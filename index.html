@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Cofre Aberto MS — Transparência Pública de Mato Grosso do Sul</title>
+<meta name="description" content="Fiscalize os gastos públicos de Mato Grosso do Sul. Dados reais de vereadores de Campo Grande, deputados estaduais, senadores e prefeitura — com notas fiscais, CEAP e folha de pessoal."/>
+<meta name="keywords" content="transparência pública, Campo Grande, Mato Grosso do Sul, vereadores, deputados, senadores, gastos públicos, CEAP, notas fiscais"/>
+<meta name="author" content="Cofre Aberto MS"/>
+<meta property="og:title" content="Cofre Aberto MS — Transparência Pública"/>
+<meta property="og:description" content="Fiscalize os gastos de 58+ parlamentares de MS. 2.773 notas fiscais reais, CEAP 2026, fotos oficiais e muito mais."/>
+<meta property="og:image" content="og-image.png"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Cofre Aberto MS"/>
+<meta name="twitter:description" content="Transparência pública de Mato Grosso do Sul — dados reais de parlamentares"/>
+<meta name="twitter:image" content="og-image.png"/>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/><link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#070910;--surface:#0f1117;--surface-2:#161a23;
+  --border:#232839;--ink:#f0f3fa;--ink-soft:#8b95aa;--ink-faint:#454d60;
+  --accent:#4d7dff;--positive:#2dd4a0;--amber:#f5c842;
+}
+html,body{min-height:100vh;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+/* BG animado */
+body::before{
+  content:"";position:fixed;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(77,125,255,.12),transparent),
+             radial-gradient(ellipse 60% 40% at 80% 80%,rgba(45,212,160,.07),transparent);
+  pointer-events:none;z-index:0;
+}
+
+.page{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 24px;}
+
+/* NAVBAR */
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:"Sora",sans-serif;font-weight:800;font-size:1.1rem;}
+.nav-logo .mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#4d7dff,#2dd4a0);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:800;box-shadow:0 2px 12px rgba(77,125,255,.4);}
+.nav-cta{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:9px 20px;font-weight:600;font-size:.88rem;cursor:pointer;font-family:inherit;transition:all .15s;}
+.nav-cta:hover{background:#3a6aee;transform:translateY(-1px);box-shadow:0 4px 16px rgba(77,125,255,.4);}
+
+/* HERO */
+.hero{text-align:center;padding:80px 0 60px;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:.78rem;color:var(--ink-soft);margin-bottom:28px;}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--positive);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.hero h1{font-family:"Sora",sans-serif;font-size:clamp(2.5rem,6vw,4.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px;}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--positive));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{font-size:1.1rem;color:var(--ink-soft);max-width:580px;margin:0 auto 40px;line-height:1.65;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:14px 32px;font-weight:700;font-size:1rem;cursor:pointer;font-family:inherit;transition:all .2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:#3a6aee;transform:translateY(-2px);box-shadow:0 8px 24px rgba(77,125,255,.4);}
+.btn-secondary{background:transparent;color:var(--ink);border:1px solid var(--border);border-radius:10px;padding:14px 32px;font-weight:600;font-size:1rem;cursor:pointer;font-family:inherit;transition:all .2s;}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+
+/* STATS BAR */
+.stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:60px 0;}
+.stat-item{background:var(--surface);padding:24px 20px;text-align:center;}
+.stat-val{font-family:"Sora",sans-serif;font-size:2rem;font-weight:800;letter-spacing:-.03em;background:linear-gradient(135deg,var(--ink),var(--ink-soft));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-label{font-size:.75rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.07em;margin-top:6px;font-weight:600;}
+
+/* FEATURES */
+.features{padding:20px 0 60px;}
+.features h2{font-family:"Sora",sans-serif;font-size:2rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:12px;}
+.features-sub{text-align:center;color:var(--ink-soft);margin-bottom:48px;font-size:.95rem;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+.feature-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;transition:border-color .2s,transform .2s;}
+.feature-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.feature-icon{font-size:2rem;margin-bottom:14px;}
+.feature-card h3{font-family:"Sora",sans-serif;font-size:1rem;font-weight:700;margin-bottom:8px;}
+.feature-card p{font-size:.85rem;color:var(--ink-soft);line-height:1.6;}
+
+/* DADOS */
+.dados{padding:0 0 60px;}
+.dados h2{font-family:"Sora",sans-serif;font-size:2rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:12px;}
+.dados-sub{text-align:center;color:var(--ink-soft);margin-bottom:40px;font-size:.95rem;}
+.abas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+.aba-card{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .2s;}
+.aba-card:hover{border-color:var(--accent);background:var(--surface);}
+.aba-card .aba-num{font-family:"Sora",sans-serif;font-size:1.6rem;font-weight:800;color:var(--accent);letter-spacing:-.02em;}
+.aba-card .aba-title{font-weight:600;font-size:.9rem;margin:4px 0 2px;}
+.aba-card .aba-desc{font-size:.78rem;color:var(--ink-faint);}
+
+/* CTA FINAL */
+.cta-final{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:48px 32px;text-align:center;margin:0 0 60px;position:relative;overflow:hidden;}
+.cta-final::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--positive));}
+.cta-final h2{font-family:"Sora",sans-serif;font-size:1.8rem;font-weight:800;margin-bottom:12px;letter-spacing:-.02em;}
+.cta-final p{color:var(--ink-soft);margin-bottom:28px;font-size:.95rem;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:24px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+footer p{font-size:.78rem;color:var(--ink-faint);}
+footer .footer-links{display:flex;gap:20px;}
+footer .footer-links a{font-size:.78rem;color:var(--ink-soft);text-decoration:none;}
+footer .footer-links a:hover{color:var(--accent);}
+
+@media(max-width:640px){
+  .hero{padding:48px 0 40px;}
+  .hero h1{font-size:2.2rem;}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .btn-primary,.btn-secondary{width:100%;justify-content:center;}
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <div class="nav-logo">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMTIwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzA3MDkxMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwZjExMTciLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImFjY2VudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM0ZDdkZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMmRkNGEwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJhY2NlbnRIIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM0ZDdkZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMmRkNGEwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZ2xvdyI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iYmx1ciIvPgogICAgICA8ZmVNZXJnZT48ZmVNZXJnZU5vZGUgaW49ImJsdXIiLz48ZmVNZXJnZU5vZGUgaW49IlNvdXJjZUdyYXBoaWMiLz48L2ZlTWVyZ2U+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CgogIDwhLS0gRnVuZG8gLS0+CiAgPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMjAiIHJ4PSIxNiIgZmlsbD0idXJsKCNiZykiLz4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyMCIgcng9IjE2IiBmaWxsPSJub25lIiBzdHJva2U9IiMyMzI4MzkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIMONY29uZTogY29mcmUvY2FkZWFkbyBlc3RpbGl6YWRvIC0tPgogIDwhLS0gQ29ycG8gZG8gY29mcmUgLS0+CiAgPHJlY3QgeD0iMTgiIHk9IjI4IiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxMCIgZmlsbD0iIzE2MWEyMyIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDwhLS0gTGluaGEgYWNjZW50IG5vIHRvcG8gZG8gY29mcmUgLS0+CiAgPHJlY3QgeD0iMTgiIHk9IjI4IiB3aWR0aD0iNjQiIGhlaWdodD0iMyIgcng9IjEuNSIgZmlsbD0idXJsKCNhY2NlbnRIKSIvPgoKICA8IS0tIERvYnJhZGnDp2EgZXNxdWVyZGEgLS0+CiAgPHJlY3QgeD0iMTQiIHk9IjQyIiB3aWR0aD0iNiIgaGVpZ2h0PSIxMCIgcng9IjMiIGZpbGw9IiMyMzI4MzkiLz4KICA8cmVjdCB4PSIxNCIgeT0iNjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEwIiByeD0iMyIgZmlsbD0iIzIzMjgzOSIvPgoKICA8IS0tIEPDrXJjdWxvIGNlbnRyYWwgZG8gY29mcmUgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI2MiIgcj0iMTgiIGZpbGw9IiMwZjExMTciIHN0cm9rZT0iIzIzMjgzOSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjYyIiByPSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2FjY2VudCkiIHN0cm9rZS13aWR0aD0iMiIgZmlsdGVyPSJ1cmwoI2dsb3cpIi8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI2MiIgcj0iNCIgZmlsbD0idXJsKCNhY2NlbnQpIi8+CgogIDwhLS0gVHJhw6dvcyBkbyBkaWFsIGRvIGNvZnJlIC0tPgogIDxsaW5lIHgxPSI1MCIgeTE9IjQ2IiB4Mj0iNTAiIHkyPSI1MCIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSI1MCIgeTE9Ijc0IiB4Mj0iNTAiIHkyPSI3OCIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSIzNCIgeTE9IjYyIiB4Mj0iMzgiIHkyPSI2MiIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSI2MiIgeTE9IjYyIiB4Mj0iNjYiIHkyPSI2MiIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgoKICA8IS0tIE1hw6dhbmV0YSBkaXJlaXRhIC0tPgogIDxyZWN0IHg9Ijc5IiB5PSI1OSIgd2lkdGg9IjgiIGhlaWdodD0iNiIgcng9IjMiIGZpbGw9IiMyMzI4MzkiLz4KCiAgPCEtLSBQw6kgZG8gY29mcmUgLS0+CiAgPHJlY3QgeD0iMjYiIHk9IjkwIiB3aWR0aD0iMTQiIGhlaWdodD0iNCIgcng9IjIiIGZpbGw9IiMxZDIyMzAiLz4KICA8cmVjdCB4PSI2MCIgeT0iOTAiIHdpZHRoPSIxNCIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iIzFkMjIzMCIvPgoKICA8IS0tIFRleHRvcyAtLT4KICA8IS0tIENPRlJFIC0tPgogIDx0ZXh0IHg9IjEwMiIgeT0iNTgiCiAgICBmb250LWZhbWlseT0iJ1NvcmEnLCAnSW50ZXInLCBzeXN0ZW0tdWksIHNhbnMtc2VyaWYiCiAgICBmb250LXdlaWdodD0iODAwIgogICAgZm9udC1zaXplPSIzMiIKICAgIGxldHRlci1zcGFjaW5nPSItMSIKICAgIGZpbGw9InVybCgjYWNjZW50KSIKICAgIGZpbHRlcj0idXJsKCNnbG93KSI+Q09GUkU8L3RleHQ+CgogIDwhLS0gQUJFUlRPIC0tPgogIDx0ZXh0IHg9IjEwMiIgeT0iODYiCiAgICBmb250LWZhbWlseT0iJ1NvcmEnLCAnSW50ZXInLCBzeXN0ZW0tdWksIHNhbnMtc2VyaWYiCiAgICBmb250LXdlaWdodD0iODAwIgogICAgZm9udC1zaXplPSIzMiIKICAgIGxldHRlci1zcGFjaW5nPSItMSIKICAgIGZpbGw9IiNmMGYzZmEiPkFCRVJUTzwvdGV4dD4KCiAgPCEtLSBNUyBiYWRnZSAtLT4KICA8cmVjdCB4PSIzMDQiIHk9IjY4IiB3aWR0aD0iMzgiIGhlaWdodD0iMjIiIHJ4PSI2IiBmaWxsPSIjMGQxODMwIiBzdHJva2U9IiM0ZDdkZmYiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHRleHQgeD0iMzIzIiB5PSI4NCIKICAgIGZvbnQtZmFtaWx5PSInU29yYScsICdJbnRlcicsIHN5c3RlbS11aSwgc2Fucy1zZXJpZiIKICAgIGZvbnQtd2VpZ2h0PSI4MDAiCiAgICBmb250LXNpemU9IjEzIgogICAgdGV4dC1hbmNob3I9Im1pZGRsZSIKICAgIGZpbGw9IiM0ZDdkZmYiPk1TPC90ZXh0PgoKICA8IS0tIExpbmhhIGRlY29yYXRpdmEgc2VwYXJhbmRvIHRleHRvIGRvIGJhZGdlIC0tPgogIDxsaW5lIHgxPSIyOTQiIHkxPSI0MCIgeDI9IjI5NCIgeTI9IjkyIiBzdHJva2U9IiMyMzI4MzkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRhZ2xpbmUgLS0+CiAgPHRleHQgeD0iMTAyIiB5PSIxMDYiCiAgICBmb250LWZhbWlseT0iJ0ludGVyJywgc3lzdGVtLXVpLCBzYW5zLXNlcmlmIgogICAgZm9udC13ZWlnaHQ9IjUwMCIKICAgIGZvbnQtc2l6ZT0iMTEiCiAgICBsZXR0ZXItc3BhY2luZz0iMS41IgogICAgZmlsbD0iIzQ1NGQ2MCI+VFJBTlNQQVLDik5DSUEgUMOaQkxJQ0E8L3RleHQ+Cgo8L3N2Zz4K" alt="Cofre Aberto MS" height="44" style="display:block"/>
+    </div>
+    <button class="nav-cta" onclick="window.location.href='cofre-aberto-ms.html'">Acessar o painel →</button>
+  </nav>
+
+  <section class="hero">
+    <div style="margin-bottom:28px">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMTIwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzA3MDkxMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwZjExMTciLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImFjY2VudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM0ZDdkZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMmRkNGEwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJhY2NlbnRIIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM0ZDdkZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMmRkNGEwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZ2xvdyI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iYmx1ciIvPgogICAgICA8ZmVNZXJnZT48ZmVNZXJnZU5vZGUgaW49ImJsdXIiLz48ZmVNZXJnZU5vZGUgaW49IlNvdXJjZUdyYXBoaWMiLz48L2ZlTWVyZ2U+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CgogIDwhLS0gRnVuZG8gLS0+CiAgPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMjAiIHJ4PSIxNiIgZmlsbD0idXJsKCNiZykiLz4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyMCIgcng9IjE2IiBmaWxsPSJub25lIiBzdHJva2U9IiMyMzI4MzkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIMONY29uZTogY29mcmUvY2FkZWFkbyBlc3RpbGl6YWRvIC0tPgogIDwhLS0gQ29ycG8gZG8gY29mcmUgLS0+CiAgPHJlY3QgeD0iMTgiIHk9IjI4IiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxMCIgZmlsbD0iIzE2MWEyMyIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDwhLS0gTGluaGEgYWNjZW50IG5vIHRvcG8gZG8gY29mcmUgLS0+CiAgPHJlY3QgeD0iMTgiIHk9IjI4IiB3aWR0aD0iNjQiIGhlaWdodD0iMyIgcng9IjEuNSIgZmlsbD0idXJsKCNhY2NlbnRIKSIvPgoKICA8IS0tIERvYnJhZGnDp2EgZXNxdWVyZGEgLS0+CiAgPHJlY3QgeD0iMTQiIHk9IjQyIiB3aWR0aD0iNiIgaGVpZ2h0PSIxMCIgcng9IjMiIGZpbGw9IiMyMzI4MzkiLz4KICA8cmVjdCB4PSIxNCIgeT0iNjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEwIiByeD0iMyIgZmlsbD0iIzIzMjgzOSIvPgoKICA8IS0tIEPDrXJjdWxvIGNlbnRyYWwgZG8gY29mcmUgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI2MiIgcj0iMTgiIGZpbGw9IiMwZjExMTciIHN0cm9rZT0iIzIzMjgzOSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjYyIiByPSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2FjY2VudCkiIHN0cm9rZS13aWR0aD0iMiIgZmlsdGVyPSJ1cmwoI2dsb3cpIi8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI2MiIgcj0iNCIgZmlsbD0idXJsKCNhY2NlbnQpIi8+CgogIDwhLS0gVHJhw6dvcyBkbyBkaWFsIGRvIGNvZnJlIC0tPgogIDxsaW5lIHgxPSI1MCIgeTE9IjQ2IiB4Mj0iNTAiIHkyPSI1MCIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSI1MCIgeTE9Ijc0IiB4Mj0iNTAiIHkyPSI3OCIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSIzNCIgeTE9IjYyIiB4Mj0iMzgiIHkyPSI2MiIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSI2MiIgeTE9IjYyIiB4Mj0iNjYiIHkyPSI2MiIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgoKICA8IS0tIE1hw6dhbmV0YSBkaXJlaXRhIC0tPgogIDxyZWN0IHg9Ijc5IiB5PSI1OSIgd2lkdGg9IjgiIGhlaWdodD0iNiIgcng9IjMiIGZpbGw9IiMyMzI4MzkiLz4KCiAgPCEtLSBQw6kgZG8gY29mcmUgLS0+CiAgPHJlY3QgeD0iMjYiIHk9IjkwIiB3aWR0aD0iMTQiIGhlaWdodD0iNCIgcng9IjIiIGZpbGw9IiMxZDIyMzAiLz4KICA8cmVjdCB4PSI2MCIgeT0iOTAiIHdpZHRoPSIxNCIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iIzFkMjIzMCIvPgoKICA8IS0tIFRleHRvcyAtLT4KICA8IS0tIENPRlJFIC0tPgogIDx0ZXh0IHg9IjEwMiIgeT0iNTgiCiAgICBmb250LWZhbWlseT0iJ1NvcmEnLCAnSW50ZXInLCBzeXN0ZW0tdWksIHNhbnMtc2VyaWYiCiAgICBmb250LXdlaWdodD0iODAwIgogICAgZm9udC1zaXplPSIzMiIKICAgIGxldHRlci1zcGFjaW5nPSItMSIKICAgIGZpbGw9InVybCgjYWNjZW50KSIKICAgIGZpbHRlcj0idXJsKCNnbG93KSI+Q09GUkU8L3RleHQ+CgogIDwhLS0gQUJFUlRPIC0tPgogIDx0ZXh0IHg9IjEwMiIgeT0iODYiCiAgICBmb250LWZhbWlseT0iJ1NvcmEnLCAnSW50ZXInLCBzeXN0ZW0tdWksIHNhbnMtc2VyaWYiCiAgICBmb250LXdlaWdodD0iODAwIgogICAgZm9udC1zaXplPSIzMiIKICAgIGxldHRlci1zcGFjaW5nPSItMSIKICAgIGZpbGw9IiNmMGYzZmEiPkFCRVJUTzwvdGV4dD4KCiAgPCEtLSBNUyBiYWRnZSAtLT4KICA8cmVjdCB4PSIzMDQiIHk9IjY4IiB3aWR0aD0iMzgiIGhlaWdodD0iMjIiIHJ4PSI2IiBmaWxsPSIjMGQxODMwIiBzdHJva2U9IiM0ZDdkZmYiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHRleHQgeD0iMzIzIiB5PSI4NCIKICAgIGZvbnQtZmFtaWx5PSInU29yYScsICdJbnRlcicsIHN5c3RlbS11aSwgc2Fucy1zZXJpZiIKICAgIGZvbnQtd2VpZ2h0PSI4MDAiCiAgICBmb250LXNpemU9IjEzIgogICAgdGV4dC1hbmNob3I9Im1pZGRsZSIKICAgIGZpbGw9IiM0ZDdkZmYiPk1TPC90ZXh0PgoKICA8IS0tIExpbmhhIGRlY29yYXRpdmEgc2VwYXJhbmRvIHRleHRvIGRvIGJhZGdlIC0tPgogIDxsaW5lIHgxPSIyOTQiIHkxPSI0MCIgeDI9IjI5NCIgeTI9IjkyIiBzdHJva2U9IiMyMzI4MzkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRhZ2xpbmUgLS0+CiAgPHRleHQgeD0iMTAyIiB5PSIxMDYiCiAgICBmb250LWZhbWlseT0iJ0ludGVyJywgc3lzdGVtLXVpLCBzYW5zLXNlcmlmIgogICAgZm9udC13ZWlnaHQ9IjUwMCIKICAgIGZvbnQtc2l6ZT0iMTEiCiAgICBsZXR0ZXItc3BhY2luZz0iMS41IgogICAgZmlsbD0iIzQ1NGQ2MCI+VFJBTlNQQVLDik5DSUEgUMOaQkxJQ0E8L3RleHQ+Cgo8L3N2Zz4K" alt="Cofre Aberto MS" height="72" style="display:inline-block"/>
+    </div>
+    <div class="hero-badge" style="margin-bottom:32px">
+      <span></span>
+      Dados atualizados — Junho 2026
+    </div>
+    <h1>Fiscalize os gastos<br/>de <em>Mato Grosso do Sul</em></h1>
+    <p>Dados reais de vereadores, deputados estaduais e senadores — com notas fiscais, CEAP, folha de pessoal e muito mais. Tudo público, tudo em um lugar só.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="window.location.href='cofre-aberto-ms.html'">
+        🔓 Abrir o painel completo
+      </button>
+      <button class="btn-secondary" onclick="document.querySelector('.dados').scrollIntoView({behavior:'smooth'})">
+        Ver o que tem dentro
+      </button>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-val">29</div>
+      <div class="stat-label">Vereadores CG</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">26</div>
+      <div class="stat-label">Dep. Estaduais</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">3</div>
+      <div class="stat-label">Senadores MS</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">2.773</div>
+      <div class="stat-label">Notas fiscais</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">R$ 6,5mi</div>
+      <div class="stat-label">CEAP Estadual 2026</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">100%</div>
+      <div class="stat-label">Dados públicos</div>
+    </div>
+  </div>
+
+  <section class="features">
+    <h2>O que você encontra aqui</h2>
+    <p class="features-sub">Tudo coletado de fontes oficiais — portais de transparência, APIs públicas e diários oficiais.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🧾</div>
+        <h3>Notas fiscais reais</h3>
+        <p>2.773 notas fiscais com fornecedor, CNPJ, valor e link para o PDF original. Veja exatamente onde cada real foi gasto.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Gastos por categoria</h3>
+        <p>Combustíveis, divulgação, consultorias, locação de veículo, software — visualize o perfil de gasto de cada parlamentar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Pessoal e gabinete</h3>
+        <p>Quantidade de funcionários, folha de pessoal mensal e equipe de escritório de cada parlamentar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Rankings cruzados</h3>
+        <p>Compare vereadores, deputados e senadores num único ranking. Veja quem gasta mais e quem gasta menos.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Busca instantânea</h3>
+        <p>Encontre qualquer parlamentar em segundos. Busca global com autocomplete em todas as abas.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Funciona offline</h3>
+        <p>Fotos embutidas, dados em cache. Abre rápido mesmo com internet lenta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dados">
+    <h2>O que está catalogado</h2>
+    <p class="dados-sub">Clique em qualquer aba para ir direto aos dados.</p>
+    <div class="abas-grid">
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
+        <div class="aba-num">29</div>
+        <div class="aba-title">Vereadores — Câmara CG</div>
+        <div class="aba-desc">Subsídio, verba indenizatória ATO 27/28, pessoal, 150 notas fiscais, fotos TSE 2024</div>
+      </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
+        <div class="aba-num">26</div>
+        <div class="aba-title">Dep. Estaduais — ALEMS</div>
+        <div class="aba-desc">CEAP Jan–Mai/2026, 2.623 notas fiscais com link para PDFs, fotos oficiais ALEMS</div>
+      </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
+        <div class="aba-num">3</div>
+        <div class="aba-title">Senadores de MS</div>
+        <div class="aba-desc">CEAPS 2026 (Soraya), 2025 (Nelsinho), pessoal, endereço do escritório, extras fora da cota</div>
+      </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
+        <div class="aba-num">8</div>
+        <div class="aba-title">Dep. Federais de MS</div>
+        <div class="aba-desc">CEAP ao vivo via API da Câmara, fotos, partido, custo estimado anual</div>
+      </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
+        <div class="aba-num">81</div>
+        <div class="aba-title">Senado Federal</div>
+        <div class="aba-desc">Todos os senadores do Brasil com partido, UF, foto e link para transparência</div>
+      </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
+        <div class="aba-num">513</div>
+        <div class="aba-title">Dep. Federais Brasil</div>
+        <div class="aba-desc">Lista completa via API da Câmara, com CEAP e custo estimado</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-final">
+    <h2>Transparência é direito seu</h2>
+    <p>Todos os dados vêm de fontes oficiais: Câmara Municipal de CG, ALEMS, Câmara Federal e Senado Federal.<br/>Nenhum dado foi alterado ou estimado sem indicação clara.</p>
+    <button class="btn-primary" onclick="window.location.href='cofre-aberto-ms.html'">
+      🔓 Entrar no painel completo
+    </button>
+  </div>
+
+  <footer>
+    <div style="display:flex;align-items:center;gap:12px"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMTIwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzA3MDkxMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwZjExMTciLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImFjY2VudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM0ZDdkZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMmRkNGEwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJhY2NlbnRIIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM0ZDdkZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMmRkNGEwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZ2xvdyI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iYmx1ciIvPgogICAgICA8ZmVNZXJnZT48ZmVNZXJnZU5vZGUgaW49ImJsdXIiLz48ZmVNZXJnZU5vZGUgaW49IlNvdXJjZUdyYXBoaWMiLz48L2ZlTWVyZ2U+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CgogIDwhLS0gRnVuZG8gLS0+CiAgPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMjAiIHJ4PSIxNiIgZmlsbD0idXJsKCNiZykiLz4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyMCIgcng9IjE2IiBmaWxsPSJub25lIiBzdHJva2U9IiMyMzI4MzkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIMONY29uZTogY29mcmUvY2FkZWFkbyBlc3RpbGl6YWRvIC0tPgogIDwhLS0gQ29ycG8gZG8gY29mcmUgLS0+CiAgPHJlY3QgeD0iMTgiIHk9IjI4IiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxMCIgZmlsbD0iIzE2MWEyMyIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDwhLS0gTGluaGEgYWNjZW50IG5vIHRvcG8gZG8gY29mcmUgLS0+CiAgPHJlY3QgeD0iMTgiIHk9IjI4IiB3aWR0aD0iNjQiIGhlaWdodD0iMyIgcng9IjEuNSIgZmlsbD0idXJsKCNhY2NlbnRIKSIvPgoKICA8IS0tIERvYnJhZGnDp2EgZXNxdWVyZGEgLS0+CiAgPHJlY3QgeD0iMTQiIHk9IjQyIiB3aWR0aD0iNiIgaGVpZ2h0PSIxMCIgcng9IjMiIGZpbGw9IiMyMzI4MzkiLz4KICA8cmVjdCB4PSIxNCIgeT0iNjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEwIiByeD0iMyIgZmlsbD0iIzIzMjgzOSIvPgoKICA8IS0tIEPDrXJjdWxvIGNlbnRyYWwgZG8gY29mcmUgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI2MiIgcj0iMTgiIGZpbGw9IiMwZjExMTciIHN0cm9rZT0iIzIzMjgzOSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjYyIiByPSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2FjY2VudCkiIHN0cm9rZS13aWR0aD0iMiIgZmlsdGVyPSJ1cmwoI2dsb3cpIi8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI2MiIgcj0iNCIgZmlsbD0idXJsKCNhY2NlbnQpIi8+CgogIDwhLS0gVHJhw6dvcyBkbyBkaWFsIGRvIGNvZnJlIC0tPgogIDxsaW5lIHgxPSI1MCIgeTE9IjQ2IiB4Mj0iNTAiIHkyPSI1MCIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSI1MCIgeTE9Ijc0IiB4Mj0iNTAiIHkyPSI3OCIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSIzNCIgeTE9IjYyIiB4Mj0iMzgiIHkyPSI2MiIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSI2MiIgeTE9IjYyIiB4Mj0iNjYiIHkyPSI2MiIgc3Ryb2tlPSIjMjMyODM5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgoKICA8IS0tIE1hw6dhbmV0YSBkaXJlaXRhIC0tPgogIDxyZWN0IHg9Ijc5IiB5PSI1OSIgd2lkdGg9IjgiIGhlaWdodD0iNiIgcng9IjMiIGZpbGw9IiMyMzI4MzkiLz4KCiAgPCEtLSBQw6kgZG8gY29mcmUgLS0+CiAgPHJlY3QgeD0iMjYiIHk9IjkwIiB3aWR0aD0iMTQiIGhlaWdodD0iNCIgcng9IjIiIGZpbGw9IiMxZDIyMzAiLz4KICA8cmVjdCB4PSI2MCIgeT0iOTAiIHdpZHRoPSIxNCIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iIzFkMjIzMCIvPgoKICA8IS0tIFRleHRvcyAtLT4KICA8IS0tIENPRlJFIC0tPgogIDx0ZXh0IHg9IjEwMiIgeT0iNTgiCiAgICBmb250LWZhbWlseT0iJ1NvcmEnLCAnSW50ZXInLCBzeXN0ZW0tdWksIHNhbnMtc2VyaWYiCiAgICBmb250LXdlaWdodD0iODAwIgogICAgZm9udC1zaXplPSIzMiIKICAgIGxldHRlci1zcGFjaW5nPSItMSIKICAgIGZpbGw9InVybCgjYWNjZW50KSIKICAgIGZpbHRlcj0idXJsKCNnbG93KSI+Q09GUkU8L3RleHQ+CgogIDwhLS0gQUJFUlRPIC0tPgogIDx0ZXh0IHg9IjEwMiIgeT0iODYiCiAgICBmb250LWZhbWlseT0iJ1NvcmEnLCAnSW50ZXInLCBzeXN0ZW0tdWksIHNhbnMtc2VyaWYiCiAgICBmb250LXdlaWdodD0iODAwIgogICAgZm9udC1zaXplPSIzMiIKICAgIGxldHRlci1zcGFjaW5nPSItMSIKICAgIGZpbGw9IiNmMGYzZmEiPkFCRVJUTzwvdGV4dD4KCiAgPCEtLSBNUyBiYWRnZSAtLT4KICA8cmVjdCB4PSIzMDQiIHk9IjY4IiB3aWR0aD0iMzgiIGhlaWdodD0iMjIiIHJ4PSI2IiBmaWxsPSIjMGQxODMwIiBzdHJva2U9IiM0ZDdkZmYiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHRleHQgeD0iMzIzIiB5PSI4NCIKICAgIGZvbnQtZmFtaWx5PSInU29yYScsICdJbnRlcicsIHN5c3RlbS11aSwgc2Fucy1zZXJpZiIKICAgIGZvbnQtd2VpZ2h0PSI4MDAiCiAgICBmb250LXNpemU9IjEzIgogICAgdGV4dC1hbmNob3I9Im1pZGRsZSIKICAgIGZpbGw9IiM0ZDdkZmYiPk1TPC90ZXh0PgoKICA8IS0tIExpbmhhIGRlY29yYXRpdmEgc2VwYXJhbmRvIHRleHRvIGRvIGJhZGdlIC0tPgogIDxsaW5lIHgxPSIyOTQiIHkxPSI0MCIgeDI9IjI5NCIgeTI9IjkyIiBzdHJva2U9IiMyMzI4MzkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRhZ2xpbmUgLS0+CiAgPHRleHQgeD0iMTAyIiB5PSIxMDYiCiAgICBmb250LWZhbWlseT0iJ0ludGVyJywgc3lzdGVtLXVpLCBzYW5zLXNlcmlmIgogICAgZm9udC13ZWlnaHQ9IjUwMCIKICAgIGZvbnQtc2l6ZT0iMTEiCiAgICBsZXR0ZXItc3BhY2luZz0iMS41IgogICAgZmlsbD0iIzQ1NGQ2MCI+VFJBTlNQQVLDik5DSUEgUMOaQkxJQ0E8L3RleHQ+Cgo8L3N2Zz4K" alt="Cofre Aberto MS" height="28"/><p style="margin:0">© 2026 — Dados públicos de MS</p></div>
+    <div class="footer-links">
+      <a href="cofre-aberto-ms.html">Painel</a>
+      <a href="https://github.com" target="_blank">GitHub</a>
+      <a href="cofre-aberto-ms.html#tab-sobre">Sobre</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
