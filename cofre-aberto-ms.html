@@ -265,6 +265,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button data-tab="prefeitura"><span class="dot"></span> Prefeitura CG</button>
       <button data-tab="deputados-brasil"><span class="dot"></span> Dep. Federais Brasil</button>
       <button data-tab="senado-brasil"><span class="dot"></span> Senado Brasil</button>
+    
+      <button data-tab="sobre"><span class="dot"></span> Sobre</button>
     </nav>
     <div class="sidebar-status" id="status-row">
       <div class="row"><span><span class="live-dot"></span>Status</span><b>Sincronizado</b></div>
@@ -400,13 +402,6 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
 
     <div class="section">
-      <div class="notice" id="notice-camara">
-        <b>Fonte dos dados.</b> Coletado via Claude para Chrome no Portal da Transparência
-        da Câmara Municipal (SCPI Fiorilli), 221 empenhos analisados individualmente em
-        14-15/06/2026. A verba indenizatória cobre combustível, mídia/divulgação,
-        assessoria, material de escritório e eventos — mas o detalhamento por nota fiscal
-        não está digitalizado, apenas o total empenhado/pago por vereador.
-      </div>
       <div class="section-head">
         <h2 class="section-title">Gabinetes — gasto com pessoal (maio/2026)</h2>
       </div>
@@ -472,13 +467,6 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
 
     <div class="section">
-      <div class="notice" id="notice-depest">
-        <b>Dados parciais.</b> A lista de deputados e o subsídio mensal são reais (Portal da
-        Transparência ALEMS e Lei 6.016/2022). A CEAP (cota individual), verba de gabinete,
-        equipe e diárias de cada deputado estão pendentes — o portal CEAP da ALEMS
-        (consulta.transparencia.al.ms.gov.br/ceap) usa sistema dinâmico que exige sessão de
-        navegador, mesma limitação encontrada nos portais municipais.
-      </div>
       <div class="section-head">
         <h2 class="section-title">Deputados Estaduais de MS</h2>
       </div>
@@ -598,6 +586,21 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
   </section>
 
+  <section class="tabpanel" id="tab-sobre">
+      <div class="notice" id="notice-camara">
+        <b>Fonte dos dados.</b> Coletado via Claude para Chrome no Portal da Transparência
+        da Câmara Municipal (SCPI Fiorilli), 221 empenhos analisados individualmente em
+        14-15/06/2026. A verba indenizatória cobre combustível, mídia/divulgação,
+        assessoria, material de escritório e eventos — mas o detalhamento por nota fiscal
+        não está digitalizado, apenas o total empenhado/pago por vereador.
+      </div>
+      <div class="notice" id="notice-depest">
+        <b>Dados parciais.</b> A lista de deputados e o subsídio mensal são reais (Portal da
+        Transparência ALEMS e Lei 6.016/2022). A CEAP (cota individual), verba de gabinete,
+        equipe e diárias de cada deputado estão pendentes — o portal CEAP da ALEMS
+        (consulta.transparencia.al.ms.gov.br/ceap) usa sistema dinâmico que exige sessão de
+        navegador, mesma limitação encontrada nos portais municipais.
+      </div>
   <!-- ===================== SOBRE ===================== -->
     <div class="hero">
       <div class="hero-label">Sobre este painel</div>
@@ -647,11 +650,6 @@ table.notes-table tr:hover td{background:var(--surface-2);}
           <li><b style="color:var(--ink)">Prefeitura de Campo Grande</b> — execução orçamentária real e maiores contratos (portal sem API).</li>
           <li><b style="color:var(--ink)">Senadores — CEAPS</b> — publicada em planilhas anuais, não em API de consulta direta.</li>
         </ul>
-        <p class="section-note" style="margin-top:14px; margin-bottom:0;">
-          Uma alternativa para os itens pendentes é usar a extensão <b style="color:var(--ink)">Claude para Chrome</b>,
-          que navega no portal usando sua sessão real do navegador (sem o bloqueio anti-bot que
-          afeta scripts externos) e pode extrair os dados manualmente, vereador por vereador.
-        </p>
       </div>
     </div>
 
@@ -675,6 +673,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         </p>
       </div>
     </div>
+  </section>
   </section>
 
   <footer class="site-footer">
