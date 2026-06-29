@@ -2353,76 +2353,54 @@ function addShareButtons() {
 
 // ===================== INIT =====================
 async function init() {
-  const camaraMunicipal = await carregarJSON("dados/camara_municipal.json") || DADOS_CAMARA_MUNICIPAL || PADRAO_CAMARA_MUNICIPAL;
-  const deputadosEstaduais = await carregarJSON("dados/deputados_estaduais_ms.json") || DADOS_DEPUTADOS_ESTADUAIS;
-  const prefeitura = await carregarJSON("dados/prefeitura.json") || PADRAO_PREFEITURA;
+  // Renderizar esqueleto imediatamente — não bloqueia a tela
+  renderCamaraMunicipal({ vereadores: [] });
+  renderDeputadosEstaduais({ vereadores: [] });
+  renderPrefeitura(PADRAO_PREFEITURA);
 
-  renderCamaraMunicipal(camaraMunicipal);
-  renderDeputadosEstaduais(deputadosEstaduais);
-  renderPrefeitura(prefeitura);
-
-  // Navegação com lazy loading para abas pesadas
+  // Navegação
   document.querySelectorAll(".sidebar nav button").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".sidebar nav button").forEach(b => b.classList.remove("active"));
       document.querySelectorAll(".tabpanel").forEach(p => p.classList.remove("active"));
       btn.classList.add("active");
       document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
-      if (btn.dataset.tab === "deputados-brasil" && !window._depBrLoaded) {
-        window._depBrLoaded = true;
-        carregarDeputadosBrasil();
-      }
-      if (btn.dataset.tab === "senado-brasil" && !window._senBrLoaded) {
-        window._senBrLoaded = true;
-        carregarSenadoBrasil();
-      }
-      if (btn.dataset.tab === "rankings" && !window._rankingsLoaded) {
-        window._rankingsLoaded = true;
-        renderRankingsGerais();
-      }
+      if (btn.dataset.tab === "dep-brasil" && !window._depBrLoaded) { window._depBrLoaded = true; carregarDeputadosBrasil(); }
+      if (btn.dataset.tab === "senado-brasil" && !window._senBrLoaded) { window._senBrLoaded = true; carregarSenadoBrasil(); }
     });
   });
 
-  // Inicializar busca global e share buttons
   initBuscaGlobal();
   addShareButtons();
 
-  // MS: busca ao vivo
-  document.getElementById("status-data").textContent = "buscando dados ao vivo…";
-  document.getElementById("dep-total").textContent = "CARREGANDO…";
-  const rankingBody = document.querySelector("#ranking-deputados tbody");
-  rankingBody.innerHTML = `<tr><td colspan="5" style="padding:16px; color:var(--ink-soft);" id="progresso-deputados">
-    Conectando à API da Câmara dos Deputados…
-  </td></tr>`;
+  // Carregar JSONs em paralelo (não bloqueante)
+  const [camara, depEst] = await Promise.all([
+    carregarJSON("dados/camara_municipal.json"),
+    carregarJSON("dados/deputados_estaduais_ms.json"),
+  ]);
 
+  if (camara) { DADOS_CAMARA_MUNICIPAL = camara; renderCamaraMunicipal(camara); }
+  if (depEst) { DADOS_DEPUTADOS_ESTADUAIS = depEst; renderDeputadosEstaduais(depEst); }
+
+  // Notas fiscais estaduais: carregar por demanda (só quando clicar no deputado)
+  carregarJSON("dados/ceap_notas_estaduais.json").then(d => { if (d) CEAP_NOTAS_ESTADUAIS = d; });
+
+  // Senadores locais
+  carregarJSON("dados/senadores_brasil.json").then(d => { if (d) DADOS_SENADORES_BRASIL = d; });
+
+  // API ao vivo: deputados e senadores de MS
+  document.getElementById("status-data").textContent = "buscando ao vivo…";
   try {
     const [deputados, senadores] = await Promise.all([
-      buscarDeputadosAoVivo("MS", (atual, total, nome) => {
-        const el = document.getElementById("progresso-deputados");
-        if (el) el.textContent = `Coletando deputado ${atual}/${total}: ${nome}… (isso pode levar alguns minutos)`;
-      }, true),
+      buscarDeputadosAoVivo("MS", null, true),
       buscarSenadoresAoVivo("MS").catch(() => []),
     ]);
-    const congresso = { ultimaAtualizacao: new Date().toISOString(), anoReferencia: ANO_REFERENCIA, deputados, senadores };
+    const congresso = { ultimaAtualizacao: new Date().toISOString(), deputados, senadores };
     document.getElementById("status-data").textContent = formatDateTime(congresso.ultimaAtualizacao);
     renderDeputados(congresso);
     renderSenadores(congresso);
-  } catch (err) {
-    const congressoLocal = await carregarJSON("dados/congresso_ms.json");
-    if (congressoLocal) {
-      document.getElementById("status-data").textContent = formatDateTime(congressoLocal.ultimaAtualizacao);
-      renderDeputados(congressoLocal);
-      renderSenadores(congressoLocal);
-      return;
-    }
-    document.getElementById("status-data").textContent = "erro ao buscar dados ao vivo";
-    document.getElementById("dep-total").textContent = "SEM CONEXÃO";
-    rankingBody.innerHTML = `<tr><td colspan="5" style="padding:16px; color:var(--ink-soft);">
-      Não foi possível buscar os dados automaticamente (${err.message}).
-      Isso pode acontecer se a API da Câmara estiver bloqueando chamadas
-      diretas do navegador (CORS) ou se sua conexão estiver instável.
-      Veja a aba Sobre para a alternativa via scraper Python.
-    </td></tr>`;
+  } catch(err) {
+    document.getElementById("status-data").textContent = "offline";
     renderSenadores({ senadores: [] });
   }
 }
