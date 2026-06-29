@@ -789,21 +789,17 @@ const PADRAO_CAMARA_MUNICIPAL = {
 // Dados reais coletados via Claude para Chrome (14-15/06/2026) — embutidos
 // diretamente para funcionar mesmo abrindo o arquivo localmente (file://),
 // onde fetch() de JSON é bloqueado pelo navegador.
-let DADOS_CAMARA_MUNICIPAL = {}; fetch('dados/camara_municipal.json').then(r=>r.json()).then(d=>{DADOS_CAMARA_MUNICIPAL=d;renderCamaraMunicipal(d);});
+let DADOS_CAMARA_MUNICIPAL = {};
 
 // Deputados Estaduais de MS (ALEMS) — lista e subsídio reais; CEAP individual
 // pendente (portal dinâmico sem API).
-let DADOS_DEPUTADOS_ESTADUAIS = {}; fetch('dados/deputados_estaduais_ms.json').then(r=>r.json()).then(d=>{DADOS_DEPUTADOS_ESTADUAIS=d;});
+let DADOS_DEPUTADOS_ESTADUAIS = {};
 
 // Notas fiscais CEAP estaduais (formato compacto)
-let CEAP_NOTAS_ESTADUAIS = {}; fetch('dados/ceap_notas_estaduais.json').then(r=>r.json()).then(d=>{CEAP_NOTAS_ESTADUAIS=d;});
-const CEAP_NOTAS_ESTADUAIS={};
-for(const[n,l]of Object.entries(CEAP_NOTAS_ESTADUAIS)){
-  CEAP_NOTAS_ESTADUAIS[n]=l.map(r=>({data:r[0],categoria:r[1],fornecedor:r[2],cnpj:r[3],valor:r[4],nf:r[5],urlPdf:r[6]}));
-}
+let CEAP_NOTAS_ESTADUAIS = {};
 
 // Senadores do Brasil — lista completa 81 senadores com IDs, fotos e CEAPS MS 2026
-let DADOS_SENADORES_BRASIL = {}; fetch('dados/senadores_brasil.json').then(r=>r.json()).then(d=>{DADOS_SENADORES_BRASIL=d;});
+let DADOS_SENADORES_BRASIL = {};
 
 
 const PADRAO_PREFEITURA = {
