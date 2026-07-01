@@ -1,0 +1,17 @@
+name: Aplicar fotos corretas
+on:
+  workflow_dispatch:
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python3 aplicar_fotos.py
+      - run: |
+          git config user.name "Cofre Aberto Bot"
+          git config user.email "bot@cofreabertoms.com.br"
+          git add dados/camara_municipal.json
+          git commit -m "Fotos dos vereadores corrigidas"
+          git push
