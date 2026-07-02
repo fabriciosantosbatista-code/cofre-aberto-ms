@@ -987,6 +987,8 @@ async function buscarSenadoresAoVivo(siglaUf) {
     const ceapsTotal = local?.ceaps2026?.total || null;
     const ceapsCategorias = local?.ceapsCategorias || null;
 
+    const ant = (DADOS_SENADORES_BRASIL?.senadores || []).find(s => String(s.id) === String(id)) || {};
+
     return {
       id,
       nome: ident.NomeParlamentarFormatado || ident.NomeParlamentar,
@@ -995,12 +997,15 @@ async function buscarSenadoresAoVivo(siglaUf) {
       foto: ident.UrlFotoParlamentar || `http://www.senado.leg.br/senadores/img/fotos-oficiais/senador${id}.jpg`,
       cargo: "Senador(a)",
       urlTransparencia: `https://www6g.senado.leg.br/transparencia/sen/${id}/?ano=${ANO_REFERENCIA}`,
-      cotaGastaAno: ceapsTotal,
+      cotaGastaAno: ceapsTotal || ant?.cotaGastaAno || null,
+      ceaps2025: ant?.ceaps2025 || null,
+      gastosExtras2025: ant?.gastosExtras2025 || null,
+      total2025: ant?.total2025 || null,
       ceapsCategorias,
       despesas: local?.despesas || [],
       totalNotasFiscais: (local?.despesas || []).length,
-      nota: local?.nota || "",
-      fonteCeaps: local?.fonteCeaps || "",
+      nota: ceapsTotal ? "" : (local?.nota || ant?.nota || ""),
+      fonteCeaps: local?.fonteCeaps || ant?.fonteCeaps || "",
       gabinete: { verbaGabineteMensal: null, equipeEstimada: null, equipeEstimadaNota: "Consulte o Portal de Transparência do Senado para dados individuais." },
       custoEstimadoAnual: {
         subsidioAnual: round2(SUBSIDIO_DEPUTADO * 13),
