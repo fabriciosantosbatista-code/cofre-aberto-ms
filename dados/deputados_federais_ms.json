@@ -1,8 +1,444 @@
 {
-  "ultimaAtualizacao": "2026-06-28T01:05:58",
+  "ultimaAtualizacao": "2026-07-02T17:03:47",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br)",
-  "total": 0,
-  "deputados": [],
-  "nota": "Dados carregados automaticamente via API da Câmara. Execute scripts/coletar_dados.py para popular."
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-07-02T17:03:47",
+  "total": 8,
+  "deputados": [
+    {
+      "id": 204358,
+      "nome": "Beto Pereira",
+      "nomeCompleto": "HUMBERTO REZENDE PEREIRA",
+      "partido": "REPUBLICANOS",
+      "uf": "MS",
+      "cargo": "Deputado(a) Federal",
+      "foto": "https://www.camara.leg.br/internet/deputado/bandep/204358.jpg",
+      "email": null,
+      "gabinete": {
+        "nome": "240",
+        "predio": "4",
+        "sala": "240",
+        "andar": "2",
+        "telefone": "3215-5240",
+        "email": "dep.betopereira@camara.leg.br"
+      },
+      "urlPerfil": "https://www.camara.leg.br/deputados/204358",
+      "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/204358/despesas?ano=2026",
+      "cotaGastaAno": 234464.74,
+      "ceapCategorias": [
+        {
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "valor": 104473.34
+        },
+        {
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 41500.0
+        },
+        {
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 33105.78
+        },
+        {
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 30072.74
+        },
+        {
+          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
+          "valor": 10390.6
+        },
+        {
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 9682.58
+        },
+        {
+          "categoria": "TELEFONIA",
+          "valor": 3439.97
+        },
+        {
+          "categoria": "SERVIÇO DE SEGURANÇA PRESTADO POR EMPRESA ESPECIALIZADA.",
+          "valor": 1356.96
+        },
+        {
+          "categoria": "PASSAGEM AÉREA - REEMBOLSO",
+          "valor": 442.77
+        }
+      ],
+      "salarioBase": 41650.92
+    },
+    {
+      "id": 220548,
+      "nome": "Camila Jara",
+      "nomeCompleto": "CAMILA BAZACHI JARA MARZOCHI",
+      "partido": "PT",
+      "uf": "MS",
+      "cargo": "Deputado(a) Federal",
+      "foto": "https://www.camara.leg.br/internet/deputado/bandep/220548.jpg",
+      "email": null,
+      "gabinete": {
+        "nome": "860",
+        "predio": "4",
+        "sala": "860",
+        "andar": "8",
+        "telefone": "3215-5860",
+        "email": "dep.camilajara@camara.leg.br"
+      },
+      "urlPerfil": "https://www.camara.leg.br/deputados/220548",
+      "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220548/despesas?ano=2026",
+      "cotaGastaAno": 133398.39,
+      "ceapCategorias": [
+        {
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "valor": 63738.0
+        },
+        {
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 32060.0
+        },
+        {
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 12982.43
+        },
+        {
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 11444.55
+        },
+        {
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 9425.59
+        },
+        {
+          "categoria": "PASSAGEM AÉREA - REEMBOLSO",
+          "valor": 3008.91
+        },
+        {
+          "categoria": "TELEFONIA",
+          "valor": 738.91
+        }
+      ],
+      "salarioBase": 41650.92
+    },
+    {
+      "id": 141411,
+      "nome": "Dagoberto Nogueira",
+      "nomeCompleto": "DAGOBERTO NOGUEIRA FILHO",
+      "partido": "PP",
+      "uf": "MS",
+      "cargo": "Deputado(a) Federal",
+      "foto": "https://www.camara.leg.br/internet/deputado/bandep/141411.jpg",
+      "email": null,
+      "gabinete": {
+        "nome": "522",
+        "predio": "4",
+        "sala": "522",
+        "andar": "5",
+        "telefone": "3215-5522",
+        "email": "dep.dagobertonogueira@camara.leg.br"
+      },
+      "urlPerfil": "https://www.camara.leg.br/deputados/141411",
+      "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/141411/despesas?ano=2026",
+      "cotaGastaAno": 231674.78,
+      "ceapCategorias": [
+        {
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "valor": 84136.66
+        },
+        {
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 55200.0
+        },
+        {
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 33289.89
+        },
+        {
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 26290.0
+        },
+        {
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 21169.83
+        },
+        {
+          "categoria": "TELEFONIA",
+          "valor": 6590.93
+        },
+        {
+          "categoria": "SERVIÇO DE SEGURANÇA PRESTADO POR EMPRESA ESPECIALIZADA.",
+          "valor": 2400.0
+        },
+        {
+          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
+          "valor": 1592.86
+        },
+        {
+          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
+          "valor": 1004.61
+        }
+      ],
+      "salarioBase": 41650.92
+    },
+    {
+      "id": 204351,
+      "nome": "Dr. Luiz Ovando",
+      "nomeCompleto": "LUIZ ALBERTO OVANDO",
+      "partido": "PP",
+      "uf": "MS",
+      "cargo": "Deputado(a) Federal",
+      "foto": "https://www.camara.leg.br/internet/deputado/bandep/204351.jpg",
+      "email": null,
+      "gabinete": {
+        "nome": "644",
+        "predio": "4",
+        "sala": "644",
+        "andar": "6",
+        "telefone": "3215-5644",
+        "email": "dep.dr.luizovando@camara.leg.br"
+      },
+      "urlPerfil": "https://www.camara.leg.br/deputados/204351",
+      "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/204351/despesas?ano=2026",
+      "cotaGastaAno": 84014.16,
+      "ceapCategorias": [
+        {
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "valor": 32230.03
+        },
+        {
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 16512.82
+        },
+        {
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 15000.0
+        },
+        {
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 10338.75
+        },
+        {
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 7213.67
+        },
+        {
+          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
+          "valor": 2423.0
+        },
+        {
+          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
+          "valor": 295.89
+        }
+      ],
+      "salarioBase": 41650.92
+    },
+    {
+      "id": 74374,
+      "nome": "Geraldo Resende",
+      "nomeCompleto": "GERALDO RESENDE PEREIRA",
+      "partido": "UNIÃO",
+      "uf": "MS",
+      "cargo": "Deputado(a) Federal",
+      "foto": "https://www.camara.leg.br/internet/deputado/bandep/74374.jpg",
+      "email": null,
+      "gabinete": {
+        "nome": "304",
+        "predio": "4",
+        "sala": "304",
+        "andar": "3",
+        "telefone": "3215-5304",
+        "email": "dep.geraldoresende@camara.leg.br"
+      },
+      "urlPerfil": "https://www.camara.leg.br/deputados/74374",
+      "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/74374/despesas?ano=2026",
+      "cotaGastaAno": 265419.37,
+      "ceapCategorias": [
+        {
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "valor": 164383.01
+        },
+        {
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 38160.99
+        },
+        {
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 24597.05
+        },
+        {
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 14889.11
+        },
+        {
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 13600.0
+        },
+        {
+          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
+          "valor": 6964.0
+        },
+        {
+          "categoria": "TELEFONIA",
+          "valor": 2629.21
+        },
+        {
+          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
+          "valor": 196.0
+        }
+      ],
+      "salarioBase": 41650.92
+    },
+    {
+      "id": 220547,
+      "nome": "Marcos Pollon",
+      "nomeCompleto": "MARCOS SBOROWSKI POLLON",
+      "partido": "PL",
+      "uf": "MS",
+      "cargo": "Deputado(a) Federal",
+      "foto": "https://www.camara.leg.br/internet/deputado/bandep/220547.jpg",
+      "email": null,
+      "gabinete": {
+        "nome": "976",
+        "predio": "3",
+        "sala": "976",
+        "andar": null,
+        "telefone": "3215-5976",
+        "email": "dep.marcospollon@camara.leg.br"
+      },
+      "urlPerfil": "https://www.camara.leg.br/deputados/220547",
+      "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220547/despesas?ano=2026",
+      "cotaGastaAno": 63030.94,
+      "ceapCategorias": [
+        {
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "valor": 20230.0
+        },
+        {
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 12505.13
+        },
+        {
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 10565.7
+        },
+        {
+          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
+          "valor": 10429.26
+        },
+        {
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 8125.89
+        },
+        {
+          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
+          "valor": 864.86
+        },
+        {
+          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
+          "valor": 310.1
+        }
+      ],
+      "salarioBase": 41650.92
+    },
+    {
+      "id": 220546,
+      "nome": "Rodolfo Nogueira",
+      "nomeCompleto": "RODOLFO OLIVEIRA NOGUEIRA",
+      "partido": "PL",
+      "uf": "MS",
+      "cargo": "Deputado(a) Federal",
+      "foto": "https://www.camara.leg.br/internet/deputado/bandep/220546.jpg",
+      "email": null,
+      "gabinete": {
+        "nome": "776",
+        "predio": "3",
+        "sala": "776",
+        "andar": null,
+        "telefone": "3215-5776",
+        "email": "dep.rodolfonogueira@camara.leg.br"
+      },
+      "urlPerfil": "https://www.camara.leg.br/deputados/220546",
+      "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220546/despesas?ano=2026",
+      "cotaGastaAno": 166290.36,
+      "ceapCategorias": [
+        {
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "valor": 125436.56
+        },
+        {
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 19891.73
+        },
+        {
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 12800.0
+        },
+        {
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 3449.5
+        },
+        {
+          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
+          "valor": 1988.0
+        },
+        {
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 1718.35
+        },
+        {
+          "categoria": "TELEFONIA",
+          "valor": 1006.22
+        }
+      ],
+      "salarioBase": 41650.92
+    },
+    {
+      "id": 74376,
+      "nome": "Vander Loubet",
+      "nomeCompleto": "VANDER LUIZ DOS SANTOS LOUBET",
+      "partido": "PT",
+      "uf": "MS",
+      "cargo": "Deputado(a) Federal",
+      "foto": "https://www.camara.leg.br/internet/deputado/bandep/74376.jpg",
+      "email": null,
+      "gabinete": {
+        "nome": "838",
+        "predio": "4",
+        "sala": "838",
+        "andar": "8",
+        "telefone": "3215-5838",
+        "email": "dep.vanderloubet@camara.leg.br"
+      },
+      "urlPerfil": "https://www.camara.leg.br/deputados/74376",
+      "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/74376/despesas?ano=2026",
+      "cotaGastaAno": 104522.63,
+      "ceapCategorias": [
+        {
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "valor": 46005.0
+        },
+        {
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 22000.0
+        },
+        {
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 11560.33
+        },
+        {
+          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
+          "valor": 8739.79
+        },
+        {
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 8106.48
+        },
+        {
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 8079.57
+        },
+        {
+          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
+          "valor": 31.46
+        }
+      ],
+      "salarioBase": 41650.92
+    }
+  ]
 }
