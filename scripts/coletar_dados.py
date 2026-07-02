@@ -268,7 +268,7 @@ def coletar_dep_estaduais():
         })
 
     data = {
-        **dados_ant if deps_ant else {},
+        **(dados_ant if deps_ant else {}),
         "ultimaAtualizacao": hoje,
         "fonte": f"Portal da Transparência ALEMS (consulta.transparencia.al.ms.gov.br/ceap) — {hoje}",
         "vereadores": deps if deps else dados_ant.get("vereadores", []),
