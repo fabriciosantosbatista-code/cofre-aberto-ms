@@ -401,6 +401,69 @@ def gerar_status():
     salvar("status.json", status)
 
 # ============================================================
+# 6. PREFEITURA DE CAMPO GRANDE — CSV de Despesas
+# ============================================================
+def coletar_prefeitura():
+    log("Coletando despesas da Prefeitura de CG...")
+
+    import csv, io
+    from datetime import date
+
+    ano = date.today().year
+    url = f"https://cdn.campogrande.ms.gov.br/portal/prod/uploads/{ano}/05/Consulta_de_Despesas__{ano}.csv"
+
+    try:
+        r = get_com_retry(url)
+        texto = r.content.decode("utf-8-sig", errors="replace")
+        reader = csv.DictReader(io.StringIO(texto), delimiter=";")
+        linhas = list(reader)
+        log(f"  {len(linhas)} linhas no CSV da Prefeitura")
+    except Exception as e:
+        log(f"  \u26a0\ufe0f CSV Prefeitura indispon\u00edvel: {e} \u2014 tentando m\u00eas anterior...")
+        try:
+            url2 = f"https://cdn.campogrande.ms.gov.br/portal/prod/uploads/{ano}/04/Consulta_de_Despesas__{ano}.csv"
+            r = get_com_retry(url2)
+            texto = r.content.decode("utf-8-sig", errors="replace")
+            reader = csv.DictReader(io.StringIO(texto), delimiter=";")
+            linhas = list(reader)
+            log(f"  {len(linhas)} linhas (m\u00eas anterior)")
+        except Exception as e2:
+            log(f"  \u26a0\ufe0f Prefeitura indispon\u00edvel: {e2} \u2014 mantendo dados anteriores")
+            return None
+
+    # Agrupar por secretaria
+    por_secretaria = {}
+    total_geral = 0
+    for row in linhas:
+        try:
+            secretaria = (row.get("Secretaria") or row.get("\u00d3rg\u00e3o") or row.get("orgao") or "Outros").strip()
+            valor_str = (row.get("Valor Pago") or row.get("valor_pago") or row.get("Valor") or "0").strip()
+            valor = float(valor_str.replace(".", "").replace(",", ".").replace("R$", "").strip() or 0)
+            por_secretaria[secretaria] = por_secretaria.get(secretaria, 0) + valor
+            total_geral += valor
+        except:
+            continue
+
+    # Carregar dados anteriores para manter estrutura
+    try:
+        dados_ant = json.load(open(DADOS / "prefeitura.json", encoding="utf-8"))
+    except:
+        dados_ant = {}
+
+    data = {
+        **dados_ant,
+        "ultimaAtualizacao": hoje,
+        "ano": ano,
+        "totalDespesas": round(total_geral, 2),
+        "fonte": f"cdn.campogrande.ms.gov.br \u2014 {hoje}",
+        "porSecretaria": {k: round(v, 2) for k, v in sorted(por_secretaria.items(), key=lambda x: -x[1])[:20]},
+        "totalLinhas": len(linhas),
+    }
+    salvar("prefeitura.json", data)
+    log(f"  Total despesas {ano}: R$ {total_geral:,.2f}")
+    return data
+
+# ============================================================
 # MAIN
 # ============================================================
 if __name__ == "__main__":
@@ -439,6 +502,12 @@ if __name__ == "__main__":
     except Exception as e:
         erros.append(f"Dep. Federais Brasil: {e}")
         log(f"❌ {e}")
+
+    try:
+        coletar_prefeitura()
+    except Exception as e:
+        erros.append(f"Prefeitura: {e}")
+        log(f"\u274c {e}")
 
     gerar_status()
 
