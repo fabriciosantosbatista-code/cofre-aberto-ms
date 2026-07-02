@@ -321,7 +321,7 @@ def coletar_senado_brasil():
     log(f"  {len(senadores)} senadores em exercício")
 
     data = {
-        **dados_ant if sens_ant else {},
+        **(dados_ant if sens_ant else {}),
         "ultimaAtualizacao": hoje,
         "fonte": f"API do Senado Federal — {hoje}",
         "totalSenadores": len(senadores),
