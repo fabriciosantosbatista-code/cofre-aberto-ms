@@ -1,0 +1,38 @@
+name: Atualizar dados diariamente
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests Pillow
+
+      - name: Coletar dados
+        run: python3 scripts/coletar_dados.py
+        continue-on-error: true
+
+      - name: Commit e push
+        run: |
+          git config user.name "Cofre Aberto Bot"
+          git config user.email "bot@cofreabertoms.com.br"
+          git add dados/
+          git diff --staged --quiet && echo "Sem mudanças" || \
+          git commit -m "🤖 Dados atualizados — $(date +'%d/%m/%Y %H:%M') BRT"
+          git push
