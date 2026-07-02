@@ -418,10 +418,6 @@ def coletar_prefeitura():
         reader = csv.DictReader(io.StringIO(texto), delimiter=";")
         linhas = list(reader)
         log(f"  {len(linhas)} linhas no CSV da Prefeitura")
-        if linhas:
-            log(f"  COLUNAS: {list(linhas[0].keys())}")
-            for i, row in enumerate(linhas[:2]):
-                log(f"  LINHA {i+1}: {dict(list(row.items())[:6])}")
     except Exception as e:
         log(f"  \u26a0\ufe0f CSV Prefeitura indispon\u00edvel: {e} \u2014 tentando m\u00eas anterior...")
         try:
@@ -440,8 +436,8 @@ def coletar_prefeitura():
     total_geral = 0
     for row in linhas:
         try:
-            secretaria = (row.get("Secretaria") or row.get("\u00d3rg\u00e3o") or row.get("orgao") or "Outros").strip()
-            valor_str = (row.get("Valor Pago") or row.get("valor_pago") or row.get("Valor") or "0").strip()
+            secretaria = (row.get("orgao") or "Outros").strip()
+            valor_str = (row.get("total_pago") or "0").strip()
             valor = float(valor_str.replace(".", "").replace(",", ".").replace("R$", "").strip() or 0)
             por_secretaria[secretaria] = por_secretaria.get(secretaria, 0) + valor
             total_geral += valor
