@@ -2373,6 +2373,12 @@ async function init() {
       if (btn.dataset.tab === "dep-brasil" && !window._depBrLoaded) { window._depBrLoaded = true; carregarDeputadosBrasil(); }
       if (btn.dataset.tab === "senado-brasil" && !window._senBrLoaded) { window._senBrLoaded = true; carregarSenadoBrasil(); }
       if (btn.dataset.tab === "deputados-estaduais" && !window._notasEstLoaded) { window._notasEstLoaded = true; carregarJSON("dados/ceap_notas_estaduais.json").then(d => { if (d) CEAP_NOTAS_ESTADUAIS = d; }); }
+      if (btn.dataset.tab === "camara" && !window._camaraLoaded) {
+        window._camaraLoaded = true;
+        carregarJSON("dados/camara_municipal.json").then(d => {
+          if (d) { DADOS_CAMARA_MUNICIPAL = d; renderCamaraMunicipal(d); }
+        });
+      }
     });
   });
 
@@ -2380,13 +2386,9 @@ async function init() {
   addShareButtons();
 
   // Carregar JSONs em paralelo (não bloqueante)
-  const [camara, depEst] = await Promise.all([
-    carregarJSON("dados/camara_municipal.json"),
-    carregarJSON("dados/deputados_estaduais_ms.json"),
-  ]);
-
-  if (camara) { DADOS_CAMARA_MUNICIPAL = camara; renderCamaraMunicipal(camara); }
-  if (depEst) { DADOS_DEPUTADOS_ESTADUAIS = depEst; renderDeputadosEstaduais(depEst); }
+  carregarJSON("dados/deputados_estaduais_ms.json").then(d => {
+    if (d) { DADOS_DEPUTADOS_ESTADUAIS = d; renderDeputadosEstaduais(d); }
+  });
 
   // Notas fiscais estaduais: carregar por demanda (só quando clicar no deputado)
 
