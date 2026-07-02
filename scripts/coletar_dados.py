@@ -438,7 +438,21 @@ def coletar_prefeitura():
         try:
             secretaria = (row.get("orgao") or "Outros").strip()
             valor_str = (row.get("total_pago") or "0").strip()
-            valor = float(valor_str.replace(".", "").replace(",", ".").replace("R$", "").strip() or 0)
+            # Tratar formato BR (1.234,56) e centavos inteiros (123456)
+            v = valor_str.strip().replace("R$", "").strip()
+            if "," in v:
+                # Formato BR: 1.234,56 → remover pontos de milhar, trocar vírgula por ponto
+                v = v.replace(".", "").replace(",", ".")
+            elif "." in v:
+                # Formato US: 1234.56 → usar direto
+                pass
+            else:
+                # Inteiro puro — pode estar em centavos
+                v = v or "0"
+            valor = float(v or 0)
+            # Sanity check: se valor unitário > 1 bilhão, provavelmente está em centavos
+            if valor > 1_000_000_000:
+                valor = valor / 100
             por_secretaria[secretaria] = por_secretaria.get(secretaria, 0) + valor
             total_geral += valor
         except:
