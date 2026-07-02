@@ -38,7 +38,7 @@ def coletar_dep_federais_ms():
     log("Coletando deputados federais de MS...")
 
     # Lista deputados em exercício por UF
-    url = f"https://dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=MS&siglaSituacao=EXERCICIO&ordem=ASC&ordenarPor=nome"
+    url = f"https://dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=MS&ordem=ASC&ordenarPor=nome"
     r = requests.get(url, headers=HEADERS, timeout=30)
     r.raise_for_status()
     deputados = r.json().get("dados", [])
@@ -211,7 +211,7 @@ def coletar_dep_estaduais():
     log("Coletando deputados estaduais ALEMS...")
 
     # CSV de CEAP da ALEMS (URL pública)
-    url_ceap = f"https://consulta.transparencia.al.ms.gov.br/ceap/export/csv?ano={ANO}"
+    url_ceap = f"https://consulta.transparencia.al.ms.gov.br/ceap/export/csv"
 
     try:
         r = requests.get(url_ceap, headers=HEADERS, timeout=30)
@@ -338,7 +338,7 @@ def coletar_dep_federais_brasil():
 
     try:
         r = requests.get(
-            "https://dadosabertos.camara.leg.br/api/v2/deputados?siglaSituacao=EXERCICIO&itens=513",
+            "https://dadosabertos.camara.leg.br/api/v2/deputados?itens=513",
             headers=HEADERS, timeout=30
         )
         r.raise_for_status()
