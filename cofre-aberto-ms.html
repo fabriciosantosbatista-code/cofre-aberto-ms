@@ -1021,12 +1021,12 @@ async function buscarSenadoresAoVivo(siglaUf) {
 }
 
 
-async function carregarJSON(path) {
+async function carregarJSON(url) {
   try {
-    const res = await fetch(path, { cache: "no-store" });
-    if (!res.ok) return null;
-    return await res.json();
-  } catch { return null; }
+    const r = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(8000) });
+    if (!r.ok) return null;
+    return await r.json();
+  } catch(e) { return null; }
 }
 
 // ===================== RENDER DEPUTADOS =====================
@@ -2372,6 +2372,7 @@ async function init() {
       document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
       if (btn.dataset.tab === "dep-brasil" && !window._depBrLoaded) { window._depBrLoaded = true; carregarDeputadosBrasil(); }
       if (btn.dataset.tab === "senado-brasil" && !window._senBrLoaded) { window._senBrLoaded = true; carregarSenadoBrasil(); }
+      if (btn.dataset.tab === "deputados-estaduais" && !window._notasEstLoaded) { window._notasEstLoaded = true; carregarJSON("dados/ceap_notas_estaduais.json").then(d => { if (d) CEAP_NOTAS_ESTADUAIS = d; }); }
     });
   });
 
@@ -2388,7 +2389,6 @@ async function init() {
   if (depEst) { DADOS_DEPUTADOS_ESTADUAIS = depEst; renderDeputadosEstaduais(depEst); }
 
   // Notas fiscais estaduais: carregar por demanda (só quando clicar no deputado)
-  carregarJSON("dados/ceap_notas_estaduais.json").then(d => { if (d) CEAP_NOTAS_ESTADUAIS = d; });
 
   // Senadores locais
   carregarJSON("dados/senadores_brasil.json").then(d => { if (d) DADOS_SENADORES_BRASIL = d; });
