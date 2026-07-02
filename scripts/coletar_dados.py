@@ -24,6 +24,19 @@ HEADERS = {
     "Accept": "application/json",
 }
 
+def get_com_retry(url, tentativas=3, **kwargs):
+    for i in range(tentativas):
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=60, **kwargs)
+            r.raise_for_status()
+            return r
+        except Exception as e:
+            if i == tentativas - 1:
+                raise
+            log(f"  Tentativa {i+1} falhou, tentando novamente...")
+            time.sleep(5)
+
+
 def log(msg): print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
 def salvar(nome, data):
     path = DADOS / nome
@@ -39,7 +52,7 @@ def coletar_dep_federais_ms():
 
     # Lista deputados em exercício por UF
     url = f"https://dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=MS&ordem=ASC&ordenarPor=nome"
-    r = requests.get(url, headers=HEADERS, timeout=30)
+    r = get_com_retry(url)
     r.raise_for_status()
     deputados = r.json().get("dados", [])
     log(f"  {len(deputados)} deputados federais de MS encontrados")
@@ -119,7 +132,7 @@ def coletar_senadores_ms():
     r = requests.get(
         "https://legis.senado.leg.br/dadosabertos/senador/lista/atual",
         headers={**HEADERS, "Accept": "application/json"},
-        timeout=30
+        timeout=60
     )
     r.raise_for_status()
     parlamentares = r.json().get("ListaParlamentarEmExercicio", {}).get("Parlamentares", {}).get("Parlamentar", [])
@@ -214,7 +227,7 @@ def coletar_dep_estaduais():
     url_ceap = f"https://consulta.transparencia.al.ms.gov.br/ceap/export/csv"
 
     try:
-        r = requests.get(url_ceap, headers=HEADERS, timeout=30)
+        r = get_com_retry(url_ceap)
         r.raise_for_status()
         texto = r.content.decode("utf-8-sig", errors="replace")
         reader = csv.DictReader(io.StringIO(texto), delimiter=";")
@@ -293,7 +306,7 @@ def coletar_senado_brasil():
         r = requests.get(
             "https://legis.senado.leg.br/dadosabertos/senador/lista/atual",
             headers={**HEADERS, "Accept": "application/json"},
-            timeout=30
+            timeout=60
         )
         r.raise_for_status()
         parlamentares = r.json().get("ListaParlamentarEmExercicio", {}).get("Parlamentares", {}).get("Parlamentar", [])
@@ -339,7 +352,7 @@ def coletar_dep_federais_brasil():
     try:
         r = requests.get(
             "https://dadosabertos.camara.leg.br/api/v2/deputados?itens=513",
-            headers=HEADERS, timeout=30
+            headers=HEADERS, timeout=60
         )
         r.raise_for_status()
         deputados = r.json().get("dados", [])
