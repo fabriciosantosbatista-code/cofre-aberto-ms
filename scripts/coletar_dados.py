@@ -418,6 +418,10 @@ def coletar_prefeitura():
         reader = csv.DictReader(io.StringIO(texto), delimiter=";")
         linhas = list(reader)
         log(f"  {len(linhas)} linhas no CSV da Prefeitura")
+        if linhas:
+            log(f"  COLUNAS: {list(linhas[0].keys())}")
+            for i, row in enumerate(linhas[:2]):
+                log(f"  LINHA {i+1}: {dict(list(row.items())[:6])}")
     except Exception as e:
         log(f"  \u26a0\ufe0f CSV Prefeitura indispon\u00edvel: {e} \u2014 tentando m\u00eas anterior...")
         try:
