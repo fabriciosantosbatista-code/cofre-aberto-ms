@@ -2415,24 +2415,39 @@ async function init() {
 }
 
 async function carregarDeputadosBrasil() {
-  const tbody = document.querySelector("#ranking-depbr tbody");
-  document.getElementById("depbr-total").textContent = "CARREGANDO…";
-  tbody.innerHTML = `<tr><td colspan="6" style="padding:20px;color:var(--ink-soft);" id="progresso-depbr">
-    Conectando à API da Câmara dos Deputados (513 deputados)…<br>
-    <small style="opacity:.7">Isso pode levar <b>vários minutos</b> — cada deputado tem até 12 meses de notas fiscais. Não feche esta aba.</small>
-  </td></tr>`;
-  try {
-    const deputados = await buscarDeputadosAoVivo(null, (atual, total, nome) => {
-      const el = document.getElementById("progresso-depbr");
-      if (el) el.innerHTML = `Coletando deputado <b>${atual}/${total}</b>: ${nome}…<br><small style="opacity:.7">Aguarde — isso pode levar vários minutos.</small>`;
-    }, true);
-    renderDeputadosBrasil(deputados);
-  } catch (err) {
-    document.getElementById("depbr-total").textContent = "ERRO";
-    tbody.innerHTML = `<tr><td colspan="6" style="padding:16px;color:var(--ink-soft);">
-      Falha ao carregar (${err.message}). Verifique sua conexão e tente novamente.
-    </td></tr>`;
-  }
+    document.getElementById("depbr-total").textContent = "carregando…";
+
+    // Tentar JSON local primeiro (mais rápido)
+    const local = await carregarJSON("dados/deputados_federais_brasil.json");
+    if (local && local.deputados && local.deputados.length > 0) {
+          renderDeputadosBrasil(local.deputados);
+          document.getElementById("depbr-total").textContent = formatBRL(
+                  local.deputados.reduce((s, d) => s + (d.cotaGastaAno || 0), 0)
+                );
+          return;
+    }
+
+    // Fallback: API ao vivo (só lista, sem CEAP individual)
+    try {
+          const r = await fetch(
+                  "https://dadosabertos.camara.leg.br/api/v2/deputados?itens=513&ordem=ASC&ordenarPor=nome",
+            { signal: AbortSignal.timeout(15000) }
+                );
+          if (!r.ok) throw new Error("API indisponível");
+          const data = await r.json();
+          const deps = (data.dados || []).map(d => ({
+                  id: d.id,
+                  nome: d.nome,
+                  partido: d.siglaPartido,
+                  uf: d.siglaUf,
+                  foto: d.urlFoto,
+                  cotaGastaAno: null,
+          }));
+          renderDeputadosBrasil(deps);
+          document.getElementById("depbr-total").textContent = `${deps.length} deputados`;
+    } catch(e) {
+          document.getElementById("depbr-total").textContent = "indisponível";
+    }
 }
 
 async function carregarSenadoBrasil() {
