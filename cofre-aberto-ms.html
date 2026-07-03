@@ -484,29 +484,21 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 
   <!-- ===================== PREFEITURA ===================== -->
   <section class="tabpanel" id="tab-prefeitura">
-    <div class="hero">
-      <div class="hero-label">Prefeitura de Campo Grande · Orçamento (LOA) 2026</div>
-      <div class="hero-number" id="pref-total">R$ —</div>
-      <div class="hero-desc">
-        fixados para 2026 — <b>+1,49%</b> em relação a 2025. Cerca de <b>56%</b> da Receita
-        Corrente Líquida vai para folha de pessoal, aposentadorias e encargos.
+    <div class="section-hero">
+      <div class="hero-label">Prefeitura Municipal de Campo Grande · Despesas <span id="pref-ano">2026</span></div>
+      <div class="hero-number" id="pref-total">—</div>
+      <div class="hero-sub">Total pago até o momento</div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="pref-linhas">—</div><div class="mini-stat-label">Empenhos</div></div>
+        <div><div class="mini-stat-value" id="pref-data">—</div><div class="mini-stat-label">Atualizado em</div></div>
       </div>
     </div>
-    <div class="section">
-      <div class="section-head">
-        <h2 class="section-title">Distribuição do orçamento 2026</h2>
-      </div>
-      <div class="card card-pad">
-        <div class="bar-list" id="secretarias-prefeitura"></div>
-      </div>
-    </div>
-    <div class="section">
-      <div class="notice">
-        <b>Execução real pendente.</b> Os valores acima são o orçamento <b>fixado/orçado</b>,
-        não o gasto efetivamente realizado até o momento. Para isso, seria necessário consultar
-        periodicamente o <a href="https://transparencia.campogrande.ms.gov.br/" target="_blank">Portal da Transparência da Prefeitura</a>,
-        que não tem API pública.
-      </div>
+    <div class="section-body" style="padding:24px">
+      <div class="subhead">Despesas por órgão (Top 20)</div>
+      <div class="bar-list" id="pref-secretarias" style="margin-top:12px"></div>
+      <p class="section-note" style="margin-top:16px">
+        Fonte: <a href="https://transparencia.campogrande.ms.gov.br/canais/dados-abertos/" target="_blank">Portal de Dados Abertos — Prefeitura de Campo Grande</a> · Atualização automática diária.
+      </p>
     </div>
   </section>
 
@@ -1797,17 +1789,21 @@ function renderDeputadosEstaduais(data) {
 
 // ===================== RENDER PREFEITURA =====================
 function renderPrefeitura(data) {
-  document.getElementById("pref-total").textContent = formatBRL(data.resumo?.receitaArrecadadaAno);
-
-  const secretarias = data.gastosPorSecretaria || [];
-  const max = Math.max(...secretarias.map(s => s.valor), 1);
-  document.getElementById("secretarias-prefeitura").innerHTML = secretarias.map(s => `
-    <div class="bar-list-row">
-      <div class="bar-list-label" title="${s.secretaria}">${s.secretaria}</div>
-      <div class="bar-list-track"><div class="bar-list-fill alt" style="width:${(s.valor / max * 100).toFixed(1)}%"></div></div>
-      <div class="bar-list-value">${formatCompact(s.valor)}</div>
-    </div>
-  `).join("") || "<div class='section-note'>Sem dados.</div>";
+  const total = data.totalDespesas || 0;
+  const por = data.porSecretaria || {};
+  const max = Math.max(...Object.values(por), 1);
+  document.getElementById("pref-total").textContent = formatCompact(total);
+  document.getElementById("pref-ano").textContent = data.ano || ANO_REFERENCIA;
+  document.getElementById("pref-linhas").textContent = (data.totalLinhas || 0).toLocaleString("pt-BR");
+  document.getElementById("pref-data").textContent = data.ultimaAtualizacao ? formatDateTime(data.ultimaAtualizacao) : "—";
+  const lista = document.getElementById("pref-secretarias");
+  if (!lista) return;
+  lista.innerHTML = Object.entries(por).map(([sec, val]) =>
+    `<div class="bar-list-row">
+      <div class="bar-list-label" title="${sec}">${sec}</div>
+      <div class="bar-list-track"><div class="bar-list-fill positive" style="width:${(val/max*100).toFixed(1)}%"></div></div>
+      <div class="bar-list-value">${formatCompact(val)}</div>
+    </div>`).join("");
 }
 
 // ===================== RENDER DEPUTADOS BRASIL =====================
@@ -2377,6 +2373,12 @@ async function init() {
         window._camaraLoaded = true;
         carregarJSON("dados/camara_municipal.json").then(d => {
           if (d) { DADOS_CAMARA_MUNICIPAL = d; renderCamaraMunicipal(d); }
+        });
+      }
+      if (btn.dataset.tab === "prefeitura" && !window._prefeituraLoaded) {
+        window._prefeituraLoaded = true;
+        carregarJSON("dados/prefeitura.json").then(d => {
+          if (d) renderPrefeitura(d);
         });
       }
     });
