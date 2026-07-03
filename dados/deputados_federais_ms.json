@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-07-02T23:20:40",
+  "ultimaAtualizacao": "2026-07-03T17:02:21",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-07-02T23:20:40",
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-07-03T17:02:21",
   "total": 8,
   "deputados": [
     {
@@ -23,7 +23,7 @@
       },
       "urlPerfil": "https://www.camara.leg.br/deputados/204358",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/204358/despesas?ano=2026",
-      "cotaGastaAno": 234464.74,
+      "cotaGastaAno": 228700.6,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -31,7 +31,7 @@
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 41500.0
+          "valor": 35000.0
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -51,7 +51,7 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 3439.97
+          "valor": 4175.83
         },
         {
           "categoria": "SERVIÇO DE SEGURANÇA PRESTADO POR EMPRESA ESPECIALIZADA.",
@@ -83,7 +83,7 @@
       },
       "urlPerfil": "https://www.camara.leg.br/deputados/220548",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220548/despesas?ano=2026",
-      "cotaGastaAno": 133398.39,
+      "cotaGastaAno": 131244.94,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -94,12 +94,12 @@
           "valor": 32060.0
         },
         {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 12982.43
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 11644.55
         },
         {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 11444.55
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 10628.98
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -135,7 +135,7 @@
       },
       "urlPerfil": "https://www.camara.leg.br/deputados/141411",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/141411/despesas?ano=2026",
-      "cotaGastaAno": 231674.78,
+      "cotaGastaAno": 233589.55,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -147,15 +147,15 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 33289.89
+          "valor": 32726.17
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 26290.0
+          "valor": 26854.37
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 21169.83
+          "valor": 22985.45
         },
         {
           "categoria": "TELEFONIA",
@@ -171,7 +171,7 @@
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 1004.61
+          "valor": 1103.11
         }
       ],
       "salarioBase": 41650.92
@@ -247,15 +247,15 @@
       },
       "urlPerfil": "https://www.camara.leg.br/deputados/74374",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/74374/despesas?ano=2026",
-      "cotaGastaAno": 265419.37,
+      "cotaGastaAno": 272766.78,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 164383.01
+          "valor": 167418.71
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 38160.99
+          "valor": 42472.7
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -355,15 +355,15 @@
       },
       "urlPerfil": "https://www.camara.leg.br/deputados/220546",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220546/despesas?ano=2026",
-      "cotaGastaAno": 166290.36,
+      "cotaGastaAno": 154230.09,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 125436.56
+          "valor": 115436.56
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 19891.73
+          "valor": 19915.47
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -371,19 +371,19 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 3449.5
+          "valor": 4299.5
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
           "valor": 1988.0
         },
         {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 1718.35
-        },
-        {
           "categoria": "TELEFONIA",
           "valor": 1006.22
+        },
+        {
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": -1215.66
         }
       ],
       "salarioBase": 41650.92
