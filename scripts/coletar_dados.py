@@ -71,26 +71,10 @@ def coletar_dep_federais_ms():
         except:
             det = {}
 
-        # Buscar CEAP do ano atual
-        ceap_total = None
-        ceap_cats = []
+        # Buscar CEAP do ano atual (paginado — um deputado pode ter mais de 100 notas/ano)
+        ceap = {"cotaGastaAno": None, "ceapCategorias": [], "totalNotasFiscais": 0}
         try:
-            ceap_r = requests.get(
-                f"https://dadosabertos.camara.leg.br/api/v2/deputados/{dep_id}/despesas"
-                f"?ano={ANO}&itens=100&ordem=DESC&ordenarPor=dataDocumento",
-                headers=HEADERS, timeout=20
-            ).json().get("dados", [])
-
-            if ceap_r:
-                # Agrupar por tipo
-                por_tipo = {}
-                for item in ceap_r:
-                    tipo = item.get("tipoDespesa", "Outros")
-                    valor = float(item.get("valorLiquido") or 0)
-                    por_tipo[tipo] = por_tipo.get(tipo, 0) + valor
-                ceap_total = sum(por_tipo.values())
-                ceap_cats = [{"categoria": k, "valor": round(v, 2)}
-                             for k, v in sorted(por_tipo.items(), key=lambda x: -x[1])]
+            ceap = buscar_ceap_deputado_agregado(dep_id, ANO)
         except Exception as e:
             log(f"    CEAP erro para {d.get('nome')}: {e}")
 
@@ -106,11 +90,10 @@ def coletar_dep_federais_ms():
             "gabinete": det.get("ultimoStatus", {}).get("gabinete", {}),
             "urlPerfil": f"https://www.camara.leg.br/deputados/{dep_id}",
             "urlCeap": f"https://dadosabertos.camara.leg.br/api/v2/deputados/{dep_id}/despesas?ano={ANO}",
-            "cotaGastaAno": round(ceap_total, 2) if ceap_total else None,
-            "ceapCategorias": ceap_cats,
             "salarioBase": 41650.92,
+            **ceap,
         })
-        log(f"  ✓ {d.get('nome')} — CEAP: R$ {ceap_total:,.2f}" if ceap_total else f"  ✓ {d.get('nome')}")
+        log(f"  ✓ {d.get('nome')} — CEAP: R$ {ceap['cotaGastaAno']:,.2f}" if ceap["cotaGastaAno"] else f"  ✓ {d.get('nome')}")
 
     data = {
         "ultimaAtualizacao": hoje,

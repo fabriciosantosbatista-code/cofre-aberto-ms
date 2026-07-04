@@ -1179,7 +1179,19 @@ function renderDeputados(data) {
       row.addEventListener("click", () => {
         const id = parseInt(row.dataset.id, 10);
         const d = deputados.find(x => x.id === id);
-        renderDetalheDeputado(d, deputados, data.anoReferencia, panel);
+        if (d.despesas?.length || d.cotaGastaAno == null) {
+          renderDetalheDeputado(d, deputados, data.anoReferencia, panel);
+          return;
+        }
+        // Veio do caminho rápido (só o total agregado) — busca as notas individuais sob demanda.
+        panel.innerHTML = `<p class="section-note">Carregando notas fiscais de ${d.nome}…</p>`;
+        panel.classList.add("active");
+        panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        buscarDespesasDeputadoAoVivo(d.id, data.anoReferencia).then(despesas => {
+          d.despesas = despesas;
+          d.totalNotasFiscais = despesas.length;
+          renderDetalheDeputado(d, deputados, data.anoReferencia, panel);
+        });
       });
     });
   }
@@ -2529,14 +2541,39 @@ async function init() {
   // Senadores locais (precisa terminar antes de buscarSenadoresAoVivo, que usa DADOS_SENADORES_BRASIL para enriquecer com despesas)
   const senadoresLocaisPromise = carregarJSON("dados/senadores_brasil.json").then(d => { if (d) DADOS_SENADORES_BRASIL = d; });
 
+  // Deputados de MS: caminho rápido via JSON pré-calculado (evita ~100 chamadas ao vivo
+  // à API da Câmara logo na abertura do site). As notas fiscais individuais de cada um
+  // são buscadas sob demanda ao clicar (ver bindClicks em renderDeputados).
+  async function carregarDeputadosMsRapido() {
+    const local = await carregarJSON("dados/deputados_federais_ms.json");
+    if (!local?.deputados?.length || !local.deputados.some(d => d.cotaGastaAno != null)) return null;
+    return local.deputados.map(d => ({
+      id: d.id,
+      nome: d.nome,
+      partido: d.partido,
+      uf: "MS",
+      foto: d.foto,
+      cargo: "Deputado(a) Federal",
+      cotaGastaAno: d.cotaGastaAno,
+      gabinete: {
+        verbaGabineteMensal: VERBA_GABINETE,
+        equipeEstimada: estimarEquipeGabinete(),
+        equipeEstimadaNota: `Estimativa: número de secretários parlamentares que a verba de gabinete sustentaria considerando o salário médio da faixa oficial (entre ${formatBRL(SALARIO_MIN_SECRETARIO)} e ${formatBRL(SALARIO_MAX_SECRETARIO)}). O número real e os salários individuais variam por gabinete e não são publicados de forma individualizada.`,
+      },
+      custoEstimadoAnual: estimarCustoAnual(d.cotaGastaAno),
+      totalNotasFiscais: d.totalNotasFiscais ?? 0,
+      despesas: [],
+    }));
+  }
+
   // API ao vivo: deputados e senadores de MS
   document.getElementById("status-data").textContent = "buscando ao vivo…";
   try {
     const [deputados, senadores] = await Promise.all([
-      buscarDeputadosAoVivo("MS", null, true),
+      carregarDeputadosMsRapido().then(d => d || buscarDeputadosAoVivo("MS", null, true)),
       senadoresLocaisPromise.then(() => buscarSenadoresAoVivo("MS")).catch(() => []),
     ]);
-    const congresso = { ultimaAtualizacao: new Date().toISOString(), deputados, senadores };
+    const congresso = { ultimaAtualizacao: new Date().toISOString(), anoReferencia: ANO_REFERENCIA, deputados, senadores };
     document.getElementById("status-data").textContent = formatDateTime(congresso.ultimaAtualizacao);
     renderDeputados(congresso);
     renderSenadores(congresso);
