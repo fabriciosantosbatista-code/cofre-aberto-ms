@@ -92,6 +92,7 @@ p{margin:0;}
 .sidebar nav button.active{background:var(--accent-soft);color:#7fa8ff;font-weight:600;}
 .sidebar nav button.active .dot{background:var(--accent);box-shadow:0 0 6px var(--accent);}
 .sidebar nav button:hover:not(.active){background:var(--surface-2);color:var(--ink);}
+.nav-group-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);font-weight:700;padding:14px 10px 4px;}
 .sidebar-divider{height:1px;background:var(--border);margin:8px 10px;}
 .sidebar-status{margin-top:auto;padding:12px 10px;border-radius:var(--radius-md);background:var(--surface-2);border:1px solid var(--border);font-size:.7rem;color:var(--ink-soft);}
 .sidebar-status .row{display:flex;justify-content:space-between;margin-bottom:3px;}
@@ -180,6 +181,11 @@ p{margin:0;}
 .detail-panel{display:none;margin-top:14px;}
 .detail-panel.active{display:block;animation:fadein .2s ease;}
 .detail-panel h3{font-family:var(--font-display);font-size:1.35rem;font-weight:800;letter-spacing:-.02em;margin:0 0 2px;}
+.detail-panel table.notes-table{display:block;overflow-x:auto;white-space:nowrap;}
+.detail-panel table.notes-table thead,.detail-panel table.notes-table tbody{display:table;width:100%;table-layout:auto;}
+.card-x-scroll{overflow-x:auto;}
+.card-x-scroll table.notes-table{display:block;overflow-x:auto;white-space:nowrap;}
+.card-x-scroll table.notes-table thead,.card-x-scroll table.notes-table tbody{display:table;width:100%;table-layout:auto;}
 .detail-meta{color:var(--ink-soft);font-size:.8rem;margin-bottom:12px;}
 .subhead{font-size:.65rem;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-faint);font-weight:700;margin:20px 0 10px;display:flex;align-items:center;gap:8px;}
 .subhead::after{content:"";flex:1;height:1px;background:var(--border);}
@@ -234,11 +240,13 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   .sidebar nav{flex-direction:row;overflow-x:auto;gap:4px;flex-wrap:nowrap;padding-bottom:4px;}
   .sidebar nav button{white-space:nowrap;flex-shrink:0;padding:6px 10px;font-size:.8rem;}
   .sidebar-status,.sidebar-divider{display:none;}
+  .nav-group-label{font-size:0;padding:0;width:1px;align-self:stretch;background:var(--border);flex-shrink:0;margin:2px 4px;}
   .main{padding:20px 16px 48px;}
   .section-hero{padding:20px;border-radius:var(--radius-lg);}
 }
 @media(max-width:600px){
   .bar-list-row{grid-template-columns:90px 1fr 70px;}
+  .bar-list-label{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25;}
   .progress-cell,.ranking th:nth-child(5),.ranking td:nth-child(5){display:none;}
   .stat-grid{grid-template-columns:1fr 1fr;}
   .hero-number{font-size:2rem;}
@@ -258,14 +266,16 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
     <nav>
       <a href="index.html" style="display:flex;align-items:center;gap:9px;color:var(--ink-soft);font-size:.83rem;font-weight:500;padding:8px 10px;border-radius:8px;text-decoration:none;transition:all .15s;margin-bottom:4px" onmouseover="this.style.background='var(--surface-2)';this.style.color='var(--ink)'" onmouseout="this.style.background='';this.style.color='var(--ink-soft)'"><span style="width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;display:inline-block"></span> 🏠 Home</a>
+      <div class="nav-group-label">Mato Grosso do Sul</div>
       <button class="active" data-tab="deputados"><span class="dot"></span> Dep. Federais MS</button>
       <button data-tab="senadores"><span class="dot"></span> Senado MS</button>
       <button data-tab="camara"><span class="dot"></span> Câmara CG</button>
       <button data-tab="deputados-estaduais"><span class="dot"></span> Dep. Estaduais MS</button>
       <button data-tab="prefeitura"><span class="dot"></span> Prefeitura CG</button>
+      <div class="nav-group-label">Brasil</div>
       <button data-tab="deputados-brasil"><span class="dot"></span> Dep. Federais Brasil</button>
       <button data-tab="senado-brasil"><span class="dot"></span> Senado Brasil</button>
-    
+
       <button data-tab="sobre"><span class="dot"></span> Sobre</button>
     </nav>
     <div class="sidebar-status" id="status-row">
@@ -523,7 +533,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       </div>
       <div class="section-note">Busque diretamente por fornecedor, órgão ou categoria de despesa entre todas as notas pagas.</div>
       <input class="search-box" id="busca-pref-notas" type="text" placeholder="buscar por fornecedor, órgão ou categoria…" />
-      <div class="card">
+      <div class="card card-x-scroll">
         <table class="notes-table" id="tabela-pref-notas">
           <thead><tr><th>Data</th><th>Órgão</th><th>Categoria</th><th>Fornecedor</th><th class="num">Valor</th></tr></thead>
           <tbody></tbody>
