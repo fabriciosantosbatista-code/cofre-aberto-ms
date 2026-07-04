@@ -127,6 +127,23 @@ footer .footer-links a:hover{color:var(--accent);}
 .aba-card { opacity: 0; transition: opacity .5s ease, transform .5s ease; transform: translateX(-20px); }
 .aba-card.visible { opacity: 1; transform: translateX(0); }
 .stat-val { transition: color .3s; }
+.scroll-arrow {
+    width: 20px; height: 20px;
+    border-right: 2px solid var(--ink-faint);
+    border-bottom: 2px solid var(--ink-faint);
+    transform: rotate(45deg);
+    animation: float 1.5s ease-in-out infinite;
+    margin: 4px auto 0;
+}
+@keyframes float {
+    0%,100% { transform: rotate(45deg) translateY(0); }
+    50% { transform: rotate(45deg) translateY(6px); }
+}
+.scroll-indicator {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 6px; margin-top: 48px; color: var(--ink-faint);
+    font-size: .72rem;
+}
 </style>
 </head>
 <body>
@@ -157,23 +174,27 @@ footer .footer-links a:hover{color:var(--accent);}
         Ver o que tem dentro
       </button>
     </div>
+    <div class="scroll-indicator">
+        <span>role para ver mais</span>
+      <div class="scroll-arrow"></div>
+    </div>
   </section>
 
   <div class="stats-bar">
     <div class="stat-item">
-      <div class="stat-val data-count="29"">29</div>
+      <div class="stat-val" data-count="29">29</div>
       <div class="stat-label">Vereadores CG</div>
     </div>
     <div class="stat-item">
-      <div class="stat-val data-count="26"">26</div>
+      <div class="stat-val" data-count="26">26</div>
       <div class="stat-label">Dep. Estaduais</div>
     </div>
     <div class="stat-item">
-      <div class="stat-val data-count="3"">3</div>
+      <div class="stat-val" data-count="3">3</div>
       <div class="stat-label">Senadores MS</div>
     </div>
     <div class="stat-item">
-      <div class="stat-val data-count="2773"">2.773</div>
+      <div class="stat-val" data-count="2773">2.773</div>
       <div class="stat-label">Notas fiscais</div>
     </div>
     <div class="stat-item">
