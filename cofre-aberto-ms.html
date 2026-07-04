@@ -969,8 +969,12 @@ async function buscarSenadoresAoVivo(siglaUf) {
       foto: s.foto || `http://www.senado.leg.br/senadores/img/fotos-oficiais/senador${s.id}.jpg`,
       cargo: "Senador(a)",
       urlTransparencia: s.urlTransparencia || `https://www6g.senado.leg.br/transparencia/sen/${s.id}/?ano=${ANO_REFERENCIA}`,
-      cotaGastaAno: s.ceaps2026?.total || null,
+      cotaGastaAno: s.cotaGastaAno ?? s.ceaps2026?.total ?? null,
       ceapsCategorias: s.ceapsCategorias || null,
+      ceaps: s.ceaps || {},
+      gastosExtras: s.gastosExtras || {},
+      pessoalReal: s.pessoal || {},
+      beneficios: s.beneficios || {},
       despesas: s.despesas || [],
       totalNotasFiscais: (s.despesas || []).length,
       nota: s.nota || "",
@@ -1000,7 +1004,7 @@ async function buscarSenadoresAoVivo(siglaUf) {
       ? (DADOS_SENADORES_BRASIL?.senadores || []).find(s => String(s.id) === String(id))
       : null;
 
-    const ceapsTotal = local?.ceaps2026?.total || null;
+    const ceapsTotal = local?.cotaGastaAno ?? local?.ceaps2026?.total ?? null;
     const ceapsCategorias = local?.ceapsCategorias || null;
 
     const ant = (DADOS_SENADORES_BRASIL?.senadores || []).find(s => String(s.id) === String(id)) || {};
@@ -1018,6 +1022,10 @@ async function buscarSenadoresAoVivo(siglaUf) {
       gastosExtras2025: ant?.gastosExtras2025 || null,
       total2025: ant?.total2025 || null,
       ceapsCategorias,
+      ceaps: local?.ceaps || {},
+      gastosExtras: local?.gastosExtras || {},
+      pessoalReal: local?.pessoal || {},
+      beneficios: local?.beneficios || {},
       despesas: local?.despesas || [],
       totalNotasFiscais: (local?.despesas || []).length,
       nota: ceapsTotal ? "" : (local?.nota || ant?.nota || ""),
@@ -1315,11 +1323,16 @@ function renderSenadores(data) {
       const custo = s.custoEstimadoAnual || {};
       const gabinete = s.gabinete || {};
 
-      // O portal do Senado separa as despesas em "Cotas" (CEAPS, urlDetalhe contém /ceaps/)
-      // e "Gastos Não Inclusos nas Cotas" (viagens, correios, mídias sociais etc.)
+      // Fonte primária: dados reais da API oficial do Senado (s.ceaps/s.gastosExtras, dict categoria->valor).
+      // Fallback: array s.despesas (dados manuais mais antigos), separado por /ceaps/ na urlDetalhe.
+      const temDadosReais = s.ceaps && Object.keys(s.ceaps).length > 0;
       const despesas = s.despesas || [];
-      const itensCeaps = despesas.filter(d => (d.urlDetalhe || "").includes("/ceaps/"));
-      const itensExtras = despesas.filter(d => !(d.urlDetalhe || "").includes("/ceaps/"));
+      const itensCeaps = temDadosReais
+        ? Object.entries(s.ceaps).map(([categoria, valor]) => ({ categoria, valor }))
+        : despesas.filter(d => (d.urlDetalhe || "").includes("/ceaps/"));
+      const itensExtras = temDadosReais
+        ? Object.entries(s.gastosExtras || {}).map(([categoria, valor]) => ({ categoria, valor }))
+        : despesas.filter(d => !(d.urlDetalhe || "").includes("/ceaps/"));
 
       const totalCeaps = s.cotaGastaAno ?? (itensCeaps.length ? itensCeaps.reduce((a, d) => a + (d.valor || 0), 0) : null);
       const totalExtras = itensExtras.length ? itensExtras.reduce((a, d) => a + (d.valor || 0), 0) : null;
@@ -1330,6 +1343,11 @@ function renderSenadores(data) {
           <td class="num">${formatBRL(d.valor)}</td>
           <td>${d.urlDetalhe ? `<a href="${d.urlDetalhe}" target="_blank" style="font-size:.75rem">ver →</a>` : ""}</td>
         </tr>`;
+
+      const pessoalReal = s.pessoalReal || {};
+      const temPessoal = pessoalReal.gabinete != null || pessoalReal.escritorio != null;
+      const beneficios = s.beneficios || {};
+      const temBeneficios = beneficios.auxilioMoradia != null || beneficios.imovelFuncional != null;
 
       panel.innerHTML = `
         <div class="detail-header">
@@ -1376,14 +1394,24 @@ function renderSenadores(data) {
         </table>
 
         <div class="subhead">Pessoal</div>
+        ${temPessoal ? `
+        <div class="stat-grid" style="margin-bottom:16px">
+          ${pessoalReal.gabinete != null ? `<div class="stat-card"><p class="stat-label">Gabinete</p><p class="stat-value">${pessoalReal.gabinete}</p><p class="stat-note">${pessoalReal.gabineteComissionados ?? 0} comissionados</p></div>` : ""}
+          ${pessoalReal.escritorio != null ? `<div class="stat-card"><p class="stat-label">Escritório(s) de apoio</p><p class="stat-value">${pessoalReal.escritorio}</p><p class="stat-note">${pessoalReal.escritorioComissionados ?? 0} comissionados</p></div>` : ""}
+        </div>` : `
         <p class="section-note" style="margin-bottom:16px">
           ${gabinete.equipeEstimadaNota || "Consulte o Portal de Transparência do Senado para dados individuais de gabinete e escritório de apoio."}
-        </p>
+        </p>`}
 
         <div class="subhead">Benefícios</div>
+        ${temBeneficios ? `
+        <div class="stat-grid" style="margin-bottom:16px">
+          <div class="stat-card"><p class="stat-label">Auxílio-moradia</p><p class="stat-value" style="font-size:1rem">${beneficios.auxilioMoradia || "—"}</p></div>
+          <div class="stat-card"><p class="stat-label">Imóvel funcional</p><p class="stat-value" style="font-size:1rem">${beneficios.imovelFuncional || "—"}</p></div>
+        </div>` : `
         <p class="section-note" style="margin-bottom:16px">
           Auxílio-moradia e imóvel funcional: consulte o Portal de Transparência do Senado para a situação individual.
-        </p>
+        </p>`}
 
         <div class="subhead">Custo estimado anual</div>
         <div class="stat-grid" style="margin-bottom:16px">

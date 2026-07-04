@@ -1,6 +1,6 @@
 {
-  "ultimaAtualizacao": "2026-07-04T12:48:39",
-  "fonte": "API do Senado Federal — 2026-07-04T12:48:39",
+  "ultimaAtualizacao": "2026-07-04T12:50:24",
+  "fonte": "API do Senado Federal — 2026-07-04T12:50:24",
   "totalSenadores": 81,
   "senadores": [
     {
@@ -642,8 +642,8 @@
       "gastosExtras2026": {},
       "pessoal2026": {},
       "nota": "⚠️ Dados de 2026 ainda não publicados no Portal do Senado (sistema redireciona para 2025). Consulte: www6g.senado.leg.br/transparencia/sen/5985/?ano=2026",
-      "fonteCeaps": "Portal da Transparência do Senado Federal — www6g.senado.leg.br/transparencia/sen/5985/?ano=2025 | Sistema Cotas, dados de 08/05/2026",
-      "cotaGastaAno": null,
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-07-04T12:50:24",
+      "cotaGastaAno": 260889.55,
       "ceaps2025": {
         "aluguelImovel": 74158.57,
         "materialConsumo": 1050.0,
@@ -749,7 +749,35 @@
       },
       "escritorioApoio": "AV. AMÉRICA, 759 – VILA PLANALTO, CAMPO GRANDE/MS – CEP 79009-060",
       "gabineteEndereco": "Senado Federal – Anexo 1, 24º Pavimento | Tel: (61) 3303-6767 / 6768",
-      "urlTransparencia": "https://www6g.senado.leg.br/transparencia/sen/5985/?ano=2026"
+      "urlTransparencia": "https://www6g.senado.leg.br/transparencia/sen/5985/?ano=2026",
+      "ceaps": {
+        "Aluguel de imóveis para escritório político": 37746.94,
+        "Aquisição de material de consumo": 0.0,
+        "Locomoção, hospedagem, alimentação e combustíveis": 0.0,
+        "Contratação de serviços de apoio ao parlamentar": 53877.35,
+        "Divulgação da atividade parlamentar": 152529.4,
+        "Passagens aéreas, aquáticas e terrestres nacionais": 16735.86,
+        "Serviços de Segurança Privada": 0.0
+      },
+      "gastosExtras": {
+        "Viagens Oficiais - Diárias": 10082.24,
+        "Viagens Oficiais - Ressarcimento de Passagens": 0.0,
+        "Consumo de Material - Outros materiais": 4867.43,
+        "Correios": 18524.52,
+        "Cotas para Impulsionamento em Mídias Sociais": 15937.31,
+        "Aquisição de passagens aéreas (ATC 2/2023)": 89474.16
+      },
+      "pessoal": {
+        "gabinete": 55,
+        "gabineteComissionados": 54,
+        "escritorio": 26,
+        "escritorioComissionados": 26
+      },
+      "beneficios": {
+        "auxilioMoradia": "Não utilizou",
+        "imovelFuncional": "Não utilizou"
+      },
+      "anoReferencia": 2026
     },
     {
       "id": 5525,
@@ -961,8 +989,8 @@
         "escritorioComissionados": 34
       },
       "nota": "",
-      "fonteCeaps": "Portal da Transparência do Senado Federal — www6g.senado.leg.br/transparencia/sen/5988/?ano=2026 | Sistema Cotas, dados de 21/06/2026",
-      "cotaGastaAno": 251350.06,
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-07-04T12:50:24",
+      "cotaGastaAno": 275041.84,
       "despesas": [
         {
           "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
@@ -1045,7 +1073,35 @@
       },
       "escritorioApoio": "AV. PROF. LUIZ ALEXANDRE DE OLIVEIRA, 879 – TÉRREO, ROYAL PARK, CAMPO GRANDE/MS – CEP 79021-430 | Tel: (67) 3222-8738",
       "gabineteEndereco": "Senado Federal – Ed. Principal, Ala Dinarte Mariz, Gab. 01 | Tel: (61) 3303-1775",
-      "urlTransparencia": "https://www6g.senado.leg.br/transparencia/sen/5988/?ano=2026"
+      "urlTransparencia": "https://www6g.senado.leg.br/transparencia/sen/5988/?ano=2026",
+      "ceaps": {
+        "Aluguel de imóveis para escritório político": 52787.7,
+        "Aquisição de material de consumo": 3810.06,
+        "Locomoção, hospedagem, alimentação e combustíveis": 150211.36,
+        "Contratação de serviços de apoio ao parlamentar": 396.0,
+        "Divulgação da atividade parlamentar": 29060.55,
+        "Passagens aéreas, aquáticas e terrestres nacionais": 38776.17,
+        "Serviços de Segurança Privada": 0.0
+      },
+      "gastosExtras": {
+        "Viagens Oficiais - Diárias": 0.0,
+        "Viagens Oficiais - Ressarcimento de Passagens": 0.0,
+        "Consumo de Material - Outros materiais": 4631.73,
+        "Correios": 9979.67,
+        "Cotas para Impulsionamento em Mídias Sociais": 0.0,
+        "Aquisição de passagens aéreas (ATC 2/2023)": 65055.28
+      },
+      "pessoal": {
+        "gabinete": 21,
+        "gabineteComissionados": 18,
+        "escritorio": 34,
+        "escritorioComissionados": 34
+      },
+      "beneficios": {
+        "auxilioMoradia": "Não utilizou",
+        "imovelFuncional": "Não utilizou"
+      },
+      "anoReferencia": 2026
     },
     {
       "id": 5959,
@@ -1097,9 +1153,37 @@
       "gastosExtras2026": {},
       "pessoal2026": {},
       "nota": "Em 2025, Tereza Cristina foi a mais econômica entre os senadores de MS, com R$ 425.624,40 total (incluindo extras). CEAP individual 2025: R$ 293.000 (estimativa). (Fonte: Campo Grande News, jan/2026)",
-      "fonteCeaps": "Campo Grande News (jan/2026) e MS em Brasília (mai/2026)",
-      "cotaGastaAno": null,
-      "urlTransparencia": "https://www6g.senado.leg.br/transparencia/sen/5736/?ano=2026"
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-07-04T12:50:24",
+      "cotaGastaAno": 93270.45,
+      "urlTransparencia": "https://www6g.senado.leg.br/transparencia/sen/5736/?ano=2026",
+      "ceaps": {
+        "Aluguel de imóveis para escritório político": 5344.59,
+        "Aquisição de material de consumo": 1936.12,
+        "Locomoção, hospedagem, alimentação e combustíveis": 33081.25,
+        "Contratação de serviços de apoio ao parlamentar": 42908.49,
+        "Divulgação da atividade parlamentar": 10000.0,
+        "Passagens aéreas, aquáticas e terrestres nacionais": 0.0,
+        "Serviços de Segurança Privada": 0.0
+      },
+      "gastosExtras": {
+        "Viagens Oficiais - Diárias": 0.0,
+        "Viagens Oficiais - Ressarcimento de Passagens": 0.0,
+        "Consumo de Material - Outros materiais": 5263.89,
+        "Correios": 14035.63,
+        "Cotas para Impulsionamento em Mídias Sociais": 10847.11,
+        "Aquisição de passagens aéreas (ATC 2/2023)": 19087.27
+      },
+      "pessoal": {
+        "gabinete": 15,
+        "gabineteComissionados": 15,
+        "escritorio": 8,
+        "escritorioComissionados": 8
+      },
+      "beneficios": {
+        "auxilioMoradia": "Não utilizou",
+        "imovelFuncional": "Não utilizou"
+      },
+      "anoReferencia": 2026
     },
     {
       "id": 5899,

@@ -125,6 +125,53 @@ def coletar_dep_federais_ms():
 # ============================================================
 # 2. SENADORES DE MS — API do Senado
 # ============================================================
+def buscar_recursos_senador(sen_id, ano):
+    """Busca CEAPS, gastos extras, benefícios e pessoal de um senador na API oficial.
+    A API redireciona (302) de ergon-ng-reports para adm-dadosabertos e agrupa tudo
+    dentro de data[0] — não usar o formato plano (ceaps/gastosNaoCeaps) do endpoint antigo.
+    """
+    r = requests.get(
+        f"https://adm.senado.gov.br/ergon-ng-reports/api/v1/senadores/{sen_id}/recursos-utilizados"
+        f"?ano={ano}&formato=json",
+        headers=HEADERS, timeout=20
+    )
+    r.raise_for_status()
+    registros = r.json().get("data") or []
+    if not registros:
+        return None
+    reg = registros[0]
+
+    ceaps = {item["recurso"]: float(item.get("valor") or 0) for item in reg.get("cotas", {}).get("despesas", [])}
+    extras = {item["recurso"]: float(item.get("valor") or 0) for item in reg.get("gastosNaoInclusos", {}).get("despesas", [])}
+
+    pessoal = {}
+    for grupo in reg.get("pessoal", []):
+        comissionados = sum(v["quantidade"] for v in grupo.get("vinculos", []) if v.get("vinculo") == "Comissionado")
+        if grupo.get("local") == "Gabinete":
+            pessoal["gabinete"] = grupo.get("quantidadeTotalEscritorio")
+            pessoal["gabineteComissionados"] = comissionados
+        elif "Apoio" in (grupo.get("local") or ""):
+            pessoal["escritorio"] = grupo.get("quantidadeTotalEscritorio")
+            pessoal["escritorioComissionados"] = comissionados
+
+    beneficios = {}
+    for b in reg.get("beneficios", []):
+        if b.get("beneficio") == "Auxílio-Moradia":
+            beneficios["auxilioMoradia"] = b.get("utilizacao")
+        elif b.get("beneficio") == "Imóvel Funcional":
+            beneficios["imovelFuncional"] = b.get("utilizacao")
+
+    return {
+        "ceaps": ceaps,
+        "gastosExtras": extras,
+        "pessoal": pessoal,
+        "beneficios": beneficios,
+        "totalCeaps": reg.get("cotas", {}).get("totalValor"),
+        "totalExtras": reg.get("gastosNaoInclusos", {}).get("totalValor"),
+        "ano": reg.get("ano", ano),
+    }
+
+
 def coletar_senadores_ms():
     log("Coletando senadores de MS...")
 
@@ -155,33 +202,22 @@ def coletar_senadores_ms():
         sen_id = int(ident["CodigoParlamentar"])
         time.sleep(0.5)
 
-        # Buscar recursos utilizados via API JSON
-        ceaps = {}
-        extras = {}
-        pessoal = {}
+        # Buscar recursos utilizados via API JSON — tenta o ano corrente, cai para o anterior
+        recursos = None
         ano_dados = ANO
-        try:
-            api_r = requests.get(
-                f"https://adm.senado.gov.br/ergon-ng-reports/api/v1/senadores/{sen_id}/recursos-utilizados"
-                f"?ano={ANO}&formato=json",
-                headers=HEADERS, timeout=20
-            )
-            if api_r.ok:
-                api_data = api_r.json()
-                # Extrair CEAPS
-                for item in api_data.get("ceaps", []):
-                    ceaps[item.get("descricao", "Outros")] = float(item.get("valor", 0) or 0)
-                # Extrair gastos extras
-                for item in api_data.get("gastosNaoCeaps", []):
-                    extras[item.get("descricao", "Outros")] = float(item.get("valor", 0) or 0)
-                pessoal = api_data.get("pessoal", {})
-                ano_dados = api_data.get("ano", ANO)
-        except Exception as e:
-            log(f"    API Senado erro para {ident.get('NomeParlamentar')}: {e}")
+        for tentativa_ano in (ANO, ANO - 1):
+            try:
+                recursos = buscar_recursos_senador(sen_id, tentativa_ano)
+                if recursos and (recursos["totalCeaps"] or recursos["totalExtras"]):
+                    ano_dados = tentativa_ano
+                    break
+            except Exception as e:
+                log(f"    API Senado erro para {ident.get('NomeParlamentar')} ({tentativa_ano}): {e}")
+        recursos = recursos or {"ceaps": {}, "gastosExtras": {}, "pessoal": {}, "beneficios": {}, "totalCeaps": None, "totalExtras": None}
 
         ant_s = dados_ant.get(sen_id, {})
-        total_ceaps = sum(ceaps.values())
-        total_extras = sum(extras.values())
+        total_ceaps = recursos["totalCeaps"] or 0
+        total_extras = recursos["totalExtras"] or 0
 
         resultado.append({
             "id": sen_id,
@@ -193,13 +229,14 @@ def coletar_senadores_ms():
                     f"https://legis.senado.leg.br/senadores/fotos-oficiais/{sen_id}",
             "urlTransparencia": f"https://www6g.senado.leg.br/transparencia/sen/{sen_id}/?ano={ANO}",
             "anoReferencia": ano_dados,
-            "ceaps": ceaps,
-            "gastosExtras": extras,
-            "pessoal": pessoal,
+            "ceaps": recursos["ceaps"],
+            "gastosExtras": recursos["gastosExtras"],
+            "pessoal": recursos["pessoal"],
+            "beneficios": recursos["beneficios"],
             "cotaGastaAno": round(total_ceaps, 2) if total_ceaps else ant_s.get("cotaGastaAno"),
             "totalGasto": round(total_ceaps + total_extras, 2) if total_ceaps else None,
             "ceapsCategorias": [{"categoria": k, "valor": round(v, 2)}
-                                for k, v in sorted(ceaps.items(), key=lambda x: -x[1]) if v > 0],
+                                for k, v in sorted(recursos["ceaps"].items(), key=lambda x: -x[1]) if v > 0],
             "despesas": ant_s.get("despesas", []),
             "escritorioApoio": ant_s.get("escritorioApoio", ""),
             "fonteCeaps": f"adm.senado.gov.br — dados de {hoje}",
@@ -318,18 +355,43 @@ def coletar_senado_brasil():
     for p in parlamentares:
         ident = p.get("IdentificacaoParlamentar", {})
         sid = int(ident.get("CodigoParlamentar", 0))
+        uf = ident.get("UfParlamentar")
         ant = sens_ant.get(sid, {})
 
-        senadores.append({
+        registro = {
             **ant,
             "id": sid,
             "nome": ident.get("NomeParlamentarFormatado") or ident.get("NomeParlamentar"),
             "partido": ident.get("SiglaPartidoParlamentar"),
-            "uf": ident.get("UfParlamentar"),
+            "uf": uf,
             "foto": ant.get("fotoBase64") or ident.get("UrlFotoParlamentar") or
                     f"https://legis.senado.leg.br/senadores/fotos-oficiais/{sid}",
             "urlTransparencia": f"https://www6g.senado.leg.br/transparencia/sen/{sid}/?ano={ANO}",
-        })
+        }
+
+        # Enriquecer senadores de MS com CEAPS/gastos extras/pessoal/benefícios reais
+        if uf == "MS":
+            time.sleep(0.5)
+            recursos = None
+            for tentativa_ano in (ANO, ANO - 1):
+                try:
+                    recursos = buscar_recursos_senador(sid, tentativa_ano)
+                    if recursos and (recursos["totalCeaps"] or recursos["totalExtras"]):
+                        break
+                except Exception as e:
+                    log(f"    API Senado erro para {registro['nome']} ({tentativa_ano}): {e}")
+            if recursos:
+                registro.update({
+                    "ceaps": recursos["ceaps"],
+                    "gastosExtras": recursos["gastosExtras"],
+                    "pessoal": recursos["pessoal"],
+                    "beneficios": recursos["beneficios"],
+                    "cotaGastaAno": round(recursos["totalCeaps"], 2) if recursos["totalCeaps"] else ant.get("cotaGastaAno"),
+                    "anoReferencia": recursos["ano"],
+                    "fonteCeaps": f"adm.senado.gov.br — dados de {hoje}",
+                })
+
+        senadores.append(registro)
 
     log(f"  {len(senadores)} senadores em exercício")
 
