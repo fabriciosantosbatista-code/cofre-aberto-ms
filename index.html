@@ -108,6 +108,25 @@ footer .footer-links a:hover{color:var(--accent);}
   .btn-primary,.btn-secondary{width:100%;justify-content:center;}
   .stats-bar{grid-template-columns:repeat(2,1fr);}
 }
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes countUp {
+    from { opacity: 0; } to { opacity: 1; }
+}
+.hero-logo { animation: fadeUp 1s cubic-bezier(.22,.68,0,1.2) .1s both; }
+.hero-badge { animation: fadeUp .8s cubic-bezier(.22,.68,0,1.2) .2s both; }
+.hero h1 { animation: fadeUp 1s cubic-bezier(.22,.68,0,1.2) .3s both; }
+.hero p { animation: fadeUp .9s cubic-bezier(.22,.68,0,1.2) .45s both; }
+.hero-btns { animation: fadeUp .9s cubic-bezier(.22,.68,0,1.2) .6s both; }
+.scroll-indicator { animation: fadeUp .8s ease .9s both; }
+.stats-bar { animation: fadeUp .8s cubic-bezier(.22,.68,0,1.2) .3s both; }
+.feature-card { opacity: 0; transition: opacity .6s ease, transform .6s cubic-bezier(.22,.68,0,1.2); transform: translateY(30px); }
+.feature-card.visible { opacity: 1; transform: translateY(0); }
+.aba-card { opacity: 0; transition: opacity .5s ease, transform .5s ease; transform: translateX(-20px); }
+.aba-card.visible { opacity: 1; transform: translateX(0); }
+.stat-val { transition: color .3s; }
 </style>
 </head>
 <body>
@@ -259,5 +278,55 @@ footer .footer-links a:hover{color:var(--accent);}
   </footer>
 
 </div>
+<script>
+  // Animação de entrada nos cards ao rolar
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 120);
+                    observer.unobserve(entry.target);
+            }
+      });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.feature-card, .aba-card').forEach(el => observer.observe(el));
+
+  // Contador animado nos stats
+  function animateCounter(el, target, duration = 2200) {
+      const start = performance.now();
+      const update = (now) => {
+            const p = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - p, 4);
+            el.textContent = Math.round(ease * target).toLocaleString('pt-BR');
+            if (p < 1) requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.stat-val[data-count]').forEach(el => {
+                              animateCounter(el, parseInt(el.dataset.count));
+                    });
+                    statsObserver.unobserve(entry.target);
+            }
+      });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.stats-bar').forEach(el => statsObserver.observe(el));
+
+  // Spotlight nos feature cards
+  document.querySelectorAll('.feature-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+            const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+            card.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(245,200,66,.08), rgba(15,17,23,.7) 60%)`;
+      });
+      card.addEventListener('mouseleave', () => card.style.background = '');
+  });
+</script>
+  
 </body>
 </html>
