@@ -1760,7 +1760,11 @@ function renderCamaraMunicipal(data) {
         <thead><tr><th>Data</th><th>Ato</th><th>Fornecedor</th><th>CNPJ</th><th class="num">Valor</th><th>Descrição/NF</th></tr></thead>
         <tbody>${notasRows}</tbody>
       </table>
-      ${verba.fonte ? `<p class="section-note" style="margin-top:10px;opacity:.6">Fonte: ${verba.fonte}</p>` : ""}
+      <p class="section-note" style="margin-top:10px">
+        Os documentos originais (notas fiscais e empenhos) ficam no portal da Câmara, que não permite link direto por vereador —
+        <a href="http://45.225.6.93:8079/transparencia/" target="_blank" rel="noopener">acesse o Portal de Transparência da Câmara Municipal de Campo Grande →</a>
+      </p>
+      ${verba.fonte ? `<p class="section-note" style="margin-top:6px;opacity:.6">Fonte dos valores: ${verba.fonte}</p>` : ""}
     `;
     panel.classList.add("active");
     panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
