@@ -536,7 +536,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <input class="search-box" id="busca-pref-notas" type="text" placeholder="buscar por fornecedor, órgão ou categoria…" />
       <div class="card card-x-scroll">
         <table class="notes-table" id="tabela-pref-notas">
-          <thead><tr><th>Data</th><th>Órgão</th><th>Categoria</th><th>Fornecedor</th><th class="num">Valor</th></tr></thead>
+          <thead><tr><th>Data</th><th>Órgão</th><th>Categoria</th><th>Fornecedor</th><th class="num">Valor</th><th>Documento</th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
@@ -2056,7 +2056,7 @@ function renderPrefeitura(data) {
           </div>
           <div class="subhead">Notas fiscais</div>
           <table class="notes-table">
-            <thead><tr><th>Data</th><th>Órgão</th><th>Categoria</th><th class="num">Valor</th></tr></thead>
+            <thead><tr><th>Data</th><th>Órgão</th><th>Categoria</th><th class="num">Valor</th><th>Documento</th></tr></thead>
             <tbody>
               ${notasFornecedor.slice(0, 300).map(d => `
                 <tr>
@@ -2064,6 +2064,7 @@ function renderPrefeitura(data) {
                   <td style="font-size:.8rem">${d.orgao}</td>
                   <td style="font-size:.8rem">${d.categoria}</td>
                   <td class="num">${formatBRL(d.valor)}</td>
+                  <td>${d.urlDetalhe ? `<a href="${d.urlDetalhe}" target="_blank" rel="noopener" style="font-size:.75rem">ver empenho →</a>` : ""}</td>
                 </tr>`).join("")}
             </tbody>
           </table>
@@ -2100,8 +2101,9 @@ function renderPrefeitura(data) {
         <td style="font-size:.8rem">${d.categoria}</td>
         <td style="font-size:.8rem">${d.fornecedor}</td>
         <td class="num">${formatBRL(d.valor)}</td>
+        <td>${d.urlDetalhe ? `<a href="${d.urlDetalhe}" target="_blank" rel="noopener" style="font-size:.75rem">ver empenho →</a>` : ""}</td>
       </tr>
-    `).join("") || `<tr><td colspan="5" style="padding:16px;color:var(--ink-soft)">Nenhuma nota encontrada.</td></tr>`;
+    `).join("") || `<tr><td colspan="6" style="padding:16px;color:var(--ink-soft)">Nenhuma nota encontrada.</td></tr>`;
     btnAnteriorNotas.disabled = paginaNotas <= 1;
     btnProximoNotas.disabled = paginaNotas >= totalPaginas;
   }

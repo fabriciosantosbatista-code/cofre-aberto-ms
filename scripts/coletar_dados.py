@@ -535,6 +535,9 @@ def coletar_prefeitura():
             por_secretaria[secretaria] = por_secretaria.get(secretaria, 0) + valor
             total_geral += valor
             if valor > 0:
+                ano_row = (row.get("ano") or "").strip()
+                uge = (row.get("uge") or "").strip()
+                num = (row.get("num") or "").strip()
                 despesas.append({
                     "data": row.get("dataempenho"),
                     "orgao": secretaria,
@@ -542,6 +545,8 @@ def coletar_prefeitura():
                     "fornecedor": (row.get("nomefornecedor") or "").strip(),
                     "cnpj": (row.get("cnpjfornecedor") or "").strip(),
                     "valor": round(valor, 2),
+                    "urlDetalhe": f"https://sig-transparencia.campogrande.ms.gov.br/despesas/detalhe/{ano_row}/{uge}/{num}"
+                        if ano_row and uge and num else None,
                 })
         except:
             continue
