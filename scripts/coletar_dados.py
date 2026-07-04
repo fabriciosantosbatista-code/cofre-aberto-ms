@@ -369,27 +369,26 @@ def coletar_senado_brasil():
             "urlTransparencia": f"https://www6g.senado.leg.br/transparencia/sen/{sid}/?ano={ANO}",
         }
 
-        # Enriquecer senadores de MS com CEAPS/gastos extras/pessoal/benefícios reais
-        if uf == "MS":
-            time.sleep(0.5)
-            recursos = None
-            for tentativa_ano in (ANO, ANO - 1):
-                try:
-                    recursos = buscar_recursos_senador(sid, tentativa_ano)
-                    if recursos and (recursos["totalCeaps"] or recursos["totalExtras"]):
-                        break
-                except Exception as e:
-                    log(f"    API Senado erro para {registro['nome']} ({tentativa_ano}): {e}")
-            if recursos:
-                registro.update({
-                    "ceaps": recursos["ceaps"],
-                    "gastosExtras": recursos["gastosExtras"],
-                    "pessoal": recursos["pessoal"],
-                    "beneficios": recursos["beneficios"],
-                    "cotaGastaAno": round(recursos["totalCeaps"], 2) if recursos["totalCeaps"] else ant.get("cotaGastaAno"),
-                    "anoReferencia": recursos["ano"],
-                    "fonteCeaps": f"adm.senado.gov.br — dados de {hoje}",
-                })
+        # Enriquecer todos os senadores com CEAPS/gastos extras/pessoal/benefícios reais
+        time.sleep(0.5)
+        recursos = None
+        for tentativa_ano in (ANO, ANO - 1):
+            try:
+                recursos = buscar_recursos_senador(sid, tentativa_ano)
+                if recursos and (recursos["totalCeaps"] or recursos["totalExtras"]):
+                    break
+            except Exception as e:
+                log(f"    API Senado erro para {registro['nome']} ({tentativa_ano}): {e}")
+        if recursos:
+            registro.update({
+                "ceaps": recursos["ceaps"],
+                "gastosExtras": recursos["gastosExtras"],
+                "pessoal": recursos["pessoal"],
+                "beneficios": recursos["beneficios"],
+                "cotaGastaAno": round(recursos["totalCeaps"], 2) if recursos["totalCeaps"] else ant.get("cotaGastaAno"),
+                "anoReferencia": recursos["ano"],
+                "fonteCeaps": f"adm.senado.gov.br — dados de {hoje}",
+            })
 
         senadores.append(registro)
 

@@ -2025,11 +2025,31 @@ function renderSenadoBrasil(senadores) {
         const id = row.dataset.id;
         const s = senadores.find(x => String(x.id) === id);
         const custo = s.custoEstimadoAnual || {};
-        const ceapsCats = s.ceapsCategorias || [];
 
-        const ceapsRows = ceapsCats.length
-          ? ceapsCats.map(c => `<tr><td>${c.categoria}</td><td class="num">${formatBRL(c.valor)}</td></tr>`).join("")
-          : "";
+        // Dados reais da API oficial do Senado (dict categoria->valor). Fallback: despesas antigas.
+        const temDadosReais = s.ceaps && Object.keys(s.ceaps).length > 0;
+        const despesas = s.despesas || [];
+        const itensCeaps = temDadosReais
+          ? Object.entries(s.ceaps).map(([categoria, valor]) => ({ categoria, valor }))
+          : despesas.filter(d => (d.urlDetalhe || "").includes("/ceaps/"));
+        const itensExtras = temDadosReais
+          ? Object.entries(s.gastosExtras || {}).map(([categoria, valor]) => ({ categoria, valor }))
+          : despesas.filter(d => !(d.urlDetalhe || "").includes("/ceaps/"));
+
+        const totalCeaps = s.cotaGastaAno ?? (itensCeaps.length ? itensCeaps.reduce((a, d) => a + (d.valor || 0), 0) : null);
+        const totalExtras = itensExtras.length ? itensExtras.reduce((a, d) => a + (d.valor || 0), 0) : null;
+
+        const linhaDespesa = d => `
+          <tr>
+            <td style="font-size:.82rem">${d.categoria}${d.descricao ? `<div style="font-size:.7rem;opacity:.6">${d.descricao}</div>` : ""}</td>
+            <td class="num">${formatBRL(d.valor)}</td>
+            <td>${d.urlDetalhe ? `<a href="${d.urlDetalhe}" target="_blank" style="font-size:.75rem">ver →</a>` : ""}</td>
+          </tr>`;
+
+        const pessoal = s.pessoal || {};
+        const temPessoal = pessoal.gabinete != null || pessoal.escritorio != null;
+        const beneficios = s.beneficios || {};
+        const temBeneficios = beneficios.auxilioMoradia != null || beneficios.imovelFuncional != null;
 
         panel.innerHTML = `
           <div class="detail-header">
@@ -2037,90 +2057,54 @@ function renderSenadoBrasil(senadores) {
             <div class="detail-header-text">
               <h3>${s.nome}</h3>
               <div class="detail-meta">${s.partido || "—"} · Senador(a) por ${s.uf || "—"}</div>
-              ${s.gabineteEndereco ? `<div class="detail-meta" style="font-size:.78rem;opacity:.7;margin-top:4px">${s.gabineteEndereco}</div>` : ""}
             </div>
           </div>
 
-          ${s.escritorioApoio ? `<p class="section-note" style="margin-bottom:12px">🏢 Escritório de apoio em MS: ${s.escritorioApoio}</p>` : ""}
-
-          <div class="subhead">CEAPS ${s.cotaGastaAno != null ? ANO_REFERENCIA : (s.ceaps2025 ? "2025 (2026 não publicado)" : "—")}</div>
-          ${s.cotaGastaAno != null ? `
-            <div class="stat-grid">
-              <div class="stat-card alt">
-                <p class="stat-label">Total CEAPS ${ANO_REFERENCIA}</p>
-                <p class="stat-value">${formatBRL(s.cotaGastaAno)}</p>
-              </div>
-              ${s.gastosExtras2026?.total ? `<div class="stat-card"><p class="stat-label">Extras fora CEAPS</p><p class="stat-value">${formatBRL(s.gastosExtras2026.total)}</p></div>` : ""}
-              ${s.totalGasto2026 ? `<div class="stat-card alt"><p class="stat-label">Total geral ${ANO_REFERENCIA}</p><p class="stat-value">${formatBRL(s.totalGasto2026)}</p></div>` : ""}
-            </div>
-            ${(() => {
-              const ceaps = s.ceaps2026 || {};
-              const cats = Object.entries(ceaps).filter(([k,v]) => k !== 'total' && v > 0).sort((a,b)=>b[1]-a[1]);
-              const max = Math.max(...cats.map(c=>c[1]), 1);
-              return cats.length ? `
-                <div class="subhead">Categorias CEAPS ${ANO_REFERENCIA}</div>
-                <div class="bar-list" style="margin-bottom:16px">
-                  ${cats.map(([k,v]) => `
-                    <div class="bar-list-row">
-                      <div class="bar-list-label">${k.replace(/([A-Z])/g,' $1').trim()}</div>
-                      <div class="bar-list-track"><div class="bar-list-fill amber" style="width:${(v/max*100).toFixed(1)}%"></div></div>
-                      <div class="bar-list-value">${formatBRL(v)}</div>
-                    </div>`).join("")}
-                </div>` : "";
-            })()}
-          ` : `
-            ${s.nota ? `<div class="notice" style="margin-bottom:12px">${s.nota}</div>` : ""}
-            ${s.ceaps2025 ? `
-            <div class="stat-grid">
-              <div class="stat-card alt">
-                <p class="stat-label">Total CEAPS 2025</p>
-                <p class="stat-value">${formatBRL(s.ceaps2025.total)}</p>
-              </div>
-              ${s.gastosExtras2025?.total ? `<div class="stat-card"><p class="stat-label">Extras fora CEAPS 2025</p><p class="stat-value">${formatBRL(s.gastosExtras2025.total)}</p></div>` : ""}
-              ${s.total2025 ? `<div class="stat-card alt"><p class="stat-label">Total geral 2025</p><p class="stat-value">${formatBRL(s.total2025)}</p></div>` : ""}
-            </div>
-            ${(() => {
-              const ceaps = s.ceaps2025 || {};
-              const cats = Object.entries(ceaps).filter(([k,v]) => k !== 'total' && v > 0).sort((a,b)=>b[1]-a[1]);
-              const max = Math.max(...cats.map(c=>c[1]), 1);
-              return cats.length ? `
-                <div class="subhead">Categorias CEAPS 2025</div>
-                <div class="bar-list" style="margin-bottom:16px">
-                  ${cats.map(([k,v]) => `
-                    <div class="bar-list-row">
-                      <div class="bar-list-label">${k.replace(/([A-Z])/g,' $1').trim()}</div>
-                      <div class="bar-list-track"><div class="bar-list-fill amber" style="width:${(v/max*100).toFixed(1)}%"></div></div>
-                      <div class="bar-list-value">${formatBRL(v)}</div>
-                    </div>`).join("")}
-                </div>` : "";
-            })()}` : ""}
-          `}
-
-          ${s.despesas?.length ? `
-          <div class="subhead">Despesas por categoria (${s.despesas.length})</div>
-          <table class="notes-table">
-            <thead><tr><th>Categoria</th><th class="num">Valor</th><th>Detalhes</th></tr></thead>
+          <div class="subhead">Cotas para Exercício da Atividade Parlamentar (CEAPS) ${s.anoReferencia || ANO_REFERENCIA}</div>
+          <table class="notes-table" style="margin-bottom:16px">
+            <thead><tr><th>Categoria</th><th class="num">Valor</th><th>Detalhe</th></tr></thead>
             <tbody>
-              ${s.despesas.map(d => `
-                <tr>
-                  <td style="font-size:.85rem">${d.categoria}</td>
-                  <td class="num">${formatBRL(d.valor)}</td>
-                  <td>${d.descricao ? `<span style="font-size:.72rem;opacity:.7">${d.descricao}</span>` : ""}
-                    ${d.urlDetalhe ? ` <a href="${d.urlDetalhe}" target="_blank" style="font-size:.75rem">ver →</a>` : ""}
-                  </td>
-                </tr>`).join("")}
+              ${itensCeaps.length ? itensCeaps.map(linhaDespesa).join("") +
+                `<tr style="font-weight:700;border-top:2px solid var(--border)">
+                  <td>Total CEAPS</td>
+                  <td class="num">${totalCeaps != null ? formatBRL(totalCeaps) : "—"}</td>
+                  <td></td>
+                </tr>`
+                : `<tr><td colspan="3" style="opacity:.6">${s.nota || "Dados não disponíveis"}</td></tr>`
+              }
             </tbody>
-          </table>` : ""}
+          </table>
 
-          ${(() => {
-            const p = s.pessoal2026 || s.pessoal2025 || {};
-            return p.gabinete ? `
-            <div class="subhead">Pessoal (${s.pessoal2026 ? ANO_REFERENCIA : "2025"})</div>
-            <div class="stat-grid">
-              <div class="stat-card"><p class="stat-label">Gabinete total</p><p class="stat-value">${p.gabinete}</p><p class="stat-note">${p.gabineteComissionados||0} comis. + ${p.gabineteEfetivos||0} efetivos</p></div>
-              ${p.escritorio ? `<div class="stat-card"><p class="stat-label">Escritório MS</p><p class="stat-value">${p.escritorio}</p><p class="stat-note">comissionados</p></div>` : ""}
-            </div>` : "";
-          })()}
+          <div class="subhead">Gastos Não Inclusos nas Cotas</div>
+          <table class="notes-table" style="margin-bottom:16px">
+            <thead><tr><th>Categoria</th><th class="num">Valor</th><th>Detalhe</th></tr></thead>
+            <tbody>
+              ${itensExtras.length ? itensExtras.map(linhaDespesa).join("") +
+                `<tr style="font-weight:700;border-top:2px solid var(--border)">
+                  <td>Total extras</td>
+                  <td class="num">${totalExtras != null ? formatBRL(totalExtras) : "—"}</td>
+                  <td></td>
+                </tr>`
+                : `<tr><td colspan="3" style="opacity:.6">Dados não disponíveis</td></tr>`
+              }
+            </tbody>
+          </table>
+
+          <div class="subhead">Pessoal</div>
+          ${temPessoal ? `
+          <div class="stat-grid" style="margin-bottom:16px">
+            ${pessoal.gabinete != null ? `<div class="stat-card"><p class="stat-label">Gabinete</p><p class="stat-value">${pessoal.gabinete}</p><p class="stat-note">${pessoal.gabineteComissionados ?? 0} comissionados</p></div>` : ""}
+            ${pessoal.escritorio != null ? `<div class="stat-card"><p class="stat-label">Escritório(s) de apoio</p><p class="stat-value">${pessoal.escritorio}</p><p class="stat-note">${pessoal.escritorioComissionados ?? 0} comissionados</p></div>` : ""}
+          </div>` : `
+          <p class="section-note" style="margin-bottom:16px">Consulte o Portal de Transparência do Senado para dados individuais.</p>`}
+
+          <div class="subhead">Benefícios</div>
+          ${temBeneficios ? `
+          <div class="stat-grid" style="margin-bottom:16px">
+            <div class="stat-card"><p class="stat-label">Auxílio-moradia</p><p class="stat-value" style="font-size:1rem">${beneficios.auxilioMoradia || "—"}</p></div>
+            <div class="stat-card"><p class="stat-label">Imóvel funcional</p><p class="stat-value" style="font-size:1rem">${beneficios.imovelFuncional || "—"}</p></div>
+          </div>` : `
+          <p class="section-note" style="margin-bottom:16px">Auxílio-moradia e imóvel funcional: consulte o Portal de Transparência do Senado para a situação individual.</p>`}
 
           <div class="subhead">Custo estimado anual</div>
           <div class="stat-grid">
