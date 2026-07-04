@@ -1287,93 +1287,88 @@ function renderSenadores(data) {
     row.addEventListener("click", () => {
       const id = row.dataset.id;
       const s = senadores.find(x => String(x.id) === id);
-      const ceaps = s.ceaps2026 || {};
       const custo = s.custoEstimadoAnual || {};
+      const gabinete = s.gabinete || {};
 
-      // Categorias CEAPS
-      let ceapsRows = "";
-      if (s.ceapsCategorias?.length) {
-        ceapsRows = s.ceapsCategorias.map(c => `<tr><td>${c.categoria}</td><td class="num">${formatBRL(c.valor)}</td></tr>`).join("");
-      } else if (Object.keys(ceaps).length > 1) {
-        ceapsRows = Object.entries(ceaps).filter(([k,v]) => k !== "total" && v != null)
-          .map(([k,v]) => `<tr><td>${k.replace(/([A-Z])/g,' $1').toLowerCase()}</td><td class="num">${formatBRL(v)}</td></tr>`).join("");
-      }
+      // O portal do Senado separa as despesas em "Cotas" (CEAPS, urlDetalhe contém /ceaps/)
+      // e "Gastos Não Inclusos nas Cotas" (viagens, correios, mídias sociais etc.)
+      const despesas = s.despesas || [];
+      const itensCeaps = despesas.filter(d => (d.urlDetalhe || "").includes("/ceaps/"));
+      const itensExtras = despesas.filter(d => !(d.urlDetalhe || "").includes("/ceaps/"));
 
-            panel.innerHTML = `
-          <div class="detail-header">
-                    ${avatarHTML(s.nome, s.foto, "avatar-lg")}
-                              <div class="detail-header-text">
-                                          <h3>${s.nome}</h3>
-                                                      <div class="detail-meta">${s.partido} · Senador(a) por ${s.uf}</div>
-                                                                  ${s.gabineteEndereco ? `<div class="detail-meta" style="font-size:.75rem;opacity:.6">${s.gabineteEndereco}</div>` : ""}
-                                                                            </div>
-                                                                                    </div>
+      const totalCeaps = s.cotaGastaAno ?? (itensCeaps.length ? itensCeaps.reduce((a, d) => a + (d.valor || 0), 0) : null);
+      const totalExtras = itensExtras.length ? itensExtras.reduce((a, d) => a + (d.valor || 0), 0) : null;
 
-                                                                                            ${s.escritorioApoio ? `<p class="section-note" style="margin-bottom:12px">🏢 ${s.escritorioApoio}</p>` : ""}
+      const linhaDespesa = d => `
+        <tr>
+          <td style="font-size:.82rem">${d.categoria}${d.descricao ? `<div style="font-size:.7rem;opacity:.6">${d.descricao}</div>` : ""}</td>
+          <td class="num">${formatBRL(d.valor)}</td>
+          <td>${d.urlDetalhe ? `<a href="${d.urlDetalhe}" target="_blank" style="font-size:.75rem">ver →</a>` : ""}</td>
+        </tr>`;
 
-                                                                                                    <div class="subhead">CEAPS ${s.anoReferencia || ANO_REFERENCIA}</div>
-                                                                                                            <table class="notes-table" style="margin-bottom:16px">
-                                                                                                                      <thead><tr><th>Categoria</th><th class="num">Valor</th><th>Detalhe</th></tr></thead>
-                                                                                                                                <tbody>
-                                                                                                                                            ${s.ceaps && Object.keys(s.ceaps).length ?
-                                                                                                                                                            Object.entries(s.ceaps).filter(([k,v]) => k !== 'total').map(([cat, val]) => `
-                      <tr>
-                                          <td style="font-size:.82rem">${cat}</td>
-                                          <td class="num">${formatBRL(val)}</td>
-                                                              <td><a href="${s.urlTransparencia || '#'}" target="_blank" style="font-size:.75rem">ver →</a></td>
-                                                                                </tr>`).join("") +
-                                                                              `<tr style="font-weight:700;border-top:2px solid var(--border)">
-                                                                                <td>Total CEAPS</td>
-                                                                                <td class="num">${formatBRL(s.cotaGastaAno || Object.values(s.ceaps).filter(v=>typeof v==='number').reduce((a,b)=>a+b,0))}</td>
-                                                                                <td></td>
-                                                                                                </tr>`
-                                                                                                : `<tr><td colspan="3" style="opacity:.6">${s.nota || "Dados não disponíveis"}</td></tr>`
-    }
-                                   </tbody>
-              </table>
+      panel.innerHTML = `
+        <div class="detail-header">
+          ${avatarHTML(s.nome, s.foto, "avatar-lg")}
+          <div class="detail-header-text">
+            <h3>${s.nome}</h3>
+            <div class="detail-meta">${s.partido} · Senador(a) por ${s.uf}</div>
+          </div>
+        </div>
 
-                        ${s.gastosExtras && Object.keys(s.gastosExtras).length ? `
-                                <div class="subhead">Gastos fora da CEAPS</div>
-                                        <table class="notes-table" style="margin-bottom:16px">
-                                                  <thead><tr><th>Categoria</th><th class="num">Valor</th></tr></thead>
-                                                            <tbody>
-                                                                        ${Object.entries(s.gastosExtras).filter(([k,v]) => k !== 'total' && v > 0).map(([cat, val]) => `
-                    <tr><td style="font-size:.82rem">${cat}</td><td class="num">${formatBRL(val)}</td></tr>`).join("")}
-                  <tr style="font-weight:700;border-top:2px solid var(--border)">
-                              <td>Total extras</td>
-                    <td class="num">${formatBRL(s.gastosExtras.total || 0)}</td>
-                  </tr>
-                              </tbody>
-                            </table>` : ""}
+        <div class="subhead">Cotas para Exercício da Atividade Parlamentar (CEAPS) ${s.anoReferencia || ANO_REFERENCIA}</div>
+        <table class="notes-table" style="margin-bottom:16px">
+          <thead><tr><th>Categoria</th><th class="num">Valor</th><th>Detalhe</th></tr></thead>
+          <tbody>
+            ${itensCeaps.length ? itensCeaps.map(linhaDespesa).join("") +
+              `<tr style="font-weight:700;border-top:2px solid var(--border)">
+                <td>Total CEAPS</td>
+                <td class="num">${totalCeaps != null ? formatBRL(totalCeaps) : "—"}</td>
+                <td></td>
+              </tr>`
+              : `<tr><td colspan="3" style="opacity:.6">${s.nota || "Dados não disponíveis"}</td></tr>`
+            }
+          </tbody>
+        </table>
 
-                            ${s.pessoal && Object.keys(s.pessoal).length ? `
-                                    <div class="subhead">Pessoal</div>
-                                            <div class="stat-grid" style="margin-bottom:16px">
-                                                      ${s.pessoal.gabinete ? `<div class="stat-card"><p class="stat-label">Gabinete</p><p class="stat-value">${s.pessoal.gabinete}</p><p class="stat-note">${s.pessoal.gabineteComissionados||0} comissionados</p></div>` : ""}
-                                                                ${s.pessoal.escritorio ? `<div class="stat-card"><p class="stat-label">Escritório MS</p><p class="stat-value">${s.pessoal.escritorio}</p><p class="stat-note">${s.pessoal.escritorioComissionados||s.pessoal.escritorio} comissionados</p></div>` : ""}
-                                                                        </div>` : ""}
+        <div class="subhead">Gastos Não Inclusos nas Cotas</div>
+        <table class="notes-table" style="margin-bottom:16px">
+          <thead><tr><th>Categoria</th><th class="num">Valor</th><th>Detalhe</th></tr></thead>
+          <tbody>
+            ${itensExtras.length ? itensExtras.map(linhaDespesa).join("") +
+              `<tr style="font-weight:700;border-top:2px solid var(--border)">
+                <td>Total extras</td>
+                <td class="num">${totalExtras != null ? formatBRL(totalExtras) : "—"}</td>
+                <td></td>
+              </tr>`
+              : `<tr><td colspan="3" style="opacity:.6">Dados não disponíveis</td></tr>`
+            }
+          </tbody>
+        </table>
 
-                                  ${s.beneficios ? `
-                                          <div class="subhead">Benefícios</div>
-                                                  <div class="stat-grid" style="margin-bottom:16px">
-                                                            <div class="stat-card"><p class="stat-label">Auxílio-moradia</p><p class="stat-value" style="font-size:1rem">${s.beneficios.auxilioMoradia || "—"}</p></div>
-                                                                      <div class="stat-card"><p class="stat-label">Imóvel funcional</p><p class="stat-value" style="font-size:1rem">${s.beneficios.imovelFuncional || "—"}</p></div>
-          </div>` : ""}
+        <div class="subhead">Pessoal</div>
+        <p class="section-note" style="margin-bottom:16px">
+          ${gabinete.equipeEstimadaNota || "Consulte o Portal de Transparência do Senado para dados individuais de gabinete e escritório de apoio."}
+        </p>
 
-                                  <div class="subhead">Custo estimado anual</div>
-                                            <div class="stat-grid" style="margin-bottom:16px">
-                                                        <div class="stat-card"><p class="stat-label">Subsídio (13×)</p><p class="stat-value">${formatCompact(custo.subsidioAnual)}</p></div>
-                                                        <div class="stat-card"><p class="stat-label">Auxílio-moradia (12×)</p><p class="stat-value">${formatCompact(custo.auxilioMoradiaAnual)}</p></div>
-                                                        ${custo.totalEstimado ? `<div class="stat-card alt"><p class="stat-label">Total estimado</p><p class="stat-value">${formatCompact(custo.totalEstimado)}</p></div>` : ""}
-                                  </div>
+        <div class="subhead">Benefícios</div>
+        <p class="section-note" style="margin-bottom:16px">
+          Auxílio-moradia e imóvel funcional: consulte o Portal de Transparência do Senado para a situação individual.
+        </p>
 
-                                            <p class="section-note">
-                                                        <a href="${s.urlTransparencia || `https://www6g.senado.leg.br/transparencia/sen/${s.id}/?ano=${ANO_REFERENCIA}`}" target="_blank">
-                                                          Ver portal completo de transparência do Senado →
-                                    </a>
-                                                ${s.fonteCeaps ? `<br><span style="opacity:.5;font-size:.72rem">${s.fonteCeaps}</span>` : ""}
-                                  </p>
-                                          `;
+        <div class="subhead">Custo estimado anual</div>
+        <div class="stat-grid" style="margin-bottom:16px">
+          <div class="stat-card"><p class="stat-label">Subsídio (13×)</p><p class="stat-value">${formatCompact(custo.subsidioAnual)}</p></div>
+          <div class="stat-card"><p class="stat-label">Auxílio-moradia (12×)</p><p class="stat-value">${formatCompact(custo.auxilioMoradiaAnual)}</p></div>
+          ${custo.totalEstimado ? `<div class="stat-card alt"><p class="stat-label">Total estimado</p><p class="stat-value">${formatCompact(custo.totalEstimado)}</p></div>` : ""}
+        </div>
+
+        <p class="section-note">
+          <a href="${s.urlTransparencia || `https://www6g.senado.leg.br/transparencia/sen/${s.id}/?ano=${ANO_REFERENCIA}`}" target="_blank">
+            Ver portal completo de transparência do Senado →
+          </a>
+          ${s.fonteCeaps ? `<br><span style="opacity:.5;font-size:.72rem">${s.fonteCeaps}</span>` : ""}
+        </p>
+      `;
       panel.classList.add("active");
       panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
