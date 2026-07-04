@@ -490,12 +490,49 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="hero-sub">Total pago até o momento</div>
       <div class="mini-stats">
         <div><div class="mini-stat-value" id="pref-linhas">—</div><div class="mini-stat-label">Empenhos</div></div>
+        <div><div class="mini-stat-value" id="pref-notas">—</div><div class="mini-stat-label">Notas fiscais pagas</div></div>
+        <div><div class="mini-stat-value" id="pref-fornecedores">—</div><div class="mini-stat-label">Fornecedores</div></div>
         <div><div class="mini-stat-value" id="pref-data">—</div><div class="mini-stat-label">Atualizado em</div></div>
       </div>
     </div>
     <div class="section-body" style="padding:24px">
       <div class="subhead">Despesas por órgão (Top 20)</div>
       <div class="bar-list" id="pref-secretarias" style="margin-top:12px"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2 class="section-title">Ranking de fornecedores</h2>
+      </div>
+      <div class="section-note">Empresas e pessoas que mais receberam pagamentos da Prefeitura de Campo Grande no ano corrente. Clique em um nome para ver as notas fiscais individuais.</div>
+      <input class="search-box" id="busca-pref-fornecedor" type="text" placeholder="buscar por fornecedor ou CNPJ…" />
+      <div class="card">
+        <table class="ranking" id="ranking-pref-fornecedores">
+          <thead>
+            <tr><th class="num">#</th><th>Fornecedor</th><th class="num">Notas</th><th class="num">Valor pago</th><th>Em relação ao maior</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="detail-panel" id="detail-pref-fornecedor"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2 class="section-title">Buscar notas fiscais</h2>
+      </div>
+      <div class="section-note">Busque diretamente por fornecedor, órgão ou categoria de despesa entre todas as notas pagas.</div>
+      <input class="search-box" id="busca-pref-notas" type="text" placeholder="buscar por fornecedor, órgão ou categoria…" />
+      <div class="card">
+        <table class="notes-table" id="tabela-pref-notas">
+          <thead><tr><th>Data</th><th>Órgão</th><th>Categoria</th><th>Fornecedor</th><th class="num">Valor</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div style="display:flex; gap:8px; margin-top:10px;">
+        <button class="pager-btn" id="pref-notas-anterior" disabled>&larr; ANTERIOR</button>
+        <button class="pager-btn" id="pref-notas-proximo" disabled>PRÓXIMA &rarr;</button>
+      </div>
       <p class="section-note" style="margin-top:16px">
         Fonte: <a href="https://transparencia.campogrande.ms.gov.br/canais/dados-abertos/" target="_blank">Portal de Dados Abertos — Prefeitura de Campo Grande</a> · Atualização automática diária.
       </p>
@@ -1939,6 +1976,7 @@ function renderDeputadosEstaduais(data) {
 function renderPrefeitura(data) {
   const total = data.totalDespesas || 0;
   const por = data.porSecretaria || {};
+  const despesas = data.despesas || [];
   const max = Math.max(...Object.values(por), 1);
   document.getElementById("pref-total").textContent = formatCompact(total);
   document.getElementById("pref-ano").textContent = data.ano || ANO_REFERENCIA;
@@ -1952,6 +1990,119 @@ function renderPrefeitura(data) {
       <div class="bar-list-track"><div class="bar-list-fill positive" style="width:${(val/max*100).toFixed(1)}%"></div></div>
       <div class="bar-list-value">${formatCompact(val)}</div>
     </div>`).join("");
+
+  document.getElementById("pref-notas").textContent = (data.totalNotasFiscais ?? despesas.length).toLocaleString("pt-BR");
+  if (!despesas.length) return;
+
+  // ---- Ranking de fornecedores (agregado a partir das notas individuais) ----
+  const porFornecedor = {};
+  for (const d of despesas) {
+    const key = d.fornecedor || "—";
+    if (!porFornecedor[key]) porFornecedor[key] = { fornecedor: key, cnpj: d.cnpj, total: 0, notas: 0 };
+    porFornecedor[key].total += d.valor || 0;
+    porFornecedor[key].notas += 1;
+  }
+  const fornecedores = Object.values(porFornecedor).sort((a, b) => b.total - a.total);
+  document.getElementById("pref-fornecedores").textContent = fornecedores.length.toLocaleString("pt-BR");
+
+  const maxFornecedor = fornecedores[0]?.total || 1;
+  const tbodyFor = document.querySelector("#ranking-pref-fornecedores tbody");
+  const painelFor = document.getElementById("detail-pref-fornecedor");
+
+  function renderRankingFornecedores(filtro = "") {
+    const f = filtro.toLowerCase();
+    const filtrados = fornecedores.filter(x =>
+      x.fornecedor.toLowerCase().includes(f) || (x.cnpj || "").includes(f)
+    );
+    tbodyFor.innerHTML = filtrados.slice(0, 500).map((x, i) => `
+      <tr class="clickable" data-fornecedor="${x.fornecedor.replace(/"/g, "&quot;")}">
+        <td class="rank-pos">${String(i + 1).padStart(2, "0")}</td>
+        <td>
+          <div class="rank-name">${x.fornecedor}</div>
+          <div class="rank-meta">${x.cnpj || "—"}</div>
+        </td>
+        <td class="num">${x.notas}</td>
+        <td class="num">${formatBRL(x.total)}</td>
+        <td class="progress-cell">${progressBar(x.total / maxFornecedor * 100, "positive")}</td>
+      </tr>
+    `).join("") || `<tr><td colspan="5" style="padding:16px;color:var(--ink-soft)">Nenhum fornecedor encontrado.</td></tr>`;
+
+    tbodyFor.querySelectorAll("tr.clickable").forEach(row => {
+      row.addEventListener("click", () => {
+        const nome = row.dataset.fornecedor;
+        const notasFornecedor = despesas.filter(d => d.fornecedor === nome);
+        const totalFornecedor = notasFornecedor.reduce((a, d) => a + (d.valor || 0), 0);
+        painelFor.innerHTML = `
+          <div class="detail-header">
+            <div class="detail-header-text">
+              <h3>${nome}</h3>
+              <div class="detail-meta">${notasFornecedor[0]?.cnpj || "—"} · ${notasFornecedor.length} notas · Total ${formatBRL(totalFornecedor)}</div>
+            </div>
+          </div>
+          <div class="subhead">Notas fiscais</div>
+          <table class="notes-table">
+            <thead><tr><th>Data</th><th>Órgão</th><th>Categoria</th><th class="num">Valor</th></tr></thead>
+            <tbody>
+              ${notasFornecedor.slice(0, 300).map(d => `
+                <tr>
+                  <td style="white-space:nowrap">${formatDate(d.data)}</td>
+                  <td style="font-size:.8rem">${d.orgao}</td>
+                  <td style="font-size:.8rem">${d.categoria}</td>
+                  <td class="num">${formatBRL(d.valor)}</td>
+                </tr>`).join("")}
+            </tbody>
+          </table>
+          ${notasFornecedor.length > 300 ? `<p class="section-note" style="margin-top:8px">Mostrando as 300 notas mais recentes de ${notasFornecedor.length}.</p>` : ""}
+        `;
+        painelFor.classList.add("active");
+        painelFor.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+    });
+  }
+  renderRankingFornecedores();
+  document.getElementById("busca-pref-fornecedor").addEventListener("input", e => {
+    painelFor.classList.remove("active");
+    renderRankingFornecedores(e.target.value);
+  });
+
+  // ---- Busca livre entre todas as notas fiscais (paginada) ----
+  const PAGE_SIZE_NOTAS = 30;
+  let paginaNotas = 1;
+  let notasFiltradas = despesas;
+  const tbodyNotas = document.querySelector("#tabela-pref-notas tbody");
+  const btnAnteriorNotas = document.getElementById("pref-notas-anterior");
+  const btnProximoNotas = document.getElementById("pref-notas-proximo");
+
+  function renderTabelaNotas() {
+    const totalPaginas = Math.max(1, Math.ceil(notasFiltradas.length / PAGE_SIZE_NOTAS));
+    paginaNotas = Math.min(paginaNotas, totalPaginas);
+    const inicio = (paginaNotas - 1) * PAGE_SIZE_NOTAS;
+    const fatia = notasFiltradas.slice(inicio, inicio + PAGE_SIZE_NOTAS);
+    tbodyNotas.innerHTML = fatia.map(d => `
+      <tr>
+        <td style="white-space:nowrap">${formatDate(d.data)}</td>
+        <td style="font-size:.8rem">${d.orgao}</td>
+        <td style="font-size:.8rem">${d.categoria}</td>
+        <td style="font-size:.8rem">${d.fornecedor}</td>
+        <td class="num">${formatBRL(d.valor)}</td>
+      </tr>
+    `).join("") || `<tr><td colspan="5" style="padding:16px;color:var(--ink-soft)">Nenhuma nota encontrada.</td></tr>`;
+    btnAnteriorNotas.disabled = paginaNotas <= 1;
+    btnProximoNotas.disabled = paginaNotas >= totalPaginas;
+  }
+  renderTabelaNotas();
+  document.getElementById("busca-pref-notas").addEventListener("input", e => {
+    const f = e.target.value.toLowerCase();
+    notasFiltradas = despesas.filter(d =>
+      (d.fornecedor || "").toLowerCase().includes(f) ||
+      (d.orgao || "").toLowerCase().includes(f) ||
+      (d.categoria || "").toLowerCase().includes(f)
+    );
+    paginaNotas = 1;
+    renderTabelaNotas();
+  });
+  btnAnteriorNotas.addEventListener("click", () => { if (paginaNotas > 1) { paginaNotas--; renderTabelaNotas(); } });
+  btnProximoNotas.addEventListener("click", () => { paginaNotas++; renderTabelaNotas(); });
 }
 
 // ===================== RENDER DEPUTADOS BRASIL =====================

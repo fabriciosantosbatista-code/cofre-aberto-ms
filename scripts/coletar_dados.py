@@ -515,32 +515,38 @@ def coletar_prefeitura():
             log(f"  \u26a0\ufe0f Prefeitura indispon\u00edvel: {e2} \u2014 mantendo dados anteriores")
             return None
 
-    # Agrupar por secretaria
+    def parse_valor(valor_str):
+        v = (valor_str or "0").strip().replace("R$", "").strip()
+        if "," in v:
+            v = v.replace(".", "").replace(",", ".")
+        valor = float(v or 0)
+        if valor > 1_000_000_000:
+            valor = valor / 100
+        return valor
+
+    # Agrupar por secretaria e extrair cada despesa individual (nota/empenho)
     por_secretaria = {}
     total_geral = 0
+    despesas = []
     for row in linhas:
         try:
             secretaria = (row.get("orgao") or "Outros").strip()
-            valor_str = (row.get("total_pago") or "0").strip()
-            # Tratar formato BR (1.234,56) e centavos inteiros (123456)
-            v = valor_str.strip().replace("R$", "").strip()
-            if "," in v:
-                # Formato BR: 1.234,56 → remover pontos de milhar, trocar vírgula por ponto
-                v = v.replace(".", "").replace(",", ".")
-            elif "." in v:
-                # Formato US: 1234.56 → usar direto
-                pass
-            else:
-                # Inteiro puro — pode estar em centavos
-                v = v or "0"
-            valor = float(v or 0)
-            # Sanity check: se valor unitário > 1 bilhão, provavelmente está em centavos
-            if valor > 1_000_000_000:
-                valor = valor / 100
+            valor = parse_valor(row.get("total_pago"))
             por_secretaria[secretaria] = por_secretaria.get(secretaria, 0) + valor
             total_geral += valor
+            if valor > 0:
+                despesas.append({
+                    "data": row.get("dataempenho"),
+                    "orgao": secretaria,
+                    "categoria": (row.get("itemclassificacaodespesaitemclassificacaodespesa") or "").strip(),
+                    "fornecedor": (row.get("nomefornecedor") or "").strip(),
+                    "cnpj": (row.get("cnpjfornecedor") or "").strip(),
+                    "valor": round(valor, 2),
+                })
         except:
             continue
+
+    despesas.sort(key=lambda x: x["data"] or "", reverse=True)
 
     # Carregar dados anteriores para manter estrutura
     try:
@@ -556,9 +562,11 @@ def coletar_prefeitura():
         "fonte": f"cdn.campogrande.ms.gov.br \u2014 {hoje}",
         "porSecretaria": {k: round(v, 2) for k, v in sorted(por_secretaria.items(), key=lambda x: -x[1])[:20]},
         "totalLinhas": len(linhas),
+        "totalNotasFiscais": len(despesas),
+        "despesas": despesas,
     }
     salvar("prefeitura.json", data)
-    log(f"  Total despesas {ano}: R$ {total_geral:,.2f}")
+    log(f"  Total despesas {ano}: R$ {total_geral:,.2f} \u2014 {len(despesas)} notas com valor pago")
     return data
 
 # ============================================================
