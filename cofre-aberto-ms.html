@@ -2471,15 +2471,15 @@ async function init() {
 
   // Notas fiscais estaduais: carregar por demanda (só quando clicar no deputado)
 
-  // Senadores locais
-  carregarJSON("dados/senadores_brasil.json").then(d => { if (d) DADOS_SENADORES_BRASIL = d; });
+  // Senadores locais (precisa terminar antes de buscarSenadoresAoVivo, que usa DADOS_SENADORES_BRASIL para enriquecer com despesas)
+  const senadoresLocaisPromise = carregarJSON("dados/senadores_brasil.json").then(d => { if (d) DADOS_SENADORES_BRASIL = d; });
 
   // API ao vivo: deputados e senadores de MS
   document.getElementById("status-data").textContent = "buscando ao vivo…";
   try {
     const [deputados, senadores] = await Promise.all([
       buscarDeputadosAoVivo("MS", null, true),
-      buscarSenadoresAoVivo("MS").catch(() => []),
+      senadoresLocaisPromise.then(() => buscarSenadoresAoVivo("MS")).catch(() => []),
     ]);
     const congresso = { ultimaAtualizacao: new Date().toISOString(), deputados, senadores };
     document.getElementById("status-data").textContent = formatDateTime(congresso.ultimaAtualizacao);
