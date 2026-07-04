@@ -2455,7 +2455,7 @@ async function init() {
       document.querySelectorAll(".tabpanel").forEach(p => p.classList.remove("active"));
       btn.classList.add("active");
       document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
-      if (btn.dataset.tab === "dep-brasil" && !window._depBrLoaded) { window._depBrLoaded = true; carregarDeputadosBrasil(); }
+      if (btn.dataset.tab === "deputados-brasil" && !window._depBrLoaded) { window._depBrLoaded = true; carregarDeputadosBrasil(); }
       if (btn.dataset.tab === "senado-brasil" && !window._senBrLoaded) { window._senBrLoaded = true; carregarSenadoBrasil(); }
       if (btn.dataset.tab === "deputados-estaduais" && !window._notasEstLoaded) { window._notasEstLoaded = true; carregarJSON("dados/ceap_notas_estaduais.json").then(d => { if (d) CEAP_NOTAS_ESTADUAIS = d; }); }
       if (btn.dataset.tab === "camara" && !window._camaraLoaded) {
