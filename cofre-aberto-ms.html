@@ -525,10 +525,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 
     <div class="section">
       <div class="notice">
-        <b>Atenção: carregamento pesado.</b> Esta aba busca dados de cerca de 513 deputados,
-        cada um com até 12 meses de notas fiscais — pode levar <b>vários minutos</b> e gerar
-        milhares de chamadas à API pública da Câmara dos Deputados. Os dados só são
-        carregados quando esta aba é aberta pela primeira vez.
+        O ranking com o gasto total de cada deputado é pré-calculado diariamente. Ao clicar em um
+        nome, as notas fiscais individuais são buscadas na hora, direto da API da Câmara.
       </div>
       <div class="section-head">
         <h2 class="section-title">Ranking nacional — gasto da cota CEAP 2026</h2>
@@ -943,6 +941,38 @@ async function buscarDeputadosAoVivo(siglaUf, onProgress, incluirDespesas = true
   }
 
   return resultado;
+}
+
+// Busca as notas fiscais individuais de UM deputado (usado para carregar sob demanda
+// o detalhe de deputados fora de MS, cuja lista completa não vem com notas pré-carregadas).
+async function buscarDespesasDeputadoAoVivo(id, ano) {
+  const despesas = [];
+  let pagina = 1;
+  while (true) {
+    let resp;
+    try {
+      resp = await fetch(`${CAMARA_API}/deputados/${id}/despesas?ano=${ano}&itens=100&pagina=${pagina}`);
+    } catch { break; }
+    if (!resp.ok) break;
+    const itens = (await resp.json()).dados || [];
+    if (itens.length === 0) break;
+    for (const item of itens) {
+      const valor = item.valorLiquido ?? item.valorDocumento ?? 0;
+      despesas.push({
+        data: item.dataDocumento,
+        categoria: item.tipoDespesa,
+        fornecedor: item.nomeFornecedor,
+        cnpjCpfFornecedor: item.cnpjCpfFornecedor,
+        valor,
+        doc: item.numDocumento || "",
+        urlNotaFiscal: item.urlDocumento || null,
+      });
+    }
+    if (itens.length < 100) break;
+    pagina++;
+  }
+  despesas.sort((a, b) => (b.data || "").localeCompare(a.data || ""));
+  return despesas;
 }
 
 async function buscarSenadoresAoVivo(siglaUf) {
@@ -1960,7 +1990,19 @@ function renderDeputadosBrasil(deputados) {
       row.addEventListener("click", () => {
         const id = parseInt(row.dataset.id, 10);
         const d = deputados.find(x => x.id === id);
-        renderDetalheDeputado(d, deputados, ANO_REFERENCIA, panel);
+        if (d.despesas?.length || d.cotaGastaAno == null) {
+          renderDetalheDeputado(d, deputados, ANO_REFERENCIA, panel);
+          return;
+        }
+        // Lista nacional só vem com o total agregado — busca as notas individuais sob demanda.
+        panel.innerHTML = `<p class="section-note">Carregando notas fiscais de ${d.nome}…</p>`;
+        panel.classList.add("active");
+        panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        buscarDespesasDeputadoAoVivo(d.id, ANO_REFERENCIA).then(despesas => {
+          d.despesas = despesas;
+          d.totalNotasFiscais = despesas.length;
+          renderDetalheDeputado(d, deputados, ANO_REFERENCIA, panel);
+        });
       });
     });
   }

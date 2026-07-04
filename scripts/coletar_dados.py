@@ -407,6 +407,37 @@ def coletar_senado_brasil():
 # ============================================================
 # 5. DEPUTADOS FEDERAIS BRASIL — lista completa 513
 # ============================================================
+def buscar_ceap_deputado_agregado(dep_id, ano):
+    """Soma a CEAP de um deputado no ano, paginando (um deputado pode ter 100+ notas/ano)."""
+    total = 0.0
+    categorias = {}
+    notas = 0
+    pagina = 1
+    while True:
+        r = requests.get(
+            f"https://dadosabertos.camara.leg.br/api/v2/deputados/{dep_id}/despesas"
+            f"?ano={ano}&itens=100&pagina={pagina}",
+            headers=HEADERS, timeout=20
+        )
+        r.raise_for_status()
+        itens = r.json().get("dados", [])
+        if not itens:
+            break
+        for item in itens:
+            tipo = item.get("tipoDespesa", "Outros")
+            valor = float(item.get("valorLiquido") or 0)
+            categorias[tipo] = categorias.get(tipo, 0) + valor
+            total += valor
+        notas += len(itens)
+        if len(itens) < 100:
+            break
+        pagina += 1
+        time.sleep(0.2)
+
+    cats = [{"categoria": k, "valor": round(v, 2)} for k, v in sorted(categorias.items(), key=lambda x: -x[1])]
+    return {"cotaGastaAno": round(total, 2) if notas else None, "ceapCategorias": cats, "totalNotasFiscais": notas}
+
+
 def coletar_dep_federais_brasil():
     log("Coletando lista completa de deputados federais...")
 
@@ -423,27 +454,36 @@ def coletar_dep_federais_brasil():
 
     log(f"  {len(deputados)} deputados federais em exercício")
 
-    # Carregar dados anteriores
-    try:
-        dados_ant = json.load(open(DADOS / "deputados_federais_brasil.json"))
-    except:
-        dados_ant = {}
+    resultado = []
+    for i, d in enumerate(deputados):
+        time.sleep(0.3)
+        ceap = {"cotaGastaAno": None, "ceapCategorias": [], "totalNotasFiscais": 0}
+        try:
+            ceap = buscar_ceap_deputado_agregado(d["id"], ANO)
+        except Exception as e:
+            log(f"    CEAP erro para {d.get('nome')}: {e}")
 
-    data = {
-        "ultimaAtualizacao": hoje,
-        "fonte": f"API da Câmara dos Deputados — {hoje}",
-        "total": len(deputados),
-        "deputados": [{
+        resultado.append({
             "id": d["id"],
             "nome": d["nome"],
             "partido": d["siglaPartido"],
             "uf": d["siglaUf"],
             "foto": d["urlFoto"],
             "urlPerfil": f"https://www.camara.leg.br/deputados/{d['id']}",
-        } for d in deputados],
+            **ceap,
+        })
+        if (i + 1) % 50 == 0:
+            log(f"  ... {i + 1}/{len(deputados)} deputados processados")
+
+    data = {
+        "ultimaAtualizacao": hoje,
+        "ano": ANO,
+        "fonte": f"API da Câmara dos Deputados — {hoje}",
+        "total": len(resultado),
+        "deputados": resultado,
     }
     salvar("deputados_federais_brasil.json", data)
-    return deputados
+    return resultado
 
 # ============================================================
 # 6. GERAR TIMESTAMP de última atualização
