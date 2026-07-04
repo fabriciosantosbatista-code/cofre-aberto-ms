@@ -1213,6 +1213,7 @@ function renderDetalheDeputado(d, todos, ano, panel) {
   const media = totalGasto / todos.length;
   const diffMedia = (d.cotaGastaAno || 0) - media;
   const diffPct = media ? (diffMedia / media * 100) : 0;
+  const escopoMedia = todos.every(x => x.uf === d.uf) ? `de ${d.uf}` : "do Brasil";
 
   const custo = d.custoEstimadoAnual || {};
   const gabinete = d.gabinete || {};
@@ -1243,7 +1244,7 @@ function renderDetalheDeputado(d, todos, ano, panel) {
         ${avatarHTML(d.nome, d.foto, "avatar-lg")}
         <div class="detail-header-text">
           <h3>${d.nome}</h3>
-          <div class="detail-meta">${d.partido || "—"} · Deputado Federal por MS · Exercício ${ano}</div>
+          <div class="detail-meta">${d.partido || "—"} · Deputado Federal por ${d.uf || "MS"} · Exercício ${ano}</div>
         </div>
       </div>
 
@@ -1258,7 +1259,7 @@ function renderDetalheDeputado(d, todos, ano, panel) {
           <p class="stat-value">${d.totalNotasFiscais ?? despesas.length}</p>
         </div>
         <div class="stat-card ${diffMedia >= 0 ? 'alt' : ''}">
-          <p class="stat-label">Vs. média dos deputados de MS</p>
+          <p class="stat-label">Vs. média dos deputados ${escopoMedia}</p>
           <p class="stat-value">${diffMedia >= 0 ? "+" : ""}${formatCompact(diffMedia)}</p>
           <p class="stat-note">${diffPct >= 0 ? "acima" : "abaixo"} da média (${Math.abs(diffPct).toFixed(1)}%)</p>
         </div>
