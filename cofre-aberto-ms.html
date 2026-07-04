@@ -2046,7 +2046,7 @@ function renderSenadoBrasil(senadores) {
             <td>${d.urlDetalhe ? `<a href="${d.urlDetalhe}" target="_blank" style="font-size:.75rem">ver →</a>` : ""}</td>
           </tr>`;
 
-        const pessoal = s.pessoal || {};
+        const pessoal = s.pessoalReal || {};
         const temPessoal = pessoal.gabinete != null || pessoal.escritorio != null;
         const beneficios = s.beneficios || {};
         const temBeneficios = beneficios.auxilioMoradia != null || beneficios.imovelFuncional != null;
