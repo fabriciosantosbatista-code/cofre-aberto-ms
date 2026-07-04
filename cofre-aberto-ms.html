@@ -111,12 +111,12 @@ p{margin:0;}
 .section-hero{background:linear-gradient(135deg,var(--surface-2) 0%,var(--surface) 100%);border:1px solid var(--border);border-radius:var(--radius-xl);padding:28px 32px 24px;margin-bottom:24px;position:relative;overflow:hidden;}
 .section-hero::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--positive));}
 .hero-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-faint);font-weight:700;margin-bottom:8px;}
-.hero-number{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,5vw,3rem);letter-spacing:-.03em;color:var(--ink);line-height:1.1;margin-bottom:8px;}
+.hero-number{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,5vw,3rem);letter-spacing:-.03em;color:var(--accent);line-height:1.1;margin-bottom:8px;}
 .hero-sub{font-size:.82rem;color:var(--ink-soft);margin-bottom:4px;}
 .hero-desc{font-size:.88rem;color:var(--ink-soft);max-width:640px;}
 .hero-desc b{color:var(--ink);font-weight:600;}
 .mini-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;margin-top:20px;padding-top:18px;border-top:1px solid var(--border);}
-.mini-stat-value{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--ink);}
+.mini-stat-value{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--accent);}
 .mini-stat-label{font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;margin-top:3px;}
 
 /* SECTIONS */
@@ -130,6 +130,7 @@ p{margin:0;}
 .ranking{width:100%;border-collapse:collapse;font-size:.84rem;}
 .ranking th{text-align:left;padding:11px 16px;font-size:.65rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);font-weight:700;white-space:nowrap;border-bottom:1px solid var(--border);background:var(--surface-2);}
 .ranking th.num,.ranking td.num{text-align:right;font-family:var(--font-mono);}
+.ranking td.num{color:var(--accent);}
 .ranking td{padding:10px 16px;border-bottom:1px solid var(--border-soft);vertical-align:middle;}
 .ranking tr:last-child td{border-bottom:none;}
 .ranking tr.clickable{cursor:pointer;transition:background .1s;}
@@ -167,14 +168,14 @@ p{margin:0;}
 .bar-list-fill{background:linear-gradient(90deg,var(--accent),#8fb0ff);height:100%;border-radius:4px;transition:width .4s ease;}
 .bar-list-fill.alt,.bar-list-fill.amber{background:linear-gradient(90deg,var(--amber),#ffe18a);}
 .bar-list-fill.positive{background:linear-gradient(90deg,var(--positive),#7ff0cd);}
-.bar-list-value{text-align:right;font-weight:600;font-family:var(--font-mono);font-size:.78rem;color:var(--ink);}
+.bar-list-value{text-align:right;font-weight:600;font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
 
 /* STAT GRID */
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:6px;}
 .stat-card{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;}
 .stat-card.alt{background:var(--accent-soft);border-color:rgba(77,125,255,.25);}
 .stat-card .stat-label{font-size:.63rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);font-weight:700;margin-bottom:6px;}
-.stat-card .stat-value{font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:var(--ink);letter-spacing:-.02em;}
+.stat-card .stat-value{font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:var(--accent);letter-spacing:-.02em;}
 .stat-card .stat-note{font-size:.7rem;color:var(--ink-soft);margin-top:4px;}
 
 /* DETAIL PANEL */
@@ -199,6 +200,7 @@ table.notes-table{width:100%;border-collapse:collapse;font-size:.8rem;}
 table.notes-table th{text-align:left;padding:9px 14px;font-size:.63rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);font-weight:700;border-bottom:1px solid var(--border);background:var(--surface-2);}
 table.notes-table td{padding:8px 14px;border-bottom:1px solid var(--border-soft);}
 table.notes-table td.num,table.notes-table th.num{text-align:right;font-family:var(--font-mono);}
+table.notes-table td.num{color:var(--accent);}
 table.notes-table tr:last-child td{border-bottom:none;}
 table.notes-table tr:hover td{background:var(--surface-2);}
 
