@@ -811,6 +811,29 @@ const PADRAO_PREFEITURA = {
 const CAMARA_API = "https://dadosabertos.camara.leg.br/api/v2";
 const SENADO_API = "https://legis.senado.leg.br/dadosabertos";
 const ANO_REFERENCIA = 2026;
+const BIO_SENADOR_CACHE = {};
+
+async function buscarBioSenador(id) {
+  if (BIO_SENADOR_CACHE[id]) return BIO_SENADOR_CACHE[id];
+  try {
+    const resp = await fetch(`${SENADO_API}/senador/${id}`, { headers: { Accept: "application/json" } });
+    if (!resp.ok) return null;
+    const data = await resp.json();
+    const p = data?.DetalheParlamentar?.Parlamentar;
+    const basicos = p?.DadosBasicosParlamentar;
+    if (!basicos) return null;
+    const bio = {
+      nomeCompleto: p?.IdentificacaoParlamentar?.NomeCompletoParlamentar || "",
+      dataNascimento: basicos.DataNascimento || "",
+      naturalidade: basicos.Naturalidade || "",
+      ufNaturalidade: basicos.UfNaturalidade || "",
+      enderecoGabinete: basicos.EnderecoParlamentar || "",
+      email: p?.IdentificacaoParlamentar?.EmailParlamentar || "",
+    };
+    BIO_SENADOR_CACHE[id] = bio;
+    return bio;
+  } catch { return null; }
+}
 
 const SALARIO_MIN_SECRETARIO = 1710.83;
 const SALARIO_MAX_SECRETARIO = 25958.90;
@@ -952,6 +975,7 @@ async function buscarSenadoresAoVivo(siglaUf) {
       totalNotasFiscais: (s.despesas || []).length,
       nota: s.nota || "",
       fonteCeaps: s.fonteCeaps || "",
+      escritorioApoio: s.escritorioApoio || "",
       gabinete: { verbaGabineteMensal: null, equipeEstimada: null, equipeEstimadaNota: "Consulte o Portal de Transparência do Senado para dados individuais." },
       custoEstimadoAnual: {
         subsidioAnual: round2(SUBSIDIO_DEPUTADO * 13),
@@ -998,6 +1022,7 @@ async function buscarSenadoresAoVivo(siglaUf) {
       totalNotasFiscais: (local?.despesas || []).length,
       nota: ceapsTotal ? "" : (local?.nota || ant?.nota || ""),
       fonteCeaps: local?.fonteCeaps || ant?.fonteCeaps || "",
+      escritorioApoio: local?.escritorioApoio || ant?.escritorioApoio || "",
       gabinete: { verbaGabineteMensal: null, equipeEstimada: null, equipeEstimadaNota: "Consulte o Portal de Transparência do Senado para dados individuais." },
       custoEstimadoAnual: {
         subsidioAnual: round2(SUBSIDIO_DEPUTADO * 13),
@@ -1315,6 +1340,11 @@ function renderSenadores(data) {
           </div>
         </div>
 
+        <div class="subhead">Dados pessoais</div>
+        <div id="sen-bio-box" class="stat-grid" style="margin-bottom:16px">
+          <p class="section-note">Carregando dados pessoais…</p>
+        </div>
+
         <div class="subhead">Cotas para Exercício da Atividade Parlamentar (CEAPS) ${s.anoReferencia || ANO_REFERENCIA}</div>
         <table class="notes-table" style="margin-bottom:16px">
           <thead><tr><th>Categoria</th><th class="num">Valor</th><th>Detalhe</th></tr></thead>
@@ -1369,8 +1399,26 @@ function renderSenadores(data) {
           ${s.fonteCeaps ? `<br><span style="opacity:.5;font-size:.72rem">${s.fonteCeaps}</span>` : ""}
         </p>
       `;
+      panel.dataset.senadorId = id;
       panel.classList.add("active");
       panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+      buscarBioSenador(id).then(bio => {
+        if (panel.dataset.senadorId !== id) return; // usuário já trocou de senador
+        const box = document.getElementById("sen-bio-box");
+        if (!box) return;
+        if (!bio) {
+          box.innerHTML = `<p class="section-note">Dados pessoais não disponíveis no momento.</p>`;
+          return;
+        }
+        box.innerHTML = `
+          ${bio.nomeCompleto ? `<div class="stat-card"><p class="stat-label">Nome civil</p><p class="stat-value" style="font-size:1rem">${bio.nomeCompleto}</p></div>` : ""}
+          ${bio.dataNascimento ? `<div class="stat-card"><p class="stat-label">Nascimento</p><p class="stat-value" style="font-size:1rem">${formatDate(bio.dataNascimento)}</p></div>` : ""}
+          ${bio.naturalidade ? `<div class="stat-card"><p class="stat-label">Naturalidade</p><p class="stat-value" style="font-size:1rem">${bio.naturalidade}${bio.ufNaturalidade ? "/" + bio.ufNaturalidade : ""}</p></div>` : ""}
+          ${bio.enderecoGabinete ? `<div class="stat-card"><p class="stat-label">Gabinete em Brasília</p><p class="stat-value" style="font-size:.85rem">${bio.enderecoGabinete}</p></div>` : ""}
+          ${s.escritorioApoio ? `<div class="stat-card"><p class="stat-label">Escritório de apoio (MS)</p><p class="stat-value" style="font-size:.85rem">${s.escritorioApoio}</p></div>` : ""}
+        `;
+      });
     });
   });
 }
