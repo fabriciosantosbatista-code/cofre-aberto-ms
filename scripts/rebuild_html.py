@@ -33,16 +33,6 @@ def embutir_const(html, nome_const, dados):
         log(f"⚠️ {nome_const} não encontrado no HTML")
     return html
 
-def atualizar_data_html(html, data_str):
-    """Atualiza a data de última atualização visível no site."""
-    # Atualizar meta de atualização
-    html = re.sub(
-        r'Dados atualizados — [^<"]+',
-        f"Dados atualizados — {data_str}",
-        html
-    )
-    return html
-
 if __name__ == "__main__":
     log("=" * 50)
     log(f"Cofre Aberto MS — Rebuild HTML {hoje}")
@@ -88,18 +78,8 @@ if __name__ == "__main__":
             html = html[:old_block.start()] + "// Notas fiscais CEAP estaduais (formato compacto)\n" + notas_js + expand_js + html[old_block.end():]
             log(f"✅ CEAP_NOTAS_ESTADUAIS atualizado")
 
-    # Atualizar data de atualização
-    data_exib = datetime.now().strftime("%B %Y").capitalize()
-    html = atualizar_data_html(html, data_exib)
-
     # Salvar HTML atualizado
     open(ROOT / "cofre-aberto-ms.html", "w", encoding="utf-8").write(html)
     log(f"✅ cofre-aberto-ms.html salvo ({len(html)//1024}KB)")
-
-    # Atualizar data na landing page também
-    idx = open(ROOT / "index.html", encoding="utf-8").read()
-    idx = atualizar_data_html(idx, data_exib)
-    open(ROOT / "index.html", "w", encoding="utf-8").write(idx)
-    log(f"✅ index.html atualizado")
 
     log("✅ Rebuild concluído!")
