@@ -7,7 +7,7 @@
 
 <!-- SEO -->
 <meta name="description" content="Transparência pública em Mato Grosso do Sul: fiscalize gastos de vereadores de Campo Grande, CEAP de deputados estaduais e federais de MS, senadores e prefeitura — com notas fiscais reais, CEAP 2026 e folha de pessoal."/>
-<meta name="keywords" content="transparência pública MS, gastos vereadores Campo Grande, CEAP deputados Mato Grosso do Sul, transparência Mato Grosso do Sul, ALEMS deputados, gastos públicos Campo Grande, cofre aberto, fiscalização pública MS"/>
+<meta name="keywords" content="cofre aberto MS, transparência pública MS, gastos vereadores Campo Grande, CEAP deputados Mato Grosso do Sul, transparência Mato Grosso do Sul, ALEMS deputados, gastos públicos Campo Grande, fiscalização pública MS"/>
 <meta name="author" content="Cofre Aberto MS"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://cofreabertoms.com.br/"/>
@@ -193,6 +193,32 @@ footer .footer-links a:hover{color:var(--accent);}
         "@type": "State",
         "name": "Mato Grosso do Sul"
       }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://cofreabertoms.com.br/cofre-aberto-ms.html#dataset",
+      "name": "Gastos públicos de parlamentares e da Prefeitura de Campo Grande — Mato Grosso do Sul",
+      "description": "Dados consolidados de CEAP, verba indenizatória, notas fiscais e folha de pessoal de vereadores de Campo Grande, deputados estaduais (ALEMS), deputados federais e senadores de Mato Grosso do Sul, além das despesas da Prefeitura de Campo Grande.",
+      "url": "https://cofreabertoms.com.br/cofre-aberto-ms.html",
+      "keywords": ["transparência pública MS", "CEAP", "gastos públicos", "Mato Grosso do Sul", "Campo Grande", "vereadores", "deputados estaduais", "senadores"],
+      "creator": { "@id": "https://cofreabertoms.com.br/#organization" },
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "Campo Grande, Mato Grosso do Sul, Brasil"
+      },
+      "temporalCoverage": "2026",
+      "isBasedOn": [
+        "https://dadosabertos.camara.leg.br/",
+        "https://legis.senado.leg.br/dadosabertos/",
+        "https://transparencia.campogrande.ms.gov.br/",
+        "https://consulta.transparencia.al.ms.gov.br/"
+      ],
+      "distribution": [
+        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/prefeitura.json" },
+        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/camara_municipal.json" },
+        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/senadores_brasil.json" },
+        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/deputados_federais_brasil.json" }
+      ]
     }
   ]
 }
