@@ -9,7 +9,7 @@ Fontes:
 - ALEMS: consulta.transparencia.al.ms.gov.br/ceap (CSV público)
 """
 
-import json, requests, csv, io, os, sys, time
+import json, requests, csv, io, os, sys, time, re
 from datetime import datetime, date
 from pathlib import Path
 
@@ -574,6 +574,77 @@ def coletar_prefeitura():
     log(f"  Total despesas {ano}: R$ {total_geral:,.2f} \u2014 {len(despesas)} notas com valor pago")
     return data
 
+
+def coletar_receitas_prefeitura():
+    """Receita arrecadada pela Prefeitura de Campo Grande no ano (portal sig-transparencia).
+    Mesmo mecanismo de sess\u00e3o/token CSRF usado pelo detalhe de despesas: o formul\u00e1rio de
+    consulta de receitas aceita download=json pra devolver todos os registros de uma vez.
+    """
+    log("Coletando receitas da Prefeitura de CG...")
+    from datetime import date
+    ano = date.today().year
+    base = "https://sig-transparencia.campogrande.ms.gov.br/receitas/consulta"
+
+    # O servidor desse subdominio nao envia a cadeia de certificado completa
+    # (falha em qualquer cliente TLS que valide a cadeia) -- e um portal oficial
+    # da Prefeitura, sem troca de credenciais, entao aceitamos verify=False aqui.
+    requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
+    try:
+        s = requests.Session()
+        r = s.get(base, headers=HEADERS, timeout=30, verify=False)
+        r.raise_for_status()
+        token = re.search(r'name="_token" value="([^"]+)"', r.text).group(1)
+
+        payload = {
+            "_token": token,
+            "page": "1",
+            "download": "json",
+            "periodo-inicio": f"{ano}-01-01",
+            "periodo-fim": f"{ano}-12-31",
+            "tipo": "1",  # Orcamentaria
+            "orgao": "",
+            "categoria": "",
+        }
+        r2 = s.post(base, data=payload, headers=HEADERS, timeout=60, verify=False)
+        r2.raise_for_status()
+        registros = r2.json()
+    except Exception as e:
+        log(f"  \u26a0\ufe0f Receitas da Prefeitura indispon\u00edvel: {e}")
+        return None
+
+    def parse_valor(v):
+        v = (v or "0").strip().replace(".", "").replace(",", ".")
+        return float(v or 0)
+
+    total_arrecadado = sum(parse_valor(x.get("arrecadada")) for x in registros)
+    por_origem = {}
+    for x in registros:
+        origem = x.get("nomeorigem") or "Outros"
+        por_origem[origem] = por_origem.get(origem, 0) + parse_valor(x.get("arrecadada"))
+
+    total_impostos = 0.0
+    por_especie_impostos = {}
+    for x in registros:
+        if x.get("nomeorigem") == "Impostos, Taxas e Contribui\u00e7\u00f5es de Melhoria":
+            v = parse_valor(x.get("arrecadada"))
+            total_impostos += v
+            especie = x.get("nomeespecie") or "Outros"
+            por_especie_impostos[especie] = por_especie_impostos.get(especie, 0) + v
+
+    data = {
+        "ultimaAtualizacao": hoje,
+        "ano": ano,
+        "totalArrecadado": round(total_arrecadado, 2),
+        "totalImpostosTaxasContribuicoes": round(total_impostos, 2),
+        "porOrigem": {k: round(v, 2) for k, v in sorted(por_origem.items(), key=lambda x: -x[1])},
+        "porEspecieImpostos": {k: round(v, 2) for k, v in sorted(por_especie_impostos.items(), key=lambda x: -x[1])},
+        "totalRegistros": len(registros),
+        "fonte": f"sig-transparencia.campogrande.ms.gov.br/receitas/consulta \u2014 {hoje} (arrecadado no ano at\u00e9 a data da coleta)",
+    }
+    salvar("receitas_prefeitura.json", data)
+    log(f"  Receita total arrecadada {ano}: R$ {total_arrecadado:,.2f} \u2014 Impostos/Taxas/Contrib.: R$ {total_impostos:,.2f}")
+    return data
+
 # ============================================================
 # MAIN
 # ============================================================
@@ -618,6 +689,12 @@ if __name__ == "__main__":
         coletar_prefeitura()
     except Exception as e:
         erros.append(f"Prefeitura: {e}")
+        log(f"\u274c {e}")
+
+    try:
+        coletar_receitas_prefeitura()
+    except Exception as e:
+        erros.append(f"Receitas Prefeitura: {e}")
         log(f"\u274c {e}")
 
     gerar_status()

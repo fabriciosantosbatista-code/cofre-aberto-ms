@@ -66,6 +66,34 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0
 .stat-val{font-family:"Sora",sans-serif;font-size:2rem;font-weight:800;letter-spacing:-.03em;background:linear-gradient(135deg,var(--ink),var(--ink-soft));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .stat-label{font-size:.75rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.07em;margin-top:6px;font-weight:600;}
 
+/* METROS (Gastômetro / Impostômetro) */
+.metro-section{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:16px 0 60px;}
+.metro-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px 20px;text-align:center;position:relative;overflow:hidden;}
+.metro-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;}
+.metro-amber::before{background:linear-gradient(90deg,var(--amber),#ffe18a);}
+.metro-green::before{background:linear-gradient(90deg,var(--positive),#7ef0cf);}
+.metro-card h2{font-family:"Sora",sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:6px;}
+.metro-sub{font-size:.85rem;color:var(--ink-soft);margin:0 auto 26px;max-width:360px;line-height:1.5;}
+.metro-display{display:flex;justify-content:center;align-items:flex-end;gap:5px;flex-wrap:wrap;margin-bottom:18px;}
+.metro-col{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.metro-group{display:flex;gap:2px;}
+.metro-digit{width:clamp(18px,4.6vw,32px);height:clamp(28px,6.6vw,46px);background:#000;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:clamp(1rem,3vw,1.6rem);position:relative;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);}
+.metro-amber .metro-digit{color:var(--amber);}
+.metro-green .metro-digit{color:var(--positive);}
+.metro-digit::after{content:"";position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(0,0,0,.55);}
+.metro-digit.flip{animation:metroFlip .3s ease;}
+@keyframes metroFlip{0%{transform:translateY(0);opacity:1;}45%{transform:translateY(-35%);opacity:.25;}55%{transform:translateY(35%);opacity:.25;}100%{transform:translateY(0);opacity:1;}}
+.metro-sep{font-weight:800;font-size:clamp(1rem,3vw,1.6rem);color:var(--ink-faint);align-self:center;padding-bottom:20px;}
+.metro-col-label{font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);font-weight:700;}
+.metro-breakdown{text-align:left;border-top:1px solid var(--border);padding-top:16px;margin-top:4px;}
+.metro-bd-row{display:flex;justify-content:space-between;gap:12px;font-size:.8rem;padding:5px 0;color:var(--ink-soft);}
+.metro-bd-row b{color:var(--ink);}
+.metro-ratio{font-size:.9rem;color:var(--ink);border-top:1px solid var(--border);padding-top:16px;margin-top:4px;line-height:1.6;}
+.metro-ratio b{color:var(--positive);}
+.metro-fonte{font-size:.68rem;color:var(--ink-faint);margin-top:14px;line-height:1.5;}
+.metro-fonte a{color:var(--ink-soft);text-decoration:underline;}
+@media(max-width:800px){.metro-section{grid-template-columns:1fr;}}
+
 /* FEATURES */
 .features{padding:20px 0 60px;}
 .features h2{font-family:"Sora",sans-serif;font-size:2rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:12px;}
@@ -177,6 +205,24 @@ footer .footer-links a:hover{color:var(--accent);}
     <div class="scroll-indicator">
         <span>role para ver mais</span>
       <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <section class="metro-section">
+    <div class="metro-card metro-amber">
+      <h2>💰 Gastômetro MS</h2>
+      <p class="metro-sub">Quanto os parlamentares e órgãos públicos de MS já gastaram em 2026, no ritmo observado até agora</p>
+      <div class="metro-display" id="gastometro-display"></div>
+      <div class="metro-breakdown" id="gastometro-breakdown"></div>
+      <p class="metro-fonte" id="gastometro-fonte"></p>
+    </div>
+
+    <div class="metro-card metro-green">
+      <h2>📈 Impostômetro MS</h2>
+      <p class="metro-sub">Quanto Mato Grosso do Sul arrecadou em impostos em 2026, no mesmo ritmo</p>
+      <div class="metro-display" id="impostometro-display"></div>
+      <p class="metro-ratio" id="impostometro-ratio"></p>
+      <p class="metro-fonte" id="impostometro-fonte"></p>
     </div>
   </section>
 
@@ -342,6 +388,159 @@ footer .footer-links a:hover{color:var(--accent);}
       });
       card.addEventListener('mouseleave', () => card.style.background = '');
   });
+
+  // ===================== GASTÔMETRO / IMPOSTÔMETRO =====================
+  (function () {
+    function formatCompactBRL(v) {
+      if (v == null) return "—";
+      if (Math.abs(v) >= 1e9) return "R$ " + (v / 1e9).toLocaleString('pt-BR', { maximumFractionDigits: 2 }) + " bi";
+      if (Math.abs(v) >= 1e6) return "R$ " + (v / 1e6).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + " mi";
+      if (Math.abs(v) >= 1e3) return "R$ " + (v / 1e3).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + " mil";
+      return "R$ " + v.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
+    }
+
+    function diaDoAno(d) {
+      const inicio = new Date(d.getFullYear(), 0, 1);
+      return Math.max(1, Math.ceil((d - inicio) / 86400000));
+    }
+    function diasNoAno(ano) {
+      return ((ano % 4 === 0 && ano % 100 !== 0) || ano % 400 === 0) ? 366 : 365;
+    }
+    // Projeta um valor já arrecadado/gasto "no ano até agora" pro ano inteiro,
+    // assumindo ritmo constante — mesma lógica usada por contadores como o
+    // Impostômetro (IBPT): valor observado ÷ fração do ano decorrida.
+    function projetarAnual(valorAteAgora) {
+      const agora = new Date();
+      return valorAteAgora * (diasNoAno(agora.getFullYear()) / diaDoAno(agora));
+    }
+
+    async function carregarJSON(url) {
+      try {
+        const r = await fetch(url, { cache: 'no-store' });
+        if (!r.ok) return null;
+        return await r.json();
+      } catch { return null; }
+    }
+
+    function digitBoxesHTML(str) {
+      return str.split('').map(d => `<div class="metro-digit">${d}</div>`).join('');
+    }
+
+    function montarDisplayHTML(valor) {
+      const [inteiro, centavos] = Math.max(0, valor).toFixed(2).split('.');
+      const comSeparador = Number(inteiro).toLocaleString('pt-BR');
+      const grupos = comSeparador.split('.');
+      const labelsPadrao = ['Bilhões', 'Milhões', 'Mil', 'Reais'];
+      const offset = labelsPadrao.length - grupos.length;
+      let html = '';
+      grupos.forEach((g, i) => {
+        if (i > 0) html += '<div class="metro-sep">.</div>';
+        html += `<div class="metro-col"><div class="metro-group">${digitBoxesHTML(g)}</div><div class="metro-col-label">${labelsPadrao[offset + i] || ''}</div></div>`;
+      });
+      html += '<div class="metro-sep">,</div>';
+      html += `<div class="metro-col"><div class="metro-group">${digitBoxesHTML(centavos)}</div><div class="metro-col-label">Centavos</div></div>`;
+      return { html, todosDigitos: comSeparador.replace(/\./g, '') + centavos };
+    }
+
+    // Inicia um contador que sobe em tempo real a partir de um valor anual
+    // projetado, reconstruindo a estrutura de dígitos só quando o número de
+    // colunas muda (ex: quando passa de milhões pra bilhões).
+    function iniciarContador(containerId, valorAnualProjetado, anoBase) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const inicioAno = new Date(anoBase, 0, 1).getTime();
+      const segundosNoAno = diasNoAno(anoBase) * 86400;
+      const ritmoPorSegundo = valorAnualProjetado / segundosNoAno;
+      let estruturaAtual = null;
+
+      function tick() {
+        const segundosDecorridos = (Date.now() - inicioAno) / 1000;
+        const valorAtual = ritmoPorSegundo * segundosDecorridos;
+        const { html, todosDigitos } = montarDisplayHTML(valorAtual);
+
+        if (estruturaAtual !== todosDigitos.length) {
+          container.innerHTML = html;
+          estruturaAtual = todosDigitos.length;
+        }
+        const els = container.querySelectorAll('.metro-digit');
+        todosDigitos.split('').forEach((d, i) => {
+          const el = els[i];
+          if (el && el.textContent !== d) {
+            el.textContent = d;
+            el.classList.remove('flip');
+            void el.offsetWidth;
+            el.classList.add('flip');
+          }
+        });
+      }
+      tick();
+      setInterval(tick, 100);
+    }
+
+    async function iniciarMetros() {
+      const ano = new Date().getFullYear();
+      const [pref, depEst, camara, senadoresBrasil, receitas] = await Promise.all([
+        carregarJSON('dados/prefeitura.json'),
+        carregarJSON('dados/deputados_estaduais_ms.json'),
+        carregarJSON('dados/camara_municipal.json'),
+        carregarJSON('dados/senadores_brasil.json'),
+        carregarJSON('dados/receitas_prefeitura.json'),
+      ]);
+
+      // ---- Gastômetro: soma de gastos já registrados em 2026, projetada pro ano ----
+      const gastoPrefeitura = pref?.totalDespesas || 0;
+      const gastoCeapEstadual = depEst?.resumo?.totalVerbaIndenizatoriaPaga2026 || 0;
+      const gastoVereadores = camara?.resumo?.totalVerbaIndenizatoriaPaga2026 || 0;
+      const senadoresMS = (senadoresBrasil?.senadores || []).filter(s => s.uf === 'MS');
+      const gastoSenadores = senadoresMS.reduce((acc, s) => {
+        const ceaps = s.cotaGastaAno || 0;
+        const extras = Object.values(s.gastosExtras || {}).reduce((a, b) => a + b, 0);
+        return acc + ceaps + extras;
+      }, 0);
+      const totalGastosAteAgora = gastoPrefeitura + gastoCeapEstadual + gastoVereadores + gastoSenadores;
+      const gastoAnualProjetado = projetarAnual(totalGastosAteAgora);
+
+      iniciarContador('gastometro-display', gastoAnualProjetado, ano);
+
+      const bd = document.getElementById('gastometro-breakdown');
+      if (bd) {
+        const fontes = [
+          ['Prefeitura de Campo Grande', gastoPrefeitura],
+          ['CEAP — Deputados Estaduais (ALEMS)', gastoCeapEstadual],
+          ['Verba indenizatória — Vereadores CG', gastoVereadores],
+          ['CEAPS — Senadores de MS', gastoSenadores],
+        ];
+        bd.innerHTML = fontes.map(([label, val]) => {
+          const pct = totalGastosAteAgora ? (val / totalGastosAteAgora * 100) : 0;
+          return `<div class="metro-bd-row"><span>${label}</span><span><b>${formatCompactBRL(val)}</b> (${pct.toFixed(1)}%)</span></div>`;
+        }).join('');
+      }
+      const gastoFonte = document.getElementById('gastometro-fonte');
+      if (gastoFonte) {
+        gastoFonte.innerHTML = `Estimativa: soma dos valores já registrados em ${ano} nas 4 fontes acima, projetada pro ano inteiro no ritmo observado até agora. Dados reais, atualizados diariamente — <a href="cofre-aberto-ms.html" target="_blank">veja o detalhamento completo →</a>`;
+      }
+
+      // ---- Impostômetro: impostos de Campo Grande (dado real) + previsão estadual ----
+      const impostoCG_ateAgora = receitas?.porEspecieImpostos?.Impostos || 0;
+      const impostoCG_projetado = projetarAnual(impostoCG_ateAgora);
+      const IMPOSTO_MS_ESTADO_2026 = 22300000000; // previsão orçamentária (ver fonte abaixo) — já é valor anual, não precisa projeção
+      const totalImpostosAnual = impostoCG_projetado + IMPOSTO_MS_ESTADO_2026;
+
+      iniciarContador('impostometro-display', totalImpostosAnual, ano);
+
+      const razao = totalImpostosAnual ? (gastoAnualProjetado / totalImpostosAnual) : 0;
+      const impostoRatio = document.getElementById('impostometro-ratio');
+      if (impostoRatio) {
+        impostoRatio.innerHTML = `A cada <b>R$ 1,00</b> arrecadado em impostos em MS, <b>R$ ${razao.toFixed(3).replace('.', ',')}</b> vai para os gastos parlamentares mapeados neste site.`;
+      }
+      const impostoFonte = document.getElementById('impostometro-fonte');
+      if (impostoFonte) {
+        impostoFonte.innerHTML = `Impostos de Campo Grande: dado real de ${ano} (${formatCompactBRL(impostoCG_ateAgora)} arrecadados até agora, projetados pro ano), fonte: Portal da Transparência da Prefeitura. Receita tributária de MS: previsão orçamentária de R$ 22,3 bi pra ${ano}, fonte: <a href="https://correiodoestado.com.br/economia/quase-metade-do-orcamento-estadual-para-2026-e-para-pagamento-de/459222/" target="_blank" rel="noopener">Correio do Estado</a>.`;
+      }
+    }
+
+    iniciarMetros();
+  })();
 </script>
   
 </body>
