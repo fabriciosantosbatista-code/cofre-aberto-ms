@@ -3,18 +3,39 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Cofre Aberto MS — Transparência Pública de Mato Grosso do Sul</title>
-<meta name="description" content="Fiscalize os gastos públicos de Mato Grosso do Sul. Dados reais de vereadores de Campo Grande, deputados estaduais, senadores e prefeitura — com notas fiscais, CEAP e folha de pessoal."/>
-<meta name="keywords" content="transparência pública, Campo Grande, Mato Grosso do Sul, vereadores, deputados, senadores, gastos públicos, CEAP, notas fiscais"/>
+<title>Cofre Aberto MS — Transparência Pública MS | Gastos de Vereadores, Deputados e Senadores</title>
+
+<!-- SEO -->
+<meta name="description" content="Transparência pública em Mato Grosso do Sul: fiscalize gastos de vereadores de Campo Grande, CEAP de deputados estaduais e federais de MS, senadores e prefeitura — com notas fiscais reais, CEAP 2026 e folha de pessoal."/>
+<meta name="keywords" content="transparência pública MS, gastos vereadores Campo Grande, CEAP deputados Mato Grosso do Sul, transparência Mato Grosso do Sul, ALEMS deputados, gastos públicos Campo Grande, cofre aberto, fiscalização pública MS"/>
 <meta name="author" content="Cofre Aberto MS"/>
-<meta property="og:title" content="Cofre Aberto MS — Transparência Pública"/>
-<meta property="og:description" content="Fiscalize os gastos de 58+ parlamentares de MS. 2.773 notas fiscais reais, CEAP 2026, fotos oficiais e muito mais."/>
-<meta property="og:image" content="og-image.png"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://cofreabertoms.com.br/"/>
+
+<!-- Geolocalização -->
+<meta name="geo.region" content="BR-MS"/>
+<meta name="geo.placename" content="Campo Grande, Mato Grosso do Sul"/>
+<meta name="geo.position" content="-20.4697;-54.6201"/>
+<meta name="ICBM" content="-20.4697, -54.6201"/>
+
+<!-- Open Graph / Facebook / WhatsApp -->
 <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://cofreabertoms.com.br/"/>
+<meta property="og:title" content="Cofre Aberto MS — Transparência Pública de Mato Grosso do Sul"/>
+<meta property="og:description" content="Fiscalize os gastos de 58+ parlamentares de MS. 2.773 notas fiscais reais, CEAP 2026, fotos oficiais e muito mais."/>
+<meta property="og:image" content="https://cofreabertoms.com.br/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:site_name" content="Cofre Aberto MS"/>
+
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Cofre Aberto MS"/>
+<meta name="twitter:url" content="https://cofreabertoms.com.br/"/>
+<meta name="twitter:title" content="Cofre Aberto MS — Transparência Pública"/>
 <meta name="twitter:description" content="Transparência pública de Mato Grosso do Sul — dados reais de parlamentares"/>
-<meta name="twitter:image" content="og-image.png"/>
+<meta name="twitter:image" content="https://cofreabertoms.com.br/og-image.png"/>
+
 <link rel="icon" type="image/x-icon" href="favicon.ico"/><link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -145,20 +166,51 @@ footer .footer-links a:hover{color:var(--accent);}
     font-size: .72rem;
 }
 </style>
+
+<!-- Structured data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cofreabertoms.com.br/#website",
+      "name": "Cofre Aberto MS",
+      "alternateName": "Cofre Aberto Mato Grosso do Sul",
+      "url": "https://cofreabertoms.com.br/",
+      "description": "Plataforma independente de transparência pública que fiscaliza gastos de vereadores de Campo Grande, deputados estaduais e federais, senadores e prefeitura de Mato Grosso do Sul.",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://cofreabertoms.com.br/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cofreabertoms.com.br/#organization",
+      "name": "Cofre Aberto MS",
+      "url": "https://cofreabertoms.com.br/",
+      "logo": "https://cofreabertoms.com.br/logo-horizontal.png",
+      "description": "Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público. Consolida dados públicos de gastos parlamentares e da Prefeitura de Campo Grande.",
+      "areaServed": {
+        "@type": "State",
+        "name": "Mato Grosso do Sul"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="page">
 
   <nav>
     <div class="nav-logo">
-      <img src="logo.svg" alt="Cofre Aberto MS" height="44" style="display:block"/>
+      <img src="logo.svg" alt="Cofre Aberto MS" width="147" height="44" style="display:block"/>
     </div>
     <button class="nav-cta" onclick="window.location.href='cofre-aberto-ms.html'">Acessar o painel →</button>
   </nav>
 
   <section class="hero">
     <div class="hero-logo" style="margin-bottom:28px">
-      <img src="logo.svg" alt="Cofre Aberto MS" height="72" style="display:inline-block"/>
+      <img src="logo.svg" alt="Cofre Aberto MS" width="240" height="72" style="display:inline-block"/>
     </div>
     <div class="hero-badge" style="margin-bottom:32px">
       <span></span>
@@ -290,7 +342,7 @@ footer .footer-links a:hover{color:var(--accent);}
   </div>
 
   <footer>
-    <div style="display:flex;align-items:center;gap:12px"><img src="logo.svg" alt="Cofre Aberto MS" height="28"/><p style="margin:0">© 2026 — Dados públicos de MS</p></div>
+    <div style="display:flex;align-items:center;gap:12px"><img src="logo.svg" alt="Cofre Aberto MS" width="93" height="28"/><p style="margin:0">© 2026 — Dados públicos de MS</p></div>
   </footer>
 
 </div>

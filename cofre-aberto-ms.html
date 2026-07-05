@@ -7,10 +7,16 @@
 
 <!-- SEO -->
 <meta name="description" content="Fiscalize os gastos públicos de Mato Grosso do Sul. Dados reais de 29 vereadores, 26 deputados estaduais, 3 senadores e deputados federais de MS — com 2.773 notas fiscais, CEAP 2026 e folha de pessoal."/>
-<meta name="keywords" content="transparência pública MS, Campo Grande vereadores, ALEMS deputados, gastos públicos Mato Grosso do Sul, CEAP senadores, cofre aberto"/>
+<meta name="keywords" content="transparência pública MS, gastos vereadores Campo Grande, CEAP deputados Mato Grosso do Sul, ALEMS deputados, gastos públicos Campo Grande, CEAP senadores MS, cofre aberto, fiscalização pública MS"/>
 <meta name="author" content="Cofre Aberto MS"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://cofreabertoms.com.br/cofre-aberto-ms.html"/>
+
+<!-- Geolocalização -->
+<meta name="geo.region" content="BR-MS"/>
+<meta name="geo.placename" content="Campo Grande, Mato Grosso do Sul"/>
+<meta name="geo.position" content="-20.4697;-54.6201"/>
+<meta name="ICBM" content="-20.4697, -54.6201"/>
 
 <!-- Open Graph / Facebook / WhatsApp -->
 <meta property="og:type" content="website"/>
@@ -255,12 +261,63 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 
 .skeleton{background:linear-gradient(90deg,var(--surface-2) 25%,var(--surface-3) 50%,var(--surface-2) 75%);background-size:200% 100%;animation:skeleton-shimmer 1.4s ease-in-out infinite;border-radius:6px;display:block;} @keyframes skeleton-shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}} .skeleton-row{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border-soft);} .skeleton-avatar{width:34px;height:34px;border-radius:8px;flex-shrink:0;} .skeleton-text{flex:1;} .skeleton-line{height:10px;margin-bottom:6px;} .skeleton-line.short{width:40%;} .skeleton-line.long{width:75%;} .skeleton-val{width:80px;height:14px;border-radius:4px;} .badge-novo{display:inline-flex;align-items:center;gap:4px;background:rgba(45,212,160,.12);border:1px solid rgba(45,212,160,.3);border-radius:20px;padding:2px 8px;font-size:.62rem;font-weight:700;color:var(--positive);text-transform:uppercase;letter-spacing:.05em;margin-left:6px;vertical-align:middle;} .badge-novo::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--positive);animation:pulse 2s infinite;} .ranking tbody tr:nth-child(1) td{background:rgba(245,200,66,.04);} .ranking tbody tr:nth-child(2) td{background:rgba(180,190,210,.03);} .ranking tbody tr:nth-child(3) td{background:rgba(200,130,80,.04);} .ranking tbody tr:nth-child(1):hover td{background:rgba(245,200,66,.08)!important;} .tooltip-wrap{position:relative;display:inline-block;cursor:help;} .tooltip-wrap .tooltip-content{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);background:var(--surface-3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:.75rem;color:var(--ink);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:100;} .tooltip-wrap .tooltip-content::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--border);} .tooltip-wrap:hover .tooltip-content{opacity:1;transform:translateX(-50%) translateY(0);} .hero-progress{height:3px;background:var(--surface-3);border-radius:2px;margin-top:16px;overflow:hidden;} .hero-progress-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--positive));transition:width 1.2s cubic-bezier(.25,.46,.45,.94);} .detail-panel{border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;background:var(--surface);box-shadow:0 4px 30px rgba(0,0,0,.3);} .scroll-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);color:var(--ink-soft);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:999;opacity:0;transform:translateY(10px);pointer-events:none;} .scroll-top.visible{opacity:1;transform:translateY(0);pointer-events:auto;} .scroll-top:hover{background:var(--accent);border-color:var(--accent);color:#fff;} .print-btn{background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--ink-soft);cursor:pointer;font-size:.75rem;padding:4px 10px;transition:all .15s;margin-left:8px;} .print-btn:hover{border-color:var(--ink-soft);color:var(--ink);} @media print{.sidebar,.search-box,.pager-btn,.share-btn,#busca-global,.rank-filter-btn{display:none!important;}.main{padding:0!important;}.layout{display:block!important;}.tabpanel{display:block!important;}.detail-panel{border:1px solid #ccc!important;box-shadow:none!important;}body{background:#fff!important;color:#000!important;}.ranking td,.ranking th{border:1px solid #ddd!important;}}
 </style>
+
+<!-- Structured data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cofreabertoms.com.br/#website",
+      "name": "Cofre Aberto MS",
+      "url": "https://cofreabertoms.com.br/",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://cofreabertoms.com.br/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cofreabertoms.com.br/#organization",
+      "name": "Cofre Aberto MS",
+      "url": "https://cofreabertoms.com.br/",
+      "logo": "https://cofreabertoms.com.br/logo-horizontal.png",
+      "description": "Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público."
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://cofreabertoms.com.br/cofre-aberto-ms.html#dataset",
+      "name": "Gastos públicos de parlamentares e da Prefeitura de Campo Grande — Mato Grosso do Sul",
+      "description": "Dados consolidados de CEAP, verba indenizatória, notas fiscais e folha de pessoal de vereadores de Campo Grande, deputados estaduais (ALEMS), deputados federais e senadores de Mato Grosso do Sul, além das despesas da Prefeitura de Campo Grande.",
+      "url": "https://cofreabertoms.com.br/cofre-aberto-ms.html",
+      "keywords": ["transparência pública MS", "CEAP", "gastos públicos", "Mato Grosso do Sul", "Campo Grande", "vereadores", "deputados estaduais", "senadores"],
+      "creator": { "@id": "https://cofreabertoms.com.br/#organization" },
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "Campo Grande, Mato Grosso do Sul, Brasil"
+      },
+      "temporalCoverage": "2026",
+      "isBasedOn": [
+        "https://dadosabertos.camara.leg.br/",
+        "https://legis.senado.leg.br/dadosabertos/",
+        "https://transparencia.campogrande.ms.gov.br/",
+        "https://consulta.transparencia.al.ms.gov.br/"
+      ],
+      "distribution": [
+        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/prefeitura.json" },
+        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/camara_municipal.json" },
+        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/senadores_brasil.json" },
+        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/deputados_federais_brasil.json" }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="layout">
 
   <aside class="sidebar">
-    <img src="logo.svg" alt="Cofre Aberto MS" style="width:100%;max-width:180px;height:auto;display:block"/>
+    <img src="logo.svg" alt="Cofre Aberto MS" width="400" height="120" style="width:100%;max-width:180px;height:auto;aspect-ratio:400/120;display:block"/>
     <div style="padding:8px 12px 4px">
       <input id="busca-global" type="text" placeholder="🔍 Buscar qualquer parlamentar…"
         style="width:100%;box-sizing:border-box;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--ink);font-size:0.85rem;outline:none"/>
