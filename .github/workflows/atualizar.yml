@@ -35,4 +35,5 @@ jobs:
           git add dados/
           git diff --staged --quiet && echo "Sem mudanças" || \
           git commit -m "🤖 Dados atualizados — $(date +'%d/%m/%Y %H:%M') BRT"
-          git push
+          git pull --rebase origin main || true
+          git push origin main || (sleep 10 && git pull --rebase origin main && git push origin main)
