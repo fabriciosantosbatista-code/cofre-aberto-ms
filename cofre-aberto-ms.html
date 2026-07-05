@@ -542,7 +542,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <input class="search-box" id="busca-depest" type="text" placeholder="buscar por nome ou partido…" />
       <div class="card">
         <table class="ranking" id="ranking-depest">
-          <thead><tr><th class="num">#</th><th>Deputado(a)</th><th>Partido</th><th class="num">CEAP Jan–Mai/2026</th><th>Em relação ao maior</th></tr></thead>
+          <thead><tr><th class="num">#</th><th>Deputado(a)</th><th>Partido</th><th class="num" id="depest-th-ceap">CEAP</th><th>Em relação ao maior</th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
@@ -1893,6 +1893,7 @@ function renderDeputadosEstaduais(data) {
   document.getElementById("depest-qtd").textContent = resumo.totalDeputados ?? deputados.length;
   document.getElementById("depest-subsidio").textContent = formatBRL(resumo.subsidioMensal);
   document.getElementById("depest-subsidio-anual").textContent = formatCompact((resumo.subsidioMensal || 0) * 13);
+  document.getElementById("depest-th-ceap").textContent = `CEAP ${resumo.periodoColetado || ""}`.trim();
 
   const tbody = document.querySelector("#ranking-depest tbody");
   const panel = document.getElementById("detail-depest");
@@ -1951,7 +1952,7 @@ function renderDeputadosEstaduais(data) {
     // Barras de categorias
     const maxCat = Math.max(...Object.values(cats), 1);
     const catsHTML = Object.keys(cats).length ? `
-      <div class="subhead">Despesas por categoria (Jan–Mai/2026)</div>
+      <div class="subhead">Despesas por categoria (${verba.periodoColetado || "período coletado"})</div>
       <div class="bar-list" style="margin-bottom:16px">
         ${Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([cat, val]) => `
           <div class="bar-list-row">
@@ -1982,10 +1983,10 @@ function renderDeputadosEstaduais(data) {
         </div>
       </div>
 
-      <div class="subhead">CEAP — Jan–Mai/2026</div>
+      <div class="subhead">CEAP — ${verba.periodoColetado || "período coletado"}</div>
       <div class="stat-grid">
         <div class="stat-card alt">
-          <p class="stat-label">Total gasto (Jan–Mai/2026)</p>
+          <p class="stat-label">Total gasto (${verba.periodoColetado || "período coletado"})</p>
           <p class="stat-value">${verba.gastoPago2026 != null ? formatBRL(verba.gastoPago2026) : "—"}</p>
           <p class="stat-note">${verba.percentualUsado != null ? verba.percentualUsado.toFixed(1) + "% da cota anual estimada" : ""}</p>
         </div>

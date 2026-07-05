@@ -6,7 +6,7 @@ Roda via GitHub Actions todo dia às 6h BRT
 Fontes:
 - Câmara Federal: dadosabertos.camara.leg.br (API REST, CORS livre)
 - Senado Federal: adm.senado.gov.br/ergon-ng-reports (API REST)
-- ALEMS: consulta.transparencia.al.ms.gov.br/ceap (CSV público)
+- ALEMS: consulta.transparencia.al.ms.gov.br/ceap (grid ScriptCase, sessão por deputado)
 """
 
 import json, requests, csv, io, os, sys, time
@@ -240,71 +240,187 @@ def coletar_senadores_ms():
 # ============================================================
 # 3. DEPUTADOS ESTADUAIS ALEMS — CSV público
 # ============================================================
-def coletar_dep_estaduais():
-    log("Coletando deputados estaduais ALEMS...")
+def _alems_post_latin1(session, url, data, **kwargs):
+    # O portal da ALEMS (ScriptCase/ISO-8859-1) só casa o filtro exato de
+    # deputado se os campos acentuados forem enviados em latin-1 — em UTF-8
+    # o "busca" falha silenciosamente e devolve a grade da consulta anterior.
+    import urllib.parse
+    body = "&".join(
+        urllib.parse.quote(str(k)) + "=" + urllib.parse.quote(str(v).encode("iso-8859-1"))
+        for k, v in data.items()
+    )
+    headers = {"Content-Type": "application/x-www-form-urlencoded"}
+    return session.post(url, data=body.encode("ascii"), headers=headers, **kwargs)
 
-    # CSV de CEAP da ALEMS (URL pública)
-    url_ceap = f"https://consulta.transparencia.al.ms.gov.br/ceap/export/csv"
+
+def _alems_parse_valor(txt):
+    txt = (txt or "").replace("R$", "").strip().replace(".", "").replace(",", ".")
+    try:
+        return float(txt)
+    except:
+        return 0.0
+
+
+def _alems_parse_data(txt):
+    # vem como DD/MM/YYYY; formatDate() do front-end espera ISO (new Date(iso))
+    try:
+        d, m, a = txt.strip().split("/")
+        return f"{a}-{m}-{d}"
+    except:
+        return txt
+
+
+def coletar_dep_estaduais():
+    log("Coletando deputados estaduais ALEMS (CEAP)...")
+    import re
+
+    BASE = "https://consulta.transparencia.al.ms.gov.br/ceap/"
+    session = requests.Session()
 
     try:
-        r = get_com_retry(url_ceap)
-        r.raise_for_status()
-        texto = r.content.decode("utf-8-sig", errors="replace")
-        reader = csv.DictReader(io.StringIO(texto), delimiter=";")
-        linhas = list(reader)
-        log(f"  {len(linhas)} linhas no CSV ALEMS")
+        r = session.get(BASE, headers=HEADERS, timeout=30)
+        html = r.text
+        script_case_init = re.search(r'name="script_case_init" value="(\d+)"', html).group(1)
+        tab_label = re.search(r'name="nmgp_tab_label" value="([^"]*)"', html).group(1)
+        select_html = re.search(
+            r'<SELECT[^>]*id="SC_deputados_nome".*?</SELECT>', html, re.S | re.I
+        ).group(0)
+        deputados = re.findall(r'<OPTION value="([^"]+)##@@', select_html, re.I)
+        deputados = [d for d in deputados if d.strip()]
+        log(f"  {len(deputados)} deputados no filtro da ALEMS")
     except Exception as e:
-        log(f"  ⚠️ CSV ALEMS indisponível: {e} — mantendo dados anteriores")
+        log(f"  ⚠️ ALEMS indisponível ao abrir o filtro: {e} — mantendo dados anteriores")
         return None
 
-    # Agrupar por deputado e categoria
-    por_dep = {}
-    for row in linhas:
-        nome = row.get("Deputado", "").strip()
-        cat = row.get("Categoria/Despesa", "").strip()
-        try:
-            valor = float(row.get("Valor (R$)", "0").replace(".", "").replace(",", "."))
-        except:
-            valor = 0
-
-        if nome not in por_dep:
-            por_dep[nome] = {"total": 0, "categorias": {}}
-        por_dep[nome]["categorias"][cat] = por_dep[nome]["categorias"].get(cat, 0) + valor
-        por_dep[nome]["total"] += valor
-
-    log(f"  {len(por_dep)} deputados com gastos em {ANO}")
-
-    # Carregar dados anteriores (fotos, notas fiscais)
     try:
-        dados_ant = json.load(open(DADOS / "deputados_estaduais_ms.json"))
+        dados_ant = json.load(open(DADOS / "deputados_estaduais_ms.json", encoding="utf-8"))
         deps_ant = {d["nome"]: d for d in dados_ant.get("vereadores", [])}
     except:
+        dados_ant = {}
         deps_ant = {}
 
-    deps = []
-    for nome_csv, gastos in por_dep.items():
-        # Normalizar nome
-        nome_norm = nome_csv.replace("Dep. ", "").replace("DEP. ", "").strip()
-        ant = deps_ant.get(nome_norm, {})
+    resultados = {}
+    total_geral = 0.0
+    for i, nome_dep in enumerate(deputados):
+        try:
+            busca = {
+                'script_case_init': script_case_init,
+                'nmgp_opcao': 'busca',
+                'deputados_nome': f"{nome_dep}##@@{nome_dep}",
+                'deputados_nome_cond': 'qp',
+                'categoriadespesas_descricao': '',
+                'categoriadespesas_descricao_cond': 'qp',
+                'verbaindenizatoria_mes_referencia': '',
+                'verbaindenizatoria_mes_referencia_cond': 'qp',
+                'verbaindenizatoria_ano_referencia': str(ANO),
+                'verbaindenizatoria_ano_referencia_cond': 'bw',
+                'verbaindenizatoria_ano_referencia_autocomp': str(ANO),
+                'verbaindenizatoria_ano_referencia_input_2': '',
+                'NM_operador': 'and',
+                'nmgp_tab_label': tab_label,
+                'bprocessa': 'pesq',
+                'nmgp_save_name_bot': '',
+                'form_condicao': '3',
+            }
+            _alems_post_latin1(session, BASE, busca, timeout=30)
+            r2 = session.post(BASE, data={'script_case_init': script_case_init, 'nmgp_opcao': 'pesq'}, timeout=30)
+            grid = r2.text
 
+            grupo = re.findall(r'Nome</td><td> => </td><td>([^<]*)</td>', grid)
+            if grupo != [nome_dep]:
+                continue  # sem gastos no período ou filtro não pegou — pula
+
+            categorias_ctx = {
+                m.group(1): (m.group(2), m.group(3))
+                for m in re.finditer(
+                    r'id="id_sc_field_categoriadespesas_descricao_(\d+)">([^<]*)</span>.*?'
+                    r'id="id_sc_field_verbaindenizatoria_mes_referencia_\1">([^<]*)</span>',
+                    grid, re.S
+                )
+            }
+
+            # Cada bloco de fornecedores vai do seu marcador até o próximo
+            # (o fechamento de tabelas aninhadas é irregular demais para casar por regex)
+            marcadores = [(m.group(1), m.start()) for m in re.finditer(r'id="emb_search_ceap_linha_(\d+)"', grid)]
+
+            notas = []
+            for j, (idx, pos) in enumerate(marcadores):
+                fim = marcadores[j + 1][1] if j + 1 < len(marcadores) else len(grid)
+                corpo = grid[pos:fim]
+                categoria, mes = categorias_ctx.get(idx, ("", ""))
+                for linha in re.finditer(
+                    r'fornecedorverbaidenizatoria_cpf_cnpj_\d+">([^<]*)</span>.*?'
+                    r'fornecedorverbaidenizatoria_razao_social_\d+">([^<]*)</span>.*?'
+                    r'fornecedorverbaidenizatoria_documento_\d+">([^<]*)</span>.*?'
+                    r'fornecedorverbaidenizatoria_documento_data_\d+">([^<]*)</span>.*?'
+                    r'fornecedorverbaidenizatoria_valor_reembolsado_\d+">([^<]*)</span>.*?'
+                    r'href="([^"]+)"', corpo, re.S
+                ):
+                    cpf, fornecedor, doc, data_doc, valor, url_pdf = linha.groups()
+                    notas.append({
+                        "categoria": categoria,
+                        "mes": mes,
+                        "fornecedor": fornecedor.strip(),
+                        "cnpj": cpf.strip(),
+                        "nf": doc.strip(),
+                        "data": _alems_parse_data(data_doc),
+                        "valor": round(_alems_parse_valor(valor), 2),
+                        "urlPdf": url_pdf,
+                    })
+
+            if not notas:
+                continue
+
+            por_categoria = {}
+            for n in notas:
+                por_categoria[n["categoria"]] = round(por_categoria.get(n["categoria"], 0) + n["valor"], 2)
+            total_dep = round(sum(n["valor"] for n in notas), 2)
+            resultados[nome_dep] = {"notas": notas, "categorias": por_categoria, "total": total_dep}
+            total_geral += total_dep
+            log(f"  [{i+1}/{len(deputados)}] {nome_dep}: {len(notas)} notas, R$ {total_dep:,.2f}")
+        except Exception as e:
+            log(f"  ⚠️ {nome_dep}: {e} — pulando")
+            continue
+
+    if not resultados:
+        log("  ⚠️ Nenhum resultado da ALEMS — mantendo dados anteriores")
+        return None
+
+    log(f"  Total ALEMS {ANO}: R$ {total_geral:,.2f} — {len(resultados)} deputados com gastos")
+
+    deps = []
+    for nome_dep, gastos in resultados.items():
+        nome_norm = re.sub(r'^Dep\.?\s*', '', nome_dep, flags=re.I).strip()
+        ant = deps_ant.get(nome_norm, {})
+        cota_anual = (ant.get("verbaIndenizatoria") or {}).get(f"cotaAnual{ANO}")
         deps.append({
-            **ant,  # manter tudo que já tínhamos (fotos, notas, etc.)
+            **ant,
             "nome": ant.get("nome", nome_norm),
             "ultimaAtualizacao": hoje,
             "verbaIndenizatoria": {
                 **ant.get("verbaIndenizatoria", {}),
-                "gastoPago2026": round(gastos["total"], 2),
-                "categorias": {k: round(v, 2) for k, v in gastos["categorias"].items()},
+                f"gastoPago{ANO}": gastos["total"],
+                "categorias": gastos["categorias"],
                 "periodoColetado": f"Jan–{datetime.now().strftime('%b')}/{ANO}",
-                "fonte": f"consulta.transparencia.al.ms.gov.br/ceap — {hoje}",
+                "percentualUsado": round(gastos["total"] / cota_anual * 100, 1) if cota_anual else None,
+                "descricaoGeral": "CEAP — Cota do Exercício da Atividade Parlamentar (ALEMS).",
+                "fonte": f"Portal da Transparência ALEMS — consulta.transparencia.al.ms.gov.br/ceap/ — {hoje}",
             },
+            "despesas": gastos["notas"],
+            "totalNotasFiscais": len(gastos["notas"]),
         })
 
     data = {
-        **(dados_ant if deps_ant else {}),
+        **dados_ant,
         "ultimaAtualizacao": hoje,
-        "fonte": f"Portal da Transparência ALEMS (consulta.transparencia.al.ms.gov.br/ceap) — {hoje}",
-        "vereadores": deps if deps else dados_ant.get("vereadores", []),
+        "fonte": f"Despesas CEAP: Portal da Transparência ALEMS (consulta.transparencia.al.ms.gov.br/ceap/) — coleta automática {hoje}. Total geral {ANO}: R$ {total_geral:,.2f}.",
+        "resumo": {
+            **(dados_ant.get("resumo") or {}),
+            "totalDeputados": len(deps),
+            f"totalVerbaIndenizatoriaPaga{ANO}": round(total_geral, 2),
+            "periodoColetado": f"Jan–{datetime.now().strftime('%b')}/{ANO}",
+        },
+        "vereadores": deps,
     }
     salvar("deputados_estaduais_ms.json", data)
     return deps
