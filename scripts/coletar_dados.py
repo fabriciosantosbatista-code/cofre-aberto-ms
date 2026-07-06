@@ -52,10 +52,14 @@ def coletar_dep_federais_ms():
     log("Coletando deputados federais de MS...")
 
     # Lista deputados em exercício por UF
-    url = f"https://dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=MS&ordem=ASC&ordenarPor=nome"
-    r = get_com_retry(url)
-    r.raise_for_status()
-    deputados = r.json().get("dados", [])
+    try:
+        url = f"https://dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=MS&ordem=ASC&ordenarPor=nome"
+        r = get_com_retry(url)
+        r.raise_for_status()
+        deputados = r.json().get("dados", [])
+    except Exception as e:
+        log(f"  ⚠️ API Câmara indisponível: {e} — mantendo dados anteriores")
+        return None
     log(f"  {len(deputados)} deputados federais de MS encontrados")
 
     try:
@@ -173,13 +177,17 @@ def coletar_senadores_ms():
     log("Coletando senadores de MS...")
 
     # Lista senadores em exercício
-    r = requests.get(
-        "https://legis.senado.leg.br/dadosabertos/senador/lista/atual",
-        headers={**HEADERS, "Accept": "application/json"},
-        timeout=60
-    )
-    r.raise_for_status()
-    parlamentares = r.json().get("ListaParlamentarEmExercicio", {}).get("Parlamentares", {}).get("Parlamentar", [])
+    try:
+        r = requests.get(
+            "https://legis.senado.leg.br/dadosabertos/senador/lista/atual",
+            headers={**HEADERS, "Accept": "application/json"},
+            timeout=60
+        )
+        r.raise_for_status()
+        parlamentares = r.json().get("ListaParlamentarEmExercicio", {}).get("Parlamentares", {}).get("Parlamentar", [])
+    except Exception as e:
+        log(f"  ⚠️ API Senado indisponível: {e} — mantendo dados anteriores")
+        return None
 
     senadores_ms = [p for p in parlamentares
                    if p.get("IdentificacaoParlamentar", {}).get("UfParlamentar") == "MS"]
