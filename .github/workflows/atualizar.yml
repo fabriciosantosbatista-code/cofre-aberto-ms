@@ -25,6 +25,8 @@ jobs:
         run: pip install requests Pillow
 
       - name: Coletar dados
+        env:
+          PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
         run: python3 scripts/coletar_dados.py
 
       - name: Commit e push
