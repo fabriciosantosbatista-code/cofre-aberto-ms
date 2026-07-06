@@ -58,6 +58,12 @@ def coletar_dep_federais_ms():
     deputados = r.json().get("dados", [])
     log(f"  {len(deputados)} deputados federais de MS encontrados")
 
+    try:
+        dados_ant = json.load(open(DADOS / "deputados_federais_ms.json", encoding="utf-8"))
+        ceap_ant = {d["id"]: d for d in dados_ant.get("deputados", [])}
+    except:
+        ceap_ant = {}
+
     resultado = []
     for d in deputados:
         dep_id = d["id"]
@@ -72,12 +78,19 @@ def coletar_dep_federais_ms():
         except:
             det = {}
 
-        # Buscar CEAP do ano atual (paginado — um deputado pode ter mais de 100 notas/ano)
-        ceap = {"cotaGastaAno": None, "ceapCategorias": [], "totalNotasFiscais": 0}
+        # Buscar CEAP do ano atual (paginado — um deputado pode ter mais de 100 notas/ano).
+        # Se a API falhar, mantém o CEAP anterior em vez de zerar o dado já publicado.
+        ant = ceap_ant.get(dep_id, {})
+        ceap_anterior = {
+            "cotaGastaAno": ant.get("cotaGastaAno"),
+            "ceapCategorias": ant.get("ceapCategorias", []),
+            "totalNotasFiscais": ant.get("totalNotasFiscais", 0),
+        }
         try:
             ceap = buscar_ceap_deputado_agregado(dep_id, ANO)
         except Exception as e:
-            log(f"    CEAP erro para {d.get('nome')}: {e}")
+            log(f"    CEAP erro para {d.get('nome')}: {e} — mantendo dado anterior")
+            ceap = ceap_anterior
 
         resultado.append({
             "id": dep_id,
@@ -554,14 +567,25 @@ def coletar_dep_federais_brasil():
 
     log(f"  {len(deputados)} deputados federais em exercício")
 
+    try:
+        dados_ant = json.load(open(DADOS / "deputados_federais_brasil.json", encoding="utf-8"))
+        ceap_ant = {d["id"]: d for d in dados_ant.get("deputados", [])}
+    except:
+        ceap_ant = {}
+
     resultado = []
     for i, d in enumerate(deputados):
         time.sleep(0.3)
-        ceap = {"cotaGastaAno": None, "ceapCategorias": [], "totalNotasFiscais": 0}
+        ant = ceap_ant.get(d["id"], {})
+        ceap = {
+            "cotaGastaAno": ant.get("cotaGastaAno"),
+            "ceapCategorias": ant.get("ceapCategorias", []),
+            "totalNotasFiscais": ant.get("totalNotasFiscais", 0),
+        }
         try:
             ceap = buscar_ceap_deputado_agregado(d["id"], ANO)
         except Exception as e:
-            log(f"    CEAP erro para {d.get('nome')}: {e}")
+            log(f"    CEAP erro para {d.get('nome')}: {e} — mantendo dado anterior")
 
         resultado.append({
             "id": d["id"],
