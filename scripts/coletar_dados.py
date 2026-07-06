@@ -833,6 +833,21 @@ if __name__ == "__main__":
         log(f"❌ {e}")
 
     try:
+        coletar_prefeitura()
+    except Exception as e:
+        erros.append(f"Prefeitura: {e}")
+        log(f"❌ {e}")
+
+    try:
+        coletar_emendas_ms()
+    except Exception as e:
+        erros.append(f"Emendas MS: {e}")
+        log(f"❌ {e}")
+
+    # Coletores "pesados" (listas completas do Brasil, 500+ requisicoes) rodam
+    # por ultimo -- se uma API externa estiver degradada e o timeout do job
+    # estourar, as fontes de MS ja estarao salvas.
+    try:
         coletar_senado_brasil()
     except Exception as e:
         erros.append(f"Senado Brasil: {e}")
@@ -843,18 +858,6 @@ if __name__ == "__main__":
     except Exception as e:
         erros.append(f"Dep. Federais Brasil: {e}")
         log(f"❌ {e}")
-
-    try:
-        coletar_prefeitura()
-    except Exception as e:
-        erros.append(f"Prefeitura: {e}")
-        log(f"\u274c {e}")
-
-    try:
-        coletar_emendas_ms()
-    except Exception as e:
-        erros.append(f"Emendas MS: {e}")
-        log(f"\u274c {e}")
 
     gerar_status()
 
