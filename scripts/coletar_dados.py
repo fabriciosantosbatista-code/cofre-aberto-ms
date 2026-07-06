@@ -25,9 +25,10 @@ HEADERS = {
 }
 
 def get_com_retry(url, tentativas=3, **kwargs):
+    headers = {**HEADERS, **kwargs.pop("headers", {})}
     for i in range(tentativas):
         try:
-            r = requests.get(url, headers=HEADERS, timeout=60, **kwargs)
+            r = requests.get(url, headers=headers, timeout=60, **kwargs)
             r.raise_for_status()
             return r
         except Exception as e:
@@ -691,6 +692,119 @@ def coletar_prefeitura():
     return data
 
 # ============================================================
+# EMENDAS PARLAMENTARES \u2014 deputados federais e senadores de MS
+# Fonte: Portal da Transpar\u00eancia (api.portaldatransparencia.gov.br)
+# Requer chave pessoal em PORTAL_TRANSPARENCIA_API_KEY (vari\u00e1vel de
+# ambiente / secret do GitHub Actions) \u2014 n\u00e3o \u00e9 embutida no c\u00f3digo.
+# ============================================================
+def _emendas_parse_valor(txt):
+    txt = (txt or "0").strip().replace(".", "").replace(",", ".")
+    try:
+        return float(txt)
+    except:
+        return 0.0
+
+
+def _emendas_buscar_autor(nome_autor, api_key):
+    emendas = []
+    pagina = 1
+    while True:
+        r = get_com_retry(
+            "https://api.portaldatransparencia.gov.br/api-de-dados/emendas",
+            headers={**HEADERS, "chave-api-dados": api_key},
+            params={"ano": ANO, "nomeAutor": nome_autor, "pagina": pagina},
+        )
+        lote = r.json()
+        if not lote:
+            break
+        emendas.extend(lote)
+        pagina += 1
+    return emendas
+
+
+def coletar_emendas_ms():
+    log("Coletando emendas parlamentares de MS...")
+
+    api_key = os.environ.get("PORTAL_TRANSPARENCIA_API_KEY")
+    if not api_key:
+        log("  \u26a0\ufe0f PORTAL_TRANSPARENCIA_API_KEY n\u00e3o configurada \u2014 pulando emendas")
+        return None
+
+    try:
+        deps = json.load(open(DADOS / "deputados_federais_ms.json", encoding="utf-8")).get("deputados", [])
+    except:
+        deps = []
+    try:
+        sens = json.load(open(DADOS / "senadores_ms.json", encoding="utf-8")).get("senadores", [])
+    except:
+        sens = []
+
+    parlamentares = [{"nome": d["nome"], "cargo": "Deputado(a) Federal", "partido": d.get("partido")} for d in deps] \
+        + [{"nome": s["nome"], "cargo": "Senador(a)", "partido": s.get("partido")} for s in sens]
+
+    resultados = []
+    total_geral_pago = 0.0
+    for p in parlamentares:
+        try:
+            brutas = _emendas_buscar_autor(p["nome"].upper(), api_key)
+        except Exception as e:
+            log(f"  \u26a0\ufe0f {p['nome']}: {e} \u2014 pulando")
+            continue
+
+        if not brutas:
+            continue
+
+        itens = []
+        por_tipo = {}
+        total_empenhado = total_pago = 0.0
+        for e in brutas:
+            empenhado = _emendas_parse_valor(e.get("valorEmpenhado"))
+            pago = _emendas_parse_valor(e.get("valorPago"))
+            tipo = "Emenda Pix" if "Especiais" in (e.get("tipoEmenda") or "") else "Projeto Definido"
+            itens.append({
+                "numero": e.get("numeroEmenda"),
+                "tipo": tipo,
+                "municipio": e.get("localidadeDoGasto"),
+                "funcao": e.get("funcao"),
+                "subfuncao": e.get("subfuncao"),
+                "valorEmpenhado": round(empenhado, 2),
+                "valorPago": round(pago, 2),
+            })
+            por_tipo[tipo] = round(por_tipo.get(tipo, 0) + pago, 2)
+            total_empenhado += empenhado
+            total_pago += pago
+
+        itens.sort(key=lambda x: x["valorPago"], reverse=True)
+        resultados.append({
+            "nome": p["nome"],
+            "cargo": p["cargo"],
+            "partido": p["partido"],
+            "totalEmpenhado": round(total_empenhado, 2),
+            "totalPago": round(total_pago, 2),
+            "porTipo": por_tipo,
+            "totalEmendas": len(itens),
+            "emendas": itens,
+        })
+        total_geral_pago += total_pago
+        log(f"  {p['nome']}: {len(itens)} emendas, R$ {total_pago:,.2f} pago")
+
+    if not resultados:
+        log("  \u26a0\ufe0f Nenhuma emenda coletada \u2014 mantendo dados anteriores")
+        return None
+
+    resultados.sort(key=lambda x: x["totalPago"], reverse=True)
+    data = {
+        "ultimaAtualizacao": hoje,
+        "ano": ANO,
+        "fonte": f"Portal da Transpar\u00eancia (api.portaldatransparencia.gov.br/api-de-dados/emendas) \u2014 {hoje}",
+        "totalGeralPago": round(total_geral_pago, 2),
+        "parlamentares": resultados,
+    }
+    salvar("emendas_ms.json", data)
+    log(f"  Total emendas MS {ANO}: R$ {total_geral_pago:,.2f} \u2014 {len(resultados)} parlamentares")
+    return data
+
+# ============================================================
 # MAIN
 # ============================================================
 if __name__ == "__main__":
@@ -734,6 +848,12 @@ if __name__ == "__main__":
         coletar_prefeitura()
     except Exception as e:
         erros.append(f"Prefeitura: {e}")
+        log(f"\u274c {e}")
+
+    try:
+        coletar_emendas_ms()
+    except Exception as e:
+        erros.append(f"Emendas MS: {e}")
         log(f"\u274c {e}")
 
     gerar_status()

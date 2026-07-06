@@ -832,6 +832,43 @@ function colorForName(nome) {
 
 // Gera <img> se houver foto, ou um avatar de iniciais coloridas como fallback.
 // sizeClass: "avatar" (pequeno, ranking) ou "avatar-lg" (grande, painel de detalhe)
+// Monta o bloco "Emendas Parlamentares" para deputados federais e senadores de MS.
+// Retorna "" se não houver dados (parlamentar sem emendas coletadas ou fonte indisponível).
+function renderEmendasHTML(nome) {
+  const p = buscarEmendasParlamentar(nome);
+  if (!p || !p.emendas?.length) return "";
+
+  const porTipo = p.porTipo || {};
+  const linhasEmendas = p.emendas.map(e => `
+    <tr>
+      <td class="num">${formatBRL(e.valorPago)}</td>
+      <td>${e.municipio || "—"}</td>
+      <td>${e.funcao || "—"}</td>
+      <td style="font-size:.78rem">${e.tipo}</td>
+    </tr>`).join("");
+
+  return `
+    <div class="subhead">Emendas Parlamentares ${DADOS_EMENDAS_MS.ano || ANO_REFERENCIA}</div>
+    <div class="stat-grid" style="margin-bottom:16px">
+      <div class="stat-card alt">
+        <p class="stat-label">Total pago</p>
+        <p class="stat-value">${formatBRL(p.totalPago)}</p>
+        <p class="stat-note">${p.totalEmendas} emenda(s) · empenhado ${formatCompact(p.totalEmpenhado)}</p>
+      </div>
+      ${Object.entries(porTipo).map(([tipo, valor]) => `
+        <div class="stat-card">
+          <p class="stat-label">${tipo}</p>
+          <p class="stat-value">${formatBRL(valor)}</p>
+        </div>`).join("")}
+    </div>
+    <table class="notes-table" style="margin-bottom:16px">
+      <thead><tr><th class="num">Valor pago</th><th>Município</th><th>Área</th><th>Tipo</th></tr></thead>
+      <tbody>${linhasEmendas}</tbody>
+    </table>
+    <p class="section-note" style="opacity:.6">Fonte: ${DADOS_EMENDAS_MS.fonte || "Portal da Transparência"}</p>
+  `;
+}
+
 function avatarHTML(nome, fotoUrl, sizeClass = "avatar") {
   if (fotoUrl) {
     const safeNome = (nome || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;");
@@ -895,6 +932,12 @@ let CEAP_NOTAS_ESTADUAIS = {};
 
 // Senadores do Brasil — lista completa 81 senadores com IDs, fotos e CEAPS MS 2026
 let DADOS_SENADORES_BRASIL = {};
+
+// Emendas parlamentares de deputados federais e senadores de MS (Portal da Transparência)
+let DADOS_EMENDAS_MS = {};
+function buscarEmendasParlamentar(nome) {
+  return (DADOS_EMENDAS_MS.parlamentares || []).find(p => p.nome === nome) || null;
+}
 
 
 const PADRAO_PREFEITURA = {
@@ -1417,6 +1460,8 @@ function renderDetalheDeputado(d, todos, ano, panel) {
         </div>
       </div>
 
+      ${renderEmendasHTML(d.nome)}
+
       <div class="subhead">Notas fiscais — página ${paginaAtual} de ${totalPaginas} (${despesas.length} no total)</div>
       <table class="notes-table">
         <thead><tr><th>Data</th><th>Categoria</th><th>Fornecedor</th><th class="num">Valor</th><th>Doc.</th><th>Nota</th></tr></thead>
@@ -1567,6 +1612,8 @@ function renderSenadores(data) {
           <div class="stat-card"><p class="stat-label">Auxílio-moradia (12×)</p><p class="stat-value">${formatCompact(custo.auxilioMoradiaAnual)}</p></div>
           ${custo.totalEstimado ? `<div class="stat-card alt"><p class="stat-label">Total estimado</p><p class="stat-value">${formatCompact(custo.totalEstimado)}</p></div>` : ""}
         </div>
+
+        ${renderEmendasHTML(s.nome)}
 
         <p class="section-note">
           <a href="${s.urlTransparencia || `https://www6g.senado.leg.br/transparencia/sen/${s.id}/?ano=${ANO_REFERENCIA}`}" target="_blank">
@@ -2761,6 +2808,8 @@ async function init() {
   carregarJSON("dados/deputados_estaduais_ms.json").then(d => {
     if (d) { DADOS_DEPUTADOS_ESTADUAIS = d; renderDeputadosEstaduais(d); }
   });
+
+  carregarJSON("dados/emendas_ms.json").then(d => { if (d) DADOS_EMENDAS_MS = d; });
 
   // Notas fiscais estaduais: carregar por demanda (só quando clicar no deputado)
 
