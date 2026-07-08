@@ -337,6 +337,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button data-tab="camara"><span class="dot"></span> Câmara CG</button>
       <button data-tab="deputados-estaduais"><span class="dot"></span> Dep. Estaduais MS</button>
       <button data-tab="prefeitura"><span class="dot"></span> Prefeitura CG</button>
+      <button data-tab="camaras-ms"><span class="dot"></span> Câmaras MS</button>
       <div class="nav-group-label">Brasil</div>
       <button data-tab="deputados-brasil"><span class="dot"></span> Dep. Federais Brasil</button>
       <button data-tab="senado-brasil"><span class="dot"></span> Senado Brasil</button>
@@ -612,6 +613,28 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         Fonte: <a href="https://transparencia.campogrande.ms.gov.br/canais/dados-abertos/" target="_blank">Portal de Dados Abertos — Prefeitura de Campo Grande</a> · Atualização automática diária.
       </p>
     </div>
+  </section>
+
+  <!-- ===================== CÂMARAS MUNICIPAIS DO INTERIOR DE MS ===================== -->
+  <section class="tabpanel" id="tab-camaras-ms">
+    <div class="hero">
+      <div class="hero-label">Expansão · Câmaras Municipais do interior de MS</div>
+      <div class="hero-desc">
+        As 20 maiores cidades de MS além de Campo Grande, cada uma com um sistema de transparência
+        diferente (Fiorilli, SAPL, Betha, Megasoft, Quality Sistemas...). Estamos adicionando dados
+        progressivamente — cidades sem dados ainda mostram link direto para o portal oficial da câmara.
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2 class="section-title">Câmaras cobertas (<span id="camaras-ms-total">20</span>)</h2>
+      </div>
+      <div class="section-note">Clique num card com dados disponíveis para ver o detalhamento. As demais abrem o portal oficial da própria câmara.</div>
+      <div id="grid-camaras-ms" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:14px"></div>
+    </div>
+
+    <div class="detail-panel" id="detail-camara-cidade"></div>
   </section>
 
   <!-- ===================== DEPUTADOS FEDERAIS - BRASIL ===================== -->
@@ -2099,6 +2122,95 @@ function renderDeputadosEstaduais(data) {
   });
 }
 
+// ===================== RENDER CÂMARAS MS (INTERIOR) =====================
+// As 20 maiores cidades de MS fora Campo Grande. "dadosUrl" só existe para
+// cidades já automatizadas — as demais mostram card "Em breve" com link
+// direto pro portal oficial da própria câmara.
+const CAMARAS_MS_LISTA = [
+  { cidade: "Dourados", portal: "https://www.camaradourados.ms.gov.br/", sistema: "SAPL/Interlegis", dadosUrl: "dados/camaras/dourados.json" },
+  { cidade: "Três Lagoas", portal: "https://cmtls.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
+  { cidade: "Corumbá", portal: "https://camaracorumba.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
+  { cidade: "Ponta Porã", portal: "https://www.camarapontapora.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
+  { cidade: "Naviraí", portal: "https://www.cmnavirai.com.br/", sistema: "Sistema próprio (PHP)" },
+  { cidade: "Nova Andradina", portal: "https://www.novaandradina.ms.leg.br/", sistema: "SAPL + Betha Cloud" },
+  { cidade: "Maracaju", portal: "https://www.camarademaracaju.ms.gov.br/", sistema: "Instar Tecnologia" },
+  { cidade: "Sidrolândia", portal: "https://camarasidrolandia.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
+  { cidade: "Aquidauana", portal: "https://cmaquidauana.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
+  { cidade: "Coxim", portal: "https://www.camaracoxim.ms.gov.br/", sistema: "Fiorilli SCPI 9.0 + Superlegis" },
+  { cidade: "Rio Brilhante", portal: "https://www.camarariobrilhante.ms.gov.br/", sistema: "Betha Cloud" },
+  { cidade: "Jardim", portal: "https://camaramunicipaldejardim.ms.gov.br/", sistema: "Fiorilli SCPI 9.0 + LegisSuper" },
+  { cidade: "Chapadão do Sul", portal: "https://www.camarachapadaodosul.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
+  { cidade: "Bonito", portal: "https://camarabonito.ms.gov.br/", sistema: "Fiorilli SCPI 9.0 + LegisSuper" },
+  { cidade: "Paranaíba", portal: "https://cmparanaiba.ms.gov.br/", sistema: "Webline Sistemas" },
+  { cidade: "Sonora", portal: "https://camarasonora.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
+  { cidade: "Aparecida do Taboado", portal: "https://camaraaparecidadotaboado.ms.gov.br/", sistema: "Quality Sistemas" },
+  { cidade: "Ribas do Rio Pardo", portal: "https://www.ribasdoriopardo.ms.leg.br/", sistema: "SAPL + Fiorilli SCPI 9.0" },
+  { cidade: "Anastácio", portal: "https://camaraanastacio.ms.gov.br/", sistema: "Megasoft" },
+  { cidade: "Miranda", portal: "https://camaramiranda.ms.gov.br/", sistema: "Quality Sistemas" },
+];
+
+function renderCamarasMS() {
+  const grid = document.getElementById("grid-camaras-ms");
+  const panel = document.getElementById("detail-camara-cidade");
+  document.getElementById("camaras-ms-total").textContent = CAMARAS_MS_LISTA.length;
+
+  grid.innerHTML = CAMARAS_MS_LISTA.map((c, i) => `
+    <div class="card card-pad ${c.dadosUrl ? "clickable" : ""}" data-idx="${i}" style="cursor:${c.dadosUrl ? "pointer" : "default"}">
+      <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;margin-bottom:8px">
+        <b style="font-size:.95rem">${c.cidade}</b>
+        ${c.dadosUrl
+          ? `<span class="badge-novo" style="background:rgba(45,212,160,.12);border-color:rgba(45,212,160,.3);color:var(--positive)">✅ Dados</span>`
+          : `<span class="badge-novo" style="background:rgba(245,200,66,.1);border-color:rgba(245,200,66,.3);color:var(--amber)">🔜 Em breve</span>`}
+      </div>
+      <p class="section-note" style="margin-bottom:10px">${c.sistema}</p>
+      <a href="${c.portal}" target="_blank" rel="noopener" style="font-size:.78rem" onclick="event.stopPropagation()">Portal oficial →</a>
+    </div>
+  `).join("");
+
+  grid.querySelectorAll(".card[data-idx]").forEach(card => {
+    const c = CAMARAS_MS_LISTA[card.dataset.idx];
+    if (!c.dadosUrl) return;
+    card.addEventListener("click", async () => {
+      panel.innerHTML = `<p class="section-note">Carregando ${c.cidade}…</p>`;
+      panel.classList.add("active");
+      panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      const d = await carregarJSON(c.dadosUrl);
+      if (!d) { panel.innerHTML = `<p class="section-note">Dados de ${c.cidade} indisponíveis no momento.</p>`; return; }
+      renderDetalheCamaraCidade(d, panel);
+    });
+  });
+}
+
+function renderDetalheCamaraCidade(d, panel) {
+  const vereadores = d.vereadores || [];
+  panel.innerHTML = `
+    <div class="detail-header">
+      <div class="detail-header-text">
+        <h3>Câmara Municipal de ${d.cidade}</h3>
+        <div class="detail-meta">${d.sistema} · ${vereadores.length} vereadores · <a href="${d.portalOficial}" target="_blank">portal oficial →</a></div>
+      </div>
+    </div>
+    ${d.temDadosFinanceiros === false ? `
+      <p class="section-note" style="margin:12px 0;opacity:.75">
+        ⚠️ ${d.notaFinanceiro || "Dados financeiros (subsídio, verba indenizatória) ainda não disponíveis para esta câmara."}
+      </p>` : ""}
+    <div class="subhead">Vereadores</div>
+    <table class="notes-table">
+      <thead><tr><th></th><th>Nome</th><th>Partido</th><th>Contato</th></tr></thead>
+      <tbody>
+        ${vereadores.map(v => `
+          <tr>
+            <td>${avatarHTML(v.nome, v.foto, "avatar")}</td>
+            <td>${v.urlPerfil ? `<a href="${v.urlPerfil}" target="_blank">${v.nome}</a>` : v.nome}</td>
+            <td>${v.partido || "—"}</td>
+            <td style="font-size:.78rem">${v.email || "—"}</td>
+          </tr>`).join("")}
+      </tbody>
+    </table>
+    <p class="section-note" style="margin-top:14px;opacity:.6">Fonte: ${d.fonte}</p>
+  `;
+}
+
 // ===================== RENDER PREFEITURA =====================
 function renderPrefeitura(data) {
   const total = data.totalDespesas || 0;
@@ -2804,6 +2916,10 @@ async function init() {
         carregarJSON("dados/prefeitura.json").then(d => {
           if (d) renderPrefeitura(d);
         });
+      }
+      if (btn.dataset.tab === "camaras-ms" && !window._camarasMsLoaded) {
+        window._camarasMsLoaded = true;
+        renderCamarasMS();
       }
     });
   });

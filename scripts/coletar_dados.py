@@ -41,6 +41,7 @@ def get_com_retry(url, tentativas=3, **kwargs):
 def log(msg): print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
 def salvar(nome, data):
     path = DADOS / nome
+    path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     log(f"✅ {nome} salvo ({path.stat().st_size//1024}KB)")
@@ -837,6 +838,67 @@ def coletar_emendas_ms():
     return data
 
 # ============================================================
+# C\u00c2MARAS MUNICIPAIS DO INTERIOR DE MS
+# Cada c\u00e2mara pode usar um sistema diferente (SAPL, Fiorilli, etc.);
+# uma fun\u00e7\u00e3o por c\u00e2mara, salvando em dados/camaras/<cidade>.json.
+# ============================================================
+def coletar_camara_dourados():
+    log("Coletando C\u00e2mara Municipal de Dourados (SAPL)...")
+    import re
+
+    BASE = "https://sapl.dourados.ms.leg.br/api"
+    try:
+        parlamentares = get_com_retry(f"{BASE}/parlamentares/parlamentar/?page_size=50").json()["results"]
+        filiacoes = get_com_retry(f"{BASE}/parlamentares/filiacao/?page_size=50").json()["results"]
+    except Exception as e:
+        log(f"  \u26a0\ufe0f SAPL Dourados indispon\u00edvel: {e} \u2014 mantendo dados anteriores")
+        return None
+
+    filiacao_por_parlamentar = {f["parlamentar"]: f for f in filiacoes}
+
+    def limpar_html(txt):
+        import html
+        txt = re.sub(r"<[^>]+>", " ", txt or "")
+        txt = html.unescape(txt)
+        txt = re.sub(r"\s+", " ", txt).strip()
+        return txt
+
+    vereadores = []
+    for p in parlamentares:
+        if not p.get("ativo"):
+            continue
+        fil = filiacao_por_parlamentar.get(p["id"], {})
+        partido_str = fil.get("__str__", "")
+        partido_sigla = partido_str.split(" - ")[1] if " - " in partido_str else None
+        vereadores.append({
+            "id": p["id"],
+            "nome": p["nome_parlamentar"],
+            "nomeCompleto": p["nome_completo"],
+            "partido": partido_sigla,
+            "email": p.get("email"),
+            "telefone": p.get("telefone"),
+            "foto": p.get("fotografia"),
+            "urlPerfil": p.get("endereco_web"),
+            "biografia": limpar_html(p.get("biografia"))[:600] or None,
+        })
+
+    vereadores.sort(key=lambda v: v["nome"])
+    data = {
+        "cidade": "Dourados",
+        "ultimaAtualizacao": hoje,
+        "fonte": f"SAPL Dourados (sapl.dourados.ms.leg.br/api/) \u2014 {hoje}",
+        "sistema": "SAPL/Interlegis",
+        "portalOficial": "https://www.camaradourados.ms.gov.br/",
+        "temDadosFinanceiros": False,
+        "notaFinanceiro": "O SAPL cobre dados legislativos (vereadores, mandatos, mat\u00e9rias). Dados financeiros (subs\u00eddio, verba indenizat\u00f3ria) n\u00e3o s\u00e3o expostos por essa API \u2014 precisam ser buscados em outro sistema da pr\u00f3pria C\u00e2mara.",
+        "totalVereadores": len(vereadores),
+        "vereadores": vereadores,
+    }
+    salvar("camaras/dourados.json", data)
+    log(f"  {len(vereadores)} vereadores de Dourados salvos")
+    return data
+
+# ============================================================
 # MAIN
 # ============================================================
 if __name__ == "__main__":
@@ -874,6 +936,12 @@ if __name__ == "__main__":
         coletar_emendas_ms()
     except Exception as e:
         erros.append(f"Emendas MS: {e}")
+        log(f"❌ {e}")
+
+    try:
+        coletar_camara_dourados()
+    except Exception as e:
+        erros.append(f"Câmara Dourados: {e}")
         log(f"❌ {e}")
 
     # Coletores "pesados" (listas completas do Brasil, 500+ requisicoes) rodam
