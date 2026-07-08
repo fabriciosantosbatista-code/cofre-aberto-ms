@@ -951,6 +951,70 @@ FIORILLI_CAMARAS = [
         "temServidores": False,
         "portalOficial": "https://cmparanaiba.ms.gov.br/",
     },
+    {
+        "cidade": "Sidrolândia",
+        "urlBase": "https://transparencia.camarasidrolandia.ms.gov.br",
+        "empresa": "2",
+        "paramAno": "Ano",
+        "temServidores": True,
+        "portalOficial": "https://camarasidrolandia.ms.gov.br/",
+    },
+    {
+        "cidade": "Aquidauana",
+        "urlBase": "http://pmaquidauana.rcmsuporte.com.br:8079/transparenciacm",
+        "empresa": "2",
+        "paramAno": "Ano",
+        "temServidores": False,
+        "portalOficial": "https://cmaquidauana.ms.gov.br/",
+    },
+    {
+        "cidade": "Coxim",
+        "urlBase": "http://pmcoxim.rcmsuporte.com.br:8079/transparenciacm",
+        "empresa": "1",
+        "paramAno": "Ano",
+        "temServidores": True,
+        "portalOficial": "https://www.camaracoxim.ms.gov.br/",
+    },
+    {
+        "cidade": "Jardim",
+        "urlBase": "http://200.209.160.171:8079/transparenciacm",
+        "empresa": "12",
+        "paramAno": "Ano",
+        "temServidores": False,
+        "portalOficial": "https://camaramunicipaldejardim.ms.gov.br/",
+    },
+    {
+        "cidade": "Chapadão do Sul",
+        "urlBase": "http://pmchapadao.rcmsuporte.com.br:8079/transparenciaCM",
+        "empresa": "1",
+        "paramAno": "Ano",
+        "temServidores": True,
+        "portalOficial": "https://www.camarachapadaodosul.ms.gov.br/",
+    },
+    {
+        "cidade": "Bonito",
+        "urlBase": "http://45.188.183.155:8079/TransparenciaCM",
+        "empresa": "15",
+        "paramAno": "Ano",
+        "temServidores": True,
+        "portalOficial": "https://camarabonito.ms.gov.br/",
+    },
+    {
+        "cidade": "Sonora",
+        "urlBase": "http://pmsonora.rcmsuporte.com.br:8079/transparenciacm",
+        "empresa": "1",
+        "paramAno": "Ano",
+        "temServidores": True,
+        "portalOficial": "https://camarasonora.ms.gov.br/",
+    },
+    {
+        "cidade": "Ribas do Rio Pardo",
+        "urlBase": "http://45.174.220.245:8079/transparenciacm",
+        "empresa": "10",
+        "paramAno": "Ano",
+        "temServidores": True,
+        "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
+    },
 ]
 
 
@@ -977,7 +1041,7 @@ def coletar_camara_fiorilli(cfg):
                 registros = get_com_retry(url, tentativas=1).json()
                 if registros:
                     for reg in registros:
-                        if (reg.get("CARGO") or "").strip().upper() != "VEREADOR":
+                        if not (reg.get("CARGO") or "").strip().upper().startswith("VEREADOR"):
                             continue
                         nome = (reg.get("NOME") or "").strip()
                         if not nome:
@@ -997,7 +1061,7 @@ def coletar_camara_fiorilli(cfg):
                f"&Empresa={empresa}&MostraDadosConsolidado=False")
         diarias = get_com_retry(url, tentativas=1).json()
         for d in diarias:
-            if (d.get("CARGO") or "").strip().upper() != "VEREADOR":
+            if not (d.get("CARGO") or "").strip().upper().startswith("VEREADOR"):
                 continue
             nome = (d.get("FAVORECIDO") or "").strip()
             if not nome:
