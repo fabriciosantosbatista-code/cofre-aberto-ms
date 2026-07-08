@@ -125,11 +125,20 @@ footer .footer-links a:hover{color:var(--accent);}
 footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
 
 @media(max-width:640px){
+  .page{padding:0 16px;}
+  .nav-cta{min-height:44px;padding:10px 16px;display:inline-flex;align-items:center;}
   .hero{padding:48px 0 40px;}
   .hero h1{font-size:2.2rem;}
+  .hero p{font-size:1rem;}
   .hero-btns{flex-direction:column;align-items:center;}
-  .btn-primary,.btn-secondary{width:100%;justify-content:center;}
+  .btn-primary,.btn-secondary{width:100%;justify-content:center;min-height:44px;}
   .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .stat-item:last-child{grid-column:span 2;}
+  .stat-val{font-size:1.7rem;}
+  .features h2,.dados h2,.cta-final h2{font-size:1.5rem;}
+  footer{flex-direction:column;align-items:flex-start;}
+  footer .footer-links{gap:16px;flex-wrap:wrap;}
+  footer .footer-links a{display:inline-flex;align-items:center;min-height:44px;padding:6px 0;}
 }
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(40px) scale(0.97); }
