@@ -898,6 +898,148 @@ def coletar_camara_dourados():
     log(f"  {len(vereadores)} vereadores de Dourados salvos")
     return data
 
+
+def _fiorilli_parse_valor(txt):
+    txt = (txt or "0").strip().replace(".", "").replace(",", ".")
+    try:
+        return float(txt)
+    except:
+        return 0.0
+
+
+def _slug(texto):
+    import unicodedata
+    texto = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode()
+    return texto.lower().replace(" ", "-")
+
+
+# Câmaras que usam o sistema Fiorilli SCPI 9.0 e expõem a API pública
+# "Dados Abertos" (VersaoJson/*) sem sessão — descoberta em investigação
+# manual. "temServidores" indica se o endpoint de folha de pagamento
+# (que traz o subsídio do vereador) responde para essa entidade; onde
+# não responde (erro 500 do lado deles), usamos só Diárias.
+FIORILLI_CAMARAS = [
+    {
+        "cidade": "Ponta Porã",
+        "urlBase": "https://contabilidade.pontapora.ms.gov.br/transparenciacm",
+        "empresa": "15",
+        "paramAno": "Ano",
+        "temServidores": True,
+        "portalOficial": "https://www.camarapontapora.ms.gov.br/",
+    },
+    {
+        "cidade": "Três Lagoas",
+        "urlBase": "http://pmtreslagoas.rcmsuporte.com.br:8079/transparenciacm",
+        "empresa": "18",
+        "paramAno": "Ano",
+        "temServidores": True,
+        "portalOficial": "https://cmtls.ms.gov.br/",
+    },
+    {
+        "cidade": "Corumbá",
+        "urlBase": "http://swb.corumba.ms.gov.br:8079/transparenciacm",
+        "empresa": "46",
+        "paramAno": "Ano",
+        "temServidores": False,
+        "portalOficial": "https://camaracorumba.ms.gov.br/",
+    },
+    {
+        "cidade": "Paranaíba",
+        "urlBase": "http://45.184.83.32:8079/transparenciacm",
+        "empresa": "2",
+        "paramAno": "Exercicio",
+        "temServidores": False,
+        "portalOficial": "https://cmparanaiba.ms.gov.br/",
+    },
+]
+
+
+def coletar_camara_fiorilli(cfg):
+    log(f"Coletando Câmara Municipal de {cfg['cidade']} (Fiorilli SCPI)...")
+    base = cfg["urlBase"]
+    empresa = cfg["empresa"]
+    param_ano = cfg["paramAno"]
+    conectar = f"&ConectarExercicio={ANO}" if param_ano == "Ano" else ""
+
+    vereadores = {}
+
+    if cfg.get("temServidores"):
+        # A folha do mês corrente costuma não estar publicada ainda —
+        # tenta o mês atual e recua até 3 meses se vier vazio.
+        mes_ref = datetime.now().month
+        for tentativa in range(4):
+            mes_tentado = mes_ref - tentativa
+            if mes_tentado < 1:
+                break
+            try:
+                url = (f"{base}/VersaoJson/Pessoal/?Listagem=Servidores&Empresa={empresa}"
+                       f"&{param_ano}={ANO}{conectar}&MesFinalPeriodo={mes_tentado:02d}")
+                registros = get_com_retry(url, tentativas=1).json()
+                if registros:
+                    for reg in registros:
+                        if (reg.get("CARGO") or "").strip().upper() != "VEREADOR":
+                            continue
+                        nome = (reg.get("NOME") or "").strip()
+                        if not nome:
+                            continue
+                        vereadores.setdefault(nome, {"nome": nome, "cargo": "Vereador(a)"})
+                        vereadores[nome]["subsidioMensal"] = round(_fiorilli_parse_valor(reg.get("PROVENTOS")), 2)
+                        vereadores[nome]["descontos"] = round(_fiorilli_parse_valor(reg.get("DESCONTOS")), 2)
+                        vereadores[nome]["referenciaFolha"] = reg.get("REFERENCIA_NOME")
+                    break
+            except Exception as e:
+                log(f"  ⚠️ Servidores ({mes_tentado:02d}/{ANO}) indisponível para {cfg['cidade']}: {e}")
+                break  # erro real (ex.: 500) não adianta tentar outro mês
+
+    try:
+        url = (f"{base}/VersaoJson/Despesas/?Listagem=Diarias&DiaInicioPeriodo=01&MesInicialPeriodo=01"
+               f"&DiaFinalPeriodo=31&MesFinalPeriodo=12&{param_ano}={ANO}{conectar}"
+               f"&Empresa={empresa}&MostraDadosConsolidado=False")
+        diarias = get_com_retry(url, tentativas=1).json()
+        for d in diarias:
+            if (d.get("CARGO") or "").strip().upper() != "VEREADOR":
+                continue
+            nome = (d.get("FAVORECIDO") or "").strip()
+            if not nome:
+                continue
+            vereadores.setdefault(nome, {"nome": nome, "cargo": "Vereador(a)"})
+            v = vereadores[nome]
+            v[f"totalDiarias{ANO}"] = round(v.get(f"totalDiarias{ANO}", 0) + _fiorilli_parse_valor(d.get("VALOR")), 2)
+            v[f"numDiarias{ANO}"] = v.get(f"numDiarias{ANO}", 0) + 1
+    except Exception as e:
+        log(f"  ⚠️ Diárias indisponível para {cfg['cidade']}: {e}")
+
+    if not vereadores:
+        log(f"  ⚠️ Nenhum dado coletado para {cfg['cidade']} — mantendo dados anteriores")
+        return None
+
+    lista = sorted(vereadores.values(), key=lambda v: v["nome"])
+    tem_subsidio = any("subsidioMensal" in v for v in lista)
+    host = base.split("//")[1].split("/")[0]
+    data = {
+        "cidade": cfg["cidade"],
+        "ultimaAtualizacao": hoje,
+        "fonte": f"Portal Transparência Fiorilli ({host}) — Dados Abertos — {hoje}",
+        "sistema": "Fiorilli SCPI 9.0",
+        "portalOficial": cfg["portalOficial"],
+        "temDadosFinanceiros": True,
+        "totalVereadores": len(lista),
+        "vereadores": lista,
+    }
+    if not tem_subsidio:
+        data["notaFinanceiro"] = "O endpoint de folha de pagamento (subsídio) está indisponível nesta câmara no momento (erro do lado deles). Os valores mostrados são apenas diárias pagas."
+    salvar(f"camaras/{_slug(cfg['cidade'])}.json", data)
+    log(f"  {len(lista)} vereadores de {cfg['cidade']} salvos ({'com subsídio' if tem_subsidio else 'só diárias'})")
+    return data
+
+
+def coletar_camaras_fiorilli():
+    for cfg in FIORILLI_CAMARAS:
+        try:
+            coletar_camara_fiorilli(cfg)
+        except Exception as e:
+            log(f"  ❌ {cfg['cidade']}: {e}")
+
 # ============================================================
 # MAIN
 # ============================================================
@@ -942,6 +1084,12 @@ if __name__ == "__main__":
         coletar_camara_dourados()
     except Exception as e:
         erros.append(f"Câmara Dourados: {e}")
+        log(f"❌ {e}")
+
+    try:
+        coletar_camaras_fiorilli()
+    except Exception as e:
+        erros.append(f"Câmaras Fiorilli: {e}")
         log(f"❌ {e}")
 
     # Coletores "pesados" (listas completas do Brasil, 500+ requisicoes) rodam

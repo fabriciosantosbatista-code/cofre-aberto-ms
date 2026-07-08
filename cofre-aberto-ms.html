@@ -2128,9 +2128,9 @@ function renderDeputadosEstaduais(data) {
 // direto pro portal oficial da própria câmara.
 const CAMARAS_MS_LISTA = [
   { cidade: "Dourados", portal: "https://www.camaradourados.ms.gov.br/", sistema: "SAPL/Interlegis", dadosUrl: "dados/camaras/dourados.json" },
-  { cidade: "Três Lagoas", portal: "https://cmtls.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
-  { cidade: "Corumbá", portal: "https://camaracorumba.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
-  { cidade: "Ponta Porã", portal: "https://www.camarapontapora.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
+  { cidade: "Três Lagoas", portal: "https://cmtls.ms.gov.br/", sistema: "Fiorilli SCPI 9.0", dadosUrl: "dados/camaras/tres-lagoas.json" },
+  { cidade: "Corumbá", portal: "https://camaracorumba.ms.gov.br/", sistema: "Fiorilli SCPI 9.0", dadosUrl: "dados/camaras/corumba.json" },
+  { cidade: "Ponta Porã", portal: "https://www.camarapontapora.ms.gov.br/", sistema: "Fiorilli SCPI 9.0", dadosUrl: "dados/camaras/ponta-pora.json" },
   { cidade: "Naviraí", portal: "https://www.cmnavirai.com.br/", sistema: "Sistema próprio (PHP)" },
   { cidade: "Nova Andradina", portal: "https://www.novaandradina.ms.leg.br/", sistema: "SAPL + Betha Cloud" },
   { cidade: "Maracaju", portal: "https://www.camarademaracaju.ms.gov.br/", sistema: "Instar Tecnologia" },
@@ -2141,7 +2141,7 @@ const CAMARAS_MS_LISTA = [
   { cidade: "Jardim", portal: "https://camaramunicipaldejardim.ms.gov.br/", sistema: "Fiorilli SCPI 9.0 + LegisSuper" },
   { cidade: "Chapadão do Sul", portal: "https://www.camarachapadaodosul.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
   { cidade: "Bonito", portal: "https://camarabonito.ms.gov.br/", sistema: "Fiorilli SCPI 9.0 + LegisSuper" },
-  { cidade: "Paranaíba", portal: "https://cmparanaiba.ms.gov.br/", sistema: "Webline Sistemas" },
+  { cidade: "Paranaíba", portal: "https://cmparanaiba.ms.gov.br/", sistema: "Webline + Fiorilli SCPI 9.0", dadosUrl: "dados/camaras/paranaiba.json" },
   { cidade: "Sonora", portal: "https://camarasonora.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
   { cidade: "Aparecida do Taboado", portal: "https://camaraaparecidadotaboado.ms.gov.br/", sistema: "Quality Sistemas" },
   { cidade: "Ribas do Rio Pardo", portal: "https://www.ribasdoriopardo.ms.leg.br/", sistema: "SAPL + Fiorilli SCPI 9.0" },
@@ -2183,18 +2183,32 @@ function renderCamarasMS() {
 
 function renderDetalheCamaraCidade(d, panel) {
   const vereadores = d.vereadores || [];
-  panel.innerHTML = `
-    <div class="detail-header">
-      <div class="detail-header-text">
-        <h3>Câmara Municipal de ${d.cidade}</h3>
-        <div class="detail-meta">${d.sistema} · ${vereadores.length} vereadores · <a href="${d.portalOficial}" target="_blank">portal oficial →</a></div>
-      </div>
-    </div>
-    ${d.temDadosFinanceiros === false ? `
-      <p class="section-note" style="margin:12px 0;opacity:.75">
-        ⚠️ ${d.notaFinanceiro || "Dados financeiros (subsídio, verba indenizatória) ainda não disponíveis para esta câmara."}
-      </p>` : ""}
-    <div class="subhead">Vereadores</div>
+  const anoRef = new Date().getFullYear();
+  const temFinanceiro = vereadores.some(v => v.subsidioMensal != null || v[`totalDiarias${anoRef}`] != null);
+
+  const tabelaFinanceira = () => {
+    const temSubsidio = vereadores.some(v => v.subsidioMensal != null);
+    return `
+    <table class="notes-table">
+      <thead><tr>
+        <th>Nome</th>
+        ${temSubsidio ? `<th class="num">Subsídio mensal</th>` : ""}
+        <th class="num">Diárias ${anoRef}</th>
+        <th class="num"># Diárias</th>
+      </tr></thead>
+      <tbody>
+        ${vereadores.map(v => `
+          <tr>
+            <td>${v.nome}${v.referenciaFolha ? `<div style="font-size:.7rem;opacity:.6">${v.referenciaFolha}</div>` : ""}</td>
+            ${temSubsidio ? `<td class="num">${v.subsidioMensal != null ? formatBRL(v.subsidioMensal) : "—"}</td>` : ""}
+            <td class="num">${v[`totalDiarias${anoRef}`] != null ? formatBRL(v[`totalDiarias${anoRef}`]) : "—"}</td>
+            <td class="num">${v[`numDiarias${anoRef}`] ?? "—"}</td>
+          </tr>`).join("")}
+      </tbody>
+    </table>`;
+  };
+
+  const tabelaLegislativa = () => `
     <table class="notes-table">
       <thead><tr><th></th><th>Nome</th><th>Partido</th><th>Contato</th></tr></thead>
       <tbody>
@@ -2206,7 +2220,21 @@ function renderDetalheCamaraCidade(d, panel) {
             <td style="font-size:.78rem">${v.email || "—"}</td>
           </tr>`).join("")}
       </tbody>
-    </table>
+    </table>`;
+
+  panel.innerHTML = `
+    <div class="detail-header">
+      <div class="detail-header-text">
+        <h3>Câmara Municipal de ${d.cidade}</h3>
+        <div class="detail-meta">${d.sistema} · ${vereadores.length} vereadores · <a href="${d.portalOficial}" target="_blank">portal oficial →</a></div>
+      </div>
+    </div>
+    ${d.temDadosFinanceiros === false || d.notaFinanceiro ? `
+      <p class="section-note" style="margin:12px 0;opacity:.75">
+        ⚠️ ${d.notaFinanceiro || "Dados financeiros (subsídio, verba indenizatória) ainda não disponíveis para esta câmara."}
+      </p>` : ""}
+    <div class="subhead">Vereadores</div>
+    ${temFinanceiro ? tabelaFinanceira() : tabelaLegislativa()}
     <p class="section-note" style="margin-top:14px;opacity:.6">Fonte: ${d.fonte}</p>
   `;
 }
