@@ -1434,13 +1434,22 @@ function renderDeputados(data) {
   bindClicks(ranking);
   bindClicks(rankingCusto);
 
-  // Fluxo por categoria — agrega todas as despesas de todos os deputados
+  // Fluxo por categoria — agrega todas as despesas de todos os deputados.
+  // Usa ceapCategorias (já vem pré-computado no JSON, carregado de cara) em vez de
+  // d.despesas, que só é buscado sob demanda quando alguém clica no deputado.
   const categorias = {};
   deputados.forEach(d => {
-    (d.despesas || []).forEach(item => {
-      const cat = item.categoria || "Outros";
-      categorias[cat] = (categorias[cat] || 0) + (item.valor || 0);
-    });
+    if (d.ceapCategorias?.length) {
+      d.ceapCategorias.forEach(item => {
+        const cat = item.categoria || "Outros";
+        categorias[cat] = (categorias[cat] || 0) + (item.valor || 0);
+      });
+    } else {
+      (d.despesas || []).forEach(item => {
+        const cat = item.categoria || "Outros";
+        categorias[cat] = (categorias[cat] || 0) + (item.valor || 0);
+      });
+    }
   });
   const categoriasOrdenadas = Object.entries(categorias).sort((a, b) => b[1] - a[1]).slice(0, 10);
   const maxCat = categoriasOrdenadas[0]?.[1] || 1;
@@ -3189,6 +3198,7 @@ async function init() {
       },
       custoEstimadoAnual: estimarCustoAnual(d.cotaGastaAno),
       totalNotasFiscais: d.totalNotasFiscais ?? 0,
+      ceapCategorias: d.ceapCategorias || [],
       despesas: [],
     }));
   }
