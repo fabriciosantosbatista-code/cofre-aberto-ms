@@ -2140,7 +2140,7 @@ const CAMARAS_MS_LISTA = [
   { cidade: "Nova Andradina", portal: "https://www.novaandradina.ms.leg.br/", sistema: "SAPL + Betha Cloud" },
   { cidade: "Maracaju", portal: "https://www.camarademaracaju.ms.gov.br/", sistema: "Instar Tecnologia" },
   { cidade: "Sidrolândia", portal: "https://camarasidrolandia.ms.gov.br/", sistema: "Fiorilli SCPI 9.0", dadosUrl: "dados/camaras/sidrolandia.json" },
-  { cidade: "Aquidauana", portal: "https://cmaquidauana.ms.gov.br/", sistema: "Fiorilli SCPI 9.0" },
+  { cidade: "Aquidauana", portal: "https://cmaquidauana.ms.gov.br/", sistema: "Fiorilli SCPI 9.0", semDados: true, notaSemDados: "A API pública desta câmara está fora do ar (folha de pagamento) ou não identifica vereadores nos registros de diárias. Sem dados coletáveis no momento — consulte o portal oficial." },
   { cidade: "Coxim", portal: "https://www.camaracoxim.ms.gov.br/", sistema: "Fiorilli SCPI 9.0 + Superlegis", dadosUrl: "dados/camaras/coxim.json" },
   { cidade: "Rio Brilhante", portal: "https://www.camarariobrilhante.ms.gov.br/", sistema: "Betha Cloud" },
   { cidade: "Jardim", portal: "https://camaramunicipaldejardim.ms.gov.br/", sistema: "Fiorilli SCPI 9.0 + LegisSuper", dadosUrl: "dados/camaras/jardim.json" },
@@ -2165,9 +2165,12 @@ function renderCamarasMS() {
         <b style="font-size:.95rem">${c.cidade}</b>
         ${c.dadosUrl
           ? `<span class="badge-novo" style="background:rgba(45,212,160,.12);border-color:rgba(45,212,160,.3);color:var(--positive)">✅ Dados</span>`
+          : c.semDados
+          ? `<span class="badge-novo" style="background:rgba(255,90,90,.1);border-color:rgba(255,90,90,.3);color:#ff8a8a">⚠️ Sem dados</span>`
           : `<span class="badge-novo" style="background:rgba(245,200,66,.1);border-color:rgba(245,200,66,.3);color:var(--amber)">🔜 Em breve</span>`}
       </div>
       <p class="section-note" style="margin-bottom:10px">${c.sistema}</p>
+      ${c.semDados ? `<p class="section-note" style="margin-bottom:10px;font-size:.72rem;opacity:.75">${c.notaSemDados}</p>` : ""}
       <a href="${c.portal}" target="_blank" rel="noopener" style="font-size:.78rem" onclick="event.stopPropagation()">Portal oficial →</a>
     </div>
   `).join("");
@@ -2198,6 +2201,7 @@ function renderDetalheCamaraCidade(d, panel) {
     return `
     <table class="notes-table">
       <thead><tr>
+        <th></th>
         <th>Nome</th>
         ${temSubsidio ? `<th class="num">Subsídio mensal</th>` : ""}
         <th class="num">Diárias ${anoRef}</th>
@@ -2206,6 +2210,7 @@ function renderDetalheCamaraCidade(d, panel) {
       <tbody>
         ${vereadores.map((v, i) => `
           <tr class="${(v.diarias || []).length ? "clickable" : ""}" data-vidx="${i}">
+            <td>${avatarHTML(v.nome, v.foto, "avatar")}</td>
             <td>${v.nome}${v.referenciaFolha ? `<div style="font-size:.7rem;opacity:.6">${v.referenciaFolha}</div>` : ""}</td>
             ${temSubsidio ? `<td class="num">${v.subsidioMensal != null ? formatBRL(v.subsidioMensal) : "—"}</td>` : ""}
             <td class="num">${v[`totalDiarias${anoRef}`] != null ? formatBRL(v[`totalDiarias${anoRef}`]) : "—"}</td>
