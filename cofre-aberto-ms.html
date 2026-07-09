@@ -341,6 +341,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="nav-group-label">Brasil</div>
       <button data-tab="deputados-brasil"><span class="dot"></span> Dep. Federais Brasil</button>
       <button data-tab="senado-brasil"><span class="dot"></span> Senado Brasil</button>
+      <button data-tab="presidencia"><span class="dot"></span> Presidência</button>
 
       <button data-tab="sobre"><span class="dot"></span> Sobre</button>
     </nav>
@@ -708,6 +709,58 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         </table>
       </div>
       <div class="detail-panel" id="detail-senbr"></div>
+    </div>
+  </section>
+
+  <!-- ===================== PRESIDÊNCIA DA REPÚBLICA ===================== -->
+  <section class="tabpanel" id="tab-presidencia">
+    <div class="section-hero">
+      <div class="hero-label">Presidência da República · Execução orçamentária <span id="pres-ano">2026</span></div>
+      <div class="hero-number" id="pres-total">—</div>
+      <div class="hero-sub">Total pago (Presidência + Gabinete da Vice-Presidência)</div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="pres-cartao">—</div><div class="mini-stat-label">Cartão corporativo (CPGF)</div></div>
+        <div><div class="mini-stat-value" id="pres-viagens-valor">—</div><div class="mini-stat-label">Diárias + passagens</div></div>
+        <div><div class="mini-stat-value" id="pres-viagens-qtd">—</div><div class="mini-stat-label">Viagens registradas</div></div>
+        <div><div class="mini-stat-value" id="pres-data">—</div><div class="mini-stat-label">Atualizado em</div></div>
+      </div>
+    </div>
+
+    <div class="section-body" style="padding:24px">
+      <div class="subhead">Despesas por órgão vinculado</div>
+      <p class="section-note">Inclui a Empresa Brasil de Comunicação (EBC) e a Imprensa Nacional, que têm orçamento e gestão próprios apesar de vinculadas à Presidência — por isso não entram no total em destaque acima.</p>
+      <div class="bar-list" id="pres-orgaos" style="margin-top:12px"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2 class="section-title">Cartão de Pagamento do Governo Federal (CPGF)</h2>
+      </div>
+      <p class="section-note" id="pres-cartao-nota">Carregando…</p>
+      <div class="bar-list" id="pres-cartao-unidades" style="margin-top:12px"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2 class="section-title">Viagens e diárias</h2>
+      </div>
+      <p class="section-note">Servidores e equipe vinculados à Presidência e à Vice-Presidência da República. O Presidente e o Vice-Presidente não possuem PCDP (Proposta de Concessão de Diárias e Passagens) individual neste sistema — ver nota metodológica abaixo.</p>
+      <input class="search-box" id="busca-pres-viagens" type="text" placeholder="buscar por nome, cargo ou motivo…" />
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-pres-viagens">
+          <thead><tr><th>Beneficiário</th><th>Órgão</th><th>Período</th><th class="num">Diárias</th><th class="num">Passagem</th><th class="num">Total</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="section-note" style="margin-top:8px" id="pres-viagens-legenda"></p>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2 class="section-title">Notas metodológicas</h2>
+      </div>
+      <ul id="pres-notas-metodologicas" style="font-size:.82rem;color:var(--ink-soft);line-height:1.6;padding-left:20px"></ul>
+      <p class="section-note" style="margin-top:12px">Fonte: Portal da Transparência do Governo Federal (<a href="https://portaldatransparencia.gov.br/" target="_blank">portaldatransparencia.gov.br</a>) · Atualização automática diária.</p>
     </div>
   </section>
 
@@ -2450,6 +2503,72 @@ function renderPrefeitura(data) {
   btnProximoNotas.addEventListener("click", () => { paginaNotas++; renderTabelaNotas(); });
 }
 
+// ===================== RENDER PRESIDÊNCIA DA REPÚBLICA =====================
+function renderPresidencia(data) {
+  document.getElementById("pres-ano").textContent = data.ano || ANO_REFERENCIA;
+  document.getElementById("pres-total").textContent = formatCompact(data.totalGeralPago || 0);
+  document.getElementById("pres-data").textContent = data.ultimaAtualizacao ? formatDateTime(data.ultimaAtualizacao) : "—";
+
+  const cartao = data.cartaoCorporativo || {};
+  document.getElementById("pres-cartao").textContent = formatCompact(cartao.totalGasto || 0);
+
+  const viagens = data.viagens || {};
+  document.getElementById("pres-viagens-valor").textContent = formatCompact(viagens.totalGeral || 0);
+  document.getElementById("pres-viagens-qtd").textContent = (viagens.totalViagens || 0).toLocaleString("pt-BR");
+
+  // ---- Despesas por órgão vinculado ----
+  const orgaos = data.despesasPorOrgao || [];
+  const maxOrgao = Math.max(...orgaos.map(o => o.pago), 1);
+  document.getElementById("pres-orgaos").innerHTML = orgaos.map(o => `
+    <div class="bar-list-row">
+      <div class="bar-list-label" title="${o.orgao}">${o.orgao}</div>
+      <div class="bar-list-track"><div class="bar-list-fill positive" style="width:${(o.pago/maxOrgao*100).toFixed(1)}%"></div></div>
+      <div class="bar-list-value">${formatCompact(o.pago)}</div>
+    </div>`).join("");
+
+  // ---- Cartão corporativo por unidade gestora ----
+  const porUG = cartao.porUnidadeGestora || {};
+  const maxUG = Math.max(...Object.values(porUG), 1);
+  document.getElementById("pres-cartao-nota").textContent =
+    `${(cartao.totalTransacoes || 0).toLocaleString("pt-BR")} transações, R$ ${(cartao.totalGasto || 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })} no total. O Portal da Transparência não divulga o nome do portador do cartão por sigilo — por isso o gasto é mostrado por unidade gestora, não por pessoa responsável.`;
+  document.getElementById("pres-cartao-unidades").innerHTML = Object.entries(porUG).map(([ug, val]) => `
+    <div class="bar-list-row">
+      <div class="bar-list-label" title="${ug}">${ug}</div>
+      <div class="bar-list-track"><div class="bar-list-fill amber" style="width:${(val/maxUG*100).toFixed(1)}%"></div></div>
+      <div class="bar-list-value">${formatCompact(val)}</div>
+    </div>`).join("") || `<p class="section-note">Nenhuma transação encontrada no período.</p>`;
+
+  // ---- Viagens ----
+  const principais = viagens.principais || [];
+  const tbodyViagens = document.querySelector("#tabela-pres-viagens tbody");
+  document.getElementById("pres-viagens-legenda").textContent =
+    `Mostrando as ${Math.min(principais.length, 50)} viagens de maior valor, de ${(viagens.totalViagens || 0).toLocaleString("pt-BR")} registradas em ${data.ano || ANO_REFERENCIA}.`;
+
+  function renderTabelaViagens(filtro = "") {
+    const f = filtro.toLowerCase();
+    const filtradas = principais.filter(v =>
+      (v.beneficiario || "").toLowerCase().includes(f) ||
+      (v.cargo || "").toLowerCase().includes(f) ||
+      (v.motivo || "").toLowerCase().includes(f)
+    );
+    tbodyViagens.innerHTML = filtradas.map(v => `
+      <tr>
+        <td>${v.beneficiario || "—"}${v.motivo ? `<div style="font-size:.7rem;opacity:.6;max-width:340px">${v.motivo}</div>` : ""}</td>
+        <td style="font-size:.8rem">${v.orgao || "—"}</td>
+        <td style="white-space:nowrap;font-size:.8rem">${formatDate(v.dataInicio)} – ${formatDate(v.dataFim)}</td>
+        <td class="num">${formatBRL(v.valorDiarias)}</td>
+        <td class="num">${formatBRL(v.valorPassagem)}</td>
+        <td class="num">${formatBRL(v.valorTotal)}</td>
+      </tr>`).join("") || `<tr><td colspan="6" style="padding:16px;color:var(--ink-soft)">Nenhuma viagem encontrada.</td></tr>`;
+  }
+  renderTabelaViagens();
+  document.getElementById("busca-pres-viagens").addEventListener("input", e => renderTabelaViagens(e.target.value));
+
+  // ---- Notas metodológicas ----
+  document.getElementById("pres-notas-metodologicas").innerHTML =
+    (data.notasMetodologicas || []).map(n => `<li style="margin-bottom:8px">${n}</li>`).join("");
+}
+
 // ===================== RENDER DEPUTADOS BRASIL =====================
 function renderDeputadosBrasil(deputados) {
   if (!deputados || deputados.length === 0) return;
@@ -3024,6 +3143,12 @@ async function init() {
       if (btn.dataset.tab === "camaras-ms" && !window._camarasMsLoaded) {
         window._camarasMsLoaded = true;
         renderCamarasMS();
+      }
+      if (btn.dataset.tab === "presidencia" && !window._presidenciaLoaded) {
+        window._presidenciaLoaded = true;
+        carregarJSON("dados/presidencia.json").then(d => {
+          if (d) renderPresidencia(d);
+        });
       }
     });
   });
