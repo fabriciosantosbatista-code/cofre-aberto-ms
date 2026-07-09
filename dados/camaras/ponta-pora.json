@@ -1,7 +1,7 @@
 {
   "cidade": "Ponta Porã",
-  "ultimaAtualizacao": "2026-07-08T19:36:58",
-  "fonte": "Portal Transparência Fiorilli (contabilidade.pontapora.ms.gov.br) — Dados Abertos — 2026-07-08T19:36:58",
+  "ultimaAtualizacao": "2026-07-08T20:01:40",
+  "fonte": "Portal Transparência Fiorilli (contabilidade.pontapora.ms.gov.br) — Dados Abertos — 2026-07-08T20:01:40",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camarapontapora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -66,6 +66,23 @@
     {
       "nome": "JELSON BERNABE DE OLIVEIRA",
       "cargo": "Vereador(a)",
+      "diarias": [
+        {
+          "data": "2026-04-23",
+          "valor": 3466.35,
+          "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 179"
+        },
+        {
+          "data": "2026-04-22",
+          "valor": 2640.0,
+          "descricao": "DESPESAS COM PASSAGENS AEREAS PARA MONTEVIDEO EM ABRIL/2026"
+        },
+        {
+          "data": "2026-03-26",
+          "valor": 3555.24,
+          "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 143/2026"
+        }
+      ],
       "totalDiarias2026": 9661.59,
       "numDiarias2026": 3
     },
@@ -75,6 +92,13 @@
       "subsidioMensal": 13909.86,
       "descontos": 3632.83,
       "referenciaFolha": "Folha Mensal - Junho",
+      "diarias": [
+        {
+          "data": "2026-03-18",
+          "valor": 2962.7,
+          "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 142"
+        }
+      ],
       "totalDiarias2026": 2962.7,
       "numDiarias2026": 1
     },
@@ -98,6 +122,13 @@
       "subsidioMensal": 13909.86,
       "descontos": 3476.42,
       "referenciaFolha": "Folha Mensal - Junho",
+      "diarias": [
+        {
+          "data": "2026-03-26",
+          "valor": 3555.24,
+          "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 147/2026"
+        }
+      ],
       "totalDiarias2026": 3555.24,
       "numDiarias2026": 1
     },
@@ -136,5 +167,1321 @@
       "descontos": 3528.56,
       "referenciaFolha": "Folha Mensal - Junho"
     }
-  ]
+  ],
+  "despesasInstitucionais": {
+    "totalGeral": 9394283.74,
+    "totalNotas": 162,
+    "porCategoria": {
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 5902595.31,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1369305.48,
+      "Obrigações Patronais": 968254.56,
+      "Serviços de Consultoria": 629539.91,
+      "Aporte para Cobertura de Déficit Atuarial do RPPS": 200336.7,
+      "Serviços de Tecnologia da Informação": 88637.63,
+      "Indenizações e Restituições": 76191.16,
+      "Diárias — Civil": 57462.18,
+      "Equipamentos e Material Permanente": 56389.7,
+      "Material de Consumo": 28651.11,
+      "Outros Serviços de Terceiros — Pessoa Física": 9000.0,
+      "Passagens e Despesas com Locomoção": 7920.0
+    },
+    "despesas": [
+      {
+        "data": "2026-01-29",
+        "fornecedor": "FOLHA DE PAGAMENTO - FUNCIONÁRIOS COMISSIONADOS",
+        "cnpj": "03.569.878/0001-30",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 3099510.8,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A FOLHA DE PAGAMENTO FUNCIONÁRIOS COMISSIONADOS RELATIVO AO EXERCÍCIO DE 2026."
+      },
+      {
+        "data": "2026-01-29",
+        "fornecedor": "FOLHA DE PAGAMENTO - VEREADORES SUBSÍDIOS",
+        "cnpj": "03.569.878/0001-30",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 1575701.46,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A FOLHA DE SUBSÍDIOS DOS VEREADORES RELATIVO AO EXERCÍCIO DE 2026."
+      },
+      {
+        "data": "2026-01-29",
+        "fornecedor": "FOLHA DE PAGAMENTO - FUNCIONÁRIOS EFETIVOS",
+        "cnpj": "03.569.878/0001-30",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 1227383.05,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A FOLHA DE PAGAMENTO FUNCIONÁRIOS EFETIVO RELATIVO AO EXERCÍCIO DE 2026."
+      },
+      {
+        "data": "2026-01-21",
+        "fornecedor": "MINISTERIO DA PREVIDENCIA SOCIAL",
+        "cnpj": "00.394.528/0001-92",
+        "categoria": "Obrigações Patronais",
+        "valor": 801004.68,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE CONTRIBUIÇÃO PREVIDENCIÁRIA - INSS PARTE EMPRESA DOS SERVIDORES E PRESTADORES DE SERVIÇOS EXERCÍCIO DE 2026."
+      },
+      {
+        "data": "2026-04-28",
+        "fornecedor": "COMUNIART COMUNICAÇÃO & MARKETING LTDA",
+        "cnpj": "03.196.366/0001-76",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 396683.38,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000032/23 - Ano Mod.: 2023 - Modalidade: CONCORRÊNCIA - Nº Mod.: 1 - Mod. Formatada: 1 - O objeto da presente licitação é a Contratação de 1 (uma) agê"
+      },
+      {
+        "data": "2026-02-06",
+        "fornecedor": "COMUNIART COMUNICAÇÃO & MARKETING LTDA",
+        "cnpj": "03.196.366/0001-76",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 376753.16,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000032/23 - Ano Mod.: 2023 - Modalidade: CONCORRÊNCIA - Nº Mod.: 1 - Mod. Formatada: 1 - O objeto da presente licitação é a Contratação de 1 (uma) agê"
+      },
+      {
+        "data": "2026-01-30",
+        "fornecedor": "INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS",
+        "cnpj": "01.990.043/0001-24",
+        "categoria": "Aporte para Cobertura de Déficit Atuarial do RPPS",
+        "valor": 200336.7,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A CONTRIBUIÇÃO PARA PREVIDÊNCIA PRÓPRIA - PREVIPORÃ DOS SERVIDORES MUNICIPAIS, RELATIVO A LEI COMPLEMENTAR 196/2020, PARA COBERTURA DO DÉFICIT ATUARIAL, EXERCÍCIO DE 202"
+      },
+      {
+        "data": "2026-01-30",
+        "fornecedor": "INSTITUTO DE PREVIDENCIA DOS SERVIDORES MUNICIPAIS",
+        "cnpj": "01.990.043/0001-24",
+        "categoria": "Obrigações Patronais",
+        "valor": 167249.88,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A CONTRIBUIÇÃO PARA PREVIDÊNCIA PRÓPRIA - PREVIPORÃ DOS SERVIDORES MUNICIPAIS PARTE EMPRESA EXERCÍCIO DE 2026."
+      },
+      {
+        "data": "2026-03-06",
+        "fornecedor": "LUIZ CARLOS CANHETE ROCHA",
+        "cnpj": "26.177.047/0001-19",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 126676.32,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000005/23 - Ano Mod.: 2023 - Modalidade: CM PREGÃO PRESENCIAL - Nº Mod.: 2 - Mod. Formatada: 2 - Contratação de serviço de transmissão das sessões ao"
+      },
+      {
+        "data": "2026-02-05",
+        "fornecedor": "BRILHAR SERVICOS TERCEIRIZADOS LTDA",
+        "cnpj": "10.648.254/0001-74",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 105000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000011/25 - Ano Mod.: 2025 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 3 - Mod. Formatada: 3 - 1.1.\t     Contratação de empresa especializada para pres"
+      },
+      {
+        "data": "2026-02-12",
+        "fornecedor": "IMDICO - INSTITUTO MULTIDISCIPLINAR DE C",
+        "cnpj": "13.814.929/0001-04",
+        "categoria": "Serviços de Consultoria",
+        "valor": 90000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000005/25 - Ano Mod.: 2025 - Modalidade: CM INEXIGIBILIDADE - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação de empresa especializada na prestação de se"
+      },
+      {
+        "data": "2026-02-19",
+        "fornecedor": "SETTE ASSESSORIAS TECNICAS E AUDITORIAS ADMINISTRA",
+        "cnpj": "10.714.023/0001-11",
+        "categoria": "Serviços de Consultoria",
+        "valor": 90000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000009/25 - Ano Mod.: 2025 - Modalidade: CM INEXIGIBILIDADE - Nº Mod.: 5 - Mod. Formatada: 5 - consultoria para adequação e implementação de boas prát"
+      },
+      {
+        "data": "2026-02-13",
+        "fornecedor": "MAJLIS CONSULTORIA INTERNACIONAL LTDA",
+        "cnpj": "58.846.051/0001-19",
+        "categoria": "Serviços de Consultoria",
+        "valor": 82500.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000006/25 - Ano Mod.: 2025 - Modalidade: CM INEXIGIBILIDADE - Nº Mod.: 4 - Mod. Formatada: 4 - serviços técnicos de consultoria e assessoria em Relaçõ"
+      },
+      {
+        "data": "2026-02-02",
+        "fornecedor": "FOCO DIGITAL COMUNICACAO LTDA",
+        "cnpj": "42.082.999/0001-05",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 77162.2,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000001/25 - Ano Mod.: 2025 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 1 - Mod. Formatada: 1 - contratação de empresa especializada na prestação de ser"
+      },
+      {
+        "data": "2026-02-12",
+        "fornecedor": "FEITOSA & COIMBRA SOCIEDADE DE ADVOGADOS",
+        "cnpj": "42.686.594/0001-86",
+        "categoria": "Serviços de Consultoria",
+        "valor": 72000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000004/25 - Ano Mod.: 2025 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 2 - Mod. Formatada: 2 - Contratação de empresa especializada na prestação de servi"
+      },
+      {
+        "data": "2026-02-02",
+        "fornecedor": "4LS COMERCIO E SERVICOS LTDA",
+        "cnpj": "60.975.465/0001-90",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 60249.41,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000001/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 1 - Mod. Formatada: 1 - O objeto da presente dispensa é a escolha da proposta mais vantaj"
+      },
+      {
+        "data": "2026-02-12",
+        "fornecedor": "MKJ ASSESSORIA CONTABIL LTDA",
+        "cnpj": "18.180.813/0001-76",
+        "categoria": "Serviços de Consultoria",
+        "valor": 60000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000003/25 - Ano Mod.: 2025 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 1 - Mod. Formatada: 1 - Contratação de empresa especializada na prestação de servi"
+      },
+      {
+        "data": "2026-03-26",
+        "fornecedor": "GODOY SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "14.972.026/0001-06",
+        "categoria": "Serviços de Consultoria",
+        "valor": 60000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000004/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 1 - Mod. Formatada: 1 - contratação de escritório de advocacia de notória especial"
+      },
+      {
+        "data": "2026-02-12",
+        "fornecedor": "MAGNA SERVICOS DE MANUTENCAO EM INFORMATICA LTDA.",
+        "cnpj": "11.603.140/0001-70",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 50000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000012/24 - Ano Mod.: 2024 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 1 - Mod. Formatada: 1 - Contratação de empresa especializada na prestação de ser"
+      },
+      {
+        "data": "2026-02-13",
+        "fornecedor": "KARINA NEINAS DE OLIVEIRA",
+        "cnpj": "48.915.387/0001-32",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 48626.93,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000028/23 - Ano Mod.: 2023 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de serviço de sonorização durantes as sessõe"
+      },
+      {
+        "data": "2026-04-29",
+        "fornecedor": "MARCIO AVILA SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "31.721.225/0001-60",
+        "categoria": "Serviços de Consultoria",
+        "valor": 45000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000014/25 - Ano Mod.: 2025 - Modalidade: CM INEXIGIBILIDADE - Nº Mod.: 7 - Mod. Formatada: 7 - Contratação de escritório de advocacia de notória espec"
+      },
+      {
+        "data": "2026-01-21",
+        "fornecedor": "ARPEJO COMUNICACAO, COMERCIO E SERVICOS LTDA",
+        "cnpj": "44.931.075/0001-61",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 43389.8,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000312/24 - Ano Mod.: 2024 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 6 - Mod. Formatada: 6 - Aquisição de aparelhos de ar-condicionado e cortina de a"
+      },
+      {
+        "data": "2026-02-12",
+        "fornecedor": "LUIZ CARLOS CANHETE ROCHA",
+        "cnpj": "26.177.047/0001-19",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 30322.36,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS  STREMING(AUDIO E VIDEO) NO SITE DA CAMARA, SESSOES ORDINARIAS , SOLENES, ITIN"
+      },
+      {
+        "data": "2026-02-26",
+        "fornecedor": "MARCIO AVILA SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "31.721.225/0001-60",
+        "categoria": "Serviços de Consultoria",
+        "valor": 30000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000014/25 - Ano Mod.: 2025 - Modalidade: CM INEXIGIBILIDADE - Nº Mod.: 7 - Mod. Formatada: 7 - Contratação de escritório de advocacia de notória espec"
+      },
+      {
+        "data": "2026-02-13",
+        "fornecedor": "G.A.P. Gestão, Avaliação e Perícia Patrimonial LTD",
+        "cnpj": "34.153.238/0001-79",
+        "categoria": "Serviços de Consultoria",
+        "valor": 29000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000033/24 - Ano Mod.: 2024 - Modalidade: DISPENSA - Nº Mod.: 21 - Mod. Formatada: 21 - Contratação de empresa especializada na prestação de serviços t"
+      },
+      {
+        "data": "2026-05-13",
+        "fornecedor": "DINO CAR FUNILARIA LTDA",
+        "cnpj": "59.140.142/0001-05",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 19800.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000018/25 - Ano Mod.: 2025 - Modalidade: CM - DISPENSA - Nº Mod.: 7 - Mod. Formatada: 7 - Contratação de empresa especializada para serviços de funila"
+      },
+      {
+        "data": "2026-05-22",
+        "fornecedor": "FEITOSA & COIMBRA SOCIEDADE DE ADVOGADOS",
+        "cnpj": "42.686.594/0001-86",
+        "categoria": "Serviços de Consultoria",
+        "valor": 18790.51,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000004/25 - Ano Mod.: 2025 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 2 - Mod. Formatada: 2 - Contratação de empresa especializada na prestação de servi"
+      },
+      {
+        "data": "2026-06-01",
+        "fornecedor": "IMDICO - INSTITUTO MULTIDISCIPLINAR DE C",
+        "cnpj": "13.814.929/0001-04",
+        "categoria": "Serviços de Consultoria",
+        "valor": 18790.51,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000005/25 - Ano Mod.: 2025 - Modalidade: CM INEXIGIBILIDADE - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação de empresa especializada na prestação de se"
+      },
+      {
+        "data": "2026-04-30",
+        "fornecedor": "ANCORA CURSOS E TREINAMENTOS LTDA",
+        "cnpj": "61.319.405/0001-81",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 17950.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000003/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação de empresa especializada na prestação de serviços de"
+      },
+      {
+        "data": "2026-02-11",
+        "fornecedor": "SIBUT DE ARAUJO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "27.209.484/0001-30",
+        "categoria": "Serviços de Consultoria",
+        "valor": 17800.13,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000003/24 - Ano Mod.: 2024 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 1 - Mod. Formatada: 1 - Contratação de escritório de advocacia de notória especial"
+      },
+      {
+        "data": "2026-03-26",
+        "fornecedor": "SISTEMAQ AUTOMAÇÃO DE ESCRITORIO LTDA",
+        "cnpj": "01.927.631/0001-13",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 17013.03,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS LOCAÇÃO DE IMPRESSORAS"
+      },
+      {
+        "data": "2026-04-27",
+        "fornecedor": "ELETRO MAGNETICA LTDA - EPP",
+        "cnpj": "03.215.760/0001-04",
+        "categoria": "Material de Consumo",
+        "valor": 15882.31,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000002/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 2 - Mod. Formatada: 2 - fornecimento de materiais destinados à manutenção predial da Câma"
+      },
+      {
+        "data": "2026-05-28",
+        "fornecedor": "MKJ ASSESSORIA CONTABIL LTDA",
+        "cnpj": "18.180.813/0001-76",
+        "categoria": "Serviços de Consultoria",
+        "valor": 15658.76,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000003/25 - Ano Mod.: 2025 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 1 - Mod. Formatada: 1 - Contratação de empresa especializada na prestação de servi"
+      },
+      {
+        "data": "2026-04-30",
+        "fornecedor": "CIA DA MODA MAISON LTDA",
+        "cnpj": "20.136.375/0001-90",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 14555.86,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000014/24 - Ano Mod.: 2024 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 6 - Mod. Formatada: 6 - Locação de 1(um) imóvel matrícula nº 4453, situado na rua"
+      },
+      {
+        "data": "2026-02-26",
+        "fornecedor": "CIA DA MODA MAISON LTDA",
+        "cnpj": "20.136.375/0001-90",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 13993.08,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000014/24 - Ano Mod.: 2024 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 6 - Mod. Formatada: 6 - Locação de 1(um) imóvel matrícula nº 4453, situado na rua"
+      },
+      {
+        "data": "2026-01-26",
+        "fornecedor": "MAURICIO BATISTA DO NASCIMENTO ME",
+        "cnpj": "12.475.033/0001-77",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 12999.9,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM SERVIÇO POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COMPRA DE MICROFONES"
+      },
+      {
+        "data": "2026-01-26",
+        "fornecedor": "KARINA NEINAS DE OLIVEIRA",
+        "cnpj": "48.915.387/0001-32",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 12890.0,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOSTECNICOS ESPECIALIZADOS DE MICROFONAÇÃO E CABEAMENTO PROFISSIONAL."
+      },
+      {
+        "data": "2026-02-12",
+        "fornecedor": "EXPERTS INFORMATICA LTDA",
+        "cnpj": "00.349.280/0001-48",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 12853.36,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000002/25 - Ano Mod.: 2025 - Modalidade: DISPENSA - Nº Mod.: 1 - Mod. Formatada: 1 - O objeto da presente dispensa é a escolha da proposta mais vantaj"
+      },
+      {
+        "data": "2026-02-13",
+        "fornecedor": "AUTO POSTO SUPER SOL",
+        "cnpj": "24.670.198/0001-89",
+        "categoria": "Material de Consumo",
+        "valor": 12768.8,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000011/24 - Ano Mod.: 2024 - Modalidade: DISPENSA - Nº Mod.: 4 - Mod. Formatada: 4 - Contratação de empresa especializada em fornecimento de combustív"
+      },
+      {
+        "data": "2026-02-11",
+        "fornecedor": "R. C. CAMARGO LTDA",
+        "cnpj": "32.886.108/0001-10",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 10637.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000034/24 - Ano Mod.: 2024 - Modalidade: DISPENSA - Nº Mod.: 22 - Mod. Formatada: 22 - Contratação de empresa especializada na prestação de serviços d"
+      },
+      {
+        "data": "2026-02-12",
+        "fornecedor": "SISTEMAQ AUTOMAÇÃO DE ESCRITORIO LTDA",
+        "cnpj": "01.927.631/0001-13",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 10478.44,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS LOCAÇÃO DE IMPRESSORAS TERMO ADITIVO 08/2023 PREGÃO 03/2023"
+      },
+      {
+        "data": "2026-03-18",
+        "fornecedor": "NATHALIA MORETE BINOTTO",
+        "cnpj": "338.XXX.XXX-08",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Física",
+        "valor": 9000.0,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA FISICA PARA ÖRGÃO PUBLICO COM SERVIÇOS DE PERICIA JUDICIARIA."
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "ENERGISA MS-DISTRIBUIDORA DE ENERGIA S.A",
+        "cnpj": "15.413.826/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 8474.18,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS FORNECIMENTO DE ENERGIA ELETRICA EXERCICIO 2026"
+      },
+      {
+        "data": "2026-02-12",
+        "fornecedor": "67 TELECOM LTDA",
+        "cnpj": "08.611.669/0003-93",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 8400.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/25 - Ano Mod.: 2025 - Modalidade: DISPENSA - Nº Mod.: 3 - Mod. Formatada: 3 - 1.1.\tContratação de empresa  de link de internet dedicado com vel"
+      },
+      {
+        "data": "2026-02-11",
+        "fornecedor": "SEGURANÇA ELETRÔNICA PONTA PORÃ LTDA",
+        "cnpj": "11.759.984/0001-05",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 5296.5,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000002/24 - Ano Mod.: 2024 - Modalidade: DISPENSA - Nº Mod.: 2 - Mod. Formatada: 2 - Contratação de empresa especializada para instalação, locação, mo"
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "EMPRESA DE SANEAMENTO DE MS SA SANESUL",
+        "cnpj": "03.982.931/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 5081.9,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS COM AGUA E ESGOTO EXERCICIO 2026"
+      },
+      {
+        "data": "2026-03-26",
+        "fornecedor": "MAURO HIDEO NAKAYA - ME",
+        "cnpj": "10.939.844/0001-56",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 5000.0,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE AO REGIME DE ADIANTAMENTO DE PAGAMENTO, CONFORME A LEI MUNICIPAL Nº 4.432, 01/04.2020, E LEI MUNICIPAL Nº 4.569, 12/06/2023, CMPP."
+      },
+      {
+        "data": "2026-02-13",
+        "fornecedor": "SISTEMAQ AUTOMAÇÃO DE ESCRITORIO LTDA",
+        "cnpj": "01.927.631/0001-13",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4950.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000013/25 - Ano Mod.: 2025 - Modalidade: CM - DISPENSA - Nº Mod.: 2 - Mod. Formatada: 2 - 1.1.\tContratação de serviço de locação de fragmentadoras de"
+      },
+      {
+        "data": "2026-01-30",
+        "fornecedor": "CAIXA ECONÔMICA FEDERAL-CEF",
+        "cnpj": "02.323.746/0001-61",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4337.0,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS COM TARIFAS BANCÁIRA EXERCÍCIO  DE 2026."
+      },
+      {
+        "data": "2026-05-15",
+        "fornecedor": "J. NATALICIO DE OLIVEIRA LTDA",
+        "cnpj": "63.444.898/0001-07",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4000.0,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE AO REGIME DE ADIANTAMENTO DE PAGAMENTO, CONFORME A LEI MUNICIPAL Nº 4.432, 01/04.2020, E LEI MUNICIPAL Nº 4.569, 12/06/2023, CMPP. ADIANTAMENTO N 06/2026"
+      },
+      {
+        "data": "2026-02-13",
+        "fornecedor": "HERVAL PROMOCOES LTDA",
+        "cnpj": "60.008.153/0001-07",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 3582.5,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ORGÃO PUBLICO COM SERVIÇOS DE FORNECIMENTO DE CERTIFICADOS DIGITAIS A1 PARA A CAMARA MUNICIPAL DE PONTA P"
+      },
+      {
+        "data": "2026-05-15",
+        "fornecedor": "CASSIO DE ALMEIDA COSTA",
+        "cnpj": "023.XXX.XXX-70",
+        "categoria": "Indenizações e Restituições",
+        "valor": 3568.16,
+        "descricao": "PAGAMENTO DE INDENIZAÇÃO DE DANOS AO VEICULO PARTICULAR USADO EM MISSÃO OFICIAL. PROCESSO ADMINISTRATIVO N 2183/2026 ENCAMINHADO AO SETOR FINANCEIRA PELA PRESIDENCIA DESSA CASA DE LEIS."
+      },
+      {
+        "data": "2026-03-26",
+        "fornecedor": "JELSON BERNABE DE OLIVEIRA",
+        "cnpj": "830.XXX.XXX-72",
+        "categoria": "Diárias — Civil",
+        "valor": 3555.24,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 143/2026"
+      },
+      {
+        "data": "2026-03-26",
+        "fornecedor": "MARCELINO NUNES DE OLIVEIRA",
+        "cnpj": "372.XXX.XXX-04",
+        "categoria": "Diárias — Civil",
+        "valor": 3555.24,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 147/2026"
+      },
+      {
+        "data": "2026-03-26",
+        "fornecedor": "CARLOS ALEXANDRE BORDÃO",
+        "cnpj": "827.XXX.XXX-72",
+        "categoria": "Diárias — Civil",
+        "valor": 3555.24,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 149/2026"
+      },
+      {
+        "data": "2026-03-26",
+        "fornecedor": "AGNALDO PEREIRA LIMA",
+        "cnpj": "810.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 3555.24,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 148/2026"
+      },
+      {
+        "data": "2026-04-23",
+        "fornecedor": "AGNALDO PEREIRA LIMA",
+        "cnpj": "810.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 3466.35,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 178"
+      },
+      {
+        "data": "2026-04-23",
+        "fornecedor": "JELSON BERNABE DE OLIVEIRA",
+        "cnpj": "830.XXX.XXX-72",
+        "categoria": "Diárias — Civil",
+        "valor": 3466.35,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 179"
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "OI S.A.",
+        "cnpj": "76.535.764/0324-28",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 3406.06,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS DE TELEFONIA FIXA PARA O EXERCICO 2026."
+      },
+      {
+        "data": "2026-05-14",
+        "fornecedor": "EXPERTS INFORMATICA LTDA",
+        "cnpj": "00.349.280/0001-48",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 3323.33,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS LICENÇAS DE USO DE SOLUÇÕES INTEGRADAS BASEADA EM NUVEM GOOGLE WORKSPACE"
+      },
+      {
+        "data": "2026-05-28",
+        "fornecedor": "AGNALDO PEREIRA LIMA",
+        "cnpj": "810.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 3081.2,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 212/2026"
+      },
+      {
+        "data": "2026-05-28",
+        "fornecedor": "GABRIEL CALEPSO ARCE",
+        "cnpj": "001.XXX.XXX-05",
+        "categoria": "Diárias — Civil",
+        "valor": 3081.2,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 213/2026"
+      },
+      {
+        "data": "2026-03-18",
+        "fornecedor": "JOSE MENINO MOREIRA JUNIOR",
+        "cnpj": "029.XXX.XXX-33",
+        "categoria": "Diárias — Civil",
+        "valor": 2962.7,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 142"
+      },
+      {
+        "data": "2026-03-26",
+        "fornecedor": "EDILENE MORA BERNABE DE OLIVEIRA",
+        "cnpj": "016.XXX.XXX-50",
+        "categoria": "Diárias — Civil",
+        "valor": 2954.82,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 144/2026"
+      },
+      {
+        "data": "2026-03-26",
+        "fornecedor": "JESOELSON PAIM DA CRUZ",
+        "cnpj": "558.XXX.XXX-30",
+        "categoria": "Diárias — Civil",
+        "valor": 2954.82,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 150/2026"
+      },
+      {
+        "data": "2026-03-26",
+        "fornecedor": "BENJAMIN ONOFRE CANHETE ROCHA",
+        "cnpj": "075.XXX.XXX-99",
+        "categoria": "Diárias — Civil",
+        "valor": 2954.82,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 151/2026"
+      },
+      {
+        "data": "2026-03-26",
+        "fornecedor": "CASSIO DE ALMEIDA COSTA",
+        "cnpj": "023.XXX.XXX-70",
+        "categoria": "Diárias — Civil",
+        "valor": 2954.82,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 152/2026"
+      },
+      {
+        "data": "2026-04-23",
+        "fornecedor": "CASSIO DE ALMEIDA COSTA",
+        "cnpj": "023.XXX.XXX-70",
+        "categoria": "Diárias — Civil",
+        "valor": 2880.83,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 180"
+      },
+      {
+        "data": "2026-04-22",
+        "fornecedor": "CASSIO DE ALMEIDA COSTA",
+        "cnpj": "023.XXX.XXX-70",
+        "categoria": "Passagens e Despesas com Locomoção",
+        "valor": 2640.0,
+        "descricao": "DESPESAS COM PASSAGENS AEREAS PARA MONTEVIDEO EM ABRIL DE 2026"
+      },
+      {
+        "data": "2026-04-22",
+        "fornecedor": "AGNALDO PEREIRA LIMA",
+        "cnpj": "810.XXX.XXX-87",
+        "categoria": "Passagens e Despesas com Locomoção",
+        "valor": 2640.0,
+        "descricao": "DESPESAS COM PASSAGENS AEREAS PARA MONTEVIDEO EM ABRIL/2026"
+      },
+      {
+        "data": "2026-04-22",
+        "fornecedor": "JELSON BERNABE DE OLIVEIRA",
+        "cnpj": "830.XXX.XXX-72",
+        "categoria": "Passagens e Despesas com Locomoção",
+        "valor": 2640.0,
+        "descricao": "DESPESAS COM PASSAGENS AEREAS PARA MONTEVIDEO EM ABRIL/2026"
+      },
+      {
+        "data": "2026-05-28",
+        "fornecedor": "BENJAMIN ONOFRE CANHETE ROCHA",
+        "cnpj": "075.XXX.XXX-99",
+        "categoria": "Diárias — Civil",
+        "valor": 2560.84,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 214/2026"
+      },
+      {
+        "data": "2026-05-28",
+        "fornecedor": "CASSIO DE ALMEIDA COSTA",
+        "cnpj": "023.XXX.XXX-70",
+        "categoria": "Diárias — Civil",
+        "valor": 2560.84,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 215/2026"
+      },
+      {
+        "data": "2026-04-17",
+        "fornecedor": "CARLOS ALEXANDRE BORDÃO",
+        "cnpj": "827.XXX.XXX-72",
+        "categoria": "Diárias — Civil",
+        "valor": 2370.16,
+        "descricao": "VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIARIAS AO SERVIDOR E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME A PORTARIA Nº 174/2026."
+      },
+      {
+        "data": "2026-06-03",
+        "fornecedor": "ANTONIO MARQUES DE OLIVEIRA",
+        "cnpj": "799.XXX.XXX-68",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1800.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-06-03",
+        "fornecedor": "MARCELINO NUNES DE OLIVEIRA",
+        "cnpj": "372.XXX.XXX-04",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1800.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "MARCELINO NUNES DE OLIVEIRA",
+        "cnpj": "372.XXX.XXX-04",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1800.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "JOSE MENINO MOREIRA JUNIOR",
+        "cnpj": "029.XXX.XXX-33",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1792.01,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "CARLOS ALEXANDRE BORDÃO",
+        "cnpj": "827.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1722.16,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "EDER ADELINO FERNANDES QUINTANA",
+        "cnpj": "022.XXX.XXX-79",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1698.63,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "ANTONIO MARQUES DE OLIVEIRA",
+        "cnpj": "799.XXX.XXX-68",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1625.26,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
+      },
+      {
+        "data": "2026-06-03",
+        "fornecedor": "EDER ADELINO FERNANDES QUINTANA",
+        "cnpj": "022.XXX.XXX-79",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1579.8,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "JELSON BERNABE DE OLIVEIRA",
+        "cnpj": "830.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1550.01,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
+      },
+      {
+        "data": "2026-06-03",
+        "fornecedor": "CARLOS ALEXANDRE BORDÃO",
+        "cnpj": "827.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1369.25,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "JELSON BERNABE DE OLIVEIRA",
+        "cnpj": "830.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1300.0,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "VANDERLEI AVELINO",
+        "cnpj": "812.XXX.XXX-15",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1300.0,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-04-07",
+        "fornecedor": "CARLOS ALEXANDRE BORDÃO",
+        "cnpj": "827.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1300.0,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "ANTONIO MARQUES DE OLIVEIRA",
+        "cnpj": "799.XXX.XXX-68",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1300.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "CARLOS ALEXANDRE BORDÃO",
+        "cnpj": "827.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1300.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "EDER ADELINO FERNANDES QUINTANA",
+        "cnpj": "022.XXX.XXX-79",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1300.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "CARLOS ALEXANDRE BORDÃO",
+        "cnpj": "827.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1298.73,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "JOSE MENINO MOREIRA JUNIOR",
+        "cnpj": "029.XXX.XXX-33",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1293.76,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "MARIA DE LOURDES MONTEIRO GODOY",
+        "cnpj": "111.XXX.XXX-53",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1262.88,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "MARIA DE LOURDES MONTEIRO GODOY",
+        "cnpj": "111.XXX.XXX-53",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1253.12,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-04-07",
+        "fornecedor": "VANDERLEI AVELINO",
+        "cnpj": "812.XXX.XXX-15",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1237.28,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "JOSE MENINO MOREIRA JUNIOR",
+        "cnpj": "029.XXX.XXX-33",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1231.8,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-04-07",
+        "fornecedor": "ANTONIO MARQUES DE OLIVEIRA",
+        "cnpj": "799.XXX.XXX-68",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1223.0,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-06-03",
+        "fornecedor": "THIAGO EUGENIO VEDANA",
+        "cnpj": "998.XXX.XXX-49",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1214.33,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "GABRIEL CALEPSO ARCE",
+        "cnpj": "001.XXX.XXX-05",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1206.56,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "JELSON BERNABE DE OLIVEIRA",
+        "cnpj": "830.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1201.25,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "JELSON BERNABE DE OLIVEIRA",
+        "cnpj": "830.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1197.1,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-06-03",
+        "fornecedor": "GABRIEL CALEPSO ARCE",
+        "cnpj": "001.XXX.XXX-05",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1194.5,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "MARIA DE LOURDES MONTEIRO GODOY",
+        "cnpj": "111.XXX.XXX-53",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1179.1,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "JOSE MENINO MOREIRA JUNIOR",
+        "cnpj": "029.XXX.XXX-33",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1173.58,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "EDER ADELINO FERNANDES QUINTANA",
+        "cnpj": "022.XXX.XXX-79",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1169.98,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-02-06",
+        "fornecedor": "GABRIEL CALEPSO ARCE",
+        "cnpj": "001.XXX.XXX-05",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1141.14,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "NATALIA VELASQUES DA SILVA",
+        "cnpj": "050.XXX.XXX-60",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1126.18,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "CARLOS ALEXANDRE BORDÃO",
+        "cnpj": "827.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1105.14,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "ANTONIO MARQUES DE OLIVEIRA",
+        "cnpj": "799.XXX.XXX-68",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1095.31,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-04-07",
+        "fornecedor": "MARCELINO NUNES DE OLIVEIRA",
+        "cnpj": "372.XXX.XXX-04",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1081.24,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-03-25",
+        "fornecedor": "DANIEL VALDEZ GODOY",
+        "cnpj": "407.XXX.XXX-15",
+        "categoria": "Diárias — Civil",
+        "valor": 1066.57,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 145/2026"
+      },
+      {
+        "data": "2026-05-27",
+        "fornecedor": "CARLOS ALEXANDRE BORDÃO",
+        "cnpj": "827.XXX.XXX-72",
+        "categoria": "Diárias — Civil",
+        "valor": 1066.57,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 209/2026"
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "VANDERLEI AVELINO",
+        "cnpj": "812.XXX.XXX-15",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1023.88,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "THIAGO EUGENIO VEDANA",
+        "cnpj": "998.XXX.XXX-49",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1011.37,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "GABRIEL CALEPSO ARCE",
+        "cnpj": "001.XXX.XXX-05",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1000.35,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "AGNALDO PEREIRA LIMA",
+        "cnpj": "810.XXX.XXX-87",
+        "categoria": "Indenizações e Restituições",
+        "valor": 981.35,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
+      },
+      {
+        "data": "2026-04-07",
+        "fornecedor": "GABRIEL CALEPSO ARCE",
+        "cnpj": "001.XXX.XXX-05",
+        "categoria": "Indenizações e Restituições",
+        "valor": 959.43,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "GABRIEL CALEPSO ARCE",
+        "cnpj": "001.XXX.XXX-05",
+        "categoria": "Indenizações e Restituições",
+        "valor": 941.09,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "MARIA DE LOURDES MONTEIRO GODOY",
+        "cnpj": "111.XXX.XXX-53",
+        "categoria": "Indenizações e Restituições",
+        "valor": 917.8,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-06-03",
+        "fornecedor": "MARIA DE LOURDES MONTEIRO GODOY",
+        "cnpj": "111.XXX.XXX-53",
+        "categoria": "Indenizações e Restituições",
+        "valor": 910.63,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-04-07",
+        "fornecedor": "EDER ADELINO FERNANDES QUINTANA",
+        "cnpj": "022.XXX.XXX-79",
+        "categoria": "Indenizações e Restituições",
+        "valor": 907.48,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-06-22",
+        "fornecedor": "EDSON ROJA BRITEZ",
+        "cnpj": "016.XXX.XXX-29",
+        "categoria": "Diárias — Civil",
+        "valor": 886.45,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 231/2026"
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "MARCELINO NUNES DE OLIVEIRA",
+        "cnpj": "372.XXX.XXX-04",
+        "categoria": "Indenizações e Restituições",
+        "valor": 857.09,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-02-06",
+        "fornecedor": "MARIA DE LOURDES MONTEIRO GODOY",
+        "cnpj": "111.XXX.XXX-53",
+        "categoria": "Indenizações e Restituições",
+        "valor": 845.18,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "DANIEL VALDEZ GODOY",
+        "cnpj": "407.XXX.XXX-15",
+        "categoria": "Indenizações e Restituições",
+        "valor": 844.9,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "DANIEL VALDEZ GODOY",
+        "cnpj": "407.XXX.XXX-15",
+        "categoria": "Indenizações e Restituições",
+        "valor": 843.07,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-04-07",
+        "fornecedor": "JELSON BERNABE DE OLIVEIRA",
+        "cnpj": "830.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 840.1,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-02-06",
+        "fornecedor": "JOSE MENINO MOREIRA JUNIOR",
+        "cnpj": "029.XXX.XXX-33",
+        "categoria": "Indenizações e Restituições",
+        "valor": 790.58,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "MARCELINO NUNES DE OLIVEIRA",
+        "cnpj": "372.XXX.XXX-04",
+        "categoria": "Indenizações e Restituições",
+        "valor": 754.8,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-04-07",
+        "fornecedor": "JOSE MENINO MOREIRA JUNIOR",
+        "cnpj": "029.XXX.XXX-33",
+        "categoria": "Indenizações e Restituições",
+        "valor": 749.27,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-06-03",
+        "fornecedor": "JELSON BERNABE DE OLIVEIRA",
+        "cnpj": "830.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 727.94,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-04-07",
+        "fornecedor": "MARIA DE LOURDES MONTEIRO GODOY",
+        "cnpj": "111.XXX.XXX-53",
+        "categoria": "Indenizações e Restituições",
+        "valor": 694.95,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-06-03",
+        "fornecedor": "JOSE MENINO MOREIRA JUNIOR",
+        "cnpj": "029.XXX.XXX-33",
+        "categoria": "Indenizações e Restituições",
+        "valor": 668.1,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "GABRIEL CALEPSO ARCE",
+        "cnpj": "001.XXX.XXX-05",
+        "categoria": "Indenizações e Restituições",
+        "valor": 646.54,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "LEANDRO BITENCOURT DA SILVA",
+        "cnpj": "057.XXX.XXX-04",
+        "categoria": "Indenizações e Restituições",
+        "valor": 640.32,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "LEANDRO BITENCOURT DA SILVA",
+        "cnpj": "057.XXX.XXX-04",
+        "categoria": "Indenizações e Restituições",
+        "valor": 639.5,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "EDER ADELINO FERNANDES QUINTANA",
+        "cnpj": "022.XXX.XXX-79",
+        "categoria": "Indenizações e Restituições",
+        "valor": 629.16,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "THIAGO EUGENIO VEDANA",
+        "cnpj": "998.XXX.XXX-49",
+        "categoria": "Indenizações e Restituições",
+        "valor": 591.22,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "VANDERLEI AVELINO",
+        "cnpj": "812.XXX.XXX-15",
+        "categoria": "Indenizações e Restituições",
+        "valor": 570.95,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-02-06",
+        "fornecedor": "CARLOS ALEXANDRE BORDÃO",
+        "cnpj": "827.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 560.5,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "WALDECIR FERNANDES GONÇALVES",
+        "cnpj": "843.XXX.XXX-15",
+        "categoria": "Indenizações e Restituições",
+        "valor": 518.08,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-04-07",
+        "fornecedor": "DANIEL VALDEZ GODOY",
+        "cnpj": "407.XXX.XXX-15",
+        "categoria": "Indenizações e Restituições",
+        "valor": 501.35,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PARA VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-01-27",
+        "fornecedor": "EDILENE MORA BERNABE DE OLIVEIRA",
+        "cnpj": "016.XXX.XXX-50",
+        "categoria": "Diárias — Civil",
+        "valor": 492.97,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº  76"
+      },
+      {
+        "data": "2026-01-27",
+        "fornecedor": "JAQUELINE MARQUES CARDOSO",
+        "cnpj": "005.XXX.XXX-03",
+        "categoria": "Diárias — Civil",
+        "valor": 492.97,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 77"
+      },
+      {
+        "data": "2026-02-04",
+        "fornecedor": "EDILENE MORA BERNABE DE OLIVEIRA",
+        "cnpj": "016.XXX.XXX-50",
+        "categoria": "Diárias — Civil",
+        "valor": 492.97,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 087/2026"
+      },
+      {
+        "data": "2026-02-04",
+        "fornecedor": "JAQUELINE MARQUES CARDOSO",
+        "cnpj": "005.XXX.XXX-03",
+        "categoria": "Diárias — Civil",
+        "valor": 492.97,
+        "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 088/2026"
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "EMPRESA BRASILEIRA DE CORREIOS E TEL.",
+        "cnpj": "34.028.316/0009-60",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 447.11,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS DE CORREIOS DE TELEGRAFOS EXERCICIO 2026"
+      },
+      {
+        "data": "2026-02-06",
+        "fornecedor": "EDER ADELINO FERNANDES QUINTANA",
+        "cnpj": "022.XXX.XXX-79",
+        "categoria": "Indenizações e Restituições",
+        "valor": 396.22,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "LEANDRO BITENCOURT DA SILVA",
+        "cnpj": "057.XXX.XXX-04",
+        "categoria": "Indenizações e Restituições",
+        "valor": 393.64,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "WALDECIR FERNANDES GONÇALVES",
+        "cnpj": "843.XXX.XXX-15",
+        "categoria": "Indenizações e Restituições",
+        "valor": 315.29,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "WALDECIR FERNANDES GONÇALVES",
+        "cnpj": "843.XXX.XXX-15",
+        "categoria": "Indenizações e Restituições",
+        "valor": 287.72,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
+      },
+      {
+        "data": "2026-03-09",
+        "fornecedor": "NATALIA VELASQUES DA SILVA",
+        "cnpj": "050.XXX.XXX-60",
+        "categoria": "Indenizações e Restituições",
+        "valor": 240.05,
+        "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
+      },
+      {
+        "data": "2026-02-13",
+        "fornecedor": "MEDIANEIRA PONTA PORA TRANSPORTES LTDA",
+        "cnpj": "06.267.133/0001-05",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000043/22 - Ano Mod.: 2022 - Modalidade: CONVITE - Nº Mod.: 2 - Mod. Formatada: 2 - Aquisição de vale transporte a serem utilizados pelos servidores d"
+      },
+      {
+        "data": "2026-04-22",
+        "fornecedor": "CAM TECNOLOGIA LTDA",
+        "cnpj": "14.438.757/0001-76",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000017/25 - Ano Mod.: 2025 - Modalidade: CM - DISPENSA - Nº Mod.: 6 - Mod. Formatada: 6 - contratação de empresa especializada para prestação de servi"
+      },
+      {
+        "data": "2026-04-27",
+        "fornecedor": "ELETRO MAGNETICA LTDA - EPP",
+        "cnpj": "03.215.760/0001-04",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000002/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 2 - Mod. Formatada: 2 - fornecimento de materiais destinados à manutenção predial da Câma"
+      },
+      {
+        "data": "2026-06-15",
+        "fornecedor": "Haslan Pisciottano da Silva Sociedade Individual d",
+        "cnpj": "43.729.718/0001-26",
+        "categoria": "Serviços de Consultoria",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 2 - Mod. Formatada: 2 - Contratação de serviços técnicos especializados de consult"
+      },
+      {
+        "data": "2026-06-17",
+        "fornecedor": "PORTO SEGURO CIA DE SEGUROS GERAIS LTDA",
+        "cnpj": "61.198.164/0001-60",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000024/23 - Ano Mod.: 2023 - Modalidade: DISPENSA - Nº Mod.: 13 - Mod. Formatada: 13 - Contratação de empresa especializada para prestação de serviços"
+      },
+      {
+        "data": "2026-06-17",
+        "fornecedor": "KARINA NEINAS DE OLIVEIRA",
+        "cnpj": "48.915.387/0001-32",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000028/23 - Ano Mod.: 2023 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de serviço de sonorização durantes as sessõe"
+      },
+      {
+        "data": "2026-06-24",
+        "fornecedor": "MAGNA SERVICOS DE MANUTENCAO EM INFORMATICA LTDA.",
+        "cnpj": "11.603.140/0001-70",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000012/24 - Ano Mod.: 2024 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 1 - Mod. Formatada: 1 - Contratação de empresa especializada na prestação de ser"
+      },
+      {
+        "data": "2026-06-29",
+        "fornecedor": "67 TELECOM LTDA",
+        "cnpj": "08.611.669/0003-93",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/25 - Ano Mod.: 2025 - Modalidade: CM - DISPENSA - Nº Mod.: 3 - Mod. Formatada: 3 - 1.1.\tContratação de empresa  de link de internet dedicado co"
+      },
+      {
+        "data": "2026-06-29",
+        "fornecedor": "PABLO ENRIQUE SOARES ALVES",
+        "cnpj": "21.266.196/0001-30",
+        "categoria": "Material de Consumo",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000015/24 - Ano Mod.: 2024 - Modalidade: DISPENSA - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada em fornecimento de água mine"
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "PANIFICADORA PAO DE OURO LTDA",
+        "cnpj": "22.313.301/0001-08",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000008/26 - Ano Mod.: 2026 - Modalidade: CM - DISPENSA - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada no fornecimento, sob de"
+      }
+    ]
+  }
 }

@@ -907,6 +907,51 @@ def _fiorilli_parse_valor(txt):
         return 0.0
 
 
+def _fiorilli_data_iso(txt):
+    # vem como "23/04/2026 00:00:00" — formatDate() do front-end espera ISO
+    try:
+        data_parte = (txt or "").split(" ")[0]
+        d, m, a = data_parte.split("/")
+        return f"{a}-{m}-{d}"
+    except:
+        return None
+
+
+# Elemento de despesa — classificação orçamentária padrão nacional (STN),
+# usada por todos os municípios brasileiros. O Fiorilli devolve só o
+# código numérico (ex.: "11"), não o nome — mapeamos os mais comuns.
+_ELEMENTO_DESPESA_NOME = {
+    "07": "Contribuição a Entidades Fechadas de Previdência",
+    "08": "Outros Benefícios Assistenciais do Servidor",
+    "11": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+    "13": "Obrigações Patronais",
+    "14": "Diárias — Civil",
+    "16": "Outras Despesas Variáveis — Pessoal Civil",
+    "30": "Material de Consumo",
+    "33": "Passagens e Despesas com Locomoção",
+    "34": "Outras Despesas de Pessoal (Terceirização)",
+    "35": "Serviços de Consultoria",
+    "36": "Outros Serviços de Terceiros — Pessoa Física",
+    "37": "Locação de Mão de Obra",
+    "39": "Outros Serviços de Terceiros — Pessoa Jurídica",
+    "40": "Serviços de Tecnologia da Informação",
+    "41": "Contribuições",
+    "46": "Auxílio-Alimentação",
+    "47": "Obrigações Tributárias e Contributivas",
+    "51": "Obras e Instalações",
+    "52": "Equipamentos e Material Permanente",
+    "92": "Despesas de Exercícios Anteriores",
+    "93": "Indenizações e Restituições",
+    "95": "Indenização pela Execução de Trabalhos de Campo",
+    "97": "Aporte para Cobertura de Déficit Atuarial do RPPS",
+}
+
+
+def _fiorilli_categoria_nome(elemento):
+    elemento = (elemento or "").strip()
+    return _ELEMENTO_DESPESA_NOME.get(elemento, f"Elemento {elemento}" if elemento else "Outros")
+
+
 def _slug(texto):
     import unicodedata
     texto = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode()
@@ -1068,7 +1113,15 @@ def coletar_camara_fiorilli(cfg):
                 continue
             vereadores.setdefault(nome, {"nome": nome, "cargo": "Vereador(a)"})
             v = vereadores[nome]
-            v[f"totalDiarias{ANO}"] = round(v.get(f"totalDiarias{ANO}", 0) + _fiorilli_parse_valor(d.get("VALOR")), 2)
+            valor = round(_fiorilli_parse_valor(d.get("VALOR")), 2)
+            v.setdefault("diarias", []).append({
+                # não existe campo estruturado de destino/motivo nesse sistema —
+                # essa informação vem embutida em texto livre na descrição.
+                "data": _fiorilli_data_iso(d.get("DATA")),
+                "valor": valor,
+                "descricao": (d.get("DESCRICAO") or "").strip() or None,
+            })
+            v[f"totalDiarias{ANO}"] = round(v.get(f"totalDiarias{ANO}", 0) + valor, 2)
             v[f"numDiarias{ANO}"] = v.get(f"numDiarias{ANO}", 0) + 1
     except Exception as e:
         log(f"  ⚠️ Diárias indisponível para {cfg['cidade']}: {e}")
@@ -1076,6 +1129,46 @@ def coletar_camara_fiorilli(cfg):
     if not vereadores:
         log(f"  ⚠️ Nenhum dado coletado para {cfg['cidade']} — mantendo dados anteriores")
         return None
+
+    for v in vereadores.values():
+        if "diarias" in v:
+            v["diarias"].sort(key=lambda x: x["data"] or "", reverse=True)
+
+    # Despesas institucionais — gasto da Câmara como entidade (fornecedor,
+    # licitação, categoria de elemento de despesa). NÃO é atribuível a um
+    # vereador específico, é o gasto da instituição como um todo.
+    despesas_institucionais = None
+    try:
+        url = (f"{base}/VersaoJson/Despesas/?Listagem=DespesasGerais&DiaInicioPeriodo=01&MesInicialPeriodo=01"
+               f"&DiaFinalPeriodo=31&MesFinalPeriodo=12&{param_ano}={ANO}{conectar}"
+               f"&Empresa={empresa}&MostrarFornecedor=True&MostraDadosConsolidado=False"
+               f"&UFParaFiltroCOVID=&MostrarCNPJFornecedor=True&ApenasIDEmpenho=False")
+        registros = get_com_retry(url, tentativas=1).json()
+        despesas = []
+        por_categoria = {}
+        total_geral = 0.0
+        for r in registros:
+            valor = round(_fiorilli_parse_valor(r.get("PAGO") or r.get("EMPENHADO")), 2)
+            categoria = r.get("NOME_ELEMENTO") or _fiorilli_categoria_nome(r.get("ELEMENTO"))
+            despesas.append({
+                "data": _fiorilli_data_iso(r.get("DATAE")),
+                "fornecedor": (r.get("NOMEFOR") or "").strip() or None,
+                "cnpj": (r.get("CPFFORMATADO") or "").strip() or None,
+                "categoria": categoria,
+                "valor": valor,
+                "descricao": (r.get("PRODU") or "").strip()[:300] or None,
+            })
+            por_categoria[categoria] = round(por_categoria.get(categoria, 0) + valor, 2)
+            total_geral += valor
+        despesas.sort(key=lambda x: x["valor"], reverse=True)
+        despesas_institucionais = {
+            "totalGeral": round(total_geral, 2),
+            "totalNotas": len(despesas),
+            "porCategoria": dict(sorted(por_categoria.items(), key=lambda x: -x[1])),
+            "despesas": despesas,
+        }
+    except Exception as e:
+        log(f"  ⚠️ Despesas gerais indisponível para {cfg['cidade']}: {e}")
 
     lista = sorted(vereadores.values(), key=lambda v: v["nome"])
     tem_subsidio = any("subsidioMensal" in v for v in lista)
@@ -1089,11 +1182,13 @@ def coletar_camara_fiorilli(cfg):
         "temDadosFinanceiros": True,
         "totalVereadores": len(lista),
         "vereadores": lista,
+        "despesasInstitucionais": despesas_institucionais,
     }
     if not tem_subsidio:
         data["notaFinanceiro"] = "O endpoint de folha de pagamento (subsídio) está indisponível nesta câmara no momento (erro do lado deles). Os valores mostrados são apenas diárias pagas."
     salvar(f"camaras/{_slug(cfg['cidade'])}.json", data)
-    log(f"  {len(lista)} vereadores de {cfg['cidade']} salvos ({'com subsídio' if tem_subsidio else 'só diárias'})")
+    log(f"  {len(lista)} vereadores de {cfg['cidade']} salvos ({'com subsídio' if tem_subsidio else 'só diárias'})"
+        + (f", {despesas_institucionais['totalNotas']} despesas institucionais" if despesas_institucionais else ""))
     return data
 
 

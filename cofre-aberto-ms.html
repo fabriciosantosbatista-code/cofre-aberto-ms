@@ -831,6 +831,10 @@ function formatCompact(value) {
 }
 function formatDate(iso) {
   if (!iso) return "—";
+  if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) {
+    const [a, m, d] = iso.split("-");
+    return `${d}/${m}/${a}`;
+  }
   return new Date(iso).toLocaleDateString("pt-BR");
 }
 function formatDateTime(iso) {
@@ -2186,6 +2190,8 @@ function renderDetalheCamaraCidade(d, panel) {
   const vereadores = d.vereadores || [];
   const anoRef = new Date().getFullYear();
   const temFinanceiro = vereadores.some(v => v.subsidioMensal != null || v[`totalDiarias${anoRef}`] != null);
+  const temDiarias = vereadores.some(v => (v.diarias || []).length);
+  const inst = d.despesasInstitucionais;
 
   const tabelaFinanceira = () => {
     const temSubsidio = vereadores.some(v => v.subsidioMensal != null);
@@ -2198,15 +2204,17 @@ function renderDetalheCamaraCidade(d, panel) {
         <th class="num"># Diárias</th>
       </tr></thead>
       <tbody>
-        ${vereadores.map(v => `
-          <tr>
+        ${vereadores.map((v, i) => `
+          <tr class="${(v.diarias || []).length ? "clickable" : ""}" data-vidx="${i}">
             <td>${v.nome}${v.referenciaFolha ? `<div style="font-size:.7rem;opacity:.6">${v.referenciaFolha}</div>` : ""}</td>
             ${temSubsidio ? `<td class="num">${v.subsidioMensal != null ? formatBRL(v.subsidioMensal) : "—"}</td>` : ""}
             <td class="num">${v[`totalDiarias${anoRef}`] != null ? formatBRL(v[`totalDiarias${anoRef}`]) : "—"}</td>
             <td class="num">${v[`numDiarias${anoRef}`] ?? "—"}</td>
           </tr>`).join("")}
       </tbody>
-    </table>`;
+    </table>
+    ${temDiarias ? `<p class="section-note" style="margin:8px 0 0">Clique num vereador com diárias para ver o detalhamento (data e descrição de cada viagem).</p>` : ""}
+    <div id="camara-vereador-diarias"></div>`;
   };
 
   const tabelaLegislativa = () => `
@@ -2223,6 +2231,44 @@ function renderDetalheCamaraCidade(d, panel) {
       </tbody>
     </table>`;
 
+  const secaoInstitucional = () => {
+    if (!inst || !inst.despesas?.length) return "";
+    const max = Math.max(...Object.values(inst.porCategoria || {}), 1);
+    const top20 = inst.despesas.slice(0, 20);
+    return `
+      <div class="subhead">Despesas institucionais da Câmara (${anoRef})</div>
+      <p class="section-note">Gasto da Câmara como instituição — não é possível atribuir a um vereador específico (folha de funcionários, contratos, fornecedores etc.).</p>
+      <div class="stat-grid" style="margin:12px 0">
+        <div class="stat-card alt">
+          <p class="stat-label">Total pago (${anoRef})</p>
+          <p class="stat-value">${formatCompact(inst.totalGeral)}</p>
+          <p class="stat-note">${inst.totalNotas} empenhos</p>
+        </div>
+      </div>
+      <div class="bar-list" style="margin-bottom:16px">
+        ${Object.entries(inst.porCategoria).slice(0, 8).map(([cat, val]) => `
+          <div class="bar-list-row">
+            <div class="bar-list-label" title="${cat}">${cat}</div>
+            <div class="bar-list-track"><div class="bar-list-fill positive" style="width:${(val/max*100).toFixed(1)}%"></div></div>
+            <div class="bar-list-value">${formatCompact(val)}</div>
+          </div>`).join("")}
+      </div>
+      <table class="notes-table">
+        <thead><tr><th>Data</th><th>Fornecedor</th><th>Categoria</th><th class="num">Valor</th></tr></thead>
+        <tbody>
+          ${top20.map(e => `
+            <tr>
+              <td style="white-space:nowrap">${formatDate(e.data)}</td>
+              <td>${e.fornecedor || "—"}${e.descricao ? `<div style="font-size:.7rem;opacity:.6">${e.descricao}</div>` : ""}</td>
+              <td style="font-size:.78rem">${e.categoria}</td>
+              <td class="num">${formatBRL(e.valor)}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+      <p class="section-note" style="margin-top:8px;opacity:.6">Mostrando as 20 maiores despesas de ${inst.totalNotas} empenhos no ano.</p>
+    `;
+  };
+
   panel.innerHTML = `
     <div class="detail-header">
       <div class="detail-header-text">
@@ -2236,8 +2282,32 @@ function renderDetalheCamaraCidade(d, panel) {
       </p>` : ""}
     <div class="subhead">Vereadores</div>
     ${temFinanceiro ? tabelaFinanceira() : tabelaLegislativa()}
+    ${secaoInstitucional()}
     <p class="section-note" style="margin-top:14px;opacity:.6">Fonte: ${d.fonte}</p>
   `;
+
+  panel.querySelectorAll("tr.clickable[data-vidx]").forEach(row => {
+    row.addEventListener("click", () => {
+      const v = vereadores[row.dataset.vidx];
+      const box = document.getElementById("camara-vereador-diarias");
+      if (!box) return;
+      const diarias = v.diarias || [];
+      box.innerHTML = `
+        <div class="subhead">Diárias de ${v.nome}</div>
+        <table class="notes-table" style="margin-bottom:16px">
+          <thead><tr><th>Data</th><th>Descrição</th><th class="num">Valor</th></tr></thead>
+          <tbody>
+            ${diarias.map(dr => `
+              <tr>
+                <td style="white-space:nowrap">${formatDate(dr.data)}</td>
+                <td style="font-size:.82rem">${dr.descricao || "—"}</td>
+                <td class="num">${formatBRL(dr.valor)}</td>
+              </tr>`).join("") || `<tr><td colspan="3">Nenhuma diária registrada.</td></tr>`}
+          </tbody>
+        </table>`;
+      box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  });
 }
 
 // ===================== RENDER PREFEITURA =====================
