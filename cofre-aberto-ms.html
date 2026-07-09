@@ -169,6 +169,8 @@ p{margin:0;}
 /* BAR LIST */
 .bar-list{display:flex;flex-direction:column;gap:12px;}
 .bar-list-row{display:grid;grid-template-columns:170px 1fr 96px;align-items:center;gap:12px;font-size:.82rem;}
+.bar-list-row.clickable{border-radius:8px;padding:4px 6px;margin:-4px -6px;transition:background .15s;}
+.bar-list-row.clickable:hover{background:var(--surface-2);}
 .bar-list-label{color:var(--ink);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .bar-list-track{background:var(--surface-3);height:7px;border-radius:4px;overflow:hidden;}
 .bar-list-fill{background:linear-gradient(90deg,var(--accent),#8fb0ff);height:100%;border-radius:4px;transition:width .4s ease;}
@@ -257,8 +259,9 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   .pager-btn{min-height:44px;padding:10px 16px;}
 }
 @media(max-width:600px){
-  .bar-list-row{grid-template-columns:90px 1fr 70px;}
+  .bar-list-row{grid-template-columns:90px 1fr auto;}
   .bar-list-label{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25;}
+  .bar-list-value{white-space:nowrap;}
   .progress-cell,.ranking th:nth-child(5),.ranking td:nth-child(5){display:none;}
   .stat-grid{grid-template-columns:1fr 1fr;}
   .hero-number{font-size:2rem;}
@@ -738,6 +741,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       </div>
       <p class="section-note" id="pres-cartao-nota">Carregando…</p>
       <div class="bar-list" id="pres-cartao-unidades" style="margin-top:12px"></div>
+      <div class="detail-panel" id="pres-cartao-detalhe" style="margin-top:16px"></div>
     </div>
 
     <div class="section">
@@ -2540,12 +2544,44 @@ function renderPresidencia(data) {
   const maxUG = Math.max(...Object.values(porUG), 1);
   document.getElementById("pres-cartao-nota").textContent =
     `${(cartao.totalTransacoes || 0).toLocaleString("pt-BR")} transações, R$ ${(cartao.totalGasto || 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })} no total. O Portal da Transparência não divulga o nome do portador do cartão por sigilo — por isso o gasto é mostrado por unidade gestora, não por pessoa responsável.`;
+  const transacoesPorUG = cartao.transacoesPorUnidadeGestora || {};
   document.getElementById("pres-cartao-unidades").innerHTML = Object.entries(porUG).map(([ug, val]) => `
-    <div class="bar-list-row">
+    <div class="bar-list-row clickable" data-ug="${ug.replace(/"/g, "&quot;")}" style="cursor:pointer">
       <div class="bar-list-label" title="${ug}">${ug}</div>
       <div class="bar-list-track"><div class="bar-list-fill amber" style="width:${(val/maxUG*100).toFixed(1)}%"></div></div>
       <div class="bar-list-value">${formatCompact(val)}</div>
     </div>`).join("") || `<p class="section-note">Nenhuma transação encontrada no período.</p>`;
+
+  const painelCartao = document.getElementById("pres-cartao-detalhe");
+  document.querySelectorAll("#pres-cartao-unidades .bar-list-row.clickable").forEach(row => {
+    row.addEventListener("click", () => {
+      const ug = row.dataset.ug;
+      const transacoes = transacoesPorUG[ug] || [];
+      painelCartao.innerHTML = `
+        <div class="detail-header">
+          <div class="detail-header-text">
+            <h3>${ug}</h3>
+            <div class="detail-meta">${transacoes.length} transações · Total ${formatBRL(porUG[ug])}</div>
+          </div>
+        </div>
+        <table class="notes-table" style="margin-top:12px">
+          <thead><tr><th>Mês do extrato</th><th>Tipo</th><th class="num">Valor</th></tr></thead>
+          <tbody>
+            ${transacoes.slice(0, 300).map(t => `
+              <tr>
+                <td style="white-space:nowrap">${t.mesExtrato || "—"}</td>
+                <td style="font-size:.8rem">${t.tipoCartao || "—"}</td>
+                <td class="num">${formatBRL(t.valor)}</td>
+              </tr>`).join("")}
+          </tbody>
+        </table>
+        ${transacoes.length > 300 ? `<p class="section-note" style="margin-top:8px">Mostrando as 300 transações mais recentes de ${transacoes.length}.</p>` : ""}
+        <p class="section-note" style="margin-top:8px;opacity:.75">O nome do portador de cada cartão não é divulgado pelo Portal da Transparência por sigilo.</p>
+      `;
+      painelCartao.classList.add("active");
+      painelCartao.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  });
 
   // ---- Viagens ----
   const principais = viagens.principais || [];

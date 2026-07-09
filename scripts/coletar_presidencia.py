@@ -86,6 +86,7 @@ def coletar_cartoes_presidencia(api_key):
     total_transacoes = 0
     por_unidade_gestora = {}
     por_mes = {}
+    transacoes_por_ug = {}
 
     pagina = 1
     while True:
@@ -117,11 +118,19 @@ def coletar_cartoes_presidencia(api_key):
             mes = t.get("mesExtrato") or "?"
             por_unidade_gestora[ug] = round(por_unidade_gestora.get(ug, 0) + valor, 2)
             por_mes[mes] = round(por_mes.get(mes, 0) + valor, 2)
+            transacoes_por_ug.setdefault(ug, []).append({
+                "mesExtrato": mes,
+                "valor": round(valor, 2),
+                "tipoCartao": (t.get("tipoCartao") or {}).get("descricao"),
+            })
 
         pagina += 1
         if pagina > 200:
             break
         time.sleep(0.05)
+
+    for ug in transacoes_por_ug:
+        transacoes_por_ug[ug].sort(key=lambda x: x["mesExtrato"][3:] + x["mesExtrato"][:2], reverse=True)
 
     log(f"  {total_transacoes} transações de cartão corporativo, R$ {total_gasto:,.2f}")
     return {
@@ -129,6 +138,7 @@ def coletar_cartoes_presidencia(api_key):
         "totalTransacoes": total_transacoes,
         "porUnidadeGestora": dict(sorted(por_unidade_gestora.items(), key=lambda x: -x[1])),
         "porMes": dict(sorted(por_mes.items(), key=lambda x: x[0][3:] + x[0][:2])),
+        "transacoesPorUnidadeGestora": transacoes_por_ug,
         "nomePortadorDisponivel": False,
     }
 
