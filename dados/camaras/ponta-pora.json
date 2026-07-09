@@ -1,7 +1,7 @@
 {
   "cidade": "Ponta Porã",
-  "ultimaAtualizacao": "2026-07-08T20:01:40",
-  "fonte": "Portal Transparência Fiorilli (contabilidade.pontapora.ms.gov.br) — Dados Abertos — 2026-07-08T20:01:40",
+  "ultimaAtualizacao": "2026-07-09T18:26:24",
+  "fonte": "Portal Transparência Fiorilli (contabilidade.pontapora.ms.gov.br) — Dados Abertos — 2026-07-09T18:26:24",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camarapontapora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -170,7 +170,7 @@
   ],
   "despesasInstitucionais": {
     "totalGeral": 9394283.74,
-    "totalNotas": 162,
+    "totalNotas": 163,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 5902595.31,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 1369305.48,
@@ -183,7 +183,8 @@
       "Equipamentos e Material Permanente": 56389.7,
       "Material de Consumo": 28651.11,
       "Outros Serviços de Terceiros — Pessoa Física": 9000.0,
-      "Passagens e Despesas com Locomoção": 7920.0
+      "Passagens e Despesas com Locomoção": 7920.0,
+      "Obras e Instalações": 0.0
     },
     "despesas": [
       {
@@ -1481,6 +1482,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000008/26 - Ano Mod.: 2026 - Modalidade: CM - DISPENSA - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada no fornecimento, sob de"
+      },
+      {
+        "data": "2026-07-08",
+        "fornecedor": "Raniero Engenharia e Construtora LTDA",
+        "cnpj": "29.641.512/0001-19",
+        "categoria": "Obras e Instalações",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000010/25 - Ano Mod.: 2025 - Modalidade: CM CONCORRÊNCIA - Nº Mod.: 1 - Mod. Formatada: 1 - 1.1.\tContratação de empresa especializada para a execução"
       }
     ]
   }

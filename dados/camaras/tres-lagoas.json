@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-07-08T20:01:40",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-08T20:01:40",
+  "ultimaAtualizacao": "2026-07-09T18:26:24",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-09T18:26:24",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -385,20 +385,20 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 17827965.21,
+    "totalGeral": 18214646.89,
     "totalNotas": 523,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 10617616.95,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 2701385.74,
+      "Obrigações Patronais": 1672008.81,
       "Auxílio-Alimentação": 1485320.93,
-      "Obrigações Patronais": 1425665.39,
       "Diárias — Civil": 420268.07,
-      "Serviços de Tecnologia da Informação": 359523.91,
-      "Locação de Mão de Obra": 228331.5,
-      "Serviços de Consultoria": 164683.06,
-      "Material de Consumo": 137139.48,
+      "Serviços de Tecnologia da Informação": 360604.91,
+      "Locação de Mão de Obra": 273997.8,
+      "Serviços de Consultoria": 196352.88,
+      "Material de Consumo": 137769.48,
+      "Aporte para Cobertura de Déficit Atuarial do RPPS": 122582.28,
       "Outros Benefícios Assistenciais do Servidor": 86987.64,
-      "Aporte para Cobertura de Déficit Atuarial do RPPS": 61291.14,
       "Indenizações e Restituições": 57637.12,
       "Despesas de Exercícios Anteriores": 48725.47,
       "Elemento 94": 18388.81,
@@ -509,7 +509,7 @@
         "fornecedor": "GADU SEGURANCA LTDA",
         "cnpj": "08.953.397/0001-48",
         "categoria": "Locação de Mão de Obra",
-        "valor": 228331.5,
+        "valor": 273997.8,
         "descricao": "Processo 064/23 -  serviços de VIGILÂNCIA PATRIMONIAL DESARMADA, nos períodos diurno e noturno, nas dependências da Câmara Municipal de Três Lagoas-MS."
       },
       {
@@ -517,7 +517,7 @@
         "fornecedor": "SIMPA ASSESSORIA & PLANEJAMENTO LTDA",
         "cnpj": "97.408.090/0001-96",
         "categoria": "Serviços de Consultoria",
-        "valor": 164683.06,
+        "valor": 196352.88,
         "descricao": "Contratação de empresa especializada para prestação de serviços de assessoria em contabilidade pública e assessoramento nos procedimentos licitatórios e contratos administrativos da Câmara Municipal d"
       },
       {
@@ -543,6 +543,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 145305.57,
         "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PREVIDENCIÁRIA (INSS) PATRONAL REF. MES DE MAIO/2026, REF. SERVIDORES VINCULADOS AO REGIME GERAL DA PREVIDENCIA SOCIAL."
+      },
+      {
+        "data": "2026-06-29",
+        "fornecedor": "SECRETARIA DA RECEITA FEDERAL DO BRASIL",
+        "cnpj": "00.394.460/0058-87",
+        "categoria": "Obrigações Patronais",
+        "valor": 143368.28,
+        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PREVIDENCIÁRIA (INSS) PATRONAL REF. MES DE JUNHO/2026, REF. SERVIDORES VINCULADOS AO REGIME GERAL DA PREVIDENCIA SOCIAL."
       },
       {
         "data": "2026-04-30",
@@ -607,6 +615,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 103800.0,
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO VEREADORES (SUBSÍDIOS) VINCULADOS AO RPPS,  REF. EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
+      },
+      {
+        "data": "2026-06-30",
+        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
+        "cnpj": "20.835.263/0001-28",
+        "categoria": "Obrigações Patronais",
+        "valor": 101504.34,
+        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (NORMAL 15%) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DA FOLHA DE PAGAMENTO REF. MÊS DE JUNHO/2026."
       },
       {
         "data": "2026-05-29",
@@ -722,6 +738,14 @@
       },
       {
         "data": "2026-05-29",
+        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
+        "cnpj": "20.835.263/0001-28",
+        "categoria": "Aporte para Cobertura de Déficit Atuarial do RPPS",
+        "valor": 61291.14,
+        "descricao": "DESPESAS REFERENTE A APORTE MENSAL (Plano de Amort. para o Equacionamento do Déficit Atuarial do RPPS Município de Três Lagoas LEI nº 4.442/2026) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊ"
+      },
+      {
+        "data": "2026-06-30",
         "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
         "cnpj": "20.835.263/0001-28",
         "categoria": "Aporte para Cobertura de Déficit Atuarial do RPPS",
@@ -1177,6 +1201,14 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DÉCIMO TERCEIRO VEREADORES VINCULADOS AO RPPS,  REF.  13º 2026 (1ª Parcela)"
       },
       {
+        "data": "2026-03-11",
+        "fornecedor": "MARIA ROSA RODRIGUES TAVARES",
+        "cnpj": "03.813.381/0001-16",
+        "categoria": "Material de Consumo",
+        "valor": 8226.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/26 - Ano Mod.: 2026 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 2 - Mod. Formatada: 000002 - Contratação de empresa para fornecimento de itens a"
+      },
+      {
         "data": "2026-05-20",
         "fornecedor": "A M CHIQUIM - ARTES GRAFICAS",
         "cnpj": "49.470.635/0001-41",
@@ -1199,14 +1231,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 7980.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000017/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 4 - Mod. Formatada: 000004 - Contratação de empresa especializada, na prestação de"
-      },
-      {
-        "data": "2026-03-11",
-        "fornecedor": "MARIA ROSA RODRIGUES TAVARES",
-        "cnpj": "03.813.381/0001-16",
-        "categoria": "Material de Consumo",
-        "valor": 7596.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/26 - Ano Mod.: 2026 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 2 - Mod. Formatada: 000002 - Contratação de empresa para fornecimento de itens a"
       },
       {
         "data": "2026-01-22",
@@ -1271,14 +1295,6 @@
         "categoria": "Material de Consumo",
         "valor": 6606.26,
         "descricao": "Processo 2/25 fornecimento de materiais de limpeza e higienização de uso comum para a Câmara Municipal de Três Lagoas."
-      },
-      {
-        "data": "2026-06-29",
-        "fornecedor": "SECRETARIA DA RECEITA FEDERAL DO BRASIL",
-        "cnpj": "00.394.460/0058-87",
-        "categoria": "Obrigações Patronais",
-        "valor": 6489.35,
-        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PREVIDENCIÁRIA (INSS) PATRONAL REF. MES DE JUNHO/2026, REF. SERVIDORES VINCULADOS AO REGIME GERAL DA PREVIDENCIA SOCIAL."
       },
       {
         "data": "2026-03-20",
@@ -1447,6 +1463,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 5200.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000020/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 6 - Mod. Formatada: 000006 - Contratação de empresa especializada, na prestação de"
+      },
+      {
+        "data": "2026-06-30",
+        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
+        "cnpj": "20.835.263/0001-28",
+        "categoria": "Obrigações Patronais",
+        "valor": 5171.19,
+        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (NORMAL) RELATIVO AO PAGAMENTO DE RENDIMENTOS RECEBIDOS ACUMULADAMENTE - RRA DO SERVIDOR MATRICULA 566-1 PAGO NA FOLHA DE PAGAMENTO REF. MÊS DE JUNHO/2026, C"
       },
       {
         "data": "2026-03-23",
@@ -1705,6 +1729,14 @@
         "descricao": "DESPESA REFERENTE A RESSARCIMENTO DE PASSAGEM AEREA PARA VIAGEM A BRASILIA DO DIA 17 A 23 DE MAIO 26. PARTICIPAR  DO 3º CURSO DE ELABORAÇÃO DE ARTEFATOS DE PLANEJAMENTO DA CONTRATAÇÃO POR MEIO DE INTE"
       },
       {
+        "data": "2026-04-06",
+        "fornecedor": "C. C. CALEJON DOS SANTOS ME",
+        "cnpj": "74.384.231/0001-82",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 3243.0,
+        "descricao": "Processo 61- 21 Locação software - V Termo  aditivo excepcional"
+      },
+      {
         "data": "2026-02-24",
         "fornecedor": "DOURAMOTORS VEICULOS LTDA",
         "cnpj": "02.199.684/0002-09",
@@ -1839,6 +1871,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 2819.79,
         "descricao": "Processo 06/25 Serviço de Limpeza e Higienização da Frota de veículos oficiais da Câmara Municipal de Três Lagoas-MS."
+      },
+      {
+        "data": "2026-06-30",
+        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
+        "cnpj": "20.835.263/0001-28",
+        "categoria": "Obrigações Patronais",
+        "valor": 2788.96,
+        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (AMORTIZAÇÃO) RELATIVO AO PAGAMENTO DE RENDIMENTOS RECEBIDOS ACUMULADAMENTE - RRA DO SERVIDOR MATRICULA 566-1 PAGO NA FOLHA DE PAGAMENTO REF. MÊS DE JUNHO/20"
       },
       {
         "data": "2026-05-22",
@@ -2391,14 +2431,6 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 2162.0,
         "descricao": "Aditivo ao contrato tendo como objeto: Contratação de empresa especializada em locação de 01 (uma) licença de software de gerenciamento de ponto, com fornecimento de 02 (dois) relógios de ponto biomét"
-      },
-      {
-        "data": "2026-04-06",
-        "fornecedor": "C. C. CALEJON DOS SANTOS ME",
-        "cnpj": "74.384.231/0001-82",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 2162.0,
-        "descricao": "Processo 61- 21 Locação software - V Termo  aditivo excepcional"
       },
       {
         "data": "2026-04-14",
@@ -4498,22 +4530,6 @@
       },
       {
         "data": "2026-06-30",
-        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
-        "cnpj": "20.835.263/0001-28",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (NORMAL 15%) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DA FOLHA DE PAGAMENTO REF. MÊS DE JUNHO/2026."
-      },
-      {
-        "data": "2026-06-30",
-        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
-        "cnpj": "20.835.263/0001-28",
-        "categoria": "Aporte para Cobertura de Déficit Atuarial do RPPS",
-        "valor": 0.0,
-        "descricao": "DESPESAS REFERENTE A APORTE MENSAL (Plano de Amort. para o Equacionamento do Déficit Atuarial do RPPS Município de Três Lagoas LEI nº 4.442/2026) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊ"
-      },
-      {
-        "data": "2026-06-30",
         "fornecedor": "MARIA DO SOCORRO SOUSA DO VALE",
         "cnpj": "26.461.086/0001-43",
         "categoria": "Material de Consumo",
@@ -4535,22 +4551,6 @@
         "categoria": "Equipamentos e Material Permanente",
         "valor": 0.0,
         "descricao": "Processo 12/26 Aquisição de máquina de lavar e secar para o uso do setor de copa e cozinha da Câmara Municipal de Três Lagoas-MS."
-      },
-      {
-        "data": "2026-06-30",
-        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
-        "cnpj": "20.835.263/0001-28",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (NORMAL) RELATIVO AO PAGAMENTO DE RENDIMENTOS RECEBIDOS ACUMULADAMENTE - RRA DO SERVIDOR MATRICULA 566-1 PAGO NA FOLHA DE PAGAMENTO REF. MÊS DE JUNHO/2026, C"
-      },
-      {
-        "data": "2026-06-30",
-        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
-        "cnpj": "20.835.263/0001-28",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (AMORTIZAÇÃO) RELATIVO AO PAGAMENTO DE RENDIMENTOS RECEBIDOS ACUMULADAMENTE - RRA DO SERVIDOR MATRICULA 566-1 PAGO NA FOLHA DE PAGAMENTO REF. MÊS DE JUNHO/20"
       },
       {
         "data": "2026-07-01",

@@ -1,7 +1,7 @@
 {
   "cidade": "Sonora",
-  "ultimaAtualizacao": "2026-07-08T20:01:40",
-  "fonte": "Portal Transparência Fiorilli (pmsonora.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-08T20:01:40",
+  "ultimaAtualizacao": "2026-07-09T18:26:24",
+  "fonte": "Portal Transparência Fiorilli (pmsonora.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-09T18:26:24",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasonora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -440,11 +440,11 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 3471069.2,
-    "totalNotas": 246,
+    "totalGeral": 3766124.53,
+    "totalNotas": 250,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 1204915.39,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 667927.75,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 1499897.72,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 668000.75,
       "Diárias — Civil": 346875.0,
       "Serviços de Tecnologia da Informação": 298766.88,
       "Serviços de Consultoria": 271336.06,
@@ -462,7 +462,7 @@
         "fornecedor": "FOLHA DE PAGAMENTO DOS SERVIDORES",
         "cnpj": "24.659.161/0001-50",
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 626920.76,
+        "valor": 770948.1,
         "descricao": "Empenho destinado à cobertura das despesas com a folha de pagamento da remuneração dos servidores ocupantes de cargos em comissão da Câmara Municipal, referente ao exercício financeiro de 2026, confor"
       },
       {
@@ -470,8 +470,16 @@
         "fornecedor": "FOLHA DE PAGAMENTO DOS VEREADORES",
         "cnpj": "24.659.161/0001-50",
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 411000.0,
+        "valor": 525400.0,
         "descricao": "Empenho destinado à cobertura das despesas com a folha de pagamento dos subsídios dos Vereadores da Câmara Municipal, referente ao exercício financeiro de 2026, nos termos da legislação municipal vige"
+      },
+      {
+        "data": "2026-01-05",
+        "fornecedor": "FOLHA DE PAGAMENTO DOS SERVIDORES",
+        "cnpj": "24.659.161/0001-50",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 203549.62,
+        "descricao": "Empenho destinado à cobertura das despesas com a folha de pagamento dos vencimentos dos servidores efetivos da Câmara Municipal, referente ao exercício financeiro de 2026, conforme legislação vigente."
       },
       {
         "data": "2026-01-05",
@@ -480,14 +488,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 169359.74,
         "descricao": "Empenho destinado à cobertura das despesas com as contribuições previdenciárias patronais devidas ao INSS, incidentes sobre a folha de pagamento da Câmara Municipal, referente ao exercício financeiro"
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "FOLHA DE PAGAMENTO DOS SERVIDORES",
-        "cnpj": "24.659.161/0001-50",
-        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 166994.63,
-        "descricao": "Empenho destinado à cobertura das despesas com a folha de pagamento dos vencimentos dos servidores efetivos da Câmara Municipal, referente ao exercício financeiro de 2026, conforme legislação vigente."
       },
       {
         "data": "2026-01-21",
@@ -2098,6 +2098,14 @@
         "descricao": "Empenho destinado à concessão de 1 (uma) diária ao servidor Deiwton Fernando Santos Silva, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 29 de abril de 2026"
       },
       {
+        "data": "2026-01-21",
+        "fornecedor": "CAIXA ECONOMICA FEDERAL",
+        "cnpj": "00.360.305/0001-04",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 452.0,
+        "descricao": "Empenho destinado à cobertura das despesas com tarifas bancárias decorrentes da prestação de serviços bancários pela Caixa Econômica Federal, relacionados à manutenção e movimentação das contas da Câm"
+      },
+      {
         "data": "2026-05-29",
         "fornecedor": "AHARDS SISTEMAS S/A",
         "cnpj": "08.202.415/0001-50",
@@ -2120,14 +2128,6 @@
         "categoria": "Diárias — Civil",
         "valor": 400.0,
         "descricao": "Empenho destinado à concessão de 1/2 (meia) diária ao servidor Deiwton Fernando Santos Silva, para custear despesas com deslocamento e alimentação na cidade de Rondonópolis/MT, no dia 19 de junho de 2"
-      },
-      {
-        "data": "2026-01-21",
-        "fornecedor": "CAIXA ECONOMICA FEDERAL",
-        "cnpj": "00.360.305/0001-04",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 379.0,
-        "descricao": "Empenho destinado à cobertura das despesas com tarifas bancárias decorrentes da prestação de serviços bancários pela Caixa Econômica Federal, relacionados à manutenção e movimentação das contas da Câm"
       },
       {
         "data": "2026-04-23",
@@ -2424,6 +2424,38 @@
         "categoria": "Diárias — Civil",
         "valor": 0.0,
         "descricao": "Empenho destinado à concessão de 2 (duas) diárias à servidora Dailsa Celestino Soares, para custear despesas com deslocamento, alimentação e estadia na cidade de Campo Grande/MS, no período de 07 a 08"
+      },
+      {
+        "data": "2026-07-08",
+        "fornecedor": "CLOTILDE DE SOUSA SILVA CASTRO",
+        "cnpj": "018.XXX.XXX-02",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "Empenho destinado à concessão de 3 (três) diárias à Vereadora Clotilde de Sousa Silva Castro, para custear despesas com deslocamento, alimentação e estadia na cidade de Campo Grande/MS, no período de"
+      },
+      {
+        "data": "2026-07-08",
+        "fornecedor": "DEIWTON FERNANDO SANTOS SILVA",
+        "cnpj": "025.XXX.XXX-62",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "Empenho destinado à concessão de 3 (três) diárias ao servidor Deiwton Fernando Santos Silva, ocupante do cargo de motorista, para custear despesas com deslocamento, alimentação e estadia na cidade de"
+      },
+      {
+        "data": "2026-07-08",
+        "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
+        "cnpj": "21.456.790/0001-94",
+        "categoria": "Material de Consumo",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000021/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 17 - Mod. Formatada: 17 - Prestação de serviços de revisão corretiva do sistema de freios"
+      },
+      {
+        "data": "2026-07-08",
+        "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
+        "cnpj": "21.456.790/0001-94",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000021/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 17 - Mod. Formatada: 17 - Prestação de serviços de revisão corretiva do sistema de freios"
       }
     ]
   }
