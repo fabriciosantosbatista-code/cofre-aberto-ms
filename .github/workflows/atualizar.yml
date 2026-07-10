@@ -29,12 +29,6 @@ jobs:
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
         run: python3 scripts/coletar_dados.py
 
-      - name: Coletar dados da Presidência
-        env:
-          PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
-        run: python3 scripts/coletar_presidencia.py
-        continue-on-error: true
-
       - name: Commit e push
         if: always()
         run: |
