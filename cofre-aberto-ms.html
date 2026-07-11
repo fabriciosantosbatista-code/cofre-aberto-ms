@@ -59,6 +59,7 @@
   --ink:          #f0f3fa;
   --ink-soft:     #8b95aa;
   --ink-faint:    #454d60;
+  --ink-caption:  #6b7387;
   --accent:       #f5c842;
   --accent-glow:  rgba(245,200,66,.15);
   --accent-soft:  #251e08;
@@ -93,12 +94,12 @@ p{margin:0;}
 .sidebar-logo{font-family:var(--font-display);font-weight:800;font-size:1.05rem;letter-spacing:-.02em;padding:0 8px 18px;display:flex;align-items:center;gap:9px;color:var(--ink);}
 .sidebar-logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#4d7dff,#2dd4a0);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:.78rem;font-weight:800;flex-shrink:0;box-shadow:0 2px 8px rgba(77,125,255,.4);}
 .sidebar nav{display:flex;flex-direction:column;gap:1px;}
-.sidebar nav button{display:flex;align-items:center;gap:9px;text-align:left;background:none;border:none;color:var(--ink-soft);font-family:var(--font-body);font-size:.83rem;font-weight:500;padding:8px 10px;border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;width:100%;}
+.sidebar nav button{display:flex;align-items:center;gap:9px;text-align:left;background:none;border:none;color:var(--ink-soft);font-family:var(--font-body);font-size:.875rem;font-weight:500;padding:8px 10px;border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;width:100%;}
 .sidebar nav button .dot{width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .15s;}
 .sidebar nav button.active{background:var(--accent-soft);color:#7fa8ff;font-weight:600;}
 .sidebar nav button.active .dot{background:var(--accent);box-shadow:0 0 6px var(--accent);}
 .sidebar nav button:hover:not(.active){background:var(--surface-2);color:var(--ink);}
-.nav-group-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);font-weight:700;padding:14px 10px 4px;}
+.nav-group-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-caption);font-weight:700;padding:14px 10px 4px;}
 .sidebar-divider{height:1px;background:var(--border);margin:8px 10px;}
 .sidebar-status{margin-top:auto;padding:12px 10px;border-radius:var(--radius-md);background:var(--surface-2);border:1px solid var(--border);font-size:.7rem;color:var(--ink-soft);}
 .sidebar-status .row{display:flex;justify-content:space-between;margin-bottom:3px;}
@@ -116,7 +117,7 @@ p{margin:0;}
 /* HERO */
 .section-hero{background:linear-gradient(135deg,var(--surface-2) 0%,var(--surface) 100%);border:1px solid var(--border);border-radius:var(--radius-xl);padding:28px 32px 24px;margin-bottom:24px;position:relative;overflow:hidden;}
 .section-hero::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--positive));}
-.hero-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-faint);font-weight:700;margin-bottom:8px;}
+.hero-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-caption);font-weight:700;margin-bottom:8px;}
 .hero-number{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,5vw,3rem);letter-spacing:-.03em;color:var(--accent);line-height:1.1;margin-bottom:8px;}
 .hero-sub{font-size:.82rem;color:var(--ink-soft);margin-bottom:4px;}
 .hero-desc{font-size:.88rem;color:var(--ink-soft);max-width:640px;}
@@ -134,7 +135,7 @@ p{margin:0;}
 
 /* RANKING */
 .ranking{width:100%;border-collapse:collapse;font-size:.84rem;}
-.ranking th{text-align:left;padding:11px 16px;font-size:.65rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);font-weight:700;white-space:nowrap;border-bottom:1px solid var(--border);background:var(--surface-2);}
+.ranking th{text-align:left;padding:11px 16px;font-size:.65rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-caption);font-weight:700;white-space:nowrap;border-bottom:1px solid var(--border);background:var(--surface-2);}
 .ranking th.num,.ranking td.num{text-align:right;font-family:var(--font-mono);}
 .ranking td.num{color:var(--accent);}
 .ranking td{padding:10px 16px;border-bottom:1px solid var(--border-soft);vertical-align:middle;}
@@ -147,7 +148,7 @@ p{margin:0;}
 .ranking tbody tr:nth-child(2) .rank-pos{background:var(--surface-3);color:var(--ink-soft);}
 .ranking tbody tr:nth-child(3) .rank-pos{background:#2a1a12;color:#e89c72;}
 .rank-name{font-weight:600;color:var(--ink);font-size:.85rem;}
-.rank-meta{color:var(--ink-faint);font-size:.73rem;}
+.rank-meta{color:var(--ink-caption);font-size:.73rem;}
 .rank-person{display:flex;align-items:center;gap:10px;}
 
 /* AVATARS */
@@ -182,7 +183,7 @@ p{margin:0;}
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:6px;}
 .stat-card{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;}
 .stat-card.alt{background:var(--accent-soft);border-color:rgba(77,125,255,.25);}
-.stat-card .stat-label{font-size:.63rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);font-weight:700;margin-bottom:6px;}
+.stat-card .stat-label{font-size:.63rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-caption);font-weight:700;margin-bottom:6px;}
 .stat-card .stat-value{font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:var(--accent);letter-spacing:-.02em;}
 .stat-card .stat-note{font-size:.7rem;color:var(--ink-soft);margin-top:4px;}
 
@@ -254,8 +255,10 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   .section-hero{padding:20px;border-radius:var(--radius-lg);}
   #busca-global{min-height:44px!important;font-size:16px!important;padding:11px 14px!important;}
   /* Tabelas de ranking: rolagem horizontal em vez de cortar colunas */
-  .card:has(> table.ranking){overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .card:has(> table.ranking){overflow-x:auto;-webkit-overflow-scrolling:touch;position:relative;}
   .card:has(> table.ranking) table.ranking{min-width:480px;}
+  /* Dica visual de que a tabela rola horizontalmente */
+  .card:has(> table.ranking)::after{content:"";position:absolute;top:0;right:0;bottom:0;width:20px;background:linear-gradient(to right,transparent,var(--surface));pointer-events:none;}
   .pager-btn{min-height:44px;padding:10px 16px;}
 }
 @media(max-width:600px){
@@ -1130,7 +1133,7 @@ async function buscarDeputadosAoVivo(siglaUf, onProgress, incluirDespesas = true
       gabinete: {
         verbaGabineteMensal: VERBA_GABINETE,
         equipeEstimada: estimarEquipeGabinete(),
-        equipeEstimadaNota: `Estimativa: número de secretários parlamentares que a verba de gabinete sustentaria considerando o salário médio da faixa oficial (entre ${formatBRL(SALARIO_MIN_SECRETARIO)} e ${formatBRL(SALARIO_MAX_SECRETARIO)}). O número real e os salários individuais variam por gabinete e não são publicados de forma individualizada.`,
+        equipeEstimadaNota: `Estimativa: verba de gabinete ÷ salário médio da faixa oficial (${formatBRL(SALARIO_MIN_SECRETARIO)}–${formatBRL(SALARIO_MAX_SECRETARIO)}). Números reais variam por gabinete e não são publicados individualmente.`,
       },
       custoEstimadoAnual: estimarCustoAnual(totalAno),
       totalNotasFiscais: todasDespesas.length,
@@ -3095,7 +3098,7 @@ async function init() {
       gabinete: {
         verbaGabineteMensal: VERBA_GABINETE,
         equipeEstimada: estimarEquipeGabinete(),
-        equipeEstimadaNota: `Estimativa: número de secretários parlamentares que a verba de gabinete sustentaria considerando o salário médio da faixa oficial (entre ${formatBRL(SALARIO_MIN_SECRETARIO)} e ${formatBRL(SALARIO_MAX_SECRETARIO)}). O número real e os salários individuais variam por gabinete e não são publicados de forma individualizada.`,
+        equipeEstimadaNota: `Estimativa: verba de gabinete ÷ salário médio da faixa oficial (${formatBRL(SALARIO_MIN_SECRETARIO)}–${formatBRL(SALARIO_MAX_SECRETARIO)}). Números reais variam por gabinete e não são publicados individualmente.`,
       },
       custoEstimadoAnual: estimarCustoAnual(d.cotaGastaAno),
       totalNotasFiscais: d.totalNotasFiscais ?? 0,
