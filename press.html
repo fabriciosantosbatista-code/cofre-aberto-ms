@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Kit de Imprensa — Cofre Aberto MS</title>
+
+<!-- SEO -->
+<meta name="description" content="Kit de imprensa do Cofre Aberto MS: descrição do projeto, números reais de gastos públicos catalogados, sugestões de pauta para veículos de Mato Grosso do Sul e contato para jornalistas."/>
+<meta name="keywords" content="cofre aberto MS imprensa, kit de imprensa transparência MS, pauta gastos públicos Campo Grande, assessoria de imprensa cofre aberto"/>
+<meta name="author" content="Cofre Aberto MS"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://cofreabertoms.com.br/press.html"/>
+
+<meta name="geo.region" content="BR-MS"/>
+<meta name="geo.placename" content="Campo Grande, Mato Grosso do Sul"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://cofreabertoms.com.br/press.html"/>
+<meta property="og:title" content="Kit de Imprensa — Cofre Aberto MS"/>
+<meta property="og:description" content="Números, sugestões de pauta e contato para jornalistas que queiram cobrir o Cofre Aberto MS."/>
+<meta property="og:image" content="https://cofreabertoms.com.br/og-image.png"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:site_name" content="Cofre Aberto MS"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Kit de Imprensa — Cofre Aberto MS"/>
+<meta name="twitter:description" content="Números, sugestões de pauta e contato para jornalistas."/>
+<meta name="twitter:image" content="https://cofreabertoms.com.br/og-image.png"/>
+
+<link rel="icon" type="image/x-icon" href="favicon.ico"/><link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#070910;--surface:#0f1117;--surface-2:#161a23;
+  --border:#232839;--ink:#f0f3fa;--ink-soft:#8b95aa;--ink-faint:#454d60;--ink-caption:#6b7387;
+  --accent:#4d7dff;--accent-btn:#3f6bf0;--positive:#2dd4a0;--amber:#f5c842;
+}
+html,body{min-height:100vh;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.page{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 24px;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.voltar{font-size:.85rem;color:var(--ink-soft);display:inline-flex;align-items:center;gap:6px;transition:color .15s;}
+.voltar:hover{color:var(--accent);}
+.nav-cta{background:var(--accent-btn);color:#fff;border:none;border-radius:8px;padding:9px 20px;font-weight:600;font-size:.88rem;cursor:pointer;font-family:inherit;transition:all .15s;}
+.nav-cta:hover{background:#3556c9;}
+
+header.hero{padding:40px 0 8px;}
+header.hero .kicker{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-caption);font-weight:700;margin-bottom:10px;}
+header.hero h1{font-family:"Sora",sans-serif;font-size:clamp(1.9rem,4.5vw,2.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px;}
+header.hero p.subtitulo{font-size:1rem;color:var(--ink-soft);line-height:1.65;max-width:680px;margin-bottom:8px;}
+
+.whatsapp-cta{display:inline-flex;align-items:center;gap:8px;background:#1c3a2c;border:1px solid #25D366;color:#4ee08a;border-radius:10px;padding:12px 22px;font-weight:700;font-size:.92rem;margin:20px 0 8px;transition:all .15s;}
+.whatsapp-cta:hover{background:#25D366;color:#06210f;}
+
+article{padding:24px 0 60px;}
+article h2{font-family:"Sora",sans-serif;font-size:1.4rem;font-weight:800;letter-spacing:-.01em;margin:40px 0 14px;}
+article h2:first-child{margin-top:0;}
+article p{font-size:.95rem;color:var(--ink-soft);line-height:1.75;margin-bottom:14px;}
+article p strong{color:var(--ink);}
+article ul,article ol{margin:0 0 16px 1.3rem;color:var(--ink-soft);font-size:.92rem;line-height:1.7;}
+article ul li,article ol li{margin-bottom:8px;}
+article ol li strong{color:var(--ink);}
+article .nota{font-size:.82rem;color:var(--ink-caption);font-style:italic;margin-top:-4px;}
+
+table.numeros{width:100%;border-collapse:collapse;margin:16px 0 8px;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+table.numeros td{padding:14px 16px;border-bottom:1px solid var(--border);font-size:.9rem;vertical-align:top;}
+table.numeros tr:last-child td{border-bottom:none;}
+table.numeros td.valor{font-family:"Sora",sans-serif;font-weight:800;color:var(--amber);white-space:nowrap;width:1%;}
+table.numeros td.desc{color:var(--ink-soft);}
+
+.contato-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:8px;}
+.contato-box dl{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:.9rem;}
+.contato-box dt{color:var(--ink-caption);font-weight:600;}
+.contato-box dd{color:var(--ink);}
+.contato-box dd a{color:var(--accent);}
+
+.download-box{background:var(--surface);border:1px dashed var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 0;font-size:.85rem;color:var(--ink-soft);}
+.download-box a{color:var(--accent);font-weight:600;}
+
+footer{border-top:1px solid var(--border);padding:24px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+footer p{font-size:.78rem;color:var(--ink-caption);}
+footer .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+footer .footer-links a{font-size:.78rem;color:var(--ink-soft);text-decoration:none;}
+footer .footer-links a:hover{color:var(--accent);}
+footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
+
+@media(max-width:640px){
+  .page{padding:0 16px;}
+  table.numeros td{padding:12px;font-size:.85rem;}
+  footer{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <div class="nav-logo">
+      <a href="index.html"><img src="logo.svg" alt="Cofre Aberto MS" width="147" height="44" style="display:block"/></a>
+    </div>
+    <button class="nav-cta" onclick="window.location.href='cofre-aberto-ms.html'">Acessar o painel →</button>
+  </nav>
+
+  <a href="index.html" class="voltar" style="margin-top:18px;display:inline-flex;">← Voltar para o site</a>
+
+  <header class="hero">
+    <div class="kicker">Kit de imprensa</div>
+    <h1>Kit de Imprensa — Cofre Aberto MS</h1>
+    <p class="subtitulo">Informações para jornalistas que queiram cobrir o Cofre Aberto MS: descrição do projeto, números reais, sugestões de pauta e contato direto.</p>
+    <p class="nota">Última atualização: julho de 2026</p>
+    <a class="whatsapp-cta" href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Sou%20jornalista%20e%20gostaria%20de%20falar%20sobre%20o%20Cofre%20Aberto%20MS." target="_blank" rel="noopener">💬 Falar com a equipe no WhatsApp</a>
+  </header>
+
+  <article>
+    <p>Este documento reúne informações para jornalistas que queiram cobrir o <strong>Cofre Aberto MS</strong>, uma plataforma independente de transparência pública sobre gastos de parlamentares e da Prefeitura de Campo Grande.</p>
+
+    <h2>O que é o Cofre Aberto MS</h2>
+    <p>O <strong>Cofre Aberto MS</strong> (<a href="https://cofreabertoms.com.br" style="color:var(--accent)">cofreabertoms.com.br</a>) é um projeto independente e sem vínculo com qualquer partido, governo ou órgão público, que reúne em um único painel os gastos de:</p>
+    <ul>
+      <li>29 vereadores da Câmara Municipal de Campo Grande</li>
+      <li>24 deputados estaduais da Assembleia Legislativa de MS (ALEMS)</li>
+      <li>8 deputados federais de Mato Grosso do Sul</li>
+      <li>3 senadores de Mato Grosso do Sul</li>
+      <li>Prefeitura Municipal de Campo Grande</li>
+      <li>Além de listas completas dos 513 deputados federais e 81 senadores do Brasil, e de câmaras municipais de outras 19 cidades do interior de MS.</li>
+    </ul>
+    <p>Todos os dados vêm diretamente de fontes oficiais — Portal da Transparência da Câmara de Campo Grande, da ALEMS, da Câmara dos Deputados e do Senado Federal — e são <strong>coletados e publicados automaticamente todos os dias</strong>, sem edição manual. Cada nota fiscal é individualizada: fornecedor, CNPJ, valor e, quando disponível, link para o documento original.</p>
+    <p>O projeto nasceu da constatação de que, embora esses dados sejam legalmente públicos, eles estão espalhados em dezenas de sistemas diferentes — muitos em PDFs individuais, sem busca, sem padronização — o que na prática dificulta o acesso do cidadão comum. O Cofre Aberto MS consolida tudo isso em um único lugar, gratuito e sem cadastro.</p>
+
+    <h2>Números que chamam atenção</h2>
+    <table class="numeros">
+      <tr><td class="valor">11.770</td><td class="desc">Notas fiscais individuais catalogadas (fornecedor, CNPJ e valor)</td></tr>
+      <tr><td class="valor">R$ 2,2 bi+</td><td class="desc">Total de gastos públicos catalogados no painel (Prefeitura de CG, verba indenizatória, CEAP estadual e federal, emendas parlamentares)</td></tr>
+      <tr><td class="valor">R$ 2,0 bi</td><td class="desc">Total de despesas da Prefeitura de Campo Grande catalogadas, com 6.688 notas fiscais</td></tr>
+      <tr><td class="valor">R$ 3,5 mi</td><td class="desc">Verba indenizatória paga aos 29 vereadores de Campo Grande em 2026</td></tr>
+      <tr><td class="valor">R$ 7,6 mi</td><td class="desc">CEAP paga aos 24 deputados estaduais de MS em 2026</td></tr>
+      <tr><td class="valor">R$ 236,7 mi</td><td class="desc">Emendas parlamentares pagas em Mato Grosso do Sul em 2026</td></tr>
+      <tr><td class="valor">R$ 4,3 mi/mês</td><td class="desc">Gasto com folha de pessoal nos 29 gabinetes da Câmara de Campo Grande (678 funcionários)</td></tr>
+      <tr><td class="valor">29</td><td class="desc">Vereadores de Campo Grande com dados públicos individualizados</td></tr>
+      <tr><td class="valor">100%</td><td class="desc">Dos dados vêm de fontes oficiais — nenhum valor é estimado sem indicação clara</td></tr>
+    </table>
+    <p class="nota">Todos os números são recalculados automaticamente pela coleta diária e podem variar ligeiramente a cada consulta — os valores acima refletem o estado do painel na data desta atualização.</p>
+
+    <h2>Sugestões de pauta</h2>
+    <p>Ideias de matéria pensadas para veículos de Mato Grosso do Sul (como <strong>Campo Grande News</strong>, <strong>Correio do Estado</strong> e <strong>Midiamax</strong>), com dados já apurados e prontos para citação:</p>
+    <ol>
+      <li><strong>"Quem mais e quem menos gastou a verba indenizatória em 2026"</strong> — entre os 29 vereadores de Campo Grande, o levantamento aponta uma diferença expressiva no uso da cota anual de R$ 300 mil por gabinete: de vereadores que já usaram mais de 40% da cota a outros que ainda não registraram nenhuma nota fiscal. Bom gancho para pedir explicação aos gabinetes nos dois extremos.</li>
+      <li><strong>"A Câmara de Campo Grande é a única do estado que não publica a verba indenizatória em formato de dados abertos"</strong> — enquanto a maioria das câmaras municipais de MS usa sistemas com API pública (Fiorilli, SAPL), a Câmara de Campo Grande só divulga a verba indenizatória em PDFs individuais por vereador, dificultando a fiscalização por qualquer sistema automatizado, inclusive por este projeto.</li>
+      <li><strong>"R$ 4,3 milhões por mês: o custo da folha de pessoal dos gabinetes da Câmara de Campo Grande"</strong> — com 678 funcionários distribuídos entre 29 gabinetes, uma média de quase 24 funcionários por vereador. Bom gancho para comparar com outras capitais de porte semelhante.</li>
+      <li><strong>"Emendas parlamentares somam R$ 236,7 milhões em MS neste ano"</strong> — matéria sobre para onde vai o dinheiro das emendas de deputados e senadores sul-mato-grossenses, com o ranking por parlamentar disponível no painel.</li>
+      <li><strong>"Site mostra nota fiscal por nota fiscal de vereadores, deputados e senadores de MS"</strong> — pauta de perfil sobre o próprio projeto: como foi feito, quem mantém, que dificuldades a coleta automática enfrenta (PDFs, sistemas fora do ar, formatos inconsistentes entre câmaras).</li>
+      <li><strong>"CEAP dos deputados estaduais de MS: veja onde cada um gastou"</strong> — releitura local do tipo de matéria que já é comum sobre a Câmara dos Deputados em Brasília, mas aplicada à ALEMS, com dados que raramente chegam à imprensa local em formato consolidado.</li>
+    </ol>
+    <p>Essas sugestões usam apenas dados já publicados e verificáveis no painel — nenhuma acusação é feita sobre irregularidade; o enquadramento sugerido é de <strong>prestação de contas e comparação</strong>, não de denúncia.</p>
+
+    <h2>Como o projeto pode ajudar na apuração</h2>
+    <ul>
+      <li>Todos os números deste kit têm origem rastreável no painel — qualquer dado pode ser conferido clicando no parlamentar correspondente em <a href="cofre-aberto-ms.html" style="color:var(--accent)">cofreabertoms.com.br/cofre-aberto-ms.html</a>.</li>
+      <li>Cada nota fiscal individual mostra fornecedor, CNPJ e valor; quando o órgão de origem publica o link do documento, ele também aparece no painel.</li>
+      <li>A pessoa responsável pelo projeto está disponível para entrevista, esclarecimentos sobre metodologia ou para levantar um recorte específico de dados a pedido da reportagem.</li>
+    </ul>
+
+    <h2>Screenshots sugeridos para a matéria</h2>
+    <p>Ao usar imagens do site, sugerimos:</p>
+    <ol>
+      <li><strong>Tela inicial</strong> (cofreabertoms.com.br) — mostra a proposta do projeto e os números gerais.</li>
+      <li><strong>Painel da Câmara de Campo Grande</strong> — tabela de ranking de gastos com verba indenizatória dos 29 vereadores.</li>
+      <li><strong>Detalhe de um vereador</strong> (clicando em qualquer nome) — mostra subsídio, verba indenizatória, gabinete e lista de notas fiscais individuais.</li>
+      <li><strong>Aba "Dep. Estaduais MS"</strong> — ranking de CEAP dos 24 deputados da ALEMS.</li>
+      <li><strong>Aba "Câmaras MS"</strong> — mapa de quais das 20 cidades catalogadas já têm dados públicos disponíveis, útil para ilustrar a fragmentação dos sistemas de transparência no interior do estado.</li>
+    </ol>
+    <p class="nota">Capturas de tela do site podem ser usadas livremente pela imprensa, com crédito a "Cofre Aberto MS".</p>
+
+    <h2>Contato</h2>
+    <div class="contato-box">
+      <dl>
+        <dt>Site</dt>
+        <dd><a href="https://cofreabertoms.com.br">cofreabertoms.com.br</a></dd>
+        <dt>WhatsApp</dt>
+        <dd><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Sou%20jornalista%20e%20gostaria%20de%20falar%20sobre%20o%20Cofre%20Aberto%20MS." target="_blank" rel="noopener">(67) 98209-5384</a></dd>
+        <dt>E-mail</dt>
+        <dd>disponível mediante contato via WhatsApp</dd>
+      </dl>
+    </div>
+
+    <h2>Sobre o projeto</h2>
+    <p>Cofre Aberto MS é um projeto independente de transparência cidadã, sem fins lucrativos e sem vínculo oficial com qualquer partido, candidato, governo ou órgão público. Todos os dados exibidos são públicos por lei (Lei de Acesso à Informação, nº 12.527/2011) e foram coletados diretamente dos portais de transparência oficiais citados ao longo deste documento.</p>
+
+    <div class="download-box">
+      📄 Prefere o formato Markdown? Veja a versão fonte deste kit em <a href="https://github.com/fabriciosantosbatista-code/cofre-aberto-ms/blob/main/PRESS.md" target="_blank" rel="noopener">PRESS.md no GitHub</a>.
+    </div>
+  </article>
+
+  <footer>
+    <div style="display:flex;align-items:center;gap:12px"><img src="logo.svg" alt="Cofre Aberto MS" width="93" height="28"/><p style="margin:0">© 2026 — Dados públicos de MS</p></div>
+    <div class="footer-links">
+      <a href="index.html">Início</a>
+      <a href="cofre-aberto-ms.html">Painel completo</a>
+      <a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener" class="footer-whatsapp">💬 WhatsApp: (67) 98209-5384</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
