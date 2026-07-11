@@ -8,7 +8,7 @@ on:
 jobs:
   atualizar:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
       - name: Checkout
@@ -22,12 +22,15 @@ jobs:
           python-version: '3.11'
 
       - name: Instalar dependências
-        run: pip install requests Pillow
+        run: pip install requests Pillow pypdf
 
       - name: Coletar dados
         env:
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
         run: python3 scripts/coletar_dados.py
+
+      - name: Coletar Verba Indenizatória (Câmara CG)
+        run: python3 scripts/coletar_verba_camara_cg.py
 
       - name: Commit e push
         if: always()
