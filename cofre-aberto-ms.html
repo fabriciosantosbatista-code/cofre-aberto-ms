@@ -832,6 +832,14 @@ function formatCompact(value) {
   if (Math.abs(value) >= 1e3) return "R$ " + (value / 1e3).toFixed(1).replace(".", ",") + " mil";
   return formatBRL(value);
 }
+const MESES_ABREV_CURTO = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+function mesesDesdeJaneiro() {
+  return new Date().getMonth() + 1; // jan=1 ... dez=12
+}
+function labelEstimativaAnual() {
+  const n = mesesDesdeJaneiro();
+  return `jan-${MESES_ABREV_CURTO[n - 1]}/${new Date().getFullYear()}`;
+}
 function formatDate(iso) {
   if (!iso) return "—";
   if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) {
@@ -973,6 +981,10 @@ let DADOS_SENADORES_BRASIL = {};
 
 // Emendas parlamentares de deputados federais e senadores de MS (Portal da Transparência)
 let DADOS_EMENDAS_MS = {};
+
+// Deputados federais de MS e do Brasil — usados pela busca global (ver initBuscaGlobal)
+let DADOS_DEPUTADOS_FEDERAIS_MS = [];
+let DADOS_DEPUTADOS_FEDERAIS_BRASIL = [];
 function buscarEmendasParlamentar(nome) {
   return (DADOS_EMENDAS_MS.parlamentares || []).find(p => p.nome === nome) || null;
 }
@@ -1851,9 +1863,9 @@ function renderCamaraMunicipal(data) {
           <p class="stat-value">${formatBRL(gabinete.gastoPessoalMensal)}</p>
         </div>
         <div class="stat-card alt">
-          <p class="stat-label">Estimativa jan-mai/2026</p>
-          <p class="stat-value">${formatCompact(gabinete.estimativaJanMai2026)}</p>
-          <p class="stat-note">5 meses de folha idêntica</p>
+          <p class="stat-label">Estimativa ${labelEstimativaAnual()}</p>
+          <p class="stat-value">${formatCompact((gabinete.gastoPessoalMensal || 0) * mesesDesdeJaneiro())}</p>
+          <p class="stat-note">${mesesDesdeJaneiro()} meses de folha idêntica</p>
         </div>
       </div>
 
@@ -2020,7 +2032,7 @@ function renderDeputadosEstaduais(data) {
             <div class="rank-name">${d.nome}</div>
           </div>
         </td>
-        <td class="rank-meta">${d.partido}</td>
+        <td class="rank-meta">${d.partido || "—"}</td>
         <td class="num">${ceap ? formatBRL(ceap) : formatBRL(d.salarioBase)}</td>
         <td class="progress-cell">${progressBar(pct, "amber")}</td>
       </tr>`;
@@ -2061,7 +2073,7 @@ function renderDeputadosEstaduais(data) {
         ${avatarHTML(d.nome, d.foto, "avatar-lg")}
         <div class="detail-header-text">
           <h3>${d.nome}</h3>
-          <div class="detail-meta">${d.partido} · Deputado(a) Estadual — ALEMS</div>
+          <div class="detail-meta">${d.partido || "—"} · Deputado(a) Estadual — ALEMS</div>
         </div>
       </div>
 
@@ -2810,7 +2822,7 @@ function renderRankingsGerais() {
   for (const v of DADOS_CAMARA_MUNICIPAL.vereadores || []) {
     const verba = v.verbaIndenizatoria || {};
     const gabinete = v.gabinete || {};
-    const gasto = (verba.gastoPago2026 || 0) + ((gabinete.gastoPessoalMensal || 0) * 5);
+    const gasto = (verba.gastoPago2026 || 0) + ((gabinete.gastoPessoalMensal || 0) * mesesDesdeJaneiro());
     todos.push({
       id: `vereador-${v.nome}`,
       nome: v.nome,
@@ -2900,11 +2912,10 @@ function renderRankingsGerais() {
 }
 
 // ===================== BUSCA GLOBAL =====================
-function initBuscaGlobal() {
-  const input = document.getElementById("busca-global");
-  if (!input) return;
-
-  // Índice de todos os parlamentares
+function montarIndiceBusca() {
+  // Montado a cada busca (não uma vez só no init) porque os dados chegam via
+  // fetch assíncrono — construir a lista uma única vez no carregamento corria
+  // o risco de rodar antes dos dados existirem e nunca mais ser refeito.
   const todos = [];
 
   for (const v of DADOS_CAMARA_MUNICIPAL.vereadores || [])
@@ -2913,6 +2924,17 @@ function initBuscaGlobal() {
     todos.push({ nome: d.nome, partido: d.partido, tab: "deputados-estaduais", label: "Dep. Estadual" });
   for (const s of DADOS_SENADORES_BRASIL.senadores || [])
     todos.push({ nome: s.nome, partido: s.partido, uf: s.uf, tab: s.uf === "MS" ? "senadores" : "senado-brasil", label: `Senador(a) ${s.uf}` });
+  for (const d of DADOS_DEPUTADOS_FEDERAIS_MS || [])
+    todos.push({ nome: d.nome, partido: d.partido, tab: "deputados", label: "Dep. Federal MS" });
+  for (const d of DADOS_DEPUTADOS_FEDERAIS_BRASIL || [])
+    todos.push({ nome: d.nome, partido: d.partido, uf: d.uf, tab: "deputados-brasil", label: `Dep. Federal ${d.uf || ""}`.trim() });
+
+  return todos;
+}
+
+function initBuscaGlobal() {
+  const input = document.getElementById("busca-global");
+  if (!input) return;
 
   // Autocomplete dropdown
   const dropdown = document.createElement("div");
@@ -2924,6 +2946,7 @@ function initBuscaGlobal() {
     const q = input.value.toLowerCase().trim();
     if (q.length < 2) { dropdown.style.display = "none"; return; }
 
+    const todos = montarIndiceBusca();
     const matches = todos.filter(p =>
       p.nome.toLowerCase().includes(q) || (p.partido||"").toLowerCase().includes(q)
     ).slice(0, 8);
@@ -3089,6 +3112,7 @@ async function init() {
       senadoresLocaisPromise.then(() => buscarSenadoresAoVivo("MS")).catch(() => []),
     ]);
     const congresso = { ultimaAtualizacao: new Date().toISOString(), anoReferencia: ANO_REFERENCIA, deputados, senadores };
+    DADOS_DEPUTADOS_FEDERAIS_MS = deputados;
     document.getElementById("status-data").textContent = formatDateTime(congresso.ultimaAtualizacao);
     renderDeputados(congresso);
     renderSenadores(congresso);
@@ -3104,6 +3128,7 @@ async function carregarDeputadosBrasil() {
     // Tentar JSON local primeiro (mais rápido)
     const local = await carregarJSON("dados/deputados_federais_brasil.json");
     if (local && local.deputados && local.deputados.length > 0) {
+          DADOS_DEPUTADOS_FEDERAIS_BRASIL = local.deputados;
           renderDeputadosBrasil(local.deputados);
           document.getElementById("depbr-total").textContent = formatBRL(
                   local.deputados.reduce((s, d) => s + (d.cotaGastaAno || 0), 0)
@@ -3127,6 +3152,7 @@ async function carregarDeputadosBrasil() {
                   foto: d.urlFoto,
                   cotaGastaAno: null,
           }));
+          DADOS_DEPUTADOS_FEDERAIS_BRASIL = deps;
           renderDeputadosBrasil(deps);
           document.getElementById("depbr-total").textContent = `${deps.length} deputados`;
     } catch(e) {
