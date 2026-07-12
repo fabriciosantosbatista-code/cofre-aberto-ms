@@ -958,6 +958,20 @@ def _slug(texto):
     return texto.lower().replace(" ", "-")
 
 
+def _fiorilli_chave_nome(nome):
+    """Chave de comparação sem acento/case — a folha de pagamento e as diárias
+    às vezes grafam o mesmo vereador de forma diferente (ex: com ou sem acento),
+    o que sem isso cria dois registros pra mesma pessoa."""
+    import unicodedata
+    texto = unicodedata.normalize("NFKD", nome.upper()).encode("ascii", "ignore").decode()
+    return " ".join(texto.split())
+
+
+def _fiorilli_tem_acento(nome):
+    import unicodedata
+    return any(unicodedata.combining(c) for c in unicodedata.normalize("NFKD", nome))
+
+
 # Câmaras que usam o sistema Fiorilli SCPI 9.0 e expõem a API pública
 # "Dados Abertos" (VersaoJson/*) sem sessão — descoberta em investigação
 # manual. "temServidores" indica se o endpoint de folha de pagamento
@@ -1091,10 +1105,13 @@ def coletar_camara_fiorilli(cfg):
                         nome = (reg.get("NOME") or "").strip()
                         if not nome:
                             continue
-                        vereadores.setdefault(nome, {"nome": nome, "cargo": "Vereador(a)"})
-                        vereadores[nome]["subsidioMensal"] = round(_fiorilli_parse_valor(reg.get("PROVENTOS")), 2)
-                        vereadores[nome]["descontos"] = round(_fiorilli_parse_valor(reg.get("DESCONTOS")), 2)
-                        vereadores[nome]["referenciaFolha"] = reg.get("REFERENCIA_NOME")
+                        chave = _fiorilli_chave_nome(nome)
+                        vereadores.setdefault(chave, {"nome": nome, "cargo": "Vereador(a)"})
+                        if _fiorilli_tem_acento(nome) and not _fiorilli_tem_acento(vereadores[chave]["nome"]):
+                            vereadores[chave]["nome"] = nome
+                        vereadores[chave]["subsidioMensal"] = round(_fiorilli_parse_valor(reg.get("PROVENTOS")), 2)
+                        vereadores[chave]["descontos"] = round(_fiorilli_parse_valor(reg.get("DESCONTOS")), 2)
+                        vereadores[chave]["referenciaFolha"] = reg.get("REFERENCIA_NOME")
                     break
             except Exception as e:
                 log(f"  ⚠️ Servidores ({mes_tentado:02d}/{ANO}) indisponível para {cfg['cidade']}: {e}")
@@ -1111,8 +1128,11 @@ def coletar_camara_fiorilli(cfg):
             nome = (d.get("FAVORECIDO") or "").strip()
             if not nome:
                 continue
-            vereadores.setdefault(nome, {"nome": nome, "cargo": "Vereador(a)"})
-            v = vereadores[nome]
+            chave = _fiorilli_chave_nome(nome)
+            vereadores.setdefault(chave, {"nome": nome, "cargo": "Vereador(a)"})
+            if _fiorilli_tem_acento(nome) and not _fiorilli_tem_acento(vereadores[chave]["nome"]):
+                vereadores[chave]["nome"] = nome
+            v = vereadores[chave]
             valor = round(_fiorilli_parse_valor(d.get("VALOR")), 2)
             v.setdefault("diarias", []).append({
                 # não existe campo estruturado de destino/motivo nesse sistema —
