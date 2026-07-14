@@ -1,14 +1,14 @@
 name: Atualizar dados diariamente
+
 on:
   schedule:
     - cron: '0 12 * * *'
   workflow_dispatch:
 
 jobs:
-  atualizar:
+  coletar_dados:
     runs-on: ubuntu-latest
     timeout-minutes: 45
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,14 +28,100 @@ jobs:
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
         run: python3 scripts/coletar_dados.py
 
+      - name: Upload artifact — dados (portal transparência)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dados-portal
+          path: dados/
+          retention-days: 1
+
+  coletar_verba_camara:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests Pillow pypdf
+
       - name: Coletar Verba Indenizatória (Câmara CG)
         run: python3 scripts/coletar_verba_camara_cg.py
+
+      - name: Upload artifact — verba indenizatória (Câmara CG)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dados-verba-camara
+          path: dados/
+          retention-days: 1
+
+  coletar_trt24:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests Pillow pypdf
 
       - name: Coletar remuneração de magistrados (TRT24)
         run: python3 scripts/coletar_trt24.py
 
+      - name: Upload artifact — TRT24
+        uses: actions/upload-artifact@v4
+        with:
+          name: dados-trt24
+          path: dados/
+          retention-days: 1
+
+  commit_e_push:
+    needs: [coletar_dados, coletar_verba_camara, coletar_trt24]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Baixar artifact — dados (portal transparência)
+        if: needs.coletar_dados.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: dados-portal
+          path: dados/
+
+      - name: Baixar artifact — verba indenizatória (Câmara CG)
+        if: needs.coletar_verba_camara.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: dados-verba-camara
+          path: dados/
+
+      - name: Baixar artifact — TRT24
+        if: needs.coletar_trt24.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: dados-trt24
+          path: dados/
+
       - name: Commit e push
-        if: always()
         run: |
           git config user.name "Cofre Aberto Bot"
           git config user.email "bot@cofreabertoms.com.br"
