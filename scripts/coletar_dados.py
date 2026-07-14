@@ -1074,6 +1074,14 @@ FIORILLI_CAMARAS = [
         "temServidores": True,
         "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
     },
+    {
+        "cidade": "Itaporã",
+        "urlBase": "http://itaporams.ddns.net:5656/transparenciacm",
+        "empresa": "9",
+        "paramAno": "Ano",
+        "temServidores": True,
+        "portalOficial": "https://camaraitapora.ms.gov.br/",
+    },
 ]
 
 
@@ -1123,12 +1131,16 @@ def coletar_camara_fiorilli(cfg):
                f"&Empresa={empresa}&MostraDadosConsolidado=False")
         diarias = get_com_retry(url, tentativas=1).json()
         for d in diarias:
-            if not (d.get("CARGO") or "").strip().upper().startswith("VEREADOR"):
-                continue
             nome = (d.get("FAVORECIDO") or "").strip()
             if not nome:
                 continue
             chave = _fiorilli_chave_nome(nome)
+            cargo_cru = (d.get("CARGO") or "").strip().upper()
+            # Em algumas instalações (ex.: Itaporã) o campo CARGO vem vazio nas
+            # diárias — só é confiável na folha/Servidores. Nesses casos, só
+            # inclui quem já foi identificado como vereador ali.
+            if not cargo_cru.startswith("VEREADOR") and chave not in vereadores:
+                continue
             vereadores.setdefault(chave, {"nome": nome, "cargo": "Vereador(a)"})
             if _fiorilli_tem_acento(nome) and not _fiorilli_tem_acento(vereadores[chave]["nome"]):
                 vereadores[chave]["nome"] = nome
