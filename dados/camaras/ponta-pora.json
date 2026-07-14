@@ -1,7 +1,7 @@
 {
   "cidade": "Ponta Porã",
-  "ultimaAtualizacao": "2026-07-14T01:20:28",
-  "fonte": "Portal Transparência Fiorilli (contabilidade.pontapora.ms.gov.br) — Dados Abertos — 2026-07-14T01:20:28",
+  "ultimaAtualizacao": "2026-07-14T18:07:06",
+  "fonte": "Portal Transparência Fiorilli (contabilidade.pontapora.ms.gov.br) — Dados Abertos — 2026-07-14T18:07:06",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camarapontapora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -12,7 +12,31 @@
       "cargo": "Vereador(a)",
       "subsidioMensal": 13909.86,
       "descontos": 7574.82,
-      "referenciaFolha": "Folha Mensal - Junho"
+      "referenciaFolha": "Folha Mensal - Junho",
+      "diarias": [
+        {
+          "data": "2026-05-28",
+          "valor": 3081.2,
+          "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 212/2026"
+        },
+        {
+          "data": "2026-04-23",
+          "valor": 3466.35,
+          "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 178"
+        },
+        {
+          "data": "2026-04-22",
+          "valor": 2640.0,
+          "descricao": "DESPESAS COM PASSAGENS AEREAS PARA MONTEVIDEO EM ABRIL/2026"
+        },
+        {
+          "data": "2026-03-26",
+          "valor": 3555.24,
+          "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 148/2026"
+        }
+      ],
+      "totalDiarias2026": 12742.79,
+      "numDiarias2026": 4
     },
     {
       "nome": "ANA CRISTINA ESPINOLA CANDIA",
