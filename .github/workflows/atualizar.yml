@@ -32,7 +32,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dados-portal
-          path: dados/
+          path: |
+            dados/**
+            !dados/camara_municipal.json
+            !dados/verba_cg_cache.json
+            !dados/trt24_magistrados.json
+            !dados/tre_ms_magistrados.json
+            !dados/tjms_magistrados.json
           retention-days: 1
 
   coletar_verba_camara:
@@ -59,7 +65,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dados-verba-camara
-          path: dados/
+          path: |
+            dados/camara_municipal.json
+            dados/verba_cg_cache.json
           retention-days: 1
 
   coletar_trt24:
@@ -86,11 +94,65 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dados-trt24
-          path: dados/
+          path: dados/trt24_magistrados.json
+          retention-days: 1
+
+  coletar_tre_ms:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests Pillow pypdf
+
+      - name: Coletar remuneração de magistrados (TRE-MS)
+        run: python3 scripts/coletar_tre_ms.py
+
+      - name: Upload artifact — TRE-MS
+        uses: actions/upload-artifact@v4
+        with:
+          name: dados-tre-ms
+          path: dados/tre_ms_magistrados.json
+          retention-days: 1
+
+  coletar_tjms:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests Pillow pypdf
+
+      - name: Coletar remuneração de magistrados (TJMS)
+        run: python3 scripts/coletar_tjms.py
+
+      - name: Upload artifact — TJMS
+        uses: actions/upload-artifact@v4
+        with:
+          name: dados-tjms
+          path: dados/tjms_magistrados.json
           retention-days: 1
 
   commit_e_push:
-    needs: [coletar_dados, coletar_verba_camara, coletar_trt24]
+    needs: [coletar_dados, coletar_verba_camara, coletar_trt24, coletar_tre_ms, coletar_tjms]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -119,6 +181,20 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dados-trt24
+          path: dados/
+
+      - name: Baixar artifact — TRE-MS
+        if: needs.coletar_tre_ms.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: dados-tre-ms
+          path: dados/
+
+      - name: Baixar artifact — TJMS
+        if: needs.coletar_tjms.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: dados-tjms
           path: dados/
 
       - name: Commit e push
