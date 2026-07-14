@@ -2353,7 +2353,9 @@ function renderJudiciario() {
   }
 
   function renderRanking() {
-    const filtrados = todosMagistrados.filter(m => tribunalFiltro === "todos" || m.tribunal === tribunalFiltro);
+    const filtrados = todosMagistrados
+      .filter(m => tribunalFiltro === "todos" || m.tribunal === tribunalFiltro)
+      .sort((a, b) => (b.remuneracaoBruta || 0) - (a.remuneracaoBruta || 0));
     tbody.innerHTML = filtrados.map((m, i) => {
       const pct = (m.remuneracaoBruta || 0) / maxBruto * 100;
       const chaveAttr = chaveMagistrado(m).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
