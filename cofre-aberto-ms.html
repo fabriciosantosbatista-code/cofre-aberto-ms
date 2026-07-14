@@ -344,6 +344,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button data-tab="deputados-estaduais"><span class="dot"></span> Dep. Estaduais MS</button>
       <button data-tab="prefeitura"><span class="dot"></span> Prefeitura CG</button>
       <button data-tab="camaras-ms"><span class="dot"></span> Câmaras MS</button>
+      <button data-tab="judiciario"><span class="dot"></span> Judiciário MS</button>
       <div class="nav-group-label">Brasil</div>
       <button data-tab="deputados-brasil"><span class="dot"></span> Dep. Federais Brasil</button>
       <button data-tab="senado-brasil"><span class="dot"></span> Senado Brasil</button>
@@ -641,6 +642,67 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
 
     <div class="detail-panel" id="detail-camara-cidade"></div>
+  </section>
+
+  <!-- ===================== JUDICIÁRIO MS (TRT24) ===================== -->
+  <section class="tabpanel" id="tab-judiciario">
+    <div class="hero">
+      <div class="hero-label" id="judic-mes">Judiciário · Magistrados do TRT24</div>
+      <div class="hero-number" id="judic-folha">R$ —</div>
+      <div class="hero-desc">
+        de folha bruta mensal para <b id="judic-qtd">—</b> magistrados do Tribunal Regional do
+        Trabalho da 24ª Região (Mato Grosso do Sul) — Desembargadores, Juízes Titulares, Substitutos
+        e Classistas.
+      </div>
+      <div class="mini-stats">
+        <div>
+          <div class="mini-stat-value" id="judic-desemb">—</div>
+          <div class="mini-stat-label">desembargadores</div>
+        </div>
+        <div>
+          <div class="mini-stat-value" id="judic-titular">—</div>
+          <div class="mini-stat-label">juízes titulares</div>
+        </div>
+        <div>
+          <div class="mini-stat-value" id="judic-substituto">—</div>
+          <div class="mini-stat-label">juízes substitutos</div>
+        </div>
+        <div>
+          <div class="mini-stat-value" id="judic-media">—</div>
+          <div class="mini-stat-label">média bruta/magistrado</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2 class="section-title">Ranking por remuneração bruta</h2>
+      </div>
+      <div class="section-note">
+        Folha de pagamento nominal (Anexo VIII, Resolução CNJ 102/2009). Clique em um magistrado para
+        ver o detalhamento completo de vantagens, descontos e diárias.
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+        <button class="rank-filter-btn active" data-cargo="todos">Todos</button>
+        <button class="rank-filter-btn" data-cargo="Desembargador">Desembargador</button>
+        <button class="rank-filter-btn" data-cargo="Juiz Titular">Juiz Titular</button>
+        <button class="rank-filter-btn" data-cargo="Juiz Substituto">Juiz Substituto</button>
+        <button class="rank-filter-btn" data-cargo="Juiz Classista">Juiz Classista</button>
+      </div>
+      <div class="card">
+        <table class="ranking" id="ranking-judiciario">
+          <thead>
+            <tr><th class="num">#</th><th>Magistrado(a)</th><th class="num">Bruto</th><th class="num">Líquido</th><th>Em relação ao maior</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="detail-panel" id="detail-magistrado"></div>
+    </div>
+
+    <div class="section">
+      <p class="section-note" style="opacity:.7">Fonte: TRT24 — Tribunal Regional do Trabalho de MS (transparência, folha de pagamento nominal).</p>
+    </div>
   </section>
 
   <!-- ===================== DEPUTADOS FEDERAIS - BRASIL ===================== -->
@@ -988,6 +1050,9 @@ let DADOS_EMENDAS_MS = {};
 // Deputados federais de MS e do Brasil — usados pela busca global (ver initBuscaGlobal)
 let DADOS_DEPUTADOS_FEDERAIS_MS = [];
 let DADOS_DEPUTADOS_FEDERAIS_BRASIL = [];
+
+// Magistrados do TRT24 (Justiça do Trabalho de MS) — folha nominal
+let DADOS_TRT24 = {};
 function buscarEmendasParlamentar(nome) {
   return (DADOS_EMENDAS_MS.parlamentares || []).find(p => p.nome === nome) || null;
 }
@@ -2216,6 +2281,148 @@ function renderCamarasMS() {
   });
 }
 
+function grupoCargoMagistrado(cargo) {
+  const c = (cargo || "").toUpperCase();
+  if (c.startsWith("DESEMBARGADOR")) return "Desembargador";
+  if (c.includes("SUBSTITUTO")) return "Juiz Substituto";
+  if (c.includes("CLASSISTA")) return "Juiz Classista";
+  return "Juiz Titular";
+}
+
+function renderJudiciario(data) {
+  const magistrados = data.magistrados || [];
+  const resumo = data.resumo || {};
+  const panel = document.getElementById("detail-magistrado");
+
+  document.getElementById("judic-mes").textContent = `Judiciário · Magistrados do TRT24 — folha de ${data.mesReferencia || "—"}`;
+  document.getElementById("judic-folha").textContent = formatBRL(resumo.totalFolhaMensalBruta);
+  document.getElementById("judic-qtd").textContent = resumo.totalMagistrados ?? magistrados.length;
+  document.getElementById("judic-desemb").textContent = resumo.porCargo?.["Desembargador"] ?? "—";
+  document.getElementById("judic-titular").textContent = resumo.porCargo?.["Juiz Titular"] ?? "—";
+  document.getElementById("judic-substituto").textContent = resumo.porCargo?.["Juiz Substituto"] ?? "—";
+  const media = magistrados.length ? (resumo.totalFolhaMensalBruta || 0) / magistrados.length : 0;
+  document.getElementById("judic-media").textContent = formatCompact(media);
+
+  const tbody = document.querySelector("#ranking-judiciario tbody");
+  const maxBruto = Math.max(...magistrados.map(m => m.remuneracaoBruta || 0), 1);
+  let cargoFiltro = "todos";
+
+  function renderRanking() {
+    const filtrados = magistrados.filter(m => cargoFiltro === "todos" || grupoCargoMagistrado(m.cargo) === cargoFiltro);
+    tbody.innerHTML = filtrados.map((m, i) => {
+      const pct = (m.remuneracaoBruta || 0) / maxBruto * 100;
+      const nomeAttr = m.nome.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+      return `
+        <tr class="clickable" data-nome="${nomeAttr}">
+          <td class="rank-pos">${String(i + 1).padStart(2, "0")}</td>
+          <td>
+            <div class="rank-person">
+              ${avatarHTML(m.nome, null, "avatar")}
+              <div>
+                <div class="rank-name">${m.nome}</div>
+                <div class="rank-meta">${m.cargo} · ${m.lotacao}</div>
+              </div>
+            </div>
+          </td>
+          <td class="num">${formatBRL(m.remuneracaoBruta)}</td>
+          <td class="num">${formatBRL(m.remuneracaoLiquida)}</td>
+          <td class="progress-cell">${progressBar(pct, "amber")}</td>
+        </tr>
+      `;
+    }).join("");
+
+    tbody.querySelectorAll("tr.clickable").forEach(row => {
+      row.addEventListener("click", () => {
+        const m = magistrados.find(x => x.nome === row.dataset.nome);
+        if (m) renderDetalheMagistrado(m, panel);
+      });
+    });
+  }
+
+  renderRanking();
+
+  document.querySelectorAll("#tab-judiciario .rank-filter-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#tab-judiciario .rank-filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      cargoFiltro = btn.dataset.cargo;
+      renderRanking();
+    });
+  });
+}
+
+function renderDetalheMagistrado(m, panel) {
+  panel.innerHTML = `
+    <div class="detail-header">
+      ${avatarHTML(m.nome, null, "avatar-lg")}
+      <div class="detail-header-text">
+        <h3>${m.nome}</h3>
+        <div class="detail-meta">${m.cargo} · ${m.lotacao}</div>
+      </div>
+    </div>
+
+    <div class="subhead">Rendimentos</div>
+    <div class="stat-grid">
+      <div class="stat-card alt">
+        <p class="stat-label">Remuneração bruta</p>
+        <p class="stat-value">${formatBRL(m.remuneracaoBruta)}</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Subsídio / cargo em comissão</p>
+        <p class="stat-value">${formatBRL(m.subsidio)}</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Vantagens pessoais</p>
+        <p class="stat-value">${formatBRL(m.vantagensPessoais)}</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Indenizações</p>
+        <p class="stat-value">${formatBRL(m.indenizacoes)}</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Vantagens eventuais</p>
+        <p class="stat-value">${formatBRL(m.vantagensEventuais)}</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Gratificações</p>
+        <p class="stat-value">${formatBRL(m.gratificacoes)}</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Diárias no mês</p>
+        <p class="stat-value">${formatBRL(m.diarias)}</p>
+      </div>
+    </div>
+
+    <div class="subhead">Descontos</div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <p class="stat-label">Previdência</p>
+        <p class="stat-value">${formatBRL(m.previdencia)}</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Imposto de Renda</p>
+        <p class="stat-value">${formatBRL(m.impostoRenda)}</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Descontos diversos</p>
+        <p class="stat-value">${formatBRL(m.descontosDiversos)}</p>
+      </div>
+      ${m.retencaoTeto ? `<div class="stat-card"><p class="stat-label">Retenção por teto constitucional</p><p class="stat-value">${formatBRL(m.retencaoTeto)}</p></div>` : ""}
+      <div class="stat-card alt">
+        <p class="stat-label">Total de descontos</p>
+        <p class="stat-value">${formatBRL(m.totalDescontos)}</p>
+      </div>
+      <div class="stat-card alt">
+        <p class="stat-label">Rendimento líquido</p>
+        <p class="stat-value">${formatBRL(m.remuneracaoLiquida)}</p>
+      </div>
+    </div>
+    <p class="section-note" style="margin-top:12px">Fonte: TRT24 — folha de pagamento nominal, Anexo VIII da Resolução CNJ 102/2009.</p>
+  `;
+  panel.classList.add("active");
+  panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
 function renderDetalheCamaraCidade(d, panel) {
   const vereadores = d.vereadores || [];
   const anoRef = new Date().getFullYear();
@@ -2931,6 +3138,8 @@ function montarIndiceBusca() {
     todos.push({ nome: d.nome, partido: d.partido, tab: "deputados", label: "Dep. Federal MS" });
   for (const d of DADOS_DEPUTADOS_FEDERAIS_BRASIL || [])
     todos.push({ nome: d.nome, partido: d.partido, uf: d.uf, tab: "deputados-brasil", label: `Dep. Federal ${d.uf || ""}`.trim() });
+  for (const m of DADOS_TRT24.magistrados || [])
+    todos.push({ nome: m.nome, partido: m.cargo, tab: "judiciario", label: "Magistrado(a) TRT24" });
 
   return todos;
 }
@@ -3062,6 +3271,12 @@ async function init() {
       if (btn.dataset.tab === "camaras-ms" && !window._camarasMsLoaded) {
         window._camarasMsLoaded = true;
         renderCamarasMS();
+      }
+      if (btn.dataset.tab === "judiciario" && !window._judiciarioLoaded) {
+        window._judiciarioLoaded = true;
+        carregarJSON("dados/trt24_magistrados.json").then(d => {
+          if (d) { DADOS_TRT24 = d; renderJudiciario(d); }
+        });
       }
     });
   });
