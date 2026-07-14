@@ -71,6 +71,13 @@ def limpa_texto(html_celula):
     return re.sub(r"\s+", " ", texto).strip()
 
 
+def determina_situacao(cargo, lotacao):
+    texto = f"{cargo} {lotacao}".upper()
+    if "INATIVO" in texto or "PENSIONISTA" in texto:
+        return "INATIVO"
+    return "ATIVO"
+
+
 def parse_valor(txt):
     txt = (txt or "").strip()
     if txt in ("", "-"):
@@ -102,6 +109,7 @@ def processa_html(html):
             "nome": celulas[1],
             "lotacao": celulas[2],
             "cargo": cargo,
+            "situacao": determina_situacao(cargo, celulas[2]),
         }
         for campo, valor in zip(COLUNAS_NUMERICAS, celulas[4:19]):
             registro[campo] = parse_valor(valor)
@@ -125,6 +133,8 @@ def coletar_tre_ms():
 
     magistrados.sort(key=lambda m: -m["remuneracaoBruta"])
     total_folha = round(sum(m["remuneracaoBruta"] for m in magistrados), 2)
+    ativos = [m for m in magistrados if m["situacao"] == "ATIVO"]
+    total_folha_ativos = round(sum(m["remuneracaoBruta"] for m in ativos), 2)
 
     por_cargo = {}
     for m in magistrados:
@@ -137,6 +147,8 @@ def coletar_tre_ms():
         "resumo": {
             "totalMagistrados": len(magistrados),
             "totalFolhaMensalBruta": total_folha,
+            "totalAtivos": len(ativos),
+            "totalFolhaMensalBrutaAtivos": total_folha_ativos,
             "porCargo": por_cargo,
         },
         "magistrados": magistrados,

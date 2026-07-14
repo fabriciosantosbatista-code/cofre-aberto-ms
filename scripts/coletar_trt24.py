@@ -98,6 +98,13 @@ def texto_celula(cel):
     return " ".join((p.text or "") for p in cel.findall("text:p", NS))
 
 
+def determina_situacao(cargo, lotacao):
+    texto = f"{cargo} {lotacao}".upper()
+    if "INATIVO" in texto or "PENSIONISTA" in texto:
+        return "INATIVO"
+    return "ATIVO"
+
+
 def parse_valor(txt):
     if txt in (None, "", "-"):
         return 0.0
@@ -146,6 +153,7 @@ def processa_ods(conteudo_bytes):
         registro["nome"] = registro["nome"].strip()
         registro["cargo"] = registro["cargo"].strip()
         registro["lotacao"] = registro["lotacao"].strip()
+        registro["situacao"] = determina_situacao(registro["cargo"], registro["lotacao"])
         pessoas.append(registro)
 
     return pessoas
@@ -176,6 +184,8 @@ def coletar_trt24():
 
     magistrados.sort(key=lambda m: -m["remuneracaoBruta"])
     total_folha = round(sum(m["remuneracaoBruta"] for m in magistrados), 2)
+    ativos = [m for m in magistrados if m["situacao"] == "ATIVO"]
+    total_folha_ativos = round(sum(m["remuneracaoBruta"] for m in ativos), 2)
 
     por_cargo = {}
     for m in magistrados:
@@ -192,6 +202,8 @@ def coletar_trt24():
         "resumo": {
             "totalMagistrados": len(magistrados),
             "totalFolhaMensalBruta": total_folha,
+            "totalAtivos": len(ativos),
+            "totalFolhaMensalBrutaAtivos": total_folha_ativos,
             "porCargo": por_cargo,
         },
         "magistrados": magistrados,

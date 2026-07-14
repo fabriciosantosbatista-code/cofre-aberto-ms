@@ -650,8 +650,9 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="hero-label" id="judic-mes">Judiciário MS · Magistrados de todos os tribunais</div>
       <div class="hero-number" id="judic-folha">R$ —</div>
       <div class="hero-desc">
-        de folha bruta mensal para <b id="judic-qtd">—</b> magistrados de Mato Grosso do Sul, somando
-        Justiça do Trabalho (TRT24), Justiça Eleitoral (TRE-MS) e Justiça Estadual (TJMS).
+        de folha bruta mensal para <b id="judic-qtd">—</b> magistrados ativos de Mato Grosso do Sul, somando
+        Justiça do Trabalho (TRT24), Justiça Eleitoral (TRE-MS) e Justiça Estadual (TJMS). Magistrados
+        inativos/pensionistas não entram nesta contagem.
       </div>
       <div class="mini-stats">
         <div>
@@ -2294,9 +2295,11 @@ function renderJudiciario() {
     { tribunal: "TJMS", dados: DADOS_TJMS },
   ];
 
+  // Só magistrados ativos aparecem na aba — sem botão de filtro Ativo/Inativo.
   const todosMagistrados = [];
   for (const f of fontes) {
     for (const m of (f.dados.magistrados || [])) {
+      if (m.situacao !== "ATIVO") continue;
       todosMagistrados.push({ ...m, tribunal: f.tribunal });
     }
   }
@@ -2319,12 +2322,12 @@ function renderJudiciario() {
     : "—";
 
   document.getElementById("judic-mes").textContent =
-    `Judiciário MS · Magistrados de todos os tribunais — folha de ${mesMaisRecenteFmt}`;
+    `Judiciário MS · Magistrados ativos de todos os tribunais — folha de ${mesMaisRecenteFmt}`;
   document.getElementById("judic-folha").textContent = formatBRL(totalFolha);
   document.getElementById("judic-qtd").textContent = todosMagistrados.length;
-  document.getElementById("judic-trt24").textContent = DADOS_TRT24.resumo?.totalMagistrados ?? "—";
-  document.getElementById("judic-trems").textContent = DADOS_TRE_MS.resumo?.totalMagistrados ?? "—";
-  document.getElementById("judic-tjms").textContent = DADOS_TJMS.resumo?.totalMagistrados ?? "—";
+  document.getElementById("judic-trt24").textContent = todosMagistrados.filter(m => m.tribunal === "TRT24").length;
+  document.getElementById("judic-trems").textContent = todosMagistrados.filter(m => m.tribunal === "TRE-MS").length;
+  document.getElementById("judic-tjms").textContent = todosMagistrados.filter(m => m.tribunal === "TJMS").length;
   document.getElementById("judic-trt24-label").textContent = `TRT24 (Trabalho) · ref. ${DADOS_TRT24.mesReferencia || "—"}`;
   document.getElementById("judic-trems-label").textContent = `TRE-MS (Eleitoral) · ref. ${DADOS_TRE_MS.mesReferencia || "—"}`;
   document.getElementById("judic-tjms-label").textContent = `TJMS (Estadual) · ref. ${DADOS_TJMS.mesReferencia || "—"}`;
@@ -3172,11 +3175,11 @@ function montarIndiceBusca() {
   for (const d of DADOS_DEPUTADOS_FEDERAIS_BRASIL || [])
     todos.push({ nome: d.nome, partido: d.partido, uf: d.uf, tab: "deputados-brasil", label: `Dep. Federal ${d.uf || ""}`.trim() });
   for (const m of DADOS_TRT24.magistrados || [])
-    todos.push({ nome: m.nome, partido: m.cargo, tab: "judiciario", label: "Magistrado(a) TRT24" });
+    if (m.situacao === "ATIVO") todos.push({ nome: m.nome, partido: m.cargo, tab: "judiciario", label: "Magistrado(a) TRT24" });
   for (const m of DADOS_TRE_MS.magistrados || [])
-    todos.push({ nome: m.nome, partido: m.cargo, tab: "judiciario", label: "Magistrado(a) TRE-MS" });
+    if (m.situacao === "ATIVO") todos.push({ nome: m.nome, partido: m.cargo, tab: "judiciario", label: "Magistrado(a) TRE-MS" });
   for (const m of DADOS_TJMS.magistrados || [])
-    todos.push({ nome: m.nome, partido: m.cargo, tab: "judiciario", label: "Magistrado(a) TJMS" });
+    if (m.situacao === "ATIVO") todos.push({ nome: m.nome, partido: m.cargo, tab: "judiciario", label: "Magistrado(a) TJMS" });
 
   return todos;
 }

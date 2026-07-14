@@ -134,6 +134,13 @@ def parse_valor(txt):
         return 0.0
 
 
+def determina_situacao(cargo, lotacao):
+    texto = f"{cargo} {lotacao}".upper()
+    if "INATIVO" in texto or "PENSIONISTA" in texto:
+        return "INATIVO"
+    return "ATIVO"
+
+
 def processa_linha(linha):
     valores = list(VALOR_RE.finditer(linha))
     if len(valores) < 15:
@@ -151,7 +158,7 @@ def processa_linha(linha):
     if not cargo:
         return None
 
-    registro = {"nome": nome, "lotacao": lotacao, "cargo": cargo}
+    registro = {"nome": nome, "lotacao": lotacao, "cargo": cargo, "situacao": determina_situacao(cargo, lotacao)}
     for campo, m_valor in zip(COLUNAS_NUMERICAS, ultimos15):
         registro[campo] = parse_valor(m_valor.group(0))
     return registro
@@ -195,6 +202,8 @@ def coletar_tjms():
 
     magistrados.sort(key=lambda m: -m["remuneracaoBruta"])
     total_folha = round(sum(m["remuneracaoBruta"] for m in magistrados), 2)
+    ativos = [m for m in magistrados if m["situacao"] == "ATIVO"]
+    total_folha_ativos = round(sum(m["remuneracaoBruta"] for m in ativos), 2)
 
     por_cargo = {}
     for m in magistrados:
@@ -207,6 +216,8 @@ def coletar_tjms():
         "resumo": {
             "totalMagistrados": len(magistrados),
             "totalFolhaMensalBruta": total_folha,
+            "totalAtivos": len(ativos),
+            "totalFolhaMensalBrutaAtivos": total_folha_ativos,
             "porCargo": por_cargo,
         },
         "magistrados": magistrados,
