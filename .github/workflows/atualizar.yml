@@ -1,5 +1,4 @@
 name: Atualizar dados diariamente
-
 on:
   schedule:
     - cron: '0 12 * * *'
@@ -31,6 +30,9 @@ jobs:
 
       - name: Coletar Verba Indenizatória (Câmara CG)
         run: python3 scripts/coletar_verba_camara_cg.py
+
+      - name: Coletar remuneração de magistrados (TRT24)
+        run: python3 scripts/coletar_trt24.py
 
       - name: Commit e push
         if: always()
