@@ -202,7 +202,48 @@ jobs:
           git config user.name "Cofre Aberto Bot"
           git config user.email "bot@cofreabertoms.com.br"
           git add dados/
-          git diff --staged --quiet && echo "Sem mudanças" || \
+
+          if git diff --staged --quiet; then
+            echo "Sem mudanças"
+            exit 0
+          fi
+
           git commit -m "🤖 Dados atualizados — $(date +'%d/%m/%Y %H:%M') BRT"
-          git pull --rebase origin main || true
-          git push origin main || (sleep 10 && git pull --rebase origin main && git push origin main)
+
+          ARQUIVOS_MANUAIS="dados/camara_municipal.json dados/verba_cg_cache.json"
+
+          resolver_conflitos() {
+            for f in $(git diff --name-only --diff-filter=U); do
+              manter_manual=0
+              for m in $ARQUIVOS_MANUAIS; do
+                [ "$f" = "$m" ] && manter_manual=1
+              done
+              if [ "$manter_manual" = "1" ]; then
+                echo "  Conflito em $f — mantendo versão do repositório (--ours)"
+                git checkout --ours -- "$f"
+              else
+                echo "  Conflito em $f — usando versão nova coletada pelo bot (--theirs)"
+                git checkout --theirs -- "$f"
+              fi
+              git add "$f"
+            done
+          }
+
+          sincronizar() {
+            git pull --rebase origin main && return 0
+            tentativas=0
+            while git diff --name-only --diff-filter=U | grep -q . && [ "$tentativas" -lt 5 ]; do
+              tentativas=$((tentativas + 1))
+              resolver_conflitos
+              GIT_EDITOR=true git rebase --continue && return 0
+            done
+            if git diff --name-only --diff-filter=U | grep -q .; then
+              echo "❌ Conflito não resolvido automaticamente — abortando rebase"
+              git rebase --abort
+              return 1
+            fi
+            return 0
+          }
+
+          sincronizar || (echo "Tentando novamente em 10s..." && sleep 10 && sincronizar) || { echo "❌ Falha ao sincronizar com origin/main"; exit 1; }
+          git push origin main
