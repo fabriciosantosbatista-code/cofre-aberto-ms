@@ -1,7 +1,7 @@
 {
   "cidade": "Ponta Porã",
-  "ultimaAtualizacao": "2026-07-13T18:18:59",
-  "fonte": "Portal Transparência Fiorilli (contabilidade.pontapora.ms.gov.br) — Dados Abertos — 2026-07-13T18:18:59",
+  "ultimaAtualizacao": "2026-07-14T01:20:28",
+  "fonte": "Portal Transparência Fiorilli (contabilidade.pontapora.ms.gov.br) — Dados Abertos — 2026-07-14T01:20:28",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camarapontapora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -40,14 +40,42 @@
       "cargo": "Vereador(a)",
       "subsidioMensal": 13909.86,
       "descontos": 7686.55,
-      "referenciaFolha": "Folha Mensal - Junho"
+      "referenciaFolha": "Folha Mensal - Junho",
+      "diarias": [
+        {
+          "data": "2026-05-27",
+          "valor": 1066.57,
+          "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 209/2026"
+        },
+        {
+          "data": "2026-04-17",
+          "valor": 2370.16,
+          "descricao": "VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIARIAS AO SERVIDOR E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME A PORTARIA Nº 174/2026."
+        },
+        {
+          "data": "2026-03-26",
+          "valor": 3555.24,
+          "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 149/2026"
+        }
+      ],
+      "totalDiarias2026": 6991.97,
+      "numDiarias2026": 3
     },
     {
       "nome": "DANIEL VALDEZ GODOY",
       "cargo": "Vereador(a)",
       "subsidioMensal": 13909.86,
       "descontos": 3632.83,
-      "referenciaFolha": "Folha Mensal - Junho"
+      "referenciaFolha": "Folha Mensal - Junho",
+      "diarias": [
+        {
+          "data": "2026-03-25",
+          "valor": 1066.57,
+          "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 145/2026"
+        }
+      ],
+      "totalDiarias2026": 1066.57,
+      "numDiarias2026": 1
     },
     {
       "nome": "DIONALDO MORINIGO",
@@ -61,7 +89,16 @@
       "cargo": "Vereador(a)",
       "subsidioMensal": 13909.86,
       "descontos": 3580.7,
-      "referenciaFolha": "Folha Mensal - Junho"
+      "referenciaFolha": "Folha Mensal - Junho",
+      "diarias": [
+        {
+          "data": "2026-05-28",
+          "valor": 3081.2,
+          "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 213/2026"
+        }
+      ],
+      "totalDiarias2026": 3081.2,
+      "numDiarias2026": 1
     },
     {
       "nome": "JELSON BERNABE DE OLIVEIRA",
