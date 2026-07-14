@@ -656,15 +656,15 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="mini-stats">
         <div>
           <div class="mini-stat-value" id="judic-trt24">—</div>
-          <div class="mini-stat-label">TRT24 (Trabalho)</div>
+          <div class="mini-stat-label" id="judic-trt24-label">TRT24 (Trabalho)</div>
         </div>
         <div>
           <div class="mini-stat-value" id="judic-trems">—</div>
-          <div class="mini-stat-label">TRE-MS (Eleitoral)</div>
+          <div class="mini-stat-label" id="judic-trems-label">TRE-MS (Eleitoral)</div>
         </div>
         <div>
           <div class="mini-stat-value" id="judic-tjms">—</div>
-          <div class="mini-stat-label">TJMS (Estadual)</div>
+          <div class="mini-stat-label" id="judic-tjms-label">TJMS (Estadual)</div>
         </div>
         <div>
           <div class="mini-stat-value" id="judic-media">—</div>
@@ -2303,15 +2303,31 @@ function renderJudiciario() {
 
   const panel = document.getElementById("detail-magistrado");
   const totalFolha = todosMagistrados.reduce((acc, m) => acc + (m.remuneracaoBruta || 0), 0);
-  const mesesRef = fontes.map(f => f.dados.mesReferencia).filter(Boolean);
+
+  function parseMesRef(mesRef) {
+    const m = /^(\d{2})\/(\d{4})$/.exec(mesRef || "");
+    return m ? { mes: Number(m[1]), ano: Number(m[2]) } : null;
+  }
+
+  const mesesRef = fontes.map(f => parseMesRef(f.dados.mesReferencia)).filter(Boolean);
+  const mesMaisRecente = mesesRef.reduce((max, atual) => {
+    if (!max) return atual;
+    return (atual.ano > max.ano || (atual.ano === max.ano && atual.mes > max.mes)) ? atual : max;
+  }, null);
+  const mesMaisRecenteFmt = mesMaisRecente
+    ? `${String(mesMaisRecente.mes).padStart(2, "0")}/${mesMaisRecente.ano}`
+    : "—";
 
   document.getElementById("judic-mes").textContent =
-    `Judiciário MS · Magistrados de todos os tribunais — folha de ${mesesRef[0] || "—"}`;
+    `Judiciário MS · Magistrados de todos os tribunais — folha de ${mesMaisRecenteFmt}`;
   document.getElementById("judic-folha").textContent = formatBRL(totalFolha);
   document.getElementById("judic-qtd").textContent = todosMagistrados.length;
   document.getElementById("judic-trt24").textContent = DADOS_TRT24.resumo?.totalMagistrados ?? "—";
   document.getElementById("judic-trems").textContent = DADOS_TRE_MS.resumo?.totalMagistrados ?? "—";
   document.getElementById("judic-tjms").textContent = DADOS_TJMS.resumo?.totalMagistrados ?? "—";
+  document.getElementById("judic-trt24-label").textContent = `TRT24 (Trabalho) · ref. ${DADOS_TRT24.mesReferencia || "—"}`;
+  document.getElementById("judic-trems-label").textContent = `TRE-MS (Eleitoral) · ref. ${DADOS_TRE_MS.mesReferencia || "—"}`;
+  document.getElementById("judic-tjms-label").textContent = `TJMS (Estadual) · ref. ${DADOS_TJMS.mesReferencia || "—"}`;
   const media = todosMagistrados.length ? totalFolha / todosMagistrados.length : 0;
   document.getElementById("judic-media").textContent = formatCompact(media);
 
