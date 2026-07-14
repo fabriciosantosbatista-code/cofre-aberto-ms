@@ -1,17 +1,13 @@
 #!/usr/bin/env python3
 """
 Cofre Aberto MS — Verba Indenizatória da Câmara Municipal de Campo Grande
-
 Extrai Ato 027 (indenizações gerais) e Ato 028 (assessoria técnica) dos PDFs
 de prestação de contas de cada vereador, publicados no Portal da
 Transparência (Fiorilli SCPI) através do menu "Outros Documentos".
-
 Fonte: http://45.225.6.93:8079/transparencia/ (HomeDocumentosPublicados.aspx)
-
 Roda separado de coletar_dados.py porque baixa ~29 vereadores × 2 atos em
 PDFs grandes (10-20MB cada) e faz parsing pesado de texto — mantém o
 script principal rápido e isola falhas desse fluxo específico.
-
 Os PDFs desta câmara não têm um formato único: variam por gabinete
 (fornecedor de contabilidade diferente para cada vereador), então o parser
 abaixo tolera várias variações de formatação (datas com ponto ou barra,
@@ -19,15 +15,26 @@ CNPJ com ou sem pontuação, valor com ou sem "R$", "NF"/"NOTA FISCAL"/
 "CUPOM FISCAL"/"RECIBO" como tipo de documento). Alguns PDFs (ex: Landmark)
 usam uma fonte customizada que desloca o código de cada caractere em +29 —
 isso é detectado e desfeito automaticamente, não é corrupção do arquivo.
-
 Regra de segurança na mesclagem: um mês só é atualizado quando o TOTAL
 IMPRESSO na própria página do PDF foi capturado (nunca a partir de soma
 parcial de itens, que pode sub-contar silenciosamente e piorar um dado que
 já era bom). Notas fiscais com data ou valor não confiáveis são descartadas
 em vez de arriscar um dado errado no ar.
+
+Cache e paralelismo: relatórios já baixados e processados com sucesso ficam
+registrados em dados/verba_cg_cache.json (chave = codigoLinhaPDF+chaveAcesso,
+que identifica uma publicação específica no portal) e são pulados nas
+execuções seguintes. O download/parsing dos relatórios restantes roda em até
+4 threads simultâneas, cada uma com sua própria sessão HTTP (o portal é
+stateful: o POST que seleciona o relatório e o GET que baixa o PDF dependem
+do mesmo cookie de sessão, então sessões não podem ser compartilhadas entre
+threads). Cada PDF tem um orçamento cooperativo de ~30s; se ultrapassado, o
+item é pulado nesta execução e tentado de novo na próxima (não fica marcado
+como concluído no cache).
 """
 
-import json, os, re, sys, time, unicodedata
+import hashlib, json, os, re, sys, threading, time, unicodedata
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, date
 from pathlib import Path
 import requests
@@ -35,6 +42,9 @@ import requests
 ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
 ARQUIVO_CAMARA = DADOS / "camara_municipal.json"
+CACHE_ARQUIVO = DADOS / "verba_cg_cache.json"
+TIMEOUT_POR_PDF = 30  # segundos — orçamento cooperativo de tempo por PDF
+MAX_WORKERS = 4
 ANO = date.today().year
 ANO_STR = str(ANO)
 hoje = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
@@ -56,9 +66,7 @@ MESES_NUM = {"janeiro": "01", "fevereiro": "02", "marco": "03", "março": "03", 
              "abril": "04", "maio": "05", "junho": "06", "julho": "07", "agosto": "08",
              "setembro": "09", "outubro": "10", "novembro": "11", "dezembro": "12"}
 
-
 def log(msg): print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
-
 
 # ============================================================
 # DECODIFICAÇÃO E PARSING DO TEXTO DO PDF
@@ -74,7 +82,6 @@ ANO_RE = re.compile(r'20\d{2}')
 TOTAL_RESUMO_RE = re.compile(r'TOTAL[^\dR]{0,12}(?:(?:R\$|RS\$?)[\s/]*)?([\d\.]+,\d{2})')
 TOTAL_PAGINA_RE = re.compile(r'(?:Total|TOTAL)[^\dR]{0,12}(?:(?:R\$|RS\$?)[\s/]*)?([\d\.]+,\d{2})')
 
-
 def decodifica_se_deslocado(texto):
     """Alguns PDFs (fonte customizada) têm todo o texto deslocado em +29 no código
     do caractere (ex: 'C' vira '&'). Detecta pela alta proporção de caracteres de
@@ -87,33 +94,26 @@ def decodifica_se_deslocado(texto):
     decodificado = ''.join(chr((ord(c) + 29) % 0x110000) if ord(c) < 256 else c for c in texto)
     return decodificado.replace('=', ' ')
 
-
 def normaliza_texto(texto):
     texto = decodifica_se_deslocado(texto)
     return texto.replace('\xad', '-').replace('‑', '-')
-
 
 def parse_valor(txt):
     txt = txt.replace('RS', '').replace('R$', '').replace('$', '').replace('/', '').strip()
     return round(float(txt.replace('.', '').replace(',', '.')), 2)
 
-
 def limpa_espacos(txt):
     return re.sub(r'\s+', ' ', txt).strip(" |—-.")
-
 
 def eh_pagina_resumo(texto):
     return 'Despesas' in texto and 'Valor (R$)' in texto and 'discriminação' not in texto
 
-
 def eh_pagina_combustivel(texto):
     return 'Placa' in texto or 'Veícu' in texto or bool(re.search(r'GASOLINA|ETANOL|\bDIESEL\b', texto.upper()))
-
 
 def eh_pagina_notas(texto):
     t = texto.lower()
     return 'discrimina' in t and 'despesas' in t
-
 
 def extrai_mes_ano_confiavel(texto):
     """Só retorna mês/ano quando encontra o mês (nome OU numérico MM/AAAA) bem perto
@@ -140,13 +140,10 @@ def extrai_mes_ano_confiavel(texto):
         return m2.group(1), m2.group(2)
     return None, None
 
-
 def novo_mes_dict(chave):
     partes = chave.split('/')
     return {"mesNum": partes[0], "ano": partes[1], "totalDeclarado": None,
-             "totalNotas": None, "totalCombustivel": None, "notas": [], "combustivel": []}
-
-
+            "totalNotas": None, "totalCombustivel": None, "notas": [], "combustivel": []}
 def extrai_itens(texto, tipo, ano_contexto):
     """Usa cada CNPJ encontrado como âncora: a data mais próxima antes dele e o
     valor/documento mais próximos depois formam um item (nota fiscal ou abastecimento)."""
@@ -188,7 +185,6 @@ def extrai_itens(texto, tipo, ano_contexto):
         itens.append(item)
     return itens
 
-
 def extrai_itens_fallback(texto, tipo, ano_contexto):
     """Fallback: âncora em DATA em vez de CNPJ, para linhas em que o CNPJ veio
     corrompido pela quebra de linha do PDF."""
@@ -220,20 +216,23 @@ def extrai_itens_fallback(texto, tipo, ano_contexto):
         itens.append(item)
     return itens
 
-
 def extrai_total_pagina(texto):
     m = TOTAL_PAGINA_RE.search(texto)
     return parse_valor(m.group(1)) if m else None
 
-
-def processa_pdf(caminho):
+def processa_pdf(caminho, deadline=None):
     """Lê um PDF de prestação de contas (Ato 027 ou 028) e devolve um dict
-    {"MM/AAAA": {totalDeclarado, notas: [...], combustivel: [...], ...}}."""
+    {"MM/AAAA": {totalDeclarado, notas: [...], combustivel: [...], ...}}.
+    Se 'deadline' (timestamp) for informado e for ultrapassado, o parsing para
+    na página atual em vez de continuar (usado pelo timeout por PDF)."""
     from pypdf import PdfReader
     r = PdfReader(caminho)
     meses = {}
     mes_atual = None
     for p in r.pages:
+        if deadline and time.time() > deadline:
+            log("     ⏱️ tempo limite do PDF atingido — parando o parsing nesta página")
+            break
         try:
             texto = normaliza_texto(p.extract_text())
         except Exception:
@@ -291,8 +290,6 @@ def processa_pdf(caminho):
             conferido = False
         d["conferido"] = conferido
     return meses
-
-
 # ============================================================
 # 1. DESCOBRIR A LISTA DE VEREADORES E CÓDIGOS DOS RELATÓRIOS
 # ============================================================
@@ -332,62 +329,143 @@ def obter_lista_relatorios(sessao):
 
     return {"ato027": extrai(bloco27), "ato028": extrai(bloco28)}
 
+# ============================================================
+# 2. CACHE E BAIXAR/PROCESSAR OS PDFs (em paralelo)
+# ============================================================
+def carregar_cache():
+    if CACHE_ARQUIVO.exists():
+        try:
+            return json.load(open(CACHE_ARQUIVO, encoding="utf-8"))
+        except Exception:
+            return {}
+    return {}
 
-# ============================================================
-# 2. BAIXAR E PROCESSAR OS PDFs
-# ============================================================
+def salvar_cache(cache):
+    DADOS.mkdir(exist_ok=True)
+    json.dump(cache, open(CACHE_ARQUIVO, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+
+def chave_cache(alvo):
+    # codigoLinhaPDF+chaveAcesso identifica uma publicação específica no portal;
+    # uma vez processada com sucesso não muda, então pode ser pulada com segurança
+    # nas execuções seguintes.
+    return f"{alvo['codigoLinhaPDF']}_{alvo['chaveAcesso']}"
+
+_thread_local = threading.local()
+
+def sessao_da_thread():
+    """Cada thread usa sua PRÓPRIA sessão/cookies. O portal é stateful (o POST
+    SalvarCodigoLinhaRelatorio marca 'qual PDF' o GET MostrarPDF.aspx seguinte vai
+    retornar, dentro da sessão) — compartilhar uma sessão entre threads causaria
+    condição de corrida (uma thread poderia receber o PDF selecionado por outra)."""
+    sessao = getattr(_thread_local, "sessao", None)
+    if sessao is None:
+        sessao = requests.Session()
+        sessao.headers.update({"User-Agent": HEADERS_AJAX["User-Agent"]})
+        sessao.get(f"{BASE_URL}/default.aspx", timeout=30)
+        sessao.post(f"{BASE_URL}/default.aspx/RecuperarDados",
+                    json={"strLnkButtonID": "lnkOutrosDocumentos", "strExercicio": ANO_STR, "strEmpresa": EMPRESA_CAMARA},
+                    headers=HEADERS_AJAX, timeout=30)
+        _thread_local.sessao = sessao
+    return sessao
+
+def processar_alvo(alvo):
+    """Baixa e processa um único PDF (Ato027 ou Ato028 de um vereador).
+    Retorna (nome, ato, meses, extra): 'extra' é o hash sha256 em caso de
+    sucesso (meses != None), ou uma mensagem do motivo em caso de falha/timeout
+    (meses=None). Respeita um orçamento cooperativo de TIMEOUT_POR_PDF segundos."""
+    inicio = time.time()
+    nome, ato = alvo["nome"], alvo["ato"]
+    caminho_tmp = f"/tmp/_verba_cg_tmp_{threading.get_ident()}.pdf"
+    try:
+        sessao = sessao_da_thread()
+        restante = TIMEOUT_POR_PDF - (time.time() - inicio)
+        if restante <= 0:
+            return nome, ato, None, "timeout antes de iniciar"
+        r1 = sessao.post(f"{BASE_URL}/HomeDocumentosPublicados.aspx/SalvarCodigoLinhaRelatorio",
+                          json={"strCodigoLinhaRelatorio": alvo["codigoLinhaPDF"], "strChaveAcesso": alvo["chaveAcesso"]},
+                          headers=HEADERS_AJAX, timeout=max(1, min(restante, 15)))
+        if r1.status_code != 200:
+            return nome, ato, None, f"erro ao selecionar relatório ({r1.status_code})"
+
+        restante = TIMEOUT_POR_PDF - (time.time() - inicio)
+        if restante <= 0:
+            return nome, ato, None, "timeout após selecionar relatório"
+        r2 = sessao.get(f"{BASE_URL}/MostrarPDF.aspx", timeout=max(1, min(restante, 25)))
+        if r2.status_code != 200 or "pdf" not in r2.headers.get("Content-Type", ""):
+            return nome, ato, None, f"PDF indisponível ({r2.status_code})"
+
+        conteudo = r2.content
+        sha256 = hashlib.sha256(conteudo).hexdigest()
+        if time.time() - inicio > TIMEOUT_POR_PDF:
+            return nome, ato, None, "timeout após download"
+
+        with open(caminho_tmp, "wb") as f:
+            f.write(conteudo)
+        meses = processa_pdf(caminho_tmp, deadline=inicio + TIMEOUT_POR_PDF)
+        def vazio(md):
+            return not md["notas"] and not md["combustivel"] and md["totalDeclarado"] is None
+        meses = {m: d for m, d in meses.items() if not vazio(d)}
+        return nome, ato, meses, sha256
+    except Exception as e:
+        return nome, ato, None, f"exceção — {e}"
+    finally:
+        if os.path.exists(caminho_tmp):
+            os.remove(caminho_tmp)
+
 def coletar_verba_indenizatoria():
     log("Coletando Verba Indenizatória — Câmara Municipal de Campo Grande...")
-    sessao = requests.Session()
-    sessao.headers.update({"User-Agent": HEADERS_AJAX["User-Agent"]})
+    sessao_inicial = requests.Session()
+    sessao_inicial.headers.update({"User-Agent": HEADERS_AJAX["User-Agent"]})
 
     try:
-        lista = obter_lista_relatorios(sessao)
+        lista = obter_lista_relatorios(sessao_inicial)
     except Exception as e:
-        log(f"  ⚠️ Não foi possível obter a lista de relatórios: {e}")
+        log(f" ⚠️ Não foi possível obter a lista de relatórios: {e}")
         return {}
 
     alvos = [{**item, "ato": "027"} for item in lista["ato027"]]
     alvos += [{**item, "ato": "028"} for item in lista["ato028"]]
-    log(f"  {len(alvos)} relatórios a processar ({len(lista['ato027'])} vereadores no Ato027, {len(lista['ato028'])} no Ato028)")
+    log(f" {len(alvos)} relatórios encontrados ({len(lista['ato027'])} vereadores no Ato027, {len(lista['ato028'])} no Ato028)")
+
+    cache = carregar_cache()
+    a_processar = [a for a in alvos if chave_cache(a) not in cache]
+    pulados = len(alvos) - len(a_processar)
+    if pulados:
+        log(f" 💾 {pulados} relatórios já processados anteriormente (cache) — pulando download")
 
     resultado = {}
-    caminho_tmp = "/tmp/_verba_cg_tmp.pdf"
+    cache_mudou = False
 
-    for i, alvo in enumerate(alvos):
-        nome, ato = alvo["nome"], alvo["ato"]
-        try:
-            r1 = sessao.post(f"{BASE_URL}/HomeDocumentosPublicados.aspx/SalvarCodigoLinhaRelatorio",
-                              json={"strCodigoLinhaRelatorio": alvo["codigoLinhaPDF"], "strChaveAcesso": alvo["chaveAcesso"]},
-                              headers=HEADERS_AJAX, timeout=30)
-            if r1.status_code != 200:
-                log(f"  [{i+1}/{len(alvos)}] {nome} Ato{ato}: erro ao selecionar relatório ({r1.status_code})")
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futuros = {executor.submit(processar_alvo, alvo): alvo for alvo in a_processar}
+        total = len(futuros)
+        concluidos = 0
+        for futuro in as_completed(futuros):
+            alvo = futuros[futuro]
+            nome, ato = alvo["nome"], alvo["ato"]
+            concluidos += 1
+            try:
+                nome_r, ato_r, meses, extra = futuro.result()
+            except Exception as e:
+                log(f" [{concluidos}/{total}] {nome} Ato{ato}: exceção inesperada — {e}")
                 continue
 
-            r2 = sessao.get(f"{BASE_URL}/MostrarPDF.aspx", timeout=60)
-            if r2.status_code != 200 or "pdf" not in r2.headers.get("Content-Type", ""):
-                log(f"  [{i+1}/{len(alvos)}] {nome} Ato{ato}: PDF indisponível ({r2.status_code})")
+            if meses is None:
+                log(f" [{concluidos}/{total}] {nome} Ato{ato}: {extra}")
                 continue
 
-            with open(caminho_tmp, "wb") as f:
-                f.write(r2.content)
-
-            meses = processa_pdf(caminho_tmp)
-            def vazio(md):
-                return not md["notas"] and not md["combustivel"] and md["totalDeclarado"] is None
-            meses = {m: d for m, d in meses.items() if not vazio(d)}
             resultado.setdefault(nome, {})[f"ato{ato}"] = meses
-            log(f"  [{i+1}/{len(alvos)}] {nome} Ato{ato}: {len(meses)} meses")
-        except Exception as e:
-            log(f"  [{i+1}/{len(alvos)}] {nome} Ato{ato}: exceção — {e}")
-        finally:
-            if os.path.exists(caminho_tmp):
-                os.remove(caminho_tmp)
-        time.sleep(0.2)
+            cache[chave_cache(alvo)] = {
+                "nome": nome, "ato": ato, "sha256": extra,
+                "processadoEm": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+            }
+            cache_mudou = True
+            log(f" [{concluidos}/{total}] {nome} Ato{ato}: {len(meses)} meses")
+
+    if cache_mudou:
+        salvar_cache(cache)
 
     return resultado
-
-
 # ============================================================
 # 3. MESCLAR NO camara_municipal.json (sem sobrescrever dados bons)
 # ============================================================
@@ -402,11 +480,9 @@ def normaliza_nome(nome):
     nome = re.sub(r"[^\w\s]", "", nome)
     return re.sub(r"\s+", " ", nome).strip()
 
-
 def data_para_iso(data_br):
     d, m, a = data_br.split("/")
     return f"{a}-{m}-{d}"
-
 
 def data_valida(data_br):
     try:
@@ -415,18 +491,15 @@ def data_valida(data_br):
     except Exception:
         return False
 
-
 def chave_dedup(data_iso, valor, documento_ou_nf):
     numeros = re.sub(r"[^0-9]", "", documento_ou_nf or "")
     v = round(valor, 2) if valor is not None else None
     return (data_iso, v, numeros)
 
-
 def limpa_doc(documento):
     if not documento:
         return None
     return re.sub(r"^(NFC?|NFS-?e|NOTA FISCAL|CUPOM FISCAL|RECIBO)\s*", "", documento, flags=re.I).strip()
-
 
 def total_mes_confiavel(dados_mes):
     """Só usa um total quando ele foi IMPRESSO na própria página do PDF —
@@ -434,14 +507,13 @@ def total_mes_confiavel(dados_mes):
     total = dados_mes.get("totalDeclarado")
     return total if total is not None and total > 0 else None
 
-
 def mesclar_dados(resultado_extraido):
     if not resultado_extraido:
-        log("  ⚠️ Nenhum dado extraído — mantendo camara_municipal.json inalterado")
+        log(" ⚠️ Nenhum dado extraído — mantendo camara_municipal.json inalterado")
         return
 
     if not ARQUIVO_CAMARA.exists():
-        log(f"  ⚠️ {ARQUIVO_CAMARA} não existe — pulando mesclagem")
+        log(f" ⚠️ {ARQUIVO_CAMARA} não existe — pulando mesclagem")
         return
 
     atual = json.load(open(ARQUIVO_CAMARA, encoding="utf-8"))
@@ -515,15 +587,14 @@ def mesclar_dados(resultado_extraido):
 
             vereadores_atualizados += 1
             total_notas_novas += notas_novas_vereador
-            log(f"  {v['nome']}: +{notas_novas_vereador} notas novas" + (", meses atualizados" if mes_mudou else ""))
+            log(f" {v['nome']}: +{notas_novas_vereador} notas novas" + (", meses atualizados" if mes_mudou else ""))
 
     if vereadores_atualizados:
         atual["ultimaAtualizacao"] = hoje
         json.dump(atual, open(ARQUIVO_CAMARA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         log(f"✅ camara_municipal.json atualizado — {vereadores_atualizados} vereadores, {total_notas_novas} notas fiscais novas")
     else:
-        log("  Nenhuma mudança confiável encontrada — camara_municipal.json inalterado")
-
+        log(" Nenhuma mudança confiável encontrada — camara_municipal.json inalterado")
 
 if __name__ == "__main__":
     resultado = coletar_verba_indenizatoria()
