@@ -482,13 +482,18 @@ def normaliza_nome(nome):
 
 def data_para_iso(data_br):
     d, m, a = data_br.split("/")
-    return f"{a}-{m}-{d}"
+    return f"{a}-{int(m):02d}-{int(d):02d}"
 
 def data_valida(data_br):
+    """Além do formato, rejeita datas no futuro — combustível/OCR corrompido
+    às vezes faz um número perto da data (litros, placa) ser lido como dia/mês,
+    produzindo datas impossíveis como agosto quando a coleta é feita em julho."""
     try:
-        d, m, a = data_br.split("/")
-        return a == ANO_STR and 1 <= int(m) <= 12 and 1 <= int(d) <= 31
-    except Exception:
+        d, m, a = (int(x) for x in data_br.split("/"))
+        if a != int(ANO_STR):
+            return False
+        return date(a, m, d) <= date.today()
+    except (ValueError, TypeError):
         return False
 
 def chave_dedup(data_iso, valor, documento_ou_nf):

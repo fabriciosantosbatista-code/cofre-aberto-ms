@@ -1,13 +1,13 @@
 {
-  "ultimaAtualizacao": "2026-07-10T20:47:21-04:00",
+  "ultimaAtualizacao": "2026-07-14T13:10:48",
   "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande/MS (SCPI Fiorilli, 45.225.6.93:8079) — Verba Indenizatória (Ato 027/028) extraída dos PDFs individuais por vereador via HomeDocumentosPublicados.aspx, 10/07/2026.",
   "resumo": {
     "totalVereadores": 29,
     "folhaSalarialMensal": 756348.42,
     "totalFuncionariosGabinetes": 678,
     "totalGastoPessoalMensal": 4288948.72,
-    "totalVerbaIndenizatoriaAnual": 8721000,
-    "totalVerbaIndenizatoriaPaga2026": 3523272.32
+    "totalVerbaIndenizatoriaAnual": 8700000.0,
+    "totalVerbaIndenizatoriaPaga2026": 2765525.18
   },
   "vereadores": [
     {
@@ -1190,7 +1190,7 @@
         "gastoPessoalAnual": 2154563.88,
         "totalEstimado": 2775856.62
       },
-      "totalNotasFiscais": 27,
+      "totalNotasFiscais": 28,
       "despesas": [
         {
           "data": "2026-01-28",
@@ -1254,6 +1254,15 @@
           "nf": null,
           "descricao": "NFE 14204/U DIVULGAÇÃO DE ATIVIDADES PARLAMENTARES",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-29",
+          "fornecedor": "7 ADVICE DIGITAL ASSESSORIA LTDAME <<",
+          "cnpj": "18.957.234/0001-97",
+          "valor": 9500.0,
+          "nf": null,
+          "descricao": "1 NFE 137/U SERVIÇO DE ASSESSORIA ..— o",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-02-06",
@@ -1455,12 +1464,24 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 0,
-        "gastoAto028_2026": 0,
-        "gastoPago2026": 0,
-        "percentualUsado": 0.0,
-        "mesesAto027": {},
-        "mesesAto028": {},
+        "gastoAto027_2026": 61340.52,
+        "gastoAto028_2026": 59000.0,
+        "gastoPago2026": 120340.52,
+        "percentualUsado": 40.1,
+        "mesesAto027": {
+          "jan": 12466.81,
+          "fev": 12493.1,
+          "mar": 12476.42,
+          "abr": 12409.53,
+          "mai": 11494.66
+        },
+        "mesesAto028": {
+          "jan": 11000.0,
+          "fev": 12000.0,
+          "mar": 12000.0,
+          "abr": 12000.0,
+          "mai": 12000.0
+        },
         "categorias": {},
         "notaColeta": "PDF com codificação incompatível — texto não extraível pelo extrator.",
         "descricaoGeral": "Reembolso de despesas vinculadas à atividade parlamentar (Ato da Mesa Diretora nº 27/2017 — atividade parlamentar geral: combustíveis, divulgação, serviços gráficos, locação de veículo, software/internet; nº 28/2017 — assessoria técnica). Dados coletados via Claude para Chrome no portal 45.225.6.93:8079/transparencia (jun/2026).",
@@ -1485,8 +1506,576 @@
         "gastoPessoalAnual": 2085611.52,
         "totalEstimado": 2724664.26
       },
-      "totalNotasFiscais": 0,
-      "despesas": [],
+      "totalNotasFiscais": 63,
+      "despesas": [
+        {
+          "data": "2026-01-05",
+          "fornecedor": "A.P.N LOCACOES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": "171",
+          "descricao": "/2026 NX Locação de veículo. Período: janeiro/2026",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-06",
+          "fornecedor": "META ANUNCIOS FACEBOOK",
+          "cnpj": "13.347.016/0001-17",
+          "valor": 1000.0,
+          "nf": null,
+          "descricao": "Transação Gestão de serviços de redes sociais 2",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-01-19",
+          "fornecedor": "POSTO CARANDA LOCATELLI LTDA",
+          "cnpj": "12.542.545/0001-09",
+          "valor": 140.57,
+          "nf": "919445",
+          "descricao": "/2026 ETANOL 34,37 N) RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-22",
+          "fornecedor": "NVITORIA COMERCIO E TRANSPORTES LTDA",
+          "cnpj": "02.422.918/0001-54",
+          "valor": 150.0,
+          "nf": "1372549",
+          "descricao": "/2026 ETANOL 34,967 RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-26",
+          "fornecedor": "META ANUNCIOS FACEBOOK",
+          "cnpj": "13.347.016/0001-17",
+          "valor": 1000.0,
+          "nf": null,
+          "descricao": "Transação Gestão de serviços de redes sociais",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-01-27",
+          "fornecedor": "POSTO LR LTDA",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 100.0,
+          "nf": "735607",
+          "descricao": "/2026 ETANOL 24,45 RWD8I62 \"",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-29",
+          "fornecedor": "POSTO LR LTDA",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 140.0,
+          "nf": "738438",
+          "descricao": "/2026 ETANOL 34,23 Nº) RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-02",
+          "fornecedor": "AUTO POSTO DANUBIO LTDA",
+          "cnpj": "19.871.109/0001-22",
+          "valor": 100.0,
+          "nf": "179526",
+          "descricao": "/2026 — N ETANOL 23,311 RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-05",
+          "fornecedor": "POSTO AVENIDA AFONSO PENA NX",
+          "cnpj": "01.271.514/0001-44",
+          "valor": 100.0,
+          "nf": "290224",
+          "descricao": "/2026 ETANOL 25,063 RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-09",
+          "fornecedor": "POSTOLRUTDA",
+          "cnpj": "52.212878/0001-94",
+          "valor": 34.17,
+          "nf": "751607",
+          "descricao": "/20%6 ETANOL 34,17 — | RwD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-09",
+          "fornecedor": "SOBERANO CONSULTORIA EM GESTAO EMPRESARIAL LTDA",
+          "cnpj": "45.267.147/0001-80",
+          "valor": 7500.0,
+          "nf": "42",
+          "descricao": "/2026 Gestão de serviços de redes sociais",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-02-12",
+          "fornecedor": "POSTO LR LTDA 1",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 172.04,
+          "nf": "755601",
+          "descricao": "/2026 ETANOL 39,19 > | RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-23",
+          "fornecedor": "POSTO CARANDA LOCATELLI LTDA",
+          "cnpj": "12.542.545/0001-09",
+          "valor": 151.01,
+          "nf": "946168",
+          "descricao": "/2026 ETANOL 36,041 RWD38I62 1",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-25",
+          "fornecedor": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA",
+          "cnpj": "13.347.016/0001-17",
+          "valor": 1500.0,
+          "nf": null,
+          "descricao": "x) Transação D Gestão de serviços de redes sociais bs",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-02-26",
+          "fornecedor": "POSTO CARANDA LOCATELLI LTDA",
+          "cnpj": "12.542.545/0001-09",
+          "valor": 150.0,
+          "nf": "948607",
+          "descricao": "/2026 ETANOL 35,8 À RWD8I62 1",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "A.P.NLOCACOES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": null,
+          "descricao": "Recibo E7CF269D Ss Locação de veículo. Período: fevereiro/2026",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "RC COMERCIO DE DERIVADOS PETROLEO LTDA",
+          "cnpj": "01.271.514/0001-44",
+          "valor": 120.02,
+          "nf": "293528",
+          "descricao": "/2026 ETANOL vT 29,489 S RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "54.284.645 FLAVIA TRINDADE FERNANDES DE SOUZA",
+          "cnpj": "54.284.645/0001-22",
+          "valor": 500.0,
+          "nf": "58",
+          "descricao": "/2026 Divulgação de atividades parlamentares",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-03",
+          "fornecedor": "BARSAGLINI REZENDE - SOCIEDADE INDIVIDUAL DE",
+          "cnpj": "28.631.008/0001-75",
+          "valor": 12000.0,
+          "nf": "129",
+          "descricao": "/2026 “s | Serviços jurídicos ADVOCACIA D",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-03-04",
+          "fornecedor": "7 ANDRE G. DE SOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 450.0,
+          "nf": "441",
+          "descricao": "/2026 Locação de software",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-06",
+          "fornecedor": "POSTO LR LTDA",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 188.46,
+          "nf": "781670",
+          "descricao": "/2026 Etanol 42,93 : RWD38I162 ) Transporte ( X )Total",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-11",
+          "fornecedor": "POSTO LRLTDA “",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 180.0,
+          "nf": null,
+          "descricao": "“) NF——— | Gasolina 27,735 x | RWDB8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-13",
+          "fornecedor": "N JR FERNANDES & CIA LTDA",
+          "cnpj": "00.163.202/0001-54",
+          "valor": 174.64,
+          "nf": "28143",
+          "descricao": "/2026 Material de expediente",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-13",
+          "fornecedor": "1 AUTO POSTO DANUBIO LTDA",
+          "cnpj": "19.871.109/0001-22",
+          "valor": 150.71,
+          "nf": "199332",
+          "descricao": "/2026 ETANOL . 32,835 RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-16",
+          "fornecedor": "G5 NEWS PRESTACAO DE SERVICOS LTDA",
+          "cnpj": "16.670.942/0001-17",
+          "valor": 2500.0,
+          "nf": "1558",
+          "descricao": "/2026 NS Divulgação de aUvdadas parlamentares",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-17",
+          "fornecedor": "LUIZ FELIPE FALCÃO CALDEIRA LTDA",
+          "cnpj": "37.225.149/0001-89",
+          "valor": 8000.0,
+          "nf": "1614",
+          "descricao": "/2026 Serviços gráficos",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-19",
+          "fornecedor": "“| AUTO POSTO DANUBIO LTDA",
+          "cnpj": "19.871.109/0001-22",
+          "valor": 175.69,
+          "nf": "202519",
+          "descricao": "/2026 ETANOL 40,02 RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-24",
+          "fornecedor": "/ | POSTO LR LTDA",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 100.0,
+          "nf": "803627",
+          "descricao": "/2026 - ETANOL 23,311 - RWDB8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-26",
+          "fornecedor": "AUTO POSTO DANUBIO LTDA",
+          "cnpj": "19.871.109/0001-22",
+          "valor": 100.0,
+          "nf": "206212",
+          "descricao": "/2026 ETANOL 22,78 RWD81I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-30",
+          "fornecedor": "NOVA LIMA NEWS LTDA",
+          "cnpj": "45.855.302/0001-80",
+          "valor": 500.0,
+          "nf": "297",
+          "descricao": "/2026 Divulgação de atividades parlamentares",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-30",
+          "fornecedor": "AUTO POSTO DANUBIO LTDA",
+          "cnpj": "19.871.109/0001-22",
+          "valor": 150.0,
+          "nf": "216",
+          "descricao": "/2026 \"” ETANOL 34,169 RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-31",
+          "fornecedor": "ANDRE G. DE SOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 450.0,
+          "nf": "473",
+          "descricao": "/2026 Locação de sistema de software",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-01",
+          "fornecedor": "G5 NEWS PRESTACAO DE SERVICOS LTDA",
+          "cnpj": "16.670.942/0001-17",
+          "valor": 2500.0,
+          "nf": "1568",
+          "descricao": "/2026 Divulgação de atividades parlamentares",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-01",
+          "fornecedor": "42.420.113 NATHALIA FONTOURA GOMES VILALBA",
+          "cnpj": "42.420.113/0001-96",
+          "valor": 500.0,
+          "nf": "171",
+          "descricao": "/2026 Divulgação de atividades parlamentares",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-06",
+          "fornecedor": "APNLOCAÇÕES",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": null,
+          "descricao": "Recibo Nº: 687FA1CB Locação de Carro mês março",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-06",
+          "fornecedor": "Mercuri Servicos e Comunicacoes LTDA",
+          "cnpj": "50.117.292/0001-15",
+          "valor": 1000.0,
+          "nf": "1227",
+          "descricao": "/2026 Divulgação de atividades parlamentares",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-07",
+          "fornecedor": "POSTO LR PETRÓLEO LTDA",
+          "cnpj": "15.715.389/000128",
+          "valor": 168.81,
+          "nf": null,
+          "descricao": "NFE 2714962 ETANOL 39,72 RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-07",
+          "fornecedor": "POSTO LR LTDA",
+          "cnpj": "52.212.876/0001-94",
+          "valor": 180.0,
+          "nf": null,
+          "descricao": "NFE 000.008.784 ETANOL 40,00 RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-10",
+          "fornecedor": "POSTO LR LTDA",
+          "cnpj": "52.212.876/0001-94",
+          "valor": 180.0,
+          "nf": null,
+          "descricao": "NFE 000824979 ETANOL 40,00 RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-14",
+          "fornecedor": "POSTO BONATO E BONATO LTDA",
+          "cnpj": "08.924.582/0002-95",
+          "valor": 160.5,
+          "nf": "001433314",
+          "descricao": "ETANOL 35,007 RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-16",
+          "fornecedor": "POSTO RUI BARBOSA",
+          "cnpj": "11.485.532/0001-82",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFE 000501488 ETANOL 22,99 RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-22",
+          "fornecedor": "POSTO LR LTDA",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 200.21,
+          "nf": null,
+          "descricao": "NFE 000009062 ETANOL 44,591 RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-28",
+          "fornecedor": "POSTO LR LTDA",
+          "cnpj": "52.212.876/0001-94",
+          "valor": 150.01,
+          "nf": null,
+          "descricao": "NFE 000845243 ETANOL 33.41 RWDB8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-30",
+          "fornecedor": "ANDRE G. DE SOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 450.0,
+          "nf": "502",
+          "descricao": "/U Locação de sistema de software",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-30",
+          "fornecedor": "POSTO Z+Z IGORLTDA",
+          "cnpj": "26.852.319/0001-39",
+          "valor": 70.0,
+          "nf": "002470500",
+          "descricao": "ETANOL 16,319 RWDB8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-01",
+          "fornecedor": "NATHÁLIA FONTOURA GOMES VILHALBA",
+          "cnpj": "42.420.113/0001-96",
+          "valor": 500.0,
+          "nf": "SE175",
+          "descricao": "/U Divulgação de atividades parlamentares",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-01",
+          "fornecedor": "APN LOCAÇÕES",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": null,
+          "descricao": "Recibo Nº: F81DEEC2 Locação de Carro mês abril",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-04",
+          "fornecedor": "POSTO F5 LTDA",
+          "cnpj": "05.990.575/0001-12",
+          "valor": 200.0,
+          "nf": "001827033",
+          "descricao": "N | GASOLINA x | 313 “N | RWD8l62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-04",
+          "fornecedor": ", | BARSAGLINI REZENDE - SOCIEDADE INDIVIDUAL DE",
+          "cnpj": "28.631.008/0001-75",
+          "valor": 12000.0,
+          "nf": "SE 133",
+          "descricao": "/U Serviços jurídicos Ns N bh ADVOCACIA",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-05-07",
+          "fornecedor": "POSTO LR LTDA",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "+ NFE 000856838 x.) ETANOL : 34,967 N RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-10",
+          "fornecedor": "POSTO TORK OLI MODELO LTDA >",
+          "cnpj": "22.061.736/0001-02",
+          "valor": 200.02,
+          "nf": "000525003",
+          "descricao": "GASOLINA => | 3155 e. RWDB8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-12",
+          "fornecedor": "POSTO LR LTDA 52,.212.878/0001-94 N 150,00 . NF 000862733 ETANOL % | 33,409 > | rwogi62 29/5/2026 POSTO LR LTDA >",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 150.0,
+          "nf": "000882248",
+          "descricao": "ETANOL x | 37,594 Nº | RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-15",
+          "fornecedor": "AUTO POSTO DANUBIO LTDA “+",
+          "cnpj": "19.871.109/0001-22",
+          "valor": 150.01,
+          "nf": null,
+          "descricao": "NFC-e 000232366 >| ETANOL N 34,968 N RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-20",
+          "fornecedor": "NEAR A LR LTDA",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFE 000871712 XX] ETANOL | 37,594 N RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-24",
+          "fornecedor": "ABASTECEDORA DE COMBUSTÍVEIS",
+          "cnpj": "07741437000125",
+          "valor": 150.0,
+          "nf": "640554",
+          "descricao": "x | ETANOL — | 36,675 N. | RWDB8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-27",
+          "fornecedor": "POSTO CARANDÁ LOCATELLI LTDA >",
+          "cnpj": "12.542.545/0001-09",
+          "valor": 144.66,
+          "nf": null,
+          "descricao": "* NFC-e 001017254 /— “| ETANOL N | 36,256 — | RWD8I62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-29",
+          "fornecedor": "4 FLAVIA TRINDADE FERNANDES DE SOUZA",
+          "cnpj": "54.284.645/0001-22",
+          "valor": 500.0,
+          "nf": "Se71",
+          "descricao": "A Divulgação de atividades parlamentares",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-29",
+          "fornecedor": "ANDRÉ G. DE SOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 450.0,
+          "nf": "Se 524",
+          "descricao": "/U Locação software ' SS X",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-01",
+          "fornecedor": "NATÁLIA FONTOURA GOMES VILALBA",
+          "cnpj": "42.420.113/0001-96",
+          "valor": 500.0,
+          "nf": "Se 182",
+          "descricao": "/U Divulgação de atividades parlamentares",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-01",
+          "fornecedor": "G5 NEWS PRESTAÇÃO DE SERVIÇOS LTDA",
+          "cnpj": "16.670.942/0001-17",
+          "valor": 2500.0,
+          "nf": "Se 1595",
+          "descricao": "/U Divulgação de atividades parlamentares",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-01",
+          "fornecedor": "APN LOCAÇÕES",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": null,
+          "descricao": "N Recibo n. 824165FF N Locação de veículo mês maio",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-02",
+          "fornecedor": "BARSAGLINI REZENDE -SOCIEDADE INDIVIDUAL DE «",
+          "cnpj": "28.631.008/0001-75",
+          "valor": 12000.0,
+          "nf": null,
+          "descricao": "134/U Serviços jurídicos | ADVOCACIA o 7",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-04-30",
+          "fornecedor": "/2026 G5 NEWS PRESTAÇÃO DE SERVIÇOS LTDA",
+          "cnpj": "16.670.942/0001-17",
+          "valor": 2500.0,
+          "nf": "1577",
+          "descricao": "/2026 Divulgação de atividades parlamentares",
+          "ato": "ATO 027"
+        }
+      ],
       "foto": "data:image/jpeg;base64,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",
       "sqcand": "120002058941",
       "urlPerfil": "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/CENTRO-OESTE/MS/2045202024/120002058941/2024/90514"
@@ -1547,7 +2136,7 @@
         "gastoPessoalAnual": 2049142.2,
         "totalEstimado": 2530117.22
       },
-      "totalNotasFiscais": 15,
+      "totalNotasFiscais": 18,
       "despesas": [
         {
           "data": "2026-02-03",
@@ -1595,6 +2184,24 @@
           "ato": "ATO 028"
         },
         {
+          "data": "2026-02-08",
+          "fornecedor": "“| VITORIA COMERCIO E TRANSPORTES LTDA",
+          "cnpj": "02.422.918/0001-54",
+          "valor": 255.11,
+          "nf": null,
+          "descricao": "NFC-e 001382543 GASOLINA 42,59L RWB6B11",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-28",
+          "fornecedor": "7| VITORIA COMERCIO E TRANSPORTES LTDA",
+          "cnpj": "02.422.918/0001-54",
+          "valor": 260.39,
+          "nf": null,
+          "descricao": "NFC-e 001394851 GASOLINA 43,47L ! RWB6B11",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-03-03",
           "fornecedor": "—",
           "cnpj": "52.340.823/0001-60",
@@ -1638,6 +2245,15 @@
           "nf": null,
           "descricao": "NFSe — 00000073 MIDIA E MARKETING DIGITAL N ' N",
           "ato": "ATO 028"
+        },
+        {
+          "data": "2026-03-13",
+          "fornecedor": "“ VITORIA COMERCIO E TRANSPORTES LTDA N/",
+          "cnpj": "02.422.918/0001-54",
+          "valor": 260.04,
+          "nf": null,
+          "descricao": "NFC-e 001403367 À GASOLINA 42,01L * | RWB6B11",
+          "ato": "ATO 027"
         },
         {
           "data": "2026-04-01",
@@ -1734,7 +2350,7 @@
         "gastoPessoalAnual": 1913498.16,
         "totalEstimado": 2393190.9
       },
-      "totalNotasFiscais": 27,
+      "totalNotasFiscais": 29,
       "despesas": [
         {
           "data": "2026-01-02",
@@ -1770,6 +2386,15 @@
           "valor": 1495.0,
           "nf": null,
           "descricao": "Hum mil quatrocentos e noventa e cinco reais",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-12",
+          "fornecedor": "Posto Cidade \"",
+          "cnpj": "06.255.176/0001-70",
+          "valor": 50.0,
+          "nf": null,
+          "descricao": "W NFe. nº Etanol x | 11,934 N REZ 3A55 x Rs 001237833",
           "ato": "ATO 027"
         },
         {
@@ -1897,6 +2522,15 @@
           "nf": null,
           "descricao": "NFS-e nº 29 Pareceres",
           "ato": "ATO 028"
+        },
+        {
+          "data": "2026-02-24",
+          "fornecedor": "Auto Posto Fenner LTDA “",
+          "cnpj": "10.839.948/0001-99",
+          "valor": 170.0,
+          "nf": null,
+          "descricao": "NFe.nº Etanol + 39,813 —N | REZ3A55 & 000282439",
+          "ato": "ATO 027"
         },
         {
           "data": "2026-03-02",
@@ -2408,17 +3042,22 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 47299.0,
-        "gastoAto028_2026": 0,
-        "gastoPago2026": 47299.0,
-        "percentualUsado": 15.8,
+        "gastoAto027_2026": 48859.0,
+        "gastoAto028_2026": 49950.0,
+        "gastoPago2026": 98809.0,
+        "percentualUsado": 32.9,
         "mesesAto027": {
-          "jan": 11210.0,
+          "jan": 12440.0,
           "fev": 12449.0,
-          "mar": 12870.0,
-          "abr": 10770.0
+          "mar": 12500.0,
+          "abr": 11470.0
         },
-        "mesesAto028": {},
+        "mesesAto028": {
+          "jan": 12500.0,
+          "fev": 12450.0,
+          "mar": 12500.0,
+          "abr": 12500.0
+        },
         "categorias": {
           "Locação de veículo": 7100.0,
           "Material gráfico": 1950.0,
@@ -2463,8 +3102,71 @@
         "gastoPessoalAnual": 1706357.88,
         "totalEstimado": 2187307.62
       },
-      "totalNotasFiscais": 4,
+      "totalNotasFiscais": 40,
       "despesas": [
+        {
+          "data": "2026-01-16",
+          "fornecedor": "Adven | Br ltda “",
+          "cnpj": "14.796.606/0001-90",
+          "valor": 1200.0,
+          "nf": null,
+          "descricao": "",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-01-28",
+          "fornecedor": "Gold Rent a Car - Locadora",
+          "cnpj": "12.605.423/0001-14",
+          "valor": 460.0,
+          "nf": null,
+          "descricao": "Fatura de Locação 1076 Locação de veículo",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-28",
+          "fornecedor": "Gold Rent a Car - Locadora",
+          "cnpj": "12.605.423/0001-14",
+          "valor": 4800.0,
+          "nf": null,
+          "descricao": "Fatura de Locação 1077 | Locação de veículo",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-09",
+          "fornecedor": "Advyen Br Ltda",
+          "cnpj": "14.796.606/0001-90",
+          "valor": 3550.0,
+          "nf": null,
+          "descricao": "",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-02-18",
+          "fornecedor": "“| Marcos Antonio L. Farias Junior",
+          "cnpj": "45.751.727/0001-49",
+          "valor": 4000.0,
+          "nf": "Se 137",
+          "descricao": "/U Divulgação de atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-18",
+          "fornecedor": "Conecta Gestor 0",
+          "cnpj": "38.561.918/0001-82",
+          "valor": 250.0,
+          "nf": "Se 3191",
+          "descricao": "Sistema de gestão de gabinete",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-25",
+          "fornecedor": "Auto Posto Danubio LTDA “>",
+          "cnpj": "19.871.109/0001-22",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFCeO00190859 | etanol x | 34,966 N QAZ1H53 ]",
+          "ato": "ATO 027"
+        },
         {
           "data": "2026-03-02",
           "fornecedor": "Gold Rent a Car Locadora",
@@ -2484,6 +3186,33 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-03-02",
+          "fornecedor": "Gold Rent a Car - Locadora",
+          "cnpj": "12.605.423/0001-14",
+          "valor": 2300.0,
+          "nf": null,
+          "descricao": "Fatura de Locação 1101 Locação de veículo",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "Gold Rent a Car - Locadora",
+          "cnpj": "12.605.423/0001-14",
+          "valor": 4800.0,
+          "nf": null,
+          "descricao": "+ Fatura de Locação 1102 Locação de veículo =| ( )Transporte ( X )Total",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-03",
+          "fornecedor": ") Naiara Gonzatto Sociedade Individual de",
+          "cnpj": "49.938.100/0001-52",
+          "valor": 8500.0,
+          "nf": "Se 36",
+          "descricao": "?U | Assessoria e Consultoria Jurídica Parlamentar | Advocacia",
+          "ato": "ATO 028"
+        },
+        {
           "data": "2026-03-04",
           "fornecedor": "Valdevino Soluções Gráficas Ltda",
           "cnpj": "10.306.434/0001-78",
@@ -2493,12 +3222,246 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-03-04",
+          "fornecedor": "Posto São Francisco Locatelli LTDA “x",
+          "cnpj": "42.115.947/0001-98",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFCe 000254166 | etanol 35,8 NJ oAZ1H53",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-03-09",
           "fornecedor": "Marcos Antonio L. de Faria Junior",
           "cnpj": "—",
           "valor": 4000.0,
           "nf": "—",
           "descricao": "Serviços",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-09",
+          "fornecedor": "Marcos Antonio L. de Faria Junior N",
+          "cnpj": "45.751.727/0001-49",
+          "valor": 4000.0,
+          "nf": "Se 141",
+          "descricao": "/U Divulgação de Atividade Parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-17",
+          "fornecedor": "Conecta Gestor 0",
+          "cnpj": "38.561.918/0001-82",
+          "valor": 250.0,
+          "nf": "Se3250",
+          "descricao": "Sistema de gestão de gabinete",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-24",
+          "fornecedor": "Ribeiro de Mendonça Baston e CIA LTDA",
+          "cnpj": "16.045.015/0001-06",
+          "valor": 120.0,
+          "nf": null,
+          "descricao": "NFCe001056996 | etanol 27,15 OAZ1H53",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-27",
+          "fornecedor": "Posto Saito União LTDA ]",
+          "cnpj": "06.876.929/0001-65",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFCe000867525 | etanol Ô 34,967 QAZ1H53",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-27",
+          "fornecedor": "Marcos Antonio L. de Faria Júnior",
+          "cnpj": "45.751.727/0001-49",
+          "valor": 4000.0,
+          "nf": "Se 143",
+          "descricao": "/U x Divulgação de ação parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-27",
+          "fornecedor": "Meta",
+          "cnpj": "13.347.016/0001-17",
+          "valor": 4000.0,
+          "nf": null,
+          "descricao": "171711169 | Gestão Rede Social",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-03-30",
+          "fornecedor": "Valdevino Soluções Gráficas LTDa",
+          "cnpj": "10.306.434/0001-78",
+          "valor": 280.0,
+          "nf": "Se6681",
+          "descricao": "/U Material gráfico",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-31",
+          "fornecedor": "Naiara Gonzatto Sociedade Individual de",
+          "cnpj": "49.938.100/0001-52",
+          "valor": 8500.0,
+          "nf": null,
+          "descricao": "sl Assessoria e Consultoria Jurídica Parlamentar Advocacia",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-04-05",
+          "fornecedor": "Auto Posto Caioba LTDA",
+          "cnpj": "33.130.757/0001-59",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFCe000284784 | etanol \"| 34,16 À QAZ1H53 ( X )",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-08",
+          "fornecedor": "Gold Rent a Car - Locadora",
+          "cnpj": "12.605.423/0001-14",
+          "valor": 4800.0,
+          "nf": null,
+          "descricao": "Fatura de Locação 1131 Locação de veículo",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-22",
+          "fornecedor": "Posto Saito União LTDA",
+          "cnpj": "06.876.929/0001-65",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFCe0D0893244 | etanol 23,31 QAZ1H53",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-27",
+          "fornecedor": "Solarys Soluções Digitais LTDA",
+          "cnpj": "08.648.207/0001-89",
+          "valor": 399.0,
+          "nf": null,
+          "descricao": "Sistema e-Gabinete gerenciamento de É gabinete politico",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-27",
+          "fornecedor": "dLocal Brasil IPS.A",
+          "cnpj": "25.021.356/0001-32",
+          "valor": 4000.0,
+          "nf": null,
+          "descricao": "22377796939 Gestão Rede Social",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-04-28",
+          "fornecedor": "Triangulo Comercio de Combustivel LTDA",
+          "cnpj": "15.360.273/0001-14",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFCe000563733 etanol 34,96 OAZ1H53",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-28",
+          "fornecedor": "dLocal Brasil IP SA",
+          "cnpj": "25.021.356/0001-32",
+          "valor": 400.0,
+          "nf": null,
+          "descricao": "NX 22429006867]| Gestão de Rede Social : NS",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-04-29",
+          "fornecedor": "Valdevino Soluções Graficas LTDA",
+          "cnpj": "10.306.434/0001-78",
+          "valor": 650.0,
+          "nf": null,
+          "descricao": "6698/U Divulgação de Atividade Parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-04",
+          "fornecedor": "Gold Rent a Car - Locadora",
+          "cnpj": "12.605.423/0001-14",
+          "valor": 2300.0,
+          "nf": null,
+          "descricao": "Fatura de Locação 1138 Locação de veículo",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-04",
+          "fornecedor": "Gold Rent a Car - Locadora",
+          "cnpj": "12.605.423/0001-14",
+          "valor": 800.0,
+          "nf": null,
+          "descricao": "Fatura de Locação 1137 Locação de veículo ( ) Transporte ( X )",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-05",
+          "fornecedor": "/| Posto São Francisco Locatelli LTDA É",
+          "cnpj": "42.115.947/0001-98",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFCe000272359 /| etanol 35,8 TCP9F19",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-06",
+          "fornecedor": "+ Auto Posto Belo Horizonte LTDA “É",
+          "cnpj": "35.748.841/0001-66",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFCe000254515 4 etanol <— SAT = OAZ1H53",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-13",
+          "fornecedor": "Posto Saito União LTDA",
+          "cnpj": "06.876.929/0001-65",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFCe000914864 -| etanol 35,8 - OAZ1H53",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-18",
+          "fornecedor": "Bonatto eBonatto LTDA ,",
+          "cnpj": "08.924.582/0002-95",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "]NFCeOO1450361 7| etanol 35,12- TCP9F19",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-21",
+          "fornecedor": "/| Posto Imbirussu LTDA",
+          "cnpj": "26.833.301/0001-90",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "] NFCOOO863329 - | etanol ' 37,68 OAZ1H53",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-25",
+          "fornecedor": "Solarys Soluções DigitaisLTDA",
+          "cnpj": "08.648.207/0001-89",
+          "valor": 370.0,
+          "nf": null,
+          "descricao": "6416 Sistema e-Gabinete gerenciamento de gabinete politico",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-26",
+          "fornecedor": "Valdevino Soluções Graficas LTDA",
+          "cnpj": "10.306.434/0001-78",
+          "valor": 280.0,
+          "nf": null,
+          "descricao": "6720 U Divulgação de Atividade Parlamentar",
           "ato": "ATO 027"
         }
       ],
@@ -2554,7 +3517,7 @@
         "gastoPessoalAnual": 1695374.04,
         "totalEstimado": 2383140.22
       },
-      "totalNotasFiscais": 22,
+      "totalNotasFiscais": 60,
       "despesas": [
         {
           "data": "2026-01-15",
@@ -2563,6 +3526,15 @@
           "valor": 399.05,
           "nf": "2781349",
           "descricao": "Diesel S10 Aditivado 66,62L | SMD-8J62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-15",
+          "fornecedor": "+ POSTO LIBERDADE LOCATELL! LTDA",
+          "cnpj": "02.394.473/0001-46",
+          "valor": 399.05,
+          "nf": null,
+          "descricao": "NFC-e n 2781349, IPIMAX DIESEL S10 ADITIVADO - 66,62 -| SMD8J62",
           "ato": "ATO 027"
         },
         {
@@ -2575,12 +3547,30 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-01-19",
+          "fornecedor": "/ | POSTO LIBERDADE LOCATELLILTDA “",
+          "cnpj": "02.394.473/0001-46",
+          "valor": 8.34,
+          "nf": null,
+          "descricao": "SMD8J62",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-01-21",
           "fornecedor": "Posto Liberdade Locatelli Ltda",
           "cnpj": "02.394.473/0001-46",
           "valor": 150.0,
           "nf": "2788139",
           "descricao": "Diesel S10 25,04L | SMD-8J62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-21",
+          "fornecedor": "“| POSTO LIBERDADE LOCATELLILTDA",
+          "cnpj": "02.394.473/0001-46",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e n 2788139 IPIMAX DIESEL S10 ADITIVADO 25,04 “ | SMD8J62 /",
           "ato": "ATO 027"
         },
         {
@@ -2593,6 +3583,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-01-24",
+          "fornecedor": "/ POSTO CARANDA LOCATELLI LTDA /",
+          "cnpj": "12.542.545/0001-09",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e n 923680 IPIMAX DIESEL S10 ADITIVADO - 16,15 | SMD8J62",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-01-26",
           "fornecedor": "Posto São Francisco Locatelli Ltda",
           "cnpj": "42.115.947/0001-98",
@@ -2602,12 +3601,30 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-01-26",
+          "fornecedor": "POSTO SÃO FRANCISCO LOCATELL! LTDA",
+          "cnpj": "42.115.947/0001-98",
+          "valor": 229.4,
+          "nf": null,
+          "descricao": "NFC-e n 242860 - IPIMAX GASOLINA ADITIVADA - 37,06 - | SLX6C56",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-01-27",
           "fornecedor": "Posto Liberdade Locatelli Ltda",
           "cnpj": "02.394.473/0001-46",
           "valor": 427.87,
           "nf": "2795622",
           "descricao": "Diesel S10 71,43L | SMD-8J62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-27",
+          "fornecedor": "/) POSTO LIBERDADE LOCATELLILTDA",
+          "cnpj": "02.394.473/0001-46",
+          "valor": 427.87,
+          "nf": null,
+          "descricao": "NFC-e n 2795622. IPIMAX DIESEL S10 ADITIVADO - 71,43 - | SMD8J62",
           "ato": "ATO 027"
         },
         {
@@ -2656,6 +3673,42 @@
           "ato": "ATO 028"
         },
         {
+          "data": "2026-02-02",
+          "fornecedor": "MERCURI SERVIÇOS E COMUNICAÇÃO LTDA",
+          "cnpj": "50.117.292/0001-15",
+          "valor": 1000.0,
+          "nf": null,
+          "descricao": "NFC-e nº 00001121 DIVULGAÇÃO DAS ATIVIDADES DO VEREADOR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-02",
+          "fornecedor": "/| CYNTHIA SILVEIRA LESCRECK GOMES",
+          "cnpj": "44.812.663/0001-86",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "+ NFC-e nº 00000035 DIVULGAÇÃO DAS ATIVIDADES DO VEREADOR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-02",
+          "fornecedor": "/| POSTO CARANDA LOCATELLI LTDA",
+          "cnpj": "12.542.545/0001-09",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e n 930236 - IPIMAX DIESEL S10 ADITIVADO, 16,15, | SMD8J62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-02",
+          "fornecedor": "VANDERLEI LOPES DA SILVA",
+          "cnpj": "64.097.655/0001-02",
+          "valor": 2500.0,
+          "nf": "0000002",
+          "descricao": "GESTÃO DE SERVIÇOS DE REDES SOCIAS",
+          "ato": "ATO 028"
+        },
+        {
           "data": "2026-02-03",
           "fornecedor": "Carlos Roberto Pereira NS",
           "cnpj": "40.447.879/0001-39",
@@ -2674,6 +3727,24 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-02-03",
+          "fornecedor": ") CARLOS ROBERTO PEREIRA NS",
+          "cnpj": "40.447.879/0001-39",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "NFC-e nº 00000275 DIVULGAÇÃO DAS ATIVIDADES DO VEREADOR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-03",
+          "fornecedor": "SOARES E SILVA ADVOCACIA",
+          "cnpj": "27.135.892/0001-94",
+          "valor": 10000.0,
+          "nf": "0000115",
+          "descricao": "TRABALHOS, PROJETOS TECNICOS E PARECERES SOCIEDADE INDIVIDUAL DE JURIDICOS. ADVOCACIA",
+          "ato": "ATO 028"
+        },
+        {
           "data": "2026-02-04",
           "fornecedor": "César da Silva Ferreira",
           "cnpj": "39.376.773/0001-02",
@@ -2689,6 +3760,114 @@
           "valor": 11000.0,
           "nf": null,
           "descricao": "",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-04",
+          "fornecedor": "CESAR DA SILVA FERREIRA",
+          "cnpj": "39.376.773/0001-02",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "NFC-e nº 00000167 DIVULGAÇÃO DAS ATIVIDADES DO VEREADOR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-05",
+          "fornecedor": "POSTO LIBERDADE LOCATELLI LTDA",
+          "cnpj": "02.394.473/0001-46",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-en2805988 IPIMAX DIESEL S10 ADITIVADO 33,39 | SMDB8J62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-10",
+          "fornecedor": "POSTO LIBERDADE LOCATELLI LTDA",
+          "cnpj": "02.394.473/0001-46",
+          "valor": 372.04,
+          "nf": null,
+          "descricao": "NFC-en2812837 IPIMAX DIESEL S10 ADITIVADO 62,11 SMD8J62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-11",
+          "fornecedor": "NOGUEIRA CASSARO COMERCIO VAREJISTA DE",
+          "cnpj": "02.780.366/0001-56",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e n 066896 GASOLINA ADITIVADA 26,36 QAV3A96 COMBUSTIVEIS E LUBRIFICANTES LTDA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-28",
+          "fornecedor": "AUTO POSTO SHIMA LTDA",
+          "cnpj": "01.330.663/0001-37",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e n 444405 GASOLINA COMUM 34,18 QAV3A96",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-28",
+          "fornecedor": "POSTO LIBERDADE LOCATELLI LTDA",
+          "cnpj": "02.394.473/0001-46",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e n 2834367 IPIMAX DIESEL S10 ADITIVADO 25,04 SMD8J62 E o - - | CSSS—— = : =",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "“| MERCURI SERVIÇOS E COMUNICAÇÃO LTDA",
+          "cnpj": "50.117.292/0001-15",
+          "valor": 1000.0,
+          "nf": null,
+          "descricao": "NFC-e nº 00001162 DIVULGAÇÃO DAS ATIVIDADES DO VEREADOR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": ") CONECTA MIDIA PRODUCAO E MARKETING LTDA",
+          "cnpj": "59.109.679/0001-02",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": ") NFC-e nº 00000101 ”» DIVULGAÇÃO DAS ATIVIDADES DO VEREADOR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "POSTO SÃO FRANCISCO LOCATELL! LTDA",
+          "cnpj": "42.115.947/0001-98",
+          "valor": 100.43,
+          "nf": null,
+          "descricao": "NFC-en0611.923 ORIGINAL ETANOL 23,97 «| SLX6C56",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "POSTO SÃO FRANCISCO LOCATELLI LTDA",
+          "cnpj": "42.115.947/0001-98",
+          "valor": 183.53,
+          "nf": null,
+          "descricao": "NFC-e n 011.923 IPIMAX GASOLINA ADITIVADA 29,65, | SLX6C56",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "SOARES E SILVA ADVOCACIA",
+          "cnpj": "27.135.892/0001-94",
+          "valor": 10000.0,
+          "nf": "0000119",
+          "descricao": "TRABALHOS, PROJETOS TECNICOS E PARECERES SOCIEDADE INDIVIDUAL DE JURIDICOS. ADVOCACIA",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-03-03",
+          "fornecedor": "CARLOS ROBERTO PEREIRA \"",
+          "cnpj": "40.447.879/0001-39",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "NFC-e nº 00000279 DIVULGAÇÃO DAS ATIVIDADES DO VEREADOR ”",
           "ato": "ATO 027"
         },
         {
@@ -2710,12 +3889,75 @@
           "ato": "ATO 028"
         },
         {
+          "data": "2026-03-04",
+          "fornecedor": "POSTO LIBERDADE LOCATELLI LTDA",
+          "cnpj": "02.394.473/0001-46",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e n 2839290 IPIMAX DIESEL S10 ADITIVADO 25,04 SMD8J62",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-04",
+          "fornecedor": "VANDERLEI LOPES DA SILVA",
+          "cnpj": "64.097.655/0001-02",
+          "valor": 2500.0,
+          "nf": "0000003",
+          "descricao": "GESTÃO DE SERVIÇOS DE REDES SOCIAS",
+          "ato": "ATO 028"
+        },
+        {
           "data": "2026-03-05",
           "fornecedor": "CESAR DA SILVA FERREIRA NS",
           "cnpj": "39.376.773/0001-02",
           "valor": 11000.0,
           "nf": null,
           "descricao": "",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-05",
+          "fornecedor": "CESAR DA SILVA FERREIRA NS",
+          "cnpj": "39.376.773/0001-02",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "NFC-e nº 00000170 DIVULGAÇÃO DAS ATIVIDADES DO VEREADOR ;",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-05",
+          "fornecedor": "» | POSTO SÃO FRANCISCO LOCATELLI! LTDA",
+          "cnpj": "42.115.947/0001-98",
+          "valor": 189.48,
+          "nf": null,
+          "descricao": "NFC-e n 011.922 IPIMAX GASOLINA ADITIVADA |/30,661 | SLX6C56",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-05",
+          "fornecedor": ", | POSTO SÃO FRANCISCO LOCATELLI LTDA",
+          "cnpj": "42.115.947/0001-98",
+          "valor": 267.29,
+          "nf": null,
+          "descricao": "NFC-e n 011.922 ORIGINAL GASOLINA 45,38 SLX6C56",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-07",
+          "fornecedor": ", | POSTO SÃO FRANCISCO LOCATELL! LTDA",
+          "cnpj": "42.115.947/0001-98",
+          "valor": 296.56,
+          "nf": null,
+          "descricao": "WNFC-e n 011.951 IPIMAX GASOLINA ADITIVADA 46,41 N) SLX6C56",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-23",
+          "fornecedor": "AUTO POSTO SHIMA LTDA",
+          "cnpj": "01.330.663/0001-37",
+          "valor": 222.18,
+          "nf": null,
+          "descricao": "NFC-e n 452731 GASOLINA COMUM 35,37) QAV3A96",
           "ato": "ATO 027"
         },
         {
@@ -2728,12 +3970,48 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-03-24",
+          "fornecedor": "POSTO SÃO FRANCISCO LOCATELLI LTDA",
+          "cnpj": "42.115.947/0001-98",
+          "valor": 240.53,
+          "nf": null,
+          "descricao": "] NFC-en0612.098 ORIGINAL GASOLINA 37,64 |SLX6C56",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-04-01",
           "fornecedor": "CESAR DA SILVA FERREIRA '",
           "cnpj": "39.376.773/0001-02",
           "valor": 11000.0,
           "nf": null,
           "descricao": "",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-01",
+          "fornecedor": ", CARLOS ROBERTO PEREIRA = \"",
+          "cnpj": "40.447.879/0001-39",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "NFC-e nº 00000291 N DIVULGAÇÃO DAS ATIVIDADES DO VEREADOR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-01",
+          "fornecedor": "SOARES E SILVA ADVOCACIA",
+          "cnpj": "27.135.892/0001-94",
+          "valor": 10000.0,
+          "nf": "0000122",
+          "descricao": "TRABALHOS, PROJETOS TECNICOS E PARECERES SOCIEDADE INDIVIDUAL DE JURIDICOS. ADVOCACIA",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-04-02",
+          "fornecedor": "MERCURI SERVIÇOS E COMUNICAÇÃO LTDA x)",
+          "cnpj": "50.117.292/0001-15",
+          "valor": 1000.0,
+          "nf": null,
+          "descricao": "NFC-e nº 00001215. —“N | DIVULGAÇÃO DAS ATIVIDADES DO VEREADOR",
           "ato": "ATO 027"
         },
         {
@@ -2746,10 +4024,37 @@
           "ato": "ATO 028"
         },
         {
+          "data": "2026-04-06",
+          "fornecedor": "VANDERLEI LOPES DA SILVA",
+          "cnpj": "64.097.655/0001-02",
+          "valor": 2500.0,
+          "nf": "0000004",
+          "descricao": "GESTÃO DE SERVIÇOS DE REDES SOCIAS",
+          "ato": "ATO 028"
+        },
+        {
           "data": "2026-05-04",
           "fornecedor": "VANDERLEI LOPES DA SILVA",
           "cnpj": "64.097.655/0001-02",
           "valor": 12500.0,
+          "nf": "0000005",
+          "descricao": "VGESTÃO DE SERVIÇOS DE REDES SOCIAS",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-05-04",
+          "fornecedor": "SOARES E SILVA ADVOCACIA",
+          "cnpj": "27.135.892/0001-94",
+          "valor": 10000.0,
+          "nf": "0000126",
+          "descricao": "! TRABALHOS, PROJETOS TECNICOS E PARECERES SOCIEDADE INDIVIDUAL DE JURIDICOS. ADVOCACIA",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-05-04",
+          "fornecedor": "VANDERLEI LOPES DA SILVA",
+          "cnpj": "64.097.655/0001-02",
+          "valor": 2500.0,
           "nf": "0000005",
           "descricao": "VGESTÃO DE SERVIÇOS DE REDES SOCIAS",
           "ato": "ATO 028"
@@ -2775,16 +4080,16 @@
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
         "gastoAto027_2026": 37486.93,
-        "gastoAto028_2026": 50000.0,
-        "gastoPago2026": 87486.93,
-        "percentualUsado": 29.2,
+        "gastoAto028_2026": 45500.0,
+        "gastoPago2026": 82986.93,
+        "percentualUsado": 27.7,
         "mesesAto027": {
           "jan": 12496.02,
           "fev": 12495.56,
           "mar": 12495.35
         },
         "mesesAto028": {
-          "jan": 12500.0,
+          "jan": 8000.0,
           "fev": 12500.0,
           "mar": 12500.0,
           "abr": 12500.0
@@ -2807,7 +4112,7 @@
         "gastoPessoalAnual": 1682428.8,
         "totalEstimado": 2371429.26
       },
-      "totalNotasFiscais": 10,
+      "totalNotasFiscais": 19,
       "despesas": [
         {
           "data": "2026-02-02",
@@ -2826,6 +4131,24 @@
           "nf": "313.777",
           "descricao": "Diesel 121,55L | OOS-6939",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-02",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 635.78,
+          "nf": null,
+          "descricao": "NF Nº 313.777 GASOLINA 103,24 OOH-8367 FKXOA31",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-02",
+          "fornecedor": "GAMA SOLUÇÕES LTDA",
+          "cnpj": "07.805.770/0001-50",
+          "valor": 4500.0,
+          "nf": null,
+          "descricao": "NF Nº279 | GESTÃO DE REDES 2OCIAB o",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-02-04",
@@ -2864,6 +4187,24 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-03-02",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 1301.38,
+          "nf": null,
+          "descricao": "NF Nº 314.244 GasoLtina — [21023 | pon-8367 FKXOA31",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 1594.18,
+          "nf": null,
+          "descricao": "NE Nº 314.244 DIESEL 261,77 — | 0O0s-6939",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-03-16",
           "fornecedor": "Trokar Postos de Serviços Ltda",
           "cnpj": "02.969.905/0001-08",
@@ -2871,6 +4212,24 @@
           "nf": "314.570",
           "descricao": "Diesel | QAW-B8E40",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-16",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 435.31,
+          "nf": null,
+          "descricao": "NF Nº 314.570 DIESEL 03,18 QAWB8E40",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-28",
+          "fornecedor": "GAMA SOLUÇÕES LTDA x",
+          "cnpj": "07.805.770/0001-50",
+          "valor": 4500.0,
+          "nf": null,
+          "descricao": "P NFNº 284/U | GESTÃO DE REDES SOCIAIS",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-04-06",
@@ -2897,6 +4256,33 @@
           "valor": 1505.94,
           "nf": "314.986",
           "descricao": "Gasolina 236,39L | FKX-OA31",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-06",
+          "fornecedor": "J.-S.DALBOSCO-ME",
+          "cnpj": "01.683.790/0001-10",
+          "valor": 9330.0,
+          "nf": null,
+          "descricao": "NF Nº2281 Criação de arte /Serviços gráficos / impressão de material",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-06",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 1224.1,
+          "nf": null,
+          "descricao": "NF Nº 314.986 DIESEL 17544 | 0OS-6939 QAWB8E40",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-06",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 1505.94,
+          "nf": null,
+          "descricao": "NFNº314.986 GASOLINA 236,39 | FKXOA3I1 OOH8367 VQWIG15",
           "ato": "ATO 027"
         }
       ],
@@ -3228,18 +4614,24 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 41262.79,
-        "gastoAto028_2026": 0,
-        "gastoPago2026": 41262.79,
-        "percentualUsado": 13.8,
+        "gastoAto027_2026": 56267.73,
+        "gastoAto028_2026": 62500.0,
+        "gastoPago2026": 118767.73,
+        "percentualUsado": 39.6,
         "mesesAto027": {
-          "jan": 7062.79,
-          "fev": 5400.0,
+          "jan": 12342.79,
+          "fev": 12484.94,
           "mar": 9600.0,
-          "abr": 9600.0,
+          "abr": 12240.0,
           "mai": 9600.0
         },
-        "mesesAto028": {},
+        "mesesAto028": {
+          "jan": 12500.0,
+          "fev": 12500.0,
+          "mar": 12500.0,
+          "abr": 12500.0,
+          "mai": 12500.0
+        },
         "categorias": {
           "Divulgação parlamentar": 16040.0,
           "Combustíveis": 1662.79
@@ -3258,7 +4650,7 @@
         "gastoPessoalAnual": 1573317.96,
         "totalEstimado": 2011401.4
       },
-      "totalNotasFiscais": 5,
+      "totalNotasFiscais": 45,
       "despesas": [
         {
           "data": "2026-02-02",
@@ -3267,6 +4659,141 @@
           "valor": 5000.0,
           "nf": "000618",
           "descricao": "Divulgação parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-02",
+          "fornecedor": "*ROSENEIDE GOULART >",
+          "cnpj": "08.145.090/0001-10",
+          "valor": 5000.0,
+          "nf": null,
+          "descricao": "NF nº 000000618 | DIVULGAÇÃO DE ATIVIDADEPARLAMENTAR — o - PR = . E pe pç) RiNAS EN AA OE CA >",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-02",
+          "fornecedor": "CLERONIO NOBREGA SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+          "cnpj": "27.698.746/0001-77",
+          "valor": 10000.0,
+          "nf": null,
+          "descricao": "Nº 00000107 - | Assessoria Jurídica É",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-02-04",
+          "fornecedor": "ANDRE G. DESOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 400.0,
+          "nf": null,
+          "descricao": "NFnº 000000323 LOCAÇÃO DESOFTWARE PF — — q PENTA .—.. a. POTES — — — — o — ——— FOROS ONO = -- — —— Es AA E Fo A: SSAuN——————&——— A a | E \" \" o o O o A",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-04",
+          "fornecedor": "É Seta MORENINHA LOCATELLI LTDA >)",
+          "cnpj": "16.731.272/0001-00",
+          "valor": 215.11,
+          "nf": null,
+          "descricao": "CUPOM send Nº 1472912 | GASOLINA COMUM N 35,322 | BSZ7H93",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-05",
+          "fornecedor": "ELSON C. PINHEIRO",
+          "cnpj": "28.365.595/0001-06",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "+ Nº 00000189 Serviços de gravação de áudios e é edição de vídeos",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-02-14",
+          "fornecedor": "POSTO MORENINHA LOCATELLI LTDA",
+          "cnpj": "16.731.272/0001-00",
+          "valor": 228.22,
+          "nf": null,
+          "descricao": "CUPOM FISCAL/ Nº 1483262. | GASOLINA COMUM n37,476 | RWI 9H31 s——, - =",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-22",
+          "fornecedor": "POSTO MORENINHA LOCATELLI LTDA (",
+          "cnpj": "16.731.272/0001-00",
+          "valor": 217.37,
+          "nf": null,
+          "descricao": "CUPOM FISCÃ 1º 1491671 | GASOLINA COMUM 35,094 BSZ 7H93 RR . 2 A bs",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-23",
+          "fornecedor": "LOCATELLI E MORAIS LTDA *",
+          "cnpj": "38.132.784/0001-84",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "CUPOM FISCAL/ Nº364426 | GASOLINA COMUM X /33,389 NSML7FO5 a 001 fiinine favinga oe",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-24",
+          "fornecedor": "POSTO MORENINHA LOCATELLI LTDA",
+          "cnpj": "16.731.272/0001-00",
+          "valor": 254.92,
+          "nf": null,
+          "descricao": "CUPOM FISCAL/ Nº1493403 | GASOLINA COMUM “| 41,859 | RWI9H31",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "CLERONIO NOBREGA SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+          "cnpj": "27.698.746/0001-77",
+          "valor": 10000.0,
+          "nf": null,
+          "descricao": "“| Nº00000108 NJ Assessoria Jurídica",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-03-03",
+          "fornecedor": "ELSON C. PINHEIRO <«",
+          "cnpj": "28.365.595/0001-06",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "Nº 00000192 AN Serviços de gravação de áudios e | edição de vídeos",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-03-04",
+          "fornecedor": "RIBEIRO DE MENDONÇA BASTONÉ CIAMDA hà",
+          "cnpj": "16.045.015/0001-06",
+          "valor": 180.0,
+          "nf": null,
+          "descricao": "CUPOMFISCAL/ Nº1047174 | GASOLINACOMUM ÉN) 30,253 NM 7FO5 1 2000) ' 3,362",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-11",
+          "fornecedor": "POSTOROUXINOLLTDA",
+          "cnpj": "00.413.865/0001-80",
+          "valor": 50.0,
+          "nf": null,
+          "descricao": "CUPOM FISCAL/ Nº151930| GASOLINA COMUMx| 6078 x sMLZFOS| :[",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-20",
+          "fornecedor": "BONATTO ECIALTDA",
+          "cnpj": "33.149.253/0005-04",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "CUPOMFISCAL/Nº 1651589| GASOLINA COMUM—| 24 No| SML7FO5 —= | 5",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-23",
+          "fornecedor": "POSTO LOCATELLI MÃE EFILHALTDA >“",
+          "cnpj": "24.601.882/0001-09",
+          "valor": 250.0,
+          "nf": null,
+          "descricao": "CUPOM FISCAL/ Nº 2064800, | GASOLINA COMUM 38,521 | RWI 9H31",
           "ato": "ATO 027"
         },
         {
@@ -3279,6 +4806,132 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-03-25",
+          "fornecedor": "MARCO ANTONIO L.DE FARIA JUNIOR Ni",
+          "cnpj": "45.751.727/0001-49",
+          "valor": 4200.0,
+          "nf": null,
+          "descricao": "NFº 00000142 N DIVULGAÇÃO DE ATIVIDADE PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-27",
+          "fornecedor": "BONATTO EBONATTO LTDA",
+          "cnpj": "08.924.582/0004-57",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "CUPOMFISCAL/Nº 1381134 |)GASOLINA COMUM, | 31,008 NVRWI 9H31",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-30",
+          "fornecedor": "POSTO AVENIDA AFONSO PENA",
+          "cnpj": "01.271.514/0001-44",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "CUPOMFISCAL/Nº 297501 GASOLINACOMUM 30,865 | RWI 9H31",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-30",
+          "fornecedor": "POSTO BANDEIRA LTDA",
+          "cnpj": "14.166.520/0001-83",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "CUPOMFISCAL / Nº 2194581 | GASOLINACOMUM. | 24 N SML7FO5",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-31",
+          "fornecedor": "ANDRE G. DESOUZA «+",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 400.0,
+          "nf": null,
+          "descricao": "NFnº 000000467 NX| LOCAÇÃO DESOFTWARE",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-31",
+          "fornecedor": "POSTO MORENINHA LOCATELLI LTDA",
+          "cnpj": "16.731.272/0001-00",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "CUPOMFISCAL/Nº 1529182 GASOLINACOMUM x | 30,35 x | BSZ7H93",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-03",
+          "fornecedor": "BONATTO ECIALTDA >",
+          "cnpj": "33.149.253/0005-04",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "CUPOMFISCAL/Nº 1861236 GASOLINACOMUM | 31,497 | SML 7FO5",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-04",
+          "fornecedor": "POSTO MORENINHA LOCATELLI LTDA 1",
+          "cnpj": "16.731.272/0001-00",
+          "valor": 236.06,
+          "nf": null,
+          "descricao": "CUPOMFISCAL/Nº 1533722 GASOLINACOMUM » 35,821 | RWI9H31",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-06",
+          "fornecedor": "CLERONIO NOBREGA SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+          "cnpj": "27.698.746/0001-77",
+          "valor": 10000.0,
+          "nf": null,
+          "descricao": "Nº 00000109 N Assessoria Jurídica",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-04-06",
+          "fornecedor": "ELSON C. PINHEIRO",
+          "cnpj": "28.365.595/0001-06",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "“| Nº 00000195 Serviços de gravação de áudios e edição de vídeos",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-04-07",
+          "fornecedor": "BONATTO EBONATTO LTDA “",
+          "cnpj": "08.924.582/0004-57",
+          "valor": 274.92,
+          "nf": null,
+          "descricao": "CUPOMFISCAL/Nº 1392076 N GASOLINACOMUM | 41,973 N] RWI9H31",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-08",
+          "fornecedor": "POSTO CARANDA LOCATELLI LTDA",
+          "cnpj": "12.542.545/0001-09",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "CUPOMFISCAL/Nº980333 GASOLINA COMUM o 31,299 | SML7FO5 1",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-12",
+          "fornecedor": "SOUZA&MIRANDA LTDA 7",
+          "cnpj": "03623.191/0001-36",
+          "valor": 109.0,
+          "nf": null,
+          "descricao": "CUPOMFISCAL/Nº434945 Á GASOLINA COMUM ' 15,175 |),PVA 8H79x GG IEA RAS GI Ao o É \" » jÕ - Fi EX Vereador Junior Coringa VIDE FEIA IE",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-15",
+          "fornecedor": "LOCARELLI EMORAIS LTDA + GASOLINA COMUM SL997N SML 7FO54",
+          "cnpj": "33.149.253/0005-04",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "CUPOM FISCAL/ Nº 16749861",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-04-30",
           "fornecedor": "Roseneide Goulart",
           "cnpj": "08.145.090/0001-10",
@@ -3286,6 +4939,42 @@
           "nf": "000633",
           "descricao": "Divulgação parlamentar",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-30",
+          "fornecedor": "ROSENEIDE GOULART",
+          "cnpj": "08.145.090/0001-10",
+          "valor": 5000.0,
+          "nf": null,
+          "descricao": "NFnº 000000633 é DIVULGAÇÃO DEATIVIDADEPARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-30",
+          "fornecedor": "ANDRE G.DESOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 400.0,
+          "nf": null,
+          "descricao": "NFnº 000000497 LOCAÇÃODESOFTWARE",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-05",
+          "fornecedor": "CLERONIO NOBREGA SOCIEDADE INDIVIDUAL DEADVOCACIA NJ",
+          "cnpj": "27.698.746/0001-77",
+          "valor": 10000.0,
+          "nf": null,
+          "descricao": "x! Nº OODOOO110x | Assessoria Jurídica",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-05-05",
+          "fornecedor": "ELSONC. PINHEIRO",
+          "cnpj": "28.365.595/0001-06",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "Nº 00000198 “ | Serviços de gravação de áudios e edição de vídeos",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-05-06",
@@ -3297,12 +4986,75 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-05-06",
+          "fornecedor": "VMARCO ANTONIO L.DEFARIA JUNIOR",
+          "cnpj": "45.751.727/0001-49",
+          "valor": 4200.0,
+          "nf": null,
+          "descricao": "NFº00000148 DIVULGAÇÃO DEATIVIDADE PARLAMENTAR “",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-05-18",
           "fornecedor": "Tratto Comunicação e Serviços Ltda",
           "cnpj": "57.825.921/0001-00",
           "valor": 2640.0,
           "nf": "000036",
           "descricao": "Divulgação parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-18",
+          "fornecedor": "] TRATTO COMUNICAÇÃO ESERVIÇOSLTDA",
+          "cnpj": "57.825.921/0001-00",
+          "valor": 2640.0,
+          "nf": null,
+          "descricao": "NFº00000129 é IMPRESSÃO DEPANFLETOS",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-29",
+          "fornecedor": "ROSENEIDE GOULART",
+          "cnpj": "08.145.090/0001-10",
+          "valor": 5000.0,
+          "nf": null,
+          "descricao": "NF nº 000000635 DIVULGAÇÃO DEATIVIDADEPARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-29",
+          "fornecedor": "ANDREG.DESOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 400.0,
+          "nf": null,
+          "descricao": "NFnº 000000513 LOCAÇÃODESOFTWARE - NNE",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-02",
+          "fornecedor": "+CLERONIO NOBREGA SOCIEDADE INDIVIDUAL DE ADVOCACIA “7",
+          "cnpj": "27.698.746/0001-77",
+          "valor": 10000.0,
+          "nf": null,
+          "descricao": "Nº 00000111 —- | Assessoria Jurídica",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-06-02",
+          "fornecedor": "+ ELSON C.PINHEIRO",
+          "cnpj": "28.365.595/0001-06",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "Nº 00000200 -| Serviços de gravação de áudios e edição de vídeos",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-06-03",
+          "fornecedor": "MARCO ANTONIO L.DEFARIA JUNIOR",
+          "cnpj": "45.751.727/0001-49",
+          "valor": 4200.0,
+          "nf": null,
+          "descricao": "NFº00000153 7 DIVULGAÇÃO DEATIVIDADEPARLAMENTAR <",
           "ato": "ATO 027"
         }
       ],
@@ -3325,18 +5077,22 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 62137.18,
-        "gastoAto028_2026": 0,
-        "gastoPago2026": 62137.18,
-        "percentualUsado": 20.7,
+        "gastoAto027_2026": 49705.01,
+        "gastoAto028_2026": 50000.0,
+        "gastoPago2026": 99705.01,
+        "percentualUsado": 33.2,
         "mesesAto027": {
-          "jan": 12433.08,
+          "jan": 0.91,
           "fev": 12373.7,
           "mar": 12443.15,
           "abr": 12425.48,
           "mai": 12461.77
         },
-        "mesesAto028": {},
+        "mesesAto028": {
+          "jan": 12500.0,
+          "fev": 25000.0,
+          "abr": 12500.0
+        },
         "categorias": {
           "Divulgação parlamentar": 11000.0,
           "Combustíveis/Estacionamento": 1433.08
@@ -3355,7 +5111,7 @@
         "gastoPessoalAnual": 1549049.16,
         "totalEstimado": 2037231.13
       },
-      "totalNotasFiscais": 35,
+      "totalNotasFiscais": 55,
       "despesas": [
         {
           "data": "2026-01-13",
@@ -3412,12 +5168,39 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-02-04",
+          "fornecedor": "Basilio Motors",
+          "cnpj": "29.649.452/0001-80",
+          "valor": 6000.0,
+          "nf": null,
+          "descricao": "Recibo Locação de carro para atividade parlamentar >",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-04",
+          "fornecedor": "Basilio Motors",
+          "cnpj": "29.649.452/0001-80",
+          "valor": 2000.0,
+          "nf": null,
+          "descricao": "Recibo Locação de carro para atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-02-06",
           "fornecedor": "THALIA ROSALINDA SOCIEDADE INDIVIDUAL",
           "cnpj": "62.826.608/0001-27",
           "valor": 12.5,
           "nf": null,
           "descricao": "0,00 (doze mil e quinhentos reais) De conformidade com a regulamentação constante do Ato da Mesa Diretora nº 028/2017, solicito o ressarcimento das de",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-02-06",
+          "fornecedor": "THALIA ROSALINDA SOCIEDADE INDIVIDUAL",
+          "cnpj": "62.826.608/0001-27",
+          "valor": 12500.0,
+          "nf": ".5",
+          "descricao": "/U % JURÍDICO DEADVOCACIA o N",
           "ato": "ATO 028"
         },
         {
@@ -3434,6 +5217,15 @@
           "fornecedor": "Alexandre Omedo da Silva",
           "cnpj": "44.629.929/0001-50",
           "valor": 11000.0,
+          "nf": "177",
+          "descricao": "/U x | Impressão de material gráfico para divulgação N de atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-10",
+          "fornecedor": "Alexandre Omedo da Silva",
+          "cnpj": "44.629.929/0001-50",
+          "valor": 3000.0,
           "nf": "177",
           "descricao": "/U x | Impressão de material gráfico para divulgação N de atividade parlamentar",
           "ato": "ATO 027"
@@ -3475,10 +5267,37 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-03-02",
+          "fornecedor": "Basilio Motors",
+          "cnpj": "29.649.452/0001-80",
+          "valor": 6000.0,
+          "nf": null,
+          "descricao": "Recibo Locação de carro para atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "Basilio Motors",
+          "cnpj": "29.649.452/0001-80",
+          "valor": 2000.0,
+          "nf": null,
+          "descricao": "Recibo Locação de carro para atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-03-04",
           "fornecedor": "Alexandre Omedo da Silva",
           "cnpj": "44.629.929/0001-50",
           "valor": 11300.0,
+          "nf": "306",
+          "descricao": "Impressão de material gráfico para divulgação de atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-04",
+          "fornecedor": "Alexandre Omedo da Silva",
+          "cnpj": "44.629.929/0001-50",
+          "valor": 3300.0,
           "nf": "306",
           "descricao": "Impressão de material gráfico para divulgação de atividade parlamentar",
           "ato": "ATO 027"
@@ -3499,6 +5318,15 @@
           "valor": 12.5,
           "nf": null,
           "descricao": "0,00 (doze mil e quinhentos reais) De conformidade com a regulamentação constante do Ato da Mesa Diretora nº 028/2017, solicito o ressarcimento das de",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-03-17",
+          "fornecedor": "Teofilo Ottoni Sociedade Individual de",
+          "cnpj": "65.553.591/0001-70",
+          "valor": 12500.0,
+          "nf": ". 1",
+          "descricao": "/U “. JURÍDICO Advocacia [)",
           "ato": "ATO 028"
         },
         {
@@ -3535,6 +5363,42 @@
           "valor": 12.5,
           "nf": null,
           "descricao": "0,00 (doze mil e quinhentos reais) De conformidade coma regulamentação constante do Atoda Mesa Diretora nº028/2017,solicito oressarcimento das despesa",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-04-01",
+          "fornecedor": "Basilio Motors",
+          "cnpj": "29.649.452/0001-80",
+          "valor": 6000.0,
+          "nf": null,
+          "descricao": "Recibo Locação de carro para atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-01",
+          "fornecedor": "Basilio Motors",
+          "cnpj": "29.649.452/0001-80",
+          "valor": 2000.0,
+          "nf": null,
+          "descricao": "Recibo Locação de carro para atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-01",
+          "fornecedor": "Alexandre Omedo da Silva",
+          "cnpj": "44.629.929/0001-50",
+          "valor": 3150.0,
+          "nf": "313",
+          "descricao": "/U Impressão de material gráfico para divulgação de atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-01",
+          "fornecedor": "Teofilo Ottoni Sociedade Individual de,",
+          "cnpj": "65.553.591/0001-70",
+          "valor": 12500.0,
+          "nf": ".6",
+          "descricao": "/U — JURÍDICO 7 Advocacia",
           "ato": "ATO 028"
         },
         {
@@ -3583,6 +5447,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-04-30",
+          "fornecedor": "Alexandre OmedodaSilva «",
+          "cnpj": "44.629.929/0001-50",
+          "valor": 2700.0,
+          "nf": "320",
+          "descricao": "/U Impressãode materialgráfico para divulgação . deatividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-05-04",
           "fornecedor": "/ | REDESAITO",
           "cnpj": "36.823.052/0002-96",
@@ -3598,6 +5471,33 @@
           "valor": 12.5,
           "nf": null,
           "descricao": "0,00 (doze mile quinhentos reais) De conformidade com a regulamentação constante do Ato da Mesa Diretora nº 028/2017, solicito o ressarcimento das des",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-05-04",
+          "fornecedor": "Basilio Motors",
+          "cnpj": "29.649.452/0001-80",
+          "valor": 6000.0,
+          "nf": null,
+          "descricao": "Recibo Locação de carro para atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-04",
+          "fornecedor": "Basilio Motors",
+          "cnpj": "29.649.452/0001-80",
+          "valor": 2000.0,
+          "nf": null,
+          "descricao": "*| Recibo . Locação de carro para atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-04",
+          "fornecedor": "Larissa Estácio de Souza Sociedade Individual /",
+          "cnpj": "66.098.776/0001-02",
+          "valor": 12500.0,
+          "nf": ".1",
+          "descricao": "/U D JURÍDICO NX de Advocacia",
           "ato": "ATO 028"
         },
         {
@@ -3664,10 +5564,46 @@
           "ato": "ATO 028"
         },
         {
+          "data": "2026-06-01",
+          "fornecedor": "Larissa Estácio de Souza Sociedade Individual de Advocacia",
+          "cnpj": "66.098.776/0001-02",
+          "valor": 12500.0,
+          "nf": ".2",
+          "descricao": "/U - JURÍDICO “7",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-06-02",
+          "fornecedor": "Basilio Motors",
+          "cnpj": "29.649.452/0001-80",
+          "valor": 6000.0,
+          "nf": null,
+          "descricao": ", Recibo Locação de carro para atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-02",
+          "fornecedor": "Basilio Motors",
+          "cnpj": "29.649.452/0001-80",
+          "valor": 2000.0,
+          "nf": null,
+          "descricao": "7,| Recibo - Locação de carro para atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-06-08",
           "fornecedor": "Alexandre Omedo daSilva",
           "cnpj": "44.629.929/0001-50",
           "valor": 10750.0,
+          "nf": "331",
+          "descricao": "/U Impressãode materialgráfico para divulgação Í Í | de atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-08",
+          "fornecedor": "Alexandre Omedo daSilva",
+          "cnpj": "44.629.929/0001-50",
+          "valor": 2750.0,
           "nf": "331",
           "descricao": "/U Impressãode materialgráfico para divulgação Í Í | de atividade parlamentar",
           "ato": "ATO 027"
@@ -3692,13 +5628,13 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 45523.49,
+        "gastoAto027_2026": 49531.67,
         "gastoAto028_2026": 37500.0,
-        "gastoPago2026": 83023.49,
-        "percentualUsado": 27.7,
+        "gastoPago2026": 87031.67,
+        "percentualUsado": 29.0,
         "mesesAto027": {
-          "jan": 11100.0,
-          "fev": 9700.0,
+          "jan": 12369.22,
+          "fev": 12438.96,
           "mar": 12454.05,
           "abr": 12269.44
         },
@@ -3735,8 +5671,44 @@
         "gastoPessoalAnual": 1547559.84,
         "totalEstimado": 2135683.05
       },
-      "totalNotasFiscais": 16,
+      "totalNotasFiscais": 64,
       "despesas": [
+        {
+          "data": "2026-01-20",
+          "fornecedor": "BERTOZZ| & BERTOZZI| COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 277.83,
+          "nf": null,
+          "descricao": "NFCOOO766828 | GASOLINA 47,17 QAX8C34 x ' COMUM > DD",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-27",
+          "fornecedor": "BERTOZZ| & BERTOZZ| COMERCIO DE COMBUSTIVEISLTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 299.68,
+          "nf": null,
+          "descricao": "NFCOOO770756 | GASOLINA 50,031 NSD3H70 —. . COMUM",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-30",
+          "fornecedor": "4OAO MARCOS SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+          "cnpj": "51.143663/0001-04",
+          "valor": 8000.0,
+          "nf": null,
+          "descricao": "NFOOOOO10 | PARECERES",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-02-03",
+          "fornecedor": "IM PRODUÇOES E MARKETINGLTDA",
+          "cnpj": "49.146.388/0001-22",
+          "valor": 4500.0,
+          "nf": null,
+          "descricao": "7 NFOOOOO96 + GESTÃO DE SERVIÇOS DE REDES SOCIAIS",
+          "ato": "ATO 028"
+        },
         {
           "data": "2026-02-04",
           "fornecedor": "André G. de Souza",
@@ -3747,12 +5719,111 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-02-04",
+          "fornecedor": "ANDRÉ G. DE SOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 700.0,
+          "nf": null,
+          "descricao": "' NFSOOOO00325 - LOCAÇÃO DE SOFTWARE. “",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-02-05",
           "fornecedor": "Yvany Xagas de Oliveira",
           "cnpj": "24.563.537/0001-28",
           "valor": 10400.0,
           "nf": "277",
           "descricao": "Serviços Gráficos",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-05",
+          "fornecedor": "YVANY XAGASDE OLIVEIRA “",
+          "cnpj": "24.563.537/0001-28",
+          "valor": 10400.0,
+          "nf": null,
+          "descricao": "NFSOOO000277 - SERVIÇOS GRÁFICOS",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-05",
+          "fornecedor": "BERTOZZ| & BERTOZZI COMERCIO DE COMBUSTIVEIS LTDA. \"",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 320.52,
+          "nf": null,
+          "descricao": "NFCOOO775678 ' GASOLINA 51,781 QAX8C34 ADITIVADA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-06",
+          "fornecedor": "POSTO CIDADE",
+          "cnpj": "06.255.176/0001-70",
+          "valor": 236.75,
+          "nf": null,
+          "descricao": "NFCOO01250756 | GASOLINA | 39,525 REWOE41 | \" | ADITIVADA IN",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-13",
+          "fornecedor": "POSTO CIDADE",
+          "cnpj": "06.255.176/0001-70",
+          "valor": 334.19,
+          "nf": null,
+          "descricao": "NFCOO01254764 |] GASOLINA x 56,739 QAX8C34 » i v COMUM",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-14",
+          "fornecedor": "BERTOZZ| &BERTOZZI COMERCIO DE COMBUSTIVEISLTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 202.56,
+          "nf": null,
+          "descricao": "NFCOOO781139 | GASOLINA 33,817 N | REWOE41 COMUM",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-17",
+          "fornecedor": "BERTOZZI & BERTOZZI| COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 183.0,
+          "nf": null,
+          "descricao": "NFCOOO782547 | ETANOL",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-19",
+          "fornecedor": "BERTOZZ| & BERTOZZI| COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 228.88,
+          "nf": null,
+          "descricao": "NFCOOO783513 | GASOLINA 38,211 TDOS9109 “COMUM ”",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-20",
+          "fornecedor": "AUTO POSTO MILENIO LTDA",
+          "cnpj": "01.332.532/0001-99",
+          "valor": 332.33,
+          "nf": null,
+          "descricao": "NFCOOOS45676x+)] GASOLINA X 54,57 NX QAX8C34 | COMUM",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-24",
+          "fornecedor": "BERTOZZ|I & BERTOZZI| COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 195.17,
+          "nf": null,
+          "descricao": "NFCOOO786614 | GASOLINA 31,53 REWOE41 > la “\"ADITIVADA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-26",
+          "fornecedor": "BERTOZZ| & BERTOZZI| COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 295.49,
+          "nf": null,
+          "descricao": "NFCOOO788092 | GASOLINA 49,331 QAX8C34 | | COMUM",
           "ato": "ATO 027"
         },
         {
@@ -3774,12 +5845,111 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-03-02",
+          "fornecedor": "ANDRÉ G. DE SOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 700.0,
+          "nf": null,
+          "descricao": "NFSEOOO418 LOCAÇÃO DE SOFTWARE",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "CONECTA MIDIA PRODUÇÃO E MARKETING LTDA",
+          "cnpj": "59.109.679/0001-02",
+          "valor": 4500.0,
+          "nf": null,
+          "descricao": ") NFSEOOO0103 - DIVULGAÇÃO DE ATIVIDADE PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "7 JOAO MARCOS SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+          "cnpj": "51.143.663/0001-04",
+          "valor": 8000.0,
+          "nf": null,
+          "descricao": "” NFSEOOOOO13-| PARECERES",
+          "ato": "ATO 028"
+        },
+        {
           "data": "2026-03-04",
           "fornecedor": "MGS Comunicação Integrada Ltda",
           "cnpj": "24.385.414/0001-44",
           "valor": 4500.0,
           "nf": "839",
           "descricao": "Divulgação parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-04",
+          "fornecedor": "MGS COMUNICAÇÃO INTEGRADA LTDA",
+          "cnpj": "24.385.414/0001-44",
+          "valor": 4500.0,
+          "nf": null,
+          "descricao": ") NFSEOOO0839 DIVULGAÇÃO DE ATIVIDADE PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-04",
+          "fornecedor": "BERTOZZ| &BERTOZZI COMERCIO DE COMBUSTIVEISLTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 274.5,
+          "nf": null,
+          "descricao": "NFCOOO791763 | GASOLINA 45,827 QAX8C34 | . COMUM",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-07",
+          "fornecedor": "BERTOZZ| & BEROZZI| COMERCIO DE COMBUSTIVEIS",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 241.66,
+          "nf": null,
+          "descricao": "NFCOOO793680 | GASOLINA 38,42 q QOAX8C34 LTDA “* t “| ADITIVADA “",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-09",
+          "fornecedor": "POSTO CIDADE \"",
+          "cnpj": "06.255.176/0001-70",
+          "valor": 196.09,
+          "nf": null,
+          "descricao": "NFCOO1268067 | GASOLINA 32,/37 REWOE41 Y > COMUM Y À",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-11",
+          "fornecedor": "BERTOZZI| & BERTOZZI| COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 323.37,
+          "nf": null,
+          "descricao": "NFCOODO796207 | GASOLINA | 52,241 QAX8C34 > | N “)* coMUM ” T",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-13",
+          "fornecedor": "BERTOZZI| & BEROZZI COMERCIO DE COMBUSTIVEIS",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 40.0,
+          "nf": null,
+          "descricao": "NFCOO0797513 PSL 127 1 QAX8C34 | LTDA : ' ào - o 2 Je o do — —E",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-13",
+          "fornecedor": "BERTOZZ| & BEROZZI COMERCIO DE COMBUSTIVEIS",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 300.0,
+          "nf": null,
+          "descricao": "NFCOOO797513 | LUBRAX 5W3 | S QAX8C34 +) LTDA * 4 ' 1",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-13",
+          "fornecedor": "BERTOZZ| & BEROZZ| COMERCIO DE COMBUSTIVEIS",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 163.51,
+          "nf": null,
+          "descricao": "NFCOOO797513 | GASOLINA 25,/91 x ) QAX8C34 3 LTDA ” ”» | ADITIVADA x]",
           "ato": "ATO 027"
         },
         {
@@ -3792,12 +5962,48 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-03-14",
+          "fornecedor": "BERTOZZI| & BEROZZI COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 375.0,
+          "nf": null,
+          "descricao": "NFCO0797862 x | LUBRAX 5W40N | 5 ss) REWOE41 oa E O MO Ú ” he — ECO MS 1 o \"",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-14",
+          "fornecedor": "BERTOZZ! & BEROZZI COMERCIO DE COMBUSTIVEISLTDA — Ni",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 30.0,
+          "nf": null,
+          "descricao": ") NFCO0797862 “) PSL TM1 1 N) REWOE41",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-14",
+          "fornecedor": "BERTOZZI & BEROZZI| COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 187.68,
+          "nf": null,
+          "descricao": "NFCOO797862 GASOLINA 30,32 REWOE41 bh à COMUM",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-03-17",
           "fornecedor": "Bertozzi & Bertozzi Comércio de Combustíveis",
           "cnpj": "21.097.620/0001-60",
           "valor": 350.09,
           "nf": "799896",
           "descricao": "Gasolina Aditivada 55,22L | QAX-8C34",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-17",
+          "fornecedor": "BERTOZZ| & BEROZZ| COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 350.09,
+          "nf": null,
+          "descricao": "NFCOOO799896 | GASOLINA 55,22 QAXBC34 Y “| ADITIVADA N",
           "ato": "ATO 027"
         },
         {
@@ -3810,12 +6016,39 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-03-20",
+          "fornecedor": "POSTO CIDADE",
+          "cnpj": "06.255.176/0001-70",
+          "valor": 185.06,
+          "nf": null,
+          "descricao": "NFCO01273953 | GASOLINA 28,515 REWOFE41 : \" | ADITIVADA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-20",
+          "fornecedor": "Bertozzi & Bertozzi Comércio de Combustívels LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFCOOO8O1540 | Etanol 46.73 QANG6DO6",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-03-23",
           "fornecedor": "Bertozzi & Bertozzi Comércio de Combustíveis",
           "cnpj": "21.097.620/0001-60",
           "valor": 312.85,
           "nf": "803733",
           "descricao": "Gasolina 48,96L | QAX-8C34",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-23",
+          "fornecedor": "BERTOZZ| & BEROZZ| COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 312.85,
+          "nf": null,
+          "descricao": "NFCOOO803733 | GASOLINA 48,96 | QAXBC34 NY >|) COMUM",
           "ato": "ATO 027"
         },
         {
@@ -3828,6 +6061,33 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-03-29",
+          "fornecedor": "BERTOZZ| & BEROZZI| COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 299.69,
+          "nf": null,
+          "descricao": "] NFCOOO807109 | GASOLINA 46,9 N QAX8C34 o ) CoMUM",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-29",
+          "fornecedor": "Bertozzi & Bertozzi Comércio de Combustíveis LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFCOOO8O7051 | Gasolina 31.3 QAN6DO6 Comum",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-30",
+          "fornecedor": "BERTOZZ| & BEROZZ| COMERCIO DE COMBUSTIVEIS d",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 2268.51,
+          "nf": null,
+          "descricao": "NFCOOO807682 | GASOLINA 42,021 NX REWOE41 : LTDA : * | COMUM",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-03-31",
           "fornecedor": "André G. de Souza",
           "cnpj": "27.537.957/0001-28",
@@ -3835,6 +6095,24 @@
           "nf": "470",
           "descricao": "Locação de Software",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-31",
+          "fornecedor": "André G. de Souza",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 700.0,
+          "nf": null,
+          "descricao": "NFOOOO470 Locação de Software",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-31",
+          "fornecedor": "João Marcos Sociedade Individual de Advocacia",
+          "cnpj": "51.143.663/0001-04",
+          "valor": 8000.0,
+          "nf": null,
+          "descricao": "NX NFOOOOO014 |, Pareceres",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-04-01",
@@ -3855,12 +6133,102 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-04-01",
+          "fornecedor": "MGS Comunicação Integrada LTDA",
+          "cnpj": "24.385.414/0001-44",
+          "valor": 4500.0,
+          "nf": null,
+          "descricao": "NFOOOO846. | Divulgação de atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-01",
+          "fornecedor": "BERTOZZI & BERTOZZI COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 300.25,
+          "nf": null,
+          "descricao": "NFCOOO8O8969 ,| GASOLINA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-10",
+          "fornecedor": "Bertozzi ji& Bertozzi Comércio de Combustíveis LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 351.21,
+          "nf": null,
+          "descricao": "NFCOOO814192 | Gasolina 54.116 QAXBC34 Comum",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-14",
+          "fornecedor": "Bertozzi & Bertozzi Comércio de Combustíveis LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 332.87,
+          "nf": null,
+          "descricao": "NFCOODO817023 | Gasolina 51.29 QAX8C34 Comum O E z",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-16",
+          "fornecedor": "Bertozzi & Bertozzi Comércio de Combustíveis LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 266.35,
+          "nf": null,
+          "descricao": "NFCOOO818218 | Gasolina 41.041 QAXBC34É Comum | ma | o | J",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-18",
+          "fornecedor": "Bertozzi & Bertozzi Comércio de Combustíveis LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 308.47,
+          "nf": null,
+          "descricao": "NFCOOO819475 | Gasolina 47.531 QAXBC34 À Comum & j",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-19",
+          "fornecedor": "Bertozzi & Bertozzi Comércio de Combustíveis LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 122.01,
+          "nf": null,
+          "descricao": "NFCOOO819881 | Gasolina 18.8 QAXBC34 Comum",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-21",
+          "fornecedor": "BERTOZZ| & BERTOZZ| COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 283.78,
+          "nf": null,
+          "descricao": "NFCOOO820841 .| ETANOL 64.79 QAX8C34",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-27",
+          "fornecedor": "BERTOZZ| & BERTOZZ| COMERCIO DE COMBUSTIVEIS LTDA",
+          "cnpj": "21.097.620/0001-60",
+          "valor": 204.5,
+          "nf": null,
+          "descricao": "NFCOOO824022 -| ETANOL 47.781 QAX8C34",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-04-30",
           "fornecedor": "André G. de Souza",
           "cnpj": "27.537.957/0001-28",
           "valor": 700.0,
           "nf": "499",
           "descricao": "Locação de Software",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-30",
+          "fornecedor": "André G. de Souza",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 700.0,
+          "nf": null,
+          "descricao": "NFOOOO499 Locação de Software",
           "ato": "ATO 027"
         },
         {
@@ -3937,7 +6305,7 @@
         "gastoPessoalAnual": 1538590.32,
         "totalEstimado": 2027043.06
       },
-      "totalNotasFiscais": 34,
+      "totalNotasFiscais": 36,
       "despesas": [
         {
           "data": "2026-01-14",
@@ -3974,6 +6342,15 @@
           "nf": "14300",
           "descricao": "Locação de veículo",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-02",
+          "fornecedor": "49.256.156 RENNE TULLER ESPOSITO CARVALHO",
+          "cnpj": "49.256.156/0001-27",
+          "valor": 500.0,
+          "nf": "S-e 70",
+          "descricao": "Gestão de serviços de redes sociais",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-02-03",
@@ -4171,6 +6548,15 @@
           "valor": 250.0,
           "nf": "—",
           "descricao": "Software – Maio",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-21",
+          "fornecedor": "CONECTA GESTOR LTDA >",
+          "cnpj": "38.561.918/0001-82",
+          "valor": 250.0,
+          "nf": "s-e3429",
+          "descricao": "N| Locação desoftware",
           "ato": "ATO 027"
         },
         {
@@ -4619,16 +7005,24 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 31264.28,
-        "gastoAto028_2026": 0,
-        "gastoPago2026": 31264.28,
-        "percentualUsado": 10.4,
+        "gastoAto027_2026": 55880.2,
+        "gastoAto028_2026": 62479.8,
+        "gastoPago2026": 118360.0,
+        "percentualUsado": 39.5,
         "mesesAto027": {
           "jan": 6282.22,
           "fev": 12487.49,
-          "mar": 12494.57
+          "mar": 12494.57,
+          "abr": 12146.62,
+          "mai": 12469.3
         },
-        "mesesAto028": {},
+        "mesesAto028": {
+          "jan": 12495.0,
+          "fev": 12496.2,
+          "mar": 12496.2,
+          "abr": 12496.2,
+          "mai": 12496.2
+        },
         "categorias": {
           "Locação de veículo": 3950.0,
           "Serviços": 6300.0,
@@ -4657,7 +7051,7 @@
         "gastoPessoalAnual": 1519357.44,
         "totalEstimado": 1983467.3
       },
-      "totalNotasFiscais": 7,
+      "totalNotasFiscais": 40,
       "despesas": [
         {
           "data": "2026-01-04",
@@ -4666,6 +7060,69 @@
           "valor": 3950.0,
           "nf": "—",
           "descricao": "Locação de veículo",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-04",
+          "fornecedor": ", | CLARO S/A 7",
+          "cnpj": "40.432.544/0445-19",
+          "valor": 26.87,
+          "nf": null,
+          "descricao": "NFST",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-21",
+          "fornecedor": "EA SERVIÇÕOS: DISITAIS",
+          "cnpj": "18.446.594/0001-24",
+          "valor": 525.0,
+          "nf": "Se 1179",
+          "descricao": "/U SITES, SUPORTE E TREINAMENTO. MÊS DE JANEIRO | DE 2026. Á - £ 7 PRESTAÇÃO DE ASSESSORIA TECNICA, | -VIRTUALIZE — CONSULTORIA E Fá Fá",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-01-29",
+          "fornecedor": "TELEFÔNICA BRASILS.A. »",
+          "cnpj": "02.558.157/0001-62",
+          "valor": 47.33,
+          "nf": null,
+          "descricao": "! NFCOM 001711974 N | PLANO DE TELEFONIA MÓVEL",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-29",
+          "fornecedor": "] ASSESSORIA EDUCACIONAL E",
+          "cnpj": "21.597.094/0001-06",
+          "valor": 11970.0,
+          "nf": "Se 97",
+          "descricao": "/U EMPRESARIAL — EIRELI - EPP ELABORAÇÃO DE PROJETOS LEGISLATIVOS, EDUCACIONAIS E EMPRESARIAIS. MÊS DE JANEIRO DE 2026",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-01-30",
+          "fornecedor": "C A PADILHA VEICULOS EIRELI",
+          "cnpj": "03.878.464/0001-93",
+          "valor": 3950.0,
+          "nf": null,
+          "descricao": "RECIBO DE LOCAÇÃO 1933 | LOCAÇÃO DE VEÍCULO SEM CONDUTOR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-30",
+          "fornecedor": "POSTO KAUÊ",
+          "cnpj": "08.571.260/0001-29",
+          "valor": 2249.1,
+          "nf": null,
+          "descricao": "DANFE 000.002.330 GASOLINA 374,5494 SMI 7G45 REZ 4E54",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-30",
+          "fornecedor": "POSTO KAUÊ",
+          "cnpj": "08.571.260/0001-29",
+          "valor": 56.25,
+          "nf": null,
+          "descricao": "DANFE 000.002.330 DIESEL S500 9,391 HSB 3005",
           "ato": "ATO 027"
         },
         {
@@ -4687,12 +7144,57 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-02-25",
+          "fornecedor": "NMERCURI SERVIÇOS E COMUNICAÇÕES LTDA",
+          "cnpj": "50.117.292/0001-15",
+          "valor": 2000.0,
+          "nf": "Se 1151",
+          "descricao": "/U N DIVULGAÇÃO DE ATIVIDADE PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-25",
+          "fornecedor": "ASSESSORIA EDUCACIONAL E",
+          "cnpj": "21.597.094/0001-06",
+          "valor": 11945.0,
+          "nf": "Se 99",
+          "descricao": "/ U DE PROJETO LEGISLATIVOS, EDUCACIONAIS E \"NEMPRESARIAL LTDA Db. bi S EMPRESARIAIS. MÊS DE FEVEREIRO DE 2026. Ú ELABORAÇÃO, MANUTENÇÃO E HOSPEDAGEM ",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-02-26",
+          "fornecedor": "57.724.335 MAYCON ROGÉRIO DA SILVA",
+          "cnpj": "57.724.335/0001-70",
+          "valor": 320.0,
+          "nf": "Se 48",
+          "descricao": "XX LIMPEZA VEICULAR 4 / sm! 7G45 Y AS x SMB 5E50",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-02-27",
           "fornecedor": "—",
           "cnpj": "—",
           "valor": 3300.0,
           "nf": "—",
           "descricao": "Serviços",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-27",
+          "fornecedor": "VALDEVINO SOLUÇÕES GRÁFICAS LTDA",
+          "cnpj": "10.306.434/0001-78",
+          "valor": 3300.0,
+          "nf": "5",
+          "descricao": "e 6660 / U SERVIÇOS GRÁFICOS",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-27",
+          "fornecedor": "AUTO POSTO E SERVIÇOS LTDA",
+          "cnpj": "08.571.260/0001-29",
+          "valor": 2843.29,
+          "nf": null,
+          "descricao": "DANFE 000.002.418 Y GASOLINA 465,1386 /» SMI 7G45 : N. b REZ 4E54",
           "ato": "ATO 027"
         },
         {
@@ -4703,6 +7205,33 @@
           "nf": "—",
           "descricao": "Locação de veículo",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-28",
+          "fornecedor": "TELEFÔNICA BRASIL S.A. “",
+          "cnpj": "02.558.157/0001-62",
+          "valor": 47.33,
+          "nf": null,
+          "descricao": "NFCOM 002249112 sn, | PLANO DE TELEFONIA MÓVEL",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-27",
+          "fornecedor": ") TELEFÔNICA BRASIL S.A.é",
+          "cnpj": "02.558.157/0021-06",
+          "valor": 46.33,
+          "nf": null,
+          "descricao": "NFCOM 002829443 é PLANO DETELEFONIAMÓVEL é",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-27",
+          "fornecedor": "ASSESSORIA EDUCACIONAL E",
+          "cnpj": "21.597.094/0001-06",
+          "valor": 11945.0,
+          "nf": "Se100",
+          "descricao": "/U EMPRESARIAL — EIRELI| - EPP a : FÊ.: ELABORAÇÃO, MANUTENÇÃO E HOSPEDAGEM DE ENGRENE SERVIÇOS DIGITAIS) 1º 145 694/0001-241 651,00 NFSe 1216/U | SIT",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-03-31",
@@ -4720,6 +7249,168 @@
           "valor": 3950.0,
           "nf": "—",
           "descricao": "Locação",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-31",
+          "fornecedor": "VALDEVINO SOLUÇÕES GRÁFICAS LTDA",
+          "cnpj": "10.306.434/0001-78",
+          "valor": 4350.0,
+          "nf": "Se 6682",
+          "descricao": "/U N SERVIÇOS GRÁFICOS",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-31",
+          "fornecedor": "57.724.335 MAYCON ROGÉRIO DA SILVA",
+          "cnpj": "57.724.335/0001-70",
+          "valor": 320.0,
+          "nf": "Se 61",
+          "descricao": "> LIMPEZA VEICULAR 4 o SM! 7G45 “| SMB 5E50",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-31",
+          "fornecedor": "POSTO KAUÊ",
+          "cnpj": "08.571.260/0001-29",
+          "valor": 3827.24,
+          "nf": null,
+          "descricao": "DANFE 000.002.519 NX GASOLINA 608,0728 * SM! 7G45 x NX ' *| REZ 4E54 ( ) Transporte ( )",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-27",
+          "fornecedor": "VTELEFÔNICABRASILS.A",
+          "cnpj": "02.558.157/0001-62",
+          "valor": 46.33,
+          "nf": null,
+          "descricao": ") NFCOM 003393719 - SÉRIE001 | PLANODETELEFONIA MÓVEL",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-27",
+          "fornecedor": "DA SERVIÇOS DIGITAIS,",
+          "cnpj": "18446.594/0001-24",
+          "valor": 551.2,
+          "nf": "Se1239",
+          "descricao": "/U | SITES, SUPORTE E TREINAMENTO. MÊS DE ABRIL DE 2026. LVIRTUALIZE - CONSULTORIA E ; agi o DE PR ES TÉCNICA,",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-04-29",
+          "fornecedor": "+MERCURI SERVIÇOSECOMUNICAÇÕES LTDA",
+          "cnpj": "50.117.292/0001-15",
+          "valor": 2000.0,
+          "nf": "Se 1251",
+          "descricao": "/ U - DIVULGAÇÃO DEATIVIDADEPARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-29",
+          "fornecedor": "ASSESSORIA EDUCACIONAL E",
+          "cnpj": "21.597.094/0001-06",
+          "valor": 11945.0,
+          "nf": "Se101",
+          "descricao": "/U/ | En oa,. AIS É EMPR ROJETOS —LEGISLATIVOS, |,Rae! (SA eo ESARIAIS. MÊS DE ABRILDE",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-04-30",
+          "fornecedor": "VCAPADILHAVEICULOS LTDA -EPP",
+          "cnpj": "03.878.464/0001-93",
+          "valor": 3950.0,
+          "nf": null,
+          "descricao": "+ RECIBODELOCAÇÃO2030 LOCAÇÃODEVEÍCULOSEM CONDUTOR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-30",
+          "fornecedor": "VALDEVINO SOLUÇÕES GRÁFICASLTDA",
+          "cnpj": "10.306.434/0001-78",
+          "valor": 1400.0,
+          "nf": "Se 6704",
+          "descricao": "/ U SERVIÇOSGRÁFICOS",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-30",
+          "fornecedor": "AUTO POSTO ESERVIÇOS LTDA",
+          "cnpj": "08.571.260/0001-29",
+          "valor": 4397.26,
+          "nf": null,
+          "descricao": "/ DANFE000.000.076 “ GASOLINA — 673,164 - SM! 7G45 REZ 4E54",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-30",
+          "fornecedor": ", AUTO POSTO ESERVIÇOSLTDA",
+          "cnpj": "08.571.260/0001-29",
+          "valor": 33.03,
+          "nf": null,
+          "descricao": "DANFE000.000.076 - DIESEL - 4,47 ; HSB3005 »&",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-04",
+          "fornecedor": "] 57.724.335 MAYCON ROGÉRIO DASILVA ,",
+          "cnpj": "57.724.335/0001-70",
+          "valor": 320.0,
+          "nf": "Se 67",
+          "descricao": "LIMPEZAVEICULAR, 4 SM! 7G45",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-27",
+          "fornecedor": "ENGRENE SERVIÇOS DIGITAISLTDA",
+          "cnpj": "18.446.594/0001-24",
+          "valor": 551.2,
+          "nf": "Se1253",
+          "descricao": "/U | SITES,SUPORTE E TREINAMENTO. MÊS DEMAIO > : 7 DE2026. PRESTAÇÃO DE ASSESSORIA — TÉCNICA, ELABORAÇÃO DE PROJETOS LEGISLATIVOS, EDUCACIONAIS E EMPR",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-05-29",
+          "fornecedor": "ASSESSORIA EDUCACIONAL E",
+          "cnpj": "21.597.094/0001-06",
+          "valor": 945.0,
+          "nf": "Se 102",
+          "descricao": "/U EMPRESARIAL —EIREL| -EPP “",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-05-30",
+          "fornecedor": "AUTO POSTO ESERVIÇOSKAUELTDA ,",
+          "cnpj": "08.571.260/0001-29",
+          "valor": 3840.17,
+          "nf": null,
+          "descricao": "DANFE000.000.125 GASOLINA 588,3429 REZ4E54, QAD9330",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-30",
+          "fornecedor": "AUTO POSTO ESERVIÇOSKAUÊLTDA",
+          "cnpj": "08.571.260/0001-29",
+          "valor": 132.8,
+          "nf": null,
+          "descricao": "7 DANFE000.000.125 DIESEL 7 17,971 HSB3005",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-31",
+          "fornecedor": "+C ÀPADILHAVEICULOS EIRELI",
+          "cnpj": "03.878.464/0001-93",
+          "valor": 3950.0,
+          "nf": null,
+          "descricao": "RECIBODELOCAÇÃO2063 LOCAÇÃODEVEÍCULOSEM CONDUTOR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-05",
+          "fornecedor": "VVALDEVINO SOLUÇÕES GRÁFICAS LTDA /",
+          "cnpj": "10.306.434/0001-78",
+          "valor": 4500.0,
+          "nf": "Se 6728",
+          "descricao": "/U SERVIÇOSGRÁFICOS",
           "ato": "ATO 027"
         }
       ],
@@ -4779,7 +7470,7 @@
         "gastoPessoalAnual": 1485956.76,
         "totalEstimado": 1939433.94
       },
-      "totalNotasFiscais": 48,
+      "totalNotasFiscais": 51,
       "despesas": [
         {
           "data": "2026-01-10",
@@ -4890,6 +7581,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-02-10",
+          "fornecedor": "Locar MS",
+          "cnpj": "32.537.588/0001-03",
+          "valor": 3800.0,
+          "nf": "1012",
+          "descricao": "Locação de Veiculo 71",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-02-27",
           "fornecedor": "Ancelmo e Paulino Ltda",
           "cnpj": "04.990.440/0001-94",
@@ -4968,6 +7668,15 @@
           "valor": 3800.0,
           "nf": null,
           "descricao": "“ | Recibo 1013 - Locação de Veizulo ,",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-10",
+          "fornecedor": ") Locar MS",
+          "cnpj": "32.537.588/0001-03",
+          "valor": 3800.0,
+          "nf": "1013",
+          "descricao": "Locação de Veizulo ,",
           "ato": "ATO 027"
         },
         {
@@ -5094,6 +7803,15 @@
           "valor": 3800.0,
           "nf": null,
           "descricao": "Recibo 1014 Locação de Veiculo 30/042026 | André Galvão de Souza",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-10",
+          "fornecedor": "Locar MS",
+          "cnpj": "32.537.588/0001-03",
+          "valor": 3800.0,
+          "nf": "1014",
+          "descricao": "Locação de Veiculo 30/042026 | André Galvão de Souza",
           "ato": "ATO 027"
         },
         {
@@ -5280,7 +7998,7 @@
         "gastoPessoalAnual": 1455028.32,
         "totalEstimado": 2055033.06
       },
-      "totalNotasFiscais": 40,
+      "totalNotasFiscais": 44,
       "despesas": [
         {
           "data": "2026-01-02",
@@ -5371,6 +8089,15 @@
           "nf": null,
           "descricao": "NF n. -) Diesel N | 276,3845 | RWG6I66 000.228.183 REY7F62",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-30",
+          "fornecedor": "Ocampos Filho Sociedade Individual de Advocacia",
+          "cnpj": "08.997.563/0001-08",
+          "valor": 12000.0,
+          "nf": null,
+          "descricao": "NF n. 1983/U | Assessoria Jurídica",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-02-02",
@@ -5481,6 +8208,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-02-27",
+          "fornecedor": "OCAMPOS FILHO SOCIEDADE INDIVIDUAL DE /",
+          "cnpj": "08.997.563/0001-08",
+          "valor": 12000.0,
+          "nf": null,
+          "descricao": "NF n. 1997/U Assessoria Jurídica ADVOCACIA",
+          "ato": "ATO 028"
+        },
+        {
           "data": "2026-03-02",
           "fornecedor": "R.C.U Consultoria em Publicidade",
           "cnpj": "37.998.966/0001-70",
@@ -5497,6 +8233,15 @@
           "nf": null,
           "descricao": "NF n. Gasolina 34,641 RWF3CO02 000.008.039",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-31",
+          "fornecedor": "OCAMPOS FILHO SOCIEDADE INDIVIDUAL DE",
+          "cnpj": "08.997.563/0001-08",
+          "valor": 12000.0,
+          "nf": null,
+          "descricao": "NF n. 2011/U NX Assessoria Jurídica ADVOCACIA",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-04-01",
@@ -5587,6 +8332,15 @@
           "nf": null,
           "descricao": "NFn. Gasolina 101,2402 RWF3CO2 000.009.248",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-30",
+          "fornecedor": "OCAMPOS FILHOSOCIEDADE INDIVIDUAL DEN",
+          "cnpj": "08.997.563/0001-08",
+          "valor": 12000.0,
+          "nf": null,
+          "descricao": "NFn. 2025/U NS Assessoria Jurídica ADVOCACIA v",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-05-04",
@@ -5696,7 +8450,7 @@
         "gastoPessoalAnual": 1369794.84,
         "totalEstimado": 1898144.0
       },
-      "totalNotasFiscais": 162,
+      "totalNotasFiscais": 164,
       "despesas": [
         {
           "data": "2026-01-02",
@@ -5723,6 +8477,15 @@
           "valor": 65.12,
           "nf": null,
           "descricao": ">) N.F 1200866 y TELEFONIA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-09",
+          "fornecedor": "AUTO POSTO MILENIO LTDA",
+          "cnpj": "01.332.532/0001-99",
+          "valor": 38.94,
+          "nf": null,
+          "descricao": "“ RWE8D55 +]",
           "ato": "ATO 027"
         },
         {
@@ -6182,6 +8945,15 @@
           "valor": 173.74,
           "nf": null,
           "descricao": "NF.FISCAL N. GASOLINA 29,2 N OOR3150 ] 1042905",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-24",
+          "fornecedor": "RIBEIRO DE MENDONÇA BASTON E CIALTDA",
+          "cnpj": "16.045.015/0001-06",
+          "valor": 128.7,
+          "nf": null,
+          "descricao": "NF.FISCAL N. x | ETANOLGRID | 30 QANG6C35 ' 1042657",
           "ato": "ATO 027"
         },
         {
@@ -7571,7 +10343,7 @@
         "gastoPessoalAnual": 1313647.68,
         "totalEstimado": 1788700.42
       },
-      "totalNotasFiscais": 37,
+      "totalNotasFiscais": 36,
       "despesas": [
         {
           "data": "2026-01-02",
@@ -7896,15 +10668,6 @@
           "nf": "Se 1",
           "descricao": "/U Pareceres;",
           "ato": "ATO 028"
-        },
-        {
-          "data": "2026-08-14",
-          "fornecedor": "POSTO LOTUS LTDA '",
-          "cnpj": "30.530.878/0001-08",
-          "valor": 100.0,
-          "nf": null,
-          "descricao": "NFC- \"” 824715 GASOLINA * E? 272 N mm. ]",
-          "ato": "ATO 027"
         }
       ],
       "foto": "data:image/jpeg;base64,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",
@@ -8599,7 +11362,7 @@
         "gastoPessoalAnual": 1285824.0,
         "totalEstimado": 1770609.7
       },
-      "totalNotasFiscais": 27,
+      "totalNotasFiscais": 28,
       "despesas": [
         {
           "data": "2026-01-05",
@@ -8608,6 +11371,15 @@
           "valor": 5500.0,
           "nf": "—",
           "descricao": "Locação de veículo",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-01-05",
+          "fornecedor": "A.P.N LOCAÇÕES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": "0170",
+          "descricao": "LOCAÇÃO DE VEÍCULO REF. JANEIRO/2026 RA ROS RAMO RS RED ME ==. [— — === — DOS ESSO, — || OA OO = NA ON AO O o VA AO A AO OA. LEA CORN CN LEOA O E o ao",
           "ato": "ATO 027"
         },
         {
@@ -8865,15 +11637,19 @@
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
         "gastoAto027_2026": 37209.4,
-        "gastoAto028_2026": 0,
-        "gastoPago2026": 37209.4,
-        "percentualUsado": 12.4,
+        "gastoAto028_2026": 37500.0,
+        "gastoPago2026": 74709.4,
+        "percentualUsado": 24.9,
         "mesesAto027": {
           "jan": 12372.08,
           "fev": 12360.07,
           "mar": 12477.25
         },
-        "mesesAto028": {},
+        "mesesAto028": {
+          "jan": 12500.0,
+          "fev": 12500.0,
+          "mar": 12500.0
+        },
         "categorias": {
           "Serviços": 19000.0,
           "Outros": 18209.4
@@ -8892,8 +11668,17 @@
         "gastoPessoalAnual": 1265309.76,
         "totalEstimado": 1753200.1
       },
-      "totalNotasFiscais": 8,
+      "totalNotasFiscais": 26,
       "despesas": [
+        {
+          "data": "2026-01-27",
+          "fornecedor": "BONATTO BONATTO LTDA «+",
+          "cnpj": "08.924.582/0004-57",
+          "valor": 300.03,
+          "nf": null,
+          "descricao": ") NFC-e nº1322470 GASOLINA 51,113 * SLW9E84",
+          "ato": "ATO 027"
+        },
         {
           "data": "2026-01-30",
           "fornecedor": "—",
@@ -8922,6 +11707,69 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-02-02",
+          "fornecedor": "H2L EQUIPAMENTOS E SISTEMAS LTDA",
+          "cnpj": "73.505.349/0002-30",
+          "valor": 390.0,
+          "nf": null,
+          "descricao": "Faturanº 103050 + | LOCAÇÃO DEEQUIPAMENTOS",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-02",
+          "fornecedor": "WESLEY RODRIGUES DA SILVA",
+          "cnpj": "52.702.940/0001-26",
+          "valor": 2000.0,
+          "nf": null,
+          "descricao": "NF nº 17 DIVULGAÇÃO DE ATIVIDADE PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-02",
+          "fornecedor": "REDE AUTO POSTO VILAÇA COM ETRANS ELOGISTICALTDA",
+          "cnpj": "54.014.085/0001-96",
+          "valor": 547.05,
+          "nf": null,
+          "descricao": "NFº 323 GASOLINA 27,019 SMF4A78 32,950 SLW9E84 33,479",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-02",
+          "fornecedor": "GLAYCHMAN SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+          "cnpj": "33.497.402/0001-00",
+          "valor": 12500.0,
+          "nf": null,
+          "descricao": "NF nº 146 PROJETOS E PARECERES",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-02-03",
+          "fornecedor": "POSTO ROUXINOL LTDA",
+          "cnpj": "00.413.865/0001-80",
+          "valor": 290.04,
+          "nf": null,
+          "descricao": "NFC-e nº140477 GASOLINA 48,421 SLW9E84",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-17",
+          "fornecedor": "POSTO BANDEIRALTDA",
+          "cnpj": "14.166.520/0001-83",
+          "valor": 279.7,
+          "nf": null,
+          "descricao": "NFC-e nº 2146669 | GASOLINA 48,30 SLW9E84",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-25",
+          "fornecedor": "H2L EQUIPAMENTOS ESISTEMAS LTDA",
+          "cnpj": "73.505.349/0002-30",
+          "valor": 390.0,
+          "nf": null,
+          "descricao": "Fatura nº103872 LOCAÇÃO DEEQUIPAMENTOS",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-02-27",
           "fornecedor": "—",
           "cnpj": "—",
@@ -8937,6 +11785,69 @@
           "valor": 3500.0,
           "nf": "—",
           "descricao": "Serviços",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-27",
+          "fornecedor": "] REDEAUTO POSTO VILAÇA COM E TRANSP ELOGISTICA LTDA",
+          "cnpj": "54.014.085/0001-96",
+          "valor": 0.33,
+          "nf": null,
+          "descricao": "NFnº335 GASOLINA 103,869 “ | SLW9E84 67,314 SMF4A78",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-02-28",
+          "fornecedor": "WESLEY RODRIGUES DASILVA",
+          "cnpj": "52.702.940/0001-26",
+          "valor": 2000.0,
+          "nf": null,
+          "descricao": "NFS-enº19 DIVULGAÇÃO DEATIVIDADE PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "JOÃO CARLOS SOUZA ORMOND",
+          "cnpj": "38.359.283/0001-35",
+          "valor": 400.0,
+          "nf": null,
+          "descricao": "NFS-enº 71 DIVULGAÇÃO DE ATIVIDADEPARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "GLAYCHMAN SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+          "cnpj": "33.497.402/0001-00",
+          "valor": 12500.0,
+          "nf": null,
+          "descricao": "NF nº 150 PROJETOS E PARECERES",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-03-06",
+          "fornecedor": "POSTO EMANUELE LTDA >”)",
+          "cnpj": "37.539.459/0001-78",
+          "valor": 266.42,
+          "nf": null,
+          "descricao": "NFC-e nº888677 DIESEL > [43041 “| QAV7H47",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-20",
+          "fornecedor": "AUTO POSTO ECOLOGICO LTDA x",
+          "cnpj": "18.947.284/0001-93",
+          "valor": 275.01,
+          "nf": null,
+          "descricao": "] NFC-e nº 235180 x | DIESEL > 36,717 AY QOAV7H47",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-27",
+          "fornecedor": "H2L EQUIPAMENTOS E SISTEMAS LTDA >",
+          "cnpj": "73.505.349/0002-30",
+          "valor": 390.0,
+          "nf": null,
+          "descricao": "Fatura nº104872 X LOCAÇÃO DE EQUIPAMENTOS",
           "ato": "ATO 027"
         },
         {
@@ -8965,6 +11876,33 @@
           "nf": "—",
           "descricao": "Serviços",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-31",
+          "fornecedor": "1CLICK GRAFICA DIGITAL LTDA *",
+          "cnpj": "49.464.432/0001-42",
+          "valor": 700.0,
+          "nf": null,
+          "descricao": "NFS-e nº 596 A SERVIÇOS GRÁFICOS ;",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-01",
+          "fornecedor": "REDEAUTO POSTO VILAÇA COM E TRANSP ELOGISTICALTDA",
+          "cnpj": "54.014.085/0001-96",
+          "valor": 845.82,
+          "nf": null,
+          "descricao": "NFnº365 n) GASOLINA x) 35,151 <= ' “95,946 —| SMF4A78 v |,5,352",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-04-07",
+          "fornecedor": "GLAYCHMAN SOCIEDADE INDIVIDUAL DE ADVOCACIA x]",
+          "cnpj": "33.497.402/0001-00",
+          "valor": 12500.0,
+          "nf": null,
+          "descricao": "NF nº 154 Ds PROJETOS E PARECERES",
+          "ato": "ATO 028"
         }
       ],
       "foto": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAeAB4AwEiAAIRAQMRAf/EABwAAAICAwEBAAAAAAAAAAAAAAAGBQcCAwQIAf/EADwQAAEDAwIDBQUGBQMFAAAAAAECAwQABRESIQYxQQcTUWFxFCIygZEVQlKhscEWIzNi0SRTgmNyouHx/8QAGQEAAgMBAAAAAAAAAAAAAAAAAAMBAgQF/8QAKBEAAgIBBAIABgMBAAAAAAAAAAECEQMEEiExQVEGEyIygcEUYXHx/9oADAMBAAIRAxEAPwCXsaCh+O4CQpG4x02qw7O8X4LLiuak5NIdrTpKlfhbJ/KnixJ02yMP+mn9KPiOmsf5/QaG6kMLfw/KlPi2yybverYWQkNtJXrWo4xkjH6U2oHu/KuFTveXJTRH9PTv45Ga5WPNPBBZIdr/AIM2KbaZyW3h2PFwt898sbgY90f5qVly40CMqRKebZZQPeWtWAKjuIro5ZrQ/OSEFDKSpevUMADnkA4+deb+JeM79xJNW/IkExwctMN7JQPTx862PJl1DubKxgorgue49qkFh1TVugvS1DYOKOhB/U4+lL8ntNuEhzQYrWPwtgkD1UTVNNXychRC31JT+ECun7X9oHMpx0XuPpV1iSGKSjyi97R2lstNpZmRSR0W04CfoaebTfLdemC7Akodx8SQcKT6ivLcN5LrgccT3uOWVcvlsBTZa7j7AfaYa3YklvfKMkHyOKZ0Q6k7PRNFQfCt+F/s6JCglMhB0PJHIHxHkRvU5VhTVBRRRQAUUUUAVLGRoju46NK/Sne0o0wo6f7U/pSfqS1b3cDPu6SrpknGKd7ejS00nwApfxDK541/v6DRfbJksB+lJ7l9fRPkraQ2oF3YnfAG37Uw3CaGWlstqHfKT4/AD1NQrdmiyEOJhualpVqS6s57xPXPoazY8S+U3JcD8MorKnLryIXapxJJTaG7d3h/1O7g6FI6fWo7hngiIq2xpUvJdWkLI6b9K+dq8RLPEMKPkrIjoJyOpUrlTnbRot8dLmEkNpBzt0pnUVQ/6ZzbXRGvcGWN1vBgtZ8cb0vP9nFvQta2wvBOw1YAqwkhBIGc1kW0KT5VVNjXGPoqG48Fux2z7Msp0nOMA5rhizZFvSph1hvvtOEqyQlY6gjxx4VcT1ubWCRg+VVzxlA9jCHmkD4uo5Hzq8Zu6YrJCNWhm7JLgWbouIAEiQhSlI1ZCSNxj86uSvO3Zy8+nii3qAXnvgFjPqP3r0TT0Y5BRRRUlQooooAXrnZYH2aUhnQEqSUhJIAOR0qMu/EbFmCGG/5kkj4QCrQPxKxyFbeOb4LRAiNtYVJkO4bT6DcnyG1IkaQ7AuH2kh1JfUkpUp0FWokjpnc7Y8qwRwZM+VPI7SG7owhXVjiJwZaLyyXHF7jUMFSvSpCxyVLl926QXNOc+INK1tC33i6/utRJCQSdJJ5ZPP1qfajuw5TMl1tSSSRp8h0ruzxRjD5cu34MSlcrXSE7tWj95xrYgEg94lA5c8Of+6jr40t2cpMuRIcbWohiK0QgADqVdKYr04ifPgLKlOFuVspe5GASfTkK7VRkupOoAg8wRzrl5U4T2+jqYY3FP2Ilge7qQh5pU9ttailKH5GsbbcvnTVf5T8eI2EPra1j4m/iGN+tdZgM+0N4QgKTvyrouEdt7QHdKkDBHlilNvs0pJKitpDi2pIalvXZ5wt993ntCVJSn0G2amTGeunDstl9wyB3eplwjcjG1N4tEchOhKcJG2ByoeQ00nQkDz2xVm7FqKQj9lyA/wAWxW1pBLaC7nlyB3q/RVS8DWhEHiBqUlpJUXFoyeYByP0q2hT4tMx5YOLV+QoooqwoKKKKAKK4ykrf4yiMNrLoYbSgNJGSVLyf2FcrzM6PckCYjGtJDKUnKT5g9T4+Fd3aBCac49cEfDTyY7atSdsKycV329KuI7X7M84lq5RlZKj91XRX/aobE+NP0EklurknWT+ZLjhE9wo0JUzu1ELDQClkjnTZKt78uUFd4hppsYSnTnVnmT4UmcLwrhCuaDJi9woKCCSc97k7kGmu6S5CZvs4c0tEA4TzPzozRzT1Cafjj9iYuCg+BDu8UWpbKgrKETyVHOfiz/mpQSRp2O2M108Y2Fb3DEiZGytSEh4t46g5yKVLfP8AaoRQTla2yEkeNZtVTnui+zoaWdwp+DVeOJDGUERXlOv6sqQ2Mgeprjavs1VzS8+p9mMsAaiNh4/4rOBw29Ajhx+Ysq3JCW88/E8zW9DES5udyzNe1DmUNYGfPO3Sk0qNXfN0MMOe13ZDDoW2PhIPLyrnuFwDbC3CeQqMg2ZVilSXnZZcafTsFJ04UOfLaou5yS4QAs/zSEpFUq2Q5KuR+4EZck9zJIOnBcJ9RgVYIqJ4es7VmtTMdCitWgalHqcVLVohHajBmyb5X6CiiirigooooAoziJ1M3iibd2HUux0vCMspOQkge6frkV8at1wUmFd25KIodOlnAUFnOdj0xtnzzXNwiyi5pnw5Dq2kTZKtDicfGlWcDPXH6UxP2N6w7FxTzDywEvH7p8FDkPI0rFNafM8LfKfH9ou6nDfQ52p1y4WspOkTGCCR0KhyPzrUpbs24/zEhK9ONI+6BWEBtxBYkMkBbYwrPJSfA139+zF9omzdMUk6lqdUEgAct66O5KW6uTNtbRMMIbMYNhXeIA0nO+fKqV4ttq+ELwAhKjEf1LjOA8sHJQfMfmKabt2t2a3Ax7Wyu4Ojmsfy2gfU7n5CoS3XmRxrZr0/dtDjcVxsoQhOEtIUFZx18DnntWCUJd+DTjl9VI5W+LkOQ0HuhqUCck+u3rtXyBxNFYZcKUjOR0Cck74qLesLoPcx9BAzgk+Oxx8hXH/DMmKyUvacHfIOd+m1LShXZo35F4N194nTKngJ/ptpIJG+a7+CrRK4lvzMl1s+wRgNSiNieePyrDhvgFV3llaitERKj3rpHM/hT4mrd0weGLA84htLUWIypwgeAGfqaZCC7E5Mj6Fvh7ipq0cX3LhmY/8A6VMlQhLWf6ed+7J8N8Dw5VYteUX57065SJzxPevuKcX6k5qzuF+1ZyMhqDeGe+bQAhMhv4wBt7w+967Gnyh5RnUvZcFFcVtu8C7xw/AlNvo66Tun1HMV20suFFFFAFD8EpY+zHYtw0o75an2HDkEAcyFeIIzTfb+MIbMWTE4hThCAUJfLf8AXHjo5g/l4VXl0vAg8GwIDaUiQ5lZURuhOcDHmT+QpVdlLWkAqJA8TRsjqY7si5t0/wAkO8bqLLDuHaUqGhyPam9SMkJekDKsdPd5Uh3jiC5XuR3s6W6+roFHYeg5Co1a88zWKOea0FDPvNIwf/tW12MN97AvetAUhTjSSCMg+6rI+hqoScq33q6eyRbcDgu5TnRt7YogDmvS2nYVSXRKNl2ssjhuYXW9TtscPuKO5a/tP7H96lLVYF3QIlSlLRGO6RyU5/gedJc7j3iJbipIkRGWn15ZJQl2OR0QHPunx1DnmmWy9pSA0EXiItD7ZCXUNIy4kHYLCR8aeWcbjwNK/jc7hz1Tcdvn2WBHYbYaS202lDaRhKUjAAqt+1zihMSAOHo+8iUAuQrohsHIT6kgfIedWSuWgtpMdQWtz4SPujxNebOM7n9q8WT5CV620udy2SeaU7Z+ZyfnV48iWQhfS2ASFEnkAM1uSsnSsAp8jzrSlQQCSPketbUk43ptkE7arvKgPJejvuNOp5KQrBqzbD2oL0pauzPeD/eaACvmnkflVNtrxXY1IIxvQ0n2HK6PSVq4ktN5OiFLSt3GS2oFKvoaK89s3FbLiHUOKQ4g5SpJwQfWiqPH6LKRDX2V38rI+FOEJ9BtXCtWAKwmLKkk+FYqXqSk+VWSUVSIbt2wJya+jZJrFO9ZK2GKCD4OdXn2ZQkngNsr2715a8/8iP2qjRzq6rZK+y+yaAkR1vKkNadCV6AAoEqUpX3Ugczz323NQ+eCRKFwZkMSpb7KGD3hZ9pab1MzSDjStofEf7kDI50xcE2FuVOeujrDiERSWYrLqipUdRHvpB6pGRjwyaXQiVMuCI0RtlM0N6UhsaWYDQ5geB6qJ33xzqx+z5uKmwSGIhU4wy+dEhYwXyQNSwPAqBA8hTJ8IXHsmL7cE2HhCfcQQHG2CG/NavdT+ZFecPnk+PjVu9r107q0W20oV7zyy+4B+FOyfzJ+lVFSojD5zUB863pxWlPvEqrYKsQbEq3rYF6a05oWrbbrQB0JcNFakb7CigCPeUCCK+4wlI8hRRQB9SKDRRQAcgTVo31cj+HeF7TFWVPriJWiOk/Es4AWrySAT6+lFFTFckS6ItXssO3eyMlTsNTmh1bfx3J8fcSeYaSeZ6039nUpTky7tOuhyR3bSnA3s21glKW0DwSKKKvL7WVXYh9ody+1OM5mlWW4umMj/jz/APIqpUcBSnPyFFFLRcAMJArIHaiigD6D9KxKsuADoKKKCTe2ccqKKKCD/9k=",
@@ -8987,15 +11925,19 @@
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
         "gastoAto027_2026": 37245.47,
-        "gastoAto028_2026": 0,
-        "gastoPago2026": 37245.47,
-        "percentualUsado": 12.4,
+        "gastoAto028_2026": 36900.0,
+        "gastoPago2026": 74145.47,
+        "percentualUsado": 24.7,
         "mesesAto027": {
           "jan": 12789.52,
           "fev": 12364.51,
           "mar": 12091.44
         },
-        "mesesAto028": {},
+        "mesesAto028": {
+          "jan": 12300.0,
+          "fev": 12300.0,
+          "mar": 12300.0
+        },
         "categorias": {
           "Divulgação parlamentar": 11400.0,
           "Software": 700.0,
@@ -9172,16 +12114,21 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 29285.0,
-        "gastoAto028_2026": 0,
-        "gastoPago2026": 29285.0,
-        "percentualUsado": 9.8,
+        "gastoAto027_2026": 34226.74,
+        "gastoAto028_2026": 50000.0,
+        "gastoPago2026": 84226.74,
+        "percentualUsado": 28.1,
         "mesesAto027": {
-          "jan": 9560.0,
-          "fev": 8725.0,
+          "jan": 20460.74,
+          "fev": 2766.0,
           "mar": 11000.0
         },
-        "mesesAto028": {},
+        "mesesAto028": {
+          "jan": 12500.0,
+          "fev": 12500.0,
+          "mar": 12500.0,
+          "abr": 12500.0
+        },
         "categorias": {
           "Locação de veículo": 5500.0,
           "Combustíveis": 3360.0,
@@ -9210,8 +12157,17 @@
         "gastoPessoalAnual": 1059532.08,
         "totalEstimado": 1515724.82
       },
-      "totalNotasFiscais": 21,
+      "totalNotasFiscais": 27,
       "despesas": [
+        {
+          "data": "2026-01-05",
+          "fornecedor": "26 A.P.N LOCAÇÕES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": null,
+          "descricao": "Recibo nº 0168 LOCAÇÃO DE VEÍCULO - JANEIRO",
+          "ato": "ATO 027"
+        },
         {
           "data": "2026-01-19",
           "fornecedor": "26 | o :",
@@ -9238,6 +12194,15 @@
           "nf": null,
           "descricao": "N NFS-e nº 0025 ELABORAÇÃO DE PARECERES JURÍDICOS DURANTE O MÊS De: DE JANEIRO DE 2026",
           "ato": "ATO 028"
+        },
+        {
+          "data": "2026-02-04",
+          "fornecedor": "26 27.537.957 ANDRE GALVÃO DE SOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 700.0,
+          "nf": "Se 0326",
+          "descricao": "LOCAÇÃO DE SOFTWARE DE GERENCIAMENTO DO GABINETE REFERENTE AO MÊS DE JANEIRO",
+          "ato": "ATO 027"
         },
         {
           "data": "2026-02-05",
@@ -9276,6 +12241,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-02-11",
+          "fornecedor": "26 , | VALDEVINO SOLUCOES GRAFICAS LTDA",
+          "cnpj": "10.306.434/0001-78",
+          "valor": 3360.0,
+          "nf": "Se 6659",
+          "descricao": "IMPRESSÃO DE INFORMATIVO GRÁFICO PARA DIVULGAÇÃO PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-02-12",
           "fornecedor": "26 POSTO LOCATELLI MAE E FILHA LTDA",
           "cnpj": "24.601.882/0001-09",
@@ -9300,6 +12274,15 @@
           "valor": 280.82,
           "nf": null,
           "descricao": "NFC e nº000140905 GASOLINA 47,84 FJM-3102",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-03-02",
+          "fornecedor": "26 27.537.957 ANDRE GALVÃO DE SOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 700.0,
+          "nf": "Se 0421",
+          "descricao": "N LOCAÇÃO DE SOFTWARE DE GERENCIAMENTO | N DO GABINETE REFERENTE AO MÊS DE FEVEREIRO ! | | | | | h | | !",
           "ato": "ATO 027"
         },
         {
@@ -9375,6 +12358,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-04-30",
+          "fornecedor": "26 “ | 27.537.957 ANDRE GALVÃO DE SOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 700.0,
+          "nf": "Se 0501",
+          "descricao": "LOCAÇÃO DE SOFTWARE DE GERENCIAMENTO DO GABINETE REFERENTE AO MÊS DE ABRIL",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-05-04",
           "fornecedor": "/26 ARGIRIN DE FIGUEIREDO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
           "cnpj": "41.126.496/0001-21",
@@ -9399,6 +12391,15 @@
           "valor": 5500.0,
           "nf": "141866B1",
           "descricao": "Locação de Veículo – Abril/2026",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-08",
+          "fornecedor": "26 A.P.N LOCAÇÕES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": null,
+          "descricao": "Recibo nº 2CO66CO6 LOCAÇÃO DE VEÍCULO - MARÇO",
           "ato": "ATO 027"
         }
       ],
