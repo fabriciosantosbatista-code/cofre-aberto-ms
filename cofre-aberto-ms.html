@@ -193,8 +193,6 @@ p{margin:0;}
 .detail-panel h3{font-family:var(--font-display);font-size:1.35rem;font-weight:800;letter-spacing:-.02em;margin:0 0 2px;}
 .detail-panel{overflow-x:auto;}
 .detail-panel table.notes-table{white-space:nowrap;}
-.card-x-scroll{overflow-x:auto;}
-.card-x-scroll table.notes-table{white-space:nowrap;}
 .detail-meta{color:var(--ink-soft);font-size:.8rem;margin-bottom:12px;}
 .subhead{font-size:.65rem;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-faint);font-weight:700;margin:20px 0 10px;display:flex;align-items:center;gap:8px;}
 .subhead::after{content:"";flex:1;height:1px;background:var(--border);}
@@ -236,6 +234,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 /* CARD */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
 .card-pad{padding:20px 24px;}
+.card-x-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.card-x-scroll table.notes-table{white-space:nowrap;}
 
 /* FOOTER */
 .site-footer{padding-top:20px;font-size:.74rem;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid var(--border);margin-top:8px;}
@@ -260,6 +260,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   /* Dica visual de que a tabela rola horizontalmente */
   .card:has(> table.ranking)::after{content:"";position:absolute;top:0;right:0;bottom:0;width:20px;background:linear-gradient(to right,transparent,var(--surface));pointer-events:none;}
   .pager-btn{min-height:44px;padding:10px 16px;}
+  .rank-filter-btn{min-height:44px;display:inline-flex;align-items:center;padding:8px 14px;}
+  .share-btn,.print-btn{min-height:44px;display:inline-flex;align-items:center;padding:10px 14px;}
 }
 @media(max-width:600px){
   .bar-list-row{grid-template-columns:90px 1fr auto;}
