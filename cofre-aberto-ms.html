@@ -3276,7 +3276,7 @@ function initBuscaGlobal() {
         // Navegar para a aba correta
         const tab = item.dataset.tab;
         const nome = item.dataset.nome;
-        document.querySelector(`[data-tab="${tab}"]`)?.click();
+        document.querySelector(`.sidebar nav button[data-tab="${tab}"]`)?.click();
         // Tentar clicar no parlamentar após um delay
         setTimeout(() => {
           const rows = document.querySelectorAll(`#tab-${tab} tr.clickable`);
