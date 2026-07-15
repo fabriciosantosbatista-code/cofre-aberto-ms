@@ -264,12 +264,49 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 @media(max-width:768px){
   .rank-filter-btn{min-height:44px;display:inline-flex;align-items:center;padding:8px 14px;}
   .share-btn,.print-btn{min-height:44px;display:inline-flex;align-items:center;padding:10px 14px;}
+
+  /* Tabelas de ranking: scroll horizontal como fallback pra qualquer coluna que ainda não caiba */
+  .card:has(> table.ranking),.card:has(> table.notes-table){overflow-x:auto;-webkit-overflow-scrolling:touch;}
+
+  /* Cada tabela abaixo oculta as colunas secundárias (categoria + 1 valor menos
+     relevante) e mantém só nome/foto + o valor principal, pra não cortar texto. */
+  #ranking-depbr th:nth-child(3),#ranking-depbr td:nth-child(3),   /* UF */
+  #ranking-depbr th:nth-child(5),#ranking-depbr td:nth-child(5)    /* Notas */
+  {display:none;}
+
+  #ranking-deputados th:nth-child(4),#ranking-deputados td:nth-child(4)  /* Notas */
+  {display:none;}
+
+  #ranking-senbr th:nth-child(3),#ranking-senbr td:nth-child(3),   /* UF */
+  #ranking-senbr th:nth-child(4),#ranking-senbr td:nth-child(4)    /* Partido */
+  {display:none;}
+
+  #ranking-senadores th:nth-child(3),#ranking-senadores td:nth-child(3)  /* Cargo */
+  {display:none;}
+
+  #ranking-vereadores th:nth-child(3),#ranking-vereadores td:nth-child(3),  /* Partido */
+  #ranking-vereadores th:nth-child(4),#ranking-vereadores td:nth-child(4)   /* Funcionários */
+  {display:none;}
+
+  #ranking-depest th:nth-child(3),#ranking-depest td:nth-child(3)  /* Partido */
+  {display:none;}
+
+  #ranking-judiciario th:nth-child(3),#ranking-judiciario td:nth-child(3),  /* Tribunal */
+  #ranking-judiciario th:nth-child(5),#ranking-judiciario td:nth-child(5)   /* Líquido */
+  {display:none;}
+
+  #ranking-pref-fornecedores th:nth-child(3),#ranking-pref-fornecedores td:nth-child(3)  /* Notas */
+  {display:none;}
+
+  /* Verba indenizatória (ranking-verba-camara): "% usado" é o próprio dado sendo
+     ranqueado, não uma barra decorativa — mantém visível mesmo com .progress-cell. */
+  #ranking-verba-camara td.progress-cell{display:table-cell;}
 }
 @media(max-width:600px){
   .bar-list-row{grid-template-columns:90px 1fr auto;}
   .bar-list-label{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25;}
   .bar-list-value{white-space:nowrap;}
-  .progress-cell,.ranking th:nth-child(5),.ranking td:nth-child(5){display:none;}
+  .progress-cell{display:none;}
   .stat-grid{grid-template-columns:1fr 1fr;}
   .hero-number{font-size:2rem;}
   .detail-header{gap:12px;}
@@ -402,7 +439,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="card">
         <table class="ranking" id="ranking-deputados">
           <thead>
-            <tr><th class="num">#</th><th>Parlamentar</th><th class="num">Líquido</th><th class="num">Notas</th><th>Em relação ao maior</th></tr>
+            <tr><th class="num">#</th><th>Parlamentar</th><th class="num">Líquido</th><th class="num">Notas</th><th class="progress-cell">Em relação ao maior</th></tr>
           </thead>
           <tbody></tbody>
         </table>
@@ -418,7 +455,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="card">
         <table class="ranking" id="ranking-custo-deputados">
           <thead>
-            <tr><th class="num">#</th><th>Parlamentar</th><th class="num">Custo estimado/ano</th><th>Em relação ao maior</th></tr>
+            <tr><th class="num">#</th><th>Parlamentar</th><th class="num">Custo estimado/ano</th><th class="progress-cell">Em relação ao maior</th></tr>
           </thead>
           <tbody></tbody>
         </table>
@@ -496,7 +533,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <input class="search-box" id="busca-vereador" type="text" placeholder="buscar por nome ou partido…" />
       <div class="card">
         <table class="ranking" id="ranking-vereadores">
-          <thead><tr><th class="num">#</th><th>Vereador(a)</th><th>Partido</th><th class="num">Funcionários</th><th class="num">Gasto pessoal/mês</th><th>Em relação ao maior</th></tr></thead>
+          <thead><tr><th class="num">#</th><th>Vereador(a)</th><th>Partido</th><th class="num">Funcionários</th><th class="num">Gasto pessoal/mês</th><th class="progress-cell">Em relação ao maior</th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
@@ -561,7 +598,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <input class="search-box" id="busca-depest" type="text" placeholder="buscar por nome ou partido…" />
       <div class="card">
         <table class="ranking" id="ranking-depest">
-          <thead><tr><th class="num">#</th><th>Deputado(a)</th><th>Partido</th><th class="num" id="depest-th-ceap">CEAP</th><th>Em relação ao maior</th></tr></thead>
+          <thead><tr><th class="num">#</th><th>Deputado(a)</th><th>Partido</th><th class="num" id="depest-th-ceap">CEAP</th><th class="progress-cell">Em relação ao maior</th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
@@ -596,7 +633,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="card">
         <table class="ranking" id="ranking-pref-fornecedores">
           <thead>
-            <tr><th class="num">#</th><th>Fornecedor</th><th class="num">Notas</th><th class="num">Valor pago</th><th>Em relação ao maior</th></tr>
+            <tr><th class="num">#</th><th>Fornecedor</th><th class="num">Notas</th><th class="num">Valor pago</th><th class="progress-cell">Em relação ao maior</th></tr>
           </thead>
           <tbody></tbody>
         </table>
@@ -695,7 +732,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="card">
         <table class="ranking" id="ranking-judiciario">
           <thead>
-            <tr><th class="num">#</th><th>Magistrado(a)</th><th>Tribunal</th><th class="num">Bruto</th><th class="num">Líquido</th><th>Em relação ao maior</th></tr>
+            <tr><th class="num">#</th><th>Magistrado(a)</th><th>Tribunal</th><th class="num">Bruto</th><th class="num">Líquido</th><th class="progress-cell">Em relação ao maior</th></tr>
           </thead>
           <tbody></tbody>
         </table>
@@ -742,7 +779,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="card">
         <table class="ranking" id="ranking-depbr">
           <thead>
-            <tr><th class="num">#</th><th>Parlamentar</th><th>UF</th><th class="num">Líquido</th><th class="num">Notas</th><th>Em relação ao maior</th></tr>
+            <tr><th class="num">#</th><th>Parlamentar</th><th>UF</th><th class="num">Líquido</th><th class="num">Notas</th><th class="progress-cell">Em relação ao maior</th></tr>
           </thead>
           <tbody></tbody>
         </table>
