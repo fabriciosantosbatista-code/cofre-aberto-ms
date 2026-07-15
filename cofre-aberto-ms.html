@@ -234,7 +234,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 /* CARD */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
 .card-pad{padding:20px 24px;}
-.card-x-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.card.card-x-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .card-x-scroll table.notes-table{white-space:nowrap;}
 
 /* FOOTER */
@@ -260,6 +260,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   /* Dica visual de que a tabela rola horizontalmente */
   .card:has(> table.ranking)::after{content:"";position:absolute;top:0;right:0;bottom:0;width:20px;background:linear-gradient(to right,transparent,var(--surface));pointer-events:none;}
   .pager-btn{min-height:44px;padding:10px 16px;}
+}
+@media(max-width:768px){
   .rank-filter-btn{min-height:44px;display:inline-flex;align-items:center;padding:8px 14px;}
   .share-btn,.print-btn{min-height:44px;display:inline-flex;align-items:center;padding:10px 14px;}
 }
