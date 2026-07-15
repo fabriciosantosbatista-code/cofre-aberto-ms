@@ -254,10 +254,11 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   .main{padding:20px 16px 48px;}
   .section-hero{padding:20px;border-radius:var(--radius-lg);}
   #busca-global{min-height:44px!important;font-size:16px!important;padding:11px 14px!important;}
-  /* Tabelas de ranking: rolagem horizontal em vez de cortar colunas */
-  .card:has(> table.ranking){overflow-x:auto;-webkit-overflow-scrolling:touch;position:relative;}
-  .card:has(> table.ranking) table.ranking{min-width:480px;}
-  /* Dica visual de que a tabela rola horizontalmente */
+  /* Tabelas de ranking: rolagem horizontal em vez de cortar colunas (sem
+     depender de :has(), que pode faltar em navegadores in-app/WebViews) */
+  .card{overflow-x:auto;-webkit-overflow-scrolling:touch;position:relative;}
+  table.ranking,table.notes-table{min-width:480px;}
+  /* Dica visual de que a tabela rola horizontalmente, quando o navegador suporta :has() */
   .card:has(> table.ranking)::after{content:"";position:absolute;top:0;right:0;bottom:0;width:20px;background:linear-gradient(to right,transparent,var(--surface));pointer-events:none;}
   .pager-btn{min-height:44px;padding:10px 16px;}
 }
@@ -265,11 +266,21 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   .rank-filter-btn{min-height:44px;display:inline-flex;align-items:center;padding:8px 14px;}
   .share-btn,.print-btn{min-height:44px;display:inline-flex;align-items:center;padding:10px 14px;}
 
-  /* Tabelas de ranking: scroll horizontal como fallback pra qualquer coluna que ainda não caiba */
-  .card:has(> table.ranking),.card:has(> table.notes-table){overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  /* Scroll horizontal universal pro container de qualquer tabela — aplicado
+     direto no .card (sem depender de :has(), que pode faltar em navegadores
+     in-app/WebViews mais antigos). Inofensivo em cards sem tabela larga. */
+  .card{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  table.ranking,table.notes-table{min-width:480px;}
+
+  /* Valores monetários nunca quebram/cortam no meio, e têm largura mínima
+     garantida mesmo com colunas ao redor apertadas. */
+  .ranking td.num,.ranking th.num{white-space:nowrap;min-width:110px;}
 
   /* Cada tabela abaixo oculta as colunas secundárias (categoria + 1 valor menos
-     relevante) e mantém só nome/foto + o valor principal, pra não cortar texto. */
+     relevante) e mantém só nome/foto + o valor principal, pra não cortar texto.
+     A coluna certa varia por tabela — em Dep. Federais MS, por exemplo, a 3ª
+     coluna É o valor principal (Líquido), então não dá pra usar uma regra
+     genérica de "sempre esconder a 3ª coluna" sem quebrar essa tabela. */
   #ranking-depbr th:nth-child(3),#ranking-depbr td:nth-child(3),   /* UF */
   #ranking-depbr th:nth-child(5),#ranking-depbr td:nth-child(5)    /* Notas */
   {display:none;}
