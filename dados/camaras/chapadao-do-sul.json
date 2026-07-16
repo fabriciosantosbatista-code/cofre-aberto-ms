@@ -1,7 +1,7 @@
 {
   "cidade": "Chapadão do Sul",
-  "ultimaAtualizacao": "2026-07-15T16:52:06",
-  "fonte": "Portal Transparência Fiorilli (pmchapadao.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-15T16:52:06",
+  "ultimaAtualizacao": "2026-07-16T16:49:33",
+  "fonte": "Portal Transparência Fiorilli (pmchapadao.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-16T16:49:33",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camarachapadaodosul.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -822,17 +822,17 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 6818287.44,
+    "totalGeral": 6836017.83,
     "totalNotas": 456,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 2520843.57,
       "Diárias — Civil": 1512514.21,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1356984.82,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1372904.82,
       "Serviços de Consultoria": 546768.27,
       "Obrigações Patronais": 387088.31,
       "Material de Consumo": 279909.04,
       "Equipamentos e Material Permanente": 109635.16,
-      "Serviços de Tecnologia da Informação": 54062.34,
+      "Serviços de Tecnologia da Informação": 55872.73,
       "Aporte para Cobertura de Déficit Atuarial do RPPS": 36926.98,
       "Passagens e Despesas com Locomoção": 9116.74,
       "Contribuições": 4438.0
@@ -1335,6 +1335,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL CASSEMS S/FOLHA DE PAGAMENTO MÊS MAIO 2026"
       },
       {
+        "data": "2026-01-09",
+        "fornecedor": "1DOC TECNOLOGIA S/A",
+        "cnpj": "19.625.833/0001-76",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 12672.73,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO ADITIVO Nº 004/2025 AO  CONTRATO Nº 009/2021, DISPENSA DE LICITAÇÃO POR VALOR, P/ LICENÇA E DIREITO DE USO MENSAL DE SOFTWARE DE SISTEMA INFORMATIZADO INTEGRADO E OFI"
+      },
+      {
         "data": "2026-01-30",
         "fornecedor": "IPMCS - INST. PREV. SOC. SERV. MUN. CHS",
         "cnpj": "04.680.541/0001-69",
@@ -1439,20 +1447,20 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A 05 (CINCO) TAXAS DE INSCRIÇÕES  P/PARTICIPAR DO CURSO GOVERNANÇA LEGISLATIVA MUNICIPAL: COMPETÊNCIAS, RESPONSABILIDADES E COMUNICAÇÃO ESTRATÉGICA NO PODER LEGISLATIVOS"
       },
       {
+        "data": "2026-07-06",
+        "fornecedor": "IDP  INSTITUTO DE DESENVOLVIMENTO PUBLICO  LTDA",
+        "cnpj": "59.457.863/0001-35",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 11450.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A 05 (CINCO) TAXAS DE INSCRIÇÕES P/PARTICIPAR DO TREINAMENTO SOBRE LEI DE IMPROBIDADE ADMINISTRATIVA E SEUS REFLEXOS NA LEI 14.133/2021, NOS DIAS 07 A 10 DE JULHO EM FER"
+      },
+      {
         "data": "2026-03-30",
         "fornecedor": "MOVEIS DAN BS LTDA",
         "cnpj": "16.513.843/0001-21",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 11164.17,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE AO ADITIVO Nº 001/2026 CONTRATO Nº 0022/2025 AO PEDIDO GERADO A PARTIR DO RESULTADO DA LICITAÇÃO: 000037/25 - PROCESSO ADMINSTRATIVO Nº 0031/2025 PREGÃO ELETRÔNICO - CON"
-      },
-      {
-        "data": "2026-01-09",
-        "fornecedor": "1DOC TECNOLOGIA S/A",
-        "cnpj": "19.625.833/0001-76",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 10862.34,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO ADITIVO Nº 004/2025 AO  CONTRATO Nº 009/2021, DISPENSA DE LICITAÇÃO POR VALOR, P/ LICENÇA E DIREITO DE USO MENSAL DE SOFTWARE DE SISTEMA INFORMATIZADO INTEGRADO E OFI"
       },
       {
         "data": "2026-01-09",
@@ -3327,6 +3335,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À 03(TRÊS) TAXAS DE INSCRIÇÕES P/PARTICIPAR DO 32º FORUMDDE GESTÃO PÚBLICA, NOS DIAS 23 A 26 DE JUNHO EM BRASÍLIA/DF, REALIZADO PELO INSTITUTO ULYSSES GUIMARÃES"
       },
       {
+        "data": "2026-07-06",
+        "fornecedor": "INSTITUTO ULYSSES GUIMARAES LTDA",
+        "cnpj": "40.033.708/0001-63",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4470.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A 03 (TRÊS) TAXAS DE INSCRIÇÕES P/PARTICIPAR DO 46º CONGRESSO DE GESTÃO PÚBLICA, NOS DIAS 07 A 10 DE JULHO EM BRASÍLIA/DF, REALIZADO PELA EMPRESA INSTITUTO ULYSSES GUIMA"
+      },
+      {
         "data": "2026-01-21",
         "fornecedor": "UNIAO DOS VEREADORES DO BRASIL",
         "cnpj": "83.594.978/0001-56",
@@ -4405,22 +4421,6 @@
         "categoria": "Diárias — Civil",
         "valor": 0.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS P/ VERIFICAR A EXECUÇÃO DOS SERVIÇOS DE INTERESSE DO LEGISLATIVO, JUNTO A ASSEMBLÉIA LEGISLATIVA DO MS E A EMPRESA EMPEC PROJETOS E"
-      },
-      {
-        "data": "2026-07-06",
-        "fornecedor": "INSTITUTO ULYSSES GUIMARAES LTDA",
-        "cnpj": "40.033.708/0001-63",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE A 03 (TRÊS) TAXAS DE INSCRIÇÕES P/PARTICIPAR DO 46º CONGRESSO DE GESTÃO PÚBLICA, NOS DIAS 07 A 10 DE JULHO EM BRASÍLIA/DF, REALIZADO PELA EMPRESA INSTITUTO ULYSSES GUIMA"
-      },
-      {
-        "data": "2026-07-06",
-        "fornecedor": "IDP  INSTITUTO DE DESENVOLVIMENTO PUBLICO  LTDA",
-        "cnpj": "59.457.863/0001-35",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE A 05 (CINCO) TAXAS DE INSCRIÇÕES P/PARTICIPAR DO TREINAMENTO SOBRE LEI DE IMPROBIDADE ADMINISTRATIVA E SEUS REFLEXOS NA LEI 14.133/2021, NOS DIAS 07 A 10 DE JULHO EM FER"
       },
       {
         "data": "2026-07-06",

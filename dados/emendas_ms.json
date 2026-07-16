@@ -1,17 +1,17 @@
 {
-  "ultimaAtualizacao": "2026-07-15T16:52:06",
+  "ultimaAtualizacao": "2026-07-16T16:49:33",
   "ano": 2026,
-  "fonte": "Portal da Transparência (api.portaldatransparencia.gov.br/api-de-dados/emendas) — 2026-07-15T16:52:06",
-  "totalGeralPago": 310189613.92,
+  "fonte": "Portal da Transparência (api.portaldatransparencia.gov.br/api-de-dados/emendas) — 2026-07-16T16:49:33",
+  "totalGeralPago": 313740687.71,
   "parlamentares": [
     {
       "nome": "Nelsinho Trad",
       "cargo": "Senador(a)",
       "partido": "PSD",
-      "totalEmpenhado": 63602205.61,
-      "totalPago": 56163260.23,
+      "totalEmpenhado": 67351830.61,
+      "totalPago": 59712905.23,
       "porTipo": {
-        "Projeto Definido": 30375357.0,
+        "Projeto Definido": 33925002.0,
         "Emenda Pix": 25787903.23
       },
       "totalEmendas": 9,
@@ -44,6 +44,15 @@
           "valorPago": 13729000.0
         },
         {
+          "numero": "0006",
+          "tipo": "Projeto Definido",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Assistência social",
+          "subfuncao": "SERVICOS SOCIOASSISTENCIAIS",
+          "valorEmpenhado": 3350000.0,
+          "valorPago": 3350000.0
+        },
+        {
           "numero": "0004",
           "tipo": "Projeto Definido",
           "municipio": "MÚLTIPLO",
@@ -62,31 +71,22 @@
           "valorPago": 312730.0
         },
         {
-          "numero": "0008",
-          "tipo": "Projeto Definido",
-          "municipio": "MATO GROSSO DO SUL (UF)",
-          "funcao": "Educação",
-          "subfuncao": "Ensino superior",
-          "valorEmpenhado": 20.0,
-          "valorPago": 151820.0
-        },
-        {
-          "numero": "0006",
-          "tipo": "Projeto Definido",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Assistência social",
-          "subfuncao": "SERVICOS SOCIOASSISTENCIAIS",
-          "valorEmpenhado": 335.0,
-          "valorPago": 335.0
-        },
-        {
           "numero": "0005",
           "tipo": "Projeto Definido",
           "municipio": "Nacional",
           "funcao": "Saúde",
           "subfuncao": "Assistência hospitalar e ambulatorial",
-          "valorEmpenhado": 20.0,
-          "valorPago": 20.0
+          "valorEmpenhado": 200000.0,
+          "valorPago": 200000.0
+        },
+        {
+          "numero": "0008",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Educação",
+          "subfuncao": "Ensino superior",
+          "valorEmpenhado": 200000.0,
+          "valorPago": 151820.0
         },
         {
           "numero": "0007",
@@ -316,7 +316,7 @@
       "nome": "Dr. Luiz Ovando",
       "cargo": "Deputado(a) Federal",
       "partido": "PP",
-      "totalEmpenhado": 35704734.59,
+      "totalEmpenhado": 35707284.59,
       "totalPago": 23991634.36,
       "porTipo": {
         "Projeto Definido": 17252354.1,
@@ -375,7 +375,7 @@
           "municipio": "Nacional",
           "funcao": "Defesa nacional",
           "subfuncao": "Defesa terrestre",
-          "valorEmpenhado": 557917.43,
+          "valorEmpenhado": 560467.43,
           "valorPago": 99680.0
         },
         {
@@ -506,13 +506,13 @@
       "nome": "Beto Pereira",
       "cargo": "Deputado(a) Federal",
       "partido": "REPUBLICANOS",
-      "totalEmpenhado": 36189026.62,
+      "totalEmpenhado": 36689026.62,
       "totalPago": 23455543.04,
       "porTipo": {
         "Projeto Definido": 18025953.19,
         "Emenda Pix": 5429589.85
       },
-      "totalEmendas": 15,
+      "totalEmendas": 16,
       "emendas": [
         {
           "numero": "0005",
@@ -593,6 +593,15 @@
           "funcao": "Desporto e lazer",
           "subfuncao": "Desporto comunitário",
           "valorEmpenhado": 490000.0,
+          "valorPago": 0.0
+        },
+        {
+          "numero": "0006",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Educação",
+          "subfuncao": "Ensino superior",
+          "valorEmpenhado": 500000.0,
           "valorPago": 0.0
         },
         {
@@ -864,9 +873,9 @@
       "cargo": "Deputado(a) Federal",
       "partido": "PT",
       "totalEmpenhado": 20675495.0,
-      "totalPago": 15423118.27,
+      "totalPago": 15424547.06,
       "porTipo": {
-        "Projeto Definido": 10172591.66,
+        "Projeto Definido": 10174020.45,
         "Emenda Pix": 5250526.61
       },
       "totalEmendas": 13,
@@ -923,7 +932,7 @@
           "funcao": "Defesa nacional",
           "subfuncao": "Defesa terrestre",
           "valorEmpenhado": 499927.15,
-          "valorPago": 362176.66
+          "valorPago": 363605.45
         },
         {
           "numero": "0012",
@@ -994,7 +1003,7 @@
       "nome": "Tereza Cristina",
       "cargo": "Senador(a)",
       "partido": "PP",
-      "totalEmpenhado": 23659418.78,
+      "totalEmpenhado": 24386918.78,
       "totalPago": 13706790.68,
       "porTipo": {
         "Projeto Definido": 13706790.68
@@ -1142,7 +1151,7 @@
           "municipio": "MÚLTIPLO",
           "funcao": "Urbanismo",
           "subfuncao": "Assistência comunitária",
-          "valorEmpenhado": 5361500.0,
+          "valorEmpenhado": 6089000.0,
           "valorPago": 0.0
         }
       ]
