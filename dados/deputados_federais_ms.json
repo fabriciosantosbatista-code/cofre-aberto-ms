@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-07-19T12:44:19",
+  "ultimaAtualizacao": "2026-07-20T13:43:37",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-07-19T12:44:19",
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-07-20T13:43:37",
   "total": 8,
   "deputados": [
     {
@@ -85,38 +85,9 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220548",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220548/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 305460.59,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 124200.4
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 65633.35
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 48997.09
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 34108.67
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 26157.59
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 3354.58
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - REEMBOLSO",
-          "valor": 3008.91
-        }
-      ],
-      "totalNotasFiscais": 258
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 141411,
@@ -419,7 +390,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/74376",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/74376/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 301234.18,
+      "cotaGastaAno": 301583.18,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -439,7 +410,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 24212.88
+          "valor": 24561.88
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -454,7 +425,7 @@
           "valor": 31.46
         }
       ],
-      "totalNotasFiscais": 236
+      "totalNotasFiscais": 237
     }
   ]
 }

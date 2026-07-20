@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-07-19T12:44:19",
+  "ultimaAtualizacao": "2026-07-20T13:43:37",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados — 2026-07-19T12:44:19",
+  "fonte": "API da Câmara dos Deputados — 2026-07-20T13:43:37",
   "total": 512,
   "deputados": [
     {
@@ -11,11 +11,15 @@
       "uf": "AP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204379.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204379",
-      "cotaGastaAno": 306702.57,
+      "cotaGastaAno": 326702.57,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
           "valor": 203290.75
+        },
+        {
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE AERONAVES",
+          "valor": 40000.0
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -30,15 +34,11 @@
           "valor": 20987.71
         },
         {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE AERONAVES",
-          "valor": 20000.0
-        },
-        {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 3053.8
         }
       ],
-      "totalNotasFiscais": 122
+      "totalNotasFiscais": 123
     },
     {
       "id": 220714,
@@ -75,7 +75,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/221328.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/221328",
-      "cotaGastaAno": 243624.26,
+      "cotaGastaAno": 246860.39,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -87,11 +87,11 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 29630.78
+          "valor": 29366.91
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 21618.61
+          "valor": 25118.61
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -127,34 +127,9 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204560.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204560",
-      "cotaGastaAno": 275700.99,
-      "ceapCategorias": [
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 81000.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 74760.26
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 56398.11
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 52500.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 6414.57
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 4628.05
-        }
-      ],
-      "totalNotasFiscais": 129
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 204528,
@@ -163,7 +138,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204528.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204528",
-      "cotaGastaAno": 36225.55,
+      "cotaGastaAno": 36526.99,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -174,12 +149,12 @@
           "valor": 13985.88
         },
         {
-          "categoria": "TELEFONIA",
-          "valor": 2169.26
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 2268.09
         },
         {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 1966.65
+          "categoria": "TELEFONIA",
+          "valor": 2169.26
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
@@ -199,7 +174,7 @@
       "uf": "GO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/121948.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/121948",
-      "cotaGastaAno": 238424.39,
+      "cotaGastaAno": 238515.42,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -211,7 +186,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 55806.22
+          "valor": 55897.25
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -230,7 +205,7 @@
           "valor": 1828.52
         }
       ],
-      "totalNotasFiscais": 209
+      "totalNotasFiscais": 210
     },
     {
       "id": 74646,
@@ -287,7 +262,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160508.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160508",
-      "cotaGastaAno": 152953.92,
+      "cotaGastaAno": 153733.92,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -311,7 +286,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 5269.8
+          "valor": 6049.8
         },
         {
           "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
@@ -326,7 +301,7 @@
           "valor": 1251.19
         }
       ],
-      "totalNotasFiscais": 156
+      "totalNotasFiscais": 157
     },
     {
       "id": 136811,
@@ -335,50 +310,22 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/136811.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/136811",
-      "cotaGastaAno": 285335.79,
+      "cotaGastaAno": 133568.71,
       "ceapCategorias": [
         {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 80700.0
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 45704.63
         },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 46238.63
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 45702.81
+          "valor": 44638.63
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 39793.77
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 36130.85
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 24484.24
-        },
-        {
-          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 5080.59
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 3526.18
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 3371.82
-        },
-        {
-          "categoria": "SERVIÇOS POSTAIS",
-          "valor": 306.9
+          "valor": 43225.45
         }
       ],
-      "totalNotasFiscais": 530
+      "totalNotasFiscais": 300
     },
     {
       "id": 178835,
@@ -387,7 +334,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178835.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178835",
-      "cotaGastaAno": 293802.2,
+      "cotaGastaAno": 289691.53,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -395,23 +342,23 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 56788.24
+          "valor": 57684.86
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
           "valor": 47800.0
         },
         {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 37718.78
-        },
-        {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 37594.66
         },
         {
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 31251.49
+        },
+        {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 7424.78
+          "valor": 8884.78
         },
         {
           "categoria": "SERVIÇOS POSTAIS",
@@ -823,50 +770,18 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220554.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220554",
-      "cotaGastaAno": 312607.29,
+      "cotaGastaAno": 58189.82,
       "ceapCategorias": [
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 62794.23
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 56758.21
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 53982.5
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 48474.77
-        },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 45816.39
         },
         {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 17193.11
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 10262.87
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 9499.11
-        },
-        {
-          "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
-          "valor": 5603.8
-        },
-        {
-          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 2222.3
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 12373.43
         }
       ],
-      "totalNotasFiscais": 843
+      "totalNotasFiscais": 100
     },
     {
       "id": 221148,
@@ -935,30 +850,18 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74057.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74057",
-      "cotaGastaAno": 294819.09,
+      "cotaGastaAno": 84637.3,
       "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 152019.5
-        },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 62082.02
         },
         {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 57107.81
-        },
-        {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 22968.76
-        },
-        {
-          "categoria": "SERVIÇO DE SEGURANÇA PRESTADO POR EMPRESA ESPECIALIZADA.",
-          "valor": 641.0
+          "valor": 22555.28
         }
       ],
-      "totalNotasFiscais": 149
+      "totalNotasFiscais": 100
     },
     {
       "id": 178927,
@@ -1095,22 +998,9 @@
       "uf": "MA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220707.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220707",
-      "cotaGastaAno": 151687.03,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 75000.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 48580.23
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 28106.8
-        }
-      ],
-      "totalNotasFiscais": 55
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 204356,
@@ -1119,7 +1009,7 @@
       "uf": "ES",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204356.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204356",
-      "cotaGastaAno": 239445.83,
+      "cotaGastaAno": 239815.83,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -1139,10 +1029,10 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 19649.04
+          "valor": 20019.04
         }
       ],
-      "totalNotasFiscais": 199
+      "totalNotasFiscais": 201
     },
     {
       "id": 220715,
@@ -1167,7 +1057,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/107970.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/107970",
-      "cotaGastaAno": 242414.71,
+      "cotaGastaAno": 242715.74,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -1179,7 +1069,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 31321.86
+          "valor": 31622.89
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -1206,7 +1096,7 @@
           "valor": 1145.0
         }
       ],
-      "totalNotasFiscais": 264
+      "totalNotasFiscais": 265
     },
     {
       "id": 220556,
@@ -1215,7 +1105,7 @@
       "uf": "SC",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220556.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220556",
-      "cotaGastaAno": 276330.92,
+      "cotaGastaAno": 284230.92,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -1223,7 +1113,7 @@
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 43735.07
+          "valor": 51635.07
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -1254,7 +1144,7 @@
           "valor": 766.35
         }
       ],
-      "totalNotasFiscais": 240
+      "totalNotasFiscais": 241
     },
     {
       "id": 220632,
@@ -1263,7 +1153,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220632.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220632",
-      "cotaGastaAno": 290723.91,
+      "cotaGastaAno": 291011.78,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -1283,7 +1173,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 26749.61
+          "valor": 27087.48
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -1291,7 +1181,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 3654.19
+          "valor": 3604.19
         },
         {
           "categoria": "PASSAGEM AÉREA - REEMBOLSO",
@@ -1319,7 +1209,7 @@
       "uf": "AP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178831.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178831",
-      "cotaGastaAno": 313832.58,
+      "cotaGastaAno": 317687.78,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -1331,7 +1221,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 32916.47
+          "valor": 36771.67
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -1350,7 +1240,7 @@
           "valor": 205.0
         }
       ],
-      "totalNotasFiscais": 171
+      "totalNotasFiscais": 173
     },
     {
       "id": 220657,
@@ -1603,42 +1493,9 @@
       "uf": "TO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220544.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220544",
-      "cotaGastaAno": 309197.68,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 135200.0
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 68097.26
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 50000.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 47677.17
-        },
-        {
-          "categoria": "SERVIÇO DE SEGURANÇA PRESTADO POR EMPRESA ESPECIALIZADA.",
-          "valor": 8700.0
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 706.8
-        },
-        {
-          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 102.02
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": -1285.57
-        }
-      ],
-      "totalNotasFiscais": 172
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 160553,
@@ -1647,15 +1504,15 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160553.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160553",
-      "cotaGastaAno": 218268.07,
+      "cotaGastaAno": 247405.58,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 70873.36
+          "valor": 78510.87
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 54000.0
+          "valor": 75500.0
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -1670,7 +1527,7 @@
           "valor": 6727.32
         }
       ],
-      "totalNotasFiscais": 293
+      "totalNotasFiscais": 299
     },
     {
       "id": 220638,
@@ -1679,19 +1536,19 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220638.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220638",
-      "cotaGastaAno": 228511.45,
+      "cotaGastaAno": 253115.76,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
           "valor": 83000.0
         },
         {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 59755.0
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 63855.87
         },
         {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 39855.87
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 59755.0
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -1706,19 +1563,19 @@
           "valor": 4908.05
         },
         {
-          "categoria": "TELEFONIA",
-          "valor": 1685.65
+          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
+          "valor": 2029.53
         },
         {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 1425.22
+          "categoria": "TELEFONIA",
+          "valor": 1685.65
         },
         {
           "categoria": "SERVIÇOS POSTAIS",
           "valor": 840.89
         }
       ],
-      "totalNotasFiscais": 194
+      "totalNotasFiscais": 200
     },
     {
       "id": 220675,
@@ -1807,7 +1664,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/73433.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/73433",
-      "cotaGastaAno": 269668.38,
+      "cotaGastaAno": 275968.38,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -1819,7 +1676,7 @@
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 39900.0
+          "valor": 46200.0
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -1854,7 +1711,7 @@
           "valor": 586.79
         }
       ],
-      "totalNotasFiscais": 272
+      "totalNotasFiscais": 273
     },
     {
       "id": 141391,
@@ -1939,50 +1796,18 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160600.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160600",
-      "cotaGastaAno": 309666.2,
+      "cotaGastaAno": 97192.53,
       "ceapCategorias": [
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 69687.28
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 59421.13
-        },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 56688.91
         },
         {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 54296.6
-        },
-        {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 44191.47
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 10000.0
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 7867.8
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - REEMBOLSO",
-          "valor": 6286.91
-        },
-        {
-          "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
-          "valor": 967.41
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 258.69
+          "valor": 40503.62
         }
       ],
-      "totalNotasFiscais": 342
+      "totalNotasFiscais": 100
     },
     {
       "id": 74090,
@@ -2059,7 +1884,7 @@
       "uf": "PE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160665.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160665",
-      "cotaGastaAno": 299794.81,
+      "cotaGastaAno": 301398.85,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -2079,7 +1904,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 15467.57
+          "valor": 17071.61
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -2106,7 +1931,7 @@
           "valor": 127.05
         }
       ],
-      "totalNotasFiscais": 241
+      "totalNotasFiscais": 248
     },
     {
       "id": 160512,
@@ -2211,7 +2036,7 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220605.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220605",
-      "cotaGastaAno": 262592.19,
+      "cotaGastaAno": 265488.97,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -2223,7 +2048,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 54966.49
+          "valor": 57936.49
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -2235,11 +2060,11 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 7443.59
+          "valor": 7479.17
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 3673.99
+          "valor": 3565.19
         },
         {
           "categoria": "TELEFONIA",
@@ -2250,7 +2075,7 @@
           "valor": 834.2
         }
       ],
-      "totalNotasFiscais": 454
+      "totalNotasFiscais": 456
     },
     {
       "id": 220612,
@@ -2423,11 +2248,11 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220698.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220698",
-      "cotaGastaAno": 61487.44,
+      "cotaGastaAno": 65262.66,
       "ceapCategorias": [
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 20053.2
+          "valor": 23328.45
         },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -2443,7 +2268,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 5043.19
+          "valor": 5202.7
         },
         {
           "categoria": "PASSAGEM AÉREA - REEMBOLSO",
@@ -2454,11 +2279,15 @@
           "valor": 1736.74
         },
         {
+          "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
+          "valor": 340.46
+        },
+        {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 197.94
         }
       ],
-      "totalNotasFiscais": 214
+      "totalNotasFiscais": 218
     },
     {
       "id": 220683,
@@ -2467,7 +2296,7 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220683.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220683",
-      "cotaGastaAno": 225938.87,
+      "cotaGastaAno": 226404.67,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -2499,14 +2328,14 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 1242.17
+          "valor": 1707.97
         },
         {
           "categoria": "SERVIÇOS POSTAIS",
           "valor": 1106.2
         }
       ],
-      "totalNotasFiscais": 366
+      "totalNotasFiscais": 367
     },
     {
       "id": 204374,
@@ -2547,7 +2376,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204388.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204388",
-      "cotaGastaAno": 333398.76,
+      "cotaGastaAno": 333465.39,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -2575,7 +2404,7 @@
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 7045.51
+          "valor": 7112.14
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -2586,7 +2415,7 @@
           "valor": 576.0
         }
       ],
-      "totalNotasFiscais": 465
+      "totalNotasFiscais": 467
     },
     {
       "id": 160538,
@@ -2595,7 +2424,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160538.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160538",
-      "cotaGastaAno": 306206.26,
+      "cotaGastaAno": 306044.79,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -2619,19 +2448,19 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 25773.5
+          "valor": 25181.3
         },
         {
           "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
           "valor": 7902.37
         },
         {
-          "categoria": "TELEFONIA",
-          "valor": 4834.15
+          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
+          "valor": 4864.61
         },
         {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 4433.88
+          "categoria": "TELEFONIA",
+          "valor": 4834.15
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
@@ -2646,7 +2475,7 @@
           "valor": 1270.09
         }
       ],
-      "totalNotasFiscais": 544
+      "totalNotasFiscais": 559
     },
     {
       "id": 210989,
@@ -2775,38 +2604,9 @@
       "uf": "MS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220548.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220548",
-      "cotaGastaAno": 305460.59,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 124200.4
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 65633.35
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 48997.09
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 34108.67
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 26157.59
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 3354.58
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - REEMBOLSO",
-          "valor": 3008.91
-        }
-      ],
-      "totalNotasFiscais": 258
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 204572,
@@ -2875,50 +2675,9 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178829.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178829",
-      "cotaGastaAno": 237626.24,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 110146.25
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 36805.55
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 33334.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 30136.97
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 10298.17
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 7200.0
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 6052.14
-        },
-        {
-          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 2053.38
-        },
-        {
-          "categoria": "SERVIÇOS POSTAIS",
-          "valor": 1097.18
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 502.6
-        }
-      ],
-      "totalNotasFiscais": 274
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 213762,
@@ -2927,7 +2686,7 @@
       "uf": "RN",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/213762.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/213762",
-      "cotaGastaAno": 330047.72,
+      "cotaGastaAno": 330349.25,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -2943,7 +2702,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 23526.31
+          "valor": 23827.84
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -2954,7 +2713,7 @@
           "valor": 1549.0
         }
       ],
-      "totalNotasFiscais": 214
+      "totalNotasFiscais": 215
     },
     {
       "id": 204361,
@@ -3067,7 +2826,7 @@
       "uf": "TO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178993.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178993",
-      "cotaGastaAno": 233712.28,
+      "cotaGastaAno": 234912.28,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -3086,15 +2845,15 @@
           "valor": 30000.0
         },
         {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 6012.06
+          "categoria": "TELEFONIA",
+          "valor": 7090.47
         },
         {
-          "categoria": "TELEFONIA",
-          "valor": 5890.47
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 6012.06
         }
       ],
-      "totalNotasFiscais": 210
+      "totalNotasFiscais": 211
     },
     {
       "id": 204460,
@@ -3271,7 +3030,7 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220704.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220704",
-      "cotaGastaAno": 313334.87,
+      "cotaGastaAno": 313775.56,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -3295,11 +3054,11 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 18860.8
+          "valor": 19048.03
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 10300.11
+          "valor": 10553.57
         },
         {
           "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
@@ -3318,7 +3077,7 @@
           "valor": 154.9
         }
       ],
-      "totalNotasFiscais": 427
+      "totalNotasFiscais": 430
     },
     {
       "id": 204369,
@@ -3367,7 +3126,7 @@
       "uf": "PI",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220699.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220699",
-      "cotaGastaAno": 250525.73,
+      "cotaGastaAno": 252487.23,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -3387,14 +3146,14 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 15983.09
+          "valor": 17944.59
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
           "valor": 10708.93
         }
       ],
-      "totalNotasFiscais": 131
+      "totalNotasFiscais": 133
     },
     {
       "id": 206018,
@@ -3403,7 +3162,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/206018.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/206018",
-      "cotaGastaAno": 305830.97,
+      "cotaGastaAno": 309581.41,
       "ceapCategorias": [
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -3419,11 +3178,11 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 37574.53
+          "valor": 38772.49
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 34059.8
+          "valor": 36612.28
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
@@ -3446,7 +3205,7 @@
           "valor": 303.1
         }
       ],
-      "totalNotasFiscais": 697
+      "totalNotasFiscais": 710
     },
     {
       "id": 178876,
@@ -3455,7 +3214,7 @@
       "uf": "GO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178876.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178876",
-      "cotaGastaAno": 218886.98,
+      "cotaGastaAno": 219724.18,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -3463,11 +3222,11 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 39234.58
+          "valor": 39634.58
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 2166.0
+          "valor": 2603.2
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -3478,7 +3237,7 @@
           "valor": 878.4
         }
       ],
-      "totalNotasFiscais": 151
+      "totalNotasFiscais": 153
     },
     {
       "id": 204488,
@@ -3487,7 +3246,7 @@
       "uf": "CE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204488.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204488",
-      "cotaGastaAno": 260820.45,
+      "cotaGastaAno": 264320.45,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -3498,11 +3257,11 @@
           "valor": 46740.25
         },
         {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 27500.0
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 31000.0
         },
         {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 27500.0
         },
         {
@@ -3510,7 +3269,7 @@
           "valor": 18429.4
         }
       ],
-      "totalNotasFiscais": 77
+      "totalNotasFiscais": 78
     },
     {
       "id": 73441,
@@ -3643,7 +3402,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/205476.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/205476",
-      "cotaGastaAno": 197860.98,
+      "cotaGastaAno": 198260.99,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -3651,7 +3410,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 53700.2
+          "valor": 54100.21
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -3670,7 +3429,7 @@
           "valor": 608.9
         }
       ],
-      "totalNotasFiscais": 164
+      "totalNotasFiscais": 165
     },
     {
       "id": 74171,
@@ -3763,7 +3522,7 @@
       "uf": "PE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220665.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220665",
-      "cotaGastaAno": 248203.97,
+      "cotaGastaAno": 254213.97,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -3775,7 +3534,7 @@
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 49010.0
+          "valor": 55020.0
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -3790,7 +3549,7 @@
           "valor": 1865.58
         }
       ],
-      "totalNotasFiscais": 144
+      "totalNotasFiscais": 145
     },
     {
       "id": 74537,
@@ -3799,7 +3558,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74537.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74537",
-      "cotaGastaAno": 202421.29,
+      "cotaGastaAno": 204504.18,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -3822,12 +3581,12 @@
           "valor": 9341.43
         },
         {
-          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 4907.85
+          "categoria": "TELEFONIA",
+          "valor": 6907.55
         },
         {
-          "categoria": "TELEFONIA",
-          "valor": 4824.66
+          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
+          "valor": 4907.85
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -3842,7 +3601,7 @@
           "valor": 89.9
         }
       ],
-      "totalNotasFiscais": 238
+      "totalNotasFiscais": 242
     },
     {
       "id": 141408,
@@ -3951,7 +3710,7 @@
       "uf": "MT",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220594.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220594",
-      "cotaGastaAno": 168122.89,
+      "cotaGastaAno": 168622.89,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -3967,7 +3726,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 22198.52
+          "valor": 22698.52
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -3982,7 +3741,7 @@
           "valor": 2211.66
         }
       ],
-      "totalNotasFiscais": 245
+      "totalNotasFiscais": 246
     },
     {
       "id": 204378,
@@ -4071,7 +3830,7 @@
       "uf": "PE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220666.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220666",
-      "cotaGastaAno": 288219.92,
+      "cotaGastaAno": 292974.54,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -4079,11 +3838,11 @@
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 76409.59
+          "valor": 76268.59
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 33018.6
+          "valor": 37914.22
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -4147,7 +3906,7 @@
       "uf": "RO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220608.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220608",
-      "cotaGastaAno": 306219.67,
+      "cotaGastaAno": 307551.67,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -4163,7 +3922,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 36362.01
+          "valor": 36563.01
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -4171,18 +3930,18 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 9704.0
+          "valor": 10259.0
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 5171.49
+          "valor": 5747.49
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
           "valor": 3203.87
         }
       ],
-      "totalNotasFiscais": 326
+      "totalNotasFiscais": 329
     },
     {
       "id": 204355,
@@ -4275,7 +4034,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220555.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220555",
-      "cotaGastaAno": 183777.73,
+      "cotaGastaAno": 184069.46,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -4307,11 +4066,11 @@
         },
         {
           "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
-          "valor": 1569.69
+          "valor": 1812.49
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 1268.07
+          "valor": 1317.0
         },
         {
           "categoria": "SERVIÇO DE SEGURANÇA PRESTADO POR EMPRESA ESPECIALIZADA.",
@@ -4322,7 +4081,7 @@
           "valor": 251.4
         }
       ],
-      "totalNotasFiscais": 222
+      "totalNotasFiscais": 225
     },
     {
       "id": 220692,
@@ -4439,7 +4198,7 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220603.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220603",
-      "cotaGastaAno": 270124.72,
+      "cotaGastaAno": 238053.35,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -4447,11 +4206,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 59192.14
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 49800.0
+          "valor": 60320.77
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -4460,6 +4215,10 @@
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
           "valor": 31160.71
+        },
+        {
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 16600.0
         },
         {
           "categoria": "TELEFONIA",
@@ -4499,7 +4258,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74060.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74060",
-      "cotaGastaAno": 259007.31,
+      "cotaGastaAno": 263060.2,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -4515,7 +4274,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 24515.62
+          "valor": 28568.51
         },
         {
           "categoria": "SERVIÇOS POSTAIS",
@@ -4526,7 +4285,7 @@
           "valor": 60.38
         }
       ],
-      "totalNotasFiscais": 90
+      "totalNotasFiscais": 92
     },
     {
       "id": 220582,
@@ -4655,30 +4414,9 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204459.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204459",
-      "cotaGastaAno": 104880.6,
-      "ceapCategorias": [
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 37800.0
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 30000.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 29258.03
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 7022.07
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 800.5
-        }
-      ],
-      "totalNotasFiscais": 51
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 220557,
@@ -4687,11 +4425,11 @@
       "uf": "SC",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220557.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220557",
-      "cotaGastaAno": 337886.96,
+      "cotaGastaAno": 345795.34,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 102735.34
+          "valor": 110535.34
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -4715,14 +4453,14 @@
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 1812.1
+          "valor": 1920.48
         },
         {
           "categoria": "TELEFONIA",
           "valor": 259.94
         }
       ],
-      "totalNotasFiscais": 375
+      "totalNotasFiscais": 377
     },
     {
       "id": 62881,
@@ -4947,7 +4685,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220625.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220625",
-      "cotaGastaAno": 309718.57,
+      "cotaGastaAno": 310677.86,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -4959,7 +4697,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 57802.63
+          "valor": 58761.92
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -4990,7 +4728,7 @@
           "valor": 1083.94
         }
       ],
-      "totalNotasFiscais": 370
+      "totalNotasFiscais": 374
     },
     {
       "id": 220561,
@@ -5259,7 +4997,7 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220701.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220701",
-      "cotaGastaAno": 263647.45,
+      "cotaGastaAno": 263761.41,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -5291,7 +5029,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 2739.2
+          "valor": 2853.16
         },
         {
           "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
@@ -5302,7 +5040,7 @@
           "valor": 404.0
         }
       ],
-      "totalNotasFiscais": 200
+      "totalNotasFiscais": 202
     },
     {
       "id": 220652,
@@ -5359,7 +5097,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220654.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220654",
-      "cotaGastaAno": 278408.38,
+      "cotaGastaAno": 280064.23,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -5371,7 +5109,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 40208.5
+          "valor": 41864.35
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -5406,7 +5144,7 @@
           "valor": 202.63
         }
       ],
-      "totalNotasFiscais": 307
+      "totalNotasFiscais": 312
     },
     {
       "id": 220553,
@@ -5415,15 +5153,15 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220553.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220553",
-      "cotaGastaAno": 255380.38,
+      "cotaGastaAno": 262454.44,
       "ceapCategorias": [
+        {
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 71544.16
+        },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
           "valor": 65315.19
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 64721.9
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -5443,7 +5181,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 5656.05
+          "valor": 5907.85
         },
         {
           "categoria": "TELEFONIA",
@@ -5458,7 +5196,7 @@
           "valor": 238.25
         }
       ],
-      "totalNotasFiscais": 570
+      "totalNotasFiscais": 590
     },
     {
       "id": 220689,
@@ -5491,11 +5229,11 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160588.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160588",
-      "cotaGastaAno": 223839.21,
+      "cotaGastaAno": 225326.11,
       "ceapCategorias": [
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 62708.74
+          "valor": 64195.64
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -5526,7 +5264,7 @@
           "valor": 101.0
         }
       ],
-      "totalNotasFiscais": 160
+      "totalNotasFiscais": 161
     },
     {
       "id": 220691,
@@ -5535,7 +5273,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220691.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220691",
-      "cotaGastaAno": 239205.74,
+      "cotaGastaAno": 238666.11,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -5551,7 +5289,7 @@
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 25058.95
+          "valor": 24214.43
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -5559,7 +5297,7 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 2224.0
+          "valor": 2528.89
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -5579,7 +5317,7 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178929.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178929",
-      "cotaGastaAno": 347982.46,
+      "cotaGastaAno": 352741.36,
       "ceapCategorias": [
         {
           "categoria": "PASSAGEM AÉREA - REEMBOLSO",
@@ -5591,15 +5329,15 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 45338.13
+          "valor": 45149.03
+        },
+        {
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 42716.31
         },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
           "valor": 39531.16
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 37816.31
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -5615,7 +5353,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 3972.68
+          "valor": 4020.68
         },
         {
           "categoria": "SERVIÇO DE SEGURANÇA PRESTADO POR EMPRESA ESPECIALIZADA.",
@@ -5626,7 +5364,7 @@
           "valor": 1281.04
         }
       ],
-      "totalNotasFiscais": 543
+      "totalNotasFiscais": 546
     },
     {
       "id": 73768,
@@ -5703,7 +5441,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160599.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160599",
-      "cotaGastaAno": 220481.34,
+      "cotaGastaAno": 221633.78,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -5719,7 +5457,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 22746.5
+          "valor": 23827.84
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -5735,7 +5473,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 2878.59
+          "valor": 2949.69
         },
         {
           "categoria": "ASSINATURA DE PUBLICAÇÕES",
@@ -5746,7 +5484,7 @@
           "valor": 180.87
         }
       ],
-      "totalNotasFiscais": 639
+      "totalNotasFiscais": 647
     },
     {
       "id": 220602,
@@ -5903,38 +5641,9 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204450.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204450",
-      "cotaGastaAno": 140922.64,
-      "ceapCategorias": [
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 40000.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 39126.08
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 31621.53
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 25000.0
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 2231.72
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 2043.81
-        },
-        {
-          "categoria": "ASSINATURA DE PUBLICAÇÕES",
-          "valor": 899.5
-        }
-      ],
-      "totalNotasFiscais": 126
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 227991,
@@ -5943,7 +5652,7 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/227991.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/227991",
-      "cotaGastaAno": 263537.01,
+      "cotaGastaAno": 263807.01,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -5963,7 +5672,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 20303.3
+          "valor": 20573.3
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
@@ -5974,7 +5683,7 @@
           "valor": 199.8
         }
       ],
-      "totalNotasFiscais": 146
+      "totalNotasFiscais": 147
     },
     {
       "id": 220614,
@@ -5983,7 +5692,7 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220614.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220614",
-      "cotaGastaAno": 113131.51,
+      "cotaGastaAno": 113345.64,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -5999,7 +5708,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 12905.43
+          "valor": 13175.49
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -6019,7 +5728,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 504.6
+          "valor": 448.67
         }
       ],
       "totalNotasFiscais": 127
@@ -6343,34 +6052,9 @@
       "uf": "PA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220674.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220674",
-      "cotaGastaAno": 255272.65,
-      "ceapCategorias": [
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE AERONAVES",
-          "valor": 81800.0
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 75000.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 63448.38
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 27500.0
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 4050.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 3474.27
-        }
-      ],
-      "totalNotasFiscais": 89
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 220686,
@@ -6551,7 +6235,7 @@
       "uf": "AC",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220589.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220589",
-      "cotaGastaAno": 294639.96,
+      "cotaGastaAno": 294899.96,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -6575,14 +6259,14 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 1260.0
+          "valor": 1520.0
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 471.6
         }
       ],
-      "totalNotasFiscais": 190
+      "totalNotasFiscais": 191
     },
     {
       "id": 74075,
@@ -6591,7 +6275,7 @@
       "uf": "PA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74075.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74075",
-      "cotaGastaAno": 209046.97,
+      "cotaGastaAno": 213656.89,
       "ceapCategorias": [
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -6603,7 +6287,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 13997.98
+          "valor": 18107.9
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
@@ -6615,10 +6299,10 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 1660.0
+          "valor": 2160.0
         }
       ],
-      "totalNotasFiscais": 217
+      "totalNotasFiscais": 219
     },
     {
       "id": 204364,
@@ -6627,7 +6311,7 @@
       "uf": "TO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204364.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204364",
-      "cotaGastaAno": 270928.39,
+      "cotaGastaAno": 275181.09,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -6639,11 +6323,11 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 62378.63
+          "valor": 63481.33
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 29390.07
+          "valor": 32540.07
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -6654,7 +6338,7 @@
           "valor": 694.99
         }
       ],
-      "totalNotasFiscais": 269
+      "totalNotasFiscais": 273
     },
     {
       "id": 178854,
@@ -6695,19 +6379,19 @@
       "uf": "MT",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/198783.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/198783",
-      "cotaGastaAno": 236543.38,
+      "cotaGastaAno": 237377.42,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
           "valor": 79100.0
         },
         {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 39926.9
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 40142.29
         },
         {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 39308.25
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 39926.9
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -6730,7 +6414,7 @@
           "valor": 590.0
         }
       ],
-      "totalNotasFiscais": 306
+      "totalNotasFiscais": 309
     },
     {
       "id": 161550,
@@ -6787,11 +6471,11 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/230765.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/230765",
-      "cotaGastaAno": 233892.6,
+      "cotaGastaAno": 250892.6,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 96816.67
+          "valor": 113816.67
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -6814,7 +6498,7 @@
           "valor": 420.78
         }
       ],
-      "totalNotasFiscais": 79
+      "totalNotasFiscais": 80
     },
     {
       "id": 220663,
@@ -6823,7 +6507,7 @@
       "uf": "PE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220663.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220663",
-      "cotaGastaAno": 248405.93,
+      "cotaGastaAno": 234333.53,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -6839,7 +6523,7 @@
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 39145.34
+          "valor": 25072.94
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -6854,7 +6538,7 @@
           "valor": 617.98
         }
       ],
-      "totalNotasFiscais": 112
+      "totalNotasFiscais": 100
     },
     {
       "id": 220645,
@@ -7003,7 +6687,7 @@
       "uf": "ES",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178871.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178871",
-      "cotaGastaAno": 289401.97,
+      "cotaGastaAno": 291619.79,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -7015,7 +6699,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 38061.87
+          "valor": 40279.69
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -7038,7 +6722,7 @@
           "valor": 575.77
         }
       ],
-      "totalNotasFiscais": 203
+      "totalNotasFiscais": 204
     },
     {
       "id": 178905,
@@ -7047,7 +6731,7 @@
       "uf": "MT",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178905.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178905",
-      "cotaGastaAno": 86853.21,
+      "cotaGastaAno": 91295.14,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -7055,7 +6739,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 23404.52
+          "valor": 23971.45
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -7063,14 +6747,14 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 5681.0
+          "valor": 9556.0
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 135.6
         }
       ],
-      "totalNotasFiscais": 94
+      "totalNotasFiscais": 100
     },
     {
       "id": 220681,
@@ -7175,7 +6859,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220653.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220653",
-      "cotaGastaAno": 144539.7,
+      "cotaGastaAno": 145770.52,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -7183,7 +6867,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 29829.67
+          "valor": 30093.77
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -7195,14 +6879,14 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 3961.04
+          "valor": 4260.94
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 2120.86
+          "valor": 2787.68
         }
       ],
-      "totalNotasFiscais": 176
+      "totalNotasFiscais": 179
     },
     {
       "id": 220712,
@@ -7243,38 +6927,9 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/66828.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/66828",
-      "cotaGastaAno": 321826.66,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 111313.49
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 72500.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 48977.31
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 42646.7
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 29972.81
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 12568.23
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 3848.12
-        }
-      ],
-      "totalNotasFiscais": 141
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 220646,
@@ -7327,7 +6982,7 @@
       "uf": "PE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/72442.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/72442",
-      "cotaGastaAno": 322472.8,
+      "cotaGastaAno": 323152.83,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -7339,7 +6994,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 55767.42
+          "valor": 56447.45
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -7354,7 +7009,7 @@
           "valor": 2175.0
         }
       ],
-      "totalNotasFiscais": 413
+      "totalNotasFiscais": 415
     },
     {
       "id": 204398,
@@ -7447,7 +7102,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204407.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204407",
-      "cotaGastaAno": 250142.53,
+      "cotaGastaAno": 250462.53,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -7459,7 +7114,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 42640.43
+          "valor": 42960.43
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -7494,7 +7149,7 @@
           "valor": 686.0
         }
       ],
-      "totalNotasFiscais": 267
+      "totalNotasFiscais": 268
     },
     {
       "id": 220656,
@@ -7587,11 +7242,11 @@
       "uf": "RN",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204445.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204445",
-      "cotaGastaAno": 323226.11,
+      "cotaGastaAno": 334426.27,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 187764.88
+          "valor": 198937.04
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -7615,7 +7270,7 @@
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 2021.34
+          "valor": 2049.34
         },
         {
           "categoria": "AQUISIÇÃO DE TOKENS E CERTIFICADOS DIGITAIS",
@@ -7626,7 +7281,7 @@
           "valor": 73.9
         }
       ],
-      "totalNotasFiscais": 190
+      "totalNotasFiscais": 196
     },
     {
       "id": 92699,
@@ -7675,7 +7330,7 @@
       "uf": "PE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204427.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204427",
-      "cotaGastaAno": 227623.41,
+      "cotaGastaAno": 229073.51,
       "ceapCategorias": [
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -7691,14 +7346,14 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 34501.02
+          "valor": 35951.12
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
           "valor": 4321.55
         }
       ],
-      "totalNotasFiscais": 217
+      "totalNotasFiscais": 223
     },
     {
       "id": 204411,
@@ -7707,11 +7362,11 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204411.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204411",
-      "cotaGastaAno": 235414.87,
+      "cotaGastaAno": 235603.87,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 81584.74
+          "valor": 81773.74
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -7750,7 +7405,7 @@
           "valor": 130.0
         }
       ],
-      "totalNotasFiscais": 231
+      "totalNotasFiscais": 232
     },
     {
       "id": 220545,
@@ -7915,7 +7570,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220551.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220551",
-      "cotaGastaAno": 332618.18,
+      "cotaGastaAno": 333003.1,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -7951,7 +7606,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 4143.29
+          "valor": 4528.21
         },
         {
           "categoria": "TELEFONIA",
@@ -7962,7 +7617,7 @@
           "valor": 1447.4
         }
       ],
-      "totalNotasFiscais": 470
+      "totalNotasFiscais": 472
     },
     {
       "id": 204494,
@@ -7971,7 +7626,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204494.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204494",
-      "cotaGastaAno": 289556.01,
+      "cotaGastaAno": 289869.54,
       "ceapCategorias": [
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -7991,11 +7646,11 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 35033.03
+          "valor": 35223.26
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 3985.3
+          "valor": 4108.6
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -8014,7 +7669,7 @@
           "valor": 293.8
         }
       ],
-      "totalNotasFiscais": 329
+      "totalNotasFiscais": 331
     },
     {
       "id": 220534,
@@ -8115,50 +7770,9 @@
       "uf": "RN",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204473.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204473",
-      "cotaGastaAno": 267780.79,
-      "ceapCategorias": [
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 86768.83
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 82150.0
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 43968.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 20484.53
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 19532.5
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 6280.0
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 4000.48
-        },
-        {
-          "categoria": "SERVIÇO DE SEGURANÇA PRESTADO POR EMPRESA ESPECIALIZADA.",
-          "valor": 2305.0
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 1662.24
-        },
-        {
-          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 629.21
-        }
-      ],
-      "totalNotasFiscais": 266
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 220611,
@@ -8167,7 +7781,7 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220611.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220611",
-      "cotaGastaAno": 222564.44,
+      "cotaGastaAno": 225239.11,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -8179,7 +7793,7 @@
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 42291.84
+          "valor": 44966.51
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -8198,7 +7812,7 @@
           "valor": 107.7
         }
       ],
-      "totalNotasFiscais": 213
+      "totalNotasFiscais": 214
     },
     {
       "id": 178966,
@@ -8207,7 +7821,7 @@
       "uf": "SC",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178966.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178966",
-      "cotaGastaAno": 254978.77,
+      "cotaGastaAno": 255318.54,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -8227,7 +7841,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 20972.75
+          "valor": 21312.52
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -8246,7 +7860,7 @@
           "valor": 1722.77
         }
       ],
-      "totalNotasFiscais": 332
+      "totalNotasFiscais": 333
     },
     {
       "id": 220702,
@@ -8255,38 +7869,9 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220702.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220702",
-      "cotaGastaAno": 301585.25,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 109400.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 95843.76
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 43871.52
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 18930.63
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 18000.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 14981.34
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 558.0
-        }
-      ],
-      "totalNotasFiscais": 218
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 74374,
@@ -8339,15 +7924,15 @@
       "uf": "PB",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204394.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204394",
-      "cotaGastaAno": 214096.09,
+      "cotaGastaAno": 228604.14,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 67500.0
+          "valor": 81000.0
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 48101.76
+          "valor": 48509.81
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -8363,7 +7948,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 7163.0
+          "valor": 7763.0
         },
         {
           "categoria": "TELEFONIA",
@@ -8374,7 +7959,7 @@
           "valor": 600.0
         }
       ],
-      "totalNotasFiscais": 286
+      "totalNotasFiscais": 293
     },
     {
       "id": 204491,
@@ -8467,7 +8052,7 @@
       "uf": "ES",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220529.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220529",
-      "cotaGastaAno": 239437.49,
+      "cotaGastaAno": 239693.91,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -8483,7 +8068,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 24452.92
+          "valor": 24709.34
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -8502,7 +8087,7 @@
           "valor": 266.8
         }
       ],
-      "totalNotasFiscais": 229
+      "totalNotasFiscais": 231
     },
     {
       "id": 204365,
@@ -8511,7 +8096,7 @@
       "uf": "SC",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204365.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204365",
-      "cotaGastaAno": 90768.01,
+      "cotaGastaAno": 93015.36,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -8527,7 +8112,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 7033.29
+          "valor": 9280.64
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -8542,7 +8127,7 @@
           "valor": 1135.6
         }
       ],
-      "totalNotasFiscais": 105
+      "totalNotasFiscais": 107
     },
     {
       "id": 220526,
@@ -8551,7 +8136,7 @@
       "uf": "ES",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220526.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220526",
-      "cotaGastaAno": 204424.11,
+      "cotaGastaAno": 204574.11,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -8575,14 +8160,14 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 21665.71
+          "valor": 21815.71
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
           "valor": 802.79
         }
       ],
-      "totalNotasFiscais": 220
+      "totalNotasFiscais": 221
     },
     {
       "id": 160673,
@@ -8591,7 +8176,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160673.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160673",
-      "cotaGastaAno": 246802.93,
+      "cotaGastaAno": 250210.96,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -8603,7 +8188,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 37133.66
+          "valor": 40384.28
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -8627,10 +8212,10 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 21.4
+          "valor": 178.81
         }
       ],
-      "totalNotasFiscais": 328
+      "totalNotasFiscais": 345
     },
     {
       "id": 152605,
@@ -8755,7 +8340,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/198197.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/198197",
-      "cotaGastaAno": 243287.82,
+      "cotaGastaAno": 245066.05,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -8766,12 +8351,12 @@
           "valor": 51412.69
         },
         {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 39210.2
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 39627.08
         },
         {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 38425.5
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 39210.2
         },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -8783,11 +8368,11 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 8823.74
+          "valor": 9063.74
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 5308.35
+          "valor": 5645.0
         },
         {
           "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
@@ -8798,7 +8383,7 @@
           "valor": 768.66
         }
       ],
-      "totalNotasFiscais": 430
+      "totalNotasFiscais": 438
     },
     {
       "id": 204531,
@@ -8807,7 +8392,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204531.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204531",
-      "cotaGastaAno": 151499.55,
+      "cotaGastaAno": 152780.92,
       "ceapCategorias": [
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -8827,18 +8412,18 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 10056.98
+          "valor": 10322.89
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 5704.06
+          "valor": 5888.43
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 2122.6
+          "valor": 2953.69
         }
       ],
-      "totalNotasFiscais": 106
+      "totalNotasFiscais": 109
     },
     {
       "id": 220664,
@@ -8987,7 +8572,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178964.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178964",
-      "cotaGastaAno": 279179.24,
+      "cotaGastaAno": 280626.21,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -8999,7 +8584,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 34242.96
+          "valor": 35590.69
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -9019,7 +8604,7 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 5459.65
+          "valor": 5558.89
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
@@ -9034,7 +8619,7 @@
           "valor": 458.48
         }
       ],
-      "totalNotasFiscais": 453
+      "totalNotasFiscais": 455
     },
     {
       "id": 178873,
@@ -9043,7 +8628,7 @@
       "uf": "ES",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178873.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178873",
-      "cotaGastaAno": 249494.67,
+      "cotaGastaAno": 256712.85,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -9055,11 +8640,11 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 35989.79
+          "valor": 42755.79
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 23374.29
+          "valor": 23820.37
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -9079,14 +8664,14 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 2014.0
+          "valor": 2020.1
         },
         {
           "categoria": "ASSINATURA DE PUBLICAÇÕES",
           "valor": 76.0
         }
       ],
-      "totalNotasFiscais": 359
+      "totalNotasFiscais": 365
     },
     {
       "id": 220537,
@@ -9253,53 +8838,17 @@
       "totalNotasFiscais": 74
     },
     {
-      "id": 178884,
-      "nome": "Hildo Rocha",
-      "partido": "MDB",
-      "uf": "MA",
-      "foto": "https://www.camara.leg.br/internet/deputado/bandep/178884.jpg",
-      "urlPerfil": "https://www.camara.leg.br/deputados/178884",
-      "cotaGastaAno": 244563.01,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 126920.0
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 37250.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 28408.07
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 25637.54
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 25530.9
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 816.5
-        }
-      ],
-      "totalNotasFiscais": 173
-    },
-    {
       "id": 141450,
       "nome": "Hugo Leal",
       "partido": "PSD",
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/141450.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/141450",
-      "cotaGastaAno": 241331.88,
+      "cotaGastaAno": 245350.65,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 78057.75
+          "valor": 80864.69
         },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -9323,14 +8872,14 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 6367.61
+          "valor": 7579.44
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
           "valor": 5202.68
         }
       ],
-      "totalNotasFiscais": 306
+      "totalNotasFiscais": 310
     },
     {
       "id": 160674,
@@ -9455,7 +9004,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204508.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204508",
-      "cotaGastaAno": 258830.44,
+      "cotaGastaAno": 259281.15,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -9463,7 +9012,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 48424.56
+          "valor": 48875.27
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -9486,7 +9035,7 @@
           "valor": 296.64
         }
       ],
-      "totalNotasFiscais": 359
+      "totalNotasFiscais": 360
     },
     {
       "id": 235620,
@@ -9551,7 +9100,7 @@
       "uf": "SC",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/98615.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/98615",
-      "cotaGastaAno": 227734.07,
+      "cotaGastaAno": 228000.78,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -9563,7 +9112,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 41964.47
+          "valor": 42231.18
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -9582,7 +9131,7 @@
           "valor": 222.0
         }
       ],
-      "totalNotasFiscais": 231
+      "totalNotasFiscais": 232
     },
     {
       "id": 204436,
@@ -9591,7 +9140,7 @@
       "uf": "AL",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204436.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204436",
-      "cotaGastaAno": 153868.65,
+      "cotaGastaAno": 154068.65,
       "ceapCategorias": [
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -9603,7 +9152,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 17415.36
+          "valor": 17615.36
         },
         {
           "categoria": "PASSAGEM AÉREA - REEMBOLSO",
@@ -9626,7 +9175,7 @@
           "valor": 241.15
         }
       ],
-      "totalNotasFiscais": 152
+      "totalNotasFiscais": 153
     },
     {
       "id": 225846,
@@ -9671,15 +9220,15 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220696.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220696",
-      "cotaGastaAno": 258422.85,
+      "cotaGastaAno": 270422.85,
       "ceapCategorias": [
+        {
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 91500.0
+        },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
           "valor": 80118.29
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 79500.0
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -9702,7 +9251,7 @@
           "valor": 698.4
         }
       ],
-      "totalNotasFiscais": 141
+      "totalNotasFiscais": 142
     },
     {
       "id": 220670,
@@ -9747,7 +9296,7 @@
       "uf": "ES",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220527.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220527",
-      "cotaGastaAno": 240668.09,
+      "cotaGastaAno": 241528.48,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -9755,7 +9304,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 58905.49
+          "valor": 59322.29
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -9767,7 +9316,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 14817.75
+          "valor": 15261.34
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -9782,7 +9331,7 @@
           "valor": 67.26
         }
       ],
-      "totalNotasFiscais": 177
+      "totalNotasFiscais": 181
     },
     {
       "id": 220697,
@@ -10003,7 +9552,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/141458.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/141458",
-      "cotaGastaAno": 238636.09,
+      "cotaGastaAno": 239436.09,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -10019,7 +9568,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 6278.08
+          "valor": 7078.08
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
@@ -10038,7 +9587,7 @@
           "valor": 57.0
         }
       ],
-      "totalNotasFiscais": 166
+      "totalNotasFiscais": 167
     },
     {
       "id": 230957,
@@ -10047,7 +9596,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/230957.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/230957",
-      "cotaGastaAno": 321689.61,
+      "cotaGastaAno": 321715.41,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -10075,7 +9624,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 6194.51
+          "valor": 6220.31
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
@@ -10098,7 +9647,7 @@
           "valor": 52.4
         }
       ],
-      "totalNotasFiscais": 366
+      "totalNotasFiscais": 369
     },
     {
       "id": 178970,
@@ -10139,7 +9688,7 @@
       "uf": "RN",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/141459.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/141459",
-      "cotaGastaAno": 340194.31,
+      "cotaGastaAno": 340560.37,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -10151,7 +9700,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 29295.5
+          "valor": 29661.56
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -10162,7 +9711,7 @@
           "valor": 19439.8
         }
       ],
-      "totalNotasFiscais": 178
+      "totalNotasFiscais": 179
     },
     {
       "id": 178910,
@@ -10291,42 +9840,9 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/205550.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/205550",
-      "cotaGastaAno": 228572.15,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 90000.0
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 63500.0
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 40739.09
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 24905.18
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 7424.04
-        },
-        {
-          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 1736.44
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 227.0
-        },
-        {
-          "categoria": "SERVIÇOS POSTAIS",
-          "valor": 40.4
-        }
-      ],
-      "totalNotasFiscais": 135
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 214694,
@@ -10379,7 +9895,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178857.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178857",
-      "cotaGastaAno": 235159.72,
+      "cotaGastaAno": 236127.51,
       "ceapCategorias": [
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -10395,7 +9911,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 39776.72
+          "valor": 40350.89
         },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -10403,7 +9919,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 4415.88
+          "valor": 4763.5
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
@@ -10411,7 +9927,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 3496.26
+          "valor": 3542.26
         },
         {
           "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
@@ -10426,7 +9942,7 @@
           "valor": 142.8
         }
       ],
-      "totalNotasFiscais": 429
+      "totalNotasFiscais": 433
     },
     {
       "id": 141464,
@@ -10482,7 +9998,7 @@
       "uf": "MT",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204472.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204472",
-      "cotaGastaAno": 279078.94,
+      "cotaGastaAno": 286603.51,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -10494,19 +10010,19 @@
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 50304.64
+          "valor": 50559.55
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 38910.36
         },
         {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 29490.48
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 33633.33
         },
         {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 27133.33
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 30260.14
         },
         {
           "categoria": "TELEFONIA",
@@ -10586,19 +10102,19 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74554.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74554",
-      "cotaGastaAno": 183257.2,
+      "cotaGastaAno": 191700.03,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
           "valor": 79020.0
         },
         {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 38541.61
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 43741.99
         },
         {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 35299.16
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 38541.61
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE AERONAVES",
@@ -10617,7 +10133,7 @@
           "valor": 73.6
         }
       ],
-      "totalNotasFiscais": 163
+      "totalNotasFiscais": 189
     },
     {
       "id": 209189,
@@ -10626,7 +10142,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/209189.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/209189",
-      "cotaGastaAno": 253198.02,
+      "cotaGastaAno": 254324.74,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -10642,7 +10158,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 30031.5
+          "valor": 31090.57
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
@@ -10654,7 +10170,7 @@
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 3084.37
+          "valor": 3152.02
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -10669,7 +10185,7 @@
           "valor": 35.0
         }
       ],
-      "totalNotasFiscais": 248
+      "totalNotasFiscais": 256
     },
     {
       "id": 220578,
@@ -10678,7 +10194,7 @@
       "uf": "AP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220578.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220578",
-      "cotaGastaAno": 294377.52,
+      "cotaGastaAno": 294867.52,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -10694,7 +10210,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 21137.25
+          "valor": 21627.25
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -10709,7 +10225,7 @@
           "valor": 329.8
         }
       ],
-      "totalNotasFiscais": 133
+      "totalNotasFiscais": 135
     },
     {
       "id": 204563,
@@ -10778,7 +10294,7 @@
       "uf": "MT",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204474.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204474",
-      "cotaGastaAno": 246575.49,
+      "cotaGastaAno": 251990.06,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -10790,19 +10306,19 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 23153.0
+          "valor": 26653.0
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
           "valor": 21554.2
         },
         {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 19535.0
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 19568.32
         },
         {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 17653.75
+          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
+          "valor": 19535.0
         },
         {
           "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
@@ -10817,7 +10333,7 @@
           "valor": 254.5
         }
       ],
-      "totalNotasFiscais": 153
+      "totalNotasFiscais": 165
     },
     {
       "id": 220559,
@@ -11058,7 +10574,7 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204457.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204457",
-      "cotaGastaAno": 298065.37,
+      "cotaGastaAno": 298748.79,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -11070,7 +10586,7 @@
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 51054.46
+          "valor": 51900.62
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -11091,10 +10607,6 @@
         {
           "categoria": "SERVIÇOS POSTAIS",
           "valor": 224.0
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 162.74
         }
       ],
       "totalNotasFiscais": 212
@@ -11294,7 +10806,7 @@
       "uf": "PA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220677.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220677",
-      "cotaGastaAno": 335056.11,
+      "cotaGastaAno": 343228.37,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -11310,7 +10822,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 25157.98
+          "valor": 33330.24
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -11321,7 +10833,7 @@
           "valor": 1177.29
         }
       ],
-      "totalNotasFiscais": 96
+      "totalNotasFiscais": 97
     },
     {
       "id": 162067,
@@ -11398,11 +10910,11 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/98057.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/98057",
-      "cotaGastaAno": 292570.85,
+      "cotaGastaAno": 293565.79,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 97900.66
+          "valor": 98895.6
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -11437,7 +10949,7 @@
           "valor": 4029.87
         }
       ],
-      "totalNotasFiscais": 266
+      "totalNotasFiscais": 270
     },
     {
       "id": 74856,
@@ -11494,7 +11006,7 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178832.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178832",
-      "cotaGastaAno": 106298.56,
+      "cotaGastaAno": 109357.76,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -11510,7 +11022,7 @@
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 14403.33
+          "valor": 17353.33
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -11522,14 +11034,14 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 1747.45
+          "valor": 1856.65
         },
         {
           "categoria": "TELEFONIA",
           "valor": 1429.94
         }
       ],
-      "totalNotasFiscais": 297
+      "totalNotasFiscais": 306
     },
     {
       "id": 220566,
@@ -11538,7 +11050,7 @@
       "uf": "GO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220566.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220566",
-      "cotaGastaAno": 209677.16,
+      "cotaGastaAno": 209833.96,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -11562,10 +11074,10 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 486.06
+          "valor": 642.86
         }
       ],
-      "totalNotasFiscais": 136
+      "totalNotasFiscais": 137
     },
     {
       "id": 122195,
@@ -11661,7 +11173,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/139285.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/139285",
-      "cotaGastaAno": 286888.47,
+      "cotaGastaAno": 288581.3,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -11685,11 +11197,11 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 7982.75
+          "valor": 9343.79
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 7391.73
+          "valor": 7723.52
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -11700,7 +11212,7 @@
           "valor": 486.47
         }
       ],
-      "totalNotasFiscais": 507
+      "totalNotasFiscais": 521
     },
     {
       "id": 74585,
@@ -11709,50 +11221,9 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74585.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74585",
-      "cotaGastaAno": 231562.26,
-      "ceapCategorias": [
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 76280.0
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 74331.18
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - RPA",
-          "valor": 30400.42
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 22592.88
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 20000.0
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 4729.55
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 1237.0
-        },
-        {
-          "categoria": "SERVIÇO DE SEGURANÇA PRESTADO POR EMPRESA ESPECIALIZADA.",
-          "valor": 1220.28
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 645.55
-        },
-        {
-          "categoria": "SERVIÇOS POSTAIS",
-          "valor": 125.4
-        }
-      ],
-      "totalNotasFiscais": 277
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 74858,
@@ -11761,7 +11232,7 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74858.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74858",
-      "cotaGastaAno": 188304.69,
+      "cotaGastaAno": 190225.38,
       "ceapCategorias": [
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -11777,10 +11248,10 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 10266.57
+          "valor": 12187.26
         }
       ],
-      "totalNotasFiscais": 183
+      "totalNotasFiscais": 189
     },
     {
       "id": 220662,
@@ -11821,7 +11292,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204404.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204404",
-      "cotaGastaAno": 229409.31,
+      "cotaGastaAno": 229540.82,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -11829,7 +11300,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 51730.44
+          "valor": 51850.95
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -11845,7 +11316,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 4089.49
+          "valor": 4100.49
         },
         {
           "categoria": "TELEFONIA",
@@ -11864,7 +11335,7 @@
           "valor": 220.0
         }
       ],
-      "totalNotasFiscais": 459
+      "totalNotasFiscais": 461
     },
     {
       "id": 220581,
@@ -11873,7 +11344,7 @@
       "uf": "AL",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220581.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220581",
-      "cotaGastaAno": 237312.44,
+      "cotaGastaAno": 237706.87,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -11889,7 +11360,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 27054.55
+          "valor": 27448.98
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -11900,7 +11371,7 @@
           "valor": 724.5
         }
       ],
-      "totalNotasFiscais": 181
+      "totalNotasFiscais": 182
     },
     {
       "id": 74478,
@@ -11953,42 +11424,9 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178931.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178931",
-      "cotaGastaAno": 247149.02,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 62772.4
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 50454.85
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 43982.06
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 43520.7
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 27999.28
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - RPA",
-          "valor": 8930.36
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 7369.49
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 2119.88
-        }
-      ],
-      "totalNotasFiscais": 382
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 178954,
@@ -11997,7 +11435,7 @@
       "uf": "RO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178954.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178954",
-      "cotaGastaAno": 324483.15,
+      "cotaGastaAno": 324983.15,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -12025,7 +11463,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 2559.91
+          "valor": 3059.91
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
@@ -12036,7 +11474,7 @@
           "valor": 146.11
         }
       ],
-      "totalNotasFiscais": 227
+      "totalNotasFiscais": 228
     },
     {
       "id": 204410,
@@ -12097,7 +11535,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/141485.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/141485",
-      "cotaGastaAno": 344558.25,
+      "cotaGastaAno": 345036.08,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -12105,7 +11543,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 48854.62
+          "valor": 49296.95
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -12117,7 +11555,7 @@
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 20222.29
+          "valor": 20257.79
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -12140,7 +11578,7 @@
           "valor": 324.5
         }
       ],
-      "totalNotasFiscais": 647
+      "totalNotasFiscais": 650
     },
     {
       "id": 73778,
@@ -12233,7 +11671,7 @@
       "uf": "PB",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74041.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74041",
-      "cotaGastaAno": 309080.11,
+      "cotaGastaAno": 313671.67,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -12241,15 +11679,15 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 65460.19
+          "valor": 68460.19
+        },
+        {
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 56175.17
         },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
           "valor": 54780.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 54583.61
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -12268,7 +11706,7 @@
           "valor": 433.76
         }
       ],
-      "totalNotasFiscais": 255
+      "totalNotasFiscais": 265
     },
     {
       "id": 141487,
@@ -12309,7 +11747,7 @@
       "uf": "CE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220658.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220658",
-      "cotaGastaAno": 220980.09,
+      "cotaGastaAno": 223634.43,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -12317,7 +11755,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 28729.62
+          "valor": 31231.98
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -12329,14 +11767,14 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 1606.02
+          "valor": 1758.0
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
           "valor": 1109.52
         }
       ],
-      "totalNotasFiscais": 99
+      "totalNotasFiscais": 101
     },
     {
       "id": 204455,
@@ -12465,7 +11903,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74784.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74784",
-      "cotaGastaAno": 260361.83,
+      "cotaGastaAno": 260858.17,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -12473,7 +11911,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 52460.28
+          "valor": 52956.62
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -12504,7 +11942,7 @@
           "valor": 449.95
         }
       ],
-      "totalNotasFiscais": 183
+      "totalNotasFiscais": 184
     },
     {
       "id": 178866,
@@ -12513,7 +11951,7 @@
       "uf": "CE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178866.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178866",
-      "cotaGastaAno": 280400.53,
+      "cotaGastaAno": 281348.79,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -12533,7 +11971,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 9007.98
+          "valor": 9956.24
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
@@ -12556,7 +11994,7 @@
           "valor": 73.0
         }
       ],
-      "totalNotasFiscais": 125
+      "totalNotasFiscais": 126
     },
     {
       "id": 220669,
@@ -12601,11 +12039,11 @@
       "uf": "GO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/166402.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/166402",
-      "cotaGastaAno": 266449.62,
+      "cotaGastaAno": 270819.2,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 127072.55
+          "valor": 131442.13
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -12632,7 +12070,7 @@
           "valor": 980.0
         }
       ],
-      "totalNotasFiscais": 114
+      "totalNotasFiscais": 115
     },
     {
       "id": 220648,
@@ -12641,7 +12079,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220648.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220648",
-      "cotaGastaAno": 223897.1,
+      "cotaGastaAno": 224475.36,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -12657,7 +12095,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 25775.02
+          "valor": 26353.28
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -12672,7 +12110,7 @@
           "valor": 227.7
         }
       ],
-      "totalNotasFiscais": 135
+      "totalNotasFiscais": 136
     },
     {
       "id": 156190,
@@ -12729,7 +12167,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/179000.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/179000",
-      "cotaGastaAno": 212338.64,
+      "cotaGastaAno": 212418.64,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -12745,7 +12183,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 40789.56
+          "valor": 40869.56
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -12768,7 +12206,7 @@
           "valor": 345.75
         }
       ],
-      "totalNotasFiscais": 249
+      "totalNotasFiscais": 250
     },
     {
       "id": 220599,
@@ -12777,7 +12215,7 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220599.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220599",
-      "cotaGastaAno": 275458.91,
+      "cotaGastaAno": 279169.81,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -12804,11 +12242,15 @@
           "valor": 4133.05
         },
         {
+          "categoria": "PASSAGEM AÉREA - REEMBOLSO",
+          "valor": 3710.9
+        },
+        {
           "categoria": "PASSAGEM AÉREA - RPA",
           "valor": 3021.01
         }
       ],
-      "totalNotasFiscais": 221
+      "totalNotasFiscais": 222
     },
     {
       "id": 133810,
@@ -12817,38 +12259,9 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/133810.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/133810",
-      "cotaGastaAno": 163266.95,
-      "ceapCategorias": [
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 63400.0
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 32000.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 31029.59
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 18070.01
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 13085.35
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 3570.0
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 2112.0
-        }
-      ],
-      "totalNotasFiscais": 228
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 204558,
@@ -12857,7 +12270,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204558.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204558",
-      "cotaGastaAno": 144041.15,
+      "cotaGastaAno": 147451.32,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -12868,23 +12281,23 @@
           "valor": 43410.0
         },
         {
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "valor": 10323.43
+        },
+        {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
           "valor": 8794.99
         },
         {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 6987.23
-        },
-        {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 2966.93
+          "valor": 3040.9
         },
         {
           "categoria": "PASSAGEM AÉREA - REEMBOLSO",
           "valor": 1382.0
         }
       ],
-      "totalNotasFiscais": 81
+      "totalNotasFiscais": 93
     },
     {
       "id": 160161,
@@ -12893,7 +12306,7 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160161.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160161",
-      "cotaGastaAno": 163663.06,
+      "cotaGastaAno": 163763.06,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -12909,7 +12322,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 11435.77
+          "valor": 11535.77
         },
         {
           "categoria": "PASSAGEM AÉREA - REEMBOLSO",
@@ -12924,7 +12337,7 @@
           "valor": 522.6
         }
       ],
-      "totalNotasFiscais": 99
+      "totalNotasFiscais": 100
     },
     {
       "id": 178983,
@@ -12957,7 +12370,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/179001.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/179001",
-      "cotaGastaAno": 245623.66,
+      "cotaGastaAno": 246423.66,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -12969,7 +12382,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 37985.55
+          "valor": 38785.55
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -13004,7 +12417,7 @@
           "valor": 63.95
         }
       ],
-      "totalNotasFiscais": 295
+      "totalNotasFiscais": 296
     },
     {
       "id": 220687,
@@ -13049,7 +12462,7 @@
       "uf": "MA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/81055.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/81055",
-      "cotaGastaAno": 330373.68,
+      "cotaGastaAno": 330523.67,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -13073,14 +12486,14 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 1792.99
+          "valor": 1942.98
         },
         {
           "categoria": "TELEFONIA",
           "valor": 87.19
         }
       ],
-      "totalNotasFiscais": 176
+      "totalNotasFiscais": 177
     },
     {
       "id": 150418,
@@ -13089,19 +12502,19 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/150418.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/150418",
-      "cotaGastaAno": 265319.74,
+      "cotaGastaAno": 268019.74,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
           "valor": 95000.0
         },
         {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 59246.67
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 61125.87
         },
         {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 58425.87
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 59246.67
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -13120,7 +12533,7 @@
           "valor": 160.91
         }
       ],
-      "totalNotasFiscais": 115
+      "totalNotasFiscais": 116
     },
     {
       "id": 160535,
@@ -13129,11 +12542,11 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160535.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160535",
-      "cotaGastaAno": 230486.7,
+      "cotaGastaAno": 235273.16,
       "ceapCategorias": [
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 56709.38
+          "valor": 59085.89
         },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -13149,7 +12562,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 24879.53
+          "valor": 27199.68
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -13173,10 +12586,10 @@
         },
         {
           "categoria": "SERVIÇOS POSTAIS",
-          "valor": 89.8
+          "valor": 179.6
         }
       ],
-      "totalNotasFiscais": 490
+      "totalNotasFiscais": 511
     },
     {
       "id": 204431,
@@ -13437,7 +12850,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74398.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74398",
-      "cotaGastaAno": 305668.12,
+      "cotaGastaAno": 305799.56,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -13453,7 +12866,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 45854.54
+          "valor": 46002.79
         },
         {
           "categoria": "SERVIÇO DE SEGURANÇA PRESTADO POR EMPRESA ESPECIALIZADA.",
@@ -13473,7 +12886,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 2927.98
+          "valor": 2911.17
         },
         {
           "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
@@ -13489,7 +12902,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204540.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204540",
-      "cotaGastaAno": 271279.14,
+      "cotaGastaAno": 271592.28,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -13501,11 +12914,11 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 34042.41
+          "valor": 34155.55
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 27045.65
+          "valor": 27245.65
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -13528,7 +12941,7 @@
           "valor": 226.8
         }
       ],
-      "totalNotasFiscais": 251
+      "totalNotasFiscais": 253
     },
     {
       "id": 220637,
@@ -13573,7 +12986,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220655.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220655",
-      "cotaGastaAno": 180028.26,
+      "cotaGastaAno": 179870.14,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -13585,7 +12998,7 @@
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 25736.97
+          "valor": 25376.05
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -13593,7 +13006,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 18094.94
+          "valor": 18297.74
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -13709,7 +13122,7 @@
       "uf": "GO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220572.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220572",
-      "cotaGastaAno": 333951.59,
+      "cotaGastaAno": 336884.62,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -13721,7 +13134,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 36943.95
+          "valor": 39476.98
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -13733,7 +13146,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 1744.0
+          "valor": 2144.0
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
@@ -13748,7 +13161,7 @@
           "valor": 102.23
         }
       ],
-      "totalNotasFiscais": 165
+      "totalNotasFiscais": 173
     },
     {
       "id": 178843,
@@ -13817,7 +13230,7 @@
       "uf": "RO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220609.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220609",
-      "cotaGastaAno": 371081.86,
+      "cotaGastaAno": 371861.86,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -13837,7 +13250,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 19066.88
+          "valor": 19846.88
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -13856,7 +13269,7 @@
           "valor": 215.55
         }
       ],
-      "totalNotasFiscais": 243
+      "totalNotasFiscais": 244
     },
     {
       "id": 220628,
@@ -14017,7 +13430,7 @@
       "uf": "AC",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220591.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220591",
-      "cotaGastaAno": 238689.61,
+      "cotaGastaAno": 247929.86,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -14033,7 +13446,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 26381.61
+          "valor": 34509.86
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -14041,10 +13454,10 @@
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 5101.52
+          "valor": 6213.52
         }
       ],
-      "totalNotasFiscais": 304
+      "totalNotasFiscais": 356
     },
     {
       "id": 74428,
@@ -14093,7 +13506,7 @@
       "uf": "PI",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/188097.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/188097",
-      "cotaGastaAno": 355438.04,
+      "cotaGastaAno": 355477.04,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -14121,14 +13534,14 @@
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 1184.47
+          "valor": 1223.47
         },
         {
           "categoria": "SERVIÇOS POSTAIS",
           "valor": 342.0
         }
       ],
-      "totalNotasFiscais": 343
+      "totalNotasFiscais": 344
     },
     {
       "id": 220585,
@@ -14241,7 +13654,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178985.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178985",
-      "cotaGastaAno": 225366.66,
+      "cotaGastaAno": 226357.35,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -14257,7 +13670,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 22027.67
+          "valor": 22241.1
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -14265,7 +13678,7 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 3119.07
+          "valor": 3896.33
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
@@ -14280,7 +13693,7 @@
           "valor": 426.0
         }
       ],
-      "totalNotasFiscais": 268
+      "totalNotasFiscais": 270
     },
     {
       "id": 154178,
@@ -14321,11 +13734,11 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178895.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178895",
-      "cotaGastaAno": 285988.36,
+      "cotaGastaAno": 292988.36,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 175112.5
+          "valor": 182112.5
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -14344,7 +13757,7 @@
           "valor": 1987.77
         }
       ],
-      "totalNotasFiscais": 66
+      "totalNotasFiscais": 67
     },
     {
       "id": 160561,
@@ -14353,7 +13766,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160561.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160561",
-      "cotaGastaAno": 245749.48,
+      "cotaGastaAno": 247352.62,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -14369,7 +13782,7 @@
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 11697.13
+          "valor": 13300.27
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
@@ -14400,7 +13813,7 @@
           "valor": 225.6
         }
       ],
-      "totalNotasFiscais": 207
+      "totalNotasFiscais": 208
     },
     {
       "id": 178997,
@@ -14665,7 +14078,7 @@
       "uf": "RR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204479.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204479",
-      "cotaGastaAno": 314085.35,
+      "cotaGastaAno": 314515.35,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -14689,14 +14102,14 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 2130.0
+          "valor": 2560.0
         },
         {
           "categoria": "PASSAGEM AÉREA - RPA",
           "valor": 733.6
         }
       ],
-      "totalNotasFiscais": 222
+      "totalNotasFiscais": 223
     },
     {
       "id": 209787,
@@ -14705,42 +14118,9 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/209787.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/209787",
-      "cotaGastaAno": 235167.02,
-      "ceapCategorias": [
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 81000.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 61777.55
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 51054.49
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 19260.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 17373.01
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 2538.0
-        },
-        {
-          "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
-          "valor": 2076.67
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 87.3
-        }
-      ],
-      "totalNotasFiscais": 229
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 178986,
@@ -14828,46 +14208,9 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178987.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178987",
-      "cotaGastaAno": 306104.29,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 196300.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 39526.25
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 22467.6
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 17496.51
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 15976.14
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - REEMBOLSO",
-          "valor": 6895.65
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 3824.0
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 2731.14
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 887.0
-        }
-      ],
-      "totalNotasFiscais": 91
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 73692,
@@ -14876,7 +14219,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/73692.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/73692",
-      "cotaGastaAno": 280557.47,
+      "cotaGastaAno": 281039.43,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -14888,7 +14231,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 46584.9
+          "valor": 46843.9
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -14904,7 +14247,7 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 8283.71
+          "valor": 8488.67
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
@@ -14912,14 +14255,14 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 316.08
+          "valor": 334.08
         },
         {
           "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
           "valor": 283.55
         }
       ],
-      "totalNotasFiscais": 431
+      "totalNotasFiscais": 434
     },
     {
       "id": 204441,
@@ -14956,7 +14299,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160556.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160556",
-      "cotaGastaAno": 334944.49,
+      "cotaGastaAno": 337811.08,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -14964,7 +14307,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 72834.1
+          "valor": 73283.23
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -14972,11 +14315,11 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 36434.79
+          "valor": 38119.07
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 15682.78
+          "valor": 16077.78
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -14984,7 +14327,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 3546.16
+          "valor": 3884.34
         },
         {
           "categoria": "TELEFONIA",
@@ -14995,7 +14338,7 @@
           "valor": 1124.97
         }
       ],
-      "totalNotasFiscais": 316
+      "totalNotasFiscais": 328
     },
     {
       "id": 180214,
@@ -15036,11 +14379,11 @@
       "uf": "PE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160642.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160642",
-      "cotaGastaAno": 225778.49,
+      "cotaGastaAno": 342569.5,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 116100.0
+          "valor": 232200.0
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -15048,11 +14391,11 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 41868.57
+          "valor": 42068.57
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 9251.75
+          "valor": 9466.76
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -15064,14 +14407,14 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 1726.9
+          "valor": 2002.9
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 1426.0
         }
       ],
-      "totalNotasFiscais": 276
+      "totalNotasFiscais": 283
     },
     {
       "id": 204570,
@@ -15108,7 +14451,7 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220615.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220615",
-      "cotaGastaAno": 265663.15,
+      "cotaGastaAno": 266258.58,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -15128,7 +14471,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 22642.72
+          "valor": 23238.15
         },
         {
           "categoria": "TELEFONIA",
@@ -15147,7 +14490,7 @@
           "valor": 113.77
         }
       ],
-      "totalNotasFiscais": 178
+      "totalNotasFiscais": 180
     },
     {
       "id": 204553,
@@ -15176,46 +14519,18 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74160.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74160",
-      "cotaGastaAno": 262386.43,
+      "cotaGastaAno": 81639.94,
       "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 80382.75
-        },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 71872.31
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 49449.13
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 18168.16
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 16186.74
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 11051.97
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 10247.06
-        },
-        {
-          "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
-          "valor": 2968.33
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 2059.98
+          "valor": 9767.63
         }
       ],
-      "totalNotasFiscais": 765
+      "totalNotasFiscais": 100
     },
     {
       "id": 141518,
@@ -15260,7 +14575,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/141516.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/141516",
-      "cotaGastaAno": 278503.08,
+      "cotaGastaAno": 277651.23,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE AERONAVES",
@@ -15276,7 +14591,7 @@
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 40313.76
+          "valor": 39461.91
         },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -15307,7 +14622,7 @@
           "valor": 110.1
         }
       ],
-      "totalNotasFiscais": 369
+      "totalNotasFiscais": 370
     },
     {
       "id": 220650,
@@ -15572,7 +14887,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74574.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74574",
-      "cotaGastaAno": 270031.36,
+      "cotaGastaAno": 270176.0,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -15584,7 +14899,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 48582.32
+          "valor": 48726.96
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -15603,7 +14918,7 @@
           "valor": 1252.0
         }
       ],
-      "totalNotasFiscais": 183
+      "totalNotasFiscais": 184
     },
     {
       "id": 74400,
@@ -15712,7 +15027,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220630.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220630",
-      "cotaGastaAno": 174755.23,
+      "cotaGastaAno": 175426.47,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -15728,7 +15043,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 20905.48
+          "valor": 21183.31
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -15740,7 +15055,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 6837.73
+          "valor": 7231.14
         },
         {
           "categoria": "TELEFONIA",
@@ -15751,7 +15066,7 @@
           "valor": 126.9
         }
       ],
-      "totalNotasFiscais": 335
+      "totalNotasFiscais": 346
     },
     {
       "id": 220667,
@@ -15760,34 +15075,18 @@
       "uf": "PE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220667.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220667",
-      "cotaGastaAno": 232343.31,
+      "cotaGastaAno": 62678.28,
       "ceapCategorias": [
         {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 76504.0
-        },
-        {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 49667.39
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 38139.0
+          "valor": 53267.39
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 27270.25
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 24597.77
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 16164.9
+          "valor": 9410.89
         }
       ],
-      "totalNotasFiscais": 337
+      "totalNotasFiscais": 100
     },
     {
       "id": 122974,
@@ -15944,7 +15243,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204406.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204406",
-      "cotaGastaAno": 331116.83,
+      "cotaGastaAno": 331900.6,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -15960,7 +15259,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 40343.89
+          "valor": 40918.73
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -15972,11 +15271,11 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 7556.74
+          "valor": 7713.67
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 4010.77
+          "valor": 4062.77
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
@@ -15991,7 +15290,7 @@
           "valor": 513.05
         }
       ],
-      "totalNotasFiscais": 513
+      "totalNotasFiscais": 518
     },
     {
       "id": 161440,
@@ -16100,7 +15399,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/73486.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/73486",
-      "cotaGastaAno": 327915.48,
+      "cotaGastaAno": 331144.89,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -16112,11 +15411,11 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 45346.04
+          "valor": 48542.75
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 21150.88
+          "valor": 21183.58
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -16135,7 +15434,7 @@
           "valor": 201.65
         }
       ],
-      "totalNotasFiscais": 410
+      "totalNotasFiscais": 427
     },
     {
       "id": 160601,
@@ -16176,30 +15475,9 @@
       "uf": "DF",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220533.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220533",
-      "cotaGastaAno": 240831.0,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 135340.0
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 53534.47
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 36800.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 13289.65
-        },
-        {
-          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 1866.88
-        }
-      ],
-      "totalNotasFiscais": 124
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 204390,
@@ -16232,7 +15510,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/221338.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/221338",
-      "cotaGastaAno": 241783.91,
+      "cotaGastaAno": 242398.01,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -16256,14 +15534,14 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 1768.67
+          "valor": 2382.77
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
           "valor": 1118.72
         }
       ],
-      "totalNotasFiscais": 155
+      "totalNotasFiscais": 158
     },
     {
       "id": 160641,
@@ -16348,7 +15626,7 @@
       "uf": "RO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/233594.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/233594",
-      "cotaGastaAno": 294441.52,
+      "cotaGastaAno": 294696.22,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -16372,7 +15650,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 5402.6
+          "valor": 5657.3
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -16391,7 +15669,7 @@
           "valor": 250.0
         }
       ],
-      "totalNotasFiscais": 420
+      "totalNotasFiscais": 431
     },
     {
       "id": 220532,
@@ -16468,7 +15746,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204567.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204567",
-      "cotaGastaAno": 276504.39,
+      "cotaGastaAno": 284067.03,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -16480,34 +15758,34 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 34666.23
+          "valor": 37243.59
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 20887.72
+          "valor": 25816.01
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 12761.59
         },
         {
+          "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
+          "valor": 5442.42
+        },
+        {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 5930.25
+          "valor": 5231.56
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
           "valor": 5197.07
         },
         {
-          "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
-          "valor": 4686.74
-        },
-        {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
           "valor": 1080.0
         }
       ],
-      "totalNotasFiscais": 331
+      "totalNotasFiscais": 341
     },
     {
       "id": 74084,
@@ -16664,22 +15942,9 @@
       "uf": "PA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/153423.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/153423",
-      "cotaGastaAno": 199009.82,
-      "ceapCategorias": [
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE AERONAVES",
-          "valor": 176000.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 22159.82
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 850.0
-        }
-      ],
-      "totalNotasFiscais": 22
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 73801,
@@ -16688,38 +15953,9 @@
       "uf": "PE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/73801.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/73801",
-      "cotaGastaAno": 244895.7,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 75546.27
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 59629.16
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 56800.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 30662.01
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 16111.61
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 4197.0
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 1949.65
-        }
-      ],
-      "totalNotasFiscais": 220
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 175765,
@@ -16728,7 +15964,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/175765.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/175765",
-      "cotaGastaAno": 236273.74,
+      "cotaGastaAno": 238844.92,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -16736,7 +15972,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 53405.75
+          "valor": 53816.14
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -16751,19 +15987,19 @@
           "valor": 15000.0
         },
         {
+          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
+          "valor": 4560.6
+        },
+        {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
           "valor": 4273.3
         },
         {
-          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 2769.8
-        },
-        {
           "categoria": "TELEFONIA",
-          "valor": 1819.95
+          "valor": 2189.94
         }
       ],
-      "totalNotasFiscais": 188
+      "totalNotasFiscais": 197
     },
     {
       "id": 221329,
@@ -16772,7 +16008,7 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/221329.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/221329",
-      "cotaGastaAno": 198247.28,
+      "cotaGastaAno": 198660.84,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -16792,10 +16028,10 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 9338.04
+          "valor": 9751.6
         }
       ],
-      "totalNotasFiscais": 94
+      "totalNotasFiscais": 98
     },
     {
       "id": 220543,
@@ -16804,7 +16040,7 @@
       "uf": "TO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220543.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220543",
-      "cotaGastaAno": 256050.96,
+      "cotaGastaAno": 258287.57,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -16820,7 +16056,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 34490.02
+          "valor": 36038.83
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -16832,10 +16068,10 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 2562.8
+          "valor": 3250.6
         }
       ],
-      "totalNotasFiscais": 286
+      "totalNotasFiscais": 293
     },
     {
       "id": 73788,
@@ -16844,34 +16080,9 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/73788.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/73788",
-      "cotaGastaAno": 208565.81,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 75000.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 65296.78
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 38266.72
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 18434.39
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - REEMBOLSO",
-          "valor": 11217.7
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 350.22
-        }
-      ],
-      "totalNotasFiscais": 260
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 204362,
@@ -16880,7 +16091,7 @@
       "uf": "SC",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204362.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204362",
-      "cotaGastaAno": 260874.84,
+      "cotaGastaAno": 260713.62,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -16896,11 +16107,11 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 28811.73
+          "valor": 30048.6
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 22583.49
+          "valor": 20945.41
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -16912,11 +16123,11 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 4022.75
+          "valor": 4217.74
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 1971.36
+          "valor": 2016.36
         }
       ],
       "totalNotasFiscais": 416
@@ -17052,7 +16263,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220693.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220693",
-      "cotaGastaAno": 329174.87,
+      "cotaGastaAno": 330676.87,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -17068,7 +16279,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 18399.17
+          "valor": 19901.17
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -17079,7 +16290,7 @@
           "valor": 3430.77
         }
       ],
-      "totalNotasFiscais": 238
+      "totalNotasFiscais": 239
     },
     {
       "id": 220588,
@@ -17128,7 +16339,7 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220613.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220613",
-      "cotaGastaAno": 227121.7,
+      "cotaGastaAno": 227426.14,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -17148,7 +16359,7 @@
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 12622.47
+          "valor": 12757.01
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
@@ -17156,14 +16367,14 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 679.5
+          "valor": 849.4
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 332.3
         }
       ],
-      "totalNotasFiscais": 323
+      "totalNotasFiscais": 325
     },
     {
       "id": 220624,
@@ -17172,11 +16383,11 @@
       "uf": "RN",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220624.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220624",
-      "cotaGastaAno": 358041.18,
+      "cotaGastaAno": 376041.18,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 209000.0
+          "valor": 227000.0
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -17195,7 +16406,7 @@
           "valor": 8289.25
         }
       ],
-      "totalNotasFiscais": 122
+      "totalNotasFiscais": 123
     },
     {
       "id": 220546,
@@ -17204,7 +16415,7 @@
       "uf": "MS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220546.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220546",
-      "cotaGastaAno": 337770.02,
+      "cotaGastaAno": 345254.72,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -17212,7 +16423,7 @@
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 67700.0
+          "valor": 74700.0
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -17227,15 +16438,15 @@
           "valor": 6130.49
         },
         {
-          "categoria": "TELEFONIA",
-          "valor": 4893.42
+          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
+          "valor": 4917.48
         },
         {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 4432.78
+          "categoria": "TELEFONIA",
+          "valor": 4893.42
         }
       ],
-      "totalNotasFiscais": 271
+      "totalNotasFiscais": 274
     },
     {
       "id": 230767,
@@ -17244,7 +16455,7 @@
       "uf": "MT",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/230767.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/230767",
-      "cotaGastaAno": 271383.97,
+      "cotaGastaAno": 271539.72,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -17252,7 +16463,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 58544.33
+          "valor": 58240.08
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -17260,7 +16471,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 29131.59
+          "valor": 29591.59
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -17283,7 +16494,7 @@
           "valor": 12.8
         }
       ],
-      "totalNotasFiscais": 367
+      "totalNotasFiscais": 369
     },
     {
       "id": 141531,
@@ -17388,26 +16599,9 @@
       "uf": "DF",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/141533.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/141533",
-      "cotaGastaAno": 180747.36,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 132915.41
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 29266.39
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 14760.0
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 3805.56
-        }
-      ],
-      "totalNotasFiscais": 157
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 165470,
@@ -17476,7 +16670,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204480.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204480",
-      "cotaGastaAno": 267806.59,
+      "cotaGastaAno": 268134.01,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -17484,7 +16678,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 54859.76
+          "valor": 55187.18
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -17519,7 +16713,7 @@
           "valor": 112.75
         }
       ],
-      "totalNotasFiscais": 388
+      "totalNotasFiscais": 389
     },
     {
       "id": 204525,
@@ -17528,7 +16722,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204525.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204525",
-      "cotaGastaAno": 260665.93,
+      "cotaGastaAno": 261509.69,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -17540,7 +16734,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 24528.97
+          "valor": 25372.73
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -17567,7 +16761,7 @@
           "valor": 126.5
         }
       ],
-      "totalNotasFiscais": 257
+      "totalNotasFiscais": 264
     },
     {
       "id": 178945,
@@ -17714,13 +16908,24 @@
       "totalNotasFiscais": 190
     },
     {
+      "id": 73806,
+      "nome": "Roseana Sarney",
+      "partido": "MDB",
+      "uf": "MA",
+      "foto": "https://www.camara.leg.br/internet/deputado/bandep/73806.jpg",
+      "urlPerfil": "https://www.camara.leg.br/deputados/73806",
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
+    },
+    {
       "id": 74371,
       "nome": "Rubens Otoni",
       "partido": "PT",
       "uf": "GO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74371.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74371",
-      "cotaGastaAno": 248784.73,
+      "cotaGastaAno": 249124.73,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -17736,7 +16941,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 29856.08
+          "valor": 30196.08
         },
         {
           "categoria": "TELEFONIA",
@@ -17747,7 +16952,7 @@
           "valor": 1677.6
         }
       ],
-      "totalNotasFiscais": 106
+      "totalNotasFiscais": 107
     },
     {
       "id": 178887,
@@ -17888,7 +17093,7 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220631.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220631",
-      "cotaGastaAno": 244238.7,
+      "cotaGastaAno": 244671.36,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -17900,7 +17105,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 35681.11
+          "valor": 36097.27
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -17916,7 +17121,7 @@
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 1793.4
+          "valor": 1809.9
         },
         {
           "categoria": "TELEFONIA",
@@ -17931,7 +17136,7 @@
           "valor": 395.6
         }
       ],
-      "totalNotasFiscais": 395
+      "totalNotasFiscais": 399
     },
     {
       "id": 204416,
@@ -18044,7 +17249,7 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204387.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204387",
-      "cotaGastaAno": 141120.62,
+      "cotaGastaAno": 141420.62,
       "ceapCategorias": [
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -18052,7 +17257,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 38735.7
+          "valor": 39035.7
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -18083,7 +17288,7 @@
           "valor": 386.6
         }
       ],
-      "totalNotasFiscais": 426
+      "totalNotasFiscais": 427
     },
     {
       "id": 220621,
@@ -18252,7 +17457,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/73808.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/73808",
-      "cotaGastaAno": 183271.88,
+      "cotaGastaAno": 184661.89,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -18264,7 +17469,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 28745.24
+          "valor": 29505.25
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -18276,7 +17481,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 6071.85
+          "valor": 6701.85
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
@@ -18291,7 +17496,7 @@
           "valor": 207.19
         }
       ],
-      "totalNotasFiscais": 191
+      "totalNotasFiscais": 193
     },
     {
       "id": 178933,
@@ -18300,46 +17505,9 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178933.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178933",
-      "cotaGastaAno": 247039.82,
-      "ceapCategorias": [
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 75020.0
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 60587.2
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 40250.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 24926.41
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 23072.7
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 16938.73
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 3527.16
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 2522.17
-        },
-        {
-          "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
-          "valor": 195.45
-        }
-      ],
-      "totalNotasFiscais": 239
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 235776,
@@ -18348,7 +17516,7 @@
       "uf": "RS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/235776.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/235776",
-      "cotaGastaAno": 125290.16,
+      "cotaGastaAno": 126941.2,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -18360,7 +17528,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 19408.18
+          "valor": 21059.22
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -18383,7 +17551,7 @@
           "valor": 104.44
         }
       ],
-      "totalNotasFiscais": 67
+      "totalNotasFiscais": 69
     },
     {
       "id": 204557,
@@ -18392,34 +17560,9 @@
       "uf": "AM",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204557.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204557",
-      "cotaGastaAno": 328863.6,
-      "ceapCategorias": [
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE AERONAVES",
-          "valor": 205000.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 60721.18
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 47626.63
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 9000.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 5927.39
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 588.4
-        }
-      ],
-      "totalNotasFiscais": 102
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 204360,
@@ -18540,7 +17683,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220651.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220651",
-      "cotaGastaAno": 249819.78,
+      "cotaGastaAno": 250311.56,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -18556,7 +17699,7 @@
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 20095.0
+          "valor": 20586.78
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
@@ -18583,7 +17726,7 @@
           "valor": 869.21
         }
       ],
-      "totalNotasFiscais": 215
+      "totalNotasFiscais": 216
     },
     {
       "id": 104552,
@@ -18592,7 +17735,7 @@
       "uf": "AC",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/104552.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/104552",
-      "cotaGastaAno": 324573.12,
+      "cotaGastaAno": 330573.12,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -18600,7 +17743,7 @@
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 60000.0
+          "valor": 66000.0
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -18615,7 +17758,7 @@
           "valor": 75.8
         }
       ],
-      "totalNotasFiscais": 103
+      "totalNotasFiscais": 104
     },
     {
       "id": 220643,
@@ -18660,30 +17803,9 @@
       "uf": "RJ",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178946.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178946",
-      "cotaGastaAno": 197830.88,
-      "ceapCategorias": [
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 115916.38
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 71180.0
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 7200.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 2500.0
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 1034.5
-        }
-      ],
-      "totalNotasFiscais": 111
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 178947,
@@ -18776,7 +17898,7 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204534.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204534",
-      "cotaGastaAno": 270102.51,
+      "cotaGastaAno": 270491.87,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -18788,7 +17910,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 26473.23
+          "valor": 26862.59
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -18815,7 +17937,7 @@
           "valor": 111.0
         }
       ],
-      "totalNotasFiscais": 214
+      "totalNotasFiscais": 215
     },
     {
       "id": 220682,
@@ -18956,7 +18078,7 @@
       "uf": "SE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220560.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220560",
-      "cotaGastaAno": 273202.33,
+      "cotaGastaAno": 274280.8,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -18968,7 +18090,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 36368.85
+          "valor": 37447.32
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -18983,7 +18105,7 @@
           "valor": 732.06
         }
       ],
-      "totalNotasFiscais": 171
+      "totalNotasFiscais": 174
     },
     {
       "id": 220597,
@@ -18992,11 +18114,11 @@
       "uf": "RO",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220597.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220597",
-      "cotaGastaAno": 262152.2,
+      "cotaGastaAno": 267952.2,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 86064.0
+          "valor": 91864.0
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -19035,7 +18157,7 @@
           "valor": 87.07
         }
       ],
-      "totalNotasFiscais": 252
+      "totalNotasFiscais": 254
     },
     {
       "id": 143084,
@@ -19080,42 +18202,9 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/220684.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/220684",
-      "cotaGastaAno": 292374.34,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 111325.59
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 85250.69
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 34646.23
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 30000.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 24177.65
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 3156.07
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 2913.1
-        },
-        {
-          "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
-          "valor": 905.01
-        }
-      ],
-      "totalNotasFiscais": 232
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 160976,
@@ -19160,38 +18249,9 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178934.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178934",
-      "cotaGastaAno": 283174.84,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 125000.0
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 71966.7
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 40466.83
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 23904.48
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 14341.01
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 6011.18
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 1484.64
-        }
-      ],
-      "totalNotasFiscais": 168
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 157130,
@@ -19200,7 +18260,7 @@
       "uf": "PE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/157130.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/157130",
-      "cotaGastaAno": 270693.39,
+      "cotaGastaAno": 271193.39,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -19208,7 +18268,7 @@
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 69265.85
+          "valor": 69765.85
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -19235,7 +18295,7 @@
           "valor": 69.95
         }
       ],
-      "totalNotasFiscais": 283
+      "totalNotasFiscais": 284
     },
     {
       "id": 236423,
@@ -19244,11 +18304,11 @@
       "uf": "PB",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/236423.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/236423",
-      "cotaGastaAno": 11309.96,
+      "cotaGastaAno": 11359.96,
       "ceapCategorias": [
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 4426.99
+          "valor": 4476.99
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -19263,7 +18323,7 @@
           "valor": 114.62
         }
       ],
-      "totalNotasFiscais": 24
+      "totalNotasFiscais": 25
     },
     {
       "id": 160610,
@@ -19312,7 +18372,7 @@
       "uf": "MS",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74376.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74376",
-      "cotaGastaAno": 301234.18,
+      "cotaGastaAno": 301583.18,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -19332,7 +18392,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 24212.88
+          "valor": 24561.88
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -19347,7 +18407,7 @@
           "valor": 31.46
         }
       ],
-      "totalNotasFiscais": 236
+      "totalNotasFiscais": 237
     },
     {
       "id": 235712,
@@ -19532,11 +18592,11 @@
       "uf": "SP",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/178992.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/178992",
-      "cotaGastaAno": 282029.74,
+      "cotaGastaAno": 282829.74,
       "ceapCategorias": [
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 115850.64
+          "valor": 116650.64
         },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -19575,7 +18635,7 @@
           "valor": 397.2
         }
       ],
-      "totalNotasFiscais": 362
+      "totalNotasFiscais": 363
     },
     {
       "id": 91228,
@@ -19584,7 +18644,7 @@
       "uf": "PE",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/91228.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/91228",
-      "cotaGastaAno": 245495.55,
+      "cotaGastaAno": 246995.55,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -19604,7 +18664,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 8883.85
+          "valor": 10383.85
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -19615,7 +18675,7 @@
           "valor": 533.67
         }
       ],
-      "totalNotasFiscais": 178
+      "totalNotasFiscais": 179
     },
     {
       "id": 160569,
@@ -19624,23 +18684,15 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160569.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160569",
-      "cotaGastaAno": 292776.77,
+      "cotaGastaAno": 191167.1,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
           "valor": 132934.68
         },
         {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 68200.0
-        },
-        {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
           "valor": 47083.52
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 28065.81
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -19648,18 +18700,10 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 3590.27
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 3270.0
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 342.56
+          "valor": 1858.97
         }
       ],
-      "totalNotasFiscais": 156
+      "totalNotasFiscais": 100
     },
     {
       "id": 160518,
@@ -19712,7 +18756,7 @@
       "uf": "PB",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/74043.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/74043",
-      "cotaGastaAno": 294234.0,
+      "cotaGastaAno": 294284.0,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -19724,7 +18768,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 14152.39
+          "valor": 14202.39
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
@@ -19739,7 +18783,7 @@
           "valor": 120.0
         }
       ],
-      "totalNotasFiscais": 119
+      "totalNotasFiscais": 120
     },
     {
       "id": 224333,
@@ -19748,46 +18792,9 @@
       "uf": "PR",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/224333.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/224333",
-      "cotaGastaAno": 318643.9,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 158317.79
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 60291.69
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 37396.66
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 27286.72
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 17995.72
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 12281.78
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 1966.47
-        },
-        {
-          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 1888.91
-        },
-        {
-          "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
-          "valor": 1218.16
-        }
-      ],
-      "totalNotasFiscais": 455
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 220564,
@@ -19848,38 +18855,9 @@
       "uf": "AC",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/230768.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/230768",
-      "cotaGastaAno": 396897.44,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 174250.0
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 90500.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 56056.03
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 49314.0
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 24433.91
-        },
-        {
-          "categoria": "SERVIÇO DE SEGURANÇA PRESTADO POR EMPRESA ESPECIALIZADA.",
-          "valor": 1800.0
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 543.5
-        }
-      ],
-      "totalNotasFiscais": 119
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 220536,
@@ -19924,7 +18902,7 @@
       "uf": "BA",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204559.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204559",
-      "cotaGastaAno": 234500.94,
+      "cotaGastaAno": 235087.87,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -19936,7 +18914,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 41789.17
+          "valor": 42106.42
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -19944,7 +18922,7 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 8880.7
+          "valor": 9150.38
         },
         {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
@@ -19963,7 +18941,7 @@
           "valor": 59.0
         }
       ],
-      "totalNotasFiscais": 196
+      "totalNotasFiscais": 199
     },
     {
       "id": 160632,
@@ -19972,50 +18950,9 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/160632.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/160632",
-      "cotaGastaAno": 274289.29,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 129829.2
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 41377.11
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 34100.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 32069.76
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 29969.78
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 3229.9
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 2824.9
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 411.0
-        },
-        {
-          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 369.41
-        },
-        {
-          "categoria": "PASSAGENS TERRESTRES, MARÍTIMAS OU FLUVIAIS",
-          "valor": 108.23
-        }
-      ],
-      "totalNotasFiscais": 176
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 220558,
@@ -20080,30 +19017,9 @@
       "uf": "MG",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/204517.jpg",
       "urlPerfil": "https://www.camara.leg.br/deputados/204517",
-      "cotaGastaAno": 232151.38,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 151036.0
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 28804.76
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 26670.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 25355.49
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 285.13
-        }
-      ],
-      "totalNotasFiscais": 181
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 160592,
