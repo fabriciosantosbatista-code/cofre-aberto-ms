@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-07-21T13:08:51",
+  "ultimaAtualizacao": "2026-07-23T13:17:48",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-07-21T13:08:51",
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-07-23T13:17:48",
   "total": 8,
   "deputados": [
     {
@@ -85,7 +85,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220548",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220548/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 305460.59,
+      "cotaGastaAno": 305817.26,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -105,7 +105,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 26157.59
+          "valor": 26514.26
         },
         {
           "categoria": "TELEFONIA",
@@ -116,7 +116,7 @@
           "valor": 3008.91
         }
       ],
-      "totalNotasFiscais": 258
+      "totalNotasFiscais": 260
     },
     {
       "id": 141411,
@@ -313,19 +313,19 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220547",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220547/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 221552.59,
+      "cotaGastaAno": 227552.59,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
           "valor": 100956.0
         },
         {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 40449.97
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "valor": 45966.12
         },
         {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 39966.12
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 40449.97
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -344,7 +344,7 @@
           "valor": 310.1
         }
       ],
-      "totalNotasFiscais": 191
+      "totalNotasFiscais": 192
     },
     {
       "id": 220546,
@@ -419,7 +419,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/74376",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/74376/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 301583.18,
+      "cotaGastaAno": 265952.92,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -428,10 +428,6 @@
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
           "valor": 62000.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 35630.26
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -454,7 +450,7 @@
           "valor": 31.46
         }
       ],
-      "totalNotasFiscais": 237
+      "totalNotasFiscais": 194
     }
   ]
 }
