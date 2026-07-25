@@ -1,7 +1,7 @@
 {
   "cidade": "Coxim",
-  "ultimaAtualizacao": "2026-07-23T13:17:48",
-  "fonte": "Portal Transparência Fiorilli (pmcoxim.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-23T13:17:48",
+  "ultimaAtualizacao": "2026-07-25T12:53:42",
+  "fonte": "Portal Transparência Fiorilli (pmcoxim.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-25T12:53:42",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camaracoxim.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -815,10 +815,10 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 4038276.74,
-    "totalNotas": 433,
+    "totalGeral": 4053920.14,
+    "totalNotas": 435,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 2322016.62,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 2337660.02,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 525218.97,
       "Obrigações Patronais": 431301.43,
       "Diárias — Civil": 283125.0,
@@ -1189,6 +1189,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 16426.65,
         "descricao": "referente a parte patronal do rpps - deficit atuarial"
+      },
+      {
+        "data": "2026-06-18",
+        "fornecedor": "CÂMARA MUNICIPAL DE COXIM",
+        "cnpj": "03.969.623/0001-65",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 15643.4,
+        "descricao": "EMPNEHO DA FOLHA DE JUNHO DOS =SERVIDORES COMISSIONADOS"
       },
       {
         "data": "2026-01-05",
@@ -3816,14 +3824,6 @@
       },
       {
         "data": "2026-06-18",
-        "fornecedor": "CÂMARA MUNICIPAL DE COXIM",
-        "cnpj": "03.969.623/0001-65",
-        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 0.0,
-        "descricao": "EMPNEHO DA FOLHA DE JUNHO DOS =SERVIDORES COMISSIONADOS"
-      },
-      {
-        "data": "2026-06-18",
         "fornecedor": "INSTITUTO MUNICIPAL DE PREVIDENCIA DOS SERVIDORES",
         "cnpj": "04.942.949/0001-61",
         "categoria": "Obrigações Patronais",
@@ -4293,6 +4293,22 @@
         "categoria": "Indenizações e Restituições",
         "valor": 0.0,
         "descricao": "VERBA INDENIZATORIO N.º 06"
+      },
+      {
+        "data": "2026-07-20",
+        "fornecedor": "SIDNEI MARCOS DEBONA",
+        "cnpj": "02.721.440/0001-63",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000006/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 4 - Mod. Formatada: 4 - CONTRATAÇÃO DE EMPRESA MEDIANTE REGISTRO DE"
+      },
+      {
+        "data": "2026-07-20",
+        "fornecedor": "FLAVIA PAGANINI AMBROSIO",
+        "cnpj": "024.XXX.XXX-46",
+        "categoria": "Indenizações e Restituições",
+        "valor": 0.0,
+        "descricao": "indenização de despesa de viagem para campo grande no dias  08,09 e 10 de julho de 2026, afim de participar de curso de capacitação"
       }
     ]
   }
