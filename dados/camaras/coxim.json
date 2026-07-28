@@ -1,7 +1,7 @@
 {
   "cidade": "Coxim",
-  "ultimaAtualizacao": "2026-07-27T14:04:17",
-  "fonte": "Portal Transparência Fiorilli (pmcoxim.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-27T14:04:17",
+  "ultimaAtualizacao": "2026-07-28T13:23:59",
+  "fonte": "Portal Transparência Fiorilli (pmcoxim.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-28T13:23:59",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camaracoxim.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -575,6 +575,11 @@
       "referenciaFolha": "Folha Mensal - Junho",
       "diarias": [
         {
+          "data": "2026-06-30",
+          "valor": 1500.0,
+          "descricao": "EMPNEHO DE DUAS DIARIAS PARA VEREADOR CUMPRIR AGENDA EM CAMPO GRANDE NOS DIAS 01/07 COM DEPUTADA MARA CASEIRO E NO DIA 02/07 COM DEPUTADO PEDRO PEDROSSIAN"
+        },
+        {
           "data": "2026-06-24",
           "valor": 2250.0,
           "descricao": "empenho refere ao pagto de tres diarias para veereador cumprir agenda em campo grandae nos dias 24 a 26 de junho de 2026, para participar de seminario legislativo KCM, com tema legislativo forte municipio desenvolvido"
@@ -620,8 +625,8 @@
           "descricao": "VALOR SE REFERE AO PAGAMENTO DE UMA DIARIA PARA VEREADOR CUMPRIR AGENDA EM CAMPO GRANDE NO DIA 12/02 COM CARLOS ALBERTO DE ASSIS NA AGEMS, COM O DEPUTADO LUIZ OVANDO E COM O DEPUTADO PAULO CORREA"
         }
       ],
-      "totalDiarias2026": 13500.0,
-      "numDiarias2026": 9
+      "totalDiarias2026": 15000.0,
+      "numDiarias2026": 10
     },
     {
       "nome": "MARLY NOGUEIRA DE LIMA",
@@ -637,6 +642,11 @@
       "descontos": 2181.21,
       "referenciaFolha": "Folha Mensal - Junho",
       "diarias": [
+        {
+          "data": "2026-06-30",
+          "valor": 750.0,
+          "descricao": "EMPENHO DE UMA DIARIA PARA VEREADOR CUMPRIR AGENDA EM CAMPO GRANDE NO DIA 01/07 COM DEPUTADO PEDRO PEDROSSIAN"
+        },
         {
           "data": "2026-06-16",
           "valor": 750.0,
@@ -708,8 +718,8 @@
           "descricao": "VALOR SE REFERE AO PAGATO DE DUAS DIARIA E MEIA PARA VEREADOR CUMPRIR AGENDA EM CAMPO GRANDE NO DIA 11/02 DEPUTADA MARA CASEIRO, NO DIA  12/02 NMA AGEMS E NO DIA 13/02 DEPUTADO LUIZ OVANDO"
         }
       ],
-      "totalDiarias2026": 22375.0,
-      "numDiarias2026": 14
+      "totalDiarias2026": 23125.0,
+      "numDiarias2026": 15
     },
     {
       "nome": "SIMONE  GOMES DO NASCIMENTO",
@@ -718,6 +728,11 @@
       "descontos": 5557.53,
       "referenciaFolha": "Folha Mensal - Junho",
       "diarias": [
+        {
+          "data": "2026-06-30",
+          "valor": 1500.0,
+          "descricao": "empenho de duas diarias para vereador cumprir agenda em campogrande nos dias 01/07 com o deputado pedro pedrossian neto e no dia 02/07 na AGAER/ SEMADESC"
+        },
         {
           "data": "2026-06-17",
           "valor": 750.0,
@@ -779,8 +794,8 @@
           "descricao": "VALOR SE REFERE AO PAGAMENTO DE TRES DIARIAS PARA VEREADOR CUMPRIR AGENDA EM CAMPO GRANDE NOS DIAS 11/02 DEPUTADA MARA CASEIRO NO DIA 12/02 NA AGEMS E NO DIA 13/02 COM DEPUTADO LUIS OVANDO"
         }
       ],
-      "totalDiarias2026": 20500.0,
-      "numDiarias2026": 12
+      "totalDiarias2026": 22000.0,
+      "numDiarias2026": 13
     },
     {
       "nome": "WILLIAM MENDES DA ROCHA MEIRA",
@@ -855,13 +870,13 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 4592156.56,
+    "totalGeral": 4639793.65,
     "totalNotas": 435,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 2643808.57,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 533508.37,
-      "Obrigações Patronais": 432059.19,
-      "Diárias — Civil": 298875.0,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 534194.85,
+      "Obrigações Patronais": 475259.8,
+      "Diárias — Civil": 302625.0,
       "Obras e Instalações": 219355.24,
       "Indenizações e Restituições": 165207.06,
       "Serviços de Consultoria": 133553.08,
@@ -1143,6 +1158,14 @@
         "descricao": "valor refere ao deficit atuarial do rpps patronal"
       },
       {
+        "data": "2026-06-18",
+        "fornecedor": "INSTITUTO MUNICIPAL DE PREVIDENCIA DOS SERVIDORES",
+        "cnpj": "04.942.949/0001-61",
+        "categoria": "Obrigações Patronais",
+        "valor": 25670.18,
+        "descricao": "empenho refere a parte deciti atuarial"
+      },
+      {
         "data": "2026-03-17",
         "fornecedor": "INSTITUTO MUNICIPAL DE PREVIDENCIA DOS SERVIDORES",
         "cnpj": "04.942.949/0001-61",
@@ -1333,6 +1356,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 13202.12,
         "descricao": "valor se refere a parte patronal do rpps"
+      },
+      {
+        "data": "2026-06-18",
+        "fornecedor": "INSTITUTO MUNICIPAL DE PREVIDENCIA DOS SERVIDORES",
+        "cnpj": "04.942.949/0001-61",
+        "categoria": "Obrigações Patronais",
+        "valor": 13202.12,
+        "descricao": "empenho refere a parte patronal do impc de junho de 26"
       },
       {
         "data": "2026-01-05",
@@ -1613,6 +1644,14 @@
         "categoria": "Diárias — Civil",
         "valor": 3000.0,
         "descricao": "valor se refere ao empenho de quatro diarias, para vereador cumprir agenda no dia 08/06 mp gabinete do junior mochi e participar nos dias 09, 10 e 11 de junho em bonito do IV forum estadual de mudaças"
+      },
+      {
+        "data": "2026-01-05",
+        "fornecedor": "BANCO DO BRASIL S/A",
+        "cnpj": "00.000.000/0552-55",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 2893.67,
+        "descricao": "referente a taxas e despesas bancárias."
       },
       {
         "data": "2026-01-05",
@@ -2039,14 +2078,6 @@
         "descricao": "valor empenho refere ao pagamento da verba indenizatoria n 004-2026"
       },
       {
-        "data": "2026-01-05",
-        "fornecedor": "BANCO DO BRASIL S/A",
-        "cnpj": "00.000.000/0552-55",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 2280.19,
-        "descricao": "referente a taxas e despesas bancárias."
-      },
-      {
         "data": "2026-06-15",
         "fornecedor": "ABILIO JUNIOR VANELI",
         "cnpj": "919.XXX.XXX-53",
@@ -2407,6 +2438,14 @@
         "descricao": "parte patronal cassems"
       },
       {
+        "data": "2026-06-18",
+        "fornecedor": "CASSEMS",
+        "cnpj": "04.311.093/0001-26",
+        "categoria": "Obrigações Patronais",
+        "valor": 2239.99,
+        "descricao": "parte patronal cassems junho"
+      },
+      {
         "data": "2026-02-19",
         "fornecedor": "INSTITUTO MUNICIPAL DE PREVIDENCIA DOS SERVIDORES",
         "cnpj": "04.942.949/0001-61",
@@ -2461,6 +2500,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 2088.32,
         "descricao": "valor refere a taxa de adm do rpps"
+      },
+      {
+        "data": "2026-06-18",
+        "fornecedor": "INSTITUTO MUNICIPAL DE PREVIDENCIA DOS SERVIDORES",
+        "cnpj": "04.942.949/0001-61",
+        "categoria": "Obrigações Patronais",
+        "valor": 2088.32,
+        "descricao": "valor empenho da tx administração do impc"
       },
       {
         "data": "2026-02-19",
@@ -2965,6 +3012,22 @@
         "categoria": "Diárias — Civil",
         "valor": 1500.0,
         "descricao": "empenho de duas diarias para vereador cumprir agenda em campo grande nos dias 25 e 26/06/26"
+      },
+      {
+        "data": "2026-06-30",
+        "fornecedor": "SIMONE GOMES DO NASCIMENTO",
+        "cnpj": "582.XXX.XXX-91",
+        "categoria": "Diárias — Civil",
+        "valor": 1500.0,
+        "descricao": "empenho de duas diarias para vereador cumprir agenda em campogrande nos dias 01/07 com o deputado pedro pedrossian neto e no dia 02/07 na AGAER/ SEMADESC"
+      },
+      {
+        "data": "2026-06-30",
+        "fornecedor": "MARIA DE LOURDES DA SILVA",
+        "cnpj": "799.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 1500.0,
+        "descricao": "EMPNEHO DE DUAS DIARIAS PARA VEREADOR CUMPRIR AGENDA EM CAMPO GRANDE NOS DIAS 01/07 COM DEPUTADA MARA CASEIRO E NO DIA 02/07 COM DEPUTADO PEDRO PEDROSSIAN"
       },
       {
         "data": "2026-04-16",
@@ -3583,6 +3646,14 @@
         "descricao": "emoenho de uma diaria para vereador cumprir agenda em campo grande nos dia 25/06 no TCE/MS"
       },
       {
+        "data": "2026-06-30",
+        "fornecedor": "MAURICIO HELPIS DE OLIVEIRA",
+        "cnpj": "030.XXX.XXX-93",
+        "categoria": "Diárias — Civil",
+        "valor": 750.0,
+        "descricao": "EMPENHO DE UMA DIARIA PARA VEREADOR CUMPRIR AGENDA EM CAMPO GRANDE NO DIA 01/07 COM DEPUTADO PEDRO PEDROSSIAN"
+      },
+      {
         "data": "2026-02-19",
         "fornecedor": "SUPERMERCADO ROMA LTDA",
         "cnpj": "24.642.985/0001-17",
@@ -3767,6 +3838,14 @@
         "descricao": "valor refere a indenização de viagen a campo grande no dias 01 e 2 de junho de 2036, conforme diarisa"
       },
       {
+        "data": "2026-01-05",
+        "fornecedor": "CAIXA ECONOMICA FEDERAL",
+        "cnpj": "00.360.305/1107-16",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 439.0,
+        "descricao": "referente a taxas e despesas bancárias."
+      },
+      {
         "data": "2026-04-01",
         "fornecedor": "MARCIO BARBOSA DE SOUZA",
         "cnpj": "034.XXX.XXX-66",
@@ -3797,14 +3876,6 @@
         "categoria": "Diárias — Civil",
         "valor": 375.0,
         "descricao": "REFERE AO PAGTO DE MEIA DIARIA PARA VEREADOR CUMPRIR AGENDA NO DIA 04 D EMAIO EM CAMPO GRNADE NA FUNDESPORTE."
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "CAIXA ECONOMICA FEDERAL",
-        "cnpj": "00.360.305/1107-16",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 366.0,
-        "descricao": "referente a taxas e despesas bancárias."
       },
       {
         "data": "2026-02-19",
@@ -3949,62 +4020,6 @@
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000003/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 2 - Mod. Formatada: 2 -  AQUISIÇÃO DE MATERIAL DE EXPEDIENTE (PAPEL"
-      },
-      {
-        "data": "2026-06-18",
-        "fornecedor": "INSTITUTO MUNICIPAL DE PREVIDENCIA DOS SERVIDORES",
-        "cnpj": "04.942.949/0001-61",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "empenho refere a parte patronal do impc de junho de 26"
-      },
-      {
-        "data": "2026-06-18",
-        "fornecedor": "CASSEMS",
-        "cnpj": "04.311.093/0001-26",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "parte patronal cassems junho"
-      },
-      {
-        "data": "2026-06-18",
-        "fornecedor": "INSTITUTO MUNICIPAL DE PREVIDENCIA DOS SERVIDORES",
-        "cnpj": "04.942.949/0001-61",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "empenho refere a parte deciti atuarial"
-      },
-      {
-        "data": "2026-06-18",
-        "fornecedor": "INSTITUTO MUNICIPAL DE PREVIDENCIA DOS SERVIDORES",
-        "cnpj": "04.942.949/0001-61",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "valor empenho da tx administração do impc"
-      },
-      {
-        "data": "2026-06-30",
-        "fornecedor": "SIMONE GOMES DO NASCIMENTO",
-        "cnpj": "582.XXX.XXX-91",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "empenho de duas diarias para vereador cumprir agenda em campogrande nos dias 01/07 com o deputado pedro pedrossian neto e no dia 02/07 na AGAER/ SEMADESC"
-      },
-      {
-        "data": "2026-06-30",
-        "fornecedor": "MARIA DE LOURDES DA SILVA",
-        "cnpj": "799.XXX.XXX-87",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "EMPNEHO DE DUAS DIARIAS PARA VEREADOR CUMPRIR AGENDA EM CAMPO GRANDE NOS DIAS 01/07 COM DEPUTADA MARA CASEIRO E NO DIA 02/07 COM DEPUTADO PEDRO PEDROSSIAN"
-      },
-      {
-        "data": "2026-06-30",
-        "fornecedor": "MAURICIO HELPIS DE OLIVEIRA",
-        "cnpj": "030.XXX.XXX-93",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "EMPENHO DE UMA DIARIA PARA VEREADOR CUMPRIR AGENDA EM CAMPO GRANDE NO DIA 01/07 COM DEPUTADO PEDRO PEDROSSIAN"
       },
       {
         "data": "2026-06-30",
