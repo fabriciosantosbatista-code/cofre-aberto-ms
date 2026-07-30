@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-07-28T13:23:59",
+  "ultimaAtualizacao": "2026-07-30T13:20:26",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-07-28T13:23:59",
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-07-30T13:20:26",
   "total": 8,
   "deputados": [
     {
@@ -24,7 +24,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/204358",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/204358/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 262052.97,
+      "cotaGastaAno": 261367.63,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -40,7 +40,7 @@
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 33105.78
+          "valor": 32420.44
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -63,7 +63,7 @@
           "valor": 442.77
         }
       ],
-      "totalNotasFiscais": 118
+      "totalNotasFiscais": 124
     },
     {
       "id": 220548,
@@ -138,7 +138,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/141411",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/141411/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 309909.54,
+      "cotaGastaAno": 311161.18,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -158,7 +158,7 @@
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 27751.47
+          "valor": 29003.11
         },
         {
           "categoria": "TELEFONIA",
@@ -177,7 +177,7 @@
           "valor": 1239.15
         }
       ],
-      "totalNotasFiscais": 132
+      "totalNotasFiscais": 135
     },
     {
       "id": 204351,
@@ -256,42 +256,9 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/74374",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/74374/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 374326.52,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 203153.71
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 65362.43
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 42884.9
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 27200.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 24565.27
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 8335.0
-        },
-        {
-          "categoria": "TELEFONIA",
-          "valor": 2629.21
-        },
-        {
-          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 196.0
-        }
-      ],
-      "totalNotasFiscais": 148
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     },
     {
       "id": 220547,
@@ -313,7 +280,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220547",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220547/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 248136.65,
+      "cotaGastaAno": 251490.38,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -321,7 +288,7 @@
         },
         {
           "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 60923.33
+          "valor": 64277.06
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -344,7 +311,7 @@
           "valor": 310.1
         }
       ],
-      "totalNotasFiscais": 210
+      "totalNotasFiscais": 211
     },
     {
       "id": 220546,
@@ -366,7 +333,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220546",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220546/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 339219.42,
+      "cotaGastaAno": 341898.06,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -378,7 +345,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 45139.48
+          "valor": 47818.12
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -397,7 +364,7 @@
           "valor": 199.89
         }
       ],
-      "totalNotasFiscais": 283
+      "totalNotasFiscais": 295
     },
     {
       "id": 74376,
@@ -419,42 +386,9 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/74376",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/74376/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 309372.81,
-      "ceapCategorias": [
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 138514.0
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 62000.0
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 43419.89
-        },
-        {
-          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 24696.5
-        },
-        {
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 24561.88
-        },
-        {
-          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 12255.79
-        },
-        {
-          "categoria": "PASSAGEM AÉREA - RPA",
-          "valor": 3893.29
-        },
-        {
-          "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
-          "valor": 31.46
-        }
-      ],
-      "totalNotasFiscais": 253
+      "cotaGastaAno": null,
+      "ceapCategorias": [],
+      "totalNotasFiscais": 0
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "cidade": "Aquidauana",
-  "ultimaAtualizacao": "2026-07-29T13:30:03",
-  "fonte": "Portal Transparência Fiorilli (pmaquidauana.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-29T13:30:03",
+  "ultimaAtualizacao": "2026-07-30T13:20:26",
+  "fonte": "Portal Transparência Fiorilli (pmaquidauana.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-30T13:20:26",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmaquidauana.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -472,17 +472,17 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 5371125.72,
-    "totalNotas": 244,
+    "totalGeral": 5592025.84,
+    "totalNotas": 251,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 4141717.7,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 4323067.0,
       "Diárias — Civil": 428000.0,
       "Obrigações Patronais": 370836.9,
-      "Serviços de Consultoria": 163007.76,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 153231.44,
-      "Serviços de Tecnologia da Informação": 81658.0,
-      "Material de Consumo": 12909.06,
-      "Equipamentos e Material Permanente": 11627.6,
+      "Serviços de Consultoria": 177707.76,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 156202.42,
+      "Serviços de Tecnologia da Informação": 92818.0,
+      "Equipamentos e Material Permanente": 22114.04,
+      "Material de Consumo": 13142.46,
       "Contribuições": 8137.26
     },
     "despesas": [
@@ -615,20 +615,28 @@
         "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 06/2026 - SUBSÍDIOS - AGENTES POLÍTICOS"
       },
       {
+        "data": "2026-01-16",
+        "fornecedor": "CELSO REIC SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "35.000.521/0001-23",
+        "categoria": "Serviços de Consultoria",
+        "valor": 88200.0,
+        "descricao": "DESPESA REF. À CONTRATAÇÃO DE ESCRITÓRIO DE ADVOCACIA DE NOTÓRIA ESPECIALIZAÇÃO NA ÁREA DE DIREITO PÚBLICO, COM ATUAÇÃO ESPECÍFICA, SINGULAR E QUE DIVERGE DAS ATRIBUIÇÕES DO QUADRO DE PESSOAL DO PODER"
+      },
+      {
+        "data": "2026-07-29",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 81869.83,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 07/2026 - VENCIMENTOS E SALÁRIOS - ESTATUTÁRIO"
+      },
+      {
         "data": "2026-05-28",
         "fornecedor": "INSS - INSTITUTO NACIONAL DE SEGURIDADE SOCIAL",
         "cnpj": "29.979.036/0086-30",
         "categoria": "Obrigações Patronais",
         "valor": 73731.51,
         "descricao": "Patronal INSS - agente político e não efetivo - dedução salário maternidade"
-      },
-      {
-        "data": "2026-01-16",
-        "fornecedor": "CELSO REIC SOCIEDADE INDIVIDUAL DE ADVOCACIA",
-        "cnpj": "35.000.521/0001-23",
-        "categoria": "Serviços de Consultoria",
-        "valor": 73500.0,
-        "descricao": "DESPESA REF. À CONTRATAÇÃO DE ESCRITÓRIO DE ADVOCACIA DE NOTÓRIA ESPECIALIZAÇÃO NA ÁREA DE DIREITO PÚBLICO, COM ATUAÇÃO ESPECÍFICA, SINGULAR E QUE DIVERGE DAS ATRIBUIÇÕES DO QUADRO DE PESSOAL DO PODER"
       },
       {
         "data": "2026-04-28",
@@ -663,12 +671,28 @@
         "descricao": "DESPESA QUE SE EMPENHA PELA CONTRATAÇÃO DE EMPRESA DE TECNOLOGIA DA INFORMAÇÃO, PARA FORNECIMENTO DE LICENÇA DE DIREITO DE USO NÃO PERMANENTE DE SISTEMA INTEGRADO DE GESTÃO PÚBLICA. Contrato nº 001/20"
       },
       {
+        "data": "2026-07-29",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 54294.6,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 07/2026 - SUBSÍDIOS - AGENTES POLÍTICOS"
+      },
+      {
         "data": "2026-02-27",
         "fornecedor": "INSS - INSTITUTO NACIONAL DE SEGURIDADE SOCIAL",
         "cnpj": "29.979.036/0086-30",
         "categoria": "Obrigações Patronais",
         "valor": 53540.86,
         "descricao": "FOLHA DE PAGAMENTO 02-2026 - CONTRIBUIÇÃO PREVIDENCIÁRIA PATRONAL AO INSS."
+      },
+      {
+        "data": "2026-07-29",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 42526.97,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 07/2026 - Servidor público não efetivo"
       },
       {
         "data": "2026-01-28",
@@ -781,6 +805,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 10890.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000013/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 7 - Mod. Formatada: 7 - Contratação de empresa especializada para a inscrição e pa"
+      },
+      {
+        "data": "2026-06-16",
+        "fornecedor": "R3ged Gestao de Documentos Ltda",
+        "cnpj": "21.268.622/0001-75",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 10850.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000118/25 - Ano Mod.: 2025 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 31 - Mod. Formatada: 31 - Contratação de empresa de tecnologia da informação, pa"
       },
       {
         "data": "2026-02-25",
@@ -1143,12 +1175,28 @@
         "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 06/2026 - VENCIMENTOS E SALÁRIOS - Recebido por\r\ncedência"
       },
       {
+        "data": "2026-05-28",
+        "fornecedor": "RODRIMAQ ARTIGOS PARA ESCRITORIO LTDA",
+        "cnpj": "33.104.951/0001-60",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 5389.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000011/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 5 - Mod. Formatada: 5 - Aquisição de bens permanentes, compreendendo mobiliário em aço, e"
+      },
+      {
         "data": "2026-01-14",
         "fornecedor": "EMPRESA DE SANEAMENTO DE MATO GROSSO DO SUL S.A.SA",
         "cnpj": "03.982.931/0001-20",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 5246.25,
         "descricao": "EMPENHO ESTIMATIVO PARA DESPESAS REFERENTES AOS SERVIÇOS DE ÁGUA E ESGOTO DO ANO DE 2026."
+      },
+      {
+        "data": "2026-05-28",
+        "fornecedor": "RODRIMAQ ARTIGOS PARA ESCRITORIO LTDA",
+        "cnpj": "33.104.951/0001-60",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 5097.44,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000011/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 5 - Mod. Formatada: 5 - Aquisição de bens permanentes, compreendendo mobiliário em aço, e"
       },
       {
         "data": "2026-01-16",
@@ -1229,6 +1277,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 3073.4,
         "descricao": "DESPESA REFERENTE À CONTRATAÇÃO DE EMPRESA PARA PRESTAR SERVIÇO DE MANUTENÇÃO PREDIAL PREVENTIVA E CORRETIVA, COM FORNECIMENTO DE MATERIAIS E MÃO DE OBRA PARA ATENDER ÀS DEMANDAS EXISTENTES NO PRÉDIO"
+      },
+      {
+        "data": "2026-06-26",
+        "fornecedor": "MAURO BONIERSKI",
+        "cnpj": "21.481.085/0001-47",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 3040.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000012/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada para a prestação de serviços"
       },
       {
         "data": "2026-04-06",
@@ -1743,6 +1799,14 @@
         "descricao": "Adiantamento 13º Salário - Recebido por cedência"
       },
       {
+        "data": "2026-07-29",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 1216.14,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 07/2026 - VENCIMENTOS E SALÁRIOS - Recebido por\r\ncedência"
+      },
+      {
         "data": "2026-04-06",
         "fornecedor": "CINTHIA GOMES GONÇALVES PEREIRA FLORES",
         "cnpj": "032.XXX.XXX-98",
@@ -1887,12 +1951,28 @@
         "descricao": "Despesa referente ao termo aditivo n° 03/2024 ao Contrato N°  39551787/2023, relativo aos serviços de postagens de correspondência, sedex, carta comercial, remessa local com comprovação de entrega, im"
       },
       {
+        "data": "2026-04-01",
+        "fornecedor": "STARK SOLUCOES EM TECNOLOGIA LTDA",
+        "cnpj": "10.278.563/0001-08",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 930.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000005/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 3 - Mod. Formatada: 3 - Serviços de locação de relógio de ponto com sistema de gestão"
+      },
+      {
         "data": "2026-02-25",
         "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
         "cnpj": "15.388.606/0001-13",
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 723.49,
         "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE RESCISAO 2/2026"
+      },
+      {
+        "data": "2026-07-29",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 695.06,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 07/2026 - Rescisão Cedidos"
       },
       {
         "data": "2026-03-26",
@@ -1903,12 +1983,12 @@
         "descricao": "Empenho referente ao produto SSL DV Domínio único, responsável pela hospedagem do site da Câmara Municipal de Aquidauana."
       },
       {
-        "data": "2026-04-01",
-        "fornecedor": "STARK SOLUCOES EM TECNOLOGIA LTDA",
-        "cnpj": "10.278.563/0001-08",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 620.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000005/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 3 - Mod. Formatada: 3 - Serviços de locação de relógio de ponto com sistema de gestão"
+        "data": "2026-07-29",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 462.63,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 07/2026 - Rescisão Complementar"
       },
       {
         "data": "2026-06-18",
@@ -1919,6 +1999,22 @@
         "descricao": "Participação de curso de Proteção de Dados Pessoais e Poder Público, dia 19 de junho, em Campo Grande/MS."
       },
       {
+        "data": "2026-07-29",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 284.07,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 06/2026 - Rescisão não efetivos"
+      },
+      {
+        "data": "2026-05-25",
+        "fornecedor": "MAIDANA & OBA LTDA - ME",
+        "cnpj": "04.076.297/0001-20",
+        "categoria": "Material de Consumo",
+        "valor": 233.4,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000009/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 4 - Mod. Formatada: 4 - Contratação de empresa especializada no fornecimento de material"
+      },
+      {
         "data": "2026-01-15",
         "fornecedor": "LOCAWEB SERVIÇOS DE INTERNET S.A.",
         "cnpj": "02.351.877/0001-52",
@@ -1927,12 +2023,12 @@
         "descricao": "PAGAMENTO REFERENTE AO PRODUTO SSL DV DOMÍNIO ÚNICO, RESPONSÁVEL PELA HOSPEDAGEM DO SITE DA CÂMARA MUNICIPAL DE AQUIDAUANA."
       },
       {
-        "data": "2026-06-26",
-        "fornecedor": "MAURO BONIERSKI",
-        "cnpj": "21.481.085/0001-47",
+        "data": "2026-06-30",
+        "fornecedor": "EMPRESA BRASILEIRA DE CORREIOS E TELÉGRAFOS / ECT",
+        "cnpj": "34.028.316/0009-60",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 96.37,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000012/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada para a prestação de serviços"
+        "valor": 27.35,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000016/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 9 - Mod. Formatada: 9 - Contratação de produtos e serviços por meio de Pacote de Serviços"
       },
       {
         "data": "2026-05-18",
@@ -2167,38 +2263,6 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000010/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada para a participação d"
       },
       {
-        "data": "2026-05-25",
-        "fornecedor": "MAIDANA & OBA LTDA - ME",
-        "cnpj": "04.076.297/0001-20",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000009/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 4 - Mod. Formatada: 4 - Contratação de empresa especializada no fornecimento de material"
-      },
-      {
-        "data": "2026-05-28",
-        "fornecedor": "RODRIMAQ ARTIGOS PARA ESCRITORIO LTDA",
-        "cnpj": "33.104.951/0001-60",
-        "categoria": "Equipamentos e Material Permanente",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000011/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 5 - Mod. Formatada: 5 - Aquisição de bens permanentes, compreendendo mobiliário em aço, e"
-      },
-      {
-        "data": "2026-05-28",
-        "fornecedor": "RODRIMAQ ARTIGOS PARA ESCRITORIO LTDA",
-        "cnpj": "33.104.951/0001-60",
-        "categoria": "Equipamentos e Material Permanente",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000011/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 5 - Mod. Formatada: 5 - Aquisição de bens permanentes, compreendendo mobiliário em aço, e"
-      },
-      {
-        "data": "2026-06-16",
-        "fornecedor": "R3ged Gestao de Documentos Ltda",
-        "cnpj": "21.268.622/0001-75",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000118/25 - Ano Mod.: 2025 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 31 - Mod. Formatada: 31 - Contratação de empresa de tecnologia da informação, pa"
-      },
-      {
         "data": "2026-06-24",
         "fornecedor": "RICARDO KUCK RODRIGUES",
         "cnpj": "15.597.378/0001-91",
@@ -2237,14 +2301,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000020/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 8 - Mod. Formatada: 8 - Contratação de empresa especializada para a inscrição e pa"
-      },
-      {
-        "data": "2026-06-30",
-        "fornecedor": "EMPRESA BRASILEIRA DE CORREIOS E TELÉGRAFOS / ECT",
-        "cnpj": "34.028.316/0009-60",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000016/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 9 - Mod. Formatada: 9 - Contratação de produtos e serviços por meio de Pacote de Serviços"
       },
       {
         "data": "2026-07-01",
