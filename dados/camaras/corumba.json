@@ -1,7 +1,7 @@
 {
   "cidade": "Corumbá",
-  "ultimaAtualizacao": "2026-07-30T13:20:26",
-  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-07-30T13:20:26",
+  "ultimaAtualizacao": "2026-07-31T13:24:06",
+  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-07-31T13:24:06",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camaracorumba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -426,14 +426,14 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 18406919.13,
+    "totalGeral": 18470766.01,
     "totalNotas": 178,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 12376203.59,
       "Obrigações Patronais": 1951985.48,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1568148.08,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1607148.08,
       "Serviços de Consultoria": 952661.15,
-      "Indenizações e Restituições": 869517.69,
+      "Indenizações e Restituições": 894364.57,
       "Diárias — Civil": 254400.0,
       "Elemento 03": 210543.12,
       "Despesas de Exercícios Anteriores": 151471.38,
@@ -700,6 +700,14 @@
       },
       {
         "data": "2026-01-05",
+        "fornecedor": "SAMYR SADEQ RAMUNIEH",
+        "cnpj": "506.XXX.XXX-04",
+        "categoria": "Indenizações e Restituições",
+        "valor": 61589.24,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A Reembolso de Despesas 01 a 12/2026, conforme Leis 2380/2014 e 2653/2018; Resoluções 743-744/2017 e 771/2024."
+      },
+      {
+        "data": "2026-01-05",
         "fornecedor": "ROBERTO GOMES FAÇANHA",
         "cnpj": "286.XXX.XXX-34",
         "categoria": "Indenizações e Restituições",
@@ -740,10 +748,10 @@
       },
       {
         "data": "2026-01-05",
-        "fornecedor": "SAMYR SADEQ RAMUNIEH",
-        "cnpj": "506.XXX.XXX-04",
+        "fornecedor": "ELIO MOREIRA JUNIOR",
+        "cnpj": "969.XXX.XXX-34",
         "categoria": "Indenizações e Restituições",
-        "valor": 53591.24,
+        "valor": 51559.23,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A Reembolso de Despesas 01 a 12/2026, conforme Leis 2380/2014 e 2653/2018; Resoluções 743-744/2017 e 771/2024."
       },
       {
@@ -764,19 +772,19 @@
       },
       {
         "data": "2026-01-05",
-        "fornecedor": "ELIO MOREIRA JUNIOR",
-        "cnpj": "969.XXX.XXX-34",
-        "categoria": "Indenizações e Restituições",
-        "valor": 42559.23,
-        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A Reembolso de Despesas 01 a 12/2026, conforme Leis 2380/2014 e 2653/2018; Resoluções 743-744/2017 e 771/2024."
-      },
-      {
-        "data": "2026-01-05",
         "fornecedor": "ENERGISA MS - DISTRIBUIDORA ENERGIA S.A.",
         "cnpj": "15.413.826/0001-50",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 41896.39,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A FORNECIMENTO DE SERVIÇOS DE ENERGIA ELETRICA PARA ESTE LEGISLATIVO (ESTIMATIVA 2026)."
+      },
+      {
+        "data": "2026-05-04",
+        "fornecedor": "FABIO LUIZ NOCHI LTDA",
+        "cnpj": "10.339.800/0001-95",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 39000.0,
+        "descricao": "VALOR QUE SE EMPENHA, POR PRESTAÇÃO DE SERVIÇOS DE MANUTENÇÃO CORRETIVA MECANICA, DE VEICULOS OFICIAIS, DA FROTA DESTE LEGISLATIVO."
       },
       {
         "data": "2026-02-10",
@@ -801,6 +809,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 29440.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A CONTRATAÇÃO EMPRESA ESPECIALIZADA EM TRANSMISSÃO ON-LINE DAS SESSÕES ORDINÁRIAS E EXRATORDINÁRIAS DESTE LEGISLATIVO, ATRAVÉS DE SUAS REDES SOCIAIS; PRODUÇÃO DE VIDEOS,"
+      },
+      {
+        "data": "2026-04-13",
+        "fornecedor": "LUIS FRANCISCO DE ALMEIDA VIANNA",
+        "cnpj": "983.XXX.XXX-87",
+        "categoria": "Indenizações e Restituições",
+        "valor": 29298.92,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A REEMBOLSO DE DESPESAS 04 A 12/2026, CONFORME LEIS 2380/2014 E 2653/2018; RESOLUÇÕES 743-744/2017 E 771/2024."
       },
       {
         "data": "2026-01-05",
@@ -849,14 +865,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 23000.0,
         "descricao": "VALOR QUE SE EMPENHA, POR Contratação de serviços técnicos especializados para a implantação de programa de Governança Corporativa, visando à imposição de “compliance”, códigos de conduta, assessorame"
-      },
-      {
-        "data": "2026-04-13",
-        "fornecedor": "LUIS FRANCISCO DE ALMEIDA VIANNA",
-        "cnpj": "983.XXX.XXX-87",
-        "categoria": "Indenizações e Restituições",
-        "valor": 21450.04,
-        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A REEMBOLSO DE DESPESAS 04 A 12/2026, CONFORME LEIS 2380/2014 E 2653/2018; RESOLUÇÕES 743-744/2017 E 771/2024."
       },
       {
         "data": "2026-06-10",
@@ -1801,14 +1809,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A CONTRATAÇÃO EMPRESA ESPECIALIZADA EM TRANSMISSÃO ON-LINE DAS SESSÕES ORDINÁRIAS E EXRATORDINÁRIAS DESTE LEGISLATIVO, ATRAVÉS DE SUAS REDES SOCIAIS; PRODUÇÃO DE VIDEOS,"
-      },
-      {
-        "data": "2026-05-04",
-        "fornecedor": "FABIO LUIZ NOCHI LTDA",
-        "cnpj": "10.339.800/0001-95",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA, POR PRESTAÇÃO DE SERVIÇOS DE MANUTENÇÃO CORRETIVA MECANICA, DE VEICULOS OFICIAIS, DA FROTA DESTE LEGISLATIVO."
       },
       {
         "data": "2026-05-08",

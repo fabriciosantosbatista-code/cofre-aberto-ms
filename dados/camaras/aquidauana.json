@@ -1,7 +1,7 @@
 {
   "cidade": "Aquidauana",
-  "ultimaAtualizacao": "2026-07-30T13:20:26",
-  "fonte": "Portal Transparência Fiorilli (pmaquidauana.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-30T13:20:26",
+  "ultimaAtualizacao": "2026-07-31T13:24:06",
+  "fonte": "Portal Transparência Fiorilli (pmaquidauana.rcmsuporte.com.br:8079) — Dados Abertos — 2026-07-31T13:24:06",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmaquidauana.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -472,14 +472,14 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 5592025.84,
-    "totalNotas": 251,
+    "totalGeral": 5682736.88,
+    "totalNotas": 253,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 4323067.0,
+      "Obrigações Patronais": 460813.99,
       "Diárias — Civil": 428000.0,
-      "Obrigações Patronais": 370836.9,
       "Serviços de Consultoria": 177707.76,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 156202.42,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 156936.37,
       "Serviços de Tecnologia da Informação": 92818.0,
       "Equipamentos e Material Permanente": 22114.04,
       "Material de Consumo": 13142.46,
@@ -629,6 +629,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 81869.83,
         "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 07/2026 - VENCIMENTOS E SALÁRIOS - ESTATUTÁRIO"
+      },
+      {
+        "data": "2026-06-26",
+        "fornecedor": "INSS - INSTITUTO NACIONAL DE SEGURIDADE SOCIAL",
+        "cnpj": "29.979.036/0086-30",
+        "categoria": "Obrigações Patronais",
+        "valor": 81784.41,
+        "descricao": "Patronal INSS  06/2026 - agente político e não efetivo"
       },
       {
         "data": "2026-05-28",
@@ -1055,6 +1063,14 @@
         "descricao": "Patronal RPPS maio 2026"
       },
       {
+        "data": "2026-06-26",
+        "fornecedor": "AQUIDAUANAPREV",
+        "cnpj": "05.030.089/0001-52",
+        "categoria": "Obrigações Patronais",
+        "valor": 8192.68,
+        "descricao": "Patronal RPPS 06/2026"
+      },
+      {
         "data": "2026-04-28",
         "fornecedor": "AQUIDAUANAPREV",
         "cnpj": "05.030.089/0001-52",
@@ -1175,20 +1191,20 @@
         "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 06/2026 - VENCIMENTOS E SALÁRIOS - Recebido por\r\ncedência"
       },
       {
+        "data": "2026-01-14",
+        "fornecedor": "EMPRESA DE SANEAMENTO DE MATO GROSSO DO SUL S.A.SA",
+        "cnpj": "03.982.931/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 5980.2,
+        "descricao": "EMPENHO ESTIMATIVO PARA DESPESAS REFERENTES AOS SERVIÇOS DE ÁGUA E ESGOTO DO ANO DE 2026."
+      },
+      {
         "data": "2026-05-28",
         "fornecedor": "RODRIMAQ ARTIGOS PARA ESCRITORIO LTDA",
         "cnpj": "33.104.951/0001-60",
         "categoria": "Equipamentos e Material Permanente",
         "valor": 5389.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000011/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 5 - Mod. Formatada: 5 - Aquisição de bens permanentes, compreendendo mobiliário em aço, e"
-      },
-      {
-        "data": "2026-01-14",
-        "fornecedor": "EMPRESA DE SANEAMENTO DE MATO GROSSO DO SUL S.A.SA",
-        "cnpj": "03.982.931/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 5246.25,
-        "descricao": "EMPENHO ESTIMATIVO PARA DESPESAS REFERENTES AOS SERVIÇOS DE ÁGUA E ESGOTO DO ANO DE 2026."
       },
       {
         "data": "2026-05-28",
@@ -2271,22 +2287,6 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000014/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 7 - Mod. Formatada: 7 - Contratação de empresa especializada para prestação de serviços d"
       },
       {
-        "data": "2026-06-26",
-        "fornecedor": "INSS - INSTITUTO NACIONAL DE SEGURIDADE SOCIAL",
-        "cnpj": "29.979.036/0086-30",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "Patronal INSS  06/2026 - agente político e não efetivo"
-      },
-      {
-        "data": "2026-06-26",
-        "fornecedor": "AQUIDAUANAPREV",
-        "cnpj": "05.030.089/0001-52",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "Patronal RPPS 06/2026"
-      },
-      {
         "data": "2026-06-30",
         "fornecedor": "UNECTA EVENTOS LTDA",
         "cnpj": "51.777.038/0001-06",
@@ -2493,6 +2493,22 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000019/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 11 - Mod. Formatada: 11 - Contratação de empresa especializada para fornecimento e instal"
+      },
+      {
+        "data": "2026-07-30",
+        "fornecedor": "INSS - INSTITUTO NACIONAL DE SEGURIDADE SOCIAL",
+        "cnpj": "29.979.036/0086-30",
+        "categoria": "Obrigações Patronais",
+        "valor": 0.0,
+        "descricao": "Patronal INSS 07/2026 - agente político, não efetivo e rescisões"
+      },
+      {
+        "data": "2026-07-30",
+        "fornecedor": "AQUIDAUANAPREV",
+        "cnpj": "05.030.089/0001-52",
+        "categoria": "Obrigações Patronais",
+        "valor": 0.0,
+        "descricao": "Patronal RPPS 07/2026"
       }
     ]
   },
