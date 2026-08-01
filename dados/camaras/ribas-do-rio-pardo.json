@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-07-31T13:24:06",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-07-31T13:24:06",
+  "ultimaAtualizacao": "2026-08-01T12:47:13",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-08-01T12:47:13",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -249,18 +249,18 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 6022108.53,
-    "totalNotas": 254,
+    "totalGeral": 6609499.28,
+    "totalNotas": 263,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 3128651.14,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 3625687.09,
       "Equipamentos e Material Permanente": 864628.8,
       "Obrigações Patronais": 571810.28,
-      "Serviços de Consultoria": 469068.95,
-      "Auxílio-Alimentação": 266319.96,
-      "Serviços de Tecnologia da Informação": 266123.75,
+      "Serviços de Consultoria": 479482.95,
+      "Auxílio-Alimentação": 310232.42,
+      "Serviços de Tecnologia da Informação": 287692.33,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 192977.78,
+      "Outros Benefícios Assistenciais do Servidor": 93575.29,
       "Outros Serviços de Terceiros — Pessoa Física": 88980.86,
-      "Outros Benefícios Assistenciais do Servidor": 79115.53,
       "Material de Consumo": 38117.42,
       "Diárias — Civil": 35053.51,
       "Indenizações e Restituições": 21260.55
@@ -281,6 +281,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 249684.6,
         "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES COMISSIONADOS - JANEIRO/2026."
+      },
+      {
+        "data": "2026-07-29",
+        "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES COMISSIONADOS",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 232381.62,
+        "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES COMISSIONADOS - JULHO/2026."
       },
       {
         "data": "2026-05-28",
@@ -379,6 +387,14 @@
         "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES EFETIVOS - MARÇO/2026."
       },
       {
+        "data": "2026-07-29",
+        "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES EFETIVOS",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 149898.04,
+        "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES EFETIVOS - JULHO/2026."
+      },
+      {
         "data": "2026-01-29",
         "fornecedor": "FOLHA DE PAGAMENTO - VEREADORES",
         "cnpj": "29.979.036/0001-40",
@@ -417,6 +433,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 114756.29,
         "descricao": "EMPENHO REFERENTE AO SUBSÍDIO DOS VEREADORES - MAIO/2026."
+      },
+      {
+        "data": "2026-07-29",
+        "fornecedor": "FOLHA DE PAGAMENTO - VEREADORES",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 114756.29,
+        "descricao": "EMPENHO REFERENTE AO SUBSÍDIO DOS VEREADORES - JULHO/2026."
       },
       {
         "data": "2026-06-26",
@@ -627,6 +651,14 @@
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - FEV/2026."
       },
       {
+        "data": "2026-05-28",
+        "fornecedor": "J. REMONATTO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "26.616.499/0001-50",
+        "categoria": "Serviços de Consultoria",
+        "valor": 31242.0,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO  ADMINISTRATIVO Nº 03/2025, INEGIXIBILIDADE DE LICITAÇÃO Nº 03/2025, PROCESSO ADMINISTRATIVO Nº 12/2025, RELATIVO À CONTRATAÇÃO DE EMPRESA ESPECIALIZ"
+      },
+      {
         "data": "2026-03-30",
         "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -657,6 +689,14 @@
         "categoria": "Auxílio-Alimentação",
         "valor": 28853.88,
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES COMISSIONADOS - JUNHO/2026."
+      },
+      {
+        "data": "2026-07-29",
+        "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
+        "cnpj": "01.696.482/0001-29",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 28853.88,
+        "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES COMISSIONADOS - JULHO/2026."
       },
       {
         "data": "2026-01-29",
@@ -715,6 +755,14 @@
         "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO, AO CONTRATO Nº 01/2023, CUJO OBJETO É A RENOVAÇÃO CONTRATUAL PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ASSESSORIA E CONSULTORIA CONTÁBIL, VIGÊNCIA"
       },
       {
+        "data": "2026-05-29",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 24496.61,
+        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
+      },
+      {
         "data": "2026-01-30",
         "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -763,6 +811,14 @@
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS VEREADORES- JUNHO/2026."
       },
       {
+        "data": "2026-01-02",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 23625.0,
+        "descricao": "EMPENHO REFERENTE AO FORNECIMENTO DE LICENÇA TEMPORÁRIA DE USO DE SOFTWARE PARA GESTÃO LEGISLATIVA, CONFORME TERMO DE REFERÊNCIA, PERÍODO CONTRATUAL DE 28/08/2025 A 27/08/2026, PROCESSO ADMINISTRATIVO"
+      },
+      {
         "data": "2026-03-26",
         "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES COMISSIONADOS",
         "cnpj": "29.979.036/0001-40",
@@ -777,22 +833,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 22083.56,
         "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ÁGUA E ESGOTO PARA O EXERCÍCIO DE 2026."
-      },
-      {
-        "data": "2026-05-28",
-        "fornecedor": "J. REMONATTO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
-        "cnpj": "26.616.499/0001-50",
-        "categoria": "Serviços de Consultoria",
-        "valor": 20828.0,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO  ADMINISTRATIVO Nº 03/2025, INEGIXIBILIDADE DE LICITAÇÃO Nº 03/2025, PROCESSO ADMINISTRATIVO Nº 12/2025, RELATIVO À CONTRATAÇÃO DE EMPRESA ESPECIALIZ"
-      },
-      {
-        "data": "2026-01-02",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 20250.0,
-        "descricao": "EMPENHO REFERENTE AO FORNECIMENTO DE LICENÇA TEMPORÁRIA DE USO DE SOFTWARE PARA GESTÃO LEGISLATIVA, CONFORME TERMO DE REFERÊNCIA, PERÍODO CONTRATUAL DE 28/08/2025 A 27/08/2026, PROCESSO ADMINISTRATIVO"
       },
       {
         "data": "2026-03-31",
@@ -867,6 +907,14 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - JULHO/2026."
       },
       {
+        "data": "2026-07-29",
+        "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
+        "cnpj": "01.696.482/0001-29",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 15058.58,
+        "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - JULHO/2026."
+      },
+      {
         "data": "2026-01-02",
         "fornecedor": "NEWPC TECNOLOGIA LTDA",
         "cnpj": "20.892.343/0001-15",
@@ -897,14 +945,6 @@
         "categoria": "Indenizações e Restituições",
         "valor": 10522.7,
         "descricao": "VALOR QUE SE EMPENHA PARA FINS DE REEMBOLSAR AS DESPESAS INERENTES ÀS ATIVIDADES PARLAMENTARES, PERÍODO DE JANEIRO A DEZEMBRO DE 2026, CONFORME PREVISTO NA LEI MUNICIPAL Nº 1.309, DE 02 DE MARÇO DE 20"
-      },
-      {
-        "data": "2026-05-29",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 10203.03,
-        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
       },
       {
         "data": "2026-06-02",
@@ -947,6 +987,14 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES COMISSIONADOS - JUNHO/2026."
       },
       {
+        "data": "2026-07-29",
+        "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
+        "cnpj": "01.696.482/0001-29",
+        "categoria": "Outros Benefícios Assistenciais do Servidor",
+        "valor": 8262.72,
+        "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES COMISSIONADOS - JULHO/2026."
+      },
+      {
         "data": "2026-05-28",
         "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
         "cnpj": "01.696.482/0001-29",
@@ -961,6 +1009,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 8000.0,
         "descricao": "EMPENHO REFERENTE AO TERMO DE CESSÃO DE USO, PROCESSO ADMINISTRATIVO 11/2026,  ENTRE A CÂMARA MUNICIPAL DE RIBAS DO RIO PARDO E O SINDICATO RURAL PARA FINS DE CEDÊNCIA DO ESPAÇO FÍSICO PARA A REALIZAÇ"
+      },
+      {
+        "data": "2026-05-29",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 7800.0,
+        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
       },
       {
         "data": "2026-03-26",
@@ -1009,6 +1065,14 @@
         "categoria": "Outros Benefícios Assistenciais do Servidor",
         "valor": 6197.04,
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES EFETIVOS - JUNHO/2026."
+      },
+      {
+        "data": "2026-07-29",
+        "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
+        "cnpj": "01.696.482/0001-29",
+        "categoria": "Outros Benefícios Assistenciais do Servidor",
+        "valor": 6197.04,
+        "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES EFETIVOS - JULHO/2026."
       },
       {
         "data": "2026-01-02",
@@ -1153,14 +1217,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 4050.0,
         "descricao": "EMPENHO REFERENTE  AO CURSO DE GESTÃO INTEGRADA NO SETOR PÚBLICO, E-SFINGE, LGPD E E-SOCIAL, QUE SE REALIZARÁ NA CIDADE DE CAMPO GRANDE/MS, NAS DATAS DE 13 A 15/05/2026."
-      },
-      {
-        "data": "2026-05-29",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 3900.0,
-        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
       },
       {
         "data": "2026-04-09",
@@ -2297,6 +2353,22 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE À EXECUÇÃO DE SERVIÇOS DE JARDINAGEM E PAISAGISMO NAS ÁREAS EXTERNAS DA NOVA SEDE DA CÂMARA MUNICIPAL DE RIBAS DO RIO PARDO/MS, COMPREENDENDO O FORNECIMENTO DE DOS MATERIAIS, INSUMOS"
+      },
+      {
+        "data": "2026-07-31",
+        "fornecedor": "CAMYLA CAMPOS DE OLIVEIRA ACOSTA",
+        "cnpj": "709.XXX.XXX-72",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1 1/2 (UMA DIÁRIA E MEIA) PARA FINS DE PARTICIPAR DO SEMINÁRIO \"LEI MARIA DA PENHA - 20 ANOS\", QUE SE REALIZAR NO AUDITÓRIO DA INSTED, NA CIDADE DE CAMPO GRANDE/MS, NA"
+      },
+      {
+        "data": "2026-07-31",
+        "fornecedor": "JOSILENE BARBOSA ALVES RONDON",
+        "cnpj": "924.XXX.XXX-53",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1 1/2 (UMA DIÁRIA E MEIA) PARA FINS DE PARTICIPAR DO SEMINÁRIO \"LEI MARIA DA PENHA - 20 ANOS\", QUE SE REALIZAR NO AUDITÓRIO DA INSTED, NA CIDADE DE CAMPO GRANDE/MS, NA"
       }
     ]
   }
