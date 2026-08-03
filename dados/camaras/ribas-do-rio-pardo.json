@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-08-02T12:50:03",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-08-02T12:50:03",
+  "ultimaAtualizacao": "2026-08-03T14:08:53",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-08-03T14:08:53",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -249,8 +249,8 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 6609499.28,
-    "totalNotas": 263,
+    "totalGeral": 6610970.53,
+    "totalNotas": 266,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 3625687.09,
       "Equipamentos e Material Permanente": 864628.8,
@@ -258,11 +258,11 @@
       "Serviços de Consultoria": 479482.95,
       "Auxílio-Alimentação": 310232.42,
       "Serviços de Tecnologia da Informação": 287692.33,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 192977.78,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 193549.03,
       "Outros Benefícios Assistenciais do Servidor": 93575.29,
       "Outros Serviços de Terceiros — Pessoa Física": 88980.86,
       "Material de Consumo": 38117.42,
-      "Diárias — Civil": 35053.51,
+      "Diárias — Civil": 35953.51,
       "Indenizações e Restituições": 21260.55
     },
     "despesas": [
@@ -1219,6 +1219,14 @@
         "descricao": "EMPENHO REFERENTE  AO CURSO DE GESTÃO INTEGRADA NO SETOR PÚBLICO, E-SFINGE, LGPD E E-SOCIAL, QUE SE REALIZARÁ NA CIDADE DE CAMPO GRANDE/MS, NAS DATAS DE 13 A 15/05/2026."
       },
       {
+        "data": "2026-01-02",
+        "fornecedor": "BANCO DO BRASIL SA",
+        "cnpj": "00.000.000/5806-86",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 3736.57,
+        "descricao": "EMPENHO REFERENTE A TARIFAS BANCÁRIAS PARA O EXERCÍCIO DE 2026."
+      },
+      {
         "data": "2026-04-09",
         "fornecedor": "ILIVINO PANIAGO NOGUEIRA SOUZA",
         "cnpj": "40.066.088/0001-69",
@@ -1241,14 +1249,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 3203.6,
         "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO ADMINISTRATIVO Nº 09/2024, DISPENSA Nº 02/2024 E PROCESSO ADMINISTRATIVO Nº 03/2024, QUE TEM POR OBJETO A IMPLEMENTAÇÃO, INTERMEDIAÇÃO E ADMINISTRAÇÃO"
-      },
-      {
-        "data": "2026-01-02",
-        "fornecedor": "BANCO DO BRASIL SA",
-        "cnpj": "00.000.000/5806-86",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 3165.32,
-        "descricao": "EMPENHO REFERENTE A TARIFAS BANCÁRIAS PARA O EXERCÍCIO DE 2026."
       },
       {
         "data": "2026-05-08",
@@ -1569,6 +1569,22 @@
         "categoria": "Auxílio-Alimentação",
         "valor": 476.88,
         "descricao": "EMPENHO COMPLEMENTAR DO AUXÍLIO-ALIMENTAÇÃO DA FOLHA DE PAGAMENTO DOS SERVIDORES EFETIVOS - JUNHO/2026."
+      },
+      {
+        "data": "2026-07-31",
+        "fornecedor": "CAMYLA CAMPOS DE OLIVEIRA ACOSTA",
+        "cnpj": "709.XXX.XXX-72",
+        "categoria": "Diárias — Civil",
+        "valor": 450.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1 1/2 (UMA DIÁRIA E MEIA) PARA FINS DE PARTICIPAR DO SEMINÁRIO \"LEI MARIA DA PENHA - 20 ANOS\", QUE SE REALIZAR NO AUDITÓRIO DA INSTED, NA CIDADE DE CAMPO GRANDE/MS, NA"
+      },
+      {
+        "data": "2026-07-31",
+        "fornecedor": "JOSILENE BARBOSA ALVES RONDON",
+        "cnpj": "924.XXX.XXX-53",
+        "categoria": "Diárias — Civil",
+        "valor": 450.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1 1/2 (UMA DIÁRIA E MEIA) PARA FINS DE PARTICIPAR DO SEMINÁRIO \"LEI MARIA DA PENHA - 20 ANOS\", QUE SE REALIZAR NO AUDITÓRIO DA INSTED, NA CIDADE DE CAMPO GRANDE/MS, NA"
       },
       {
         "data": "2026-05-11",
@@ -2356,19 +2372,27 @@
       },
       {
         "data": "2026-07-31",
-        "fornecedor": "CAMYLA CAMPOS DE OLIVEIRA ACOSTA",
-        "cnpj": "709.XXX.XXX-72",
-        "categoria": "Diárias — Civil",
+        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
         "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1 1/2 (UMA DIÁRIA E MEIA) PARA FINS DE PARTICIPAR DO SEMINÁRIO \"LEI MARIA DA PENHA - 20 ANOS\", QUE SE REALIZAR NO AUDITÓRIO DA INSTED, NA CIDADE DE CAMPO GRANDE/MS, NA"
+        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS VEREDORES - JULHO/2026."
       },
       {
         "data": "2026-07-31",
-        "fornecedor": "JOSILENE BARBOSA ALVES RONDON",
-        "cnpj": "924.XXX.XXX-53",
-        "categoria": "Diárias — Civil",
+        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
         "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1 1/2 (UMA DIÁRIA E MEIA) PARA FINS DE PARTICIPAR DO SEMINÁRIO \"LEI MARIA DA PENHA - 20 ANOS\", QUE SE REALIZAR NO AUDITÓRIO DA INSTED, NA CIDADE DE CAMPO GRANDE/MS, NA"
+        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - JULHO/2026."
+      },
+      {
+        "data": "2026-07-31",
+        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 0.0,
+        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - JULHO/2026."
       }
     ]
   }
