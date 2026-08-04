@@ -1,7 +1,7 @@
 {
   "cidade": "Sonora",
-  "ultimaAtualizacao": "2026-08-03T14:08:53",
-  "fonte": "Portal Transparência Fiorilli (pmsonora.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-03T14:08:53",
+  "ultimaAtualizacao": "2026-08-04T13:30:45",
+  "fonte": "Portal Transparência Fiorilli (pmsonora.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-04T13:30:45",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasonora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -515,21 +515,22 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 4033513.39,
-    "totalNotas": 278,
+    "totalGeral": 4090112.49,
+    "totalNotas": 280,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 1499897.72,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 720070.19,
-      "Diárias — Civil": 400075.0,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 724348.2,
+      "Diárias — Civil": 400575.0,
+      "Serviços de Tecnologia da Informação": 352571.71,
       "Serviços de Consultoria": 328871.62,
-      "Serviços de Tecnologia da Informação": 305586.66,
       "Obrigações Patronais": 249479.67,
       "Obras e Instalações": 175136.93,
       "Indenizações e Restituições": 160703.7,
-      "Material de Consumo": 112686.72,
+      "Material de Consumo": 117522.76,
       "Despesas de Exercícios Anteriores": 44650.18,
       "Equipamentos e Material Permanente": 36355.0,
-      "Obrigações Tributárias e Contributivas": 0.0
+      "Obrigações Tributárias e Contributivas": 0.0,
+      "Locação de Mão de Obra": 0.0
     },
     "despesas": [
       {
@@ -590,19 +591,19 @@
       },
       {
         "data": "2026-01-21",
+        "fornecedor": "INTECO TECNOLOGIA INFORMATICA COXIM LTDA",
+        "cnpj": "07.266.202/0001-29",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 105000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000033/25 - Ano Mod.: 2025 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 6 - Mod. Formatada: 6 - A contratação de empresa de tecnologia da informação par"
+      },
+      {
+        "data": "2026-01-21",
         "fornecedor": "CENTRO DE DIAGNOSTICOS BIOANALISES LTDA",
         "cnpj": "26.832.691/0001-83",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 90516.62,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000046/25 - Ano Mod.: 2025 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 8 - Mod. Formatada: 8 - contratação de empresa especializada para Prestação de s"
-      },
-      {
-        "data": "2026-01-21",
-        "fornecedor": "INTECO TECNOLOGIA INFORMATICA COXIM LTDA",
-        "cnpj": "07.266.202/0001-29",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 90000.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000033/25 - Ano Mod.: 2025 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 6 - Mod. Formatada: 6 - A contratação de empresa de tecnologia da informação par"
       },
       {
         "data": "2026-01-21",
@@ -629,6 +630,14 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000010/23 - Ano Mod.: 2023 - Modalidade: TOMADA DE PREÇOS - Nº Mod.: 1 - Mod. Formatada: 1 - CONTRATAÇÃO DE AGÊNCIA DE PROPAGANDA PARA REALIZAR UM CON"
       },
       {
+        "data": "2026-03-31",
+        "fornecedor": "INTECO TECNOLOGIA INFORMÁTICA COXIM LTDA",
+        "cnpj": "07.266.202/0001-29",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 61295.96,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000026/23 - Ano Mod.: 2023 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 2 - Mod. Formatada: 2 - Locação e cessão de uso de softwares para a Gestão Pública"
+      },
+      {
         "data": "2026-04-28",
         "fornecedor": "J P M CONSULTORIA CONTABIL LTDA",
         "cnpj": "07.310.267/0001-24",
@@ -653,12 +662,12 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000018/25 - Ano Mod.: 2025 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação de empresa especializada para a prestação de s"
       },
       {
-        "data": "2026-03-31",
-        "fornecedor": "INTECO TECNOLOGIA INFORMÁTICA COXIM LTDA",
-        "cnpj": "07.266.202/0001-29",
+        "data": "2026-01-21",
+        "fornecedor": "GABRIEL E LOPES LTDA - EPP",
+        "cnpj": "05.340.638/0001-95",
         "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 45971.97,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000026/23 - Ano Mod.: 2023 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 2 - Mod. Formatada: 2 - Locação e cessão de uso de softwares para a Gestão Pública"
+        "valor": 48141.36,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000004/21 - Ano Mod.: 2021 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 1 - Mod. Formatada: 1 -  O objeto desta licitação é a seleção da proposta mais v"
       },
       {
         "data": "2026-01-21",
@@ -675,14 +684,6 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 44030.01,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000026/23 - Ano Mod.: 2023 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 2 - Mod. Formatada: 2 - Locação e cessão de uso de softwares para a Gestão Pública"
-      },
-      {
-        "data": "2026-01-21",
-        "fornecedor": "GABRIEL E LOPES LTDA - EPP",
-        "cnpj": "05.340.638/0001-95",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 40117.8,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000004/21 - Ano Mod.: 2021 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 1 - Mod. Formatada: 1 -  O objeto desta licitação é a seleção da proposta mais v"
       },
       {
         "data": "2026-05-15",
@@ -733,6 +734,14 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000019/25 - Ano Mod.: 2025 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 5 - Mod. Formatada: 5 - Contratação de Escritório de Advocacia especializada para"
       },
       {
+        "data": "2026-02-03",
+        "fornecedor": "GABRIEL E LOPES LTDA - EPP",
+        "cnpj": "05.340.638/0001-95",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 25575.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000032/23 - Ano Mod.: 2023 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 6 - Mod. Formatada:  - CONTRATAÇÃO DE EMPRESA NO RAMO PERTINENTE PARA A AQUISICA"
+      },
+      {
         "data": "2026-01-21",
         "fornecedor": "MAP COM. DE PRODUTOS ALIMENTÍCIOS LTDA",
         "cnpj": "18.407.294/0001-36",
@@ -757,12 +766,12 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000030/25 - Ano Mod.: 2025 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 4 - Mod. Formatada: 4 - aquisição futura de materiais de e"
       },
       {
-        "data": "2026-02-03",
+        "data": "2026-04-09",
         "fornecedor": "GABRIEL E LOPES LTDA - EPP",
         "cnpj": "05.340.638/0001-95",
         "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 21312.5,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000032/23 - Ano Mod.: 2023 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 6 - Mod. Formatada:  - CONTRATAÇÃO DE EMPRESA NO RAMO PERTINENTE PARA A AQUISICA"
+        "valor": 17500.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000012/23 - Ano Mod.: 2023 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 2 - Mod. Formatada: 2 - CONTRATAÇÃO DE EMPRESA NO RAMO PERTINENTE PARA A LOCAÇÃO"
       },
       {
         "data": "2026-01-21",
@@ -793,14 +802,6 @@
         "fornecedor": "GABRIEL E LOPES LTDA - EPP",
         "cnpj": "05.340.638/0001-95",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 13125.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000012/23 - Ano Mod.: 2023 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 2 - Mod. Formatada: 2 - CONTRATAÇÃO DE EMPRESA NO RAMO PERTINENTE PARA A LOCAÇÃO"
-      },
-      {
-        "data": "2026-04-09",
-        "fornecedor": "GABRIEL E LOPES LTDA - EPP",
-        "cnpj": "05.340.638/0001-95",
-        "categoria": "Serviços de Tecnologia da Informação",
         "valor": 13125.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000012/23 - Ano Mod.: 2023 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 2 - Mod. Formatada: 2 - CONTRATAÇÃO DE EMPRESA NO RAMO PERTINENTE PARA A LOCAÇÃO"
       },
@@ -1374,6 +1375,14 @@
       },
       {
         "data": "2026-01-21",
+        "fornecedor": "BANCO DO BRASIL S.A",
+        "cnpj": "00.000.000/4354-06",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4365.47,
+        "descricao": "Empenho destinado à cobertura das despesas com tarifas bancárias decorrentes da prestação de serviços bancários pelo Banco do Brasil S/A, relacionados à manutenção e movimentação das contas da Câmara"
+      },
+      {
+        "data": "2026-01-21",
         "fornecedor": "GABRIEL E LOPES LTDA - EPP",
         "cnpj": "05.340.638/0001-95",
         "categoria": "Serviços de Tecnologia da Informação",
@@ -1387,14 +1396,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 4257.64,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000002/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 1 - Mod. Formatada: 1 - Contratação de empresa especializada para fornecimento e prestaçã"
-      },
-      {
-        "data": "2026-01-21",
-        "fornecedor": "BANCO DO BRASIL S.A",
-        "cnpj": "00.000.000/4354-06",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 4060.26,
-        "descricao": "Empenho destinado à cobertura das despesas com tarifas bancárias decorrentes da prestação de serviços bancários pelo Banco do Brasil S/A, relacionados à manutenção e movimentação das contas da Câmara"
       },
       {
         "data": "2026-02-23",
@@ -1435,6 +1436,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 3400.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000014/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 10 - Mod. Formatada: 10 - Contratação de empresa especializada para fornecimento de janta"
+      },
+      {
+        "data": "2026-07-08",
+        "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
+        "cnpj": "21.456.790/0001-94",
+        "categoria": "Material de Consumo",
+        "valor": 3303.19,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000021/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 17 - Mod. Formatada: 17 - Prestação de serviços de revisão corretiva do sistema de freios"
       },
       {
         "data": "2026-02-12",
@@ -2069,6 +2078,22 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000015/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 11 - Mod. Formatada: 11 - Contratação de empresa especializada para fornecimento de mater"
       },
       {
+        "data": "2026-07-06",
+        "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
+        "cnpj": "21.456.790/0001-94",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1568.9,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000020/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 16 - Mod. Formatada: 16 - 1.1.\tContratação de empresa especializada para fornecimento e p"
+      },
+      {
+        "data": "2026-07-02",
+        "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
+        "cnpj": "21.456.790/0001-94",
+        "categoria": "Material de Consumo",
+        "valor": 1532.85,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000019/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 15 - Mod. Formatada: 15 - Contratação de empresa especializada para fornecimento e presta"
+      },
+      {
         "data": "2026-03-17",
         "fornecedor": "HEMERSON OLIVEIRA GRISON",
         "cnpj": "966.XXX.XXX-72",
@@ -2115,6 +2140,14 @@
         "categoria": "Diárias — Civil",
         "valor": 1500.0,
         "descricao": "Empenho destinado à concessão de 3 (três) diárias ao servidor Deiwton Fernando Santos Silva, ocupante do cargo de motorista, para custear despesas com deslocamento, alimentação e estadia na cidade de"
+      },
+      {
+        "data": "2026-07-02",
+        "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
+        "cnpj": "21.456.790/0001-94",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1468.9,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000019/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 15 - Mod. Formatada: 15 - Contratação de empresa especializada para fornecimento e presta"
       },
       {
         "data": "2026-06-23",
@@ -2203,6 +2236,14 @@
         "categoria": "Material de Consumo",
         "valor": 997.76,
         "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000027/25 - Ano Mod.: 2025 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 2 - Mod. Formatada: 2 - AQUISIÇÃO DE MATERIAIS DE CONSUMO"
+      },
+      {
+        "data": "2026-07-08",
+        "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
+        "cnpj": "21.456.790/0001-94",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 935.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000021/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 17 - Mod. Formatada: 17 - Prestação de serviços de revisão corretiva do sistema de freios"
       },
       {
         "data": "2026-03-17",
@@ -2509,6 +2550,14 @@
         "descricao": "Empenho destinado à concessão de 1 (uma) diária ao servidor Deiwton Fernando Santos Silva, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 23 de julho de 2026"
       },
       {
+        "data": "2026-07-31",
+        "fornecedor": "DEIWTON FERNANDO SANTOS SILVA",
+        "cnpj": "025.XXX.XXX-62",
+        "categoria": "Diárias — Civil",
+        "valor": 500.0,
+        "descricao": "Empenho destinado à concessão de 1 (uma) diária ao servidor Deiwton Fernando Santos Silva, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 31 de julho de 2026"
+      },
+      {
         "data": "2026-07-01",
         "fornecedor": "AUTO PECAS E SERVICOS LIMA LTDA",
         "cnpj": "47.620.540/0001-31",
@@ -2669,52 +2718,12 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000019/25 - Ano Mod.: 2025 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 5 - Mod. Formatada: 5 - Contratação de Escritório de Advocacia especializada para"
       },
       {
-        "data": "2026-07-02",
-        "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
-        "cnpj": "21.456.790/0001-94",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000019/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 15 - Mod. Formatada: 15 - Contratação de empresa especializada para fornecimento e presta"
-      },
-      {
-        "data": "2026-07-02",
-        "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
-        "cnpj": "21.456.790/0001-94",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000019/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 15 - Mod. Formatada: 15 - Contratação de empresa especializada para fornecimento e presta"
-      },
-      {
         "data": "2026-07-06",
         "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
         "cnpj": "21.456.790/0001-94",
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000020/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 16 - Mod. Formatada: 16 - 1.1.\tContratação de empresa especializada para fornecimento e p"
-      },
-      {
-        "data": "2026-07-06",
-        "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
-        "cnpj": "21.456.790/0001-94",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000020/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 16 - Mod. Formatada: 16 - 1.1.\tContratação de empresa especializada para fornecimento e p"
-      },
-      {
-        "data": "2026-07-08",
-        "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
-        "cnpj": "21.456.790/0001-94",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000021/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 17 - Mod. Formatada: 17 - Prestação de serviços de revisão corretiva do sistema de freios"
-      },
-      {
-        "data": "2026-07-08",
-        "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
-        "cnpj": "21.456.790/0001-94",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000021/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 17 - Mod. Formatada: 17 - Prestação de serviços de revisão corretiva do sistema de freios"
       },
       {
         "data": "2026-07-10",
@@ -2755,6 +2764,14 @@
         "categoria": "Despesas de Exercícios Anteriores",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000023/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 19 - Mod. Formatada: 19 - Aquisição de papel sulfite A4 (210 mm x 297 mm), gramatura 75 g"
+      },
+      {
+        "data": "2026-07-31",
+        "fornecedor": "GADU SEGURANÇA LTDA",
+        "cnpj": "08.953.397/0001-48",
+        "categoria": "Locação de Mão de Obra",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000025/25 - Ano Mod.: 2025 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação empresa especializada para prestação de serv"
       }
     ]
   }
