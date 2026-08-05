@@ -1,7 +1,7 @@
 {
   "cidade": "Corumbá",
-  "ultimaAtualizacao": "2026-08-04T13:30:45",
-  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-08-04T13:30:45",
+  "ultimaAtualizacao": "2026-08-05T13:28:37",
+  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-08-05T13:28:37",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camaracorumba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -101,6 +101,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-08-04",
+          "valor": 2000.0,
+          "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDAS/PARTICIPAR DE REUNIÕES  NA GOVERNADORIA/CASA CIVIL DO ESTADO DE MATO GROSSO DO SUL E ASSEMBLÉIA LEGISLATIVA, CONFORME LEIS 2384/2014 E 2819/2022."
+        },
+        {
           "data": "2026-06-08",
           "valor": 3000.0,
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A PONTA PORÃ-MS, PARA PARTICIPAR DO SEMINÁRIO DE CAPACITAÇÃO LEGISLATIVA, CONFORME LEIS 2384/2014 E 2819/2022."
@@ -131,8 +136,8 @@
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO CICLO DE PALESTRAS PARA O LEGISLATIVO MUNICIPAL E CUMPRIR AGENDAS NA ASSEMBLEIA LEGISLATIVA (Ale/MS), CONFORME LEIS 2384/2014 E 2819/2022."
         }
       ],
-      "totalDiarias2026": 17000.0,
-      "numDiarias2026": 6
+      "totalDiarias2026": 19000.0,
+      "numDiarias2026": 7
     },
     {
       "nome": "HESLEY SANT'ANA SALUSTIANO",
@@ -441,15 +446,15 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 18484355.09,
-    "totalNotas": 181,
+    "totalGeral": 18798912.1,
+    "totalNotas": 182,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 12376203.59,
-      "Obrigações Patronais": 1951985.48,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1612737.16,
+      "Obrigações Patronais": 2264285.26,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1612994.39,
       "Serviços de Consultoria": 952661.15,
       "Indenizações e Restituições": 894364.57,
-      "Diárias — Civil": 262400.0,
+      "Diárias — Civil": 264400.0,
       "Elemento 03": 210543.12,
       "Despesas de Exercícios Anteriores": 151471.38,
       "Elemento 96": 56095.48,
@@ -502,7 +507,7 @@
         "fornecedor": "DARF (DOCUMENTO DE ARRECADAÇÃO DE RECEITAS FEDERAI",
         "cnpj": "00.394.460/0058-87",
         "categoria": "Obrigações Patronais",
-        "valor": 1173555.08,
+        "valor": 1363586.19,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE CONTRIBUIÇÃO PREVIDENCIÁRIA PATRONAL - INSS 2026 (ESTIMADO)."
       },
       {
@@ -518,7 +523,7 @@
         "fornecedor": "FUNPREV",
         "cnpj": "04.727.444/0001-84",
         "categoria": "Obrigações Patronais",
-        "valor": 660429.54,
+        "valor": 782698.21,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A CONTRIBUIÇÃO PREVIDENCIÁRIA PATRONAL MUNICIPAL ESTIMADA 2026, COM A CONTRIBUIÇÃO COMPLEMENTAR 085/5 E ABONO DE PERMANENCIA DE EFETIVOS: ARMANDO M. CANDIA, JULIO C. BRA"
       },
       {
@@ -1674,6 +1679,14 @@
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDAS/PARTICIPAR DE REUNIÕES  NA GOVERNADORIA DO ESTADO DE MATO GROSSO DO SUL E ASSEMBLÉIA LEGISLATIVA, CONFORME"
       },
       {
+        "data": "2026-08-04",
+        "fornecedor": "GENILSON JOSE DA SILVA",
+        "cnpj": "495.XXX.XXX-04",
+        "categoria": "Diárias — Civil",
+        "valor": 2000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDAS/PARTICIPAR DE REUNIÕES  NA GOVERNADORIA/CASA CIVIL DO ESTADO DE MATO GROSSO DO SUL E ASSEMBLÉIA LEGISLATIV"
+      },
+      {
         "data": "2026-01-05",
         "fornecedor": "KLEYTON GONÇALVES CRUZ",
         "cnpj": "938.XXX.XXX-34",
@@ -1694,7 +1707,7 @@
         "fornecedor": "CAIXA ECONÔMICA FEDERAL",
         "cnpj": "00.360.305/0018-52",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 1537.04,
+        "valor": 1794.27,
         "descricao": "VALOR QUE SE EMEPNHA, REFERENTE A  prestação de serviços bancários/taxas bancárias para este Legislativo (ESTIMATIVA 2026)."
       },
       {

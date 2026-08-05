@@ -1,7 +1,7 @@
 {
   "cidade": "Sonora",
-  "ultimaAtualizacao": "2026-08-04T13:30:45",
-  "fonte": "Portal Transparência Fiorilli (pmsonora.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-04T13:30:45",
+  "ultimaAtualizacao": "2026-08-05T13:28:37",
+  "fonte": "Portal Transparência Fiorilli (pmsonora.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-05T13:28:37",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasonora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -515,11 +515,11 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 4090112.49,
-    "totalNotas": 280,
+    "totalGeral": 4384788.26,
+    "totalNotas": 285,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 1499897.72,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 724348.2,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 1794500.49,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 724421.2,
       "Diárias — Civil": 400575.0,
       "Serviços de Tecnologia da Informação": 352571.71,
       "Serviços de Consultoria": 328871.62,
@@ -538,7 +538,7 @@
         "fornecedor": "FOLHA DE PAGAMENTO DOS SERVIDORES",
         "cnpj": "24.659.161/0001-50",
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 770948.1,
+        "valor": 914975.44,
         "descricao": "Empenho destinado à cobertura das despesas com a folha de pagamento da remuneração dos servidores ocupantes de cargos em comissão da Câmara Municipal, referente ao exercício financeiro de 2026, confor"
       },
       {
@@ -546,8 +546,16 @@
         "fornecedor": "FOLHA DE PAGAMENTO DOS VEREADORES",
         "cnpj": "24.659.161/0001-50",
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 525400.0,
+        "valor": 639800.0,
         "descricao": "Empenho destinado à cobertura das despesas com a folha de pagamento dos subsídios dos Vereadores da Câmara Municipal, referente ao exercício financeiro de 2026, nos termos da legislação municipal vige"
+      },
+      {
+        "data": "2026-01-05",
+        "fornecedor": "FOLHA DE PAGAMENTO DOS SERVIDORES",
+        "cnpj": "24.659.161/0001-50",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 239725.05,
+        "descricao": "Empenho destinado à cobertura das despesas com a folha de pagamento dos vencimentos dos servidores efetivos da Câmara Municipal, referente ao exercício financeiro de 2026, conforme legislação vigente."
       },
       {
         "data": "2026-01-05",
@@ -556,14 +564,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 212820.44,
         "descricao": "Empenho destinado à cobertura das despesas com as contribuições previdenciárias patronais devidas ao INSS, incidentes sobre a folha de pagamento da Câmara Municipal, referente ao exercício financeiro"
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "FOLHA DE PAGAMENTO DOS SERVIDORES",
-        "cnpj": "24.659.161/0001-50",
-        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 203549.62,
-        "descricao": "Empenho destinado à cobertura das despesas com a folha de pagamento dos vencimentos dos servidores efetivos da Câmara Municipal, referente ao exercício financeiro de 2026, conforme legislação vigente."
       },
       {
         "data": "2026-01-21",
@@ -2502,6 +2502,14 @@
         "descricao": "Empenho referente ao reembolso de despesa custeada pela servidora Ana Marli Moreira da Luz, matrícula nº 200, relativa ao pagamento da taxa de inscrição na XXVII Marcha a Brasília em Defesa dos Municí"
       },
       {
+        "data": "2026-01-21",
+        "fornecedor": "CAIXA ECONOMICA FEDERAL",
+        "cnpj": "00.360.305/0001-04",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 525.0,
+        "descricao": "Empenho destinado à cobertura das despesas com tarifas bancárias decorrentes da prestação de serviços bancários pela Caixa Econômica Federal, relacionados à manutenção e movimentação das contas da Câm"
+      },
+      {
         "data": "2026-03-26",
         "fornecedor": "SIDNEI TELES DE AMORIM",
         "cnpj": "772.XXX.XXX-34",
@@ -2572,14 +2580,6 @@
         "categoria": "Material de Consumo",
         "valor": 468.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000022/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 18 - Mod. Formatada: 18 - Contratação de empresa especializada para fornecimento de peças"
-      },
-      {
-        "data": "2026-01-21",
-        "fornecedor": "CAIXA ECONOMICA FEDERAL",
-        "cnpj": "00.360.305/0001-04",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 452.0,
-        "descricao": "Empenho destinado à cobertura das despesas com tarifas bancárias decorrentes da prestação de serviços bancários pela Caixa Econômica Federal, relacionados à manutenção e movimentação das contas da Câm"
       },
       {
         "data": "2026-01-21",
@@ -2772,6 +2772,46 @@
         "categoria": "Locação de Mão de Obra",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000025/25 - Ano Mod.: 2025 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação empresa especializada para prestação de serv"
+      },
+      {
+        "data": "2026-07-31",
+        "fornecedor": "MAP COM. DE PRODUTOS ALIMENTÍCIOS LTDA",
+        "cnpj": "18.407.294/0001-36",
+        "categoria": "Material de Consumo",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000030/25 - Ano Mod.: 2025 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 4 - Mod. Formatada: 4 - aquisição futura de materiais de e"
+      },
+      {
+        "data": "2026-08-04",
+        "fornecedor": "FLAVIA PORTO DA MOTA VASCONCELOS",
+        "cnpj": "105.XXX.XXX-75",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "Empenho destinado à concessão de 4 (quatro) diárias à Vereadora Flavia Porto da Mota Vasconcelos, para custear despesas com deslocamento, alimentação e estadia na cidade de Brasília/DF, no período de"
+      },
+      {
+        "data": "2026-08-04",
+        "fornecedor": "FRANCISCO DEUZIMAR LIMA",
+        "cnpj": "481.XXX.XXX-30",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "Empenho destinado à concessão de 4 (quatro) diárias ao Vereador Francisco Deuzimar Lima, para custear despesas com deslocamento, alimentação e estadia na cidade de Brasília/DF, no período de 04 a 07 d"
+      },
+      {
+        "data": "2026-08-04",
+        "fornecedor": "JOAQUIM CASSIANO TEIXEIRA",
+        "cnpj": "361.XXX.XXX-20",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "Empenho destinado à concessão de 4 (quatro) diárias ao Vereador Joaquim Cassiano Teixeira, para custear despesas com deslocamento, alimentação e estadia na cidade de Brasília/DF, no período de 04 a 07"
+      },
+      {
+        "data": "2026-08-04",
+        "fornecedor": "WELDISON MANOEL RAMOS",
+        "cnpj": "912.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "Empenho destinado à concessão de 4 (quatro) diárias ao Vereador Weldison Manoel Ramos, para custear despesas com deslocamento, alimentação e estadia na cidade de Brasília/DF, no período de 04 a 07 de"
       }
     ]
   }
