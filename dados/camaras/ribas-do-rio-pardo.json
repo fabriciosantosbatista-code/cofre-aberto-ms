@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-08-05T13:28:37",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-08-05T13:28:37",
+  "ultimaAtualizacao": "2026-08-06T13:27:29",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-08-06T13:27:29",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -249,18 +249,18 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 6611470.53,
+    "totalGeral": 6673907.57,
     "totalNotas": 271,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 3625687.09,
-      "Equipamentos e Material Permanente": 864628.8,
+      "Equipamentos e Material Permanente": 894676.8,
       "Obrigações Patronais": 571810.28,
-      "Serviços de Consultoria": 479982.95,
+      "Serviços de Consultoria": 489482.95,
       "Auxílio-Alimentação": 310232.42,
       "Serviços de Tecnologia da Informação": 287692.33,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 193549.03,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 203726.53,
+      "Outros Serviços de Terceiros — Pessoa Física": 101692.4,
       "Outros Benefícios Assistenciais do Servidor": 93575.29,
-      "Outros Serviços de Terceiros — Pessoa Física": 88980.86,
       "Material de Consumo": 38117.42,
       "Diárias — Civil": 35953.51,
       "Indenizações e Restituições": 21260.55
@@ -271,7 +271,7 @@
         "fornecedor": "MORENA COMERCIO & SERVICO LTDA",
         "cnpj": "08.256.030/0001-75",
         "categoria": "Equipamentos e Material Permanente",
-        "valor": 691952.0,
+        "valor": 722000.0,
         "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE MÓVEIS PLANEJADOS SOB MEDIDA, COMPREENDENDO FABRICAÇÃO, TRANSPORTE, MONTAGEM E INSTALAÇÃO, CONFORME PROCESSO ADMINISTRAT"
       },
       {
@@ -483,6 +483,14 @@
         "descricao": "EMPENHO REFERENTE AO TERMO ADITIVO Nº 004/2025, PREGÃO PRESENCIAL Nº 005/2021, CONTRATO ADMINISTRATIVO Nº 10/2021, CUJO OBJETO É A PRESTAÇÃO DE SERVIÇOS DE CONEXÃO COM A INTERNET, POR MEIO DE IP DEDIC"
       },
       {
+        "data": "2026-04-10",
+        "fornecedor": "ANTONIO FERNANDO DA SILVA",
+        "cnpj": "087.XXX.XXX-71",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Física",
+        "valor": 63557.74,
+        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO ADMINISTRATIVO Nº 003/2024, PROCESSO ADMINISTRATIVO Nº 8/2024, INEXIGIBILIDADE 02/2024,  CUJO OBJETO É A LOCAÇÃO DE IMÓVEL QUE SERVIRÁ PARA ABRIGAR TE"
+      },
+      {
         "data": "2026-06-17",
         "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES COMISSIONADOS",
         "cnpj": "29.979.036/0001-40",
@@ -513,14 +521,6 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 52818.24,
         "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO Nº 11/2023, PREGÃO PRESENCIAL Nº 02/2023 E PROCESSO ADMINISTRATIVO Nº 09/2023, LOCAÇÃO DE IMPRESSORAS MULTIFUNCIONAIS A LASER, JATO DE TINTA E SCANNER"
-      },
-      {
-        "data": "2026-04-10",
-        "fornecedor": "ANTONIO FERNANDO DA SILVA",
-        "cnpj": "087.XXX.XXX-71",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Física",
-        "valor": 50846.2,
-        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO ADMINISTRATIVO Nº 003/2024, PROCESSO ADMINISTRATIVO Nº 8/2024, INEXIGIBILIDADE 02/2024,  CUJO OBJETO É A LOCAÇÃO DE IMÓVEL QUE SERVIRÁ PARA ABRIGAR TE"
       },
       {
         "data": "2026-02-03",
@@ -564,6 +564,14 @@
       },
       {
         "data": "2026-01-02",
+        "fornecedor": "ENERGISA - DISTRIBUIDORA DE ENERGIA S/A",
+        "cnpj": "15.413.826/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 41618.68,
+        "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ENERGIA ELÉTRICA PARA O EXERCÍCIO DE 2026."
+      },
+      {
+        "data": "2026-01-02",
         "fornecedor": "J. REMONATTO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
         "cnpj": "26.616.499/0001-50",
         "categoria": "Serviços de Consultoria",
@@ -577,14 +585,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Física",
         "valor": 38134.66,
         "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO 003/2024, PROCESSO ADMINISTRATIVO 08/2024, INEXIBILIDADE DE LICITAÇÃO 02/2024, CUJO OBJETO É A LOCAÇÃO TEMPORÁRIA DE IMÓVEL PARA ATENDER AS NECESSIDAD"
-      },
-      {
-        "data": "2026-01-02",
-        "fornecedor": "ENERGISA - DISTRIBUIDORA DE ENERGIA S/A",
-        "cnpj": "15.413.826/0001-50",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 37730.26,
-        "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ENERGIA ELÉTRICA PARA O EXERCÍCIO DE 2026."
       },
       {
         "data": "2026-06-17",
@@ -819,6 +819,14 @@
         "descricao": "EMPENHO REFERENTE AO FORNECIMENTO DE LICENÇA TEMPORÁRIA DE USO DE SOFTWARE PARA GESTÃO LEGISLATIVA, CONFORME TERMO DE REFERÊNCIA, PERÍODO CONTRATUAL DE 28/08/2025 A 27/08/2026, PROCESSO ADMINISTRATIVO"
       },
       {
+        "data": "2026-01-02",
+        "fornecedor": "SANESUL S/A",
+        "cnpj": "03.982.931/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 22485.26,
+        "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ÁGUA E ESGOTO PARA O EXERCÍCIO DE 2026."
+      },
+      {
         "data": "2026-03-26",
         "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES COMISSIONADOS",
         "cnpj": "29.979.036/0001-40",
@@ -827,12 +835,12 @@
         "descricao": "EMPENHO REFERENTE À RESCISÃO DE SERVIDORES COMISSIONADOS - MARÇO/2026."
       },
       {
-        "data": "2026-01-02",
-        "fornecedor": "SANESUL S/A",
-        "cnpj": "03.982.931/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 22083.56,
-        "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ÁGUA E ESGOTO PARA O EXERCÍCIO DE 2026."
+        "data": "2026-06-02",
+        "fornecedor": "ENGELUGA ENGENHARIA LTDA",
+        "cnpj": "22.034.572/0001-24",
+        "categoria": "Serviços de Consultoria",
+        "valor": 20000.0,
+        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO DE PRORROGAÇÃO DE PRAZO, AO CONTRATO ADMINISTRATIVO Nº 004/2025, PARA A PRESTAÇÃO DE SERVIÇOS DE CONSULTORIA E ASSESSORIA EM ENGENHARIA, EM CONFORMIDADE COM O ART"
       },
       {
         "data": "2026-03-31",
@@ -945,14 +953,6 @@
         "categoria": "Indenizações e Restituições",
         "valor": 10522.7,
         "descricao": "VALOR QUE SE EMPENHA PARA FINS DE REEMBOLSAR AS DESPESAS INERENTES ÀS ATIVIDADES PARLAMENTARES, PERÍODO DE JANEIRO A DEZEMBRO DE 2026, CONFORME PREVISTO NA LEI MUNICIPAL Nº 1.309, DE 02 DE MARÇO DE 20"
-      },
-      {
-        "data": "2026-06-02",
-        "fornecedor": "ENGELUGA ENGENHARIA LTDA",
-        "cnpj": "22.034.572/0001-24",
-        "categoria": "Serviços de Consultoria",
-        "valor": 10500.0,
-        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO DE PRORROGAÇÃO DE PRAZO, AO CONTRATO ADMINISTRATIVO Nº 004/2025, PARA A PRESTAÇÃO DE SERVIÇOS DE CONSULTORIA E ASSESSORIA EM ENGENHARIA, EM CONFORMIDADE COM O ART"
       },
       {
         "data": "2026-04-30",
@@ -1153,6 +1153,14 @@
         "categoria": "Outros Benefícios Assistenciais do Servidor",
         "valor": 5164.2,
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVDORES EFETIVOS - ABRIL/2026."
+      },
+      {
+        "data": "2026-08-03",
+        "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
+        "cnpj": "04.311.093/0001-26",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 5160.48,
+        "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES EFETIVOS - JULHO/2026."
       },
       {
         "data": "2026-06-30",
@@ -1481,6 +1489,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 726.9,
         "descricao": "EMPENHO REFERENTE A CASSEMS PATRONAL DOS SERVIDORES COMISSIONADOS - JUNHO/2026."
+      },
+      {
+        "data": "2026-08-03",
+        "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
+        "cnpj": "04.311.093/0001-26",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 726.9,
+        "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES COMISSIONADOS - JULHO/2026."
       },
       {
         "data": "2026-04-08",
@@ -2393,22 +2409,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - JULHO/2026."
-      },
-      {
-        "data": "2026-08-03",
-        "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
-        "cnpj": "04.311.093/0001-26",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES COMISSIONADOS - JULHO/2026."
-      },
-      {
-        "data": "2026-08-03",
-        "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
-        "cnpj": "04.311.093/0001-26",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES EFETIVOS - JULHO/2026."
       },
       {
         "data": "2026-08-04",

@@ -1,7 +1,7 @@
 {
   "cidade": "Paranaíba",
-  "ultimaAtualizacao": "2026-08-05T13:28:37",
-  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-08-05T13:28:37",
+  "ultimaAtualizacao": "2026-08-06T13:27:29",
+  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-08-06T13:27:29",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmparanaiba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -703,18 +703,18 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 6949512.79,
-    "totalNotas": 253,
+    "totalGeral": 7087962.66,
+    "totalNotas": 254,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 4456838.31,
-      "Obrigações Patronais": 712189.7,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 628647.72,
+      "Obrigações Patronais": 756027.42,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 669896.52,
       "Diárias — Civil": 579545.6,
-      "Serviços de Consultoria": 402000.0,
-      "Despesas de Exercícios Anteriores": 95801.1,
-      "Material de Consumo": 35880.2,
+      "Serviços de Consultoria": 442000.0,
+      "Despesas de Exercícios Anteriores": 97877.35,
+      "Material de Consumo": 38570.2,
+      "Serviços de Tecnologia da Informação": 21130.1,
       "Equipamentos e Material Permanente": 12854.3,
-      "Serviços de Tecnologia da Informação": 12533.0,
       "Contribuições": 9596.86,
       "Outros Serviços de Terceiros — Pessoa Física": 3350.0,
       "Obrigações Tributárias e Contributivas": 276.0
@@ -753,20 +753,20 @@
         "descricao": "EMPENHO  ESTIMATIVO DE CONTRIBUIÇÃO PREVIDENCIARIA PATRONAL DOS SERVIDORES COMISSIONADOS, CONTRATADOS E ELETIVOS (VEREADORES). PARA O RGPS EXERCICIO DE 2026."
       },
       {
+        "data": "2026-01-02",
+        "fornecedor": "INSTITUTO DE PREV. SERV. DO MUNIC. PBA-PREVIM",
+        "cnpj": "04.925.862/0001-86",
+        "categoria": "Obrigações Patronais",
+        "valor": 304010.56,
+        "descricao": "EMPENHO ESTIMATIVO DE CONTRIBUIÇÃO PREVIDENCIÁRIA PATRONAL DOS SERVIDORES EFETIVOS PARA O RPPS EXERCICIO DE 2026."
+      },
+      {
         "data": "2026-01-15",
         "fornecedor": "NOVO ENGENHO COMUNICAÇÃO INTEGRADA LTDA.",
         "cnpj": "06.301.987/0001-60",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 264507.44,
         "descricao": "REFERE-SE À EMPENHO PARA  CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM SERVIÇOS DE PUBLICIDADE PRESTADOS POR INTERMÉDIO DE AGENCIA DE PROPAGANDA - 5º TERMO ADITIVO.\r\nLICITAÇÃO: 000004/21 - ANO MOD.: 2021 -"
-      },
-      {
-        "data": "2026-01-02",
-        "fornecedor": "INSTITUTO DE PREV. SERV. DO MUNIC. PBA-PREVIM",
-        "cnpj": "04.925.862/0001-86",
-        "categoria": "Obrigações Patronais",
-        "valor": 260172.84,
-        "descricao": "EMPENHO ESTIMATIVO DE CONTRIBUIÇÃO PREVIDENCIÁRIA PATRONAL DOS SERVIDORES EFETIVOS PARA O RPPS EXERCICIO DE 2026."
       },
       {
         "data": "2026-02-09",
@@ -789,8 +789,16 @@
         "fornecedor": "BERTOTTO & RUZA ADVOGADOS ASSOCIADOS",
         "cnpj": "39.540.502/0001-40",
         "categoria": "Serviços de Consultoria",
-        "valor": 87000.0,
+        "valor": 101500.0,
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DA EMPRESA ESPECIALIZADA EM PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS EM CONSULTORIA E ASSESSORIA EM CONTROLE INTERNO DO LEGISLATIVO MUNICIPAL, ABRANGENDO O AS"
+      },
+      {
+        "data": "2026-01-19",
+        "fornecedor": "BASTOS, CLARO & DUAILIBI ADVOGADOS ASSOCIADOS",
+        "cnpj": "08.761.038/0001-99",
+        "categoria": "Serviços de Consultoria",
+        "valor": 94500.0,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA PARA PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ASSESSORIA JURÍDICA PARA ATENDER AS DEMANDAS NA GESTÃO PÚBLICA DA CÂMARA MUNICIPAL DE PARANAÍBA-MS"
       },
       {
         "data": "2026-06-17",
@@ -802,11 +810,11 @@
       },
       {
         "data": "2026-01-19",
-        "fornecedor": "BASTOS, CLARO & DUAILIBI ADVOGADOS ASSOCIADOS",
-        "cnpj": "08.761.038/0001-99",
+        "fornecedor": "AGAESSE ASSESSORIA E PLANEJAMENTO LTDA.",
+        "cnpj": "04.117.097/0001-78",
         "categoria": "Serviços de Consultoria",
-        "valor": 81000.0,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA PARA PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ASSESSORIA JURÍDICA PARA ATENDER AS DEMANDAS NA GESTÃO PÚBLICA DA CÂMARA MUNICIPAL DE PARANAÍBA-MS"
+        "valor": 84000.0,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DA EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ASSESSORIA E CONSULTORIA CONTÁBIL PARA ORIENTAR E AUXILIAR OS VEREADORES E TÉCNICO"
       },
       {
         "data": "2026-06-25",
@@ -823,14 +831,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 75000.0,
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM PRESTAÇÕES DE CONSULTORIA PARA ADEQUAÇÃO E IMPLEMENTAÇÃO DE BOAS PRÁTICAS E GOVERNANÇA EM CONFORMIDADE COM A LGPD, INCLUINDO MAPEAMENTO"
-      },
-      {
-        "data": "2026-01-19",
-        "fornecedor": "AGAESSE ASSESSORIA E PLANEJAMENTO LTDA.",
-        "cnpj": "04.117.097/0001-78",
-        "categoria": "Serviços de Consultoria",
-        "valor": 72000.0,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DA EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ASSESSORIA E CONSULTORIA CONTÁBIL PARA ORIENTAR E AUXILIAR OS VEREADORES E TÉCNICO"
       },
       {
         "data": "2026-06-17",
@@ -865,6 +865,14 @@
         "descricao": "EMPENHO ESTIMATIVO DA FOLHA DE PAGAMENTO PARA SERVIDORA DO MUNÍCIPIO DE PARANAÍBA-MS, CEDIDO COM ONUS PARA LEGISLATIVO MUNICIPAL."
       },
       {
+        "data": "2026-03-12",
+        "fornecedor": "IMPACTO COMERCIO E SERVICOS URBANOS E RURAIS LTDA",
+        "cnpj": "10.315.247/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 32050.0,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA EXECUÇÃO DE SERVIÇOS DE LIMPEZA PESADA, CONSERVAÇÃO E HIGIENIZAÇÃO, COM FORNECIMENTO DE MÃO DE OBRA, MATERIAIS, INSUMOS E EQUIPAMENTO"
+      },
+      {
         "data": "2026-01-02",
         "fornecedor": "CAMARA MUNICIPAL DE PARANAIBA",
         "cnpj": "03.629.284/0001-78",
@@ -897,20 +905,20 @@
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DA EMPRESA UNIÃO DAS CÂMARAS DE VEREADORES DO ESTADO DE MATO GROSSO DO SUL (UCV/MS), PARA CAPACITAÇÃO E ATUALIZAÇÃO TÉCNICA E INSTITUCIONAL DE VEREADORES E SERVIDO"
       },
       {
+        "data": "2026-02-02",
+        "fornecedor": "WEBLINE SOFTWARE LTDA - EPP.",
+        "cnpj": "07.673.796/0001-92",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 15039.6,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NO FORNECIMENTO, MANUTENÇÃO E LICENCIAMENTO DE USO DE SOFTWARE LEGISLATIVO EM PLATAFORMA WEB, ABRANGENDO SISTEMA DE GESTÃO DE TODO O TRÂMI"
+      },
+      {
         "data": "2026-03-09",
         "fornecedor": "INOVA SERVICOS E MONITORAMENTO LTDA",
         "cnpj": "51.132.742/0001-01",
         "categoria": "Equipamentos e Material Permanente",
         "valor": 12854.3,
         "descricao": "REFERE-SE À EMPENHO CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE SEGURANÇA ELETRÔNICA, COMPREENDENDO O FORNECIMENTO, INSTALAÇÃO, MANUTENÇÃO PREVENTIVA E CORRETIVA, BEM"
-      },
-      {
-        "data": "2026-02-02",
-        "fornecedor": "WEBLINE SOFTWARE LTDA - EPP.",
-        "cnpj": "07.673.796/0001-92",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 12533.0,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NO FORNECIMENTO, MANUTENÇÃO E LICENCIAMENTO DE USO DE SOFTWARE LEGISLATIVO EM PLATAFORMA WEB, ABRANGENDO SISTEMA DE GESTÃO DE TODO O TRÂMI"
       },
       {
         "data": "2026-01-19",
@@ -927,6 +935,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 10833.34,
         "descricao": "EMPENHO PARA CONTRATAÇÃO DE EMPRESA PARA PRESTAÇÃO DE SERVIÇOS TÉCNICOS DE DIAGNÓSTICO, PLANEJAMENTO E DESENVOLVIMENTO DO PLANO ANUAL DE COMUNICAÇÃO INSTITUCIONAL, INCLUINDO A ELABORAÇÃO DE METODOLOGI"
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "REZENDE E DINIZ NETO LTDA - ME",
+        "cnpj": "02.001.655/0001-00",
+        "categoria": "Material de Consumo",
+        "valor": 10326.0,
+        "descricao": "REFERE-SE–SE À EMEPNHO PARA CONTRATAÇÃO DE EMPRESA PARA FORNECIMENTO DE MATERIAIS GRÁFICOS DIVERSOS, COM A FINALIDADE DE ATENDER ÀS DEMANDAS DA CÂMARA MUNICIPAL DE PARANAÍBA-MS.\r\nPEDIDO GERADO A PARTI"
       },
       {
         "data": "2026-01-02",
@@ -975,14 +991,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 7950.0,
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE 05 (CINCO) INSCRIÇÕES PARA PARTICIPAÇÃO DE VEREADORES DA CÂMARA MUNICIPAL DE PARANAÍBA/MS, NO SEMINÁRIO DE VEREADORES E AGENTES PÚBLICOS, EVENTO DESTINADO À CAP"
-      },
-      {
-        "data": "2026-01-23",
-        "fornecedor": "REZENDE E DINIZ NETO LTDA - ME",
-        "cnpj": "02.001.655/0001-00",
-        "categoria": "Material de Consumo",
-        "valor": 7636.0,
-        "descricao": "REFERE-SE–SE À EMEPNHO PARA CONTRATAÇÃO DE EMPRESA PARA FORNECIMENTO DE MATERIAIS GRÁFICOS DIVERSOS, COM A FINALIDADE DE ATENDER ÀS DEMANDAS DA CÂMARA MUNICIPAL DE PARANAÍBA-MS.\r\nPEDIDO GERADO A PARTI"
       },
       {
         "data": "2026-01-19",
@@ -1297,12 +1305,28 @@
         "descricao": "REFERE-SE À EMPENHO PARA AQUISIÇÃO DE EQUIPAMENTOS DE INFORMÁTICA, COMPREENDENDO NOTEBOOKS, MONITORES, TECLADOS, MOUSES E MOUSE PADS, DESTINADOS EFICIÊNCIA E REGULARIDADE DOS SERVIÇOS ADMINISTRATIVOS"
       },
       {
+        "data": "2026-07-10",
+        "fornecedor": "W O COMERCIO E SOLUCOES LTDA",
+        "cnpj": "39.922.130/0001-17",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 6090.5,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM PRESTAÇÃO DE SERVIÇOS DE MANUTENÇÃO DE IMPRESSORAS PARA ATENDER A DEMANDA DA CÂMARA MUNICIPAL DE PARANAÍBA/MS.\r\nPEDIDO GERADO A PARTIR"
+      },
+      {
         "data": "2026-04-27",
         "fornecedor": "EDMAR PIRES DA SILVA JUNIOR",
         "cnpj": "003.XXX.XXX-60",
         "categoria": "Diárias — Civil",
         "valor": 5554.02,
         "descricao": "REFERE-SE À CONCESSÃO DE 3,0% DE DIÁRIA PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA - DF, PARA COMPARECER NA CÂMARA DE DEPUTADOS, SENADO FEDERAL E VISITAS INSTITUCIONAIS, COM O INT"
+      },
+      {
+        "data": "2026-01-19",
+        "fornecedor": "ALGAR TELECOM S/A",
+        "cnpj": "71.208.516/0001-74",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 5219.4,
+        "descricao": "REFERE-SE À EMPENHO PARA PRESTAÇÃO DE SERVIÇO TELEFÔNICO FIXO COMUTADO (STFC), E 23 RAMAIS,  COM FORNECIMENTO DE LINHAS, CHAMADAS LOCAIS E DE LONGA DISTÂNCIA, IMPLANTAÇÃO, MANUTENÇÃO E SUPORTE TÉCNICO"
       },
       {
         "data": "2026-06-08",
@@ -1409,12 +1433,20 @@
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE 02 (DUAS) INSCRIÇÕES PARA PARTICIPAÇÃO DE SERVIDORES DA CÂMARA MUNICIPAL DE PARANAÍBA/MS NO 2º CONGRESSO CONTROLAR MS 2026, EVENTO DE CAPACITAÇÃO VOLTADO AO APE"
       },
       {
-        "data": "2026-01-19",
-        "fornecedor": "ALGAR TELECOM S/A",
-        "cnpj": "71.208.516/0001-74",
+        "data": "2026-07-22",
+        "fornecedor": "EFFICIENCE EVENTOS CORPORATIVOS LTDA",
+        "cnpj": "57.725.821/0001-02",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 4349.5,
-        "descricao": "REFERE-SE À EMPENHO PARA PRESTAÇÃO DE SERVIÇO TELEFÔNICO FIXO COMUTADO (STFC), E 23 RAMAIS,  COM FORNECIMENTO DE LINHAS, CHAMADAS LOCAIS E DE LONGA DISTÂNCIA, IMPLANTAÇÃO, MANUTENÇÃO E SUPORTE TÉCNICO"
+        "valor": 4750.0,
+        "descricao": "REFERE-SE À EMPENHO CONTRATAÇÃO DA EMPRESA EFFICIENCE EVENTOS CORPORATIVOS LTDA PARA PRESTAÇÃO DE SERVIÇOS DE CAPACITAÇÃO PROFISSIONAL, CONSISTENTE NA PARTICIPAÇÃO DE 02 (DOIS) REPRESENTANTES DA CÂMAR"
+      },
+      {
+        "data": "2026-06-08",
+        "fornecedor": "R3GED GESTÃO DE DOCUMENTOS LTDA EPP.",
+        "cnpj": "21.268.622/0001-75",
+        "categoria": "Despesas de Exercícios Anteriores",
+        "valor": 4152.5,
+        "descricao": "REFERE-SE À PARA CONTRATAÇÃO DA EMPRESA R3GED GESTAO DE DOCUMENTOS LTDA (21.268.622/0001-75) ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇO DE ALINHAMENTO, AJUSTE E OPERAÇÃO DO SISTEMA DE CONTROLE INTERNO DA C"
       },
       {
         "data": "2026-01-19",
@@ -1737,6 +1769,14 @@
         "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE - MS, COM A FINALIDADE DE BUSCAR PROJETOS E PARCERIAS PARA O DESENVOLVIMENTO DA REGIÃO DA C"
       },
       {
+        "data": "2026-07-16",
+        "fornecedor": "ADRIANO PINTO DA SILVA",
+        "cnpj": "18.675.203/0001-43",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 3328.69,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO ESPECIALIZADOS NO PLANEJAMENTO, IMPLANTAÇÃO E EXECUÇÃO CONTINUADA DE ATIVIDADES DE AT"
+      },
+      {
         "data": "2026-06-17",
         "fornecedor": "CAMARA MUNICIPAL DE PARANAIBA",
         "cnpj": "03.629.284/0001-78",
@@ -1749,7 +1789,7 @@
         "fornecedor": "BANCO DO BRASIL SA",
         "cnpj": "00.000.000/0484-70",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 3174.86,
+        "valor": 3227.17,
         "descricao": "REFERE-SE À EMPENHO ESTIMATIVO PARA SERVIÇOS BANCÁRIOS - TARIFAS."
       },
       {
@@ -2081,14 +2121,6 @@
         "descricao": "REFERE-SE À EMPENHO PARA PAGAMENTO DE DESPESA COM TARIFA DE ENERGIA ELÉTRICA, REFERENTE AO EXERCICIO 2026, PARA ATENDER ÀS NECESSIDADES DA CÂMARA MUNICIPAL DE PARANAÍBA-MS."
       },
       {
-        "data": "2026-06-08",
-        "fornecedor": "R3GED GESTÃO DE DOCUMENTOS LTDA EPP.",
-        "cnpj": "21.268.622/0001-75",
-        "categoria": "Despesas de Exercícios Anteriores",
-        "valor": 2076.25,
-        "descricao": "REFERE-SE À PARA CONTRATAÇÃO DA EMPRESA R3GED GESTAO DE DOCUMENTOS LTDA (21.268.622/0001-75) ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇO DE ALINHAMENTO, AJUSTE E OPERAÇÃO DO SISTEMA DE CONTROLE INTERNO DA C"
-      },
-      {
         "data": "2026-04-15",
         "fornecedor": "IGOR MATEUS DOS SANTOS MACHADO",
         "cnpj": "052.XXX.XXX-93",
@@ -2313,6 +2345,14 @@
         "descricao": "REFERE-SE À CONCESSÃO DE 1,70% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA CUMPRIR  AGENDAS DIVERSAS. PERÍODO  DE 04/08/2026 A 05/08/2026."
       },
       {
+        "data": "2026-01-19",
+        "fornecedor": "C.C. CALEJON DOS SANTOS-ME",
+        "cnpj": "74.384.231/0001-82",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1187.4,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM LOCAÇÃO DE EQUIPAMENTOS (RELÓGIOS DE PONTO ELETRÔNICO COM RECONHECIMENTO FACIAL), INCLUINDO SERVIÇOS DE INSTALAÇÃO, MANUTENÇÃO, CONSERV"
+      },
+      {
         "data": "2026-02-04",
         "fornecedor": "DAIANA MOURA STREGE BERGANTINI",
         "cnpj": "011.XXX.XXX-11",
@@ -2351,14 +2391,6 @@
         "categoria": "Despesas de Exercícios Anteriores",
         "valor": 1000.0,
         "descricao": "REFERE-SE – SE À CONTRATAÇÃO DE EMPRESA PARA FORNECIMENTO DE MATERIAIS GRÁFICOS DIVERSOS, COM A FINALIDADE DE ATENDER ÀS DEMANDAS DA CÂMARA MUNICIPAL DE PARANAÍBA-MS.\r\nPEDIDO GERADO A PARTIR DO RESULT"
-      },
-      {
-        "data": "2026-01-19",
-        "fornecedor": "C.C. CALEJON DOS SANTOS-ME",
-        "cnpj": "74.384.231/0001-82",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 989.5,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM LOCAÇÃO DE EQUIPAMENTOS (RELÓGIOS DE PONTO ELETRÔNICO COM RECONHECIMENTO FACIAL), INCLUINDO SERVIÇOS DE INSTALAÇÃO, MANUTENÇÃO, CONSERV"
       },
       {
         "data": "2026-01-27",
@@ -2625,14 +2657,6 @@
         "descricao": "ANULAÇAÕ DE PEDIUDO DE EMPENHO, VALOR DO CONTRATO DIVERGE DO PEDIDO. (REFERE-SE À EMPENHO PARA ADESÃO À ATA DE REGISTRO DE PREÇOS Nº 037/SAD/2025-1, GERENCIADA PELA SECRETARIA DE ESTADO DE ADMINISTRAÇ"
       },
       {
-        "data": "2026-03-12",
-        "fornecedor": "IMPACTO COMERCIO E SERVICOS URBANOS E RURAIS LTDA",
-        "cnpj": "10.315.247/0001-50",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA EXECUÇÃO DE SERVIÇOS DE LIMPEZA PESADA, CONSERVAÇÃO E HIGIENIZAÇÃO, COM FORNECIMENTO DE MÃO DE OBRA, MATERIAIS, INSUMOS E EQUIPAMENTO"
-      },
-      {
         "data": "2026-03-30",
         "fornecedor": "SINDOLEY LUIZ DE SOUZA MORAIS",
         "cnpj": "976.XXX.XXX-68",
@@ -2689,14 +2713,6 @@
         "descricao": "EMPENHO EMITIDO NA FICHA INCORRETA. REPASSE DE DESCONTO DA FOLHA DE PAGAMENTO, IMPOSTO DE RENDA SERVIDORES E VEREADORES. REF 04/2026."
       },
       {
-        "data": "2026-07-10",
-        "fornecedor": "W O COMERCIO E SOLUCOES LTDA",
-        "cnpj": "39.922.130/0001-17",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM PRESTAÇÃO DE SERVIÇOS DE MANUTENÇÃO DE IMPRESSORAS PARA ATENDER A DEMANDA DA CÂMARA MUNICIPAL DE PARANAÍBA/MS.\r\nPEDIDO GERADO A PARTIR"
-      },
-      {
         "data": "2026-07-16",
         "fornecedor": "BEM STAR AR CONDICIONADO E REFRIGERACAO LTDA",
         "cnpj": "23.434.114/0001-45",
@@ -2721,28 +2737,20 @@
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA PARA PRESTAÇÃO DE SERVIÇOS DE SEGURO VEICULAR, PARA A FROTA DA CÂMARA MUNICIPAL DE PARANAÍBA-MS.\r\nPEDIDO GERADO A PARTIR DO RESULTADO DA LICITAÇÃO: 0000"
       },
       {
-        "data": "2026-07-16",
-        "fornecedor": "ADRIANO PINTO DA SILVA",
-        "cnpj": "18.675.203/0001-43",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO ESPECIALIZADOS NO PLANEJAMENTO, IMPLANTAÇÃO E EXECUÇÃO CONTINUADA DE ATIVIDADES DE AT"
-      },
-      {
-        "data": "2026-07-22",
-        "fornecedor": "EFFICIENCE EVENTOS CORPORATIVOS LTDA",
-        "cnpj": "57.725.821/0001-02",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À EMPENHO CONTRATAÇÃO DA EMPRESA EFFICIENCE EVENTOS CORPORATIVOS LTDA PARA PRESTAÇÃO DE SERVIÇOS DE CAPACITAÇÃO PROFISSIONAL, CONSISTENTE NA PARTICIPAÇÃO DE 02 (DOIS) REPRESENTANTES DA CÂMAR"
-      },
-      {
         "data": "2026-07-23",
         "fornecedor": "G. S. M EMPREENDIMENTOS LTDA",
         "cnpj": "45.970.327/0001-24",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE SERVIÇOS DE JARDINAGEM, COMPREENDENDO A ROÇADA DE GRAMA, PODA DE PLANTAS, PODAS DE ÁRVORES, ADUBAGEM, MANUTENÇÃO E DEDETIZAÇÃO PARA COMBATE ÀS PRAGAS, ERVAS DAN"
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "GARCIA TELECOMUNICACOES LTDA",
+        "cnpj": "27.319.313/0001-63",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE ACESSO À REDE DE INTERNET (LINK DEDICADO FULL DUPLEX - FIBRA ÓPTICA), COM O OBJETIVO DE ATENDER INTEGRALMENTE"
       }
     ]
   },

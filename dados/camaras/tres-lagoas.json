@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-08-05T13:28:37",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-05T13:28:37",
+  "ultimaAtualizacao": "2026-08-06T13:27:29",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-06T13:27:29",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -439,27 +439,27 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 20973846.11,
-    "totalNotas": 590,
+    "totalGeral": 20982915.13,
+    "totalNotas": 601,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 12245126.42,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 2941079.61,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 2943594.8,
       "Auxílio-Alimentação": 2159200.95,
       "Obrigações Patronais": 1677131.98,
       "Diárias — Civil": 469516.7,
       "Serviços de Tecnologia da Informação": 441597.1,
       "Locação de Mão de Obra": 319664.1,
       "Serviços de Consultoria": 196352.88,
-      "Material de Consumo": 168125.86,
+      "Material de Consumo": 168179.74,
       "Aporte para Cobertura de Déficit Atuarial do RPPS": 122582.28,
       "Outros Benefícios Assistenciais do Servidor": 86987.64,
       "Indenizações e Restituições": 63146.52,
       "Despesas de Exercícios Anteriores": 48725.47,
       "Elemento 94": 19608.6,
       "Elemento 32": 10000.0,
+      "Equipamentos e Material Permanente": 6499.95,
       "Outros Serviços de Terceiros — Pessoa Física": 3000.0,
-      "Contribuições": 2000.0,
-      "Equipamentos e Material Permanente": 0.0
+      "Contribuições": 2000.0
     },
     "despesas": [
       {
@@ -1079,20 +1079,20 @@
         "descricao": "Contratação de empresa especializada em serviços de locação de Software de Gerenciamento Eletrônico e Controle Físico de Documentos para atender as necessidades da Câmara Municipal de Três Lagoas, con"
       },
       {
+        "data": "2026-03-03",
+        "fornecedor": "GADU SEGURANCA LTDA",
+        "cnpj": "08.953.397/0001-48",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 20165.79,
+        "descricao": "Contratação empresa especializada na prestação de serviços de Segurança para suporte nas Sessões Ordinárias ou Extraordinárias, Audiências Públicas e Eventos realizados pela Câmara Municipal de Três L"
+      },
+      {
         "data": "2026-05-20",
         "fornecedor": "A.S DISTRIBUIDORA E COMERCIO LTDA",
         "cnpj": "31.823.550/0001-34",
         "categoria": "Material de Consumo",
         "valor": 20020.8,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000021/26 - Ano Mod.: 2026 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 3 - Mod. Formatada: 000003 - Contratação de empresa especializada para o forneci"
-      },
-      {
-        "data": "2026-03-03",
-        "fornecedor": "GADU SEGURANCA LTDA",
-        "cnpj": "08.953.397/0001-48",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 19540.5,
-        "descricao": "Contratação empresa especializada na prestação de serviços de Segurança para suporte nas Sessões Ordinárias ou Extraordinárias, Audiências Públicas e Eventos realizados pela Câmara Municipal de Três L"
       },
       {
         "data": "2026-01-29",
@@ -1147,7 +1147,7 @@
         "fornecedor": "GIANCARLO TELLES SILVA LTDA",
         "cnpj": "38.213.665/0001-56",
         "categoria": "Material de Consumo",
-        "valor": 14945.01,
+        "valor": 14998.89,
         "descricao": "Processo 062/24 - fornecimento de itens alimentícios (café, açúcar, chá, adoçante, água mineral, e alimentos e bebidas para uso em coffee break), para a Câmara Municipal de Três Lagoas."
       },
       {
@@ -1197,6 +1197,14 @@
         "categoria": "Outros Benefícios Assistenciais do Servidor",
         "valor": 14092.41,
         "descricao": "Contribuição Patronal ref. Convênio Cassems servidores CMTLS ref. competência \t\r\nJaneiro/2026."
+      },
+      {
+        "data": "2026-01-15",
+        "fornecedor": "ITONER COMÉRCIO DE IMPRESSORAS E SERVIÇO LTDA",
+        "cnpj": "10.736.424/0001-72",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 13229.3,
+        "descricao": "Processo 40/25 locação de impressoras, de forma contínua, para a Câmara Municipal de Três Lagoas-MS."
       },
       {
         "data": "2026-01-27",
@@ -1261,14 +1269,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 11344.13,
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES COMISSIONADOS, VINCULADOS AO RPPS,  REF. MES DE 13º 2026 (1ª Parcela)"
-      },
-      {
-        "data": "2026-01-15",
-        "fornecedor": "ITONER COMÉRCIO DE IMPRESSORAS E SERVIÇO LTDA",
-        "cnpj": "10.736.424/0001-72",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 11339.4,
-        "descricao": "Processo 40/25 locação de impressoras, de forma contínua, para a Câmara Municipal de Três Lagoas-MS."
       },
       {
         "data": "2026-07-30",
@@ -1405,6 +1405,14 @@
         "categoria": "Material de Consumo",
         "valor": 6606.26,
         "descricao": "Processo 2/25 fornecimento de materiais de limpeza e higienização de uso comum para a Câmara Municipal de Três Lagoas."
+      },
+      {
+        "data": "2026-07-01",
+        "fornecedor": "RILL QUÍMICA LTDA",
+        "cnpj": "67.421.040/0001-88",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 6499.95,
+        "descricao": "Processo 35/26 Aquisição de carrinhos funcionais de limpeza para Câmara Municipal de Três Lagoas-MS."
       },
       {
         "data": "2026-03-20",
@@ -4631,20 +4639,20 @@
         "descricao": "SALDO NÃO UTILIZADO NO PROCESSAMENTO DA FOLHA."
       },
       {
-        "data": "2026-01-29",
-        "fornecedor": "AGILITÁ PROPAGANDA e MARKETING LTDA",
-        "cnpj": "00.974.843/0001-99",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000101/23 - Ano Mod.: 2023 - Modalidade: CONCORRÊNCIA - Nº Mod.: 3 - Mod. Formatada: 000003 - Contratação de serviços de publicidade prestados por int"
-      },
-      {
         "data": "2026-02-02",
         "fornecedor": "AGILITÁ PROPAGANDA e MARKETING LTDA",
         "cnpj": "00.974.843/0001-99",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "Anulação"
+      },
+      {
+        "data": "2026-01-29",
+        "fornecedor": "AGILITÁ PROPAGANDA e MARKETING LTDA",
+        "cnpj": "00.974.843/0001-99",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000101/23 - Ano Mod.: 2023 - Modalidade: CONCORRÊNCIA - Nº Mod.: 3 - Mod. Formatada: 000003 - Contratação de serviços de publicidade prestados por int"
       },
       {
         "data": "2026-05-05",
@@ -4695,14 +4703,6 @@
         "descricao": "Concessão de suprimento de fundos para despesas de pronto pagamento relacionadas a serviços."
       },
       {
-        "data": "2026-03-11",
-        "fornecedor": "ROBSON FEGRUGLIA DA COSTA",
-        "cnpj": "542.XXX.XXX-04",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "DESPESAS REFERENTE A CONCESSÃO DE 2 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 11/03/2026 a 13/03/2026, CONFORME SOLICITAÇÃO. Finalidade: \" A participação no"
-      },
-      {
         "data": "2026-03-06",
         "fornecedor": "ROBSON FEGRUGLIA DA COSTA",
         "cnpj": "542.XXX.XXX-04",
@@ -4711,12 +4711,12 @@
         "descricao": "DESPESAS REFERENTE A CONCESSÃO DE 2 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 11/03/2026 a 13/03/2026, CONFORME SOLICITAÇÃO. Finalidade: \" A participação no"
       },
       {
-        "data": "2026-03-24",
-        "fornecedor": "OVIDIO LOPES DE OLIVEIRA",
-        "cnpj": "048.XXX.XXX-49",
-        "categoria": "Indenizações e Restituições",
+        "data": "2026-03-11",
+        "fornecedor": "ROBSON FEGRUGLIA DA COSTA",
+        "cnpj": "542.XXX.XXX-04",
+        "categoria": "Diárias — Civil",
         "valor": 0.0,
-        "descricao": "Devolveu, conforme transferência e relato no relatório de viagem."
+        "descricao": "DESPESAS REFERENTE A CONCESSÃO DE 2 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 11/03/2026 a 13/03/2026, CONFORME SOLICITAÇÃO. Finalidade: \" A participação no"
       },
       {
         "data": "2026-03-09",
@@ -4725,6 +4725,14 @@
         "categoria": "Indenizações e Restituições",
         "valor": 0.0,
         "descricao": "Indenização de Combustível, conforme Lei Municipal 3.960/2023, compreendendo a ida e volta à cidade de Campo Grande - MS, no período de 11/03/2026 a 13/03/2026 que corresponde a 652 KM, (padronizado c"
+      },
+      {
+        "data": "2026-03-24",
+        "fornecedor": "OVIDIO LOPES DE OLIVEIRA",
+        "cnpj": "048.XXX.XXX-49",
+        "categoria": "Indenizações e Restituições",
+        "valor": 0.0,
+        "descricao": "Devolveu, conforme transferência e relato no relatório de viagem."
       },
       {
         "data": "2026-04-07",
@@ -4767,20 +4775,20 @@
         "descricao": "ANULAÇÃO PARCIAL RELATIVO A VOLTA ANTECIPADA, DEVOLVIDO RECURSO FINANCEIRO EM 17/04/2026"
       },
       {
-        "data": "2026-04-07",
-        "fornecedor": "MARIO LUIZ DE ALMEIDA GRESPAN",
-        "cnpj": "609.XXX.XXX-91",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "DESPESAS REFERENTE A CONCESSÃO DE 3 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 08/04/2026 a 11/04/2026, CONFORME SOLICITAÇÃO. Finalidade: \"   O UCV/MS SUMMIT"
-      },
-      {
         "data": "2026-04-08",
         "fornecedor": "MARIO LUIZ DE ALMEIDA GRESPAN",
         "cnpj": "609.XXX.XXX-91",
         "categoria": "Diárias — Civil",
         "valor": 0.0,
         "descricao": "VIAGEM NÃO REALIZADA, VALOR INTEGRALMENTE DEVOLVIDO EM 08/04/2026."
+      },
+      {
+        "data": "2026-04-07",
+        "fornecedor": "MARIO LUIZ DE ALMEIDA GRESPAN",
+        "cnpj": "609.XXX.XXX-91",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A CONCESSÃO DE 3 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 08/04/2026 a 11/04/2026, CONFORME SOLICITAÇÃO. Finalidade: \"   O UCV/MS SUMMIT"
       },
       {
         "data": "2026-04-13",
@@ -5064,14 +5072,6 @@
       },
       {
         "data": "2026-07-01",
-        "fornecedor": "RILL QUÍMICA LTDA",
-        "cnpj": "67.421.040/0001-88",
-        "categoria": "Equipamentos e Material Permanente",
-        "valor": 0.0,
-        "descricao": "Processo 35/26 Aquisição de carrinhos funcionais de limpeza para Câmara Municipal de Três Lagoas-MS."
-      },
-      {
-        "data": "2026-07-01",
         "fornecedor": "65.332.029 ELISABETE FERMIANO LUCIO",
         "cnpj": "65.332.029/0001-16",
         "categoria": "Equipamentos e Material Permanente",
@@ -5181,6 +5181,94 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 0.0,
         "descricao": "Processo 033/25  fornecimento de link dedicado à internet ."
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
+        "cnpj": "15.410.145/0001-38",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (VENCIMENTOS E SALÁRIOS) VINCULADOS AO RPPS,  REF.  COMPLEMENTO EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
+        "cnpj": "15.410.145/0001-38",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (INCENTIVO A QUALIFICAÇÃO) VINCULADOS AO RPPS,  REF . COMPLEMENTO EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
+        "cnpj": "15.410.145/0001-38",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (Outros Adicionais, vantagens, gratificações) VINCULADOS AO RPPS,  REF. COMPLEMENTO EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
+        "cnpj": "15.410.145/0001-38",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (GRATIFICAÇÃO POR EXERCÍCIO DE CARGOS) VINCULADOS AO RPPS,  REF.  COMPLEMENTO EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
+        "cnpj": "15.410.145/0001-38",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (GRATIFICAÇÃO POR EXERCÍCIO DE FUNÇÕES) VINCULADOS AO RPPS,  REF.  COMPLEMENTO EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
+        "cnpj": "15.410.145/0001-38",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (ABONO DE PERMANÊNCIA) VINCULADOS AO RPPS,  REF.  COMPLEMENTO EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
+        "cnpj": "15.410.145/0001-38",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (GRATIFICAÇÃO DE TEMPO DE SERVIÇO) VINCULADOS AO RPPS,  REF.  COMPLEMENTO EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
+        "cnpj": "15.410.145/0001-38",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (LICENÇA SAÚDE) VINCULADOS AO RPPS,  REF.  COMPLEMENTO EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
+        "cnpj": "15.410.145/0001-38",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (ADICIONAL DE INSALUBRIDADE) VINCULADOS AO RPPS,  REF.  COMPLEMENTO EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "FOLHA DE PGTO SERV. COMISSIONADOS (Câmara)",
+        "cnpj": "15.410.145/0001-38",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (Vencimentos e Salários Prorrogação Licença maternidade) VINCULADOS AO RGPS,  REF.  COMPLEMENTO EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "FOLHA DE PGTO SERV. COMISSIONADOS (Câmara)",
+        "cnpj": "15.410.145/0001-38",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES COMISSIONADOS (OUTROS VENCIMENTOS E VANTAGENS FIXAS - PESSOAL CIVIL - RGPS (Aux. Saúde)) VINCULADOS AO RGPS,  REF.  COMPLEMENTO EMPENHO GLOBAL ESTIMA"
       }
     ]
   }
