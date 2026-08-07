@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-08-06T13:27:29",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-06T13:27:29",
+  "ultimaAtualizacao": "2026-08-07T12:33:58",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-07T12:33:58",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -439,25 +439,25 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 20982915.13,
+    "totalGeral": 21134650.87,
     "totalNotas": 601,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 12245126.42,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 2943594.8,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 2951206.44,
       "Auxílio-Alimentação": 2159200.95,
-      "Obrigações Patronais": 1677131.98,
+      "Obrigações Patronais": 1816981.21,
       "Diárias — Civil": 469516.7,
-      "Serviços de Tecnologia da Informação": 441597.1,
+      "Serviços de Tecnologia da Informação": 441805.97,
       "Locação de Mão de Obra": 319664.1,
       "Serviços de Consultoria": 196352.88,
-      "Material de Consumo": 168179.74,
+      "Material de Consumo": 169427.74,
       "Aporte para Cobertura de Déficit Atuarial do RPPS": 122582.28,
       "Outros Benefícios Assistenciais do Servidor": 86987.64,
       "Indenizações e Restituições": 63146.52,
       "Despesas de Exercícios Anteriores": 48725.47,
       "Elemento 94": 19608.6,
       "Elemento 32": 10000.0,
-      "Equipamentos e Material Permanente": 6499.95,
+      "Equipamentos e Material Permanente": 9317.95,
       "Outros Serviços de Terceiros — Pessoa Física": 3000.0,
       "Contribuições": 2000.0
     },
@@ -621,6 +621,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 145305.57,
         "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PREVIDENCIÁRIA (INSS) PATRONAL REF. MES DE MAIO/2026, REF. SERVIDORES VINCULADOS AO REGIME GERAL DA PREVIDENCIA SOCIAL."
+      },
+      {
+        "data": "2026-07-29",
+        "fornecedor": "SECRETARIA DA RECEITA FEDERAL DO BRASIL",
+        "cnpj": "00.394.460/0058-87",
+        "categoria": "Obrigações Patronais",
+        "valor": 144972.4,
+        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PREVIDENCIÁRIA (INSS) PATRONAL REF. MES DE JULHO/2026, REF. SERVIDORES VINCULADOS AO REGIME GERAL DA PREVIDENCIA SOCIAL."
       },
       {
         "data": "2026-06-29",
@@ -967,12 +975,28 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (Vencimentos e Salários Prorrogação Licença maternidade) VINCULADOS AO RPPS,  REF.  EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
       },
       {
+        "data": "2026-01-15",
+        "fornecedor": "LOJA STAR PLUS LTDA",
+        "cnpj": "09.594.810/0001-98",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 30301.81,
+        "descricao": "Processo 40/25  Contratação de uma empresa para locação de impressoras, de forma contínua, para a Câmara Municipal de Três Lagoas-MS."
+      },
+      {
         "data": "2026-05-13",
         "fornecedor": "VISIONA9 GESTAO EMPRESARIAL LTDA",
         "cnpj": "58.521.834/0001-22",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 28768.0,
         "descricao": "Processo 030/26 prestação de serviço de capacitação que realizará o evento denominado “COMUNIQUE Congresso de Estratégias e Comunicação”"
+      },
+      {
+        "data": "2026-01-16",
+        "fornecedor": "MARIA ROSA RODRIGUES TAVARES",
+        "cnpj": "03.813.381/0001-16",
+        "categoria": "Material de Consumo",
+        "valor": 26780.0,
+        "descricao": "Processo 62/24 fornecimento de itens alimentícios (café, açúcar, chá, adoçante, água mineral, e alimentos e bebidas para uso em coffee break), para a Câmara Municipal de Três Lagoas."
       },
       {
         "data": "2026-06-23",
@@ -991,28 +1015,12 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES COMISSIONADOS (OUTROS VENCIMENTOS E VANTAGENS FIXAS - PESSOAL CIVIL - RGPS (Aux. Saúde)) VINCULADOS AO RGPS,  REF.  EMPENHO GLOBAL ESTIMATIVA EXERCÍC"
       },
       {
-        "data": "2026-01-15",
-        "fornecedor": "LOJA STAR PLUS LTDA",
-        "cnpj": "09.594.810/0001-98",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 25972.98,
-        "descricao": "Processo 40/25  Contratação de uma empresa para locação de impressoras, de forma contínua, para a Câmara Municipal de Três Lagoas-MS."
-      },
-      {
         "data": "2026-03-10",
         "fornecedor": "UNECTA EVENTOS LTDA",
         "cnpj": "51.777.038/0001-06",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 25740.0,
         "descricao": "Processo 15/26  serviço de capacitação que realizará o evento denominado “Alta Performance no Legislativo Municipal: Decisão Política, Gestão Segura e Inovação”, oferecido pela empresa UNECTA EVENTOS"
-      },
-      {
-        "data": "2026-01-16",
-        "fornecedor": "MARIA ROSA RODRIGUES TAVARES",
-        "cnpj": "03.813.381/0001-16",
-        "categoria": "Material de Consumo",
-        "valor": 25532.0,
-        "descricao": "Processo 62/24 fornecimento de itens alimentícios (café, açúcar, chá, adoçante, água mineral, e alimentos e bebidas para uso em coffee break), para a Câmara Municipal de Três Lagoas."
       },
       {
         "data": "2026-01-29",
@@ -1029,6 +1037,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 24925.0,
         "descricao": "PROCESSO 22/26  Contratação de empresa especializada, na prestação de serviço de capacitação que realizará o evento denominado “UCV/MS SUMMIT – EDIÇÃO CONECTA (Congresso de Vereadores de Mato Grosso d"
+      },
+      {
+        "data": "2026-03-03",
+        "fornecedor": "GADU SEGURANCA LTDA",
+        "cnpj": "08.953.397/0001-48",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 23448.6,
+        "descricao": "Contratação empresa especializada na prestação de serviços de Segurança para suporte nas Sessões Ordinárias ou Extraordinárias, Audiências Públicas e Eventos realizados pela Câmara Municipal de Três L"
       },
       {
         "data": "2026-03-03",
@@ -1077,14 +1093,6 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 20377.76,
         "descricao": "Contratação de empresa especializada em serviços de locação de Software de Gerenciamento Eletrônico e Controle Físico de Documentos para atender as necessidades da Câmara Municipal de Três Lagoas, con"
-      },
-      {
-        "data": "2026-03-03",
-        "fornecedor": "GADU SEGURANCA LTDA",
-        "cnpj": "08.953.397/0001-48",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 20165.79,
-        "descricao": "Contratação empresa especializada na prestação de serviços de Segurança para suporte nas Sessões Ordinárias ou Extraordinárias, Audiências Públicas e Eventos realizados pela Câmara Municipal de Três L"
       },
       {
         "data": "2026-05-20",
@@ -1607,14 +1615,6 @@
         "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (NORMAL) RELATIVO AO PAGAMENTO DE RENDIMENTOS RECEBIDOS ACUMULADAMENTE - RRA DO SERVIDOR MATRICULA 566-1 PAGO NA FOLHA DE PAGAMENTO REF. MÊS DE JUNHO/2026, C"
       },
       {
-        "data": "2026-07-29",
-        "fornecedor": "SECRETARIA DA RECEITA FEDERAL DO BRASIL",
-        "cnpj": "00.394.460/0058-87",
-        "categoria": "Obrigações Patronais",
-        "valor": 5123.17,
-        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PREVIDENCIÁRIA (INSS) PATRONAL REF. MES DE JULHO/2026, REF. SERVIDORES VINCULADOS AO REGIME GERAL DA PREVIDENCIA SOCIAL."
-      },
-      {
         "data": "2026-03-23",
         "fornecedor": "SEGUROS SURA S.A.",
         "cnpj": "33.065.699/0001-27",
@@ -1997,6 +1997,14 @@
         "categoria": "Indenizações e Restituições",
         "valor": 2826.08,
         "descricao": "Processo 177/2026\r\nSolicito a autorização para compra de passagens, amparada na Lei nº3.960/2023, que “Dispõe sobre a concessão de diárias da Câmara Municipal de Três Lagoas/MS e dá outras providência"
+      },
+      {
+        "data": "2026-06-25",
+        "fornecedor": "AGR SOLUCOES INTEGRADAS LTDA",
+        "cnpj": "65.912.505/0001-78",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 2818.0,
+        "descricao": "Processo 34/26 - Ano Mod.: 2026 - aquisição de dois sopradores a bateria sem carregador e sem bateria, sendo compatível com as baterias AP 300 S."
       },
       {
         "data": "2026-06-30",
@@ -4399,6 +4407,14 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000002/26 - Ano Mod.: 2026 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 1 - Mod. Formatada: 000001 - Contratação de empresa especializada para o forneci"
       },
       {
+        "data": "2026-07-17",
+        "fornecedor": "VETT - VIA EXPRESS TECNOLOGIA E TELECOMUNICACOES L",
+        "cnpj": "11.743.904/0001-23",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 208.87,
+        "descricao": "Processo 33/25 - prestação de serviços de instalação e fornecimento de link dedicado à internet (IP dedicado) por meio de fibra óptica, com velocidade de 2 Gbps (Gigabits por segundo)full duplex (2 Gb"
+      },
+      {
         "data": "2026-06-03",
         "fornecedor": "Marcelo Barros Fefin",
         "cnpj": "279.XXX.XXX-86",
@@ -5023,14 +5039,6 @@
         "descricao": "Processo 14/25 Prestação de Serviços de Higienização em condensadora e evaporadoras VRV, de forma contínua, para a Câmara Municipal de Três Lagoas-MS."
       },
       {
-        "data": "2026-06-25",
-        "fornecedor": "AGR SOLUCOES INTEGRADAS LTDA",
-        "cnpj": "65.912.505/0001-78",
-        "categoria": "Equipamentos e Material Permanente",
-        "valor": 0.0,
-        "descricao": "Processo 34/26 - Ano Mod.: 2026 - aquisição de dois sopradores a bateria sem carregador e sem bateria, sendo compatível com as baterias AP 300 S."
-      },
-      {
         "data": "2026-06-29",
         "fornecedor": "65.171.702 LUANA SILVA OLIVEIRA",
         "cnpj": "65.171.702/0001-83",
@@ -5093,14 +5101,6 @@
         "categoria": "Equipamentos e Material Permanente",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000036/26 - Ano Mod.: 2026 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 4 - Mod. Formatada: 000004 - Contratação de empresa para aquisição tela interati"
-      },
-      {
-        "data": "2026-07-17",
-        "fornecedor": "VETT - VIA EXPRESS TECNOLOGIA E TELECOMUNICACOES L",
-        "cnpj": "11.743.904/0001-23",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 0.0,
-        "descricao": "Processo 33/25 - prestação de serviços de instalação e fornecimento de link dedicado à internet (IP dedicado) por meio de fibra óptica, com velocidade de 2 Gbps (Gigabits por segundo)full duplex (2 Gb"
       },
       {
         "data": "2026-07-17",
