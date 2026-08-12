@@ -1,7 +1,7 @@
 {
   "cidade": "Paranaíba",
-  "ultimaAtualizacao": "2026-08-11T12:34:50",
-  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-08-11T12:34:50",
+  "ultimaAtualizacao": "2026-08-12T12:37:42",
+  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-08-12T12:37:42",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmparanaiba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -141,6 +141,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-08-10",
+          "valor": 1851.34,
+          "descricao": "REFERE-SE À CONCESSÃO DE 2,0% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA CUMPRIR AGENDA NA  SECRETÁRIA DE ESTADO DE SAÚDE (SES)  E NO TRIBUNAL DE CONTAS DO ESTADO (TCE) , BEM COMO TRATAR DE ASSUNTOS DO MUNICÍPIO DE PARANAÍBA-MS. PERÍODO DE 12/08/2026 A 14/08/2026."
+        },
+        {
           "data": "2026-08-03",
           "valor": 1574.19,
           "descricao": "REFERE-SE À CONCESSÃO DE 1,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA CUMPRIR AGENDA NA AGESUL E ENERGISA, BEM COMO TRATAR DE ASSUNTOS DO MUNICÍPIO DE PARANAÍBA-MS. PERÍODO DE 04/08/2026 A 05/08/2026."
@@ -211,13 +216,18 @@
           "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA PARTICIPAR  DE REUNIAO DA SETESC ( SECRETARIA DE ESTADO DE TURISMO, ESPORTE, CULTURA, ASSOMASUL ( ASSOCIAÇÃO DOS MUNICIPIOS DE MATO GROSSO DO SUL ),  ASSEMBLEIA LEGISLATIVA DE MATO GROSSO DO SUL, E AGESUL ( AGENCIA ESTADUAL DE GESTAO E EMPREENDIMENTOS ), BEM COMO TRATAR DE ASSUNTOS DO MUNICIPIO DE PARANAIBA-MS. PERÍODO DE 10/02/2026 A 13/02/2026."
         }
       ],
-      "totalDiarias2026": 46102.78,
-      "numDiarias2026": 14
+      "totalDiarias2026": 47954.12,
+      "numDiarias2026": 15
     },
     {
       "nome": "EDMAR PIRES DA SILVA JUNIOR",
       "cargo": "Vereador(a)",
       "diarias": [
+        {
+          "data": "2026-08-10",
+          "valor": 648.52,
+          "descricao": "REFERE-SE À CONCESSÃO DE 0,70% DE DIÁRIA PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA COMPARECER À VISITAS INSTITUCIONAIS, COM O INTUITO DE TRATAR DE ASSUNTOS DE RELEVÂNCIA DESTE MUNICÍPIO. PERÍODO 11/08/2026."
+        },
         {
           "data": "2026-08-03",
           "valor": 1574.19,
@@ -299,8 +309,8 @@
           "descricao": "REFERE-SE À CONCESSÃO DE 1,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA COMPARECER NA ASSEMBLÉIA LEGISLATIVA E VISITAS INSTITUCIONAIS, COM INTUITO DE TRATAR DE ASSUNTOS DE RELEVÂNCIA DESTE MUNÍCIPIO. PERÍODO DE 04/02/2026 A 05/02/2026."
         }
       ],
-      "totalDiarias2026": 44623.91,
-      "numDiarias2026": 16
+      "totalDiarias2026": 45272.43,
+      "numDiarias2026": 17
     },
     {
       "nome": "GILSON SANTANA DE ARAÚJO",
@@ -703,14 +713,14 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 7089944.56,
-    "totalNotas": 254,
+    "totalGeral": 7137599.91,
+    "totalNotas": 260,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 4456838.31,
       "Obrigações Patronais": 756027.42,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 671878.42,
-      "Diárias — Civil": 579545.6,
-      "Serviços de Consultoria": 442000.0,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 702750.48,
+      "Diárias — Civil": 583828.89,
+      "Serviços de Consultoria": 454500.0,
       "Despesas de Exercícios Anteriores": 97877.35,
       "Material de Consumo": 38570.2,
       "Serviços de Tecnologia da Informação": 21130.1,
@@ -773,7 +783,7 @@
         "fornecedor": "FLAVIO VASCONCELOS ALVES E CASTRO",
         "cnpj": "08.714.430/0001-87",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 171480.0,
+        "valor": 200060.0,
         "descricao": "REFERE-SE À EMPENHO PARA A ADESÃO À ATA DE REGISTRO DE PREÇOS Nº 037/SAD/2025-1, GERENCIADA PELA SECRETARIA DE ESTADO DE ADMINISTRAÇÃO DE MATO GROSSO DO SUL – SAD, DO GOVERNO DO ESTADO DE MATO GROSSO"
       },
       {
@@ -801,6 +811,14 @@
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA PARA PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ASSESSORIA JURÍDICA PARA ATENDER AS DEMANDAS NA GESTÃO PÚBLICA DA CÂMARA MUNICIPAL DE PARANAÍBA-MS"
       },
       {
+        "data": "2026-01-19",
+        "fornecedor": "SETTE ASSESSORIAS TECNICAS E AUDITORIAS ADMINISTRA",
+        "cnpj": "10.714.023/0001-11",
+        "categoria": "Serviços de Consultoria",
+        "valor": 87500.0,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM PRESTAÇÕES DE CONSULTORIA PARA ADEQUAÇÃO E IMPLEMENTAÇÃO DE BOAS PRÁTICAS E GOVERNANÇA EM CONFORMIDADE COM A LGPD, INCLUINDO MAPEAMENTO"
+      },
+      {
         "data": "2026-06-17",
         "fornecedor": "CAMARA MUNICIPAL DE PARANAIBA",
         "cnpj": "03.629.284/0001-78",
@@ -823,14 +841,6 @@
         "categoria": "Despesas de Exercícios Anteriores",
         "valor": 76400.0,
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS DE ORGANIZAÇÃO E REALIZAÇÃO DE EVENTO INSTITUCIONAL, COMPREENDENDO FORNECIMENTO DE BUFFET COMPLETO, ESPAÇO FÍSI"
-      },
-      {
-        "data": "2026-01-19",
-        "fornecedor": "SETTE ASSESSORIAS TECNICAS E AUDITORIAS ADMINISTRA",
-        "cnpj": "10.714.023/0001-11",
-        "categoria": "Serviços de Consultoria",
-        "valor": 75000.0,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM PRESTAÇÕES DE CONSULTORIA PARA ADEQUAÇÃO E IMPLEMENTAÇÃO DE BOAS PRÁTICAS E GOVERNANÇA EM CONFORMIDADE COM A LGPD, INCLUINDO MAPEAMENTO"
       },
       {
         "data": "2026-06-17",
@@ -1441,20 +1451,20 @@
         "descricao": "REFERE-SE À EMPENHO CONTRATAÇÃO DA EMPRESA EFFICIENCE EVENTOS CORPORATIVOS LTDA PARA PRESTAÇÃO DE SERVIÇOS DE CAPACITAÇÃO PROFISSIONAL, CONSISTENTE NA PARTICIPAÇÃO DE 02 (DOIS) REPRESENTANTES DA CÂMAR"
       },
       {
+        "data": "2026-01-19",
+        "fornecedor": "INOVA SERVICOS E MONITORAMENTO LTDA",
+        "cnpj": "51.132.742/0001-01",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4395.7,
+        "descricao": "REFERE-SE À EMPENHO CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE SEGURANÇA ELETRÔNICA, COMPREENDENDO O FORNECIMENTO, INSTALAÇÃO, MANUTENÇÃO PREVENTIVA E CORRETIVA, BEM"
+      },
+      {
         "data": "2026-06-08",
         "fornecedor": "R3GED GESTÃO DE DOCUMENTOS LTDA EPP.",
         "cnpj": "21.268.622/0001-75",
         "categoria": "Despesas de Exercícios Anteriores",
         "valor": 4152.5,
         "descricao": "REFERE-SE À PARA CONTRATAÇÃO DA EMPRESA R3GED GESTAO DE DOCUMENTOS LTDA (21.268.622/0001-75) ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇO DE ALINHAMENTO, AJUSTE E OPERAÇÃO DO SISTEMA DE CONTROLE INTERNO DA C"
-      },
-      {
-        "data": "2026-01-19",
-        "fornecedor": "INOVA SERVICOS E MONITORAMENTO LTDA",
-        "cnpj": "51.132.742/0001-01",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 3795.7,
-        "descricao": "REFERE-SE À EMPENHO CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE SEGURANÇA ELETRÔNICA, COMPREENDENDO O FORNECIMENTO, INSTALAÇÃO, MANUTENÇÃO PREVENTIVA E CORRETIVA, BEM"
       },
       {
         "data": "2026-06-11",
@@ -2137,6 +2147,14 @@
         "descricao": "REFERE-SE À CONCESSÃO DE 2,0% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA PARTICIPAR DE REUNIÃO DA SEMADESC COM O SECRETÁRIO EXECUTIVO DE QUALIFICAÇÃO PROFI"
       },
       {
+        "data": "2026-08-10",
+        "fornecedor": "DEBORA QUEIROZ DE OLIVEIRA",
+        "cnpj": "956.XXX.XXX-15",
+        "categoria": "Diárias — Civil",
+        "valor": 1851.34,
+        "descricao": "REFERE-SE À CONCESSÃO DE 2,0% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA CUMPRIR AGENDA NA  SECRETÁRIA DE ESTADO DE SAÚDE (SES)  E NO TRIBUNAL DE CONTAS DO"
+      },
+      {
         "data": "2026-05-12",
         "fornecedor": "VISIONA9 GESTAO EMPRESARIAL LTDA",
         "cnpj": "58.521.834/0001-22",
@@ -2231,6 +2249,14 @@
         "categoria": "Diárias — Civil",
         "valor": 1783.43,
         "descricao": "REFERE-SE À CONCESSÃO DE 2,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, ONDE IREI  PARTICIPAR DO 47º SEMINÁRIO DE GESTÃO PÚBLICA DO INSTITUTO ULYSSES GUIMARÃES"
+      },
+      {
+        "data": "2026-07-16",
+        "fornecedor": "SEGUROS SURA S.A.",
+        "cnpj": "33.065.699/0001-27",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1692.06,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA PARA PRESTAÇÃO DE SERVIÇOS DE SEGURO VEICULAR, PARA A FROTA DA CÂMARA MUNICIPAL DE PARANAÍBA-MS.\r\nPEDIDO GERADO A PARTIR DO RESULTADO DA LICITAÇÃO: 0000"
       },
       {
         "data": "2026-01-30",
@@ -2343,6 +2369,14 @@
         "categoria": "Diárias — Civil",
         "valor": 1574.19,
         "descricao": "REFERE-SE À CONCESSÃO DE 1,70% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA CUMPRIR  AGENDAS DIVERSAS. PERÍODO  DE 04/08/2026 A 05/08/2026."
+      },
+      {
+        "data": "2026-08-10",
+        "fornecedor": "ELIENE VIEIRA BORGES DA SILVA",
+        "cnpj": "901.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 1321.14,
+        "descricao": "REFERE-SE À CONCESSÃO DE 2,0% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA ACOMPANHAR A VEREADORA DÉBORA QUEIROZ DE OLIVEIRA NA SECRETÁRIA DE ESTADO DE SAÚDE"
       },
       {
         "data": "2026-01-19",
@@ -2505,6 +2539,14 @@
         "descricao": "REFERE-SE À CONCESSÃO DE 0,7% DE DIÁRIA PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA AGENDA DIVERSAS, COM OBJETIVO DE TRATAR ASSUNTOS DE INTERESSES DO MUNICÍPIO DE PARA"
       },
       {
+        "data": "2026-08-10",
+        "fornecedor": "EDMAR PIRES DA SILVA JUNIOR",
+        "cnpj": "003.XXX.XXX-60",
+        "categoria": "Diárias — Civil",
+        "valor": 648.52,
+        "descricao": "REFERE-SE À CONCESSÃO DE 0,70% DE DIÁRIA PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA COMPARECER À VISITAS INSTITUCIONAIS, COM O INTUITO DE TRATAR DE ASSUNTOS DE RELEVÂ"
+      },
+      {
         "data": "2026-03-30",
         "fornecedor": "S C V ASSUNCAO LTDA",
         "cnpj": "58.157.851/0001-22",
@@ -2551,6 +2593,14 @@
         "categoria": "Diárias — Civil",
         "valor": 462.29,
         "descricao": "REFERE-SE À CONCESSÃO DE 0,70% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA ACOMPANHAR O VEREADOR EDMAR PIRES DA SILVA JUNIOR EM VISITAS INSTITUCIONAIS, COM"
+      },
+      {
+        "data": "2026-08-10",
+        "fornecedor": "IGOR MATEUS DOS SANTOS MACHADO",
+        "cnpj": "052.XXX.XXX-93",
+        "categoria": "Diárias — Civil",
+        "valor": 462.29,
+        "descricao": "REFERE-SE À CONCESSÃO DE 0,70% DE DIÁRIA PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA ACOMPANHAR O VEREADOR EDMAR PIRES DA SILVA JUNIOR EM VISITAS INSTITUCIONAIS, COM O"
       },
       {
         "data": "2026-04-17",
@@ -2729,14 +2779,6 @@
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA PARA PRESTAÇÃO DE SERVIÇOS DE SEGURO VEICULAR, PARA A FROTA DA CÂMARA MUNICIPAL DE PARANAÍBA-MS.\r\nPEDIDO GERADO A PARTIR DO RESULTADO DA LICITAÇÃO: 0000"
       },
       {
-        "data": "2026-07-16",
-        "fornecedor": "SEGUROS SURA S.A.",
-        "cnpj": "33.065.699/0001-27",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA PARA PRESTAÇÃO DE SERVIÇOS DE SEGURO VEICULAR, PARA A FROTA DA CÂMARA MUNICIPAL DE PARANAÍBA-MS.\r\nPEDIDO GERADO A PARTIR DO RESULTADO DA LICITAÇÃO: 0000"
-      },
-      {
         "data": "2026-07-23",
         "fornecedor": "G. S. M EMPREENDIMENTOS LTDA",
         "cnpj": "45.970.327/0001-24",
@@ -2750,7 +2792,23 @@
         "cnpj": "27.319.313/0001-63",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE ACESSO À REDE DE INTERNET (LINK DEDICADO FULL DUPLEX - FIBRA ÓPTICA), COM O OBJETIVO DE ATENDER INTEGRALMENTE"
+        "descricao": "REFERE-SE AO EMPENHO DO 1º  TERMO ADITIVO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE ACESSO À REDE DE INTERNET (LINK DEDICADO FULL DUPLEX - FIBRA ÓPTICA), COM O OBJETIVO DE"
+      },
+      {
+        "data": "2026-08-10",
+        "fornecedor": "BASTOS, CLARO & DUAILIBI ADVOGADOS ASSOCIADOS",
+        "cnpj": "08.761.038/0001-99",
+        "categoria": "Serviços de Consultoria",
+        "valor": 0.0,
+        "descricao": "REFERE-SE AO EMPENHO DO 1º TERMO ADITIVO DA CONTRATAÇÃO DO ESCRITÓRIO DE ADVOCACIA BASTOS, CLAROS & DUAILIBI ADVOGADOS ASSOCIADOS, CNPJ: 08.761.038./0001-99 PARA PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIA"
+      },
+      {
+        "data": "2026-08-10",
+        "fornecedor": "AGAESSE ASSESSORIA E PLANEJAMENTO LTDA.",
+        "cnpj": "04.117.097/0001-78",
+        "categoria": "Serviços de Consultoria",
+        "valor": 0.0,
+        "descricao": "REFERE-SE AO EMPENHO DO 1º TERMO ADITIVO DA CONTRATAÇÃO DA EMPRESA AGAESSE ASSESSORIA E PLANEJAMENTO LTDA, PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ASSESSORIA E CONSULTORIA CONTÁBIL PAR"
       }
     ]
   },
