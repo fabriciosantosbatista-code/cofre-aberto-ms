@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-08-12T12:37:42",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-08-12T12:37:42",
+  "ultimaAtualizacao": "2026-08-13T12:38:21",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-08-13T12:38:21",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -147,6 +147,11 @@
       "referenciaFolha": "Folha Mensal - Julho",
       "diarias": [
         {
+          "data": "2026-08-12",
+          "valor": 250.0,
+          "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 1/2 (MEIA DIÁRIA) PARA FINS DE PARTICIPAR DE REUNIÃO NA SUPERINTENDÊNCIA DO PATRIMÔNIO DA UNIÃO, NA DATA DE 12/08/2026, NA CIDADE DE CAMPO GRANDE/MS, VISANDO TRATAR DE INTERESSES DO MUNICÍPIO, BEM COMO PARTICIPAR DE DE REUNIÃO COM DEPUTADOS NA ASSEMBLEIA LEGISLATIVA. LEI DE DIÁRIAS Nº 15, DE 06 DE ABRIL DE 2026."
+        },
+        {
           "data": "2026-08-06",
           "valor": 250.0,
           "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 1/2 (MEIA-DIÁRIA) PARA FINS DE REALIZAR VISITA INSTITUCIONAL, NA DATA DE 07/08/2026, NA CIDADE DE CAMPO GRANDE/MS, À SUPERINTÊNCIA DO PATRIMÔNIO DA UNIÃO EM MATO GROSSO DO SUL (SPU/MS). A VISITA TEM COMO OBJETIVO BUSCAR INFORMAÇÕES TÉCNICAS E ADMINISTRATIVAS DE INTERESSE DO MUNICÍPIO, ACOMPANHAMENTO DE DEMANDAS E DESENVOLVIMENTO DE AÇÕES DE INTERESSE PÚBLICO. LEI DE DIÁRIAS  Nº 15, DE 06 DE ABRIL DE 2026."
@@ -212,8 +217,8 @@
           "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 02 (DUAS) DIÁRIAS EM FAVOR DO VEREADOR LUCAS LOPES RIBEIRO PARA PARTICIPAR DE REUNIÃO, NA DATA DE 27/02/2026, NA ASSEMBLEIA LEGISLATIVA PARA FINS DE PARCERIA COM O DEPUTADO PEDRO KEMP, E PARTICIPAR DE LANÇAMENTO DO PROGRAMA AGROINDUSTRIALIZAÇÃO DA AGRICULTURA FAMILIAR, NA DATA DE 02/03/2026."
         }
       ],
-      "totalDiarias2026": 9952.5,
-      "numDiarias2026": 13
+      "totalDiarias2026": 10202.5,
+      "numDiarias2026": 14
     },
     {
       "nome": "LUCIMAR ROSA DE CAMPOS",
@@ -264,20 +269,20 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 6698985.17,
-    "totalNotas": 280,
+    "totalGeral": 6727072.13,
+    "totalNotas": 281,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 3625687.09,
       "Equipamentos e Material Permanente": 910863.91,
       "Obrigações Patronais": 571810.28,
-      "Serviços de Consultoria": 489482.95,
+      "Serviços de Consultoria": 508039.31,
       "Auxílio-Alimentação": 310232.42,
       "Serviços de Tecnologia da Informação": 288772.33,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 208222.02,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 217502.62,
       "Outros Serviços de Terceiros — Pessoa Física": 101692.4,
       "Outros Benefícios Assistenciais do Servidor": 93575.29,
       "Material de Consumo": 39047.42,
-      "Diárias — Civil": 37128.51,
+      "Diárias — Civil": 37378.51,
       "Indenizações e Restituições": 22470.55
     },
     "despesas": [
@@ -466,20 +471,20 @@
         "descricao": "EMPENHO REFERENTE AO SUBSÍDIO DOS VEREADORES - JUNHO/2026."
       },
       {
+        "data": "2026-03-12",
+        "fornecedor": "LOLLI GHETTI ADVOCACIA",
+        "cnpj": "30.615.309/0001-57",
+        "categoria": "Serviços de Consultoria",
+        "valor": 92781.8,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO Nº 02/2025, CUJO OBJETO É A PRESTAÇÃO DE SERVIÇOS TÉCNICOS DE ASSESSORIA E CONSULTORIA JURÍDICA EM LICITAÇÕES, PERÍODO CONTRATUAL: 10/03/2026 A 10/03"
+      },
+      {
         "data": "2026-01-02",
         "fornecedor": "RAMOS GOMES SOCIEDADE INDIVIDUAL DE ADVOCACIA",
         "cnpj": "36.367.034/0001-66",
         "categoria": "Serviços de Consultoria",
         "valor": 76950.0,
         "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA DE ASSESSORIA E CONSULTORIA JURÍDICA, ESPECIALIZADA EM DIREITO PÚBLICO, PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS, SUPORTE CONSULTIVO AO GABINETE DA PRESIDÊNCIA,"
-      },
-      {
-        "data": "2026-03-12",
-        "fornecedor": "LOLLI GHETTI ADVOCACIA",
-        "cnpj": "30.615.309/0001-57",
-        "categoria": "Serviços de Consultoria",
-        "valor": 74225.44,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO Nº 02/2025, CUJO OBJETO É A PRESTAÇÃO DE SERVIÇOS TÉCNICOS DE ASSESSORIA E CONSULTORIA JURÍDICA EM LICITAÇÕES, PERÍODO CONTRATUAL: 10/03/2026 A 10/03"
       },
       {
         "data": "2026-03-09",
@@ -976,6 +981,14 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 10740.26,
         "descricao": "EMPENHO REFERENTE AO 3º TERMO ADITIVO AO CONTRATO Nº 11/2023 (PROCESSO ADMINISTRATIVO Nº 09/2023 E PREGÃO PRESENCIAL Nº 02/2023), CUJO OBJETO É A CONTRATAÇÃO DE EMPRESA PARA A PRESTAÇÃO DE SERVIÇOS DE"
+      },
+      {
+        "data": "2026-08-11",
+        "fornecedor": "LOLLIPOP CANTINA LTDA",
+        "cnpj": "46.147.988/0001-17",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 9470.0,
+        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS DE BUFFET COMPLETO, COMPREENDENDO FORNECIMENTO DE ALIMENTOS, BEBIDAS NÃO ALCOÓLICAS, EQUIPE DE ATENDIMENTO, UTENSÍLI"
       },
       {
         "data": "2026-04-30",
@@ -1770,6 +1783,14 @@
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA DIÁRIA) PARA FINS PARTICIPAR DE ENTREVISTA NA RÁDIO N FM AGRO, NA CIDADE DE CAMPO GRANDE-MS, NA DATA DE 13/08/2026, ÀS 7h. LEI DE DIÁRIAS Nº 15, DE 06/04/202"
       },
       {
+        "data": "2026-08-12",
+        "fornecedor": "LUCAS LOPES RIBEIRO",
+        "cnpj": "044.XXX.XXX-40",
+        "categoria": "Diárias — Civil",
+        "valor": 250.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA DIÁRIA) PARA FINS DE PARTICIPAR DE REUNIÃO NA SUPERINTENDÊNCIA DO PATRIMÔNIO DA UNIÃO, NA DATA DE 12/08/2026, NA CIDADE DE CAMPO GRANDE/MS, VISANDO TRATAR DE"
+      },
+      {
         "data": "2026-03-10",
         "fornecedor": "LUCAS LOPES RIBEIRO",
         "cnpj": "044.XXX.XXX-40",
@@ -1840,14 +1861,6 @@
         "categoria": "Material de Consumo",
         "valor": 196.8,
         "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 02/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
-      },
-      {
-        "data": "2026-08-11",
-        "fornecedor": "LOLLIPOP CANTINA LTDA",
-        "cnpj": "46.147.988/0001-17",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 189.4,
-        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS DE BUFFET COMPLETO, COMPREENDENDO FORNECIMENTO DE ALIMENTOS, BEBIDAS NÃO ALCOÓLICAS, EQUIPE DE ATENDIMENTO, UTENSÍLI"
       },
       {
         "data": "2026-04-15",
