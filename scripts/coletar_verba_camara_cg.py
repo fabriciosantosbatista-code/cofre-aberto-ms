@@ -21,16 +21,24 @@ parcial de itens, que pode sub-contar silenciosamente e piorar um dado que
 já era bom). Notas fiscais com data ou valor não confiáveis são descartadas
 em vez de arriscar um dado errado no ar.
 
-Cache e paralelismo: relatórios já baixados e processados com sucesso ficam
-registrados em dados/verba_cg_cache.json (chave = codigoLinhaPDF+chaveAcesso,
-que identifica uma publicação específica no portal) e são pulados nas
-execuções seguintes. O download/parsing dos relatórios restantes roda em até
-4 threads simultâneas, cada uma com sua própria sessão HTTP (o portal é
-stateful: o POST que seleciona o relatório e o GET que baixa o PDF dependem
-do mesmo cookie de sessão, então sessões não podem ser compartilhadas entre
-threads). Cada PDF tem um orçamento cooperativo de ~30s; se ultrapassado, o
-item é pulado nesta execução e tentado de novo na próxima (não fica marcado
-como concluído no cache).
+Cache e paralelismo: TODOS os relatórios são baixados de novo em toda
+execução (o download em si é rápido) — o cache em dados/verba_cg_cache.json
+(chave = codigoLinhaPDF+chaveAcesso) guarda o sha256 do conteúdo baixado da
+ÚLTIMA vez, e só pula o PARSING (a etapa pesada) quando o hash bate com o
+anterior, ou seja, quando o PDF genuinamente não mudou desde a última coleta.
+Isso é importante porque o portal reaproveita o mesmo codigoLinhaPDF/
+chaveAcesso indefinidamente e só ACRESCENTA páginas/meses novos ao mesmo PDF
+ao longo do ano — se o cache pulasse o download com base só nesse ID (como
+uma versão anterior deste script fazia), a coleta pararia de enxergar dados
+novos pra sempre depois da primeira execução, mesmo rodando "com sucesso"
+todo dia (foi exatamente isso que aconteceu: ~1 mês sem atualização real,
+apesar do workflow reportar sucesso diariamente).
+O download/parsing roda em até 4 threads simultâneas, cada uma com sua
+própria sessão HTTP (o portal é stateful: o POST que seleciona o relatório e
+o GET que baixa o PDF dependem do mesmo cookie de sessão, então sessões não
+podem ser compartilhadas entre threads). Cada PDF tem um orçamento
+cooperativo de ~30s; se ultrapassado, o item é pulado nesta execução e
+tentado de novo na próxima (não atualiza o hash no cache).
 """
 
 import hashlib, json, os, re, sys, threading, time, unicodedata
@@ -345,9 +353,10 @@ def salvar_cache(cache):
     json.dump(cache, open(CACHE_ARQUIVO, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
 def chave_cache(alvo):
-    # codigoLinhaPDF+chaveAcesso identifica uma publicação específica no portal;
-    # uma vez processada com sucesso não muda, então pode ser pulada com segurança
-    # nas execuções seguintes.
+    # codigoLinhaPDF+chaveAcesso identifica uma publicação específica no portal —
+    # mas o PORTAL reaproveita esse mesmo ID indefinidamente conforme acrescenta
+    # meses novos ao PDF, então essa chave NÃO pode servir pra pular o download,
+    # só pra guardar/comparar o hash do conteúdo (ver processar_alvo).
     return f"{alvo['codigoLinhaPDF']}_{alvo['chaveAcesso']}"
 
 _thread_local = threading.local()
@@ -368,11 +377,14 @@ def sessao_da_thread():
         _thread_local.sessao = sessao
     return sessao
 
-def processar_alvo(alvo):
-    """Baixa e processa um único PDF (Ato027 ou Ato028 de um vereador).
+def processar_alvo(alvo, cache_anterior):
+    """Baixa e processa um único PDF (Ato027 ou Ato028 de um vereador) — SEMPRE
+    baixa de novo, e só refaz o parsing pesado se o hash do conteúdo mudou
+    desde a última execução (ver chave_cache).
     Retorna (nome, ato, meses, extra): 'extra' é o hash sha256 em caso de
-    sucesso (meses != None), ou uma mensagem do motivo em caso de falha/timeout
-    (meses=None). Respeita um orçamento cooperativo de TIMEOUT_POR_PDF segundos."""
+    sucesso (meses é um dict, possivelmente vazio se nada mudou), ou uma
+    mensagem do motivo em caso de falha/timeout (meses=None). Respeita um
+    orçamento cooperativo de TIMEOUT_POR_PDF segundos."""
     inicio = time.time()
     nome, ato = alvo["nome"], alvo["ato"]
     caminho_tmp = f"/tmp/_verba_cg_tmp_{threading.get_ident()}.pdf"
@@ -396,6 +408,11 @@ def processar_alvo(alvo):
 
         conteudo = r2.content
         sha256 = hashlib.sha256(conteudo).hexdigest()
+
+        hash_anterior = cache_anterior.get(chave_cache(alvo), {}).get("sha256")
+        if hash_anterior == sha256:
+            return nome, ato, {}, sha256  # baixado de novo, mas conteúdo idêntico — nada pra reprocessar
+
         if time.time() - inicio > TIMEOUT_POR_PDF:
             return nome, ato, None, "timeout após download"
 
@@ -427,17 +444,16 @@ def coletar_verba_indenizatoria():
     alvos += [{**item, "ato": "028"} for item in lista["ato028"]]
     log(f" {len(alvos)} relatórios encontrados ({len(lista['ato027'])} vereadores no Ato027, {len(lista['ato028'])} no Ato028)")
 
+    # Baixa TODOS os relatórios sempre — o cache só decide, depois do download,
+    # se o parsing pesado pode ser pulado (ver processar_alvo).
     cache = carregar_cache()
-    a_processar = [a for a in alvos if chave_cache(a) not in cache]
-    pulados = len(alvos) - len(a_processar)
-    if pulados:
-        log(f" 💾 {pulados} relatórios já processados anteriormente (cache) — pulando download")
 
     resultado = {}
     cache_mudou = False
+    sem_mudanca = 0
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futuros = {executor.submit(processar_alvo, alvo): alvo for alvo in a_processar}
+        futuros = {executor.submit(processar_alvo, alvo, cache): alvo for alvo in alvos}
         total = len(futuros)
         concluidos = 0
         for futuro in as_completed(futuros):
@@ -454,14 +470,21 @@ def coletar_verba_indenizatoria():
                 log(f" [{concluidos}/{total}] {nome} Ato{ato}: {extra}")
                 continue
 
-            resultado.setdefault(nome, {})[f"ato{ato}"] = meses
+            if meses:
+                resultado.setdefault(nome, {})[f"ato{ato}"] = meses
+                log(f" [{concluidos}/{total}] {nome} Ato{ato}: {len(meses)} meses")
+            else:
+                sem_mudanca += 1
+                log(f" [{concluidos}/{total}] {nome} Ato{ato}: sem mudança (hash igual ao anterior)")
+
             cache[chave_cache(alvo)] = {
                 "nome": nome, "ato": ato, "sha256": extra,
                 "processadoEm": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
             }
             cache_mudou = True
-            log(f" [{concluidos}/{total}] {nome} Ato{ato}: {len(meses)} meses")
 
+    if sem_mudanca:
+        log(f" 💾 {sem_mudanca} relatório(s) sem mudança desde a última coleta (parsing pulado)")
     if cache_mudou:
         salvar_cache(cache)
 
