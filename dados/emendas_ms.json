@@ -1,8 +1,8 @@
 {
-  "ultimaAtualizacao": "2026-08-13T12:38:21",
+  "ultimaAtualizacao": "2026-08-14T12:34:27",
   "ano": 2026,
-  "fonte": "Portal da Transparência (api.portaldatransparencia.gov.br/api-de-dados/emendas) — 2026-08-13T12:38:21",
-  "totalGeralPago": 230960582.58,
+  "fonte": "Portal da Transparência (api.portaldatransparencia.gov.br/api-de-dados/emendas) — 2026-08-14T12:34:27",
+  "totalGeralPago": 239679780.98,
   "parlamentares": [
     {
       "nome": "Nelsinho Trad",
@@ -95,6 +95,56 @@
           "funcao": "Educação",
           "subfuncao": "Ensino profissional",
           "valorEmpenhado": 28800.0,
+          "valorPago": 0.0
+        }
+      ]
+    },
+    {
+      "nome": "Rodolfo Nogueira",
+      "cargo": "Deputado(a) Federal",
+      "partido": "PL",
+      "totalEmpenhado": 38916075.0,
+      "totalPago": 33407742.52,
+      "porTipo": {
+        "Projeto Definido": 15226005.0,
+        "Emenda Pix": 18181737.52
+      },
+      "totalEmendas": 4,
+      "emendas": [
+        {
+          "numero": "0006",
+          "tipo": "Emenda Pix",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Encargos especiais",
+          "subfuncao": "Outras transferências",
+          "valorEmpenhado": 19886070.0,
+          "valorPago": 18181737.52
+        },
+        {
+          "numero": "0001",
+          "tipo": "Projeto Definido",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Saúde",
+          "subfuncao": "Assistência hospitalar e ambulatorial",
+          "valorEmpenhado": 8000000.0,
+          "valorPago": 8000000.0
+        },
+        {
+          "numero": "0007",
+          "tipo": "Projeto Definido",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Saúde",
+          "subfuncao": "Atenção básica",
+          "valorEmpenhado": 10926005.0,
+          "valorPago": 7226005.0
+        },
+        {
+          "numero": "0002",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Defesa nacional",
+          "subfuncao": "Normatização e fiscalização",
+          "valorEmpenhado": 104000.0,
           "valorPago": 0.0
         }
       ]
@@ -268,56 +318,6 @@
           "subfuncao": "Assistência hospitalar e ambulatorial",
           "valorEmpenhado": 200.0,
           "valorPago": 200.0
-        }
-      ]
-    },
-    {
-      "nome": "Rodolfo Nogueira",
-      "cargo": "Deputado(a) Federal",
-      "partido": "PL",
-      "totalEmpenhado": 30916875.0,
-      "totalPago": 25408542.52,
-      "porTipo": {
-        "Projeto Definido": 7226805.0,
-        "Emenda Pix": 18181737.52
-      },
-      "totalEmendas": 4,
-      "emendas": [
-        {
-          "numero": "0006",
-          "tipo": "Emenda Pix",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Encargos especiais",
-          "subfuncao": "Outras transferências",
-          "valorEmpenhado": 19886070.0,
-          "valorPago": 18181737.52
-        },
-        {
-          "numero": "0007",
-          "tipo": "Projeto Definido",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Saúde",
-          "subfuncao": "Atenção básica",
-          "valorEmpenhado": 10926005.0,
-          "valorPago": 7226005.0
-        },
-        {
-          "numero": "0001",
-          "tipo": "Projeto Definido",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Saúde",
-          "subfuncao": "Assistência hospitalar e ambulatorial",
-          "valorEmpenhado": 800.0,
-          "valorPago": 800.0
-        },
-        {
-          "numero": "0002",
-          "tipo": "Projeto Definido",
-          "municipio": "MATO GROSSO DO SUL (UF)",
-          "funcao": "Defesa nacional",
-          "subfuncao": "Normatização e fiscalização",
-          "valorEmpenhado": 104000.0,
-          "valorPago": 0.0
         }
       ]
     },
@@ -647,9 +647,9 @@
       "cargo": "Deputado(a) Federal",
       "partido": "UNIÃO",
       "totalEmpenhado": 20190940.66,
-      "totalPago": 12995443.36,
+      "totalPago": 13295443.36,
       "porTipo": {
-        "Projeto Definido": 3575183.0,
+        "Projeto Definido": 3875183.0,
         "Emenda Pix": 9420260.36
       },
       "totalEmendas": 11,
@@ -673,6 +673,15 @@
           "valorPago": 3781000.0
         },
         {
+          "numero": "0013",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Educação",
+          "subfuncao": "Ensino superior",
+          "valorEmpenhado": 2216151.0,
+          "valorPago": 1521328.0
+        },
+        {
           "numero": "0010",
           "tipo": "Projeto Definido",
           "municipio": "MÚLTIPLO",
@@ -680,15 +689,6 @@
           "subfuncao": "Assistência hospitalar e ambulatorial",
           "valorEmpenhado": 3646731.0,
           "valorPago": 1357528.0
-        },
-        {
-          "numero": "0013",
-          "tipo": "Projeto Definido",
-          "municipio": "MATO GROSSO DO SUL (UF)",
-          "funcao": "Educação",
-          "subfuncao": "Ensino superior",
-          "valorEmpenhado": 2216151.0,
-          "valorPago": 1221328.0
         },
         {
           "numero": "0014",
@@ -760,9 +760,9 @@
       "cargo": "Deputado(a) Federal",
       "partido": "PT",
       "totalEmpenhado": 11789200.3,
-      "totalPago": 9690636.83,
+      "totalPago": 10110635.23,
       "porTipo": {
-        "Projeto Definido": 7529236.32,
+        "Projeto Definido": 7949234.72,
         "Emenda Pix": 2161400.51
       },
       "totalEmendas": 9,
@@ -784,6 +784,15 @@
           "subfuncao": "Outras transferências",
           "valorEmpenhado": 3184000.0,
           "valorPago": 2161400.51
+        },
+        {
+          "numero": "0010",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Educação",
+          "subfuncao": "Ensino superior",
+          "valorEmpenhado": 419998.4,
+          "valorPago": 419998.4
         },
         {
           "numero": "0009",
@@ -828,15 +837,6 @@
           "funcao": "Segurança pública",
           "subfuncao": "Policiamento",
           "valorEmpenhado": 35.0,
-          "valorPago": 0.0
-        },
-        {
-          "numero": "0010",
-          "tipo": "Projeto Definido",
-          "municipio": "MATO GROSSO DO SUL (UF)",
-          "funcao": "Educação",
-          "subfuncao": "Ensino superior",
-          "valorEmpenhado": 419998.4,
           "valorPago": 0.0
         },
         {
