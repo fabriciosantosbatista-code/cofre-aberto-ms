@@ -1,7 +1,7 @@
 {
   "cidade": "Chapadão do Sul",
-  "ultimaAtualizacao": "2026-08-17T12:16:16",
-  "fonte": "Portal Transparência Fiorilli (pmchapadao.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-17T12:16:16",
+  "ultimaAtualizacao": "2026-08-18T12:17:57",
+  "fonte": "Portal Transparência Fiorilli (pmchapadao.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-18T12:17:57",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camarachapadaodosul.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -588,6 +588,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-08-13",
+          "valor": 2318.62,
+          "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS , NOS DIAS 13 E 14 DE AGOSTO, A FIM DE REALIZAR VISITAS INSTITUCIONAIS, CONFORME SOLICITADO NO MEMORANDO Nº 1627/2026"
+        },
+        {
           "data": "2026-08-03",
           "valor": 9274.88,
           "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE MARINGA/PR P/PARTICIPAR DO CURSO: \"O PODER FISCALIZADOR E JULGADOR DO LEGISLATIVO MUNICIPAL\", NOS DIAS 04 A 07 DE AGOSTO, REALIZADO PELA EMPRESA NOJURIS TREINAMENTO PARA GESTÃO PÚBLICA DE RESULTADO"
@@ -683,8 +688,8 @@
           "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS P/ CUMPRIR AGENDA INSTITUCIONAL NOS SEGUINTES ÓRGÃOS:  DIAS 21 E 22 DE JANEIRO - REUNIÃO COM ASSESSORIA JURÍDICA, ENERGISA, GABINETE SENADOR NELSON TRAD – CONFORME SOLICITADO PELO 1DOC MEMORANDO Nº 068/2026."
         }
       ],
-      "totalDiarias2026": 101436.8,
-      "numDiarias2026": 19
+      "totalDiarias2026": 103755.42,
+      "numDiarias2026": 20
     },
     {
       "nome": "RICARDO ESTEFANO E. BANNAK",
@@ -844,20 +849,20 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 7988356.84,
-    "totalNotas": 528,
+    "totalGeral": 8020946.6,
+    "totalNotas": 530,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 2965132.16,
-      "Diárias — Civil": 1760726.63,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1627008.88,
-      "Serviços de Consultoria": 657119.1,
+      "Diárias — Civil": 1763045.25,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1628793.09,
+      "Serviços de Consultoria": 674119.1,
       "Obrigações Patronais": 457155.72,
       "Material de Consumo": 284871.36,
       "Equipamentos e Material Permanente": 109635.16,
       "Serviços de Tecnologia da Informação": 64883.12,
-      "Aporte para Cobertura de Déficit Atuarial do RPPS": 47705.07,
+      "Aporte para Cobertura de Déficit Atuarial do RPPS": 58558.0,
       "Passagens e Despesas com Locomoção": 9681.64,
-      "Contribuições": 4438.0
+      "Contribuições": 5072.0
     },
     "despesas": [
       {
@@ -1029,6 +1034,14 @@
         "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO DO SUBSÍDIO DOS SERVIDORES COMISSIONADOS DA CÂMARA DESTA MUNICIPALIDADE. REF. MAIO DE 2026."
       },
       {
+        "data": "2026-03-20",
+        "fornecedor": "AQUIS JUNIOR SOARES - SOCIEDADE INDIVIDUAL DE ADVO",
+        "cnpj": "19.189.883/0001-58",
+        "categoria": "Serviços de Consultoria",
+        "valor": 85000.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO CONTRATO N º 002/2026  DA LICITAÇÃO 000010/26 - INEXIGIBILIDADE - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE ASSESSORIA TÉCNICA ESPECIALIZADA EM"
+      },
+      {
         "data": "2026-01-28",
         "fornecedor": "FOLHA DE PAGAMENTO",
         "cnpj": "05.443.531/0001-72",
@@ -1091,14 +1104,6 @@
         "categoria": "Equipamentos e Material Permanente",
         "valor": 72932.34,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE AO CONTRATO Nº 0022/2025 AO PEDIDO GERADO A PARTIR DO RESULTADO DA LICITAÇÃO: 000037/25 - PROCESSO ADMINSTRATIVO Nº 0031/2025 PREGÃO ELETRÔNICO - CONTRATAÇÃO DE EMPRESA"
-      },
-      {
-        "data": "2026-03-20",
-        "fornecedor": "AQUIS JUNIOR SOARES - SOCIEDADE INDIVIDUAL DE ADVO",
-        "cnpj": "19.189.883/0001-58",
-        "categoria": "Serviços de Consultoria",
-        "valor": 68000.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO CONTRATO N º 002/2026  DA LICITAÇÃO 000010/26 - INEXIGIBILIDADE - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE ASSESSORIA TÉCNICA ESPECIALIZADA EM"
       },
       {
         "data": "2026-05-29",
@@ -1453,6 +1458,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL CASSEMS S/FOLHA DE PAGAMENTO REF MÊS FEVEREIRO 2026"
       },
       {
+        "data": "2026-01-08",
+        "fornecedor": "CHAPNET SERVIÇOS DE COMUN. LTDA",
+        "cnpj": "03.701.156/0001-98",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 12800.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO TERMO ADITIVO Nº 002/2025 AO CONTRATO Nº 015/2023 P.S - CIRCUITO DEDICADO CORPORATIVO - LINL DE INTERNET DEDICADO COM VELOCIDADE DE DOWNLOAD MÍNIMA DE 300 MBPS E UPLO"
+      },
+      {
         "data": "2026-05-29",
         "fornecedor": "CASSEMS - CAIXA DE ASSIST. SERVID. MS",
         "cnpj": "04.311.093/0001-26",
@@ -1581,14 +1594,6 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À 06 (SEIS) TAXAS DE INSCRIÇÕES P/PARTICIPARDA QUALIFICAÇÃO PARA VEREADORES E EQUIPES TÉCNICAS DA CÂMARA MUNICIPAL, NOS DIAS 14 A 17 DE JULHO EM CAMPO GRANDE/MS"
       },
       {
-        "data": "2026-01-08",
-        "fornecedor": "CHAPNET SERVIÇOS DE COMUN. LTDA",
-        "cnpj": "03.701.156/0001-98",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 11200.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO TERMO ADITIVO Nº 002/2025 AO CONTRATO Nº 015/2023 P.S - CIRCUITO DEDICADO CORPORATIVO - LINL DE INTERNET DEDICADO COM VELOCIDADE DE DOWNLOAD MÍNIMA DE 300 MBPS E UPLO"
-      },
-      {
         "data": "2026-07-17",
         "fornecedor": "DR SERRALHERIA LTDA",
         "cnpj": "53.538.798/0001-96",
@@ -1603,6 +1608,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 11164.17,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE AO ADITIVO Nº 001/2026 CONTRATO Nº 0022/2025 AO PEDIDO GERADO A PARTIR DO RESULTADO DA LICITAÇÃO: 000037/25 - PROCESSO ADMINSTRATIVO Nº 0031/2025 PREGÃO ELETRÔNICO - CON"
+      },
+      {
+        "data": "2026-08-17",
+        "fornecedor": "IPMCS - INST. PREV. SOC. SERV. MUN. CHS",
+        "cnpj": "04.680.541/0001-69",
+        "categoria": "Aporte para Cobertura de Déficit Atuarial do RPPS",
+        "valor": 10852.93,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL IPMCS S/FOLHA DE PAGAMENTO MÊS JULHO 2026 - APORTE"
       },
       {
         "data": "2026-07-17",
@@ -3229,6 +3242,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À LICITAÇÃO Nº 27/2025  DE REGISTRO DE PREÇOS Nº  000027/25 - DISPENSA ELETRÔNICA - REGISTRO DE PREÇO PARA FUTURA AQUISIÇÃO DE AGUA MINERAL"
       },
       {
+        "data": "2026-01-21",
+        "fornecedor": "UNIAO DOS VEREADORES DO BRASIL",
+        "cnpj": "83.594.978/0001-56",
+        "categoria": "Contribuições",
+        "valor": 5072.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO MENSAL CONFORME RESOLUÇÃO Nº 123/2015 DE DEZEMBRO DE 2015 REFERENTE AOS PAGAMENTOS DO ANO DE 2026"
+      },
+      {
         "data": "2026-01-30",
         "fornecedor": "BATISTA & PATTINI ADVOGADOS ASSOCIADOS",
         "cnpj": "22.430.924/0001-60",
@@ -3749,14 +3770,6 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À ADITIVO Nº 0001/2025 AO CONTRATO Nº 032/2024 P.S LICITAÇÃO: 000041/24 - DISPENSA ELETRÔNICA - CONTRATAÇÃO DE EMPRESA P/PRESTAÇÃO DE SERVIÇOS DE MONITORAMENTO E MANUTEN"
       },
       {
-        "data": "2026-01-21",
-        "fornecedor": "UNIAO DOS VEREADORES DO BRASIL",
-        "cnpj": "83.594.978/0001-56",
-        "categoria": "Contribuições",
-        "valor": 4438.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO MENSAL CONFORME RESOLUÇÃO Nº 123/2015 DE DEZEMBRO DE 2015 REFERENTE AOS PAGAMENTOS DO ANO DE 2026"
-      },
-      {
         "data": "2026-01-08",
         "fornecedor": "KIMATEL TELECOMUNIC. E COMÉRCIO LTDA ME",
         "cnpj": "05.164.653/0001-20",
@@ -4177,7 +4190,7 @@
         "fornecedor": "CENTRO AUTOMOTIVO CAR WASH-EIRELI-ME",
         "cnpj": "19.713.028/0001-02",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 2675.34,
+        "valor": 2711.19,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE AO 1º TERMO ADITIVO Nº 001/2026 DO CONTRATO Nº 005/2025 LICITAÇÃO: 000011/25 - DISPENSA ELETRÔNICA - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS CONT"
       },
       {
@@ -4243,6 +4256,14 @@
         "categoria": "Diárias — Civil",
         "valor": 2318.62,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS P/PARTICIPARDA QUALIFICAÇÃO PARA VEREADORES E EQUIPES TÉCNICAS DA CÂMARA MUNICIPAL, NOS DIAS 14 A 17 DE JULHO, REALIZADO PELA EMPRES"
+      },
+      {
+        "data": "2026-08-13",
+        "fornecedor": "MARCELO DA COSTA",
+        "cnpj": "006.XXX.XXX-55",
+        "categoria": "Diárias — Civil",
+        "valor": 2318.62,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS , NOS DIAS 13 E 14 DE AGOSTO, A FIM DE REALIZAR VISITAS INSTITUCIONAIS, CONFORME SOLICITADO NO MEMORANDO Nº 1627/2026"
       },
       {
         "data": "2026-01-21",
@@ -4485,6 +4506,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À COMPLEMENTO AO EMPENHO Nº 52"
       },
       {
+        "data": "2026-01-08",
+        "fornecedor": "SANESUL - EMPRESA DE SANEAMENTO DE MS",
+        "cnpj": "03.982.931/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1435.57,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À TARIFAS DE CONSUMO DE ÁGUA/ESGOTO NO DECORRER DO EXERCÍCIO DE 2026"
+      },
+      {
         "data": "2026-06-18",
         "fornecedor": "ANDREIA CRISTIANE DE LIMA",
         "cnpj": "845.XXX.XXX-68",
@@ -4539,14 +4568,6 @@
         "categoria": "Material de Consumo",
         "valor": 1310.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE COMPLEMENTO AO EMPENHO Nº 232 DA AQUISIÇÃO DE PEÇAS P/REPOSIÇÃO NA 4ª REVISÃO DO VEÍCULO SW4 PLATINUM PLACA SMF6F91"
-      },
-      {
-        "data": "2026-01-08",
-        "fornecedor": "SANESUL - EMPRESA DE SANEAMENTO DE MS",
-        "cnpj": "03.982.931/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 1287.21,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE À TARIFAS DE CONSUMO DE ÁGUA/ESGOTO NO DECORRER DO EXERCÍCIO DE 2026"
       },
       {
         "data": "2026-01-23",
@@ -5061,14 +5082,6 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À P.S DA 5ª REVISÃO DE 50.000 KM VEÍCULO SW4 / SW4 DSL 4X4 SRX PLATINUM AT 7S PLACA SMF6F91"
       },
       {
-        "data": "2026-08-13",
-        "fornecedor": "MARCELO DA COSTA",
-        "cnpj": "006.XXX.XXX-55",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS , NOS DIAS 13 E 14 DE AGOSTO, A FIM DE REALIZAR VISITAS INSTITUCIONAIS, CONFORME SOLICITADO NO MEMORANDO Nº 1627/2026"
-      },
-      {
         "data": "2026-08-14",
         "fornecedor": "GENTE SEGURADORA SA",
         "cnpj": "90.180.605/0001-02",
@@ -5083,6 +5096,14 @@
         "categoria": "Serviços de Consultoria",
         "valor": 0.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE CONTRATO Nº 0017/2026 - INEXIGIBILIDADE PROCESSO ADMINISTRATIVO Nº 0023/2026 À PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE NATUREZA PREDOMINANTEMENTE INTELECTUAL DE"
+      },
+      {
+        "data": "2026-08-17",
+        "fornecedor": "CHAPNET SERVIÇOS DE COMUN. LTDA",
+        "cnpj": "03.701.156/0001-98",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO TERMO ADITIVO Nº 003/2026 AO CONTRATO Nº 015/2023 P.S - CIRCUITO DEDICADO CORPORATIVO - LINL DE INTERNET DEDICADO COM VELOCIDADE DE DOWNLOAD MÍNIMA DE 300 MBPS E UPLO"
       }
     ]
   },
