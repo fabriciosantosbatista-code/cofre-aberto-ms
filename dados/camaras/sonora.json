@@ -1,7 +1,7 @@
 {
   "cidade": "Sonora",
-  "ultimaAtualizacao": "2026-08-18T12:17:57",
-  "fonte": "Portal Transparência Fiorilli (pmsonora.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-18T12:17:57",
+  "ultimaAtualizacao": "2026-08-19T12:17:44",
+  "fonte": "Portal Transparência Fiorilli (pmsonora.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-19T12:17:44",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasonora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -40,6 +40,11 @@
       "descontos": 5240.47,
       "referenciaFolha": "Folha Mensal - Julho",
       "diarias": [
+        {
+          "data": "2026-08-12",
+          "valor": 750.0,
+          "descricao": "Empenho destinado à concessão de 1 (uma) diária à Vereadora Clotilde de Sousa Silva Castro, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 12 de agosto de 2026, em razão de cumprimento de agenda institucional na Assembleia Legislativa de Mato Grosso do Sul, junto ao Deputado Estadual Marcio Fernandes e ao Deputado Federal Beto Pereira, vinculada ao exercício da atividade parlamentar, conforme legislação municipal vigente."
+        },
         {
           "data": "2026-07-16",
           "valor": 750.0,
@@ -86,8 +91,8 @@
           "descricao": "Empenho destinado à concessão de 5 (cinco) diárias ao Vereadora Clotilde de Sousa Silva Castro, para custear despesas com deslocamento, alimentação e estadia na cidade de Brasília/DF, no período de 23 a 27 de fevereiro de 2026, em razão de participação no 29º Seminário de Gestão Pública e cumprimento de agenda institucional junto a deputados federais, senadores e órgãos públicos, conforme legislação municipal vigente."
         }
       ],
-      "totalDiarias2026": 37125.0,
-      "numDiarias2026": 9
+      "totalDiarias2026": 37875.0,
+      "numDiarias2026": 10
     },
     {
       "nome": "DOUGLAS BRASILEIRO DA SILVA",
@@ -347,6 +352,11 @@
       "referenciaFolha": "Folha Mensal - Julho",
       "diarias": [
         {
+          "data": "2026-08-12",
+          "valor": 750.0,
+          "descricao": "Empenho destinado à concessão de 1 (uma) diária ao Vereador Joaquim Cassiano Teixeira, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 12 de agosto de 2026, em razão de cumprimento de agenda institucional na Assembleia Legislativa de Mato Grosso do Sul, junto ao Deputado Estadual Marcio Fernandes e ao Deputado Federal Beto Pereira, vinculada ao exercício da atividade parlamentar, conforme legislação municipal vigente."
+        },
+        {
           "data": "2026-08-04",
           "valor": 6000.0,
           "descricao": "Empenho destinado à concessão de 4 (quatro) diárias ao Vereador Joaquim Cassiano Teixeira, para custear despesas com deslocamento, alimentação e estadia na cidade de Brasília/DF, no período de 04 a 07 de agosto de 2026, em razão de participação no 47º Congresso de Gestão Pública, vinculada ao exercício da atividade parlamentar, conforme legislação municipal vigente."
@@ -392,8 +402,8 @@
           "descricao": "Empenho destinado ao pagamento de 4 (quatro) diárias ao vereador Joaquim Cassiano Teixeira, para custear despesas com deslocamento, alimentação e estadia na cidade de Brasília/DF, no período de 20 a 23 de janeiro de 2026, em razão da participação no 40º Congresso de Gestão Pública."
         }
       ],
-      "totalDiarias2026": 46500.0,
-      "numDiarias2026": 9
+      "totalDiarias2026": 47250.0,
+      "numDiarias2026": 10
     },
     {
       "nome": "JOEL PINTO DE SOUZA",
@@ -535,12 +545,12 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 4511766.79,
+    "totalGeral": 4514766.79,
     "totalNotas": 292,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 1794500.49,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 763863.0,
-      "Diárias — Civil": 424575.0,
+      "Diárias — Civil": 427575.0,
       "Serviços de Tecnologia da Informação": 352571.71,
       "Serviços de Consultoria": 328871.62,
       "Obrigações Patronais": 313016.4,
@@ -2546,6 +2556,22 @@
         "descricao": "Empenho destinado à concessão de 1 (uma) diária ao Presidente da Câmara Municipal, Vereador Laudir Abreu da Rosa Junior, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/"
       },
       {
+        "data": "2026-08-12",
+        "fornecedor": "JOAQUIM CASSIANO TEIXEIRA",
+        "cnpj": "361.XXX.XXX-20",
+        "categoria": "Diárias — Civil",
+        "valor": 750.0,
+        "descricao": "Empenho destinado à concessão de 1 (uma) diária ao Vereador Joaquim Cassiano Teixeira, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 12 de agosto de 2026, e"
+      },
+      {
+        "data": "2026-08-12",
+        "fornecedor": "CLOTILDE DE SOUSA SILVA CASTRO",
+        "cnpj": "018.XXX.XXX-02",
+        "categoria": "Diárias — Civil",
+        "valor": 750.0,
+        "descricao": "Empenho destinado à concessão de 1 (uma) diária à Vereadora Clotilde de Sousa Silva Castro, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 12 de agosto de 20"
+      },
+      {
         "data": "2026-06-02",
         "fornecedor": "ANA MARLI MOREIRA DA LUZ",
         "cnpj": "487.XXX.XXX-87",
@@ -2616,6 +2642,30 @@
         "categoria": "Diárias — Civil",
         "valor": 500.0,
         "descricao": "Empenho destinado à concessão de 1 (uma) diária ao servidor Deiwton Fernando Santos Silva, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 31 de julho de 2026"
+      },
+      {
+        "data": "2026-08-12",
+        "fornecedor": "SIDNEI TELES DE AMORIM",
+        "cnpj": "772.XXX.XXX-34",
+        "categoria": "Diárias — Civil",
+        "valor": 500.0,
+        "descricao": "Empenho destinado à concessão de 1 (uma) diária ao servidor Sidnei Teles Amorim, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 12 de agosto de 2026, em razã"
+      },
+      {
+        "data": "2026-08-13",
+        "fornecedor": "JESSICA BORGES CORDEIRO",
+        "cnpj": "050.XXX.XXX-88",
+        "categoria": "Diárias — Civil",
+        "valor": 500.0,
+        "descricao": "Empenho destinado à concessão de 1 (uma) diária à servidora Jéssica Borges Cordeiro, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 13 de agosto de 2026, em"
+      },
+      {
+        "data": "2026-08-13",
+        "fornecedor": "SIDNEI TELES DE AMORIM",
+        "cnpj": "772.XXX.XXX-34",
+        "categoria": "Diárias — Civil",
+        "valor": 500.0,
+        "descricao": "Empenho destinado à concessão de 1 (uma) diária ao servidor Sidnei Teles de Amorim, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 13 de agosto de 2026, em r"
       },
       {
         "data": "2026-07-01",
@@ -2848,46 +2898,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "O veículo oficial apresentou falha no sistema de freios dianteiro durante viagem oficial, configurando situação urgente que pode ocasionar prejuízo ao Legislativo e comprometer a segurança do servidor"
-      },
-      {
-        "data": "2026-08-12",
-        "fornecedor": "JOAQUIM CASSIANO TEIXEIRA",
-        "cnpj": "361.XXX.XXX-20",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "Empenho destinado à concessão de 1 (uma) diária ao Vereador Joaquim Cassiano Teixeira, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 12 de agosto de 2026, e"
-      },
-      {
-        "data": "2026-08-12",
-        "fornecedor": "CLOTILDE DE SOUSA SILVA CASTRO",
-        "cnpj": "018.XXX.XXX-02",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "Empenho destinado à concessão de 1 (uma) diária à Vereadora Clotilde de Sousa Silva Castro, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 12 de agosto de 20"
-      },
-      {
-        "data": "2026-08-12",
-        "fornecedor": "SIDNEI TELES DE AMORIM",
-        "cnpj": "772.XXX.XXX-34",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "Empenho destinado à concessão de 1 (uma) diária ao servidor Sidnei Teles Amorim, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 12 de agosto de 2026, em razã"
-      },
-      {
-        "data": "2026-08-13",
-        "fornecedor": "JESSICA BORGES CORDEIRO",
-        "cnpj": "050.XXX.XXX-88",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "Empenho destinado à concessão de 1 (uma) diária à servidora Jéssica Borges Cordeiro, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 13 de agosto de 2026, em"
-      },
-      {
-        "data": "2026-08-13",
-        "fornecedor": "SIDNEI TELES DE AMORIM",
-        "cnpj": "772.XXX.XXX-34",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "Empenho destinado à concessão de 1 (uma) diária ao servidor Sidnei Teles de Amorim, para custear despesas com deslocamento e alimentação na cidade de Campo Grande/MS, no dia 13 de agosto de 2026, em r"
       }
     ]
   }
