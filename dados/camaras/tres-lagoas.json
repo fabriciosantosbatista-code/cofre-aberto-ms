@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-08-19T12:17:44",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-19T12:17:44",
+  "ultimaAtualizacao": "2026-08-20T12:19:47",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-20T12:19:47",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -469,25 +469,25 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 21507050.59,
-    "totalNotas": 636,
+    "totalGeral": 21519575.09,
+    "totalNotas": 637,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 12245126.42,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 2989159.01,
       "Auxílio-Alimentação": 2159200.95,
       "Obrigações Patronais": 1914120.58,
-      "Serviços de Tecnologia da Informação": 511253.13,
+      "Serviços de Tecnologia da Informação": 512334.13,
       "Diárias — Civil": 505683.66,
       "Locação de Mão de Obra": 319664.1,
       "Serviços de Consultoria": 228022.7,
       "Material de Consumo": 189455.23,
       "Aporte para Cobertura de Déficit Atuarial do RPPS": 183873.42,
       "Outros Benefícios Assistenciais do Servidor": 101683.65,
-      "Indenizações e Restituições": 67155.72,
+      "Indenizações e Restituições": 68150.22,
       "Despesas de Exercícios Anteriores": 48725.47,
+      "Equipamentos e Material Permanente": 19766.95,
       "Elemento 94": 19608.6,
       "Elemento 32": 10000.0,
-      "Equipamentos e Material Permanente": 9317.95,
       "Outros Serviços de Terceiros — Pessoa Física": 3000.0,
       "Contribuições": 2000.0,
       "Passagens e Despesas com Locomoção": 0.0
@@ -1358,6 +1358,14 @@
         "descricao": "Perocesso 033/25  prestação de serviços de instalação e fornecimento de link dedicado à internet (IP dedicado) por meio de fibra óptica, com velocidade de 2 Gbps (Gigabits por segundo)full duplex (2 G"
       },
       {
+        "data": "2026-06-30",
+        "fornecedor": "ARPEJO COMUNICACAO, COMERCIO E SERVICOS LTDA",
+        "cnpj": "44.931.075/0001-61",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 10449.0,
+        "descricao": "Processo 13/26 Aquisição e instalação de aparelhos de ar condicionado para a Câmara Municipal de Três Lagoas-MS,."
+      },
+      {
         "data": "2026-03-11",
         "fornecedor": "MARIA ROSA RODRIGUES TAVARES",
         "cnpj": "03.813.381/0001-16",
@@ -1742,6 +1750,14 @@
         "descricao": "Concessão de suprimento de fundos Material de consumo"
       },
       {
+        "data": "2026-04-06",
+        "fornecedor": "C. C. CALEJON DOS SANTOS ME",
+        "cnpj": "74.384.231/0001-82",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 4324.0,
+        "descricao": "Processo 61- 21 Locação software - V Termo  aditivo excepcional"
+      },
+      {
         "data": "2026-03-30",
         "fornecedor": "FOLHA DE PGTO SERV. COMISSIONADOS (Câmara)",
         "cnpj": "15.410.145/0001-38",
@@ -1980,14 +1996,6 @@
         "categoria": "Indenizações e Restituições",
         "valor": 3245.07,
         "descricao": "DESPESA REFERENTE A RESSARCIMENTO DE PASSAGEM AEREA PARA VIAGEM A BRASILIA DO DIA 17 A 23 DE MAIO 26. PARTICIPAR  DO 3º CURSO DE ELABORAÇÃO DE ARTEFATOS DE PLANEJAMENTO DA CONTRATAÇÃO POR MEIO DE INTE"
-      },
-      {
-        "data": "2026-04-06",
-        "fornecedor": "C. C. CALEJON DOS SANTOS ME",
-        "cnpj": "74.384.231/0001-82",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 3243.0,
-        "descricao": "Processo 61- 21 Locação software - V Termo  aditivo excepcional"
       },
       {
         "data": "2026-02-24",
@@ -3596,6 +3604,14 @@
         "categoria": "Indenizações e Restituições",
         "valor": 1020.5,
         "descricao": "\"Indenização de Combustível, conforme Lei Municipal 3.960/2023, compreendendo a ida e volta à cidade de Foz do Iguaçú - PR, no período de 25/08 A 29/08/2026 que corresponde a 1570 KM, (padronizado con"
+      },
+      {
+        "data": "2026-08-19",
+        "fornecedor": "JONATAS MODESTO SANTOS",
+        "cnpj": "056.XXX.XXX-71",
+        "categoria": "Indenizações e Restituições",
+        "valor": 994.5,
+        "descricao": "Indenização de Combustível, conforme Lei Municipal 3.960/2023, compreendendo a ida e volta à cidade de Curitiba-PR, no período de 24/08/2026 a 29/08/2026 que corresponde a 1530 KM, (padronizado confor"
       },
       {
         "data": "2026-03-20",
@@ -5332,14 +5348,6 @@
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "Processo 33/26 -  fornecimento de camisetas personalizadas para a Procuradoria da Mulher da Câmara Municipal de Três Lagoas-MS."
-      },
-      {
-        "data": "2026-06-30",
-        "fornecedor": "ARPEJO COMUNICACAO, COMERCIO E SERVICOS LTDA",
-        "cnpj": "44.931.075/0001-61",
-        "categoria": "Equipamentos e Material Permanente",
-        "valor": 0.0,
-        "descricao": "Processo 13/26 Aquisição e instalação de aparelhos de ar condicionado para a Câmara Municipal de Três Lagoas-MS,."
       },
       {
         "data": "2026-06-30",
