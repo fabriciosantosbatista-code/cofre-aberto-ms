@@ -1,7 +1,7 @@
 {
   "cidade": "Corumbá",
-  "ultimaAtualizacao": "2026-08-20T12:19:47",
-  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-08-20T12:19:47",
+  "ultimaAtualizacao": "2026-08-21T12:19:37",
+  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-08-21T12:19:37",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camaracorumba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -291,6 +291,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-08-20",
+          "valor": 3000.0,
+          "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDAS/PARTICIPAR DE REUNIÕES  NA GOVERNADORIA; NOS  ESCRITÓRIOS POLITICOS:  DA SENADORA SORAYA THRONICKE E DO DEPUTADO FEDERAL DAGOBERTO NOGUEIRA, CONFORME LEIS 2384/2014 E 2819/2022."
+        },
+        {
           "data": "2026-06-08",
           "valor": 3000.0,
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A PONTA PORÃ-MS, PARA PARTICIPAR DO SEMINÁRIO DE CAPACITAÇÃO LEGISLATIVA, CONFORME LEIS 2384/2014 E 2819/2022."
@@ -316,8 +321,8 @@
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO SEMINARIO LEGISLATIVO 360 -GOVERNANÇA, FISCALIZAÇÃO E RESULTADO, CONFORME LEIS 2384/2014 E 2819/2022."
         }
       ],
-      "totalDiarias2026": 13000.0,
-      "numDiarias2026": 5
+      "totalDiarias2026": 16000.0,
+      "numDiarias2026": 6
     },
     {
       "nome": "MATHEUS PEREIRA CAZARIN SILVA",
@@ -481,15 +486,15 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 19084127.32,
-    "totalNotas": 195,
+    "totalGeral": 19129095.93,
+    "totalNotas": 196,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 12376203.59,
       "Obrigações Patronais": 2264285.26,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1832676.15,
-      "Serviços de Consultoria": 971661.15,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1849644.76,
+      "Serviços de Consultoria": 996661.15,
       "Indenizações e Restituições": 894364.57,
-      "Diárias — Civil": 284400.0,
+      "Diárias — Civil": 287400.0,
       "Elemento 03": 210543.12,
       "Despesas de Exercícios Anteriores": 151471.38,
       "Elemento 96": 82628.94,
@@ -634,6 +639,14 @@
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ADVOCACIA EM DIREITO PÚBLICO, CONSISTENTES NA ASSESSORIA E CONSULTORIA JURIDICA, PARA DEFINIÇÃO E IMPLEMENTAÇÃO DA FI"
       },
       {
+        "data": "2026-03-31",
+        "fornecedor": "PLENUS CONSULTORIA E PLANEJAMENTO LTDA",
+        "cnpj": "08.680.859/0001-09",
+        "categoria": "Serviços de Consultoria",
+        "valor": 125000.0,
+        "descricao": "VALOR QUE SE EMPENHA PARA, CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA CONSULTORIA EM GESTÃO DE RECURSOS HUMANOS, COM ÊNFASE NA ANÁLISE E CONFORMIDADE LEGAL DA FOLHA DE PAGAMENTO, ALÉM DE ACOMPANHAMENTO"
+      },
+      {
         "data": "2026-04-07",
         "fornecedor": "FUNPREV",
         "cnpj": "04.727.444/0001-84",
@@ -656,14 +669,6 @@
         "categoria": "Elemento 03",
         "valor": 101000.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A FOLHA DE PAGAMENTO ESTIMADA 2026."
-      },
-      {
-        "data": "2026-03-31",
-        "fornecedor": "PLENUS CONSULTORIA E PLANEJAMENTO LTDA",
-        "cnpj": "08.680.859/0001-09",
-        "categoria": "Serviços de Consultoria",
-        "valor": 100000.0,
-        "descricao": "VALOR QUE SE EMPENHA PARA, CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA CONSULTORIA EM GESTÃO DE RECURSOS HUMANOS, COM ÊNFASE NA ANÁLISE E CONFORMIDADE LEGAL DA FOLHA DE PAGAMENTO, ALÉM DE ACOMPANHAMENTO"
       },
       {
         "data": "2026-04-06",
@@ -794,6 +799,14 @@
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A Reembolso de Despesas 01 a 12/2026, conforme Leis 2380/2014 e 2653/2018; Resoluções 743-744/2017 e 771/2024."
       },
       {
+        "data": "2026-03-31",
+        "fornecedor": "LAMPER IMAGEM E DIGITALIZAÇÃO LTDA - EPP",
+        "cnpj": "97.408.074/0001-01",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 58718.05,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS DE LOCAÇÃO DE SOFTWARE PARA O GERENCIAMENTO ELETRONICO DE DOCUMENTOS FISICOS E DIGITAIS DO ACERVO DESTE LEGISLATIVO, DE ACORDO COM AS ESPECIFICA"
+      },
+      {
         "data": "2026-01-05",
         "fornecedor": "SUNA CONSULTORIA E ASSESSORIA LTDA",
         "cnpj": "47.545.825/0001-55",
@@ -824,14 +837,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 47485.47,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A FORNECIMENTO DE SERVIÇOS DE ENERGIA ELETRICA PARA ESTE LEGISLATIVO (ESTIMATIVA 2026)."
-      },
-      {
-        "data": "2026-03-31",
-        "fornecedor": "LAMPER IMAGEM E DIGITALIZAÇÃO LTDA - EPP",
-        "cnpj": "97.408.074/0001-01",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 46974.44,
-        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS DE LOCAÇÃO DE SOFTWARE PARA O GERENCIAMENTO ELETRONICO DE DOCUMENTOS FISICOS E DIGITAIS DO ACERVO DESTE LEGISLATIVO, DE ACORDO COM AS ESPECIFICA"
       },
       {
         "data": "2026-05-04",
@@ -946,6 +951,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A PRESTAÇÃO DE SERVIÇOS DE FORNECIMENTO DE BUFFET (CAFÉ EXECUTIVO/COQUETEL/BUFFET COMPLETO) PARA ATENDER AS NECESSIDADES DESTE LEGISLATIVO."
       },
       {
+        "data": "2026-05-20",
+        "fornecedor": "H2L EQUIPAMENTOS E SISTEMAS LTDA",
+        "cnpj": "73.505.349/0002-30",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 15675.0,
+        "descricao": "VALOR QUE SE EMPENHA, PARA Contratação de serviço de Outsourcing (terceirização) de solução de impressão, reprografia e digitalização de documentos, por meio de fornecimento de equipamentos, licença d"
+      },
+      {
         "data": "2026-01-05",
         "fornecedor": "UNIAO DAS CAMARAS DE VEREADORES DO ESTADO DE MATO",
         "cnpj": "01.941.195/0001-37",
@@ -968,14 +981,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 10967.0,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE À INSCRIÇÕES PARA SEMINÁRIO, DE VEREDORES/SERVIDORES DESTE LEGISLATIVO."
-      },
-      {
-        "data": "2026-05-20",
-        "fornecedor": "H2L EQUIPAMENTOS E SISTEMAS LTDA",
-        "cnpj": "73.505.349/0002-30",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 10450.0,
-        "descricao": "VALOR QUE SE EMPENHA, PARA Contratação de serviço de Outsourcing (terceirização) de solução de impressão, reprografia e digitalização de documentos, por meio de fornecimento de equipamentos, licença d"
       },
       {
         "data": "2026-01-05",
@@ -1520,6 +1525,14 @@
         "categoria": "Diárias — Civil",
         "valor": 3000.0,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO SEMINÁRIO WORKSHOP DO PODER LEGISLATIVO MUNICIPAL E CUMPRIR AGENDAS/PARTICIPAR DE REUNIÕES  NA CASA CIVIL, C"
+      },
+      {
+        "data": "2026-08-20",
+        "fornecedor": "MARCELO NUNES ARAUJO",
+        "cnpj": "701.XXX.XXX-49",
+        "categoria": "Diárias — Civil",
+        "valor": 3000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDAS/PARTICIPAR DE REUNIÕES  NA GOVERNADORIA; NOS  ESCRITÓRIOS POLITICOS:  DA SENADORA SORAYA THRONICKE E DO DE"
       },
       {
         "data": "2026-05-08",

@@ -1,7 +1,7 @@
 {
   "cidade": "Sidrolândia",
-  "ultimaAtualizacao": "2026-08-20T12:19:47",
-  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-08-20T12:19:47",
+  "ultimaAtualizacao": "2026-08-21T12:19:37",
+  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-08-21T12:19:37",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasidrolandia.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -87,6 +87,11 @@
       "referenciaFolha": "Folha Mensal - Julho",
       "diarias": [
         {
+          "data": "2026-06-22",
+          "valor": 11000.0,
+          "descricao": "REFERENTE A DIARIAS PARA CUMPRIMENTO DE AGENDA EM BRASILIA/DF NOS DIA 23 A 26/06/2026"
+        },
+        {
           "data": "2026-03-23",
           "valor": 11000.0,
           "descricao": "REFERENTE A DIARIAS PARA A PARTIPAÇÃO NA 3º CONFERENCIA NACIONAL DE DESENVOLVIMENTO RURAL SUSTENTAVEL E SOLIDARIO NA CIDADE DE BRASILIA/DF NOS DIAS 24 A 27/03/2026"
@@ -102,8 +107,8 @@
           "descricao": "REFERENTE A DIARIAS DO VEREADORA PARA CUMPRIMENTO DE AGENDA NO INCRA E MDA NA CIDADE DE CAMPO GRANDE/MS DIA 04 E 05/02/2026"
         }
       ],
-      "totalDiarias2026": 23678.0,
-      "numDiarias2026": 3
+      "totalDiarias2026": 34678.0,
+      "numDiarias2026": 4
     },
     {
       "nome": "ELAINE DE SOUZA CANATTO COIMBRA",
@@ -221,6 +226,11 @@
           "descricao": "REFERENTE A DIARIAS PARA O CURSO DE MODO MENTORIA , TEMA : SISTEMA CONTROLE DE FROTAS NOS MUNICIPIOS ,FISCALIZAÇÃO DE COMBUSTIVEIS ,PNEUS E AQUIPAMENTOS  NOS DIA 03 A 06/03/2026 NA CIDADE DE MARINGA/PR"
         },
         {
+          "data": "2026-03-03",
+          "valor": 2750.0,
+          "descricao": "REFERENTE A UMA DIARIA PARA CUMPRIMENTO DE AGENDA COM DEPUTADO FEDERAL EM BRASILIA/DF  DIA 04/03/2026"
+        },
+        {
           "data": "2026-02-23",
           "valor": 1844.0,
           "descricao": "REFERENTE A DUAS DIARIAS DENTRO DO ESTADO PARA CUMPRIMENTO DE AGENDO COM DEPUTADOS E GOVERNO DIAS 24 E 25/02/2026 EM CAMPO GRANDE/MS"
@@ -231,8 +241,8 @@
           "descricao": "REFERENTE A DIARIAS PARA O CURSO DE GESTÃO E FISCALIZAÇÃO DE DE CONTRATOS NOS DIA 26  28/01/2026 NA CIDADE DE FOZ DO IGUAÇU /PR"
         }
       ],
-      "totalDiarias2026": 26594.0,
-      "numDiarias2026": 4
+      "totalDiarias2026": 29344.0,
+      "numDiarias2026": 5
     },
     {
       "nome": "SHIRLEI HERNANDES PIGOSSO BASSO",
@@ -262,6 +272,11 @@
       "referenciaFolha": "Folha Mensal - Julho",
       "diarias": [
         {
+          "data": "2026-06-08",
+          "valor": 11000.0,
+          "descricao": "REFERENTE A DIARIAS PARA O CURSO NA CIDADE DE FOZ DO IGUAÇU /PR TEMA GESTÃO ESTRATEGICA DOS TRIBUTOS MUNICIPAIS  DIAS 09 A 12/06/2026"
+        },
+        {
           "data": "2026-04-06",
           "valor": 11000.0,
           "descricao": "REFERENTE A DIARIAS PARA O CURSO DE RESPONSABILIDADES JURIDICAS NO PROCESS LEGISLATIVO MUNICIPAL NOS DIAS 07 A 10/04/2026 NA CIDADE DE MARIGA/PR"
@@ -277,19 +292,19 @@
           "descricao": "REFERENTE A DIARIAS DO VEREADOR PARA O CURSO COM O TEMA : REPASSE DE RECURSOS PUBLICOS AO TERCEIRO SETOR . REALIZADO DOA DIAS 03 A 06/02/2026 NA CIDADE DE MARINGA/PR"
         }
       ],
-      "totalDiarias2026": 30250.0,
-      "numDiarias2026": 3
+      "totalDiarias2026": 41250.0,
+      "numDiarias2026": 4
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 10294497.26,
-    "totalNotas": 394,
+    "totalGeral": 10380656.86,
+    "totalNotas": 408,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 6100586.76,
       "Obrigações Patronais": 1202288.39,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 881777.41,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 882109.01,
+      "Diárias — Civil": 612675.0,
       "Elemento 04": 607569.5,
-      "Diárias — Civil": 526847.0,
       "Serviços de Consultoria": 386961.09,
       "Serviços de Tecnologia da Informação": 180507.69,
       "Material de Consumo": 173668.17,
@@ -1698,6 +1713,22 @@
         "descricao": "REFERENTE A DIARIAS PARA O CURSO DE RESPONSABILIDADES JURIDICAS NO PROCESSO LEGISLATIVO MUNICIPAL NOS DIAS 07 A 10/04/2026 NA CIDADE DE MARINGA/PR"
       },
       {
+        "data": "2026-06-08",
+        "fornecedor": "SILVESTRE JOSE CARDOSO ZOTTI",
+        "cnpj": "044.XXX.XXX-03",
+        "categoria": "Diárias — Civil",
+        "valor": 11000.0,
+        "descricao": "REFERENTE A DIARIAS PARA O CURSO NA CIDADE DE FOZ DO IGUAÇU /PR TEMA GESTÃO ESTRATEGICA DOS TRIBUTOS MUNICIPAIS  DIAS 09 A 12/06/2026"
+      },
+      {
+        "data": "2026-06-22",
+        "fornecedor": "EDILAINE CRISTINA TAVARES",
+        "cnpj": "013.XXX.XXX-75",
+        "categoria": "Diárias — Civil",
+        "valor": 11000.0,
+        "descricao": "REFERENTE A DIARIAS PARA CUMPRIMENTO DE AGENDA EM BRASILIA/DF NOS DIA 23 A 26/06/2026"
+      },
+      {
         "data": "2026-03-02",
         "fornecedor": "PONTOCOM LTDA",
         "cnpj": "14.864.845/0001-30",
@@ -1728,6 +1759,54 @@
         "categoria": "Diárias — Civil",
         "valor": 9900.0,
         "descricao": "REFERENTE A DIARIAS PARA O CURSO DE RESPONSABILIDADES JURIDICAS NO PROCESS LEGISLATIVO MUNICIPAL NOS DIAS 07 A 10/04/2026 NA CIDADE DE MARIGA/PR"
+      },
+      {
+        "data": "2026-06-08",
+        "fornecedor": "PATRÍCIA CAVALCANTE DAL PAZ LEITE",
+        "cnpj": "028.XXX.XXX-45",
+        "categoria": "Diárias — Civil",
+        "valor": 9900.0,
+        "descricao": "REFERENTE A DIARIAS PARA O CURSO NA CIDADE DE FOZ DO IGUAÇU /PR TEMA GESTÃO ESTRATEGICA DOS TRIBUTOS MUNICIPAIS  DIAS 09 A 12/06/2026"
+      },
+      {
+        "data": "2026-06-23",
+        "fornecedor": "LAURIMAR GONÇALVES DE LIMA",
+        "cnpj": "034.XXX.XXX-31",
+        "categoria": "Diárias — Civil",
+        "valor": 9900.0,
+        "descricao": "REFERENTE A DIARIAS PARA O CURSO DE REFORMA TRIBUTARIA ,NA CIDADE DE CURITIBA /PR DOS DIAS 23 A 26/06/2026"
+      },
+      {
+        "data": "2026-06-23",
+        "fornecedor": "THIAGO LIMA DE ARAUJO",
+        "cnpj": "022.XXX.XXX-74",
+        "categoria": "Diárias — Civil",
+        "valor": 9900.0,
+        "descricao": "REFERENTE A DIARIAS PARA O CURSO DE REFORMA TRIBUTARIA ,NA CIDADE DE CURITIBA /PR DOS DIAS 23 A 26/06/2026"
+      },
+      {
+        "data": "2026-06-23",
+        "fornecedor": "EDIONES MARCELINO GABRIEL",
+        "cnpj": "000.XXX.XXX-10",
+        "categoria": "Diárias — Civil",
+        "valor": 9900.0,
+        "descricao": "REFERENTE A DIARIAS PARA O CURSO DE REFORMA TRIBUTARIA ,NA CIDADE DE CURITIBA /PR DOS DIAS 23 A 26/06/2026"
+      },
+      {
+        "data": "2026-06-23",
+        "fornecedor": "GEDILSON SILVA GABRIEL",
+        "cnpj": "015.XXX.XXX-33",
+        "categoria": "Diárias — Civil",
+        "valor": 9900.0,
+        "descricao": "REFERENTE A DIARIAS PARA O CURSO DE REFORMA TRIBUTARIA ,NA CIDADE DE CURITIBA /PR DOS DIAS 23 A 26/06/2026"
+      },
+      {
+        "data": "2026-06-22",
+        "fornecedor": "WENDER GABRIEL ROCHA AVALOS",
+        "cnpj": "107.XXX.XXX-69",
+        "categoria": "Diárias — Civil",
+        "valor": 9900.0,
+        "descricao": "REFERENTE A DIARIAS PARA ACOMPANHAMENTO DA VEREADORA EM CUMPRIMENTO DE AGENDA EM BRASILIA/DF NOS DIA 23 A 26/06/2026"
       },
       {
         "data": "2026-05-04",
@@ -2202,6 +2281,14 @@
         "descricao": "REFERENTE A CAMPANHA MÊS DAS MULHERES ,CONFORME NF 22103"
       },
       {
+        "data": "2026-03-03",
+        "fornecedor": "OTACIR PEREIRA FIGUEREDO",
+        "cnpj": "002.XXX.XXX-02",
+        "categoria": "Diárias — Civil",
+        "valor": 2750.0,
+        "descricao": "REFERENTE A UMA DIARIA PARA CUMPRIMENTO DE AGENDA COM DEPUTADO FEDERAL EM BRASILIA/DF  DIA 04/03/2026"
+      },
+      {
         "data": "2026-04-22",
         "fornecedor": "ALEXANDRE PEREIRA DA SILVA",
         "cnpj": "41.263.932/0001-04",
@@ -2456,6 +2543,14 @@
         "categoria": "Diárias — Civil",
         "valor": 1678.0,
         "descricao": "REFERENTE A DIARIAS DO VEREADORA PARA CUMPRIMENTO DE AGENDA NO INCRA E MDA NA CIDADE DE CAMPO GRANDE/MS DIA 04 E 05/02/2026"
+      },
+      {
+        "data": "2026-06-25",
+        "fornecedor": "GENIVALDO ANTONIO CAMPOS",
+        "cnpj": "475.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 1678.0,
+        "descricao": "REFERENTE A DIARIAS PARA CUMPRIMENTO DE AGENDA EM CAMPO GRANDE COM OS DEPUTADOS  NOS DIAS 25 E 26/06/2026"
       },
       {
         "data": "2026-05-25",
@@ -2840,6 +2935,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 343.33,
         "descricao": "REFERENTE A CONTRIBUIÇ]AO PATRONAL DO GABINETE ( FERIAS )"
+      },
+      {
+        "data": "2026-03-31",
+        "fornecedor": "CAIXA ECONÔMICA FEDERAL S/A",
+        "cnpj": "00.360.305/4292-91",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 331.6,
+        "descricao": "REFERENTE A TARIFA BANCARIA DE 03/2026"
       },
       {
         "data": "2026-05-08",
@@ -3448,6 +3551,30 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "REFERENTE A INSCRIÇÃO DO CURSO DE GOVERNANÇA EM GESTÃO DE PESSOAS PARA ADMINISTRAÇÃO PUBLICA  , NOS DIAS 18 A 20/08/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
+      },
+      {
+        "data": "2026-03-12",
+        "fornecedor": "VALERIOTE CURSOS CONSULTORIA GESTÃO E EMPREENDIMEN",
+        "cnpj": "19.038.976/0001-81",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "REFERENTE A INSCRIÇÃO DO ENCONTRO NACIONAL DO PODER LEGISLATIVO MUNICIPAL EM BRASILIA/DFDOS DIA 03 A 06/03"
+      },
+      {
+        "data": "2026-03-12",
+        "fornecedor": "VALERIOTE CURSOS CONSULTORIA GESTÃO E EMPREENDIMEN",
+        "cnpj": "19.038.976/0001-81",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "REFERENTE A INSCRIÇÃO DO ENCONTRO NACIONAL DO PODER LEGISLATIVO MUNICIPAL EM BRASILIA/DFDOS DIA 03 A 06/03"
+      },
+      {
+        "data": "2026-03-12",
+        "fornecedor": "VALERIOTE CURSOS CONSULTORIA GESTÃO E EMPREENDIMEN",
+        "cnpj": "19.038.976/0001-81",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "REFERENTE A INSCRIÇÃO DO EMCONTRO NACIONAL DO PODER LEGISLATIVO MUNICIPAL DOS DIA 03 A 06/03/2026 EM BRASILIA/DF"
       }
     ]
   }

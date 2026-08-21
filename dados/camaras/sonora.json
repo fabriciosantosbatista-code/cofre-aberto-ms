@@ -1,7 +1,7 @@
 {
   "cidade": "Sonora",
-  "ultimaAtualizacao": "2026-08-20T12:19:47",
-  "fonte": "Portal Transparência Fiorilli (pmsonora.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-20T12:19:47",
+  "ultimaAtualizacao": "2026-08-21T12:19:37",
+  "fonte": "Portal Transparência Fiorilli (pmsonora.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-21T12:19:37",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasonora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -545,18 +545,18 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 4514766.79,
+    "totalGeral": 4572916.23,
     "totalNotas": 292,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 1794500.49,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 763863.0,
       "Diárias — Civil": 427575.0,
+      "Serviços de Consultoria": 386407.18,
       "Serviços de Tecnologia da Informação": 352571.71,
-      "Serviços de Consultoria": 328871.62,
       "Obrigações Patronais": 313016.4,
       "Obras e Instalações": 175136.93,
       "Indenizações e Restituições": 160703.7,
-      "Material de Consumo": 117522.76,
+      "Material de Consumo": 118136.64,
       "Despesas de Exercícios Anteriores": 44650.18,
       "Equipamentos e Material Permanente": 36355.0,
       "Obrigações Tributárias e Contributivas": 0.0,
@@ -644,6 +644,14 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000046/25 - Ano Mod.: 2025 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 8 - Mod. Formatada: 8 - contratação de empresa especializada para Prestação de s"
       },
       {
+        "data": "2026-04-28",
+        "fornecedor": "J P M CONSULTORIA CONTABIL LTDA",
+        "cnpj": "07.310.267/0001-24",
+        "categoria": "Serviços de Consultoria",
+        "valor": 72000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000009/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 1 - Mod. Formatada: 1 - contratação de empresa especializada para a prestação de s"
+      },
+      {
         "data": "2026-01-21",
         "fornecedor": "J. REMONATTO SOCIEDADE IND. DE ADV.",
         "cnpj": "26.616.499/0001-50",
@@ -668,18 +676,18 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000026/23 - Ano Mod.: 2023 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 2 - Mod. Formatada: 2 - Locação e cessão de uso de softwares para a Gestão Pública"
       },
       {
-        "data": "2026-04-28",
-        "fornecedor": "J P M CONSULTORIA CONTABIL LTDA",
-        "cnpj": "07.310.267/0001-24",
-        "categoria": "Serviços de Consultoria",
-        "valor": 54000.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000009/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 1 - Mod. Formatada: 1 - contratação de empresa especializada para a prestação de s"
-      },
-      {
         "data": "2026-01-21",
         "fornecedor": "OTTONI RONDON ADVOCACIA S/S",
         "cnpj": "17.569.895/0001-82",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 52082.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000035/23 - Ano Mod.: 2023 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 3 - Mod. Formatada: 3 - CONTRATAÇÃO DE ESCRITÓRIO DE ADVOCACIA PARA A PRESTAÇÃO DE"
+      },
+      {
+        "data": "2026-05-15",
+        "fornecedor": "OTTONI RONDON ADVOCACIA S/S",
+        "cnpj": "17.569.895/0001-82",
+        "categoria": "Serviços de Consultoria",
         "valor": 52082.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000035/23 - Ano Mod.: 2023 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 3 - Mod. Formatada: 3 - CONTRATAÇÃO DE ESCRITÓRIO DE ADVOCACIA PARA A PRESTAÇÃO DE"
       },
@@ -724,12 +732,20 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000026/23 - Ano Mod.: 2023 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 2 - Mod. Formatada: 2 - Locação e cessão de uso de softwares para a Gestão Pública"
       },
       {
-        "data": "2026-05-15",
-        "fornecedor": "OTTONI RONDON ADVOCACIA S/S",
-        "cnpj": "17.569.895/0001-82",
+        "data": "2026-05-25",
+        "fornecedor": "J. REMONATTO SOCIEDADE IND. DE ADV.",
+        "cnpj": "26.616.499/0001-50",
         "categoria": "Serviços de Consultoria",
-        "valor": 39061.5,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000035/23 - Ano Mod.: 2023 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 3 - Mod. Formatada: 3 - CONTRATAÇÃO DE ESCRITÓRIO DE ADVOCACIA PARA A PRESTAÇÃO DE"
+        "valor": 40085.76,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000020/25 - Ano Mod.: 2025 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada em prestação de Servi"
+      },
+      {
+        "data": "2026-06-17",
+        "fornecedor": "J. REMONATTO SOCIEDADE IND. DE ADV.",
+        "cnpj": "26.616.499/0001-50",
+        "categoria": "Serviços de Consultoria",
+        "valor": 39459.42,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000019/25 - Ano Mod.: 2025 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 5 - Mod. Formatada: 5 - Contratação de Escritório de Advocacia especializada para"
       },
       {
         "data": "2026-02-05",
@@ -746,22 +762,6 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 32200.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000043/25 - Ano Mod.: 2025 - Modalidade: DISPENSA - Nº Mod.: 22 - Mod. Formatada: 22 - Contratação de empresa para prestação de serviço de comunicação"
-      },
-      {
-        "data": "2026-05-25",
-        "fornecedor": "J. REMONATTO SOCIEDADE IND. DE ADV.",
-        "cnpj": "26.616.499/0001-50",
-        "categoria": "Serviços de Consultoria",
-        "valor": 26723.84,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000020/25 - Ano Mod.: 2025 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada em prestação de Servi"
-      },
-      {
-        "data": "2026-06-17",
-        "fornecedor": "J. REMONATTO SOCIEDADE IND. DE ADV.",
-        "cnpj": "26.616.499/0001-50",
-        "categoria": "Serviços de Consultoria",
-        "valor": 26306.28,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000019/25 - Ano Mod.: 2025 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 5 - Mod. Formatada: 5 - Contratação de Escritório de Advocacia especializada para"
       },
       {
         "data": "2026-02-03",
@@ -2140,6 +2140,14 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000015/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 11 - Mod. Formatada: 11 - Contratação de empresa especializada para fornecimento de mater"
       },
       {
+        "data": "2026-07-10",
+        "fornecedor": "MINIMERCADO DO GALIANO LTDA",
+        "cnpj": "48.121.736/0001-44",
+        "categoria": "Material de Consumo",
+        "valor": 1611.64,
+        "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000027/25 - Ano Mod.: 2025 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 2 - Mod. Formatada: 2 - AQUISIÇÃO DE MATERIAIS DE CONSUMO"
+      },
+      {
         "data": "2026-07-06",
         "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
         "cnpj": "21.456.790/0001-94",
@@ -2290,14 +2298,6 @@
         "categoria": "Diárias — Civil",
         "valor": 1000.0,
         "descricao": "Empenho destinado à concessão de 2 (duas) diárias à servidora Dailsa Celestino Soares, para custear despesas com deslocamento, alimentação e estadia na cidade de Campo Grande/MS, no período de 07 a 08"
-      },
-      {
-        "data": "2026-07-10",
-        "fornecedor": "MINIMERCADO DO GALIANO LTDA",
-        "cnpj": "48.121.736/0001-44",
-        "categoria": "Material de Consumo",
-        "valor": 997.76,
-        "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000027/25 - Ano Mod.: 2025 - Modalidade: PREGÃO PRESENCIAL - Nº Mod.: 2 - Mod. Formatada: 2 - AQUISIÇÃO DE MATERIAIS DE CONSUMO"
       },
       {
         "data": "2026-07-08",
