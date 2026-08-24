@@ -1,7 +1,7 @@
 {
   "cidade": "Sidrolândia",
-  "ultimaAtualizacao": "2026-08-23T12:13:23",
-  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-08-23T12:13:23",
+  "ultimaAtualizacao": "2026-08-24T12:19:57",
+  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-08-24T12:19:57",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasidrolandia.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -334,19 +334,20 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 10728240.1,
-    "totalNotas": 442,
+    "totalGeral": 10772051.75,
+    "totalNotas": 451,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 6100586.76,
       "Obrigações Patronais": 1202288.39,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1010167.25,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1010416.79,
       "Diárias — Civil": 816450.0,
       "Elemento 04": 607569.5,
       "Serviços de Consultoria": 386961.09,
       "Serviços de Tecnologia da Informação": 196257.69,
       "Material de Consumo": 173668.17,
       "Passagens e Despesas com Locomoção": 153971.25,
-      "Equipamentos e Material Permanente": 80320.0
+      "Equipamentos e Material Permanente": 80320.0,
+      "Indenizações e Restituições": 43562.11
     },
     "despesas": [
       {
@@ -2150,6 +2151,22 @@
         "descricao": "REFERENTE A SERVIÇOS DE DECORAÇÃO CONFORME NF 2"
       },
       {
+        "data": "2026-05-18",
+        "fornecedor": "CLEDINALDO MARCELINO COTOCIO",
+        "cnpj": "011.XXX.XXX-88",
+        "categoria": "Indenizações e Restituições",
+        "valor": 7000.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
+      },
+      {
+        "data": "2026-05-18",
+        "fornecedor": "MARCIO  SILVA DE ALMEIDA",
+        "cnpj": "786.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 6500.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
+      },
+      {
         "data": "2026-03-02",
         "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
         "cnpj": "15.413.826/0001-50",
@@ -2188,6 +2205,14 @@
         "categoria": "Equipamentos e Material Permanente",
         "valor": 5750.0,
         "descricao": "REFERENTE A COMPRAS DE CADEIRAS DE ESCRITORIO CONFORME PEDIDO DE EMPENHO 8"
+      },
+      {
+        "data": "2026-05-18",
+        "fornecedor": "CARLOS ALESSANDRO DA SILVA",
+        "cnpj": "954.XXX.XXX-49",
+        "categoria": "Indenizações e Restituições",
+        "valor": 5743.29,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
       },
       {
         "data": "2026-03-17",
@@ -2246,6 +2271,22 @@
         "descricao": "REFERENTE A CONSUMO DE 01/2026"
       },
       {
+        "data": "2026-05-18",
+        "fornecedor": "EDILAINE CRISTINA TAVARES",
+        "cnpj": "013.XXX.XXX-75",
+        "categoria": "Indenizações e Restituições",
+        "valor": 5565.94,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
+      },
+      {
+        "data": "2026-05-18",
+        "fornecedor": "JUSCINEI CLARO DINO",
+        "cnpj": "448.XXX.XXX-34",
+        "categoria": "Indenizações e Restituições",
+        "valor": 5552.83,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
+      },
+      {
         "data": "2026-04-01",
         "fornecedor": "OTACIR PEREIRA FIGUEREDO",
         "cnpj": "002.XXX.XXX-02",
@@ -2292,6 +2333,22 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 5000.0,
         "descricao": "REFERENTE A PALESTRA  EVENTO MULHER DESTAQUE 2026 CONFORME NF 13"
+      },
+      {
+        "data": "2026-05-18",
+        "fornecedor": "SILVESTRE JOSE CARDOSO ZOTTI",
+        "cnpj": "044.XXX.XXX-03",
+        "categoria": "Indenizações e Restituições",
+        "valor": 5000.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
+      },
+      {
+        "data": "2026-05-18",
+        "fornecedor": "ELAINE DE SOUZA CANATTO COIMBRA",
+        "cnpj": "693.XXX.XXX-34",
+        "categoria": "Indenizações e Restituições",
+        "valor": 5000.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
       },
       {
         "data": "2026-02-23",
@@ -2476,6 +2533,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 3221.96,
         "descricao": "REFERENTE AO CONSUMO 06/2026"
+      },
+      {
+        "data": "2026-05-18",
+        "fornecedor": "SHIRLEI HERNENDES PIGOSSO BASSO",
+        "cnpj": "321.XXX.XXX-87",
+        "categoria": "Indenizações e Restituições",
+        "valor": 3200.05,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
       },
       {
         "data": "2026-04-29",
@@ -3228,6 +3293,14 @@
         "categoria": "Material de Consumo",
         "valor": 274.26,
         "descricao": "REFERENTE COMPRA DE GAZ DE COZINHA CONFORME NF 665"
+      },
+      {
+        "data": "2026-05-05",
+        "fornecedor": "CARTORIO DO 1º OFÍCIO DE REGISTRO PUBLIC",
+        "cnpj": "74.054.677/0001-49",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 249.54,
+        "descricao": "REFERENTE A UM PROTESTO DE FATURA DE ENERGIA ELETRICA"
       },
       {
         "data": "2026-02-27",
