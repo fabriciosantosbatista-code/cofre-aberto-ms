@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-08-24T12:19:57",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-08-24T12:19:57",
+  "ultimaAtualizacao": "2026-08-25T12:20:34",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-08-25T12:20:34",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -147,6 +147,11 @@
       "referenciaFolha": "Folha Mensal - Julho",
       "diarias": [
         {
+          "data": "2026-08-20",
+          "valor": 250.0,
+          "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 1/2 (MEIA DIÁRIA) PARA PARTICIPAR DE REUNIÃO NA ASSEMBLEIA LEGISLATIVA COM O DEPUTADO PEDRO KEMP, NA DATA DE 20/08/2026, PARA TRATAR DE INTERESSES MUNICIPAIS. LEI DE DIÁRIA Nº 015, DE 06 DE ABRIL DE 2026."
+        },
+        {
           "data": "2026-08-12",
           "valor": 250.0,
           "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 1/2 (MEIA DIÁRIA) PARA FINS DE PARTICIPAR DE REUNIÃO NA SUPERINTENDÊNCIA DO PATRIMÔNIO DA UNIÃO, NA DATA DE 12/08/2026, NA CIDADE DE CAMPO GRANDE/MS, VISANDO TRATAR DE INTERESSES DO MUNICÍPIO, BEM COMO PARTICIPAR DE DE REUNIÃO COM DEPUTADOS NA ASSEMBLEIA LEGISLATIVA. LEI DE DIÁRIAS Nº 15, DE 06 DE ABRIL DE 2026."
@@ -217,8 +222,8 @@
           "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 02 (DUAS) DIÁRIAS EM FAVOR DO VEREADOR LUCAS LOPES RIBEIRO PARA PARTICIPAR DE REUNIÃO, NA DATA DE 27/02/2026, NA ASSEMBLEIA LEGISLATIVA PARA FINS DE PARCERIA COM O DEPUTADO PEDRO KEMP, E PARTICIPAR DE LANÇAMENTO DO PROGRAMA AGROINDUSTRIALIZAÇÃO DA AGRICULTURA FAMILIAR, NA DATA DE 02/03/2026."
         }
       ],
-      "totalDiarias2026": 10202.5,
-      "numDiarias2026": 14
+      "totalDiarias2026": 10452.5,
+      "numDiarias2026": 15
     },
     {
       "nome": "LUCIMAR ROSA DE CAMPOS",
@@ -269,20 +274,20 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 6901778.3,
-    "totalNotas": 282,
+    "totalGeral": 7102260.06,
+    "totalNotas": 287,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 3625687.09,
-      "Equipamentos e Material Permanente": 910863.91,
+      "Equipamentos e Material Permanente": 1110586.91,
       "Obrigações Patronais": 673025.42,
       "Serviços de Consultoria": 536381.44,
       "Serviços de Tecnologia da Informação": 329243.67,
       "Auxílio-Alimentação": 310232.42,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 219502.62,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 219711.38,
       "Outros Serviços de Terceiros — Pessoa Física": 101692.4,
       "Outros Benefícios Assistenciais do Servidor": 93575.29,
       "Material de Consumo": 41486.52,
-      "Diárias — Civil": 37378.51,
+      "Diárias — Civil": 37928.51,
       "Indenizações e Restituições": 22709.01
     },
     "despesas": [
@@ -292,6 +297,14 @@
         "cnpj": "08.256.030/0001-75",
         "categoria": "Equipamentos e Material Permanente",
         "valor": 722000.0,
+        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE MÓVEIS PLANEJADOS SOB MEDIDA, COMPREENDENDO FABRICAÇÃO, TRANSPORTE, MONTAGEM E INSTALAÇÃO, CONFORME PROCESSO ADMINISTRAT"
+      },
+      {
+        "data": "2026-04-29",
+        "fornecedor": "MORENA COMERCIO & SERVICO LTDA",
+        "cnpj": "08.256.030/0001-75",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 372399.8,
         "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE MÓVEIS PLANEJADOS SOB MEDIDA, COMPREENDENDO FABRICAÇÃO, TRANSPORTE, MONTAGEM E INSTALAÇÃO, CONFORME PROCESSO ADMINISTRAT"
       },
       {
@@ -357,14 +370,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 184944.91,
         "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES EFETIVOS - JANEIRO/2026."
-      },
-      {
-        "data": "2026-04-29",
-        "fornecedor": "MORENA COMERCIO & SERVICO LTDA",
-        "cnpj": "08.256.030/0001-75",
-        "categoria": "Equipamentos e Material Permanente",
-        "valor": 172676.8,
-        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE MÓVEIS PLANEJADOS SOB MEDIDA, COMPREENDENDO FABRICAÇÃO, TRANSPORTE, MONTAGEM E INSTALAÇÃO, CONFORME PROCESSO ADMINISTRAT"
       },
       {
         "data": "2026-06-26",
@@ -1831,6 +1836,14 @@
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA DIÁRIA) PARA FINS DE PARTICIPAR DE REUNIÃO NA SUPERINTENDÊNCIA DO PATRIMÔNIO DA UNIÃO, NA DATA DE 12/08/2026, NA CIDADE DE CAMPO GRANDE/MS, VISANDO TRATAR DE"
       },
       {
+        "data": "2026-08-20",
+        "fornecedor": "LUCAS LOPES RIBEIRO",
+        "cnpj": "044.XXX.XXX-40",
+        "categoria": "Diárias — Civil",
+        "valor": 250.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA DIÁRIA) PARA PARTICIPAR DE REUNIÃO NA ASSEMBLEIA LEGISLATIVA COM O DEPUTADO PEDRO KEMP, NA DATA DE 20/08/2026, PARA TRATAR DE INTERESSES MUNICIPAIS. LEI DE D"
+      },
+      {
         "data": "2026-03-10",
         "fornecedor": "LUCAS LOPES RIBEIRO",
         "cnpj": "044.XXX.XXX-40",
@@ -1877,6 +1890,14 @@
         "categoria": "Material de Consumo",
         "valor": 220.8,
         "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 02/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
+      },
+      {
+        "data": "2026-08-10",
+        "fornecedor": "GC - AGENCIA DE MONITORAMENTO LTDA - ME",
+        "cnpj": "11.161.339/0001-96",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 208.76,
+        "descricao": "EMPENHO REFERENTE A CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS CONTINUADOS DE MONITORAMENTO ELETRÔNICO PATRIMONIAL INTEGRADO, COMPREENDENDO A ADEQUAÇÃO, INTEGRAÇÃO E CONFIGURAÇÃ"
       },
       {
         "data": "2026-03-26",
@@ -2013,6 +2034,22 @@
         "categoria": "Diárias — Civil",
         "valor": 150.0,
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA DIÁRIA) PARA FINS DE ACOMPANHAR A VEREADORA JAQUELINE PEREIRA ARIMURA, QUE SERÁ  ENTREVISTADA NA RÁDIO N FM AGRO, NA CIDADE DE CAMPO GRANDE-MS, NA DATA DE 13"
+      },
+      {
+        "data": "2026-08-20",
+        "fornecedor": "JOAO HENRIQUE DE OLIVEIRA",
+        "cnpj": "066.XXX.XXX-40",
+        "categoria": "Diárias — Civil",
+        "valor": 150.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA DIÁRIA) PARA PARTICIPAR DE REUNIÃO NA ASSEMBLEIA LEGISLATIVA COM O DEPUTADO PEDRO KEMP, NA DATA DE 20/08/2026, PARA TRATAR DE INTERESSES MUNICIPAIS. LEI DE D"
+      },
+      {
+        "data": "2026-08-20",
+        "fornecedor": "LUIZ FELIPE SALOMÉ DE SOUZA",
+        "cnpj": "079.XXX.XXX-64",
+        "categoria": "Diárias — Civil",
+        "valor": 150.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA DIÁRIA) PARA PARTICIPAR DE REUNIÃO NA ASSEMBLEIA LEGISLATIVA COM O DEPUTADO PEDRO KEMP, NA DATA DE 20/08/2026, PARA TRATAR DE INTERESSES MUNICIPAIS. LEI DE D"
       },
       {
         "data": "2026-05-25",
@@ -2527,20 +2564,28 @@
         "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
       },
       {
-        "data": "2026-08-10",
-        "fornecedor": "GC - AGENCIA DE MONITORAMENTO LTDA - ME",
-        "cnpj": "11.161.339/0001-96",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE A CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS CONTINUADOS DE MONITORAMENTO ELETRÔNICO PATRIMONIAL INTEGRADO, COMPREENDENDO A ADEQUAÇÃO, INTEGRAÇÃO E CONFIGURAÇÃ"
-      },
-      {
         "data": "2026-08-18",
         "fornecedor": "58.291.882 ROZANGELA DA SILVA GUEDES",
         "cnpj": "58.291.882/0001-71",
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE E DE COMUNICAÇÃO, ATA DE REGISTRO DE PREÇOS 02/2026, PROCESSO ADMINISTRATIVO 05/2026, DISPENSA ELETRÔNICA 01/2026. PERÍODO CONTRATUAL 01/04/202"
+      },
+      {
+        "data": "2026-08-24",
+        "fornecedor": "UILLIAN MARQUES DA SILVA",
+        "cnpj": "27.560.148/0001-37",
+        "categoria": "Material de Consumo",
+        "valor": 0.0,
+        "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
+      },
+      {
+        "data": "2026-08-24",
+        "fornecedor": "UILLIAN MARQUES DA SILVA",
+        "cnpj": "27.560.148/0001-37",
+        "categoria": "Material de Consumo",
+        "valor": 0.0,
+        "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
       }
     ]
   }

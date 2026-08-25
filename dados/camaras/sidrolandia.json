@@ -1,11 +1,11 @@
 {
   "cidade": "Sidrolândia",
-  "ultimaAtualizacao": "2026-08-24T12:19:57",
-  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-08-24T12:19:57",
+  "ultimaAtualizacao": "2026-08-25T12:20:34",
+  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-08-25T12:20:34",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasidrolandia.ms.gov.br/",
   "temDadosFinanceiros": true,
-  "totalVereadores": 14,
+  "totalVereadores": 15,
   "vereadores": [
     {
       "nome": "ADAVILTON JOARILDO DE SOUZA",
@@ -133,6 +133,11 @@
       "referenciaFolha": "Folha Mensal - Julho",
       "diarias": [
         {
+          "data": "2026-05-21",
+          "valor": 5500.0,
+          "descricao": "REFERENTE A DIARIAS PARA CURSO DE DEGURANÇA PUBLICA MUNICIPAL SOB A PERSPECTIVA DO PODER LEGISLATIVO NOS DIAS 19A 22/05/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
+        },
+        {
           "data": "2026-04-24",
           "valor": 11000.0,
           "descricao": "REFERENTE A DIARIAS DA  VEREADORA PARA  EM BRASILIA/DF NA  EVENTO DA MARCHA DOS VEREAORES  NOS DIAS 27 A 30/04/2026"
@@ -148,8 +153,8 @@
           "descricao": "REFERENTE A DIARIAS DO VEREADORA PARA O CURSO COM O TEMA : REPASSE DE RECURSOS PUBLICOS AO TERCEIRO SETOR . REALIZADO DOA DIAS 24 A 27/02/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
         }
       ],
-      "totalDiarias2026": 33000.0,
-      "numDiarias2026": 3
+      "totalDiarias2026": 38500.0,
+      "numDiarias2026": 4
     },
     {
       "nome": "IZAQUEU DE SOUZA DINIZ",
@@ -197,6 +202,11 @@
       "referenciaFolha": "Folha Mensal - Julho",
       "diarias": [
         {
+          "data": "2026-05-21",
+          "valor": 5500.0,
+          "descricao": "REFERENTE A DIARIAS PARA CURSO DE DEGURANÇA PUBLICA MUNICIPAL SOB A PERSPECTIVA DO PODER LEGISLATIVO NOS DIAS 19A 22/05/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
+        },
+        {
           "data": "2026-04-24",
           "valor": 11000.0,
           "descricao": "REFERENTE A DIARIAS DO  VEREADOR PARA  EM BRASILIA/DF NA  EVENTO DA MARCHA DOS VEREAORES  NOS DIAS 27 A 30/04/2026"
@@ -212,8 +222,8 @@
           "descricao": "REFERENTE A DIARIAS DO VEREADORA PARA O CURSO COM O TEMA : REPASSE DE RECURSOS PUBLICOS AO TERCEIRO SETOR . REALIZADO DOA DIAS 24 A 27/02/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
         }
       ],
-      "totalDiarias2026": 33000.0,
-      "numDiarias2026": 3
+      "totalDiarias2026": 38500.0,
+      "numDiarias2026": 4
     },
     {
       "nome": "MARCIO SILVA DE ALMEIDA",
@@ -297,6 +307,19 @@
       "referenciaFolha": "Folha Mensal - Julho"
     },
     {
+      "nome": "SHIRLEI HERNENDES PIGOSSO BASSO",
+      "cargo": "Vereador(a)",
+      "diarias": [
+        {
+          "data": "2026-05-29",
+          "valor": 11000.0,
+          "descricao": "REFERENTE A DIARIAS PARA O CURSO GESTÃO ESTRATEGICA DOS TRIBUTOS MUNICIPAIS  DOS DIAS 09 A 12/06/2026 NA CIDADE DE MARINGA/PR"
+        }
+      ],
+      "totalDiarias2026": 11000.0,
+      "numDiarias2026": 1
+    },
+    {
       "nome": "SILVESTRE JOSE CARDOSO ZOTTI",
       "cargo": "Vereador(a)",
       "subsidioMensal": 21128.9,
@@ -334,20 +357,20 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 10772051.75,
-    "totalNotas": 451,
+    "totalGeral": 11030780.11,
+    "totalNotas": 482,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 6100586.76,
       "Obrigações Patronais": 1202288.39,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1010416.79,
-      "Diárias — Civil": 816450.0,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1100660.43,
+      "Diárias — Civil": 902800.0,
       "Elemento 04": 607569.5,
       "Serviços de Consultoria": 386961.09,
-      "Serviços de Tecnologia da Informação": 196257.69,
+      "Serviços de Tecnologia da Informação": 219791.01,
       "Material de Consumo": 173668.17,
       "Passagens e Despesas com Locomoção": 153971.25,
-      "Equipamentos e Material Permanente": 80320.0,
-      "Indenizações e Restituições": 43562.11
+      "Indenizações e Restituições": 102163.51,
+      "Equipamentos e Material Permanente": 80320.0
     },
     "despesas": [
       {
@@ -703,6 +726,14 @@
         "descricao": "REFERENTE AO VALE ALIMENTAÇÃO DE 0382026 CONFORME NF 2045113"
       },
       {
+        "data": "2026-06-18",
+        "fornecedor": "IFOOD BENEFÍCIOS E SERVIÇOS LTDA",
+        "cnpj": "33.157.312/0001-62",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 46398.0,
+        "descricao": "REFERENTE A VALE ALIMENTAÇÃO DE 06/2026 CONFORME NF 2468669"
+      },
+      {
         "data": "2026-05-20",
         "fornecedor": "IFOOD BENEFÍCIOS E SERVIÇOS LTDA",
         "cnpj": "33.157.312/0001-62",
@@ -965,6 +996,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 29167.5,
         "descricao": "REFERENTE A CAMPANHA DIAS DOS POVOS INDIGENAS CONFORME NF 22192"
+      },
+      {
+        "data": "2026-05-21",
+        "fornecedor": "A & T PUBLICIDADE E ASSESSORIA LTDA",
+        "cnpj": "15.427.958/0001-30",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 29167.5,
+        "descricao": "REFERENTE A SERVIÇO DE PUBLICIDADE DA CAMPANHA DIA DOS POVOS INDIGINAS CONFORME NF 22192"
       },
       {
         "data": "2026-02-19",
@@ -1599,6 +1638,22 @@
         "descricao": "REFERENTE A DUAS PARCELAS DA INSTALAÇÃO DE EQUIPAMENTOS NA CAMARA MUNICIPAL CONFORME NF 2042 E 2041"
       },
       {
+        "data": "2026-05-29",
+        "fornecedor": "HOBY INTERNET E SERVICO DE COMUNICACAO LTDA",
+        "cnpj": "08.585.299/0001-03",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 11766.66,
+        "descricao": "REFERENTE A DUAS PARCELAS DA INSTALAÇÃO DE EQUIPAMENTOS NA CAMARA MUNICIPAL CONFORME NF 2043 E 2044"
+      },
+      {
+        "data": "2026-06-30",
+        "fornecedor": "HOBY INTERNET E SERVICO DE COMUNICACAO LTDA",
+        "cnpj": "08.585.299/0001-03",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 11766.66,
+        "descricao": "REFERENTE A DUAS PARCELAS DA INSTALAÇÃO DE EQUIPAMENTOS NA CAMARA MUNICIPAL CONFORME NF 2045 E 2046"
+      },
+      {
         "data": "2026-03-20",
         "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
         "cnpj": "15.413.826/0001-50",
@@ -1863,6 +1918,14 @@
         "descricao": "REFERENTE A DIARIAS DO  VEREADOR PARA  EM BRASILIA/DF NA  EVENTO DA MARCHA DOS VEREAORES  NOS DIAS 27 A 30/04/2026"
       },
       {
+        "data": "2026-05-29",
+        "fornecedor": "SHIRLEI HERNENDES PIGOSSO BASSO",
+        "cnpj": "321.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 11000.0,
+        "descricao": "REFERENTE A DIARIAS PARA O CURSO GESTÃO ESTRATEGICA DOS TRIBUTOS MUNICIPAIS  DOS DIAS 09 A 12/06/2026 NA CIDADE DE MARINGA/PR"
+      },
+      {
         "data": "2026-03-02",
         "fornecedor": "PONTOCOM LTDA",
         "cnpj": "14.864.845/0001-30",
@@ -2031,6 +2094,62 @@
         "descricao": "REFERENTE A DIARIAS PARA O ACOMPANHAMENTO DO SEU VEREADOR PARA O EM BRASILIA/DF NA  EVENTO DA MARCHA DOS VEREAORES  NOS DIAS27 A 30/04/2026"
       },
       {
+        "data": "2026-05-21",
+        "fornecedor": "EDNO RIBAS MACHADO",
+        "cnpj": "607.XXX.XXX-00",
+        "categoria": "Diárias — Civil",
+        "valor": 9900.0,
+        "descricao": "REFERENTE A DIARIAS PARA CURSO DE DEGURANÇA PUBLICA MUNICIPAL SOB A PERSPECTIVA DO PODER LEGISLATIVO NOS DIAS 19A 22/05/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
+      },
+      {
+        "data": "2026-05-21",
+        "fornecedor": "ADAIR IVARRAS PEREIRA",
+        "cnpj": "842.XXX.XXX-53",
+        "categoria": "Diárias — Civil",
+        "valor": 9900.0,
+        "descricao": "REFERENTE A DIARIAS PARA CURSO DE DEGURANÇA PUBLICA MUNICIPAL SOB A PERSPECTIVA DO PODER LEGISLATIVO NOS DIAS 19A 22/05/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
+      },
+      {
+        "data": "2026-05-21",
+        "fornecedor": "OLGA CAROLINA BASILIO BALDIN DA SILVA",
+        "cnpj": "022.XXX.XXX-39",
+        "categoria": "Diárias — Civil",
+        "valor": 9900.0,
+        "descricao": "REFERENTE A DIARIAS PARA CURSO DE DEGURANÇA PUBLICA MUNICIPAL SOB A PERSPECTIVA DO PODER LEGISLATIVO NOS DIAS 19A 22/05/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
+      },
+      {
+        "data": "2026-05-21",
+        "fornecedor": "ANGELA GOMES DA CUNHA",
+        "cnpj": "951.XXX.XXX-68",
+        "categoria": "Diárias — Civil",
+        "valor": 9900.0,
+        "descricao": "REFERENTE A DIARIAS PARA CURSO DE DEGURANÇA PUBLICA MUNICIPAL SOB A PERSPECTIVA DO PODER LEGISLATIVO NOS DIAS 19A 22/05/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
+      },
+      {
+        "data": "2026-05-09",
+        "fornecedor": "ERICKSON DE CARVALHO OLIVEIRA",
+        "cnpj": "014.XXX.XXX-18",
+        "categoria": "Diárias — Civil",
+        "valor": 9900.0,
+        "descricao": "REFERENTE A DIARIAS PARA O CURSO GESTÃO ESTRATEGICA DOS TRIBUTOS MUNICIPAIS  DOS DIAS 09 A 12/06/2026 NA CIDADE DE MARINGA/PR"
+      },
+      {
+        "data": "2026-05-29",
+        "fornecedor": "MARIANNE LINA RAFAEL",
+        "cnpj": "045.XXX.XXX-35",
+        "categoria": "Diárias — Civil",
+        "valor": 9900.0,
+        "descricao": "REFERENTE A DIARIAS PARA O CURSO GESTÃO ESTRATEGICA DOS TRIBUTOS MUNICIPAIS  DOS DIAS 09 A 12/06/2026 NA CIDADE DE MARINGA/PR"
+      },
+      {
+        "data": "2026-06-22",
+        "fornecedor": "FABIO AUGUSTO MOREIRA PRINCIPE LTDA",
+        "cnpj": "58.777.443/0001-73",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 9872.0,
+        "descricao": "REFERENTE AO PAGAMENTO DE JUROS DO EMPENHO 226 EM FAVOR DA EMPRESA FABIO AUGUSTO MOREIRA LTDA"
+      },
+      {
         "data": "2026-05-04",
         "fornecedor": "ROSEMAR MOURA BARRETOS PRETE",
         "cnpj": "22.809.700/0001-64",
@@ -2159,6 +2278,46 @@
         "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
       },
       {
+        "data": "2026-05-21",
+        "fornecedor": "IZAQUEU DE SOUZA DINIZ",
+        "cnpj": "018.XXX.XXX-90",
+        "categoria": "Indenizações e Restituições",
+        "valor": 7000.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
+      },
+      {
+        "data": "2026-06-25",
+        "fornecedor": "CLEDINALDO MARCELINO COTOCIO",
+        "cnpj": "011.XXX.XXX-88",
+        "categoria": "Indenizações e Restituições",
+        "valor": 7000.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
+      },
+      {
+        "data": "2026-06-25",
+        "fornecedor": "IZAQUEU DE SOUZA DINIZ",
+        "cnpj": "018.XXX.XXX-90",
+        "categoria": "Indenizações e Restituições",
+        "valor": 7000.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
+      },
+      {
+        "data": "2026-06-25",
+        "fornecedor": "EDILAINE CRISTINA TAVARES",
+        "cnpj": "013.XXX.XXX-75",
+        "categoria": "Indenizações e Restituições",
+        "valor": 6714.86,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
+      },
+      {
+        "data": "2026-06-25",
+        "fornecedor": "SILVESTRE JOSE CARDOSO ZOTTI",
+        "cnpj": "044.XXX.XXX-03",
+        "categoria": "Indenizações e Restituições",
+        "valor": 6506.13,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
+      },
+      {
         "data": "2026-05-18",
         "fornecedor": "MARCIO  SILVA DE ALMEIDA",
         "cnpj": "786.XXX.XXX-72",
@@ -2167,12 +2326,28 @@
         "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
       },
       {
+        "data": "2026-06-25",
+        "fornecedor": "MARCIO  SILVA DE ALMEIDA",
+        "cnpj": "786.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 6390.1,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
+      },
+      {
         "data": "2026-03-02",
         "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
         "cnpj": "15.413.826/0001-50",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 6077.22,
         "descricao": "REFERENTE AO CONSUMO 03/2026"
+      },
+      {
+        "data": "2026-06-25",
+        "fornecedor": "JUSCINEI CLARO DINO",
+        "cnpj": "448.XXX.XXX-34",
+        "categoria": "Indenizações e Restituições",
+        "valor": 5983.12,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
       },
       {
         "data": "2026-05-11",
@@ -2197,6 +2372,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 5797.0,
         "descricao": "REFERENTE A IMPLANTAÇÃO E LICENÇA DE USO DO SOFTWARE GED REFERENTE AO CONTRATO 017/2025 , CONFORME NF 24"
+      },
+      {
+        "data": "2026-06-25",
+        "fornecedor": "CARLOS ALESSANDRO DA SILVA",
+        "cnpj": "954.XXX.XXX-49",
+        "categoria": "Indenizações e Restituições",
+        "valor": 5756.83,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
       },
       {
         "data": "2026-03-04",
@@ -2295,6 +2478,22 @@
         "descricao": "REFERENTE A DIARIAS PARA CUMPRIMENTO DE AGENDA COM DEPUTADOS FEDERAIS EM BRASILIA/DF DE 01 E 02/04/2026"
       },
       {
+        "data": "2026-05-21",
+        "fornecedor": "JUSCINEI CLARO DINO",
+        "cnpj": "448.XXX.XXX-34",
+        "categoria": "Diárias — Civil",
+        "valor": 5500.0,
+        "descricao": "REFERENTE A DIARIAS PARA CURSO DE DEGURANÇA PUBLICA MUNICIPAL SOB A PERSPECTIVA DO PODER LEGISLATIVO NOS DIAS 19A 22/05/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
+      },
+      {
+        "data": "2026-05-21",
+        "fornecedor": "ELAINE DE SOUZA CANATTO COIMBRA",
+        "cnpj": "693.XXX.XXX-34",
+        "categoria": "Diárias — Civil",
+        "valor": 5500.0,
+        "descricao": "REFERENTE A DIARIAS PARA CURSO DE DEGURANÇA PUBLICA MUNICIPAL SOB A PERSPECTIVA DO PODER LEGISLATIVO NOS DIAS 19A 22/05/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
+      },
+      {
         "data": "2026-06-26",
         "fornecedor": "CAMARA MUNICIPAL DE SIDROLÂNDIA",
         "cnpj": "15.497.092/0001-34",
@@ -2351,6 +2550,14 @@
         "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
       },
       {
+        "data": "2026-06-25",
+        "fornecedor": "ELAINE DE SOUZA CANATTO COIMBRA",
+        "cnpj": "693.XXX.XXX-34",
+        "categoria": "Indenizações e Restituições",
+        "valor": 5000.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
+      },
+      {
         "data": "2026-02-23",
         "fornecedor": "FABIO DE ASSIS DA HORA",
         "cnpj": "036.XXX.XXX-02",
@@ -2365,6 +2572,14 @@
         "categoria": "Diárias — Civil",
         "valor": 4950.0,
         "descricao": "REFERENTE A DIARIAS PARA O CURSO DE RESPONSABILIDADES JURIDICAS NO PROCESS LEGISLATIVO MUNICIPAL NOS DIAS 07 A 10/04/2026 NA CIDADE DE MARIGA/PR COMO MOTORISTA DOS VEREADORES"
+      },
+      {
+        "data": "2026-05-21",
+        "fornecedor": "FERNANDA DE SOUZA",
+        "cnpj": "693.XXX.XXX-91",
+        "categoria": "Diárias — Civil",
+        "valor": 4950.0,
+        "descricao": "REFERENTE A DIARIAS PARA CURSO DE DEGURANÇA PUBLICA MUNICIPAL SOB A PERSPECTIVA DO PODER LEGISLATIVO NOS DIAS 19A 22/05/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
       },
       {
         "data": "2026-02-02",
@@ -2677,6 +2892,22 @@
         "categoria": "Obrigações Patronais",
         "valor": 2212.69,
         "descricao": "REFERENTE A CONTRIBUIÇÃO PATRONAL DAS RECISÕES DE 04/2026"
+      },
+      {
+        "data": "2026-06-10",
+        "fornecedor": "LOURDES APARECIDA KRASPRECHEN LTDA",
+        "cnpj": "60.115.429/0001-56",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 2200.0,
+        "descricao": "REFERENTE A SERVIÇOS DE COFFE BREAK TIPO B  CONFORME NF 30"
+      },
+      {
+        "data": "2026-06-02",
+        "fornecedor": "FABIO AUGUSTO MOREIRA PRINCIPE LTDA",
+        "cnpj": "58.777.443/0001-73",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 2185.0,
+        "descricao": "REFERENTE AO PAGAMENTO DE JUROS DO EMPENHO 78 EM FAVOR DA EMPRESA FABIO AUGUSTO MOREIRA LTDA"
       },
       {
         "data": "2026-05-04",
@@ -3023,6 +3254,14 @@
         "descricao": "REFERENTE A SERVIÇOS DE 06/2026 CONFORME NF 4410"
       },
       {
+        "data": "2026-06-25",
+        "fornecedor": "SHIRLEI HERNENDES PIGOSSO BASSO",
+        "cnpj": "321.XXX.XXX-87",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1250.36,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
+      },
+      {
         "data": "2026-02-19",
         "fornecedor": "PEDRO LUIZ RIBEIRO RUANO",
         "cnpj": "37.544.111/0001-79",
@@ -3309,6 +3548,22 @@
         "categoria": "Obrigações Patronais",
         "valor": 226.68,
         "descricao": "REFERENTE A CONTRIBUIÇÃO PATRONAL DO RECISÃO DE 02/2026"
+      },
+      {
+        "data": "2026-06-30",
+        "fornecedor": "CAIXA ECONÔMICA FEDERAL S/A",
+        "cnpj": "00.360.305/4292-91",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 215.42,
+        "descricao": "REFERENTE A TAXA DESERVIÇOS BANCARIOS DE 06/2026"
+      },
+      {
+        "data": "2026-05-31",
+        "fornecedor": "CAIXA ECONÔMICA FEDERAL S/A",
+        "cnpj": "00.360.305/4292-91",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 205.72,
+        "descricao": "REFERENTE A TARIFA BANCARIA DO MES 05/2026"
       },
       {
         "data": "2026-02-27",
@@ -3957,6 +4212,22 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "REFERENTE A INSCRIÇÃO DO ENCONTRO NACIONAL DO PODER LEGISLATIVO MUNICIPAL EM BRASILIA/DFDOS DIA 03 A 06/03"
+      },
+      {
+        "data": "2026-05-21",
+        "fornecedor": "A & T PUBLICIDADE E ASSESSORIA LTDA",
+        "cnpj": "15.427.958/0001-30",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "REFERENTE A SERVIÇOS DE PUBLICIDADE DA CAMPANHA DIA DOS POVOS INDIGENAS CONFORME NF 22192"
+      },
+      {
+        "data": "2026-05-21",
+        "fornecedor": "A & T PUBLICIDADE E ASSESSORIA LTDA",
+        "cnpj": "15.427.958/0001-30",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "REFERENTE A SERVIÇOS DE PUBLICIDADE DA CAMPANHA DIA DOS POVOS INDIGENAS CONFORME NF 22192"
       }
     ]
   }
