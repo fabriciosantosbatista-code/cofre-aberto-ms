@@ -1,7 +1,7 @@
 {
   "cidade": "Paranaíba",
-  "ultimaAtualizacao": "2026-08-25T12:20:34",
-  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-08-25T12:20:34",
+  "ultimaAtualizacao": "2026-08-26T12:22:23",
+  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-08-26T12:22:23",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmparanaiba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -229,6 +229,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-08-25",
+          "valor": 925.67,
+          "descricao": "REFERE-SE À CONCESSÃO DE 1,0% DE DIÁRIA PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA REALIZAR VISITAS INSTITUCIONAIS, COM O INTUITO DE TRATAR DE ASSUNTOS  DESTE MUNICÍPIO. PERÍODO DE 25/08/2026 A 26/08/2026."
+        },
+        {
           "data": "2026-08-18",
           "valor": 6849.96,
           "descricao": "REFERE-SE À CONCESSÃO DE 3,70% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA PARTICIPAR DO 33º FÓRUM DE GESTÃO PÚBLICA, DO INSTITUTO ULYSSES GUIMARÃES, COM O INTUITO DE ADQUIRIR CONHECIMENTO DESTE MUNICÍPIO. PERÍODO DE 18/08/2026 A 21/08/2026."
@@ -319,8 +324,8 @@
           "descricao": "REFERE-SE À CONCESSÃO DE 1,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA COMPARECER NA ASSEMBLÉIA LEGISLATIVA E VISITAS INSTITUCIONAIS, COM INTUITO DE TRATAR DE ASSUNTOS DE RELEVÂNCIA DESTE MUNÍCIPIO. PERÍODO DE 04/02/2026 A 05/02/2026."
         }
       ],
-      "totalDiarias2026": 52122.39,
-      "numDiarias2026": 18
+      "totalDiarias2026": 53048.06,
+      "numDiarias2026": 19
     },
     {
       "nome": "GILSON SANTANA DE ARAÚJO",
@@ -753,13 +758,13 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 7301850.8,
-    "totalNotas": 281,
+    "totalGeral": 7351407.58,
+    "totalNotas": 282,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 4456838.31,
       "Obrigações Patronais": 844056.46,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 712137.53,
-      "Diárias — Civil": 615163.69,
+      "Diárias — Civil": 664720.47,
       "Serviços de Consultoria": 490000.0,
       "Despesas de Exercícios Anteriores": 97877.35,
       "Material de Consumo": 38570.2,
@@ -1363,6 +1368,46 @@
         "descricao": "REFERE-SE À CONCESSÃO DE 3,70% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA COMPARECER AO 33º FÓRUM DE GESTÃO PÚBLICA, DO INSTITUTO ULYSSES GUIMARÃES. A PARTICIP"
       },
       {
+        "data": "2026-08-24",
+        "fornecedor": "JOSE ANTONIO LOPES COSTA",
+        "cnpj": "710.XXX.XXX-15",
+        "categoria": "Diárias — Civil",
+        "valor": 6849.96,
+        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA COMPARECER E PARTICIPAR DO 35º SIMPÓSIO DE GESTÃO PÚBLICA, COM A FINALIDADE DE APRENDE"
+      },
+      {
+        "data": "2026-08-24",
+        "fornecedor": "CESAR MORETH DA SILVA QUEIROZ",
+        "cnpj": "337.XXX.XXX-20",
+        "categoria": "Diárias — Civil",
+        "valor": 6849.96,
+        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA PARTICIPAR 35º SIMPÓSIO DE GESTÃO PÚBLICA. PERÍODO DE 25/08/2026 A 28/08/2026."
+      },
+      {
+        "data": "2026-08-24",
+        "fornecedor": "MARCOS HENRIQUE DE CAMARGO SILVA",
+        "cnpj": "519.XXX.XXX-00",
+        "categoria": "Diárias — Civil",
+        "valor": 6849.96,
+        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, O OBJETIVO DA VIAGEM É PARTICIPAR 35º SIMPÓSIO DE GESTÃO PÚBLICA, PROMOVIDO PELO INSTITUTO"
+      },
+      {
+        "data": "2026-08-24",
+        "fornecedor": "MAURICIO GOMES DE ALMEIDA",
+        "cnpj": "712.XXX.XXX-78",
+        "categoria": "Diárias — Civil",
+        "valor": 6849.96,
+        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA AGENDA DIVERSA, COM OBJETIVO DE TRATAR DE ASSUNTOS DE INTERESSE DO MUNICÍPIO DE PARANA"
+      },
+      {
+        "data": "2026-08-24",
+        "fornecedor": "LÚCIO ANTÔNIO DE FREITAS",
+        "cnpj": "841.XXX.XXX-68",
+        "categoria": "Diárias — Civil",
+        "valor": 6849.96,
+        "descricao": "REFERE-SE À CONCESSÃO DE 3,70% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, COM FINALIDADE DE PARTICIPAR DO 35º SIMPÓSIO DE GESTÃO PÚBLICA. A PARTICIPAÇÃO NESTE EVENT"
+      },
+      {
         "data": "2026-02-02",
         "fornecedor": "MAURICIO GOMES DE ALMEIDA",
         "cnpj": "712.XXX.XXX-78",
@@ -1505,6 +1550,30 @@
         "categoria": "Diárias — Civil",
         "valor": 4793.77,
         "descricao": "REFERE-SE À CONCESSÃO DE 3,70% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA ACOMPANHAR O VEREADOR EDMAR PIRES DA SILVA JUNIOR NO 33º FÓRUM DE GESTÃO PÚBLICA, DO"
+      },
+      {
+        "data": "2026-08-24",
+        "fornecedor": "JOAO FERNANDO FERREIRA NUNES",
+        "cnpj": "051.XXX.XXX-20",
+        "categoria": "Diárias — Civil",
+        "valor": 4793.77,
+        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA ACOMPANHAR O VEREADOR EM AGENDA DIVERSA, BEM COMO PARA COMPARECER NO 35º SIMPÓSIO DE G"
+      },
+      {
+        "data": "2026-08-24",
+        "fornecedor": "NILDO SILVA CANÇADO",
+        "cnpj": "403.XXX.XXX-91",
+        "categoria": "Diárias — Civil",
+        "valor": 4793.77,
+        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, O OBJETIVO DA VIAGEM É PARTICIPAR 35º SIMPÓSIO DE GESTÃO PÚBLICA, PROMOVIDO PELO INSTITUTO"
+      },
+      {
+        "data": "2026-08-24",
+        "fornecedor": "JEAN DINIZ QUEIROZ",
+        "cnpj": "448.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 4793.77,
+        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA ASSESSORAR O VEREADOR  CÉSAR MORETH DA SILVA QUEIROZ E PARTICIPAR DO 35º SIMPÓSIO DE G"
       },
       {
         "data": "2026-03-02",
@@ -2579,6 +2648,14 @@
         "descricao": "REFERE-SE À CONCESSÃO DE 1,0% DE DIÁRIA PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA CUMPRIR AGENDA NA  CASA CIVIL, BEM COMO TRATAR DE ASSUNTOS DO MUNICÍPIO DE PARANAÍB"
       },
       {
+        "data": "2026-08-25",
+        "fornecedor": "EDMAR PIRES DA SILVA JUNIOR",
+        "cnpj": "003.XXX.XXX-60",
+        "categoria": "Diárias — Civil",
+        "valor": 925.67,
+        "descricao": "REFERE-SE À CONCESSÃO DE 1,0% DE DIÁRIA PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA REALIZAR VISITAS INSTITUCIONAIS, COM O INTUITO DE TRATAR DE ASSUNTOS  DESTE MUNICÍP"
+      },
+      {
         "data": "2026-04-17",
         "fornecedor": "ELIANA DA SILVA LEAL",
         "cnpj": "608.XXX.XXX-91",
@@ -2953,70 +3030,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 0.0,
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE SOCIEDADE DE ADVOCACIA ESPECIALIZADA PARA A PRESTAÇÃO CONTINUADA DE SERVIÇOS TÉCNICOS DE ASSESSORIA E CONSULTORIA JURÍDICA ESPECIALIZADA, CONSULTORIA AO DEPARTA"
-      },
-      {
-        "data": "2026-08-24",
-        "fornecedor": "JOSE ANTONIO LOPES COSTA",
-        "cnpj": "710.XXX.XXX-15",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA COMPARECER E PARTICIPAR DO 35º SIMPÓSIO DE GESTÃO PÚBLICA, COM A FINALIDADE DE APRENDE"
-      },
-      {
-        "data": "2026-08-24",
-        "fornecedor": "JOAO FERNANDO FERREIRA NUNES",
-        "cnpj": "051.XXX.XXX-20",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA ACOMPANHAR O VEREADOR EM AGENDA DIVERSA, BEM COMO PARA COMPARECER NO 35º SIMPÓSIO DE G"
-      },
-      {
-        "data": "2026-08-24",
-        "fornecedor": "CESAR MORETH DA SILVA QUEIROZ",
-        "cnpj": "337.XXX.XXX-20",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA PARTICIPAR 35º SIMPÓSIO DE GESTÃO PÚBLICA. PERÍODO DE 25/08/2026 A 28/08/2026."
-      },
-      {
-        "data": "2026-08-24",
-        "fornecedor": "MARCOS HENRIQUE DE CAMARGO SILVA",
-        "cnpj": "519.XXX.XXX-00",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, O OBJETIVO DA VIAGEM É PARTICIPAR 35º SIMPÓSIO DE GESTÃO PÚBLICA, PROMOVIDO PELO INSTITUTO"
-      },
-      {
-        "data": "2026-08-24",
-        "fornecedor": "MAURICIO GOMES DE ALMEIDA",
-        "cnpj": "712.XXX.XXX-78",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA AGENDA DIVERSA, COM OBJETIVO DE TRATAR DE ASSUNTOS DE INTERESSE DO MUNICÍPIO DE PARANA"
-      },
-      {
-        "data": "2026-08-24",
-        "fornecedor": "NILDO SILVA CANÇADO",
-        "cnpj": "403.XXX.XXX-91",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, O OBJETIVO DA VIAGEM É PARTICIPAR 35º SIMPÓSIO DE GESTÃO PÚBLICA, PROMOVIDO PELO INSTITUTO"
-      },
-      {
-        "data": "2026-08-24",
-        "fornecedor": "LÚCIO ANTÔNIO DE FREITAS",
-        "cnpj": "841.XXX.XXX-68",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À CONCESSÃO DE 3,70% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, COM FINALIDADE DE PARTICIPAR DO 35º SIMPÓSIO DE GESTÃO PÚBLICA. A PARTICIPAÇÃO NESTE EVENT"
-      },
-      {
-        "data": "2026-08-24",
-        "fornecedor": "JEAN DINIZ QUEIROZ",
-        "cnpj": "448.XXX.XXX-87",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, PARA ASSESSORAR O VEREADOR  CÉSAR MORETH DA SILVA QUEIROZ E PARTICIPAR DO 35º SIMPÓSIO DE G"
       }
     ]
   },
