@@ -1,7 +1,7 @@
 {
   "cidade": "Sidrolândia",
-  "ultimaAtualizacao": "2026-08-26T12:22:23",
-  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-08-26T12:22:23",
+  "ultimaAtualizacao": "2026-08-27T21:21:09",
+  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-08-27T21:21:09",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasidrolandia.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -272,6 +272,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-07-21",
+          "valor": 11000.0,
+          "descricao": "REFERENTE A DIARIAS PARA CURSO DE SEGURANÇA DIGITAL NO LEGISLATIVO NO MUNICIPIO NA CIDADE DE CURITIBA/PR NOS DIAS 22 A 25/07"
+        },
+        {
           "data": "2026-06-08",
           "valor": 11000.0,
           "descricao": "REFERENTE A DIARIAS PARA O CURSO NA CIDADE DE FOZ DO IGUAÇU /PR TEMA GESTÃO ESTRATEGICA DOS TRIBUTOS MUNICIPAIS  DIAS 09 A 12/06/2026"
@@ -297,24 +302,24 @@
           "descricao": "REFERENTE A DIARIAS DO VEREADOR PARA O CURSO COM O TEMA : REPASSE DE RECURSOS PUBLICOS AO TERCEIRO SETOR . REALIZADO DOA DIAS 03 A 06/02/2026 NA CIDADE DE MARINGA/PR"
         }
       ],
-      "totalDiarias2026": 52250.0,
-      "numDiarias2026": 5
+      "totalDiarias2026": 63250.0,
+      "numDiarias2026": 6
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 11206893.75,
-    "totalNotas": 494,
+    "totalGeral": 11545217.97,
+    "totalNotas": 547,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 6100586.76,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1268384.07,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1294046.39,
       "Obrigações Patronais": 1202288.39,
-      "Diárias — Civil": 902800.0,
+      "Diárias — Civil": 913800.0,
       "Elemento 04": 607569.5,
-      "Serviços de Consultoria": 386961.09,
-      "Serviços de Tecnologia da Informação": 219791.01,
-      "Material de Consumo": 177058.17,
+      "Serviços de Consultoria": 551162.95,
+      "Serviços de Tecnologia da Informação": 266968.01,
+      "Indenizações e Restituições": 191474.58,
+      "Material de Consumo": 183030.14,
       "Passagens e Despesas com Locomoção": 153971.25,
-      "Indenizações e Restituições": 107163.51,
       "Equipamentos e Material Permanente": 80320.0
     },
     "despesas": [
@@ -839,6 +844,22 @@
         "descricao": "REFERENTE A CONTRIBUIÇÃO PATRONAL DO INSS DOS SERVIDORES NOMEADOS DE 07/2026"
       },
       {
+        "data": "2026-07-14",
+        "fornecedor": "J P M CONSULTORIA CONTÁBIL LTDA EPP",
+        "cnpj": "07.310.267/0001-24",
+        "categoria": "Serviços de Consultoria",
+        "valor": 32637.92,
+        "descricao": "REFERENTE AS SERVIÇOS DE CONSUTORIA CONTABIL  DE 07/2026 CONFORME NF 87"
+      },
+      {
+        "data": "2026-08-17",
+        "fornecedor": "J P M CONSULTORIA CONTÁBIL LTDA EPP",
+        "cnpj": "07.310.267/0001-24",
+        "categoria": "Serviços de Consultoria",
+        "valor": 32637.92,
+        "descricao": "REFRENTE A SERVIÇOS DE CONSUTORIA CONTABIL DO MES 08/206 CONFORME NF 98"
+      },
+      {
         "data": "2026-06-26",
         "fornecedor": "INSS- INST.NAC.DE SEG.SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -1013,6 +1034,22 @@
         "categoria": "Serviços de Consultoria",
         "valor": 28437.17,
         "descricao": "REFERENTE A SERVIÇOS DE CONSUTORIA JURIDICA DE 06/2026 CONFORME NF 637 DO PROCESSO DE INEXGIBILIDADE 002/2023 E CONTRATO 002/2023"
+      },
+      {
+        "data": "2026-07-17",
+        "fornecedor": "LUIZ CLÁUDIO NETO PALERMO SOCIEDADE INDIVIDUAL DE",
+        "cnpj": "32.421.031/0001-02",
+        "categoria": "Serviços de Consultoria",
+        "valor": 28437.17,
+        "descricao": "REFERENTE A SERVIÇOS DE CONSUTORIA JURIDICA DO MES 07/2026 CONFORME NF 652"
+      },
+      {
+        "data": "2026-08-17",
+        "fornecedor": "LUIZ CLÁUDIO NETO PALERMO SOCIEDADE INDIVIDUAL DE",
+        "cnpj": "32.421.031/0001-02",
+        "categoria": "Serviços de Consultoria",
+        "valor": 28437.17,
+        "descricao": "REFERENTE A SERVIÇOS DE CONSUTORIA JURIDICA DO MES 08/2026 CONFORME NF 87"
       },
       {
         "data": "2026-01-30",
@@ -1351,6 +1388,22 @@
         "descricao": "REFERENTE A LOCAÇÃO DE SISTEMA NO PERIODO DE 24/03 A 23/04/2026 CONFORME NF 4030"
       },
       {
+        "data": "2026-07-29",
+        "fornecedor": "R3GED GESTAO DE DOCUMENTOS LTDA",
+        "cnpj": "21.268.622/0001-75",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 15750.0,
+        "descricao": "REFERENTE LOCAÇÃO DE SISTEMA DO PERIODO DE 24/06 A 23/07/2026 CONFORME NF 1503"
+      },
+      {
+        "data": "2026-08-24",
+        "fornecedor": "R3GED GESTAO DE DOCUMENTOS LTDA",
+        "cnpj": "21.268.622/0001-75",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 15750.0,
+        "descricao": "REFERENTE LOCAÇÃO DE SISTEMA DO PERIODO DE 24/07 A 23/08/2026 CONFORME NF 1588"
+      },
+      {
         "data": "2026-05-28",
         "fornecedor": "INSS- INST.NAC.DE SEG.SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -1429,6 +1482,22 @@
         "categoria": "Serviços de Consultoria",
         "valor": 15000.0,
         "descricao": "REFERENTE A ACESSORIA JURIDICA DE 05/2026 CONFORME NF 27"
+      },
+      {
+        "data": "2026-07-30",
+        "fornecedor": "FELIPE ANDRE SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "58.276.135/0001-64",
+        "categoria": "Serviços de Consultoria",
+        "valor": 15000.0,
+        "descricao": "REFERENTE A SERVIÇOS DE CONSULTORIA JURIDICA DE MES 07/2026 CONFORME NF 35"
+      },
+      {
+        "data": "2026-06-12",
+        "fornecedor": "FELIPE ANDRE SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "58.276.135/0001-64",
+        "categoria": "Serviços de Consultoria",
+        "valor": 15000.0,
+        "descricao": "REFERENTE A SERVIÇOS DE CONSUTORIA JURIDICA DE 06/2026 CONFORME NF 31"
       },
       {
         "data": "2026-04-25",
@@ -1919,6 +1988,14 @@
         "descricao": "REFERENTE A DIARIAS PARA O CURSO GESTÃO ESTRATEGICA DOS TRIBUTOS MUNICIPAIS  DOS DIAS 09 A 12/06/2026 NA CIDADE DE MARINGA/PR"
       },
       {
+        "data": "2026-07-21",
+        "fornecedor": "SILVESTRE JOSE CARDOSO ZOTTI",
+        "cnpj": "044.XXX.XXX-03",
+        "categoria": "Diárias — Civil",
+        "valor": 11000.0,
+        "descricao": "REFERENTE A DIARIAS PARA CURSO DE SEGURANÇA DIGITAL NO LEGISLATIVO NO MUNICIPIO NA CIDADE DE CURITIBA/PR NOS DIAS 22 A 25/07"
+      },
+      {
         "data": "2026-03-02",
         "fornecedor": "PONTOCOM LTDA",
         "cnpj": "14.864.845/0001-30",
@@ -2231,6 +2308,14 @@
         "descricao": "REFERENTE CONSUMO DE 04/2025"
       },
       {
+        "data": "2026-07-22",
+        "fornecedor": "SILVESTRE JOSE CARDOSO ZOTTI",
+        "cnpj": "044.XXX.XXX-03",
+        "categoria": "Indenizações e Restituições",
+        "valor": 7596.67,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DO MES 07/2026"
+      },
+      {
         "data": "2026-05-04",
         "fornecedor": "PEDRO LUIZ RIBEIRO RUANO",
         "cnpj": "37.544.111/0002-50",
@@ -2253,6 +2338,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 7460.0,
         "descricao": "REFERENTE A RESTAURAÇÃO DE 20 UNIDADES DE MESAS DE ESCRITORIO CONFORME NF 1"
+      },
+      {
+        "data": "2026-08-26",
+        "fornecedor": "MARCIO  SILVA DE ALMEIDA",
+        "cnpj": "786.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 7366.32,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 08/2026"
       },
       {
         "data": "2026-04-01",
@@ -2295,6 +2388,38 @@
         "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
       },
       {
+        "data": "2026-07-22",
+        "fornecedor": "CLEDINALDO MARCELINO COTOCIO",
+        "cnpj": "011.XXX.XXX-88",
+        "categoria": "Indenizações e Restituições",
+        "valor": 7000.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DO MES 07/2026"
+      },
+      {
+        "data": "2026-07-22",
+        "fornecedor": "IZAQUEU DE SOUZA DINIZ",
+        "cnpj": "018.XXX.XXX-90",
+        "categoria": "Indenizações e Restituições",
+        "valor": 7000.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DO MES 07/2026"
+      },
+      {
+        "data": "2026-08-26",
+        "fornecedor": "IZAQUEU DE SOUZA DINIZ",
+        "cnpj": "018.XXX.XXX-90",
+        "categoria": "Indenizações e Restituições",
+        "valor": 7000.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 08/2026"
+      },
+      {
+        "data": "2026-08-26",
+        "fornecedor": "CLEDINALDO MARCELINO COTOCIO",
+        "cnpj": "011.XXX.XXX-88",
+        "categoria": "Indenizações e Restituições",
+        "valor": 7000.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 08/2026"
+      },
+      {
         "data": "2026-06-25",
         "fornecedor": "EDILAINE CRISTINA TAVARES",
         "cnpj": "013.XXX.XXX-75",
@@ -2311,6 +2436,14 @@
         "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
       },
       {
+        "data": "2026-07-22",
+        "fornecedor": "MARCIO  SILVA DE ALMEIDA",
+        "cnpj": "786.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 6504.02,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DO MES 07/2026"
+      },
+      {
         "data": "2026-05-18",
         "fornecedor": "MARCIO  SILVA DE ALMEIDA",
         "cnpj": "786.XXX.XXX-72",
@@ -2319,12 +2452,36 @@
         "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
       },
       {
+        "data": "2026-07-23",
+        "fornecedor": "FELIPE ANDRE SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "58.276.135/0001-64",
+        "categoria": "Serviços de Consultoria",
+        "valor": 6500.0,
+        "descricao": "REFERENTE VALOR PROPORCIONAL DO PERIODO MES 07/2026  DA RECISÃO AMIGAVEL CONFORME NF 7"
+      },
+      {
         "data": "2026-06-25",
         "fornecedor": "MARCIO  SILVA DE ALMEIDA",
         "cnpj": "786.XXX.XXX-72",
         "categoria": "Indenizações e Restituições",
         "valor": 6390.1,
         "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
+      },
+      {
+        "data": "2026-07-30",
+        "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
+        "cnpj": "15.413.826/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 6235.8,
+        "descricao": "REFERENTE AO CONSUMO DE 08/2026"
+      },
+      {
+        "data": "2026-07-22",
+        "fornecedor": "JUSCINEI CLARO DINO",
+        "cnpj": "448.XXX.XXX-34",
+        "categoria": "Indenizações e Restituições",
+        "valor": 6203.38,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DO MES 07/2026"
       },
       {
         "data": "2026-03-02",
@@ -2423,6 +2580,22 @@
         "descricao": "REFERENTE A SERVIÇOS DE MANUTENÇÃO DE EQUIPAMENTOS E COMPUTADORES DE 0682026 CONFORME NF 122"
       },
       {
+        "data": "2026-07-30",
+        "fornecedor": "THIAGO GRANDI ME",
+        "cnpj": "27.412.318/0001-36",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 5737.5,
+        "descricao": "REFERENTE A SERVIÇOS DE MANUTENÇÃO DE COMPUTADORES DO MES 07/2026 CONFORME NF 125"
+      },
+      {
+        "data": "2026-08-19",
+        "fornecedor": "THIAGO GRANDI ME",
+        "cnpj": "27.412.318/0001-36",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 5737.5,
+        "descricao": "REFERENTE A SERVIÇOS DE MANUTENÇÃO DE COMPUTADORES CONFORME NF 26"
+      },
+      {
         "data": "2026-05-19",
         "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
         "cnpj": "15.413.826/0001-50",
@@ -2437,6 +2610,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 5666.67,
         "descricao": "REFERENTE A FERIAS DOS SERVIDORES COMISSIONADOS DE 06/2026"
+      },
+      {
+        "data": "2026-07-22",
+        "fornecedor": "CARLOS ALESSANDRO DA SILVA",
+        "cnpj": "954.XXX.XXX-49",
+        "categoria": "Indenizações e Restituições",
+        "valor": 5616.48,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DO MES 07/2026"
       },
       {
         "data": "2026-01-07",
@@ -2463,6 +2644,14 @@
         "descricao": "REFERENTE A VERBA INDENIZATORIA DOS VEREADORES DO MES 05/2026"
       },
       {
+        "data": "2026-07-10",
+        "fornecedor": "J P M CONSULTORIA CONTÁBIL LTDA EPP",
+        "cnpj": "07.310.267/0001-24",
+        "categoria": "Serviços de Consultoria",
+        "valor": 5551.68,
+        "descricao": "REFERENTE A DIFERENÇAS DAD NF DE 03 04 ,05 06 CONFORME T A 002/2026"
+      },
+      {
         "data": "2026-04-01",
         "fornecedor": "OTACIR PEREIRA FIGUEREDO",
         "cnpj": "002.XXX.XXX-02",
@@ -2487,12 +2676,28 @@
         "descricao": "REFERENTE A DIARIAS PARA CURSO DE DEGURANÇA PUBLICA MUNICIPAL SOB A PERSPECTIVA DO PODER LEGISLATIVO NOS DIAS 19A 22/05/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
       },
       {
+        "data": "2026-08-26",
+        "fornecedor": "CARLOS ALESSANDRO DA SILVA",
+        "cnpj": "954.XXX.XXX-49",
+        "categoria": "Indenizações e Restituições",
+        "valor": 5368.37,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 08/2026"
+      },
+      {
         "data": "2026-06-26",
         "fornecedor": "CAMARA MUNICIPAL DE SIDROLÂNDIA",
         "cnpj": "15.497.092/0001-34",
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 5333.34,
         "descricao": "REFERENTE A FERIAS DOS SERVIDOR DE GABINETES 06/2026"
+      },
+      {
+        "data": "2026-08-26",
+        "fornecedor": "ELAINE DE SOUZA CANATTO COIMBRA",
+        "cnpj": "693.XXX.XXX-34",
+        "categoria": "Indenizações e Restituições",
+        "valor": 5225.82,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 08/2026"
       },
       {
         "data": "2026-06-26",
@@ -2557,6 +2762,14 @@
         "categoria": "Indenizações e Restituições",
         "valor": 5000.0,
         "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
+      },
+      {
+        "data": "2026-07-22",
+        "fornecedor": "ELAINE DE SOUZA CANATTO COIMBRA",
+        "cnpj": "693.XXX.XXX-34",
+        "categoria": "Indenizações e Restituições",
+        "valor": 5000.0,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DO MES 07/2026"
       },
       {
         "data": "2026-02-23",
@@ -2799,12 +3012,44 @@
         "descricao": "REFERENTE A LOCAÇÃO DE EQUIPAMENTOS DO MES 05/2026 CONFORME RECIBO R67"
       },
       {
+        "data": "2026-06-29",
+        "fornecedor": "FG COPIADORA EIRELI ME",
+        "cnpj": "13.676.824/0001-28",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 3195.0,
+        "descricao": "REFERENTE A LOAÇÃO DE EQUIPAMENTO DE 06/2026 CONFORME VENDA 19822"
+      },
+      {
+        "data": "2026-07-27",
+        "fornecedor": "FG COPIADORA EIRELI ME",
+        "cnpj": "13.676.824/0001-28",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 3195.0,
+        "descricao": "REFERENTE A LOAÇÃO DE EQUIPAMENTO DE 07/2026 CONFORME RECIBO R72"
+      },
+      {
+        "data": "2026-08-26",
+        "fornecedor": "FG COPIADORA EIRELI ME",
+        "cnpj": "13.676.824/0001-28",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 3195.0,
+        "descricao": "REFERENTE A LOCAÇÃO DE EQUIPAMENTOS DE 08/2026 CONFORME VENDA F20882"
+      },
+      {
         "data": "2026-01-05",
         "fornecedor": "PEDRO LUIZ RIBEIRO RUANO",
         "cnpj": "37.544.111/0001-79",
         "categoria": "Material de Consumo",
         "valor": 2947.1,
         "descricao": "REFERENTE A COMPRA DE MATERIAL DE EXPEDIENTE EM 12/2025 CONFORME NF 15988"
+      },
+      {
+        "data": "2026-08-12",
+        "fornecedor": "JOAO ADMAR CUSTODIO LOPES LTDA",
+        "cnpj": "23.190.679/0001-24",
+        "categoria": "Material de Consumo",
+        "valor": 2870.9,
+        "descricao": "COMPRA DE MATRIAL DE COPA E BANHEIRO CONFORME NF 1056"
       },
       {
         "data": "2026-04-22",
@@ -2887,6 +3132,14 @@
         "descricao": "REFERENTE A RECARGAS E REPARO DE AR CONDICIONADOS CONFORME NF 13"
       },
       {
+        "data": "2026-07-30",
+        "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
+        "cnpj": "15.413.826/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 2362.59,
+        "descricao": "REFERENTE A CONSUMO DE 07/2026"
+      },
+      {
         "data": "2026-02-10",
         "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
         "cnpj": "15.413.826/0001-50",
@@ -2935,12 +3188,28 @@
         "descricao": "REFERENTE AO PAGAMENTO DE JUROS DO EMPENHO 78 EM FAVOR DA EMPRESA FABIO AUGUSTO MOREIRA LTDA"
       },
       {
+        "data": "2026-08-26",
+        "fornecedor": "EDILAINE CRISTINA TAVARES",
+        "cnpj": "013.XXX.XXX-75",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2163.94,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 08/2026"
+      },
+      {
         "data": "2026-05-04",
         "fornecedor": "NUELI APARECIDA SOUZA DA SILVA FERNANDES LTDA",
         "cnpj": "51.911.636/0001-26",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 2120.0,
         "descricao": "REFERENTE A MANUTENÇÃO DA PLATOFORMA DE ACESSIBILIDADE ETROCA PLACA DE COMANDO CONFORME NF 93"
+      },
+      {
+        "data": "2026-05-04",
+        "fornecedor": "NUELI APARECIDA SOUZA DA SILVA FERNANDES LTDA",
+        "cnpj": "51.911.636/0001-26",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 2120.0,
+        "descricao": "REFERENTE A SERVIÇOS DE MANUTENÇÃO DO ELEVADOR CONFORME NF 93"
       },
       {
         "data": "2026-03-27",
@@ -2989,6 +3258,14 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 1972.0,
         "descricao": "REFERENTE AO SERVIÇOS DE 06/2026 CONFORME NF 32"
+      },
+      {
+        "data": "2026-07-30",
+        "fornecedor": "ELPIS SOFT LTDA",
+        "cnpj": "58.495.442/0001-36",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 1972.0,
+        "descricao": "REFERENTE A LICENÇA USO DE SOLFTWARE PROTOCOLO VIRTUAL DE 07/2026 CONFORME NF 44"
       },
       {
         "data": "2026-01-05",
@@ -3103,12 +3380,36 @@
         "descricao": "REFERENTE A INSCRIÇÃO DO EMCONTRO NACIONAL DO PODER LEGISLATIVO MUNICIPAL DOS DIA 03 A 06/03/2026 EM BRASILIA/DF"
       },
       {
+        "data": "2026-07-22",
+        "fornecedor": "EDILAINE CRISTINA TAVARES",
+        "cnpj": "013.XXX.XXX-75",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1804.43,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DO MES 07/2026"
+      },
+      {
         "data": "2026-05-04",
         "fornecedor": "AUTO POSTO PÉ DE CEDRO LTDA",
         "cnpj": "15.513.096/0001-69",
         "categoria": "Material de Consumo",
         "valor": 1772.01,
         "descricao": "REFERENTE AO CONSUMO DE 04/2026 CONFORME NF 36.649"
+      },
+      {
+        "data": "2026-08-26",
+        "fornecedor": "SHIRLEI HERNENDES PIGOSSO BASSO",
+        "cnpj": "321.XXX.XXX-87",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1769.22,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DE 08/2026"
+      },
+      {
+        "data": "2026-07-22",
+        "fornecedor": "SHIRLEI HERNENDES PIGOSSO BASSO",
+        "cnpj": "321.XXX.XXX-87",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1692.42,
+        "descricao": "REFERENTE A VERBA INDENIZATORIA DO MES 07/2026"
       },
       {
         "data": "2026-02-04",
@@ -3189,6 +3490,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 1637.5,
         "descricao": "REFERENTE A SERVIÇO DE MONITORAMENTO DE 06/2026 CONFORME NF 9105"
+      },
+      {
+        "data": "2026-08-03",
+        "fornecedor": "SEGURANCA ELETRONICA SIDROLANDIA LTDA - EPP",
+        "cnpj": "22.321.732/0001-16",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1637.5,
+        "descricao": "REFERENTE A MONITORAMENTO DE 07/2026 CONFORME NF 202"
       },
       {
         "data": "2026-01-05",
@@ -3287,12 +3596,36 @@
         "descricao": "REFERENTE A SERVIÇOS DE 06/2026 CONFORME NF 4410"
       },
       {
+        "data": "2026-08-05",
+        "fornecedor": "W3 TECNOLOGIA LTDA",
+        "cnpj": "20.522.727/0001-46",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 1320.0,
+        "descricao": "REFERENTE A SERVIÇOS DE 08/2026 CONFORME NF 489"
+      },
+      {
         "data": "2026-06-25",
         "fornecedor": "SHIRLEI HERNENDES PIGOSSO BASSO",
         "cnpj": "321.XXX.XXX-87",
         "categoria": "Indenizações e Restituições",
         "valor": 1250.36,
         "descricao": "REFERENTE A VERBA INDENIZATORIA DE 06/2026"
+      },
+      {
+        "data": "2026-07-02",
+        "fornecedor": "CENTRO AMERICA COMERCIO, SERVICO, GESTAO TECNOLOGI",
+        "cnpj": "09.179.444/0001-00",
+        "categoria": "Material de Consumo",
+        "valor": 1241.98,
+        "descricao": "REFERENTE AO CONSUMO DE COMBUSTIVEL DO PERIODO DE 01/05 A 31/05/2026 CONFORME FATURA 1722533  DO CONTRATO 06/2026"
+      },
+      {
+        "data": "2026-08-01",
+        "fornecedor": "SANESUL - EMP DE SANEAMENTO DE MATO GROS",
+        "cnpj": "03.982.931/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1223.72,
+        "descricao": "REFERENTE A RESIDUO DA RETIRADA E TROCA DE HIDROMETRO 10/06/2026 REFERENTE AO CONSUMO 07/2026"
       },
       {
         "data": "2026-02-19",
@@ -3325,6 +3658,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 1090.0,
         "descricao": "REFERENTE A SERVIÇOS DE LAVAGEM VEICULO CONFORME NF 1"
+      },
+      {
+        "data": "2026-07-02",
+        "fornecedor": "CENTRO AMERICA COMERCIO, SERVICO, GESTAO TECNOLOGI",
+        "cnpj": "09.179.444/0001-00",
+        "categoria": "Material de Consumo",
+        "valor": 977.07,
+        "descricao": "REFERENTE AO CONSUMO DE COMBUSTIVEL DO PERIODO DE 01/06 A 30/06/2026 CONFORME FATURA 1722536  DO CONTRATO 06/2026"
       },
       {
         "data": "2026-06-01",
@@ -3421,6 +3762,38 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 700.0,
         "descricao": "REFERENTE A SERVIÇOS DE LINK DE INTERNET DEDICADO CONFORME NF 2052"
+      },
+      {
+        "data": "2026-07-30",
+        "fornecedor": "HOBY INTERNET E SERVICO DE COMUNICACAO LTDA",
+        "cnpj": "08.585.299/0001-03",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 700.0,
+        "descricao": "REFERENTE A MENSALIDADE DE ASSINATURA PLANE MENSAL DE INTERNET CONFORME NF 3413"
+      },
+      {
+        "data": "2026-07-30",
+        "fornecedor": "HOBY INTERNET E SERVICO DE COMUNICACAO LTDA",
+        "cnpj": "08.585.299/0001-03",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 700.0,
+        "descricao": "REFERENTE A MENSALIDADE DE ASSINATURA PLANE MENSAL DE INTERNET MES 06/2026 CONFORME NF 3472"
+      },
+      {
+        "data": "2026-08-05",
+        "fornecedor": "HOBY INTERNET E SERVICO DE COMUNICACAO LTDA",
+        "cnpj": "08.585.299/0001-03",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 700.0,
+        "descricao": "REFERENTE A MENSALIDADE DA INTERNET DO MES 08/2026 CONFORME NF 4144"
+      },
+      {
+        "data": "2026-07-02",
+        "fornecedor": "HOBY INTERNET E SERVICO DE COMUNICACAO LTDA",
+        "cnpj": "08.585.299/0001-03",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 700.0,
+        "descricao": "REFERENTE A MENSALIDADE DE INTERNET DE 07/2026 CONFORME NF 3502"
       },
       {
         "data": "2026-06-26",
@@ -3527,6 +3900,22 @@
         "descricao": "REFERENTE COMPRA DE GAZ E AGUA MINERAL PARA CAMARA MUNICIPAL CONFORME NF 798"
       },
       {
+        "data": "2026-05-04",
+        "fornecedor": "GZ COMERCIO E SERVICOS LTDA",
+        "cnpj": "53.852.451/0001-13",
+        "categoria": "Material de Consumo",
+        "valor": 459.26,
+        "descricao": "REFERENTE A COMPRA DE MATERIAL DE EXPEDIENTE CONFORME NF 961"
+      },
+      {
+        "data": "2026-08-12",
+        "fornecedor": "JOAO ADMAR CUSTODIO LOPES LTDA",
+        "cnpj": "23.190.679/0001-24",
+        "categoria": "Material de Consumo",
+        "valor": 422.76,
+        "descricao": "REFERENTE A COMPRA DE MATERIAL PARA COZINHA E GAZ CONFORME NF 1055"
+      },
+      {
         "data": "2026-03-10",
         "fornecedor": "FEDERAÇÃO DAS CAMARAS DE VEREADORES DE SANTA CATAR",
         "cnpj": "76.875.731/0001-42",
@@ -3559,6 +3948,14 @@
         "descricao": "REFERENTE A TARIFA BANCARIA DE 03/2026"
       },
       {
+        "data": "2026-08-01",
+        "fornecedor": "SANESUL - EMP DE SANEAMENTO DE MATO GROS",
+        "cnpj": "03.982.931/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 323.73,
+        "descricao": "REFERENTE AO CONSUMO DE 07/2026"
+      },
+      {
         "data": "2026-05-08",
         "fornecedor": "PACOLLA & CHIMENES COMERCIO DE PEÇAS AUTOMOTIVAS E",
         "cnpj": "59.459.386/0001-47",
@@ -3573,6 +3970,14 @@
         "categoria": "Material de Consumo",
         "valor": 274.26,
         "descricao": "REFERENTE COMPRA DE GAZ DE COZINHA CONFORME NF 665"
+      },
+      {
+        "data": "2026-07-31",
+        "fornecedor": "CAIXA ECONÔMICA FEDERAL S/A",
+        "cnpj": "00.360.305/4292-91",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 255.08,
+        "descricao": "REFERENTE A TARIFA BANCARIAS DE 07/2026"
       },
       {
         "data": "2026-05-05",
@@ -3693,6 +4098,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 31.61,
         "descricao": "REFERENTE AO CONSUMO DE 01/2026"
+      },
+      {
+        "data": "2026-07-07",
+        "fornecedor": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+        "cnpj": "34.028.316/0009-60",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 28.9,
+        "descricao": "REFERENTE A POSTAGENS DE 06/2026 CONFORME BOLETO 194685"
       },
       {
         "data": "2026-01-20",
@@ -4269,6 +4682,22 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "REFERENTE A SERVIÇOS DE PUBLICIDADE DA CAMPANHA DIA DOS POVOS INDIGENAS CONFORME NF 22192"
+      },
+      {
+        "data": "2026-07-30",
+        "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
+        "cnpj": "15.413.826/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "REFERENTE AO CONSUMO DE 06/2026."
+      },
+      {
+        "data": "2026-07-30",
+        "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
+        "cnpj": "15.413.826/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "REFERENTE AO CONSUMO DE 06/2026."
       }
     ]
   },
