@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-08-27T21:21:09",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-08-27T21:21:09",
+  "ultimaAtualizacao": "2026-08-28T21:33:01",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-08-28T21:33:01",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -56,6 +56,11 @@
       "descontos": 3322.2,
       "referenciaFolha": "Folha Mensal - Julho",
       "diarias": [
+        {
+          "data": "2026-08-26",
+          "valor": 500.0,
+          "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 02 (DUAS MEIAS-DIÁRIA) PARA FINS PARTICIPAR DA XX JORNADA DA LEI MARIA DA PENHA, A REALIZAR-SE NOS DIAS 27 e 28/08/2026, EM CAMPO GRANDE/MS. LEI DE DIÁRIAS Nº 15, DE 06/04/2026."
+        },
         {
           "data": "2026-08-11",
           "valor": 250.0,
@@ -122,8 +127,8 @@
           "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 01 (UMA) DIÁRIA EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 25/02/2026, REALIZAR VISITA INSTITUCIONAL À SUPERINTENDÊNCIA DO PROGRAMA CUIDAR DE QUEM CUIDA."
         }
       ],
-      "totalDiarias2026": 7742.5,
-      "numDiarias2026": 13
+      "totalDiarias2026": 8242.5,
+      "numDiarias2026": 14
     },
     {
       "nome": "JEOVÁ DA SILVA PRADO",
@@ -274,20 +279,20 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 7109780.69,
-    "totalNotas": 290,
+    "totalGeral": 7639024.62,
+    "totalNotas": 298,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 3625687.09,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 4095469.76,
       "Equipamentos e Material Permanente": 1110586.91,
       "Obrigações Patronais": 673025.42,
       "Serviços de Consultoria": 536381.44,
+      "Auxílio-Alimentação": 353375.74,
       "Serviços de Tecnologia da Informação": 329243.67,
-      "Auxílio-Alimentação": 310232.42,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 227232.01,
+      "Outros Benefícios Assistenciais do Servidor": 108035.05,
       "Outros Serviços de Terceiros — Pessoa Física": 101692.4,
-      "Outros Benefícios Assistenciais do Servidor": 93575.29,
-      "Material de Consumo": 41486.52,
-      "Diárias — Civil": 37928.51,
+      "Material de Consumo": 42544.7,
+      "Diárias — Civil": 38728.51,
       "Indenizações e Restituições": 22709.01
     },
     "despesas": [
@@ -356,6 +361,14 @@
         "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES COMISSIONADOS - FEV/2026."
       },
       {
+        "data": "2026-08-27",
+        "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES COMISSIONADOS",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 206536.96,
+        "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES COMISSIONADOS - AGOSTO/2026."
+      },
+      {
         "data": "2026-04-29",
         "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES COMISSIONADOS",
         "cnpj": "29.979.036/0001-40",
@@ -420,6 +433,14 @@
         "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES EFETIVOS - JULHO/2026."
       },
       {
+        "data": "2026-08-27",
+        "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES EFETIVOS",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 148489.42,
+        "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES EFETIVOS - AGOSTO/2026."
+      },
+      {
         "data": "2026-01-29",
         "fornecedor": "FOLHA DE PAGAMENTO - VEREADORES",
         "cnpj": "29.979.036/0001-40",
@@ -466,6 +487,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 114756.29,
         "descricao": "EMPENHO REFERENTE AO SUBSÍDIO DOS VEREADORES - JULHO/2026."
+      },
+      {
+        "data": "2026-08-27",
+        "fornecedor": "FOLHA DE PAGAMENTO - VEREADORES",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 114756.29,
+        "descricao": "EMPENHO REFERENTE AO SUBSÍDIO DOS VEREADORES - AGOSTO/2026."
       },
       {
         "data": "2026-06-26",
@@ -740,6 +769,14 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES COMISSIONADOS - JULHO/2026."
       },
       {
+        "data": "2026-08-27",
+        "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
+        "cnpj": "01.696.482/0001-29",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 28337.48,
+        "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES COMISSIONADOS - SETEMBRO/2026."
+      },
+      {
         "data": "2026-01-29",
         "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
         "cnpj": "01.696.482/0001-29",
@@ -980,6 +1017,14 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - JULHO/2026."
       },
       {
+        "data": "2026-08-27",
+        "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
+        "cnpj": "01.696.482/0001-29",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 14805.84,
+        "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - SETEMBRO/2026."
+      },
+      {
         "data": "2026-01-02",
         "fornecedor": "NEWPC TECNOLOGIA LTDA",
         "cnpj": "20.892.343/0001-15",
@@ -1068,6 +1113,14 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES COMISSIONADOS - JULHO/2026."
       },
       {
+        "data": "2026-08-27",
+        "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
+        "cnpj": "01.696.482/0001-29",
+        "categoria": "Outros Benefícios Assistenciais do Servidor",
+        "valor": 8262.72,
+        "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES COMISSIONADOS - AGOSTO/2026."
+      },
+      {
         "data": "2026-05-28",
         "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
         "cnpj": "01.696.482/0001-29",
@@ -1146,6 +1199,14 @@
         "categoria": "Outros Benefícios Assistenciais do Servidor",
         "valor": 6197.04,
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES EFETIVOS - JULHO/2026."
+      },
+      {
+        "data": "2026-08-27",
+        "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
+        "cnpj": "01.696.482/0001-29",
+        "categoria": "Outros Benefícios Assistenciais do Servidor",
+        "valor": 6197.04,
+        "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES EFETIVOS - AGOSTO/2026."
       },
       {
         "data": "2026-01-02",
@@ -1572,6 +1633,14 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES COMISSIONADOS - ABRIL/2026."
       },
       {
+        "data": "2026-08-27",
+        "fornecedor": "58.291.882 ROZANGELA DA SILVA GUEDES",
+        "cnpj": "58.291.882/0001-71",
+        "categoria": "Material de Consumo",
+        "valor": 776.24,
+        "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE E DE COMUNICAÇÃO, ATA DE REGISTRO DE PREÇOS 02/2026, PROCESSO ADMINISTRATIVO 05/2026, DISPENSA ELETRÔNICA 01/2026. PERÍODO CONTRATUAL 01/04/202"
+      },
+      {
         "data": "2026-04-08",
         "fornecedor": "LUCAS LOPES RIBEIRO",
         "cnpj": "044.XXX.XXX-40",
@@ -1684,6 +1753,14 @@
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 01 DIÁRIA EM FAVOR DO VEREADOR LUCAS LOPES RIBEIRO PARA PARTICIPAR DE ATO POLÍTICO A SER REALIZADO NO DIA 11/04/2026, NA SEDE DA FETEMS, EM CAMPO GRANDE/MS, COM A FINA"
       },
       {
+        "data": "2026-08-26",
+        "fornecedor": "JAQUELINE PEREIRA ARIMURA",
+        "cnpj": "010.XXX.XXX-44",
+        "categoria": "Diárias — Civil",
+        "valor": 500.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 02 (DUAS MEIAS-DIÁRIA) PARA FINS PARTICIPAR DA XX JORNADA DA LEI MARIA DA PENHA, A REALIZAR-SE NOS DIAS 27 e 28/08/2026, EM CAMPO GRANDE/MS. LEI DE DIÁRIAS Nº 15, DE 0"
+      },
+      {
         "data": "2026-05-21",
         "fornecedor": "61.886.264 MARYANE HIRAHATA SHIOTA",
         "cnpj": "61.886.264/0001-89",
@@ -1762,6 +1839,14 @@
         "categoria": "Diárias — Civil",
         "valor": 300.53,
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 01 (UMA) DIÁRIA EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA PARA FINS DE IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 11/03/2026, REALIZAR VISITA INSTITUCIONAL A"
+      },
+      {
+        "data": "2026-08-26",
+        "fornecedor": "EDINA GUIMARAES DE CARVALHO JULG",
+        "cnpj": "713.XXX.XXX-91",
+        "categoria": "Diárias — Civil",
+        "valor": 300.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 02 (DUAS MEIAS-DIÁRIA) PARA FINS PARTICIPAR DA XX JORNADA DA LEI MARIA DA PENHA, A REALIZAR-SE NOS DIAS 27 e 28/08/2026, EM CAMPO GRANDE/MS. LEI DE DIÁRIAS Nº 15, DE 0"
       },
       {
         "data": "2026-07-09",
@@ -2058,6 +2143,22 @@
         "categoria": "Material de Consumo",
         "valor": 147.15,
         "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE E MATERIAIS DE COMUNICAÇÃO VISUAL, CONFORME TERMO DE REFERÊNCIA DA ATA DE REGISTRO DE PREÇOS, DISPENSA ELETRÔNICA Nº 001/2026, PROCESSO ADMINIS"
+      },
+      {
+        "data": "2026-05-21",
+        "fornecedor": "58.291.882 ROZANGELA DA SILVA GUEDES",
+        "cnpj": "58.291.882/0001-71",
+        "categoria": "Material de Consumo",
+        "valor": 143.85,
+        "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE E DE COMUNICAÇÃO, ATA DE REGISTRO DE PREÇOS 02/2026, PROCESSO ADMINISTRATIVO 05/2026, DISPENSA ELETRÔNICA 01/2026. PERÍODO CONTRATUAL 01/04/202"
+      },
+      {
+        "data": "2026-05-28",
+        "fornecedor": "58.291.882 ROZANGELA DA SILVA GUEDES",
+        "cnpj": "58.291.882/0001-71",
+        "categoria": "Material de Consumo",
+        "valor": 138.09,
+        "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE E DE COMUNICAÇÃO, ATA DE REGISTRO DE PREÇOS 02/2026, PROCESSO ADMINISTRATIVO 05/2026, DISPENSA ELETRÔNICA 01/2026. PERÍODO CONTRATUAL 01/04/202"
       },
       {
         "data": "2026-06-10",
@@ -2421,14 +2522,6 @@
       },
       {
         "data": "2026-05-21",
-        "fornecedor": "58.291.882 ROZANGELA DA SILVA GUEDES",
-        "cnpj": "58.291.882/0001-71",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE E DE COMUNICAÇÃO, ATA DE REGISTRO DE PREÇOS 02/2026, PROCESSO ADMINISTRATIVO 05/2026, DISPENSA ELETRÔNICA 01/2026. PERÍODO CONTRATUAL 01/04/202"
-      },
-      {
-        "data": "2026-05-21",
         "fornecedor": "ILIVINO PANIAGO NOGUEIRA SOUZA",
         "cnpj": "40.066.088/0001-69",
         "categoria": "Material de Consumo",
@@ -2445,14 +2538,6 @@
       },
       {
         "data": "2026-05-27",
-        "fornecedor": "58.291.882 ROZANGELA DA SILVA GUEDES",
-        "cnpj": "58.291.882/0001-71",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE E DE COMUNICAÇÃO, ATA DE REGISTRO DE PREÇOS 02/2026, PROCESSO ADMINISTRATIVO 05/2026, DISPENSA ELETRÔNICA 01/2026. PERÍODO CONTRATUAL 01/04/202"
-      },
-      {
-        "data": "2026-05-28",
         "fornecedor": "58.291.882 ROZANGELA DA SILVA GUEDES",
         "cnpj": "58.291.882/0001-71",
         "categoria": "Material de Consumo",
@@ -2586,22 +2671,6 @@
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
-      },
-      {
-        "data": "2026-08-26",
-        "fornecedor": "JAQUELINE PEREIRA ARIMURA",
-        "cnpj": "010.XXX.XXX-44",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 02 (DUAS MEIAS-DIÁRIA) PARA FINS PARTICIPAR DA XX JORNADA DA LEI MARIA DA PENHA, A REALIZAR-SE NOS DIAS 27 e 28/08/2026, EM CAMPO GRANDE/MS. LEI DE DIÁRIAS Nº 15, DE 0"
-      },
-      {
-        "data": "2026-08-26",
-        "fornecedor": "EDINA GUIMARAES DE CARVALHO JULG",
-        "cnpj": "713.XXX.XXX-91",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 02 (DUAS MEIAS-DIÁRIA) PARA FINS PARTICIPAR DA XX JORNADA DA LEI MARIA DA PENHA, A REALIZAR-SE NOS DIAS 27 e 28/08/2026, EM CAMPO GRANDE/MS. LEI DE DIÁRIAS Nº 15, DE 0"
       },
       {
         "data": "2026-08-26",

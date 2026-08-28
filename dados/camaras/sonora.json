@@ -1,7 +1,7 @@
 {
   "cidade": "Sonora",
-  "ultimaAtualizacao": "2026-08-27T21:21:09",
-  "fonte": "Portal Transparência Fiorilli (pmsonora.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-27T21:21:09",
+  "ultimaAtualizacao": "2026-08-28T21:33:01",
+  "fonte": "Portal Transparência Fiorilli (pmsonora.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-28T21:33:01",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasonora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -40,6 +40,11 @@
       "descontos": 5240.47,
       "referenciaFolha": "Folha Mensal - Julho",
       "diarias": [
+        {
+          "data": "2026-08-27",
+          "valor": 1500.0,
+          "descricao": "Empenho destinado à concessão de 2 (duas) diárias à Vereadora Clotilde de Sousa Silva Castro, para custear despesas com deslocamento, alimentação e estadia na cidade de Campo Grande/MS, no período de 27 a 28 de agosto de 2026, em razão de participação no evento alusivo aos 20 anos da Jornada da Lei Maria da Penha, vinculado ao exercício da atividade parlamentar, conforme legislação municipal vigente."
+        },
         {
           "data": "2026-08-12",
           "valor": 750.0,
@@ -91,8 +96,8 @@
           "descricao": "Empenho destinado à concessão de 5 (cinco) diárias ao Vereadora Clotilde de Sousa Silva Castro, para custear despesas com deslocamento, alimentação e estadia na cidade de Brasília/DF, no período de 23 a 27 de fevereiro de 2026, em razão de participação no 29º Seminário de Gestão Pública e cumprimento de agenda institucional junto a deputados federais, senadores e órgãos públicos, conforme legislação municipal vigente."
         }
       ],
-      "totalDiarias2026": 37875.0,
-      "numDiarias2026": 10
+      "totalDiarias2026": 39375.0,
+      "numDiarias2026": 11
     },
     {
       "nome": "DOUGLAS BRASILEIRO DA SILVA",
@@ -101,6 +106,11 @@
       "descontos": 4881.88,
       "referenciaFolha": "Folha Mensal - Julho",
       "diarias": [
+        {
+          "data": "2026-08-27",
+          "valor": 1500.0,
+          "descricao": "Empenho destinado à concessão de 2 (duas) diárias ao Vereador Douglas Brasileiro da Silva, para custear despesas com deslocamento, alimentação e estadia na cidade de Campo Grande/MS, no período de 27 a 28 de agosto de 2026, em razão de cumprimento de agenda institucional junto à Assembleia Legislativa de Mato Grosso do Sul e a secretarias estaduais, vinculada ao exercício da atividade parlamentar, conforme legislação municipal vigente."
+        },
         {
           "data": "2026-07-07",
           "valor": 6000.0,
@@ -137,8 +147,8 @@
           "descricao": "Empenho destinado à concessão de 4 (quatro) diárias ao Vereador Douglas Brasileiro da Silva, para custear despesas com deslocamento, alimentação e estadia na cidade de Brasília/DF, no período de 03 a 06 de março de 2026, em razão de participação no 42º Congresso de Gestão Pública e cumprimento de agenda institucional junto a deputados federais, senadores e órgãos públicos, conforme legislação municipal vigente."
         }
       ],
-      "totalDiarias2026": 23250.0,
-      "numDiarias2026": 7
+      "totalDiarias2026": 24750.0,
+      "numDiarias2026": 8
     },
     {
       "nome": "EDIMILSON FERNANDES DE OLIVEIRA",
@@ -545,17 +555,17 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 4609154.23,
-    "totalNotas": 305,
+    "totalGeral": 4647448.23,
+    "totalNotas": 312,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 1794500.49,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 780011.4,
-      "Diárias — Civil": 427575.0,
+      "Diárias — Civil": 434075.0,
       "Serviços de Consultoria": 386407.18,
       "Serviços de Tecnologia da Informação": 352571.71,
       "Obrigações Patronais": 313016.4,
+      "Indenizações e Restituições": 192497.7,
       "Obras e Instalações": 175136.93,
-      "Indenizações e Restituições": 160703.7,
       "Material de Consumo": 120126.24,
       "Despesas de Exercícios Anteriores": 62750.18,
       "Equipamentos e Material Permanente": 36355.0,
@@ -1924,6 +1934,54 @@
         "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Laudir Abreu da Rosa Junior, a título de ressarcimento de despesas vinculadas ao exercício da atividade parlamentar, conforme requerim"
       },
       {
+        "data": "2026-08-20",
+        "fornecedor": "JOAQUIM CASSIANO TEIXEIRA",
+        "cnpj": "361.XXX.XXX-20",
+        "categoria": "Indenizações e Restituições",
+        "valor": 3000.0,
+        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Joaquim Cassiano Teixeira, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação comp"
+      },
+      {
+        "data": "2026-08-20",
+        "fornecedor": "JOEL PINTO DE SOUZA",
+        "cnpj": "568.XXX.XXX-87",
+        "categoria": "Indenizações e Restituições",
+        "valor": 3000.0,
+        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Joel Pinto de Souza, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação comprobató"
+      },
+      {
+        "data": "2026-08-20",
+        "fornecedor": "FLAVIA PORTO DA MOTA VASCONCELOS",
+        "cnpj": "105.XXX.XXX-75",
+        "categoria": "Indenizações e Restituições",
+        "valor": 3000.0,
+        "descricao": "Empenho destinado ao pagamento de verba indenizatória à Vereadora Flavia Porto da Mota Vasconcelos, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentaç"
+      },
+      {
+        "data": "2026-08-20",
+        "fornecedor": "CLOTILDE DE SOUSA SILVA CASTRO",
+        "cnpj": "018.XXX.XXX-02",
+        "categoria": "Indenizações e Restituições",
+        "valor": 3000.0,
+        "descricao": "Empenho destinado ao pagamento de verba indenizatória à Vereadora Clotilde de Sousa Silva Castro, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação"
+      },
+      {
+        "data": "2026-08-20",
+        "fornecedor": "WELDISON MANOEL RAMOS",
+        "cnpj": "912.XXX.XXX-87",
+        "categoria": "Indenizações e Restituições",
+        "valor": 3000.0,
+        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Weldison Manoel Ramos, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação comproba"
+      },
+      {
+        "data": "2026-08-21",
+        "fornecedor": "LAUDIR ABREU DA ROSA JUNIOR",
+        "cnpj": "012.XXX.XXX-52",
+        "categoria": "Indenizações e Restituições",
+        "valor": 3000.0,
+        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Laudir Abreu da Rosa Junior, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação co"
+      },
+      {
         "data": "2026-03-20",
         "fornecedor": "HEMERSON OLIVEIRA GRISON",
         "cnpj": "966.XXX.XXX-72",
@@ -1986,6 +2044,22 @@
         "categoria": "Indenizações e Restituições",
         "valor": 2983.31,
         "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Edimilson Fernandes de Oliveira, a título de ressarcimento de despesas vinculadas ao exercício da atividade parlamentar, conforme requ"
+      },
+      {
+        "data": "2026-08-20",
+        "fornecedor": "ALEX FABIANO MARTINS",
+        "cnpj": "961.XXX.XXX-87",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2982.24,
+        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Alex Fabiano Martins, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação comprobat"
+      },
+      {
+        "data": "2026-08-20",
+        "fornecedor": "EDIMILSON FERNANDES DE OLIVEIRA",
+        "cnpj": "845.XXX.XXX-53",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2982.22,
+        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Edimilson Fernandes de Oliveira, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentaçã"
       },
       {
         "data": "2026-06-23",
@@ -2052,6 +2126,14 @@
         "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador(a) Hemerson Oliveira Grison, a título de ressarcimento de despesas vinculadas ao exercício da atividade parlamentar, conforme requerim"
       },
       {
+        "data": "2026-08-20",
+        "fornecedor": "FRANCISCO DEUZIMAR LIMA",
+        "cnpj": "481.XXX.XXX-30",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2906.88,
+        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Francisco Deuzimar Lima, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação compro"
+      },
+      {
         "data": "2026-04-22",
         "fornecedor": "JOEL PINTO DE SOUZA",
         "cnpj": "568.XXX.XXX-87",
@@ -2066,6 +2148,14 @@
         "categoria": "Indenizações e Restituições",
         "valor": 2849.88,
         "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador(a) Douglas Brasileiro da Silva, a título de ressarcimento de despesas vinculadas ao exercício da atividade parlamentar, conforme reque"
+      },
+      {
+        "data": "2026-08-21",
+        "fornecedor": "DOUGLAS BRASILEIRO DA SILVA",
+        "cnpj": "032.XXX.XXX-84",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2584.86,
+        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Douglas Brasileiro da Silva, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação co"
       },
       {
         "data": "2026-02-23",
@@ -2090,6 +2180,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 2363.85,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000027/23 - Ano Mod.: 2023 - Modalidade: DISPENSA - Nº Mod.:  - Mod. Formatada:  - AQUISIÇÃO DE RELÓGIO PONTO ELETRÔNICO COM SOFTWARE DE APONTAMENTOS"
+      },
+      {
+        "data": "2026-08-20",
+        "fornecedor": "HEMERSON OLIVEIRA GRISON",
+        "cnpj": "966.XXX.XXX-72",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2337.8,
+        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Hemerson Oliveira Grison, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação compr"
       },
       {
         "data": "2026-06-17",
@@ -2244,6 +2342,30 @@
         "descricao": "Empenho destinado à concessão de 3 (três) diárias ao servidor Deiwton Fernando Santos Silva, ocupante do cargo de motorista, para custear despesas com deslocamento, alimentação e estadia na cidade de"
       },
       {
+        "data": "2026-08-27",
+        "fornecedor": "DOUGLAS BRASILEIRO DA SILVA",
+        "cnpj": "032.XXX.XXX-84",
+        "categoria": "Diárias — Civil",
+        "valor": 1500.0,
+        "descricao": "Empenho destinado à concessão de 2 (duas) diárias ao Vereador Douglas Brasileiro da Silva, para custear despesas com deslocamento, alimentação e estadia na cidade de Campo Grande/MS, no período de 27"
+      },
+      {
+        "data": "2026-08-27",
+        "fornecedor": "PATRICIA MOURA DA SILVA LARSON",
+        "cnpj": "015.XXX.XXX-01",
+        "categoria": "Diárias — Civil",
+        "valor": 1500.0,
+        "descricao": "Empenho destinado à concessão de 2 (duas) diárias à Sra. Patrícia Moura da Silva Larson, na condição de colaboradora eventual indicada como acompanhante do Vereador Douglas Brasileiro da Silva, nos te"
+      },
+      {
+        "data": "2026-08-27",
+        "fornecedor": "CLOTILDE DE SOUSA SILVA CASTRO",
+        "cnpj": "018.XXX.XXX-02",
+        "categoria": "Diárias — Civil",
+        "valor": 1500.0,
+        "descricao": "Empenho destinado à concessão de 2 (duas) diárias à Vereadora Clotilde de Sousa Silva Castro, para custear despesas com deslocamento, alimentação e estadia na cidade de Campo Grande/MS, no período de"
+      },
+      {
         "data": "2026-07-02",
         "fornecedor": "ENZO MOTORS CONCESSIONARIA LTDA",
         "cnpj": "21.456.790/0001-94",
@@ -2322,6 +2444,22 @@
         "categoria": "Diárias — Civil",
         "valor": 1000.0,
         "descricao": "Empenho destinado à concessão de 2 (duas) diárias à servidora Dailsa Celestino Soares, para custear despesas com deslocamento, alimentação e estadia na cidade de Campo Grande/MS, no período de 07 a 08"
+      },
+      {
+        "data": "2026-08-27",
+        "fornecedor": "SIDNEI TELES DE AMORIM",
+        "cnpj": "772.XXX.XXX-34",
+        "categoria": "Diárias — Civil",
+        "valor": 1000.0,
+        "descricao": "Empenho destinado à concessão de 2 (duas) diárias ao servidor Sidnei Teles Amorim, ocupante do cargo de motorista, para custear despesas com deslocamento, alimentação e estadia na cidade de Campo Gran"
+      },
+      {
+        "data": "2026-08-27",
+        "fornecedor": "DEIWTON FERNANDO SANTOS SILVA",
+        "cnpj": "025.XXX.XXX-62",
+        "categoria": "Diárias — Civil",
+        "valor": 1000.0,
+        "descricao": "Empenho destinado à concessão de 2 (duas) diárias ao servidor Deiwton Fernando Santos Silva, para custear despesas com deslocamento, alimentação e estadia na cidade de Campo Grande/MS, no período de 2"
       },
       {
         "data": "2026-07-08",
@@ -2804,6 +2942,22 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000026/25 - Ano Mod.: 2025 - Modalidade: DISPENSA - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação de empresa especializada para prestação de serviços c"
       },
       {
+        "data": "2026-08-18",
+        "fornecedor": "GABRIEL & LOPES LTDA",
+        "cnpj": "05.340.638/0001-95",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000032/25 - Ano Mod.: 2025 - Modalidade: DISPENSA - Nº Mod.: 12 - Mod. Formatada: 12 - Aquisição de equipamentos e materiais de informática, conforme"
+      },
+      {
+        "data": "2026-08-18",
+        "fornecedor": "GABRIEL & LOPES LTDA",
+        "cnpj": "05.340.638/0001-95",
+        "categoria": "Material de Consumo",
+        "valor": 0.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000032/25 - Ano Mod.: 2025 - Modalidade: DISPENSA - Nº Mod.: 12 - Mod. Formatada: 12 - Aquisição de equipamentos e materiais de informática, conforme"
+      },
+      {
         "data": "2026-03-23",
         "fornecedor": "HELENO LOPES DOS SANTOS - ME",
         "cnpj": "13.266.442/0001-26",
@@ -2914,94 +3068,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "O veículo oficial apresentou falha no sistema de freios dianteiro durante viagem oficial, configurando situação urgente que pode ocasionar prejuízo ao Legislativo e comprometer a segurança do servidor"
-      },
-      {
-        "data": "2026-08-20",
-        "fornecedor": "JOAQUIM CASSIANO TEIXEIRA",
-        "cnpj": "361.XXX.XXX-20",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Joaquim Cassiano Teixeira, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação comp"
-      },
-      {
-        "data": "2026-08-20",
-        "fornecedor": "ALEX FABIANO MARTINS",
-        "cnpj": "961.XXX.XXX-87",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Alex Fabiano Martins, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação comprobat"
-      },
-      {
-        "data": "2026-08-20",
-        "fornecedor": "JOEL PINTO DE SOUZA",
-        "cnpj": "568.XXX.XXX-87",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Joel Pinto de Souza, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação comprobató"
-      },
-      {
-        "data": "2026-08-20",
-        "fornecedor": "FRANCISCO DEUZIMAR LIMA",
-        "cnpj": "481.XXX.XXX-30",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Francisco Deuzimar Lima, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação compro"
-      },
-      {
-        "data": "2026-08-20",
-        "fornecedor": "EDIMILSON FERNANDES DE OLIVEIRA",
-        "cnpj": "845.XXX.XXX-53",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Edimilson Fernandes de Oliveira, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentaçã"
-      },
-      {
-        "data": "2026-08-20",
-        "fornecedor": "FLAVIA PORTO DA MOTA VASCONCELOS",
-        "cnpj": "105.XXX.XXX-75",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "Empenho destinado ao pagamento de verba indenizatória à Vereadora Flavia Porto da Mota Vasconcelos, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentaç"
-      },
-      {
-        "data": "2026-08-20",
-        "fornecedor": "CLOTILDE DE SOUSA SILVA CASTRO",
-        "cnpj": "018.XXX.XXX-02",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "Empenho destinado ao pagamento de verba indenizatória à Vereadora Clotilde de Sousa Silva Castro, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação"
-      },
-      {
-        "data": "2026-08-20",
-        "fornecedor": "WELDISON MANOEL RAMOS",
-        "cnpj": "912.XXX.XXX-87",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Weldison Manoel Ramos, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação comproba"
-      },
-      {
-        "data": "2026-08-20",
-        "fornecedor": "HEMERSON OLIVEIRA GRISON",
-        "cnpj": "966.XXX.XXX-72",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Hemerson Oliveira Grison, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação compr"
-      },
-      {
-        "data": "2026-08-21",
-        "fornecedor": "DOUGLAS BRASILEIRO DA SILVA",
-        "cnpj": "032.XXX.XXX-84",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Douglas Brasileiro da Silva, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação co"
-      },
-      {
-        "data": "2026-08-21",
-        "fornecedor": "LAUDIR ABREU DA ROSA JUNIOR",
-        "cnpj": "012.XXX.XXX-52",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "Empenho destinado ao pagamento de verba indenizatória ao Vereador Laudir Abreu da Rosa Junior, para ressarcimento de despesas realizadas no exercício da atividade parlamentar, conforme documentação co"
       }
     ]
   }

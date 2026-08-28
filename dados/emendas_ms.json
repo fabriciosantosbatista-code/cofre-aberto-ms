@@ -1,8 +1,8 @@
 {
-  "ultimaAtualizacao": "2026-08-27T21:21:09",
+  "ultimaAtualizacao": "2026-08-28T21:33:01",
   "ano": 2026,
-  "fonte": "Portal da Transparência (api.portaldatransparencia.gov.br/api-de-dados/emendas) — 2026-08-27T21:21:09",
-  "totalGeralPago": 233553591.05,
+  "fonte": "Portal da Transparência (api.portaldatransparencia.gov.br/api-de-dados/emendas) — 2026-08-28T21:33:01",
+  "totalGeralPago": 254151531.05,
   "parlamentares": [
     {
       "nome": "Nelsinho Trad",
@@ -103,14 +103,23 @@
       "nome": "Soraya Thronicke",
       "cargo": "Senador(a)",
       "partido": "PSB",
-      "totalEmpenhado": 27665532.97,
-      "totalPago": 29585017.0,
+      "totalEmpenhado": 68161482.97,
+      "totalPago": 52082767.0,
       "porTipo": {
-        "Projeto Definido": 16417887.95,
+        "Projeto Definido": 38915637.95,
         "Emenda Pix": 13167129.05
       },
       "totalEmendas": 13,
       "emendas": [
+        {
+          "numero": "0003",
+          "tipo": "Projeto Definido",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Saúde",
+          "subfuncao": "Atenção básica",
+          "valorEmpenhado": 20000000.0,
+          "valorPago": 20000000.0
+        },
         {
           "numero": "0005",
           "tipo": "Emenda Pix",
@@ -126,7 +135,7 @@
           "municipio": "MÚLTIPLO",
           "funcao": "Saúde",
           "subfuncao": "Assistência hospitalar e ambulatorial",
-          "valorEmpenhado": 1000.0,
+          "valorEmpenhado": 10000000.0,
           "valorPago": 9628734.0
         },
         {
@@ -148,6 +157,24 @@
           "valorPago": 2004674.0
         },
         {
+          "numero": "0014",
+          "tipo": "Projeto Definido",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Assistência social",
+          "subfuncao": "SERVICOS SOCIOASSISTENCIAIS",
+          "valorEmpenhado": 1000000.0,
+          "valorPago": 1000000.0
+        },
+        {
+          "numero": "0013",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Comércio e serviços",
+          "subfuncao": "Turismo",
+          "valorEmpenhado": 1000000.0,
+          "valorPago": 1000000.0
+        },
+        {
           "numero": "0007",
           "tipo": "Projeto Definido",
           "municipio": "Nacional",
@@ -157,40 +184,13 @@
           "valorPago": 564485.95
         },
         {
-          "numero": "0003",
-          "tipo": "Projeto Definido",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Saúde",
-          "subfuncao": "Atenção básica",
-          "valorEmpenhado": 2000.0,
-          "valorPago": 2000.0
-        },
-        {
-          "numero": "0014",
-          "tipo": "Projeto Definido",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Assistência social",
-          "subfuncao": "SERVICOS SOCIOASSISTENCIAIS",
-          "valorEmpenhado": 100.0,
-          "valorPago": 100.0
-        },
-        {
-          "numero": "0013",
-          "tipo": "Projeto Definido",
-          "municipio": "MATO GROSSO DO SUL (UF)",
-          "funcao": "Comércio e serviços",
-          "subfuncao": "Turismo",
-          "valorEmpenhado": 100.0,
-          "valorPago": 100.0
-        },
-        {
           "numero": "0012",
           "tipo": "Projeto Definido",
           "municipio": "MÚLTIPLO",
           "funcao": "Cultura",
           "subfuncao": "Difusão cultural",
-          "valorEmpenhado": 100.0,
-          "valorPago": 50.0
+          "valorEmpenhado": 1000000.0,
+          "valorPago": 500000.0
         },
         {
           "numero": "0011",
@@ -207,7 +207,7 @@
           "municipio": "MATO GROSSO DO SUL (UF)",
           "funcao": "Direitos da cidadania",
           "subfuncao": "Direitos individuais, coletivos e difusos",
-          "valorEmpenhado": 100.0,
+          "valorEmpenhado": 1000000.0,
           "valorPago": 0.0
         },
         {
@@ -216,7 +216,7 @@
           "municipio": "MÚLTIPLO",
           "funcao": "Urbanismo",
           "subfuncao": "Assistência comunitária",
-          "valorEmpenhado": 150.0,
+          "valorEmpenhado": 1500000.0,
           "valorPago": 0.0
         },
         {
@@ -225,7 +225,7 @@
           "municipio": "MÚLTIPLO",
           "funcao": "Urbanismo",
           "subfuncao": "infra-estrutura urbana",
-          "valorEmpenhado": 500.0,
+          "valorEmpenhado": 5000000.0,
           "valorPago": 0.0
         }
       ]
@@ -515,10 +515,10 @@
       "nome": "Vander Loubet",
       "cargo": "Deputado(a) Federal",
       "partido": "PT",
-      "totalEmpenhado": 23188904.99,
-      "totalPago": 16367652.43,
+      "totalEmpenhado": 19289294.99,
+      "totalPago": 14467842.43,
       "porTipo": {
-        "Projeto Definido": 11117125.82,
+        "Projeto Definido": 9217315.82,
         "Emenda Pix": 5250526.61
       },
       "totalEmendas": 13,
@@ -551,24 +551,6 @@
           "valorPago": 1663002.0
         },
         {
-          "numero": "0014",
-          "tipo": "Projeto Definido",
-          "municipio": "BONITO - MS",
-          "funcao": "Cultura",
-          "subfuncao": "Difusão cultural",
-          "valorEmpenhado": 800000.0,
-          "valorPago": 800000.0
-        },
-        {
-          "numero": "0016",
-          "tipo": "Projeto Definido",
-          "municipio": "BONITO - MS",
-          "funcao": "Cultura",
-          "subfuncao": "Difusão cultural",
-          "valorEmpenhado": 600000.0,
-          "valorPago": 600000.0
-        },
-        {
           "numero": "0010",
           "tipo": "Projeto Definido",
           "municipio": "MATO GROSSO DO SUL (UF)",
@@ -576,15 +558,6 @@
           "subfuncao": "Ensino superior",
           "valorEmpenhado": 999999.99,
           "valorPago": 568458.79
-        },
-        {
-          "numero": "0011",
-          "tipo": "Projeto Definido",
-          "municipio": "MATO GROSSO DO SUL (UF)",
-          "funcao": "Cultura",
-          "subfuncao": "Difusão cultural",
-          "valorEmpenhado": 500000.0,
-          "valorPago": 500000.0
         },
         {
           "numero": "0005",
@@ -603,6 +576,33 @@
           "subfuncao": "Assistência hospitalar e ambulatorial",
           "valorEmpenhado": 334413.0,
           "valorPago": 334413.0
+        },
+        {
+          "numero": "0014",
+          "tipo": "Projeto Definido",
+          "municipio": "BONITO - MS",
+          "funcao": "Cultura",
+          "subfuncao": "Difusão cultural",
+          "valorEmpenhado": 80.0,
+          "valorPago": 80.0
+        },
+        {
+          "numero": "0016",
+          "tipo": "Projeto Definido",
+          "municipio": "BONITO - MS",
+          "funcao": "Cultura",
+          "subfuncao": "Difusão cultural",
+          "valorEmpenhado": 60.0,
+          "valorPago": 60.0
+        },
+        {
+          "numero": "0011",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Cultura",
+          "subfuncao": "Difusão cultural",
+          "valorEmpenhado": 50.0,
+          "valorPago": 50.0
         },
         {
           "numero": "0009",
@@ -628,7 +628,7 @@
           "municipio": "MATO GROSSO DO SUL (UF)",
           "funcao": "Segurança pública",
           "subfuncao": "Policiamento",
-          "valorEmpenhado": 1000000.0,
+          "valorEmpenhado": 100.0,
           "valorPago": 0.0
         },
         {
@@ -637,7 +637,7 @@
           "municipio": "Nacional",
           "funcao": "Saúde",
           "subfuncao": "Formação de recursos humanos",
-          "valorEmpenhado": 1000000.0,
+          "valorEmpenhado": 100.0,
           "valorPago": 0.0
         }
       ]
