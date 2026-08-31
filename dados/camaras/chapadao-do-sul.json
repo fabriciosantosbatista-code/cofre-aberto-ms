@@ -1,7 +1,7 @@
 {
   "cidade": "Chapadão do Sul",
-  "ultimaAtualizacao": "2026-08-30T15:33:00",
-  "fonte": "Portal Transparência Fiorilli (pmchapadao.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-30T15:33:00",
+  "ultimaAtualizacao": "2026-08-31T18:16:16",
+  "fonte": "Portal Transparência Fiorilli (pmchapadao.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-31T18:16:16",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camarachapadaodosul.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -942,14 +942,14 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 8738246.76,
-    "totalNotas": 552,
+    "totalGeral": 8885877.76,
+    "totalNotas": 556,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 3408476.65,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1855970.3,
       "Diárias — Civil": 1833778.3,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1778783.85,
       "Serviços de Consultoria": 714119.1,
-      "Obrigações Patronais": 457155.72,
+      "Obrigações Patronais": 527600.27,
       "Material de Consumo": 288971.7,
       "Equipamentos e Material Permanente": 109635.16,
       "Serviços de Tecnologia da Informação": 72083.12,
@@ -1215,12 +1215,28 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE AO CONTRATO Nº 0022/2025 AO PEDIDO GERADO A PARTIR DO RESULTADO DA LICITAÇÃO: 000037/25 - PROCESSO ADMINSTRATIVO Nº 0031/2025 PREGÃO ELETRÔNICO - CONTRATAÇÃO DE EMPRESA"
       },
       {
+        "data": "2026-08-20",
+        "fornecedor": "NEIVANI DE CARLI ME",
+        "cnpj": "02.839.592/0001-65",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 63500.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO CONTRATO Nº 018/2026 LICITAÇÃO : 000028/26 - DISPENSA ELETRÔNICA - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PS DE SERVIÇOS DE BUFFET COM DECORAÇÃO, SONORIZAÇÃO E PAINE"
+      },
+      {
         "data": "2026-05-29",
         "fornecedor": "INSS-INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
         "categoria": "Obrigações Patronais",
         "valor": 57225.48,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL INSS S/FOLHA DE PAGAMENTO MÊS MAIO 2026"
+      },
+      {
+        "data": "2026-08-28",
+        "fornecedor": "INSS-INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 55700.19,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL INSS S/FOLHA DE PAGAMENTO MÊS AGOSTO 2026"
       },
       {
         "data": "2026-07-30",
@@ -1519,6 +1535,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL IPMCS S/FOLHA DE PAGAMENTO MÊS JULHO 2026"
       },
       {
+        "data": "2026-08-28",
+        "fornecedor": "IPMCS - INST. PREV. SOC. SERV. MUN. CHS",
+        "cnpj": "04.680.541/0001-69",
+        "categoria": "Obrigações Patronais",
+        "valor": 14744.36,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL S/FOLHA DE PAGAMENTO SERVIDORES EFETIVOS MÊS AGOSTO 2026"
+      },
+      {
         "data": "2026-06-26",
         "fornecedor": "IPMCS - INST. PREV. SOC. SERV. MUN. CHS",
         "cnpj": "04.680.541/0001-69",
@@ -1573,6 +1597,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 13686.45,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL CASSEMS S/FOLHA DE PAGAMENTO MÊS JULHO 2026"
+      },
+      {
+        "data": "2026-08-28",
+        "fornecedor": "CASSEMS - CAIXA DE ASSIST. SERVID. MS",
+        "cnpj": "04.311.093/0001-26",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 13686.45,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL CASSEMS S/FOLHA DE PAGAMENTO MÊS AGOSTO 2026"
       },
       {
         "data": "2026-03-27",
@@ -5359,20 +5391,20 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A ADITIVO 004/2026 CONTRATO Nº 01/2023 DO PROC ADMINISTRATIVO Nº 011/2022, CONCORRÊNCIA Nº 001/2022 P.S. QUE CONSISTE NO CONJUNTO DE ATIVIDADES INTEGRADAMENTE QUE TENHAM"
       },
       {
-        "data": "2026-08-20",
-        "fornecedor": "NEIVANI DE CARLI ME",
-        "cnpj": "02.839.592/0001-65",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO CONTRATO Nº 018/2026 LICITAÇÃO : 000028/26 - DISPENSA ELETRÔNICA - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PS DE SERVIÇOS DE BUFFET COM DECORAÇÃO, SONORIZAÇÃO E PAINE"
-      },
-      {
         "data": "2026-08-27",
         "fornecedor": "IPD - INSTITUTO PARANAENSE DE DIREITO LTDA",
         "cnpj": "64.024.252/0001-33",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À LICITATÇÃO 000031/26 - INEXIGIBILIDADE - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A REALIZAÇÃO DE CURSO DE CAPACITAÇÃO IN LOCO COM O TEMA\"ÉTICA E TRANSPARENCIA NA ADM"
+      },
+      {
+        "data": "2026-08-28",
+        "fornecedor": "MARCOS VINICIUS ANTUNES MONTOVANELLI",
+        "cnpj": "067.XXX.XXX-61",
+        "categoria": "Passagens e Despesas com Locomoção",
+        "valor": 0.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A REEMBOLSO DE DESPESAS DE COMBUSTÍVEL À CIDADE DE BRASILIA/DF P/PARTICIPAR DO 35º SIMPÓSIO DE GESTÃO PÚBLICA , NOS DIAS 25 A 28 DE AGOSTO, REALIZADO PELA EMPRESA INSTIT"
       }
     ]
   }
