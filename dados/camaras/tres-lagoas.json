@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-08-31T18:16:16",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-08-31T18:16:16",
+  "ultimaAtualizacao": "2026-09-01T15:37:45",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-09-01T15:37:45",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -484,11 +484,11 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 23502965.36,
-    "totalNotas": 659,
+    "totalGeral": 23505911.81,
+    "totalNotas": 661,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 13895094.63,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 3232690.75,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 13896715.63,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 3233666.0,
       "Auxílio-Alimentação": 2159200.95,
       "Obrigações Patronais": 1917536.03,
       "Serviços de Tecnologia da Informação": 512334.13,
@@ -505,7 +505,7 @@
       "Elemento 32": 10000.0,
       "Outros Serviços de Terceiros — Pessoa Física": 3000.0,
       "Contribuições": 2000.0,
-      "Passagens e Despesas com Locomoção": 1090.42
+      "Passagens e Despesas com Locomoção": 1440.62
     },
     "despesas": [
       {
@@ -1509,6 +1509,14 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES COMISSIONADOS (FERIAS – ABONO CONSTITUCIONAL) VINCULADOS AO RGPS,  REF. MES DE AGOSTO/2026"
       },
       {
+        "data": "2026-01-06",
+        "fornecedor": "BANCO DO BRASIL S/A",
+        "cnpj": "00.000.000/0001-91",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 6950.54,
+        "descricao": "EMPENHO ESTIMADO REF. TARIFAS DE USO DE SERVIÇOS BANCÁRIOS CONTA 5844-0 AGENCIA 0208-9 BANCO DO BRASIL REF. EXERCÍCIO 2026."
+      },
+      {
         "data": "2026-01-19",
         "fornecedor": "PPR COMERCIAL LTDA",
         "cnpj": "54.711.829/0001-21",
@@ -1595,14 +1603,6 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 6155.17,
         "descricao": "Processo 29-26 serviço técnico especializado para criação e fornecimento de licença de uso de site (portal de conteúdo gerenciável), com área de transparência, plataforma de atendimento ao cidadão (co"
-      },
-      {
-        "data": "2026-01-06",
-        "fornecedor": "BANCO DO BRASIL S/A",
-        "cnpj": "00.000.000/0001-91",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 5975.29,
-        "descricao": "EMPENHO ESTIMADO REF. TARIFAS DE USO DE SERVIÇOS BANCÁRIOS CONTA 5844-0 AGENCIA 0208-9 BANCO DO BRASIL REF. EXERCÍCIO 2026."
       },
       {
         "data": "2026-08-13",
@@ -3035,6 +3035,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 1682.64,
         "descricao": "DESPESAS REFERENTE A SALDO SALÁRIO REF. EXONERAÇÃO SERVIDORES:\r\nDaniel Hidalgo Dantas \r\nGleise da Silva Borges Rodrigues"
+      },
+      {
+        "data": "2026-08-31",
+        "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
+        "cnpj": "15.410.145/0001-38",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 1621.0,
+        "descricao": "Complemento folha pagamento serf. efetivos, matricula 558, por erro ficou de fora do cálculo."
       },
       {
         "data": "2026-05-13",
@@ -4877,6 +4885,14 @@
         "descricao": "\"DESPESAS REFERENTE A CONCESSÃO DE 1 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Andradina - SP, NO PERÍODO DE 26/08/2026, CONFORME SOLICITAÇÃO. Finalidade:'' \"\" A presente solicitação de diá"
       },
       {
+        "data": "2026-08-31",
+        "fornecedor": "DAVIS MARTINELLI LEAL DOS SANTOS",
+        "cnpj": "697.XXX.XXX-63",
+        "categoria": "Passagens e Despesas com Locomoção",
+        "valor": 350.2,
+        "descricao": "\"Ressarcimento de pedágios, conforme Lei Municipal nº 3.960/2023, tendo como destino Campo Grande - MS,  sendo data de partida 16/10/2025 e data de retorno 18/10/2025, conforme finalidade:'' Captação"
+      },
+      {
         "data": "2026-01-19",
         "fornecedor": "WRM GAS E CONVENIENCIA LTDA",
         "cnpj": "12.211.992/0001-85",
@@ -5058,7 +5074,7 @@
         "cnpj": "29.530.767/0001-04",
         "categoria": "Material de Consumo",
         "valor": 0.0,
-        "descricao": "Anulação de empenho pra reajuste de valores conforme 1º termo aditivo."
+        "descricao": "Processo 02/25 fornecimento de materiais de limpeza e higienização de uso comum para a Câmara Municipal de Três Lagoas."
       },
       {
         "data": "2026-01-19",
@@ -5066,7 +5082,7 @@
         "cnpj": "29.530.767/0001-04",
         "categoria": "Material de Consumo",
         "valor": 0.0,
-        "descricao": "Processo 02/25 fornecimento de materiais de limpeza e higienização de uso comum para a Câmara Municipal de Três Lagoas."
+        "descricao": "Anulação de empenho pra reajuste de valores conforme 1º termo aditivo."
       },
       {
         "data": "2026-05-27",
@@ -5197,20 +5213,20 @@
         "descricao": "SALDO NÃO UTILIZADO NO PROCESSAMENTO DA FOLHA."
       },
       {
-        "data": "2026-02-02",
-        "fornecedor": "AGILITÁ PROPAGANDA e MARKETING LTDA",
-        "cnpj": "00.974.843/0001-99",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Anulação"
-      },
-      {
         "data": "2026-01-29",
         "fornecedor": "AGILITÁ PROPAGANDA e MARKETING LTDA",
         "cnpj": "00.974.843/0001-99",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000101/23 - Ano Mod.: 2023 - Modalidade: CONCORRÊNCIA - Nº Mod.: 3 - Mod. Formatada: 000003 - Contratação de serviços de publicidade prestados por int"
+      },
+      {
+        "data": "2026-02-02",
+        "fornecedor": "AGILITÁ PROPAGANDA e MARKETING LTDA",
+        "cnpj": "00.974.843/0001-99",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Anulação"
       },
       {
         "data": "2026-05-05",
