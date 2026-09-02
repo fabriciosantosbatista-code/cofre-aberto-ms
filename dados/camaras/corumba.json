@@ -1,7 +1,7 @@
 {
   "cidade": "Corumbá",
-  "ultimaAtualizacao": "2026-09-01T15:37:45",
-  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-09-01T15:37:45",
+  "ultimaAtualizacao": "2026-09-02T15:25:22",
+  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-09-02T15:25:22",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camaracorumba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -121,6 +121,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-09-01",
+          "valor": 2000.0,
+          "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO SEMINÁRIO DE CAPACITAÇÃO DO PODER LEGISLATIVO MUNICIPAL, CONFORME LEIS 2384/2014 E 2819/2022."
+        },
+        {
           "data": "2026-08-25",
           "valor": 1000.0,
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIA PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDA/PARTICIPAR DE REUNIÃO  NA GOVERNADORIA/CASA CIVIL, CONFORME LEIS 2384/2014 E 2819/2022."
@@ -161,13 +166,18 @@
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO CICLO DE PALESTRAS PARA O LEGISLATIVO MUNICIPAL E CUMPRIR AGENDAS NA ASSEMBLEIA LEGISLATIVA (Ale/MS), CONFORME LEIS 2384/2014 E 2819/2022."
         }
       ],
-      "totalDiarias2026": 20000.0,
-      "numDiarias2026": 8
+      "totalDiarias2026": 22000.0,
+      "numDiarias2026": 9
     },
     {
       "nome": "HESLEY SANT'ANA SALUSTIANO",
       "cargo": "Vereador(a)",
       "diarias": [
+        {
+          "data": "2026-09-01",
+          "valor": 3000.0,
+          "descricao": "VALOR QUE SE EMPENHA,  REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDA/REUNIÃO NO GABINETE POLITICO DA SENADORA SORAYA THRONICKE PARTICIPAR DO SEMINÁRIO DE CAPACITAÇÃO DO PODER LEGISLATIVO MUNICIPAL, CONFORME LEIS 2384/2014 E 2819/2022."
+        },
         {
           "data": "2026-06-22",
           "valor": 3000.0,
@@ -189,8 +199,8 @@
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDA  COM SENADORA SORAYA THRONICKE E PARTICIPAR DO SEMINARIO DE CAPACITAÇÃO LEGISLATIVA: EDUCAÇÃO E INCLUSÃO EM FOCO, CONFORME LEIS 2384/2014 E 2819/2022."
         }
       ],
-      "totalDiarias2026": 13000.0,
-      "numDiarias2026": 4
+      "totalDiarias2026": 16000.0,
+      "numDiarias2026": 5
     },
     {
       "nome": "JOVAN TEMELJKOVITCH",
@@ -529,15 +539,15 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 21177802.88,
-    "totalNotas": 202,
+    "totalGeral": 21188057.94,
+    "totalNotas": 206,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 14101224.28,
       "Obrigações Patronais": 2264285.26,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1905346.52,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1905601.58,
       "Serviços de Consultoria": 1096909.61,
       "Indenizações e Restituições": 1020565.42,
-      "Diárias — Civil": 298400.0,
+      "Diárias — Civil": 308400.0,
       "Elemento 03": 239078.31,
       "Despesas de Exercícios Anteriores": 151471.38,
       "Elemento 96": 82628.94,
@@ -1602,6 +1612,22 @@
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO WORKSHOP DO PODER LEGISLATIVO MUNICIPAL-CARACTERÍSTICAS ESSENCIAIS E AVANÇOS DA CASA DE LEIS; E CUMPRIR AGEN"
       },
       {
+        "data": "2026-09-01",
+        "fornecedor": "HESLEY SANT'ANA SALUSTIANO",
+        "cnpj": "002.XXX.XXX-09",
+        "categoria": "Diárias — Civil",
+        "valor": 3000.0,
+        "descricao": "VALOR QUE SE EMPENHA,  REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDA/REUNIÃO NO GABINETE POLITICO DA SENADORA SORAYA THRONICKE PARTICIPAR DO SEMINÁRIO DE CAPACITAÇÃO DO PODER"
+      },
+      {
+        "data": "2026-09-01",
+        "fornecedor": "JONATHAN FRANÇA DE MORAES  DA CRUZ",
+        "cnpj": "026.XXX.XXX-10",
+        "categoria": "Diárias — Civil",
+        "valor": 3000.0,
+        "descricao": "VALOR QUE SE EMPENHA,  REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA ACOMPANHAR VEREADOR EM AGENDA/REUNIÃO NO GABINETE POLITICO DA SENADORA SORAYA THRONICKE PARTICIPAR DO SEMINÁRIO DE CAPACI"
+      },
+      {
         "data": "2026-05-08",
         "fornecedor": "VISIONA9 Gestão Empresarial LTDA",
         "cnpj": "58.521.834/0001-22",
@@ -1704,6 +1730,14 @@
         "categoria": "Diárias — Civil",
         "valor": 2400.0,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A PONTA PORÃ-MS, PARA PARTICIPAR DO SEMINÁRIO DE CAPACITAÇÃO LEGISLATIVA, CONFORME LEIS 2384/2014 E 2900/2023."
+      },
+      {
+        "data": "2026-01-05",
+        "fornecedor": "CAIXA ECONÔMICA FEDERAL",
+        "cnpj": "00.360.305/0018-52",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 2049.33,
+        "descricao": "VALOR QUE SE EMEPNHA, REFERENTE A  prestação de serviços bancários/taxas bancárias para este Legislativo (ESTIMATIVA 2026)."
       },
       {
         "data": "2026-01-05",
@@ -1874,6 +1908,22 @@
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO WORKSHOP DO PODER LEGISLATIVO MUNICIPAL-CARACTERÍSTICAS ESSENCIAIS E AVANÇOS DA CASA DE LEIS, CONFORME LEIS"
       },
       {
+        "data": "2026-09-01",
+        "fornecedor": "MATHEUS PEREIRA CAZARIN SILVA",
+        "cnpj": "012.XXX.XXX-11",
+        "categoria": "Diárias — Civil",
+        "valor": 2000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO SEMINÁRIO DE CAPACITAÇÃO DO PODER LEGISLATIVO MUNICIPAL, CONFORME LEIS 2384/2014 E 2819/2022."
+      },
+      {
+        "data": "2026-09-01",
+        "fornecedor": "GENILSON JOSE DA SILVA",
+        "cnpj": "495.XXX.XXX-04",
+        "categoria": "Diárias — Civil",
+        "valor": 2000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO SEMINÁRIO DE CAPACITAÇÃO DO PODER LEGISLATIVO MUNICIPAL, CONFORME LEIS 2384/2014 E 2819/2022."
+      },
+      {
         "data": "2026-01-05",
         "fornecedor": "KLEYTON GONÇALVES CRUZ",
         "cnpj": "938.XXX.XXX-34",
@@ -1888,14 +1938,6 @@
         "categoria": "Material de Consumo",
         "valor": 1893.16,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A AQUISIÇAO DE MATERIAIS DE COPA E COZINHA PARA ATENDER AS NECESSIDADES DESTE LEGISLATIVO."
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "CAIXA ECONÔMICA FEDERAL",
-        "cnpj": "00.360.305/0018-52",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 1794.27,
-        "descricao": "VALOR QUE SE EMEPNHA, REFERENTE A  prestação de serviços bancários/taxas bancárias para este Legislativo (ESTIMATIVA 2026)."
       },
       {
         "data": "2026-05-12",
