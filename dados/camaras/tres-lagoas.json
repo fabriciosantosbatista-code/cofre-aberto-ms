@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-09-02T15:25:22",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-09-02T15:25:22",
+  "ultimaAtualizacao": "2026-09-03T15:18:57",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-09-03T15:18:57",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -14,6 +14,11 @@
       "descontos": 4565.12,
       "referenciaFolha": "Folha Mensal - Agosto",
       "diarias": [
+        {
+          "data": "2026-09-02",
+          "valor": 2308.53,
+          "descricao": "\"DESPESAS REFERENTE A CONCESSÃO DE 3 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 02/09 a 05/09/2026, CONFORME SOLICITAÇÃO. Finalidade:'' VIAGEM PARA CAMPO GRANDE/MS JUNTAMENTE COM MEUS ASSESSORES PARA PARTICIPAR DO CURSO \"\"NOVOS DESAFIOS DO LEGISLATIVO MUNICIPAL: ATUAÇÃO PARLAMENTAR, TECNOLOGIA E GESTÃO PÚBLICA\"\"\r\nNA SEXTA-FEIRA, DIA 04 DE SETEMBRE, NO PERÍODO A TARDE, CUMPRIREI COMPROMISSO NA ASSEMBLEIA LEGISLATIVA, RETORNANDO PARA TRÊS LAGOAS NO SÁBADO DE MANHÃ.''\"\t\t\r\nProcesso 432-26"
+        },
         {
           "data": "2026-07-20",
           "valor": 2308.53,
@@ -40,8 +45,8 @@
           "descricao": "DESPESAS REFERENTE A CONCESSÃO DE 2 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 04/02/2026 a 06/02/2026, CONFORME SOLICITAÇÃO ASSINADA PELO REQUISITANTE E VEREADOR (A). Finalidade:\" Viagem a Campo Grande/MS, realizada juntamente com os demais vereadores e assessores desta Câmara Municipal, com a finalidade de participação no evento “Ano Legislativo em Foco: Planejamento, Segurança Jurídica e Atuação do Vereador em Ano Eleitoral”.\""
         }
       ],
-      "totalDiarias2026": 10003.63,
-      "numDiarias2026": 5
+      "totalDiarias2026": 12312.16,
+      "numDiarias2026": 6
     },
     {
       "nome": "ADRIANO CEZAR RODRIGUES",
@@ -484,20 +489,20 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 23526335.25,
-    "totalNotas": 676,
+    "totalGeral": 23725382.55,
+    "totalNotas": 678,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 13896715.63,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 3233926.0,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 3243666.0,
       "Auxílio-Alimentação": 2159200.95,
-      "Obrigações Patronais": 1917536.03,
-      "Diárias — Civil": 526845.17,
-      "Serviços de Tecnologia da Informação": 512334.13,
+      "Obrigações Patronais": 2014694.09,
+      "Diárias — Civil": 531462.23,
+      "Serviços de Tecnologia da Informação": 523879.16,
       "Locação de Mão de Obra": 342497.25,
+      "Aporte para Cobertura de Déficit Atuarial do RPPS": 245164.56,
       "Material de Consumo": 240860.66,
       "Serviços de Consultoria": 228022.7,
-      "Aporte para Cobertura de Déficit Atuarial do RPPS": 183873.42,
-      "Outros Benefícios Assistenciais do Servidor": 101683.65,
+      "Outros Benefícios Assistenciais do Servidor": 116379.66,
       "Indenizações e Restituições": 70747.62,
       "Despesas de Exercícios Anteriores": 48725.47,
       "Equipamentos e Material Permanente": 27317.35,
@@ -725,6 +730,14 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO VEREADORES (SUBSÍDIOS) VINCULADOS AO RPPS,  REF. EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
       },
       {
+        "data": "2026-07-29",
+        "fornecedor": "AGILITÁ PROPAGANDA e MARKETING LTDA",
+        "cnpj": "00.974.843/0001-99",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 133791.17,
+        "descricao": "3º termo aditivo; Contratação de serviços de publicidade prestados por intermédio de 01 (uma) agência de propaganda para atender as necessidades da Câmara Municipal de Três Lagoas-MS com a prestação d"
+      },
+      {
         "data": "2026-01-26",
         "fornecedor": "TICKET SERVICOS SA",
         "cnpj": "47.866.934/0001-74",
@@ -739,14 +752,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 124796.15,
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES COMISSIONADOS (FERIAS – ABONO CONSTITUCIONAL) VINCULADOS AO RGPS,  REF. MES DE FEVEREIRO/2026"
-      },
-      {
-        "data": "2026-07-29",
-        "fornecedor": "AGILITÁ PROPAGANDA e MARKETING LTDA",
-        "cnpj": "00.974.843/0001-99",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 124051.17,
-        "descricao": "3º termo aditivo; Contratação de serviços de publicidade prestados por intermédio de 01 (uma) agência de propaganda para atender as necessidades da Câmara Municipal de Três Lagoas-MS com a prestação d"
       },
       {
         "data": "2026-06-16",
@@ -771,6 +776,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 101504.34,
         "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (NORMAL 15%) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DA FOLHA DE PAGAMENTO REF. MÊS DE JUNHO/2026."
+      },
+      {
+        "data": "2026-08-27",
+        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
+        "cnpj": "20.835.263/0001-28",
+        "categoria": "Obrigações Patronais",
+        "valor": 97158.06,
+        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (NORMAL 15%) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DA FOLHA DE PAGAMENTO REF. MÊS DE AGOSTO/2026."
       },
       {
         "data": "2026-07-29",
@@ -893,6 +906,14 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (FERIAS – ABONO CONSTITUCIONAL) VINCULADOS AO RPPS,  REF. MES DE JUNHO/2026"
       },
       {
+        "data": "2026-02-26",
+        "fornecedor": "LAMPER DIGITALIZAÇÃO E SISTEMAS LTDA EPP",
+        "cnpj": "97.408.074/0001-01",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 63994.32,
+        "descricao": "Pedido de empenho referente ao III termo aditivo proporcional ao ano de 2026"
+      },
+      {
         "data": "2026-04-29",
         "fornecedor": "FUNDACAO STENIO CONGRO",
         "cnpj": "04.073.837/0001-11",
@@ -918,6 +939,14 @@
       },
       {
         "data": "2026-07-29",
+        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
+        "cnpj": "20.835.263/0001-28",
+        "categoria": "Aporte para Cobertura de Déficit Atuarial do RPPS",
+        "valor": 61291.14,
+        "descricao": "DESPESAS REFERENTE A APORTE MENSAL (Plano de Amort. para o Equacionamento do Déficit Atuarial do RPPS Município de Três Lagoas Lei nº 4.442/2026) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊ"
+      },
+      {
+        "data": "2026-08-27",
         "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
         "cnpj": "20.835.263/0001-28",
         "categoria": "Aporte para Cobertura de Déficit Atuarial do RPPS",
@@ -979,14 +1008,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 56958.07,
         "descricao": "DESPESAS REFERENTE A EMPENHO ESTIMATIVA DE CONSUMO DE ENERGIA REF. EXERCÍCIO 2026."
-      },
-      {
-        "data": "2026-02-26",
-        "fornecedor": "LAMPER DIGITALIZAÇÃO E SISTEMAS LTDA EPP",
-        "cnpj": "97.408.074/0001-01",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 53328.6,
-        "descricao": "Pedido de empenho referente ao III termo aditivo proporcional ao ano de 2026"
       },
       {
         "data": "2026-01-29",
@@ -1277,6 +1298,14 @@
         "descricao": "Contribuição Patronal ref. Convênio Cassems servidores CMTLS ref. competência \t\r\n07/2026."
       },
       {
+        "data": "2026-08-27",
+        "fornecedor": "CAIXA DE ASSISTENCIA DOS SERVIDORES DO ESTADO DE M",
+        "cnpj": "04.311.093/0001-26",
+        "categoria": "Outros Benefícios Assistenciais do Servidor",
+        "valor": 14696.01,
+        "descricao": "Contribuição Patronal ref. Convênio Cassems servidores CMTLS ref. competência \t\r\n08/2026"
+      },
+      {
         "data": "2026-04-30",
         "fornecedor": "CAIXA DE ASSISTENCIA DOS SERVIDORES DO ESTADO DE M",
         "cnpj": "04.311.093/0001-26",
@@ -1493,6 +1522,14 @@
         "descricao": "Processo 57/25  serviço de Poda, Extração, Limpeza e descarte de resíduos originários dos serviços, com escopo de melhor atender às necessidades, da Câmara Municipal de Três Lagoas/MS."
       },
       {
+        "data": "2026-01-19",
+        "fornecedor": "WEBNETS SOLUCOES LTDA",
+        "cnpj": "12.319.369/0001-40",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 7034.48,
+        "descricao": "Processo 29-26 serviço técnico especializado para criação e fornecimento de licença de uso de site (portal de conteúdo gerenciável), com área de transparência, plataforma de atendimento ao cidadão (co"
+      },
+      {
         "data": "2026-07-30",
         "fornecedor": "FOLHA DE PGTO SERV. COMISSIONADOS (Câmara)",
         "cnpj": "15.410.145/0001-38",
@@ -1595,14 +1632,6 @@
         "categoria": "Diárias — Civil",
         "valor": 6463.86,
         "descricao": "DESPESAS REFERENTE A CONCESSÃO DE 5 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Porto Alegre-RS, NO PERÍODO DE 18/05/2026 a 22/05/2026, CONFORME SOLICITAÇÃO. Finalidade: \" VIAGEM PARA BRASÍLI"
-      },
-      {
-        "data": "2026-01-19",
-        "fornecedor": "WEBNETS SOLUCOES LTDA",
-        "cnpj": "12.319.369/0001-40",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 6155.17,
-        "descricao": "Processo 29-26 serviço técnico especializado para criação e fornecimento de licença de uso de site (portal de conteúdo gerenciável), com área de transparência, plataforma de atendimento ao cidadão (co"
       },
       {
         "data": "2026-08-13",
@@ -2947,6 +2976,22 @@
         "categoria": "Diárias — Civil",
         "valor": 2308.53,
         "descricao": "\"DESPESAS REFERENTE A CONCESSÃO DE 3 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 01/09 a 04/09/2026, CONFORME SOLICITAÇÃO ASSINADA PELO REQUISITANTE E VEREADO"
+      },
+      {
+        "data": "2026-09-02",
+        "fornecedor": "EDOGLANILDO FERREIRA CEZAR",
+        "cnpj": "914.XXX.XXX-20",
+        "categoria": "Diárias — Civil",
+        "valor": 2308.53,
+        "descricao": "\"DESPESAS REFERENTE A CONCESSÃO DE 3 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 02/09 a 05/09/2026, CONFORME SOLICITAÇÃO ASSINADA PELO REQUISITANTE E VEREADO"
+      },
+      {
+        "data": "2026-09-02",
+        "fornecedor": "ADEMIR SILVA DOS SANTOS",
+        "cnpj": "806.XXX.XXX-59",
+        "categoria": "Diárias — Civil",
+        "valor": 2308.53,
+        "descricao": "\"DESPESAS REFERENTE A CONCESSÃO DE 3 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 02/09 a 05/09/2026, CONFORME SOLICITAÇÃO. Finalidade:'' VIAGEM PARA CAMPO GRA"
       },
       {
         "data": "2026-04-28",
@@ -5875,30 +5920,6 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 0.0,
         "descricao": "Empenhado incorreto."
-      },
-      {
-        "data": "2026-08-27",
-        "fornecedor": "CAIXA DE ASSISTENCIA DOS SERVIDORES DO ESTADO DE M",
-        "cnpj": "04.311.093/0001-26",
-        "categoria": "Outros Benefícios Assistenciais do Servidor",
-        "valor": 0.0,
-        "descricao": "Contribuição Patronal ref. Convênio Cassems servidores CMTLS ref. competência \t\r\n08/2026"
-      },
-      {
-        "data": "2026-08-27",
-        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
-        "cnpj": "20.835.263/0001-28",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (NORMAL 15%) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DA FOLHA DE PAGAMENTO REF. MÊS DE AGOSTO/2026."
-      },
-      {
-        "data": "2026-08-27",
-        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
-        "cnpj": "20.835.263/0001-28",
-        "categoria": "Aporte para Cobertura de Déficit Atuarial do RPPS",
-        "valor": 0.0,
-        "descricao": "DESPESAS REFERENTE A APORTE MENSAL (Plano de Amort. para o Equacionamento do Déficit Atuarial do RPPS Município de Três Lagoas Lei nº 4.442/2026) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊ"
       },
       {
         "data": "2026-08-28",

@@ -1,7 +1,7 @@
 {
   "cidade": "Paranaíba",
-  "ultimaAtualizacao": "2026-09-02T15:25:22",
-  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-09-02T15:25:22",
+  "ultimaAtualizacao": "2026-09-03T15:18:57",
+  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-09-03T15:18:57",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmparanaiba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -763,15 +763,15 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 7976343.34,
+    "totalGeral": 8042127.07,
     "totalNotas": 283,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 5078716.18,
-      "Obrigações Patronais": 844056.46,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 712357.96,
-      "Diárias — Civil": 664720.47,
-      "Serviços de Consultoria": 490000.0,
-      "Despesas de Exercícios Anteriores": 97877.35,
+      "Obrigações Patronais": 887127.57,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 713644.37,
+      "Diárias — Civil": 671570.43,
+      "Serviços de Consultoria": 502500.0,
+      "Despesas de Exercícios Anteriores": 99953.6,
       "Material de Consumo": 40036.68,
       "Serviços de Tecnologia da Informação": 21130.1,
       "Equipamentos e Material Permanente": 12854.3,
@@ -817,7 +817,7 @@
         "fornecedor": "INSTITUTO DE PREV. SERV. DO MUNIC. PBA-PREVIM",
         "cnpj": "04.925.862/0001-86",
         "categoria": "Obrigações Patronais",
-        "valor": 304010.56,
+        "valor": 347081.67,
         "descricao": "EMPENHO ESTIMATIVO DE CONTRIBUIÇÃO PREVIDENCIÁRIA PATRONAL DOS SERVIDORES EFETIVOS PARA O RPPS EXERCICIO DE 2026."
       },
       {
@@ -854,19 +854,19 @@
       },
       {
         "data": "2026-01-19",
+        "fornecedor": "SETTE ASSESSORIAS TECNICAS E AUDITORIAS ADMINISTRA",
+        "cnpj": "10.714.023/0001-11",
+        "categoria": "Serviços de Consultoria",
+        "valor": 100000.0,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM PRESTAÇÕES DE CONSULTORIA PARA ADEQUAÇÃO E IMPLEMENTAÇÃO DE BOAS PRÁTICAS E GOVERNANÇA EM CONFORMIDADE COM A LGPD, INCLUINDO MAPEAMENTO"
+      },
+      {
+        "data": "2026-01-19",
         "fornecedor": "BASTOS, CLARO & DUAILIBI ADVOGADOS ASSOCIADOS",
         "cnpj": "08.761.038/0001-99",
         "categoria": "Serviços de Consultoria",
         "valor": 94500.0,
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA PARA PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ASSESSORIA JURÍDICA PARA ATENDER AS DEMANDAS NA GESTÃO PÚBLICA DA CÂMARA MUNICIPAL DE PARANAÍBA-MS"
-      },
-      {
-        "data": "2026-01-19",
-        "fornecedor": "SETTE ASSESSORIAS TECNICAS E AUDITORIAS ADMINISTRA",
-        "cnpj": "10.714.023/0001-11",
-        "categoria": "Serviços de Consultoria",
-        "valor": 87500.0,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM PRESTAÇÕES DE CONSULTORIA PARA ADEQUAÇÃO E IMPLEMENTAÇÃO DE BOAS PRÁTICAS E GOVERNANÇA EM CONFORMIDADE COM A LGPD, INCLUINDO MAPEAMENTO"
       },
       {
         "data": "2026-06-17",
@@ -1045,20 +1045,20 @@
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE SERVIÇOS DE JARDINAGEM, PARA ATENDER AS NECESSIDADES DA CÂMARA MUNICIPAL DE PARANAÍBA-MS.\r\nPEDIDO GERADO A PARTIR DO RESULTADO DA LICITAÇÃO: 000012/25 - ANO MOD"
       },
       {
+        "data": "2026-01-02",
+        "fornecedor": "CASSEMP-CAIXA DE ASSIST.DOS SERV.PUBL.MS",
+        "cnpj": "04.960.858/0001-59",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 8314.62,
+        "descricao": "EMPENHO ESTIMATIVO PARA CONTRIBUIÇÃO PATRONAL DO LEGISLATIVO MUNICIPAL,  REFERENTE À PLANO DE SAUDE - CASSEMP , PARA O EXERCICIO 2026."
+      },
+      {
         "data": "2026-07-07",
         "fornecedor": "CAMILA SOUZA PINHEIRO ALBRECHT",
         "cnpj": "25.289.845/0001-70",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 7950.0,
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE 05 (CINCO) INSCRIÇÕES PARA PARTICIPAÇÃO DE VEREADORES DA CÂMARA MUNICIPAL DE PARANAÍBA/MS, NO SEMINÁRIO DE VEREADORES E AGENTES PÚBLICOS, EVENTO DESTINADO À CAP"
-      },
-      {
-        "data": "2026-01-02",
-        "fornecedor": "CASSEMP-CAIXA DE ASSIST.DOS SERV.PUBL.MS",
-        "cnpj": "04.960.858/0001-59",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 7291.69,
-        "descricao": "EMPENHO ESTIMATIVO PARA CONTRIBUIÇÃO PATRONAL DO LEGISLATIVO MUNICIPAL,  REFERENTE À PLANO DE SAUDE - CASSEMP , PARA O EXERCICIO 2026."
       },
       {
         "data": "2026-01-19",
@@ -1413,12 +1413,28 @@
         "descricao": "REFERE-SE À CONCESSÃO DE 3,70% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, COM FINALIDADE DE PARTICIPAR DO 35º SIMPÓSIO DE GESTÃO PÚBLICA. A PARTICIPAÇÃO NESTE EVENT"
       },
       {
+        "data": "2026-09-01",
+        "fornecedor": "MARCOS HENRIQUE DE CAMARGO SILVA",
+        "cnpj": "519.XXX.XXX-00",
+        "categoria": "Diárias — Civil",
+        "valor": 6849.96,
+        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE SÃO JOSÉ DO RIO PRETO-SP, O OBJETIVO DA VIAGEM É PARTICIPAR DO SEMINARIO DE CAPACITAÇÃO PARA VEREADORES"
+      },
+      {
         "data": "2026-02-02",
         "fornecedor": "MAURICIO GOMES DE ALMEIDA",
         "cnpj": "712.XXX.XXX-78",
         "categoria": "Diárias — Civil",
         "valor": 6849.79,
         "descricao": "REFERE-SE À CONCESSÃO DE 4,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF,  PARA AGENDA DIVERSA, COM O OBJETIVO DE TRATAR DE ASSUNTOS DE INTERESSE DO MUNÍCIPIO PARANA"
+      },
+      {
+        "data": "2026-06-08",
+        "fornecedor": "R3GED GESTÃO DE DOCUMENTOS LTDA EPP.",
+        "cnpj": "21.268.622/0001-75",
+        "categoria": "Despesas de Exercícios Anteriores",
+        "valor": 6228.75,
+        "descricao": "REFERE-SE À PARA CONTRATAÇÃO DA EMPRESA R3GED GESTAO DE DOCUMENTOS LTDA (21.268.622/0001-75) ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇO DE ALINHAMENTO, AJUSTE E OPERAÇÃO DO SISTEMA DE CONTROLE INTERNO DA C"
       },
       {
         "data": "2026-03-30",
@@ -1613,19 +1629,11 @@
         "descricao": "REFERE-SE À EMPENHO CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE SEGURANÇA ELETRÔNICA, COMPREENDENDO O FORNECIMENTO, INSTALAÇÃO, MANUTENÇÃO PREVENTIVA E CORRETIVA, BEM"
       },
       {
-        "data": "2026-06-08",
-        "fornecedor": "R3GED GESTÃO DE DOCUMENTOS LTDA EPP.",
-        "cnpj": "21.268.622/0001-75",
-        "categoria": "Despesas de Exercícios Anteriores",
-        "valor": 4152.5,
-        "descricao": "REFERE-SE À PARA CONTRATAÇÃO DA EMPRESA R3GED GESTAO DE DOCUMENTOS LTDA (21.268.622/0001-75) ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇO DE ALINHAMENTO, AJUSTE E OPERAÇÃO DO SISTEMA DE CONTROLE INTERNO DA C"
-      },
-      {
         "data": "2026-01-02",
         "fornecedor": "BANCO DO BRASIL SA",
         "cnpj": "00.000.000/0484-70",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 3659.32,
+        "valor": 3724.9,
         "descricao": "REFERE-SE À EMPENHO ESTIMATIVO PARA SERVIÇOS BANCÁRIOS - TARIFAS."
       },
       {
@@ -2549,20 +2557,20 @@
         "descricao": "REFERE-SE À CONCESSÃO DE 1,70% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA COMPARECER NO GABINETE DO DEPUTADO GERSON CLARO, E NO GABINETE DA DEPUTADA MARA C"
       },
       {
+        "data": "2026-01-19",
+        "fornecedor": "C.C. CALEJON DOS SANTOS-ME",
+        "cnpj": "74.384.231/0001-82",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1385.3,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM LOCAÇÃO DE EQUIPAMENTOS (RELÓGIOS DE PONTO ELETRÔNICO COM RECONHECIMENTO FACIAL), INCLUINDO SERVIÇOS DE INSTALAÇÃO, MANUTENÇÃO, CONSERV"
+      },
+      {
         "data": "2026-08-10",
         "fornecedor": "ELIENE VIEIRA BORGES DA SILVA",
         "cnpj": "901.XXX.XXX-87",
         "categoria": "Diárias — Civil",
         "valor": 1321.14,
         "descricao": "REFERE-SE À CONCESSÃO DE 2,0% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA ACOMPANHAR A VEREADORA DÉBORA QUEIROZ DE OLIVEIRA NA SECRETÁRIA DE ESTADO DE SAÚDE"
-      },
-      {
-        "data": "2026-01-19",
-        "fornecedor": "C.C. CALEJON DOS SANTOS-ME",
-        "cnpj": "74.384.231/0001-82",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 1187.4,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM LOCAÇÃO DE EQUIPAMENTOS (RELÓGIOS DE PONTO ELETRÔNICO COM RECONHECIMENTO FACIAL), INCLUINDO SERVIÇOS DE INSTALAÇÃO, MANUTENÇÃO, CONSERV"
       },
       {
         "data": "2026-02-04",
@@ -3035,14 +3043,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 0.0,
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE SOCIEDADE DE ADVOCACIA ESPECIALIZADA PARA A PRESTAÇÃO CONTINUADA DE SERVIÇOS TÉCNICOS DE ASSESSORIA E CONSULTORIA JURÍDICA ESPECIALIZADA, CONSULTORIA AO DEPARTA"
-      },
-      {
-        "data": "2026-09-01",
-        "fornecedor": "MARCOS HENRIQUE DE CAMARGO SILVA",
-        "cnpj": "519.XXX.XXX-00",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE SÃO JOSÉ DO RIO PRETO-SP, O OBJETIVO DA VIAGEM É PARTICIPAR DO SEMINARIO DE CAPACITAÇÃO PARA VEREADORES"
       }
     ]
   },
