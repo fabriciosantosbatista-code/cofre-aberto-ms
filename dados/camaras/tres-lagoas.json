@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-09-07T16:43:15",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-09-07T16:43:15",
+  "ultimaAtualizacao": "2026-09-09T15:23:33",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-09-09T15:23:33",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -489,19 +489,19 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 23748423.77,
-    "totalNotas": 680,
+    "totalGeral": 24233857.65,
+    "totalNotas": 681,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 13896715.63,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 3265035.22,
-      "Auxílio-Alimentação": 2159200.95,
-      "Obrigações Patronais": 2014694.09,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 3529543.67,
+      "Auxílio-Alimentação": 2199493.95,
+      "Obrigações Patronais": 2156154.84,
       "Diárias — Civil": 531462.23,
-      "Serviços de Tecnologia da Informação": 523879.16,
+      "Serviços de Tecnologia da Informação": 524960.16,
       "Locação de Mão de Obra": 342497.25,
+      "Serviços de Consultoria": 261082.83,
+      "Material de Consumo": 247563.21,
       "Aporte para Cobertura de Déficit Atuarial do RPPS": 245164.56,
-      "Material de Consumo": 242532.66,
-      "Serviços de Consultoria": 228022.7,
       "Outros Benefícios Assistenciais do Servidor": 116379.66,
       "Indenizações e Restituições": 70747.62,
       "Despesas de Exercícios Anteriores": 48725.47,
@@ -592,6 +592,14 @@
         "categoria": "Auxílio-Alimentação",
         "valor": 387090.0,
         "descricao": "Contratação de empresa especializada na prestação de serviços de administração, gerenciamento, emissão e fornecimento de vale alimentação, na forma de cartões de chip e magnéticos, para aquisição em e"
+      },
+      {
+        "data": "2026-07-29",
+        "fornecedor": "AGILITÁ PROPAGANDA e MARKETING LTDA",
+        "cnpj": "00.974.843/0001-99",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 383623.17,
+        "descricao": "3º termo aditivo; Contratação de serviços de publicidade prestados por intermédio de 01 (uma) agência de propaganda para atender as necessidades da Câmara Municipal de Três Lagoas-MS com a prestação d"
       },
       {
         "data": "2026-06-16",
@@ -698,6 +706,14 @@
         "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PREVIDENCIÁRIA (INSS) PATRONAL REF. MES DE JULHO/2026, REF. SERVIDORES VINCULADOS AO REGIME GERAL DA PREVIDENCIA SOCIAL."
       },
       {
+        "data": "2026-08-27",
+        "fornecedor": "SECRETARIA DA RECEITA FEDERAL DO BRASIL",
+        "cnpj": "00.394.460/0058-87",
+        "categoria": "Obrigações Patronais",
+        "valor": 144876.2,
+        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PREVIDENCIÁRIA (INSS) PATRONAL REF. MES DE AGOSTO/2026, REF. SERVIDORES VINCULADOS AO REGIME GERAL DA PREVIDENCIA SOCIAL."
+      },
+      {
         "data": "2026-06-29",
         "fornecedor": "SECRETARIA DA RECEITA FEDERAL DO BRASIL",
         "cnpj": "00.394.460/0058-87",
@@ -728,14 +744,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 138400.0,
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO VEREADORES (SUBSÍDIOS) VINCULADOS AO RPPS,  REF. EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
-      },
-      {
-        "data": "2026-07-29",
-        "fornecedor": "AGILITÁ PROPAGANDA e MARKETING LTDA",
-        "cnpj": "00.974.843/0001-99",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 133791.17,
-        "descricao": "3º termo aditivo; Contratação de serviços de publicidade prestados por intermédio de 01 (uma) agência de propaganda para atender as necessidades da Câmara Municipal de Três Lagoas-MS com a prestação d"
       },
       {
         "data": "2026-01-26",
@@ -856,6 +864,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 88626.49,
         "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (NORMAL 15%) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DA FOLHA DE PAGAMENTO REF. MÊS DE JANEIRO/2026."
+      },
+      {
+        "data": "2026-06-23",
+        "fornecedor": "TICKET SERVICOS SA",
+        "cnpj": "47.866.934/0001-74",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 84645.0,
+        "descricao": "Processo 60/25 fornecimento de vale alimentação\r\nEmpenho vinculados ao RPPS"
       },
       {
         "data": "2026-05-26",
@@ -1002,14 +1018,6 @@
         "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (COMPLEMENTAR 9,89% ) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DA FOLHA DE PAGAMENTO REF. MÊS DE JANEIRO/2026."
       },
       {
-        "data": "2026-06-23",
-        "fornecedor": "TICKET SERVICOS SA",
-        "cnpj": "47.866.934/0001-74",
-        "categoria": "Auxílio-Alimentação",
-        "valor": 57172.5,
-        "descricao": "Processo 60/25 fornecimento de vale alimentação\r\nEmpenho vinculados ao RPPS"
-      },
-      {
         "data": "2026-01-29",
         "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
         "cnpj": "15.410.145/0001-38",
@@ -1034,6 +1042,14 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (ADICIONAL DE INSALUBRIDADE) VINCULADOS AO RPPS,  REF.  EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
       },
       {
+        "data": "2026-06-23",
+        "fornecedor": "TICKET SERVICOS SA",
+        "cnpj": "47.866.934/0001-74",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 39501.0,
+        "descricao": "Processo 60/25 fornecimento de vale alimentação\r\nEmpenho  vinculados ao RGPS"
+      },
+      {
         "data": "2026-06-29",
         "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
         "cnpj": "15.410.145/0001-38",
@@ -1056,6 +1072,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 33083.02,
         "descricao": "COMPLEMENTO EMPENHO 74 REF. CONTRIBUIÇÃO PATRONAL SERVIDORES VINCULADOS AO RGPS, DEVIDO MUDANÇA ALÍQUIDA A PARTIR DE 2026 PARA 16%."
+      },
+      {
+        "data": "2026-08-10",
+        "fornecedor": "SIMPA ASSESSORIA & PLANEJAMENTO LTDA",
+        "cnpj": "97.408.090/0001-96",
+        "categoria": "Serviços de Consultoria",
+        "valor": 33060.13,
+        "descricao": "Processo 50-23 - Assessoria"
       },
       {
         "data": "2026-01-29",
@@ -1106,12 +1130,20 @@
         "descricao": "Processo 030/26 prestação de serviço de capacitação que realizará o evento denominado “COMUNIQUE Congresso de Estratégias e Comunicação”"
       },
       {
-        "data": "2026-06-23",
-        "fornecedor": "TICKET SERVICOS SA",
-        "cnpj": "47.866.934/0001-74",
-        "categoria": "Auxílio-Alimentação",
-        "valor": 26680.5,
-        "descricao": "Processo 60/25 fornecimento de vale alimentação\r\nEmpenho  vinculados ao RGPS"
+        "data": "2026-02-19",
+        "fornecedor": "PANTANAL - COMERCIO DE ELETRODOMESTICOS E PRESTADO",
+        "cnpj": "17.089.482/0001-09",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 28682.25,
+        "descricao": "Pedido para empenho proporcional ao ano de 2026 do III Termo Aditivo"
+      },
+      {
+        "data": "2026-01-30",
+        "fornecedor": "THALLITA HELLEN DE AZEVEDO OLIVEIRA ME",
+        "cnpj": "13.268.328/0001-35",
+        "categoria": "Material de Consumo",
+        "valor": 26711.58,
+        "descricao": "Processo 05/25 -Fornecimento de materiais gráficos para a Câmara Municipal de Três Lagoas, conforme condições e exigências estabelecidas no Termo de Referência - anexo II do Edital."
       },
       {
         "data": "2026-04-28",
@@ -1162,14 +1194,6 @@
         "descricao": "Contratação empresa especializada na prestação de serviços de Segurança para suporte nas Sessões Ordinárias ou Extraordinárias, Audiências Públicas e Eventos realizados pela Câmara Municipal de Três L"
       },
       {
-        "data": "2026-02-19",
-        "fornecedor": "PANTANAL - COMERCIO DE ELETRODOMESTICOS E PRESTADO",
-        "cnpj": "17.089.482/0001-09",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 22945.8,
-        "descricao": "Pedido para empenho proporcional ao ano de 2026 do III Termo Aditivo"
-      },
-      {
         "data": "2026-04-29",
         "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
         "cnpj": "15.410.145/0001-38",
@@ -1184,14 +1208,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 21734.55,
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (FERIAS – ABONO CONSTITUCIONAL) VINCULADOS AO RPPS,  REF. MES DE AGOSTO/2026"
-      },
-      {
-        "data": "2026-01-30",
-        "fornecedor": "THALLITA HELLEN DE AZEVEDO OLIVEIRA ME",
-        "cnpj": "13.268.328/0001-35",
-        "categoria": "Material de Consumo",
-        "valor": 21681.03,
-        "descricao": "Processo 05/25 -Fornecimento de materiais gráficos para a Câmara Municipal de Três Lagoas, conforme condições e exigências estabelecidas no Termo de Referência - anexo II do Edital."
       },
       {
         "data": "2026-07-21",
@@ -1482,6 +1498,14 @@
         "descricao": "Processo 2/25 fornecimento de materiais de limpeza e higienização de uso comum para a Câmara Municipal de Três Lagoas."
       },
       {
+        "data": "2026-08-21",
+        "fornecedor": "UNYFLEX - UNYGOV GOVERNANCE CAPACITACAO E TREINAME",
+        "cnpj": "55.930.096/0001-89",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 8940.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000050/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 24 - Mod. Formatada: 000024 - Contratação de empresa especializada, na prestação d"
+      },
+      {
         "data": "2026-06-16",
         "fornecedor": "FOLHA DE PAGAMENTO - SUBSIDIOS (Câmara)",
         "cnpj": "15.410.145/0001-38",
@@ -1664,6 +1688,14 @@
         "categoria": "Equipamentos e Material Permanente",
         "valor": 5480.0,
         "descricao": "Processo 016/26 aquisição de aparelhos Smart TV para Câmara Municipal de Três Lagoas-MS."
+      },
+      {
+        "data": "2026-04-06",
+        "fornecedor": "C. C. CALEJON DOS SANTOS ME",
+        "cnpj": "74.384.231/0001-82",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 5405.0,
+        "descricao": "Processo 61- 21 Locação software - V Termo  aditivo excepcional"
       },
       {
         "data": "2026-05-12",
@@ -1882,14 +1914,6 @@
         "descricao": "Concessão de suprimento de fundos Material de consumo"
       },
       {
-        "data": "2026-04-06",
-        "fornecedor": "C. C. CALEJON DOS SANTOS ME",
-        "cnpj": "74.384.231/0001-82",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 4324.0,
-        "descricao": "Processo 61- 21 Locação software - V Termo  aditivo excepcional"
-      },
-      {
         "data": "2026-03-30",
         "fornecedor": "FOLHA DE PGTO SERV. COMISSIONADOS (Câmara)",
         "cnpj": "15.410.145/0001-38",
@@ -2096,14 +2120,6 @@
         "categoria": "Material de Consumo",
         "valor": 3445.43,
         "descricao": "Concessão de suprimento de fundos Material de consumo."
-      },
-      {
-        "data": "2026-08-27",
-        "fornecedor": "SECRETARIA DA RECEITA FEDERAL DO BRASIL",
-        "cnpj": "00.394.460/0058-87",
-        "categoria": "Obrigações Patronais",
-        "valor": 3415.45,
-        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PREVIDENCIÁRIA (INSS) PATRONAL REF. MES DE AGOSTO/2026, REF. SERVIDORES VINCULADOS AO REGIME GERAL DA PREVIDENCIA SOCIAL."
       },
       {
         "data": "2026-07-17",
@@ -5874,14 +5890,6 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES COMISSIONADOS (OUTROS VENCIMENTOS E VANTAGENS FIXAS - PESSOAL CIVIL - RGPS (Aux. Saúde)) VINCULADOS AO RGPS,  REF.  COMPLEMENTO EMPENHO GLOBAL ESTIMA"
       },
       {
-        "data": "2026-08-10",
-        "fornecedor": "SIMPA ASSESSORIA & PLANEJAMENTO LTDA",
-        "cnpj": "97.408.090/0001-96",
-        "categoria": "Serviços de Consultoria",
-        "valor": 0.0,
-        "descricao": "Processo 50-23 - Assessoria"
-      },
-      {
         "data": "2026-08-14",
         "fornecedor": "ESAFI - ESCOLA DE ADMINISTRAÇÃO E TREINA",
         "cnpj": "35.963.479/0001-46",
@@ -5914,14 +5922,6 @@
         "descricao": "Processo 040/25 Locação de impressoras, de forma contínua, para a Câmara Municipal de Três Lagoas-MS."
       },
       {
-        "data": "2026-08-21",
-        "fornecedor": "UNYFLEX - UNYGOV GOVERNANCE CAPACITACAO E TREINAME",
-        "cnpj": "55.930.096/0001-89",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000050/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 24 - Mod. Formatada: 000024 - Contratação de empresa especializada, na prestação d"
-      },
-      {
         "data": "2026-08-24",
         "fornecedor": "VETT - VIA EXPRESS TECNOLOGIA E TELECOMUNICACOES L",
         "cnpj": "11.743.904/0001-23",
@@ -5952,6 +5952,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "Processo 051/26 Prestação de serviço de capacitação que realizará o evento denominado “SEMINÁRIO: “NOVOS DESAFIOS DO LEGISLATIVO MUNICIPAL: ATUAÇÃO PARLAMENTAR, TECNOLOGIA E GESTÃO PÚBLICA”, oferecido"
+      },
+      {
+        "data": "2026-09-08",
+        "fornecedor": "SANAGUA SANEAMENTO E TRATAMENTO DE AGUA",
+        "cnpj": "36.785.392/0001-99",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Processo 48/25 -prestação de Serviços contínuos de Higienização (limpeza externa e interna) de bebedouros, para a Câmara Municipal de Três Lagoas-MS."
       }
     ]
   }
