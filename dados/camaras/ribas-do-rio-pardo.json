@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-09-09T15:23:33",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-09-09T15:23:33",
+  "ultimaAtualizacao": "2026-09-11T15:19:39",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-09-11T15:19:39",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -29,6 +29,11 @@
       "nome": "JAQUELINE PEREIRA ARIMURA",
       "cargo": "Vereador(a)",
       "diarias": [
+        {
+          "data": "2026-09-01",
+          "valor": 350.0,
+          "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 1/2 (MEIA)DIÁRIA PARA CUMPRIR AGENDA INSTITUCIONAL COM O PROMOTOR DE JUSTIÇA DE BATAGUASSU, EDIVAL GOULART QUIRINO, NA DATA DE 02/09/2026, PARA TRATAR DO IMPACTO INTERMUNICIPAL DA POLUIÇÃO E PROLIFERAÇÃO DE MACRÓFITAS NA BACIA DO RIO PARDO. LEI DE DIÁRIAS Nº 15, DE 06 DE ABRIL DE 2026."
+        },
         {
           "data": "2026-08-26",
           "valor": 500.0,
@@ -100,13 +105,18 @@
           "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 01 (UMA) DIÁRIA EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 25/02/2026, REALIZAR VISITA INSTITUCIONAL À SUPERINTENDÊNCIA DO PROGRAMA CUIDAR DE QUEM CUIDA."
         }
       ],
-      "totalDiarias2026": 8242.5,
-      "numDiarias2026": 14
+      "totalDiarias2026": 8592.5,
+      "numDiarias2026": 15
     },
     {
       "nome": "LUCAS LOPES RIBEIRO",
       "cargo": "Vereador(a)",
       "diarias": [
+        {
+          "data": "2026-09-01",
+          "valor": 1050.0,
+          "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 1,5 (UMA DIÁRIA E MEIA) PARA CUMPRIR AGENDA INSTITUCIONAL COM O PROMOTOR DE JUSTIÇA DE BATAGUASSU, EDIVAL GOULART QUIRINO, NAS DATAS DE 02 E 03/09/2026, BEM COMO REALIZAR VISITA TÉCNICA AO RIO PARDO, CONFORME A LEI DE DIÁRIAS Nº 15, DE 06 DE ABRIL DE 2026."
+        },
         {
           "data": "2026-08-20",
           "valor": 250.0,
@@ -183,8 +193,8 @@
           "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 02 (DUAS) DIÁRIAS EM FAVOR DO VEREADOR LUCAS LOPES RIBEIRO PARA PARTICIPAR DE REUNIÃO, NA DATA DE 27/02/2026, NA ASSEMBLEIA LEGISLATIVA PARA FINS DE PARCERIA COM O DEPUTADO PEDRO KEMP, E PARTICIPAR DE LANÇAMENTO DO PROGRAMA AGROINDUSTRIALIZAÇÃO DA AGRICULTURA FAMILIAR, NA DATA DE 02/03/2026."
         }
       ],
-      "totalDiarias2026": 10452.5,
-      "numDiarias2026": 15
+      "totalDiarias2026": 11502.5,
+      "numDiarias2026": 16
     },
     {
       "nome": "NEI LUIZ DE ARAUJO PEREIRA",
@@ -211,21 +221,21 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 7639282.75,
-    "totalNotas": 314,
+    "totalGeral": 7754500.53,
+    "totalNotas": 315,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 4095469.76,
       "Equipamentos e Material Permanente": 1110586.91,
       "Obrigações Patronais": 673025.42,
-      "Serviços de Consultoria": 536381.44,
+      "Serviços de Consultoria": 575351.8,
+      "Serviços de Tecnologia da Informação": 354804.59,
       "Auxílio-Alimentação": 353375.74,
-      "Serviços de Tecnologia da Informação": 329243.67,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 227490.14,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 254062.81,
       "Outros Benefícios Assistenciais do Servidor": 108035.05,
       "Outros Serviços de Terceiros — Pessoa Física": 101692.4,
-      "Material de Consumo": 42544.7,
-      "Diárias — Civil": 38728.51,
-      "Indenizações e Restituições": 22709.01
+      "Material de Consumo": 62358.53,
+      "Diárias — Civil": 40828.51,
+      "Indenizações e Restituições": 24909.01
     },
     "despesas": [
       {
@@ -441,7 +451,7 @@
         "fornecedor": "LOLLI GHETTI ADVOCACIA",
         "cnpj": "30.615.309/0001-57",
         "categoria": "Serviços de Consultoria",
-        "valor": 92781.8,
+        "valor": 111338.16,
         "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO Nº 02/2025, CUJO OBJETO É A PRESTAÇÃO DE SERVIÇOS TÉCNICOS DE ASSESSORIA E CONSULTORIA JURÍDICA EM LICITAÇÕES, PERÍODO CONTRATUAL: 10/03/2026 A 10/03"
       },
       {
@@ -454,19 +464,19 @@
       },
       {
         "data": "2026-01-02",
+        "fornecedor": "WEVERTON CORREIA GUEDES 00883500108 - ME",
+        "cnpj": "15.440.016/0001-92",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 86017.14,
+        "descricao": "EMPENHO REFERENTE AO TERMO ADITIVO Nº 004/2025, PREGÃO PRESENCIAL Nº 005/2021, CONTRATO ADMINISTRATIVO Nº 10/2021, CUJO OBJETO É A PRESTAÇÃO DE SERVIÇOS DE CONEXÃO COM A INTERNET, POR MEIO DE IP DEDIC"
+      },
+      {
+        "data": "2026-01-02",
         "fornecedor": "RAMOS GOMES SOCIEDADE INDIVIDUAL DE ADVOCACIA",
         "cnpj": "36.367.034/0001-66",
         "categoria": "Serviços de Consultoria",
         "valor": 76950.0,
         "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA DE ASSESSORIA E CONSULTORIA JURÍDICA, ESPECIALIZADA EM DIREITO PÚBLICO, PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS, SUPORTE CONSULTIVO AO GABINETE DA PRESIDÊNCIA,"
-      },
-      {
-        "data": "2026-01-02",
-        "fornecedor": "WEVERTON CORREIA GUEDES 00883500108 - ME",
-        "cnpj": "15.440.016/0001-92",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 76459.68,
-        "descricao": "EMPENHO REFERENTE AO TERMO ADITIVO Nº 004/2025, PREGÃO PRESENCIAL Nº 005/2021, CONTRATO ADMINISTRATIVO Nº 10/2021, CUJO OBJETO É A PRESTAÇÃO DE SERVIÇOS DE CONEXÃO COM A INTERNET, POR MEIO DE IP DEDIC"
       },
       {
         "data": "2026-02-20",
@@ -525,6 +535,14 @@
         "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO Nº 004/2025, PROCESSO ADMINISTRATIVO Nº 19/2025, INEXIGIBILIDADE DE LICITAÇÃO Nº 004/2025, RELATIVO À CONTRATAÇÃO DE EMPRESA DE ASSESSORIA E CONSULTOR"
       },
       {
+        "data": "2026-01-02",
+        "fornecedor": "ENERGISA - DISTRIBUIDORA DE ENERGIA S/A",
+        "cnpj": "15.413.826/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 46138.47,
+        "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ENERGIA ELÉTRICA PARA O EXERCÍCIO DE 2026."
+      },
+      {
         "data": "2026-07-31",
         "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -557,20 +575,20 @@
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - MARÇO/2026."
       },
       {
-        "data": "2026-01-02",
-        "fornecedor": "ENERGISA - DISTRIBUIDORA DE ENERGIA S/A",
-        "cnpj": "15.413.826/0001-50",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 42848.07,
-        "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ENERGIA ELÉTRICA PARA O EXERCÍCIO DE 2026."
-      },
-      {
         "data": "2026-04-30",
         "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
         "categoria": "Obrigações Patronais",
         "valor": 42664.63,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - ABRIL/"
+      },
+      {
+        "data": "2026-05-28",
+        "fornecedor": "J. REMONATTO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "26.616.499/0001-50",
+        "categoria": "Serviços de Consultoria",
+        "valor": 41656.0,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO  ADMINISTRATIVO Nº 03/2025, INEGIXIBILIDADE DE LICITAÇÃO Nº 03/2025, PROCESSO ADMINISTRATIVO Nº 12/2025, RELATIVO À CONTRATAÇÃO DE EMPRESA ESPECIALIZ"
       },
       {
         "data": "2026-01-02",
@@ -595,6 +613,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 36513.4,
         "descricao": "EMPENHO REFERENTE AO ADIANTAMENTO DO 13º SALÁRIO DOS VEREADORES."
+      },
+      {
+        "data": "2026-05-29",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 36021.45,
+        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
       },
       {
         "data": "2026-02-27",
@@ -645,14 +671,6 @@
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - FEV/2026."
       },
       {
-        "data": "2026-05-28",
-        "fornecedor": "J. REMONATTO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
-        "cnpj": "26.616.499/0001-50",
-        "categoria": "Serviços de Consultoria",
-        "valor": 31242.0,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO  ADMINISTRATIVO Nº 03/2025, INEGIXIBILIDADE DE LICITAÇÃO Nº 03/2025, PROCESSO ADMINISTRATIVO Nº 12/2025, RELATIVO À CONTRATAÇÃO DE EMPRESA ESPECIALIZ"
-      },
-      {
         "data": "2026-03-30",
         "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -675,6 +693,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 30965.7,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - MAIO/2026."
+      },
+      {
+        "data": "2026-06-02",
+        "fornecedor": "ENGELUGA ENGENHARIA LTDA",
+        "cnpj": "22.034.572/0001-24",
+        "categoria": "Serviços de Consultoria",
+        "valor": 30000.0,
+        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO DE PRORROGAÇÃO DE PRAZO, AO CONTRATO ADMINISTRATIVO Nº 004/2025, PARA A PRESTAÇÃO DE SERVIÇOS DE CONSULTORIA E ASSESSORIA EM ENGENHARIA, EM CONFORMIDADE COM O ART"
       },
       {
         "data": "2026-06-26",
@@ -742,10 +768,18 @@
       },
       {
         "data": "2026-01-02",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 27000.0,
+        "descricao": "EMPENHO REFERENTE AO FORNECIMENTO DE LICENÇA TEMPORÁRIA DE USO DE SOFTWARE PARA GESTÃO LEGISLATIVA, CONFORME TERMO DE REFERÊNCIA, PERÍODO CONTRATUAL DE 28/08/2025 A 27/08/2026, PROCESSO ADMINISTRATIVO"
+      },
+      {
+        "data": "2026-01-02",
         "fornecedor": "SANESUL S/A",
         "cnpj": "03.982.931/0001-20",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 26610.93,
+        "valor": 26910.95,
         "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ÁGUA E ESGOTO PARA O EXERCÍCIO DE 2026."
       },
       {
@@ -771,14 +805,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 24552.5,
         "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO, AO CONTRATO Nº 01/2023, CUJO OBJETO É A RENOVAÇÃO CONTRATUAL PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ASSESSORIA E CONSULTORIA CONTÁBIL, VIGÊNCIA"
-      },
-      {
-        "data": "2026-05-29",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 24496.61,
-        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
       },
       {
         "data": "2026-01-30",
@@ -837,12 +863,12 @@
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS VEREDORES - JULHO/2026."
       },
       {
-        "data": "2026-01-02",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 23625.0,
-        "descricao": "EMPENHO REFERENTE AO FORNECIMENTO DE LICENÇA TEMPORÁRIA DE USO DE SOFTWARE PARA GESTÃO LEGISLATIVA, CONFORME TERMO DE REFERÊNCIA, PERÍODO CONTRATUAL DE 28/08/2025 A 27/08/2026, PROCESSO ADMINISTRATIVO"
+        "data": "2026-05-07",
+        "fornecedor": "VAGNER DOS SANTOS - ME",
+        "cnpj": "27.441.604/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 23320.98,
+        "descricao": "EMPENHO REFERENTE AO 4º TERMO ADITIVO AO CONTRATO Nº 05/2022, PREGÃO PRESENCIAL 001/2022, CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE TRANSMISSÃO AO VIVO, VIA INTERNET E REDES SOC"
       },
       {
         "data": "2026-03-26",
@@ -859,14 +885,6 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 21480.52,
         "descricao": "EMPENHO REFERENTE AO 3º TERMO ADITIVO AO CONTRATO Nº 11/2023 (PROCESSO ADMINISTRATIVO Nº 09/2023 E PREGÃO PRESENCIAL Nº 02/2023), CUJO OBJETO É A CONTRATAÇÃO DE EMPRESA PARA A PRESTAÇÃO DE SERVIÇOS DE"
-      },
-      {
-        "data": "2026-06-02",
-        "fornecedor": "ENGELUGA ENGENHARIA LTDA",
-        "cnpj": "22.034.572/0001-24",
-        "categoria": "Serviços de Consultoria",
-        "valor": 20000.0,
-        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO DE PRORROGAÇÃO DE PRAZO, AO CONTRATO ADMINISTRATIVO Nº 004/2025, PARA A PRESTAÇÃO DE SERVIÇOS DE CONSULTORIA E ASSESSORIA EM ENGENHARIA, EM CONFORMIDADE COM O ART"
       },
       {
         "data": "2026-03-31",
@@ -907,14 +925,6 @@
         "categoria": "Auxílio-Alimentação",
         "valor": 15942.34,
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - MAIO/2026."
-      },
-      {
-        "data": "2026-05-07",
-        "fornecedor": "VAGNER DOS SANTOS - ME",
-        "cnpj": "27.441.604/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 15702.79,
-        "descricao": "EMPENHO REFERENTE AO 4º TERMO ADITIVO AO CONTRATO Nº 05/2022, PREGÃO PRESENCIAL 001/2022, CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE TRANSMISSÃO AO VIVO, VIA INTERNET E REDES SOC"
       },
       {
         "data": "2026-03-26",
@@ -958,11 +968,27 @@
       },
       {
         "data": "2026-01-02",
+        "fornecedor": "JAQUELINE PEREIRA ARIMURA",
+        "cnpj": "010.XXX.XXX-44",
+        "categoria": "Indenizações e Restituições",
+        "valor": 13932.7,
+        "descricao": "VALOR QUE SE EMPENHA PARA FINS DE REEMBOLSAR AS DESPESAS INERENTES ÀS ATIVIDADES PARLAMENTARES, PERÍODO DE JANEIRO A DEZEMBRO DE 2026, CONFORME PREVISTO NA LEI MUNICIPAL Nº 1.309, DE 02 DE MARÇO DE 20"
+      },
+      {
+        "data": "2026-01-02",
         "fornecedor": "NEWPC TECNOLOGIA LTDA",
         "cnpj": "20.892.343/0001-15",
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 13200.0,
         "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO Nº 10/2023, PREGÃO PRESENCIAL Nº 02/2023 E PROCESSO ADMINISTRATIVO Nº 09/2023, LOCAÇÃO DE IMPRESSORAS MULTIFUNCIONAIS A LASER, JATO DE TINTA E SCANNER"
+      },
+      {
+        "data": "2026-07-10",
+        "fornecedor": "L M K CONFECCOES LTDA",
+        "cnpj": "48.486.248/0001-30",
+        "categoria": "Material de Consumo",
+        "valor": 12655.0,
+        "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE UNIFORMES - DISPENSA ELETRÔNICA Nº 002/2026, PROCESSO ADMINISTRATIVO Nº 007/2026. Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000007/26 - A"
       },
       {
         "data": "2026-07-09",
@@ -971,14 +997,6 @@
         "categoria": "Equipamentos e Material Permanente",
         "valor": 12153.72,
         "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE ELETRODOMÉSTICOS, CONFORME A DISPENSA ELETRÔNICA Nº 003/2026, PROCESSO ADMINISTRATIVO Nº 012/2026.  Pedido gerado a partir do resultado da Licitação: 000012/26 - Ano M"
-      },
-      {
-        "data": "2026-01-02",
-        "fornecedor": "JAQUELINE PEREIRA ARIMURA",
-        "cnpj": "010.XXX.XXX-44",
-        "categoria": "Indenizações e Restituições",
-        "valor": 11732.7,
-        "descricao": "VALOR QUE SE EMPENHA PARA FINS DE REEMBOLSAR AS DESPESAS INERENTES ÀS ATIVIDADES PARLAMENTARES, PERÍODO DE JANEIRO A DEZEMBRO DE 2026, CONFORME PREVISTO NA LEI MUNICIPAL Nº 1.309, DE 02 DE MARÇO DE 20"
       },
       {
         "data": "2026-03-23",
@@ -995,6 +1013,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 10000.0,
         "descricao": "EMPENHO REFERENTE AO TERMO DE CESSÃO DE USO, PROCESSO ADMINISTRATIVO 11/2026,  ENTRE A CÂMARA MUNICIPAL DE RIBAS DO RIO PARDO E O SINDICATO RURAL PARA FINS DE CEDÊNCIA DO ESPAÇO FÍSICO PARA A REALIZAÇ"
+      },
+      {
+        "data": "2026-08-10",
+        "fornecedor": "GC - AGENCIA DE MONITORAMENTO LTDA - ME",
+        "cnpj": "11.161.339/0001-96",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 10000.0,
+        "descricao": "EMPENHO REFERENTE A CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS CONTINUADOS DE MONITORAMENTO ELETRÔNICO PATRIMONIAL INTEGRADO, COMPREENDENDO A ADEQUAÇÃO, INTEGRAÇÃO E CONFIGURAÇÃ"
       },
       {
         "data": "2026-08-11",
@@ -1091,14 +1117,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 6979.0,
         "descricao": "EMPENHO REFERENTE À PARTICIPAÇÃO DE VEREADORES NO CONGRESSO PRESENCIAL UCVMS SUMMIT, NOS DIAS 08 A 10 DE ABRIL/2026. Pedido gerado a partir do resultado da Licitação: 000014/26 - Ano Mod.: 2026 - Moda"
-      },
-      {
-        "data": "2026-08-10",
-        "fornecedor": "GC - AGENCIA DE MONITORAMENTO LTDA - ME",
-        "cnpj": "11.161.339/0001-96",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 6500.0,
-        "descricao": "EMPENHO REFERENTE A CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS CONTINUADOS DE MONITORAMENTO ELETRÔNICO PATRIMONIAL INTEGRADO, COMPREENDENDO A ADEQUAÇÃO, INTEGRAÇÃO E CONFIGURAÇÃ"
       },
       {
         "data": "2026-02-20",
@@ -1205,6 +1223,14 @@
         "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
       },
       {
+        "data": "2026-01-02",
+        "fornecedor": "CEO SISTEMAS E COMÉRCIO DE RELÓGIO DE PO",
+        "cnpj": "15.385.833/0001-95",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 5220.0,
+        "descricao": "EMPENHO REFERENTE À LOCAÇÃO DE SISTEMA INFORMATIZADO DE CADASTRO ELETRÔNICO DE PONTO, PERÍODO CONTRATUAL: 03/09/2025 A 02/09/2026, LEI FEDERAL Nº 14.133/2021, ARTIGOS 89 A 92. CONTRATO ADMINISTRATIVO"
+      },
+      {
         "data": "2026-03-26",
         "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
         "cnpj": "01.696.482/0001-29",
@@ -1227,6 +1253,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 5160.48,
         "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES EFETIVOS - JULHO/2026."
+      },
+      {
+        "data": "2026-07-27",
+        "fornecedor": "VAGNER DOS SANTOS - ME",
+        "cnpj": "27.441.604/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 5133.0,
+        "descricao": "EMPENHO REFERENTE À PRESTAÇÃO DE SERVIÇOS DE LOCAÇÃO, INSTALAÇÃO, CONFIGURAÇÃO, OPERAÇÃO ASSISTIDA, MANUTENÇÃO E SUPORTE TÉCNICO DE SISTEMA DE PAINEL \"VIDEO WALL\", PARA UTILIZAÇÃO NO PLENÁRIO DA CÂMAR"
       },
       {
         "data": "2026-06-30",
@@ -1261,12 +1295,20 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DE SERVIDORES EFETIVOS - FEV/2026."
       },
       {
-        "data": "2026-01-02",
-        "fornecedor": "CEO SISTEMAS E COMÉRCIO DE RELÓGIO DE PO",
-        "cnpj": "15.385.833/0001-95",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 4640.0,
-        "descricao": "EMPENHO REFERENTE À LOCAÇÃO DE SISTEMA INFORMATIZADO DE CADASTRO ELETRÔNICO DE PONTO, PERÍODO CONTRATUAL: 03/09/2025 A 02/09/2026, LEI FEDERAL Nº 14.133/2021, ARTIGOS 89 A 92. CONTRATO ADMINISTRATIVO"
+        "data": "2026-08-28",
+        "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
+        "cnpj": "04.311.093/0001-26",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4493.04,
+        "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES COMISSIONADOS - AGOSTO/2026."
+      },
+      {
+        "data": "2026-06-17",
+        "fornecedor": "PRIME CONSULTORIA E ASSESSORIA EMPRESARIAL LTDA",
+        "cnpj": "05.340.639/0001-30",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4422.83,
+        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO ADMINISTRATIVO Nº 09/2024, DISPENSA Nº 02/2024 E PROCESSO ADMINISTRATIVO Nº 03/2024, QUE TEM POR OBJETO A IMPLEMENTAÇÃO, INTERMEDIAÇÃO E ADMINISTRAÇÃO"
       },
       {
         "data": "2026-06-18",
@@ -1275,6 +1317,14 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 4400.0,
         "descricao": "EMPENHO REFERENTE AO 3º TERMO ADITIVO, CONTRATO ADMINISTRATIVO Nº 10/2023, PREGÃO PRESENCIAL Nº 02/2023 E PROCESSO ADMINISTRATIVO Nº 09/2023, QUE TEM POR OBJETO A LOCAÇÃO DE IMPRESSORAS MULTIFUNCIONAI"
+      },
+      {
+        "data": "2026-01-02",
+        "fornecedor": "BANCO DO BRASIL SA",
+        "cnpj": "00.000.000/5806-86",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4311.54,
+        "descricao": "EMPENHO REFERENTE A TARIFAS BANCÁRIAS PARA O EXERCÍCIO DE 2026."
       },
       {
         "data": "2026-01-29",
@@ -1301,12 +1351,12 @@
         "descricao": "EMPENHO REFERENTE  AO CURSO DE GESTÃO INTEGRADA NO SETOR PÚBLICO, E-SFINGE, LGPD E E-SOCIAL, QUE SE REALIZARÁ NA CIDADE DE CAMPO GRANDE/MS, NAS DATAS DE 13 A 15/05/2026."
       },
       {
-        "data": "2026-01-02",
-        "fornecedor": "BANCO DO BRASIL SA",
-        "cnpj": "00.000.000/5806-86",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 3736.57,
-        "descricao": "EMPENHO REFERENTE A TARIFAS BANCÁRIAS PARA O EXERCÍCIO DE 2026."
+        "data": "2026-08-24",
+        "fornecedor": "UILLIAN MARQUES DA SILVA",
+        "cnpj": "27.560.148/0001-37",
+        "categoria": "Material de Consumo",
+        "valor": 3994.3,
+        "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
       },
       {
         "data": "2026-04-09",
@@ -1323,14 +1373,6 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 3500.0,
         "descricao": "EMPENHO REFERENTE À DISPENSA ELETRÔNICA Nº 01/2025, PROCESSO ADMINISTRATIVO Nº 15/2025 E CONTRATO ADMINISTRATIVO Nº 05/2025, CUJO OBJETIVO É A PRESTAÇÃO DE SERVIÇOS DE CRIAÇÃO, DESENVOLVIMENTO DE WEBS"
-      },
-      {
-        "data": "2026-06-17",
-        "fornecedor": "PRIME CONSULTORIA E ASSESSORIA EMPRESARIAL LTDA",
-        "cnpj": "05.340.639/0001-30",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 3384.02,
-        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO ADMINISTRATIVO Nº 09/2024, DISPENSA Nº 02/2024 E PROCESSO ADMINISTRATIVO Nº 03/2024, QUE TEM POR OBJETO A IMPLEMENTAÇÃO, INTERMEDIAÇÃO E ADMINISTRAÇÃO"
       },
       {
         "data": "2026-04-14",
@@ -1418,6 +1460,14 @@
         "cnpj": "27.560.148/0001-37",
         "categoria": "Material de Consumo",
         "valor": 2259.1,
+        "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
+      },
+      {
+        "data": "2026-07-28",
+        "fornecedor": "UILLIAN MARQUES DA SILVA",
+        "cnpj": "27.560.148/0001-37",
+        "categoria": "Material de Consumo",
+        "valor": 2012.26,
         "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
       },
       {
@@ -1509,6 +1559,14 @@
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 01 (UMA DIÁRIA) PARA FINS DE VISITA INSTITUCIONAL, NA CIDADE DE BRASÍLIA/DF, NAS DATAS DE 16 A 17/06/2026, VISANDO LEVAR AS DEMANDAS DO MUNICÍPIO NOS SEUS RESPECTIVOS"
       },
       {
+        "data": "2026-08-24",
+        "fornecedor": "UILLIAN MARQUES DA SILVA",
+        "cnpj": "27.560.148/0001-37",
+        "categoria": "Material de Consumo",
+        "valor": 1152.27,
+        "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
+      },
+      {
         "data": "2026-04-30",
         "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
         "cnpj": "04.311.093/0001-26",
@@ -1531,6 +1589,22 @@
         "categoria": "Diárias — Civil",
         "valor": 1050.0,
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1,5 (UMA DIÁRIA E MEIA) PARA FINS DE PARTICIPAR DA CERIMÔNIA DE ENTREGA DE TÍTULOS E ANÚNCIOS DA REFORMA AGRÁRIA, PARA O ESTADO DE MATO GROSSO DO SUL, NO ASSENTAMENTO"
+      },
+      {
+        "data": "2026-09-01",
+        "fornecedor": "LUCAS LOPES RIBEIRO",
+        "cnpj": "044.XXX.XXX-40",
+        "categoria": "Diárias — Civil",
+        "valor": 1050.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1,5 (UMA DIÁRIA E MEIA) PARA CUMPRIR AGENDA INSTITUCIONAL COM O PROMOTOR DE JUSTIÇA DE BATAGUASSU, EDIVAL GOULART QUIRINO, NAS DATAS DE 02 E 03/09/2026, BEM COMO REALI"
+      },
+      {
+        "data": "2026-06-30",
+        "fornecedor": "W3 TECNOLOGIA LTDA",
+        "cnpj": "20.522.727/0001-46",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 1047.24,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO Nº 05/2025 PROCESSO ADMINISTRATIVO Nº 19/2025, DISPENSA ELETRÔNICA Nº 01/2025, QUE TEM COMO OBJETO A PRESTAÇÃO DE SERVIÇOS DE CRIAÇÃO, DESENVOLVIMENT"
       },
       {
         "data": "2026-07-09",
@@ -1605,6 +1679,14 @@
         "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES COMISSIONADOS - JULHO/2026."
       },
       {
+        "data": "2026-08-28",
+        "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
+        "cnpj": "04.311.093/0001-26",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 726.9,
+        "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES EFETIVOS - AGOSTO/2026."
+      },
+      {
         "data": "2026-04-08",
         "fornecedor": "JAQUELINE PEREIRA ARIMURA",
         "cnpj": "010.XXX.XXX-44",
@@ -1661,12 +1743,12 @@
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1,5 (UMA DIÁRIA E MEIA) PARA FINS DE PARTICIPAR DA CERIMÔNIA DE ENTREGA DE TÍTULOS E ANÚNCIOS DA REFORMA AGRÁRIA, PARA O ESTADO DE MATO GROSSO DO SUL, NO ASSENTAMENTO"
       },
       {
-        "data": "2026-06-30",
-        "fornecedor": "W3 TECNOLOGIA LTDA",
-        "cnpj": "20.522.727/0001-46",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 523.62,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO Nº 05/2025 PROCESSO ADMINISTRATIVO Nº 19/2025, DISPENSA ELETRÔNICA Nº 01/2025, QUE TEM COMO OBJETO A PRESTAÇÃO DE SERVIÇOS DE CRIAÇÃO, DESENVOLVIMENT"
+        "data": "2026-09-01",
+        "fornecedor": "JOAO HENRIQUE DE OLIVEIRA",
+        "cnpj": "066.XXX.XXX-40",
+        "categoria": "Diárias — Civil",
+        "valor": 525.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1,5 (UMA DIÁRIA E MEIA) PARA CUMPRIR AGENDA INSTITUCIONAL COM O PROMOTOR DE JUSTIÇA DE BATAGUASSU, EDIVAL GOULART QUIRINO, NAS  DATAS DE 02 E 03/09/2026, BEM COMO REAL"
       },
       {
         "data": "2026-04-09",
@@ -1755,6 +1837,14 @@
         "categoria": "Diárias — Civil",
         "valor": 350.0,
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 01 (UMA) DIÁRIA EM FAVOR DO VEREADOR LUCAS LOPES RIBEIRO PARA FINS DE PARTICIPAR DO EVENTO CONEXÃO SEM FRONTEIRAS, NA CIDADE DE CAMPO GRANDE/MS, NA DATA DE 27/03/2026."
+      },
+      {
+        "data": "2026-09-01",
+        "fornecedor": "JAQUELINE PEREIRA ARIMURA",
+        "cnpj": "010.XXX.XXX-44",
+        "categoria": "Diárias — Civil",
+        "valor": 350.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA)DIÁRIA PARA CUMPRIR AGENDA INSTITUCIONAL COM O PROMOTOR DE JUSTIÇA DE BATAGUASSU, EDIVAL GOULART QUIRINO, NA DATA DE 02/09/2026, PARA TRATAR DO IMPACTO INTER"
       },
       {
         "data": "2026-06-23",
@@ -1949,6 +2039,14 @@
         "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
       },
       {
+        "data": "2026-09-01",
+        "fornecedor": "EDINA GUIMARAES DE CARVALHO JULG",
+        "cnpj": "713.XXX.XXX-91",
+        "categoria": "Diárias — Civil",
+        "valor": 175.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA)DIÁRIA PARA CUMPRIR AGENDA INSTITUCIONAL COM O PROMOTOR DE JUSTIÇA DE BATAGUASSU, EDIVAL GOULART QUIRINO, NA DATA DE 02/09/2026, PARA TRATAR DO IMPACTO INTER"
+      },
+      {
         "data": "2026-04-15",
         "fornecedor": "STEFANELLO MAT. PARA CONSTRUÇAO LTDA- ME",
         "cnpj": "08.236.688/0001-15",
@@ -2123,14 +2221,6 @@
         "categoria": "Diárias — Civil",
         "valor": 104.06,
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA ASSESSORA PARLAMENTAR EDINA GUIMARÃES DE CARVALHO JULG PARA FINS DE IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 11/03/2026, REALIZAR V"
-      },
-      {
-        "data": "2026-07-27",
-        "fornecedor": "VAGNER DOS SANTOS - ME",
-        "cnpj": "27.441.604/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 102.66,
-        "descricao": "EMPENHO REFERENTE À PRESTAÇÃO DE SERVIÇOS DE LOCAÇÃO, INSTALAÇÃO, CONFIGURAÇÃO, OPERAÇÃO ASSISTIDA, MANUTENÇÃO E SUPORTE TÉCNICO DE SISTEMA DE PAINEL \"VIDEO WALL\", PARA UTILIZAÇÃO NO PLENÁRIO DA CÂMAR"
       },
       {
         "data": "2026-02-27",
@@ -2533,14 +2623,6 @@
         "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE ELETRODOMÉSTICOS, CONFORME A DISPENSA ELETRÔNICA Nº 003/2026, PROCESSO ADMINISTRATIVO Nº 012/2026.  Pedido gerado a partir do resultado da Licitação: 000012/26 - Ano M"
       },
       {
-        "data": "2026-07-10",
-        "fornecedor": "L M K CONFECCOES LTDA",
-        "cnpj": "48.486.248/0001-30",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE UNIFORMES - DISPENSA ELETRÔNICA Nº 002/2026, PROCESSO ADMINISTRATIVO Nº 007/2026. Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000007/26 - A"
-      },
-      {
         "data": "2026-07-13",
         "fornecedor": "58.291.882 ROZANGELA DA SILVA GUEDES",
         "cnpj": "58.291.882/0001-71",
@@ -2555,14 +2637,6 @@
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE AO FORNECIMENTO E INSTALAÇÃO DE CORTINAS, TIPO PERSIANA, SOB MEDIDA, INCLUINDO TODOS OS MATERIAIS, ACESSÓRIOS E SERVIÇOS, NECESSÁRIOS À PERFEITA EXECUÇÃO, PARA ATENDIMENTO DAS NECESS"
-      },
-      {
-        "data": "2026-07-28",
-        "fornecedor": "UILLIAN MARQUES DA SILVA",
-        "cnpj": "27.560.148/0001-37",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
       },
       {
         "data": "2026-07-28",
@@ -2587,22 +2661,6 @@
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE E DE COMUNICAÇÃO, ATA DE REGISTRO DE PREÇOS 02/2026, PROCESSO ADMINISTRATIVO 05/2026, DISPENSA ELETRÔNICA 01/2026. PERÍODO CONTRATUAL 01/04/202"
-      },
-      {
-        "data": "2026-08-24",
-        "fornecedor": "UILLIAN MARQUES DA SILVA",
-        "cnpj": "27.560.148/0001-37",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
-      },
-      {
-        "data": "2026-08-24",
-        "fornecedor": "UILLIAN MARQUES DA SILVA",
-        "cnpj": "27.560.148/0001-37",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
       },
       {
         "data": "2026-08-26",
@@ -2646,22 +2704,6 @@
       },
       {
         "data": "2026-08-28",
-        "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
-        "cnpj": "04.311.093/0001-26",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES EFETIVOS - AGOSTO/2026."
-      },
-      {
-        "data": "2026-08-28",
-        "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
-        "cnpj": "04.311.093/0001-26",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES COMISSIONADOS - AGOSTO/2026."
-      },
-      {
-        "data": "2026-08-28",
         "fornecedor": "68.107.605 ANA CLARA BARROS DA SILVA",
         "cnpj": "68.107.605/0001-10",
         "categoria": "Equipamentos e Material Permanente",
@@ -2702,43 +2744,19 @@
       },
       {
         "data": "2026-09-01",
-        "fornecedor": "JAQUELINE PEREIRA ARIMURA",
-        "cnpj": "010.XXX.XXX-44",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA)DIÁRIA PARA CUMPRIR AGENDA INSTITUCIONAL COM O PROMOTOR DE JUSTIÇA DE BATAGUASSU, EDIVAL GOULART QUIRINO, NA DATA DE 02/09/2026, PARA TRATAR DO IMPACTO INTER"
-      },
-      {
-        "data": "2026-09-01",
-        "fornecedor": "EDINA GUIMARAES DE CARVALHO JULG",
-        "cnpj": "713.XXX.XXX-91",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA)DIÁRIA PARA CUMPRIR AGENDA INSTITUCIONAL COM O PROMOTOR DE JUSTIÇA DE BATAGUASSU, EDIVAL GOULART QUIRINO, NA DATA DE 02/09/2026, PARA TRATAR DO IMPACTO INTER"
-      },
-      {
-        "data": "2026-09-01",
-        "fornecedor": "LUCAS LOPES RIBEIRO",
-        "cnpj": "044.XXX.XXX-40",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1,5 (UMA DIÁRIA E MEIA) PARA CUMPRIR AGENDA INSTITUCIONAL COM O PROMOTOR DE JUSTIÇA DE BATAGUASSU, EDIVAL GOULART QUIRINO, NAS DATAS DE 02 E 03/09/2026, BEM COMO REALI"
-      },
-      {
-        "data": "2026-09-01",
-        "fornecedor": "JOAO HENRIQUE DE OLIVEIRA",
-        "cnpj": "066.XXX.XXX-40",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1,5 (UMA DIÁRIA E MEIA) PARA CUMPRIR AGENDA INSTITUCIONAL COM O PROMOTOR DE JUSTIÇA DE BATAGUASSU, EDIVAL GOULART QUIRINO, NAS  DATAS DE 02 E 03/09/2026, BEM COMO REAL"
-      },
-      {
-        "data": "2026-09-01",
         "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
         "categoria": "Obrigações Patronais",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - AGOSTO/2026."
+      },
+      {
+        "data": "2026-09-10",
+        "fornecedor": "CEO SISTEMAS E COMÉRCIO DE RELÓGIO DE PO",
+        "cnpj": "15.385.833/0001-95",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 0.0,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO Nº 07/2025, DISPENSA DE LICITAÇÃO Nº 10/2025, PROCESSO ADMINISTRATIVO Nº 22/2025, QUE TEM POR OBJETO A LOCAÇÃO DE SISTEMA INFORMATIZADO DE CADASTRO EL"
       }
     ]
   },
