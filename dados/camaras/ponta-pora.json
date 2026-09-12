@@ -1,7 +1,7 @@
 {
   "cidade": "Ponta Porã",
-  "ultimaAtualizacao": "2026-09-11T15:19:39",
-  "fonte": "Portal Transparência Fiorilli (contabilidade.pontapora.ms.gov.br) — Dados Abertos — 2026-09-11T15:19:39",
+  "ultimaAtualizacao": "2026-09-12T14:27:59",
+  "fonte": "Portal Transparência Fiorilli (contabilidade.pontapora.ms.gov.br) — Dados Abertos — 2026-09-12T14:27:59",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camarapontapora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -231,7 +231,7 @@
   ],
   "despesasInstitucionais": {
     "totalGeral": 12706739.69,
-    "totalNotas": 211,
+    "totalNotas": 221,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 7818783.54,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 1829334.31,
@@ -1833,12 +1833,52 @@
         "descricao": "VALOR QUE SE PAGA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024."
       },
       {
+        "data": "2026-09-11",
+        "fornecedor": "BRILHAR SERVICOS TERCEIRIZADOS LTDA",
+        "cnpj": "10.648.254/0001-74",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "ANULAÇÃO PARCIAL DO EMPENHO 30 BRILHAR - 2026."
+      },
+      {
+        "data": "2026-09-11",
+        "fornecedor": "COMUNIART COMUNICAÇÃO & MARKETING LTDA",
+        "cnpj": "03.196.366/0001-76",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Anulação Parcial do Empenho 31 - COMUNIART - Saldo Remanescente."
+      },
+      {
         "data": "2026-02-13",
         "fornecedor": "MEDIANEIRA PONTA PORA TRANSPORTES LTDA",
         "cnpj": "06.267.133/0001-05",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000043/22 - Ano Mod.: 2022 - Modalidade: CONVITE - Nº Mod.: 2 - Mod. Formatada: 2 - Aquisição de vale transporte a serem utilizados pelos servidores d"
+      },
+      {
+        "data": "2026-09-11",
+        "fornecedor": "LUIZ CARLOS CANHETE ROCHA",
+        "cnpj": "26.177.047/0001-19",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Anulação Parcial do Empenho 58 - LUIZ CARLOS CANHETE."
+      },
+      {
+        "data": "2026-09-11",
+        "fornecedor": "SISTEMAQ AUTOMAÇÃO DE ESCRITORIO LTDA",
+        "cnpj": "01.927.631/0001-13",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "Anulação Parcial do Empenho 83 - SISTEMAQ"
+      },
+      {
+        "data": "2026-09-11",
+        "fornecedor": "GODOY SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "14.972.026/0001-06",
+        "categoria": "Serviços de Consultoria",
+        "valor": 0.0,
+        "descricao": "Anulação Parcial do Empenho 85 - GODOY SOCIEDADE INDIVIDUAL."
       },
       {
         "data": "2026-04-22",
@@ -1855,6 +1895,46 @@
         "categoria": "Equipamentos e Material Permanente",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000002/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 2 - Mod. Formatada: 2 - fornecimento de materiais destinados à manutenção predial da Câma"
+      },
+      {
+        "data": "2026-09-11",
+        "fornecedor": "EXPERTS INFORMATICA LTDA",
+        "cnpj": "00.349.280/0001-48",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 0.0,
+        "descricao": "Anulação Parcial do Empenho 123 - EXPERTS INFORMÁTICA."
+      },
+      {
+        "data": "2026-09-11",
+        "fornecedor": "FEITOSA & COIMBRA SOCIEDADE DE ADVOGADOS",
+        "cnpj": "42.686.594/0001-86",
+        "categoria": "Serviços de Consultoria",
+        "valor": 0.0,
+        "descricao": "Anulação Parcial do Empenho 126 - FEITOSA E COIMBRA."
+      },
+      {
+        "data": "2026-09-11",
+        "fornecedor": "MKJ ASSESSORIA CONTABIL LTDA",
+        "cnpj": "18.180.813/0001-76",
+        "categoria": "Serviços de Consultoria",
+        "valor": 0.0,
+        "descricao": "Anulação Parcial EMpenho 128- MKJ ASSESSORIA."
+      },
+      {
+        "data": "2026-09-11",
+        "fornecedor": "MAGNA SERVICOS DE MANUTENCAO EM INFORMATICA LTDA.",
+        "cnpj": "11.603.140/0001-70",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 0.0,
+        "descricao": "Anulação Parcial do Empenho 147 - MAGNA SERVICOS."
+      },
+      {
+        "data": "2026-09-11",
+        "fornecedor": "PABLO ENRIQUE SOARES ALVES",
+        "cnpj": "21.266.196/0001-30",
+        "categoria": "Material de Consumo",
+        "valor": 0.0,
+        "descricao": "Anulação Parcial do Empenho 149 - PABLO ENRIQUE."
       },
       {
         "data": "2026-07-07",
