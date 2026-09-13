@@ -1,17 +1,17 @@
 {
-  "ultimaAtualizacao": "2026-09-12T14:27:59",
+  "ultimaAtualizacao": "2026-09-13T15:09:04",
   "ano": 2026,
-  "fonte": "Portal da Transparência (api.portaldatransparencia.gov.br/api-de-dados/emendas) — 2026-09-12T14:27:59",
-  "totalGeralPago": 232028124.13,
+  "fonte": "Portal da Transparência (api.portaldatransparencia.gov.br/api-de-dados/emendas) — 2026-09-13T15:09:04",
+  "totalGeralPago": 235777749.13,
   "parlamentares": [
     {
       "nome": "Nelsinho Trad",
       "cargo": "Senador(a)",
       "partido": "PSD",
-      "totalEmpenhado": 49874655.61,
-      "totalPago": 56011460.23,
+      "totalEmpenhado": 68122830.61,
+      "totalPago": 59761085.23,
       "porTipo": {
-        "Projeto Definido": 30223557.0,
+        "Projeto Definido": 33973182.0,
         "Emenda Pix": 25787903.23
       },
       "totalEmendas": 10,
@@ -40,8 +40,17 @@
           "municipio": "MÚLTIPLO",
           "funcao": "Saúde",
           "subfuncao": "Assistência hospitalar e ambulatorial",
-          "valorEmpenhado": 1400.0,
+          "valorEmpenhado": 14000000.0,
           "valorPago": 13729000.0
+        },
+        {
+          "numero": "0006",
+          "tipo": "Projeto Definido",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Assistência social",
+          "subfuncao": "SERVICOS SOCIOASSISTENCIAIS",
+          "valorEmpenhado": 3350000.0,
+          "valorPago": 3350000.0
         },
         {
           "numero": "0004",
@@ -62,22 +71,13 @@
           "valorPago": 312730.0
         },
         {
-          "numero": "0006",
-          "tipo": "Projeto Definido",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Assistência social",
-          "subfuncao": "SERVICOS SOCIOASSISTENCIAIS",
-          "valorEmpenhado": 335.0,
-          "valorPago": 335.0
-        },
-        {
           "numero": "0005",
           "tipo": "Projeto Definido",
           "municipio": "Nacional",
           "funcao": "Saúde",
           "subfuncao": "Assistência hospitalar e ambulatorial",
-          "valorEmpenhado": 20.0,
-          "valorPago": 20.0
+          "valorEmpenhado": 200000.0,
+          "valorPago": 200000.0
         },
         {
           "numero": "0008",
@@ -85,8 +85,8 @@
           "municipio": "MATO GROSSO DO SUL (UF)",
           "funcao": "Educação",
           "subfuncao": "Ensino superior",
-          "valorEmpenhado": 20.0,
-          "valorPago": 20.0
+          "valorEmpenhado": 200000.0,
+          "valorPago": 200000.0
         },
         {
           "numero": "0007",
@@ -103,7 +103,7 @@
           "municipio": "MATO GROSSO DO SUL (UF)",
           "funcao": "Cultura",
           "subfuncao": "Difusão cultural",
-          "valorEmpenhado": 50.0,
+          "valorEmpenhado": 500000.0,
           "valorPago": 0.0
         }
       ]
