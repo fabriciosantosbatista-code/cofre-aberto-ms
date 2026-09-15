@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-09-14T17:06:02",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-09-14T17:06:02",
+  "ultimaAtualizacao": "2026-09-15T15:46:04",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-09-15T15:46:04",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -221,21 +221,21 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 7803893.26,
+    "totalGeral": 7926583.93,
     "totalNotas": 315,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 4095469.76,
       "Equipamentos e Material Permanente": 1110586.91,
-      "Obrigações Patronais": 673025.42,
-      "Serviços de Consultoria": 575351.8,
-      "Serviços de Tecnologia da Informação": 354804.59,
+      "Obrigações Patronais": 770981.91,
+      "Serviços de Consultoria": 591417.68,
+      "Serviços de Tecnologia da Informação": 358704.59,
       "Auxílio-Alimentação": 353375.74,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 290744.0,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 295292.27,
       "Outros Serviços de Terceiros — Pessoa Física": 114403.94,
       "Outros Benefícios Assistenciais do Servidor": 108035.05,
       "Material de Consumo": 62358.53,
       "Diárias — Civil": 40828.51,
-      "Indenizações e Restituições": 24909.01
+      "Indenizações e Restituições": 25129.04
     },
     "despesas": [
       {
@@ -495,6 +495,14 @@
         "descricao": "EMPENHO REFERENTE AO 3º TERMO ADITIVO DO CONTRATO ADMINISTRATIVO Nº 01/2023, INEXIGIBILIDADE Nº 01/2023, CUJO OBJETO É A RENOVAÇÃO CONTRATUAL PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE AS"
       },
       {
+        "data": "2026-05-20",
+        "fornecedor": "RAMOS GOMES SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "36.367.034/0001-66",
+        "categoria": "Serviços de Consultoria",
+        "valor": 64263.52,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO Nº 004/2025, PROCESSO ADMINISTRATIVO Nº 19/2025, INEXIGIBILIDADE DE LICITAÇÃO Nº 004/2025, RELATIVO À CONTRATAÇÃO DE EMPRESA DE ASSESSORIA E CONSULTOR"
+      },
+      {
         "data": "2026-06-17",
         "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES COMISSIONADOS",
         "cnpj": "29.979.036/0001-40",
@@ -525,14 +533,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 50000.0,
         "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, CONTRATO Nº 001/2025, PARA A PRESTAÇÃO DE SERVIÇOS DE CONSULTORIA E ASSESSORIA EM ENGENHARIA. AS OBRIGAÇÕES CONSTANTES NO TERMO DE REFERÊNCIA, DENTRE OUTRAS, ENG"
-      },
-      {
-        "data": "2026-05-20",
-        "fornecedor": "RAMOS GOMES SOCIEDADE INDIVIDUAL DE ADVOCACIA",
-        "cnpj": "36.367.034/0001-66",
-        "categoria": "Serviços de Consultoria",
-        "valor": 48197.64,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO Nº 004/2025, PROCESSO ADMINISTRATIVO Nº 19/2025, INEXIGIBILIDADE DE LICITAÇÃO Nº 004/2025, RELATIVO À CONTRATAÇÃO DE EMPRESA DE ASSESSORIA E CONSULTOR"
       },
       {
         "data": "2026-01-02",
@@ -573,6 +573,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 43652.26,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - MARÇO/2026."
+      },
+      {
+        "data": "2026-09-01",
+        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 43448.87,
+        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - AGOSTO/2026."
       },
       {
         "data": "2026-04-30",
@@ -703,6 +711,22 @@
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - MAIO/2026."
       },
       {
+        "data": "2026-01-02",
+        "fornecedor": "SANESUL S/A",
+        "cnpj": "03.982.931/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 30420.41,
+        "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ÁGUA E ESGOTO PARA O EXERCÍCIO DE 2026."
+      },
+      {
+        "data": "2026-08-28",
+        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 30408.81,
+        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - AGOSTO/2026."
+      },
+      {
         "data": "2026-06-02",
         "fornecedor": "ENGELUGA ENGENHARIA LTDA",
         "cnpj": "22.034.572/0001-24",
@@ -783,14 +807,6 @@
         "descricao": "EMPENHO REFERENTE AO FORNECIMENTO DE LICENÇA TEMPORÁRIA DE USO DE SOFTWARE PARA GESTÃO LEGISLATIVA, CONFORME TERMO DE REFERÊNCIA, PERÍODO CONTRATUAL DE 28/08/2025 A 27/08/2026, PROCESSO ADMINISTRATIVO"
       },
       {
-        "data": "2026-01-02",
-        "fornecedor": "SANESUL S/A",
-        "cnpj": "03.982.931/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 26910.95,
-        "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ÁGUA E ESGOTO PARA O EXERCÍCIO DE 2026."
-      },
-      {
         "data": "2026-01-30",
         "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -869,6 +885,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 24098.81,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS VEREDORES - JULHO/2026."
+      },
+      {
+        "data": "2026-08-28",
+        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 24098.81,
+        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS VEREADORES - AGOSTO/2026."
       },
       {
         "data": "2026-05-07",
@@ -1007,6 +1031,14 @@
         "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE ELETRODOMÉSTICOS, CONFORME A DISPENSA ELETRÔNICA Nº 003/2026, PROCESSO ADMINISTRATIVO Nº 012/2026.  Pedido gerado a partir do resultado da Licitação: 000012/26 - Ano M"
       },
       {
+        "data": "2026-05-29",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 11700.0,
+        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
+      },
+      {
         "data": "2026-03-23",
         "fornecedor": "JOSE CARLOS DA FONSECA EIRELI - ME",
         "cnpj": "37.179.678/0001-93",
@@ -1095,14 +1127,6 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES COMISSIONADOS - MAIO/2026."
       },
       {
-        "data": "2026-05-29",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 7800.0,
-        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
-      },
-      {
         "data": "2026-03-26",
         "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
         "cnpj": "01.696.482/0001-29",
@@ -1135,6 +1159,14 @@
         "descricao": "EMPENHO REFERENTE À RESCISÃO CONTRATUAL DA SERVIDORA GISELE DOS SANTOS PEREIRA (ASSESSORA PARLAMENTAR)."
       },
       {
+        "data": "2026-01-02",
+        "fornecedor": "LUCAS LOPES RIBEIRO",
+        "cnpj": "044.XXX.XXX-40",
+        "categoria": "Indenizações e Restituições",
+        "valor": 6246.34,
+        "descricao": "VALOR QUE SE EMPENHA PARA FINS DE REEMBOLSAR AS DESPESAS INERENTES ÀS ATIVIDADES PARLAMENTARES, PERÍODO DE JANEIRO A DEZEMBRO DE 2026, CONFORME PREVISTO NA LEI MUNICIPAL Nº 1.309, DE 02 DE MARÇO DE 20"
+      },
+      {
         "data": "2026-05-28",
         "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
         "cnpj": "01.696.482/0001-29",
@@ -1165,14 +1197,6 @@
         "categoria": "Outros Benefícios Assistenciais do Servidor",
         "valor": 6197.04,
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES EFETIVOS - AGOSTO/2026."
-      },
-      {
-        "data": "2026-01-02",
-        "fornecedor": "LUCAS LOPES RIBEIRO",
-        "cnpj": "044.XXX.XXX-40",
-        "categoria": "Indenizações e Restituições",
-        "valor": 6026.31,
-        "descricao": "VALOR QUE SE EMPENHA PARA FINS DE REEMBOLSAR AS DESPESAS INERENTES ÀS ATIVIDADES PARLAMENTARES, PERÍODO DE JANEIRO A DEZEMBRO DE 2026, CONFORME PREVISTO NA LEI MUNICIPAL Nº 1.309, DE 02 DE MARÇO DE 20"
       },
       {
         "data": "2026-04-30",
@@ -1311,6 +1335,14 @@
         "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES COMISSIONADOS - AGOSTO/2026."
       },
       {
+        "data": "2026-06-17",
+        "fornecedor": "PRIME CONSULTORIA E ASSESSORIA EMPRESARIAL LTDA",
+        "cnpj": "05.340.639/0001-30",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4422.83,
+        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO ADMINISTRATIVO Nº 09/2024, DISPENSA Nº 02/2024 E PROCESSO ADMINISTRATIVO Nº 03/2024, QUE TEM POR OBJETO A IMPLEMENTAÇÃO, INTERMEDIAÇÃO E ADMINISTRAÇÃO"
+      },
+      {
         "data": "2026-06-18",
         "fornecedor": "NEWPC TECNOLOGIA LTDA",
         "cnpj": "20.892.343/0001-15",
@@ -1373,14 +1405,6 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 3500.0,
         "descricao": "EMPENHO REFERENTE À DISPENSA ELETRÔNICA Nº 01/2025, PROCESSO ADMINISTRATIVO Nº 15/2025 E CONTRATO ADMINISTRATIVO Nº 05/2025, CUJO OBJETIVO É A PRESTAÇÃO DE SERVIÇOS DE CRIAÇÃO, DESENVOLVIMENTO DE WEBS"
-      },
-      {
-        "data": "2026-06-17",
-        "fornecedor": "PRIME CONSULTORIA E ASSESSORIA EMPRESARIAL LTDA",
-        "cnpj": "05.340.639/0001-30",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 3384.02,
-        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO ADMINISTRATIVO Nº 09/2024, DISPENSA Nº 02/2024 E PROCESSO ADMINISTRATIVO Nº 03/2024, QUE TEM POR OBJETO A IMPLEMENTAÇÃO, INTERMEDIAÇÃO E ADMINISTRAÇÃO"
       },
       {
         "data": "2026-04-14",
@@ -2676,14 +2700,6 @@
         "cnpj": "29.979.036/0001-40",
         "categoria": "Obrigações Patronais",
         "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS VEREADORES - AGOSTO/2026."
-      },
-      {
-        "data": "2026-08-28",
-        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
-        "cnpj": "29.979.036/0001-40",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - AGOSTO/2026."
       },
       {
@@ -2693,14 +2709,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 0.0,
         "descricao": "ANULAÇÃO DE EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - AGOSTO/2026."
-      },
-      {
-        "data": "2026-08-28",
-        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
-        "cnpj": "29.979.036/0001-40",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - AGOSTO/2026."
       },
       {
         "data": "2026-08-28",
@@ -2741,14 +2749,6 @@
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
-      },
-      {
-        "data": "2026-09-01",
-        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
-        "cnpj": "29.979.036/0001-40",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - AGOSTO/2026."
       },
       {
         "data": "2026-09-10",
