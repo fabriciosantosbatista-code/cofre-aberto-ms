@@ -1,8 +1,8 @@
 {
-  "ultimaAtualizacao": "2026-09-16T15:37:59",
+  "ultimaAtualizacao": "2026-09-17T15:43:56",
   "ano": 2026,
-  "fonte": "Portal da Transparência (api.portaldatransparencia.gov.br/api-de-dados/emendas) — 2026-09-16T15:37:59",
-  "totalGeralPago": 232028124.13,
+  "fonte": "Portal da Transparência (api.portaldatransparencia.gov.br/api-de-dados/emendas) — 2026-09-17T15:43:56",
+  "totalGeralPago": 232395787.66,
   "parlamentares": [
     {
       "nome": "Nelsinho Trad",
@@ -112,10 +112,10 @@
       "nome": "Soraya Thronicke",
       "cargo": "Senador(a)",
       "partido": "PSB",
-      "totalEmpenhado": 27665532.97,
-      "totalPago": 29653428.8,
+      "totalEmpenhado": 27650172.97,
+      "totalPago": 29942657.46,
       "porTipo": {
-        "Projeto Definido": 16486299.75,
+        "Projeto Definido": 16775528.41,
         "Emenda Pix": 13167129.05
       },
       "totalEmendas": 13,
@@ -162,8 +162,17 @@
           "municipio": "Nacional",
           "funcao": "Educação",
           "subfuncao": "Ensino superior",
-          "valorEmpenhado": 999988.35,
+          "valorEmpenhado": 984628.35,
           "valorPago": 632897.75
+        },
+        {
+          "numero": "0006",
+          "tipo": "Projeto Definido",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Urbanismo",
+          "subfuncao": "infra-estrutura urbana",
+          "valorEmpenhado": 500.0,
+          "valorPago": 289228.66
         },
         {
           "numero": "0003",
@@ -226,15 +235,6 @@
           "funcao": "Urbanismo",
           "subfuncao": "Assistência comunitária",
           "valorEmpenhado": 150.0,
-          "valorPago": 0.0
-        },
-        {
-          "numero": "0006",
-          "tipo": "Projeto Definido",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Urbanismo",
-          "subfuncao": "infra-estrutura urbana",
-          "valorEmpenhado": 500.0,
           "valorPago": 0.0
         }
       ]
@@ -335,9 +335,9 @@
       "cargo": "Deputado(a) Federal",
       "partido": "PP",
       "totalEmpenhado": 27507194.3,
-      "totalPago": 19708501.21,
+      "totalPago": 19710657.45,
       "porTipo": {
-        "Projeto Definido": 12969220.95,
+        "Projeto Definido": 12971377.19,
         "Emenda Pix": 6739280.26
       },
       "totalEmendas": 9,
@@ -376,7 +376,7 @@
           "funcao": "Defesa nacional",
           "subfuncao": "Defesa terrestre",
           "valorEmpenhado": 559557.14,
-          "valorPago": 483898.0
+          "valorPago": 486054.24
         },
         {
           "numero": "0001",
@@ -429,13 +429,13 @@
       "nome": "Marcos Pollon",
       "cargo": "Deputado(a) Federal",
       "partido": "PL",
-      "totalEmpenhado": 29204004.24,
+      "totalEmpenhado": 30203206.94,
       "totalPago": 19512913.51,
       "porTipo": {
         "Projeto Definido": 10870898.64,
         "Emenda Pix": 8642014.87
       },
-      "totalEmendas": 9,
+      "totalEmendas": 10,
       "emendas": [
         {
           "numero": "0007",
@@ -497,7 +497,7 @@
           "municipio": "MÚLTIPLO",
           "funcao": "Assistência social",
           "subfuncao": "SERVICOS SOCIOASSISTENCIAIS",
-          "valorEmpenhado": 295.0,
+          "valorEmpenhado": 415.0,
           "valorPago": 290.0
         },
         {
@@ -516,6 +516,15 @@
           "funcao": "Desporto e lazer",
           "subfuncao": "Desporto comunitário",
           "valorEmpenhado": 196985.6,
+          "valorPago": 0.0
+        },
+        {
+          "numero": "0001",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Segurança pública",
+          "subfuncao": "Policiamento",
+          "valorEmpenhado": 999082.7,
           "valorPago": 0.0
         }
       ]
@@ -872,10 +881,10 @@
       "nome": "Beto Pereira",
       "cargo": "Deputado(a) Federal",
       "partido": "REPUBLICANOS",
-      "totalEmpenhado": 16643419.62,
-      "totalPago": 9053788.01,
+      "totalEmpenhado": 16646491.62,
+      "totalPago": 9130066.64,
       "porTipo": {
-        "Projeto Definido": 3624198.16,
+        "Projeto Definido": 3700476.79,
         "Emenda Pix": 5429589.85
       },
       "totalEmendas": 16,
@@ -914,7 +923,7 @@
           "funcao": "Defesa nacional",
           "subfuncao": "Defesa terrestre",
           "valorEmpenhado": 499996.79,
-          "valorPago": 77398.16
+          "valorPago": 153667.79
         },
         {
           "numero": "0005",
@@ -953,12 +962,21 @@
           "valorPago": 45.0
         },
         {
+          "numero": "0009",
+          "tipo": "Projeto Definido",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Urbanismo",
+          "subfuncao": "Assistência comunitária",
+          "valorEmpenhado": 100.0,
+          "valorPago": 9.0
+        },
+        {
           "numero": "0002",
           "tipo": "Projeto Definido",
           "municipio": "MÚLTIPLO",
           "funcao": "Desporto e lazer",
           "subfuncao": "Desporto comunitário",
-          "valorEmpenhado": 492464.0,
+          "valorEmpenhado": 495536.0,
           "valorPago": 0.0
         },
         {
@@ -1007,15 +1025,6 @@
           "valorPago": 0.0
         },
         {
-          "numero": "0009",
-          "tipo": "Projeto Definido",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Urbanismo",
-          "subfuncao": "Assistência comunitária",
-          "valorEmpenhado": 100.0,
-          "valorPago": 0.0
-        },
-        {
           "numero": "0011",
           "tipo": "Projeto Definido",
           "municipio": "MATO GROSSO DO SUL (UF)",
@@ -1030,7 +1039,7 @@
       "nome": "Tereza Cristina",
       "cargo": "Senador(a)",
       "partido": "PP",
-      "totalEmpenhado": 23927115.78,
+      "totalEmpenhado": 24545556.78,
       "totalPago": 8160113.47,
       "porTipo": {
         "Projeto Definido": 8160113.47
@@ -1079,7 +1088,7 @@
           "municipio": "MATO GROSSO DO SUL (UF)",
           "funcao": "Agricultura",
           "subfuncao": "Desenvolvimento tecnológico e engenharia",
-          "valorEmpenhado": 439649.46,
+          "valorEmpenhado": 558060.46,
           "valorPago": 305803.32
         },
         {
@@ -1106,7 +1115,7 @@
           "municipio": "MÚLTIPLO",
           "funcao": "Assistência social",
           "subfuncao": "SERVICOS SOCIOASSISTENCIAIS",
-          "valorEmpenhado": 202.0,
+          "valorEmpenhado": 232.0,
           "valorPago": 192.0
         },
         {
@@ -1187,7 +1196,7 @@
           "municipio": "MÚLTIPLO",
           "funcao": "Urbanismo",
           "subfuncao": "Assistência comunitária",
-          "valorEmpenhado": 6339000.0,
+          "valorEmpenhado": 6839000.0,
           "valorPago": 0.0
         }
       ]

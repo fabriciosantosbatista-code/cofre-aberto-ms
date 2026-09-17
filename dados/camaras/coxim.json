@@ -1,7 +1,7 @@
 {
   "cidade": "Coxim",
-  "ultimaAtualizacao": "2026-09-16T15:37:59",
-  "fonte": "Portal Transparência Fiorilli (pmcoxim.rcmsuporte.com.br:8079) — Dados Abertos — 2026-09-16T15:37:59",
+  "ultimaAtualizacao": "2026-09-17T15:43:56",
+  "fonte": "Portal Transparência Fiorilli (pmcoxim.rcmsuporte.com.br:8079) — Dados Abertos — 2026-09-17T15:43:56",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camaracoxim.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -1273,15 +1273,15 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 6369457.89,
-    "totalNotas": 570,
+    "totalGeral": 6422787.9,
+    "totalNotas": 574,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 3470553.01,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 906342.21,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 3481289.22,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 907055.43,
       "Obrigações Patronais": 655619.18,
-      "Diárias — Civil": 412125.0,
+      "Diárias — Civil": 422250.0,
+      "Indenizações e Restituições": 263537.7,
       "Serviços de Consultoria": 241217.89,
-      "Indenizações e Restituições": 231782.12,
       "Obras e Instalações": 219355.24,
       "Serviços de Tecnologia da Informação": 121793.35,
       "Material de Consumo": 107069.89,
@@ -2001,6 +2001,14 @@
         "descricao": "SERVIÇO DE APLICAÇÃO DE MANTA ASFALTICA IMPERMEABILIZADA NO TELHADO DA CAMARA MUNICIPAL, EM 197 METROS QUADRADOS"
       },
       {
+        "data": "2026-09-11",
+        "fornecedor": "IZABEL MARIA DE JESUS",
+        "cnpj": "322.XXX.XXX-20",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 10736.21,
+        "descricao": "valor referte ao apgto do abonme permanencia, que a servidora tinha direito de gozar, conforme relatorio do recursos humanos e parecer das consultorias"
+      },
+      {
         "data": "2026-05-12",
         "fornecedor": "SANDRA SALINO - MEI",
         "cnpj": "65.405.468/0001-01",
@@ -2193,6 +2201,14 @@
         "descricao": "EMPENHO DE ADIANTAMENTO DE SUPRIMENTO DE FUNDO N 003-2026"
       },
       {
+        "data": "2026-01-05",
+        "fornecedor": "BRASIL TECPAR SERV DE TELEC SA",
+        "cnpj": "07.756.651/0001-55",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4988.22,
+        "descricao": "serviços diversos conf nota fiscal DE INTERNET CONFORME CONTRATO"
+      },
+      {
         "data": "2026-03-09",
         "fornecedor": "ELAINE CRISTINA TEIXEIRA GAUDIOSO",
         "cnpj": "215.XXX.XXX-35",
@@ -2231,14 +2247,6 @@
         "categoria": "Material de Consumo",
         "valor": 4295.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000009/24 - Ano Mod.: 2024 - Modalidade: DISPENSA - Nº Mod.: 7 - Mod. Formatada:  - Contratação de empresa especializada para aq"
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "BRASIL TECPAR SERV DE TELEC SA",
-        "cnpj": "07.756.651/0001-55",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 4275.0,
-        "descricao": "serviços diversos conf nota fiscal DE INTERNET CONFORME CONTRATO"
       },
       {
         "data": "2026-01-05",
@@ -2585,6 +2593,62 @@
         "descricao": "valor refere ao pagto da verba indenizatoria n.º007"
       },
       {
+        "data": "2026-09-14",
+        "fornecedor": "MARIA DE LOURDES DA SILVA",
+        "cnpj": "799.XXX.XXX-87",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2800.0,
+        "descricao": "valor refere ao pagto da 8 verba indenizatória"
+      },
+      {
+        "data": "2026-09-14",
+        "fornecedor": "LUCIMEIRE ELIAS DA SILVA RAMOS",
+        "cnpj": "367.XXX.XXX-30",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2800.0,
+        "descricao": "valor refere ao pagto da 8 verba indenizatória"
+      },
+      {
+        "data": "2026-09-14",
+        "fornecedor": "JOHNNY GUERRA GAI",
+        "cnpj": "856.XXX.XXX-20",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2800.0,
+        "descricao": "valor refere ao pagto da 8 verba indenizatória"
+      },
+      {
+        "data": "2026-09-14",
+        "fornecedor": "MARCIO BARBOSA DE SOUZA",
+        "cnpj": "034.XXX.XXX-66",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2800.0,
+        "descricao": "valor refere ao pagto da 8 verba indenizatória"
+      },
+      {
+        "data": "2026-09-14",
+        "fornecedor": "WILLIAM MENDES DA ROCHA MEIRA",
+        "cnpj": "003.XXX.XXX-70",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2800.0,
+        "descricao": "valor refere ao pagto da 8 verba indenizatória"
+      },
+      {
+        "data": "2026-09-15",
+        "fornecedor": "LUIZ EDUARDO DOS SANTOS",
+        "cnpj": "039.XXX.XXX-60",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2800.0,
+        "descricao": "valor refere ao pagto da verba indenizatória n 08/2026"
+      },
+      {
+        "data": "2026-09-15",
+        "fornecedor": "ADEMIR FERREIRA DA SILVA",
+        "cnpj": "018.XXX.XXX-88",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2800.0,
+        "descricao": "valor refere ao pagamento de verba indenizatório n008"
+      },
+      {
         "data": "2026-05-12",
         "fornecedor": "SIMONE GOMES DO NASCIMENTO",
         "cnpj": "582.XXX.XXX-91",
@@ -2673,6 +2737,22 @@
         "descricao": "VERBA INDENIZATORIO N.º 06"
       },
       {
+        "data": "2026-09-14",
+        "fornecedor": "MAURICIO HELPIS DE OLIVEIRA",
+        "cnpj": "030.XXX.XXX-93",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2779.16,
+        "descricao": "valor refere ao pagto da 8 verba indenizatória"
+      },
+      {
+        "data": "2026-09-16",
+        "fornecedor": "ADRIANA APARECIDA MARIANO NABHAN",
+        "cnpj": "013.XXX.XXX-08",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2777.88,
+        "descricao": "valor refere ao pagto de verba indenizatória n 008/26"
+      },
+      {
         "data": "2026-03-13",
         "fornecedor": "ADRIANA APARECIDA MARIANO NABHAN",
         "cnpj": "013.XXX.XXX-08",
@@ -2695,6 +2775,14 @@
         "categoria": "Indenizações e Restituições",
         "valor": 2760.0,
         "descricao": "REFERENTE AO PAGTO DA VERBA INDENIZATORIA N.º 03/2026"
+      },
+      {
+        "data": "2026-09-14",
+        "fornecedor": "SIMONE GOMES DO NASCIMENTO",
+        "cnpj": "582.XXX.XXX-91",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2753.47,
+        "descricao": "valor refere ao pagto da 8 verba indenizatória"
       },
       {
         "data": "2026-05-12",
@@ -3449,6 +3537,22 @@
         "descricao": "valor refere ao pagto de tres diarias para vereador cumprir agenda em campo grande nos dias 02,03 e 04 de setembro em curso da KCM com tema da escuta cidadã à atuação parlamentar : o vereador como age"
       },
       {
+        "data": "2026-09-15",
+        "fornecedor": "ADRIANA APARECIDA MARIANO NABHAN",
+        "cnpj": "013.XXX.XXX-08",
+        "categoria": "Diárias — Civil",
+        "valor": 2250.0,
+        "descricao": "valor refere ao pagto de tres diarias para vereador cumprir agenda em campo grande, nos dias 16/09 deputado junior mochi, e nos dias 17 e 18/09, participar de sminraio kcm, com tema Pilares fundamenta"
+      },
+      {
+        "data": "2026-09-15",
+        "fornecedor": "SIMONE GOMES DO NASCIMENTO",
+        "cnpj": "582.XXX.XXX-91",
+        "categoria": "Diárias — Civil",
+        "valor": 2250.0,
+        "descricao": "valor refere ao pagto de tres diarias para vereador cumprir agenda em campo grande, nos dias 16/09 deputado junior mochi, e nos dias 17 e 18/09, participar de sminraio kcm, com tema Pilares fundamenta"
+      },
+      {
         "data": "2026-05-20",
         "fornecedor": "CASSEMS",
         "cnpj": "04.311.093/0001-26",
@@ -3495,6 +3599,14 @@
         "categoria": "Indenizações e Restituições",
         "valor": 2184.1,
         "descricao": "valor empenho refere ao pagamento da verba indenizatoria n 004-2026"
+      },
+      {
+        "data": "2026-09-14",
+        "fornecedor": "JEFFERSON AISLAN SILVA",
+        "cnpj": "952.XXX.XXX-00",
+        "categoria": "Indenizações e Restituições",
+        "valor": 2143.12,
+        "descricao": "valor refere ao pagto da 8 verba indenizatória"
       },
       {
         "data": "2026-07-20",
@@ -4305,6 +4417,22 @@
         "descricao": "valor refere ao pagto de duas diarias para vereador cumprir agenda em campo grande nos dias 03 de setembro com deputado junior mochi e no dia 04 de setembro com o deputado rodolfo nogueuira"
       },
       {
+        "data": "2026-09-15",
+        "fornecedor": "JEFFERSON AISLAN SILVA",
+        "cnpj": "952.XXX.XXX-00",
+        "categoria": "Diárias — Civil",
+        "valor": 1500.0,
+        "descricao": "valor refere ao pagto de duas diarias para vereador cumprir agenda em campo grande no dia 16/09 com deputado antonio vaz e no dia 17/09 deputado beto pereira"
+      },
+      {
+        "data": "2026-09-16",
+        "fornecedor": "GIANI MARCIO SCHOLZ",
+        "cnpj": "808.XXX.XXX-20",
+        "categoria": "Diárias — Civil",
+        "valor": 1500.0,
+        "descricao": "valor refere ao pagto de duas diarias para contador, Participar de Seminário de contabilidade Pública com ênfase em MCASP, realizado nos dias 17 e 18 de setembro de 2026, pela NORTHIA Soluções Intelig"
+      },
+      {
         "data": "2026-04-16",
         "fornecedor": "ABILIO JUNIOR VANELI",
         "cnpj": "919.XXX.XXX-53",
@@ -4319,6 +4447,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 1450.0,
         "descricao": "TREINAMENTO DE SERVIDORA DIRETORA DE LICITAÇÃO, EM E-SFINGE, LGPD E E-SOCIAL, QUE SE REALIZARÁ EM CAMPO GRANDE NOS DIAS 13,14 E 15 DE MAIO DE 2026, PELA EMPRESA ATHUALLI"
+      },
+      {
+        "data": "2026-09-14",
+        "fornecedor": "ARMINDO BATISTA DOS SANTOS FILHO",
+        "cnpj": "141.XXX.XXX-04",
+        "categoria": "Indenizações e Restituições",
+        "valor": 1449.33,
+        "descricao": "valor refere ao pagto da 8 verba indenizatória"
       },
       {
         "data": "2026-08-31",
@@ -5153,6 +5289,22 @@
         "descricao": "valor refere ao pagto de uma diaria para vereador  cumprir agenda em campo grande no dia 09/09 com deputado junior mochi"
       },
       {
+        "data": "2026-09-15",
+        "fornecedor": "WILLIAM MENDES DA ROCHA MEIRA",
+        "cnpj": "003.XXX.XXX-70",
+        "categoria": "Diárias — Civil",
+        "valor": 750.0,
+        "descricao": "valor refere ao pagto de uma diaria para vereador participar de agenda em campo grande no dia 16/09 com o deputado geraldo resende"
+      },
+      {
+        "data": "2026-09-16",
+        "fornecedor": "LUIZ EDUARDO DOS SANTOS",
+        "cnpj": "039.XXX.XXX-60",
+        "categoria": "Diárias — Civil",
+        "valor": 750.0,
+        "descricao": "valor refere ao empenho de uma diaria para vereador cumprir agenda em campo grande no dia 16/09 com o deputado federal geraldo resende"
+      },
+      {
         "data": "2026-02-19",
         "fornecedor": "SUPERMERCADO ROMA LTDA",
         "cnpj": "24.642.985/0001-17",
@@ -5481,6 +5633,30 @@
         "descricao": "VALOR REF AO PAGTO DE MEIA DIARIA PARA O DIA 05/08, PARA VEREADOR CUMPRIR AGENDA NA AGEMS"
       },
       {
+        "data": "2026-09-14",
+        "fornecedor": "MAURICIO HELPIS DE OLIVEIRA",
+        "cnpj": "030.XXX.XXX-93",
+        "categoria": "Diárias — Civil",
+        "valor": 375.0,
+        "descricao": "valor refere ao pagto de meia diaria pra vereador cumprir agenda em campo grande no dia 14/09 no gabinete da deputada mara caseiro"
+      },
+      {
+        "data": "2026-09-14",
+        "fornecedor": "ADEMIR FERREIRA DA SILVA",
+        "cnpj": "018.XXX.XXX-88",
+        "categoria": "Diárias — Civil",
+        "valor": 375.0,
+        "descricao": "valor refere ao pagto de meia diaria para vereador cumprir agenda em campo grande no gabinete do deputado vander loubert no dia 14 de setembro"
+      },
+      {
+        "data": "2026-09-15",
+        "fornecedor": "MARCIO BARBOSA DE SOUZA",
+        "cnpj": "034.XXX.XXX-66",
+        "categoria": "Diárias — Civil",
+        "valor": 375.0,
+        "descricao": "valor refere ao pagto de meia diaria para vereador cumrpir agenda em campo grande no dia 16/09 na governadoria do estado de MS"
+      },
+      {
         "data": "2026-07-01",
         "fornecedor": "CENTRO DE DIAGNOSTICO BIANÁLISES LTDA",
         "cnpj": "26.832.691/0001-83",
@@ -5527,6 +5703,14 @@
         "categoria": "Indenizações e Restituições",
         "valor": 258.64,
         "descricao": "valor referente a restituição de despesa de cobustivel em viagem opara campoo grande conforme diaria"
+      },
+      {
+        "data": "2026-09-10",
+        "fornecedor": "ELAINE CRISTINA TEIXEIRA GAUDIOSO",
+        "cnpj": "215.XXX.XXX-35",
+        "categoria": "Indenizações e Restituições",
+        "valor": 252.62,
+        "descricao": "indenização de despesa de viagem"
       },
       {
         "data": "2026-03-04",
@@ -5650,14 +5834,6 @@
       },
       {
         "data": "2026-09-10",
-        "fornecedor": "ELAINE CRISTINA TEIXEIRA GAUDIOSO",
-        "cnpj": "215.XXX.XXX-35",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "indenização de despesa de viagem"
-      },
-      {
-        "data": "2026-09-10",
         "fornecedor": "J C DESENVOLVIMENTO E TREINAMENTO LTDA",
         "cnpj": "59.132.105/0001-47",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
@@ -5665,110 +5841,6 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000009/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 5 - Mod. Formatada: 5 - Contratação de empresa especializada para a execução do Projeto P"
       },
       {
-        "data": "2026-09-11",
-        "fornecedor": "IZABEL MARIA DE JESUS",
-        "cnpj": "322.XXX.XXX-20",
-        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 0.0,
-        "descricao": "valor referte ao apgto do abonme permanencia, que a servidora tinha direito de gozar, conforme relatorio do recursos humanos e parecer das consultorias"
-      },
-      {
-        "data": "2026-09-14",
-        "fornecedor": "MAURICIO HELPIS DE OLIVEIRA",
-        "cnpj": "030.XXX.XXX-93",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de meia diaria pra vereador cumprir agenda em campo grande no dia 14/09 no gabinete da deputada mara caseiro"
-      },
-      {
-        "data": "2026-09-14",
-        "fornecedor": "ADEMIR FERREIRA DA SILVA",
-        "cnpj": "018.XXX.XXX-88",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de meia diaria para vereador cumprir agenda em campo grande no gabinete do deputado vander loubert no dia 14 de setembro"
-      },
-      {
-        "data": "2026-09-14",
-        "fornecedor": "SIMONE GOMES DO NASCIMENTO",
-        "cnpj": "582.XXX.XXX-91",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto da 8 verba indenizatória"
-      },
-      {
-        "data": "2026-09-14",
-        "fornecedor": "MAURICIO HELPIS DE OLIVEIRA",
-        "cnpj": "030.XXX.XXX-93",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto da 8 verba indenizatória"
-      },
-      {
-        "data": "2026-09-14",
-        "fornecedor": "MARIA DE LOURDES DA SILVA",
-        "cnpj": "799.XXX.XXX-87",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto da 8 verba indenizatória"
-      },
-      {
-        "data": "2026-09-14",
-        "fornecedor": "LUCIMEIRE ELIAS DA SILVA RAMOS",
-        "cnpj": "367.XXX.XXX-30",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto da 8 verba indenizatória"
-      },
-      {
-        "data": "2026-09-14",
-        "fornecedor": "JOHNNY GUERRA GAI",
-        "cnpj": "856.XXX.XXX-20",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto da 8 verba indenizatória"
-      },
-      {
-        "data": "2026-09-14",
-        "fornecedor": "MARCIO BARBOSA DE SOUZA",
-        "cnpj": "034.XXX.XXX-66",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto da 8 verba indenizatória"
-      },
-      {
-        "data": "2026-09-14",
-        "fornecedor": "ARMINDO BATISTA DOS SANTOS FILHO",
-        "cnpj": "141.XXX.XXX-04",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto da 8 verba indenizatória"
-      },
-      {
-        "data": "2026-09-14",
-        "fornecedor": "WILLIAM MENDES DA ROCHA MEIRA",
-        "cnpj": "003.XXX.XXX-70",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto da 8 verba indenizatória"
-      },
-      {
-        "data": "2026-09-14",
-        "fornecedor": "JEFFERSON AISLAN SILVA",
-        "cnpj": "952.XXX.XXX-00",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto da 8 verba indenizatória"
-      },
-      {
-        "data": "2026-09-15",
-        "fornecedor": "LUIZ EDUARDO DOS SANTOS",
-        "cnpj": "039.XXX.XXX-60",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto da verba indenizatória n 08/2026"
-      },
-      {
         "data": "2026-09-15",
         "fornecedor": "SUPERMERCADO ROMA LTDA",
         "cnpj": "24.642.985/0001-17",
@@ -5801,52 +5873,12 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000010/24 - Ano Mod.: 2024 - Modalidade: DISPENSA - Nº Mod.: 10 - Mod. Formatada: 10 - Contratação de empresa especializada para"
       },
       {
-        "data": "2026-09-15",
-        "fornecedor": "ADRIANA APARECIDA MARIANO NABHAN",
-        "cnpj": "013.XXX.XXX-08",
-        "categoria": "Diárias — Civil",
+        "data": "2026-09-16",
+        "fornecedor": "SIDNEI MARCOS DEBONA",
+        "cnpj": "02.721.440/0001-63",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
-        "descricao": "valor refere ao pagto de tres diarias para vereador cumprir agenda em campo grande, nos dias 16/09 deputado junior mochi, e nos dias 17 e 18/09, participar de sminraio kcm, com tema Pilares fundamenta"
-      },
-      {
-        "data": "2026-09-15",
-        "fornecedor": "JEFFERSON AISLAN SILVA",
-        "cnpj": "952.XXX.XXX-00",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de duas diarias para vereador cumprir agenda em campo grande no dia 16/09 com deputado antonio vaz e no dia 17/09 deputado beto pereira"
-      },
-      {
-        "data": "2026-09-15",
-        "fornecedor": "MARCIO BARBOSA DE SOUZA",
-        "cnpj": "034.XXX.XXX-66",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de meia diaria para vereador cumrpir agenda em campo grande no dia 16/09 na governadoria do estado de MS"
-      },
-      {
-        "data": "2026-09-15",
-        "fornecedor": "WILLIAM MENDES DA ROCHA MEIRA",
-        "cnpj": "003.XXX.XXX-70",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de uma diaria para vereador participar de agenda em campo grande no dia 16/09 com o deputado geraldo resende"
-      },
-      {
-        "data": "2026-09-15",
-        "fornecedor": "SIMONE GOMES DO NASCIMENTO",
-        "cnpj": "582.XXX.XXX-91",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de tres diarias para vereador cumprir agenda em campo grande, nos dias 16/09 deputado junior mochi, e nos dias 17 e 18/09, participar de sminraio kcm, com tema Pilares fundamenta"
-      },
-      {
-        "data": "2026-09-15",
-        "fornecedor": "ADEMIR FERREIRA DA SILVA",
-        "cnpj": "018.XXX.XXX-88",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagamento de verba indenizatório n008"
+        "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000006/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 4 - Mod. Formatada: 4 - CONTRATAÇÃO DE EMPRESA MEDIANTE REGISTRO DE"
       }
     ]
   }
