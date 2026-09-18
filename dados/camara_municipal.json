@@ -1,5 +1,5 @@
 {
-  "ultimaAtualizacao": "2026-08-21T12:19:35",
+  "ultimaAtualizacao": "2026-09-18T15:16:30",
   "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande/MS (SCPI Fiorilli, 45.225.6.93:8079) — Verba Indenizatória (Ato 027/028) extraída dos PDFs individuais por vereador via HomeDocumentosPublicados.aspx, 10/07/2026.",
   "resumo": {
     "totalVereadores": 29,
@@ -4557,16 +4557,19 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 62464.43,
+        "gastoAto027_2026": 99948.71,
         "gastoAto028_2026": 58000.0,
-        "gastoPago2026": 120464.43,
-        "percentualUsado": 40.2,
+        "gastoPago2026": 157948.71,
+        "percentualUsado": 52.6,
         "mesesAto027": {
           "jan": 12496.02,
           "fev": 12495.56,
           "mar": 12495.35,
           "abr": 12488.55,
-          "mai": 12488.95
+          "mai": 12488.95,
+          "jun": 12498.12,
+          "jul": 12490.45,
+          "ago": 12495.71
         },
         "mesesAto028": {
           "jan": 8000.0,
@@ -4593,7 +4596,7 @@
         "gastoPessoalAnual": 1682428.8,
         "totalEstimado": 2371429.26
       },
-      "totalNotasFiscais": 26,
+      "totalNotasFiscais": 35,
       "despesas": [
         {
           "data": "2026-02-02",
@@ -4827,6 +4830,87 @@
           "valor": 1672.98,
           "nf": null,
           "descricao": "NF Nº315.961 GASOLINA 250,76 J SN * > | 00H8367 NX | UGWIG15",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 2117.74,
+          "nf": null,
+          "descricao": "NF Nº 316.561 DIESEL 297,85 QAWB8E40",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 1890.38,
+          "nf": null,
+          "descricao": "NF Nº316.561 GASOLINA 287,43 OOH8367 UGWI1G15",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-02",
+          "fornecedor": "J.S.DALBOSCO-ME >",
+          "cnpj": "01.683.790/0001-10",
+          "valor": 8490.0,
+          "nf": null,
+          "descricao": "NF Nº2310/U Criação de arte /Serviços gráficos / impressão ] de material",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-03",
+          "fornecedor": "J.S.DALBOSCO-ME NV",
+          "cnpj": "01.683.790/0001-10",
+          "valor": 7350.0,
+          "nf": null,
+          "descricao": "NF Nº2320/U NX “| Criação de arte [Serviços gráficos / impressão de material Foo Essa RD o o AM Fasso EE e) 3",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-03",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA x",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 3246.93,
+          "nf": null,
+          "descricao": "NF Nº 317.252 DIESEL 464,51 QAWB8E40",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-03",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA x",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 1893.52,
+          "nf": null,
+          "descricao": "NF Nº317.252 GASOLINA 291,76 | OOH8367 * UGWI16G15",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-02",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA >",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 1685.5,
+          "nf": null,
+          "descricao": "NFNº317.858 2 DIESEL 291,13 | QAW8E4O >",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-02",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 2620.21,
+          "nf": null,
+          "descricao": "NFNº317.858 “* OoH8367 | UGWI1G15 — GASOLINA NX S",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-03",
+          "fornecedor": "J.S.DALBOSCO-ME",
+          "cnpj": "01.683.790/0001-10",
+          "valor": 8190.0,
+          "nf": null,
+          "descricao": "NF Nº2330/U Criação de arte /Serviços gráficos / impressão à SS de material",
           "ato": "ATO 027"
         }
       ],
@@ -7390,16 +7474,19 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 60850.05,
+        "gastoAto027_2026": 95000.05,
         "gastoAto028_2026": 62500.0,
-        "gastoPago2026": 123350.05,
-        "percentualUsado": 41.1,
+        "gastoPago2026": 157500.05,
+        "percentualUsado": 52.5,
         "mesesAto027": {
           "jan": 11530.0,
           "fev": 12400.02,
           "mar": 12275.03,
           "abr": 12480.0,
-          "mai": 12165.0
+          "mai": 12165.0,
+          "jun": 12450.0,
+          "jul": 10850.0,
+          "ago": 10850.0
         },
         "mesesAto028": {
           "jan": 12500.0,
@@ -7427,7 +7514,7 @@
         "gastoPessoalAnual": 1535872.44,
         "totalEstimado": 2269745.38
       },
-      "totalNotasFiscais": 46,
+      "totalNotasFiscais": 50,
       "despesas": [
         {
           "data": "2026-01-01",
@@ -7842,6 +7929,42 @@
           "nf": "98",
           "descricao": "PRESTAÇÃODESERVIÇOSADVOCATÍCIOS",
           "ato": "ATO 028"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "ANDRÉ G. DE SOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 450.0,
+          "nf": "555",
+          "descricao": "Locação de Software - Gabinett",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-06",
+          "fornecedor": "Valdevino Soluções Gráficas Eirelli",
+          "cnpj": "10.306.434/0001-78",
+          "valor": 12000.0,
+          "nf": "6739",
+          "descricao": "Impressão de folder",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-31",
+          "fornecedor": ", | Cunha Locação Serviços e",
+          "cnpj": "20.357.581/0001-20",
+          "valor": 5200.0,
+          "nf": null,
+          "descricao": "sh] FTLCO1630 Locação de veículo - QAH - 7B56 \"| Transportes LTDA Y NS \"",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "ANDRÉ G.DESOUZA >]",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 450.0,
+          "nf": "616",
+          "descricao": "“| Locaçãode Software -Gabinett",
+          "ato": "ATO 027"
         }
       ],
       "foto": "data:image/jpeg;base64,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",
