@@ -1,5 +1,5 @@
 {
-  "ultimaAtualizacao": "2026-09-18T15:16:30",
+  "ultimaAtualizacao": "2026-09-20T14:57:35",
   "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande/MS (SCPI Fiorilli, 45.225.6.93:8079) — Verba Indenizatória (Ato 027/028) extraída dos PDFs individuais por vereador via HomeDocumentosPublicados.aspx, 10/07/2026.",
   "resumo": {
     "totalVereadores": 29,
@@ -2872,9 +2872,9 @@
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
         "gastoAto027_2026": 61468.99,
-        "gastoAto028_2026": 62500.0,
-        "gastoPago2026": 123968.99,
-        "percentualUsado": 41.3,
+        "gastoAto028_2026": 100000.0,
+        "gastoPago2026": 161468.99,
+        "percentualUsado": 53.8,
         "mesesAto027": {
           "jan": 12030.71,
           "fev": 12466.47,
@@ -2887,7 +2887,10 @@
           "fev": 12500.0,
           "mar": 12500.0,
           "abr": 12500.0,
-          "mai": 12500.0
+          "mai": 12500.0,
+          "jun": 12500.0,
+          "jul": 12500.0,
+          "ago": 12500.0
         },
         "categorias": {
           "Assessoria/Serviços": 8000.0,
@@ -2916,7 +2919,7 @@
         "gastoPessoalAnual": 1706465.76,
         "totalEstimado": 2280718.5
       },
-      "totalNotasFiscais": 38,
+      "totalNotasFiscais": 44,
       "despesas": [
         {
           "data": "2026-01-01",
@@ -3259,6 +3262,60 @@
           "nf": null,
           "descricao": "NF-e000.000.251 GASOLINACOMUM — [92/2481 | RWB-6J80, QAK9831",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "LAURO CABRAL SOCIEDADE INDIVIDUAL DE ADVOCACIA *",
+          "cnpj": "46.541.837/0001-49",
+          "valor": 8500.0,
+          "nf": null,
+          "descricao": "> — NFSe/37/U PRESTAÇÃO DE SERVIÇOS ADVOCATICIOS",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "CLAUDEMIR PAES SILVA ME »",
+          "cnpj": "23.206.545/0001-54",
+          "valor": 4000.0,
+          "nf": null,
+          "descricao": "NFSe /378/U : GESTAO DE REDES SOCIAIS",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-08-03",
+          "fornecedor": "CLAUDEMIR PAES SILVA ME x",
+          "cnpj": "23.206.545/0001-54",
+          "valor": 4000.0,
+          "nf": null,
+          "descricao": "N NFSe /381/U Ne GESTAO DE REDES SOCIAIS",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-08-04",
+          "fornecedor": "LAURO CABRAL SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+          "cnpj": "46.541.837/0001-49",
+          "valor": 8500.0,
+          "nf": null,
+          "descricao": "N NFSe / 40/U = PRESTAÇÃO DE SERVIÇOS ADVOCATICIOS",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-08-31",
+          "fornecedor": "CLAUDEMIR PAES SILVA ME *",
+          "cnpj": "23.206.545/0001-54",
+          "valor": 4000.0,
+          "nf": null,
+          "descricao": "N NFS /386/U N GESTAO DE REDES SOCIAIS",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": ")» LAURO CABRAL SOCIEDADE INDIVIDUAL DE ADVOCACIA «",
+          "cnpj": "46.541.837/0001-49",
+          "valor": 8500.0,
+          "nf": null,
+          "descricao": "ho. NFSe / 41/U s — PRESTAÇÃO DE SERVIÇOS ADVOCATICIOS",
+          "ato": "ATO 028"
         }
       ],
       "foto": "data:image/jpeg;base64,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",
@@ -4558,9 +4615,9 @@
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
         "gastoAto027_2026": 99948.71,
-        "gastoAto028_2026": 58000.0,
-        "gastoPago2026": 157948.71,
-        "percentualUsado": 52.6,
+        "gastoAto028_2026": 95500.0,
+        "gastoPago2026": 195448.71,
+        "percentualUsado": 65.1,
         "mesesAto027": {
           "jan": 12496.02,
           "fev": 12495.56,
@@ -4576,7 +4633,10 @@
           "fev": 12500.0,
           "mar": 12500.0,
           "abr": 12500.0,
-          "mai": 12500.0
+          "mai": 12500.0,
+          "jun": 12500.0,
+          "jul": 12500.0,
+          "ago": 12500.0
         },
         "categorias": {
           "Serviços gráficos": 30050.0,
@@ -4596,7 +4656,7 @@
         "gastoPessoalAnual": 1682428.8,
         "totalEstimado": 2371429.26
       },
-      "totalNotasFiscais": 35,
+      "totalNotasFiscais": 38,
       "despesas": [
         {
           "data": "2026-02-02",
@@ -4833,6 +4893,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-06-30",
+          "fornecedor": "GAMA SOLUÇOES LTDA",
+          "cnpj": "07.805.770/0001-50",
+          "valor": 4500.0,
+          "nf": null,
+          "descricao": ", NFNº292/U| GESTÃO DEREDESSOCIAIS 7",
+          "ato": "ATO 028"
+        },
+        {
           "data": "2026-07-01",
           "fornecedor": "TROKAR POSTOS DE SERVIÇOS LTDA",
           "cnpj": "02.969.905/0001-08",
@@ -4860,6 +4929,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-07-31",
+          "fornecedor": "SAMA SOLUÇÕES LTDA",
+          "cnpj": "07.805.770/0001-50",
+          "valor": 4500.0,
+          "nf": null,
+          "descricao": "N NFNº297/U GESTÃO DEREDESSOCIAIS",
+          "ato": "ATO 028"
+        },
+        {
           "data": "2026-08-03",
           "fornecedor": "J.S.DALBOSCO-ME NV",
           "cnpj": "01.683.790/0001-10",
@@ -4885,6 +4963,15 @@
           "nf": null,
           "descricao": "NF Nº317.252 GASOLINA 291,76 | OOH8367 * UGWI16G15",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-31",
+          "fornecedor": "GAMASOLUÇÕES LTDA x",
+          "cnpj": "07.805.770/0001-50",
+          "valor": 4500.0,
+          "nf": null,
+          "descricao": "NFNº300/U | GESTÃO DEREDESSOCIAIS",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-09-02",
@@ -7475,9 +7562,9 @@
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
         "gastoAto027_2026": 95000.05,
-        "gastoAto028_2026": 62500.0,
-        "gastoPago2026": 157500.05,
-        "percentualUsado": 52.5,
+        "gastoAto028_2026": 95000.0,
+        "gastoPago2026": 190000.05,
+        "percentualUsado": 63.3,
         "mesesAto027": {
           "jan": 11530.0,
           "fev": 12400.02,
@@ -7493,7 +7580,10 @@
           "fev": 12500.0,
           "mar": 12500.0,
           "abr": 12500.0,
-          "mai": 12500.0
+          "mai": 12500.0,
+          "jun": 12500.0,
+          "jul": 10000.0,
+          "ago": 10000.0
         },
         "categorias": {
           "Serviços gráficos/Impressão": 32675.0,
@@ -7514,7 +7604,7 @@
         "gastoPessoalAnual": 1535872.44,
         "totalEstimado": 2269745.38
       },
-      "totalNotasFiscais": 50,
+      "totalNotasFiscais": 54,
       "despesas": [
         {
           "data": "2026-01-01",
@@ -7940,6 +8030,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-07-02",
+          "fornecedor": "YUIRÊ CAMPOS sd",
+          "cnpj": "65.229.033/0001-53",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "NFS9 N SERVIÇOSDEMARKETING ST o. : \" õ",
+          "ato": "ATO 028"
+        },
+        {
           "data": "2026-07-06",
           "fornecedor": "Valdevino Soluções Gráficas Eirelli",
           "cnpj": "10.306.434/0001-78",
@@ -7947,6 +8046,24 @@
           "nf": "6739",
           "descricao": "Impressão de folder",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-07",
+          "fornecedor": "KALANIT TIECHERSOCIEDADE INDIVIDUAL DEADVOCACIA",
+          "cnpj": "36.162.407/0001-62",
+          "valor": 10000.0,
+          "nf": "99",
+          "descricao": "N PRESTAÇÃODESERVIÇOSADVOCATÍCIOS",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-08-07",
+          "fornecedor": "KALANIT TIECHERSOCIEDADE INDIVIDUAL DEADVOCACIA",
+          "cnpj": "36.162.407/0001-62",
+          "valor": 10000.0,
+          "nf": "100",
+          "descricao": "PRESTAÇÃODESERVIÇOSADVOCATÍCIOS",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-08-31",
@@ -7965,6 +8082,15 @@
           "nf": "616",
           "descricao": "“| Locaçãode Software -Gabinett",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-04",
+          "fornecedor": "KALANIT TIECHERSOCIEDADE INDIVIDUAL DEADVOCACIA",
+          "cnpj": "36.162.407/0001-62",
+          "valor": 10000.0,
+          "nf": "101",
+          "descricao": "> PRESTAÇÃODESERVIÇOSADVOCATIÍCIOS : 2",
+          "ato": "ATO 028"
         }
       ],
       "foto": "data:image/jpeg;base64,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",
@@ -11412,9 +11538,9 @@
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
         "gastoAto027_2026": 62100.0,
-        "gastoAto028_2026": 72500.0,
-        "gastoPago2026": 134600.0,
-        "percentualUsado": 44.9,
+        "gastoAto028_2026": 108500.0,
+        "gastoPago2026": 170600.0,
+        "percentualUsado": 56.9,
         "mesesAto027": {
           "jan": 12100.0,
           "fev": 12500.0,
@@ -11426,9 +11552,10 @@
           "fev": 12000.0,
           "mar": 12000.0,
           "abr": 12000.0,
-          "mai": 12000.0,
+          "mai": 24000.0,
           "jun": 12500.0,
-          "jan": 12000.0
+          "jan": 12000.0,
+          "jul": 24000.0
         },
         "categorias": {
           "Locação de veículo": 5500.0,
@@ -11448,7 +11575,7 @@
         "gastoPessoalAnual": 1319611.68,
         "totalEstimado": 1956504.42
       },
-      "totalNotasFiscais": 34,
+      "totalNotasFiscais": 37,
       "despesas": [
         {
           "data": "2026-01-21",
@@ -11755,6 +11882,33 @@
           "nf": "316",
           "descricao": "Divulgação de Atividade Parlamentar",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-30",
+          "fornecedor": "«! MARCELO DASILVAPEREIRA À",
+          "cnpj": "40.533.737/0001-94",
+          "valor": 12000.0,
+          "nf": "74",
+          "descricao": "XX SERVIÇOS DEFOTOGRAFIA, ACOMPANHAMENTO, - COBERTURA DEEVENTOS EGESTÃO DEIMAGEM",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-07-31",
+          "fornecedor": "MARCELO DASILVAPEREIRA Pá",
+          "cnpj": "40.533.737/0001-94",
+          "valor": 12000.0,
+          "nf": "76",
+          "descricao": "SERVIÇOS DEFOTOGRAFIA, ACOMPANHAMENTO, COBERTURA DEEVENTOS EGESTÃO DEIMAGEM",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-08-31",
+          "fornecedor": "J MARCELO DASILVAPEREIRA x)",
+          "cnpj": "40.533.737/0001-94",
+          "valor": 12000.0,
+          "nf": "78",
+          "descricao": "SERVIÇOS DEFOTOGRAFIA, ACOMPANHAMENTO, COBERTURA DEEVENTOS EGESTÃO DEIMAGEM",
+          "ato": "ATO 028"
         }
       ],
       "foto": "data:image/jpeg;base64,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",
