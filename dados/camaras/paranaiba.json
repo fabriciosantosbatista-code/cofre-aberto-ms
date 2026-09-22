@@ -1,7 +1,7 @@
 {
   "cidade": "Paranaíba",
-  "ultimaAtualizacao": "2026-09-20T14:57:35",
-  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-09-20T14:57:35",
+  "ultimaAtualizacao": "2026-09-22T15:48:22",
+  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-09-22T15:48:22",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmparanaiba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -29,6 +29,11 @@
       "nome": "ANDREW ROBALINHO DA SILVA FILHO",
       "cargo": "Vereador(a)",
       "diarias": [
+        {
+          "data": "2026-09-21",
+          "valor": 2499.86,
+          "descricao": "REFERE-SE À CONCESSÃO DE 2,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, ONDE IREI  AO GABINETE DO DEPUTADO ESTADUAL GERSON CLARO, ESCRITÓRIO PARLAMENTAR DO DEPUTADO FEDERAL DAGOBERTO NOGUEIRA, BEM COMO SECRETARIAS DE ESTADO, COM A FINALIDADE DE TRATAR DE ASSUNTOS DE INTERESSE DO MUNICIPIO E DO LEGISLATIVO PARANAIBENSE.  PERÍODO DE 22/09/2026 A 24/09/2026."
+        },
         {
           "data": "2026-09-14",
           "valor": 6849.96,
@@ -75,8 +80,8 @@
           "descricao": "REFERE-SE À CONCESSÃO DE 2,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, ONDE TEREI VARIAS AGENDAS/ AUDIENCIAS, DENTRE ELAS: SECRETARIAS DE ESTADO, COMO A SEINFRA, NA GOVERNADORIA, ASSEMBLÉIA LEGISLATIVA, COMANDO GEREAL DA POLÍCIA MILITAR E ESCRITÓRIOS PARLAMENTARES DO DEPUTADO FEDERAL DAGOBERTO NOGUEIRA E BETO PEREIRA,  COM A FINALIDADE DE TRATAR DE ASSUNTOS DE INTERSSE DO MUNICIPIO E DO LEGISLATIVO PARANAIBENSE. PERÍODO DE 10/02/2026 A 12/02/2026."
         }
       ],
-      "totalDiarias2026": 39899.14,
-      "numDiarias2026": 9
+      "totalDiarias2026": 42399.0,
+      "numDiarias2026": 10
     },
     {
       "nome": "CESAR MORETH DA SILVA QUEIROZ",
@@ -803,12 +808,12 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 8248412.94,
-    "totalNotas": 296,
+    "totalGeral": 8248455.69,
+    "totalNotas": 298,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 5078716.18,
       "Obrigações Patronais": 976113.15,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 760593.01,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 760635.76,
       "Diárias — Civil": 709128.58,
       "Serviços de Consultoria": 528524.4,
       "Despesas de Exercícios Anteriores": 103652.6,
@@ -1721,7 +1726,7 @@
         "fornecedor": "BANCO DO BRASIL SA",
         "cnpj": "00.000.000/0484-70",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 3816.65,
+        "valor": 3859.2,
         "descricao": "REFERE-SE À EMPENHO ESTIMATIVO PARA SERVIÇOS BANCÁRIOS - TARIFAS."
       },
       {
@@ -3021,6 +3026,14 @@
         "descricao": "REFERE-SE ENCARGOS DA DIFERENÇA DE CONTRIBUIÇÃO PREVIDENCIÁRIA PATRONAL DOS SERVIDORES EFETIVOS PARA O RPPS EXERCICIO DE 2026,  PROVENIENTE DA ALTERAÇÃO DO CUSTEIO SUPLEMENTAR DE 11% A 14,27%, PERIODO"
       },
       {
+        "data": "2026-09-18",
+        "fornecedor": "MUNICIPIO DE PARANAIBA",
+        "cnpj": "03.343.118/0001-00",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.2,
+        "descricao": "REFERE-SE À EMPENHO PARA FINS DE COMPLEMENTAÇÃO E REGULARIZAÇÃO ORÇAMENTÁRIA, RELATIVO À DIFERENÇA DE R$ 0,20 (VINTE CENTAVOS), DECORRENTE DO EMPENHO EXTRA ORÇAMENTARIO DE Nº 159, EM VIRTUDE DA EMISSÃ"
+      },
+      {
         "data": "2026-06-12",
         "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
         "cnpj": "15.413.826/0001-50",
@@ -3187,6 +3200,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DA EMPRESA  QUALIFICADA NA PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ARQUITETURA E ENGENHARIA, VISANDO À ELABORAÇÃO DE ESTUDOS TÉCNICOS, LEVANTAMENTOS TOPOG"
+      },
+      {
+        "data": "2026-09-21",
+        "fornecedor": "ANDREW ROBALINHO DA SILVA FILHO",
+        "cnpj": "465.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "REFERE-SE À CONCESSÃO DE 2,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, ONDE IREI  AO GABINETE DO DEPUTADO ESTADUAL GERSON CLARO, ESCRITÓRIO PARLAMENTAR DO DEP"
       }
     ]
   },

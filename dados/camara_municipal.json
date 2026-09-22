@@ -1,5 +1,5 @@
 {
-  "ultimaAtualizacao": "2026-09-21T17:15:17",
+  "ultimaAtualizacao": "2026-09-22T15:48:22",
   "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande/MS (SCPI Fiorilli, 45.225.6.93:8079) — Verba Indenizatória (Ato 027/028) extraída dos PDFs individuais por vereador via HomeDocumentosPublicados.aspx, 10/07/2026.",
   "resumo": {
     "totalVereadores": 29,
@@ -3861,9 +3861,9 @@
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
         "gastoAto027_2026": 60909.0,
-        "gastoAto028_2026": 66450.0,
-        "gastoPago2026": 127359.0,
-        "percentualUsado": 42.5,
+        "gastoAto028_2026": 91950.0,
+        "gastoPago2026": 152859.0,
+        "percentualUsado": 51.0,
         "mesesAto027": {
           "jan": 12440.0,
           "fev": 12449.0,
@@ -3877,7 +3877,9 @@
           "mar": 12500.0,
           "abr": 12500.0,
           "mai": 12500.0,
-          "jun": 4000.0
+          "jun": 12500.0,
+          "jul": 8500.0,
+          "ago": 8500.0
         },
         "categorias": {
           "Locação de veículo": 7100.0,
@@ -3923,7 +3925,7 @@
         "gastoPessoalAnual": 1706357.88,
         "totalEstimado": 2187307.62
       },
-      "totalNotasFiscais": 49,
+      "totalNotasFiscais": 50,
       "despesas": [
         {
           "data": "2026-01-16",
@@ -4364,6 +4366,15 @@
           "valor": 4000.0,
           "nf": null,
           "descricao": "Se 24241440261 | Gestão de Rede Social",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-06-30",
+          "fornecedor": "Naiara Gonzatto Sociedade Individual de Advocacia *",
+          "cnpj": "49.938.100/0001-52",
+          "valor": 8500.0,
+          "nf": null,
+          "descricao": "bo 40/U | Assessoria e Consultoria Jurídica Parlamentar",
           "ato": "ATO 028"
         }
       ],
@@ -13848,16 +13859,19 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 62015.74,
+        "gastoAto027_2026": 97815.07,
         "gastoAto028_2026": 62500.0,
-        "gastoPago2026": 124515.74,
-        "percentualUsado": 41.5,
+        "gastoPago2026": 160315.07,
+        "percentualUsado": 53.4,
         "mesesAto027": {
           "jan": 12245.34,
           "fev": 12399.39,
           "mar": 12471.14,
           "abr": 12487.55,
-          "mai": 12412.32
+          "mai": 12412.32,
+          "jun": 12313.2,
+          "jul": 11843.85,
+          "ago": 11642.28
         },
         "mesesAto028": {
           "jan": 12500.0,
@@ -13890,7 +13904,7 @@
         "gastoPessoalAnual": 1307049.72,
         "totalEstimado": 1886102.46
       },
-      "totalNotasFiscais": 116,
+      "totalNotasFiscais": 172,
       "despesas": [
         {
           "data": "2026-01-21",
@@ -14919,6 +14933,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-06-10",
+          "fornecedor": "POSTO LOCATELLI MAE E FILHA LTDA",
+          "cnpj": "24.601.882/0001-09",
+          "valor": 166.34,
+          "nf": null,
+          "descricao": "NFCe 2142210 ETANOL COMUM 39,7 SMFOI36",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-06-11",
           "fornecedor": "M.COM CLICK LTDA",
           "cnpj": "44.168.903/0001-51",
@@ -14934,6 +14957,501 @@
           "valor": 135.0,
           "nf": null,
           "descricao": "NFCe 95254 IPIMAX GASOLINA 20,18 ADITIVADA CoHsios",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-15",
+          "fornecedor": "TROKAR POSTOS DE SERVIÇOS",
+          "cnpj": "02.969.905/0001-08",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFCe 1080128 GASOLINACOMUM | 14,949 ooH6/98 | Eh",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-16",
+          "fornecedor": "AUTO POSTO CABREUVA LTDA",
+          "cnpj": "41.038.174/0001-20",
+          "valor": 150.12,
+          "nf": null,
+          "descricao": "NFCe 95819 ORIGINAL ETANOL — | 37,625 SMFOI36 ZA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-19",
+          "fornecedor": "AUTO POSTO CABREUVA LTDA",
+          "cnpj": "41.038.174/0001-20",
+          "valor": 130.0,
+          "nf": null,
+          "descricao": "NFCe 96521 ORIGINALETANOL — | 32,582 SMFOI36 22:06.2026 VITORIA COMERCIO E TRANSPORTES LTDA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-25",
+          "fornecedor": "POSTO LOCATELLI MAE E FILHA LTDA",
+          "cnpj": "24.601.882/0001-09",
+          "valor": 151.94,
+          "nf": null,
+          "descricao": "NFCe 2155987 ETANOL COMUM 38,081 L SMFOI3B6",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-28",
+          "fornecedor": "FENNER CIA LTDA",
+          "cnpj": "11.037.808/0002-40",
+          "valor": 122.88,
+          "nf": null,
+          "descricao": "NFCe 320308 GASOLINA C 19,231 FAX9738 ADITIVADA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-30",
+          "fornecedor": "AUTO POSTO CABREUVA LTDA",
+          "cnpj": "41.038.174/0001-20",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFCe 38711 ORIGINAL GASOLINA | 23,475 OOH6J98",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "A.P.NLOCACOES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": null,
+          "descricao": "RECIBO nº 16ADCOD7 LOCAÇAO DE VEICULO VW TCROSS PRETA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "BONATTO E CIA 24 HORAS",
+          "cnpj": "33.149.253/0001-80",
+          "valor": 100.14,
+          "nf": null,
+          "descricao": "NFCe 3117061 GASOLINA COMUM | 15,771 OOH6J98 À",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-03",
+          "fornecedor": "POSTO IMBIRUSSU LTDA",
+          "cnpj": "26.833.301/0001-90",
+          "valor": 150.03,
+          "nf": null,
+          "descricao": "NFCe 1822451 ETANOL COMUM 38.969 OOH6J98 3,20 ETANOL COMUM 0,832",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-03",
+          "fornecedor": "POSTO INDEPENDENCIA LTDA",
+          "cnpj": "07.409.300/0001-78",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFCe 2571464 ORIGINALETANOL —| 38,561 SMFOI36",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-06",
+          "fornecedor": "51.966.296 SUZY RIBEIRO DA SILVA",
+          "cnpj": "51.966.296/0001-30",
+          "valor": 500.0,
+          "nf": "Se 65",
+          "descricao": "DIVULGAÇÃO DE ATIVIDADE PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-06",
+          "fornecedor": "53.003.624 AGNALDO CESAR DE MAGALHAES",
+          "cnpj": "53.003.624/0001-29",
+          "valor": 300.0,
+          "nf": "Se 1",
+          "descricao": "DIVULGAÇÃO DE ATIVIDADE PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-07",
+          "fornecedor": "BONATTO BONATTO LTDA (CS)",
+          "cnpj": "08.924.582/0004-57",
+          "valor": 120.08,
+          "nf": null,
+          "descricao": "NFCe 1475937 ETANOL 30,096 smroiae OP",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-08",
+          "fornecedor": "AUTO POSTO CABREUVA LTDA",
+          "cnpj": "41.038.174/0001-20",
+          "valor": 50.0,
+          "nf": null,
+          "descricao": "NFCe 100372 ORIGINAL GASOLINA | 7,95 OOH6/98",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-09",
+          "fornecedor": "POSTO IMBIRUSSU LTDA",
+          "cnpj": "26.833.301/0001-90",
+          "valor": 138.06,
+          "nf": null,
+          "descricao": "NFCe 916526 ETANOL COMUM 35,86 OOH6/98",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-09",
+          "fornecedor": "POSTO FIGUEIRA 3 LTDA",
+          "cnpj": "57.749.810/0001-62",
+          "valor": 163.19,
+          "nf": null,
+          "descricao": "NFCe 489044 ETANOL ADITIVADO | 41,952 SMFOI36",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-10",
+          "fornecedor": "M.COM CLICK LTDA",
+          "cnpj": "44.168.903/0001-51",
+          "valor": 3500.0,
+          "nf": "Se 00000274",
+          "descricao": "DIVULGAÇÃO DE ATIVIDADE PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-13",
+          "fornecedor": "POSTO IMBIRUSSU LTDA",
+          "cnpj": "26.833.301/0001-90",
+          "valor": 133.98,
+          "nf": null,
+          "descricao": "NFCe 920867 - ETANOL COMUM 34,8 OOH6J98 e) FE E",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-14",
+          "fornecedor": "ALLOY AUTO POSTO LTDA Ni",
+          "cnpj": "11.837.316/0001-59",
+          "valor": 152.05,
+          "nf": null,
+          "descricao": "NFCe 1812399 ETANOL COMUM — | 40,44 N) SMFOI36 CC lh14.07,2026 “| ABASTECEDORA NOSSA SRA IMACULADA LTDA 12.507.699/0001/60 120,00 NFCe 161579 “| GASOL",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-16",
+          "fornecedor": "FENNER CIA LTDA «",
+          "cnpj": "11.037.808/0002-40",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFCe 321236 GASOLINACOMUM | 31,898 FAX9738 Nx à à Ea > N >. “ Ses o",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-20",
+          "fornecedor": "POSTO IMBIRUSSU LTDA -—)",
+          "cnpj": "26.833.301/0001-90",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": ") NFCe 928607 «ETANOL COMUM 38.962 —“nl OOH6J98 A h",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-24",
+          "fornecedor": "POSTO GUENO PROSA LTDA",
+          "cnpj": "03.024.296/0001-79",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFCe 289736 = ETANOL HIDR 26.386 FAX9738 = NL Ê SS | N| ADITIVADO NÃ",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-24",
+          "fornecedor": "k POSTO CIDADE =",
+          "cnpj": "06.255.176/0001-70",
+          "valor": 156.54,
+          "nf": null,
+          "descricao": "“NNFCe 1331421 — “ETANOL ] 41,304 SMFOI36 “",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-25",
+          "fornecedor": "POSTO IMBIRUSSU LTDA",
+          "cnpj": "26.833.301/0001-90",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFCe 935214 ETANOL COMUM 25975 — | ooH6Ios x à S b à! N «",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-27",
+          "fornecedor": "POSTO IMBIRUSSU LTDA",
+          "cnpj": "26.833.301/0001-90",
+          "valor": 112.73,
+          "nf": null,
+          "descricao": "NFCe 936959 ETANOL COMUM 29281 \"NJ ooH6J98",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-28",
+          "fornecedor": "RC COMERCIO DE DERIVADOS PETROLEO LTDA «",
+          "cnpj": "01.271.514/0001-44",
+          "valor": 228.1,
+          "nf": null,
+          "descricao": "«| NFCe 322956 GASOLINA ORIGINAL | 36,85 SMFOI36 N Sh qn N Se Su e NNW NS",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-29",
+          "fornecedor": "54.284.645 FLAVIA TRINDADE FERNANDES DE SOUZA x",
+          "cnpj": "54.284.645/0001-22",
+          "valor": 500.0,
+          "nf": "S-e 78",
+          "descricao": "S DIVULGAÇÃO DO MANDATO VEREADOR MÊSN ” JULHO 2026 MGSNEWS",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-29",
+          "fornecedor": "“It AUTO POSTO MARECHAL DEODORO N]",
+          "cnpj": "01.242.585/0001-19",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": ") NFCe 75106 4] GASOLINA COMUM || 24.039 | OOH6J98 x",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-01",
+          "fornecedor": "AUTO POSTO CABREUVA LTDA",
+          "cnpj": "41.038.174/0001-20",
+          "valor": 156.46,
+          "nf": null,
+          "descricao": "«| NFCe 104841 | ORIGINAL ETANOL 40,222 — | SMFOI36| é FP No \"x",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-03",
+          "fornecedor": "“|. A.P.N LOCACOES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": null,
+          "descricao": "N] RECIBO nº 8F557F1B N | LOCAÇÃO DE VEICULO VW TCROSS PRETA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-04",
+          "fornecedor": "ANDREI WISLEY BLANS CAICARA LTDA",
+          "cnpj": "45.701.696/0001-11",
+          "valor": 500.0,
+          "nf": "Se 91",
+          "descricao": "DIVULGAÇÃO DE ATIVIDADE PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-06",
+          "fornecedor": "POSTO IMBIRUSSU LTDA",
+          "cnpj": "26.833.301/0001-90",
+          "valor": 120.0,
+          "nf": null,
+          "descricao": "NFCe 1836027 ETANOL COMUM 31,169 ooH6/o8 2 | “L. : hP bh. | , Cão j O)",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-07",
+          "fornecedor": "FALEIROS E CIA LTDA “l",
+          "cnpj": "12.926.979/0001-02",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "“—). NFCe 300250 '“) ORIGINAL GASOLINA |-15.65 N-00H6/98 Sl",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-08",
+          "fornecedor": "POSTO LR LTDA",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 111.16,
+          "nf": null,
+          "descricao": "' NFCe 966300 ETANOL COMUM “. | 29,33 “ sMFOI36 1 j",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-12",
+          "fornecedor": "POSTO IMBIRUSSU LTDA",
+          "cnpj": "26.833.301/0001-90",
+          "valor": 140.02,
+          "nf": null,
+          "descricao": "NFCe 956853 ETANOL COMUM 36,369 OOH6J98",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-13",
+          "fornecedor": "ABASTECEDORA NOSSA SRA IMACULADA LTDA",
+          "cnpj": "12.507.699/0001-60",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFCe 163529 GASOLINA COMUM | 241 OO0H6J98 a — po",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-16",
+          "fornecedor": "BONATTO GUAICURUS",
+          "cnpj": "33.149.253/0003-42",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFCe 2502674 - ETANOL 26,526 SMFOI36 .,",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-17",
+          "fornecedor": "RIBEIRO DE MENDONCA BASTON E CIA LTDA",
+          "cnpj": "16.045.015/0001-06",
+          "valor": 155.09,
+          "nf": null,
+          "descricao": "NFCe 1133137 ETANOL GRID 40,921 SMFOIS6 / LJ",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-20",
+          "fornecedor": "AUTO POSTO NACOES INDIGENAS LTDA",
+          "cnpj": "09.137.037/0001-30",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFCe 350255 , ETANOL COMUM 25,317 SMFOI36",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-22",
+          "fornecedor": "POSTO EMANUELE LTDA",
+          "cnpj": "37.539.459/0001-78",
+          "valor": 166.53,
+          "nf": "1007327",
+          "descricao": "ETANOL 41,737 . | smFoI36 ADITIVADO",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-24",
+          "fornecedor": "POSTO IMBIRUSSU LTDA",
+          "cnpj": "26.833.301/0001-90",
+          "valor": 134.75,
+          "nf": null,
+          "descricao": "NFCe 1842897 ETANOL COMUM 0O0H6/98 ,",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-24",
+          "fornecedor": "RIBEIRO DE MENDONCA BASTON E CIA LTDA",
+          "cnpj": "16.045.015/0001-06",
+          "valor": 117.96,
+          "nf": null,
+          "descricao": "NFCe 1137119 ETANOL GRID 30,64 SMFOI36 ,",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-25",
+          "fornecedor": "AUTO POSTO CABREUVA LTDA",
+          "cnpj": "41.038.174/0001-20",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFCe 109650 ORIGINAL GASOLINA | 15,899 0O0H6J98",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-27",
+          "fornecedor": "AUTO POSTO NACOES INDIGENAS LTDA",
+          "cnpj": "09.137.037/0001-30",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFCe 351432 | ETANOL comum — | 25,975 SMFOI36",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-29",
+          "fornecedor": "ANCELMO EPAULINOLTDA",
+          "cnpj": "04.990.440/0001-94",
+          "valor": 50.0,
+          "nf": null,
+          "descricao": "NFCe 1412225 ORIGINAL ETANOL 13,193 SMFOI36",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-31",
+          "fornecedor": "POSTO JACKELINE DE SOUZA LOCATELLI E CIA LTDA",
+          "cnpj": "35.185.810/0001-44",
+          "valor": 50.0,
+          "nf": null,
+          "descricao": "NFCe 1319921 é ETANOL COMUM 13,193 SMFOI36",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "A.P.NLOCACOES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": null,
+          "descricao": "RECIBO nº 81C77B5F LOCAÇAO DE VEICULO VW TCROSS PRETA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "AUTO POSTO CABREUVA LTDA",
+          "cnpj": "41.038.174/0001-20",
+          "valor": 142.3,
+          "nf": null,
+          "descricao": "NFCe 110599 ORIGINALETANOL — | 36,581 SMFOI36",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-03",
+          "fornecedor": "POSTO IMBIRUSSU LTDA",
+          "cnpj": "26.833.301/0001-90",
+          "valor": 166.09,
+          "nf": null,
+          "descricao": "NFCe 980664 ETANOLCOMUM /|43141 | ooH6I98",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-04",
+          "fornecedor": "51.966.296 SUZY RIBEIRO DA SILVA",
+          "cnpj": "51.966.296/0001-30",
+          "valor": 500.0,
+          "nf": "Se70",
+          "descricao": "DIVULGAÇÃO DE ATIVIDADE PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-04",
+          "fornecedor": "(| AUTO POSTO REFERENCIA LTDA",
+          "cnpj": "19.462.681/0001-38",
+          "valor": 160.72,
+          "nf": null,
+          "descricao": ", NFCe 380739 , ORIGINAL ETANOL | 41,318 SMFOIS6,",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-06",
+          "fornecedor": "AUTO POSTO CASTELO LTDA",
+          "cnpj": "01.742.740/0001-66",
+          "valor": 100.03,
+          "nf": null,
+          "descricao": "NFCe 185006 ORIGINAL ETANOL , | 25,715 SMFOI36 o",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-10",
+          "fornecedor": "À M.COM CLICK LTDA",
+          "cnpj": "44.168.903/0001-51",
+          "valor": 3000.0,
+          "nf": "Se 290",
+          "descricao": "/ DIVULGAÇÃO DE ATIVIDADE PARLAMENTAR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-10",
+          "fornecedor": "RIBEIRO DE MENDONCA BASTON E CIA LTDA",
+          "cnpj": "16.045.015/0001-06",
+          "valor": 168.78,
+          "nf": null,
+          "descricao": "NFCe 1145667 ETANOL GRID — 42,301 SMFOI36",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-14",
+          "fornecedor": "“| RIBEIRO DE MENDONCA BASTON E CIALTDA é",
+          "cnpj": "16.045.015/0001-06",
+          "valor": 130.03,
+          "nf": null,
+          "descricao": "NFCe 1147710 , ETANOL GRID / 32,59 SMFOI36",
           "ato": "ATO 027"
         }
       ],
@@ -15783,16 +16301,19 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 62616.69,
+        "gastoAto027_2026": 98978.51,
         "gastoAto028_2026": 61500.0,
-        "gastoPago2026": 124116.69,
-        "percentualUsado": 41.4,
+        "gastoPago2026": 160478.51,
+        "percentualUsado": 53.5,
         "mesesAto027": {
           "jan": 12789.52,
           "fev": 12364.51,
           "mar": 12491.44,
           "abr": 12500.0,
-          "mai": 12471.22
+          "mai": 12471.22,
+          "jun": 12000.0,
+          "jul": 12400.0,
+          "ago": 11961.82
         },
         "mesesAto028": {
           "jan": 12300.0,
@@ -15829,7 +16350,7 @@
         "gastoPessoalAnual": 1209393.24,
         "totalEstimado": 1694269.78
       },
-      "totalNotasFiscais": 24,
+      "totalNotasFiscais": 34,
       "despesas": [
         {
           "data": "2026-02-02",
@@ -16046,6 +16567,96 @@
           "nf": null,
           "descricao": "d NF. Nº18/U/ / SERVIÇOS DE CONSULTORIA, PLANEJAMENTOE =“ USADOS LTDA. GERENCIAMENTO REDES SOCIAIS REFERENTE MAIO/2026",
           "ato": "ATO 028"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "ANDRE GALVÃO DE SOUZA Z",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 700.0,
+          "nf": null,
+          "descricao": "NF Nº 561/U LOCAÇÃO DE SOFTWARE GABINETT REF. MÊS DE JUNHO/2026",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "HUB COMUNICA IDEIAS LTDA",
+          "cnpj": "07.033.869/0001-81",
+          "valor": 11300.0,
+          "nf": null,
+          "descricao": "NF Nº 98/U SERVIÇOS PRESTADOS NO MÊS DEJUNHO DE 2026 REFERENTE: 1) INSERÇÃO DE 04 MATÉRIAS EINFOPUBLI SEM PRODUÇÃO PARA OSITE DNA67NEWS.COM.BR EINSTAG",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-06",
+          "fornecedor": "TORKOILMODELOLTDA",
+          "cnpj": "22.061.736/0001-02",
+          "valor": 400.0,
+          "nf": null,
+          "descricao": "MAIA AR/ | OLEO DIESEL 59,26 PLACA SMJ1B61",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-27",
+          "fornecedor": "TORK OIL MODELO LTDA",
+          "cnpj": "22.061.736/0001-02",
+          "valor": 454.88,
+          "nf": null,
+          "descricao": "AAA / | OLEO DIESEL 67,39 PLACA , rá ; SMJ1B61",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-31",
+          "fornecedor": "ANDRE GALVÃO DESOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 700.0,
+          "nf": null,
+          "descricao": "NF Nº 582/U LOCAÇÃO DE SOFTWARE GABINETT REF. MÊSDEJULHO/2026",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-03",
+          "fornecedor": "HUB COMUNICA IDEIASLTDA",
+          "cnpj": "07.033.869/0001-81",
+          "valor": 11300.0,
+          "nf": null,
+          "descricao": "NFNº100/U DIVULGAÇÃO PARLAMENTAR: JULHO/2026: PARA OSITE DNA67NEWS.COM.BR EINSTAGRAM QDNA67NEWS",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-08",
+          "fornecedor": "TORK OIL MODELO LTDA",
+          "cnpj": "22.061.736/0001-02",
+          "valor": 371.72,
+          "nf": null,
+          "descricao": "NFCE000549695 —| OLEO DIESEL 55,07 PLACA : $ | SERIE0O6 : SA",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-21",
+          "fornecedor": "TORK OIL MODELO LTDA",
+          "cnpj": "22.061.736/0001-02",
+          "valor": 440.1,
+          "nf": null,
+          "descricao": "A AR OLEO DIESEL 65,20 PLACA SMJ1B61",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "ANDRE GALVÃO DESOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 700.0,
+          "nf": null,
+          "descricao": "NFNº622/U *Nu LOCAÇÃO DE SOFTWARE GABINETT REF. MÊSDE AGOSTO/2026",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "HUB COMUNICA IDEIAS LTDA",
+          "cnpj": "07.033.869/0001-81",
+          "valor": 10450.0,
+          "nf": null,
+          "descricao": "NF Nº 114/U INSERÇÃO DE 11 MATÉRIAS E INFOPUBLI SEM PRODUÇÃO PARA O SITE DNA67NEWS. COM.BR E INSTAGRAM GQDNA67NEWS. VALOR: 11 X R$ 950,00 =R$ 10.450,0",
+          "ato": "ATO 027"
         }
       ],
       "foto": "data:image/jpeg;base64,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",
