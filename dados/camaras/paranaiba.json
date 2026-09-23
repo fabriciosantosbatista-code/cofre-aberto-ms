@@ -1,7 +1,7 @@
 {
   "cidade": "Paranaíba",
-  "ultimaAtualizacao": "2026-09-22T15:48:22",
-  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-09-22T15:48:22",
+  "ultimaAtualizacao": "2026-09-23T15:38:11",
+  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-09-23T15:38:11",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmparanaiba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -357,6 +357,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-09-23",
+          "valor": 648.52,
+          "descricao": "REFERE-SE À CONCESSÃO DE 0,70% DE DIÁRIA PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA COMPARECER AO ESCRITÓRIO DO  DEPUTADO FEDERAL BETO PEREIRA, PARA TRATAR DE ASSUNTOS DE INTERESSE DO MUNICÍPIO DE PARANAÍBA-MS. PERÍODO  23/09/2026."
+        },
+        {
           "data": "2026-09-08",
           "valor": 3425.53,
           "descricao": "REFERE-SE À CONCESSÃO DE 3,70% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA COMPARECER NO ESCRITÓRIO DO  DEPUTADO FEDERAL BETO PEREIRA E ASSEMBLEIA LEGISLATIVA, PARA TRATAR DE ASSUNTOS DE INTERESSE DO MUNICÍPIO DE PARANAÍBA-MS. PERÍODO  DE  08/09/2026 A 11/09/2026."
@@ -407,8 +412,8 @@
           "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF,  PARA PARTICIPAR DO 41º CONGRESSO GESTÃO PÚBLICA. PERÍODO DE 03/02/2026 A 06/02/2026 ."
         }
       ],
-      "totalDiarias2026": 49526.11,
-      "numDiarias2026": 10
+      "totalDiarias2026": 50174.63,
+      "numDiarias2026": 11
     },
     {
       "nome": "JOSE ANTONIO LOPES COSTA",
@@ -808,13 +813,13 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 8248455.69,
+    "totalGeral": 8250955.55,
     "totalNotas": 298,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 5078716.18,
       "Obrigações Patronais": 976113.15,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 760635.76,
-      "Diárias — Civil": 709128.58,
+      "Diárias — Civil": 711628.44,
       "Serviços de Consultoria": 528524.4,
       "Despesas de Exercícios Anteriores": 103652.6,
       "Material de Consumo": 40600.18,
@@ -2242,6 +2247,14 @@
         "descricao": "REFERE-SE À CONCESSÃO DE 2,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, ONDE IREI  PARTICIPAR DO SEMINÁRIO DE GESTÃO PÚBLICA DO INSTITUTO ULYSSES GUIMARÃES, BE"
       },
       {
+        "data": "2026-09-21",
+        "fornecedor": "ANDREW ROBALINHO DA SILVA FILHO",
+        "cnpj": "465.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 2499.86,
+        "descricao": "REFERE-SE À CONCESSÃO DE 2,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, ONDE IREI  AO GABINETE DO DEPUTADO ESTADUAL GERSON CLARO, ESCRITÓRIO PARLAMENTAR DO DEP"
+      },
+      {
         "data": "2026-02-23",
         "fornecedor": "DAIANA MOURA STREGE BERGANTINI",
         "cnpj": "011.XXX.XXX-11",
@@ -3027,8 +3040,8 @@
       },
       {
         "data": "2026-09-18",
-        "fornecedor": "MUNICIPIO DE PARANAIBA",
-        "cnpj": "03.343.118/0001-00",
+        "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
+        "cnpj": "15.413.826/0001-50",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.2,
         "descricao": "REFERE-SE À EMPENHO PARA FINS DE COMPLEMENTAÇÃO E REGULARIZAÇÃO ORÇAMENTÁRIA, RELATIVO À DIFERENÇA DE R$ 0,20 (VINTE CENTAVOS), DECORRENTE DO EMPENHO EXTRA ORÇAMENTARIO DE Nº 159, EM VIRTUDE DA EMISSÃ"
@@ -3200,14 +3213,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DA EMPRESA  QUALIFICADA NA PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ARQUITETURA E ENGENHARIA, VISANDO À ELABORAÇÃO DE ESTUDOS TÉCNICOS, LEVANTAMENTOS TOPOG"
-      },
-      {
-        "data": "2026-09-21",
-        "fornecedor": "ANDREW ROBALINHO DA SILVA FILHO",
-        "cnpj": "465.XXX.XXX-87",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À CONCESSÃO DE 2,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, ONDE IREI  AO GABINETE DO DEPUTADO ESTADUAL GERSON CLARO, ESCRITÓRIO PARLAMENTAR DO DEP"
       }
     ]
   },
