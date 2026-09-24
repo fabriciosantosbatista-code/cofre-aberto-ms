@@ -1,7 +1,7 @@
 {
   "cidade": "Paranaíba",
-  "ultimaAtualizacao": "2026-09-23T15:38:11",
-  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-09-23T15:38:11",
+  "ultimaAtualizacao": "2026-09-24T15:59:03",
+  "fonte": "Portal Transparência Fiorilli (45.184.83.32:8079) — Dados Abertos — 2026-09-24T15:59:03",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmparanaiba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -579,6 +579,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-09-23",
+          "valor": 3147.28,
+          "descricao": "REFERE-SE À CONCESSÃO DE 1,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE GOIÂNIA-GO, O OBJETIVO DA VIAGEM É REALIZAR VISITA INSTITUCIONAL À CÂMARA MUNICIPAL DE GOIÂNIA PARA CONHECER SUA ESTRUTURA, FUNCIONAMENTO, PROJETOS E PRATICAS LEGISLATIVAS, PROMOVENDO TROCA DE EXPERIÊNCIAS PARA MELHOR DESEMPENHO DA VEREANÇA NO MUNICIPIO DE PARANAÍBA-MS. PERÍODO DE 24/09/2026 A 25/09/2026."
+        },
+        {
           "data": "2026-09-01",
           "valor": 6849.96,
           "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE SÃO JOSÉ DO RIO PRETO-SP, O OBJETIVO DA VIAGEM É PARTICIPAR DO SEMINARIO DE CAPACITAÇÃO PARA VEREADORES E AGENTES PÚBLICOS, COM A FINALIDADE DE ADQUIRIR CONHECIMENTOS E CAPACITAÇÃO PARA MELHOR DESEMPENHO DA VEREANÇA NO MUNICÍPIO DE PARANAÍBA-MS. PERÍODO DE 01/09/2026 A 04/09/2026."
@@ -629,8 +634,8 @@
           "descricao": "REFERE-SE À CONCESSÃO DE 3,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE BRASÍLIA-DF, O OBJETIVO DA VIAGEM É PARTICIPAR DO 29º SEMINÁRIO DE GESTÃO PÚBLICA, PROMOVIDO PELO INSTITUTO ULYSSES GUIMARÃES, COM A FINALIDADE DE ADQUIRIR CONHECIMENTOS E CAPACITAÇÃO PARA MELHOR DESEMPENHO DA VEREANÇA NO MUNICÍPIO DE PARANAÍBA-MS. PERÍODO DE 24/02/2026 A 27/02/2026."
         }
       ],
-      "totalDiarias2026": 40546.56,
-      "numDiarias2026": 10
+      "totalDiarias2026": 43693.84,
+      "numDiarias2026": 11
     },
     {
       "nome": "MAURICIO GOMES DE ALMEIDA",
@@ -813,14 +818,14 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 8250955.55,
-    "totalNotas": 298,
+    "totalGeral": 8289662.61,
+    "totalNotas": 300,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 5078716.18,
       "Obrigações Patronais": 976113.15,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 760635.76,
-      "Diárias — Civil": 711628.44,
-      "Serviços de Consultoria": 528524.4,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 762047.02,
+      "Diárias — Civil": 715424.24,
+      "Serviços de Consultoria": 562024.4,
       "Despesas de Exercícios Anteriores": 103652.6,
       "Material de Consumo": 40600.18,
       "Serviços de Tecnologia da Informação": 23636.7,
@@ -907,7 +912,7 @@
         "fornecedor": "SETTE ASSESSORIAS TECNICAS E AUDITORIAS ADMINISTRA",
         "cnpj": "10.714.023/0001-11",
         "categoria": "Serviços de Consultoria",
-        "valor": 100000.0,
+        "valor": 112500.0,
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM PRESTAÇÕES DE CONSULTORIA PARA ADEQUAÇÃO E IMPLEMENTAÇÃO DE BOAS PRÁTICAS E GOVERNANÇA EM CONFORMIDADE COM A LGPD, INCLUINDO MAPEAMENTO"
       },
       {
@@ -979,7 +984,7 @@
         "fornecedor": "FREDERICO LUIZ GONCALVES SOCIEDADE INDIVIDUAL DE A",
         "cnpj": "26.136.126/0001-81",
         "categoria": "Serviços de Consultoria",
-        "valor": 36000.0,
+        "valor": 48000.0,
         "descricao": "REFERE-SE-SE À EMPENHO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE CONSULTORIA E ASSESSORIA JURÍDICA PARLAMENTAR, DE NATUREZA PREDOMINANTEMENTE INTELECTUAL, EXECUTADOS DE FORMA CONTINUADA, MEDIANTE ATUAÇÃO"
       },
       {
@@ -1109,6 +1114,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 9000.0,
         "descricao": "REFERE-SE À EMPENHO DE CONTRATAÇÃO DA EMPRESA EFFICIENCE EVENTOS CORPORATIVOS LTDA, PARA MINISTRAR O SEGUNDO CONGRESSO CONTABILIZAR MS, COM FOCO EM APRIMORAR OS CONHECIMENTOS FUNDAMENTAIS NA ÁREA DA C"
+      },
+      {
+        "data": "2026-08-24",
+        "fornecedor": "HASLAN PISCIOTTANO DA SILVA SOCIEDADE INDIVIDUAL D",
+        "cnpj": "43.729.718/0001-26",
+        "categoria": "Serviços de Consultoria",
+        "valor": 9000.0,
+        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE SOCIEDADE DE ADVOCACIA ESPECIALIZADA PARA A PRESTAÇÃO CONTINUADA DE SERVIÇOS TÉCNICOS DE ASSESSORIA E CONSULTORIA JURÍDICA ESPECIALIZADA, CONSULTORIA AO DEPARTA"
       },
       {
         "data": "2026-01-19",
@@ -1723,7 +1736,7 @@
         "fornecedor": "INOVA SERVICOS E MONITORAMENTO LTDA",
         "cnpj": "51.132.742/0001-01",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 4545.7,
+        "valor": 4695.7,
         "descricao": "REFERE-SE À EMPENHO CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE SEGURANÇA ELETRÔNICA, COMPREENDENDO O FORNECIMENTO, INSTALAÇÃO, MANUTENÇÃO PREVENTIVA E CORRETIVA, BEM"
       },
       {
@@ -1731,8 +1744,16 @@
         "fornecedor": "BANCO DO BRASIL SA",
         "cnpj": "00.000.000/0484-70",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 3859.2,
+        "valor": 3899.51,
         "descricao": "REFERE-SE À EMPENHO ESTIMATIVO PARA SERVIÇOS BANCÁRIOS - TARIFAS."
+      },
+      {
+        "data": "2026-01-02",
+        "fornecedor": "SANESUL - EMPRESA DE SANEAMENTO DE MS",
+        "cnpj": "03.982.931/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 3850.57,
+        "descricao": "REFRE-SE À EMEPENHO ESTIMATIVO PARA DESPESA COM TARIFAS DE ÁGUA E ESGÔTO, REFERENTE AO EXERCÍCIO 2026, PARA ATENDER ÀS NECESSIDADES DA CÂMARA MUNICIPAL DE  PARANAÍBA-MS."
       },
       {
         "data": "2026-09-14",
@@ -2087,6 +2108,14 @@
         "descricao": "REFERE-SE – SE À EMEPNHO PARA - CONTRATAÇÃO DE EMPRESA PARA FORNECIMENTO DE MATERIAIS GRÁFICOS DIVERSOS, COM A FINALIDADE DE ATENDER ÀS DEMANDAS DA CÂMARA MUNICIPAL DE PARANAÍBA-MS.\r\nPEDIDO GERADO A P"
       },
       {
+        "data": "2026-09-23",
+        "fornecedor": "MARCOS HENRIQUE DE CAMARGO SILVA",
+        "cnpj": "519.XXX.XXX-00",
+        "categoria": "Diárias — Civil",
+        "valor": 3147.28,
+        "descricao": "REFERE-SE À CONCESSÃO DE 1,7% DE DIÁRIAS PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE GOIÂNIA-GO, O OBJETIVO DA VIAGEM É REALIZAR VISITA INSTITUCIONAL À CÂMARA MUNICIPAL DE GOIÂNIA PARA CONH"
+      },
+      {
         "data": "2026-05-11",
         "fornecedor": "AMANDA NEVES PEREIRA",
         "cnpj": "032.XXX.XXX-55",
@@ -2109,14 +2138,6 @@
         "categoria": "Diárias — Civil",
         "valor": 3104.57,
         "descricao": "REFERE-SE À CONCESSÃO DE 4,7% DE DIÁRIA PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA PARTICIPAÇÃO NO CONGRESSO COMUNIQUE 2026, BEM COMO PARA CUMPRIMENTO DE AGENDA DE CA"
-      },
-      {
-        "data": "2026-01-02",
-        "fornecedor": "SANESUL - EMPRESA DE SANEAMENTO DE MS",
-        "cnpj": "03.982.931/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 2916.2,
-        "descricao": "REFRE-SE À EMEPENHO ESTIMATIVO PARA DESPESA COM TARIFAS DE ÁGUA E ESGÔTO, REFERENTE AO EXERCÍCIO 2026, PARA ATENDER ÀS NECESSIDADES DA CÂMARA MUNICIPAL DE  PARANAÍBA-MS."
       },
       {
         "data": "2026-02-09",
@@ -2871,6 +2892,14 @@
         "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE EMPRESA PARA PRESTAÇÃO DE SERVIÇOS DE SEGURO VEICULAR, PARA A FROTA DA CÂMARA MUNICIPAL DE PARANAÍBA-MS.\r\nPEDIDO GERADO A PARTIR DO RESULTADO DA LICITAÇÃO: 0000"
       },
       {
+        "data": "2026-06-11",
+        "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
+        "cnpj": "15.413.826/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 735.14,
+        "descricao": "REFERE-SE À EMPENHO PARA PAGAMENTO DE DESPESA COM TARIFA DE ENERGIA ELÉTRICA, REFERENTE AO EXERCICIO 2026, PARA ATENDER ÀS NECESSIDADES DA CÂMARA MUNICIPAL DE PARANAÍBA-MS."
+      },
+      {
         "data": "2026-05-29",
         "fornecedor": "ANDERCLEYNE DE OLIVEIRA QUEIROZ SILVEIRA",
         "cnpj": "001.XXX.XXX-05",
@@ -2933,6 +2962,14 @@
         "categoria": "Diárias — Civil",
         "valor": 648.52,
         "descricao": "REFERE-SE À CONCESSÃO DE 0,70% DE DIÁRIA PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA COMPARECER À VISITAS INSTITUCIONAIS, COM O INTUITO DE TRATAR DE ASSUNTOS DE RELEVÂ"
+      },
+      {
+        "data": "2026-09-23",
+        "fornecedor": "GILSON SANTANA DE ARAÚJO",
+        "cnpj": "704.XXX.XXX-04",
+        "categoria": "Diárias — Civil",
+        "valor": 648.52,
+        "descricao": "REFERE-SE À CONCESSÃO DE 0,70% DE DIÁRIA PARA ALIMENTAÇÃO E HOSPEDAGENS COM DESTINO À CIDADE DE CAMPO GRANDE-MS, PARA COMPARECER AO ESCRITÓRIO DO  DEPUTADO FEDERAL BETO PEREIRA, PARA TRATAR DE ASSUNTO"
       },
       {
         "data": "2026-03-30",
@@ -3005,14 +3042,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Física",
         "valor": 450.0,
         "descricao": "REFERE-SE À EMPENHO PARA ADIANTAMENTO DE DESPESAS DE PEQUENO VULTO E DE PRONTO PAGAMENTO, COM  FINALIDADE DE CONTRATAÇÃO DE SERVIÇOS ESPECIALIZADOS PARA MAUNTENÇÃO  E ADEQUAÇÃO DE INFRAESTRUTURA ELÉTR"
-      },
-      {
-        "data": "2026-06-11",
-        "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
-        "cnpj": "15.413.826/0001-50",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 448.56,
-        "descricao": "REFERE-SE À EMPENHO PARA PAGAMENTO DE DESPESA COM TARIFA DE ENERGIA ELÉTRICA, REFERENTE AO EXERCICIO 2026, PARA ATENDER ÀS NECESSIDADES DA CÂMARA MUNICIPAL DE PARANAÍBA-MS."
       },
       {
         "data": "2026-01-15",
@@ -3197,14 +3226,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 0.0,
         "descricao": "REFERE-SE AO 1º TERMO ADITIVO DE CONTRATAÇÃO ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS EM CONSULTORIA E ASSESSORIA EM CONTROLE INTERNO DO LEGISLATIVO MUNICIPAL, ABRANGENDO O ASSES"
-      },
-      {
-        "data": "2026-08-24",
-        "fornecedor": "HASLAN PISCIOTTANO DA SILVA SOCIEDADE INDIVIDUAL D",
-        "cnpj": "43.729.718/0001-26",
-        "categoria": "Serviços de Consultoria",
-        "valor": 0.0,
-        "descricao": "REFERE-SE À EMPENHO PARA CONTRATAÇÃO DE SOCIEDADE DE ADVOCACIA ESPECIALIZADA PARA A PRESTAÇÃO CONTINUADA DE SERVIÇOS TÉCNICOS DE ASSESSORIA E CONSULTORIA JURÍDICA ESPECIALIZADA, CONSULTORIA AO DEPARTA"
       },
       {
         "data": "2026-09-04",

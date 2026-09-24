@@ -1,7 +1,7 @@
 {
   "cidade": "Corumbá",
-  "ultimaAtualizacao": "2026-09-23T15:38:11",
-  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-09-23T15:38:11",
+  "ultimaAtualizacao": "2026-09-24T15:59:03",
+  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-09-24T15:59:03",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camaracorumba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -369,6 +369,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-09-23",
+          "valor": 3000.0,
+          "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA  PARTICIPAR DO WORKSHOP DO PODER LEGISLATIVO MUNICIPAL E CUMPRIR AGENDA/REUNIÃO NA ASSEMBLÉIA LEGISLATIVA (ALe/MS), CONFORME LEIS 2384/2014 E 2819/2022."
+        },
+        {
           "data": "2026-09-01",
           "valor": 2000.0,
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO SEMINÁRIO DE CAPACITAÇÃO DO PODER LEGISLATIVO MUNICIPAL, CONFORME LEIS 2384/2014 E 2819/2022."
@@ -414,8 +419,8 @@
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDAS NO GABINETE DO DEPUTADO ESTADUAL PAULO DUARTE, ESCRITORIO POLITICO DO SENADOR NELSON TRAD E PARTICIPAR DO CICLO DE PALESTRAS PARA O LEGISLATIVO MUNICIPAL, CONFORME LEIS 2384/2014 E 2819/2022."
         }
       ],
-      "totalDiarias2026": 28000.0,
-      "numDiarias2026": 9
+      "totalDiarias2026": 31000.0,
+      "numDiarias2026": 10
     },
     {
       "nome": "ROBERTO GOMES FAÇANHA",
@@ -564,19 +569,19 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 21931181.68,
-    "totalNotas": 214,
+    "totalGeral": 21990094.95,
+    "totalNotas": 217,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 14101224.28,
       "Obrigações Patronais": 2576855.42,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 2240382.02,
-      "Serviços de Consultoria": 1169080.0,
+      "Serviços de Consultoria": 1219993.27,
       "Indenizações e Restituições": 1020565.42,
-      "Diárias — Civil": 320400.0,
+      "Diárias — Civil": 326400.0,
       "Elemento 03": 239078.31,
       "Despesas de Exercícios Anteriores": 151471.38,
       "Elemento 96": 94231.69,
-      "Contribuições": 16000.0,
+      "Contribuições": 18000.0,
       "Material de Consumo": 1893.16
     },
     "despesas": [
@@ -678,19 +683,19 @@
       },
       {
         "data": "2026-03-31",
+        "fornecedor": "SIMPA ASSESSORIA & PLANEJAMENTO EIRELI - EPP",
+        "cnpj": "97.408.090/0001-96",
+        "categoria": "Serviços de Consultoria",
+        "valor": 192468.42,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A  PRESTAÇÃO DE SERVIÇOS DE ASSESSORIA CONTABIL, ABRANGENDO AREAS ORÇAMENTÁRIA, FINANCEIRA, RECURSOS HUMANOS; ASSESSORAMENTO NOS PROCEDIMENTOS LICITATÓRIOS E CONTRATOS A"
+      },
+      {
+        "data": "2026-03-31",
         "fornecedor": "CJR EMPREENDIMENTOS COMERCIAIS ME",
         "cnpj": "22.839.362/0001-03",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 184000.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A CONTRATAÇÃO EMPRESA ESPECIALIZADA EM TRANSMISSÃO ON-LINE DAS SESSÕES ORDINÁRIAS E EXRATORDINÁRIAS DESTE LEGISLATIVO, ATRAVÉS DE SUAS REDES SOCIAIS; PRODUÇÃO DE VIDEOS,"
-      },
-      {
-        "data": "2026-03-31",
-        "fornecedor": "SIMPA ASSESSORIA & PLANEJAMENTO EIRELI - EPP",
-        "cnpj": "97.408.090/0001-96",
-        "categoria": "Serviços de Consultoria",
-        "valor": 160390.35,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE A  PRESTAÇÃO DE SERVIÇOS DE ASSESSORIA CONTABIL, ABRANGENDO AREAS ORÇAMENTÁRIA, FINANCEIRA, RECURSOS HUMANOS; ASSESSORAMENTO NOS PROCEDIMENTOS LICITATÓRIOS E CONTRATOS A"
       },
       {
         "data": "2026-01-05",
@@ -1045,20 +1050,28 @@
         "descricao": "VALOR QUE SE EMPENHA, PARA CONTRATAÇÃO DE EMPRESA PARA PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ASSESSORIA E CONSULTORIA NA AREA DE CONTROLE INTERNO, OBJETIVANDO CAPACITAR, ACOMPANHAR E ORIENT"
       },
       {
-        "data": "2026-02-03",
-        "fornecedor": "PIETRO COSTA CANDIA",
-        "cnpj": "027.XXX.XXX-08",
-        "categoria": "Indenizações e Restituições",
-        "valor": 17644.98,
-        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A REEMBOLSO DE DESPESAS 02 A 12/2026, CONFORME LEIS 2380/2014 E 2653/2018; RESOLUÇÕES 743-744/2017 E 771/2024."
+        "data": "2026-09-03",
+        "fornecedor": "DANILO LIMA SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "58.502.324/0001-08",
+        "categoria": "Serviços de Consultoria",
+        "valor": 18835.2,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ADVOCACIA EM DIREITO PÚBLICO, CONSISTENTES NA ASSESSORIA E CONSULTORIA JURIDICA, PARA DEFINIÇÃO E IMPLEMENTAÇÃO DA FI"
       },
       {
         "data": "2026-01-05",
         "fornecedor": "UNIAO DAS CAMARAS DE VEREADORES DO ESTADO DE MATO",
         "cnpj": "01.941.195/0001-37",
         "categoria": "Contribuições",
-        "valor": 16000.0,
+        "valor": 18000.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A CONTRIBUIÇÃO ASSOCIATIVA 2026."
+      },
+      {
+        "data": "2026-02-03",
+        "fornecedor": "PIETRO COSTA CANDIA",
+        "cnpj": "027.XXX.XXX-08",
+        "categoria": "Indenizações e Restituições",
+        "valor": 17644.98,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A REEMBOLSO DE DESPESAS 02 A 12/2026, CONFORME LEIS 2380/2014 E 2653/2018; RESOLUÇÕES 743-744/2017 E 771/2024."
       },
       {
         "data": "2026-01-05",
@@ -1709,6 +1722,22 @@
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA  PARTICIPAR DO WORKSHOP DO PODER LEGISLATIVO MUNICIPAL E CUMPRIR AGENDA/REUNIÃO NA GOVERNADORIA, CONFORME LEIS 2384/2014 E"
       },
       {
+        "data": "2026-09-23",
+        "fornecedor": "ELIO MOREIRA JUNIOR",
+        "cnpj": "969.XXX.XXX-34",
+        "categoria": "Diárias — Civil",
+        "valor": 3000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA  PARTICIPAR DO WORKSHOP DO PODER LEGISLATIVO MUNICIPAL E CUMPRIR AGENDA/REUNIÃO COM DEPUTADO ESTADUAL JOÃO CESAR MATTOGROS"
+      },
+      {
+        "data": "2026-09-23",
+        "fornecedor": "MATHEUS PEREIRA CAZARIN SILVA",
+        "cnpj": "012.XXX.XXX-11",
+        "categoria": "Diárias — Civil",
+        "valor": 3000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA  PARTICIPAR DO WORKSHOP DO PODER LEGISLATIVO MUNICIPAL E CUMPRIR AGENDA/REUNIÃO NA ASSEMBLÉIA LEGISLATIVA (ALe/MS), CONFOR"
+      },
+      {
         "data": "2026-05-08",
         "fornecedor": "VISIONA9 Gestão Empresarial LTDA",
         "cnpj": "58.521.834/0001-22",
@@ -2261,14 +2290,6 @@
         "descricao": "VALOR QUE SE EMPENHA, POR Contratação de Empresa Especializada em Locação de Materiais, Equipamentos, Estrutura (incluindo a montagem e desmontagem), Sistema de Registro de Presença dos Vereadores e C"
       },
       {
-        "data": "2026-09-03",
-        "fornecedor": "DANILO LIMA SOCIEDADE INDIVIDUAL DE ADVOCACIA",
-        "cnpj": "58.502.324/0001-08",
-        "categoria": "Serviços de Consultoria",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ADVOCACIA EM DIREITO PÚBLICO, CONSISTENTES NA ASSESSORIA E CONSULTORIA JURIDICA, PARA DEFINIÇÃO E IMPLEMENTAÇÃO DA FI"
-      },
-      {
         "data": "2026-09-08",
         "fornecedor": "LAMPER IMAGEM E DIGITALIZAÇÃO LTDA - EPP",
         "cnpj": "97.408.074/0001-01",
@@ -2291,6 +2312,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A INSCRIÇÕES PARA SECOFEM 2026."
+      },
+      {
+        "data": "2026-09-23",
+        "fornecedor": "H2L EQUIPAMENTOS E SISTEMAS LTDA",
+        "cnpj": "73.505.349/0002-30",
+        "categoria": "Despesas de Exercícios Anteriores",
+        "valor": 0.0,
+        "descricao": "VALOR QUE SE EMPENHA, POR RECONHECIMENTO DE DÍVIDA."
       }
     ]
   },
