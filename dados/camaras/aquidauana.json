@@ -1,7 +1,7 @@
 {
   "cidade": "Aquidauana",
-  "ultimaAtualizacao": "2026-09-24T15:59:03",
-  "fonte": "Portal Transparência Fiorilli (pmaquidauana.rcmsuporte.com.br:8079) — Dados Abertos — 2026-09-24T15:59:03",
+  "ultimaAtualizacao": "2026-09-25T15:59:34",
+  "fonte": "Portal Transparência Fiorilli (pmaquidauana.rcmsuporte.com.br:8079) — Dados Abertos — 2026-09-25T15:59:34",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmaquidauana.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -565,14 +565,14 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 7307490.31,
+    "totalGeral": 7381178.73,
     "totalNotas": 299,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 5494540.01,
       "Obrigações Patronais": 627835.14,
       "Diárias — Civil": 478800.0,
-      "Serviços de Consultoria": 308407.76,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 217795.24,
+      "Serviços de Consultoria": 325407.76,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 274483.66,
       "Serviços de Tecnologia da Informação": 120718.0,
       "Equipamentos e Material Permanente": 27330.84,
       "Material de Consumo": 21213.64,
@@ -812,6 +812,14 @@
         "descricao": "Patronal INSS - agente político e não efetivo - dedução salário maternidade."
       },
       {
+        "data": "2026-05-21",
+        "fornecedor": "BATISTA & PATTINI ADVOGADOS ASSOCIADOS",
+        "cnpj": "22.430.924/0001-60",
+        "categoria": "Serviços de Consultoria",
+        "valor": 68000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 4 - Mod. Formatada: 4 - Contratação de empresa especializada para prestação de ser"
+      },
+      {
         "data": "2026-03-25",
         "fornecedor": "INSS - INSTITUTO NACIONAL DE SEGURIDADE SOCIAL",
         "cnpj": "29.979.036/0086-30",
@@ -844,14 +852,6 @@
         "descricao": "FOLHA DE PAGAMENTO 02-2026 - CONTRIBUIÇÃO PREVIDENCIÁRIA PATRONAL AO INSS."
       },
       {
-        "data": "2026-05-21",
-        "fornecedor": "BATISTA & PATTINI ADVOGADOS ASSOCIADOS",
-        "cnpj": "22.430.924/0001-60",
-        "categoria": "Serviços de Consultoria",
-        "valor": 51000.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 4 - Mod. Formatada: 4 - Contratação de empresa especializada para prestação de ser"
-      },
-      {
         "data": "2026-05-11",
         "fornecedor": "CRIVELLI E INFRAN ASSESSORIA CONTABIL LTDA",
         "cnpj": "15.348.415/0001-28",
@@ -868,20 +868,28 @@
         "descricao": "FOLHA DE PAGAMENTO 01-2026 - CONTRIBUIÇÃO PREVIDENCIÁRIA PATRONAL AO INSS."
       },
       {
-        "data": "2026-06-16",
-        "fornecedor": "R3ged Gestao de Documentos Ltda",
-        "cnpj": "21.268.622/0001-75",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 32550.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000118/25 - Ano Mod.: 2025 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 31 - Mod. Formatada: 31 - Contratação de empresa de tecnologia da informação, pa"
+        "data": "2026-09-11",
+        "fornecedor": "Ipd - Instituto Paranaense de Direito Ltda",
+        "cnpj": "64.024.252/0001-33",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 38500.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000026/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 11 - Mod. Formatada: 11 - Contratação de serviço técnico especializado de treiname"
       },
       {
         "data": "2026-01-14",
         "fornecedor": "ENERGISA MATO GROSSO DO SUL DISTRIBUIDORA DE ENERG",
         "cnpj": "15.413.826/0001-50",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 30136.93,
+        "valor": 34342.73,
         "descricao": "DESPESA ESTIMADA REFERENTE AOS SERVIÇOS DE ENERGIA ELÉTRICA PARA O ANO DE 2026."
+      },
+      {
+        "data": "2026-06-16",
+        "fornecedor": "R3ged Gestao de Documentos Ltda",
+        "cnpj": "21.268.622/0001-75",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 32550.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000118/25 - Ano Mod.: 2025 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 31 - Mod. Formatada: 31 - Contratação de empresa de tecnologia da informação, pa"
       },
       {
         "data": "2026-02-19",
@@ -954,6 +962,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 12870.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000010/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada para a participação d"
+      },
+      {
+        "data": "2026-09-02",
+        "fornecedor": "UNECTA EVENTOS LTDA",
+        "cnpj": "51.777.038/0001-06",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 12870.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000025/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 10 - Mod. Formatada: 10 - Contratação de empresa para viabilizar a participação de"
       },
       {
         "data": "2026-06-09",
@@ -1396,6 +1412,14 @@
         "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 06/2026 - VENCIMENTOS E SALÁRIOS - Recebido por\r\ncedência"
       },
       {
+        "data": "2026-06-26",
+        "fornecedor": "MAURO BONIERSKI",
+        "cnpj": "21.481.085/0001-47",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 6050.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000012/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada para a prestação de serviços"
+      },
+      {
         "data": "2026-01-16",
         "fornecedor": "ARENIR DE FATIMA ALVES RIBEIRO & CIA LTDA",
         "cnpj": "02.568.247/0001-34",
@@ -1434,14 +1458,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 5075.0,
         "descricao": "DESPESA QUE SE EMPENHA PELA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS DE CONFECÇÃO DE PLACAS EM AÇO INOX E CERTIFICADOS EM MOLDURA DE VIDRO TIPO SANDUÍCHE. Contrato nº 6/2025. Em"
-      },
-      {
-        "data": "2026-06-26",
-        "fornecedor": "MAURO BONIERSKI",
-        "cnpj": "21.481.085/0001-47",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 4937.38,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000012/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada para a prestação de serviços"
       },
       {
         "data": "2026-01-15",
@@ -2940,14 +2956,6 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000022/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 13 - Mod. Formatada: 13 - Contratação de empresa especializada para confecção e fornecime"
       },
       {
-        "data": "2026-09-02",
-        "fornecedor": "UNECTA EVENTOS LTDA",
-        "cnpj": "51.777.038/0001-06",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000025/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 10 - Mod. Formatada: 10 - Contratação de empresa para viabilizar a participação de"
-      },
-      {
         "data": "2026-09-04",
         "fornecedor": "CREIDE CELESTE PEREIRA DE ALMEIDA SILVA & CIA LTDA",
         "cnpj": "36.987.047/0001-38",
@@ -2962,14 +2970,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000022/25 - Ano Mod.: 2025 - Modalidade: DISPENSA - Nº Mod.: 20 - Mod. Formatada: 20 - Contratação de empresa para prestar serviço de manutenção predi"
-      },
-      {
-        "data": "2026-09-11",
-        "fornecedor": "Ipd - Instituto Paranaense de Direito Ltda",
-        "cnpj": "64.024.252/0001-33",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000026/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 11 - Mod. Formatada: 11 - Contratação de serviço técnico especializado de treiname"
       }
     ]
   },

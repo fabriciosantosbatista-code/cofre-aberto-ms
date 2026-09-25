@@ -1,8 +1,8 @@
 {
-  "ultimaAtualizacao": "2026-09-24T15:59:03",
+  "ultimaAtualizacao": "2026-09-25T15:59:34",
   "ano": 2026,
-  "fonte": "Portal da Transparência (api.portaldatransparencia.gov.br/api-de-dados/emendas) — 2026-09-24T15:59:03",
-  "totalGeralPago": 321615786.35,
+  "fonte": "Portal da Transparência (api.portaldatransparencia.gov.br/api-de-dados/emendas) — 2026-09-25T15:59:34",
+  "totalGeralPago": 321909989.19,
   "parlamentares": [
     {
       "nome": "Nelsinho Trad",
@@ -331,6 +331,119 @@
       ]
     },
     {
+      "nome": "Camila Jara",
+      "cargo": "Deputado(a) Federal",
+      "partido": "PT",
+      "totalEmpenhado": 28846267.83,
+      "totalPago": 25145765.35,
+      "porTipo": {
+        "Projeto Definido": 22984364.84,
+        "Emenda Pix": 2161400.51
+      },
+      "totalEmendas": 11,
+      "emendas": [
+        {
+          "numero": "0015",
+          "tipo": "Projeto Definido",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Saúde",
+          "subfuncao": "Assistência hospitalar e ambulatorial",
+          "valorEmpenhado": 10500000.0,
+          "valorPago": 10500000.0
+        },
+        {
+          "numero": "0004",
+          "tipo": "Projeto Definido",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Saúde",
+          "subfuncao": "Atenção básica",
+          "valorEmpenhado": 7183953.0,
+          "valorPago": 7183953.0
+        },
+        {
+          "numero": "0014",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Cultura",
+          "subfuncao": "Difusão cultural",
+          "valorEmpenhado": 3000000.0,
+          "valorPago": 2500000.0
+        },
+        {
+          "numero": "0013",
+          "tipo": "Emenda Pix",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Encargos especiais",
+          "subfuncao": "Outras transferências",
+          "valorEmpenhado": 3184000.0,
+          "valorPago": 2161400.51
+        },
+        {
+          "numero": "0007",
+          "tipo": "Projeto Definido",
+          "municipio": "MÚLTIPLO",
+          "funcao": "Assistência social",
+          "subfuncao": "SERVICOS SOCIOASSISTENCIAIS",
+          "valorEmpenhado": 1300000.0,
+          "valorPago": 1300000.0
+        },
+        {
+          "numero": "0008",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Educação",
+          "subfuncao": "Ensino profissional",
+          "valorEmpenhado": 712367.3,
+          "valorPago": 712366.8
+        },
+        {
+          "numero": "0010",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Educação",
+          "subfuncao": "Ensino superior",
+          "valorEmpenhado": 419998.4,
+          "valorPago": 419998.4
+        },
+        {
+          "numero": "0009",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Educação",
+          "subfuncao": "Ensino superior",
+          "valorEmpenhado": 999683.9,
+          "valorPago": 368046.64
+        },
+        {
+          "numero": "0012",
+          "tipo": "Projeto Definido",
+          "municipio": "MATO GROSSO DO SUL (UF)",
+          "funcao": "Gestão ambiental",
+          "subfuncao": "Normatização e fiscalização",
+          "valorEmpenhado": 196265.23,
+          "valorPago": 0.0
+        },
+        {
+          "numero": "0001",
+          "tipo": "Projeto Definido",
+          "municipio": "Nacional",
+          "funcao": "Segurança pública",
+          "subfuncao": "Policiamento",
+          "valorEmpenhado": 350000.0,
+          "valorPago": 0.0
+        },
+        {
+          "numero": "0002",
+          "tipo": "Projeto Definido",
+          "municipio": "Nacional",
+          "funcao": "Saúde",
+          "subfuncao": "Formação de recursos humanos",
+          "valorEmpenhado": 1000000.0,
+          "valorPago": 0.0
+        }
+      ]
+    },
+    {
       "nome": "Dr. Luiz Ovando",
       "cargo": "Deputado(a) Federal",
       "partido": "PP",
@@ -421,119 +534,6 @@
           "funcao": "Defesa nacional",
           "subfuncao": "Defesa naval",
           "valorEmpenhado": 264987.18,
-          "valorPago": 0.0
-        }
-      ]
-    },
-    {
-      "nome": "Camila Jara",
-      "cargo": "Deputado(a) Federal",
-      "partido": "PT",
-      "totalEmpenhado": 28583271.86,
-      "totalPago": 24853297.17,
-      "porTipo": {
-        "Projeto Definido": 22691896.66,
-        "Emenda Pix": 2161400.51
-      },
-      "totalEmendas": 11,
-      "emendas": [
-        {
-          "numero": "0015",
-          "tipo": "Projeto Definido",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Saúde",
-          "subfuncao": "Assistência hospitalar e ambulatorial",
-          "valorEmpenhado": 10500000.0,
-          "valorPago": 10500000.0
-        },
-        {
-          "numero": "0004",
-          "tipo": "Projeto Definido",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Saúde",
-          "subfuncao": "Atenção básica",
-          "valorEmpenhado": 7183953.0,
-          "valorPago": 7183953.0
-        },
-        {
-          "numero": "0014",
-          "tipo": "Projeto Definido",
-          "municipio": "MATO GROSSO DO SUL (UF)",
-          "funcao": "Cultura",
-          "subfuncao": "Difusão cultural",
-          "valorEmpenhado": 3000000.0,
-          "valorPago": 2500000.0
-        },
-        {
-          "numero": "0013",
-          "tipo": "Emenda Pix",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Encargos especiais",
-          "subfuncao": "Outras transferências",
-          "valorEmpenhado": 3184000.0,
-          "valorPago": 2161400.51
-        },
-        {
-          "numero": "0007",
-          "tipo": "Projeto Definido",
-          "municipio": "MÚLTIPLO",
-          "funcao": "Assistência social",
-          "subfuncao": "SERVICOS SOCIOASSISTENCIAIS",
-          "valorEmpenhado": 1300000.0,
-          "valorPago": 1300000.0
-        },
-        {
-          "numero": "0010",
-          "tipo": "Projeto Definido",
-          "municipio": "MATO GROSSO DO SUL (UF)",
-          "funcao": "Educação",
-          "subfuncao": "Ensino superior",
-          "valorEmpenhado": 419998.4,
-          "valorPago": 419998.4
-        },
-        {
-          "numero": "0008",
-          "tipo": "Projeto Definido",
-          "municipio": "MATO GROSSO DO SUL (UF)",
-          "funcao": "Educação",
-          "subfuncao": "Ensino profissional",
-          "valorEmpenhado": 449371.33,
-          "valorPago": 419898.62
-        },
-        {
-          "numero": "0009",
-          "tipo": "Projeto Definido",
-          "municipio": "MATO GROSSO DO SUL (UF)",
-          "funcao": "Educação",
-          "subfuncao": "Ensino superior",
-          "valorEmpenhado": 999683.9,
-          "valorPago": 368046.64
-        },
-        {
-          "numero": "0012",
-          "tipo": "Projeto Definido",
-          "municipio": "MATO GROSSO DO SUL (UF)",
-          "funcao": "Gestão ambiental",
-          "subfuncao": "Normatização e fiscalização",
-          "valorEmpenhado": 196265.23,
-          "valorPago": 0.0
-        },
-        {
-          "numero": "0001",
-          "tipo": "Projeto Definido",
-          "municipio": "Nacional",
-          "funcao": "Segurança pública",
-          "subfuncao": "Policiamento",
-          "valorEmpenhado": 350000.0,
-          "valorPago": 0.0
-        },
-        {
-          "numero": "0002",
-          "tipo": "Projeto Definido",
-          "municipio": "Nacional",
-          "funcao": "Saúde",
-          "subfuncao": "Formação de recursos humanos",
-          "valorEmpenhado": 1000000.0,
           "valorPago": 0.0
         }
       ]
@@ -805,9 +805,9 @@
       "cargo": "Deputado(a) Federal",
       "partido": "UNIÃO",
       "totalEmpenhado": 28490110.66,
-      "totalPago": 18794893.36,
+      "totalPago": 18796628.02,
       "porTipo": {
-        "Projeto Definido": 9374633.0,
+        "Projeto Definido": 9376367.66,
         "Emenda Pix": 9420260.36
       },
       "totalEmendas": 11,
@@ -882,7 +882,7 @@
           "funcao": "Desporto e lazer",
           "subfuncao": "Desporto comunitário",
           "valorEmpenhado": 346701.66,
-          "valorPago": 0.0
+          "valorPago": 1734.66
         },
         {
           "numero": "0008",
@@ -917,7 +917,7 @@
       "nome": "Vander Loubet",
       "cargo": "Deputado(a) Federal",
       "partido": "PT",
-      "totalEmpenhado": 23218128.55,
+      "totalEmpenhado": 23233278.55,
       "totalPago": 17540292.08,
       "porTipo": {
         "Projeto Definido": 12289765.47,
@@ -976,7 +976,7 @@
           "municipio": "MATO GROSSO DO SUL (UF)",
           "funcao": "Educação",
           "subfuncao": "Ensino superior",
-          "valorEmpenhado": 967099.99,
+          "valorEmpenhado": 982249.99,
           "valorPago": 760227.36
         },
         {
