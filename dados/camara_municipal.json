@@ -1,5 +1,5 @@
 {
-  "ultimaAtualizacao": "2026-09-26T15:11:33",
+  "ultimaAtualizacao": "2026-09-28T18:48:59",
   "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande/MS (SCPI Fiorilli, 45.225.6.93:8079) — Verba Indenizatória (Ato 027/028) extraída dos PDFs individuais por vereador via HomeDocumentosPublicados.aspx, 10/07/2026.",
   "resumo": {
     "totalVereadores": 29,
@@ -14136,22 +14136,28 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 62253.59,
-        "gastoAto028_2026": 62500.0,
-        "gastoPago2026": 124753.59,
-        "percentualUsado": 41.6,
+        "gastoAto027_2026": 99405.68,
+        "gastoAto028_2026": 100000.0,
+        "gastoPago2026": 199405.68,
+        "percentualUsado": 66.5,
         "mesesAto027": {
           "jan": 12370.04,
           "fev": 12446.14,
           "mar": 12474.53,
           "abr": 12478.33,
-          "mai": 12484.55
+          "mai": 12484.55,
+          "jun": 12204.01,
+          "jul": 12459.95,
+          "ago": 12488.13
         },
         "mesesAto028": {
           "jan": 12500.0,
           "fev": 12500.0,
           "mar": 12500.0,
-          "abr": 25000.0
+          "abr": 25000.0,
+          "jun": 12500.0,
+          "jul": 12500.0,
+          "ago": 12500.0
         },
         "categorias": {},
         "notaColeta": "Notas parcialmente legíveis — locação + serviços R$ 5.500–8.000/mês.",
@@ -14168,7 +14174,7 @@
         "gastoPessoalAnual": 1313647.68,
         "totalEstimado": 1788700.42
       },
-      "totalNotasFiscais": 86,
+      "totalNotasFiscais": 157,
       "despesas": [
         {
           "data": "2026-01-02",
@@ -14864,6 +14870,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-05-21",
+          "fornecedor": "POSTO LOTUS LTDA",
+          "cnpj": "30.530.878/0001-08",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e nº 872701 GASOLINA 15,899 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-05-23",
           "fornecedor": "POSTO MORENINHA LOCATELLI LTDA",
           "cnpj": "16.731.272/0001-00",
@@ -14873,12 +14888,39 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-05-23",
+          "fornecedor": "POSTO LOTUS LTDA",
+          "cnpj": "30.530.878/0001-08",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e nº 873895 GASOLINA 23,848 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-05-27",
           "fornecedor": "VFORTCOMBUSTIVEIS LTDA",
           "cnpj": "32.195.248/0002-22",
           "valor": 150.0,
           "nf": null,
           "descricao": "NFC-e nº 20183 GASOLINA — 23,112 7 NBR1477,",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-27",
+          "fornecedor": "POSTO MORENINHA LOCATELLI LTDA",
+          "cnpj": "16.731.272/0001-00",
+          "valor": 200.01,
+          "nf": null,
+          "descricao": "NFC-e nº 1587916. ETANOL 50,128 SMH8FO7",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-28",
+          "fornecedor": "RIBEIRO DE MENDONCA BASTON E CIA LTDA",
+          "cnpj": "16.045.015/0001-06",
+          "valor": 90.0,
+          "nf": null,
+          "descricao": "NFC-e nº 1091302 GASOLINA 13,741 NBR1477",
           "ato": "ATO 027"
         },
         {
@@ -14897,6 +14939,33 @@
           "valor": 200.0,
           "nf": null,
           "descricao": "NFC-e nº 872448 é ETANOL 50,252, RWB1G50",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-29",
+          "fornecedor": "POSTO LOTUS LTDA",
+          "cnpj": "30.530.878/0001-08",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e nº 876380 GASOLINA 23,848 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-30",
+          "fornecedor": "POSTO LOTUS LTDA",
+          "cnpj": "30.530.878/0001-08",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e nº 877393 GASOLINA 15,899 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-05-31",
+          "fornecedor": "] | POSTO Z+Z IGOR LTDA",
+          "cnpj": "26.852.319/0001-39",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e nº 2501227 ETANOL 38,561 SMH8FO7",
           "ato": "ATO 027"
         },
         {
@@ -14936,12 +15005,588 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-06-03",
+          "fornecedor": "POSTO LOTUS LTDA",
+          "cnpj": "30.530.878/0001-08",
+          "valor": 130.0,
+          "nf": null,
+          "descricao": "NFC-e nº 879072 ETANOL 32,582 SMH8FO7",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-03",
+          "fornecedor": ", AUTO POSTO SAO JORGE LTDA",
+          "cnpj": "15.144.169/0001-92",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 827147 GASOLINA 31,898 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-05",
+          "fornecedor": "POSTO MORENINHA LOCATELLILTDA",
+          "cnpj": "16.731.272/0001-00",
+          "valor": 50.0,
+          "nf": null,
+          "descricao": "NFC-e nº 1597567 ETANOL 12,854 SMH8FO7",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-06",
+          "fornecedor": "POSTO VIA NORTE LTDA",
+          "cnpj": "20.025.135/0003-80",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e nº 217552 GASOLINA 23,697 NBR1477 É o",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-06",
+          "fornecedor": "POSTO LOTUS LTDA",
+          "cnpj": "30.530.878/0001-08",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e nº 880923 - GASOLINA 15,775 smero7",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-08",
+          "fornecedor": "POSTO VIA NORTE LTDA",
+          "cnpj": "20.025.135/0003-80",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e nº 218598 GASOLINA 23,697",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-08",
+          "fornecedor": "RC COMERCIO DE DERIVADOS PETROLEO LTDA",
+          "cnpj": "01.271.514/0001-44",
+          "valor": 50.0,
+          "nf": null,
+          "descricao": "NFC-e nº 306760 ETANOL 12,854 sMHSFO7 E)",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-10",
+          "fornecedor": "POSTO LOTUS LTDA",
+          "cnpj": "30.530.878/0001-08",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 882821 GASOLINA 31,798 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-15",
+          "fornecedor": "POSTO LOTUS LTDA",
+          "cnpj": "30.530.878/0001-08",
+          "valor": 159.0,
+          "nf": null,
+          "descricao": "NFC-e nº 884846 GASOLINA 25,279 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-17",
+          "fornecedor": "POSTO GUENO PROSA LTDA",
+          "cnpj": "03.024.296/0001-79",
+          "valor": 175.0,
+          "nf": null,
+          "descricao": "NFC-e nº 254858 ETANOL 43,862 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-19",
+          "fornecedor": "POSTO FIGUEIRA LTDA",
+          "cnpj": "02.322.969/0001-04",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 261444 GASOLINA 31,3 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-22",
+          "fornecedor": "POSTO LOTUS LTDA",
+          "cnpj": "30.530.878/0001-08",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 888471 GASOLINA 31,798 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-24",
+          "fornecedor": "AUTO POSTO SAO JORGE LTDA",
+          "cnpj": "15.144.169/0003-54",
+          "valor": 50.0,
+          "nf": null,
+          "descricao": "NFC-e nº 76085 GASOLINA NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-25",
+          "fornecedor": "AUTO POSTO SAO JORGE LTDA",
+          "cnpj": "15.144.169/0001-92",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e nº 841208 ETANOL NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-26",
+          "fornecedor": "] POSTO SEARA LTDA",
+          "cnpj": "24.632.119/0001-45",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e nº 2509298 GASOLINA 15,038 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-26",
+          "fornecedor": "POSTO VIA NORTE LTDA",
+          "cnpj": "20.025.135/0003-80",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 226962 GASOLINA NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-26",
+          "fornecedor": "POSTO VIA NORTE LTDA",
+          "cnpj": "20.025.135/0003-80",
+          "valor": 62.0,
+          "nf": null,
+          "descricao": "NFC-e nº 226962 ÓLEO 1 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-29",
+          "fornecedor": "AUTO POSTO SAO JORGE LTDA",
+          "cnpj": "15.144.169/0001-92",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e nº 843809 ETANOL 26,042 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-30",
+          "fornecedor": "NOVA LIMA NEWS LTDA",
+          "cnpj": "45.855.302/0001-80",
+          "valor": 1000.0,
+          "nf": "S-e329",
+          "descricao": "U Divulgação de atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-30",
+          "fornecedor": "VITORIA DOS ANJOS CENTURION",
+          "cnpj": "50.173.968/0001-98",
+          "valor": 4000.0,
+          "nf": null,
+          "descricao": "NFS-e O5 Divulgação de atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-06-30",
+          "fornecedor": "/26 EDINALDO MENESES SOCIEDADE INDIVIDUAL DE ADVOCACIA x",
+          "cnpj": "66.810.445/0001-45",
+          "valor": 12500.0,
+          "nf": "Se 2",
+          "descricao": "/U N Pareceres;",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "+ ANDRE G. DE SOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 400.0,
+          "nf": "S-e 563",
+          "descricao": "/U - Locação de software",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-03",
+          "fornecedor": "AUTO POSTO REFERENCIA LTDA",
+          "cnpj": "19.462.681/0001-38",
+          "valor": 207.76,
+          "nf": null,
+          "descricao": "NFC-e nº 340255 ETANOL 52,071 QAG8G79",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-06",
+          "fornecedor": "POSTO SEARA LTDA",
+          "cnpj": "24.632.119/0001-45",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 2520977 GASOLINA rs",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-08",
+          "fornecedor": "BONATTO E CIA LTDA (AL)",
+          "cnpj": "33.149.253/0005-04",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e nº 1924335 ETANOL 26,063 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-10",
+          "fornecedor": "POSTO VIA NORTE LTDA",
+          "cnpj": "20.025.135/0003-80",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e nº 234138 GASOLINA FP",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-11",
+          "fornecedor": "Auto PostoLos AngelesLTDA",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 373230 GASOLINA 31,299 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-15",
+          "fornecedor": "TORK OIL MODELO LTDA",
+          "cnpj": "22.061.736/0004-55",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e nº 109622 GASOLINA 23,66 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-16",
+          "fornecedor": "WESLEY CACERES LIRA",
+          "cnpj": "46.646.903/0001-45",
+          "valor": 260.0,
+          "nf": null,
+          "descricao": "NFC-e nº 45 ÓLEO 4 NBRI477E",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-16",
+          "fornecedor": "Auto PostoLos AngelesLTDA",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 200.01,
+          "nf": null,
+          "descricao": "NFC-e nº 373649 GASOLINA 31,301 NBR147%",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-18",
+          "fornecedor": "AUTO POSTO SAO JORGE LTDA",
+          "cnpj": "15.144.169/0001-92",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e nº 856931 GASOLINA 23,924 NBRI477-| oC Ieo6/ EMC",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-20",
+          "fornecedor": "POSTO LOTUS LTDA",
+          "cnpj": "30.530.878/0001-08",
+          "valor": 138.67,
+          "nf": null,
+          "descricao": "NFC-e 11º902755 ETANOL",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-21",
+          "fornecedor": "POSTO MORENINHA LOCATELLI LTDA",
+          "cnpj": "16.731.272/0001-00",
+          "valor": 93.01,
+          "nf": null,
+          "descricao": "NFC-e nº1642947",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-24",
+          "fornecedor": "Auto Posto Los Angeles LTDA",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 374226",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-27",
+          "fornecedor": "BONATTO ECIA 24 HORAS",
+          "cnpj": "33.149.253/0001-80",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e nº3146430",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-30",
+          "fornecedor": "ANDRE G. DESOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 400.0,
+          "nf": "S-e 578",
+          "descricao": "/ U Locação desoftware",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-31",
+          "fornecedor": "NOVA LIMA NEWS LTDA",
+          "cnpj": "45.855.302/0001-80",
+          "valor": 1000.0,
+          "nf": "S-e 342",
+          "descricao": "U Divulgação de atividade parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-31",
+          "fornecedor": "VITORIA DOS ANJOSCENTURION",
+          "cnpj": "50.173.968/0001-98",
+          "valor": 4000.0,
+          "nf": "S-e 07",
+          "descricao": "Divulgação de atividade parlamentar)",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-31",
+          "fornecedor": "Auto Posto Los Angeles LTDA",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e nº 374849 , ETANOL 39,578 ' > NBRI477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-31",
+          "fornecedor": "/26 | EDINALDO MENESES SOCIEDADE INDIVIDUAL DE ADVOCACIA *",
+          "cnpj": "66.810.445/0001-45",
+          "valor": 12500.0,
+          "nf": "Se3",
+          "descricao": "/U N Pareceres; % x",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-08-03",
+          "fornecedor": "Auto Posto Los Angeles LTDA",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 375056 GASOLINA 31,299 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-05",
+          "fornecedor": "CRISTIANE ELIAS FARIASDA SILVALTDA",
+          "cnpj": "28.010.274/0001-80",
+          "valor": 4284.5,
+          "nf": "S-e1198",
+          "descricao": "/ U Serviços gráficos A",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-05",
+          "fornecedor": "Auto Posto Los Angeles LTDA",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 375270 ETANOL GASOLINA GASOLINA GASOLINA QAG8G79 QAG8G79 NBR1477 NBR1477 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-07",
+          "fornecedor": "AUTO POSTO SAO JORGE LTDA",
+          "cnpj": "15.144.169/0001-92",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e nº 870336 , GASOLINA 24,233 j NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-08",
+          "fornecedor": "Auto Posto Los Angeles LTDA",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 172.03,
+          "nf": null,
+          "descricao": "NFC-e nº 375582 ETANOL 45,391 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-11",
+          "fornecedor": "POSTO LOTUS LTDA",
+          "cnpj": "30.530.878/0001-08",
+          "valor": 173.96,
+          "nf": null,
+          "descricao": "NFC-e nº 913514 ETANOL 45,9 SMH8FO7",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-11",
+          "fornecedor": "Auto Posto Los Angeles LTDA",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 375764 GASOLINA 31,299 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-08-14",
           "fornecedor": "POSTO LOTUS LTDA '",
           "cnpj": "30.530.878/0001-08",
           "valor": 100.0,
           "nf": null,
           "descricao": "NFC- \"” 824715 GASOLINA * E? 272 N mm. ]",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-14",
+          "fornecedor": "Auto Posto Los Angeles LTDA",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 150.0,
+          "nf": null,
+          "descricao": "NFC-e nº 376035 ETANOL 39,579 QAG8G79,",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-16",
+          "fornecedor": "POSTO LRLTDA",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 175.02,
+          "nf": null,
+          "descricao": "NFC-e nº 976250 ETANOL 46,18 SEN",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-17",
+          "fornecedor": "AUTO POSTO SAO JORGE LTDA",
+          "cnpj": "15.144.169/0001-92",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e nº 877120 GASOLINA 16,156 . NBR1477 a",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-19",
+          "fornecedor": "POSTO LRLTDA",
+          "cnpj": "52.212.878/0001-94",
+          "valor": 167.03,
+          "nf": null,
+          "descricao": "NFC-e nº 979803 * ETANOL 44,072 SMH8FOR",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-20",
+          "fornecedor": "Auto Posto Los Angeles LTDA",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": ", NFC-e nº 376566 ETANOL 26,386 QAG8G7",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-22",
+          "fornecedor": "Auto Posto Los Angeles LTDA",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 376770 GASOLINA *' 31,299 * NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-22",
+          "fornecedor": "POSTO LOTUS LTDA",
+          "cnpj": "30.530.878/0001-08",
+          "valor": 100.0,
+          "nf": null,
+          "descricao": "NFC-e nº 919757 ETANOL 26,387 | SMHSFO/? & | VEOE//9 ese:",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-23",
+          "fornecedor": "Auto Posto Los Angeles LTDA ,;",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 150.01,
+          "nf": null,
+          "descricao": "NFC-e nº 376873 ETANOL 39,581 NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-25",
+          "fornecedor": "TORK OIL MODELO LTDA ,",
+          "cnpj": "22.061.736/0001-02",
+          "valor": 170.02,
+          "nf": null,
+          "descricao": "NFC-enº 554353 ETANOL 45,34 * | SMH8FO7",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-28",
+          "fornecedor": "POSTO SEARALTDA ”",
+          "cnpj": "24.632.119/0001-45",
+          "valor": 250.0,
+          "nf": null,
+          "descricao": "NFC-e nº 2580296 ” GASOLINA ' 39,371, |. NBR1477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-30",
+          "fornecedor": "POSTO MORENINHA LOCATELLI LTDA",
+          "cnpj": "16.731.272/0001-00",
+          "valor": 180.06,
+          "nf": null,
+          "descricao": "NFC-e nº 1682461 ETANOL 47,51, DPSMH8FO7",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-30",
+          "fornecedor": "Auto Posto Los Angeles LTDA *'",
+          "cnpj": "04.627.224/0001-89",
+          "valor": 200.0,
+          "nf": null,
+          "descricao": "NFC-e nº 377484 , GASOLINA 31,299 | NBRU477",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-31",
+          "fornecedor": "VIPCAR LTDA",
+          "cnpj": "50.442.570/0001-00",
+          "valor": 4000.0,
+          "nf": "S-e 17722",
+          "descricao": "/U Locação de carro",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-31",
+          "fornecedor": "/26 | EDINALDO MENESES SOCIEDADE INDIVIDUAL DE ADVOCACIA À",
+          "cnpj": "66.810.445/0001-45",
+          "valor": 12500.0,
+          "nf": "Se4",
+          "descricao": "/U xs | Pareceres; N >",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "NOVA LIMA NEWS LTDA",
+          "cnpj": "45.855.302/0001-80",
+          "valor": 1000.0,
+          "nf": "S-e 352",
+          "descricao": "U xs Divulgação de atividade parlamentar >]",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "VITORIA DOS ANJOS CENTURION",
+          "cnpj": "50.173.968/0001-98",
+          "valor": 4000.0,
+          "nf": "S-e 10",
+          "descricao": "Divulgação de atividade parlamentar >)",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "ANDRE G. DE SOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 400.0,
+          "nf": "S-e 624",
+          "descricao": "/ U 1, Locação de software",
           "ato": "ATO 027"
         }
       ],
