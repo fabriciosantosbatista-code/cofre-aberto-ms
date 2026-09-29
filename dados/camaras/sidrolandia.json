@@ -1,7 +1,7 @@
 {
   "cidade": "Sidrolândia",
-  "ultimaAtualizacao": "2026-09-28T18:48:52",
-  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-09-28T18:48:52",
+  "ultimaAtualizacao": "2026-09-29T17:06:09",
+  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-09-29T17:06:09",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasidrolandia.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -332,18 +332,18 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 13957140.07,
-    "totalNotas": 625,
+    "totalGeral": 14064695.79,
+    "totalNotas": 631,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 7918645.49,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1429130.47,
       "Obrigações Patronais": 1384274.08,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1335358.07,
       "Diárias — Civil": 973750.0,
       "Elemento 04": 786330.71,
       "Serviços de Consultoria": 612238.04,
-      "Serviços de Tecnologia da Informação": 273584.01,
+      "Serviços de Tecnologia da Informação": 297117.33,
       "Indenizações e Restituições": 245882.94,
-      "Material de Consumo": 192785.48,
+      "Material de Consumo": 183035.48,
       "Passagens e Despesas com Locomoção": 153971.25,
       "Equipamentos e Material Permanente": 80320.0
     },
@@ -821,12 +821,28 @@
         "descricao": "REFERENTE A VALE ALIMENTAÇÃO DE 07/2026 CONFORME NF 2619089"
       },
       {
+        "data": "2026-08-19",
+        "fornecedor": "IFOOD BENEFÍCIOS E SERVIÇOS LTDA",
+        "cnpj": "33.157.312/0001-62",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 46398.0,
+        "descricao": "REFERENTE A VALE ALIMENTAÇÃO DO MES 08/2026 CONFORME NF 2782190"
+      },
+      {
         "data": "2026-05-20",
         "fornecedor": "IFOOD BENEFÍCIOS E SERVIÇOS LTDA",
         "cnpj": "33.157.312/0001-62",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 46356.22,
         "descricao": "REFERENTE AO VALE ALIMENTAÇÃO DE 05/2026 CONFORME NF 2325850"
+      },
+      {
+        "data": "2026-09-18",
+        "fornecedor": "IFOOD BENEFÍCIOS E SERVIÇOS LTDA",
+        "cnpj": "33.157.312/0001-62",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 46314.4,
+        "descricao": "REFERENTE A VALE ALIMENTAÇÃO DO MES 09/2026 CONFORME NF 2941219"
       },
       {
         "data": "2026-04-17",
@@ -1933,6 +1949,22 @@
         "descricao": "REFERENTE A DUAS PARCELAS DA INSTALAÇÃO DE EQUIPAMENTOS NA CAMARA MUNICIPAL CONFORME NF 2045 E 2046"
       },
       {
+        "data": "2026-08-03",
+        "fornecedor": "HOBY INTERNET E SERVICO DE COMUNICACAO LTDA",
+        "cnpj": "08.585.299/0001-03",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 11766.66,
+        "descricao": "REFERENTE A DUAS PARCELAS DA INSTALAÇÃO DE EQUIPAMENTOS NA CAMARA MUNICIPAL CONFORME NF 2047 E 2048"
+      },
+      {
+        "data": "2026-09-03",
+        "fornecedor": "HOBY INTERNET E SERVICO DE COMUNICACAO LTDA",
+        "cnpj": "08.585.299/0001-03",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 11766.66,
+        "descricao": "REFERENTE A DUAS PARCELAS DA INSTALAÇÃO DE EQUIPAMENTOS NA CAMARA MUNICIPAL CONFORME NF 2049 E 2050"
+      },
+      {
         "data": "2026-03-20",
         "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENE",
         "cnpj": "15.413.826/0001-50",
@@ -2491,14 +2523,6 @@
         "categoria": "Material de Consumo",
         "valor": 9750.0,
         "descricao": "REFERENTE A COMPRA DE KITS PRESENTE DO DIA DAS MÃES CONFORME NF 001"
-      },
-      {
-        "data": "2026-05-04",
-        "fornecedor": "ROSEMAR MOURA BARRETOS PRETE",
-        "cnpj": "22.809.700/0001-64",
-        "categoria": "Material de Consumo",
-        "valor": 9750.0,
-        "descricao": "REFERENTE A KITS PRESENTE DIAS DAS MÃES CONFORME NF 001"
       },
       {
         "data": "2026-05-04",
@@ -4141,6 +4165,14 @@
         "descricao": "REFERENTE A SERVIÇOS DE LAVAGEM VEICULO CONFORME NF 1"
       },
       {
+        "data": "2026-07-30",
+        "fornecedor": "LOURDES APARECIDA KRASPRECHEN LTDA",
+        "cnpj": "60.115.429/0001-56",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1060.0,
+        "descricao": "REFERENTE A SERVIÇO DE COFFE BREAK ATE 50 PESSOAS CONFORME NF 41"
+      },
+      {
         "data": "2026-07-02",
         "fornecedor": "CENTRO AMERICA COMERCIO, SERVICO, GESTAO TECNOLOGI",
         "cnpj": "09.179.444/0001-00",
@@ -5267,6 +5299,22 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "REFERENTE AO CONSUMO 08/2026"
+      },
+      {
+        "data": "2026-05-04",
+        "fornecedor": "ROSEMAR MOURA BARRETOS PRETE",
+        "cnpj": "22.809.700/0001-64",
+        "categoria": "Material de Consumo",
+        "valor": 0.0,
+        "descricao": "REFERENTE A KITS PRESENTE DIAS DAS MÃES CONFORME NF 001."
+      },
+      {
+        "data": "2026-09-03",
+        "fornecedor": "ROSEMAR MOURA BARRETOS PRETE",
+        "cnpj": "22.809.700/0001-64",
+        "categoria": "Material de Consumo",
+        "valor": 0.0,
+        "descricao": "REFERENTE A KITS PRESENTE DIAS DAS MÃES CONFORME NF 001."
       },
       {
         "data": "2026-07-30",

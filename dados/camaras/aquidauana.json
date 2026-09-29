@@ -1,7 +1,7 @@
 {
   "cidade": "Aquidauana",
-  "ultimaAtualizacao": "2026-09-28T18:48:52",
-  "fonte": "Portal Transparência Fiorilli (pmaquidauana.rcmsuporte.com.br:8079) — Dados Abertos — 2026-09-28T18:48:52",
+  "ultimaAtualizacao": "2026-09-29T17:06:09",
+  "fonte": "Portal Transparência Fiorilli (pmaquidauana.rcmsuporte.com.br:8079) — Dados Abertos — 2026-09-29T17:06:09",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmaquidauana.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -565,11 +565,11 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 7564939.91,
+    "totalGeral": 7572989.8,
     "totalNotas": 306,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 5678301.19,
-      "Obrigações Patronais": 627835.14,
+      "Obrigações Patronais": 635885.03,
       "Diárias — Civil": 478800.0,
       "Serviços de Consultoria": 325407.76,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 274483.66,
@@ -1322,6 +1322,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 8049.89,
         "descricao": "Patronal RPPS 08/2026"
+      },
+      {
+        "data": "2026-09-25",
+        "fornecedor": "AQUIDAUANAPREV",
+        "cnpj": "05.030.089/0001-52",
+        "categoria": "Obrigações Patronais",
+        "valor": 8049.89,
+        "descricao": "Patronal RPPS 09/2026"
       },
       {
         "data": "2026-02-27",
@@ -3018,14 +3026,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 0.0,
         "descricao": "Patronal INSS 09/2026 - agente político, não efetivo e rescisões"
-      },
-      {
-        "data": "2026-09-25",
-        "fornecedor": "AQUIDAUANAPREV",
-        "cnpj": "05.030.089/0001-52",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "Patronal RPPS 09/2026"
       }
     ]
   },
