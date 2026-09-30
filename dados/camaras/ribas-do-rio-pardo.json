@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-09-29T17:06:09",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-09-29T17:06:09",
+  "ultimaAtualizacao": "2026-09-30T17:03:52",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-09-30T17:03:52",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -226,15 +226,15 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 8566081.83,
-    "totalNotas": 329,
+    "totalGeral": 8594979.79,
+    "totalNotas": 330,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 4573105.01,
       "Equipamentos e Material Permanente": 1124831.96,
       "Obrigações Patronais": 770981.91,
-      "Serviços de Consultoria": 644217.68,
+      "Serviços de Consultoria": 654631.68,
+      "Serviços de Tecnologia da Informação": 407578.81,
       "Auxílio-Alimentação": 398119.37,
-      "Serviços de Tecnologia da Informação": 389094.85,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 298596.22,
       "Outros Benefícios Assistenciais do Servidor": 122494.81,
       "Outros Serviços de Terceiros — Pessoa Física": 114403.94,
@@ -564,6 +564,14 @@
         "descricao": "EMPENHO REFERENTE AO PROCESSO ADMINISTRATIVO Nº 15/2026, INEXIGIBILIDADE DE LICITAÇÃO Nº 003/2026 E CONTRATO ADMINISTRATIVO Nº 007/2026, RELATIVO À CONTRATAÇÃO DE SERVIÇOS ESPECIALIZADOS EM CONSULTORI"
       },
       {
+        "data": "2026-05-28",
+        "fornecedor": "J. REMONATTO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "26.616.499/0001-50",
+        "categoria": "Serviços de Consultoria",
+        "valor": 52070.0,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO  ADMINISTRATIVO Nº 03/2025, INEGIXIBILIDADE DE LICITAÇÃO Nº 03/2025, PROCESSO ADMINISTRATIVO Nº 12/2025, RELATIVO À CONTRATAÇÃO DE EMPRESA ESPECIALIZ"
+      },
+      {
         "data": "2026-02-03",
         "fornecedor": "ENGELUGA ENGENHARIA LTDA",
         "cnpj": "22.034.572/0001-24",
@@ -578,6 +586,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 47425.27,
         "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ENERGIA ELÉTRICA PARA O EXERCÍCIO DE 2026."
+      },
+      {
+        "data": "2026-05-29",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 47093.65,
+        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
       },
       {
         "data": "2026-07-31",
@@ -628,14 +644,6 @@
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - ABRIL/"
       },
       {
-        "data": "2026-05-28",
-        "fornecedor": "J. REMONATTO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
-        "cnpj": "26.616.499/0001-50",
-        "categoria": "Serviços de Consultoria",
-        "valor": 41656.0,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO  ADMINISTRATIVO Nº 03/2025, INEGIXIBILIDADE DE LICITAÇÃO Nº 03/2025, PROCESSO ADMINISTRATIVO Nº 12/2025, RELATIVO À CONTRATAÇÃO DE EMPRESA ESPECIALIZ"
-      },
-      {
         "data": "2026-01-02",
         "fornecedor": "J. REMONATTO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
         "cnpj": "26.616.499/0001-50",
@@ -666,14 +674,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 36513.4,
         "descricao": "EMPENHO REFERENTE AO ADIANTAMENTO DO 13º SALÁRIO DOS VEREADORES."
-      },
-      {
-        "data": "2026-05-29",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 36021.45,
-        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
       },
       {
         "data": "2026-02-27",
@@ -1004,6 +1004,14 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - MAIO/2026."
       },
       {
+        "data": "2026-05-29",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 15600.0,
+        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
+      },
+      {
         "data": "2026-03-26",
         "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
         "cnpj": "01.696.482/0001-29",
@@ -1090,14 +1098,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 12000.0,
         "descricao": "EMPENHO REFERENTE AO TERMO DE CESSÃO DE USO, PROCESSO ADMINISTRATIVO 11/2026,  ENTRE A CÂMARA MUNICIPAL DE RIBAS DO RIO PARDO E O SINDICATO RURAL PARA FINS DE CEDÊNCIA DO ESPAÇO FÍSICO PARA A REALIZAÇ"
-      },
-      {
-        "data": "2026-05-29",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 11700.0,
-        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
       },
       {
         "data": "2026-08-28",
@@ -1474,6 +1474,14 @@
         "categoria": "Material de Consumo",
         "valor": 3605.62,
         "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 01/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
+      },
+      {
+        "data": "2026-08-28",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 3511.76,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO Nº 06/2026, PROCESSO ADMININISTRATIVO Nº 21/2025, PREGÃO ELETRÔNICO Nº 04/2025, QUE TEM POR OBJETO O FORNECIMENTO DE LICENÇA TEMPORÁRIA DE USO DE SOFT"
       },
       {
         "data": "2026-01-02",
@@ -2796,14 +2804,6 @@
         "descricao": "ANULAÇÃO DE EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - AGOSTO/2026."
       },
       {
-        "data": "2026-08-28",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO Nº 06/2026, PROCESSO ADMININISTRATIVO Nº 21/2025, PREGÃO ELETRÔNICO Nº 04/2025, QUE TEM POR OBJETO O FORNECIMENTO DE LICENÇA TEMPORÁRIA DE USO DE SOFT"
-      },
-      {
         "data": "2026-08-31",
         "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -2874,6 +2874,14 @@
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA E COZINHA E MATERIAIS ELÉTRICOS, PERÍODO CONTRATUAL 01/10/2025 A 30/09/2026. PROCESSO ADMINISTRATIVO 20/2025, PREGÃO ELETRÔNICO 3/2025, A.R."
+      },
+      {
+        "data": "2026-09-29",
+        "fornecedor": "61.886.264 MARYANE HIRAHATA SHIOTA",
+        "cnpj": "61.886.264/0001-89",
+        "categoria": "Material de Consumo",
+        "valor": 0.0,
+        "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 02/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
       }
     ]
   },
