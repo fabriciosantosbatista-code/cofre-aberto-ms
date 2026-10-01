@@ -1,7 +1,7 @@
 {
   "cidade": "Sidrolândia",
-  "ultimaAtualizacao": "2026-09-30T17:03:52",
-  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-09-30T17:03:52",
+  "ultimaAtualizacao": "2026-10-01T17:34:19",
+  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-10-01T17:34:19",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasidrolandia.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -387,14 +387,14 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 14065980.71,
-    "totalNotas": 635,
+    "totalGeral": 14490696.18,
+    "totalNotas": 644,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 7918645.49,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 8176745.48,
+      "Obrigações Patronais": 1445109.44,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 1429415.39,
-      "Obrigações Patronais": 1384274.08,
       "Diárias — Civil": 973750.0,
-      "Elemento 04": 786330.71,
+      "Elemento 04": 892110.83,
       "Serviços de Consultoria": 612238.04,
       "Serviços de Tecnologia da Informação": 297117.33,
       "Indenizações e Restituições": 246882.94,
@@ -490,6 +490,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 259967.55,
         "descricao": "REFERENTE A SALARIO DOS SERVIDORES DE GABINETE DE 03/2026"
+      },
+      {
+        "data": "2026-09-30",
+        "fornecedor": "CAMARA MUNICIPAL DE SIDROLÂNDIA",
+        "cnpj": "15.497.092/0001-34",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 258099.99,
+        "descricao": "REFERENTE AO SALARIO DOS SERVIDORES DE GABINETES  COM FERIAS E RECISÕES DE 09/2026"
       },
       {
         "data": "2026-05-28",
@@ -698,6 +706,14 @@
         "categoria": "Elemento 04",
         "valor": 111385.12,
         "descricao": "REFERENTE A SALARIO DOS SERVIDORES TEMPORARIOAS DE 02/2026"
+      },
+      {
+        "data": "2026-09-30",
+        "fornecedor": "CAMARA MUNICIPAL DE SIDROLÂNDIA",
+        "cnpj": "15.497.092/0001-34",
+        "categoria": "Elemento 04",
+        "valor": 105780.12,
+        "descricao": "REFERENTE AO SALARIO E FERIAS DOS SERVIDOR TEMPORARIOS DE 09/2026"
       },
       {
         "data": "2026-09-23",
@@ -930,6 +946,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 43276.68,
         "descricao": "REFERENTE A CONTRIBUIÇÃO PATRONAL DO INSS  DOS SERVIDORES DE GABINETES DE 08/2026"
+      },
+      {
+        "data": "2026-09-30",
+        "fornecedor": "INSS- INST.NAC.DE SEG.SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 41110.4,
+        "descricao": "REFERENTE A CONTRIBUIÇÃO PATRONAL DA INSS  DOS SERVIDORES DE GABINETES DE 09/2026"
       },
       {
         "data": "2026-07-29",
@@ -1514,6 +1538,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 17940.73,
         "descricao": "REFERENTE A CONTRIBUIÇÃO PATRONAL DA CASSEMS DE 03/2026"
+      },
+      {
+        "data": "2026-09-30",
+        "fornecedor": "INSS- INST.NAC.DE SEG.SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 17854.64,
+        "descricao": "REFERENTE A CONTRIBUIÇÃO PATRONAL DO INSS DOS SERVIDORES TEMPORARIOS DE 09/2026"
       },
       {
         "data": "2026-02-27",
@@ -3828,6 +3860,14 @@
         "descricao": "CONTRIBUIÇÃO PATRONAL PREVILANDIA  DOS GABINETES DE 06/2026"
       },
       {
+        "data": "2026-09-30",
+        "fornecedor": "PREVILANDIA",
+        "cnpj": "01.705.182/0001-69",
+        "categoria": "Obrigações Patronais",
+        "valor": 1870.32,
+        "descricao": "REFERENTE A CONTRIBUIÇÃO PATRONAL DA PREVILANDIA DOS SERVIDORES DE GABINETES DE 09/2026"
+      },
+      {
         "data": "2026-01-30",
         "fornecedor": "PREVILANDIA",
         "cnpj": "01.705.182/0001-69",
@@ -5482,6 +5522,38 @@
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "REFERENTE AO CONSUMO DE COMBUSTIVEL DO PERIODE DE 01/05 A 31/05 CONFORME FATURA 1722533"
+      },
+      {
+        "data": "2026-09-30",
+        "fornecedor": "INSS- INST.NAC.DE SEG.SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 0.0,
+        "descricao": "REFERENTE A CONTRIBUIÇÃO PATRONAL DA INSS DOS SERVIDORES DE GABINETES DE 09/2026"
+      },
+      {
+        "data": "2026-09-30",
+        "fornecedor": "INSS- INST.NAC.DE SEG.SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 0.0,
+        "descricao": "REFERENTE A CONTRIBUIÇÃO PATRONAL DA INSS DOS SERVIDORES DE GABINETES DE 09/2026"
+      },
+      {
+        "data": "2026-09-30",
+        "fornecedor": "CAMARA MUNICIPAL DE SIDROLÂNDIA",
+        "cnpj": "15.497.092/0001-34",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "REFERENTE AO SALARIO DOS SERVIDORES NOMEADOS E FERIAS DE 09/2026"
+      },
+      {
+        "data": "2026-09-30",
+        "fornecedor": "CAMARA MUNICIPAL DE SIDROLÂNDIA",
+        "cnpj": "15.497.092/0001-34",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "REFERENTE AO SALARIO DOS SERVIDORES NOMEADOS E FERIAS DE 09/2026"
       }
     ]
   }
