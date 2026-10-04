@@ -1,15 +1,39 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-10-03T15:17:22",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-10-03T15:17:22",
+  "ultimaAtualizacao": "2026-10-04T16:02:06",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-10-04T16:02:06",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
-  "totalVereadores": 4,
+  "totalVereadores": 12,
   "vereadores": [
+    {
+      "nome": "ANDERSON ARRY JANUARIO GUIMARÃES",
+      "cargo": "Vereador(a)",
+      "subsidioMensal": 10432.39,
+      "descontos": 1829.65,
+      "referenciaFolha": "Folha Mensal - Setembro"
+    },
+    {
+      "nome": "CHARLIN CASTRO CAMILO",
+      "cargo": "Vereador(a)",
+      "subsidioMensal": 0.0,
+      "descontos": 0.0,
+      "referenciaFolha": "Folha Mensal - Setembro"
+    },
+    {
+      "nome": "CHRISTOFFER JAMESSON DA SILVA",
+      "cargo": "Vereador(a)",
+      "subsidioMensal": 10432.39,
+      "descontos": 2676.53,
+      "referenciaFolha": "Folha Mensal - Setembro"
+    },
     {
       "nome": "DIONE LIMA TAVARES",
       "cargo": "Vereador(a)",
+      "subsidioMensal": 10432.39,
+      "descontos": 6677.83,
+      "referenciaFolha": "Folha Mensal - Setembro",
       "diarias": [
         {
           "data": "2026-05-08",
@@ -28,6 +52,9 @@
     {
       "nome": "JAQUELINE PEREIRA ARIMURA",
       "cargo": "Vereador(a)",
+      "subsidioMensal": 10432.39,
+      "descontos": 3322.2,
+      "referenciaFolha": "Folha Mensal - Setembro",
       "diarias": [
         {
           "data": "2026-09-17",
@@ -114,8 +141,25 @@
       "numDiarias2026": 16
     },
     {
+      "nome": "JEOVÁ DA SILVA PRADO",
+      "cargo": "Vereador(a)",
+      "subsidioMensal": 10432.39,
+      "descontos": 4797.63,
+      "referenciaFolha": "Folha Mensal - Setembro"
+    },
+    {
+      "nome": "JOSE HELERIANO RODRIGUES DE SOUZA",
+      "cargo": "Vereador(a)",
+      "subsidioMensal": 10432.39,
+      "descontos": 6281.2,
+      "referenciaFolha": "Folha Mensal - Setembro"
+    },
+    {
       "nome": "LUCAS LOPES RIBEIRO",
       "cargo": "Vereador(a)",
+      "subsidioMensal": 10432.39,
+      "descontos": 7369.86,
+      "referenciaFolha": "Folha Mensal - Setembro",
       "diarias": [
         {
           "data": "2026-09-01",
@@ -202,8 +246,18 @@
       "numDiarias2026": 16
     },
     {
-      "nome": "NEI LUIZ DE ARAUJO PEREIRA",
+      "nome": "LUCIMAR ROSA DE CAMPOS",
       "cargo": "Vereador(a)",
+      "subsidioMensal": 10432.39,
+      "descontos": 6849.48,
+      "referenciaFolha": "Folha Mensal - Setembro"
+    },
+    {
+      "nome": "NEI LUIZ DE ARAÚJO PEREIRA",
+      "cargo": "Vereador(a)",
+      "subsidioMensal": 10432.39,
+      "descontos": 2624.39,
+      "referenciaFolha": "Folha Mensal - Setembro",
       "diarias": [
         {
           "data": "2026-06-15",
@@ -223,6 +277,20 @@
       ],
       "totalDiarias2026": 7290.0,
       "numDiarias2026": 3
+    },
+    {
+      "nome": "ROZENIR PEREIRA LINS",
+      "cargo": "Vereador(a)",
+      "subsidioMensal": 10432.39,
+      "descontos": 7118.31,
+      "referenciaFolha": "Folha Mensal - Setembro"
+    },
+    {
+      "nome": "TANIA MARIA FERREIRA DE SOUZA",
+      "cargo": "Vereador(a)",
+      "subsidioMensal": 10432.39,
+      "descontos": 5003.49,
+      "referenciaFolha": "Folha Mensal - Setembro"
     }
   ],
   "despesasInstitucionais": {
@@ -2932,6 +3000,5 @@
         "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO QUE TEM POR OBJETO A ADEQUAÇÃO DA EXECUÇÃO DO CONTRATO ADMINISTRATIVO Nº 012/2026, PROCESSO ADMINISTRATIVO Nº 017/2026, MEDIANTE A DISPONIBILIZAÇÃO, INSTALAÇÃO, C"
       }
     ]
-  },
-  "notaFinanceiro": "O endpoint de folha de pagamento (subsídio) está indisponível nesta câmara no momento (erro do lado deles). Os valores mostrados são apenas diárias pagas."
+  }
 }
