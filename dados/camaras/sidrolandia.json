@@ -1,7 +1,7 @@
 {
   "cidade": "Sidrolândia",
-  "ultimaAtualizacao": "2026-10-04T16:02:06",
-  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-10-04T16:02:06",
+  "ultimaAtualizacao": "2026-10-06T17:28:22",
+  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-10-06T17:28:22",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasidrolandia.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -387,8 +387,8 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 15193343.98,
-    "totalNotas": 654,
+    "totalGeral": 15217598.29,
+    "totalNotas": 661,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 8777372.36,
       "Obrigações Patronais": 1542834.18,
@@ -396,9 +396,9 @@
       "Diárias — Civil": 973750.0,
       "Elemento 04": 896407.01,
       "Serviços de Consultoria": 612238.04,
-      "Serviços de Tecnologia da Informação": 297117.33,
+      "Serviços de Tecnologia da Informação": 316062.33,
       "Indenizações e Restituições": 246882.94,
-      "Material de Consumo": 183035.48,
+      "Material de Consumo": 188344.79,
       "Passagens e Despesas com Locomoção": 153971.25,
       "Equipamentos e Material Permanente": 80320.0
     },
@@ -1754,6 +1754,14 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 15750.0,
         "descricao": "REFERENTE LOCAÇÃO DE SISTEMA DO PERIODO DE 24/07 A 23/08/2026 CONFORME NF 1588"
+      },
+      {
+        "data": "2026-09-24",
+        "fornecedor": "R3GED GESTAO DE DOCUMENTOS LTDA",
+        "cnpj": "21.268.622/0001-75",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 15750.0,
+        "descricao": "REFERENTE LOCAÇÃO SOFTWARE DO PERIODO DE 24/08 A 23/09/2026 CONFORME NF 1705"
       },
       {
         "data": "2026-05-28",
@@ -3572,6 +3580,22 @@
         "descricao": "REFERENTE A LOCAÇÃO DE EQUIPAMENTOS DE 08/2026 CONFORME VENDA F20882"
       },
       {
+        "data": "2026-09-29",
+        "fornecedor": "FG COPIADORA EIRELI ME",
+        "cnpj": "13.676.824/0001-28",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 3195.0,
+        "descricao": "REFERENTE A LOCAÇÃO DE 09/2026 CONFORME RECIBO R81"
+      },
+      {
+        "data": "2026-09-09",
+        "fornecedor": "MIX CLEAN PRODUTOS DE LIMPEZA LTDA - EPP",
+        "cnpj": "07.837.083/0001-17",
+        "categoria": "Material de Consumo",
+        "valor": 3058.24,
+        "descricao": "REFERENTE A MATERIAL DE LIMPEZA CONFORME NF 23543"
+      },
+      {
         "data": "2026-01-05",
         "fornecedor": "PEDRO LUIZ RIBEIRO RUANO",
         "cnpj": "37.544.111/0001-79",
@@ -4212,6 +4236,14 @@
         "descricao": "REFERENTE CONSUMO 04/2026"
       },
       {
+        "data": "2026-09-10",
+        "fornecedor": "JOAO ADMAR CUSTODIO LOPES LTDA",
+        "cnpj": "23.190.679/0001-24",
+        "categoria": "Material de Consumo",
+        "valor": 1373.47,
+        "descricao": "REFERENTE A MATERIL PARA COPA E COZINHA  CONFORME NF 1125"
+      },
+      {
         "data": "2026-01-07",
         "fornecedor": "W3 TECNOLOGIA LTDA",
         "cnpj": "20.522.727/0001-46",
@@ -4394,6 +4426,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 795.0,
         "descricao": "REFERENTE A MÃO DE OBRA DA MANUTENÇÃO DE VEICULO CONFORME NF 3653"
+      },
+      {
+        "data": "2026-09-17",
+        "fornecedor": "GZ COMERCIO E SERVICOS LTDA",
+        "cnpj": "53.852.451/0001-13",
+        "categoria": "Material de Consumo",
+        "valor": 771.0,
+        "descricao": "REFERENTE A MATERIAL DE EXPEDIENTE CONFORME NF 001.170"
       },
       {
         "data": "2026-01-05",
@@ -4772,6 +4812,14 @@
         "descricao": "REFERENTE A POSTAGENS DE 01/2026 CONFORME BOLETO 187829"
       },
       {
+        "data": "2026-09-09",
+        "fornecedor": "MIX CLEAN PRODUTOS DE LIMPEZA LTDA - EPP",
+        "cnpj": "07.837.083/0001-17",
+        "categoria": "Material de Consumo",
+        "valor": 106.6,
+        "descricao": "REFERENTE COMPRA DE MATERIAL PARA COPA E COZINHA CONFORME NF 23.544"
+      },
+      {
         "data": "2026-02-10",
         "fornecedor": "SANESUL - EMP DE SANEAMENTO DE MATO GROS",
         "cnpj": "03.982.931/0001-20",
@@ -4922,6 +4970,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "REFERENTE A TRES INSCRIÇÕES PARA O CURSO DE GESTÃO DO eSOCIAL NA ADMINISTRAÇÃO PUBLICA VOLTADA PARA OS SERVIDORES DA AREA DE DE GESTÃO DE PESSOAS E DA AREA DE CONTABILIDADE , NA CIDADE DE FLORIANOPOLI"
+      },
+      {
+        "data": "2026-02-02",
+        "fornecedor": "OTACIR PEREIRA FIGUEREDO",
+        "cnpj": "002.XXX.XXX-02",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "REFERENTE A DIARIAS DO VEREADOR OTACIR PARA CUMPRIMENTO DE AGENDA COM DEPUTADOS FEDERAIS EM BUSCA DE RECURSOS PARA O MUNICIPIO DE SIDROLÂNDIA NA CIDADE DE BRASILIA /DF NOS DIAS 03 A 05/02/2026"
       },
       {
         "data": "2026-02-02",

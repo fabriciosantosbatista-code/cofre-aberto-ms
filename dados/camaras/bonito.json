@@ -1,7 +1,7 @@
 {
   "cidade": "Bonito",
-  "ultimaAtualizacao": "2026-10-04T16:02:06",
-  "fonte": "Portal Transparência Fiorilli (45.188.183.155:8079) — Dados Abertos — 2026-10-04T16:02:06",
+  "ultimaAtualizacao": "2026-10-06T17:28:22",
+  "fonte": "Portal Transparência Fiorilli (45.188.183.155:8079) — Dados Abertos — 2026-10-06T17:28:22",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarabonito.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -990,17 +990,17 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 6915572.42,
+    "totalGeral": 6957512.03,
     "totalNotas": 638,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 3186393.84,
       "Diárias — Civil": 1264234.12,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 875064.63,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 891610.32,
       "Obrigações Patronais": 592397.52,
-      "Serviços de Consultoria": 518845.34,
-      "Serviços de Tecnologia da Informação": 351635.84,
+      "Serviços de Consultoria": 542845.34,
+      "Serviços de Tecnologia da Informação": 351753.76,
       "Indenizações e Restituições": 62427.5,
-      "Material de Consumo": 33877.63,
+      "Material de Consumo": 35153.63,
       "Equipamentos e Material Permanente": 15200.0,
       "Despesas de Exercícios Anteriores": 13386.0,
       "Locação de Mão de Obra": 2110.0
@@ -1055,6 +1055,14 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000004/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação de empresa para a prestação de serviços técnic"
       },
       {
+        "data": "2026-06-02",
+        "fornecedor": "ANDERSON MARQUES SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "47.668.567/0001-02",
+        "categoria": "Serviços de Consultoria",
+        "valor": 96000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000005/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 5 - Mod. Formatada: 5 - Contratação de serviços técnicos especializados, de nature"
+      },
+      {
         "data": "2026-01-05",
         "fornecedor": "CÂMARA MUNICIPAL DE BONITO",
         "cnpj": "01.952.787/0001-54",
@@ -1085,14 +1093,6 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 72358.64,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000013/25 - Ano Mod.: 2025 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 1 - Mod. Formatada: 1 - contratação de empresa especializada na prestação de ser"
-      },
-      {
-        "data": "2026-06-02",
-        "fornecedor": "ANDERSON MARQUES SOCIEDADE INDIVIDUAL DE ADVOCACIA",
-        "cnpj": "47.668.567/0001-02",
-        "categoria": "Serviços de Consultoria",
-        "valor": 72000.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000005/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 5 - Mod. Formatada: 5 - Contratação de serviços técnicos especializados, de nature"
       },
       {
         "data": "2026-05-21",
@@ -1136,19 +1136,19 @@
       },
       {
         "data": "2026-01-05",
+        "fornecedor": "ENERGISA MATO GROSSO DO SUL DIS.DE E S.A",
+        "cnpj": "15.413.826/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 45362.82,
+        "descricao": "EMPENHO ESTIMATIVO DESTINADO AO PAGAMENTO DAS DESPESAS COM CONSUMO DE ENERGIA ELÉTRICA FORNECIDA PELA CONCESSIONÁRIA ENERGISA MATO GROSSO DO SUL, REFERENTE AO FORNECIMENTO DE ENERGIA PARA AS INSTALAÇÕ"
+      },
+      {
+        "data": "2026-01-05",
         "fornecedor": "BRIZOLA ASSESSORIA CONTABIL & GESTAO ESTRATEGICA L",
         "cnpj": "33.236.641/0001-07",
         "categoria": "Serviços de Consultoria",
         "valor": 45000.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/25 - Ano Mod.: 2025 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 1 - Mod. Formatada: 1 - Contratação de empresa para prestação de serviços técnicos"
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "ENERGISA MATO GROSSO DO SUL DIS.DE E S.A",
-        "cnpj": "15.413.826/0001-50",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 40468.18,
-        "descricao": "EMPENHO ESTIMATIVO DESTINADO AO PAGAMENTO DAS DESPESAS COM CONSUMO DE ENERGIA ELÉTRICA FORNECIDA PELA CONCESSIONÁRIA ENERGISA MATO GROSSO DO SUL, REFERENTE AO FORNECIMENTO DE ENERGIA PARA AS INSTALAÇÕ"
       },
       {
         "data": "2026-07-09",
@@ -1368,7 +1368,7 @@
       },
       {
         "data": "2026-01-05",
-        "fornecedor": "G.M.X. PROVEDOR DE INTERTET SERVIÇOS E LOCAÇÕES LT",
+        "fornecedor": "G.M.X. PROVEDOR DE INTERNET SERVIÇOS E LOCAÇÕES LT",
         "cnpj": "08.766.389/0001-92",
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 15400.0,
@@ -1455,6 +1455,14 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000011/25 - Ano Mod.: 2025 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 2 - Mod. Formatada: 2 - Contratação de empresa especializada para prestação de"
       },
       {
+        "data": "2026-09-15",
+        "fornecedor": "LIDERGOV INSTITUTO DE FORMAÇÃO E ASSESSORIA EM GES",
+        "cnpj": "54.108.236/0001-75",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 10250.0,
+        "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 5 (CINCO) INSCRIÇÕES  PARA SERVIDORES DA CÂMARA  PARTICIPAREM DE CURSO NO PERÍODO DE 16/09/2026 A 18/09/2026, NA CIDADE DE CAMPO GRANDE/MS, DO MODULO 4:"
+      },
+      {
         "data": "2026-03-25",
         "fornecedor": "ANDRE WILIAN PEREIRA CONDE MEI",
         "cnpj": "26.971.699/0001-20",
@@ -1469,6 +1477,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 9730.0,
         "descricao": "VALOR QUE SE EMPENHA PARA FAZER FACE A DESPESAS COM INSCRIÇÃO EM CAPACITAÇÃO NO 1º CONGRESSO DE EXCELÊNCIA PARA VEREADORES, GESTORES E SERVIDORES DO LEGISLATIVO E EXECUTIVO MUNICIPAL, CONFORME SOLICIT"
+      },
+      {
+        "data": "2026-01-05",
+        "fornecedor": "CASSEMS",
+        "cnpj": "04.311.093/0001-26",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 9654.26,
+        "descricao": "EMPENHO ESTIMATIVO DESTINADO AO PAGAMENTO DA CONTRAPARTIDA CONTRATUAL DO PLANO DE SAÚDE DOS SERVIDORES DA CÂMARA MUNICIPAL DE BONITO, REFERENTE AO CONVÊNIO FIRMADO COM A CAIXA DE ASSISTÊNCIA DOS SERVI"
       },
       {
         "data": "2026-06-08",
@@ -1557,14 +1573,6 @@
         "categoria": "Diárias — Civil",
         "valor": 8336.47,
         "descricao": "VALOR QUE SE EMPENHA DE DIÁRIAS PARA PARTICIPAR DA XXVII MARCHA EM BRASILIA EM DEFESA DOS MUNICIPIOS, A SER REALIZADA DO DIA 18 A 21 DE MAIO DE 2026."
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "CASSEMS",
-        "cnpj": "04.311.093/0001-26",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 8327.11,
-        "descricao": "EMPENHO ESTIMATIVO DESTINADO AO PAGAMENTO DA CONTRAPARTIDA CONTRATUAL DO PLANO DE SAÚDE DOS SERVIDORES DA CÂMARA MUNICIPAL DE BONITO, REFERENTE AO CONVÊNIO FIRMADO COM A CAIXA DE ASSISTÊNCIA DOS SERVI"
       },
       {
         "data": "2026-06-22",
@@ -1967,6 +1975,14 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000011/25 - Ano Mod.: 2025 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 2 - Mod. Formatada: 2 - Contratação de empresa especializada para prestação de"
       },
       {
+        "data": "2026-03-19",
+        "fornecedor": "FELIZARDO COMERCIO & SOLUÇÕES LTDA.",
+        "cnpj": "49.628.090/0001-59",
+        "categoria": "Material de Consumo",
+        "valor": 6142.5,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000001/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 1 - Mod. Formatada: 1 - Aquisição de Material de Higiene, Limpeza, Copa, Cozin"
+      },
+      {
         "data": "2026-08-03",
         "fornecedor": "CICLO AZUL CONSULTORIA, ASSESSORIA E GESTAO AMBIEN",
         "cnpj": "36.940.762/0001-15",
@@ -2165,14 +2181,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 4902.06,
         "descricao": "EMPENHO ESTIMATIVO DESTINADO AO PAGAMENTO DE TARIFAS BANCÁRIAS INCIDENTES SOBRE MOVIMENTAÇÕES FINANCEIRAS DA CÂMARA MUNICIPAL DE BONITO JUNTO AO BANCO DO BRASIL, CONFORME SERVIÇOS CONTRATADOS E NORMAT"
-      },
-      {
-        "data": "2026-03-19",
-        "fornecedor": "FELIZARDO COMERCIO & SOLUÇÕES LTDA.",
-        "cnpj": "49.628.090/0001-59",
-        "categoria": "Material de Consumo",
-        "valor": 4866.5,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000001/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 1 - Mod. Formatada: 1 - Aquisição de Material de Higiene, Limpeza, Copa, Cozin"
       },
       {
         "data": "2026-09-09",
@@ -3712,7 +3720,7 @@
       },
       {
         "data": "2026-08-05",
-        "fornecedor": "G.M.X. PROVEDOR DE INTERTET SERVIÇOS E LOCAÇÕES LT",
+        "fornecedor": "G.M.X. PROVEDOR DE INTERNET SERVIÇOS E LOCAÇÕES LT",
         "cnpj": "08.766.389/0001-92",
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 2200.0,
@@ -3768,7 +3776,7 @@
       },
       {
         "data": "2026-01-05",
-        "fornecedor": "G.M.X. PROVEDOR DE INTERTET SERVIÇOS E LOCAÇÕES LT",
+        "fornecedor": "G.M.X. PROVEDOR DE INTERNET SERVIÇOS E LOCAÇÕES LT",
         "cnpj": "08.766.389/0001-92",
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 2016.0,
@@ -5087,6 +5095,14 @@
         "descricao": "A presente demanda justifica-se pela necessidade de disponibilização imediata dos materiais e equipamentos mínimos para a continuidade das primeiras adequações do Programa Câmara Lixo Zero, vinculado"
       },
       {
+        "data": "2026-01-05",
+        "fornecedor": "EMPRESA BRAS. DE CORREIOS E TELÉGRAFOS",
+        "cnpj": "34.028.316/1648-07",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1950.72,
+        "descricao": "EMPENHO ESTIMATIVO DESTINADO À COBERTURA DAS DESPESAS COM SERVIÇOS DE POSTAGENS E CORRESPONDÊNCIAS OFICIAIS JUNTO À EMPRESA BRASILEIRA DE CORREIOS E TELÉGRAFOS – CORREIOS, PARA ATENDIMENTO DAS DEMANDA"
+      },
+      {
         "data": "2026-05-06",
         "fornecedor": "ÂNGELO CARLOS PERES CHERES",
         "cnpj": "023.XXX.XXX-05",
@@ -5109,14 +5125,6 @@
         "categoria": "Indenizações e Restituições",
         "valor": 1890.0,
         "descricao": "VALOR QUE SE EMPENHA DE INDENIZAÇÃO DE GASTOS COM VEICULO NO EXERCICIO DO MANDATO CONFORME PROCESSO 245/2026."
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "EMPRESA BRAS. DE CORREIOS E TELÉGRAFOS",
-        "cnpj": "34.028.316/1648-07",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 1876.82,
-        "descricao": "EMPENHO ESTIMATIVO DESTINADO À COBERTURA DAS DESPESAS COM SERVIÇOS DE POSTAGENS E CORRESPONDÊNCIAS OFICIAIS JUNTO À EMPRESA BRASILEIRA DE CORREIOS E TELÉGRAFOS – CORREIOS, PARA ATENDIMENTO DAS DEMANDA"
       },
       {
         "data": "2026-07-29",
@@ -5323,7 +5331,7 @@
         "fornecedor": "UNIVERSO ONLINE S.A",
         "cnpj": "01.109.184/0004-38",
         "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 823.01,
+        "valor": 940.93,
         "descricao": "EMPENHO ESTIMATIVO DESTINADO À COBERTURA DAS DESPESAS COM SERVIÇOS DE HOSPEDAGEM E MANUTENÇÃO DO SISTEMA DE CORREIO ELETRÔNICO INSTITUCIONAL DA CÂMARA MUNICIPAL DE BONITO (E-MAIL), INCLUINDO ARMAZENAM"
       },
       {
@@ -5893,14 +5901,6 @@
         "categoria": "Diárias — Civil",
         "valor": 0.0,
         "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 3,5 (TRÊS E MEIA) DIÁRIAS, PARA PARTICIPAR NOS DIAS 08, 09, 10 E 11 DE SETEMBRO DE 2026, DE CURSO NA  KCM COM O TEMA - “LEGISLATIVO QUE TRANSFORMA: DO IN"
-      },
-      {
-        "data": "2026-09-15",
-        "fornecedor": "LIDERGOV INSTITUTO DE FORMAÇÃO E ASSESSORIA EM GES",
-        "cnpj": "54.108.236/0001-75",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 5 (CINCO) INSCRIÇÕES  PARA SERVIDORES DA CÂMARA  PARTICIPAREM DE CURSO NO PERÍODO DE 16/09/2026 A 18/09/2026, NA CIDADE DE CAMPO GRANDE/MS, DO MODULO 4:"
       },
       {
         "data": "2026-09-15",

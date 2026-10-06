@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-10-04T16:02:06",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-10-04T16:02:06",
+  "ultimaAtualizacao": "2026-10-06T17:28:22",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-10-06T17:28:22",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -294,21 +294,21 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 8625214.43,
+    "totalGeral": 8650212.05,
     "totalNotas": 336,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 4573105.01,
       "Equipamentos e Material Permanente": 1124831.96,
       "Obrigações Patronais": 770981.91,
       "Serviços de Consultoria": 664631.68,
-      "Serviços de Tecnologia da Informação": 407578.81,
+      "Serviços de Tecnologia da Informação": 417659.89,
       "Auxílio-Alimentação": 398119.37,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 317461.66,
+      "Outros Serviços de Terceiros — Pessoa Física": 127115.48,
       "Outros Benefícios Assistenciais do Servidor": 122494.81,
-      "Outros Serviços de Terceiros — Pessoa Física": 114403.94,
       "Material de Consumo": 64047.73,
       "Diárias — Civil": 41228.51,
-      "Indenizações e Restituições": 26329.04
+      "Indenizações e Restituições": 28534.04
     },
     "despesas": [
       {
@@ -564,8 +564,16 @@
         "fornecedor": "WEVERTON CORREIA GUEDES 00883500108 - ME",
         "cnpj": "15.440.016/0001-92",
         "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 86017.14,
+        "valor": 95574.6,
         "descricao": "EMPENHO REFERENTE AO TERMO ADITIVO Nº 004/2025, PREGÃO PRESENCIAL Nº 005/2021, CONTRATO ADMINISTRATIVO Nº 10/2021, CUJO OBJETO É A PRESTAÇÃO DE SERVIÇOS DE CONEXÃO COM A INTERNET, POR MEIO DE IP DEDIC"
+      },
+      {
+        "data": "2026-04-10",
+        "fornecedor": "ANTONIO FERNANDO DA SILVA",
+        "cnpj": "087.XXX.XXX-71",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Física",
+        "valor": 88980.82,
+        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO ADMINISTRATIVO Nº 003/2024, PROCESSO ADMINISTRATIVO Nº 8/2024, INEXIGIBILIDADE 02/2024,  CUJO OBJETO É A LOCAÇÃO DE IMÓVEL QUE SERVIRÁ PARA ABRIGAR TE"
       },
       {
         "data": "2026-01-02",
@@ -574,14 +582,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 76950.0,
         "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA DE ASSESSORIA E CONSULTORIA JURÍDICA, ESPECIALIZADA EM DIREITO PÚBLICO, PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS, SUPORTE CONSULTIVO AO GABINETE DA PRESIDÊNCIA,"
-      },
-      {
-        "data": "2026-04-10",
-        "fornecedor": "ANTONIO FERNANDO DA SILVA",
-        "cnpj": "087.XXX.XXX-71",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Física",
-        "valor": 76269.28,
-        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO ADMINISTRATIVO Nº 003/2024, PROCESSO ADMINISTRATIVO Nº 8/2024, INEXIGIBILIDADE 02/2024,  CUJO OBJETO É A LOCAÇÃO DE IMÓVEL QUE SERVIRÁ PARA ABRIGAR TE"
       },
       {
         "data": "2026-02-20",
@@ -1064,6 +1064,14 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO ALIMENTAÇÃO DE SERVIDORES EFETIVOS - MARÇO/2026."
       },
       {
+        "data": "2026-01-02",
+        "fornecedor": "JAQUELINE PEREIRA ARIMURA",
+        "cnpj": "010.XXX.XXX-44",
+        "categoria": "Indenizações e Restituições",
+        "valor": 16137.7,
+        "descricao": "VALOR QUE SE EMPENHA PARA FINS DE REEMBOLSAR AS DESPESAS INERENTES ÀS ATIVIDADES PARLAMENTARES, PERÍODO DE JANEIRO A DEZEMBRO DE 2026, CONFORME PREVISTO NA LEI MUNICIPAL Nº 1.309, DE 02 DE MARÇO DE 20"
+      },
+      {
         "data": "2026-04-29",
         "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
         "cnpj": "01.696.482/0001-29",
@@ -1126,14 +1134,6 @@
         "categoria": "Auxílio-Alimentação",
         "valor": 14805.84,
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - SETEMBRO/2026."
-      },
-      {
-        "data": "2026-01-02",
-        "fornecedor": "JAQUELINE PEREIRA ARIMURA",
-        "cnpj": "010.XXX.XXX-44",
-        "categoria": "Indenizações e Restituições",
-        "valor": 13932.7,
-        "descricao": "VALOR QUE SE EMPENHA PARA FINS DE REEMBOLSAR AS DESPESAS INERENTES ÀS ATIVIDADES PARLAMENTARES, PERÍODO DE JANEIRO A DEZEMBRO DE 2026, CONFORME PREVISTO NA LEI MUNICIPAL Nº 1.309, DE 02 DE MARÇO DE 20"
       },
       {
         "data": "2026-01-02",
@@ -1704,6 +1704,14 @@
         "descricao": "EMPENHO REFERENTE À PRESTAÇÃO DE SERVIÇOS POR DEMANDA PARA A EMISSÃO DE CERTIFICADOS DIGITAIS, TIPO A1 E-CPF E A1 E-CNPJ, PERÍODO CONTRATUAL: 09/02/2026 A 08/02/2027. CONTRATO ADMINISTRATIVO Nº 001/20"
       },
       {
+        "data": "2026-06-30",
+        "fornecedor": "W3 TECNOLOGIA LTDA",
+        "cnpj": "20.522.727/0001-46",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 1570.86,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO Nº 05/2025 PROCESSO ADMINISTRATIVO Nº 19/2025, DISPENSA ELETRÔNICA Nº 01/2025, QUE TEM COMO OBJETO A PRESTAÇÃO DE SERVIÇOS DE CRIAÇÃO, DESENVOLVIMENT"
+      },
+      {
         "data": "2026-06-09",
         "fornecedor": "EDINA GUIMARAES DE CARVALHO JULG",
         "cnpj": "713.XXX.XXX-91",
@@ -1798,14 +1806,6 @@
         "categoria": "Diárias — Civil",
         "valor": 1050.0,
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1,5 (UMA DIÁRIA E MEIA) PARA CUMPRIR AGENDA INSTITUCIONAL COM O PROMOTOR DE JUSTIÇA DE BATAGUASSU, EDIVAL GOULART QUIRINO, NAS DATAS DE 02 E 03/09/2026, BEM COMO REALI"
-      },
-      {
-        "data": "2026-06-30",
-        "fornecedor": "W3 TECNOLOGIA LTDA",
-        "cnpj": "20.522.727/0001-46",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 1047.24,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO Nº 05/2025 PROCESSO ADMINISTRATIVO Nº 19/2025, DISPENSA ELETRÔNICA Nº 01/2025, QUE TEM COMO OBJETO A PRESTAÇÃO DE SERVIÇOS DE CRIAÇÃO, DESENVOLVIMENT"
       },
       {
         "data": "2026-07-09",
