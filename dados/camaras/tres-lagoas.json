@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-10-07T18:00:35",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-07T18:00:35",
+  "ultimaAtualizacao": "2026-10-08T18:02:25",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-08T18:02:25",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -155,7 +155,7 @@
         {
           "data": "2026-04-06",
           "valor": 769.51,
-          "descricao": "DESPESAS REFERENTE A CONCESSÃO DE 3 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 08/04/2026 a 09/04/2026, CONFORME SOLICITAÇÃO. Finalidade: \"   Visita à Assembleia Legislativa - - DEP Mara Caseiro para fazer pedido de emendas parlamentares para o Município de Três Lagoas.”"
+          "descricao": "DESPESAS REFERENTE A CONCESSÃO DE 1 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 08/04/2026 a 09/04/2026, CONFORME SOLICITAÇÃO. Finalidade: \"   Visita à Assembleia Legislativa - - DEP Mara Caseiro para fazer pedido de emendas parlamentares para o Município de Três Lagoas.”"
         },
         {
           "data": "2026-04-01",
@@ -509,19 +509,19 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 27002614.72,
+    "totalGeral": 27359483.7,
     "totalNotas": 731,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 15641319.11,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 3892501.83,
-      "Auxílio-Alimentação": 2482216.17,
+      "Auxílio-Alimentação": 2806025.02,
       "Obrigações Patronais": 2254333.14,
       "Serviços de Tecnologia da Informação": 606100.84,
       "Diárias — Civil": 556086.54,
       "Locação de Mão de Obra": 388163.55,
       "Aporte para Cobertura de Déficit Atuarial do RPPS": 306455.7,
+      "Serviços de Consultoria": 294142.96,
       "Material de Consumo": 263987.29,
-      "Serviços de Consultoria": 261082.83,
       "Outros Benefícios Assistenciais do Servidor": 130784.66,
       "Indenizações e Restituições": 73481.52,
       "Despesas de Exercícios Anteriores": 48725.47,
@@ -582,20 +582,20 @@
         "descricao": "Contratação de empresa especializada na prestação de serviços de administração, gerenciamento, emissão e fornecimento de vale alimentação, na forma de cartões de chip e magnéticos, para aquisição em e"
       },
       {
+        "data": "2026-06-23",
+        "fornecedor": "PLUXEE BENEFICIOS BRASIL S.A.",
+        "cnpj": "69.034.668/0001-56",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 812438.09,
+        "descricao": "Processo 60/25 fornecimento de vale alimentação.\r\nEmpenho  vinculados ao RGPS"
+      },
+      {
         "data": "2026-01-29",
         "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
         "cnpj": "15.410.145/0001-38",
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 649943.42,
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (GRATIFICAÇÃO POR EXERCÍCIO DE FUNÇÕES) VINCULADOS AO RPPS,  REF.  EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
-      },
-      {
-        "data": "2026-06-23",
-        "fornecedor": "PLUXEE BENEFICIOS BRASIL S.A.",
-        "cnpj": "69.034.668/0001-56",
-        "categoria": "Auxílio-Alimentação",
-        "valor": 613171.24,
-        "descricao": "Processo 60/25 fornecimento de vale alimentação.\r\nEmpenho  vinculados ao RGPS"
       },
       {
         "data": "2026-07-29",
@@ -630,6 +630,14 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS VINCULADOS AO RPPS,  REF. MES DE 13º 2026 (1ª Parcela)"
       },
       {
+        "data": "2026-06-23",
+        "fornecedor": "PLUXEE BENEFICIOS BRASIL S.A.",
+        "cnpj": "69.034.668/0001-56",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 343827.0,
+        "descricao": "Processo 060/25 fornecimento de vale alimentação.\r\nEmpenho  vinculados ao RPPS"
+      },
+      {
         "data": "2026-01-21",
         "fornecedor": "GADU SEGURANCA LTDA",
         "cnpj": "08.953.397/0001-48",
@@ -660,14 +668,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 264776.16,
         "descricao": "Processo 42-22  Transmissão de sessões ordinárias."
-      },
-      {
-        "data": "2026-06-23",
-        "fornecedor": "PLUXEE BENEFICIOS BRASIL S.A.",
-        "cnpj": "69.034.668/0001-56",
-        "categoria": "Auxílio-Alimentação",
-        "valor": 259578.0,
-        "descricao": "Processo 060/25 fornecimento de vale alimentação.\r\nEmpenho  vinculados ao RPPS"
       },
       {
         "data": "2026-01-08",
@@ -798,6 +798,14 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (FÉRIAS - ABONO PECUNIÁRIO) VINCULADOS AO RPPS,  REF.  EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
       },
       {
+        "data": "2026-06-23",
+        "fornecedor": "TICKET SERVICOS SA",
+        "cnpj": "47.866.934/0001-74",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 112117.5,
+        "descricao": "Processo 60/25 fornecimento de vale alimentação\r\nEmpenho vinculados ao RPPS"
+      },
+      {
         "data": "2026-01-30",
         "fornecedor": "SECRETARIA DA RECEITA FEDERAL DO BRASIL",
         "cnpj": "00.394.460/0058-87",
@@ -894,14 +902,6 @@
         "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (NORMAL 15%) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DA FOLHA DE PAGAMENTO REF. MÊS DE JANEIRO/2026."
       },
       {
-        "data": "2026-06-23",
-        "fornecedor": "TICKET SERVICOS SA",
-        "cnpj": "47.866.934/0001-74",
-        "categoria": "Auxílio-Alimentação",
-        "valor": 84645.0,
-        "descricao": "Processo 60/25 fornecimento de vale alimentação\r\nEmpenho vinculados ao RPPS"
-      },
-      {
         "data": "2026-05-26",
         "fornecedor": "FUNDACAO STENIO CONGRO",
         "cnpj": "04.073.837/0001-11",
@@ -972,6 +972,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 66892.75,
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (FERIAS – ABONO CONSTITUCIONAL) VINCULADOS AO RPPS,  REF. MES DE JUNHO/2026"
+      },
+      {
+        "data": "2026-08-10",
+        "fornecedor": "SIMPA ASSESSORIA & PLANEJAMENTO LTDA",
+        "cnpj": "97.408.090/0001-96",
+        "categoria": "Serviços de Consultoria",
+        "valor": 66120.26,
+        "descricao": "Processo 50-23 - Assessoria"
       },
       {
         "data": "2026-04-29",
@@ -1070,6 +1078,14 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (GRATIFICAÇÃO POR EXERCÍCIO DE CARGOS) VINCULADOS AO RPPS,  REF.  EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
       },
       {
+        "data": "2026-06-23",
+        "fornecedor": "TICKET SERVICOS SA",
+        "cnpj": "47.866.934/0001-74",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 52321.5,
+        "descricao": "Processo 60/25 fornecimento de vale alimentação\r\nEmpenho  vinculados ao RGPS"
+      },
+      {
         "data": "2026-01-29",
         "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
         "cnpj": "15.410.145/0001-38",
@@ -1100,14 +1116,6 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 40005.02,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000052/24 - Ano Mod.: 2024 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 4 - Mod. Formatada: 000004 - Contratação de serviços técnicos especializados na"
-      },
-      {
-        "data": "2026-06-23",
-        "fornecedor": "TICKET SERVICOS SA",
-        "cnpj": "47.866.934/0001-74",
-        "categoria": "Auxílio-Alimentação",
-        "valor": 39501.0,
-        "descricao": "Processo 60/25 fornecimento de vale alimentação\r\nEmpenho  vinculados ao RGPS"
       },
       {
         "data": "2026-01-16",
@@ -1156,14 +1164,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 33083.02,
         "descricao": "COMPLEMENTO EMPENHO 74 REF. CONTRIBUIÇÃO PATRONAL SERVIDORES VINCULADOS AO RGPS, DEVIDO MUDANÇA ALÍQUIDA A PARTIR DE 2026 PARA 16%."
-      },
-      {
-        "data": "2026-08-10",
-        "fornecedor": "SIMPA ASSESSORIA & PLANEJAMENTO LTDA",
-        "cnpj": "97.408.090/0001-96",
-        "categoria": "Serviços de Consultoria",
-        "valor": 33060.13,
-        "descricao": "Processo 50-23 - Assessoria"
       },
       {
         "data": "2026-01-29",
