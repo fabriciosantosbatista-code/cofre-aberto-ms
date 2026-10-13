@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-10-12T20:28:32",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-10-12T20:28:32",
+  "ultimaAtualizacao": "2026-10-13T18:33:43",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-10-13T18:33:43",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -294,16 +294,16 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 8657350.9,
+    "totalGeral": 8685436.75,
     "totalNotas": 341,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 4573105.01,
       "Equipamentos e Material Permanente": 1131861.96,
       "Obrigações Patronais": 770981.91,
-      "Serviços de Consultoria": 664631.68,
-      "Serviços de Tecnologia da Informação": 417659.89,
+      "Serviços de Consultoria": 683188.04,
+      "Serviços de Tecnologia da Informação": 418265.9,
       "Auxílio-Alimentação": 398119.37,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 317570.51,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 326493.99,
       "Outros Serviços de Terceiros — Pessoa Física": 127115.48,
       "Outros Benefícios Assistenciais do Servidor": 122494.81,
       "Material de Consumo": 64047.73,
@@ -472,6 +472,14 @@
         "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES EFETIVOS - SET/2026."
       },
       {
+        "data": "2026-03-12",
+        "fornecedor": "LOLLI GHETTI ADVOCACIA",
+        "cnpj": "30.615.309/0001-57",
+        "categoria": "Serviços de Consultoria",
+        "valor": 129894.52,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO Nº 02/2025, CUJO OBJETO É A PRESTAÇÃO DE SERVIÇOS TÉCNICOS DE ASSESSORIA E CONSULTORIA JURÍDICA EM LICITAÇÕES, PERÍODO CONTRATUAL: 10/03/2026 A 10/03"
+      },
+      {
         "data": "2026-01-29",
         "fornecedor": "FOLHA DE PAGAMENTO - VEREADORES",
         "cnpj": "29.979.036/0001-40",
@@ -542,14 +550,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 113291.29,
         "descricao": "EMPENHO REFERENTE AO SUBSÍDIO DOS VEREADORES - JUNHO/2026."
-      },
-      {
-        "data": "2026-03-12",
-        "fornecedor": "LOLLI GHETTI ADVOCACIA",
-        "cnpj": "30.615.309/0001-57",
-        "categoria": "Serviços de Consultoria",
-        "valor": 111338.16,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO Nº 02/2025, CUJO OBJETO É A PRESTAÇÃO DE SERVIÇOS TÉCNICOS DE ASSESSORIA E CONSULTORIA JURÍDICA EM LICITAÇÕES, PERÍODO CONTRATUAL: 10/03/2026 A 10/03"
       },
       {
         "data": "2026-03-09",
@@ -640,20 +640,20 @@
         "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO  ADMINISTRATIVO Nº 03/2025, INEGIXIBILIDADE DE LICITAÇÃO Nº 03/2025, PROCESSO ADMINISTRATIVO Nº 12/2025, RELATIVO À CONTRATAÇÃO DE EMPRESA ESPECIALIZ"
       },
       {
+        "data": "2026-01-02",
+        "fornecedor": "ENERGISA - DISTRIBUIDORA DE ENERGIA S/A",
+        "cnpj": "15.413.826/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 50877.18,
+        "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ENERGIA ELÉTRICA PARA O EXERCÍCIO DE 2026."
+      },
+      {
         "data": "2026-02-03",
         "fornecedor": "ENGELUGA ENGENHARIA LTDA",
         "cnpj": "22.034.572/0001-24",
         "categoria": "Serviços de Consultoria",
         "valor": 50000.0,
         "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, CONTRATO Nº 001/2025, PARA A PRESTAÇÃO DE SERVIÇOS DE CONSULTORIA E ASSESSORIA EM ENGENHARIA. AS OBRIGAÇÕES CONSTANTES NO TERMO DE REFERÊNCIA, DENTRE OUTRAS, ENG"
-      },
-      {
-        "data": "2026-01-02",
-        "fornecedor": "ENERGISA - DISTRIBUIDORA DE ENERGIA S/A",
-        "cnpj": "15.413.826/0001-50",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 47425.27,
-        "descricao": "EMPENHO REFERENTE A SERVIÇOS DE ENERGIA ELÉTRICA PARA O EXERCÍCIO DE 2026."
       },
       {
         "data": "2026-05-29",
@@ -1136,6 +1136,14 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - SETEMBRO/2026."
       },
       {
+        "data": "2026-08-10",
+        "fornecedor": "GC - AGENCIA DE MONITORAMENTO LTDA - ME",
+        "cnpj": "11.161.339/0001-96",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 13500.0,
+        "descricao": "EMPENHO REFERENTE A CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS CONTINUADOS DE MONITORAMENTO ELETRÔNICO PATRIMONIAL INTEGRADO, COMPREENDENDO A ADEQUAÇÃO, INTEGRAÇÃO E CONFIGURAÇÃ"
+      },
+      {
         "data": "2026-01-02",
         "fornecedor": "NEWPC TECNOLOGIA LTDA",
         "cnpj": "20.892.343/0001-15",
@@ -1190,14 +1198,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 10266.0,
         "descricao": "EMPENHO REFERENTE À PRESTAÇÃO DE SERVIÇOS DE LOCAÇÃO, INSTALAÇÃO, CONFIGURAÇÃO, OPERAÇÃO ASSISTIDA, MANUTENÇÃO E SUPORTE TÉCNICO DE SISTEMA DE PAINEL \"VIDEO WALL\", PARA UTILIZAÇÃO NO PLENÁRIO DA CÂMAR"
-      },
-      {
-        "data": "2026-08-10",
-        "fornecedor": "GC - AGENCIA DE MONITORAMENTO LTDA - ME",
-        "cnpj": "11.161.339/0001-96",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 10108.85,
-        "descricao": "EMPENHO REFERENTE A CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS CONTINUADOS DE MONITORAMENTO ELETRÔNICO PATRIMONIAL INTEGRADO, COMPREENDENDO A ADEQUAÇÃO, INTEGRAÇÃO E CONFIGURAÇÃ"
       },
       {
         "data": "2026-08-11",
@@ -1496,6 +1496,14 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DE SERVIDORES EFETIVOS - FEV/2026."
       },
       {
+        "data": "2026-06-17",
+        "fornecedor": "PRIME CONSULTORIA E ASSESSORIA EMPRESARIAL LTDA",
+        "cnpj": "05.340.639/0001-30",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4603.25,
+        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO ADMINISTRATIVO Nº 09/2024, DISPENSA Nº 02/2024 E PROCESSO ADMINISTRATIVO Nº 03/2024, QUE TEM POR OBJETO A IMPLEMENTAÇÃO, INTERMEDIAÇÃO E ADMINISTRAÇÃO"
+      },
+      {
         "data": "2026-08-28",
         "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
         "cnpj": "04.311.093/0001-26",
@@ -1510,14 +1518,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 4493.04,
         "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES EFETIVOS - SET/2026."
-      },
-      {
-        "data": "2026-06-17",
-        "fornecedor": "PRIME CONSULTORIA E ASSESSORIA EMPRESARIAL LTDA",
-        "cnpj": "05.340.639/0001-30",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 4422.83,
-        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO ADMINISTRATIVO Nº 09/2024, DISPENSA Nº 02/2024 E PROCESSO ADMINISTRATIVO Nº 03/2024, QUE TEM POR OBJETO A IMPLEMENTAÇÃO, INTERMEDIAÇÃO E ADMINISTRAÇÃO"
       },
       {
         "data": "2026-01-29",
@@ -1678,6 +1678,14 @@
         "categoria": "Material de Consumo",
         "valor": 2012.26,
         "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
+      },
+      {
+        "data": "2026-10-02",
+        "fornecedor": "GC - AGENCIA DE MONITORAMENTO LTDA - ME",
+        "cnpj": "11.161.339/0001-96",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1900.0,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO QUE TEM POR OBJETO A ADEQUAÇÃO DA EXECUÇÃO DO CONTRATO ADMINISTRATIVO Nº 012/2026, PROCESSO ADMINISTRATIVO Nº 017/2026, MEDIANTE A DISPONIBILIZAÇÃO, INSTALAÇÃO, C"
       },
       {
         "data": "2026-01-30",
@@ -1910,6 +1918,14 @@
         "categoria": "Diárias — Civil",
         "valor": 675.0,
         "descricao": "EMPENHO REFERENTE A CONCESSÃO DE 3 1/2 (MEIA-DIÁRIAS) EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA PARA PARTICIPAR DO CONGRESSO DE VEREADORES DE MATO GROSSO DO SUL, EDIÇAÕ CONECTA, QUE SE REALIZARÁ"
+      },
+      {
+        "data": "2026-09-10",
+        "fornecedor": "CEO SISTEMAS E COMÉRCIO DE RELÓGIO DE PO",
+        "cnpj": "15.385.833/0001-95",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 606.01,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO Nº 07/2025, DISPENSA DE LICITAÇÃO Nº 10/2025, PROCESSO ADMINISTRATIVO Nº 22/2025, QUE TEM POR OBJETO A LOCAÇÃO DE SISTEMA INFORMATIZADO DE CADASTRO EL"
       },
       {
         "data": "2026-02-26",
@@ -2944,14 +2960,6 @@
         "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
       },
       {
-        "data": "2026-09-10",
-        "fornecedor": "CEO SISTEMAS E COMÉRCIO DE RELÓGIO DE PO",
-        "cnpj": "15.385.833/0001-95",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO Nº 07/2025, DISPENSA DE LICITAÇÃO Nº 10/2025, PROCESSO ADMINISTRATIVO Nº 22/2025, QUE TEM POR OBJETO A LOCAÇÃO DE SISTEMA INFORMATIZADO DE CADASTRO EL"
-      },
-      {
         "data": "2026-09-24",
         "fornecedor": "WILSON HENRIQUE NOGUEIRA LTDA",
         "cnpj": "50.649.204/0001-26",
@@ -3006,14 +3014,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - SET/2026."
-      },
-      {
-        "data": "2026-10-02",
-        "fornecedor": "GC - AGENCIA DE MONITORAMENTO LTDA - ME",
-        "cnpj": "11.161.339/0001-96",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO QUE TEM POR OBJETO A ADEQUAÇÃO DA EXECUÇÃO DO CONTRATO ADMINISTRATIVO Nº 012/2026, PROCESSO ADMINISTRATIVO Nº 017/2026, MEDIANTE A DISPONIBILIZAÇÃO, INSTALAÇÃO, C"
       },
       {
         "data": "2026-10-06",
