@@ -1,7 +1,7 @@
 {
   "cidade": "Coxim",
-  "ultimaAtualizacao": "2026-10-14T16:01:36",
-  "fonte": "Portal Transparência Fiorilli (pmcoxim.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-14T16:01:36",
+  "ultimaAtualizacao": "2026-10-15T15:50:01",
+  "fonte": "Portal Transparência Fiorilli (pmcoxim.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-15T15:50:01",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camaracoxim.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -162,6 +162,11 @@
       "referenciaFolha": "Folha Mensal - Setembro",
       "diarias": [
         {
+          "data": "2026-10-14",
+          "valor": 1500.0,
+          "descricao": "VALOR REFER AO PÁGTO DE DUAS DIARIAS PARA VEREADOR CUMPRR AGENDA EM CAMPO GRAND E NOS DIAS 14 E 15 DE OUTUBRO DE 2026, COM DEPUTADO JUNIOR MOCHI, DEPUTADO RODOLFO NOGUEIRA"
+        },
+        {
           "data": "2026-10-07",
           "valor": 2250.0,
           "descricao": "valor refere ao pagto de tres diarias para vereador cumrpur agenda em campo grande nos dias 07 , 08 e 09 de outubro de 2026, para participar de curso dKCM as regras de ouro do legislativo municipal"
@@ -247,8 +252,8 @@
           "descricao": "VALOR SE REFERE AO PAGAMENTO DE TRES DIARIAS PARA VEREADOR CUMPRIR AGENDA EM CAMPO GRANDE NOS DIAS 11/02 SENADORA SORAYA NO DIA 12/02 COM DR LUIZ OVANDO E NO DIA 13/02 COM DEPUTADO JUNIOR MOCHI"
         }
       ],
-      "totalDiarias2026": 40000.0,
-      "numDiarias2026": 17
+      "totalDiarias2026": 41500.0,
+      "numDiarias2026": 18
     },
     {
       "nome": "ARMINDO BATISTA DOS SANTOS FILHO",
@@ -1323,13 +1328,13 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 7163476.51,
-    "totalNotas": 623,
+    "totalGeral": 7194176.62,
+    "totalNotas": 624,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 3900711.18,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1044854.32,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1052304.43,
       "Obrigações Patronais": 744978.44,
-      "Diárias — Civil": 445875.0,
+      "Diárias — Civil": 469125.0,
       "Serviços de Consultoria": 277106.16,
       "Indenizações e Restituições": 265076.48,
       "Obras e Instalações": 219355.24,
@@ -1691,6 +1696,14 @@
         "descricao": "prestação de serviço de assessoria e consultoria juridica conforme contrato"
       },
       {
+        "data": "2026-06-08",
+        "fornecedor": "KOHL ADVOGADOS ASSOCIADOS",
+        "cnpj": "22.706.943/0001-77",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 29800.55,
+        "descricao": "empenho se refere ao contrato com a empresa para implantação, adequação e manutenção da LGPD, comforme contrato"
+      },
+      {
         "data": "2026-02-19",
         "fornecedor": "INSS -INSTITUTO NACIONAL DO SEGURO SOCIA",
         "cnpj": "29.979.036/0001-40",
@@ -1793,14 +1806,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 24093.03,
         "descricao": "valor refrente a parte patronal da contribuição previdenciaria parte comissionado"
-      },
-      {
-        "data": "2026-06-08",
-        "fornecedor": "KOHL ADVOGADOS ASSOCIADOS",
-        "cnpj": "22.706.943/0001-77",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 23840.44,
-        "descricao": "empenho se refere ao contrato com a empresa para implantação, adequação e manutenção da LGPD, comforme contrato"
       },
       {
         "data": "2026-04-22",
@@ -2281,6 +2286,30 @@
         "categoria": "Diárias — Civil",
         "valor": 6250.0,
         "descricao": "valor se refere ao pagamento de cinco diarias para ASSESSOR DE IMPRENSA, acompanhar os vereadores nas agendas em Brasilia DF nos dias 02 à 07 de março de 2026, com agenda nos dias 02/03 deslocamento,"
+      },
+      {
+        "data": "2026-10-09",
+        "fornecedor": "WILLIAM MENDES DA ROCHA MEIRA",
+        "cnpj": "003.XXX.XXX-70",
+        "categoria": "Diárias — Civil",
+        "valor": 6250.0,
+        "descricao": "valor referte ao pagto de cinco diaria spara vereador cumprur agenda em brasilia df  nos dias 12 a 17 de outubro de 2026, com agendas dibveras"
+      },
+      {
+        "data": "2026-10-09",
+        "fornecedor": "LUIZ EDUARDO DOS SANTOS",
+        "cnpj": "039.XXX.XXX-60",
+        "categoria": "Diárias — Civil",
+        "valor": 6250.0,
+        "descricao": "valor referte ao pagto de cinco diaria spara vereador cumprur agenda em brasilia df  nos dias 12 a 17 de outubro de 2026, com agendas dibveras"
+      },
+      {
+        "data": "2026-10-09",
+        "fornecedor": "ELAINE CRISTINA TEIXEIRA GAUDIOSO",
+        "cnpj": "215.XXX.XXX-35",
+        "categoria": "Diárias — Civil",
+        "valor": 6250.0,
+        "descricao": "refere ao pagto de cinco diaria spara secretaria geral participar de seminario d egestao publcia em brasilia df nos dias 12 a 17 de outubro de 12026"
       },
       {
         "data": "2026-04-14",
@@ -3771,6 +3800,22 @@
         "descricao": "valor refere ao pagto de tres diarias para vereador cumrpur agenda em campo grande nos dias 07 , 08 e 09 de outubro de 2026, para participar de curso dKCM as regras de ouro do legislativo municipal"
       },
       {
+        "data": "2026-10-09",
+        "fornecedor": "JOHNNY GUERRA GAI",
+        "cnpj": "856.XXX.XXX-20",
+        "categoria": "Diárias — Civil",
+        "valor": 2250.0,
+        "descricao": "refere ao pagto de trs diarias pára veraaodr cumrpur agenda em campo grande nos dias  13/10 com depoutado luiz ovando, no dia 14/10 com dpeutado junior mochi e marcio fernandes e no dia 15/10 com depu"
+      },
+      {
+        "data": "2026-10-09",
+        "fornecedor": "LUCIMEIRE ELIAS DA SILVA RAMOS",
+        "cnpj": "367.XXX.XXX-30",
+        "categoria": "Diárias — Civil",
+        "valor": 2250.0,
+        "descricao": "refere ao pagto de trs diarias pára veraaodr cumrpur agenda em campo grande nos dias  13/10 com depoutado luiz ovando, no dia 14/10 com dpeutado junior mochi e marcio fernandes e no dia 15/10 com depu"
+      },
+      {
         "data": "2026-05-20",
         "fornecedor": "CASSEMS",
         "cnpj": "04.311.093/0001-26",
@@ -4705,6 +4750,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 1490.0,
         "descricao": "curso de rotinas de recursos humanos para o responsavel pelo RH da Camara de coxim, nos dias 23, 24 e 25 de setembro"
+      },
+      {
+        "data": "2026-10-08",
+        "fornecedor": "INSTITUTO ULYSSES GUIMARAES LTDA",
+        "cnpj": "40.033.708/0001-63",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1490.0,
+        "descricao": "refere ai empenho de seminario de gestao publica , que se realizara em brasilia df. nos dias 13 a 16 de outubro de 2026"
       },
       {
         "data": "2026-04-16",
@@ -6267,60 +6320,20 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000018/24 - Ano Mod.: 2024 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 3 - Mod. Formatada:  - Prestação de serviços técnicos de con"
       },
       {
-        "data": "2026-10-08",
-        "fornecedor": "INSTITUTO ULYSSES GUIMARAES LTDA",
-        "cnpj": "40.033.708/0001-63",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "refere ai empenho de seminario de gestao publica , que se realizara em brasilia df. nos dias 13 a 16 de outubro de 2026"
-      },
-      {
-        "data": "2026-10-09",
-        "fornecedor": "WILLIAM MENDES DA ROCHA MEIRA",
-        "cnpj": "003.XXX.XXX-70",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor referte ao pagto de cinco diaria spara vereador cumprur agenda em brasilia df  nos dias 12 a 17 de outubro de 2026, com agendas dibveras"
-      },
-      {
-        "data": "2026-10-09",
-        "fornecedor": "LUIZ EDUARDO DOS SANTOS",
-        "cnpj": "039.XXX.XXX-60",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor referte ao pagto de cinco diaria spara vereador cumprur agenda em brasilia df  nos dias 12 a 17 de outubro de 2026, com agendas dibveras"
-      },
-      {
-        "data": "2026-10-09",
-        "fornecedor": "ELAINE CRISTINA TEIXEIRA GAUDIOSO",
-        "cnpj": "215.XXX.XXX-35",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "refere ao pagto de cinco diaria spara secretaria geral participar de seminario d egestao publcia em brasilia df nos dias 12 a 17 de outubro de 12026"
-      },
-      {
-        "data": "2026-10-09",
-        "fornecedor": "JOHNNY GUERRA GAI",
-        "cnpj": "856.XXX.XXX-20",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "refere ao pagto de trs diarias pára veraaodr cumrpur agenda em campo grande nos dias  13/10 com depoutado luiz ovando, no dia 14/10 com dpeutado junior mochi e marcio fernandes e no dia 15/10 com depu"
-      },
-      {
-        "data": "2026-10-09",
-        "fornecedor": "LUCIMEIRE ELIAS DA SILVA RAMOS",
-        "cnpj": "367.XXX.XXX-30",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "refere ao pagto de trs diarias pára veraaodr cumrpur agenda em campo grande nos dias  13/10 com depoutado luiz ovando, no dia 14/10 com dpeutado junior mochi e marcio fernandes e no dia 15/10 com depu"
-      },
-      {
         "data": "2026-10-13",
         "fornecedor": "MARCIO BARBOSA DE SOUZA",
         "cnpj": "034.XXX.XXX-66",
         "categoria": "Diárias — Civil",
         "valor": 0.0,
         "descricao": "valor refere ao pagto de uma diaria e meia, para veredor cumprir agenda em campo grande no dia 14/10 com o deputado junior mochi e no dia 15/10 na governadoria do MS"
+      },
+      {
+        "data": "2026-10-14",
+        "fornecedor": "ADRIANA APARECIDA MARIANO NABHAN",
+        "cnpj": "013.XXX.XXX-08",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "VALOR REFER AO PÁGTO DE DUAS DIARIAS PARA VEREADOR CUMPRR AGENDA EM CAMPO GRAND E NOS DIAS 14 E 15 DE OUTUBRO DE 2026, COM DEPUTADO JUNIOR MOCHI, DEPUTADO RODOLFO NOGUEIRA"
       }
     ]
   }
