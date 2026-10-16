@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-10-15T15:50:01",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-10-15T15:50:01",
+  "ultimaAtualizacao": "2026-10-16T15:38:30",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-10-16T15:38:30",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -294,21 +294,22 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 8710887.74,
-    "totalNotas": 341,
+    "totalGeral": 8725163.99,
+    "totalNotas": 342,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 4573105.01,
       "Equipamentos e Material Permanente": 1131861.96,
       "Obrigações Patronais": 770981.91,
-      "Serviços de Consultoria": 699253.92,
+      "Serviços de Consultoria": 711530.17,
       "Serviços de Tecnologia da Informação": 418265.9,
       "Auxílio-Alimentação": 398119.37,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 326627.37,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 328627.37,
       "Outros Serviços de Terceiros — Pessoa Física": 127115.48,
       "Outros Benefícios Assistenciais do Servidor": 122494.81,
       "Material de Consumo": 73299.46,
       "Diárias — Civil": 41228.51,
-      "Indenizações e Restituições": 28534.04
+      "Indenizações e Restituições": 28534.04,
+      "Elemento 96": 0.0
     },
     "despesas": [
       {
@@ -576,6 +577,14 @@
         "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO AO CONTRATO ADMINISTRATIVO Nº 003/2024, PROCESSO ADMINISTRATIVO Nº 8/2024, INEXIGIBILIDADE 02/2024,  CUJO OBJETO É A LOCAÇÃO DE IMÓVEL QUE SERVIRÁ PARA ABRIGAR TE"
       },
       {
+        "data": "2026-02-20",
+        "fornecedor": "AGAESSE ASSESSORIA E PLANEJAMENTO LTDA",
+        "cnpj": "04.117.097/0001-78",
+        "categoria": "Serviços de Consultoria",
+        "valor": 85933.75,
+        "descricao": "EMPENHO REFERENTE AO 3º TERMO ADITIVO DO CONTRATO ADMINISTRATIVO Nº 01/2023, INEXIGIBILIDADE Nº 01/2023, CUJO OBJETO É A RENOVAÇÃO CONTRATUAL PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE AS"
+      },
+      {
         "data": "2026-05-20",
         "fornecedor": "RAMOS GOMES SOCIEDADE INDIVIDUAL DE ADVOCACIA",
         "cnpj": "36.367.034/0001-66",
@@ -590,14 +599,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 76950.0,
         "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA DE ASSESSORIA E CONSULTORIA JURÍDICA, ESPECIALIZADA EM DIREITO PÚBLICO, PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS, SUPORTE CONSULTIVO AO GABINETE DA PRESIDÊNCIA,"
-      },
-      {
-        "data": "2026-02-20",
-        "fornecedor": "AGAESSE ASSESSORIA E PLANEJAMENTO LTDA",
-        "cnpj": "04.117.097/0001-78",
-        "categoria": "Serviços de Consultoria",
-        "valor": 73657.5,
-        "descricao": "EMPENHO REFERENTE AO 3º TERMO ADITIVO DO CONTRATO ADMINISTRATIVO Nº 01/2023, INEXIGIBILIDADE Nº 01/2023, CUJO OBJETO É A RENOVAÇÃO CONTRATUAL PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE AS"
       },
       {
         "data": "2026-06-17",
@@ -1136,6 +1137,14 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - SETEMBRO/2026."
       },
       {
+        "data": "2026-03-23",
+        "fornecedor": "SINDICATO RURAL DE RIBAS DO RIO PARDO",
+        "cnpj": "24.644.981/0001-78",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 14000.0,
+        "descricao": "EMPENHO REFERENTE AO TERMO DE CESSÃO DE USO, PROCESSO ADMINISTRATIVO 11/2026,  ENTRE A CÂMARA MUNICIPAL DE RIBAS DO RIO PARDO E O SINDICATO RURAL PARA FINS DE CEDÊNCIA DO ESPAÇO FÍSICO PARA A REALIZAÇ"
+      },
+      {
         "data": "2026-08-10",
         "fornecedor": "GC - AGENCIA DE MONITORAMENTO LTDA - ME",
         "cnpj": "11.161.339/0001-96",
@@ -1166,14 +1175,6 @@
         "categoria": "Equipamentos e Material Permanente",
         "valor": 12153.72,
         "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE ELETRODOMÉSTICOS, CONFORME A DISPENSA ELETRÔNICA Nº 003/2026, PROCESSO ADMINISTRATIVO Nº 012/2026.  Pedido gerado a partir do resultado da Licitação: 000012/26 - Ano M"
-      },
-      {
-        "data": "2026-03-23",
-        "fornecedor": "SINDICATO RURAL DE RIBAS DO RIO PARDO",
-        "cnpj": "24.644.981/0001-78",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 12000.0,
-        "descricao": "EMPENHO REFERENTE AO TERMO DE CESSÃO DE USO, PROCESSO ADMINISTRATIVO 11/2026,  ENTRE A CÂMARA MUNICIPAL DE RIBAS DO RIO PARDO E O SINDICATO RURAL PARA FINS DE CEDÊNCIA DO ESPAÇO FÍSICO PARA A REALIZAÇ"
       },
       {
         "data": "2026-08-28",
@@ -2813,7 +2814,7 @@
         "cnpj": "044.XXX.XXX-40",
         "categoria": "Diárias — Civil",
         "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DO VEREADOR LUCAS LOPES RIBEIRO PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 30/04/2026, PARA FINS DE REUNIÃO COM DEPUTADOS E REPRESE"
+        "descricao": "ANULAÇÃO DE EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DO VEREADOR LUCAS LOPES RIBEIRO PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 30/04/2026, PARA FINS DE REUNIÃO COM DEPUTAD"
       },
       {
         "data": "2026-04-29",
@@ -2821,7 +2822,7 @@
         "cnpj": "044.XXX.XXX-40",
         "categoria": "Diárias — Civil",
         "valor": 0.0,
-        "descricao": "ANULAÇÃO DE EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DO VEREADOR LUCAS LOPES RIBEIRO PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 30/04/2026, PARA FINS DE REUNIÃO COM DEPUTAD"
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DO VEREADOR LUCAS LOPES RIBEIRO PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 30/04/2026, PARA FINS DE REUNIÃO COM DEPUTADOS E REPRESE"
       },
       {
         "data": "2026-04-29",
@@ -3038,6 +3039,14 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE À DISPENSA DE LICITAÇÃO Nº 09/2026, PROCESSO ADMINISTRATIVO Nº 26/2026, CUJO OBJETIVO É CONTRATAÇÃO DE EMPRESA PARA A PRESTAÇÃO DE SERVIÇOS DE IDENTIFICAÇÃO, ORGANIZAÇÃO, TERMINAÇÃO,"
+      },
+      {
+        "data": "2026-10-15",
+        "fornecedor": "PREFEITURA MUNICIPAL RIBAS DO RIO PARDO",
+        "cnpj": "03.501.541/0001-91",
+        "categoria": "Elemento 96",
+        "valor": 0.0,
+        "descricao": "EMPENHO REFERENTE À RESTITUIÇÃO DA REMUNERAÇÃO E ENCARGOS PATRONAIS DA SERVIDORA SUELEN MACHADO DE OLIVEIRA, CARGO EFETIVO DE AUXILIAR ADMINISTRATIVO, MATRÍCULA 4000-2, CEDIDA PARA A CÂMARA MUNICIPAL"
       }
     ]
   }
