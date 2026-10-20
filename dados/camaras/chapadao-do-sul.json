@@ -1,7 +1,7 @@
 {
   "cidade": "Chapadão do Sul",
-  "ultimaAtualizacao": "2026-10-19T17:49:41",
-  "fonte": "Portal Transparência Fiorilli (pmchapadao.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-19T17:49:41",
+  "ultimaAtualizacao": "2026-10-20T15:53:29",
+  "fonte": "Portal Transparência Fiorilli (pmchapadao.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-20T15:53:29",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camarachapadaodosul.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -816,6 +816,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-10-15",
+          "valor": 2318.62,
+          "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS REALIZAR VISITAS INSTITUCIONAIS, NOS DIAS 15 E 16 DE OUTUBRO COM A FINALIDADE DE TRATAR DE ASSUNTOS DE INTERESSE DO MUNICÍPIO DE CHAPADÃO DO SUL/MS E BUSCAR APOIO E ENCAMINHAMENTOS JUNTO AOS ÓRGÃOS E AUTORIDADES ESTADUAIS."
+        },
+        {
           "data": "2026-10-06",
           "valor": 9274.88,
           "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE FERNANDÓPOLIS/SP P/PARTICIPAR DO CURSO SOBRE GESTÃO DE BENS PÚBLICOS E PATRIMÔNIO LEGISLATIVO, NOS DIAS 06 A 09 DE OUTUBRO, REALZADO PELA EMPRESA IDP - INSTITUTO DE DESENVOLVIMENTO PÚBLICO"
@@ -936,8 +941,8 @@
           "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS P/ CUMPRIR AGENDA INSTITUCIONAL NOS SEGUINTES ÓRGÃOS:  DIAS 21 E 22 DE JANEIRO - REUNIÃO COM ASSESSORIA JURÍDICA, ENERGISA, GABINETE SENADOR NELSON TRAD – CONFORME SOLICITADO PELO 1DOC MEMORANDO Nº 068/2026."
         }
       ],
-      "totalDiarias2026": 124623.8,
-      "numDiarias2026": 24
+      "totalDiarias2026": 126942.42,
+      "numDiarias2026": 25
     },
     {
       "nome": "RICARDO ESTEFANO E. BANNAK",
@@ -1132,12 +1137,12 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 10500673.47,
+    "totalGeral": 10504898.21,
     "totalNotas": 646,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 3848632.6,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 2294990.25,
-      "Diárias — Civil": 2203977.71,
+      "Diárias — Civil": 2208202.45,
       "Serviços de Consultoria": 977901.08,
       "Obrigações Patronais": 597575.65,
       "Material de Consumo": 291163.19,
@@ -5365,6 +5370,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS , NOS DIAS 13 E 14 DE AGOSTO, A FIM DE REALIZAR VISITAS INSTITUCIONAIS, CONFORME SOLICITADO NO MEMORANDO Nº 1627/2026"
       },
       {
+        "data": "2026-10-15",
+        "fornecedor": "MARCELO DA COSTA",
+        "cnpj": "006.XXX.XXX-55",
+        "categoria": "Diárias — Civil",
+        "valor": 2318.62,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS REALIZAR VISITAS INSTITUCIONAIS, NOS DIAS 15 E 16 DE OUTUBRO COM A FINALIDADE DE TRATAR DE ASSUNTOS DE INTERESSE DO MUNICÍPIO DE CHA"
+      },
+      {
         "data": "2026-01-21",
         "fornecedor": "MARCELO DA COSTA",
         "cnpj": "006.XXX.XXX-55",
@@ -5539,6 +5552,14 @@
         "categoria": "Diárias — Civil",
         "valor": 1906.12,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS , NOS DIAS 13 E 14 DE AGOSTO, ACOMPANHANDO O PRESIDENTE NAS VISITAS INSTITUCIONAIS, CONFORME SOLICITADO NO MEMORANDO Nº 1627/2026"
+      },
+      {
+        "data": "2026-10-15",
+        "fornecedor": "LUCAS FERREIRA SCHEER",
+        "cnpj": "037.XXX.XXX-03",
+        "categoria": "Diárias — Civil",
+        "valor": 1906.12,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS ACOMPANHANDO O PRESIDENTE NAS VISITAS INSTITUCIONAIS, NOS DIAS 15 E 16 DE OUTUBRO COM A FINALIDADE DE TRATAR DE ASSUNTOS DE INTERESS"
       },
       {
         "data": "2026-04-08",
@@ -6291,22 +6312,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À 03 (TRÊS) TAXAS DE INSCRIÇÕES P/PARTICIPAR DO CURSO DE GESTÃO FINANCEIRA E TESOURARIA PÚBLICA NA PRÁTICA: EFICIÊNCIA, CONTROLE E SEGURANÇA NA ADMINISTRAÇÃO MU"
-      },
-      {
-        "data": "2026-10-15",
-        "fornecedor": "MARCELO DA COSTA",
-        "cnpj": "006.XXX.XXX-55",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS REALIZAR VISITAS INSTITUCIONAIS, NOS DIAS 15 E 16 DE OUTUBRO COM A FINALIDADE DE TRATAR DE ASSUNTOS DE INTERESSE DO MUNICÍPIO DE CHA"
-      },
-      {
-        "data": "2026-10-15",
-        "fornecedor": "LUCAS FERREIRA SCHEER",
-        "cnpj": "037.XXX.XXX-03",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS ACOMPANHANDO O PRESIDENTE NAS VISITAS INSTITUCIONAIS, NOS DIAS 15 E 16 DE OUTUBRO COM A FINALIDADE DE TRATAR DE ASSUNTOS DE INTERESS"
       },
       {
         "data": "2026-10-16",
