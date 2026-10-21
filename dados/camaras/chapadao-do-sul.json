@@ -1,7 +1,7 @@
 {
   "cidade": "Chapadão do Sul",
-  "ultimaAtualizacao": "2026-10-20T15:53:29",
-  "fonte": "Portal Transparência Fiorilli (pmchapadao.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-20T15:53:29",
+  "ultimaAtualizacao": "2026-10-21T16:10:47",
+  "fonte": "Portal Transparência Fiorilli (pmchapadao.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-21T16:10:47",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camarachapadaodosul.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -406,6 +406,11 @@
       "referenciaFolha": "Folha Mensal - Agosto",
       "diarias": [
         {
+          "data": "2026-10-21",
+          "valor": 418.75,
+          "descricao": "VALOR QUE SE EMPENHA REFERENTE A REEMBOLSO DE DESPESAS DE COMBUSTÍVEL À CIDADE DE CAMPO GRANDE/MS P/PARTICIPAR DO CURSO DE GESTÃO FINANCEIRA E TESOURARIA PÚBLICA NA PRÁTICA: EFICIÊNCIA, CONTROLE E SEGURANÇA NA ADMINISTRAÇÃO MUNICIPAL, NOS DIAS 13 A 16 DE OUTUBRO, REALIZADO PELA EMPRESA LIDERGOV"
+        },
+        {
           "data": "2026-10-13",
           "valor": 4637.24,
           "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS P/PARTICIPAR DO CURSO DE GESTÃO FINANCEIRA E TESOURARIA PÚBLICA NA PRÁTICA: EFICIÊNCIA, CONTROLE E SEGURANÇA NA ADMINISTRAÇÃO MUNICIPAL, NOS DIAS 13 A 16 DE OUTUBRO, REALIZADO PELA EMPRESA LIDERGOV"
@@ -496,8 +501,8 @@
           "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE MARINGÁ/PR P/PARTICIPAR DA CAPACITAÇÃO PARA VEREADORES , SERVIDORES E ASSESSORES DO LEGISLATIVO MUNICIPAL SOBRE SUBVENÇÕES, AUXÍLIOS, CONVENIOS E PARCERIAS - EXERCICIO 2026, NOS DIAS 03 A 06 DE FEVEREIRO, REALIZADO PELA EMPRESA NS TREINAMENTOS EM GESTÃO PÚBLICA."
         }
       ],
-      "totalDiarias2026": 128687.41,
-      "numDiarias2026": 18
+      "totalDiarias2026": 129106.16,
+      "numDiarias2026": 19
     },
     {
       "nome": "JULINEI RAUL",
@@ -1137,19 +1142,19 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 10504898.21,
-    "totalNotas": 646,
+    "totalGeral": 10535001.52,
+    "totalNotas": 650,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 3848632.6,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 2294990.25,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 2317474.81,
       "Diárias — Civil": 2208202.45,
       "Serviços de Consultoria": 977901.08,
       "Obrigações Patronais": 597575.65,
       "Material de Consumo": 291163.19,
       "Equipamentos e Material Permanente": 109635.16,
-      "Serviços de Tecnologia da Informação": 83064.78,
+      "Serviços de Tecnologia da Informação": 90264.78,
       "Aporte para Cobertura de Déficit Atuarial do RPPS": 69443.5,
-      "Passagens e Despesas com Locomoção": 17949.55,
+      "Passagens e Despesas com Locomoção": 18368.3,
       "Contribuições": 6340.0
     },
     "despesas": [
@@ -1434,6 +1439,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE AO CONTRATO Nº 018/2026 LICITAÇÃO : 000028/26 - DISPENSA ELETRÔNICA - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PS DE SERVIÇOS DE BUFFET COM DECORAÇÃO, SONORIZAÇÃO E PAINE"
       },
       {
+        "data": "2026-03-04",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 57600.0,
+        "descricao": "VALOR QUE SE EMPENHA AO 2º TERMO ADITIVO Nº 002/2025 CONTRATO Nº 003/2023 LOCAÇÃO E CESSÃO DE SOFTWARE VIA WEB E APLICATIVO P/CELULAR E TABLET P/ CONSOLIDAÇÃO DA LEG. MUN., C/ MÃO DE OBRA P/INSERÇÃO D"
+      },
+      {
         "data": "2026-05-29",
         "fornecedor": "INSS-INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -1472,14 +1485,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 55201.02,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL INSS S/FOLHA DE PAGAMENTO REF MÊS SETEMBRO 2026"
-      },
-      {
-        "data": "2026-03-04",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 50400.0,
-        "descricao": "VALOR QUE SE EMPENHA AO 2º TERMO ADITIVO Nº 002/2025 CONTRATO Nº 003/2023 LOCAÇÃO E CESSÃO DE SOFTWARE VIA WEB E APLICATIVO P/CELULAR E TABLET P/ CONSOLIDAÇÃO DA LEG. MUN., C/ MÃO DE OBRA P/INSERÇÃO D"
       },
       {
         "data": "2026-01-09",
@@ -1576,6 +1581,14 @@
         "categoria": "Equipamentos e Material Permanente",
         "valor": 36702.82,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE AO ADITIVO Nº 001/2026 CONTRATO Nº 0022/2025 AO PEDIDO GERADO A PARTIR DO RESULTADO DA LICITAÇÃO: 000037/25 - PROCESSO ADMINSTRATIVO Nº 0031/2025 PREGÃO ELETRÔNICO - CON"
+      },
+      {
+        "data": "2026-08-24",
+        "fornecedor": "AMPASUL - ASSOC. SUL MAT. PROD. DE ALGOD",
+        "cnpj": "03.447.258/0001-29",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 29900.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À LICITAÇÃO 000029/26 - INEXIGIBILIDADE  - LOCAÇÃO DE ESPAÇO FÍSICO NO CENTRO DE EVENTOS DA AMPASUL DESTINADO A REALIZAÇÃO DO JANTAR DE ENCERRAMENTO DO PROJETO CÃMARA VA"
       },
       {
         "data": "2026-01-08",
@@ -1730,12 +1743,12 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE AO CONTRATO Nº 0022/2025 AO PEDIDO GERADO A PARTIR DO RESULTADO DA LICITAÇÃO: 000037/25 - PROCESSO ADMINSTRATIVO Nº 0031/2025 PREGÃO ELETRÔNICO - CONTRATAÇÃO DE EMPRESA"
       },
       {
-        "data": "2026-08-24",
-        "fornecedor": "AMPASUL - ASSOC. SUL MAT. PROD. DE ALGOD",
-        "cnpj": "03.447.258/0001-29",
+        "data": "2026-02-10",
+        "fornecedor": "NELSON JUNIOR GARCIA MARQUES 00041355121",
+        "cnpj": "32.905.344/0001-36",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 17600.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE À LICITAÇÃO 000029/26 - INEXIGIBILIDADE  - LOCAÇÃO DE ESPAÇO FÍSICO NO CENTRO DE EVENTOS DA AMPASUL DESTINADO A REALIZAÇÃO DO JANTAR DE ENCERRAMENTO DO PROJETO CÃMARA VA"
+        "valor": 18400.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A ADITIVO Nº 001/2026 AO CONTRATO Nº 006/2025 LICITAÇÃO: 000001/25 - DISPENSA ELETRÔNICA - CONTRATAÇÃO PARA PRESTAÇÃO DE SERVIÇOS DE PEQUENAS MANUTENÇÕES PREDIAIS, PREVE"
       },
       {
         "data": "2026-01-09",
@@ -1754,12 +1767,12 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À LICITAÇÃO: 000019/26 - DISPENSA ELETRÔNICA - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA  PARA A PRESTAÇÃO DE SERVIÇOS DE COMUNICAÇÃO DE DADOS VIA SATÉLITE (LEO), COM DISPONI"
       },
       {
-        "data": "2026-02-10",
-        "fornecedor": "NELSON JUNIOR GARCIA MARQUES 00041355121",
-        "cnpj": "32.905.344/0001-36",
+        "data": "2026-01-08",
+        "fornecedor": "AR PURO AR CONDICIONADO LTDA",
+        "cnpj": "57.883.354/0001-49",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 16100.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE A ADITIVO Nº 001/2026 AO CONTRATO Nº 006/2025 LICITAÇÃO: 000001/25 - DISPENSA ELETRÔNICA - CONTRATAÇÃO PARA PRESTAÇÃO DE SERVIÇOS DE PEQUENAS MANUTENÇÕES PREDIAIS, PREVE"
+        "valor": 16599.99,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000042/24 - Ano Mod.: 2024 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 35 - Mod. Formatada: 35 - A CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO"
       },
       {
         "data": "2026-05-11",
@@ -1784,14 +1797,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 15540.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À 06 (SEIS) TAXAS DE INSCRIÇÕES P/PARTICIPAR DO SEMINÁRIO DE CONTRATAÇÕES PÚBLICAS DO SUDOESTE GOIANO, NOS DIAS 25 A 27 DE FEVEREIRO, EM RIO VERDE/GO, REALIZADO PELA EMP"
-      },
-      {
-        "data": "2026-01-08",
-        "fornecedor": "AR PURO AR CONDICIONADO LTDA",
-        "cnpj": "57.883.354/0001-49",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 15000.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000042/24 - Ano Mod.: 2024 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 35 - Mod. Formatada: 35 - A CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO"
       },
       {
         "data": "2026-07-06",
@@ -1888,6 +1893,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 13193.55,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL CASSEMS S/FOLHA DE PAGAMENTO MÊS MARÇO 2026"
+      },
+      {
+        "data": "2026-07-06",
+        "fornecedor": "GRUPO SS MULTISERVICE LTDA",
+        "cnpj": "19.694.574/0001-35",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 13163.73,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO ADITIVO 0001/2026 DO CONTRATO Nº010/2025 À LICITAÇÃO: 000023/25 - PREGÃO ELETRÔNICO - CONTRATAÇÃO DE EMPRESA NO RAMO PERTINENTE, PARA A PRESTAÇÃO DE SERVIÇOS DE MÃO D"
       },
       {
         "data": "2026-09-28",
@@ -2216,6 +2229,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 9901.91,
         "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO DO SUBSÍDIO DO SENHOR VEREADOR MARCELO DA COSTA/ PRESIDENTE DA CÂMARA DESTA MUNICIPALIDADE. REF. SETEMBRO DE 2026"
+      },
+      {
+        "data": "2026-03-26",
+        "fornecedor": "KIMATEL TELECOMUNIC. E COMÉRCIO LTDA ME",
+        "cnpj": "05.164.653/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 9765.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE ADITIVO Nº 001/2026 AO CONTRATO Nº 003/2025 DA LICITAÇÃO: 000006/25 - DISPENSA DE LICITAÇÃO POR VALOR - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS D"
       },
       {
         "data": "2026-09-11",
@@ -3106,28 +3127,12 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A 09 (NOVE) TAXAS DE INSCRIÇÕES P/PARTICIPAR DO UCV/MS SUMMIT, NOS DIAS 08 A 10 DE ABRIL EM CAMPO GRANDE/MS, REALIZADO PELA UNIÃO DAS CÂMARAS DE VEREADORES DO MS - UCV/M"
       },
       {
-        "data": "2026-07-06",
-        "fornecedor": "GRUPO SS MULTISERVICE LTDA",
-        "cnpj": "19.694.574/0001-35",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 8775.82,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO ADITIVO 0001/2026 DO CONTRATO Nº010/2025 À LICITAÇÃO: 000023/25 - PREGÃO ELETRÔNICO - CONTRATAÇÃO DE EMPRESA NO RAMO PERTINENTE, PARA A PRESTAÇÃO DE SERVIÇOS DE MÃO D"
-      },
-      {
         "data": "2026-03-18",
         "fornecedor": "IPMCS - INST. PREV. SOC. SERV. MUN. CHS",
         "cnpj": "04.680.541/0001-69",
         "categoria": "Aporte para Cobertura de Déficit Atuarial do RPPS",
         "valor": 8570.4,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL IPMCS S/FOLHA DE PAGAMENTO SERVIDORES EFETIVOS MÊS MARÇO 2026 - APORTE"
-      },
-      {
-        "data": "2026-03-26",
-        "fornecedor": "KIMATEL TELECOMUNIC. E COMÉRCIO LTDA ME",
-        "cnpj": "05.164.653/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 8370.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE ADITIVO Nº 001/2026 AO CONTRATO Nº 003/2025 DA LICITAÇÃO: 000006/25 - DISPENSA DE LICITAÇÃO POR VALOR - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS D"
       },
       {
         "data": "2026-02-20",
@@ -3858,6 +3863,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE JALES/SP P/ VISITA INSTITUCIONAL AO HOSPITAL DE AMOR, HOSPITAL DE AMOR DE BARRETOS/SP E HOTEIS QUE RECEBEM E ATENDEM PACIENTES DE CHAPADÃO DO SUL/MS"
       },
       {
+        "data": "2026-05-08",
+        "fornecedor": "CENTRO AUTOMOTIVO CAR WASH-EIRELI-ME",
+        "cnpj": "19.713.028/0001-02",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 6688.35,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO 1º TERMO ADITIVO Nº 001/2026 DO CONTRATO Nº 005/2025 LICITAÇÃO: 000011/25 - DISPENSA ELETRÔNICA - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS CONT"
+      },
+      {
         "data": "2026-02-20",
         "fornecedor": "ITAMAR MARIANI",
         "cnpj": "519.XXX.XXX-00",
@@ -3920,14 +3933,6 @@
         "categoria": "Diárias — Civil",
         "valor": 6671.45,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE BRASÍLIA/DF P/PARTICIPAR DA 25ª MARCHA DOS GESTORES E LEGISLATIVOS MUNICIPAIS, NOS DIAS 27 A 30 DE MAIO, REALIZADO PELA UVB - UNIÃO DAS CAMARAS DO B"
-      },
-      {
-        "data": "2026-05-08",
-        "fornecedor": "CENTRO AUTOMOTIVO CAR WASH-EIRELI-ME",
-        "cnpj": "19.713.028/0001-02",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 6391.09,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE AO 1º TERMO ADITIVO Nº 001/2026 DO CONTRATO Nº 005/2025 LICITAÇÃO: 000011/25 - DISPENSA ELETRÔNICA - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS CONT"
       },
       {
         "data": "2026-10-06",
@@ -5459,6 +5464,14 @@
       },
       {
         "data": "2026-01-08",
+        "fornecedor": "SANESUL - EMPRESA DE SANEAMENTO DE MS",
+        "cnpj": "03.982.931/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1921.53,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À TARIFAS DE CONSUMO DE ÁGUA/ESGOTO NO DECORRER DO EXERCÍCIO DE 2026"
+      },
+      {
+        "data": "2026-01-08",
         "fornecedor": "JOAO ADMAR CUSTODIO LOPES EIRELI-ME",
         "cnpj": "23.190.679/0001-24",
         "categoria": "Material de Consumo",
@@ -5584,14 +5597,6 @@
         "categoria": "Diárias — Civil",
         "valor": 1738.96,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE  CAMPO GRANDE/MS EM CUMPRIMENTO DE AGENDA OFICIAL NO GABINETE DO DEPUTADO CORONEL DAVID."
-      },
-      {
-        "data": "2026-01-08",
-        "fornecedor": "SANESUL - EMPRESA DE SANEAMENTO DE MS",
-        "cnpj": "03.982.931/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 1717.13,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE À TARIFAS DE CONSUMO DE ÁGUA/ESGOTO NO DECORRER DO EXERCÍCIO DE 2026"
       },
       {
         "data": "2026-01-08",
@@ -5936,6 +5941,14 @@
         "categoria": "Material de Consumo",
         "valor": 420.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À LICITAÇÃO: 000020/26 - DISPENSA POR VALOR - AQUISIÇÃO DE QUADRO LEGISLATIVO PARA A CÂMARA MUNICIPAL DE CHAPADÃO DO SUL, CONFORME CONDIÇÕES E ESPECIFICAÇÕES  CONSTANTES"
+      },
+      {
+        "data": "2026-10-16",
+        "fornecedor": "JOSE TEIXEIRA JUNIOR",
+        "cnpj": "037.XXX.XXX-55",
+        "categoria": "Passagens e Despesas com Locomoção",
+        "valor": 418.75,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A REEMBOLSO DE DESPESAS DE COMBUSTÍVEL À CIDADE DE CAMPO GRANDE/MS P/PARTICIPAR DO CURSO DE GESTÃO FINANCEIRA E TESOURARIA PÚBLICA NA PRÁTICA: EFICIÊNCIA, CONTROLE E SEG"
       },
       {
         "data": "2026-04-27",
@@ -6314,12 +6327,36 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À 03 (TRÊS) TAXAS DE INSCRIÇÕES P/PARTICIPAR DO CURSO DE GESTÃO FINANCEIRA E TESOURARIA PÚBLICA NA PRÁTICA: EFICIÊNCIA, CONTROLE E SEGURANÇA NA ADMINISTRAÇÃO MU"
       },
       {
-        "data": "2026-10-16",
-        "fornecedor": "JOSE TEIXEIRA JUNIOR",
-        "cnpj": "037.XXX.XXX-55",
-        "categoria": "Passagens e Despesas com Locomoção",
+        "data": "2026-10-20",
+        "fornecedor": "ITAMAR MARIANI",
+        "cnpj": "519.XXX.XXX-00",
+        "categoria": "Material de Consumo",
         "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE A REEMBOLSO DE DESPESAS DE COMBUSTÍVEL À CIDADE DE CAMPO GRANDE/MS P/PARTICIPAR DO CURSO DE GESTÃO FINANCEIRA E TESOURARIA PÚBLICA NA PRÁTICA: EFICIÊNCIA, CONTROLE E SEG"
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À SUPRIMENTO DE FUNDOS DESTINADO A COMPRA DE MATERIAL DE CONSUMO E /OU SERVIÇO DE TERCEIROS, QUANDO NÃO EXISTIR PROCEDIMENTO LICITATÓRIO E A DESPESA  FOR CONSIDERADA DE"
+      },
+      {
+        "data": "2026-10-20",
+        "fornecedor": "ITAMAR MARIANI",
+        "cnpj": "519.XXX.XXX-00",
+        "categoria": "Material de Consumo",
+        "valor": 0.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À SUPRIMENTO DE FUNDOS DESTINADO A COMPRA DE MATERIAL DE CONSUMO E /OU SERVIÇO DE TERCEIROS, QUANDO NÃO EXISTIR PROCEDIMENTO LICITATÓRIO E A DESPESA  FOR CONSIDERADA DE"
+      },
+      {
+        "data": "2026-10-20",
+        "fornecedor": "ITAMAR MARIANI",
+        "cnpj": "519.XXX.XXX-00",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À SUPRIMENTO DE FUNDOS DESTINADO A COMPRA DE MATERIAL DE CONSUMO E /OU SERVIÇO DE TERCEIROS, QUANDO NÃO EXISTIR PROCEDIMENTO LICITATÓRIO E A DESPESA  FOR CONSIDERADA DE"
+      },
+      {
+        "data": "2026-10-20",
+        "fornecedor": "ITAMAR MARIANI",
+        "cnpj": "519.XXX.XXX-00",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À SUPRIMENTO DE FUNDOS DESTINADO A COMPRA DE MATERIAL DE CONSUMO E /OU SERVIÇO DE TERCEIROS, QUANDO NÃO EXISTIR PROCEDIMENTO LICITATÓRIO E A DESPESA  FOR CONSIDERADA DE"
       }
     ]
   }
