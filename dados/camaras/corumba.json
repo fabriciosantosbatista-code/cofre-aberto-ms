@@ -1,7 +1,7 @@
 {
   "cidade": "Corumbá",
-  "ultimaAtualizacao": "2026-10-21T16:10:47",
-  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-10-21T16:10:47",
+  "ultimaAtualizacao": "2026-10-22T16:08:48",
+  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-10-22T16:08:48",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camaracorumba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -351,6 +351,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-10-22",
+          "valor": 3000.0,
+          "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDAS: NO GABINETE DO DEPUTADO FEDERAL DAGOBERTO NOGUEIRA; NA CASA CIVIL DO GOVERNO DE MS E NA ASSEMBLÉIA LEGISLATIVA (Ale/MS), CONFORME LEIS 2384/2014 E 2819/2022."
+        },
+        {
           "data": "2026-08-20",
           "valor": 3000.0,
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDAS/PARTICIPAR DE REUNIÕES  NA GOVERNADORIA; NOS  ESCRITÓRIOS POLITICOS:  DA SENADORA SORAYA THRONICKE E DO DEPUTADO FEDERAL DAGOBERTO NOGUEIRA, CONFORME LEIS 2384/2014 E 2819/2022."
@@ -381,8 +386,8 @@
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO SEMINARIO LEGISLATIVO 360 -GOVERNANÇA, FISCALIZAÇÃO E RESULTADO, CONFORME LEIS 2384/2014 E 2819/2022."
         }
       ],
-      "totalDiarias2026": 16000.0,
-      "numDiarias2026": 6
+      "totalDiarias2026": 19000.0,
+      "numDiarias2026": 7
     },
     {
       "nome": "MATHEUS PEREIRA CAZARIN SILVA",
@@ -599,19 +604,19 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 24806163.49,
-    "totalNotas": 224,
+    "totalGeral": 24860466.56,
+    "totalNotas": 225,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 15873537.64,
       "Obrigações Patronais": 2898995.65,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 2656011.12,
-      "Serviços de Consultoria": 1311993.27,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 2673236.12,
+      "Serviços de Consultoria": 1344071.34,
       "Indenizações e Restituições": 1140729.53,
-      "Diárias — Civil": 343400.0,
+      "Diárias — Civil": 346400.0,
       "Elemento 03": 267613.5,
       "Despesas de Exercícios Anteriores": 177920.74,
       "Elemento 96": 105834.44,
-      "Contribuições": 18000.0,
+      "Contribuições": 20000.0,
       "Material de Consumo": 12127.6
     },
     "despesas": [
@@ -716,7 +721,7 @@
         "fornecedor": "SIMPA ASSESSORIA & PLANEJAMENTO EIRELI - EPP",
         "cnpj": "97.408.090/0001-96",
         "categoria": "Serviços de Consultoria",
-        "valor": 192468.42,
+        "valor": 224546.49,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A  PRESTAÇÃO DE SERVIÇOS DE ASSESSORIA CONTABIL, ABRANGENDO AREAS ORÇAMENTÁRIA, FINANCEIRA, RECURSOS HUMANOS; ASSESSORAMENTO NOS PROCEDIMENTOS LICITATÓRIOS E CONTRATOS A"
       },
       {
@@ -785,6 +790,14 @@
       },
       {
         "data": "2026-01-05",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 108000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS DE LOCAÇÃO DE SOFTWARE VIA WEB E APLICATIVO PARA CELULAR E TABLET PARA CONSOLIDAÇÃO DA LEGISLAÇÃO MUNICIPAL COM MAO DE OBRA  INCLUSA. PARA INSER"
+      },
+      {
+        "data": "2026-01-05",
         "fornecedor": "MUNICIPIO DE CORUMBA",
         "cnpj": "03.330.461/0001-10",
         "categoria": "Elemento 96",
@@ -798,14 +811,6 @@
         "categoria": "Elemento 03",
         "valor": 101000.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A FOLHA DE PAGAMENTO ESTIMADA 2026."
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 96000.0,
-        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS DE LOCAÇÃO DE SOFTWARE VIA WEB E APLICATIVO PARA CELULAR E TABLET PARA CONSOLIDAÇÃO DA LEGISLAÇÃO MUNICIPAL COM MAO DE OBRA  INCLUSA. PARA INSER"
       },
       {
         "data": "2026-04-06",
@@ -1064,6 +1069,14 @@
         "descricao": "VALOR QUE SE EMPENHA, POR RECONHECIMENTO DE DÍVIDA."
       },
       {
+        "data": "2026-05-20",
+        "fornecedor": "H2L EQUIPAMENTOS E SISTEMAS LTDA",
+        "cnpj": "73.505.349/0002-30",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 26125.0,
+        "descricao": "VALOR QUE SE EMPENHA, PARA Contratação de serviço de Outsourcing (terceirização) de solução de impressão, reprografia e digitalização de documentos, por meio de fornecimento de equipamentos, licença d"
+      },
+      {
         "data": "2026-07-21",
         "fornecedor": "SUNA CONSULTORIA E ASSESSORIA LTDA",
         "cnpj": "47.545.825/0001-55",
@@ -1096,12 +1109,12 @@
         "descricao": "VALOR QUE SE EMPENHA PARA, Contratação de empresa especializada para consultoria em gestão de Recursos Humanos, com ênfase na análise e conformidade legal da folha de pagamento, além de acompanhamento"
       },
       {
-        "data": "2026-05-20",
-        "fornecedor": "H2L EQUIPAMENTOS E SISTEMAS LTDA",
-        "cnpj": "73.505.349/0002-30",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 20900.0,
-        "descricao": "VALOR QUE SE EMPENHA, PARA Contratação de serviço de Outsourcing (terceirização) de solução de impressão, reprografia e digitalização de documentos, por meio de fornecimento de equipamentos, licença d"
+        "data": "2026-01-05",
+        "fornecedor": "UNIAO DAS CAMARAS DE VEREADORES DO ESTADO DE MATO",
+        "cnpj": "01.941.195/0001-37",
+        "categoria": "Contribuições",
+        "valor": 20000.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A CONTRIBUIÇÃO ASSOCIATIVA 2026."
       },
       {
         "data": "2026-09-03",
@@ -1110,14 +1123,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 18835.2,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE ADVOCACIA EM DIREITO PÚBLICO, CONSISTENTES NA ASSESSORIA E CONSULTORIA JURIDICA, PARA DEFINIÇÃO E IMPLEMENTAÇÃO DA FI"
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "UNIAO DAS CAMARAS DE VEREADORES DO ESTADO DE MATO",
-        "cnpj": "01.941.195/0001-37",
-        "categoria": "Contribuições",
-        "valor": 18000.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE A CONTRIBUIÇÃO ASSOCIATIVA 2026."
       },
       {
         "data": "2026-02-03",
@@ -1854,6 +1859,14 @@
         "categoria": "Diárias — Civil",
         "valor": 3000.0,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDAS: NO GABINETE DE REPRESENTAÇÃO DO DEPUTADO FEDERAL DAGOBERTO NOGUEIRA; NA GOVERNADORIA E NA ASSEMBLÉIA LEGI"
+      },
+      {
+        "data": "2026-10-21",
+        "fornecedor": "MARCELO NUNES ARAUJO",
+        "cnpj": "701.XXX.XXX-49",
+        "categoria": "Diárias — Civil",
+        "valor": 3000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDAS: NO GABINETE DO DEPUTADO FEDERAL DAGOBERTO NOGUEIRA; NA CASA CIVIL DO GOVERNO DE MS E NA ASSEMBLÉIA LEGISL"
       },
       {
         "data": "2026-05-08",

@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-10-21T16:10:47",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-10-21T16:10:47",
+  "ultimaAtualizacao": "2026-10-22T16:08:48",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-10-22T16:08:48",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -162,6 +162,11 @@
       "referenciaFolha": "Folha Mensal - Setembro",
       "diarias": [
         {
+          "data": "2026-10-22",
+          "valor": 250.0,
+          "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DO VEREADOR LUCAS LOPES RIBEIRO PARA DESLOCAMENTO À CIDADE DE CAMPO GRANDE/MS, EM 23/10/2026, COM O OBJETIVO DE CUMPRIR AGENDA INSTITUCIONAL NA ASSEMBLEIA LEGISLATIVA, EM REUNIÃO COM O DEPUTADO PEDRO KEMP, PARA ARTICULAR AÇÕES ESTRATÉGICAS, TRATAR DE DEMANDAS PRIORITÁRIAS DO MUNICÍPIO, VIABILIZAR APOIO POLÍTICO E CAPTAR RECURSOS DESTINADOS AO FORTALECIMENTO DAS POLÍTICAS PÚBLICAS E AO DESENVOLVIMENTO MUNICIPAL."
+        },
+        {
           "data": "2026-09-01",
           "valor": 1050.0,
           "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 1,5 (UMA DIÁRIA E MEIA) PARA CUMPRIR AGENDA INSTITUCIONAL COM O PROMOTOR DE JUSTIÇA DE BATAGUASSU, EDIVAL GOULART QUIRINO, NAS DATAS DE 02 E 03/09/2026, BEM COMO REALIZAR VISITA TÉCNICA AO RIO PARDO, CONFORME A LEI DE DIÁRIAS Nº 15, DE 06 DE ABRIL DE 2026."
@@ -242,8 +247,8 @@
           "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 02 (DUAS) DIÁRIAS EM FAVOR DO VEREADOR LUCAS LOPES RIBEIRO PARA PARTICIPAR DE REUNIÃO, NA DATA DE 27/02/2026, NA ASSEMBLEIA LEGISLATIVA PARA FINS DE PARCERIA COM O DEPUTADO PEDRO KEMP, E PARTICIPAR DE LANÇAMENTO DO PROGRAMA AGROINDUSTRIALIZAÇÃO DA AGRICULTURA FAMILIAR, NA DATA DE 02/03/2026."
         }
       ],
-      "totalDiarias2026": 11502.5,
-      "numDiarias2026": 16
+      "totalDiarias2026": 11752.5,
+      "numDiarias2026": 17
     },
     {
       "nome": "LUCIMAR ROSA DE CAMPOS",
@@ -294,14 +299,14 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 8851567.32,
+    "totalGeral": 8862307.58,
     "totalNotas": 345,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 4573105.01,
       "Equipamentos e Material Permanente": 1131861.96,
       "Obrigações Patronais": 870373.69,
       "Serviços de Consultoria": 711530.17,
-      "Serviços de Tecnologia da Informação": 437915.9,
+      "Serviços de Tecnologia da Informação": 448656.16,
       "Auxílio-Alimentação": 398119.37,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 335853.92,
       "Outros Serviços de Terceiros — Pessoa Física": 127115.48,
@@ -713,6 +718,14 @@
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - AGOSTO/2026."
       },
       {
+        "data": "2026-06-16",
+        "fornecedor": "H2L - EQUIP. E SISTEMAS LTDA",
+        "cnpj": "73.505.349/0002-30",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 42961.04,
+        "descricao": "EMPENHO REFERENTE AO 3º TERMO ADITIVO AO CONTRATO Nº 11/2023 (PROCESSO ADMINISTRATIVO Nº 09/2023 E PREGÃO PRESENCIAL Nº 02/2023), CUJO OBJETO É A CONTRATAÇÃO DE EMPRESA PARA A PRESTAÇÃO DE SERVIÇOS DE"
+      },
+      {
         "data": "2026-04-30",
         "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -791,14 +804,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 33310.3,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - JANEIRO/2026."
-      },
-      {
-        "data": "2026-06-16",
-        "fornecedor": "H2L - EQUIP. E SISTEMAS LTDA",
-        "cnpj": "73.505.349/0002-30",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 32220.78,
-        "descricao": "EMPENHO REFERENTE AO 3º TERMO ADITIVO AO CONTRATO Nº 11/2023 (PROCESSO ADMINISTRATIVO Nº 09/2023 E PREGÃO PRESENCIAL Nº 02/2023), CUJO OBJETO É A CONTRATAÇÃO DE EMPRESA PARA A PRESTAÇÃO DE SERVIÇOS DE"
       },
       {
         "data": "2026-06-30",

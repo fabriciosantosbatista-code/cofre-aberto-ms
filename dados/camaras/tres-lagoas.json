@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-10-21T16:10:47",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-21T16:10:47",
+  "ultimaAtualizacao": "2026-10-22T16:08:48",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-22T16:08:48",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -529,21 +529,21 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 27893918.04,
-    "totalNotas": 780,
+    "totalGeral": 27909038.41,
+    "totalNotas": 789,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 15641319.11,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 4179633.03,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 4179638.13,
       "Auxílio-Alimentação": 2806025.02,
       "Obrigações Patronais": 2401744.99,
       "Serviços de Tecnologia da Informação": 643346.06,
-      "Diárias — Civil": 607643.71,
-      "Locação de Mão de Obra": 388163.55,
+      "Diárias — Civil": 612260.77,
+      "Locação de Mão de Obra": 395470.16,
       "Aporte para Cobertura de Déficit Atuarial do RPPS": 306455.7,
       "Serviços de Consultoria": 294142.96,
-      "Material de Consumo": 272021.59,
+      "Material de Consumo": 274365.59,
       "Outros Benefícios Assistenciais do Servidor": 130784.66,
-      "Indenizações e Restituições": 76336.32,
+      "Indenizações e Restituições": 77183.92,
       "Despesas de Exercícios Anteriores": 48725.47,
       "Equipamentos e Material Permanente": 46253.35,
       "Elemento 94": 32416.48,
@@ -1106,6 +1106,14 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (GRATIFICAÇÃO POR EXERCÍCIO DE CARGOS) VINCULADOS AO RPPS,  REF.  EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
       },
       {
+        "data": "2026-08-17",
+        "fornecedor": "GADU SEGURANCA LTDA",
+        "cnpj": "08.953.397/0001-48",
+        "categoria": "Locação de Mão de Obra",
+        "valor": 52972.91,
+        "descricao": "Pedido de empenho para realização do III termo aditivo com valores proporcionais ao ano de 2026 ref. serviço de postos de vigilâcia."
+      },
+      {
         "data": "2026-06-23",
         "fornecedor": "TICKET SERVICOS SA",
         "cnpj": "47.866.934/0001-74",
@@ -1128,14 +1136,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 48355.37,
         "descricao": "PEDIDO EMPENHO SALDO 01/01/2026 A FINAL VIGÊNCIA CONTRUAL OCORRE EM 2026."
-      },
-      {
-        "data": "2026-08-17",
-        "fornecedor": "GADU SEGURANCA LTDA",
-        "cnpj": "08.953.397/0001-48",
-        "categoria": "Locação de Mão de Obra",
-        "valor": 45666.3,
-        "descricao": "Pedido de empenho para realização do III termo aditivo com valores proporcionais ao ano de 2026 ref. serviço de postos de vigilâcia."
       },
       {
         "data": "2026-03-03",
@@ -1338,6 +1338,14 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (Vencimentos e Salários Prorrogação Licença maternidade) VINCULADOS AO RGPS,  REF.  EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
       },
       {
+        "data": "2026-03-11",
+        "fornecedor": "MARIA ROSA RODRIGUES TAVARES",
+        "cnpj": "03.813.381/0001-16",
+        "categoria": "Material de Consumo",
+        "valor": 18990.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/26 - Ano Mod.: 2026 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 2 - Mod. Formatada: 000002 - Contratação de empresa para fornecimento de itens a"
+      },
+      {
         "data": "2026-07-01",
         "fornecedor": "EXITO INDUSTRIA E COMERCIO LTDA",
         "cnpj": "63.015.288/0001-98",
@@ -1352,14 +1360,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 18150.3,
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (FERIAS – ABONO CONSTITUCIONAL) VINCULADOS AO RPPS,  REF. MES DE ABRIL/2026"
-      },
-      {
-        "data": "2026-03-11",
-        "fornecedor": "MARIA ROSA RODRIGUES TAVARES",
-        "cnpj": "03.813.381/0001-16",
-        "categoria": "Material de Consumo",
-        "valor": 18000.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/26 - Ano Mod.: 2026 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 2 - Mod. Formatada: 000002 - Contratação de empresa para fornecimento de itens a"
       },
       {
         "data": "2026-03-20",
@@ -4274,6 +4274,30 @@
         "descricao": "\"DESPESAS REFERENTE A CONCESSÃO DE 2 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 21/10/2026 a 23/10/2026, CONFORME SOLICITAÇÃO ASSINADA PELO REQUISITANTE E VE"
       },
       {
+        "data": "2026-10-21",
+        "fornecedor": "ANTONIO LUIZ TEIXEIRA EMPKE JUNIOR",
+        "cnpj": "955.XXX.XXX-53",
+        "categoria": "Diárias — Civil",
+        "valor": 1539.02,
+        "descricao": "\"DESPESAS REFERENTE A CONCESSÃO DE 2 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 21/10/2026 a 23/10/2026, CONFORME SOLICITAÇÃO. Finalidade: '' Solicita-se a c"
+      },
+      {
+        "data": "2026-10-21",
+        "fornecedor": "ADEMILSON PEDROSO",
+        "cnpj": "003.XXX.XXX-08",
+        "categoria": "Diárias — Civil",
+        "valor": 1539.02,
+        "descricao": "\"DESPESAS REFERENTE A CONCESSÃO DE 2 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 21/10/2026 a 23/10/2026, CONFORME SOLICITAÇÃO ASSINADA PELO REQUISITANTE E VE"
+      },
+      {
+        "data": "2026-10-21",
+        "fornecedor": "PAULO ROGERIO LOPES FERREIRA",
+        "cnpj": "501.XXX.XXX-49",
+        "categoria": "Diárias — Civil",
+        "valor": 1539.02,
+        "descricao": "\"DESPESAS REFERENTE A CONCESSÃO DE 2 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 21/10/2026 a 23/10/2026, CONFORME SOLICITAÇÃO. Finalidade: ''  Solicita-se a"
+      },
+      {
         "data": "2026-07-06",
         "fornecedor": "RIBEIRO COMERCIO LTDA",
         "cnpj": "25.040.889/0001-61",
@@ -4304,6 +4328,14 @@
         "categoria": "Indenizações e Restituições",
         "valor": 1388.2,
         "descricao": "EMPENHO PRÉVIO PARA RESSARCIMENTO COM COMPRA DE PASSAGEM. VIAGEM COM DESTINO À CIDADE DE Porto Alegre, DO DIA 18/05 A 22/05/2026 COM A FINALIDADE DE PARTICIPAR DO CURSO PRÁTICO DE FOTOGRAFIA E VÍDEO I"
+      },
+      {
+        "data": "2026-09-28",
+        "fornecedor": "CAZ COMERCIO DE ARTIGOS PARA ESCRITORIO LTDA",
+        "cnpj": "47.944.342/0001-23",
+        "categoria": "Material de Consumo",
+        "valor": 1354.0,
+        "descricao": "Contratação de empresa para aquisição de materiais de expediente de uso comum para Câmara Municipal de Três Lagoas-MS, conforme condições e exigências estabelecidas no termo de referência."
       },
       {
         "data": "2026-01-21",
@@ -5658,6 +5690,22 @@
         "descricao": "\"Indenização de Combustível, conforme Lei Municipal 3.960/2023, compreendendo a ida e volta à cidade de Campo Grande - MS, no período de 21/10/2026 a 23/10/2026 que corresponde a 652 KM, (padronizado"
       },
       {
+        "data": "2026-10-21",
+        "fornecedor": "EDUARDO CASTRO MILANEZ",
+        "cnpj": "790.XXX.XXX-44",
+        "categoria": "Indenizações e Restituições",
+        "valor": 423.8,
+        "descricao": "\"Indenização de Combustível, conforme Lei Municipal 3.960/2023, compreendendo a ida e volta à cidade de Campo Grande - MS, no período de 21/10/2026 a 23/10/2026 que corresponde a 652 KM, (padronizado"
+      },
+      {
+        "data": "2026-10-21",
+        "fornecedor": "JEZIEL RODRIGUES DA SILVA",
+        "cnpj": "595.XXX.XXX-15",
+        "categoria": "Indenizações e Restituições",
+        "valor": 423.8,
+        "descricao": "\"Indenização de Combustível, conforme Lei Municipal 3.960/2023, compreendendo a ida e volta à cidade de Campo Grande - MS, no período de 21/10/2026 a 23/10/2026 que corresponde a 652 KM, (padronizado"
+      },
+      {
         "data": "2026-01-19",
         "fornecedor": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
         "cnpj": "34.028.316/0001-03",
@@ -5810,20 +5858,20 @@
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (LICENÇA SAÚDE) VINCULADOS AO RPPS,  REF.  COMPLEMENTO EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
       },
       {
+        "data": "2026-06-12",
+        "fornecedor": "R.F. PREST. SERV. COL. RES. NÃO PERIGOSO",
+        "cnpj": "14.263.140/0001-67",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 232.67,
+        "descricao": "Processo 28/25 serviços de Locação de Caçambas para a Câmara Municipal de Três Lagoas-MS."
+      },
+      {
         "data": "2026-05-27",
         "fornecedor": "R.F. PREST. SERV. COL. RES. NÃO PERIGOSO",
         "cnpj": "14.263.140/0001-67",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 227.57,
         "descricao": "Processo 28/25serviços de Locação de Caçambas para a Câmara Municipal de Três Lagoas-MS."
-      },
-      {
-        "data": "2026-06-12",
-        "fornecedor": "R.F. PREST. SERV. COL. RES. NÃO PERIGOSO",
-        "cnpj": "14.263.140/0001-67",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 227.57,
-        "descricao": "Processo 28/25 serviços de Locação de Caçambas para a Câmara Municipal de Três Lagoas-MS."
       },
       {
         "data": "2026-07-17",
@@ -5991,7 +6039,7 @@
         "cnpj": "29.530.767/0001-04",
         "categoria": "Material de Consumo",
         "valor": 0.0,
-        "descricao": "Processo 02/25 fornecimento de materiais de limpeza e higienização de uso comum para a Câmara Municipal de Três Lagoas."
+        "descricao": "Anulação de empenho pra reajuste de valores conforme 1º termo aditivo."
       },
       {
         "data": "2026-01-19",
@@ -5999,7 +6047,7 @@
         "cnpj": "29.530.767/0001-04",
         "categoria": "Material de Consumo",
         "valor": 0.0,
-        "descricao": "Anulação de empenho pra reajuste de valores conforme 1º termo aditivo."
+        "descricao": "Processo 02/25 fornecimento de materiais de limpeza e higienização de uso comum para a Câmara Municipal de Três Lagoas."
       },
       {
         "data": "2026-05-27",
@@ -6506,6 +6554,38 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000002/26 - Ano Mod.: 2026 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 1 - Mod. Formatada: 000001 - Contratação de empresa especializada para o forneci"
       },
       {
+        "data": "2026-10-21",
+        "fornecedor": "TICKET SERVICOS SA",
+        "cnpj": "47.866.934/0001-74",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 0.0,
+        "descricao": "SALDO NÃO UTILIZADO."
+      },
+      {
+        "data": "2026-10-21",
+        "fornecedor": "TICKET SERVICOS SA",
+        "cnpj": "47.866.934/0001-74",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 0.0,
+        "descricao": "SALDO NÃO UTILIZADO."
+      },
+      {
+        "data": "2026-10-21",
+        "fornecedor": "PLUXEE BENEFICIOS BRASIL S.A.",
+        "cnpj": "69.034.668/0001-56",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 0.0,
+        "descricao": "SALDO NÃO UTILIZADO."
+      },
+      {
+        "data": "2026-10-21",
+        "fornecedor": "PLUXEE BENEFICIOS BRASIL S.A.",
+        "cnpj": "69.034.668/0001-56",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 0.0,
+        "descricao": "SALDO NÃO UTILIZADO."
+      },
+      {
         "data": "2026-08-05",
         "fornecedor": "FOLHA DE PGTO SERVIDORES EFETIVOS (Câmara)",
         "cnpj": "15.410.145/0001-38",
@@ -6669,14 +6749,6 @@
         "data": "2026-09-28",
         "fornecedor": "SOUZA & MASTELLINI LTDA",
         "cnpj": "15.804.087/0001-27",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "Contratação de empresa para aquisição de materiais de expediente de uso comum para Câmara Municipal de Três Lagoas-MS, conforme condições e exigências estabelecidas no termo de referência."
-      },
-      {
-        "data": "2026-09-28",
-        "fornecedor": "CAZ COMERCIO DE ARTIGOS PARA ESCRITORIO LTDA",
-        "cnpj": "47.944.342/0001-23",
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "Contratação de empresa para aquisição de materiais de expediente de uso comum para Câmara Municipal de Três Lagoas-MS, conforme condições e exigências estabelecidas no termo de referência."
