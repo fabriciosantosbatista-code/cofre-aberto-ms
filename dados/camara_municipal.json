@@ -1,5 +1,5 @@
 {
-  "ultimaAtualizacao": "2026-10-23T15:58:42",
+  "ultimaAtualizacao": "2026-10-26T17:43:12",
   "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande/MS (SCPI Fiorilli, 45.225.6.93:8079) — Verba Indenizatória (Ato 027/028) extraída dos PDFs individuais por vereador via HomeDocumentosPublicados.aspx, 10/07/2026.",
   "resumo": {
     "totalVereadores": 29,
@@ -10392,9 +10392,9 @@
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
         "gastoAto027_2026": 62250.0,
-        "gastoAto028_2026": 62500.0,
-        "gastoPago2026": 124750.0,
-        "percentualUsado": 41.6,
+        "gastoAto028_2026": 105000.0,
+        "gastoPago2026": 167250.0,
+        "percentualUsado": 55.8,
         "mesesAto027": {
           "jan": 12250.0,
           "fev": 12500.0,
@@ -10407,7 +10407,11 @@
           "fev": 12500.0,
           "mar": 12500.0,
           "abr": 12500.0,
-          "mai": 12500.0
+          "mai": 12500.0,
+          "jun": 12500.0,
+          "jul": 10000.0,
+          "ago": 10000.0,
+          "set": 10000.0
         },
         "categorias": {
           "Divulgação parlamentar": 8000.0,
@@ -10428,7 +10432,7 @@
         "gastoPessoalAnual": 1538590.32,
         "totalEstimado": 2027043.06
       },
-      "totalNotasFiscais": 36,
+      "totalNotasFiscais": 37,
       "despesas": [
         {
           "data": "2026-01-14",
@@ -10753,6 +10757,15 @@
           "nf": "S-e 1168",
           "descricao": "y | Serviços gráficos",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "49.256.156 RENNE TULLER ESPOSITO CARVALHO",
+          "cnpj": "49.256.156/0001-27",
+          "valor": 2500.0,
+          "nf": "S-e 107",
+          "descricao": "Gestão deserviços de redessociais",
+          "ato": "ATO 028"
         }
       ],
       "foto": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAeAB4AwEiAAIRAQMRAf/EABwAAAEFAQEBAAAAAAAAAAAAAAACBAUGBwEDCP/EADsQAAIBAwIEAwMKBQQDAAAAAAECAwAEEQUhBhIxQRNRYSJxkQcUIzJigaGxweFCUnLR8BUWJGNDU/H/xAAaAQACAwEBAAAAAAAAAAAAAAABBQACAwQG/8QAKREAAgICAgECBQUBAAAAAAAAAAECAxEhBDESIlETFDJBYQUVI3Gxof/aAAwDAQACEQMRAD8AsK9dqb6gcQ04VqZ6icry+legXYuZpfDacmgWa/8AWKlGplo6cmlWy+UY/KnrV4eyWW3+Rx+Br4ytetD3VQfjUVxFxNpXD9kZ766RTnlWNTl2PoKi9R4nt9M1+7EgJ8ONRnH4eprI7nT9U13W5bydZEhMzNGsjbgEnp+f3Cs6qfJZnpG3i9YJ7XPleupbkx6XYlLbHstMCHb164A+NQA421y5lD8lrGDk8vKXz95OakbfgEhF9oue7NuWPma9JeEmhkLOvMBsqZ2Jz3rrhKqOoo1XxoLTwSfCXGtxpV5861KweWKQFfFt+w77Hr+Fa/o2v6dr1p840+4EqjHOpGGQ+TA9KwC84au4hMIWCqN28Md8dPWo/Q9e1LhPVDLHIeZSMqcnnHcNv+db1zXUTC/4k35T2z6hzXc1C8N8QWvEukR6ha5AJ5JEPVHAGR69etTFbKRy4F0VwGu1onkAUUUVCGRBO9Rt4304U9zitAbg+PHs3cg96ioi64InNwjpdRsoYE5Ug4zTH9z42H6v9Ob5ez2Lnp68tjCPJBXb25S0tnmkOFUZpcZWG3XmIAVdyaqOuaib2Uopxbp0+0fOvLQrdvpQwbSeWUriKzub3WRJJgozmV+U7jsB8KkrK2UlQq7AbU2ecSF+VjyytyjzAHWpmxAKDFX5CcWoeww4mGnMk7WEhB6U7FnA7BnjVsdiKRbKSnsnNOgCMZrGMcG82NL20haDlEajfoBVQ1nQ7ae3lbwhzgdlByKulxnfFQl/IYzlN2FDLjLJVxzHDIr5LXOl8R3umqrLbzxB0BO2R+xNa8KyzQI4YuL9MnQ4D88Yx7icfhWpCmkXlCeawzo60ukUsdK1gUYUUUVcA1J2prczJDGXcgAdzVXPEF9Gn11PvFRd9rd9qAWFkUxBgXI2wKTTrlNpDb5C2EXN9Inr2+N8yAkizB9tR1cVUte1KEySwWOfCwBk5yPSpDUdQeGBYYlI5l+uRtj0qBtLV7y/hgVW9twSfTuaf8Piwrh8SfS/7gUXXOX8cRFpbymC1lKnlLODkdPL8zS7qcW8w5lvLnI2hgUYX31ZNTRY7xYEA8NDvjrnH716R6ZBOgZlAI70jsud1jsx3sd01KFaiVvRNaEd2VFteW4J+rcbH/N6tOpatLaWnitn2h7OBmmFzY2cUq4bmb133p3NGGtolnAMTbbnrVHJ50a+KS2VJuKGiuCLi/uoy+6jwC6Y37j3GpOC9N9bh+ZJM7h4zsw/SpldFhOBFNIsZ35Q21KubOC0i5IkVRj+Edak3ldFcbIvhdX/ANw2jfWCSsuO3Q/lmtTFZ/wtbxJfo43kefOPLC71oArsobcRZyYqMlg7Sx0pFLFdUDmYUUUVcBV5uGrVxgSSL99VfWtGfT7qJbe4YiTOUI2OK0JjVW16KSS8huF3SLIb0B70kha1bHL0MlyLpQcXLQhFXX9Ee3eMRXMWxA/hYdCPQ1V7K7m03iOKKSNoyCI3Qr5+VWB3u4f+VYRF2T65H1SPI04W5t9esnc24W6tyGCnqpG4INeg9NsHGSyv8FuJQkmNdcZW1VESMq5TmLfzf5imM9xJHDl25IFGWY9/2ppf64L7WYXSORfDUo6sMEHvUkZUlhC7cvUUknRKhRU1htDjjXKyLSfTPCOczkFGRlYDvnI7GnM815I6hIYuQDGSDt61428M0GFilVrfAAhljDhP6e4FOrixS4jKryKcY5kUj86iSaN3n7ng161rMixOrYXcEjJ+6u3Vy8uxXqM12HT7OwzIIw0h+s7dW/b0pjqV9HbW7MSDK/Ss286RPLWyx8HWkkitd5AiR2UeZOBmriKh+GbNrHh+0icYkZfEcerb/wBqmKYVR8YpCa2fnJsUOtKpK0quiK0YhRRRViGO3PEWqRzSoL6XYbdKn+E57i/06SS6mMrzEgF/TaqJqUyxXkjuwVcbknFTHDnGvD+j6Q1ve3ErSc5dfm8ZY7/ACu39S41U6fGMUn/RhxrZqeW9Fuktb7TrQ20hjNrIMMVHc+dRsskunXcd3bgkDCyqP4l/vULffLHbvA0Npo7yk5HPcShQR7hk/jVNveOdYvUMcXg2yf8AWuT8Tml3GruX1o6LLIsvupXemw3U19IUthIM/SnlJ9QD1pnBdhreK4g5nt5F50OMbZI+G1ZXLLNPcGSWSSWZuruxYn7zW1aVpZk4R00RKGljt1IH8wIyRVuTx3KOW8svxr1CfshdlewMF+kAHen8mo2qIQr5HfmqvGw8XBjx7mH+YpX+lSOQpQAnoBvmlqguhq7HgTqGuRmQhMso7jpUdb2F1rF280wMcMalnP8AIv8Ac1Z7DhEu6vP7C9ftfd5UrjC4t9E4bktbZRGZ/olA6knqfXauvj8PMsyWjh5HLUYtReyI4S+VG0s7CLT9d8bMJ8JLtV5wV/h5x1z2zvmtPsNRs9UtVubG5iuIG6PG2R+xr5jig5llB6MelSOiazf8NX63FhcGMnqh3SQeTDv+dMbOMnuIujd7n0uDSqpHDnyjaVrPJBdEWF4duSRvYY/Zb9DiroGrkeYaZssPaF0VwGirZRD5Y1y/fUtQlKnESthRUaIh3r35ds+e9JIpi9vLOXoQEArqEAkEV3pXceyWPU0Ai4InnnSKMEvIwQY6kk4rdG1Cy4d0ON7uXkihRY1A3ZyBgADudqy7gTTDqPEkLEZjtlMze8bD8T+FXXjHTGudCnkaMvMkiCFRuVHMBt787/tVJbeArSyMhxdFqV+Xg0+dQzDJVgG9SeozWh6fDbtCk1sAyyDIkzksPfWM2VvNqF6miadMkblea4nHVR3ArWeGbGHQtPj0+NpDECSGkbJ5j1Ppk9qrKmEfUlskLrJLxb0Tpwi4HWsf451H59xBJAp5orUeGP6v4j8dvurUtd1SPRdLnu2w0iqeRT3Pb7s4rCpXaaZ5HbmdyWYnuTuavSs7BP2PEhYwegHnTOeRZyqxhjynPP2Pup26pKpBw46H314MOSQIDk9ceVbGYldhg1aNA461fQQkSy/ObRf/AATEkAfZPVfy9KrfJ60cmPjVZQUtMKk49G66Dx/o+tckbS/M7ptvBnIGT9luh/A0Vh0aDJLn2fLzorllxFnTNlc/uiOIFeZzXs1IIrpMxAUHelMM4FKxgUAEtgDJ6AetQhqXyZ6d4GjXN+y+1cScqn7K/uTTrii4aXULOzVvo428WQeZ7fAZNWDRLAabodlZAYMcShv6up/EmqxMRdapcXJ3HOwX3DYVSteU2wWvEcEPw/bSQ8XwXZ+pKWjx5ZB2/AVppiIQHOSdhVF0eEtrNog/9ob4AmtFRQcE/wDyjc9oFPRQflEvjFBaWHOWkk+kkz2UbKPjk/dWf7AfpUvxNqI1TiC7uQ2Yw3hx/wBK7D47n76iOn6VeCwiSeWeThUPisMEDqO/pXioJYs31m3NKkJlf7C/iaWF9KsQFrrEKvqTtXPSuZ5mOewokOE5OB0FFKUYeihgmRny7Ul1xRRVUECMipbhewF/xHYQuMp4odx6L7X6UUUH0E2u/m+b2UsvcKSPfiqlEnJAB3xiiihT0yl3aHOhQg65GT0SN2P5frU7xPqh0rhu6uAcTSL4cX9TbfgMn7qKKFm5oNX0GLFu3akSueXA6nYelFFakOBcKAK7nAoookODYikoe/mSaKKhPud5iaKKKhD/2Q==",
