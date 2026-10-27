@@ -1,5 +1,5 @@
 {
-  "ultimaAtualizacao": "2026-10-26T17:43:12",
+  "ultimaAtualizacao": "2026-10-27T16:54:58",
   "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande/MS (SCPI Fiorilli, 45.225.6.93:8079) — Verba Indenizatória (Ato 027/028) extraída dos PDFs individuais por vereador via HomeDocumentosPublicados.aspx, 10/07/2026.",
   "resumo": {
     "totalVereadores": 29,
@@ -18870,16 +18870,19 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 62424.11,
+        "gastoAto027_2026": 98760.4,
         "gastoAto028_2026": 100000.0,
-        "gastoPago2026": 162424.11,
-        "percentualUsado": 54.1,
+        "gastoPago2026": 198760.4,
+        "percentualUsado": 66.3,
         "mesesAto027": {
           "jan": 12495.43,
           "fev": 12433.24,
           "mar": 12499.74,
           "abr": 12499.6,
-          "mai": 12496.1
+          "mai": 12496.1,
+          "jun": 12498.08,
+          "jul": 11341.32,
+          "ago": 12496.89
         },
         "mesesAto028": {
           "jan": 12500.0,
@@ -18927,7 +18930,7 @@
         "gastoPessoalAnual": 1285824.0,
         "totalEstimado": 1770609.7
       },
-      "totalNotasFiscais": 43,
+      "totalNotasFiscais": 60,
       "despesas": [
         {
           "data": "2026-01-05",
@@ -19263,6 +19266,33 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-07-01",
+          "fornecedor": "] A.P.N LOCAÇÕES LTDA /",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": "3",
+          "descricao": "C7D6D64 / LOCAÇÃO DEVEÍCULO REF. JUNHO/2026",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "POSTO RUI BARBOSALTDA",
+          "cnpj": "11.485.532/0001-82",
+          "valor": 3078.08,
+          "nf": null,
+          "descricao": "NF-e Nº 000.027.984 GASOLINA COMUM 474,2809 PAV1003,UGXOD19, Série 1 NRP 3013, QWY1D31",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-01",
+          "fornecedor": "POSTO RUI BARBOSALTDA",
+          "cnpj": "11.485.532/0001-82",
+          "valor": 920.0,
+          "nf": null,
+          "descricao": "NF-e Nº 000.027.984 GASOLINA 140,4584 NRP 3013, PAV1003, Série 1 PETR.GRID NRU4E77",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-07-02",
           "fornecedor": "“| MORENOMIRANDA SOCIEDADE INDIVIDUAL DEADVOCACIA",
           "cnpj": "46.003.696/0001-00",
@@ -19279,6 +19309,15 @@
           "nf": "S-e24",
           "descricao": "Z SERVIÇOS DEFOTOGRAFIA, ACOMPANHAMENTOECOBERTURA DEEVENTOS EGESTÃO DEIMAGEM",
           "ato": "ATO 028"
+        },
+        {
+          "data": "2026-07-03",
+          "fornecedor": ", | A.P.N LOCAÇÕES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 3000.0,
+          "nf": null,
+          "descricao": "RECIBO BB4CB400 LOCAÇÃO DE VEÍCULO REF.JUNHO/2026 R$8.500,00",
+          "ato": "ATO 027"
         },
         {
           "data": "2026-08-03",
@@ -19299,6 +19338,51 @@
           "ato": "ATO 028"
         },
         {
+          "data": "2026-08-03",
+          "fornecedor": "A.P.N LOCAÇÕES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": null,
+          "descricao": "RECIBO B4C6A112 LOCAÇÃO DE VEÍCULO REF.JULHO/2026",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-03",
+          "fornecedor": "A.P.N LOCAÇÕES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 3000.0,
+          "nf": null,
+          "descricao": "RECIBO DA2D1074 <—| LOCAÇÃO DE VEÍCULO REF.JULHO/2026 =",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-03",
+          "fornecedor": "POSTO RUI BARBOSALTDA",
+          "cnpj": "11.485.532/0001-82",
+          "valor": 1267.98,
+          "nf": null,
+          "descricao": "NF-e Nº 000.028.332 GASOLINA COMUM 197,8453 PAV1003,UGXOD19, Série 1 NRU4E77",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-03",
+          "fornecedor": "POSTO RUI BARBOSALTDA",
+          "cnpj": "11.485.532/0001-82",
+          "valor": 800.0,
+          "nf": null,
+          "descricao": "NF-e Nº 000.028.332 GASOLINA 122,1374 PAV1003,UGXOD19, serie PETR.GRID NRU4E77",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-03",
+          "fornecedor": "POSTO RUI BARBOSALTDA",
+          "cnpj": "11.485.532/0001-82",
+          "valor": 773.34,
+          "nf": null,
+          "descricao": "NF-e Nº 000.028.332 ETANOL HIDRAT 197,6539 PAV1003,UGXOD19, Série 1 NRU4E77",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-09-01",
           "fornecedor": "MORENOMIRANDA SOCIEDADE INDIVIDUAL DEADVOCACIA",
           "cnpj": "46.003.696/0001-00",
@@ -19315,6 +19399,78 @@
           "nf": "S-e28",
           "descricao": "N | SERVIÇOS DEFOTOGRAFIA, ACOMPANHAMENTOECOBERTURAE DEEVENTOS EGESTÃO DEIMAGEM",
           "ato": "ATO 028"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "A.P.N LOCAÇÕES LTDA >",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": null,
+          "descricao": "RECIBO .F9DAS&B9 N | LOCAÇÃO DE VEÍCULO REF. AGOSTO/2026 > [",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "A.P.N LOCAÇÕES LTDA >",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 3000.0,
+          "nf": null,
+          "descricao": "> RECIBO DA2D1074 LOCAÇÃO DE VEÍCULO REF. AGOSTO/2026",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "POSTO RUI BARBOSA LTDA",
+          "cnpj": "11.485.532/0001-82",
+          "valor": 458.39,
+          "nf": null,
+          "descricao": "“| NF-e Nº 000.028.633 GASOLINA COMUM |N 72,2546 x] PAV1003, NRU4E77SS | : Série 1",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "POSTO RUI BARBOSA LTDA",
+          "cnpj": "11.485.532/0001-82",
+          "valor": 407.08,
+          "nf": null,
+          "descricao": "> | NF-e Nº 000.028.633 GASOLINA * 62,15 UGXOD19 io ” i bi - | série PETR.GRID",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "POSTO RUI BARBOSA LTDA,",
+          "cnpj": "11.485.532/0001-82",
+          "valor": 3131.42,
+          "nf": null,
+          "descricao": "NF-e Nº 000.028.633 ETANOL HIDRAT x 826,2326 PAV1003,UGXOD19, > N “sere1 ' NRU4E77 > o & FÉ;E EE",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-10-01",
+          "fornecedor": "POSTO RUI BARBOSALTDA",
+          "cnpj": "11.485.532/0001-82",
+          "valor": 1295.57,
+          "nf": null,
+          "descricao": "/ | NF-eNº 000.028.922 GASOLINA COMUM 202,7496 PAV1003,NRU4E77 | Série 1",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-10-01",
+          "fornecedor": "POSTO RUI BARBOSALTDA",
+          "cnpj": "11.485.532/0001-82",
+          "valor": 1303.06,
+          "nf": null,
+          "descricao": "NF-eNº 000.028.922 GASOLINA , 198,9405 UGXOD19 , Série 1 PETR.GRID PAV1003,UGXOD19",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-10-01",
+          "fornecedor": "POSTO RUI BARBOSALTDA",
+          "cnpj": "11.485.532/0001-82",
+          "valor": 1399.7,
+          "nf": null,
+          "descricao": "\"| NF-eNº 000.028.922 ETANOLHIDRAT 362,3612 PAV1003,UGXOD19, Série 1 NRU4E77",
+          "ato": "ATO 027"
         }
       ],
       "foto": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAeAB4AwEiAAIRAQMRAf/EABwAAAEFAQEBAAAAAAAAAAAAAAADBAUGBwIIAf/EADsQAAEDAwIDBgMGBAYDAAAAAAEAAgMEBRESIQYxUQcTIkFhcTKBoRQjkbHB8BVSYpIkM0KCstFDcnP/xAAaAQACAwEBAAAAAAAAAAAAAAAABQIDBAEG/8QAKhEAAgIBAwMCBgMBAAAAAAAAAAECAxEEEiExQVEFIhMzYXGhsTI0gfD/2gAMAwEAAhEDEQA/AISUZkaE+AyGtCZO/wA4J9TjU8L0vcWIu3CDBCWtbydklX2LcBUrhpml8AH8hJ/FXeEfkvEesc62X+fod6b5CCtgjqqR8Ew1RvwCM81G3W7WbhW397VPZTtPwRtGXyHo0cz+Shu0bjB3CdqpnU7Y31s7z3TZD4fCNyQNzzGyyS30t94tqjWVEs1SXHDp3nAPoOgUaapyh7pYiHV8Lku9X2ys1OFJZzpGQ188+PoB+RVbre1XiWoZIA+jhjd/JARp9ASSSpObs2jkgaWSd3IByGSOXr6qLquz6rLWtYdQB5AfvqtEa6V2O7LE8oiIeOavvQ6phjlBPieQ5pPtuVtvAXFtmvdohpKSp01ULQHwS+F/u3ycPULJZey+rkg7x1Rhzhu0N5eiqdwstw4cqWOD5InB3gliON/LfPNWwVaftLLrtRZDbY8pHrkL6sy7J+P6niiCotV1IdcaRge2bGO+j5ZOP9QOM9cj1WmBXmI+oQhAAhCEAeZsfeZUpbI+8nBPIbqMZgkkkKdsjW6zI4+EeQ3JPQL0uRakXWwNxWNGMYj/AFVygGQVVLDqfcJXOj7tzY2gtPMZ3Vo7+Omp3TSHDR05n0XhvUfdrZ4+n6Q5p4oRkvbLEZ71bYhgYpySegLirbZqSC32elghaGtbE3l7Kk9ok76ziymMgO8LSOjRqO376q70ry+ggJGnwDZaJRcIKLLdPy2x2Jt12x4zyTUYHmlQQqzWOzIwsIPPoq9xLb6evtFQyWMHwnScbg9Qpclp2UbfXllqnIGfDyCM8kGuCnditPp43uTshumkcHNI3PjbjC3sLFuyBsTeK7hoOc0rsZ541tytpC3roLH1PqEIXTgIQhAFZFvpC3H2WHH/AMwlILNb86vsUAdnYtYAfom8d4t72eCqicT6qWpJ6eSIFszHf7khrdueGxhdXKK90fwRUworXPUznTDGAC8qvi81FzlNRJTuhoGn7mRzgAfUjrty8lD3W6uvN3rgHg0sU5ZEAdnadtX02SUT3TwR0ccxMETtRZgYGD5eu+6Z6DSTnP4kuZMy3WRS2jW8Uk1z4xs0r4i1jyWgHzY3xZP1U/fK80NMXieOnYNi6TkV8pA110pW48UTZpD7nb/tc19sZXOL5ow97c6HEfATzx6onPc8s2Rq+G9qZWLfxlNU1/cvqaSWLOA9gIz+itM9eYabvHHAUBBwVHEQ1gayMO1BjQQMnzVnq7ax9nZTOBIwGkqtvwWxWFyU2fjKoiq9BqqOGDO73B34Z5KyW24fxOAZkinY4fHGcgqNPBVPI0M1d5Hq1hkgyAeuOqmLdYILYXSsY0SPOXBuwJ645Ib4I9yM7PKZtl7QrrTTOLIhGe6ceR1ubpH5rZAsyZSMkvL3CM97NHHh3kC1xx891po5LTTNyyvBk1FSglLyfUIQrjKCEIQBh8MTg5sZYee5wVY6mVlBZKiXvNIiic4kdcK7UtJG7x6G7+eE34mggdwzcu8Y3SKaQ5x/SUnrs4y0ehv9VVkktv5Mc4boKm50E8FFUMaGu2kecl2d/lnqnlCH0hk7xpY+A6XM5HV+qZWeOa3tpbjSZL2gCSIH/MZ5j3VxrbKy/wAUd1s1VGZ3AAh/wux16OHJej001GGI9zzl/vnuY4pmRmppKnYvkbkFp2AI3B67p3USNjOT6p1S2nuLC5kpzUUjtQON/LI9ioWvdJ3NTp+IE6SlN0XGUk/LGVFisS+wm67OD5JI4TKIxhrNWnU7qSkKvid8cPhpy553LNQwPTKiqO4se91HHSS+Akd9Jsx3XcZK+EzCYhlPTuOefek/QBV8mnjwS1LeSyVssjO7jm/0E50n091KNuEb+Z58lRbhNcqgd2ymibEwZc/fPsAp6kp5BHTguJLWguJ9lx8A0u5brNG2a6wvcBjOQfPr+CuY5Kv8L0kYoBVluZHlzWuzyaDj88qwrXTHEfuLL57pY8AhCFaUghCEAQVFf7RUMa2CuifkbYyo3jC829nDNQwzscJ3NhwN86jgqicN6jdI252DCluNWkW63U4ziWta0gexV9vpFUINKT6FcNTLcngYtoJaCvitRk0sLgWz5AAjIJBOdtsYVjs1l/g9XLU0lXLLICDJnZk2Rk4A29l3SWqgvkH+N1MrqZgikLXkAAbhw8iPVVe98ew8MzyUcJhr6qHwsMUn3IHV2PP0CxaO6Wdkv5LqabknHK7moVx1U32qGQmCRoEjW/r+SqNVcbbUVktJSXCmqJGtBlbFIHFnlg42WP3Xi+93qF4q66QQPcXfZ4jojH+0c/nlXnsZtkNa2+GZgLRDFEP6S4udt/a1ab4qcMIrpm4SyWZkEdPT6GMyMKNe2qc/u44W6c83BPqyOot0ksWrOg4wVEvuFSXbOAKWvh4G0Z8ZJaOJkNNmo0DbJHkkmyGd0dNSDVUzu0saPL1PoBuodlPcbpOIYy6R2c6RyHqT5BXWgoqTg+x1d2rHCSaKEySSHoOTW+5wPUqUK3J/QptuUfuU21ccycH8b3a1zPfUWj7W8OHN0Z2Bc358wtbs3E1mv7C62XCGdwHijBw9vu07heUn1UtXWz1c28s8jpHn+onJ/NLwTSCfvIpXw1EZBZLG7Dm/MJlsWOBZufc9eIWKcI9q1ypY2U19Z9tiBx37MCUD18nfQrYLdcqS60bKuinbNC/k5vl6EeR9FBxa6nU8jtCEKJ0890fE9v4eqGzVXeSSObtFEAXfPOwUFxBx5V30wBtNFSx08vexlri52ryyeX0VRrqp1VcZJXHdxJ9ugXLnYwFutvlNvwUwrUUSdx4iuVwJdWV087tOnxv2x0wNsKCLzJJudsrqV2VxEBknGVnLR9luhuTstk7DXaqO+u6zQ/8AFyxUbrb+xGDu7HcJsbzVGP7QB+q5LoCLdxTa6iRouFEwSSMGJoD/AORo8x/UPqPYKAtdomunjMT4Yc4c+VpBHoAeZVjutbHWulp9zDC7xZ2DyPP2H6KMt1+ZTV7aWQvfHK/TsCdB6+3LP4pTO6p37GhjXC1U5RP0Ntp6CLu6eMNb5nzcepKz3tkvZgtlHZYn4dUu76YD+Rvwj5u/4rTyQBkLzjx/df4xxpXytdqihd9nj6YZsfrqTOCQvk2+WV2PAGonAHMkpWF7Xyl7DlpGx6pLumyAB7QQloQC4BvIK5ECTpzpAVm4f4kr7DU99RzaQ742O3a8eoVZj2ATuN3JTSyRybvYOP7bdtENTijqTth58Dj6O8vmhYvTyYPohQdS7HVMz1501GfRJh5Mm66nOJUjnBUSYtKMFEJwCvk3Jvsuom+AFACzd1vXZHEYuDYpMbSSzE/3Y/RYKznsvR3ZnT9z2f2zIwXxF/4uJ/VRn0Ood3CIsjcQQ0uBOMcgmVgtbZ2ySl4bJqLMhvlzUjWv72V58uX7/fTqlOHhplnjA2B1j57JFVNT1eRnPMdPg6vNc2xcP1lSXEimgc9uo+YGw/HC8yjU95c85e45cep81uHa9cBRcLR0LXfe1s4Dv/RviP10rEWBPYLgVNn1wwzA5nYJxBHpaAkWDXJ6NS7pBGxWoiO2yNbzISzJ2nkVX3TOkm2JwE9gOBqOUKQYJyKbL9IzpG7ihMWyFjMZ3O5QpZOYKtOfECkCcOQhUliF5N2j2SrfgA9EIXQOh4WuPQL1Dw9CLbwRbojsYqKMexLR/wBoQqb3iDa8E61mSX1GudQIG/p+/wB8ipGybSzOPIMBP4oQvPaL+xH/ALsNNR8pmQ9rVxNXxPBSh2RTQAkdHPOfyDVQS4NBPRCF6ePQTPqdQHwAnz3SdTIQ1CFJ9A7jemGp4z5qTa4AgDk1CFxAxRji52UIQpHD/9k=",
@@ -19754,10 +19910,10 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 98978.51,
-        "gastoAto028_2026": 61500.0,
-        "gastoPago2026": 160478.51,
-        "percentualUsado": 53.5,
+        "gastoAto027_2026": 111048.39,
+        "gastoAto028_2026": 110700.0,
+        "gastoPago2026": 221748.39,
+        "percentualUsado": 73.9,
         "mesesAto027": {
           "jan": 12789.52,
           "fev": 12364.51,
@@ -19766,14 +19922,19 @@
           "mai": 12471.22,
           "jun": 12000.0,
           "jul": 12400.0,
-          "ago": 11961.82
+          "ago": 12447.42,
+          "set": 11584.28
         },
         "mesesAto028": {
           "jan": 12300.0,
           "fev": 12300.0,
           "mar": 12300.0,
           "abr": 12300.0,
-          "mai": 12300.0
+          "mai": 12300.0,
+          "jun": 12300.0,
+          "jul": 12300.0,
+          "ago": 12300.0,
+          "set": 12300.0
         },
         "categorias": {
           "Divulgação parlamentar": 11400.0,
@@ -19803,7 +19964,7 @@
         "gastoPessoalAnual": 1209393.24,
         "totalEstimado": 1694269.78
       },
-      "totalNotasFiscais": 34,
+      "totalNotasFiscais": 42,
       "despesas": [
         {
           "data": "2026-02-02",
@@ -20040,6 +20201,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-07-01",
+          "fornecedor": "MS COMERCIO VAREJISTA DE LIVROS NOVOS E /",
+          "cnpj": "25.246.451/0001-34",
+          "valor": 12300.0,
+          "nf": null,
+          "descricao": "NF. Nº19/U SERVIÇOS DE CONSULTORIA, PLANEJAMENTO E FÊUSADOS LTDA. GERENCIAMENTO REDES SOCIAIS REFERENTE MÊ DE JUNHO/2026",
+          "ato": "ATO 028"
+        },
+        {
           "data": "2026-07-06",
           "fornecedor": "TORKOILMODELOLTDA",
           "cnpj": "22.061.736/0001-02",
@@ -20056,6 +20226,15 @@
           "nf": null,
           "descricao": "AAA / | OLEO DIESEL 67,39 PLACA , rá ; SMJ1B61",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-30",
+          "fornecedor": "MS COMERCIO VAREJISTA DE LIVROS NOVOS E",
+          "cnpj": "25.246.451/0001-34",
+          "valor": 12300.0,
+          "nf": null,
+          "descricao": "x NF. Nº20/U SERVIÇOS DE CONSULTORIA, PLANEJAMENTO E USADOS LTDA. j GERENCIAMENTO REDES SOCIAIS REFERENTE MÊS DE JULHO/2026",
+          "ato": "ATO 028"
         },
         {
           "data": "2026-07-31",
@@ -20109,6 +20288,60 @@
           "valor": 10450.0,
           "nf": null,
           "descricao": "NF Nº 114/U INSERÇÃO DE 11 MATÉRIAS E INFOPUBLI SEM PRODUÇÃO PARA O SITE DNA67NEWS. COM.BR E INSTAGRAM GQDNA67NEWS. VALOR: 11 X R$ 950,00 =R$ 10.450,0",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-01",
+          "fornecedor": "MS COMERCIO VAREJISTA DE LIVROS NOVOS E",
+          "cnpj": "25.246.451/0001-34",
+          "valor": 12300.0,
+          "nf": null,
+          "descricao": "NF. Nº21/U SERVIÇOS DE CONSULTORIA, PLANEJAMENTO E USADOS LTDA. . ) GERENCIAMENTO REDES SOCIAIS REFERENTE MÊS DE AGOSTO/2026",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-09-16",
+          "fornecedor": "TORK OIL MODELO LTDA",
+          "cnpj": "22.061.736/0001-02",
+          "valor": 485.6,
+          "nf": null,
+          "descricao": "NFC-E000560052 OLEO DIESEL NX 69471 < | PLACA: SERIE006",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-26",
+          "fornecedor": "TORK OIL MODELO LTDA",
+          "cnpj": "22.061.736/0001-02",
+          "valor": 434.28,
+          "nf": null,
+          "descricao": "SER ue Ro OLEODIESEL | 60,401 PLACA is ' : * | SMJ1B61",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-30",
+          "fornecedor": "ANDRE GALVÃO DESOUZA",
+          "cnpj": "27.537.957/0001-28",
+          "valor": 700.0,
+          "nf": null,
+          "descricao": "NF Nº 654/U LOCAÇÃO DESOFTWARE GABINETT % » 'Y sx. | REFERÊNCIA: SETEMBRO/2026",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-09-30",
+          "fornecedor": "MSCOMERCIO VAREJISTA DE LIVROS NOVOS E",
+          "cnpj": "25.246.451/0001-34",
+          "valor": 12300.0,
+          "nf": null,
+          "descricao": "NF. Nº22/U SERVIÇOS DE CONSULTORIA, PLANEJAMENTO E USADOS LTDA. N GERENCIAMENTO REDES SOCIAIS REFERENTE MÊS DESETEMBRO/2026",
+          "ato": "ATO 028"
+        },
+        {
+          "data": "2026-10-01",
+          "fornecedor": "HUB COMUNICA IDEIAS LTDA",
+          "cnpj": "07.033.869/0001-81",
+          "valor": 10450.0,
+          "nf": null,
+          "descricao": "NF Nº 123 INSERÇÃO DE 11 MATÉRIAS E INFOPUBLI SEM PRODUÇÃO PARA O SITE DNA67NEWS.COM,.BR EINSTAGRAM ODNA67NEWS. REFERÊNCIA: SETEMBRO/2026 VALOR: 11 X ",
           "ato": "ATO 027"
         }
       ],

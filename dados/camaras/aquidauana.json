@@ -1,7 +1,7 @@
 {
   "cidade": "Aquidauana",
-  "ultimaAtualizacao": "2026-10-26T17:43:13",
-  "fonte": "Portal Transparência Fiorilli (pmaquidauana.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-26T17:43:13",
+  "ultimaAtualizacao": "2026-10-27T16:54:56",
+  "fonte": "Portal Transparência Fiorilli (pmaquidauana.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-27T16:54:56",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmaquidauana.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -630,15 +630,15 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 8283436.66,
-    "totalNotas": 328,
+    "totalGeral": 8494664.72,
+    "totalNotas": 336,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 6202454.88,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 6388475.52,
       "Obrigações Patronais": 713839.09,
       "Diárias — Civil": 514100.0,
-      "Serviços de Consultoria": 357407.76,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 296241.54,
-      "Serviços de Tecnologia da Informação": 134668.0,
+      "Serviços de Consultoria": 374407.76,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 304365.26,
+      "Serviços de Tecnologia da Informação": 134751.7,
       "Equipamentos e Material Permanente": 27330.84,
       "Material de Consumo": 26544.87,
       "Contribuições": 10849.68
@@ -861,12 +861,28 @@
         "descricao": "DESPESA REF. À CONTRATAÇÃO DE ESCRITÓRIO DE ADVOCACIA DE NOTÓRIA ESPECIALIZAÇÃO NA ÁREA DE DIREITO PÚBLICO, COM ATUAÇÃO ESPECÍFICA, SINGULAR E QUE DIVERGE DAS ATRIBUIÇÕES DO QUADRO DE PESSOAL DO PODER"
       },
       {
+        "data": "2026-05-21",
+        "fornecedor": "BATISTA & PATTINI ADVOGADOS ASSOCIADOS",
+        "cnpj": "22.430.924/0001-60",
+        "categoria": "Serviços de Consultoria",
+        "valor": 85000.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 4 - Mod. Formatada: 4 - Contratação de empresa especializada para prestação de ser"
+      },
+      {
         "data": "2026-06-26",
         "fornecedor": "INSS - INSTITUTO NACIONAL DE SEGURIDADE SOCIAL",
         "cnpj": "29.979.036/0086-30",
         "categoria": "Obrigações Patronais",
         "valor": 81784.41,
         "descricao": "Patronal INSS  06/2026 - agente político e não efetivo"
+      },
+      {
+        "data": "2026-10-26",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 81591.83,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 10/2026 - VENCIMENTOS E SALÁRIOS - ESTATUTÁRIO"
       },
       {
         "data": "2026-09-25",
@@ -909,14 +925,6 @@
         "descricao": "Patronal INSS - agente político e não efetivo - dedução salário maternidade."
       },
       {
-        "data": "2026-05-21",
-        "fornecedor": "BATISTA & PATTINI ADVOGADOS ASSOCIADOS",
-        "cnpj": "22.430.924/0001-60",
-        "categoria": "Serviços de Consultoria",
-        "valor": 68000.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 4 - Mod. Formatada: 4 - Contratação de empresa especializada para prestação de ser"
-      },
-      {
         "data": "2026-03-25",
         "fornecedor": "INSS - INSTITUTO NACIONAL DE SEGURIDADE SOCIAL",
         "cnpj": "29.979.036/0086-30",
@@ -949,12 +957,28 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000008/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 5 - Mod. Formatada: 5 - Contratação de empresa especializada para prestação de ser"
       },
       {
+        "data": "2026-10-26",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 54163.4,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 10/2026 - SUBSÍDIOS - AGENTES POLÍTICOS"
+      },
+      {
         "data": "2026-02-27",
         "fornecedor": "INSS - INSTITUTO NACIONAL DE SEGURIDADE SOCIAL",
         "cnpj": "29.979.036/0086-30",
         "categoria": "Obrigações Patronais",
         "valor": 53540.86,
         "descricao": "FOLHA DE PAGAMENTO 02-2026 - CONTRIBUIÇÃO PREVIDENCIÁRIA PATRONAL AO INSS."
+      },
+      {
+        "data": "2026-10-26",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 47075.72,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 10/2026 - VENCIMENTOS E SALÁRIOS - SERVIDOR PÚBLICO NÃO EFETIVO"
       },
       {
         "data": "2026-06-16",
@@ -981,6 +1005,14 @@
         "descricao": "FOLHA DE PAGAMENTO 01-2026 - CONTRIBUIÇÃO PREVIDENCIÁRIA PATRONAL AO INSS."
       },
       {
+        "data": "2026-01-14",
+        "fornecedor": "ENERGISA MATO GROSSO DO SUL DISTRIBUIDORA DE ENERG",
+        "cnpj": "15.413.826/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 38666.45,
+        "descricao": "DESPESA ESTIMADA REFERENTE AOS SERVIÇOS DE ENERGIA ELÉTRICA PARA O ANO DE 2026."
+      },
+      {
         "data": "2026-09-11",
         "fornecedor": "Ipd - Instituto Paranaense de Direito Ltda",
         "cnpj": "64.024.252/0001-33",
@@ -989,19 +1021,11 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000026/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 11 - Mod. Formatada: 11 - Contratação de serviço técnico especializado de treiname"
       },
       {
-        "data": "2026-01-14",
-        "fornecedor": "ENERGISA MATO GROSSO DO SUL DISTRIBUIDORA DE ENERG",
-        "cnpj": "15.413.826/0001-50",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 34342.73,
-        "descricao": "DESPESA ESTIMADA REFERENTE AOS SERVIÇOS DE ENERGIA ELÉTRICA PARA O ANO DE 2026."
-      },
-      {
         "data": "2026-02-19",
         "fornecedor": "VAGNER DOS SANTOS",
         "cnpj": "27.441.604/0001-20",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 26600.0,
+        "valor": 30400.0,
         "descricao": "Contratação de empresa especializada na prestação de serviços de captação, transmissão online ao vivo, gravação, edição de vídeo e áudio e transcrição integral para elaboração de Atas, dos eventos ofi"
       },
       {
@@ -1345,7 +1369,7 @@
         "fornecedor": "RICARDO KUCK RODRIGUES",
         "cnpj": "15.597.378/0001-91",
         "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 8370.0,
+        "valor": 8453.7,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000014/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 7 - Mod. Formatada: 7 - Contratação de empresa especializada para prestação de serviços d"
       },
       {
@@ -2469,6 +2493,22 @@
         "descricao": "Adiantamento 13º Salário - Recebido por cedência"
       },
       {
+        "data": "2026-10-26",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 1216.14,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 10/2026 - VENCIMENTOS E SALÁRIOS - RECEBIDO POR\r\nCEDÊNCIA"
+      },
+      {
+        "data": "2026-10-26",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 1214.12,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 10/2026 - RESCISÃO AGENTE POLÍTICO"
+      },
+      {
         "data": "2026-04-06",
         "fornecedor": "CINTHIA GOMES GONÇALVES PEREIRA FLORES",
         "cnpj": "032.XXX.XXX-98",
@@ -2715,6 +2755,14 @@
         "categoria": "Diárias — Civil",
         "valor": 800.0,
         "descricao": "solicitação de 1 diária para o cumprimento de agenda na Assembleia Legislativa do Estado de Mato Grosso do Sul, em Campo Grande - MS, no dia 14 de outubro."
+      },
+      {
+        "data": "2026-10-26",
+        "fornecedor": "CAMARA MUNICIPAL DE AQUIDAUANA",
+        "cnpj": "15.388.606/0001-13",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 759.43,
+        "descricao": "PELA DESPESA DE FOLHA DE PAGAMENTO EMPENHADA REFERENTE MENSAL 10/2026 - RESCISÃO SERVIDORES NÃO EFETIVOS"
       },
       {
         "data": "2026-02-25",
@@ -3267,6 +3315,22 @@
         "categoria": "Diárias — Civil",
         "valor": 0.0,
         "descricao": "solicitação de 1 diária para o cumprimento de agenda na Assembleia Legislativa do Estado de Mato Grosso do Sul, em Campo Grande - MS, no dia 14 de outubro."
+      },
+      {
+        "data": "2026-10-26",
+        "fornecedor": "AQUIDAUANAPREV",
+        "cnpj": "05.030.089/0001-52",
+        "categoria": "Obrigações Patronais",
+        "valor": 0.0,
+        "descricao": "Patronal RPPS 10/2026"
+      },
+      {
+        "data": "2026-10-26",
+        "fornecedor": "INSS - INSTITUTO NACIONAL DE SEGURIDADE SOCIAL",
+        "cnpj": "29.979.036/0086-30",
+        "categoria": "Obrigações Patronais",
+        "valor": 0.0,
+        "descricao": "Patronal INSS 10/2026 - agente político, não efetivo e rescisões"
       }
     ]
   },
