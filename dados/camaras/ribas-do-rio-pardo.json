@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-10-28T17:29:05",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-10-28T17:29:05",
+  "ultimaAtualizacao": "2026-10-29T17:39:39",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-10-29T17:39:39",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -299,18 +299,18 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 8999327.27,
-    "totalNotas": 356,
+    "totalGeral": 9390712.72,
+    "totalNotas": 359,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 4709724.7,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 5043930.29,
       "Equipamentos e Material Permanente": 1131861.96,
       "Obrigações Patronais": 870373.69,
       "Serviços de Consultoria": 711530.17,
       "Serviços de Tecnologia da Informação": 448656.16,
-      "Auxílio-Alimentação": 398119.37,
+      "Auxílio-Alimentação": 442905.15,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 335853.92,
+      "Outros Benefícios Assistenciais do Servidor": 134888.89,
       "Outros Serviços de Terceiros — Pessoa Física": 127115.48,
-      "Outros Benefícios Assistenciais do Servidor": 122494.81,
       "Material de Consumo": 73299.46,
       "Diárias — Civil": 41763.51,
       "Indenizações e Restituições": 28534.04,
@@ -372,6 +372,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 215170.03,
         "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES COMISSIONADOS - JUNHO/2026."
+      },
+      {
+        "data": "2026-10-27",
+        "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES COMISSIONADOS",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 211616.34,
+        "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES COMISSIONADOS - OUT/2026."
       },
       {
         "data": "2026-03-26",
@@ -478,6 +486,14 @@
         "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES EFETIVOS - SET/2026."
       },
       {
+        "data": "2026-10-27",
+        "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES EFETIVOS",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 144452.65,
+        "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES EFETIVOS - OUT/2026."
+      },
+      {
         "data": "2026-03-12",
         "fornecedor": "LOLLI GHETTI ADVOCACIA",
         "cnpj": "30.615.309/0001-57",
@@ -558,6 +574,14 @@
         "descricao": "EMPENHO REFERENTE AO SUBSÍDIO DOS VEREADORES - SET/2026."
       },
       {
+        "data": "2026-10-27",
+        "fornecedor": "FOLHA DE PAGAMENTO - VEREADORES",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 114756.29,
+        "descricao": "EMPENHO REFERENTE AO SUBSÍDIO DOS VEREADORES - OUT/2026."
+      },
+      {
         "data": "2026-06-26",
         "fornecedor": "FOLHA DE PAGAMENTO - VEREADORES",
         "cnpj": "29.979.036/0001-40",
@@ -612,14 +636,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 61650.78,
         "descricao": "EMPENHO REFERENTE AO ADIANTAMENTO DO 13º SALÁRIO DOS SERVIDORES COMISSIONADOS."
-      },
-      {
-        "data": "2026-10-27",
-        "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES EFETIVOS",
-        "cnpj": "29.979.036/0001-40",
-        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 59092.95,
-        "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES EFETIVOS - OUT/2026."
       },
       {
         "data": "2026-01-02",
@@ -742,14 +758,6 @@
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - ABRIL/"
       },
       {
-        "data": "2026-10-27",
-        "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES COMISSIONADOS",
-        "cnpj": "29.979.036/0001-40",
-        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 41499.55,
-        "descricao": "EMPENHO REFERENTE À FOLHA DE PAGAMENTO DOS SERVIDORES COMISSIONADOS - OUT/2026."
-      },
-      {
         "data": "2026-01-02",
         "fornecedor": "J. REMONATTO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
         "cnpj": "26.616.499/0001-50",
@@ -796,14 +804,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 36513.4,
         "descricao": "EMPENHO REFERENTE AO ADIANTAMENTO DO 13º SALÁRIO DOS VEREADORES."
-      },
-      {
-        "data": "2026-10-27",
-        "fornecedor": "FOLHA DE PAGAMENTO - VEREADORES",
-        "cnpj": "29.979.036/0001-40",
-        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 36027.19,
-        "descricao": "EMPENHO REFERENTE AO SUBSÍDIO DOS VEREADORES - OUT/2026."
       },
       {
         "data": "2026-02-27",
@@ -908,6 +908,14 @@
         "categoria": "Auxílio-Alimentação",
         "valor": 29728.24,
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES COMISSIONADOS - JULHO/2026."
+      },
+      {
+        "data": "2026-10-27",
+        "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
+        "cnpj": "01.696.482/0001-29",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 29688.5,
+        "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES COMISSIONADOS - NOV/2026."
       },
       {
         "data": "2026-09-28",
@@ -1166,6 +1174,14 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES EFETIVOS -OUT/2026."
       },
       {
+        "data": "2026-10-27",
+        "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
+        "cnpj": "01.696.482/0001-29",
+        "categoria": "Auxílio-Alimentação",
+        "valor": 15097.28,
+        "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - NOV/2026."
+      },
+      {
         "data": "2026-06-26",
         "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
         "cnpj": "01.696.482/0001-29",
@@ -1324,6 +1340,14 @@
         "categoria": "Outros Benefícios Assistenciais do Servidor",
         "valor": 8262.72,
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES COMISSIONADOS - SET/2026."
+      },
+      {
+        "data": "2026-10-27",
+        "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
+        "cnpj": "01.696.482/0001-29",
+        "categoria": "Outros Benefícios Assistenciais do Servidor",
+        "valor": 8262.72,
+        "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES COMISSIONADOS - OUT/2026."
       },
       {
         "data": "2026-05-28",
@@ -1588,6 +1612,14 @@
         "categoria": "Outros Benefícios Assistenciais do Servidor",
         "valor": 4131.36,
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DE SERVIDORES EFETIVOS - JANEIRO/2026."
+      },
+      {
+        "data": "2026-10-27",
+        "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
+        "cnpj": "01.696.482/0001-29",
+        "categoria": "Outros Benefícios Assistenciais do Servidor",
+        "valor": 4131.36,
+        "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES EFETIVOS - OUT/2026."
       },
       {
         "data": "2026-03-05",
@@ -2838,14 +2870,6 @@
         "descricao": "ANULAÇÃO DE EMPENHO REFERENTE A CONCESSÃO DE 3 1/2 (MEIA-DIÁRIAS) EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA PARA PARTICIPAR DO CONGRESSO DE VEREADORES DE MATO GROSSO DO SUL, EDIÇAÕ CONECTA, QUE"
       },
       {
-        "data": "2026-04-24",
-        "fornecedor": "EDINA GUIMARAES DE CARVALHO JULG",
-        "cnpj": "713.XXX.XXX-91",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA ASSESSORA PARLAMENTAR EDINA GUIMARÃES DE CARVALHO JULG, PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 27/04/2026, PARTICIPAR DE REU"
-      },
-      {
         "data": "2026-04-28",
         "fornecedor": "EDINA GUIMARAES DE CARVALHO JULG",
         "cnpj": "713.XXX.XXX-91",
@@ -2855,11 +2879,11 @@
       },
       {
         "data": "2026-04-24",
-        "fornecedor": "JAQUELINE PEREIRA ARIMURA",
-        "cnpj": "010.XXX.XXX-44",
+        "fornecedor": "EDINA GUIMARAES DE CARVALHO JULG",
+        "cnpj": "713.XXX.XXX-91",
         "categoria": "Diárias — Civil",
         "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA, PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 27/04/2026, PARTICIPAR DE REUNIÃO QUE TRATARÁ DO"
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA ASSESSORA PARLAMENTAR EDINA GUIMARÃES DE CARVALHO JULG, PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 27/04/2026, PARTICIPAR DE REU"
       },
       {
         "data": "2026-04-28",
@@ -2870,12 +2894,12 @@
         "descricao": "ANULAÇÃO DE EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA, PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 27/04/2026, PARTICIPAR DE REUNIÃO QU"
       },
       {
-        "data": "2026-04-28",
+        "data": "2026-04-24",
         "fornecedor": "JAQUELINE PEREIRA ARIMURA",
         "cnpj": "010.XXX.XXX-44",
         "categoria": "Diárias — Civil",
         "valor": 0.0,
-        "descricao": "ANULAÇÃO DE EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA, PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 29/04/2026, PARTICIPAR DE REUNIÃO, N"
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA, PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 27/04/2026, PARTICIPAR DE REUNIÃO QUE TRATARÁ DO"
       },
       {
         "data": "2026-04-24",
@@ -2884,6 +2908,14 @@
         "categoria": "Diárias — Civil",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA, PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 29/04/2026, PARTICIPAR DE REUNIÃO, NO GABINETE D"
+      },
+      {
+        "data": "2026-04-28",
+        "fornecedor": "JAQUELINE PEREIRA ARIMURA",
+        "cnpj": "010.XXX.XXX-44",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "ANULAÇÃO DE EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA, PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 29/04/2026, PARTICIPAR DE REUNIÃO, N"
       },
       {
         "data": "2026-04-29",
@@ -3119,38 +3151,6 @@
       },
       {
         "data": "2026-10-27",
-        "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
-        "cnpj": "01.696.482/0001-29",
-        "categoria": "Auxílio-Alimentação",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES COMISSIONADOS - NOV/2026."
-      },
-      {
-        "data": "2026-10-27",
-        "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
-        "cnpj": "01.696.482/0001-29",
-        "categoria": "Auxílio-Alimentação",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - NOV/2026."
-      },
-      {
-        "data": "2026-10-27",
-        "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
-        "cnpj": "01.696.482/0001-29",
-        "categoria": "Outros Benefícios Assistenciais do Servidor",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES EFETIVOS - OUT/2026."
-      },
-      {
-        "data": "2026-10-27",
-        "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
-        "cnpj": "01.696.482/0001-29",
-        "categoria": "Outros Benefícios Assistenciais do Servidor",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO AUXÍLIO PRÉ-ESCOLAR DOS SERVIDORES COMISSIONADOS - OUT/2026."
-      },
-      {
-        "data": "2026-10-27",
         "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
         "cnpj": "04.311.093/0001-26",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
@@ -3164,6 +3164,30 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES EFETIVOS - OUT/2026."
+      },
+      {
+        "data": "2026-10-28",
+        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 0.0,
+        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DO SUBSÍDIO DOS VEREADORES - OUT/2026."
+      },
+      {
+        "data": "2026-10-28",
+        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 0.0,
+        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - OUT/2026."
+      },
+      {
+        "data": "2026-10-28",
+        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 0.0,
+        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - OUT/2026."
       }
     ]
   }
