@@ -1,7 +1,7 @@
 {
   "cidade": "Chapadão do Sul",
-  "ultimaAtualizacao": "2026-10-29T17:39:39",
-  "fonte": "Portal Transparência Fiorilli (pmchapadao.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-29T17:39:39",
+  "ultimaAtualizacao": "2026-10-30T17:17:59",
+  "fonte": "Portal Transparência Fiorilli (pmchapadao.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-30T17:17:59",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camarachapadaodosul.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -821,6 +821,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-10-29",
+          "valor": 2318.62,
+          "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS NOS DIAS 29 E 30 DE OUTUBRO P/REALIZAR VISITA INSTITUCIONAL A SEDE DA EMPRESA JRA COMUNICAÇÕES LTDA, E ESCRITÓRIO DA CONSULTORIA JURÍDICA BATISTA & PATINI ADVOGADOS ASSOCIADOS, COM A FINALIDADE DE TRATAR DE TRATAR ASSUNTOS DE INTERESSE DA CÂMARA MUNICIPAL DE CHAPADÃO DO SUL – MS."
+        },
+        {
           "data": "2026-10-15",
           "valor": 2318.62,
           "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS REALIZAR VISITAS INSTITUCIONAIS, NOS DIAS 15 E 16 DE OUTUBRO COM A FINALIDADE DE TRATAR DE ASSUNTOS DE INTERESSE DO MUNICÍPIO DE CHAPADÃO DO SUL/MS E BUSCAR APOIO E ENCAMINHAMENTOS JUNTO AOS ÓRGÃOS E AUTORIDADES ESTADUAIS."
@@ -946,8 +951,8 @@
           "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS P/ CUMPRIR AGENDA INSTITUCIONAL NOS SEGUINTES ÓRGÃOS:  DIAS 21 E 22 DE JANEIRO - REUNIÃO COM ASSESSORIA JURÍDICA, ENERGISA, GABINETE SENADOR NELSON TRAD – CONFORME SOLICITADO PELO 1DOC MEMORANDO Nº 068/2026."
         }
       ],
-      "totalDiarias2026": 126942.42,
-      "numDiarias2026": 25
+      "totalDiarias2026": 129261.04,
+      "numDiarias2026": 26
     },
     {
       "nome": "RICARDO ESTEFANO E. BANNAK",
@@ -1142,14 +1147,14 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 10770222.35,
-    "totalNotas": 662,
+    "totalGeral": 11347028.89,
+    "totalNotas": 668,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 3939139.62,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 2440678.52,
-      "Diárias — Civil": 2208202.45,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 4288384.62,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 2593815.83,
+      "Diárias — Civil": 2212427.19,
       "Serviços de Consultoria": 977901.08,
-      "Obrigações Patronais": 597575.65,
+      "Obrigações Patronais": 667775.14,
       "Material de Consumo": 301763.19,
       "Equipamentos e Material Permanente": 109635.16,
       "Serviços de Tecnologia da Informação": 90264.78,
@@ -1163,8 +1168,16 @@
         "fornecedor": "FOLHA DE PAGAMENTO",
         "cnpj": "05.443.531/0001-72",
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 549226.08,
+        "valor": 698809.14,
         "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO POR ESTIMATIVA DOS SERVIDORES COMISSIONADOS DA CÂMARA DESTA MUNICIPALIDADE. REF. AOS MESES DE JULHO A DEZEMBRO DE 2026"
+      },
+      {
+        "data": "2026-07-24",
+        "fornecedor": "FOLHA DE PAGAMENTO",
+        "cnpj": "05.443.531/0001-72",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 633047.87,
+        "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO POR ESTIMATIVA DOS SERVIDORES EFETIVOS DA CÂMARA DESTA MUNICIPALIDADE. REF. AOS MESES DE JULHO A DEZEMBRO DE 2026"
       },
       {
         "data": "2026-01-08",
@@ -1175,20 +1188,20 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE AO ADITIVO 002/2024 CONTRATO Nº 01/2023 DO PROC ADMINISTRATIVO Nº 011/2022, CONCORRÊNCIA Nº 001/2022 P.S. QUE CONSISTE NO CONJUNTO DE ATIVIDADES INTEGRADAMENTE QUE TENHA"
       },
       {
-        "data": "2026-07-24",
-        "fornecedor": "FOLHA DE PAGAMENTO",
-        "cnpj": "05.443.531/0001-72",
-        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 511856.15,
-        "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO POR ESTIMATIVA DOS SERVIDORES EFETIVOS DA CÂMARA DESTA MUNICIPALIDADE. REF. AOS MESES DE JULHO A DEZEMBRO DE 2026"
-      },
-      {
         "data": "2026-01-08",
         "fornecedor": "BATISTA & PATTINI ADVOGADOS ASSOCIADOS",
         "cnpj": "22.430.924/0001-60",
         "categoria": "Serviços de Consultoria",
         "valor": 289285.7,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE AO ADITIVO Nº 002/2025 E AO CONTRATO Nº 015/2022,  INEXIGIBILIDADE 01/20122- PRESTAÇÃO DOS SERVIÇOS TÉCNICOS E PROFISSIONAIS ESPECIALIZADOS PARA ASSESSORIA E CONSULTORIA"
+      },
+      {
+        "data": "2026-04-15",
+        "fornecedor": "EMPEC PROJETOS E CONSTRUCOES LTDA",
+        "cnpj": "40.980.298/0001-68",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 281835.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE CONTRATO 005/2026 LICITAÇÃO: 000009/26 - INEXIGIBILIDADE - PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE NATUREZA  PREDOMINANTEMENTE INTELECTUAL PARA ELABORAÇÃO DE PR"
       },
       {
         "data": "2026-05-21",
@@ -1205,14 +1218,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 220000.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRATO Nº 001/2026 RESULTADO DA LICITAÇÃO Nº 000001/26 -INEXIGIBILIDADE - PRESTAÇÃO DE CONSULTORIA E ASSESSORIA TÉCNICA ESPECIALIZADA, ORIENTAÇÃO E ACAOMPANHAMENTO E"
-      },
-      {
-        "data": "2026-04-15",
-        "fornecedor": "EMPEC PROJETOS E CONSTRUCOES LTDA",
-        "cnpj": "40.980.298/0001-68",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 190335.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE CONTRATO 005/2026 LICITAÇÃO: 000009/26 - INEXIGIBILIDADE - PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE NATUREZA  PREDOMINANTEMENTE INTELECTUAL PARA ELABORAÇÃO DE PR"
       },
       {
         "data": "2026-01-08",
@@ -1423,6 +1428,14 @@
         "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO DO SUBSÍDIO DOS SENHORES VEREADORES DA CÂMARA DESTA MUNICIPALIDADE. REF. SETEMBRO DE 2026"
       },
       {
+        "data": "2026-10-27",
+        "fornecedor": "FOLHA DE PAGAMENTO",
+        "cnpj": "05.443.531/0001-72",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 79215.28,
+        "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO DO SUBSÍDIO DOS SENHORES VEREADORES DA CÂMARA DESTA MUNICIPALIDADE. REF. OUTUBRO DE 2026"
+      },
+      {
         "data": "2026-01-08",
         "fornecedor": "MOVEIS DAN BS LTDA",
         "cnpj": "16.513.843/0001-21",
@@ -1471,6 +1484,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL INSS S/FOLHA DE PAGAMENTO MÊS AGOSTO 2026"
       },
       {
+        "data": "2026-10-29",
+        "fornecedor": "INSS-INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 55384.14,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL INSS S/FOLHA DE PAGAMENTO MÊS OUTUBRO 2026"
+      },
+      {
         "data": "2026-07-30",
         "fornecedor": "INSS-INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -1517,6 +1538,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 48500.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À Licitação: 000034/26 - INEXIGIBILIDADE - Contratação de empresa especializada para viabilizar a realização de curso de capacitação in loco, destinado aos Vereadores, A"
+      },
+      {
+        "data": "2026-10-27",
+        "fornecedor": "IPD - INSTITUTO PARANAENSE DE DIREITO LTDA",
+        "cnpj": "64.024.252/0001-33",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 48500.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À LICITAÇÃO : 000040/26 - INEXIGIBILIDADE -  CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA REALIZAÇÃO  DE CURSO DE CAPACITAÇÃO IN LOCO, DESTINADO A VEREADORES, ASSESSORES E"
       },
       {
         "data": "2026-03-27",
@@ -1621,14 +1650,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 26910.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A 09 (NOVE) TAXAS DE INSCRIÇÕES P/PARTICIPAR DO TREINAMENTO DE SISTEMA DE CONTROLE DE FROTAS NOS MUNICÍPIOS; FISCALIZAÇÃO DE COMBUSTÍVEIS, PNEUS, PEÇAS E EQUIPAMENTOS, A"
-      },
-      {
-        "data": "2026-10-27",
-        "fornecedor": "FOLHA DE PAGAMENTO",
-        "cnpj": "05.443.531/0001-72",
-        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 24422.3,
-        "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO DO SUBSÍDIO DOS SENHORES VEREADORES DA CÂMARA DESTA MUNICIPALIDADE. REF. OUTUBRO DE 2026"
       },
       {
         "data": "2026-09-09",
@@ -1759,6 +1780,14 @@
         "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO DO SUBSÍDIO DOS SENHORES VEREADORES DA CÂMARA DESTA MUNICIPALIDADE. REF. SETEMBRO DE 2026"
       },
       {
+        "data": "2026-10-27",
+        "fornecedor": "FOLHA DE PAGAMENTO",
+        "cnpj": "05.443.531/0001-72",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 19803.82,
+        "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO DO SUBSÍDIO DOS SENHORES VEREADORES DA CÂMARA DESTA MUNICIPALIDADE. REF. OUTUBRO DE 2026"
+      },
+      {
         "data": "2026-01-08",
         "fornecedor": "MOVEIS DAN BS LTDA",
         "cnpj": "16.513.843/0001-21",
@@ -1829,6 +1858,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 14950.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À 05 (CINCO) TAXAS DE INSCRIÇÕES P/ PARTICIPAR DO TREINAMENTODE CÂMARAS MUNICIPAIS DE ALTO DESEMPENHO: GOVERNANÇA ESTRATÉGICA, BLINDAGEM JURÍDICA, E A PRÁTICA D"
+      },
+      {
+        "data": "2026-10-29",
+        "fornecedor": "IPMCS - INST. PREV. SOC. SERV. MUN. CHS",
+        "cnpj": "04.680.541/0001-69",
+        "categoria": "Obrigações Patronais",
+        "valor": 14815.35,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL IPMCS S/FOLHA DE PAGAMENTO SERVIDORES EFETIVOS MÊS OUTUBRO 2026"
       },
       {
         "data": "2026-09-28",
@@ -1941,6 +1978,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 13137.31,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL CASSEMS S/FOLHA DE PAGAMENTO MÊS SETEMBRO 2026"
+      },
+      {
+        "data": "2026-10-29",
+        "fornecedor": "CASSEMS - CAIXA DE ASSIST. SERVID. MS",
+        "cnpj": "04.311.093/0001-26",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 13137.31,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À CONTRIBUIÇÃO PATRONAL CASSEMS  S/FOLHA DE PAGAMENTO MÊS OUTUBRO 2026"
       },
       {
         "data": "2026-03-02",
@@ -2277,6 +2322,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 9901.91,
         "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO DO SUBSÍDIO DO SENHOR VEREADOR MARCELO DA COSTA/ PRESIDENTE DA CÂMARA DESTA MUNICIPALIDADE. REF. SETEMBRO DE 2026"
+      },
+      {
+        "data": "2026-10-27",
+        "fornecedor": "FOLHA DE PAGAMENTO",
+        "cnpj": "05.443.531/0001-72",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 9901.91,
+        "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO DO SUBSÍDIO DO SENHOR VEREADOR MARCELO DA COSTA/ PRESIDENTE DA CÂMARA DESTA MUNICIPALIDADE. REF. OUTUBRO DE 2026"
       },
       {
         "data": "2026-03-26",
@@ -4943,14 +4996,6 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE AO ADITIVO Nº 001/2026 CONTRATO 11/2026 À LICITAÇÃO: 000013/26 - DISPENSA ELETRÔNICA - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS DE SONORIZAÇÃO PRO"
       },
       {
-        "data": "2026-10-27",
-        "fornecedor": "FOLHA DE PAGAMENTO",
-        "cnpj": "05.443.531/0001-72",
-        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 3962.28,
-        "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO DO SUBSÍDIO DO SENHOR VEREADOR MARCELO DA COSTA/ PRESIDENTE DA CÂMARA DESTA MUNICIPALIDADE. REF. OUTUBRO DE 2026"
-      },
-      {
         "data": "2026-01-21",
         "fornecedor": "CASSEMS - CAIXA DE ASSIST. SERVID. MS",
         "cnpj": "04.311.093/0001-26",
@@ -5455,6 +5500,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS REALIZAR VISITAS INSTITUCIONAIS, NOS DIAS 15 E 16 DE OUTUBRO COM A FINALIDADE DE TRATAR DE ASSUNTOS DE INTERESSE DO MUNICÍPIO DE CHA"
       },
       {
+        "data": "2026-10-29",
+        "fornecedor": "MARCELO DA COSTA",
+        "cnpj": "006.XXX.XXX-55",
+        "categoria": "Diárias — Civil",
+        "valor": 2318.62,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS NOS DIAS 29 E 30 DE OUTUBRO P/REALIZAR VISITA INSTITUCIONAL A SEDE DA EMPRESA JRA COMUNICAÇÕES LTDA, E ESCRITÓRIO DA CONSULTORIA JUR"
+      },
+      {
         "data": "2026-01-21",
         "fornecedor": "MARCELO DA COSTA",
         "cnpj": "006.XXX.XXX-55",
@@ -5485,14 +5538,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 2085.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À 03 (TRÊS) TAXAS DE INSCRIÇÕES P/PARTICIPAR DO ENCONTRO NACIONAL DE GESTORES E LEGISLATIVOS MUNICIPAIS, NOS DIAS 09 A 12 DE JUNHO EM CAMPO GRANDE/MS, REALIZADO PELA UVB"
-      },
-      {
-        "data": "2026-10-27",
-        "fornecedor": "FOLHA DE PAGAMENTO",
-        "cnpj": "05.443.531/0001-72",
-        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 2066.21,
-        "descricao": "VALOR QUE SE EMPENHA A FOLHA DE PAGAMENTO DO SUBSÍDIO DOS SENHORES VEREADORES DA CÂMARA DESTA MUNICIPALIDADE. REF. OUTUBRO DE 2026"
       },
       {
         "data": "2026-05-18",
@@ -5653,6 +5698,14 @@
         "categoria": "Diárias — Civil",
         "valor": 1906.12,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS ACOMPANHANDO O PRESIDENTE NAS VISITAS INSTITUCIONAIS, NOS DIAS 15 E 16 DE OUTUBRO COM A FINALIDADE DE TRATAR DE ASSUNTOS DE INTERESS"
+      },
+      {
+        "data": "2026-10-29",
+        "fornecedor": "LUCAS FERREIRA SCHEER",
+        "cnpj": "037.XXX.XXX-03",
+        "categoria": "Diárias — Civil",
+        "valor": 1906.12,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DIÁRIA À CIDADE DE CAMPO GRANDE/MS , NOS DIAS 29 E 30 DE OUTUBRO, ACOMPANHANDO O PRESIDENTE NAS VISITAS INSTITUCIONAIS A SEDE DA EMPRESA JRA COMUNICAÇÕES LTDA, E ESCRI"
       },
       {
         "data": "2026-04-08",
@@ -6439,20 +6492,20 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À LICITAÇÃO: 000033/26 - DISPENSA POR VALOR - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS EM ENGENHARIA E SEGURANÇA E MEDICIN"
       },
       {
-        "data": "2026-10-27",
-        "fornecedor": "IPD - INSTITUTO PARANAENSE DE DIREITO LTDA",
-        "cnpj": "64.024.252/0001-33",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE À LICITAÇÃO : 000040/26 - INEXIGIBILIDADE -  CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA REALIZAÇÃO  DE CURSO DE CAPACITAÇÃO IN LOCO, DESTINADO A VEREADORES, ASSESSORES E"
-      },
-      {
         "data": "2026-10-28",
         "fornecedor": "DEPOSITO DE GAS CENTRAL LTDA",
         "cnpj": "09.222.495/0001-78",
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE À LICITAÇÃO 000041/26 - DISPENSA POR VALOR - AQUISIÇÃO DE CARGA DE GÁS DE COZINHA (GLP), DESTINADA AO USO NAS DEPENDÊNCIAS DA CÂMARA MUNICIPAL DE CHAPADÃO DO SUL/MS, CON"
+      },
+      {
+        "data": "2026-10-29",
+        "fornecedor": "KAMPAI MOTORS LTDA",
+        "cnpj": "03.583.836/0003-16",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 0.0,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE À LICITAÇÃO: 000037/26 - 2026 - PREGÃO ELETRÔNICO - AQUISIÇÃO DE 01 (UM) VEÍCULO NOVO (ZERO QUILOMETRO), TIPO “SUV” DE FABRICAÇÃO NACIONAL/MERCOSUL, ANO/MODELO 2026/2026"
       }
     ]
   }

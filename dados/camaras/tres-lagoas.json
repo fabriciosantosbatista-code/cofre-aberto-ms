@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-10-29T17:39:39",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-29T17:39:39",
+  "ultimaAtualizacao": "2026-10-30T17:17:59",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-10-30T17:17:59",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -539,11 +539,11 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 29802650.43,
-    "totalNotas": 807,
+    "totalGeral": 29805052.09,
+    "totalNotas": 811,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 17283803.59,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 4348889.24,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 4351290.9,
       "Auxílio-Alimentação": 2806025.02,
       "Obrigações Patronais": 2401744.99,
       "Serviços de Tecnologia da Informação": 652785.39,
@@ -2666,6 +2666,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 2500.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000023/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 8 - Mod. Formatada: 000008 - Contratação de empresa especializada, na prestação de"
+      },
+      {
+        "data": "2026-09-08",
+        "fornecedor": "SANAGUA SANEAMENTO E TRATAMENTO DE AGUA",
+        "cnpj": "36.785.392/0001-99",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 2401.66,
+        "descricao": "Processo 48/25 -prestação de Serviços contínuos de Higienização (limpeza externa e interna) de bebedouros, para a Câmara Municipal de Três Lagoas-MS."
       },
       {
         "data": "2026-05-05",
@@ -6828,14 +6836,6 @@
         "descricao": "Concessão de suprimento de fundos Material de consumo"
       },
       {
-        "data": "2026-09-08",
-        "fornecedor": "SANAGUA SANEAMENTO E TRATAMENTO DE AGUA",
-        "cnpj": "36.785.392/0001-99",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Processo 48/25 -prestação de Serviços contínuos de Higienização (limpeza externa e interna) de bebedouros, para a Câmara Municipal de Três Lagoas-MS."
-      },
-      {
         "data": "2026-09-09",
         "fornecedor": "Batista & Pattini Advogados Associados",
         "cnpj": "22.430.924/0001-60",
@@ -7018,6 +7018,38 @@
         "categoria": "Equipamentos e Material Permanente",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000063/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 6 - Mod. Formatada: 000006 - PRONTO PAGAMENTO - CADEIRA EXECUTIVA, COM APOIO DE CABEÇA -"
+      },
+      {
+        "data": "2026-10-29",
+        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
+        "cnpj": "20.835.263/0001-28",
+        "categoria": "Obrigações Patronais",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PATRONAL (NORMAL 15%) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DA FOLHA DE PAGAMENTO REF. MÊS DE OUTUBRO/2026."
+      },
+      {
+        "data": "2026-10-29",
+        "fornecedor": "INSTITUTO DE PREV. SOCIAL DOS SERV M. TL",
+        "cnpj": "20.835.263/0001-28",
+        "categoria": "Aporte para Cobertura de Déficit Atuarial do RPPS",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A APORTE MENSAL (Plano de Amort. para o Equacionamento do Déficit Atuarial do RPPS Município de Três Lagoas Lei nº 4.442/2026) DOS SERVIDORES VINCULADOS AO REGIME PRÓPRIO DE PREVIDÊ"
+      },
+      {
+        "data": "2026-10-29",
+        "fornecedor": "SECRETARIA DA RECEITA FEDERAL DO BRASIL",
+        "cnpj": "00.394.460/0058-87",
+        "categoria": "Obrigações Patronais",
+        "valor": 0.0,
+        "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PREVIDENCIÁRIA (INSS) PATRONAL REF. MES DE OUTUBRO/2026, REF. SERVIDORES VINCULADOS AO REGIME GERAL DA PREVIDENCIA SOCIAL."
+      },
+      {
+        "data": "2026-10-29",
+        "fornecedor": "CAIXA DE ASSISTENCIA DOS SERVIDORES DO ESTADO DE M",
+        "cnpj": "04.311.093/0001-26",
+        "categoria": "Outros Benefícios Assistenciais do Servidor",
+        "valor": 0.0,
+        "descricao": "Contribuição Patronal ref. Convênio Cassems servidores CMTLS ref. competência \t\r\n10/2026."
       }
     ]
   }
