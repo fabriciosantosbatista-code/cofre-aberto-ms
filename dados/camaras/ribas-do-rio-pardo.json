@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-11-03T18:42:47",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-11-03T18:42:47",
+  "ultimaAtualizacao": "2026-11-04T18:55:47",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-11-04T18:55:47",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -299,8 +299,8 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 9391329.82,
-    "totalNotas": 359,
+    "totalGeral": 9391493.07,
+    "totalNotas": 360,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 5043930.29,
       "Equipamentos e Material Permanente": 1131861.96,
@@ -308,7 +308,7 @@
       "Serviços de Consultoria": 711530.17,
       "Serviços de Tecnologia da Informação": 448656.16,
       "Auxílio-Alimentação": 442905.15,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 336471.02,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 336634.27,
       "Outros Benefícios Assistenciais do Servidor": 134888.89,
       "Outros Serviços de Terceiros — Pessoa Física": 127115.48,
       "Material de Consumo": 73299.46,
@@ -854,6 +854,14 @@
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - FEV/2026."
       },
       {
+        "data": "2026-05-07",
+        "fornecedor": "VAGNER DOS SANTOS - ME",
+        "cnpj": "27.441.604/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 31257.89,
+        "descricao": "EMPENHO REFERENTE AO 4º TERMO ADITIVO AO CONTRATO Nº 05/2022, PREGÃO PRESENCIAL 001/2022, CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE TRANSMISSÃO AO VIVO, VIA INTERNET E REDES SOC"
+      },
+      {
         "data": "2026-03-30",
         "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -868,14 +876,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 31107.73,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - JULHO/2026."
-      },
-      {
-        "data": "2026-05-07",
-        "fornecedor": "VAGNER DOS SANTOS - ME",
-        "cnpj": "27.441.604/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 31094.64,
-        "descricao": "EMPENHO REFERENTE AO 4º TERMO ADITIVO AO CONTRATO Nº 05/2022, PREGÃO PRESENCIAL 001/2022, CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE TRANSMISSÃO AO VIVO, VIA INTERNET E REDES SOC"
       },
       {
         "data": "2026-05-28",
@@ -2886,20 +2886,20 @@
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA ASSESSORA PARLAMENTAR EDINA GUIMARÃES DE CARVALHO JULG, PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 27/04/2026, PARTICIPAR DE REU"
       },
       {
-        "data": "2026-04-28",
-        "fornecedor": "JAQUELINE PEREIRA ARIMURA",
-        "cnpj": "010.XXX.XXX-44",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "ANULAÇÃO DE EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA, PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 27/04/2026, PARTICIPAR DE REUNIÃO QU"
-      },
-      {
         "data": "2026-04-24",
         "fornecedor": "JAQUELINE PEREIRA ARIMURA",
         "cnpj": "010.XXX.XXX-44",
         "categoria": "Diárias — Civil",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA, PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 27/04/2026, PARTICIPAR DE REUNIÃO QUE TRATARÁ DO"
+      },
+      {
+        "data": "2026-04-28",
+        "fornecedor": "JAQUELINE PEREIRA ARIMURA",
+        "cnpj": "010.XXX.XXX-44",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "ANULAÇÃO DE EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA EM FAVOR DA VEREADORA JAQUELINE PEREIRA ARIMURA, PARA IR ATÉ A CIDADE DE CAMPO GRANDE/MS, NA DATA DE 27/04/2026, PARTICIPAR DE REUNIÃO QU"
       },
       {
         "data": "2026-04-24",
@@ -3188,6 +3188,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - OUT/2026."
+      },
+      {
+        "data": "2026-11-03",
+        "fornecedor": "PREFEITURA MUNICIPAL RIBAS DO RIO PARDO",
+        "cnpj": "03.501.541/0001-91",
+        "categoria": "Elemento 96",
+        "valor": 0.0,
+        "descricao": "EMPENHO REFERENTE À RESTITUIÇÃO DA REMUNERAÇÃO E ENCARGOS PATRONAIS DA SERVIDORA SUELEN MACHADO DE OLIVEIRA, CARGO EFETIVO DE AUXILIAR ADMINISTRATIVO, MATRÍCULA 4000-2, CEDIDA PARA A CÂMARA MUNICIPAL"
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "cidade": "Corumbá",
-  "ultimaAtualizacao": "2026-11-03T18:42:47",
-  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-11-03T18:42:47",
+  "ultimaAtualizacao": "2026-11-04T18:55:47",
+  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-11-04T18:55:47",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camaracorumba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -371,6 +371,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-11-04",
+          "valor": 2000.0,
+          "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAÇÃO NO WORKSHOP DO PODER LEGISLATIVO MUNICIPAL (CAPACITAÇÃO EM PLANEJAMENTO E ORÇAMENTO PÚBLICO MUNICIPAL) E CUMPRIR AGENDA/REUNIÃO NO GABINETE DO DEPUTADO FEDERAL DAGOBERTO NOGUEIRA, CONFORME LEIS 2384/2014 E 2819/2022."
+        },
+        {
           "data": "2026-10-22",
           "valor": 3000.0,
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDAS: NO GABINETE DO DEPUTADO FEDERAL DAGOBERTO NOGUEIRA; NA CASA CIVIL DO GOVERNO DE MS E NA ASSEMBLÉIA LEGISLATIVA (Ale/MS), CONFORME LEIS 2384/2014 E 2819/2022."
@@ -406,8 +411,8 @@
           "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO SEMINARIO LEGISLATIVO 360 -GOVERNANÇA, FISCALIZAÇÃO E RESULTADO, CONFORME LEIS 2384/2014 E 2819/2022."
         }
       ],
-      "totalDiarias2026": 19000.0,
-      "numDiarias2026": 7
+      "totalDiarias2026": 21000.0,
+      "numDiarias2026": 8
     },
     {
       "nome": "MATHEUS PEREIRA CAZARIN SILVA",
@@ -634,15 +639,15 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 26827918.51,
-    "totalNotas": 228,
+    "totalGeral": 26866418.51,
+    "totalNotas": 235,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 17599761.31,
       "Obrigações Patronais": 2898995.65,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 2685708.79,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 2699208.79,
       "Serviços de Consultoria": 1414247.71,
       "Indenizações e Restituições": 1266773.58,
-      "Diárias — Civil": 350400.0,
+      "Diárias — Civil": 375400.0,
       "Elemento 03": 296148.69,
       "Despesas de Exercícios Anteriores": 177920.74,
       "Elemento 96": 105834.44,
@@ -1155,6 +1160,14 @@
         "descricao": "VALOR QUE SE EMPENHA PARA, Contratação de empresa especializada para consultoria em gestão de Recursos Humanos, com ênfase na análise e conformidade legal da folha de pagamento, além de acompanhamento"
       },
       {
+        "data": "2026-09-08",
+        "fornecedor": "LAMPER IMAGEM E DIGITALIZAÇÃO LTDA - EPP",
+        "cnpj": "97.408.074/0001-01",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 24300.0,
+        "descricao": "VALOR QUE SE EMPENHA, POR Contratação de empresa especializada para prestação de serviços de gestão documental, compreendendo levantamento, organização, higienização, indexação, digitalização e acondi"
+      },
+      {
         "data": "2026-01-05",
         "fornecedor": "UNIAO DAS CAMARAS DE VEREADORES DO ESTADO DE MATO",
         "cnpj": "01.941.195/0001-37",
@@ -1219,20 +1232,28 @@
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE À INSCRIÇÕES PARA SEMINÁRIO, DE VEREDORES/SERVIDORES DESTE LEGISLATIVO."
       },
       {
-        "data": "2026-09-08",
-        "fornecedor": "LAMPER IMAGEM E DIGITALIZAÇÃO LTDA - EPP",
-        "cnpj": "97.408.074/0001-01",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 10800.0,
-        "descricao": "VALOR QUE SE EMPENHA, POR Contratação de empresa especializada para prestação de serviços de gestão documental, compreendendo levantamento, organização, higienização, indexação, digitalização e acondi"
-      },
-      {
         "data": "2026-01-05",
         "fornecedor": "SANESUL-EMPRESA DE SANEAMENTO DE MS",
         "cnpj": "03.982.931/0001-20",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 9707.51,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS DE FORNECIMENTO DE AGUA POTÁVEL E ESGOTO PARA ESTE LEGISLATIVO (ESTIMATIVA 2026)."
+      },
+      {
+        "data": "2026-11-03",
+        "fornecedor": "JULIO CESAR BRAVO",
+        "cnpj": "108.XXX.XXX-34",
+        "categoria": "Diárias — Civil",
+        "valor": 7500.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA PARTICIPAÇÃO/CAPACITAÇÃO NA XXXV SECOFEM - SEMANA CONTÁBIL E FISCAL PARA ESTADOS E MUNICIPIOS (ROTINAS DE CONTABILIDADE E RESPONSABILIDADE FISCAL APLICAD"
+      },
+      {
+        "data": "2026-11-03",
+        "fornecedor": "IOLANDA VICTORIO DA SILVA FILHA",
+        "cnpj": "343.XXX.XXX-72",
+        "categoria": "Diárias — Civil",
+        "valor": 7500.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA PARTICIPAÇÃO/CAPACITAÇÃO NA XXXV SECOFEM - SEMANA CONTÁBIL E FISCAL PARA ESTADOS E MUNICIPIOS (ROTINAS DE CONTABILIDADE E RESPONSABILIDADE FISCAL APLICAD"
       },
       {
         "data": "2026-02-19",
@@ -1915,6 +1936,22 @@
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA CUMPRIR AGENDAS/PARTICIPAR DE REUNIÕES  EM GABINETES  EXTERNOS DE SENADORES; GABINETE EXTERNO DE DEPUTADO FEDERAL E GABINE"
       },
       {
+        "data": "2026-11-03",
+        "fornecedor": "EDINALDO SOUZA NEVES DOS SANTOS",
+        "cnpj": "497.XXX.XXX-68",
+        "categoria": "Diárias — Civil",
+        "valor": 3000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA  CUMPRIR AGENDA/REUNIÃO NA ASSEMBLÉIA LEGISLATIVA (ALe/MS) E PARTICIPAR DO WORKSHOP DO PODER LEGISLATIVO MUNICIPAL (CAPACI"
+      },
+      {
+        "data": "2026-11-03",
+        "fornecedor": "YUSSEF MOHAMAD EL SALLA",
+        "cnpj": "379.XXX.XXX-00",
+        "categoria": "Diárias — Civil",
+        "valor": 3000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAÇÃO NO WORKSHOP DO PODER LEGISLATIVO MUNICIPAL (CAPACITAÇÃO EM PLANEJAMENTO E ORÇAMENTO PÚBLICO MUNICIPAL) E CUMP"
+      },
+      {
         "data": "2026-05-08",
         "fornecedor": "VISIONA9 Gestão Empresarial LTDA",
         "cnpj": "58.521.834/0001-22",
@@ -2219,6 +2256,22 @@
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAR DO SEMINÁRIO DE VEREADORES: LEGISLATIVO INTELIGENTE - IA (APLICADA AO MANDATO E A GESTÃO PARLAMENTAR), CONFORME"
       },
       {
+        "data": "2026-11-03",
+        "fornecedor": "MATHEUS PEREIRA CAZARIN SILVA",
+        "cnpj": "012.XXX.XXX-11",
+        "categoria": "Diárias — Civil",
+        "valor": 2000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAÇÃO NO WORKSHOP DO PODER LEGISLATIVO MUNICIPAL (CAPACITAÇÃO EM PLANEJAMENTO E ORÇAMENTO PÚBLICO MUNICIPAL), CONFO"
+      },
+      {
+        "data": "2026-11-03",
+        "fornecedor": "LUCINETE CORDEIRO DA SILVA NASCIMENTO",
+        "cnpj": "782.XXX.XXX-91",
+        "categoria": "Diárias — Civil",
+        "valor": 2000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIAGEM A CAMPO GRANDE-MS, PARA PARTICIPAÇÃO NO WORKSHOP DO PODER LEGISLATIVO MUNICIPAL (CAPACITAÇÃO EM PLANEJAMENTO E ORÇAMENTO PÚBLICO MUNICIPAL), CONFO"
+      },
+      {
         "data": "2026-01-05",
         "fornecedor": "KLEYTON GONÇALVES CRUZ",
         "cnpj": "938.XXX.XXX-34",
@@ -2473,6 +2526,14 @@
         "categoria": "Serviços de Consultoria",
         "valor": 0.0,
         "descricao": "VALOR QUE SE EMPENHA, POR Contratação de empresa especializada para o provimento de assessoria técnica parlamentar na elaboração das emendas impositivas individuais e qualificação pedagógica estratégi"
+      },
+      {
+        "data": "2026-11-03",
+        "fornecedor": "NILMA SOCORRO NANTES",
+        "cnpj": "500.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA PARTICIPAÇÃO/CAPACITAÇÃO NA XXXV SECOFEM - SEMANA CONTÁBIL E FISCAL PARA ESTADOS E MUNICIPIOS (ROTINAS DE CONTABILIDADE E RESPONSABILIDADE FISCAL APLICAD"
       }
     ]
   },
