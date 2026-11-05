@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-11-04T18:55:47",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-11-04T18:55:47",
+  "ultimaAtualizacao": "2026-11-05T19:07:34",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-11-05T19:07:34",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -299,19 +299,19 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 9391493.07,
+    "totalGeral": 9613757.11,
     "totalNotas": 360,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 5043930.29,
-      "Equipamentos e Material Permanente": 1131861.96,
+      "Equipamentos e Material Permanente": 1256847.96,
       "Obrigações Patronais": 870373.69,
       "Serviços de Consultoria": 711530.17,
-      "Serviços de Tecnologia da Informação": 448656.16,
+      "Serviços de Tecnologia da Informação": 462545.64,
       "Auxílio-Alimentação": 442905.15,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 336634.27,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 355622.83,
+      "Material de Consumo": 137699.46,
       "Outros Benefícios Assistenciais do Servidor": 134888.89,
       "Outros Serviços de Terceiros — Pessoa Física": 127115.48,
-      "Material de Consumo": 73299.46,
       "Diárias — Civil": 41763.51,
       "Indenizações e Restituições": 28534.04,
       "Elemento 96": 0.0
@@ -330,7 +330,7 @@
         "fornecedor": "MORENA COMERCIO & SERVICO LTDA",
         "cnpj": "08.256.030/0001-75",
         "categoria": "Equipamentos e Material Permanente",
-        "valor": 372399.8,
+        "valor": 497385.8,
         "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE MÓVEIS PLANEJADOS SOB MEDIDA, COMPREENDENDO FABRICAÇÃO, TRANSPORTE, MONTAGEM E INSTALAÇÃO, CONFORME PROCESSO ADMINISTRAT"
       },
       {
@@ -630,6 +630,14 @@
         "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA DE ASSESSORIA E CONSULTORIA JURÍDICA, ESPECIALIZADA EM DIREITO PÚBLICO, PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS, SUPORTE CONSULTIVO AO GABINETE DA PRESIDÊNCIA,"
       },
       {
+        "data": "2026-07-27",
+        "fornecedor": "MORENA COMERCIO & SERVICO LTDA",
+        "cnpj": "08.256.030/0001-75",
+        "categoria": "Material de Consumo",
+        "valor": 64400.0,
+        "descricao": "EMPENHO REFERENTE AO FORNECIMENTO E INSTALAÇÃO DE CORTINAS, TIPO PERSIANA, SOB MEDIDA, INCLUINDO TODOS OS MATERIAIS, ACESSÓRIOS E SERVIÇOS, NECESSÁRIOS À PERFEITA EXECUÇÃO, PARA ATENDIMENTO DAS NECESS"
+      },
+      {
         "data": "2026-06-17",
         "fornecedor": "FOLHA DE PAGAMENTO - SERVIDORES COMISSIONADOS",
         "cnpj": "29.979.036/0001-40",
@@ -644,6 +652,14 @@
         "categoria": "Serviços de Consultoria",
         "valor": 54000.0,
         "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS EM ASSESSORIA E CONSULTORIA JURÍDICA EM LICITAÇÕES, NOS TERMOS DA LEI FEDERAL Nº 14.133/2021,"
+      },
+      {
+        "data": "2026-05-29",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 53571.37,
+        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
       },
       {
         "data": "2026-01-02",
@@ -684,14 +700,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 50000.0,
         "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, CONTRATO Nº 001/2025, PARA A PRESTAÇÃO DE SERVIÇOS DE CONSULTORIA E ASSESSORIA EM ENGENHARIA. AS OBRIGAÇÕES CONSTANTES NO TERMO DE REFERÊNCIA, DENTRE OUTRAS, ENG"
-      },
-      {
-        "data": "2026-05-29",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 47093.65,
-        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
       },
       {
         "data": "2026-07-31",
@@ -756,6 +764,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 42664.63,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES COMISSIONADOS - ABRIL/"
+      },
+      {
+        "data": "2026-05-07",
+        "fornecedor": "VAGNER DOS SANTOS - ME",
+        "cnpj": "27.441.604/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 40163.91,
+        "descricao": "EMPENHO REFERENTE AO 4º TERMO ADITIVO AO CONTRATO Nº 05/2022, PREGÃO PRESENCIAL 001/2022, CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE TRANSMISSÃO AO VIVO, VIA INTERNET E REDES SOC"
       },
       {
         "data": "2026-01-02",
@@ -852,14 +868,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 31586.29,
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - FEV/2026."
-      },
-      {
-        "data": "2026-05-07",
-        "fornecedor": "VAGNER DOS SANTOS - ME",
-        "cnpj": "27.441.604/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 31257.89,
-        "descricao": "EMPENHO REFERENTE AO 4º TERMO ADITIVO AO CONTRATO Nº 05/2022, PREGÃO PRESENCIAL 001/2022, CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE TRANSMISSÃO AO VIVO, VIA INTERNET E REDES SOC"
       },
       {
         "data": "2026-03-30",
@@ -1094,6 +1102,14 @@
         "descricao": "EMPENHO REFERENTE À RESCISÃO DE SERVIDORES COMISSIONADOS - MARÇO/2026."
       },
       {
+        "data": "2026-05-29",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 19500.0,
+        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
+      },
+      {
         "data": "2026-03-31",
         "fornecedor": "MUNICIPALIZA DESENVOLVIMENTO PUBLICO E COMUNICACAO",
         "cnpj": "62.555.763/0001-56",
@@ -1142,14 +1158,6 @@
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - MAIO/2026."
       },
       {
-        "data": "2026-05-29",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 15600.0,
-        "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS DE DIGITALIZAÇÃO E GESTÃO ARQUIVÍSTICA, CONFORME PROCESSO ADMINISTRATIVO Nº 06/2026, PREGÃO ELETRÔNICO Nº 02/2026,"
-      },
-      {
         "data": "2026-03-26",
         "fornecedor": "AUXÍLIO-ALIMENTAÇÃO - SERVIDORES",
         "cnpj": "01.696.482/0001-29",
@@ -1164,6 +1172,14 @@
         "categoria": "Auxílio-Alimentação",
         "valor": 15407.18,
         "descricao": "EMPENHO REFERENTE AO AUXÍLIO-ALIMENTAÇÃO DOS SERVIDORES EFETIVOS - JUNHO/2026."
+      },
+      {
+        "data": "2026-07-27",
+        "fornecedor": "VAGNER DOS SANTOS - ME",
+        "cnpj": "27.441.604/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 15399.0,
+        "descricao": "EMPENHO REFERENTE À PRESTAÇÃO DE SERVIÇOS DE LOCAÇÃO, INSTALAÇÃO, CONFIGURAÇÃO, OPERAÇÃO ASSISTIDA, MANUTENÇÃO E SUPORTE TÉCNICO DE SISTEMA DE PAINEL \"VIDEO WALL\", PARA UTILIZAÇÃO NO PLENÁRIO DA CÂMAR"
       },
       {
         "data": "2026-09-28",
@@ -1260,14 +1276,6 @@
         "categoria": "Material de Consumo",
         "valor": 11020.0,
         "descricao": "EMPENHO REFERENTE À CONFECÇÃO DE SERVIÇOS GRÁFICOS E DE COMUNICAÇÃO VISUAL. PROCESSO ADMINISTRATIVO Nº 08/2026, DISPENSA DE LICITAÇÃO Nº 03/2026. LEI FEDERAL 14.133/2021, ART. 75, INCISO II. Pedido ge"
-      },
-      {
-        "data": "2026-07-27",
-        "fornecedor": "VAGNER DOS SANTOS - ME",
-        "cnpj": "27.441.604/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 10368.66,
-        "descricao": "EMPENHO REFERENTE À PRESTAÇÃO DE SERVIÇOS DE LOCAÇÃO, INSTALAÇÃO, CONFIGURAÇÃO, OPERAÇÃO ASSISTIDA, MANUTENÇÃO E SUPORTE TÉCNICO DE SISTEMA DE PAINEL \"VIDEO WALL\", PARA UTILIZAÇÃO NO PLENÁRIO DA CÂMAR"
       },
       {
         "data": "2026-08-11",
@@ -1388,6 +1396,14 @@
         "categoria": "Equipamentos e Material Permanente",
         "valor": 7030.0,
         "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE ELETRODOMÉSTICOS, CONFORME A DISPENSA ELETRÔNICA Nº 003/2026, PROCESSO ADMINISTRATIVO Nº 012/2026.  Pedido gerado a partir do resultado da Licitação: 000012/26 - Ano M"
+      },
+      {
+        "data": "2026-08-28",
+        "fornecedor": "JAISON COUTINHO",
+        "cnpj": "11.103.343/0001-06",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 7023.52,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO Nº 06/2026, PROCESSO ADMININISTRATIVO Nº 21/2025, PREGÃO ELETRÔNICO Nº 04/2025, QUE TEM POR OBJETO O FORNECIMENTO DE LICENÇA TEMPORÁRIA DE USO DE SOFT"
       },
       {
         "data": "2026-04-08",
@@ -1606,6 +1622,14 @@
         "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES EFETIVOS - SET/2026."
       },
       {
+        "data": "2026-10-27",
+        "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
+        "cnpj": "04.311.093/0001-26",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 4493.04,
+        "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES EFETIVOS - OUT/2026."
+      },
+      {
         "data": "2026-01-29",
         "fornecedor": "AUXÍLIO PRÉ-ESCOLAR",
         "cnpj": "01.696.482/0001-29",
@@ -1652,14 +1676,6 @@
         "categoria": "Material de Consumo",
         "valor": 3605.62,
         "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 01/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
-      },
-      {
-        "data": "2026-08-28",
-        "fornecedor": "JAISON COUTINHO",
-        "cnpj": "11.103.343/0001-06",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 3511.76,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO Nº 06/2026, PROCESSO ADMININISTRATIVO Nº 21/2025, PREGÃO ELETRÔNICO Nº 04/2025, QUE TEM POR OBJETO O FORNECIMENTO DE LICENÇA TEMPORÁRIA DE USO DE SOFT"
       },
       {
         "data": "2026-01-02",
@@ -2076,6 +2092,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 559.16,
         "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES COMISSIONADOS - SET/2026."
+      },
+      {
+        "data": "2026-10-27",
+        "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
+        "cnpj": "04.311.093/0001-26",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 559.16,
+        "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES COMISSIONADOS - OUT/2026."
       },
       {
         "data": "2026-05-21",
@@ -3014,14 +3038,6 @@
         "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE E DE COMUNICAÇÃO, ATA DE REGISTRO DE PREÇOS 02/2026, PROCESSO ADMINISTRATIVO 05/2026, DISPENSA ELETRÔNICA 01/2026. PERÍODO CONTRATUAL 01/04/202"
       },
       {
-        "data": "2026-07-27",
-        "fornecedor": "MORENA COMERCIO & SERVICO LTDA",
-        "cnpj": "08.256.030/0001-75",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO FORNECIMENTO E INSTALAÇÃO DE CORTINAS, TIPO PERSIANA, SOB MEDIDA, INCLUINDO TODOS OS MATERIAIS, ACESSÓRIOS E SERVIÇOS, NECESSÁRIOS À PERFEITA EXECUÇÃO, PARA ATENDIMENTO DAS NECESS"
-      },
-      {
         "data": "2026-08-10",
         "fornecedor": "UILLIAN MARQUES DA SILVA",
         "cnpj": "27.560.148/0001-37",
@@ -3148,22 +3164,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO, DE PRORROGAÇÃO DE PRAZO E VALOR, AO PROCESSO ADMINISTRATIVO 19/2024, DISPENSA DE LICITAÇÃO 12/2024, CUJO OBJETO É A RENOVAÇÃO DA APÓLICE DO SEGURO DA FROTA OFICI"
-      },
-      {
-        "data": "2026-10-27",
-        "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
-        "cnpj": "04.311.093/0001-26",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES COMISSIONADOS - OUT/2026."
-      },
-      {
-        "data": "2026-10-27",
-        "fornecedor": "CASSEMS-CAIXA ASSIST SERVIDORES DO MS",
-        "cnpj": "04.311.093/0001-26",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CASSEMS PATRONAL DOS SERVIDORES EFETIVOS - OUT/2026."
       },
       {
         "data": "2026-10-28",
