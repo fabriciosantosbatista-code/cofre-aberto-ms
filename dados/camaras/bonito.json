@@ -1,7 +1,7 @@
 {
   "cidade": "Bonito",
-  "ultimaAtualizacao": "2026-11-05T19:07:34",
-  "fonte": "Portal Transparência Fiorilli (45.188.183.155:8079) — Dados Abertos — 2026-11-05T19:07:34",
+  "ultimaAtualizacao": "2026-11-06T18:34:48",
+  "fonte": "Portal Transparência Fiorilli (45.188.183.155:8079) — Dados Abertos — 2026-11-06T18:34:48",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarabonito.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -1000,6 +1000,11 @@
       "referenciaFolha": "Folha Mensal - Outubro",
       "diarias": [
         {
+          "data": "2026-11-05",
+          "valor": 2646.5,
+          "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 2,5 (DUAS E MEIA) DIÁRIAS, PARA PARTICIPAR, DE 04/11/2026 A 06/11//2026, A CONVITE DA KCM, NO AUDITÓRIO DO HOTEL CONCORD, NA AV. CALÓGERA. 1624, EM CAMPO GRANDE – MS, DA PREPARAÇÃO PARA O ENCERRAMENTO DO EXERCICIO MUNICIPAL DE 2026: RESPONSABILIDADE FISCAL, RESTOS A PAGAR, DÍVIDAS PÚBLICAS, CONTRATOS, REPASSES FEDERAIS E PREVENÇÃO DE IRREGULARIDADES."
+        },
+        {
           "data": "2026-10-06",
           "valor": 9527.4,
           "descricao": "Valor que se empenha destinado ao pagamento de 6 (seis) diárias, para fora do Estado, para participação no Seminário “Soluções Urbanas Contemporâneas: Paisagens, Mobilidade e Experiências Projetuais em Cidades”, a ser realizado nos dias 07, 08 e 09 de outubro de 2026, no Rio de Janeiro/RJ."
@@ -1095,23 +1100,23 @@
           "descricao": "VALOR QUE SE EMPENHA PARA FAZER FACE A DESPESAS COM CONCESSÃO DE DIÁRIAS PARA PARTICIPAÇÃO NO 1º CONGRESSO DE EXCELÊNCIA PARA VEREADORES, GESTORRES E SERVIDORES DO LEGISLATIVO E EXECUTIVO MUNICIPAL, NO PERÍODO DE 20, 21, 22 e 23 DE JANEIRO DE 2026."
         }
       ],
-      "totalDiarias2026": 92495.17,
-      "numDiarias2026": 19
+      "totalDiarias2026": 95141.67,
+      "numDiarias2026": 20
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 7890727.87,
-    "totalNotas": 732,
+    "totalGeral": 7923212.36,
+    "totalNotas": 733,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 3579621.95,
-      "Diárias — Civil": 1440491.21,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1037380.13,
+      "Diárias — Civil": 1443137.71,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1062031.73,
       "Obrigações Patronais": 666137.56,
       "Serviços de Consultoria": 595003.6,
       "Serviços de Tecnologia da Informação": 410601.59,
       "Indenizações e Restituições": 67797.5,
+      "Material de Consumo": 42382.62,
       "Equipamentos e Material Permanente": 41002.1,
-      "Material de Consumo": 37196.23,
       "Despesas de Exercícios Anteriores": 13386.0,
       "Locação de Mão de Obra": 2110.0
     },
@@ -1709,6 +1714,14 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000006/21 - Ano Mod.: 2021 - Modalidade: DISPENSA - Nº Mod.: 13 - Mod. Formatada: 13 -  contratação de empresa especializada para prestação de serviço"
       },
       {
+        "data": "2026-07-13",
+        "fornecedor": "FLAVIO JESUS DUARTE ESPINOSA",
+        "cnpj": "64.210.608/0001-23",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 8451.6,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000008/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação de empresa especializada para execução de"
+      },
+      {
         "data": "2026-09-01",
         "fornecedor": "KCM CENTRO NACIONAL DE TREINAMENTOS, CAPACITACOES",
         "cnpj": "66.962.221/0001-59",
@@ -1787,6 +1800,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 7960.0,
         "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 4 (QUATRO) INSCRIÇÃO DOS VEREADORES, ADÃO CARLOS DUARTE, ROSINEIDE APARECIDA DOS SANTOS, MICHELE DA CRUZ FLORES E ANGELO CARLOS PERES CHERES,  EM CURSOS"
+      },
+      {
+        "data": "2026-11-04",
+        "fornecedor": "KCM CENTRO NACIONAL DE TREINAMENTOS, CAPACITACOES",
+        "cnpj": "66.962.221/0001-59",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 7950.0,
+        "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 5 (CINCO) INSCRIÇÕES DOS VEREADORES: ROSINEIDE APARECIDA DOS SANTOS; ADÃO CARLOS DUARTE, JHONATAN JACQUES MARQUES, LUCAS LEANDRO PAES E ANDRE LUIZ OCAMPO"
       },
       {
         "data": "2026-03-09",
@@ -1915,6 +1936,14 @@
         "categoria": "Material de Consumo",
         "valor": 6746.25,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000001/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 1 - Mod. Formatada: 1 - Aquisição de Material de Higiene, Limpeza, Copa, Cozin"
+      },
+      {
+        "data": "2026-10-27",
+        "fornecedor": "KCM CENTRO NACIONAL DE TREINAMENTOS, CAPACITACOES",
+        "cnpj": "66.962.221/0001-59",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 6660.0,
+        "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 3 (TRÊS) INSCRIÇÕES DOS VEREADORES: MICHELE DA CRUZ FLORES, RAMONA DE LIMA AQUINO e PEDRO APARECIDO ROSARIO, E 1 (UMA) DO SERVIDOR RAFAEL AUGUSTO LORETO"
       },
       {
         "data": "2026-08-10",
@@ -2189,6 +2218,14 @@
         "descricao": "TERMO ADITIVO DE CONTRATAÇÃO DE EMPRESA ESPEZIALIZADA PARA PRESTAÇÃO DE SERVIÇOS DE CRIAÇÃO DESENVOLVIMENTO MANUNTENÇAÕ DE HOSPEDAGEM EM SERVIÇOS DEDICADO DE ALTA PERFORMANCE PARA WEBSITE/PORTAL DA CA"
       },
       {
+        "data": "2026-07-02",
+        "fornecedor": "GZ COMERCIO E SERVICOS LTDA",
+        "cnpj": "53.852.451/0001-13",
+        "categoria": "Material de Consumo",
+        "valor": 5680.78,
+        "descricao": "Valor que se empenha para fazer face a despesa, conforme Pedido gerado a partir do resultado da Licitação: 000007/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 2 - Mod. Formatada: 2"
+      },
+      {
         "data": "2026-04-15",
         "fornecedor": "LG ASSESSORIA, TRINAMENTOS E PESQUISA LTDA",
         "cnpj": "18.036.852/0001-02",
@@ -2419,14 +2456,6 @@
         "categoria": "Indenizações e Restituições",
         "valor": 4857.0,
         "descricao": "VALOR QUE SE EMPENHA PARA INDENIZAR VEREADOR POR GASTO COM O MANDATO, CONFORME PROCESSO ADMINISTRATIVO 353/2026."
-      },
-      {
-        "data": "2026-07-02",
-        "fornecedor": "GZ COMERCIO E SERVICOS LTDA",
-        "cnpj": "53.852.451/0001-13",
-        "categoria": "Material de Consumo",
-        "valor": 4742.78,
-        "descricao": "Valor que se empenha para fazer face a despesa, conforme Pedido gerado a partir do resultado da Licitação: 000007/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 2 - Mod. Formatada: 2"
       },
       {
         "data": "2026-06-19",
@@ -3091,6 +3120,14 @@
         "categoria": "Material de Consumo",
         "valor": 3600.49,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000001/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 1 - Mod. Formatada: 1 - Aquisição de Material de Higiene, Limpeza, Copa, Cozin"
+      },
+      {
+        "data": "2026-07-13",
+        "fornecedor": "FLAVIO JESUS DUARTE ESPINOSA",
+        "cnpj": "64.210.608/0001-23",
+        "categoria": "Material de Consumo",
+        "valor": 3448.03,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000008/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação de empresa especializada para execução de"
       },
       {
         "data": "2026-09-02",
@@ -4024,6 +4061,14 @@
         "data": "2026-11-04",
         "fornecedor": "ROSINEIDE APARECIDA DOS SANTOS",
         "cnpj": "002.XXX.XXX-70",
+        "categoria": "Diárias — Civil",
+        "valor": 2646.5,
+        "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 2,5 (DUAS E MEIA) DIÁRIAS, PARA PARTICIPAR, DE 04/11/2026 A 06/11//2026, A CONVITE DA KCM, NO AUDITÓRIO DO HOTEL CONCORD, NA AV. CALÓGERA. 1624, EM CAMPO"
+      },
+      {
+        "data": "2026-11-04",
+        "fornecedor": "ÂNGELO CARLOS PERES CHERES",
+        "cnpj": "023.XXX.XXX-05",
         "categoria": "Diárias — Civil",
         "valor": 2646.5,
         "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 2,5 (DUAS E MEIA) DIÁRIAS, PARA PARTICIPAR, DE 04/11/2026 A 06/11//2026, A CONVITE DA KCM, NO AUDITÓRIO DO HOTEL CONCORD, NA AV. CALÓGERA. 1624, EM CAMPO"
@@ -5837,6 +5882,14 @@
         "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE INSCRIÇÃO DO VEREADOR PEDRO APARECIDO ROSARIO EM SEMINÁRIO LEGISLATIVO MUNICIPAL DA KCM SOBRE: ESTRATÉGIAS PARA UMA GESTÃO PÚBLICA DE EXCELÊNCIA: CONTROL"
       },
       {
+        "data": "2026-11-04",
+        "fornecedor": "KCM CENTRO NACIONAL DE TREINAMENTOS, CAPACITACOES",
+        "cnpj": "66.962.221/0001-59",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1590.0,
+        "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 5 (CINCO) INSCRIÇÕES DOS VEREADORES: ROSINEIDE APARECIDA DOS SANTOS; ADÃO CARLOS DUARTE, JHONATAN JACQUES MARQUES, LUCAS LEANDRO PAES E ANDRE LUIZ OCAMPO"
+      },
+      {
         "data": "2026-06-18",
         "fornecedor": "PAULO HENRIQUE BREDA SANTOS",
         "cnpj": "003.XXX.XXX-51",
@@ -5995,6 +6048,14 @@
         "categoria": "Serviços de Tecnologia da Informação",
         "valor": 862.98,
         "descricao": "VALOR QUE SE EMPENHA PARA USO DE SISTEMA DE INFORMÁTICA PARA USO DO SETOR DE IMPRENSA E COMUNICAÇÃO DA CÂMARA."
+      },
+      {
+        "data": "2026-07-13",
+        "fornecedor": "FLAVIO JESUS DUARTE ESPINOSA",
+        "cnpj": "64.210.608/0001-23",
+        "categoria": "Material de Consumo",
+        "valor": 800.36,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000008/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação de empresa especializada para execução de"
       },
       {
         "data": "2026-06-18",
@@ -6502,30 +6563,6 @@
       },
       {
         "data": "2026-07-13",
-        "fornecedor": "FLAVIO JESUS DUARTE ESPINOSA",
-        "cnpj": "64.210.608/0001-23",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000008/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação de empresa especializada para execução de"
-      },
-      {
-        "data": "2026-07-13",
-        "fornecedor": "FLAVIO JESUS DUARTE ESPINOSA",
-        "cnpj": "64.210.608/0001-23",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000008/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação de empresa especializada para execução de"
-      },
-      {
-        "data": "2026-07-13",
-        "fornecedor": "FLAVIO JESUS DUARTE ESPINOSA",
-        "cnpj": "64.210.608/0001-23",
-        "categoria": "Material de Consumo",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000008/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 3 - Mod. Formatada: 3 - Contratação de empresa especializada para execução de"
-      },
-      {
-        "data": "2026-07-13",
         "fornecedor": "KCM ASSESSORIA, CAPACITAÇÕES, TREINAMENTOS, CURSOS",
         "cnpj": "58.772.397/0001-10",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
@@ -6869,14 +6906,6 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000013/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 5 - Mod. Formatada: 5 - Contratação, em solução global e integrada, de empresa"
       },
       {
-        "data": "2026-10-27",
-        "fornecedor": "KCM CENTRO NACIONAL DE TREINAMENTOS, CAPACITACOES",
-        "cnpj": "66.962.221/0001-59",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 3 (TRÊS) INSCRIÇÕES DOS VEREADORES: MICHELE DA CRUZ FLORES, RAMONA DE LIMA AQUINO e PEDRO APARECIDO ROSARIO, E 1 (UMA) DO SERVIDOR RAFAEL AUGUSTO LORETO"
-      },
-      {
         "data": "2026-10-29",
         "fornecedor": "PEDRO APARECIDO ROSÁRIO",
         "cnpj": "137.XXX.XXX-92",
@@ -6934,14 +6963,6 @@
       },
       {
         "data": "2026-11-04",
-        "fornecedor": "KCM CENTRO NACIONAL DE TREINAMENTOS, CAPACITACOES",
-        "cnpj": "66.962.221/0001-59",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 5 (CINCO) INSCRIÇÕES DOS VEREADORES: ROSINEIDE APARECIDA DOS SANTOS; ADÃO CARLOS DUARTE, JHONATAN JACQUES MARQUES, LUCAS LEANDRO PAES E ANDRE LUIZ OCAMPO"
-      },
-      {
-        "data": "2026-11-04",
         "fornecedor": "LIDERGOV INSTITUTO DE FORMAÇÃO E ASSESSORIA EM GES",
         "cnpj": "54.108.236/0001-75",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
@@ -6957,20 +6978,12 @@
         "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 2,5 (DUAS E MEIA) DIÁRIA PARA O SERVIDOR DA CÂMARA PARTICIPAR DE CURSO DA LIDERGOV, SOBRE COMUNICAÇÃO ESTRATÉGICA NO PODER PUBLICO, ORATÓRIA, POSICIONAME"
       },
       {
-        "data": "2026-11-04",
-        "fornecedor": "KCM CENTRO NACIONAL DE TREINAMENTOS, CAPACITACOES",
-        "cnpj": "66.962.221/0001-59",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 5 (CINCO) INSCRIÇÕES DOS VEREADORES: ROSINEIDE APARECIDA DOS SANTOS; ADÃO CARLOS DUARTE, JHONATAN JACQUES MARQUES, LUCAS LEANDRO PAES E ANDRE LUIZ OCAMPO"
-      },
-      {
-        "data": "2026-11-04",
-        "fornecedor": "ÂNGELO CARLOS PERES CHERES",
-        "cnpj": "023.XXX.XXX-05",
+        "data": "2026-11-05",
+        "fornecedor": "JOSÉ CARLOS DE OLIVEIRA",
+        "cnpj": "036.XXX.XXX-96",
         "categoria": "Diárias — Civil",
         "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 2,5 (DUAS E MEIA) DIÁRIAS, PARA PARTICIPAR, DE 04/11/2026 A 06/11//2026, A CONVITE DA KCM, NO AUDITÓRIO DO HOTEL CONCORD, NA AV. CALÓGERA. 1624, EM CAMPO"
+        "descricao": "VALOR QUE SE EMPENHA DESTINADO AO PAGAMENTO DE 2,5 (DUAS E MEIA) DIÁRIA PARA O SERVIDOR DA CÂMARA PARTICIPAR DE CURSO DA LIDERGOV, SOBRE COMUNICAÇÃO ESTRATÉGICA NO PODER PUBLICO, ORATÓRIA, POSICIONAME"
       }
     ]
   }
