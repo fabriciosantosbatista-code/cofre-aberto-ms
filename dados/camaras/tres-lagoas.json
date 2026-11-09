@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-11-08T17:17:02",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-11-08T17:17:02",
+  "ultimaAtualizacao": "2026-11-09T21:40:00",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-11-09T21:40:00",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -569,23 +569,23 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 30481597.36,
+    "totalGeral": 30504804.62,
     "totalNotas": 834,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 17283803.59,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 4452296.65,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 4467196.65,
       "Auxílio-Alimentação": 3130463.55,
       "Obrigações Patronais": 2500251.75,
       "Diárias — Civil": 682747.67,
       "Serviços de Tecnologia da Informação": 664330.42,
       "Locação de Mão de Obra": 433829.85,
       "Aporte para Cobertura de Déficit Atuarial do RPPS": 367746.84,
+      "Material de Consumo": 299065.95,
       "Serviços de Consultoria": 294142.96,
-      "Material de Consumo": 292194.89,
       "Outros Benefícios Assistenciais do Servidor": 145164.04,
       "Indenizações e Restituições": 81912.02,
+      "Equipamentos e Material Permanente": 49691.55,
       "Despesas de Exercícios Anteriores": 48725.47,
-      "Equipamentos e Material Permanente": 48255.35,
       "Elemento 94": 35770.93,
       "Elemento 32": 10000.0,
       "Passagens e Despesas com Locomoção": 4961.38,
@@ -842,6 +842,14 @@
         "descricao": "DESPESAS REFERENTE A CONTRIBUIÇÃO PREVIDENCIÁRIA (INSS) PATRONAL REF. MES DE ABRIL/2026, REF. SERVIDORES VINCULADOS AO REGIME GERAL DA PREVIDENCIA SOCIAL."
       },
       {
+        "data": "2026-01-30",
+        "fornecedor": "VAGNER DOS SANTOS",
+        "cnpj": "27.441.604/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 134100.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000071/25 - Ano Mod.: 2025 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 12 - Mod. Formatada: 000012 - Contratação de empresa especializada no serviço de"
+      },
+      {
         "data": "2026-01-26",
         "fornecedor": "TICKET SERVICOS SA",
         "cnpj": "47.866.934/0001-74",
@@ -872,14 +880,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 121100.0,
         "descricao": "DESPESAS REFERENTE A FOLHA DÉCIMO TERCEIRO VEREADORES VINCULADOS AO RGPS,  REF.  13º 2026 (1ª Parcela)"
-      },
-      {
-        "data": "2026-01-30",
-        "fornecedor": "VAGNER DOS SANTOS",
-        "cnpj": "27.441.604/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 119200.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000071/25 - Ano Mod.: 2025 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 12 - Mod. Formatada: 000012 - Contratação de empresa especializada no serviço de"
       },
       {
         "data": "2026-01-29",
@@ -1346,6 +1346,14 @@
         "descricao": "Processo 15/26  serviço de capacitação que realizará o evento denominado “Alta Performance no Legislativo Municipal: Decisão Política, Gestão Segura e Inovação”, oferecido pela empresa UNECTA EVENTOS"
       },
       {
+        "data": "2026-01-19",
+        "fornecedor": "GIANCARLO TELLES SILVA LTDA",
+        "cnpj": "38.213.665/0001-56",
+        "categoria": "Material de Consumo",
+        "valor": 25626.53,
+        "descricao": "Processo 062/24 - fornecimento de itens alimentícios (café, açúcar, chá, adoçante, água mineral, e alimentos e bebidas para uso em coffee break), para a Câmara Municipal de Três Lagoas."
+      },
+      {
         "data": "2026-01-29",
         "fornecedor": "FOLHA DE PGTO SERV. COMISSIONADOS (Câmara)",
         "cnpj": "15.410.145/0001-38",
@@ -1360,14 +1368,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 24925.0,
         "descricao": "PROCESSO 22/26  Contratação de empresa especializada, na prestação de serviço de capacitação que realizará o evento denominado “UCV/MS SUMMIT – EDIÇÃO CONECTA (Congresso de Vereadores de Mato Grosso d"
-      },
-      {
-        "data": "2026-01-19",
-        "fornecedor": "GIANCARLO TELLES SILVA LTDA",
-        "cnpj": "38.213.665/0001-56",
-        "categoria": "Material de Consumo",
-        "valor": 24497.97,
-        "descricao": "Processo 062/24 - fornecimento de itens alimentícios (café, açúcar, chá, adoçante, água mineral, e alimentos e bebidas para uso em coffee break), para a Câmara Municipal de Três Lagoas."
       },
       {
         "data": "2026-04-29",
@@ -1664,6 +1664,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 11880.0,
         "descricao": "Processo 051/26 Prestação de serviço de capacitação que realizará o evento denominado “SEMINÁRIO: “NOVOS DESAFIOS DO LEGISLATIVO MUNICIPAL: ATUAÇÃO PARLAMENTAR, TECNOLOGIA E GESTÃO PÚBLICA”, oferecido"
+      },
+      {
+        "data": "2026-03-17",
+        "fornecedor": "ESKIP DISTRIBUIDORA LTDA",
+        "cnpj": "47.128.762/0001-31",
+        "categoria": "Material de Consumo",
+        "valor": 11485.0,
+        "descricao": "Contratação de empresa para aquisição de materiais de expediente de uso comum, de forma contínua, para Câmara Municipal de Três Lagoas-MS, conforme condições e exigências estabelecidas no Termo de Ref"
       },
       {
         "data": "2026-06-16",
@@ -1976,14 +1984,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 5960.0,
         "descricao": "Contratação de empresa especializada, na prestação de serviço de capacitação que realizará o evento denominado “Portal e LGPD e-SIC e Ouvidoria”, oferecido pela empresa UNYFLEX - UNYGOV CAPACITACAO E"
-      },
-      {
-        "data": "2026-03-17",
-        "fornecedor": "ESKIP DISTRIBUIDORA LTDA",
-        "cnpj": "47.128.762/0001-31",
-        "categoria": "Material de Consumo",
-        "valor": 5742.5,
-        "descricao": "Contratação de empresa para aquisição de materiais de expediente de uso comum, de forma contínua, para Câmara Municipal de Três Lagoas-MS, conforme condições e exigências estabelecidas no Termo de Ref"
       },
       {
         "data": "2026-10-02",
@@ -4658,6 +4658,14 @@
         "descricao": "DESPESAS REFERENTE A SALDO SALÁRIO REF. EXONERAÇÃO SERVIDORES:\r\nFabiano Ferran Leal de Queiroz\r\nJonatas Modesto Santos"
       },
       {
+        "data": "2026-10-05",
+        "fornecedor": "STYLE COMERCIO E SERVICOS LTDA",
+        "cnpj": "57.316.498/0001-13",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 1436.2,
+        "descricao": "Contratação de empresas especializadas para aquisição de suporte de banner e backdrop para uso nas dependências da Câmara Municipal de Três Lagoas/MS, conforme condições e exigências estabelecidas no"
+      },
+      {
         "data": "2026-05-04",
         "fornecedor": "IIMA - INFO MANAGEMENT COMUNICACAO LTDA",
         "cnpj": "38.904.674/0001-93",
@@ -7192,14 +7200,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "PROCESSO 42/26 Serviço de remoção e instalação de película de controle solar para guarita da Câmara Municipal de Três Lagoas-MS."
-      },
-      {
-        "data": "2026-10-05",
-        "fornecedor": "STYLE COMERCIO E SERVICOS LTDA",
-        "cnpj": "57.316.498/0001-13",
-        "categoria": "Equipamentos e Material Permanente",
-        "valor": 0.0,
-        "descricao": "Contratação de empresas especializadas para aquisição de suporte de banner e backdrop para uso nas dependências da Câmara Municipal de Três Lagoas/MS, conforme condições e exigências estabelecidas no"
       },
       {
         "data": "2026-10-09",
