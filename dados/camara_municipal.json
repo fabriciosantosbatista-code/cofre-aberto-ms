@@ -1,5 +1,5 @@
 {
-  "ultimaAtualizacao": "2026-11-10T01:04:41",
+  "ultimaAtualizacao": "2026-11-10T22:30:04",
   "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande/MS (SCPI Fiorilli, 45.225.6.93:8079) — Verba Indenizatória (Ato 027/028) extraída dos PDFs individuais por vereador via HomeDocumentosPublicados.aspx, atualizado em 10/11/2026.",
   "resumo": {
     "totalVereadores": 29,
@@ -7,7 +7,7 @@
     "totalFuncionariosGabinetes": 684,
     "totalGastoPessoalMensal": 4436294.21,
     "totalVerbaIndenizatoriaAnual": 8700000.0,
-    "totalVerbaIndenizatoriaPaga2026": 5719192.59
+    "totalVerbaIndenizatoriaPaga2026": 5908281.13
   },
   "vereadores": [
     {
@@ -25,14 +25,14 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 99000.0,
-        "gastoAto028_2026": 72000.0,
-        "gastoPago2026": 171000.0,
-        "percentualUsado": 57.0,
+        "gastoAto027_2026": 100000.0,
+        "gastoAto028_2026": 96000.0,
+        "gastoPago2026": 196000.0,
+        "percentualUsado": 65.3,
         "mesesAto027": {
-          "jan": 8000.0,
-          "fev": 8000.0,
-          "mar": 8000.0,
+          "jan": 12500.0,
+          "fev": 5500.0,
+          "mar": 7000.0,
           "abr": 12500.0,
           "mai": 12500.0,
           "jun": 12500.0,
@@ -46,12 +46,23 @@
           "mai": 12000.0,
           "jul": 12000.0,
           "ago": 12000.0,
-          "set": 12000.0
+          "set": 12000.0,
+          "jan": 12000.0,
+          "mar": 12000.0
         },
         "categorias": {},
         "notaColeta": "PDF com poucas páginas — dados limitados a 6 páginas para 3 meses.",
         "descricaoGeral": "Reembolso de despesas vinculadas à atividade parlamentar (Ato da Mesa Diretora nº 27/2017 — atividade parlamentar geral: combustíveis, divulgação, serviços gráficos, locação de veículo, software/internet; nº 28/2017 — assessoria técnica). Dados coletados via Claude para Chrome no portal 45.225.6.93:8079/transparencia (jun/2026).",
-        "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (45.225.6.93:8079) — Verba Indenizatória. Coletado via Claude para Chrome em jun/2026."
+        "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (45.225.6.93:8079) — Verba Indenizatória. Coletado via Claude para Chrome em jun/2026.",
+        "mesesTotalPelosItens027": [
+          "jan",
+          "fev",
+          "mar"
+        ],
+        "mesesTotalPelosItens028": [
+          "jan",
+          "mar"
+        ]
       },
       "gastosExtras": {
         "totalExtras2026": 4200.0,
@@ -471,18 +482,23 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 24052.34,
-        "gastoAto028_2026": 107000.0,
-        "gastoPago2026": 131052.34,
-        "percentualUsado": 43.7,
+        "gastoAto027_2026": 59971.68,
+        "gastoAto028_2026": 112500.0,
+        "gastoPago2026": 172471.68,
+        "percentualUsado": 57.5,
         "mesesAto027": {
-          "jan": 11869.66,
-          "fev": 7000.0,
-          "mar": 5182.68
+          "jan": 12484.97,
+          "fev": 12182.68,
+          "mar": 5349.09,
+          "abr": 5484.0,
+          "mai": 9434.49,
+          "jun": 5420.09,
+          "jul": 5243.13,
+          "ago": 4373.23
         },
         "mesesAto028": {
           "jan": 12500.0,
-          "fev": 7000.0,
+          "fev": 12500.0,
           "mar": 12500.0,
           "abr": 12500.0,
           "mai": 12500.0,
@@ -497,7 +513,13 @@
         },
         "notaColeta": "",
         "descricaoGeral": "Reembolso de despesas parlamentares (Ato 027: combustível, divulgação, locação, software; Ato 028: assessoria técnica).",
-        "fonte": "Portal da Transparência CMCG (45.225.6.93:8079) — coletado via Claude para Chrome jun/2026"
+        "fonte": "Portal da Transparência CMCG (45.225.6.93:8079) — coletado via Claude para Chrome jun/2026",
+        "mesesTotalPelosItens027": [
+          "jan",
+          "abr",
+          "mai",
+          "jun"
+        ]
       },
       "gastosExtras": {
         "totalExtras2026": null,
@@ -3715,10 +3737,10 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 108988.46,
+        "gastoAto027_2026": 113988.46,
         "gastoAto028_2026": 112500.0,
-        "gastoPago2026": 221488.46,
-        "percentualUsado": 73.8,
+        "gastoPago2026": 226488.46,
+        "percentualUsado": 75.5,
         "mesesAto027": {
           "jan": 11705.03,
           "fev": 12015.5,
@@ -3726,7 +3748,7 @@
           "abr": 12387.22,
           "mai": 12281.06,
           "jun": 12452.67,
-          "jul": 11973.94,
+          "jul": 16973.94,
           "ago": 12257.45,
           "set": 12155.55
         },
@@ -3747,7 +3769,10 @@
         },
         "notaColeta": "",
         "descricaoGeral": "Reembolso de despesas parlamentares (Ato 027: combustível, divulgação, locação, software; Ato 028: assessoria técnica).",
-        "fonte": "Portal da Transparência CMCG (45.225.6.93:8079) — coletado via Claude para Chrome jun/2026"
+        "fonte": "Portal da Transparência CMCG (45.225.6.93:8079) — coletado via Claude para Chrome jun/2026",
+        "mesesTotalPelosItens027": [
+          "jul"
+        ]
       },
       "gastosExtras": {
         "totalExtras2026": 1200.0,
@@ -3768,7 +3793,7 @@
         "gastoPessoalAnual": 2049142.2,
         "totalEstimado": 2530117.22
       },
-      "totalNotasFiscais": 57,
+      "totalNotasFiscais": 60,
       "despesas": [
         {
           "data": "2026-02-03",
@@ -4149,6 +4174,15 @@
           "ato": "ATO 028"
         },
         {
+          "data": "2026-08-06",
+          "fornecedor": "VITORIACOMERCIO E TRANSPORTES LTDA =",
+          "cnpj": "02.422.918/0001-54",
+          "valor": 230.14,
+          "nf": null,
+          "descricao": "NFC-e 001500327 5 | GASOLINA SN 35,46L EM RWB6B11N & % S :",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-08-07",
           "fornecedor": "VIPCAR LTDA >",
           "cnpj": "50.442.570/0001-00",
@@ -4158,12 +4192,30 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-08-11",
+          "fornecedor": "VITORIA COMERCIO E TRANSPORTES LTDA",
+          "cnpj": "02.422.918/0001-54",
+          "valor": 269.28,
+          "nf": null,
+          "descricao": "NFC-e0O01503411 €N| GASOLINA À 41,49L “— | RWB6B11 +]",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-08-19",
           "fornecedor": "OX PEREIRA COMUNICAÇÃO VISUALLTDA",
           "cnpj": "41.199.078/0001-64",
           "valor": 2500.0,
           "nf": "S-e271",
           "descricao": "Divulgação de Atividade Parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-28",
+          "fornecedor": "VITORIA COMERCIO ETRANSPORTES LTDA x]",
+          "cnpj": "02.422.918/0001-54",
+          "valor": 250.03,
+          "nf": null,
+          "descricao": "QNFC-e 001514995 : GASOLINA > | 39,75 v RWB6B11",
           "ato": "ATO 027"
         },
         {
@@ -5701,16 +5753,16 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 99207.0,
+        "gastoAto027_2026": 99559.25,
         "gastoAto028_2026": 91950.0,
-        "gastoPago2026": 191157.0,
-        "percentualUsado": 63.7,
+        "gastoPago2026": 191509.25,
+        "percentualUsado": 63.8,
         "mesesAto027": {
           "jan": 12440.0,
           "fev": 12449.0,
           "mar": 12500.0,
           "abr": 12420.0,
-          "mai": 11100.0,
+          "mai": 11452.25,
           "jun": 12049.0,
           "jul": 7850.0,
           "ago": 10399.0,
@@ -8238,9 +8290,9 @@
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
         "gastoAto027_2026": 76250.0,
-        "gastoAto028_2026": 84000.0,
-        "gastoPago2026": 160250.0,
-        "percentualUsado": 53.4,
+        "gastoAto028_2026": 88500.0,
+        "gastoPago2026": 164750.0,
+        "percentualUsado": 54.9,
         "mesesAto027": {
           "jan": 11600.0,
           "fev": 12450.0,
@@ -8260,7 +8312,8 @@
           "mai": 12500.0,
           "jun": 12500.0,
           "ago": 4500.0,
-          "set": 4500.0
+          "set": 4500.0,
+          "jul": 4500.0
         },
         "categorias": {
           "Divulgação parlamentar": 9800.0,
@@ -8681,14 +8734,14 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 75156.9,
+        "gastoAto027_2026": 157756.9,
         "gastoAto028_2026": 95000.0,
-        "gastoPago2026": 170156.9,
-        "percentualUsado": 56.7,
+        "gastoPago2026": 252756.9,
+        "percentualUsado": 84.3,
         "mesesAto027": {
           "jan": 12342.79,
           "fev": 12484.94,
-          "mar": 9600.0,
+          "mar": 92200.0,
           "abr": 12240.0,
           "mai": 12360.53,
           "jun": 12369.44,
@@ -8711,7 +8764,10 @@
         },
         "notaColeta": "",
         "descricaoGeral": "Reembolso de despesas parlamentares (Ato 027: combustível, divulgação, locação, software; Ato 028: assessoria técnica).",
-        "fonte": "Portal da Transparência CMCG (45.225.6.93:8079) — coletado via Claude para Chrome jun/2026"
+        "fonte": "Portal da Transparência CMCG (45.225.6.93:8079) — coletado via Claude para Chrome jun/2026",
+        "mesesTotalPelosItens027": [
+          "mar"
+        ]
       },
       "gastosExtras": {
         "totalExtras2026": null,
@@ -9564,12 +9620,12 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 98939.53,
-        "gastoAto028_2026": 100000.0,
-        "gastoPago2026": 198939.53,
-        "percentualUsado": 66.3,
+        "gastoAto027_2026": 103371.7,
+        "gastoAto028_2026": 112500.0,
+        "gastoPago2026": 215871.7,
+        "percentualUsado": 72.0,
         "mesesAto027": {
-          "jan": 0.91,
+          "jan": 4433.08,
           "fev": 12373.7,
           "mar": 12443.15,
           "abr": 12425.48,
@@ -9581,10 +9637,14 @@
         },
         "mesesAto028": {
           "jan": 12500.0,
-          "fev": 25000.0,
-          "abr": 37500.0,
+          "fev": 12500.0,
+          "abr": 12500.0,
           "jul": 12500.0,
-          "ago": 12500.0
+          "ago": 12500.0,
+          "mar": 12500.0,
+          "mai": 12500.0,
+          "jun": 12500.0,
+          "set": 12500.0
         },
         "categorias": {
           "Divulgação parlamentar": 11000.0,
@@ -9592,7 +9652,10 @@
         },
         "notaColeta": "",
         "descricaoGeral": "Reembolso de despesas parlamentares (Ato 027: combustível, divulgação, locação, software; Ato 028: assessoria técnica).",
-        "fonte": "Portal da Transparência CMCG (45.225.6.93:8079) — coletado via Claude para Chrome jun/2026"
+        "fonte": "Portal da Transparência CMCG (45.225.6.93:8079) — coletado via Claude para Chrome jun/2026",
+        "mesesTotalPelosItens027": [
+          "jan"
+        ]
       },
       "gastosExtras": {
         "totalExtras2026": null,
@@ -10608,11 +10671,12 @@
           "jan": 12500.0,
           "fev": 12500.0,
           "mar": 12500.0,
-          "abr": 25000.0,
+          "abr": 12500.0,
           "jun": 12500.0,
           "jul": 12500.0,
           "ago": 12500.0,
-          "set": 12500.0
+          "set": 12500.0,
+          "mai": 12500.0
         },
         "categorias": {
           "Divulgação parlamentar": 27000.0,
@@ -12768,9 +12832,10 @@
           "mar": 12494.57,
           "abr": 12146.62,
           "mai": 12469.3,
-          "jun": 21973.62,
+          "jun": 10098.15,
           "ago": 11655.83,
-          "set": 12179.87
+          "set": 12179.87,
+          "jul": 11875.47
         },
         "mesesAto028": {
           "jan": 12495.0,
@@ -17464,9 +17529,9 @@
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
         "gastoAto027_2026": 112100.0,
-        "gastoAto028_2026": 120500.0,
-        "gastoPago2026": 232600.0,
-        "percentualUsado": 77.5,
+        "gastoAto028_2026": 108000.0,
+        "gastoPago2026": 220100.0,
+        "percentualUsado": 73.4,
         "mesesAto027": {
           "jan": 12100.0,
           "fev": 12500.0,
@@ -17482,11 +17547,12 @@
           "fev": 12000.0,
           "mar": 12000.0,
           "abr": 12000.0,
-          "mai": 24000.0,
-          "jun": 12500.0,
+          "mai": 12000.0,
+          "jun": 12000.0,
           "jan": 12000.0,
-          "jul": 24000.0,
-          "set": 12000.0
+          "jul": 12000.0,
+          "set": 12000.0,
+          "ago": 12000.0
         },
         "categorias": {
           "Locação de veículo": 5500.0,
@@ -17506,7 +17572,7 @@
         "gastoPessoalAnual": 1319611.68,
         "totalEstimado": 1956504.42
       },
-      "totalNotasFiscais": 56,
+      "totalNotasFiscais": 62,
       "despesas": [
         {
           "data": "2026-01-21",
@@ -17878,6 +17944,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-07-29",
+          "fornecedor": "FLAVIA TRINDADE FERNANDES DE SOUZA",
+          "cnpj": "54.284.645/0001-22",
+          "valor": 1800.0,
+          "nf": "S-e 77",
+          "descricao": "Divulgação de Atividade Parlamentar",
+          "ato": "ATO 027"
+        },
+        {
           "data": "2026-07-31",
           "fornecedor": "MARCELO DASILVAPEREIRA Pá",
           "cnpj": "40.533.737/0001-94",
@@ -17885,6 +17960,51 @@
           "nf": "76",
           "descricao": "SERVIÇOS DEFOTOGRAFIA, ACOMPANHAMENTO, COBERTURA DEEVENTOS EGESTÃO DEIMAGEM",
           "ato": "ATO 028"
+        },
+        {
+          "data": "2026-07-31",
+          "fornecedor": "RAIO X NOTICIAS E INFORMAÇÃO LTDA ME",
+          "cnpj": "10.530.100/0001-83",
+          "valor": 1800.0,
+          "nf": "406",
+          "descricao": "Divulgação de Atividade Parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-31",
+          "fornecedor": "MARECHAL MOTORS LTDA",
+          "cnpj": "40.298.830/0001-61",
+          "valor": 3000.0,
+          "nf": null,
+          "descricao": "REC 0370 | Locação de Automóveis",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-07-31",
+          "fornecedor": "MARECHAL MOTORS LTDA",
+          "cnpj": "40.298.830/0001-61",
+          "valor": 2500.0,
+          "nf": null,
+          "descricao": "REC 0220 | Locação de Automóveis",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-01",
+          "fornecedor": "EDER FLORENCIO YANAGUITA",
+          "cnpj": "24.523.677/0001-72",
+          "valor": 3000.0,
+          "nf": "320",
+          "descricao": "Divulgação de Atividade Parlamentar",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-08-03",
+          "fornecedor": "NATHALIA FONTOURA GOMES VILALBA",
+          "cnpj": "42.420.113/0001-96",
+          "valor": 400.0,
+          "nf": "00000191",
+          "descricao": "Divulgação de Atividade Parlamentar",
+          "ato": "ATO 027"
         },
         {
           "data": "2026-08-28",
@@ -18051,11 +18171,12 @@
           "jan": 12500.0,
           "fev": 12500.0,
           "mar": 12500.0,
-          "abr": 25000.0,
+          "abr": 12500.0,
           "jun": 12500.0,
           "jul": 12500.0,
           "ago": 12500.0,
-          "set": 12500.0
+          "set": 12500.0,
+          "mai": 12500.0
         },
         "categorias": {},
         "notaColeta": "Notas parcialmente legíveis — locação + serviços R$ 5.500–8.000/mês.",
@@ -21567,10 +21688,10 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 98760.4,
+        "gastoAto027_2026": 111258.73,
         "gastoAto028_2026": 100000.0,
-        "gastoPago2026": 198760.4,
-        "percentualUsado": 66.3,
+        "gastoPago2026": 211258.73,
+        "percentualUsado": 70.4,
         "mesesAto027": {
           "jan": 12495.43,
           "fev": 12433.24,
@@ -21579,7 +21700,8 @@
           "mai": 12496.1,
           "jun": 12498.08,
           "jul": 11341.32,
-          "ago": 12496.89
+          "ago": 12496.89,
+          "set": 12498.33
         },
         "mesesAto028": {
           "jan": 12500.0,
@@ -21627,7 +21749,7 @@
         "gastoPessoalAnual": 1285824.0,
         "totalEstimado": 1770609.7
       },
-      "totalNotasFiscais": 60,
+      "totalNotasFiscais": 62,
       "despesas": [
         {
           "data": "2026-01-05",
@@ -22168,6 +22290,24 @@
           "nf": null,
           "descricao": "\"| NF-eNº 000.028.922 ETANOLHIDRAT 362,3612 PAV1003,UGXOD19, Série 1 NRU4E77",
           "ato": "ATO 027"
+        },
+        {
+          "data": "2026-10-01",
+          "fornecedor": "1 A.P.N LOCAÇÕES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 5500.0,
+          "nf": "6601",
+          "descricao": "AA8E LOCAÇÃO DE VEÍCULO REF. SETEMBRO/2026",
+          "ato": "ATO 027"
+        },
+        {
+          "data": "2026-10-01",
+          "fornecedor": "A.P.N LOCAÇÕES LTDA",
+          "cnpj": "58.522.143/0001-43",
+          "valor": 3000.0,
+          "nf": "6200",
+          "descricao": "C203 - LOCAÇÃO DEVEÍCULO REF. SETEMBRO/2026",
+          "ato": "ATO 027"
         }
       ],
       "foto": "data:image/jpeg;base64,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",
@@ -22190,9 +22330,9 @@
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
         "gastoAto027_2026": 91392.4,
-        "gastoAto028_2026": 100000.0,
-        "gastoPago2026": 191392.4,
-        "percentualUsado": 63.8,
+        "gastoAto028_2026": 112500.0,
+        "gastoPago2026": 203892.4,
+        "percentualUsado": 68.0,
         "mesesAto027": {
           "jan": 12372.08,
           "fev": 12360.07,
@@ -22211,7 +22351,8 @@
           "mai": 12500.0,
           "jun": 12500.0,
           "ago": 12500.0,
-          "set": 12500.0
+          "set": 12500.0,
+          "jul": 12500.0
         },
         "categorias": {
           "Serviços": 19000.0,
@@ -22219,7 +22360,10 @@
         },
         "notaColeta": "",
         "descricaoGeral": "Reembolso de despesas parlamentares (Ato 027: combustível, divulgação, locação, software; Ato 028: assessoria técnica).",
-        "fonte": "Portal da Transparência CMCG (45.225.6.93:8079) — coletado via Claude para Chrome jun/2026"
+        "fonte": "Portal da Transparência CMCG (45.225.6.93:8079) — coletado via Claude para Chrome jun/2026",
+        "mesesTotalPelosItens028": [
+          "jul"
+        ]
       },
       "gastosExtras": {
         "totalExtras2026": null,
@@ -22231,7 +22375,7 @@
         "gastoPessoalAnual": 1265309.76,
         "totalEstimado": 1753200.1
       },
-      "totalNotasFiscais": 67,
+      "totalNotasFiscais": 68,
       "despesas": [
         {
           "data": "2026-01-27",
@@ -22783,6 +22927,15 @@
           "ato": "ATO 027"
         },
         {
+          "data": "2026-09-01",
+          "fornecedor": "k GLAYCHMAN SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+          "cnpj": "33.497.402/0001-00",
+          "valor": 12500.0,
+          "nf": null,
+          "descricao": "NE nº 173 PROJETOS E PARECERES",
+          "ato": "ATO 028"
+        },
+        {
           "data": "2026-09-02",
           "fornecedor": "REDEAUTO POSTO VILAÇA COM ETRANSP E LOGISTICA LTDA",
           "cnpj": "54.014.085/0001-96",
@@ -22856,17 +23009,17 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 111048.39,
+        "gastoAto027_2026": 111144.76,
         "gastoAto028_2026": 110700.0,
-        "gastoPago2026": 221748.39,
+        "gastoPago2026": 221844.76,
         "percentualUsado": 73.9,
         "mesesAto027": {
-          "jan": 12789.52,
+          "jan": 12425.01,
           "fev": 12364.51,
           "mar": 12491.44,
           "abr": 12500.0,
           "mai": 12471.22,
-          "jun": 12000.0,
+          "jun": 12460.88,
           "jul": 12400.0,
           "ago": 12447.42,
           "set": 11584.28
@@ -22889,7 +23042,10 @@
         },
         "notaColeta": "",
         "descricaoGeral": "Reembolso de despesas parlamentares (Ato 027: combustível, divulgação, locação, software; Ato 028: assessoria técnica).",
-        "fonte": "Portal da Transparência CMCG (45.225.6.93:8079) — coletado via Claude para Chrome jun/2026"
+        "fonte": "Portal da Transparência CMCG (45.225.6.93:8079) — coletado via Claude para Chrome jun/2026",
+        "mesesTotalPelosItens027": [
+          "jun"
+        ]
       },
       "gastosExtras": {
         "totalExtras2026": 1200.0,
@@ -23797,18 +23953,18 @@
         "cotaAnual2026": 300000.0,
         "atoMesa027": 150000.0,
         "atoMesa028": 150000.0,
-        "gastoAto027_2026": 107000.0,
+        "gastoAto027_2026": 107690.08,
         "gastoAto028_2026": 95800.0,
-        "gastoPago2026": 202800.0,
-        "percentualUsado": 67.6,
+        "gastoPago2026": 203490.08,
+        "percentualUsado": 67.8,
         "mesesAto027": {
-          "jan": 12500.0,
+          "jan": 12590.0,
           "fev": 12500.0,
           "mar": 12500.0,
           "abr": 12500.0,
           "mai": 12500.0,
           "jun": 12500.0,
-          "jul": 7000.0,
+          "jul": 7600.08,
           "ago": 12500.0,
           "set": 12500.0
         },
@@ -23826,7 +23982,11 @@
         "categorias": {},
         "notaColeta": "3 meses, 6 páginas — valores estimados (R$ 8.000–12.000/mês), notas não legíveis.",
         "descricaoGeral": "Reembolso de despesas vinculadas à atividade parlamentar (Ato da Mesa Diretora nº 27/2017 — atividade parlamentar geral: combustíveis, divulgação, serviços gráficos, locação de veículo, software/internet; nº 28/2017 — assessoria técnica). Dados coletados via Claude para Chrome no portal 45.225.6.93:8079/transparencia (jun/2026).",
-        "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (45.225.6.93:8079) — Verba Indenizatória. Coletado via Claude para Chrome em jun/2026."
+        "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (45.225.6.93:8079) — Verba Indenizatória. Coletado via Claude para Chrome em jun/2026.",
+        "mesesTotalPelosItens027": [
+          "jan",
+          "jul"
+        ]
       },
       "gastosExtras": {
         "totalExtras2026": 1200.0,
