@@ -65,9 +65,11 @@ def main(alvos_txt):
                 tot = cg.TOTAL_RESUMO_RE.search(t) if tipo == "RESUMO" else cg.TOTAL_PAGINA_RE.search(t)
                 idx = t.find("Mês")
                 trecho_mes = re.sub(r"\s+", " ", t[idx:idx + 40]) if idx >= 0 else "(sem 'Mês')"
+                inicio = re.sub(r"[^\w ]", " ", t[:90])
+                total_txt = tot.group(1) if tot else "-"
+                extra = f" | início: {inicio!r}" if tipo == "—" else ""
                 print(f"  p{i:>3}: mês={m or '-'}/{a or '-'} (contexto {mes_atual or '-'}) tipo={tipo:<11} "
-                      f"total={tot.group(1) if tot else '-':>12} | {trecho_mes!r} | {len(t)} chars"
-                      + (f" | início: {re.sub(r'[^\\w ]', ' ', t[:90])!r}" if tipo == '—' else ""))
+                      f"total={total_txt:>12} | {trecho_mes!r} | {len(t)} chars{extra}")
             meses = cg.processa_pdf(f.name)
             print("  RESULTADO do leitor: " + ", ".join(f"{k}: total={v['totalDeclarado']}" for k, v in sorted(meses.items())))
 
