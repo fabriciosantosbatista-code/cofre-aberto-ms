@@ -1339,7 +1339,10 @@ FIORILLI_CAMARAS = [
     },
     {
         "cidade": "Itaporã",
-        "urlBase": "http://itaporams.ddns.net:5656/transparenciacm",
+        # O endereço antigo (itaporams.ddns.net:5656) saiu do ar em jul/2026; este é o
+        # link publicado hoje no site da Câmara. Em nov/2026 o portal novo respondia,
+        # mas redirecionava tudo para Erro.aspx (falha no servidor da prefeitura/câmara).
+        "urlBase": "https://transparencia.itapora.ms.gov.br/Transparenciacm",
         "empresa": "9",
         "paramAno": "Ano",
         "temServidores": True,
