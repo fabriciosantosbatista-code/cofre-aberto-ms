@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Metodologia, fontes e dados abertos | Cofre Aberto MS</title>
+<meta name="description" content="De onde vem cada número do Cofre Aberto MS, o que é dado oficial e o que é estimativa, limitações de cada fonte, como citar e download dos dados em CSV e JSON."/>
+<link rel="canonical" href="https://cofreabertoms.com.br/metodologia.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://cofreabertoms.com.br/metodologia.html"/>
+<meta property="og:title" content="Metodologia, fontes e dados abertos — Cofre Aberto MS"/>
+<meta property="og:description" content="De onde vem cada número, o que é estimativa, limitações, como citar e download dos dados (CSV/JSON)."/>
+<meta property="og:image" content="https://cofreabertoms.com.br/og-image.png"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:site_name" content="Cofre Aberto MS"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070910;--surface:#0f1117;--surface-2:#161a23;--border:#232839;--ink:#f0f3fa;--ink-soft:#8b95aa;--ink-caption:#6b7387;--accent:#4d7dff;--accent-btn:#3f6bf0;--amber:#f5c842;--positive:#2dd4a0}
+html,body{min-height:100vh;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.page{max-width:920px;margin:0 auto;padding:0 24px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid var(--border);gap:12px}
+.nav-cta{background:var(--accent-btn);color:#fff!important;border-radius:8px;padding:9px 18px;font-weight:600;font-size:.86rem;white-space:nowrap}
+.breadcrumb{font-size:.8rem;color:var(--ink-soft);padding:18px 0 0}.breadcrumb a{color:var(--ink-soft)}
+article{padding:24px 0 56px}
+h1{font-family:"Sora",sans-serif;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
+h2{font-family:"Sora",sans-serif;font-size:1.3rem;font-weight:700;margin:40px 0 12px;scroll-margin-top:16px}
+h3{font-family:"Sora",sans-serif;font-size:1rem;font-weight:700;margin:22px 0 8px;color:var(--ink)}
+p,li{font-size:.93rem;color:var(--ink-soft);line-height:1.7}p{margin-bottom:12px;max-width:760px}
+ul,ol{margin:0 0 12px 20px}li{margin-bottom:4px}
+strong{color:var(--ink)}code{background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:1px 5px;font-size:.82rem;color:var(--ink)}
+.sub{font-size:1.02rem;color:var(--ink-soft);max-width:720px;line-height:1.6}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 6px}
+.toc a{border:1px solid var(--border);border-radius:999px;padding:6px 12px;font-size:.8rem;color:var(--ink)}
+.box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin:12px 0}
+.tabela-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--surface);margin:10px 0 16px}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{text-align:left;padding:9px 12px;font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-caption);background:var(--surface-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--ink-soft);vertical-align:top}
+td b{color:var(--ink)}tbody tr:last-child td{border-bottom:none}
+.selo{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:600;border-radius:999px;padding:3px 9px;border:1px solid;white-space:nowrap}
+.selo.ok{color:var(--positive);border-color:rgba(45,212,160,.35);background:rgba(45,212,160,.08)}
+.selo.atencao{color:var(--amber);border-color:rgba(245,200,66,.35);background:rgba(245,200,66,.08)}
+.tag{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:6px;margin-right:4px}
+.tag.of{background:rgba(45,212,160,.12);color:var(--positive)}.tag.est{background:rgba(245,200,66,.12);color:var(--amber)}
+.citar{font-family:ui-monospace,Menlo,monospace;font-size:.8rem;color:var(--ink);background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;line-height:1.6}
+.btn{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:.8rem;color:var(--ink);background:var(--surface);cursor:pointer;font-family:inherit;margin-top:8px}
+.btn:hover{border-color:var(--accent)}
+footer{border-top:1px solid var(--border);padding:22px 0;font-size:.78rem;color:var(--ink-caption);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--ink-soft)}
+@media(max-width:640px){.page{padding:0 16px}td,th{padding:7px 8px}}
+</style>
+<script defer data-domain="cofreabertoms.com.br" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+<div class="page">
+<nav><a href="/"><img src="/logo.svg" alt="Cofre Aberto MS" width="147" height="44" style="display:block"/></a>
+<a class="nav-cta" href="/cofre-aberto-ms.html">Painel completo →</a></nav>
+<p class="breadcrumb"><a href="/">Início</a> / Metodologia e dados abertos</p>
+
+<article>
+<h1>Metodologia, fontes e dados abertos</h1>
+<p class="sub">De onde vem cada número do Cofre Aberto MS, o que é dado oficial e o que é estimativa, as limitações de cada fonte,
+como citar e como baixar os dados.</p>
+<div class="toc">
+  <a href="#principios">Princípios</a><a href="#status">Status das fontes</a><a href="#fontes">Fontes por aba</a>
+  <a href="#oficial-estimativa">Oficial × estimativa</a><a href="#limitacoes">Limitações</a><a href="#dados-abertos">Baixar os dados</a>
+  <a href="#citar">Como citar</a><a href="#correcoes">Correções</a>
+</div>
+
+<h2 id="principios">Princípios</h2>
+<ul>
+  <li><strong>Só dados públicos e oficiais.</strong> Todo número vem de um portal de transparência ou de uma base de dados aberta de órgão público. Nada é digitado à mão.</li>
+  <li><strong>Coleta automática, todo dia.</strong> Programas de código aberto baixam os dados das fontes oficiais. O site não edita nem "ajusta" valores. Quando uma fonte falha, o dado anterior é mantido e o painel indica a data da última atualização.</li>
+  <li><strong>Sem juízo de valor.</strong> O site mostra quanto foi gasto, com quem e quando. Ele <strong>não acusa ninguém</strong> e não afirma que qualquer gasto seja irregular. Cotas e verbas parlamentares são previstas em lei; usá-las não é ilegal.</li>
+  <li><strong>Estimativas são sempre marcadas.</strong> Quando um número é calculado pelo site, e não publicado pela fonte, isso aparece escrito ao lado dele.</li>
+  <li><strong>Código aberto.</strong> Os coletores e o site estão em <a href="https://github.com/fabriciosantosbatista-code/cofre-aberto-ms" target="_blank" rel="noopener">github.com/fabriciosantosbatista-code/cofre-aberto-ms</a>, com o histórico de todas as coletas.</li>
+</ul>
+
+<h2 id="status">Status das fontes agora</h2>
+<p>Atualizado automaticamente a cada coleta. <span class="selo ok">✅ em dia</span> significa que a fonte trouxe dado recente. <span class="selo atencao">⚠️ atenção</span> significa que o dado mais recente está mais antigo que o normal para aquela fonte — em geral porque o órgão ainda não publicou ou o portal está fora do ar.</p>
+<div class="tabela-wrap"><table id="tab-status">
+  <thead><tr><th>Aba</th><th>Fonte oficial</th><th>Dado mais recente</th><th>Última coleta</th><th>Situação</th></tr></thead>
+  <tbody><tr><td colspan="5">Carregando…</td></tr></tbody>
+</table></div>
+
+<h2 id="fontes">Fontes por aba</h2>
+<div class="tabela-wrap"><table>
+<thead><tr><th>Aba</th><th>O que mostra</th><th>Fonte oficial e como é coletada</th><th>Atraso típico</th></tr></thead>
+<tbody>
+<tr><td><b>Câmara CG</b></td><td>Verba indenizatória (Atos da Mesa 027 e 028/2017), notas fiscais, pessoal dos gabinetes, subsídio</td>
+<td>Portal da Transparência da Câmara Municipal (SCPI Fiorilli). A verba indenizatória só existe em <strong>PDFs escaneados por vereador</strong>, lidos por extração de texto. O pessoal dos gabinetes vem da folha de servidores do mesmo sistema (lotação = nome do vereador).</td><td>1 a 2 meses</td></tr>
+<tr><td><b>Dep. Estaduais</b></td><td>CEAP (cota parlamentar) e notas fiscais com link para o PDF</td>
+<td>Portal da Transparência da ALEMS (<code>transparencia2.al.ms.gov.br/ceap</code>), dados por deputado e por nota.</td><td>dias</td></tr>
+<tr><td><b>Dep. Federais MS e Brasil</b></td><td>CEAP e notas fiscais</td>
+<td>Arquivo completo da cota parlamentar publicado diariamente pela Câmara dos Deputados (<code>camara.leg.br/cotas/Ano-AAAA.csv.zip</code>). A lista de deputados vem da API de dados abertos da Câmara.</td><td>dias</td></tr>
+<tr><td><b>Senadores MS e Brasil</b></td><td>CEAPS, gastos fora da cota, pessoal, benefícios e notas fiscais</td>
+<td>API de dados abertos do Senado (<code>adm.senado.gov.br/adm-dadosabertos</code>) e lista de senadores em exercício (<code>legis.senado.leg.br/dadosabertos</code>).</td><td>dias</td></tr>
+<tr><td><b>Prefeitura CG</b></td><td>Despesas do ano: empenhado, liquidado, pago, por órgão e fornecedor</td>
+<td>Exportação da consulta de despesas do SIG-Transparência (<code>sig-transparencia.campogrande.ms.gov.br</code>); reserva: CSV de dados abertos da Prefeitura.</td><td>dias a semanas</td></tr>
+<tr><td><b>Câmaras MS</b></td><td>Subsídio, diárias e despesas institucionais das câmaras do interior</td>
+<td>Sistemas de transparência de cada câmara (Fiorilli SCPI, "Dados Abertos"; SAPL/Interlegis em Dourados).</td><td>dias</td></tr>
+<tr><td><b>Judiciário MS</b></td><td>Remuneração dos magistrados ativos (bruto, descontos, líquido, diárias)</td>
+<td>Anexo VIII da Resolução CNJ 102/2009, publicado por cada tribunal: TRT24 e TRE-MS direto dos portais. O TJMS bloqueia acessos de fora do Brasil, então a folha vem do <a href="https://dadosjusbr.org/" target="_blank" rel="noopener">DadosJusBr</a>, que coleta o mesmo Anexo VIII.</td><td>1 a 2 meses</td></tr>
+<tr><td><b>Conexões</b></td><td>Empresas pagas por mais de um político de MS ou também pela Prefeitura</td>
+<td>Cruzamento, feito pelo site, das notas fiscais de todas as fontes acima pelo CNPJ.</td><td>—</td></tr>
+<tr><td><b>Evolução</b></td><td>Gasto mês a mês em comparação com o ano anterior</td>
+<td>Mesmas notas fiscais, agrupadas pelo mês de competência; o ano anterior vem das mesmas fontes oficiais (arquivo de 2025 da Câmara, API do Senado, portal da ALEMS).</td><td>—</td></tr>
+</tbody></table></div>
+
+<h2 id="oficial-estimativa">O que é dado oficial e o que é estimativa</h2>
+<div class="box">
+<p><span class="tag of">OFICIAL</span> <strong>Publicado pela fonte, apenas reorganizado pelo site:</strong> valores de cota e verba pagos, notas fiscais (fornecedor, CNPJ, data, valor, documento), despesas da Prefeitura, remuneração dos magistrados, folha de servidores da Câmara CG, subsídios fixados em lei.</p>
+<p><span class="tag of">CALCULADO</span> <strong>Conta feita pelo site sobre dado oficial</strong> (o método está descrito): totais e somas, % da cota usada, variação em relação ao ano anterior, agrupamento por mês, ranking, cruzamento de fornecedores.</p>
+<p style="margin-bottom:0"><span class="tag est">ESTIMATIVA</span> <strong>Valor que a fonte não publica e o site estima</strong> — sempre marcado no painel:</p>
+<ul style="margin-top:8px">
+  <li><strong>Equipe estimada por gabinete (deputados federais)</strong>: verba de gabinete (R$ 165.806,07/mês) ÷ salário médio do secretário parlamentar (entre R$ 1.710,83 e R$ 25.958,90). O número real varia por gabinete e não é publicado de forma aberta.</li>
+  <li><strong>Custo estimado anual do mandato</strong>: subsídio × 13 + verba de gabinete × 12 + auxílio-moradia × 12 + cota gasta. É um piso: não inclui diárias, passagens extras nem encargos.</li>
+  <li><strong>Alguns meses de verba de 5 vereadores de CG</strong> (Papy, Professor Juari, Wilson Lands, Landmark e Veterinário Francisco): em PDFs ilegíveis de uma carga anterior, parte dos valores foi estimada. O detalhe de cada um no painel e na planilha (<code>observacao_coleta</code>) diz isso. A coleta automática substitui o valor sempre que o PDF traz o total legível.</li>
+</ul>
+</div>
+
+<h2 id="limitacoes">Limitações conhecidas</h2>
+<ul>
+  <li><strong>Câmara de Campo Grande:</strong> a verba indenizatória é publicada só em PDFs escaneados. Nomes de fornecedores e descrições podem ter erros de leitura, como letras trocadas ou lixo no início do nome. Um mês só é contado quando o total vem impresso no PDF. Meses ausentes podem significar que não houve gasto ou que o PDF não trouxe o total.</li>
+  <li><strong>Datas:</strong> as cotas parlamentares são agrupadas pelo <strong>mês de competência</strong> da despesa, que é a regra das próprias casas. Uma nota emitida em dezembro de 2025 pode contar como despesa de janeiro de 2026. Na Prefeitura, a data mostrada é a do <strong>empenho</strong>, e o valor pago é o acumulado até a coleta.</li>
+  <li><strong>Meses recentes incompletos:</strong> notas fiscais chegam com atraso às fontes. Por isso a comparação com o ano anterior usa só os meses já fechados.</li>
+  <li><strong>Câmaras do interior:</strong> quando o portal de uma câmara sai do ar, o painel mostra os últimos dados obtidos e avisa a data. Em novembro de 2026, os portais de <strong>Itaporã</strong> (sem dados desde julho) e <strong>Sonora</strong> não respondiam.</li>
+  <li><strong>Judiciário:</strong> a folha mostrada é a do mês mais recente publicado por cada tribunal, e os tribunais publicam em ritmos diferentes. A situação (ativo ou inativo) segue a classificação do próprio tribunal.</li>
+  <li><strong>Conexões entre fornecedores:</strong> mostram apenas que a mesma empresa recebeu de mais de um pagador. <strong>Isso não indica irregularidade.</strong> Postos de combustível, companhias aéreas, telefonia e gráficas atendem naturalmente muitos gabinetes. Só entram pessoas jurídicas com CNPJ válido (dígito verificador conferido). CPFs de pessoas físicas não aparecem nessa aba, e filiais são agrupadas pela raiz do CNPJ.</li>
+  <li><strong>Vereadores de CG sem ano anterior:</strong> a verba de 2025 só existe nos mesmos PDFs escaneados, sem qualidade para comparação. Por isso, na aba Evolução, os vereadores são comparados pelo uso da cota anual.</li>
+</ul>
+
+<h2 id="dados-abertos">Baixar os dados</h2>
+<p>Todas as planilhas são regeneradas a cada coleta diária. O <strong>CSV</strong> está no formato do Excel em português: separador <code>;</code>, vírgula decimal, UTF-8. O <strong>JSON</strong> é o arquivo bruto usado pelo painel, melhor para programação. Os dados são públicos e podem ser reutilizados, com citação da fonte.</p>
+<div class="tabela-wrap"><table>
+<thead><tr><th>Conjunto</th><th>CSV</th><th>JSON</th></tr></thead>
+<tbody>
+<tr><td><b>Vereadores de Campo Grande</b> — resumo por vereador</td><td><a href="/dados/csv/vereadores_cg.csv" download>vereadores_cg.csv</a></td><td><a href="/dados/camara_municipal.json">camara_municipal.json</a></td></tr>
+<tr><td><b>Vereadores de CG</b> — notas fiscais</td><td><a href="/dados/csv/vereadores_cg_notas.csv" download>vereadores_cg_notas.csv</a></td><td>—</td></tr>
+<tr><td><b>Deputados estaduais</b> — resumo</td><td><a href="/dados/csv/deputados_estaduais.csv" download>deputados_estaduais.csv</a></td><td><a href="/dados/deputados_estaduais_ms.json">deputados_estaduais_ms.json</a></td></tr>
+<tr><td><b>Deputados estaduais</b> — notas fiscais</td><td><a href="/dados/csv/deputados_estaduais_notas.csv" download>deputados_estaduais_notas.csv</a></td><td>—</td></tr>
+<tr><td><b>Deputados federais de MS</b> — resumo</td><td><a href="/dados/csv/deputados_federais_ms.csv" download>deputados_federais_ms.csv</a></td><td><a href="/dados/deputados_federais_ms.json">deputados_federais_ms.json</a></td></tr>
+<tr><td><b>Deputados federais de MS</b> — notas fiscais</td><td><a href="/dados/csv/deputados_federais_ms_notas.csv" download>deputados_federais_ms_notas.csv</a></td><td>—</td></tr>
+<tr><td><b>Senadores de MS</b> — resumo</td><td><a href="/dados/csv/senadores_ms.csv" download>senadores_ms.csv</a></td><td><a href="/dados/senadores_ms.json">senadores_ms.json</a></td></tr>
+<tr><td><b>Senadores de MS</b> — notas fiscais</td><td><a href="/dados/csv/senadores_ms_notas.csv" download>senadores_ms_notas.csv</a></td><td>—</td></tr>
+<tr><td><b>Prefeitura de Campo Grande</b> — despesas pagas</td><td><a href="/dados/csv/prefeitura_despesas.csv" download>prefeitura_despesas.csv</a></td><td><a href="/dados/prefeitura.json">prefeitura.json</a></td></tr>
+<tr><td><b>Judiciário MS</b> — magistrados (TRT24, TRE-MS, TJMS)</td><td><a href="/dados/csv/judiciario_magistrados.csv" download>judiciario_magistrados.csv</a></td><td><a href="/dados/tjms_magistrados.json">TJMS</a> · <a href="/dados/trt24_magistrados.json">TRT24</a> · <a href="/dados/tre_ms_magistrados.json">TRE-MS</a></td></tr>
+<tr><td><b>Câmaras do interior</b></td><td><a href="/dados/csv/camaras_interior.csv" download>camaras_interior.csv</a></td><td><a href="https://github.com/fabriciosantosbatista-code/cofre-aberto-ms/tree/main/dados/camaras" target="_blank" rel="noopener">dados/camaras/</a></td></tr>
+<tr><td><b>Deputados federais — Brasil</b> (513)</td><td><a href="/dados/csv/deputados_federais_brasil.csv" download>deputados_federais_brasil.csv</a></td><td><a href="/dados/deputados_federais_brasil.json">deputados_federais_brasil.json</a> · notas por UF em <code>/dados/ceap_federal/UF.json</code></td></tr>
+<tr><td><b>Senadores — Brasil</b> (81)</td><td><a href="/dados/csv/senadores_brasil.csv" download>senadores_brasil.csv</a></td><td><a href="/dados/senadores_brasil.json">senadores_brasil.json</a> · notas por UF em <code>/dados/ceaps_senado/UF.json</code></td></tr>
+<tr><td><b>Conexões entre fornecedores</b></td><td><a href="/dados/csv/conexoes_fornecedores.csv" download>conexoes_fornecedores.csv</a></td><td><a href="/dados/conexoes_fornecedores.json">conexoes_fornecedores.json</a></td></tr>
+<tr><td><b>Evolução mensal</b> (ano atual × anterior)</td><td><a href="/dados/csv/evolucao_mensal.csv" download>evolucao_mensal.csv</a></td><td><a href="/dados/evolucao_mensal.json">evolucao_mensal.json</a></td></tr>
+</tbody></table></div>
+<p>Notas novas de cada parlamentar de MS também saem em <strong>RSS</strong>, no botão "🔔 Seguir notas novas" de cada página ou no <a href="/dados/feeds/todas.xml">feed geral</a>.</p>
+
+<h2 id="citar">Como citar</h2>
+<p>Ao usar os dados numa reportagem, pesquisa ou trabalho, cite o Cofre Aberto MS <strong>e a fonte oficial</strong>, com a data de acesso. Cada aba do painel e cada página de parlamentar tem um botão "Como citar" com o texto pronto. Formato sugerido (ABNT):</p>
+<div class="citar" id="cit-exemplo">COFRE ABERTO MS. <i>Gastos dos vereadores de Campo Grande</i>. Fonte dos dados: Portal da Transparência da Câmara Municipal de Campo Grande. Coletados em 10/11/2026. Disponível em: https://cofreabertoms.com.br/cofre-aberto-ms.html#aba=camara. Acesso em: 10 nov. 2026.</div>
+<button type="button" class="btn" id="cit-copiar">📋 Copiar</button>
+<p style="margin-top:14px">Em matérias jornalísticas, basta: <em>"segundo dados do Portal da Transparência da Câmara Municipal de Campo Grande, compilados pelo Cofre Aberto MS"</em>. Para conferir um valor específico, cada nota fiscal tem o link do documento na fonte oficial, quando o órgão publica.</p>
+
+<h2 id="correcoes">Correções e direito de resposta</h2>
+<p>Se você encontrou um erro, ou é citado no site e quer contestar um dado, envie a correção com o documento ou link da fonte oficial pelo <a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Quero%20enviar%20uma%20corre%C3%A7%C3%A3o%20sobre%20um%20dado%20do%20Cofre%20Aberto%20MS." target="_blank" rel="noopener">WhatsApp (67) 98209-5384</a>. Para erros técnicos, você também pode abrir uma <a href="https://github.com/fabriciosantosbatista-code/cofre-aberto-ms/issues" target="_blank" rel="noopener">issue no GitHub</a>. Todo erro confirmado é corrigido e registrado abaixo. Se o erro estiver na própria fonte oficial, isso é informado.</p>
+<h3>Registro de correções</h3>
+<div class="tabela-wrap"><table>
+<thead><tr><th>Data</th><th>O que foi corrigido</th></tr></thead>
+<tbody>
+<tr><td style="white-space:nowrap">10/11/2026</td><td><b>Prefeitura de CG:</b> as despesas estavam paradas em maio/2026 (R$ 2,00 bi pagos), porque o arquivo de dados abertos da Prefeitura não é atualizado desde maio. A fonte passou a ser a consulta do SIG-Transparência, com dados do dia (R$ 4,13 bi pagos até 02/10/2026).</td></tr>
+<tr><td style="white-space:nowrap">10/11/2026</td><td><b>Deputados federais:</b> a API da Câmara passou a devolver lista vazia de despesas, e o CEAP aparecia zerado desde agosto/2026. A fonte passou a ser o arquivo completo da cota parlamentar, publicado pela própria Câmara.</td></tr>
+<tr><td style="white-space:nowrap">10/11/2026</td><td><b>Câmara CG:</b> 18 PDFs de verba indenizatória não eram lidos por limite de tempo, e havia meses faltando para 17 vereadores. Foram incluídas 251 notas fiscais. O total pago no topo da aba (R$ 2,77 mi) não acompanhava a soma dos vereadores (R$ 5,72 mi). A folha dos gabinetes foi atualizada de maio para outubro/2026.</td></tr>
+<tr><td style="white-space:nowrap">10/11/2026</td><td><b>Judiciário:</b> a folha do TJMS estava parada em junho/2026, porque o portal do tribunal bloqueia acessos de fora do Brasil. Ela passou a vir do DadosJusBr (setembro/2026).</td></tr>
+<tr><td style="white-space:nowrap">10/11/2026</td><td><b>Deputados estaduais:</b> o detalhe de 22 deputados mostrava notas de uma carga de junho/2026, em vez das notas atuais. Foto e partido de 3 deputados, perdidos numa coleta de julho, foram restaurados.</td></tr>
+</tbody></table></div>
+</article>
+
+<footer><span>© 2026 Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
+<span><a href="/">Início</a> · <a href="/cofre-aberto-ms.html">Painel</a> · <a href="/press.html">Imprensa</a></span></footer>
+</div>
+<script>
+(function () {
+  const ABAS = { "camara": "Câmara CG", "deputados-estaduais": "Dep. Estaduais", "deputados": "Dep. Federais MS", "senadores": "Senadores MS",
+    "prefeitura": "Prefeitura CG", "camaras-ms": "Câmaras MS", "judiciario": "Judiciário MS", "deputados-brasil": "Dep. Federais Brasil",
+    "senado-brasil": "Senado Brasil", "conexoes": "Conexões", "evolucao": "Evolução" };
+  const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const dataBR = iso => { if (!iso) return "—"; const [a, m, d] = String(iso).slice(0, 10).split("-"); return `${d}/${m}/${a}`; };
+  fetch("/dados/status_fontes.json", { cache: "no-store" }).then(r => r.json()).then(s => {
+    document.querySelector("#tab-status tbody").innerHTML = Object.entries(ABAS).map(([aba, rot]) => {
+      const f = s.fontes[aba]; if (!f) return "";
+      return `<tr><td><b><a href="/cofre-aberto-ms.html#aba=${aba}" style="color:inherit">${rot}</a></b></td>
+        <td>${f.url ? `<a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.fonte)}</a>` : esc(f.fonte)}</td>
+        <td>${esc(f.dadoMaisRecente || "—")}</td><td style="white-space:nowrap">${dataBR(f.coleta)}</td>
+        <td><span class="selo ${f.nivel}">${f.nivel === "ok" ? "✅ em dia" : "⚠️ atenção"}</span>${f.mensagem ? `<div style="font-size:.74rem;margin-top:4px">${esc(f.mensagem)}</div>` : ""}</td></tr>`;
+    }).join("");
+  }).catch(() => { document.querySelector("#tab-status tbody").innerHTML = '<tr><td colspan="5">Status indisponível no momento.</td></tr>'; });
+  const hoje = new Date(), mes = ["jan.", "fev.", "mar.", "abr.", "maio", "jun.", "jul.", "ago.", "set.", "out.", "nov.", "dez."][hoje.getMonth()];
+  const el = document.getElementById("cit-exemplo");
+  el.textContent = el.textContent.replace(/Acesso em: .*$/, `Acesso em: ${hoje.getDate()} ${mes} ${hoje.getFullYear()}.`);
+  document.getElementById("cit-copiar").addEventListener("click", e => {
+    navigator.clipboard?.writeText(el.textContent).then(() => { e.target.textContent = "✅ Copiado!"; setTimeout(() => (e.target.textContent = "📋 Copiar"), 2000); });
+  });
+})();
+</script>
+</body>
+</html>

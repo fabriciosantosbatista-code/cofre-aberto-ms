@@ -30,6 +30,13 @@ HOJE = date.today()
 MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 COR_ATUAL, COR_ANTERIOR = "#3987e5", "#d95926"   # mesmas cores validadas da aba Evolução
 
+FONTE_OFICIAL = {
+    "vereador": "Portal da Transparência da Câmara Municipal de Campo Grande",
+    "estadual": "Portal da Transparência da Assembleia Legislativa de MS (ALEMS)",
+    "federal": "Câmara dos Deputados, arquivo da Cota para o Exercício da Atividade Parlamentar",
+    "senador": "Senado Federal, dados abertos da CEAPS",
+}
+
 GRUPOS = {
     "vereador": {"pasta": "vereador", "cargo": "Vereador(a) de Campo Grande", "plural": "Vereadores de Campo Grande",
                  "aba": "camara", "cota": "verba indenizatória (Atos 027/028)", "feed": "vereador"},
@@ -247,6 +254,7 @@ td.f{color:var(--ink)}td small{display:block;color:var(--ink-caption);font-size:
 @media(max-width:560px){.g-larga{display:none}.g-estreita{display:block}}
 .leg{display:flex;gap:16px;font-size:.76rem;color:var(--ink-soft);margin-bottom:6px}.leg i{display:inline-block;width:18px;border-top:2px solid;vertical-align:middle;margin-right:6px}
 details{margin-top:8px;font-size:.8rem;color:var(--ink-soft)}summary{cursor:pointer}
+.citar{font-family:ui-monospace,Menlo,monospace;font-size:.78rem;color:var(--ink);background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;line-height:1.6}
 .aviso{font-size:.8rem;color:var(--ink-soft);border:1px solid var(--border);border-radius:10px;padding:10px 12px;background:var(--surface-2)}
 .lista{columns:2 240px;gap:24px;font-size:.88rem;line-height:1.9}.lista a{color:var(--ink)}
 .lista span{color:var(--ink-caption);font-size:.78rem}
@@ -294,7 +302,7 @@ def cabecalho(titulo, descricao, url, imagem, jsonld, tipo="profile"):
 
 
 RODAPE = f"""<footer><span>© {ANO} Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
-<span><a href="/">Início</a> · <a href="/cofre-aberto-ms.html">Painel</a> · <a href="/press.html">Imprensa</a></span></footer>
+<span><a href="/">Início</a> · <a href="/cofre-aberto-ms.html">Painel</a> · <a href="/metodologia.html">Metodologia e dados</a> · <a href="/press.html">Imprensa</a></span></footer>
 </div>
 </body>
 </html>
@@ -468,7 +476,9 @@ def pagina(p, irmaos):
 {bloco_notas}
 {bloco_cx}
 {bloco_irmaos}
-<p style="margin-top:28px;font-size:.78rem">Dados públicos de {e(g['cota'])}, coletados automaticamente das fontes oficiais. Última coleta: {data_br(fonte_data)}.</p>
+<h2>Como citar</h2>
+<div class="citar">COFRE ABERTO MS. <i>{e(p['nome'])} ({e(cargo)}): gastos de {e(g['cota'])} em {ANO}</i>. Fonte dos dados: {e(FONTE_OFICIAL[p['grupo']])}. Coletados em {data_br(fonte_data)}. Disponível em: {e(url_abs)}. Acesso em: {data_br(HOJE.isoformat())}.</div>
+<p style="margin-top:14px;font-size:.78rem">Dados públicos de {e(g['cota'])}, coletados automaticamente das fontes oficiais — <a href="/metodologia.html">veja a metodologia, as limitações de cada fonte e como baixar os dados</a>. Encontrou um erro? <a href="/metodologia.html#correcoes">Envie uma correção</a>. Última coleta: {data_br(fonte_data)}.</p>
 </article>
 """
     return cabecalho(titulo, desc, p["url"], foto, jsonld) + corpo + RODAPE
@@ -503,7 +513,7 @@ def indice(grupo, lst):
 def sitemap(lista):
     hoje = HOJE.isoformat()
     fixos = [("/", "daily", "1.0"), ("/cofre-aberto-ms.html", "daily", "0.9"), ("/vereadores-campo-grande.html", "daily", "0.8"),
-             ("/deputados-estaduais-ms.html", "daily", "0.8"), ("/senadores-ms.html", "daily", "0.8"), ("/press.html", "monthly", "0.5")]
+             ("/deputados-estaduais-ms.html", "daily", "0.8"), ("/senadores-ms.html", "daily", "0.8"), ("/press.html", "monthly", "0.5"), ("/metodologia.html", "weekly", "0.7")]
     fixos += [(f"/{g['pasta']}/", "daily", "0.8") for g in GRUPOS.values()]
     urls = [f"  <url><loc>{SITE}{u}</loc><lastmod>{hoje}</lastmod><changefreq>{c}</changefreq><priority>{pr}</priority></url>" for u, c, pr in fixos]
     urls += [f"  <url><loc>{SITE}{p['url']}</loc><lastmod>{hoje}</lastmod><changefreq>daily</changefreq><priority>{'0.7' if p['ms'] else '0.5'}</priority></url>" for p in lista]

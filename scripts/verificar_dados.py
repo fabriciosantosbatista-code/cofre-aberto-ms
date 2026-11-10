@@ -219,6 +219,13 @@ def main():
         n = len(fi.get("parlamentares", []))
         checa(n >= 60, f"Feeds RSS: {n} parlamentares", f"**Feeds RSS**: só {n} parlamentares")
 
+    # ---------- dados abertos (gerar_dados_abertos.py) ----------
+    sf = carregar("status_fontes.json")
+    if sf:
+        recente("Status das fontes", sf.get("geradoEm"), 2, o_que="última geração")
+    csvs = list((DADOS / "csv").glob("*.csv"))
+    checa(len(csvs) >= 15, f"Planilhas CSV: {len(csvs)}", f"**Planilhas CSV**: só {len(csvs)} (esperado 15)", "aviso")
+
     # ---------- páginas próprias dos parlamentares ----------
     paginas = list(ROOT.glob("vereador/*/index.html")) + list(ROOT.glob("deputado-estadual/*/index.html")) + \
               list(ROOT.glob("deputado-federal/*/index.html")) + list(ROOT.glob("senador/*/index.html"))

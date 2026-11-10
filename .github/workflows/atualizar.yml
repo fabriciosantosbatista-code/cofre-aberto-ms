@@ -200,6 +200,9 @@ jobs:
       - name: Gerar conexões entre fornecedores, evolução mensal e feeds RSS
         run: python3 scripts/gerar_analises.py || echo "⚠️ gerar_analises.py falhou — análises anteriores mantidas"
 
+      - name: Gerar planilhas CSV e status das fontes
+        run: python3 scripts/gerar_dados_abertos.py || echo "⚠️ gerar_dados_abertos.py falhou — planilhas anteriores mantidas"
+
       - name: Gerar uma página por parlamentar (+ sitemap)
         run: python3 scripts/gerar_paginas_parlamentares.py || echo "⚠️ gerar_paginas_parlamentares.py falhou — páginas anteriores mantidas"
 

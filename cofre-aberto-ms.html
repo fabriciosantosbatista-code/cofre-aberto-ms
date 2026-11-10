@@ -231,6 +231,18 @@ p{margin:0;}
 .ev-tabela td,.ev-tabela th{padding:4px 6px;border-bottom:1px solid var(--border-soft,var(--border));text-align:right}
 .ev-tabela td:first-child,.ev-tabela th:first-child{text-align:left}
 .ev-var-up{color:var(--ink)} .ev-var-down{color:var(--ink-soft)}
+/* Fonte / status / download / citação por aba */
+.fonte-barra{margin:0 0 18px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-size:.78rem;color:var(--ink-soft)}
+.fonte-linha{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap}
+.fonte-txt b{color:var(--ink);font-weight:600}.fonte-txt a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--border)}
+.fonte-msg{color:var(--amber)}
+.fonte-selo{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:600;border-radius:999px;padding:2px 8px;border:1px solid;white-space:nowrap}
+.fonte-selo.ok{color:var(--positive);border-color:rgba(45,212,160,.35);background:rgba(45,212,160,.08)}
+.fonte-selo.atencao{color:var(--amber);border-color:rgba(245,200,66,.35);background:rgba(245,200,66,.08)}
+.fonte-acoes{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.fonte-btn{background:none;border:1px solid var(--border);border-radius:7px;padding:5px 10px;color:var(--ink);font-size:.74rem;cursor:pointer;font-family:inherit;text-decoration:none;white-space:nowrap}
+.fonte-btn:hover{border-color:var(--accent)}
+.fonte-cit{margin-top:8px}.fonte-cit-txt{font-family:var(--font-mono,monospace);font-size:.74rem;color:var(--ink);background:var(--surface-2);border:1px solid var(--border);border-radius:7px;padding:8px 10px;line-height:1.55;margin-bottom:6px}
 /* Seguir (RSS) */
 .seguir-box{margin-top:10px;padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);font-size:.8rem;color:var(--ink-soft)}
 .seguir-box code{display:block;word-break:break-all;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px;margin:6px 0;color:var(--ink);font-size:.74rem}
@@ -442,6 +454,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button data-tab="senado-brasil"><span class="dot"></span> Senado Brasil</button>
 
       <button data-tab="sobre"><span class="dot"></span> Sobre</button>
+      <a href="metodologia.html" style="display:flex;align-items:center;gap:9px;color:var(--ink-soft);font-size:.83rem;font-weight:500;padding:8px 10px;border-radius:8px;text-decoration:none"><span class="dot"></span> Metodologia e dados</a>
     </nav>
     <div class="sidebar-status" id="status-row">
       <div class="row"><span><span class="live-dot"></span>Status</span><b>Sincronizado</b></div>
@@ -947,90 +960,36 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   </section>
 
   <section class="tabpanel" id="tab-sobre">
-      <div class="notice" id="notice-camara">
-        <b>Fonte dos dados.</b> Coletado via Claude para Chrome no Portal da Transparência
-        da Câmara Municipal (SCPI Fiorilli), 221 empenhos analisados individualmente em
-        14-15/06/2026. A verba indenizatória cobre combustível, mídia/divulgação,
-        assessoria, material de escritório e eventos — mas o detalhamento por nota fiscal
-        não está digitalizado, apenas o total empenhado/pago por vereador.
-      </div>
-      <div class="notice" id="notice-depest">
-        <b>Dados parciais.</b> A lista de deputados e o subsídio mensal são reais (Portal da
-        Transparência ALEMS e Lei 6.016/2022). A CEAP (cota individual), verba de gabinete,
-        equipe e diárias de cada deputado estão pendentes — o portal CEAP da ALEMS
-        (consulta.transparencia.al.ms.gov.br/ceap) usa sistema dinâmico que exige sessão de
-        navegador, mesma limitação encontrada nos portais municipais.
-      </div>
-  <!-- ===================== SOBRE ===================== -->
+    <!-- usado por renderCamaraMunicipal (fonte da Câmara CG) -->
+    <div class="notice" id="notice-camara" hidden></div>
     <div class="hero">
       <div class="hero-label">Sobre este painel</div>
       <div class="hero-desc" style="font-size:0.92rem;">
-        Painel reúne dados de gastos públicos de Mato Grosso do Sul e Campo Grande em um único
-        lugar, sendo transparente sobre o que é dado oficial automatizável e o que é estimativa
-        ou ainda pendente de coleta manual.
+        O Cofre Aberto MS reúne, num só lugar, os gastos públicos de políticos de Mato Grosso do Sul e da Prefeitura de
+        Campo Grande. Todos os números vêm de <b style="color:var(--ink)">fontes oficiais</b> e são coletados automaticamente
+        todos os dias, sem edição manual. O site mostra quanto foi gasto, com quem e quando, e <b style="color:var(--ink)">não acusa ninguém</b>.
       </div>
     </div>
-
     <div class="section">
-      <div class="section-head">
-        <h2 class="section-title">✅ Dados reais (via API pública)</h2>
+      <div class="section-head"><h2 class="section-title">Situação de cada fonte</h2></div>
+      <div class="card">
+        <table class="ranking" id="sobre-status">
+          <thead><tr><th>Aba</th><th>Dado mais recente</th><th>Situação</th></tr></thead>
+          <tbody><tr><td colspan="3" style="padding:14px;color:var(--ink-soft)">Carregando…</td></tr></tbody>
+        </table>
       </div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Metodologia, dados abertos e correções</h2></div>
       <div class="card card-pad">
-        <ul style="font-size:0.86rem; color:var(--ink-soft); line-height:1.9; margin:0; padding-left:20px;">
-          <li><b style="color:var(--ink)">Deputados Federais e Senadores de MS</b> — lista, partido, e para deputados, gasto integral da cota CEAP no ano com todas as notas fiscais (dadosabertos.camara.leg.br).</li>
-          <li><b style="color:var(--ink)">Subsídio de Deputados/Senadores</b> — R$ 46.366,19/mês (desde fev/2025).</li>
-          <li><b style="color:var(--ink)">Verba de gabinete (Deputados Federais)</b> — R$ 165.806,07/mês, teto para até 25 secretários parlamentares (Ato da Mesa 243/2026).</li>
-          <li><b style="color:var(--ink)">Faixa salarial dos secretários parlamentares</b> — R$ 1.710,83 a R$ 25.958,90.</li>
-          <li><b style="color:var(--ink)">Auxílio-moradia</b> — R$ 4.253,00/mês.</li>
-          <li><b style="color:var(--ink)">Subsídio dos vereadores de Campo Grande</b> — R$ 26.080,98/mês, fixado por lei desde jan/2025.</li>
-          <li><b style="color:var(--ink)">Orçamento (LOA 2026) da Prefeitura de Campo Grande</b> — R$ 6,974 bilhões, com divisão por área.</li>
+        <ul style="font-size:0.88rem; color:var(--ink-soft); line-height:1.9; margin:0; padding-left:20px;">
+          <li><a href="metodologia.html#fontes">De onde vem cada número</a>: fonte oficial de cada aba, como é coletada e o atraso típico.</li>
+          <li><a href="metodologia.html#oficial-estimativa">O que é dado oficial e o que é estimativa</a>: as poucas estimativas (equipe e custo anual dos deputados federais) são sempre marcadas.</li>
+          <li><a href="metodologia.html#limitacoes">Limitações conhecidas</a> de cada fonte, como os PDFs escaneados da Câmara de CG e os portais do interior fora do ar.</li>
+          <li><a href="metodologia.html#dados-abertos">Baixar os dados</a> em CSV (Excel) ou JSON. Cada aba também tem os botões de download no topo.</li>
+          <li><a href="metodologia.html#citar">Como citar</a> numa reportagem ou pesquisa.</li>
+          <li><a href="metodologia.html#correcoes">Correções e direito de resposta</a>, com o registro de tudo o que já foi corrigido.</li>
         </ul>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-head">
-        <h2 class="section-title">🧮 Estimativas (marcadas no painel)</h2>
-      </div>
-      <div class="card card-pad">
-        <ul style="font-size:0.86rem; color:var(--ink-soft); line-height:1.9; margin:0; padding-left:20px;">
-          <li><b style="color:var(--ink)">Equipe estimada por gabinete</b> — verba de gabinete ÷ salário médio (piso/teto) de secretário parlamentar. O número real e os salários individuais variam por gabinete e não são publicados de forma aberta.</li>
-          <li><b style="color:var(--ink)">Custo estimado anual do mandato</b> — subsídio (13 parcelas) + gabinete (12 meses) + moradia (12 meses) + cota gasta. Não inclui diárias, passagens extras, encargos da equipe — é uma estimativa de piso.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-head">
-        <h2 class="section-title">⏳ Pendente de coleta manual</h2>
-      </div>
-      <div class="card card-pad">
-        <ul style="font-size:0.86rem; color:var(--ink-soft); line-height:1.9; margin:0; padding-left:20px;">
-          <li><b style="color:var(--ink)">Câmara Municipal de Campo Grande</b> — cota, gabinete, equipe e notas fiscais de cada vereador (portal sem API, bloqueia automação).</li>
-          <li><b style="color:var(--ink)">Prefeitura de Campo Grande</b> — execução orçamentária real e maiores contratos (portal sem API).</li>
-          <li><b style="color:var(--ink)">Senadores — CEAPS</b> — publicada em planilhas anuais, não em API de consulta direta.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-head">
-        <h2 class="section-title">📦 Como funciona a atualização dos dados</h2>
-      </div>
-      <div class="card card-pad">
-        <p class="section-note">
-          Ao abrir este site, ele tenta automaticamente buscar os dados de Deputados e
-          Senadores de MS <b style="color:var(--ink)">direto da API pública da Câmara dos
-          Deputados e do Senado</b>, no seu próprio navegador — sem precisar instalar nada.
-          Essa busca pode levar alguns minutos (ela percorre todas as notas fiscais do ano de
-          cada deputado).
-        </p>
-        <p class="section-note" style="margin-bottom:0;">
-          Se a busca ao vivo falhar (por exemplo, se a API bloquear chamadas diretas do
-          navegador), o site tentará carregar <code>dados/congresso_ms.json</code>, caso esse
-          arquivo exista na mesma pasta — esse arquivo pode ser gerado rodando
-          <code>scraper/coletar.py</code> (requer Python).
-        </p>
       </div>
     </div>
   </section>
@@ -3967,6 +3926,90 @@ function montarBotaoSeguir(panel) {
   });
 }
 
+// ===================== FONTE, STATUS, DOWNLOAD E "COMO CITAR" POR ABA =====================
+// dados/status_fontes.json e dados/csv/ são gerados por scripts/gerar_dados_abertos.py a cada coleta
+const FONTE_ABA = {
+  "camara": { titulo: "Gastos dos vereadores de Campo Grande", csv: [["Resumo", "vereadores_cg.csv"], ["Notas fiscais", "vereadores_cg_notas.csv"]], json: "camara_municipal.json" },
+  "deputados-estaduais": { titulo: "CEAP dos deputados estaduais de MS", csv: [["Resumo", "deputados_estaduais.csv"], ["Notas fiscais", "deputados_estaduais_notas.csv"]], json: "deputados_estaduais_ms.json" },
+  "deputados": { titulo: "CEAP dos deputados federais de MS", csv: [["Resumo", "deputados_federais_ms.csv"], ["Notas fiscais", "deputados_federais_ms_notas.csv"]], json: "deputados_federais_ms.json" },
+  "senadores": { titulo: "CEAPS dos senadores de MS", csv: [["Resumo", "senadores_ms.csv"], ["Notas fiscais", "senadores_ms_notas.csv"]], json: "senadores_ms.json" },
+  "prefeitura": { titulo: "Despesas da Prefeitura de Campo Grande", csv: [["Despesas pagas", "prefeitura_despesas.csv"]], json: "prefeitura.json" },
+  "camaras-ms": { titulo: "Câmaras municipais do interior de MS", csv: [["Vereadores", "camaras_interior.csv"]], json: null },
+  "judiciario": { titulo: "Remuneração dos magistrados de MS", csv: [["Magistrados", "judiciario_magistrados.csv"]], json: "tjms_magistrados.json" },
+  "deputados-brasil": { titulo: "CEAP dos deputados federais do Brasil", csv: [["Resumo", "deputados_federais_brasil.csv"]], json: "deputados_federais_brasil.json" },
+  "senado-brasil": { titulo: "CEAPS dos senadores do Brasil", csv: [["Resumo", "senadores_brasil.csv"]], json: "senadores_brasil.json" },
+  "conexoes": { titulo: "Conexões entre fornecedores de políticos de MS", csv: [["Conexões", "conexoes_fornecedores.csv"]], json: "conexoes_fornecedores.json" },
+  "evolucao": { titulo: "Evolução mensal dos gastos de políticos de MS", csv: [["Mês a mês", "evolucao_mensal.csv"]], json: "evolucao_mensal.json" },
+};
+
+function dataBRcurta(iso) {
+  if (!iso) return "—";
+  const [a, m, d] = String(iso).slice(0, 10).split("-");
+  return `${d}/${m}/${a}`;
+}
+function textoCitacao(aba, f) {
+  const cfg = FONTE_ABA[aba];
+  const hoje = new Date();
+  const mes = ["jan.", "fev.", "mar.", "abr.", "maio", "jun.", "jul.", "ago.", "set.", "out.", "nov.", "dez."][hoje.getMonth()];
+  return `COFRE ABERTO MS. ${cfg.titulo}. Fonte dos dados: ${f ? f.fonte : "fontes oficiais"}. Coletados em ${dataBRcurta(f && f.coleta)}. ` +
+    `Disponível em: ${location.origin}${location.pathname}#aba=${aba}. Acesso em: ${hoje.getDate()} ${mes} ${hoje.getFullYear()}.`;
+}
+
+function montarBarrasFonte() {
+  carregarJSON("dados/status_fontes.json").then(st => {
+    const fontes = (st && st.fontes) || {};
+    Object.keys(FONTE_ABA).forEach(aba => {
+      const sec = document.getElementById("tab-" + aba);
+      if (!sec || sec.querySelector(".fonte-barra")) return;
+      const f = fontes[aba], cfg = FONTE_ABA[aba];
+      const ok = f && f.nivel === "ok";
+      const bar = document.createElement("div");
+      bar.className = "fonte-barra";
+      bar.innerHTML = `
+        <div class="fonte-linha">
+          ${f ? `<span class="fonte-selo ${ok ? "ok" : "atencao"}" title="${ok ? "Fonte em dia" : "Dado mais antigo que o normal para esta fonte"}">${ok ? "✅ em dia" : "⚠️ atenção"}</span>` : ""}
+          <span class="fonte-txt"><b>Fonte:</b> ${f ? (f.url ? `<a href="${escHTML(f.url)}" target="_blank" rel="noopener">${escHTML(f.fonte)}</a>` : escHTML(f.fonte)) : "fontes oficiais"}
+            ${f && f.dadoMaisRecente ? ` · <b>dado mais recente:</b> ${escHTML(f.dadoMaisRecente)}` : ""}
+            ${f && f.coleta ? ` · coletado em ${dataBRcurta(f.coleta)}` : ""}
+            ${f && f.mensagem ? `<span class="fonte-msg"> — ${escHTML(f.mensagem)}</span>` : ""}</span>
+        </div>
+        <div class="fonte-acoes">
+          ${cfg.csv.map(([rot, arq]) => `<a class="fonte-btn" href="dados/csv/${arq}" download>⬇ ${rot} (CSV)</a>`).join("")}
+          ${cfg.json ? `<a class="fonte-btn" href="dados/${cfg.json}" target="_blank" rel="noopener">JSON</a>` : ""}
+          <button type="button" class="fonte-btn fonte-citar">❝ Como citar</button>
+          <a class="fonte-btn" href="metodologia.html#fontes">Metodologia</a>
+        </div>
+        <div class="fonte-cit" hidden>
+          <div class="fonte-cit-txt"></div>
+          <button type="button" class="fonte-btn fonte-copiar">📋 Copiar citação</button>
+        </div>`;
+      const hero = sec.querySelector(".hero");
+      if (hero) hero.after(bar); else sec.prepend(bar);
+      const cit = bar.querySelector(".fonte-cit");
+      bar.querySelector(".fonte-citar").addEventListener("click", () => {
+        cit.querySelector(".fonte-cit-txt").textContent = textoCitacao(aba, f);
+        cit.hidden = !cit.hidden;
+      });
+      bar.querySelector(".fonte-copiar").addEventListener("click", ev => {
+        const b = ev.currentTarget, txt = cit.querySelector(".fonte-cit-txt").textContent;
+        const okc = () => { b.textContent = "✅ Copiado!"; setTimeout(() => (b.textContent = "📋 Copiar citação"), 2000); };
+        navigator.clipboard?.writeText(txt).then(okc).catch(() => {
+          const ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select();
+          document.execCommand("copy"); document.body.removeChild(ta); okc();
+        });
+      });
+    });
+    // tabela de status na aba Sobre
+    const tb = document.querySelector("#sobre-status tbody");
+    if (tb) tb.innerHTML = Object.keys(FONTE_ABA).map(aba => {
+      const f = fontes[aba]; if (!f) return "";
+      const rot = document.querySelector(`.sidebar nav button[data-tab="${aba}"]`)?.textContent.trim() || aba;
+      return `<tr><td><a href="#aba=${aba}">${escHTML(rot)}</a></td><td>${escHTML(f.dadoMaisRecente || "—")}</td>
+        <td><span class="fonte-selo ${f.nivel === "ok" ? "ok" : "atencao"}">${f.nivel === "ok" ? "✅ em dia" : "⚠️ atenção"}</span></td></tr>`;
+    }).join("");
+  });
+}
+
 // ===================== COMPARTILHAMENTO =====================
 function addShareButtons() {
   // Adiciona botão "Compartilhar" em cada painel de detalhe
@@ -4064,6 +4107,7 @@ async function init() {
 
   initBuscaGlobal();
   addShareButtons();
+  montarBarrasFonte();
   window.addEventListener("hashchange", abrirDoHash);
   setTimeout(abrirDoHash, 300);
 
