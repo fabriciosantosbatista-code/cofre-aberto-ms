@@ -12,7 +12,11 @@ reescreve só os trechos de números/tabelas, sem mexer no resto do HTML.
 
 import json, re
 from datetime import date
+import sys as _sys
 from pathlib import Path
+_sys.path.insert(0, str(Path(__file__).parent))
+from ano_ref import ano_referencia
+ANO = ano_referencia()
 
 ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
@@ -86,12 +90,12 @@ def main():
     n_fed = sum(len(d.get("despesas") or []) or (d.get("totalNotasFiscais") or 0) for d in deps_fed)
     n_sen = sum(len(s.get("notasCeaps") or []) for s in senadores)
     n_total = n_cg + n_est + n_fed + n_sen
-    ceap_est = (est.get("resumo") or {}).get("totalVerbaIndenizatoriaPaga2026") or \
-        sum((d.get("verbaIndenizatoria") or {}).get("gastoPago2026") or 0 for d in deps_est)
-    verba_cg = sum((v.get("verbaIndenizatoria") or {}).get("gastoPago2026") or 0 for v in vereadores)
+    ceap_est = (est.get("resumo") or {}).get(f"totalVerbaIndenizatoriaPaga{ANO}") or \
+        sum((d.get("verbaIndenizatoria") or {}).get(f"gastoPago{ANO}") or 0 for d in deps_est)
+    verba_cg = sum((v.get("verbaIndenizatoria") or {}).get(f"gastoPago{ANO}") or 0 for v in vereadores)
     ativos = sum((m.get("resumo") or {}).get("totalAtivos") or 0 for m in mags)
-    mes_fim = MESES[date.today().month - 1]
-    periodo = f"Jan–{mes_fim}/{date.today().year}"
+    mes_fim = "Dez" if ANO < date.today().year else MESES[date.today().month - 1]
+    periodo = f"Jan–{mes_fim}/{ANO}"
 
     # ---------------- index.html (capa) ----------------
     p = ROOT / "index.html"
@@ -99,6 +103,9 @@ def main():
 
     def stat(html, rotulo, valor_txt, contagem=None):
         attr = f' data-count="{contagem}"' if contagem is not None else ""
+        # rótulos com ano ("CEAP Estadual 2026") casam qualquer ano e são reescritos com o ano de referência
+        padrao_rot = re.escape(rotulo).replace(str(ANO), r"\d{4}")
+        html = re.sub(rf'(<(?:div|span) class="stat-label">){padrao_rot}<', rf"\g<1>{rotulo}<", html)
         return troca(html,
                      rf'(<(div|span) class="stat-val")[^>]*>[^<]*(</\2>\s*<(?:div|span) class="stat-label">{re.escape(rotulo)}<)',
                      rf'\1{attr}>{valor_txt}\3', f"capa: {rotulo}")
@@ -110,9 +117,9 @@ def main():
     if ativos:
         html = stat(html, "Magistrados MS", ativos, ativos)
     if ceap_est:
-        html = stat(html, "CEAP Estadual 2026", compacto_mi(ceap_est))
+        html = stat(html, f"CEAP Estadual {ANO}", compacto_mi(ceap_est))
     if emendas.get("totalGeralPago"):
-        html = stat(html, "Emendas Parlamentares MS 2026", compacto_mi(emendas["totalGeralPago"]))
+        html = stat(html, f"Emendas Parlamentares MS {ANO}", compacto_mi(emendas["totalGeralPago"]))
     html = re.sub(r"\d{1,3}(?:\.\d{3})* notas fiscais reais", f"{milhar(n_total)} notas fiscais reais", html)
     html = re.sub(r"<p>\d{1,3}(?:\.\d{3})* notas fiscais com fornecedor", f"<p>{milhar(n_total)} notas fiscais com fornecedor", html)
     html = re.sub(r"(pessoal dos gabinetes, )\d{1,3}(?:\.\d{3})*( notas fiscais)", rf"\g<1>{milhar(n_cg)}\2", html)
@@ -142,15 +149,15 @@ def main():
         html = troca(html, r'(<div class="resumo-grid">\n).*?(\n    </div>)',
                      r"\g<1>" + resumo_grid([
                          (len(vereadores), "Vereadores"),
-                         (brl(verba_cg), "Verba indenizatória paga em 2026"),
+                         (brl(verba_cg), f"Verba indenizatória paga em {ANO}"),
                          (milhar(n_cg), "Notas fiscais coletadas"),
                          (brl(subsidio), "Subsídio mensal por vereador"),
                      ]).replace("\\", "\\\\") + r"\2", "vereadores: resumo")
         linhas = []
-        for v in sorted(vereadores, key=lambda v: -((v.get("verbaIndenizatoria") or {}).get("gastoPago2026") or 0)):
+        for v in sorted(vereadores, key=lambda v: -((v.get("verbaIndenizatoria") or {}).get(f"gastoPago{ANO}") or 0)):
             vi = v.get("verbaIndenizatoria") or {}
-            pago = vi.get("gastoPago2026") or 0
-            cota = vi.get("cotaAnual2026") or 300000
+            pago = vi.get(f"gastoPago{ANO}") or 0
+            cota = vi.get(f"cotaAnual{ANO}") or 300000
             linhas.append([link_nome("vereador", v["nome"]), f"<td>{v.get('partido') or '—'}</td>",
                            f'<td class="num">{brl(pago)}</td>', f'<td class="num">{pago / cota * 100:.1f}%</td>',
                            f'<td class="num">{v.get("totalNotasFiscais") or 0}</td>'])
@@ -164,7 +171,7 @@ def main():
         html = p.read_text(encoding="utf-8")
         html = re.sub(r"\b\d+ deputados estaduais", f"{len(deps_est)} deputados estaduais", html)
         html = re.sub(r"Jan–\w{3}/\d{4}", periodo, html)
-        html = re.sub(r"período de Jan a \w{3}/\d{4}", f"período de Jan a {mes_fim}/{date.today().year}", html)
+        html = re.sub(r"período de Jan a \w{3}/\d{4}", f"período de Jan a {mes_fim}/{ANO}", html)
         subsidio = next((d.get("salarioBase") for d in deps_est if d.get("salarioBase")), 34774.64)
         html = troca(html, r'(<div class="resumo-grid">\n).*?(\n    </div>)',
                      r"\g<1>" + resumo_grid([
@@ -188,7 +195,7 @@ def main():
                      r"\g<1>" + resumo_grid([
                          (len(senadores), "Senadores de MS"),
                          (len(senbr.get("senadores") or []) or 81, "Senadores no Brasil"),
-                         (brl(sum(s.get("cotaGastaAno") or 0 for s in senadores)), "CEAPS gasta em 2026 (MS)"),
+                         (brl(sum(s.get("cotaGastaAno") or 0 for s in senadores)), f"CEAPS gasta em {ANO} (MS)"),
                          (milhar(n_sen), "Notas fiscais coletadas"),
                      ]).replace("\\", "\\\\") + r"\2", "senadores: resumo")
         linhas = [[link_nome("senador", s["nome"]), f"<td>{s.get('partido') or '—'}</td>",

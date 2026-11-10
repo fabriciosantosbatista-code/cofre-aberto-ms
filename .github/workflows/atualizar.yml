@@ -28,6 +28,9 @@ jobs:
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
         run: python3 scripts/coletar_dados.py
 
+      - name: Histórico do ano que fechou (só na primeira coleta após a virada)
+        run: python3 scripts/gerar_historico.py --se-faltar || echo "⚠️ histórico do ano anterior não gerado — tenta de novo amanhã"
+
       - name: Upload artifact — dados (portal transparência)
         uses: actions/upload-artifact@v4
         with:
@@ -68,6 +71,7 @@ jobs:
           path: |
             dados/camara_municipal.json
             dados/verba_cg_cache.json
+            dados/historico_*_camara_cg.json
           retention-days: 1
 
   coletar_trt24:

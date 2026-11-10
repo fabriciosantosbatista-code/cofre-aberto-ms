@@ -34,7 +34,10 @@ ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
 SITE = "https://cofreabertoms.com.br"
 PAINEL = f"{SITE}/cofre-aberto-ms.html"
-ANO = date.today().year
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent))
+from ano_ref import ano_referencia
+ANO = ano_referencia()  # vira em 1º de fevereiro (scripts/ano_ref.py)
 MESES_ABREV = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 
 
@@ -173,6 +176,7 @@ def gerar_conexoes(lista):
 # ------------------------------------------------------------------
 def gerar_evolucao(lista):
     hist = carregar(f"historico_{ANO - 1}.json")
+    hist_cg = carregar(f"historico_{ANO - 1}_camara_cg.json").get("vereadoresCG") or {}
     chave_hist = {"federal": "federaisMS", "senador": "senadoresMS", "estadual": "estaduais"}
     grupos = {}
     for grupo, aba, rotulo, v, notas in lista:
@@ -196,7 +200,9 @@ def gerar_evolucao(lista):
                 if 1 <= mes <= 12:
                     m[mes - 1] += float(n.get("valor") or 0)
         anterior = None
-        if grupo in chave_hist:
+        if grupo == "vereador" and v["nome"] in hist_cg:
+            anterior = hist_cg[v["nome"]]["mensal"]
+        elif grupo in chave_hist:
             h = hist.get(chave_hist[grupo]) or {}
             reg = h.get(str(v.get("id"))) or h.get(v["nome"])
             if reg:
@@ -211,6 +217,8 @@ def gerar_evolucao(lista):
         "ultimaAtualizacao": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
         "ano": ANO, "anoAnterior": ANO - 1,
         "mesAtual": date.today().month,
+        # último mês já fechado do ano de referência (dez se o ano já virou no calendário)
+        "mesFechado": 12 if ANO < date.today().year else max(1, date.today().month - 1),
         "nota": ("Valores por mês de competência da despesa. Deputados federais e senadores: "
                  "notas da CEAP/CEAPS; deputados estaduais: CEAP da ALEMS; vereadores de CG: "
                  "verba indenizatória declarada (Atos 027/028), sem histórico de anos anteriores."),

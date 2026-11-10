@@ -15,7 +15,22 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
-ANO = date.today().year
+sys.path.insert(0, str(Path(__file__).parent))
+from ano_ref import ano_referencia
+# Ano de referência: vira em 1º de fevereiro (ver scripts/ano_ref.py) — em janeiro
+# ainda chegam as notas de dezembro, então o ano anterior fecha completo.
+ANO = ano_referencia()
+MESES_PT = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+
+
+def mes_fim_periodo():
+    """Último mês do período coletado, em português (dez se o ano de referência já fechou)."""
+    return "dez" if ANO < date.today().year else MESES_PT[date.today().month - 1]
+
+
+def mesmo_ano(dados_ant):
+    """Os dados anteriores são do mesmo ano de referência? (na virada, não podem ser reaproveitados)"""
+    return (dados_ant or {}).get("ano", 2026) == ANO
 hoje = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 
 # Headers padrão para evitar bloqueios
@@ -192,7 +207,11 @@ def coletar_dep_federais_ms():
         dados_ant = json.load(open(DADOS / "deputados_federais_ms.json", encoding="utf-8"))
         ceap_ant = {d["id"]: d for d in dados_ant.get("deputados", [])}
     except:
-        ceap_ant = {}
+        dados_ant, ceap_ant = {}, {}
+    if not mesmo_ano(dados_ant):
+        # virada do ano: a lista anterior serve de reserva, mas o CEAP/notas não
+        ceap_ant = {k: {kk: vv for kk, vv in v.items() if kk not in ("cotaGastaAno", "ceapCategorias", "totalNotasFiscais", "despesas")}
+                    for k, v in ceap_ant.items()}
 
     if not deputados:
         # Lista da API fora do ar: reaproveita a lista anterior (o CEAP vem do arquivo completo)
@@ -378,8 +397,10 @@ def coletar_senadores_ms():
 
     notas_ant = {}
     try:
-        for s_ant in json.load(open(DADOS / "senadores_ms.json", encoding="utf-8")).get("senadores", []):
-            notas_ant[s_ant["id"]] = s_ant.get("notasCeaps", [])
+        _sen_ant = json.load(open(DADOS / "senadores_ms.json", encoding="utf-8"))
+        if mesmo_ano(_sen_ant):  # na virada do ano, notas antigas não valem para o ano novo
+            for s_ant in _sen_ant.get("senadores", []):
+                notas_ant[s_ant["id"]] = s_ant.get("notasCeaps", [])
     except: pass
     notas_ceaps = carregar_notas_ceaps_senado(ANO)
 
@@ -423,7 +444,7 @@ def coletar_senadores_ms():
             "gastosExtras": recursos["gastosExtras"],
             "pessoal": recursos["pessoal"],
             "beneficios": recursos["beneficios"],
-            "cotaGastaAno": round(total_ceaps, 2) if total_ceaps else ant_s.get("cotaGastaAno"),
+            "cotaGastaAno": round(total_ceaps, 2) if total_ceaps else (ant_s.get("cotaGastaAno") if ant_s.get("anoReferencia") == ano_dados else None),
             "totalGasto": round(total_ceaps + total_extras, 2) if total_ceaps else None,
             "ceapsCategorias": [{"categoria": k, "valor": round(v, 2)}
                                 for k, v in sorted(recursos["ceaps"].items(), key=lambda x: -x[1]) if v > 0],
@@ -502,6 +523,20 @@ def coletar_dep_estaduais():
     except:
         dados_ant = {}
         deps_ant = {}
+    if not mesmo_ano(dados_ant):
+        # Virada do ano: mantém o cadastro (foto, partido, gabinete), zera CEAP e notas
+        # e leva a cota anual para o ano novo (o valor da cota é o mesmo até mudar a lei).
+        ano_ant = dados_ant.get("ano", 2026)
+        for d in deps_ant.values():
+            vi = d.get("verbaIndenizatoria") or {}
+            cota = vi.get(f"cotaAnual{ano_ant}")
+            d["verbaIndenizatoria"] = {k: v for k, v in vi.items() if not re.search(r"\d{4}$", k) and k not in ("categorias", "percentualUsado")}
+            if cota:
+                d["verbaIndenizatoria"][f"cotaAnual{ANO}"] = cota
+            d["despesas"], d["totalNotasFiscais"] = [], 0
+        dados_ant = {k: v for k, v in dados_ant.items() if k != "resumo"} | {"resumo": {
+            k: v for k, v in (dados_ant.get("resumo") or {}).items() if not re.search(r"\d{4}$", k)}}
+        log(f"  Virada do ano ({ano_ant} → {ANO}): CEAP e notas zerados, cadastro mantido")
 
     resultados = {}
     total_geral = 0.0
@@ -579,7 +614,7 @@ def coletar_dep_estaduais():
                 **ant.get("verbaIndenizatoria", {}),
                 f"gastoPago{ANO}": gastos["total"],
                 "categorias": gastos["categorias"],
-                "periodoColetado": f"Jan–{datetime.now().strftime('%b')}/{ANO}",
+                "periodoColetado": f"Jan–{mes_fim_periodo().capitalize()}/{ANO}",
                 "percentualUsado": round(gastos["total"] / cota_anual * 100, 1) if cota_anual else None,
                 "descricaoGeral": "CEAP — Cota do Exercício da Atividade Parlamentar (ALEMS).",
                 "fonte": f"Portal da Transparência ALEMS — transparencia2.al.ms.gov.br/ceap — {hoje}",
@@ -590,13 +625,14 @@ def coletar_dep_estaduais():
 
     data = {
         **dados_ant,
+        "ano": ANO,
         "ultimaAtualizacao": hoje,
         "fonte": f"Despesas CEAP: Portal da Transparência ALEMS (transparencia2.al.ms.gov.br/ceap) — coleta automática {hoje}. Total geral {ANO}: R$ {total_geral:,.2f}.",
         "resumo": {
             **(dados_ant.get("resumo") or {}),
             "totalDeputados": len(deps),
             f"totalVerbaIndenizatoriaPaga{ANO}": round(total_geral, 2),
-            "periodoColetado": f"Jan–{datetime.now().strftime('%b')}/{ANO}",
+            "periodoColetado": f"Jan–{mes_fim_periodo().capitalize()}/{ANO}",
         },
         "vereadores": deps,
     }
@@ -662,7 +698,7 @@ def coletar_senado_brasil():
                 "gastosExtras": recursos["gastosExtras"],
                 "pessoal": recursos["pessoal"],
                 "beneficios": recursos["beneficios"],
-                "cotaGastaAno": round(recursos["totalCeaps"], 2) if recursos["totalCeaps"] else ant.get("cotaGastaAno"),
+                "cotaGastaAno": round(recursos["totalCeaps"], 2) if recursos["totalCeaps"] else (ant.get("cotaGastaAno") if ant.get("anoReferencia") == recursos["ano"] else None),
                 "anoReferencia": recursos["ano"],
                 "fonteCeaps": f"adm.senado.gov.br — dados de {hoje}",
             })
@@ -747,7 +783,10 @@ def coletar_dep_federais_brasil():
         dados_ant = json.load(open(DADOS / "deputados_federais_brasil.json", encoding="utf-8"))
         ceap_ant = {d["id"]: d for d in dados_ant.get("deputados", [])}
     except:
-        ceap_ant = {}
+        dados_ant, ceap_ant = {}, {}
+    if not mesmo_ano(dados_ant):
+        ceap_ant = {k: {kk: vv for kk, vv in v.items() if kk not in ("cotaGastaAno", "ceapCategorias", "totalNotasFiscais")}
+                    for k, v in ceap_ant.items()}
 
     if not deputados:
         if not ceap_ant or carregar_ceap_bulk(ANO) is None:
@@ -860,7 +899,7 @@ def _pref_baixar_csv_dados_abertos(ano):
 
 def coletar_prefeitura():
     log("Coletando despesas da Prefeitura de CG...")
-    ano = date.today().year
+    ano = ANO
     fonte = None
     try:
         linhas = _pref_baixar_sig(ano)
@@ -921,8 +960,8 @@ def coletar_prefeitura():
         except Exception:
             continue
 
-    # Não regride: se a fonte trouxer menos pago que o já publicado, mantém
-    if total_geral < (dados_ant.get("totalDespesas") or 0) * 0.98:
+    # Não regride: se a fonte trouxer menos pago que o já publicado (no MESMO ano), mantém
+    if dados_ant.get("ano") == ano and total_geral < (dados_ant.get("totalDespesas") or 0) * 0.98:
         log(f"  ⚠️ Total pago caiu (R$ {total_geral:,.2f} < R$ {dados_ant.get('totalDespesas'):,.2f}) — mantendo dados anteriores")
         return None
 

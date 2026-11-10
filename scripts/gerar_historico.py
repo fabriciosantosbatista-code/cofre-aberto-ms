@@ -24,7 +24,10 @@ import requests
 sys.path.insert(0, str(Path(__file__).parent))
 import coletar_dados as cd  # reaproveita downloads/parsers da coleta diária
 
-ANO = int(sys.argv[1]) if len(sys.argv) > 1 else 2025
+from ano_ref import ano_referencia
+_args = [a for a in sys.argv[1:] if not a.startswith("--")]
+ANO = int(_args[0]) if _args else ano_referencia() - 1
+SE_FALTAR = "--se-faltar" in sys.argv   # usado na coleta diária: só gera uma vez por ano fechado
 DADOS = cd.DADOS
 
 
@@ -105,6 +108,12 @@ def estaduais():
 
 
 if __name__ == "__main__":
+    destino = DADOS / f"historico_{ANO}.json"
+    if SE_FALTAR and destino.exists():
+        atual = json.load(open(destino, encoding="utf-8"))
+        if all(atual.get(k) for k in ("federaisMS", "senadoresMS", "estaduais")):
+            cd.log(f"Histórico de {ANO} já existe — nada a fazer")
+            sys.exit(0)
     cd.log(f"Gerando histórico de {ANO}...")
     dados = {"ano": ANO, "geradoEm": cd.hoje,
              "fontes": {"federais": f"camara.leg.br/cotas/Ano-{ANO}.csv.zip",

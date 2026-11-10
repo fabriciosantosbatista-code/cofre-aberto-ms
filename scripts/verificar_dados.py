@@ -25,6 +25,9 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
 HOJE = date.today()
+sys.path.insert(0, str(Path(__file__).parent))
+from ano_ref import ano_referencia
+ANO = ano_referencia()
 MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 
 erros, avisos, ok = [], [], []
@@ -38,6 +41,10 @@ def carregar(nome):
         return None
 
 
+def ano_de(d):
+    return (d or {}).get("ano", 2026)
+
+
 def versao_anterior(nome):
     """Conteúdo da versão anterior do arquivo no git (para detectar quedas bruscas)."""
     try:
@@ -45,8 +52,11 @@ def versao_anterior(nome):
                                          cwd=ROOT, text=True, stderr=subprocess.DEVNULL).split()
         if len(hashes) < 2:
             return None
-        return json.loads(subprocess.check_output(["git", "show", f"{hashes[1]}:dados/{nome}"],
-                                                  cwd=ROOT, stderr=subprocess.DEVNULL))
+        ant = json.loads(subprocess.check_output(["git", "show", f"{hashes[1]}:dados/{nome}"],
+                                                 cwd=ROOT, stderr=subprocess.DEVNULL))
+        atual = json.load(open(DADOS / nome, encoding="utf-8"))
+        # na virada do ano os totais recomeçam do zero: não é "queda brusca"
+        return ant if ano_de(ant) == ano_de(atual) else None
     except Exception:
         return None
 
@@ -107,7 +117,7 @@ def main():
                 if m in MESES:
                     ult = max(ult, MESES.index(m))
         if ult >= 0:
-            ano = int(str(cg.get("ultimaAtualizacao", HOJE.year))[:4])
+            ano = ano_de(cg)
             atraso = (HOJE.year * 12 + HOJE.month) - (ano * 12 + ult + 1)
             # a Câmara publica a verba com ~1–2 meses de atraso
             checa(atraso <= 3, f"Câmara CG: verba até {MESES[ult]}/{ano}",

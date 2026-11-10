@@ -25,7 +25,10 @@ from urllib.parse import quote
 ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
 SITE = "https://cofreabertoms.com.br"
-ANO = date.today().year
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent))
+from ano_ref import ano_referencia
+ANO = ano_referencia()
 HOJE = date.today()
 MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 COR_ATUAL, COR_ANTERIOR = "#3987e5", "#d95926"   # mesmas cores validadas da aba Evolução
@@ -391,7 +394,8 @@ def pagina(p, irmaos):
     ev = p.get("evol")
     var_txt = ""
     if ev and ev.get("mAnterior"):
-        M = max(0, min(HOJE.month - 2, max([i for i, v in enumerate(ev["m"]) if v > 0], default=0)))
+        fechado = 11 if ANO < HOJE.year else HOJE.month - 2   # índice do último mês fechado
+        M = max(0, min(fechado, max([i for i, v in enumerate(ev["m"]) if v > 0], default=0)))
         a, b = sum(ev["m"][:M + 1]), sum(ev["mAnterior"][:M + 1])
         if b:
             v = (a / b - 1) * 100

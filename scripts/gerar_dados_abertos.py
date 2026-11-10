@@ -22,7 +22,10 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
 HOJE = date.today()
-ANO = HOJE.year
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent))
+from ano_ref import ano_referencia
+ANO = ano_referencia()
 MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 
 
@@ -206,7 +209,7 @@ def status_fontes():
         for m in list(vi.get("mesesAto027") or {}) + list(vi.get("mesesAto028") or {}):
             if m in MESES:
                 ult = max(ult, MESES.index(m))
-    atraso = (HOJE.month - 1 - ult) if ult >= 0 else 99
+    atraso = ((HOJE.year * 12 + HOJE.month) - (ANO * 12 + ult + 1)) if ult >= 0 else 99
     add("camara", "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
         "http://45.225.6.93:8079/transparencia/", cg.get("ultimaAtualizacao"),
         f"verba indenizatória até {MESES[ult]}/{ANO}" if ult >= 0 else None,

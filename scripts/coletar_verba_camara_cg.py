@@ -59,7 +59,9 @@ TIMEOUT_DOWNLOAD = 120  # segundos para selecionar + baixar o PDF
 TIMEOUT_PARSING = 300   # segundos de leitura por PDF
 TIMEOUT_POR_PDF = TIMEOUT_DOWNLOAD  # compatibilidade
 MAX_WORKERS = 4
-ANO = date.today().year
+sys.path.insert(0, str(Path(__file__).parent))
+from ano_ref import ano_referencia
+ANO = ano_referencia()  # vira em 1º de fevereiro (scripts/ano_ref.py)
 ANO_STR = str(ANO)
 hoje = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 
@@ -557,6 +559,54 @@ def total_mes_confiavel(dados_mes):
     total = dados_mes.get("totalDeclarado")
     return total if total is not None and total > 0 else None
 
+MESES_ABREV_ORDEM = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+
+
+def virada_do_ano():
+    """Na virada do ano de referência, arquiva os meses do ano que fechou e zera a verba.
+
+    Os meses da verba ficam em mesesAto027/028 com chave só do mês ("jan", "fev"...),
+    sem o ano — sem este reset, jan do ano novo sobrescreveria jan do ano anterior e o
+    total somaria os dois anos. O ano que fechou vai para
+    dados/historico_<ano>_camara_cg.json (usado na aba Evolução para comparar)."""
+    if not ARQUIVO_CAMARA.exists():
+        return
+    atual = json.load(open(ARQUIVO_CAMARA, encoding="utf-8"))
+    ano_ant = int(atual.get("ano") or 2026)
+    if ano_ant >= ANO:
+        return
+    log(f" Virada do ano: arquivando a verba de {ano_ant} e começando {ANO} do zero")
+    hist = {"ano": ano_ant, "geradoEm": hoje,
+            "fonte": "Verba indenizatória (Atos 027/028) declarada nos PDFs da Câmara Municipal de Campo Grande",
+            "vereadoresCG": {}}
+    for v in atual.get("vereadores", []):
+        vi = v.get("verbaIndenizatoria") or {}
+        mensal = [0.0] * 12
+        for campo in ("mesesAto027", "mesesAto028"):
+            for ab, val in (vi.get(campo) or {}).items():
+                if ab in MESES_ABREV_ORDEM:
+                    mensal[MESES_ABREV_ORDEM.index(ab)] += float(val or 0)
+        hist["vereadoresCG"][v["nome"]] = {"nome": v["nome"], "mensal": [round(x, 2) for x in mensal],
+                                           "notas": v.get("totalNotasFiscais") or 0}
+        cota = vi.get(f"cotaAnual{ano_ant}")
+        novo = {k: val for k, val in vi.items()
+                if not re.search(r"\d{4}$", k) and k not in ("mesesAto027", "mesesAto028", "percentualUsado", "categorias", "notaColeta")}
+        if cota:
+            novo[f"cotaAnual{ANO}"] = cota
+        novo["mesesAto027"], novo["mesesAto028"] = {}, {}
+        v["verbaIndenizatoria"] = novo
+        v["despesas"], v["totalNotasFiscais"] = [], 0
+    arq_hist = DADOS / f"historico_{ano_ant}_camara_cg.json"
+    if not arq_hist.exists():
+        json.dump(hist, open(arq_hist, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+    resumo = atual.setdefault("resumo", {})
+    for k in [k for k in resumo if re.search(r"\d{4}$", k)]:
+        resumo.pop(k)
+    resumo[f"totalVerbaIndenizatoriaPaga{ANO}"] = 0
+    atual["ano"] = ANO
+    json.dump(atual, open(ARQUIVO_CAMARA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+
+
 def mesclar_dados(resultado_extraido):
     if not resultado_extraido:
         log(" ⚠️ Nenhum dado extraído — mantendo camara_municipal.json inalterado")
@@ -626,10 +676,10 @@ def mesclar_dados(resultado_extraido):
             gasto027 = round(sum(vi.get("mesesAto027", {}).values()), 2)
             gasto028 = round(sum(vi.get("mesesAto028", {}).values()), 2)
             gasto_pago = round(gasto027 + gasto028, 2)
-            cota_anual = vi.get("cotaAnual2026") or 1
-            vi["gastoAto027_2026"] = gasto027
-            vi["gastoAto028_2026"] = gasto028
-            vi["gastoPago2026"] = gasto_pago
+            cota_anual = vi.get(f"cotaAnual{ANO_STR}") or 1
+            vi[f"gastoAto027_{ANO_STR}"] = gasto027
+            vi[f"gastoAto028_{ANO_STR}"] = gasto028
+            vi[f"gastoPago{ANO_STR}"] = gasto_pago
             vi["percentualUsado"] = round(gasto_pago / cota_anual * 100, 1)
 
             despesas_existentes.sort(key=lambda d: d["data"])
@@ -641,6 +691,7 @@ def mesclar_dados(resultado_extraido):
 
     if vereadores_atualizados:
         atual["ultimaAtualizacao"] = hoje
+        atual["ano"] = ANO
         # O resumo (exibido no topo da aba Câmara CG) precisa acompanhar os
         # totais individuais — antes ficava congelado no valor da carga manual.
         resumo = atual.setdefault("resumo", {})
@@ -766,6 +817,7 @@ def coletar_pessoal_gabinetes():
         f"{resumo['totalFuncionariosGabinetes']} servidores, R$ {resumo['totalGastoPessoalMensal']:,.2f}/mês")
 
 if __name__ == "__main__":
+    virada_do_ano()
     resultado = coletar_verba_indenizatoria()
     mesclar_dados(resultado)
     try:

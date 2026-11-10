@@ -6,7 +6,7 @@
 <title>Cofre Aberto MS — Transparência Pública de Mato Grosso do Sul</title>
 
 <!-- SEO -->
-<meta name="description" content="Fiscalize os gastos públicos de Mato Grosso do Sul. Dados reais de 29 vereadores, 26 deputados estaduais, 3 senadores e deputados federais de MS — com 2.773 notas fiscais, CEAP 2026 e folha de pessoal."/>
+<meta name="description" content="Fiscalize os gastos públicos de Mato Grosso do Sul: vereadores de Campo Grande, deputados estaduais e federais, senadores, Prefeitura e Judiciário — com notas fiscais, cotas parlamentares e folha de pessoal, atualizados todo dia."/>
 <meta name="keywords" content="transparência pública MS, gastos vereadores Campo Grande, CEAP deputados Mato Grosso do Sul, ALEMS deputados, gastos públicos Campo Grande, CEAP senadores MS, cofre aberto, fiscalização pública MS"/>
 <meta name="author" content="Cofre Aberto MS"/>
 <meta name="robots" content="index, follow"/>
@@ -22,7 +22,7 @@
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://cofreabertoms.com.br/cofre-aberto-ms.html"/>
 <meta property="og:title" content="Cofre Aberto MS — Transparência Pública"/>
-<meta property="og:description" content="2.773 notas fiscais reais, CEAP 2026, pessoal e gastos de 58+ parlamentares de Mato Grosso do Sul. Dados 100% públicos e verificáveis."/>
+<meta property="og:description" content="Notas fiscais, cotas parlamentares e gastos de mais de 60 políticos de Mato Grosso do Sul, atualizados todo dia. Dados 100% públicos e verificáveis."/>
 <meta property="og:image" content="https://cofreabertoms.com.br/og-image.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
@@ -33,7 +33,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:url" content="https://cofreabertoms.com.br/cofre-aberto-ms.html"/>
 <meta name="twitter:title" content="Cofre Aberto MS — Transparência Pública"/>
-<meta name="twitter:description" content="2.773 notas fiscais reais de parlamentares de MS. CEAP 2026, pessoal e gastos."/>
+<meta name="twitter:description" content="Notas fiscais e gastos de políticos de MS, atualizados todo dia."/>
 <meta name="twitter:image" content="https://cofreabertoms.com.br/og-image.png"/>
 
 <!-- Favicon -->
@@ -469,7 +469,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   <section class="tabpanel active" id="tab-deputados">
 
     <div class="hero">
-      <div class="hero-label">Auditoria da cota · Exercício 2026 · Deputados Federais de MS</div>
+      <div class="hero-label">Auditoria da cota · Exercício <span class="ano-ref">2026</span> · Deputados Federais de MS</div>
       <div class="hero-number" id="dep-total">R$ —</div>
       <div class="hero-desc">
         reembolsados a <b id="dep-qtd">—</b> deputados federais por Mato Grosso do Sul, em
@@ -497,7 +497,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 
     <div class="section">
       <div class="section-head">
-        <h2 class="section-title">Ranking de gastos — cota CEAP 2026</h2>
+        <h2 class="section-title">Ranking de gastos — cota CEAP <span class="ano-ref">2026</span></h2>
       </div>
       <div class="section-note">Gasto líquido da cota parlamentar (CEAP) no ano. Clique em um nome para ver o detalhamento completo, incluindo gabinete, equipe estimada, custo anual e todas as notas fiscais.</div>
       <div class="card">
@@ -619,9 +619,9 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 
     <div class="section">
       <div class="section-head">
-        <h2 class="section-title">Gastos institucionais da Câmara (2026)</h2>
+        <h2 class="section-title">Gastos institucionais da Câmara (<span class="ano-ref">2026</span>)</h2>
       </div>
-      <div class="section-note">Despesas da Câmara como instituição (não individualizadas por gabinete) — folha, previdência, publicidade, manutenção, etc. Valores empenhados em 2026.</div>
+      <div class="section-note">Despesas da Câmara como instituição (não individualizadas por gabinete) — folha, previdência, publicidade, manutenção, etc. Valores empenhados em <span class="ano-ref">2026</span>.</div>
       <div class="card card-pad">
         <div class="bar-list" id="institucionais-camara"></div>
       </div>
@@ -812,7 +812,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   <!-- ===================== DEPUTADOS FEDERAIS - BRASIL ===================== -->
   <section class="tabpanel" id="tab-deputados-brasil">
     <div class="hero">
-      <div class="hero-label">Auditoria nacional · Exercício 2026 · Todos os Deputados Federais do Brasil</div>
+      <div class="hero-label">Auditoria nacional · Exercício <span class="ano-ref">2026</span> · Todos os Deputados Federais do Brasil</div>
       <div class="hero-number" id="depbr-total">R$ —</div>
       <div class="hero-desc">
         reembolsados a <b id="depbr-qtd">—</b> deputados federais de todo o país, em
@@ -836,7 +836,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         nome, as notas fiscais individuais são buscadas na hora, direto da API da Câmara.
       </div>
       <div class="section-head">
-        <h2 class="section-title">Ranking nacional — gasto da cota CEAP 2026</h2>
+        <h2 class="section-title">Ranking nacional — gasto da cota CEAP <span class="ano-ref">2026</span></h2>
       </div>
       <div class="section-note">Todos os deputados federais do Brasil, ordenados pelo gasto líquido da cota parlamentar no ano. Clique em um nome para ver detalhamento completo.</div>
       <input class="search-box" id="busca-depbr" type="text" placeholder="buscar por nome, partido ou UF…" />
@@ -1202,7 +1202,14 @@ const PADRAO_PREFEITURA = {
 // ===================== BUSCA AUTOMÁTICA NA API (direto do navegador) =====================
 const CAMARA_API = "https://dadosabertos.camara.leg.br/api/v2";
 const SENADO_API = "https://legis.senado.leg.br/dadosabertos";
-const ANO_REFERENCIA = 2026;
+// Ano de referência: vira em 1º de fevereiro (mesma regra de scripts/ano_ref.py) —
+// em janeiro ainda chegam as notas de dezembro, então o ano anterior fecha completo.
+const ANO_REFERENCIA = (() => { const d = new Date(); return d.getMonth() >= 1 ? d.getFullYear() : d.getFullYear() - 1; })();
+// Ano dos dados de verba (Câmara CG / ALEMS): o do próprio JSON, que só muda na
+// primeira coleta após a virada (ver anoDosDados).
+let ANO_VERBA = ANO_REFERENCIA;
+function anoDosDados(d) { if (d && d.ano) ANO_VERBA = d.ano; return ANO_VERBA; }
+const kAno = base => `${base}${ANO_VERBA}`;
 const BIO_SENADOR_CACHE = {};
 
 async function buscarBioSenador(id) {
@@ -2019,8 +2026,8 @@ function renderCamaraMunicipal(data) {
   document.getElementById("cam-folha").textContent = formatBRL(resumo.totalGastoPessoalMensal);
   document.getElementById("cam-funcionarios").textContent = resumo.totalFuncionariosGabinetes ?? "—";
   document.getElementById("cam-verba-total").textContent = formatCompact(resumo.totalVerbaIndenizatoriaAnual);
-  const somaVerbaPaga = vereadores.reduce((s, v) => s + (v.verbaIndenizatoria?.gastoPago2026 || 0), 0);
-  document.getElementById("cam-verba-paga").textContent = formatCompact(somaVerbaPaga || resumo.totalVerbaIndenizatoriaPaga2026);
+  const somaVerbaPaga = vereadores.reduce((s, v) => s + (v.verbaIndenizatoria?.[kAno("gastoPago")] || 0), 0);
+  document.getElementById("cam-verba-paga").textContent = formatCompact(somaVerbaPaga || resumo[kAno("totalVerbaIndenizatoriaPaga")]);
   document.getElementById("cam-subsidio").textContent = formatBRL(SUBSIDIO_VEREADOR);
 
   if (data.fonte) {
@@ -2099,7 +2106,7 @@ function renderCamaraMunicipal(data) {
             const v27 = meses27[m] || 0;
             const v28 = meses28[m] || 0;
             return `<tr>
-              <td>${MESES_LABEL[m] || m}/2026</td>
+              <td>${MESES_LABEL[m] || m}/${ANO_VERBA}</td>
               <td class="num">${formatBRL(v27)}</td>
               <td class="num">${formatBRL(v28)}</td>
               <td class="num" style="font-weight:600">${formatBRL(v27+v28)}</td>
@@ -2176,26 +2183,26 @@ function renderCamaraMunicipal(data) {
         </div>
       </div>
 
-      <div class="subhead">Verba indenizatória 2026 (Atos da Mesa nº 27 e 28/2017)</div>
+      <div class="subhead">Verba indenizatória ${ANO_VERBA} (Atos da Mesa nº 27 e 28/2017)</div>
       <div class="stat-grid">
         <div class="stat-card">
-          <p class="stat-label">Cota anual 2026</p>
-          <p class="stat-value">${formatBRL(verba.cotaAnual2026)}</p>
+          <p class="stat-label">Cota anual ${ANO_VERBA}</p>
+          <p class="stat-value">${formatBRL(verba[kAno("cotaAnual")])}</p>
           <p class="stat-note">Ato 027 + Ato 028 (R$ 150k cada)</p>
         </div>
         <div class="stat-card">
           <p class="stat-label">Gasto ATO 027</p>
-          <p class="stat-value">${formatBRL(verba.gastoAto027_2026)}</p>
+          <p class="stat-value">${formatBRL(verba[kAno("gastoAto027_")])}</p>
           <p class="stat-note">Combustível, divulgação, locação, software</p>
         </div>
         <div class="stat-card">
           <p class="stat-label">Gasto ATO 028</p>
-          <p class="stat-value">${formatBRL(verba.gastoAto028_2026)}</p>
+          <p class="stat-value">${formatBRL(verba[kAno("gastoAto028_")])}</p>
           <p class="stat-note">Assessoria técnica</p>
         </div>
         <div class="stat-card alt">
           <p class="stat-label">Total pago / % da cota</p>
-          <p class="stat-value">${formatBRL(verba.gastoPago2026)}</p>
+          <p class="stat-value">${formatBRL(verba[kAno("gastoPago")])}</p>
           <p class="stat-note">${verba.percentualUsado != null ? verba.percentualUsado.toFixed(1) + "% da cota anual" : "—"}</p>
         </div>
       </div>
@@ -2266,8 +2273,8 @@ function renderCamaraMunicipal(data) {
             </div>
           </div>
         </td>
-        <td class="num">${formatBRL(verba.cotaAnual2026)}</td>
-        <td class="num">${formatBRL(verba.gastoPago2026)}</td>
+        <td class="num">${formatBRL(verba[kAno("cotaAnual")])}</td>
+        <td class="num">${formatBRL(verba[kAno("gastoPago")])}</td>
         <td class="progress-cell">
           ${progressBar(pct, "positive")}
           <div style="font-size:0.72rem; color:var(--ink-soft); margin-top:3px;">${pct.toFixed(1)}%</div>
@@ -2318,9 +2325,9 @@ function renderDeputadosEstaduais(data) {
 
   // Ordenar por CEAP gasto (maiores primeiro)
   const ordenados = [...deputados].sort((a, b) =>
-    (b.verbaIndenizatoria?.gastoPago2026 || 0) - (a.verbaIndenizatoria?.gastoPago2026 || 0)
+    (b.verbaIndenizatoria?.[kAno("gastoPago")] || 0) - (a.verbaIndenizatoria?.[kAno("gastoPago")] || 0)
   );
-  const maxCeap = Math.max(...ordenados.map(d => d.verbaIndenizatoria?.gastoPago2026 || 0), 1);
+  const maxCeap = Math.max(...ordenados.map(d => d.verbaIndenizatoria?.[kAno("gastoPago")] || 0), 1);
 
   function renderTable(filtro = "") {
     const f = filtro.toLowerCase();
@@ -2328,7 +2335,7 @@ function renderDeputadosEstaduais(data) {
       d.nome.toLowerCase().includes(f) || (d.partido || "").toLowerCase().includes(f)
     );
     tbody.innerHTML = filtrados.map((d, i) => {
-      const ceap = d.verbaIndenizatoria?.gastoPago2026 || 0;
+      const ceap = d.verbaIndenizatoria?.[kAno("gastoPago")] || 0;
       const pct = ceap / maxCeap * 100;
       return `
       <tr class="clickable" data-idx="${i}">
@@ -2402,7 +2409,7 @@ function renderDeputadosEstaduais(data) {
       <div class="stat-grid">
         <div class="stat-card alt">
           <p class="stat-label">Total gasto (${verba.periodoColetado || "período coletado"})</p>
-          <p class="stat-value">${verba.gastoPago2026 != null ? formatBRL(verba.gastoPago2026) : "—"}</p>
+          <p class="stat-value">${verba[kAno("gastoPago")] != null ? formatBRL(verba[kAno("gastoPago")]) : "—"}</p>
           <p class="stat-note">${verba.percentualUsado != null ? verba.percentualUsado.toFixed(1) + "% da cota anual estimada" : ""}</p>
         </div>
         <div class="stat-card">
@@ -3357,7 +3364,7 @@ function renderRankingsGerais() {
   for (const v of DADOS_CAMARA_MUNICIPAL.vereadores || []) {
     const verba = v.verbaIndenizatoria || {};
     const gabinete = v.gabinete || {};
-    const gasto = (verba.gastoPago2026 || 0) + ((gabinete.gastoPessoalMensal || 0) * mesesDesdeJaneiro());
+    const gasto = (verba[kAno("gastoPago")] || 0) + ((gabinete.gastoPessoalMensal || 0) * mesesDesdeJaneiro());
     todos.push({
       id: `vereador-${v.nome}`,
       nome: v.nome,
@@ -3366,7 +3373,7 @@ function renderRankingsGerais() {
       tipo: "vereador",
       foto: v.foto || null,
       gasto2026: gasto,
-      ceap: verba.gastoPago2026 || 0,
+      ceap: verba[kAno("gastoPago")] || 0,
       subsidioMensal: v.salarioBase || 0,
     });
   }
@@ -3381,8 +3388,8 @@ function renderRankingsGerais() {
       cargo: "Dep. Estadual MS",
       tipo: "depest",
       foto: d.foto || null,
-      gasto2026: verba.gastoPago2026 || 0,
-      ceap: verba.gastoPago2026 || 0,
+      gasto2026: verba[kAno("gastoPago")] || 0,
+      ceap: verba[kAno("gastoPago")] || 0,
       subsidioMensal: d.salarioBase || 0,
     });
   }
@@ -3680,7 +3687,7 @@ function evDesenhar() {
   const { lista, p, atual, anterior } = evSeries();
   const ultimo = evUltimoMes(atual);
   // compara até o último mês completo (o mês corrente ainda está chegando)
-  const M = Math.max(0, Math.min((d.mesAtual || 12) - 2, ultimo));
+  const M = Math.max(0, Math.min((d.mesFechado ?? ((d.mesAtual || 12) - 1)) - 1, ultimo));
   const acA = evAcum(atual), acB = anterior ? evAcum(anterior) : null;
 
   document.getElementById("ev-total").textContent = formatCompact(acA[ultimo] || 0);
@@ -4068,7 +4075,7 @@ async function init() {
       if (btn.dataset.tab === "camara" && !window._camaraLoaded) {
         window._camaraLoaded = true;
         carregarJSON("dados/camara_municipal.json").then(d => {
-          if (d) { DADOS_CAMARA_MUNICIPAL = d; renderCamaraMunicipal(d); }
+          if (d) { DADOS_CAMARA_MUNICIPAL = d; anoDosDados(d); renderCamaraMunicipal(d); }
         });
       }
       if (btn.dataset.tab === "prefeitura" && !window._prefeituraLoaded) {
@@ -4107,13 +4114,14 @@ async function init() {
 
   initBuscaGlobal();
   addShareButtons();
+  document.querySelectorAll(".ano-ref").forEach(el => { el.textContent = ANO_REFERENCIA; });
   montarBarrasFonte();
   window.addEventListener("hashchange", abrirDoHash);
   setTimeout(abrirDoHash, 300);
 
   // Carregar JSONs em paralelo (não bloqueante)
   carregarJSON("dados/deputados_estaduais_ms.json").then(d => {
-    if (d) { DADOS_DEPUTADOS_ESTADUAIS = d; renderDeputadosEstaduais(d); }
+    if (d) { DADOS_DEPUTADOS_ESTADUAIS = d; anoDosDados(d); renderDeputadosEstaduais(d); }
   });
 
   carregarJSON("dados/emendas_ms.json").then(d => { if (d) DADOS_EMENDAS_MS = d; });
