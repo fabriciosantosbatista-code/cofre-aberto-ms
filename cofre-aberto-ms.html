@@ -3588,6 +3588,11 @@ const TIPO_ROTULO = {
   federal: ["dep. federal", "dep. federais"], senador: ["senador", "senadores"], prefeitura: ["Prefeitura", "Prefeitura"],
 };
 let DADOS_CONEXOES = null;
+// Comprovante de CNPJ da Receita com o número já preenchido. O caminho precisa
+// ser exatamente este (maiúsculas): a versão em minúsculas redireciona e perde o ?cnpj=
+function urlReceitaCNPJ(cnpj) {
+  return "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp?cnpj=" + String(cnpj).replace(/\D/g, "");
+}
 
 function renderConexoes(d) {
   DADOS_CONEXOES = d;
@@ -3645,7 +3650,7 @@ function renderConexoes(d) {
     panel.innerHTML = `
       <div class="detail-header"><div class="detail-header-text">
         <h3>${escHTML(c.nome)}</h3>
-        <div class="detail-meta">${c.cnpjs.map(escHTML).join(" · ")}</div>
+        <div class="detail-meta">${c.cnpjs.map(x => `<a href="${urlReceitaCNPJ(x)}" target="_blank" rel="noopener" title="Abrir o comprovante de CNPJ na Receita Federal (já preenchido)">${escHTML(x)}</a>`).join(" · ")}</div>
       </div></div>
       <div class="stat-grid" style="margin-bottom:14px">
         <div class="stat-card"><p class="stat-label">Pagadores</p><p class="stat-value">${c.numPagadores}</p></div>
@@ -3660,7 +3665,8 @@ function renderConexoes(d) {
               <td style="font-size:.78rem">${escHTML(p.rotulo)}</td><td class="num">${p.notas}</td><td class="num">${formatBRL(p.total)}</td></tr>`).join("")}
         </tbody></table></div>
       <p class="section-note" style="margin-top:10px">Clique no nome para ver as notas fiscais do parlamentar. Um fornecedor em comum não indica irregularidade.
-        <a href="https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp" target="_blank" rel="noopener">Consultar o CNPJ na Receita Federal →</a></p>`;
+        <a href="${urlReceitaCNPJ(c.cnpjs[0])}" target="_blank" rel="noopener">Consultar o CNPJ ${escHTML(c.cnpjs[0])} na Receita Federal →</a>
+        <span style="opacity:.7">(o número já vem preenchido; falta só confirmar o captcha)</span></p>`;
     panel.classList.add("active");
     panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
