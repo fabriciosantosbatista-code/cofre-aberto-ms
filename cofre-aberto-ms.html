@@ -511,7 +511,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="hero-label">Câmara Municipal de Campo Grande · 29 vereadores</div>
       <div class="hero-number" id="cam-folha">R$ —</div>
       <div class="hero-desc">
-        em gastos com pessoal nos 29 gabinetes (<span class="ref-pessoal-cg">maio/2026</span>), além do subsídio de
+        em gastos com pessoal nos 29 gabinetes (<span class="ref-pessoal-cg">outubro/2026</span>), além do subsídio de
         <b>R$ 26.080,98/mês</b> por vereador (fixado por lei desde jan/2025 — 75% da
         remuneração dos deputados estaduais de MS, teto constitucional para o porte do
         município).
@@ -527,7 +527,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         </div>
         <div>
           <div class="mini-stat-value" id="cam-verba-paga">—</div>
-          <div class="mini-stat-label">verba paga até jun/2026</div>
+          <div class="mini-stat-label">verba paga até <span class="ref-verba-cg">set/2026</span></div>
         </div>
         <div>
           <div class="mini-stat-value" id="cam-subsidio">—</div>
@@ -538,7 +538,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 
     <div class="section">
       <div class="section-head">
-        <h2 class="section-title">Gabinetes — gasto com pessoal (<span class="ref-pessoal-cg">maio/2026</span>)</h2>
+        <h2 class="section-title">Gabinetes — gasto com pessoal (<span class="ref-pessoal-cg">outubro/2026</span>)</h2>
       </div>
       <div class="section-note">Número de funcionários e gasto mensal bruto de cada gabinete. Clique em um vereador para ver detalhes completos: verba indenizatória, percentual usado, diárias e custo estimado anual.</div>
       <input class="search-box" id="busca-vereador" type="text" placeholder="buscar por nome ou partido…" />
@@ -555,10 +555,10 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="section-head">
         <h2 class="section-title">Verba indenizatória — % usado da cota anual</h2>
       </div>
-      <div class="section-note">Cada vereador tem cota de R$ 300.000/ano (Atos da Mesa nº 27 e 28/2017). Valores acima refletem o que já foi pago até junho/2026.</div>
+      <div class="section-note">Cada vereador tem cota de R$ 300.000/ano (Atos da Mesa nº 27 e 28/2017). Valores acima refletem o que já foi pago até <span class="ref-verba-cg">set/2026</span>.</div>
       <div class="card">
         <table class="ranking" id="ranking-verba-camara">
-          <thead><tr><th class="num">#</th><th>Vereador(a)</th><th class="num">Cota anual</th><th class="num">Pago até jun/2026</th><th>% usado</th></tr></thead>
+          <thead><tr><th class="num">#</th><th>Vereador(a)</th><th class="num">Cota anual</th><th class="num">Pago até <span class="ref-verba-cg">set/2026</span></th><th>% usado</th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
@@ -1919,12 +1919,25 @@ function renderSenadores(data) {
 }
 
 // ===================== RENDER CÂMARA MUNICIPAL =====================
-let DADOS_REF_PESSOAL_CG = "maio/2026";
+let DADOS_REF_PESSOAL_CG = "outubro/2026";
 function renderCamaraMunicipal(data) {
   const vereadores = data.vereadores || [];
   if (data.referenciaPessoal) {
     DADOS_REF_PESSOAL_CG = data.referenciaPessoal;
     document.querySelectorAll(".ref-pessoal-cg").forEach(el => { el.textContent = data.referenciaPessoal; });
+  }
+  // Último mês com verba indenizatória declarada (Atos 027/028) entre todos os vereadores
+  const MESES_ABREV = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+  let ultMes = -1;
+  for (const v of vereadores) {
+    const vi = v.verbaIndenizatoria || {};
+    for (const m of [...Object.keys(vi.mesesAto027 || {}), ...Object.keys(vi.mesesAto028 || {})]) {
+      ultMes = Math.max(ultMes, MESES_ABREV.indexOf(m));
+    }
+  }
+  if (ultMes >= 0) {
+    const ano = (data.ultimaAtualizacao || "").slice(0, 4) || ANO_REFERENCIA;
+    document.querySelectorAll(".ref-verba-cg").forEach(el => { el.textContent = `${MESES_ABREV[ultMes]}/${ano}`; });
   }
   const resumo = data.resumo || {};
 
@@ -2243,7 +2256,7 @@ function renderDeputadosEstaduais(data) {
       const ceap = d.verbaIndenizatoria?.gastoPago2026 || 0;
       const pct = ceap / maxCeap * 100;
       return `
-      <tr class="clickable" data-id="${d.id}">
+      <tr class="clickable" data-idx="${i}">
         <td class="rank-pos">${String(i + 1).padStart(2, "0")}</td>
         <td>
           <div class="rank-person">
@@ -2259,9 +2272,9 @@ function renderDeputadosEstaduais(data) {
 
     tbody.querySelectorAll("tr.clickable").forEach(row => {
       row.addEventListener("click", () => {
-        const id = parseInt(row.dataset.id, 10);
-        const d = deputados.find(x => x.id === id);
-        renderDetalheDepEstadual(d, panel);
+        // pela posição na lista filtrada: 5 deputados não têm "id" no JSON da ALEMS
+        const d = filtrados[parseInt(row.dataset.idx, 10)];
+        if (d) renderDetalheDepEstadual(d, panel);
       });
     });
   }
