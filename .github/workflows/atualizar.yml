@@ -2,7 +2,10 @@ name: Atualizar dados diariamente
 
 on:
   schedule:
-    - cron: '0 12 * * *'
+    # 07:23 UTC = 04:23 de Brasília. Minuto "quebrado" e madrugada: os horários
+    # redondos (ex.: 12:00) são os mais disputados no GitHub e o run chegava a
+    # começar 5–10 h atrasado. Assim os dados ficam prontos antes do expediente.
+    - cron: '23 7 * * *'
   workflow_dispatch:
 
 jobs:
