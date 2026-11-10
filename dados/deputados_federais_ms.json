@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-10T01:32:54",
+  "ultimaAtualizacao": "2026-11-10T18:57:06",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-10T01:32:54",
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-10T18:57:06",
   "total": 8,
   "deputados": [
     {
@@ -24,7 +24,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/204358",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/204358/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 354338.97,
+      "cotaGastaAno": 354890.97,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -40,7 +40,7 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 22409.6
+          "valor": 22961.6
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -63,7 +63,7 @@
           "valor": 442.77
         }
       ],
-      "totalNotasFiscais": 116,
+      "totalNotasFiscais": 117,
       "despesas": [
         {
           "data": "2026-10-30",
@@ -73,6 +73,16 @@
           "valor": 9392.0,
           "doc": "44731",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8171649",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-26",
+          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
+          "fornecedor": "VITORIA HOTEL LTDA",
+          "cnpjCpfFornecedor": "03.672.097/0001-77",
+          "valor": 552.0,
+          "doc": "24190",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8171819.pdf",
           "mes": 10
         },
         {
@@ -6607,15 +6617,15 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/204351",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/204351/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 209995.78,
+      "cotaGastaAno": 235393.47,
       "ceapCategorias": [
+        {
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "valor": 86688.82
+        },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "valor": 76007.12
-        },
-        {
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 61688.82
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -6623,7 +6633,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 36127.96
+          "valor": 36525.65
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -6646,8 +6656,18 @@
           "valor": -23923.0
         }
       ],
-      "totalNotasFiscais": 332,
+      "totalNotasFiscais": 334,
       "despesas": [
+        {
+          "data": "2026-11-03",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "AUTO POSTO CABREUVA LTDA",
+          "cnpjCpfFornecedor": "41.038.174/0001-20",
+          "valor": 397.69,
+          "doc": "265",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8173242",
+          "mes": 11
+        },
         {
           "data": "2026-10-30",
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -6656,6 +6676,16 @@
           "valor": 233.99,
           "doc": "243697",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8171505",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-26",
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "fornecedor": "GRAFICA GLOBO LTDA",
+          "cnpjCpfFornecedor": "04.829.513/0001-60",
+          "valor": 25000.0,
+          "doc": "1127",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3393/2026/8169865.pdf",
           "mes": 10
         },
         {
@@ -13574,11 +13604,11 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220546",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220546/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 408703.41,
+      "cotaGastaAno": 438703.41,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 199374.35
+          "valor": 229374.35
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -13601,8 +13631,18 @@
           "valor": 8012.5
         }
       ],
-      "totalNotasFiscais": 332,
+      "totalNotasFiscais": 333,
       "despesas": [
+        {
+          "data": "2026-10-29",
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "fornecedor": "FOCAGEM PUBLICIDADE LTDA",
+          "cnpjCpfFornecedor": "50.192.240/0001-03",
+          "valor": 30000.0,
+          "doc": "10",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8171093.pdf",
+          "mes": 10
+        },
         {
           "data": "2026-10-22",
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",

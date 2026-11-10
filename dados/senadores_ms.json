@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-10T01:32:54",
+  "ultimaAtualizacao": "2026-11-10T18:57:06",
   "ano": 2026,
-  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-10T01:32:54",
+  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-10T18:57:06",
   "total": 3,
   "senadores": [
     {
@@ -26,7 +26,7 @@
         "Viagens Oficiais - Diárias": 58150.2,
         "Viagens Oficiais - Ressarcimento de Passagens": 0.0,
         "Consumo de Material - Outros materiais": 8280.09,
-        "Correios": 42913.0,
+        "Correios": 43553.73,
         "Cotas para Impulsionamento em Mídias Sociais": 31258.68,
         "Aquisição de passagens aéreas (ATC 2/2023)": 134850.72
       },
@@ -41,7 +41,7 @@
         "imovelFuncional": "Utilizou"
       },
       "cotaGastaAno": 499728.24,
-      "totalGasto": 775180.93,
+      "totalGasto": 775821.66,
       "ceapsCategorias": [
         {
           "categoria": "Divulgação da atividade parlamentar",
@@ -1263,7 +1263,7 @@
       ],
       "totalNotasFiscais": 105,
       "escritorioApoio": "AV. AMÉRICA, 759 – VILA PLANALTO, CAMPO GRANDE/MS – CEP 79009-060",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-10T01:32:54",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-10T18:57:06",
       "nota": ""
     },
     {
@@ -1281,16 +1281,16 @@
         "Locomoção, hospedagem, alimentação e combustíveis": 250764.4,
         "Contratação de serviços de apoio ao parlamentar": 792.0,
         "Divulgação da atividade parlamentar": 29060.55,
-        "Passagens aéreas, aquáticas e terrestres nacionais": 101407.16,
+        "Passagens aéreas, aquáticas e terrestres nacionais": 104331.41,
         "Serviços de Segurança Privada": 0.0
       },
       "gastosExtras": {
         "Viagens Oficiais - Diárias": 0.0,
         "Viagens Oficiais - Ressarcimento de Passagens": 0.0,
         "Consumo de Material - Outros materiais": 6441.41,
-        "Correios": 14168.55,
+        "Correios": 14200.93,
         "Cotas para Impulsionamento em Mídias Sociais": 0.0,
-        "Aquisição de passagens aéreas (ATC 2/2023)": 113209.56
+        "Aquisição de passagens aéreas (ATC 2/2023)": 131763.07
       },
       "pessoal": {
         "gabinete": 21,
@@ -1302,8 +1302,8 @@
         "auxilioMoradia": "Não utilizou",
         "imovelFuncional": "Utilizou"
       },
-      "cotaGastaAno": 483397.03,
-      "totalGasto": 617216.55,
+      "cotaGastaAno": 486321.28,
+      "totalGasto": 638726.69,
       "ceapsCategorias": [
         {
           "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
@@ -1311,7 +1311,7 @@
         },
         {
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
-          "valor": 101407.16
+          "valor": 104331.41
         },
         {
           "categoria": "Aluguel de imóveis para escritório político",
@@ -1895,6 +1895,17 @@
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 608.52
+        },
+        {
+          "data": "2026-08-10",
+          "mes": 8,
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "fornecedor": "LM Turismo Ltda",
+          "cnpjCpf": "26.480.780/0001-08",
+          "doc": "YUWINW",
+          "tipoDocumento": "Passagem / Bilhete / Código Localizador",
+          "detalhamento": "Companhia Aérea: LATAM, Localizador: YUWINW. Passageiros: ",
+          "valor": 2924.25
         },
         {
           "data": "2026-08-06",
@@ -3200,7 +3211,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "Hoteis Martins Ltda",
           "cnpjCpf": "01.511.724/0001-62",
-          "doc": "73301",
+          "doc": "73300",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 735.0
@@ -3222,7 +3233,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "Hoteis Martins Ltda",
           "cnpjCpf": "01.511.724/0001-62",
-          "doc": "73300",
+          "doc": "73301",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 735.0
@@ -3475,7 +3486,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HOTEL VALE VERDE LTDA",
           "cnpjCpf": "33.178.278/0001-02",
-          "doc": "115160",
+          "doc": "115158",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 265.0
@@ -3486,7 +3497,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HOTEL VALE VERDE LTDA",
           "cnpjCpf": "33.178.278/0001-02",
-          "doc": "115158",
+          "doc": "115160",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 265.0
@@ -3976,9 +3987,9 @@
           "valor": 10000.0
         }
       ],
-      "totalNotasFiscais": 236,
+      "totalNotasFiscais": 237,
       "escritorioApoio": "AV. PROF. LUIZ ALEXANDRE DE OLIVEIRA, 879 – TÉRREO, ROYAL PARK, CAMPO GRANDE/MS – CEP 79021-430 | Tel: (67) 3222-8738",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-10T01:32:54",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-10T18:57:06",
       "nota": ""
     },
     {
@@ -5843,7 +5854,7 @@
       ],
       "totalNotasFiscais": 163,
       "escritorioApoio": "",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-10T01:32:54",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-10T18:57:06",
       "nota": ""
     }
   ]
