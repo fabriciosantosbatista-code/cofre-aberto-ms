@@ -179,27 +179,94 @@ def processa_pdf(conteudo_bytes):
     return magistrados
 
 
-def coletar_tjms():
-    log("Coletando remuneração de magistrados do TJMS...")
+# ------------------------------------------------------------
+# Fonte alternativa: DadosJusBr (api.dadosjusbr.org)
+# ------------------------------------------------------------
+# Desde jul/2026 o portal do TJMS derruba conexões vindas de fora do Brasil
+# (inclusive dos runners do GitHub Actions) e a coleta parou em 06/2026.
+# O projeto DadosJusBr coleta a mesma folha (Anexo VIII CNJ) todo mês e
+# publica um pacote aberto com contracheque e rubricas por magistrado.
+PALAVRAS_MINUSCULAS = {"de", "da", "do", "das", "dos", "e", "em"}
+
+def _titulo(txt):
+    palavras = (txt or "").strip().lower().split()
+    return " ".join(p if (i and p in PALAVRAS_MINUSCULAS) else p[:1].upper() + p[1:]
+                    for i, p in enumerate(palavras))
+
+def _mes_ord(mes_ref):
     try:
-        url_pdf, mes_referencia = encontra_pdf_mais_recente()
-    except Exception as e:
-        log(f"  ⚠️ Não foi possível localizar o PDF mais recente: {e}")
-        return None
+        m, a = mes_ref.split("/")
+        return int(a) * 12 + int(m)
+    except Exception:
+        return 0
 
-    log(f"  Arquivo mais recente: {mes_referencia} — {url_pdf}")
+def coletar_via_dadosjusbr():
+    import csv, io, zipfile
+    from datetime import date
+    hoje_d = date.today()
+    base = hoje_d.year * 12 + hoje_d.month - 1
+    for k in range(0, 7):  # do mês corrente até 6 meses atrás
+        ano, mes = divmod(base - k, 12)
+        mes += 1
+        try:
+            r = requests.get(f"https://api.dadosjusbr.org/v2/dados/tjms/{ano}/{mes}", headers=HEADERS, timeout=60)
+            if r.status_code != 200:
+                continue
+            url_zip = (r.json().get("pacote_de_dados") or {}).get("url")
+            if not url_zip:
+                continue
+            z = zipfile.ZipFile(io.BytesIO(get_com_retry(url_zip).content))
+        except Exception as e:
+            log(f"  DadosJusBr {mes:02d}/{ano}: {e}")
+            continue
 
-    try:
-        resp = get_com_retry(url_pdf)
-        magistrados = processa_pdf(resp.content)
-    except Exception as e:
-        log(f"  ⚠️ Falha ao baixar/processar o PDF: {e} — mantendo dados anteriores")
-        return None
+        def ler(nome):
+            return list(csv.DictReader(io.TextIOWrapper(z.open(nome), encoding="utf-8"), delimiter=";"))
+        num = lambda v: round(abs(float((v or "0").replace(",", "."))), 2)
+        rubricas = {}
+        for x in ler("remuneracao.csv"):
+            rubricas.setdefault(x["id_contracheque"], []).append(x)
 
-    if not magistrados:
-        log("  ⚠️ Nenhum magistrado encontrado no PDF — mantendo dados anteriores")
-        return None
+        magistrados = []
+        for c in ler("contracheque.csv"):
+            v = dict.fromkeys(COLUNAS_NUMERICAS, 0.0)
+            for x in rubricas.get(c["id_contracheque"], []):
+                valor, cat, item = num(x["valor"]), x["categoria"], x["item"].strip().lower()
+                if x["tipo"] == "R/B":
+                    v["subsidio"] += valor
+                elif x["tipo"] == "D":
+                    campo = ("previdencia" if "previd" in item else "impostoRenda" if "imposto" in item
+                             else "retencaoTeto" if "teto" in item else "descontosDiversos")
+                    v[campo] += valor
+                elif cat == "contracheque":
+                    if "diária" in item or "diaria" in item:
+                        v["diarias"] += valor
+                    elif "origem" in item:
+                        v["remuneracaoOrgaoOrigem"] += valor
+                elif cat == "indenizações":
+                    v["indenizacoes"] += valor
+                elif cat == "direitos-pessoais":
+                    v["vantagensPessoais"] += valor
+                elif cat == "direitos-eventuais":
+                    if "gratificação por exercício cumulativo" in item or "curso/concurso" in item:
+                        v["gratificacoes"] += valor
+                    else:
+                        v["vantagensEventuais"] += valor
+            v = {k2: round(val, 2) for k2, val in v.items()}
+            v["remuneracaoBruta"] = round(v["subsidio"] + v["vantagensPessoais"] + v["indenizacoes"]
+                                          + v["vantagensEventuais"] + v["gratificacoes"], 2)
+            v["totalDescontos"] = round(v["previdencia"] + v["impostoRenda"] + v["descontosDiversos"] + v["retencaoTeto"], 2)
+            v["remuneracaoLiquida"] = round(v["remuneracaoBruta"] - v["totalDescontos"], 2)
+            cargo = _titulo(c["funcao"])
+            lotacao = _titulo(c["local_trabalho"])
+            magistrados.append({"nome": c["nome"].strip(), "lotacao": lotacao, "cargo": cargo,
+                                "situacao": determina_situacao(cargo, lotacao), **v})
+        if magistrados:
+            return magistrados, f"{mes:02d}/{ano}"
+    return None, None
 
+
+def salvar_resultado(magistrados, mes_referencia, fonte):
     magistrados.sort(key=lambda m: -m["remuneracaoBruta"])
     total_folha = round(sum(m["remuneracaoBruta"] for m in magistrados), 2)
     ativos = [m for m in magistrados if m["situacao"] == "ATIVO"]
@@ -211,7 +278,7 @@ def coletar_tjms():
 
     data = {
         "ultimaAtualizacao": hoje,
-        "fonte": f"Portal da Transparência do TJMS (tjms.jus.br/transparencia/resolucaoCNJ215) — Anexo VIII, Resolução CNJ 102/2009 c/c 215/2015 — coleta automática {hoje}",
+        "fonte": fonte,
         "mesReferencia": mes_referencia,
         "resumo": {
             "totalMagistrados": len(magistrados),
@@ -225,6 +292,37 @@ def coletar_tjms():
     salvar("tjms_magistrados.json", data)
     log(f"  {len(magistrados)} magistrados — folha bruta de {mes_referencia}: R$ {total_folha:,.2f}")
     return data
+
+
+def coletar_tjms():
+    log("Coletando remuneração de magistrados do TJMS...")
+    magistrados, mes_referencia = None, None
+    try:
+        url_pdf, mes_referencia = encontra_pdf_mais_recente()
+        log(f"  Arquivo mais recente: {mes_referencia} — {url_pdf}")
+        magistrados = processa_pdf(get_com_retry(url_pdf).content)
+    except Exception as e:
+        log(f"  ⚠️ Portal do TJMS indisponível: {e}")
+
+    if magistrados:
+        return salvar_resultado(magistrados, mes_referencia,
+            f"Portal da Transparência do TJMS (tjms.jus.br/transparencia/resolucaoCNJ215) — Anexo VIII, Resolução CNJ 102/2009 c/c 215/2015 — coleta automática {hoje}")
+
+    log("  Tentando a fonte alternativa DadosJusBr...")
+    magistrados, mes_referencia = coletar_via_dadosjusbr()
+    if not magistrados:
+        log("  ⚠️ DadosJusBr também sem dados — mantendo dados anteriores")
+        return None
+    try:
+        atual = json.load(open(DADOS / "tjms_magistrados.json", encoding="utf-8")).get("mesReferencia", "")
+    except Exception:
+        atual = ""
+    if _mes_ord(mes_referencia) < _mes_ord(atual):
+        log(f"  DadosJusBr tem {mes_referencia}, mais antigo que o publicado ({atual}) — mantendo")
+        return None
+    return salvar_resultado(magistrados, mes_referencia,
+        f"Folha do TJMS (Anexo VIII, Resolução CNJ 102/2009 c/c 215/2015) via DadosJusBr "
+        f"(api.dadosjusbr.org) — o portal do TJMS bloqueia acessos de fora do Brasil — coleta automática {hoje}")
 
 
 if __name__ == "__main__":

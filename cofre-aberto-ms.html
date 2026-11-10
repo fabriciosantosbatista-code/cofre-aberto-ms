@@ -511,7 +511,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="hero-label">Câmara Municipal de Campo Grande · 29 vereadores</div>
       <div class="hero-number" id="cam-folha">R$ —</div>
       <div class="hero-desc">
-        em gastos com pessoal nos 29 gabinetes (maio/2026), além do subsídio de
+        em gastos com pessoal nos 29 gabinetes (<span class="ref-pessoal-cg">maio/2026</span>), além do subsídio de
         <b>R$ 26.080,98/mês</b> por vereador (fixado por lei desde jan/2025 — 75% da
         remuneração dos deputados estaduais de MS, teto constitucional para o porte do
         município).
@@ -538,7 +538,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 
     <div class="section">
       <div class="section-head">
-        <h2 class="section-title">Gabinetes — gasto com pessoal (maio/2026)</h2>
+        <h2 class="section-title">Gabinetes — gasto com pessoal (<span class="ref-pessoal-cg">maio/2026</span>)</h2>
       </div>
       <div class="section-note">Número de funcionários e gasto mensal bruto de cada gabinete. Clique em um vereador para ver detalhes completos: verba indenizatória, percentual usado, diárias e custo estimado anual.</div>
       <input class="search-box" id="busca-vereador" type="text" placeholder="buscar por nome ou partido…" />
@@ -1663,6 +1663,22 @@ function renderDetalheDeputado(d, todos, ano, panel) {
 }
 
 // ===================== RENDER SENADORES =====================
+// Notas fiscais por estado (dados/ceap_federal/UF.json, dados/ceaps_senado/UF.json),
+// gravadas pelo coletor — só o arquivo do estado do parlamentar aberto é baixado.
+const _notasPorUF = {};
+function carregarNotasPorUF(pasta, uf, id) {
+  if (!uf) return Promise.resolve([]);
+  const chave = `${pasta}/${uf}`;
+  if (!_notasPorUF[chave]) {
+    // timeout maior que o de carregarJSON: o arquivo de SP passa de 3 MB
+    _notasPorUF[chave] = fetch(`dados/${chave}.json`, { signal: AbortSignal.timeout(30000) })
+      .then(r => r.ok ? r.json() : null)
+      .then(d => d?.parlamentares || {})
+      .catch(() => { delete _notasPorUF[chave]; return {}; });
+  }
+  return _notasPorUF[chave].then(m => m[String(id)] || []);
+}
+
 // Notas fiscais individuais da CEAPS (senadores de MS) — carregadas só ao abrir um senador
 let _notasSenadoresMS = null;
 function carregarNotasSenadoresMS() {
@@ -1903,8 +1919,13 @@ function renderSenadores(data) {
 }
 
 // ===================== RENDER CÂMARA MUNICIPAL =====================
+let DADOS_REF_PESSOAL_CG = "maio/2026";
 function renderCamaraMunicipal(data) {
   const vereadores = data.vereadores || [];
+  if (data.referenciaPessoal) {
+    DADOS_REF_PESSOAL_CG = data.referenciaPessoal;
+    document.querySelectorAll(".ref-pessoal-cg").forEach(el => { el.textContent = data.referenciaPessoal; });
+  }
   const resumo = data.resumo || {};
 
   document.getElementById("cam-folha").textContent = formatBRL(resumo.totalGastoPessoalMensal);
@@ -2050,7 +2071,7 @@ function renderCamaraMunicipal(data) {
         </div>
       </div>
 
-      <div class="subhead">Equipe do gabinete (maio/2026)</div>
+      <div class="subhead">Equipe do gabinete (${DADOS_REF_PESSOAL_CG})</div>
       <div class="stat-grid">
         <div class="stat-card">
           <p class="stat-label">Funcionários</p>
@@ -2705,6 +2726,14 @@ function renderDetalheCamaraCidade(d, panel) {
         <div class="detail-meta">${d.sistema} · ${vereadores.length} vereadores · <a href="${d.portalOficial}" target="_blank">portal oficial →</a></div>
       </div>
     </div>
+    ${(() => {
+      // Aviso de dado antigo: o portal da câmara pode ter saído do ar ou mudado de endereço
+      const dias = d.ultimaAtualizacao ? Math.floor((Date.now() - new Date(d.ultimaAtualizacao)) / 86400000) : null;
+      return dias != null && dias > 7 ? `
+      <p class="section-note" style="margin:12px 0;padding:10px 12px;border:1px solid rgba(245,200,66,.35);border-radius:8px;background:rgba(245,200,66,.08)">
+        ⚠️ Dados de ${formatDate(d.ultimaAtualizacao.slice(0, 10))} (há ${dias} dias): o portal de transparência desta câmara não está respondendo à coleta automática.
+      </p>` : "";
+    })()}
     ${d.temDadosFinanceiros === false || d.notaFinanceiro ? `
       <p class="section-note" style="margin:12px 0;opacity:.75">
         ⚠️ ${d.notaFinanceiro || "Dados financeiros (subsídio, verba indenizatória) ainda não disponíveis para esta câmara."}
@@ -2931,11 +2960,13 @@ function renderDeputadosBrasil(deputados) {
         panel.innerHTML = `<p class="section-note">Carregando notas fiscais de ${d.nome}…</p>`;
         panel.classList.add("active");
         panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        buscarDespesasDeputadoAoVivo(d.id, ANO_REFERENCIA).then(despesas => {
-          d.despesas = despesas;
-          d.totalNotasFiscais = despesas.length;
-          renderDetalheDeputado(d, deputados, ANO_REFERENCIA, panel);
-        });
+        carregarNotasPorUF("ceap_federal", d.uf, d.id)
+          .then(notas => notas.length ? notas : buscarDespesasDeputadoAoVivo(d.id, ANO_REFERENCIA))
+          .then(despesas => {
+            d.despesas = despesas;
+            d.totalNotasFiscais = despesas.length || d.totalNotasFiscais;
+            renderDetalheDeputado(d, deputados, ANO_REFERENCIA, panel);
+          });
       });
     });
   }
@@ -3073,6 +3104,9 @@ function renderSenadoBrasil(senadores) {
           </div>` : `
           <p class="section-note" style="margin-bottom:16px">Consulte o Portal de Transparência do Senado para dados individuais.</p>`}
 
+          <div class="subhead">Notas fiscais da CEAPS ${ANO_REFERENCIA}</div>
+          <div id="senbr-notas-box" style="margin-bottom:16px"><p class="section-note">Carregando notas fiscais…</p></div>
+
           <div class="subhead">Benefícios</div>
           ${temBeneficios ? `
           <div class="stat-grid" style="margin-bottom:16px">
@@ -3095,8 +3129,14 @@ function renderSenadoBrasil(senadores) {
             ${s.fonteCeaps ? `<br><span style="opacity:.6;font-size:.75rem">${s.fonteCeaps}</span>` : ""}
           </p>
         `;
+        panel.dataset.senadorId = id;
         panel.classList.add("active");
         panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        carregarNotasPorUF("ceaps_senado", s.uf, s.id).then(notas => {
+          if (panel.dataset.senadorId !== id) return;
+          const box = document.getElementById("senbr-notas-box");
+          if (box) renderNotasSenador(box, notas);
+        });
       });
     });
   }

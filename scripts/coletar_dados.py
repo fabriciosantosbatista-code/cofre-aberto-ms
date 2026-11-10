@@ -64,6 +64,34 @@ def _formata_cnpj_cpf(txt):
         return f"{n[:3]}.{n[3:6]}.{n[6:9]}-{n[9:]}"
     return (txt or "").strip()
 
+def salvar_notas_por_uf(pasta, ids_uf, notas_por_id, fonte):
+    """Grava dados/<pasta>/<UF>.json = {"deputados"/"parlamentares": {id: [notas]}}.
+    Um arquivo por estado: o painel só baixa o do parlamentar que o usuário abrir.
+    Se notas_por_id estiver vazio (fonte fora do ar), não mexe nos arquivos."""
+    if not notas_por_id:
+        log(f"  ⚠️ Sem notas para {pasta} — mantendo arquivos anteriores")
+        return
+    por_uf = {}
+    for pid, uf in ids_uf:
+        if not uf:
+            continue
+        por_uf.setdefault(uf, {})[str(pid)] = notas_por_id.get(pid, [])
+    def compacta(n):
+        # sem campos vazios nem "mes" (já está na data) — reduz o arquivo ~40%
+        return {k: v for k, v in n.items() if v not in (None, "") and k != "mes"}
+    (DADOS / pasta).mkdir(parents=True, exist_ok=True)
+    for uf, mapa in sorted(por_uf.items()):
+        cab = {"ultimaAtualizacao": hoje, "ano": ANO, "uf": uf, "fonte": fonte,
+               "totalNotas": sum(len(v) for v in mapa.values())}
+        # JSON compacto, uma linha por parlamentar (diffs diários pequenos)
+        linhas = [f"{json.dumps(pid)}:{json.dumps([compacta(n) for n in notas], ensure_ascii=False, separators=(',', ':'))}"
+                  for pid, notas in sorted(mapa.items(), key=lambda x: int(x[0]))]
+        texto = json.dumps(cab, ensure_ascii=False)[:-1] + ',"parlamentares":{\n' + ",\n".join(linhas) + "\n}}\n"
+        path = DADOS / pasta / f"{uf}.json"
+        path.write_text(texto, encoding="utf-8")
+    log(f"✅ {pasta}/: {len(por_uf)} estados salvos")
+
+
 def carregar_ceap_bulk(ano):
     """Devolve {ideCadastro: {"cotaGastaAno", "ceapCategorias", "totalNotasFiscais", "despesas"}}
     ou None se o arquivo não puder ser baixado/lido."""
@@ -650,6 +678,10 @@ def coletar_senado_brasil():
         "senadores": senadores,
     }
     salvar("senadores_brasil.json", data)
+    notas = carregar_notas_ceaps_senado(ANO)
+    if notas is not None:
+        salvar_notas_por_uf("ceaps_senado", ((s["id"], s.get("uf")) for s in senadores), notas,
+                            "CEAPS — API de dados abertos do Senado (adm.senado.gov.br)")
     return senadores
 
 # ============================================================
@@ -758,6 +790,9 @@ def coletar_dep_federais_brasil():
         "deputados": resultado,
     }
     salvar("deputados_federais_brasil.json", data)
+    salvar_notas_por_uf("ceap_federal", ((d["id"], d["uf"]) for d in resultado),
+                        {k: v["despesas"] for k, v in (carregar_ceap_bulk(ANO) or {}).items()},
+                        "CEAP — arquivo completo da Câmara (camara.leg.br/cotas)")
     return resultado
 
 # ============================================================
@@ -1247,7 +1282,7 @@ def coletar_camara_fiorilli(cfg):
             try:
                 url = (f"{base}/VersaoJson/Pessoal/?Listagem=Servidores&Empresa={empresa}"
                        f"&{param_ano}={ANO}{conectar}&MesFinalPeriodo={mes_tentado:02d}")
-                registros = get_com_retry(url, tentativas=1).json()
+                registros = get_com_retry(url, tentativas=3).json()
                 if registros:
                     for reg in registros:
                         if not (reg.get("CARGO") or "").strip().upper().startswith("VEREADOR"):
@@ -1271,7 +1306,7 @@ def coletar_camara_fiorilli(cfg):
         url = (f"{base}/VersaoJson/Despesas/?Listagem=Diarias&DiaInicioPeriodo=01&MesInicialPeriodo=01"
                f"&DiaFinalPeriodo=31&MesFinalPeriodo=12&{param_ano}={ANO}{conectar}"
                f"&Empresa={empresa}&MostraDadosConsolidado=False")
-        diarias = get_com_retry(url, tentativas=1).json()
+        diarias = get_com_retry(url, tentativas=3).json()
         for d in diarias:
             nome = (d.get("FAVORECIDO") or "").strip()
             if not nome:
@@ -1317,7 +1352,7 @@ def coletar_camara_fiorilli(cfg):
                f"&DiaFinalPeriodo=31&MesFinalPeriodo=12&{param_ano}={ANO}{conectar}"
                f"&Empresa={empresa}&MostrarFornecedor=True&MostraDadosConsolidado=False"
                f"&UFParaFiltroCOVID=&MostrarCNPJFornecedor=True&ApenasIDEmpenho=False")
-        registros = get_com_retry(url, tentativas=1).json()
+        registros = get_com_retry(url, tentativas=3).json()
         despesas = []
         por_categoria = {}
         total_geral = 0.0

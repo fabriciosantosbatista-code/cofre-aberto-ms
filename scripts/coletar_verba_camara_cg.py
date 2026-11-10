@@ -313,11 +313,11 @@ def obter_lista_relatorios(sessao):
     """Navega pelo menu 'Outros Documentos' e extrai, para cada vereador, o
     codigoLinhaPDF + chaveAcesso de cada Ato (027 e 028) — necessários pra
     pedir o PDF individual depois."""
-    sessao.get(f"{BASE_URL}/default.aspx", timeout=30)
+    sessao.get(f"{BASE_URL}/default.aspx", timeout=90)
     sessao.post(f"{BASE_URL}/default.aspx/RecuperarDados",
                 json={"strLnkButtonID": "lnkOutrosDocumentos", "strExercicio": ANO_STR, "strEmpresa": EMPRESA_CAMARA},
-                headers=HEADERS_AJAX, timeout=30)
-    r = sessao.get(f"{BASE_URL}/HomeDocumentosPublicados.aspx", timeout=30)
+                headers=HEADERS_AJAX, timeout=90)
+    r = sessao.get(f"{BASE_URL}/HomeDocumentosPublicados.aspx", timeout=90)
     html = r.text
 
     idx27 = html.find('VERBA INDENIZATÓRIA - Ato 27')
@@ -443,10 +443,20 @@ def coletar_verba_indenizatoria():
     sessao_inicial = requests.Session()
     sessao_inicial.headers.update({"User-Agent": HEADERS_AJAX["User-Agent"]})
 
-    try:
-        lista = obter_lista_relatorios(sessao_inicial)
-    except Exception as e:
-        log(f" ⚠️ Não foi possível obter a lista de relatórios: {e}")
+    # O portal às vezes leva mais de 30 s para responder (ex.: run de 10/11/2026
+    # falhou com "Read timed out") — tenta algumas vezes com prazo maior.
+    lista = None
+    for tentativa in range(1, 5):
+        try:
+            lista = obter_lista_relatorios(sessao_inicial)
+            break
+        except Exception as e:
+            log(f" ⚠️ Tentativa {tentativa}/4 de obter a lista de relatórios falhou: {e}")
+            time.sleep(20 * tentativa)
+            sessao_inicial = requests.Session()
+            sessao_inicial.headers.update({"User-Agent": HEADERS_AJAX["User-Agent"]})
+    if lista is None:
+        log(" ⚠️ Não foi possível obter a lista de relatórios")
         return {}
 
     alvos = [{**item, "ato": "027"} for item in lista["ato027"]]
@@ -644,6 +654,115 @@ def mesclar_dados(resultado_extraido):
     else:
         log(" Nenhuma mudança confiável encontrada — camara_municipal.json inalterado")
 
+# ============================================================
+# 4. PESSOAL DOS GABINETES (folha de servidores do Fiorilli)
+# ============================================================
+# Até nov/2026 o gasto com pessoal por gabinete era uma carga manual de
+# maio/2026. O portal da Câmara é o mesmo Fiorilli SCPI das câmaras do
+# interior, que expõe a folha em /VersaoJson/Pessoal. Aqui a folha é lida,
+# os servidores são agrupados pela lotação "GABINETE ... <vereador>" e,
+# só se a maioria dos gabinetes for reconhecida, o JSON é atualizado.
+MESES_NOME = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho",
+              "agosto", "setembro", "outubro", "novembro", "dezembro"]
+
+def _sem_acento(t):
+    return "".join(c for c in unicodedata.normalize("NFD", (t or "").upper()) if unicodedata.category(c) != "Mn")
+
+def _valor_fiorilli(v):
+    if isinstance(v, (int, float)):
+        return float(v)
+    t = str(v or "0").replace("R$", "").strip()
+    if "," in t:
+        t = t.replace(".", "").replace(",", ".")
+    try:
+        return float(t)
+    except ValueError:
+        return 0.0
+
+def baixar_folha_servidores():
+    sessao = requests.Session()
+    sessao.headers.update({"User-Agent": HEADERS_AJAX["User-Agent"]})
+    hoje_d = date.today()
+    for k in range(0, 4):
+        ano, mes = divmod(hoje_d.year * 12 + hoje_d.month - 1 - k, 12)
+        mes += 1
+        for param in (f"Ano={ano}&ConectarExercicio={ano}", f"Exercicio={ano}"):
+            url = (f"{BASE_URL}/VersaoJson/Pessoal/?Listagem=Servidores&Empresa={EMPRESA_CAMARA}"
+                   f"&{param}&MesFinalPeriodo={mes:02d}")
+            try:
+                r = sessao.get(url, timeout=120)
+                if r.status_code != 200:
+                    log(f"   folha {mes:02d}/{ano} ({param.split('=')[0]}): HTTP {r.status_code}")
+                    continue
+                dados = r.json()
+            except Exception as e:
+                log(f"   folha {mes:02d}/{ano} ({param.split('=')[0]}): {e}")
+                continue
+            if isinstance(dados, list) and dados:
+                return dados, mes, ano
+    return None, None, None
+
+def coletar_pessoal_gabinetes():
+    log("Coletando folha de pessoal dos gabinetes — Câmara Municipal de Campo Grande...")
+    registros, mes, ano = baixar_folha_servidores()
+    if not registros:
+        log(" ⚠️ Folha de servidores indisponível — mantendo pessoal dos gabinetes anterior")
+        return
+    chaves = list(registros[0].keys())
+    log(f" {len(registros)} registros na folha {mes:02d}/{ano}; campos: {chaves}")
+    campo_lot = next((c for c in chaves if any(x in c.upper() for x in ("LOTA", "SETOR", "LOCAL", "DEPARTAMENTO", "SECRETARIA"))), None)
+    campo_val = next((c for c in chaves if "PROVENTO" in c.upper()), None) or next((c for c in chaves if "BRUTO" in c.upper()), None)
+    if not campo_lot or not campo_val:
+        log(f" ⚠️ Sem campo de lotação/proventos reconhecível (lotação={campo_lot}, valor={campo_val}) — mantendo dados anteriores")
+        return
+    lotacoes = {}
+    for reg in registros:
+        lotacoes[str(reg.get(campo_lot) or "").strip()] = lotacoes.get(str(reg.get(campo_lot) or "").strip(), 0) + 1
+    log(f" lotações mais frequentes ({campo_lot}): {sorted(lotacoes.items(), key=lambda x: -x[1])[:40]}")
+
+    atual = json.load(open(ARQUIVO_CAMARA, encoding="utf-8"))
+    gab = {}
+    for reg in registros:
+        lot = _sem_acento(reg.get(campo_lot))
+        if "GAB" not in lot or "PRESID" in lot:
+            continue
+        cargo = _sem_acento(reg.get("CARGO"))
+        if cargo.startswith("VEREADOR"):
+            continue
+        melhor, pontos = None, 0
+        for v in atual["vereadores"]:
+            for nome in (v.get("nome"), v.get("nomeCompleto")):
+                toks = [t for t in re.split(r"[^A-Z]+", _sem_acento(nome)) if len(t) >= 3 and t not in ("DR", "PROF", "PROFESSOR", "VEREADOR")]
+                p = sum(1 for t in toks if re.search(rf"\b{t}\b", lot))
+                if p > pontos:
+                    melhor, pontos = v["nome"], p
+        if melhor:
+            g = gab.setdefault(melhor, {"n": 0, "total": 0.0})
+            g["n"] += 1
+            g["total"] += _valor_fiorilli(reg.get(campo_val))
+    log(f" gabinetes reconhecidos: {len(gab)}/29 — {[(k, v['n'], round(v['total'], 2)) for k, v in sorted(gab.items())]}")
+    if len(gab) < 20:
+        log(" ⚠️ Menos de 20 gabinetes reconhecidos pela lotação — mantendo dados anteriores (ver log acima para ajustar)")
+        return
+    for v in atual["vereadores"]:
+        g = gab.get(v["nome"])
+        if not g:
+            continue
+        v.setdefault("gabinete", {})
+        v["gabinete"]["numFuncionarios"] = g["n"]
+        v["gabinete"]["gastoPessoalMensal"] = round(g["total"], 2)
+    resumo = atual.setdefault("resumo", {})
+    resumo["totalFuncionariosGabinetes"] = sum(v.get("gabinete", {}).get("numFuncionarios") or 0 for v in atual["vereadores"])
+    resumo["totalGastoPessoalMensal"] = round(sum(v.get("gabinete", {}).get("gastoPessoalMensal") or 0 for v in atual["vereadores"]), 2)
+    atual["referenciaPessoal"] = f"{MESES_NOME[mes - 1]}/{ano}"
+    json.dump(atual, open(ARQUIVO_CAMARA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    log(f"✅ Pessoal dos gabinetes atualizado ({atual['referenciaPessoal']}): "
+        f"{resumo['totalFuncionariosGabinetes']} servidores, R$ {resumo['totalGastoPessoalMensal']:,.2f}/mês")
+
 if __name__ == "__main__":
     resultado = coletar_verba_indenizatoria()
     mesclar_dados(resultado)
+    try:
+        coletar_pessoal_gabinetes()
+    except Exception as e:
+        log(f" ⚠️ Pessoal dos gabinetes: erro inesperado — {e} (dados anteriores mantidos)")
