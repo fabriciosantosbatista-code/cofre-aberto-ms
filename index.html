@@ -23,7 +23,7 @@
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://cofreabertoms.com.br/"/>
 <meta property="og:title" content="Cofre Aberto MS — Transparência Pública de Mato Grosso do Sul"/>
-<meta property="og:description" content="Fiscalize os gastos de 60+ parlamentares de MS. 4.829 notas fiscais reais, CEAP 2026, fotos oficiais e muito mais."/>
+<meta property="og:description" content="Fiscalize os gastos de 60+ parlamentares de MS. 10.519 notas fiscais reais, CEAP 2026, fotos oficiais e muito mais."/>
 <meta property="og:image" content="https://cofreabertoms.com.br/og-image.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
@@ -309,7 +309,7 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
     </div>
     <div class="hero-badge" style="margin-bottom:32px">
       <span></span>
-      Dados atualizados — Julho 2026
+      Dados atualizados — <span id="data-atualizacao">10/11/2026</span>
     </div>
     <h1>Fiscalize os gastos dos <em>políticos de Mato Grosso do Sul</em></h1>
     <p>Dados reais de vereadores, deputados estaduais, senadores, deputados federais e prefeitura — com notas fiscais, CEAP, folha de pessoal e muito mais. Tudo público, tudo verificável.</p>
@@ -341,7 +341,7 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
       <div class="stat-label">Senadores MS</div>
     </div>
     <div class="stat-item">
-      <div class="stat-val" data-count="4829">4.829</div>
+      <div class="stat-val" data-count="10519">10.519</div>
       <div class="stat-label">Notas fiscais</div>
     </div>
     <div class="stat-item">
@@ -373,7 +373,7 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
       <div class="feature-card">
         <div class="feature-icon">🧾</div>
         <h3>Notas fiscais reais</h3>
-        <p>4.829 notas fiscais com fornecedor, CNPJ, valor e link para o PDF original. Veja exatamente onde cada real foi gasto.</p>
+        <p>10.519 notas fiscais com fornecedor, CNPJ, valor e link para o PDF original. Veja exatamente onde cada real foi gasto.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📊</div>
@@ -410,32 +410,32 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
         <div class="aba-num">29</div>
         <div class="aba-title">Vereadores — Câmara CG</div>
-        <div class="aba-desc">Subsídio, verba indenizatória ATO 27/28, pessoal, 2.206 notas fiscais, fotos TSE 2024</div>
+        <div class="aba-desc">Subsídio, verba indenizatória ATO 27/28, pessoal dos gabinetes, 2.457 notas fiscais, fotos TSE 2024</div>
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
         <div class="aba-num">25</div>
         <div class="aba-title">Dep. Estaduais — ALEMS</div>
-        <div class="aba-desc">CEAP Jan–Nov/2026, 2.623 notas fiscais com link para PDFs, fotos oficiais ALEMS</div>
+        <div class="aba-desc">CEAP Jan–Nov/2026, 5.662 notas fiscais com link para PDFs, fotos oficiais ALEMS</div>
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
         <div class="aba-num">3</div>
         <div class="aba-title">Senadores de MS</div>
-        <div class="aba-desc">CEAPS 2026 (Soraya), 2025 (Nelsinho), pessoal, endereço do escritório, extras fora da cota</div>
+        <div class="aba-desc">CEAPS 2026 com 504 notas fiscais, pessoal, endereço do escritório, extras fora da cota</div>
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
         <div class="aba-num">8</div>
         <div class="aba-title">Dep. Federais de MS</div>
-        <div class="aba-desc">CEAP ao vivo via API da Câmara, fotos, partido, custo estimado anual</div>
+        <div class="aba-desc">CEAP 2026 com 1.896 notas fiscais, fotos, partido, custo estimado anual</div>
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
         <div class="aba-num">81</div>
         <div class="aba-title">Senado Federal</div>
-        <div class="aba-desc">Todos os senadores do Brasil com partido, UF, foto e link para transparência</div>
+        <div class="aba-desc">Todos os senadores do Brasil com partido, UF, foto e notas fiscais da CEAPS 2026</div>
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
         <div class="aba-num">513</div>
         <div class="aba-title">Dep. Federais Brasil</div>
-        <div class="aba-desc">Lista completa via API da Câmara, com CEAP e custo estimado</div>
+        <div class="aba-desc">Todos os 513 com CEAP 2026, notas fiscais e custo estimado</div>
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html'">
         <div class="aba-num">43</div>
@@ -481,6 +481,18 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
 
 </div>
 <script>
+  // Data da última coleta automática (dados/status.json é regravado todo dia pelo GitHub Actions)
+  fetch('dados/status.json', { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : null)
+    .then(st => {
+      const iso = st && st.ultimaAtualizacao;
+      if (!iso) return;
+      const [a, m, d] = iso.slice(0, 10).split('-');
+      const el = document.getElementById('data-atualizacao');
+      if (el) el.textContent = `${d}/${m}/${a}`;
+    })
+    .catch(() => {});
+
   // Animação de entrada nos cards ao rolar
   const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {

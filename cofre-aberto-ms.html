@@ -2271,8 +2271,10 @@ function renderDeputadosEstaduais(data) {
     const verba = d.verbaIndenizatoria || {};
     const custo = d.custoEstimadoAnual || {};
     const cats = verba.categorias || {};
-    // Buscar notas do objeto separado (evita duplicar no JSON principal)
-    const despesas = (typeof CEAP_NOTAS_ESTADUAIS !== "undefined" && CEAP_NOTAS_ESTADUAIS[d.nome]) || d.despesas || [];
+    // Notas atuais vêm do coletor diário da ALEMS (d.despesas). O arquivo separado
+    // ceap_notas_estaduais.json é uma carga antiga (jun/2026) — só serve de reserva.
+    const despesas = (d.despesas && d.despesas.length) ? d.despesas
+      : ((typeof CEAP_NOTAS_ESTADUAIS !== "undefined" && CEAP_NOTAS_ESTADUAIS[d.nome]) || []);
 
     // Barras de categorias
     const maxCat = Math.max(...Object.values(cats), 1);

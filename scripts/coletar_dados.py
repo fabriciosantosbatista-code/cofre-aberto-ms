@@ -566,6 +566,7 @@ def coletar_dep_estaduais():
     for nome_norm in {**deps_ant, **gastos_por_nome_norm}:
         ant = deps_ant.get(nome_norm, {})
         gastos = gastos_por_nome_norm.get(nome_norm)
+        ant.pop("notasFiscais", None)  # campo da carga manual de jun/2026, substituído por "despesas"
         if gastos is None:
             deps.append(ant)
             continue

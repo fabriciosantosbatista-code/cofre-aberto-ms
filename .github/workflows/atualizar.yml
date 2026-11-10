@@ -197,11 +197,14 @@ jobs:
           name: dados-tjms
           path: dados/
 
+      - name: Atualizar números da capa e das páginas de SEO
+        run: python3 scripts/atualizar_paginas.py || echo "⚠️ atualizar_paginas.py falhou — páginas estáticas mantidas"
+
       - name: Commit e push
         run: |
           git config user.name "Cofre Aberto Bot"
           git config user.email "bot@cofreabertoms.com.br"
-          git add dados/
+          git add dados/ index.html vereadores-campo-grande.html deputados-estaduais-ms.html senadores-ms.html
 
           if git diff --staged --quiet; then
             echo "Sem mudanças"
