@@ -114,7 +114,7 @@ def main():
         html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Judiciário MS)', rf"\g<1>{ativos}\2", html)
     if status.get("ultimaAtualizacao"):
         a, m, d = status["ultimaAtualizacao"][:10].split("-")
-        html = re.sub(r'(<span id="data-atualizacao">)[^<]*(</span>)', rf"\g<1>{d}/{m}/{a}\2", html)
+        html = re.sub(r'(<time id="data-atualizacao">)[^<]*(</time>)', rf"\g<1>{d}/{m}/{a}\2", html)
     p.write_text(html, encoding="utf-8")
     print(f"✅ index.html — {milhar(n_total)} notas, {len(deps_est)} dep. estaduais, {ativos} magistrados")
 

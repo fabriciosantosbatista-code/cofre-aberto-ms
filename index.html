@@ -71,7 +71,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0
 /* HERO */
 .hero{text-align:center;padding:80px 0 60px;}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:.78rem;color:var(--ink-soft);margin-bottom:28px;}
-.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--positive);animation:pulse 2s ease-in-out infinite;}
+.hero-badge > span:first-child{width:6px;height:6px;border-radius:50%;background:var(--positive);animation:pulse 2s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
 .hero h1{font-family:"Sora",sans-serif;font-size:clamp(2.5rem,6vw,4.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px;}
 .hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--positive));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -309,7 +309,7 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
     </div>
     <div class="hero-badge" style="margin-bottom:32px">
       <span></span>
-      Dados atualizados — <span id="data-atualizacao">10/11/2026</span>
+      <span>Dados atualizados — <time id="data-atualizacao">10/11/2026</time></span>
     </div>
     <h1>Fiscalize os gastos dos <em>políticos de Mato Grosso do Sul</em></h1>
     <p>Dados reais de vereadores, deputados estaduais, senadores, deputados federais e prefeitura — com notas fiscais, CEAP, folha de pessoal e muito mais. Tudo público, tudo verificável.</p>
