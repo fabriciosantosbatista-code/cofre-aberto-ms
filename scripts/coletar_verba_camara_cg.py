@@ -51,7 +51,13 @@ ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
 ARQUIVO_CAMARA = DADOS / "camara_municipal.json"
 CACHE_ARQUIVO = DADOS / "verba_cg_cache.json"
-TIMEOUT_POR_PDF = 30  # segundos — orçamento cooperativo de tempo por PDF
+# O servidor da Câmara é lento: PDFs grandes levam mais de 30 s só pra baixar.
+# Antes havia um orçamento único de 30 s (download + parsing) e 18 dos 58 PDFs
+# davam "timeout após download" todo dia — nunca eram lidos. Agora são prazos
+# separados para baixar e para ler.
+TIMEOUT_DOWNLOAD = 120  # segundos para selecionar + baixar o PDF
+TIMEOUT_PARSING = 300   # segundos de leitura por PDF
+TIMEOUT_POR_PDF = TIMEOUT_DOWNLOAD  # compatibilidade
 MAX_WORKERS = 4
 ANO = date.today().year
 ANO_STR = str(ANO)
@@ -228,7 +234,7 @@ def extrai_total_pagina(texto):
     m = TOTAL_PAGINA_RE.search(texto)
     return parse_valor(m.group(1)) if m else None
 
-def processa_pdf(caminho, deadline=None):
+def processa_pdf(caminho, deadline=None, estado=None):
     """Lê um PDF de prestação de contas (Ato 027 ou 028) e devolve um dict
     {"MM/AAAA": {totalDeclarado, notas: [...], combustivel: [...], ...}}.
     Se 'deadline' (timestamp) for informado e for ultrapassado, o parsing para
@@ -240,6 +246,8 @@ def processa_pdf(caminho, deadline=None):
     for p in r.pages:
         if deadline and time.time() > deadline:
             log("     ⏱️ tempo limite do PDF atingido — parando o parsing nesta página")
+            if estado is not None:
+                estado["truncado"] = True
             break
         try:
             texto = normaliza_texto(p.extract_text())
@@ -402,7 +410,7 @@ def processar_alvo(alvo, cache_anterior):
         restante = TIMEOUT_POR_PDF - (time.time() - inicio)
         if restante <= 0:
             return nome, ato, None, "timeout após selecionar relatório"
-        r2 = sessao.get(f"{BASE_URL}/MostrarPDF.aspx", timeout=max(1, min(restante, 25)))
+        r2 = sessao.get(f"{BASE_URL}/MostrarPDF.aspx", timeout=max(1, restante))
         if r2.status_code != 200 or "pdf" not in r2.headers.get("Content-Type", ""):
             return nome, ato, None, f"PDF indisponível ({r2.status_code})"
 
@@ -413,16 +421,17 @@ def processar_alvo(alvo, cache_anterior):
         if hash_anterior == sha256:
             return nome, ato, {}, sha256  # baixado de novo, mas conteúdo idêntico — nada pra reprocessar
 
-        if time.time() - inicio > TIMEOUT_POR_PDF:
-            return nome, ato, None, "timeout após download"
-
         with open(caminho_tmp, "wb") as f:
             f.write(conteudo)
-        meses = processa_pdf(caminho_tmp, deadline=inicio + TIMEOUT_POR_PDF)
+        estado = {"truncado": False}
+        meses = processa_pdf(caminho_tmp, deadline=time.time() + TIMEOUT_PARSING, estado=estado)
+        truncado = estado["truncado"]
         def vazio(md):
             return not md["notas"] and not md["combustivel"] and md["totalDeclarado"] is None
         meses = {m: d for m, d in meses.items() if not vazio(d)}
-        return nome, ato, meses, sha256
+        # Leitura incompleta: usa o que deu, mas sem gravar o hash no cache —
+        # senão o resto do PDF nunca mais seria lido.
+        return nome, ato, meses, (None if truncado else sha256)
     except Exception as e:
         return nome, ato, None, f"exceção — {e}"
     finally:
@@ -477,6 +486,9 @@ def coletar_verba_indenizatoria():
                 sem_mudanca += 1
                 log(f" [{concluidos}/{total}] {nome} Ato{ato}: sem mudança (hash igual ao anterior)")
 
+            if extra is None:
+                log(f" [{concluidos}/{total}] {nome} Ato{ato}: leitura incompleta — será relido na próxima coleta")
+                continue
             cache[chave_cache(alvo)] = {
                 "nome": nome, "ato": ato, "sha256": extra,
                 "processadoEm": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
