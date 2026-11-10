@@ -203,6 +203,22 @@ def main():
         if j:
             recente(f"Câmara de {j.get('cidade', f.stem)}", j.get("ultimaAtualizacao"), 7, nivel="aviso", o_que="última coleta")
 
+    # ---------- análises derivadas (gerar_analises.py) ----------
+    cx = carregar("conexoes_fornecedores.json")
+    if cx:
+        recente("Conexões entre fornecedores", cx.get("ultimaAtualizacao"), 2, o_que="última geração")
+        checa(cx.get("totalEmpresas", 0) >= 100, f"Conexões: {cx.get('totalEmpresas')} empresas",
+              f"**Conexões entre fornecedores**: só {cx.get('totalEmpresas')} empresas — notas faltando?", "aviso")
+    ev = carregar("evolucao_mensal.json")
+    if ev:
+        recente("Evolução mensal", ev.get("ultimaAtualizacao"), 2, o_que="última geração")
+        faltando = [g for g in ("vereador", "estadual", "federal", "senador") if not (ev.get("grupos") or {}).get(g)]
+        checa(not faltando, "Evolução: 4 grupos", f"**Evolução mensal**: grupos sem dados: {', '.join(faltando)}")
+    fi = carregar("feeds/index.json")
+    if fi:
+        n = len(fi.get("parlamentares", []))
+        checa(n >= 60, f"Feeds RSS: {n} parlamentares", f"**Feeds RSS**: só {n} parlamentares")
+
     # ---------- arquivos de notas por estado ----------
     for pasta, nome in (("ceap_federal", "Notas dep. federais por UF"), ("ceaps_senado", "Notas senadores por UF")):
         arqs = list((DADOS / pasta).glob("*.json"))

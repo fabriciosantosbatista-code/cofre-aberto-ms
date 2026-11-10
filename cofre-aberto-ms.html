@@ -200,6 +200,43 @@ p{margin:0;}
 /* SEARCH */
 .search-box{width:100%;padding:10px 14px;margin-bottom:14px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.86rem;background:var(--surface-2);color:var(--ink);}
 .search-box::placeholder{color:var(--ink-faint);}
+/* Conexões */
+.cx-filtros{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.cx-filtros .search-box{margin-bottom:4px}
+.cx-check{font-size:.8rem;color:var(--ink-soft);display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.cx-check input{margin-top:2px;accent-color:var(--accent)}
+.cx-tag{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 7px;border-radius:999px;border:1px solid var(--border);color:var(--ink-soft);margin:1px 3px 1px 0;white-space:nowrap}
+.cx-mais,.ev-voltar,.ev-grupos button,.seguir-btn{background:none;border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--ink);cursor:pointer;font-family:inherit;font-size:.8rem}
+.cx-mais{margin-top:10px}
+.cx-mais:hover,.ev-voltar:hover,.ev-grupos button:hover,.seguir-btn:hover{border-color:var(--accent)}
+.cx-aviso{max-width:none;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}
+/* Evolução */
+.ev-grupos{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.ev-grupos button.active{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:600}
+.ev-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.ev-titulo{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--ink)}
+.ev-sub{font-size:.78rem;color:var(--ink-soft);margin-top:2px}
+.ev-legenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.76rem;color:var(--ink-soft);margin:10px 0 4px}
+.ev-legenda span{display:inline-flex;align-items:center;gap:6px}
+.ev-legenda i{display:inline-block;width:18px;height:0;border-top:2px solid}
+.ev-chart{position:relative;width:100%;height:260px}
+.ev-chart svg{display:block;width:100%;height:100%;overflow:visible}
+.ev-chart .ev-tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-size:.75rem;color:var(--ink);box-shadow:0 6px 18px rgba(0,0,0,.35);white-space:nowrap;z-index:2;max-width:calc(100% - 8px)}
+@media (max-width:520px){.ev-chart .ev-tip{white-space:normal;font-size:.7rem;padding:6px 8px}.ev-chart .ev-tip div{margin-top:2px}}
+.ev-chart .ev-tip b{display:block;margin-bottom:4px;font-size:.78rem}
+.ev-chart .ev-tip .cor{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.ev-tabela{margin-top:10px;font-size:.8rem;color:var(--ink-soft)}
+.ev-tabela summary{cursor:pointer}
+.ev-tabela table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.78rem}
+.ev-tabela td,.ev-tabela th{padding:4px 6px;border-bottom:1px solid var(--border-soft,var(--border));text-align:right}
+.ev-tabela td:first-child,.ev-tabela th:first-child{text-align:left}
+.ev-var-up{color:var(--ink)} .ev-var-down{color:var(--ink-soft)}
+/* Seguir (RSS) */
+.seguir-box{margin-top:10px;padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);font-size:.8rem;color:var(--ink-soft)}
+.seguir-box code{display:block;word-break:break-all;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px;margin:6px 0;color:var(--ink);font-size:.74rem}
+.seguir-box ol{margin:6px 0 0 18px;padding:0}
+.seguir-acoes{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
 .search-box:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow);}
 
 /* NOTES TABLE */
@@ -377,6 +414,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   ]
 }
 </script>
+<link rel="alternate" type="application/rss+xml" title="Cofre Aberto MS — novas notas fiscais" href="dados/feeds/todas.xml"/>
 </head>
 <body>
 <div class="layout">
@@ -397,6 +435,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button data-tab="prefeitura"><span class="dot"></span> Prefeitura CG</button>
       <button data-tab="camaras-ms"><span class="dot"></span> Câmaras MS</button>
       <button data-tab="judiciario"><span class="dot"></span> Judiciário MS</button>
+      <button data-tab="conexoes"><span class="dot"></span> Conexões</button>
+      <button data-tab="evolucao"><span class="dot"></span> Evolução</button>
       <div class="nav-group-label">Brasil</div>
       <button data-tab="deputados-brasil"><span class="dot"></span> Dep. Federais Brasil</button>
       <button data-tab="senado-brasil"><span class="dot"></span> Senado Brasil</button>
@@ -827,6 +867,82 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         </table>
       </div>
       <div class="detail-panel" id="detail-senbr"></div>
+    </div>
+  </section>
+
+  <section class="tabpanel" id="tab-conexoes">
+    <div class="hero">
+      <div class="hero-label">Conexões · Fornecedores em comum</div>
+      <div class="hero-number" id="cx-total">—</div>
+      <div class="hero-desc">
+        empresas que receberam, em <span id="cx-ano">2026</span>, de <b>dois ou mais</b> pagadores públicos de MS —
+        vereadores de Campo Grande, deputados estaduais e federais, senadores e a Prefeitura de CG.
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="cx-multi">—</div><div class="mini-stat-label">pagas por 3+ esferas</div></div>
+        <div><div class="mini-stat-value" id="cx-pref">—</div><div class="mini-stat-label">também pagas pela Prefeitura</div></div>
+        <div><div class="mini-stat-value" id="cx-max">—</div><div class="mini-stat-label">máx. de pagadores numa empresa</div></div>
+      </div>
+    </div>
+    <div class="section">
+      <p class="section-note cx-aviso">
+        ℹ️ <b>Um fornecedor em comum não indica irregularidade.</b> Companhias aéreas, postos de combustível,
+        telefonia, energia e gráficas atendem naturalmente muitos gabinetes. Esta lista mostra <b>conexões</b>
+        — quem pagou a mesma empresa — para facilitar a consulta e a apuração. Só pessoas jurídicas
+        (CNPJ válido); filiais agrupadas pela raiz do CNPJ; pessoas físicas (CPF) não aparecem.
+      </p>
+      <div class="cx-filtros">
+        <input class="search-box" id="busca-cx" type="text" placeholder="buscar empresa, CNPJ ou parlamentar…" />
+        <label class="cx-check"><input type="checkbox" id="cx-esferas"> só empresas pagas por esferas diferentes (ex.: vereador + deputado)</label>
+        <label class="cx-check"><input type="checkbox" id="cx-so-pref"> só empresas que também receberam da Prefeitura</label>
+      </div>
+      <div class="card">
+        <table class="ranking" id="ranking-cx">
+          <thead><tr><th>Empresa</th><th class="num">Pagadores</th><th>Quem pagou</th><th class="num">Total pago</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button type="button" class="cx-mais" id="cx-mais" style="display:none"></button>
+      <div class="detail-panel" id="detail-cx"></div>
+    </div>
+  </section>
+
+  <section class="tabpanel" id="tab-evolucao">
+    <div class="hero">
+      <div class="hero-label">Evolução · Gasto mês a mês</div>
+      <div class="hero-number" id="ev-total">—</div>
+      <div class="hero-desc" id="ev-desc">gastos acumulados no ano, comparados com o mesmo período do ano anterior.</div>
+    </div>
+    <div class="section">
+      <div class="ev-grupos" role="tablist" aria-label="Grupo">
+        <button type="button" data-grupo="estadual" class="active">Dep. estaduais</button>
+        <button type="button" data-grupo="federal">Dep. federais MS</button>
+        <button type="button" data-grupo="senador">Senadores MS</button>
+        <button type="button" data-grupo="vereador">Vereadores CG</button>
+      </div>
+      <div class="card card-pad">
+        <div class="ev-head">
+          <div>
+            <div class="ev-titulo" id="ev-titulo">—</div>
+            <div class="ev-sub" id="ev-sub"></div>
+          </div>
+          <button type="button" class="ev-voltar" id="ev-voltar" style="display:none">← todos do grupo</button>
+        </div>
+        <div class="ev-legenda" id="ev-legenda"></div>
+        <div class="ev-chart" id="ev-chart" role="img"></div>
+        <details class="ev-tabela"><summary>Ver como tabela</summary><div id="ev-tabela"></div></details>
+      </div>
+      <div class="section-head" style="margin-top:22px">
+        <h2 class="section-title" id="ev-rank-titulo">Quem gastou mais rápido</h2>
+      </div>
+      <p class="section-note" id="ev-rank-nota"></p>
+      <div class="card">
+        <table class="ranking" id="ranking-ev">
+          <thead><tr><th class="num">#</th><th>Parlamentar</th><th class="num" id="ev-th-atual">2026</th><th class="num" id="ev-th-ant">2025</th><th class="num" id="ev-th-var">Variação</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="section-note" id="ev-nota" style="margin-top:10px"></p>
     </div>
   </section>
 
@@ -3457,6 +3573,369 @@ function initBuscaGlobal() {
   });
 }
 
+// ===================== UTILITÁRIOS (abas novas) =====================
+function escHTML(t) {
+  return String(t ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+// Link que abre um parlamentar direto no painel (lido por abrirDoHash)
+function linkParlamentar(aba, nome) {
+  return `#aba=${encodeURIComponent(aba)}&p=${encodeURIComponent(nome)}`;
+}
+
+// ===================== CONEXÕES ENTRE FORNECEDORES =====================
+const TIPO_ROTULO = {
+  vereador: ["vereador", "vereadores"], estadual: ["dep. estadual", "dep. estaduais"],
+  federal: ["dep. federal", "dep. federais"], senador: ["senador", "senadores"], prefeitura: ["Prefeitura", "Prefeitura"],
+};
+let DADOS_CONEXOES = null;
+
+function renderConexoes(d) {
+  DADOS_CONEXOES = d;
+  const lista = d.conexoes || [];
+  document.getElementById("cx-total").textContent = lista.length.toLocaleString("pt-BR");
+  document.getElementById("cx-ano").textContent = d.ano || ANO_REFERENCIA;
+  document.getElementById("cx-multi").textContent = lista.filter(c => c.tipos.length >= 3).length;
+  document.getElementById("cx-pref").textContent = lista.filter(c => c.tipos.includes("prefeitura")).length;
+  document.getElementById("cx-max").textContent = Math.max(0, ...lista.map(c => c.numPagadores));
+
+  const tbody = document.querySelector("#ranking-cx tbody");
+  const panel = document.getElementById("detail-cx");
+  const busca = document.getElementById("busca-cx");
+  const soEsferas = document.getElementById("cx-esferas");
+  const soPref = document.getElementById("cx-so-pref");
+  const mais = document.getElementById("cx-mais");
+  let limite = 60, filtrados = lista;
+
+  const tags = c => {
+    const n = {};
+    c.pagadores.forEach(p => { n[p.tipo] = (n[p.tipo] || 0) + 1; });
+    return Object.entries(n).map(([t, q]) => `<span class="cx-tag">${t === "prefeitura" ? "Prefeitura" : `${q} ${TIPO_ROTULO[t][q > 1 ? 1 : 0]}`}</span>`).join("");
+  };
+
+  function desenhar() {
+    tbody.innerHTML = filtrados.slice(0, limite).map((c, i) => `
+      <tr class="clickable" data-idx="${i}">
+        <td><div class="rank-name">${escHTML(c.nome)}</div>
+            <div class="rank-meta">${escHTML(c.cnpjs[0])}${c.cnpjs.length > 1 ? ` + ${c.cnpjs.length - 1} filial(is)` : ""}</div></td>
+        <td class="num">${c.numPagadores}</td>
+        <td>${tags(c)}</td>
+        <td class="num">${formatBRL(c.total)}</td>
+      </tr>`).join("") || `<tr><td colspan="4" style="padding:14px;color:var(--ink-soft)">Nenhuma empresa com esse filtro.</td></tr>`;
+    tbody.querySelectorAll("tr.clickable").forEach(row => row.addEventListener("click", () => detalhe(filtrados[+row.dataset.idx])));
+    const resto = filtrados.length - limite;
+    mais.style.display = resto > 0 ? "" : "none";
+    mais.textContent = `Mostrar mais (${resto.toLocaleString("pt-BR")} restantes)`;
+  }
+
+  function filtrar() {
+    const f = busca.value.trim().toLowerCase();
+    const fDig = f.replace(/\D/g, "");
+    filtrados = lista.filter(c =>
+      (!soEsferas.checked || c.tipos.length >= 2) &&
+      (!soPref.checked || c.tipos.includes("prefeitura")) &&
+      (!f || c.nome.toLowerCase().includes(f) ||
+        (fDig.length >= 4 && c.cnpjs.some(x => x.replace(/\D/g, "").includes(fDig))) ||
+        c.pagadores.some(p => p.nome.toLowerCase().includes(f))));
+    limite = 60;
+    panel.classList.remove("active");
+    desenhar();
+  }
+
+  function detalhe(c) {
+    panel.innerHTML = `
+      <div class="detail-header"><div class="detail-header-text">
+        <h3>${escHTML(c.nome)}</h3>
+        <div class="detail-meta">${c.cnpjs.map(escHTML).join(" · ")}</div>
+      </div></div>
+      <div class="stat-grid" style="margin-bottom:14px">
+        <div class="stat-card"><p class="stat-label">Pagadores</p><p class="stat-value">${c.numPagadores}</p></div>
+        <div class="stat-card"><p class="stat-label">Notas / empenhos</p><p class="stat-value">${c.notas.toLocaleString("pt-BR")}</p></div>
+        <div class="stat-card alt"><p class="stat-label">Total recebido em ${d.ano}</p><p class="stat-value">${formatCompact(c.total)}</p></div>
+      </div>
+      <div class="subhead">Quem pagou esta empresa</div>
+      <div style="overflow-x:auto"><table class="notes-table">
+        <thead><tr><th>Pagador</th><th>Cargo</th><th class="num">Notas</th><th class="num">Valor</th></tr></thead>
+        <tbody>${c.pagadores.map(p => `
+          <tr><td>${p.tipo === "prefeitura" ? escHTML(p.nome) : `<a href="${linkParlamentar(p.aba, p.nome)}">${escHTML(p.nome)}</a>`}${p.partido ? ` <span style="opacity:.6">· ${escHTML(p.partido)}</span>` : ""}</td>
+              <td style="font-size:.78rem">${escHTML(p.rotulo)}</td><td class="num">${p.notas}</td><td class="num">${formatBRL(p.total)}</td></tr>`).join("")}
+        </tbody></table></div>
+      <p class="section-note" style="margin-top:10px">Clique no nome para ver as notas fiscais do parlamentar. Um fornecedor em comum não indica irregularidade.
+        <a href="https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp" target="_blank" rel="noopener">Consultar o CNPJ na Receita Federal →</a></p>`;
+    panel.classList.add("active");
+    panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  busca.addEventListener("input", filtrar);
+  soEsferas.addEventListener("change", filtrar);
+  soPref.addEventListener("change", filtrar);
+  mais.addEventListener("click", () => { limite += 100; desenhar(); });
+  desenhar();
+}
+
+// ===================== EVOLUÇÃO MENSAL =====================
+const EV_COR = { atual: "#3987e5", anterior: "#d95926" };   // validados (dataviz) contra o fundo #0f1117
+const EV_MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+const EV_GRUPO = {
+  estadual: { nome: "Deputados estaduais de MS", rotulo: "CEAP da ALEMS" },
+  federal: { nome: "Deputados federais de MS", rotulo: "CEAP da Câmara dos Deputados" },
+  senador: { nome: "Senadores de MS", rotulo: "CEAPS do Senado" },
+  vereador: { nome: "Vereadores de Campo Grande", rotulo: "verba indenizatória (Atos 027/028)" },
+};
+let EV = { dados: null, grupo: "estadual", sel: null };
+
+// variação em texto: seta + sinal (nunca só cor); |v| < 0,05% vira "≈ 0%"
+const evVar = v => Math.abs(v) < 0.05 ? "≈ 0%" : `${v > 0 ? "▲ +" : "▼ "}${v.toFixed(1).replace(".", ",")}%`;
+const evSoma = (lista, campo) => Array.from({ length: 12 }, (_, i) => lista.reduce((s, p) => s + ((p[campo] || [])[i] || 0), 0));
+const evAcum = arr => { let s = 0; return arr.map(v => (s += v)); };
+const evUltimoMes = arr => { for (let i = 11; i >= 0; i--) if (arr[i] > 0) return i; return -1; };
+
+function renderEvolucao(d) {
+  EV.dados = d;
+  document.querySelectorAll(".ev-grupos button").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".ev-grupos button").forEach(x => x.classList.toggle("active", x === b));
+    EV.grupo = b.dataset.grupo; EV.sel = null; evDesenhar();
+  }));
+  document.getElementById("ev-voltar").addEventListener("click", () => { EV.sel = null; evDesenhar(); });
+  if (window.ResizeObserver) new ResizeObserver(() => evGrafico()).observe(document.getElementById("ev-chart"));
+  document.getElementById("ev-nota").textContent = d.nota || "";
+  evDesenhar();
+}
+
+function evSeries() {
+  const lista = EV.dados.grupos[EV.grupo] || [];
+  const p = EV.sel ? lista.find(x => x.nome === EV.sel) : null;
+  const atual = p ? p.m : evSoma(lista, "m");
+  const temAnt = p ? !!p.mAnterior : lista.some(x => x.mAnterior);
+  const anterior = temAnt ? (p ? p.mAnterior : evSoma(lista.filter(x => x.mAnterior), "mAnterior")) : null;
+  return { lista, p, atual, anterior };
+}
+
+function evDesenhar() {
+  const d = EV.dados, g = EV_GRUPO[EV.grupo];
+  const { lista, p, atual, anterior } = evSeries();
+  const ultimo = evUltimoMes(atual);
+  // compara até o último mês completo (o mês corrente ainda está chegando)
+  const M = Math.max(0, Math.min((d.mesAtual || 12) - 2, ultimo));
+  const acA = evAcum(atual), acB = anterior ? evAcum(anterior) : null;
+
+  document.getElementById("ev-total").textContent = formatCompact(acA[ultimo] || 0);
+  document.getElementById("ev-desc").textContent = p
+    ? `gastos de ${p.nome} (${p.rotulo}) em ${d.ano}, acumulados mês a mês${anterior ? `, comparados com ${d.anoAnterior}` : ""}.`
+    : `gastos acumulados de ${g.nome.toLowerCase()} em ${d.ano} (${g.rotulo})${anterior ? `, comparados com o mesmo período de ${d.anoAnterior}` : ""}.`;
+  document.getElementById("ev-titulo").textContent = p ? p.nome : `${g.nome} — total do grupo`;
+  let sub = `Acumulado até ${EV_MESES[ultimo] || "—"}/${d.ano}: ${formatBRL(acA[ultimo] || 0)}`;
+  if (acB) {
+    const v = acB[M] ? (acA[M] / acB[M] - 1) * 100 : null;
+    sub += ` · jan–${EV_MESES[M]}: ${formatCompact(acA[M])} em ${d.ano} vs ${formatCompact(acB[M])} em ${d.anoAnterior}` +
+      (v != null ? ` (${evVar(v)})` : "");
+  }
+  document.getElementById("ev-sub").textContent = sub;
+  document.getElementById("ev-voltar").style.display = p ? "" : "none";
+  document.getElementById("ev-legenda").innerHTML = anterior
+    ? `<span><i style="border-color:${EV_COR.atual}"></i>${d.ano}</span><span><i style="border-color:${EV_COR.anterior};border-top-style:dashed"></i>${d.anoAnterior}</span>`
+    : "";
+  document.getElementById("ev-chart").setAttribute("aria-label",
+    `Gráfico de gasto acumulado por mês em ${d.ano}${anterior ? ` e ${d.anoAnterior}` : ""}. A mesma informação está em "Ver como tabela".`);
+
+  // tabela acessível
+  document.getElementById("ev-tabela").innerHTML = `<table><thead><tr><th>Mês</th><th>${d.ano}</th><th>Acumulado ${d.ano}</th>${anterior ? `<th>${d.anoAnterior}</th><th>Acumulado ${d.anoAnterior}</th>` : ""}</tr></thead><tbody>` +
+    EV_MESES.map((m, i) => `<tr><td>${m}</td><td>${i <= ultimo ? formatBRL(atual[i]) : "—"}</td><td>${i <= ultimo ? formatBRL(acA[i]) : "—"}</td>${anterior ? `<td>${formatBRL(anterior[i])}</td><td>${formatBRL(acB[i])}</td>` : ""}</tr>`).join("") + "</tbody></table>";
+
+  // ranking: quem gastou mais rápido
+  const tbody = document.querySelector("#ranking-ev tbody");
+  const comHist = lista.some(x => x.mAnterior);
+  const linhas = lista.map(x => {
+    const a = x.m.slice(0, M + 1).reduce((s, v) => s + v, 0);
+    const b = x.mAnterior ? x.mAnterior.slice(0, M + 1).reduce((s, v) => s + v, 0) : null;
+    const cota = x.cotaAnual;
+    return { x, a, b, v: b ? (a / b - 1) * 100 : null, pc: cota ? a / cota * 100 : null };
+  });
+  if (comHist) {
+    linhas.sort((r, s) => (s.v ?? -1e9) - (r.v ?? -1e9));
+    document.getElementById("ev-rank-titulo").textContent = `Quem acelerou os gastos em ${d.ano}`;
+    document.getElementById("ev-rank-nota").textContent =
+      `Gasto de jan a ${EV_MESES[M]} de ${d.ano} comparado com o mesmo período de ${d.anoAnterior}. Ordenado pela variação. Clique para ver o gráfico do parlamentar.`;
+    document.getElementById("ev-th-atual").textContent = `jan–${EV_MESES[M]} ${d.ano}`;
+    document.getElementById("ev-th-ant").textContent = `jan–${EV_MESES[M]} ${d.anoAnterior}`;
+    document.getElementById("ev-th-var").textContent = "Variação";
+  } else {
+    linhas.sort((r, s) => (s.pc ?? s.a) - (r.pc ?? r.a));
+    document.getElementById("ev-rank-titulo").textContent = "Quem já usou mais da cota anual";
+    document.getElementById("ev-rank-nota").textContent =
+      `Verba paga de jan a ${EV_MESES[M]} de ${d.ano} em relação à cota anual. Sem histórico de ${d.anoAnterior} para este grupo.`;
+    document.getElementById("ev-th-atual").textContent = `jan–${EV_MESES[M]} ${d.ano}`;
+    document.getElementById("ev-th-ant").textContent = "Cota anual";
+    document.getElementById("ev-th-var").textContent = "% da cota";
+  }
+  tbody.innerHTML = linhas.map((r, i) => `
+    <tr class="clickable${EV.sel === r.x.nome ? " ev-sel" : ""}" data-nome="${escHTML(r.x.nome)}">
+      <td class="rank-pos">${String(i + 1).padStart(2, "0")}</td>
+      <td><div class="rank-name">${escHTML(r.x.nome)}</div><div class="rank-meta">${escHTML(r.x.partido || "—")}</div></td>
+      <td class="num">${formatBRL(r.a)}</td>
+      <td class="num">${comHist ? (r.b != null ? formatBRL(r.b) : "—") : (r.x.cotaAnual ? formatBRL(r.x.cotaAnual) : "—")}</td>
+      <td class="num">${comHist
+        ? (r.v != null ? `<span class="${r.v >= 0 ? "ev-var-up" : "ev-var-down"}">${evVar(r.v)}</span>` : `sem ${d.anoAnterior}`)
+        : (r.pc != null ? `${r.pc.toFixed(1).replace(".", ",")}%` : "—")}</td>
+    </tr>`).join("");
+  tbody.querySelectorAll("tr.clickable").forEach(row => row.addEventListener("click", () => {
+    EV.sel = row.dataset.nome; evDesenhar();
+    document.getElementById("ev-chart").scrollIntoView({ behavior: "smooth", block: "center" });
+  }));
+  evGrafico();
+}
+
+function evGrafico() {
+  if (!EV.dados) return;
+  const box = document.getElementById("ev-chart");
+  const W = box.clientWidth || 600, H = box.clientHeight || 260;
+  if (!W) return;
+  const { atual, anterior } = evSeries();
+  const ultimo = evUltimoMes(atual);
+  const acA = evAcum(atual).map((v, i) => (i <= ultimo ? v : null));
+  const acB = anterior ? evAcum(anterior) : null;
+  const pad = { l: 56, r: 44, t: 10, b: 26 };
+  const iw = W - pad.l - pad.r, ih = H - pad.t - pad.b;
+  const max = Math.max(1, ...acA.filter(v => v != null), ...(acB || [0]));
+  // escala "bonita"
+  const passo = (() => { const bruto = max / 4, ex = Math.pow(10, Math.floor(Math.log10(bruto))); return [1, 2, 2.5, 5, 10].map(m => m * ex).find(m => m >= bruto); })();
+  const topo = Math.ceil(max / passo) * passo;
+  const x = i => pad.l + (iw * i) / 11, y = v => pad.t + ih - (ih * v) / topo;
+  const linha = arr => arr.map((v, i) => (v == null ? null : `${x(i).toFixed(1)},${y(v).toFixed(1)}`)).filter(Boolean).join(" ");
+  const compact = v => formatCompact(v).replace("R$ ", "R$ ");
+  let svg = `<svg viewBox="0 0 ${W} ${H}" aria-hidden="true">`;
+  for (let t = 0; t <= topo + 1e-6; t += passo) {
+    svg += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${y(t)}" y2="${y(t)}" stroke="var(--border)" stroke-width="1"/>` +
+      `<text x="${pad.l - 8}" y="${y(t) + 4}" text-anchor="end" font-size="10" fill="var(--ink-soft)">${t ? compact(t) : "0"}</text>`;
+  }
+  EV_MESES.forEach((m, i) => { if (W > 420 || i % 2 === 0) svg += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle" font-size="10" fill="var(--ink-soft)">${m}</text>`; });
+  if (acB) svg += `<polyline points="${linha(acB)}" fill="none" stroke="${EV_COR.anterior}" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round" stroke-linecap="round"/>`;
+  svg += `<polyline points="${linha(acA)}" fill="none" stroke="${EV_COR.atual}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  // rótulos diretos no fim das linhas (texto em tinta neutra; a cor fica na marca)
+  if (ultimo >= 0) svg += `<circle cx="${x(ultimo)}" cy="${y(acA[ultimo])}" r="4" fill="${EV_COR.atual}" stroke="var(--surface)" stroke-width="2"/>` +
+    `<text x="${x(ultimo) + 7}" y="${y(acA[ultimo]) + 4}" font-size="10" font-weight="600" fill="var(--ink)">${EV.dados.ano}</text>`;
+  if (acB) svg += `<text x="${x(11) + 6}" y="${y(acB[11]) + 4}" font-size="10" fill="var(--ink-soft)">${EV.dados.anoAnterior}</text>`;
+  svg += `<line class="ev-cross" x1="0" x2="0" y1="${pad.t}" y2="${pad.t + ih}" stroke="var(--ink-faint)" stroke-width="1" visibility="hidden"/>` +
+    `<circle class="ev-pa" r="4" fill="${EV_COR.atual}" stroke="var(--surface)" stroke-width="2" visibility="hidden"/>` +
+    `<circle class="ev-pb" r="4" fill="${EV_COR.anterior}" stroke="var(--surface)" stroke-width="2" visibility="hidden"/>` +
+    `<rect class="ev-hit" x="${pad.l - 10}" y="0" width="${iw + 20}" height="${H}" fill="transparent"/></svg><div class="ev-tip" hidden></div>`;
+  box.innerHTML = svg;
+
+  const s = box.querySelector("svg"), tip = box.querySelector(".ev-tip");
+  const cross = s.querySelector(".ev-cross"), pa = s.querySelector(".ev-pa"), pb = s.querySelector(".ev-pb");
+  const mostrar = ev => {
+    const r = s.getBoundingClientRect();
+    const i = Math.max(0, Math.min(11, Math.round(((ev.clientX - r.left) * (W / r.width) - pad.l) / (iw / 11))));
+    cross.setAttribute("x1", x(i)); cross.setAttribute("x2", x(i)); cross.setAttribute("visibility", "visible");
+    const temA = acA[i] != null;
+    pa.setAttribute("visibility", temA ? "visible" : "hidden");
+    if (temA) { pa.setAttribute("cx", x(i)); pa.setAttribute("cy", y(acA[i])); }
+    pb.setAttribute("visibility", acB ? "visible" : "hidden");
+    if (acB) { pb.setAttribute("cx", x(i)); pb.setAttribute("cy", y(acB[i])); }
+    tip.innerHTML = `<b>${EV_MESES[i]}</b>` +
+      `<div><span class="cor" style="background:${EV_COR.atual}"></span>${EV.dados.ano}: ${temA ? `${formatBRL(acA[i])} <span style="opacity:.6">(mês ${formatCompact(atual[i])})</span>` : "sem dados ainda"}</div>` +
+      (acB ? `<div><span class="cor" style="background:${EV_COR.anterior}"></span>${EV.dados.anoAnterior}: ${formatBRL(acB[i])} <span style="opacity:.6">(mês ${formatCompact(anterior[i])})</span></div>` : "");
+    tip.hidden = false;
+    const px = (x(i) / W) * r.width;
+    const esquerda = px + 12 + tip.offsetWidth > r.width ? px - 12 - tip.offsetWidth : px + 12;
+    tip.style.left = `${Math.min(Math.max(4, esquerda), Math.max(4, r.width - tip.offsetWidth - 4))}px`;
+    tip.style.top = "6px";
+  };
+  const esconder = () => { tip.hidden = true; [cross, pa, pb].forEach(e => e.setAttribute("visibility", "hidden")); };
+  s.addEventListener("pointermove", mostrar);
+  s.addEventListener("pointerdown", mostrar);
+  s.addEventListener("pointerleave", esconder);
+}
+
+// ===================== LINKS DIRETOS (#aba=...&p=...) =====================
+// Abre a aba e o parlamentar de um link compartilhado. Aceita o formato novo
+// (#aba=camara&p=Papy) e o antigo do botão "Copiar link" (#Papy).
+function abrirDoHash() {
+  const h = location.hash.slice(1);
+  if (!h) return;
+  let aba = null, nome = null;
+  if (h.includes("=")) {
+    const q = new URLSearchParams(h);
+    aba = q.get("aba"); nome = q.get("p");
+  } else {
+    nome = decodeURIComponent(h);
+    const achado = (typeof montarIndiceBusca === "function" ? montarIndiceBusca() : []).find(p => p.nome === nome);
+    aba = achado && achado.tab;
+  }
+  const btn = aba && document.querySelector(`.sidebar nav button[data-tab="${aba}"]`);
+  if (!btn) return;
+  btn.click();
+  if (!nome) return;
+  if (aba === "conexoes") {
+    const tenta = () => { const b = document.getElementById("busca-cx"); if (DADOS_CONEXOES && b) { b.value = nome; b.dispatchEvent(new Event("input")); } else setTimeout(tenta, 300); };
+    tenta();
+  }
+  const alvo = nome.trim().toLowerCase();
+  let tentativas = 0;
+  (function procura() {
+    const linhas = [...document.querySelectorAll(`#tab-${aba} tr.clickable`)];
+    const row = linhas.find(r => (r.querySelector(".rank-name")?.textContent || "").trim().toLowerCase() === alvo)
+      || linhas.find(r => r.textContent.toLowerCase().includes(alvo));
+    if (row) { row.click(); row.scrollIntoView({ behavior: "smooth", block: "center" }); return; }
+    if (++tentativas < 40) setTimeout(procura, 400);
+  })();
+}
+
+// ===================== SEGUIR (RSS de notas novas) =====================
+const SEGUIR_GRUPO = { "camara": "vereador", "deputados-estaduais": "estadual", "deputados": "federal", "senadores": "senador" };
+let _feedsIndice = null;
+function carregarFeedsIndice() {
+  if (!_feedsIndice) _feedsIndice = carregarJSON("dados/feeds/index.json").then(d => d?.parlamentares || []).catch(() => []);
+  return _feedsIndice;
+}
+function slugNome(t) {
+  return (t || "").normalize("NFD").replace(/[^\x00-\x7f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+function montarBotaoSeguir(panel) {
+  const tabpanel = panel.closest(".tabpanel");
+  const grupo = tabpanel && SEGUIR_GRUPO[tabpanel.id.replace(/^tab-/, "")];
+  const nome = (panel.querySelector("h3")?.textContent || "").trim();
+  if (!grupo || !nome || panel.querySelector(".seguir-btn")) return;
+  carregarFeedsIndice().then(lista => {
+    const f = lista.find(x => x.grupo === grupo && x.slug === `${grupo}-${slugNome(nome)}`);
+    if (!f || panel.querySelector(".seguir-btn") || (panel.querySelector("h3")?.textContent || "").trim() !== nome) return;
+    const url = new URL(f.feed, location.href).href;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "seguir-btn";
+    btn.textContent = "🔔 Seguir notas novas";
+    btn.title = `Receber aviso quando ${nome} tiver nota fiscal nova`;
+    const box = document.createElement("div");
+    box.className = "seguir-box";
+    box.hidden = true;
+    box.innerHTML = `
+      <b style="color:var(--ink)">Receba um aviso quando ${escHTML(nome)} lançar uma nota fiscal nova</b>
+      <div style="margin-top:6px">Este é o endereço (RSS) das notas fiscais, atualizado todo dia:</div>
+      <code>${escHTML(url)}</code>
+      <div class="seguir-acoes">
+        <button type="button" class="seguir-btn seguir-copiar">📋 Copiar endereço</button>
+        <a class="seguir-btn" href="${escHTML(url)}" target="_blank" rel="noopener">Abrir o feed</a>
+      </div>
+      <ol>
+        <li><b>No celular ou computador:</b> cole o endereço num leitor de RSS (Feedly, Inoreader, NetNewsWire, Feeder…).</li>
+        <li><b>Por e-mail:</b> cole o endereço num serviço gratuito de “RSS por e-mail” — você recebe uma mensagem a cada nota nova.</li>
+      </ol>
+      <div style="margin-top:8px;font-size:.74rem">Quer acompanhar todos? <a href="dados/feeds/todas.xml" target="_blank" rel="noopener">Feed com as notas novas de todos os políticos de MS</a>.</div>`;
+    btn.addEventListener("click", () => { box.hidden = !box.hidden; });
+    box.querySelector(".seguir-copiar").addEventListener("click", ev => {
+      const b = ev.currentTarget;
+      const ok = () => { b.textContent = "✅ Copiado!"; setTimeout(() => (b.textContent = "📋 Copiar endereço"), 2000); };
+      navigator.clipboard?.writeText(url).then(ok).catch(() => {
+        const ta = document.createElement("textarea"); ta.value = url; document.body.appendChild(ta); ta.select();
+        document.execCommand("copy"); document.body.removeChild(ta); ok();
+      });
+    });
+    const share = panel.querySelector(".share-btn");
+    btn.style.cssText = "margin-top:12px;margin-left:8px";
+    if (share) { share.style.display = "inline-block"; share.after(btn); } else panel.appendChild(btn);
+    btn.after(box);
+  });
+}
+
 // ===================== COMPARTILHAMENTO =====================
 function addShareButtons() {
   // Adiciona botão "Compartilhar" em cada painel de detalhe
@@ -3469,8 +3948,9 @@ function addShareButtons() {
         btn.title = "Copiar link para este parlamentar";
         btn.style.cssText = "margin-top:12px;display:block";
         btn.addEventListener("click", () => {
-          const url = window.location.href.split("#")[0] + "#" +
-            encodeURIComponent(panel.querySelector("h3")?.textContent || "");
+          const aba = (panel.closest(".tabpanel")?.id || "").replace(/^tab-/, "");
+          const url = window.location.href.split("#")[0] +
+            linkParlamentar(aba, (panel.querySelector("h3")?.textContent || "").trim());
           navigator.clipboard.writeText(url).then(() => {
             btn.textContent = "✅ Copiado!";
             setTimeout(() => btn.textContent = "📋 Copiar link", 2000);
@@ -3488,8 +3968,9 @@ function addShareButtons() {
         });
         panel.appendChild(btn);
       }
+      if (panel.classList.contains("active")) montarBotaoSeguir(panel);
     });
-    observer.observe(panel, { attributes: true, attributeFilter: ["class"] });
+    observer.observe(panel, { attributes: true, attributeFilter: ["class"], childList: true });
   });
 }
 
@@ -3522,6 +4003,14 @@ async function init() {
           if (d) renderPrefeitura(d);
         });
       }
+      if (btn.dataset.tab === "conexoes" && !window._conexoesLoaded) {
+        window._conexoesLoaded = true;
+        carregarJSON("dados/conexoes_fornecedores.json").then(d => { if (d) renderConexoes(d); });
+      }
+      if (btn.dataset.tab === "evolucao" && !window._evolucaoLoaded) {
+        window._evolucaoLoaded = true;
+        carregarJSON("dados/evolucao_mensal.json").then(d => { if (d) renderEvolucao(d); });
+      }
       if (btn.dataset.tab === "camaras-ms" && !window._camarasMsLoaded) {
         window._camarasMsLoaded = true;
         renderCamarasMS();
@@ -3544,6 +4033,8 @@ async function init() {
 
   initBuscaGlobal();
   addShareButtons();
+  window.addEventListener("hashchange", abrirDoHash);
+  setTimeout(abrirDoHash, 300);
 
   // Carregar JSONs em paralelo (não bloqueante)
   carregarJSON("dados/deputados_estaduais_ms.json").then(d => {

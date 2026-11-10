@@ -197,6 +197,9 @@ jobs:
           name: dados-tjms
           path: dados/
 
+      - name: Gerar conexões entre fornecedores, evolução mensal e feeds RSS
+        run: python3 scripts/gerar_analises.py || echo "⚠️ gerar_analises.py falhou — análises anteriores mantidas"
+
       - name: Atualizar números da capa e das páginas de SEO
         run: python3 scripts/atualizar_paginas.py || echo "⚠️ atualizar_paginas.py falhou — páginas estáticas mantidas"
 

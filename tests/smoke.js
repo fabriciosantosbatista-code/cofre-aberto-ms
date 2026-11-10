@@ -18,7 +18,7 @@ const { chromium } = require("playwright");
 const BASE = (process.argv[2] || "http://localhost:8000/").replace(/\/?$/, "/");
 const BAD = /\bNaN\b|\bundefined\b|\[object Object\]|\bInfinity\b/g;
 const TODOS = ["deputados", "senadores", "camara", "deputados-estaduais"];      // clica em todos os itens
-const AMOSTRA = ["prefeitura", "judiciario", "deputados-brasil", "senado-brasil"]; // clica em alguns
+const AMOSTRA = ["prefeitura", "judiciario", "deputados-brasil", "senado-brasil", "conexoes"]; // clica em alguns
 const PAGINAS = ["", "press.html", "vereadores-campo-grande.html", "deputados-estaduais-ms.html", "senadores-ms.html"];
 
 const problemas = [];
@@ -102,6 +102,40 @@ const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
       }
       console.log(`  ✅ ${tab}: ${n} itens, ${abertos}/${idxs.length} detalhes abertos`);
     }
+
+    // evolução: os 4 grupos têm gráfico e ranking; clicar num parlamentar troca o gráfico
+    onde = "aba evolucao";
+    await page.locator('button[data-tab="evolucao"]').evaluate((e) => e.click());
+    await page.waitForTimeout(2000);
+    for (const g of ["estadual", "federal", "senador", "vereador"]) {
+      onde = `aba evolucao, grupo ${g}`;
+      await page.locator(`.ev-grupos button[data-grupo="${g}"]`).evaluate((e) => e.click());
+      await page.waitForTimeout(500);
+      const r = await page.evaluate(() => ({
+        linhas: document.querySelectorAll("#ranking-ev tbody tr.clickable").length,
+        svg: !!document.querySelector("#ev-chart svg polyline"),
+        tx: document.getElementById("tab-evolucao").innerText,
+      }));
+      if (!r.svg) falha(`[${nome}] evolução ${g}: gráfico não desenhou`);
+      if (!r.linhas) falha(`[${nome}] evolução ${g}: ranking vazio`);
+      const mm = r.tx.match(BAD);
+      if (mm) falha(`[${nome}] evolução ${g}: mostra ${[...new Set(mm)]}`);
+      await page.locator("#ranking-ev tr.clickable").first().evaluate((e) => e.click());
+      await page.waitForTimeout(400);
+      if (!(await page.isVisible("#ev-voltar"))) falha(`[${nome}] evolução ${g}: clique no parlamentar não abriu o gráfico dele`);
+    }
+    console.log("  ✅ evolução: 4 grupos com gráfico e ranking");
+
+    // link direto (#aba=...&p=...) abre o parlamentar
+    onde = "link direto";
+    await page.goto(BASE + "cofre-aberto-ms.html#aba=deputados-estaduais&p=Zeca%20do%20PT", { waitUntil: "load" });
+    await page.waitForTimeout(6000);
+    const aberto = await page.evaluate(() => document.querySelector("#tab-deputados-estaduais .detail-panel.active h3")?.textContent || "");
+    if (aberto !== "Zeca do PT") falha(`[${nome}] link direto #aba=deputados-estaduais&p=Zeca do PT abriu "${aberto || "nada"}"`);
+    else console.log("  ✅ link direto abre o parlamentar");
+    if (!(await page.$("#tab-deputados-estaduais .detail-panel.active .seguir-btn"))) falha(`[${nome}] botão "Seguir notas novas" não apareceu`);
+    await page.goto(BASE + "cofre-aberto-ms.html", { waitUntil: "load" });
+    await page.waitForTimeout(4000);
 
     // câmaras do interior: todas
     onde = "aba camaras-ms";

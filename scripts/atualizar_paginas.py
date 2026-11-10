@@ -112,6 +112,12 @@ def main():
     html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Dep\. Estaduais)', rf"\g<1>{len(deps_est)}\2", html)
     if ativos:
         html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Judiciário MS)', rf"\g<1>{ativos}\2", html)
+    cx = carregar("conexoes_fornecedores.json").get("totalEmpresas")
+    if cx:
+        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Conexões entre fornecedores)', rf"\g<1>{cx}\2", html)
+    nf = len(carregar("feeds/index.json").get("parlamentares") or [])
+    if nf:
+        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Siga um político)', rf"\g<1>{nf}\2", html)
     if status.get("ultimaAtualizacao"):
         a, m, d = status["ultimaAtualizacao"][:10].split("-")
         html = re.sub(r'(<time id="data-atualizacao">)[^<]*(</time>)', rf"\g<1>{d}/{m}/{a}\2", html)

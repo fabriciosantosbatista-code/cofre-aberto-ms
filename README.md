@@ -28,6 +28,23 @@ O GitHub Actions roda todo dia às **6h BRT** e:
 4. Rebuilda o HTML com os dados novos
 5. Commita e faz push — o Netlify detecta e faz deploy automático
 
+### Análises geradas a cada coleta (`scripts/gerar_analises.py`)
+
+- **Conexões entre fornecedores** (`dados/conexoes_fornecedores.json`, aba *Conexões*):
+  empresas que receberam de 2+ pagadores públicos de MS (vereadores de CG,
+  deputados estaduais e federais, senadores, Prefeitura). Só pessoa jurídica com
+  CNPJ válido (dígito verificador) — CPFs ficam de fora —, filiais agrupadas pela
+  raiz do CNPJ. Enquadramento sempre de **conexão**, não de suspeita.
+- **Evolução mensal** (`dados/evolucao_mensal.json`, aba *Evolução*): gasto mês a
+  mês em 2026 x 2025 e ranking de quem acelerou os gastos. O ano anterior vem de
+  `dados/historico_2025.json`, gerado uma vez por `scripts/gerar_historico.py 2025`
+  (Câmara/Senado/ALEMS; a Câmara CG não tem histórico em formato aproveitável).
+- **Feeds RSS** (`dados/feeds/<grupo>-<nome>.xml` + `todas.xml`): notas fiscais mais
+  recentes de cada parlamentar de MS. No painel, o botão **🔔 Seguir notas novas**
+  mostra o endereço para leitor de RSS ou serviço de RSS por e-mail.
+- **Links diretos**: `cofre-aberto-ms.html#aba=deputados-estaduais&p=Zeca%20do%20PT`
+  abre o parlamentar (é o que o botão "Copiar link" gera).
+
 ### Monitoramento (alerta quando algo para)
 
 Os coletores mantêm o dado anterior quando uma fonte falha — então o Actions
