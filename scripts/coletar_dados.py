@@ -814,91 +814,137 @@ def gerar_status():
 # ============================================================
 # 6. PREFEITURA DE CAMPO GRANDE — CSV de Despesas
 # ============================================================
+def _pref_baixar_sig(ano):
+    """Exportação JSON da consulta de despesas do SIG-Transparência (dados do
+    dia). O formulário é Laravel: GET para pegar _token + cookie, POST com
+    download=json para o período do ano inteiro."""
+    import re as _re
+    base = "https://sig-transparencia.campogrande.ms.gov.br/despesas/consulta"
+    s = requests.Session()
+    s.headers.update({"User-Agent": "Mozilla/5.0 (CofreAbertoMS; transparencia publica)"})
+    r = s.get(base, timeout=90)
+    r.raise_for_status()
+    m = _re.search(r'name="_token" value="([^"]+)"', r.text)
+    if not m:
+        raise RuntimeError("token do formulário não encontrado")
+    fim = date.today() if ano == date.today().year else date(ano, 12, 31)
+    r = s.post(base, timeout=600, data={
+        "_token": m.group(1), "page": "1", "orderColumn": "dataempenho", "orderDirection": "DESC",
+        "download": "json", "periodo-inicio": f"{ano}-01-01", "periodo-fim": fim.isoformat(),
+        "orgao": "", "fornecedor": "", "cpf_cnpj": "", "categoria": "",
+    })
+    r.raise_for_status()
+    linhas = r.json()
+    if not isinstance(linhas, list) or not linhas:
+        raise RuntimeError("exportação vazia")
+    for x in linhas:  # normaliza para o formato do CSV de dados abertos
+        d = str(x.get("dataempenho") or "")
+        if _re.match(r"\d{2}/\d{2}/\d{4}$", d):
+            x["dataempenho"] = f"{d[6:]}-{d[3:5]}-{d[:2]}"
+        x.setdefault("itemclassificacaodespesaitemclassificacaodespesa", x.get("itemclassificacaodespesa"))
+    return linhas
+
+
+def _pref_baixar_csv_dados_abertos(ano):
+    """CSV de 'Despesas – Dados Abertos'. O link muda de pasta a cada upload
+    (uploads/AAAA/MM/), então é lido da própria página em vez de fixo."""
+    import csv, io, re as _re
+    pag = get_com_retry("https://transparencia.campogrande.ms.gov.br/canais/despesas-dados-abertos/").text
+    links = _re.findall(rf'href="(https://cdn\.campogrande\.ms\.gov\.br/[^"]*Consulta_de_Despesas__{ano}\.csv)"', pag)
+    if not links:
+        raise RuntimeError(f"link do CSV {ano} não encontrado na página de dados abertos")
+    r = get_com_retry(links[0])
+    return list(csv.DictReader(io.StringIO(r.content.decode("utf-8-sig", errors="replace")), delimiter=";"))
+
+
 def coletar_prefeitura():
     log("Coletando despesas da Prefeitura de CG...")
-
-    import csv, io
-    from datetime import date
-
     ano = date.today().year
-    url = f"https://cdn.campogrande.ms.gov.br/portal/prod/uploads/{ano}/05/Consulta_de_Despesas__{ano}.csv"
-
+    fonte = None
     try:
-        r = get_com_retry(url)
-        texto = r.content.decode("utf-8-sig", errors="replace")
-        reader = csv.DictReader(io.StringIO(texto), delimiter=";")
-        linhas = list(reader)
-        log(f"  {len(linhas)} linhas no CSV da Prefeitura")
+        linhas = _pref_baixar_sig(ano)
+        fonte = "SIG-Transparência da Prefeitura (sig-transparencia.campogrande.ms.gov.br/despesas) — exportação do dia"
+        log(f"  {len(linhas)} empenhos na consulta online (SIG-Transparência)")
     except Exception as e:
-        log(f"  \u26a0\ufe0f CSV Prefeitura indispon\u00edvel: {e} \u2014 tentando m\u00eas anterior...")
+        log(f"  ⚠️ Consulta online indisponível: {e} — tentando o CSV de dados abertos")
         try:
-            url2 = f"https://cdn.campogrande.ms.gov.br/portal/prod/uploads/{ano}/04/Consulta_de_Despesas__{ano}.csv"
-            r = get_com_retry(url2)
-            texto = r.content.decode("utf-8-sig", errors="replace")
-            reader = csv.DictReader(io.StringIO(texto), delimiter=";")
-            linhas = list(reader)
-            log(f"  {len(linhas)} linhas (m\u00eas anterior)")
+            linhas = _pref_baixar_csv_dados_abertos(ano)
+            fonte = "Dados Abertos da Prefeitura (transparencia.campogrande.ms.gov.br) — CSV de despesas"
+            log(f"  {len(linhas)} linhas no CSV de dados abertos")
         except Exception as e2:
-            log(f"  \u26a0\ufe0f Prefeitura indispon\u00edvel: {e2} \u2014 mantendo dados anteriores")
+            log(f"  ⚠️ Prefeitura indisponível: {e2} — mantendo dados anteriores")
             return None
 
     def parse_valor(valor_str):
-        v = (valor_str or "0").strip().replace("R$", "").strip()
+        v = str(valor_str or "0").strip().replace("R$", "").strip()
         if "," in v:
             v = v.replace(".", "").replace(",", ".")
-        valor = float(v or 0)
-        if valor > 1_000_000_000:
-            valor = valor / 100
-        return valor
+        return float(v or 0)
 
-    # Agrupar por secretaria e extrair cada despesa individual (nota/empenho)
-    por_secretaria = {}
-    total_geral = 0
-    despesas = []
-    for row in linhas:
-        try:
-            secretaria = (row.get("orgao") or "Outros").strip()
-            valor = parse_valor(row.get("total_pago"))
-            por_secretaria[secretaria] = por_secretaria.get(secretaria, 0) + valor
-            total_geral += valor
-            if valor > 0:
-                ano_row = (row.get("ano") or "").strip()
-                uge = (row.get("uge") or "").strip()
-                num = (row.get("num") or "").strip()
-                despesas.append({
-                    "data": row.get("dataempenho"),
-                    "orgao": secretaria,
-                    "categoria": (row.get("itemclassificacaodespesaitemclassificacaodespesa") or "").strip(),
-                    "fornecedor": (row.get("nomefornecedor") or "").strip(),
-                    "cnpj": (row.get("cnpjfornecedor") or "").strip(),
-                    "valor": round(valor, 2),
-                    "urlDetalhe": f"https://sig-transparencia.campogrande.ms.gov.br/despesas/detalhe/{ano_row}/{uge}/{num}"
-                        if ano_row and uge and num else None,
-                })
-        except:
-            continue
-
-    despesas.sort(key=lambda x: x["data"] or "", reverse=True)
-
-    # Carregar dados anteriores para manter estrutura
     try:
         dados_ant = json.load(open(DADOS / "prefeitura.json", encoding="utf-8"))
     except:
         dados_ant = {}
 
+    por_secretaria = {}
+    total_geral = total_empenhado = total_liquidado = 0.0
+    despesas = []
+    for row in linhas:
+        try:
+            secretaria = (row.get("orgao") or "Outros").strip()
+            valor = parse_valor(row.get("total_pago"))
+            empenhado = parse_valor(row.get("total_empenhado"))
+            liquidado = parse_valor(row.get("total_liquidado"))
+            por_secretaria[secretaria] = por_secretaria.get(secretaria, 0) + valor
+            total_geral += valor
+            total_empenhado += empenhado
+            total_liquidado += liquidado
+            if valor > 0:
+                ano_row = str(row.get("ano") or "").strip()
+                uge = str(row.get("uge") or "").strip()
+                num = str(row.get("num") or "").strip()
+                item = {
+                    "data": row.get("dataempenho"),
+                    "orgao": secretaria,
+                    "categoria": (row.get("itemclassificacaodespesaitemclassificacaodespesa") or "").strip(),
+                    "fornecedor": (row.get("nomefornecedor") or "").strip(),
+                    "cnpj": str(row.get("cnpjfornecedor") or "").strip(),
+                    "valor": round(valor, 2),
+                    "empenhado": round(empenhado, 2),
+                    "urlDetalhe": f"https://sig-transparencia.campogrande.ms.gov.br/despesas/detalhe/{ano_row}/{uge}/{num}"
+                        if ano_row and uge and num else None,
+                }
+                if row.get("modalidadelicitacao"):
+                    item["modalidade"] = row["modalidadelicitacao"].strip()
+                despesas.append(item)
+        except Exception:
+            continue
+
+    # Não regride: se a fonte trouxer menos pago que o já publicado, mantém
+    if total_geral < (dados_ant.get("totalDespesas") or 0) * 0.98:
+        log(f"  ⚠️ Total pago caiu (R$ {total_geral:,.2f} < R$ {dados_ant.get('totalDespesas'):,.2f}) — mantendo dados anteriores")
+        return None
+
+    despesas.sort(key=lambda x: x["data"] or "", reverse=True)
     data = {
         **dados_ant,
         "ultimaAtualizacao": hoje,
         "ano": ano,
         "totalDespesas": round(total_geral, 2),
-        "fonte": f"cdn.campogrande.ms.gov.br \u2014 {hoje}",
+        "totalEmpenhado": round(total_empenhado, 2),
+        "totalLiquidado": round(total_liquidado, 2),
+        "ultimoEmpenho": max((str(r.get("dataempenho") or "") for r in linhas), default=None),
+        "fonte": f"{fonte} — {hoje}",
         "porSecretaria": {k: round(v, 2) for k, v in sorted(por_secretaria.items(), key=lambda x: -x[1])[:20]},
         "totalLinhas": len(linhas),
         "totalNotasFiscais": len(despesas),
         "despesas": despesas,
     }
-    salvar("prefeitura.json", data)
-    log(f"  Total despesas {ano}: R$ {total_geral:,.2f} \u2014 {len(despesas)} notas com valor pago")
+    # compacto (sem indentação): ~12 mil empenhos, o arquivo cai de ~5 MB para ~3 MB
+    with open(DADOS / "prefeitura.json", "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
+    log(f"✅ prefeitura.json salvo ({(DADOS / 'prefeitura.json').stat().st_size // 1024}KB)")
+    log(f"  Total pago {ano}: R$ {total_geral:,.2f} — {len(despesas)} empenhos com valor pago")
     return data
 
 # ============================================================

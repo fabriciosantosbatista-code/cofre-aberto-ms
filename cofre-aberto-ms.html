@@ -622,7 +622,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     <div class="section-hero">
       <div class="hero-label">Prefeitura Municipal de Campo Grande · Despesas <span id="pref-ano">2026</span></div>
       <div class="hero-number" id="pref-total">—</div>
-      <div class="hero-sub">Total pago até o momento</div>
+      <div class="hero-sub">Total pago até o momento<span id="pref-extra"></span></div>
       <div class="mini-stats">
         <div><div class="mini-stat-value" id="pref-linhas">—</div><div class="mini-stat-label">Empenhos</div></div>
         <div><div class="mini-stat-value" id="pref-notas">—</div><div class="mini-stat-label">Notas fiscais pagas</div></div>
@@ -2778,6 +2778,11 @@ function renderPrefeitura(data) {
   document.getElementById("pref-ano").textContent = data.ano || ANO_REFERENCIA;
   document.getElementById("pref-linhas").textContent = (data.totalLinhas || 0).toLocaleString("pt-BR");
   document.getElementById("pref-data").textContent = data.ultimaAtualizacao ? formatDateTime(data.ultimaAtualizacao) : "—";
+  const extra = [];
+  if (data.totalEmpenhado) extra.push(`empenhado ${formatCompact(data.totalEmpenhado)}`);
+  if (data.totalLiquidado) extra.push(`liquidado ${formatCompact(data.totalLiquidado)}`);
+  if (data.ultimoEmpenho) extra.push(`último empenho em ${formatDate(data.ultimoEmpenho)}`);
+  document.getElementById("pref-extra").textContent = extra.length ? ` · ${extra.join(" · ")}` : "";
   const lista = document.getElementById("pref-secretarias");
   if (!lista) return;
   lista.innerHTML = Object.entries(por).map(([sec, val]) =>
