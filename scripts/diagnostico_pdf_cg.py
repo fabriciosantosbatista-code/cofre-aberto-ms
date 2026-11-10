@@ -50,6 +50,7 @@ def main(alvos_txt):
             reader = PdfReader(f.name)
             print(f"  {len(reader.pages)} páginas")
             mes_atual = None
+            despejos = 0
             for i, pg in enumerate(reader.pages, 1):
                 try:
                     bruto = pg.extract_text() or ""
@@ -70,6 +71,11 @@ def main(alvos_txt):
                 extra = f" | início: {inicio!r}" if tipo == "—" else ""
                 print(f"  p{i:>3}: mês={m or '-'}/{a or '-'} (contexto {mes_atual or '-'}) tipo={tipo:<11} "
                       f"total={total_txt:>12} | {trecho_mes!r} | {len(t)} chars{extra}")
+                if tipo == "RESUMO" and (not tot or not m) and despejos < 4:
+                    despejos += 1
+                    print("      ---- texto da página (resumo sem total ou sem mês) ----")
+                    for linha in t.splitlines()[:60]:
+                        print("      | " + linha[:160])
             meses = cg.processa_pdf(f.name)
             print("  RESULTADO do leitor: " + ", ".join(f"{k}: total={v['totalDeclarado']}" for k, v in sorted(meses.items())))
 
