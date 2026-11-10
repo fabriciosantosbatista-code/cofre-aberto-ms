@@ -94,11 +94,11 @@ p{margin:0;}
 .sidebar-logo{font-family:var(--font-display);font-weight:800;font-size:1.05rem;letter-spacing:-.02em;padding:0 8px 18px;display:flex;align-items:center;gap:9px;color:var(--ink);}
 .sidebar-logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#4d7dff,#2dd4a0);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:.78rem;font-weight:800;flex-shrink:0;box-shadow:0 2px 8px rgba(77,125,255,.4);}
 .sidebar nav{display:flex;flex-direction:column;gap:1px;}
-.sidebar nav button{display:flex;align-items:center;gap:9px;text-align:left;background:none;border:none;color:var(--ink-soft);font-family:var(--font-body);font-size:.875rem;font-weight:500;padding:8px 10px;border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;width:100%;}
-.sidebar nav button .dot{width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .15s;}
+.sidebar nav button,.sidebar nav a.nav-link{text-decoration:none;display:flex;align-items:center;gap:9px;text-align:left;background:none;border:none;color:var(--ink-soft);font-family:var(--font-body);font-size:.875rem;font-weight:500;padding:8px 10px;border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;width:100%;}
+.sidebar nav button .dot,.sidebar nav a.nav-link .dot{width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .15s;}
 .sidebar nav button.active{background:var(--accent-soft);color:#7fa8ff;font-weight:600;}
 .sidebar nav button.active .dot{background:var(--accent);box-shadow:0 0 6px var(--accent);}
-.sidebar nav button:hover:not(.active){background:var(--surface-2);color:var(--ink);}
+.sidebar nav button:hover:not(.active),.sidebar nav a.nav-link:hover{background:var(--surface-2);color:var(--ink);}
 .nav-group-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-caption);font-weight:700;padding:14px 10px 4px;}
 .sidebar-divider{height:1px;background:var(--border);margin:8px 10px;}
 .sidebar-status{margin-top:auto;padding:12px 10px;border-radius:var(--radius-md);background:var(--surface-2);border:1px solid var(--border);font-size:.7rem;color:var(--ink-soft);}
@@ -297,7 +297,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   .sidebar{width:100%;height:auto;position:relative;padding:14px 12px;border-right:none;border-bottom:1px solid var(--border);}
   .sidebar-logo{padding-bottom:12px;}
   .sidebar nav{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:4px;flex-wrap:nowrap;padding-bottom:4px;}
-  .sidebar nav button{width:auto;white-space:nowrap;flex-shrink:0;padding:11px 14px;font-size:.8rem;min-height:44px;}
+  .sidebar nav button,.sidebar nav a.nav-link{width:auto;white-space:nowrap;flex-shrink:0;padding:11px 14px;font-size:.8rem;min-height:44px;}
   .sidebar-status,.sidebar-divider{display:none;}
   .nav-group-label{font-size:0;padding:0;width:1px;align-self:stretch;background:var(--border);flex-shrink:0;margin:2px 4px;}
   .main{padding:20px 16px 48px;}
@@ -452,9 +452,9 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="nav-group-label">Brasil</div>
       <button data-tab="deputados-brasil"><span class="dot"></span> Dep. Federais Brasil</button>
       <button data-tab="senado-brasil"><span class="dot"></span> Senado Brasil</button>
-
+      <div class="nav-group-label">Sobre o projeto</div>
       <button data-tab="sobre"><span class="dot"></span> Sobre</button>
-      <a href="metodologia.html" style="display:flex;align-items:center;gap:9px;color:var(--ink-soft);font-size:.83rem;font-weight:500;padding:8px 10px;border-radius:8px;text-decoration:none"><span class="dot"></span> Metodologia e dados</a>
+      <a class="nav-link" href="metodologia.html"><span class="dot"></span> Metodologia e dados</a>
     </nav>
     <div class="sidebar-status" id="status-row">
       <div class="row"><span><span class="live-dot"></span>Status</span><b>Sincronizado</b></div>
