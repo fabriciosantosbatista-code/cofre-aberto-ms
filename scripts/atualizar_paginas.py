@@ -56,6 +56,16 @@ def resumo_grid(itens):
                      f'<div class="resumo-label">{r}</div></div>' for v, r in itens)
 
 
+_IDX = None
+def link_nome(grupo, nome):
+    """<td class="nome"> com link para a página própria (se existir)."""
+    global _IDX
+    if _IDX is None:
+        _IDX = carregar("paginas_index.json")
+    url = _IDX.get(f"{grupo}|{nome}")
+    return f'<td class="nome"><a href="{url}" style="color:inherit;text-decoration:underline;text-decoration-color:var(--border)">{nome}</a></td>' if url else f'<td class="nome">{nome}</td>'
+
+
 def main():
     cg = carregar("camara_municipal.json")
     est = carregar("deputados_estaduais_ms.json")
@@ -141,7 +151,7 @@ def main():
             vi = v.get("verbaIndenizatoria") or {}
             pago = vi.get("gastoPago2026") or 0
             cota = vi.get("cotaAnual2026") or 300000
-            linhas.append([f'<td class="nome">{v["nome"]}</td>', f"<td>{v.get('partido') or '—'}</td>",
+            linhas.append([link_nome("vereador", v["nome"]), f"<td>{v.get('partido') or '—'}</td>",
                            f'<td class="num">{brl(pago)}</td>', f'<td class="num">{pago / cota * 100:.1f}%</td>',
                            f'<td class="num">{v.get("totalNotasFiscais") or 0}</td>'])
         html = troca(html, r"(<tbody>\n).*?(\n      </tbody>)", r"\g<1>" + tabela(linhas).replace("\\", "\\\\") + r"\2", "vereadores: tabela")
@@ -163,7 +173,7 @@ def main():
                          (milhar(n_est), "Notas fiscais coletadas"),
                          (brl(subsidio), "Subsídio mensal por deputado"),
                      ]).replace("\\", "\\\\") + r"\2", "dep. estaduais: resumo")
-        linhas = [[f'<td class="nome">{d["nome"]}</td>', f"<td>{d.get('partido') or '—'}</td>",
+        linhas = [[link_nome("estadual", d["nome"]), f"<td>{d.get('partido') or '—'}</td>",
                    f'<td class="num">{len(d.get("despesas") or [])}</td>']
                   for d in sorted(deps_est, key=lambda d: -len(d.get("despesas") or []))]
         html = troca(html, r"(<tbody>\n).*?(\n      </tbody>)", r"\g<1>" + tabela(linhas).replace("\\", "\\\\") + r"\2", "dep. estaduais: tabela")
@@ -181,7 +191,7 @@ def main():
                          (brl(sum(s.get("cotaGastaAno") or 0 for s in senadores)), "CEAPS gasta em 2026 (MS)"),
                          (milhar(n_sen), "Notas fiscais coletadas"),
                      ]).replace("\\", "\\\\") + r"\2", "senadores: resumo")
-        linhas = [[f'<td class="nome">{s["nome"]}</td>', f"<td>{s.get('partido') or '—'}</td>",
+        linhas = [[link_nome("senador", s["nome"]), f"<td>{s.get('partido') or '—'}</td>",
                    f'<td class="num">{brl(s.get("cotaGastaAno") or 0)}</td>',
                    f'<td class="num">{len(s.get("notasCeaps") or [])}</td>']
                   for s in sorted(senadores, key=lambda s: -(s.get("cotaGastaAno") or 0))]

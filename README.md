@@ -45,6 +45,25 @@ O GitHub Actions roda todo dia às **6h BRT** e:
 - **Links diretos**: `cofre-aberto-ms.html#aba=deputados-estaduais&p=Zeca%20do%20PT`
   abre o parlamentar (é o que o botão "Copiar link" gera).
 
+### Página de cada parlamentar (`scripts/gerar_paginas_parlamentares.py`)
+
+Uma página estática por parlamentar — boa para o Google e com prévia (foto,
+nome e valor gasto) ao compartilhar no WhatsApp/redes:
+
+| Endereço | Quem |
+|---|---|
+| `/vereador/<nome>/` | 29 vereadores de Campo Grande |
+| `/deputado-estadual/<nome>/` | deputados estaduais de MS |
+| `/deputado-federal/<nome>/` | 513 deputados federais |
+| `/senador/<nome>/` | 81 senadores |
+
+Cada página tem: totais do ano, % da cota, comparação com o ano anterior,
+gráfico mês a mês, gastos por categoria, últimas notas fiscais, fornecedores em
+comum com outros políticos, botões de WhatsApp, painel e RSS. Há um índice por
+grupo (`/vereador/` etc.), o `sitemap.xml` é regenerado com todas as páginas e
+as fotos embutidas nos JSONs viram arquivos em `fotos/p/` (a prévia precisa de
+URL de imagem). Roda no job de commit da coleta diária; só reescreve o que mudou.
+
 ### Monitoramento (alerta quando algo para)
 
 Os coletores mantêm o dado anterior quando uma fonte falha — então o Actions

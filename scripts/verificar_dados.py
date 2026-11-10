@@ -219,6 +219,15 @@ def main():
         n = len(fi.get("parlamentares", []))
         checa(n >= 60, f"Feeds RSS: {n} parlamentares", f"**Feeds RSS**: só {n} parlamentares")
 
+    # ---------- páginas próprias dos parlamentares ----------
+    paginas = list(ROOT.glob("vereador/*/index.html")) + list(ROOT.glob("deputado-estadual/*/index.html")) + \
+              list(ROOT.glob("deputado-federal/*/index.html")) + list(ROOT.glob("senador/*/index.html"))
+    checa(len(paginas) >= 600, f"Páginas de parlamentares: {len(paginas)}",
+          f"**Páginas de parlamentares**: só {len(paginas)} (esperado ~648)")
+    smap = (ROOT / "sitemap.xml").read_text(encoding="utf-8") if (ROOT / "sitemap.xml").exists() else ""
+    checa(smap.count("<url>") >= 600, f"sitemap.xml: {smap.count('<url>')} endereços",
+          f"**sitemap.xml**: só {smap.count('<url>')} endereços", "aviso")
+
     # ---------- arquivos de notas por estado ----------
     for pasta, nome in (("ceap_federal", "Notas dep. federais por UF"), ("ceaps_senado", "Notas senadores por UF")):
         arqs = list((DADOS / pasta).glob("*.json"))

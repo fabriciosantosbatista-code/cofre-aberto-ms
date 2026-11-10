@@ -200,6 +200,9 @@ jobs:
       - name: Gerar conexões entre fornecedores, evolução mensal e feeds RSS
         run: python3 scripts/gerar_analises.py || echo "⚠️ gerar_analises.py falhou — análises anteriores mantidas"
 
+      - name: Gerar uma página por parlamentar (+ sitemap)
+        run: python3 scripts/gerar_paginas_parlamentares.py || echo "⚠️ gerar_paginas_parlamentares.py falhou — páginas anteriores mantidas"
+
       - name: Atualizar números da capa e das páginas de SEO
         run: python3 scripts/atualizar_paginas.py || echo "⚠️ atualizar_paginas.py falhou — páginas estáticas mantidas"
 
@@ -207,7 +210,8 @@ jobs:
         run: |
           git config user.name "Cofre Aberto Bot"
           git config user.email "bot@cofreabertoms.com.br"
-          git add dados/ index.html vereadores-campo-grande.html deputados-estaduais-ms.html senadores-ms.html
+          git add dados/ index.html vereadores-campo-grande.html deputados-estaduais-ms.html senadores-ms.html \
+                  vereador/ deputado-estadual/ deputado-federal/ senador/ fotos/p/ sitemap.xml
 
           if git diff --staged --quiet; then
             echo "Sem mudanças"

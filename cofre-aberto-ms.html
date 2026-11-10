@@ -3886,6 +3886,31 @@ function abrirDoHash() {
   })();
 }
 
+// ===================== PÁGINA PRÓPRIA DO PARLAMENTAR =====================
+// /vereador/<nome>/, /deputado-estadual/..., /deputado-federal/..., /senador/... (gerar_paginas_parlamentares.py)
+const PAGINA_GRUPO = { "camara": "vereador", "deputados-estaduais": "estadual", "deputados": "federal",
+                       "deputados-brasil": "federal", "senadores": "senador", "senado-brasil": "senador" };
+let _paginasIndice = null;
+function montarLinkPagina(panel) {
+  const tabpanel = panel.closest(".tabpanel");
+  const grupo = tabpanel && PAGINA_GRUPO[tabpanel.id.replace(/^tab-/, "")];
+  const nome = (panel.querySelector("h3")?.textContent || "").trim();
+  if (!grupo || !nome || panel.querySelector(".pagina-btn")) return;
+  if (!_paginasIndice) _paginasIndice = carregarJSON("dados/paginas_index.json").then(d => d || {}).catch(() => ({}));
+  _paginasIndice.then(idx => {
+    const url = idx[`${grupo}|${nome}`];
+    if (!url || panel.querySelector(".pagina-btn") || (panel.querySelector("h3")?.textContent || "").trim() !== nome) return;
+    const a = document.createElement("a");
+    a.className = "seguir-btn pagina-btn";
+    a.href = url;
+    a.textContent = "📄 Página de " + nome;
+    a.title = "Página própria, fácil de compartilhar no WhatsApp e nas redes";
+    a.style.cssText = "margin-top:12px;margin-left:8px;display:inline-block;text-decoration:none";
+    const share = panel.querySelector(".share-btn");
+    if (share) { share.style.display = "inline-block"; share.after(a); } else panel.appendChild(a);
+  });
+}
+
 // ===================== SEGUIR (RSS de notas novas) =====================
 const SEGUIR_GRUPO = { "camara": "vereador", "deputados-estaduais": "estadual", "deputados": "federal", "senadores": "senador" };
 let _feedsIndice = null;
@@ -3974,7 +3999,7 @@ function addShareButtons() {
         });
         panel.appendChild(btn);
       }
-      if (panel.classList.contains("active")) montarBotaoSeguir(panel);
+      if (panel.classList.contains("active")) { montarBotaoSeguir(panel); montarLinkPagina(panel); }
     });
     observer.observe(panel, { attributes: true, attributeFilter: ["class"], childList: true });
   });
