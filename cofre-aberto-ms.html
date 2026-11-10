@@ -1432,7 +1432,8 @@ function renderDeputados(data) {
   const totalNotas = deputados.reduce((acc, d) => acc + (d.totalNotasFiscais || (d.despesas || []).length), 0);
   const media = totalGasto / deputados.length;
 
-  document.getElementById("dep-total").textContent = formatBRL(totalGasto);
+  const temCotaDep = deputados.some(d => d.cotaGastaAno != null);
+  document.getElementById("dep-total").textContent = temCotaDep ? formatBRL(totalGasto) : "—";
   document.getElementById("dep-qtd").textContent = deputados.length;
   document.getElementById("dep-notas").textContent = totalNotas.toLocaleString("pt-BR");
   document.getElementById("dep-media").textContent = formatCompact(media);
@@ -3423,9 +3424,10 @@ async function init() {
   // Deputados de MS: caminho rápido via JSON pré-calculado (evita ~100 chamadas ao vivo
   // à API da Câmara logo na abertura do site). As notas fiscais individuais de cada um
   // são buscadas sob demanda ao clicar (ver bindClicks em renderDeputados).
-  async function carregarDeputadosMsRapido() {
+  async function carregarDeputadosMsRapido(aceitarSemCota = false) {
     const local = await carregarJSON("dados/deputados_federais_ms.json");
-    if (!local?.deputados?.length || !local.deputados.some(d => d.cotaGastaAno != null)) return null;
+    if (!local?.deputados?.length) return null;
+    if (!aceitarSemCota && !local.deputados.some(d => d.cotaGastaAno != null)) return null;
     return local.deputados.map(d => ({
       id: d.id,
       nome: d.nome,
@@ -3448,19 +3450,31 @@ async function init() {
 
   // API ao vivo: deputados e senadores de MS
   document.getElementById("status-data").textContent = "buscando ao vivo…";
-  try {
-    const [deputados, senadores] = await Promise.all([
-      carregarDeputadosMsRapido().then(d => d || buscarDeputadosAoVivo("MS", null, true)),
-      senadoresLocaisPromise.then(() => buscarSenadoresAoVivo("MS")).catch(() => []),
-    ]);
-    const congresso = { ultimaAtualizacao: new Date().toISOString(), anoReferencia: ANO_REFERENCIA, deputados, senadores };
+  // Deputados e senadores carregam de forma independente: se a API da Câmara cair
+  // ou ficar lenta, a aba do Senado não fica vazia (e vice-versa). A lista local
+  // aparece na hora; a busca ao vivo só substitui se terminar com sucesso.
+  const agora = () => ({ ultimaAtualizacao: new Date().toISOString(), anoReferencia: ANO_REFERENCIA });
+  const marcarStatus = () => { document.getElementById("status-data").textContent = formatDateTime(new Date().toISOString()); };
+
+  senadoresLocaisPromise
+    .then(() => buscarSenadoresAoVivo("MS"))
+    .catch(() => [])
+    .then(senadores => { renderSenadores({ ...agora(), senadores }); if (senadores.length) marcarStatus(); });
+
+  const renderDeps = deputados => {
     DADOS_DEPUTADOS_FEDERAIS_MS = deputados;
-    document.getElementById("status-data").textContent = formatDateTime(congresso.ultimaAtualizacao);
-    renderDeputados(congresso);
-    renderSenadores(congresso);
-  } catch(err) {
-    document.getElementById("status-data").textContent = "offline";
-    renderSenadores({ senadores: [] });
+    renderDeputados({ ...agora(), deputados });
+    if (deputados.length) marcarStatus();
+  };
+  const rapido = await carregarDeputadosMsRapido();
+  if (rapido) {
+    renderDeps(rapido);
+  } else {
+    const locais = await carregarDeputadosMsRapido(true);
+    if (locais) renderDeps(locais);
+    buscarDeputadosAoVivo("MS", null, true)
+      .then(vivos => { if (vivos?.length) renderDeps(vivos); })
+      .catch(() => { if (!locais) { renderDeps([]); document.getElementById("status-data").textContent = "offline"; } });
   }
 }
 
@@ -3472,9 +3486,11 @@ async function carregarDeputadosBrasil() {
     if (local && local.deputados && local.deputados.length > 0) {
           DADOS_DEPUTADOS_FEDERAIS_BRASIL = local.deputados;
           renderDeputadosBrasil(local.deputados);
-          document.getElementById("depbr-total").textContent = formatBRL(
-                  local.deputados.reduce((s, d) => s + (d.cotaGastaAno || 0), 0)
-                );
+          // Se a API da Câmara não devolveu CEAP para ninguém, não exibir "R$ 0,00"
+          const temCota = local.deputados.some(d => d.cotaGastaAno != null);
+          document.getElementById("depbr-total").textContent = temCota
+            ? formatBRL(local.deputados.reduce((s, d) => s + (d.cotaGastaAno || 0), 0))
+            : "R$ — (CEAP indisponível na API da Câmara)";
           return;
     }
 

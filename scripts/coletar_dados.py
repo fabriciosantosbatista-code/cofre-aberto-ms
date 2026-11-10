@@ -96,6 +96,7 @@ def coletar_dep_federais_ms():
         except Exception as e:
             log(f"    CEAP erro para {d.get('nome')}: {e} — mantendo dado anterior")
             ceap = ceap_anterior
+        ceap = _preservar_ceap_se_vazio(ceap, ceap_anterior, d.get("nome"))
 
         resultado.append({
             "id": dep_id,
@@ -497,6 +498,16 @@ def coletar_senado_brasil():
 # ============================================================
 # 5. DEPUTADOS FEDERAIS BRASIL — lista completa 513
 # ============================================================
+def _preservar_ceap_se_vazio(ceap, ceap_anterior, nome=None):
+    """A API da Câmara às vezes responde 200 com lista vazia (instabilidade do
+    lado deles). Uma resposta vazia não pode apagar um CEAP já publicado: o
+    gasto acumulado no ano nunca diminui para zero."""
+    if ceap.get("cotaGastaAno") is None and ceap_anterior.get("cotaGastaAno") is not None:
+        log(f"    CEAP vazio para {nome} — API sem notas, mantendo dado anterior")
+        return ceap_anterior
+    return ceap
+
+
 def buscar_ceap_deputado_agregado(dep_id, ano):
     """Soma a CEAP de um deputado no ano, paginando (um deputado pode ter 100+ notas/ano)."""
     total = 0.0
@@ -563,6 +574,11 @@ def coletar_dep_federais_brasil():
             ceap = buscar_ceap_deputado_agregado(d["id"], ANO)
         except Exception as e:
             log(f"    CEAP erro para {d.get('nome')}: {e} — mantendo dado anterior")
+        ceap = _preservar_ceap_se_vazio(ceap, {
+            "cotaGastaAno": ant.get("cotaGastaAno"),
+            "ceapCategorias": ant.get("ceapCategorias", []),
+            "totalNotasFiscais": ant.get("totalNotasFiscais", 0),
+        }, d.get("nome"))
 
         resultado.append({
             "id": d["id"],
