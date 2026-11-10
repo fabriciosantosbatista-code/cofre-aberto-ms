@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-10T19:07:21",
+  "ultimaAtualizacao": "2026-11-10T19:59:16",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-10T19:07:21",
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-10T19:59:16",
   "total": 8,
   "deputados": [
     {
@@ -4821,13 +4821,20 @@
     {
       "id": 141411,
       "nome": "Dagoberto Nogueira",
-      "nomeCompleto": "Dagoberto Nogueira",
+      "nomeCompleto": "DAGOBERTO NOGUEIRA FILHO",
       "partido": "PP",
       "uf": "MS",
       "cargo": "Deputado(a) Federal",
       "foto": "https://www.camara.leg.br/internet/deputado/bandep/141411.jpg",
       "email": null,
-      "gabinete": {},
+      "gabinete": {
+        "nome": "522",
+        "predio": "4",
+        "sala": "522",
+        "andar": "5",
+        "telefone": "3215-5522",
+        "email": "dep.dagobertonogueira@camara.leg.br"
+      },
       "urlPerfil": "https://www.camara.leg.br/deputados/141411",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/141411/despesas?ano=2026",
       "salarioBase": 41650.92,
