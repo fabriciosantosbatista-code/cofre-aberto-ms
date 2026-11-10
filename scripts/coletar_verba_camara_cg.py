@@ -80,7 +80,8 @@ MESES_NUM_PARA_ABREV = {
 }
 MESES_NUM = {"janeiro": "01", "fevereiro": "02", "marco": "03", "março": "03", "maro": "03",
              "abril": "04", "maio": "05", "junho": "06", "julho": "07", "agosto": "08",
-             "setembro": "09", "outubro": "10", "novembro": "11", "dezembro": "12"}
+             "setembro": "09", "outubro": "10", "novembro": "11", "dezembro": "12",
+             "feverero": "02", "punho": "06"}
 
 def log(msg): print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
 
@@ -92,7 +93,9 @@ DATE_RE = re.compile(r'\d{2}[./]\d{2}[./]\d{4}')
 DATE_CURTA_RE = re.compile(r'\b\d{1,2}[./]\d{1,2}\b')
 VALOR_RE = re.compile(r'(?:(?:R\$|RS\$?)[\s/]*)?\d{1,3}(?:\.\d{3})*,\d{2}(?!\d)|(?:R\$|RS\$?)[\s/]*\d+,\d{2}(?!\d)')
 DOC_RE = re.compile(r'(?:NFC?|NFS-?e|NOTA\s+FISCAL|CUPOM\s+FISCAL|RECIBO|NOTA\s*N[ºo°]?)[.:\s]*\d+', re.I)
-MES_NOME_RE = re.compile(r'(Janeiro|Fevereiro|Mar.?o|Abril|Maio|Junho|Julho|Agosto|Setembro|Outubro|Novembro|Dezembro)\b', re.I)
+# Sem \b no fim: na digitalização o mês aparece colado ao nome ("MARÇOCarlão").
+# Inclui grafias que o OCR produz com frequência (FEVERERO, PUNHO = JUNHO).
+MES_NOME_RE = re.compile(r'(Janeiro|Fevereiro|Feverero|Mar.?o|Abril|Maio|Junho|Punho|Julho|Agosto|Setembro|Outubro|Novembro|Dezembro)', re.I)
 MES_NUMERICO_RE = re.compile(r'\b(0[1-9]|1[0-2])/(20\d{2})\b')
 ANO_RE = re.compile(r'20\d{2}')
 TOTAL_RESUMO_RE = re.compile(r'TOTAL[^\dR]{0,12}(?:(?:R\$|RS\$?)[\s/]*)?([\d\.]+,\d{2})')
@@ -134,13 +137,12 @@ def eh_pagina_notas(texto):
 def extrai_mes_ano_confiavel(texto):
     """Só retorna mês/ano quando encontra o mês (nome OU numérico MM/AAAA) bem perto
     do rótulo 'Mês:' (janela estreita), pra não pegar 'janeiro de 2019' de rodapé/legislação."""
-    idx = texto.rfind('Mês:')
-    if idx == -1:
-        # variante com acento corrompido pela decodificação de fonte deslocada (ex: "M\x8fs:")
-        m_label = None
-        for m_label in re.finditer(r'M.s:', texto):
-            pass
-        idx = m_label.start() if m_label else -1
+    # "Mês:" ou "Mês e ano:" (alguns gabinetes usam o 2º); o acento pode vir
+    # corrompido pela fonte deslocada (ex.: "M\x8fs:") — pega o último rótulo.
+    m_label = None
+    for m_label in re.finditer(r'M.s(?:\s+e\s+ano)?\s*:', texto):
+        pass
+    idx = m_label.start() if m_label else -1
     if idx == -1:
         return None, None
     janela = texto[idx:idx + 60]
@@ -148,12 +150,12 @@ def extrai_mes_ano_confiavel(texto):
     if m:
         mes_norm = re.sub(r'[^a-zçã]', '', m.group(1).lower()).replace('ç', 'c').replace('ã', 'a')
         mes_num = MESES_NUM.get(mes_norm) or MESES_NUM.get(m.group(1).lower())
-        ano_m = ANO_RE.search(janela[m.end():m.end() + 15])
-        ano = ano_m.group(0) if ano_m else ANO_STR
-        return mes_num, ano
+        # Cada PDF é do exercício ANO (a lista é filtrada por exercício); o ano lido
+        # pelo OCR erra com frequência ("2028", "Junho2025"), então vale sempre ANO.
+        return mes_num, ANO_STR
     m2 = MES_NUMERICO_RE.search(janela)
     if m2:
-        return m2.group(1), m2.group(2)
+        return m2.group(1), ANO_STR
     return None, None
 
 def novo_mes_dict(chave):
@@ -236,6 +238,52 @@ def extrai_total_pagina(texto):
     m = TOTAL_PAGINA_RE.search(texto)
     return parse_valor(m.group(1)) if m else None
 
+def total_do_resumo(texto):
+    """Total declarado na página de resumo. Devolve (valor, origem) ou (None, None).
+
+    1. "TOTAL ... R$ 7.265,89" perto do rótulo (regex original);
+    2. linha que começa com TOTAL e traz o valor no fim — no Ato 027 o valor
+       por extenso vem antes do número ("TOTAL; SETE MIL ... REAIS E R$ 7.265,89");
+    3. se a linha do TOTAL saiu ilegível no OCR ("TOTAL RYUL)000,00"), soma
+       os itens numerados impressos no próprio resumo ("2) Serviços ... R$ 4.000,00")."""
+    linhas = texto.splitlines()
+    itens = []
+    for linha in linhas:
+        if re.match(r"\s*\d{1,2}\s*\)", linha):
+            vals = VALOR_RE.findall(linha)
+            if vals:
+                try:
+                    itens.append(parse_valor(vals[-1]))
+                except ValueError:
+                    pass
+    maior_item = max(itens, default=0)
+
+    def plausivel(v):
+        # "000,00" ilegível não é total; o total não pode ser menor que um item
+        return v is not None and v > 0 and v + 0.01 >= maior_item
+
+    m = TOTAL_RESUMO_RE.search(texto)
+    if m:
+        try:
+            v = parse_valor(m.group(1))
+            if plausivel(v):
+                return v, "total"
+        except ValueError:
+            pass
+    for i, linha in enumerate(linhas):
+        if re.match(r"\s*TOTAL\b", linha, re.I) and "extenso" not in linha.lower():
+            for cand in (linha, linhas[i + 1] if i + 1 < len(linhas) else ""):
+                vals = VALOR_RE.findall(cand)
+                if vals:
+                    try:
+                        v = parse_valor(vals[-1])
+                    except ValueError:
+                        continue
+                    if plausivel(v):
+                        return v, "total"
+    return (round(sum(itens), 2), "soma dos itens do resumo") if itens else (None, None)
+
+
 def processa_pdf(caminho, deadline=None, estado=None):
     """Lê um PDF de prestação de contas (Ato 027 ou 028) e devolve um dict
     {"MM/AAAA": {totalDeclarado, notas: [...], combustivel: [...], ...}}.
@@ -245,6 +293,7 @@ def processa_pdf(caminho, deadline=None, estado=None):
     r = PdfReader(caminho)
     meses = {}
     mes_atual = None
+    textos = []
     for p in r.pages:
         if deadline and time.time() > deadline:
             log("     ⏱️ tempo limite do PDF atingido — parando o parsing nesta página")
@@ -252,11 +301,21 @@ def processa_pdf(caminho, deadline=None, estado=None):
                 estado["truncado"] = True
             break
         try:
-            texto = normaliza_texto(p.extract_text())
+            textos.append(normaliza_texto(p.extract_text()))
         except Exception:
-            continue
+            textos.append(None)
+    meses_pag = [extrai_mes_ano_confiavel(t) if t else (None, None) for t in textos]
 
-        mes_num, ano = extrai_mes_ano_confiavel(texto)
+    for i, texto in enumerate(textos):
+        if texto is None:
+            continue
+        mes_num, ano = meses_pag[i]
+        # O resumo abre a seção de cada mês. Se o OCR estragou o mês nele ("ECSTAM"),
+        # usa o da página seguinte — senão o mês inteiro iria para o anterior.
+        if not mes_num and eh_pagina_resumo(texto) and i + 1 < len(meses_pag):
+            prox = meses_pag[i + 1][0]
+            if prox and f"{prox}/{meses_pag[i + 1][1]}" != mes_atual:
+                mes_num, ano = meses_pag[i + 1]
         if mes_num:
             mes_atual = f"{mes_num}/{ano}"
         chave = mes_atual
@@ -266,11 +325,13 @@ def processa_pdf(caminho, deadline=None, estado=None):
             if not chave:
                 continue
             meses.setdefault(chave, novo_mes_dict(chave))
-            m = TOTAL_RESUMO_RE.search(texto)
-            if m:
+            valor, origem = total_do_resumo(texto)
+            if valor is not None:
                 # Páginas "COMPLEMENTO" repetem o mesmo mês com um total PARCIAL que
                 # deve ser somado ao principal, nunca sobrescrito.
-                meses[chave]["totalDeclarado"] = round((meses[chave]["totalDeclarado"] or 0) + parse_valor(m.group(1)), 2)
+                meses[chave]["totalDeclarado"] = round((meses[chave]["totalDeclarado"] or 0) + valor, 2)
+                if origem != "total":
+                    meses[chave]["origemTotal"] = origem
         elif eh_pagina_combustivel(texto):
             if not chave:
                 continue
@@ -650,6 +711,17 @@ def mesclar_dados(resultado_extraido):
                 if total is not None and meses_dict.get(abrev) != total:
                     meses_dict[abrev] = total
                     mes_mudou = True
+                # transparência: meses cujo total veio da soma dos itens (linha TOTAL ilegível)
+                chave_origem = f"mesesTotalPelosItens{ato_num}"
+                lista_origem = set(vi.get(chave_origem) or [])
+                if dados_mes.get("origemTotal") and total is not None:
+                    lista_origem.add(abrev)
+                elif total is not None:
+                    lista_origem.discard(abrev)
+                if lista_origem:
+                    vi[chave_origem] = sorted(lista_origem, key=MESES_ABREV_ORDEM.index)
+                else:
+                    vi.pop(chave_origem, None)
 
                 for grupo in ("notas", "combustivel"):
                     for item in dados_mes.get(grupo, []):
