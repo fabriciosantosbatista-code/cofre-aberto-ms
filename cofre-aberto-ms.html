@@ -3445,7 +3445,8 @@ async function init() {
       custoEstimadoAnual: estimarCustoAnual(d.cotaGastaAno),
       totalNotasFiscais: d.totalNotasFiscais ?? 0,
       ceapCategorias: d.ceapCategorias || [],
-      despesas: [],
+      // notas fiscais vêm do arquivo completo da Câmara, gravado pelo coletor
+      despesas: d.despesas || [],
     }));
   }
 

@@ -4,7 +4,7 @@ Cofre Aberto MS — Script de coleta automática de dados
 Roda via GitHub Actions todo dia às 6h BRT
 
 Fontes:
-- Câmara Federal: dadosabertos.camara.leg.br (API REST, CORS livre)
+- Câmara Federal: dadosabertos.camara.leg.br (lista) + camara.leg.br/cotas/Ano-AAAA.csv.zip (CEAP completo)
 - Senado Federal: adm.senado.gov.br/ergon-ng-reports (API REST)
 - ALEMS: transparencia2.al.ms.gov.br/ceap (API JSON própria, token por deputado)
 """
@@ -47,6 +47,104 @@ def salvar(nome, data):
     log(f"✅ {nome} salvo ({path.stat().st_size//1024}KB)")
 
 # ============================================================
+# CEAP — arquivo completo da Câmara (camara.leg.br/cotas/Ano-AAAA.csv.zip)
+# ============================================================
+# O endpoint /deputados/{id}/despesas da API passou a devolver lista vazia
+# (desde ago/2026, para qualquer ano). O arquivo anual completo, publicado
+# pela própria Câmara e atualizado diariamente, tem as mesmas notas — é a
+# fonte primária; a API por deputado fica só como fallback.
+_CEAP_BULK = {}
+
+def _formata_cnpj_cpf(txt):
+    # O CSV da Câmara traz a máscara deslocada (ex.: "049.904.400/0019-4")
+    n = "".join(ch for ch in (txt or "") if ch.isdigit())
+    if len(n) == 14:
+        return f"{n[:2]}.{n[2:5]}.{n[5:8]}/{n[8:12]}-{n[12:]}"
+    if len(n) == 11:
+        return f"{n[:3]}.{n[3:6]}.{n[6:9]}-{n[9:]}"
+    return (txt or "").strip()
+
+def carregar_ceap_bulk(ano):
+    """Devolve {ideCadastro: {"cotaGastaAno", "ceapCategorias", "totalNotasFiscais", "despesas"}}
+    ou None se o arquivo não puder ser baixado/lido."""
+    if ano in _CEAP_BULK:
+        return _CEAP_BULK[ano]
+    import zipfile, tempfile
+    url = f"https://www.camara.leg.br/cotas/Ano-{ano}.csv.zip"
+    log(f"Baixando CEAP completo da Câmara ({url})...")
+    try:
+        with tempfile.TemporaryFile() as tmp:
+            with requests.get(url, headers={**HEADERS, "Accept": "*/*"}, timeout=300, stream=True) as r:
+                r.raise_for_status()
+                for bloco in r.iter_content(1 << 20):
+                    tmp.write(bloco)
+            tmp.seek(0)
+            z = zipfile.ZipFile(tmp)
+            nome_csv = next(n for n in z.namelist() if n.lower().endswith(".csv"))
+            por_dep = {}
+            with z.open(nome_csv) as f:
+                leitor = csv.DictReader(io.TextIOWrapper(f, encoding="utf-8-sig"), delimiter=";")
+                for row in leitor:
+                    try:
+                        dep_id = int(row.get("ideCadastro") or 0)
+                    except ValueError:
+                        continue
+                    if not dep_id:
+                        continue
+                    valor = float((row.get("vlrLiquido") or "0").replace(",", ".") or 0)
+                    d = por_dep.setdefault(dep_id, {"total": 0.0, "cats": {}, "despesas": [], "uf": row.get("sgUF")})
+                    cat = row.get("txtDescricao") or "Outros"
+                    d["total"] += valor
+                    d["cats"][cat] = d["cats"].get(cat, 0) + valor
+                    mes = int(row.get("numMes") or 0) or None
+                    d["despesas"].append({
+                        "data": (row.get("datEmissao") or "")[:10] or (f"{ano}-{mes:02d}-01" if mes else None),
+                        "categoria": cat,
+                        "fornecedor": (row.get("txtFornecedor") or "").strip(),
+                        "cnpjCpfFornecedor": _formata_cnpj_cpf(row.get("txtCNPJCPF")),
+                        "valor": round(valor, 2),
+                        "doc": (row.get("txtNumero") or "").strip(),
+                        "urlNotaFiscal": row.get("urlDocumento") or None,
+                        "mes": mes,
+                    })
+    except Exception as e:
+        log(f"  ⚠️ CEAP completo indisponível: {e} — usando API por deputado")
+        _CEAP_BULK[ano] = None
+        return None
+
+    resultado = {}
+    for dep_id, d in por_dep.items():
+        d["despesas"].sort(key=lambda x: x["data"] or "", reverse=True)
+        resultado[dep_id] = {
+            "cotaGastaAno": round(d["total"], 2),
+            "ceapCategorias": [{"categoria": k, "valor": round(v, 2)}
+                               for k, v in sorted(d["cats"].items(), key=lambda x: -x[1])],
+            "totalNotasFiscais": len(d["despesas"]),
+            "despesas": d["despesas"],
+        }
+    log(f"  CEAP {ano}: {sum(x['totalNotasFiscais'] for x in resultado.values())} notas de {len(resultado)} deputados")
+    _CEAP_BULK[ano] = resultado
+    return resultado
+
+
+def ceap_do_deputado(dep_id, ceap_anterior, nome, incluir_notas):
+    """CEAP de um deputado: arquivo completo primeiro, API como fallback,
+    e nunca apaga um valor já publicado por causa de uma resposta vazia."""
+    bulk = carregar_ceap_bulk(ANO)
+    if bulk is not None:
+        ceap = dict(bulk.get(dep_id) or {"cotaGastaAno": None, "ceapCategorias": [], "totalNotasFiscais": 0, "despesas": []})
+    else:
+        try:
+            ceap = buscar_ceap_deputado_agregado(dep_id, ANO)
+        except Exception as e:
+            log(f"    CEAP erro para {nome}: {e} — mantendo dado anterior")
+            ceap = ceap_anterior
+    if not incluir_notas:
+        ceap.pop("despesas", None)
+    return _preservar_ceap_se_vazio(ceap, ceap_anterior, nome)
+
+
+# ============================================================
 # 1. DEPUTADOS FEDERAIS DE MS — API da Câmara
 # ============================================================
 def coletar_dep_federais_ms():
@@ -59,15 +157,24 @@ def coletar_dep_federais_ms():
         r.raise_for_status()
         deputados = r.json().get("dados", [])
     except Exception as e:
-        log(f"  ⚠️ API Câmara indisponível: {e} — mantendo dados anteriores")
-        return None
-    log(f"  {len(deputados)} deputados federais de MS encontrados")
+        deputados = None
+        log(f"  ⚠️ API Câmara indisponível: {e}")
 
     try:
         dados_ant = json.load(open(DADOS / "deputados_federais_ms.json", encoding="utf-8"))
         ceap_ant = {d["id"]: d for d in dados_ant.get("deputados", [])}
     except:
         ceap_ant = {}
+
+    if not deputados:
+        # Lista da API fora do ar: reaproveita a lista anterior (o CEAP vem do arquivo completo)
+        if not ceap_ant or carregar_ceap_bulk(ANO) is None:
+            log("  ⚠️ Sem lista de deputados — mantendo dados anteriores")
+            return None
+        log("  Usando a lista de deputados da coleta anterior")
+        deputados = [{"id": a["id"], "nome": a.get("nome"), "siglaPartido": a.get("partido"),
+                      "urlFoto": a.get("foto"), "_ant": a} for a in ceap_ant.values()]
+    log(f"  {len(deputados)} deputados federais de MS encontrados")
 
     resultado = []
     for d in deputados:
@@ -82,6 +189,9 @@ def coletar_dep_federais_ms():
             ).json().get("dados", {})
         except:
             det = {}
+        if not det and d.get("_ant"):
+            a = d["_ant"]
+            det = {"nomeCivil": a.get("nomeCompleto"), "ultimoStatus": {"email": a.get("email"), "gabinete": a.get("gabinete", {})}}
 
         # Buscar CEAP do ano atual (paginado — um deputado pode ter mais de 100 notas/ano).
         # Se a API falhar, mantém o CEAP anterior em vez de zerar o dado já publicado.
@@ -90,13 +200,9 @@ def coletar_dep_federais_ms():
             "cotaGastaAno": ant.get("cotaGastaAno"),
             "ceapCategorias": ant.get("ceapCategorias", []),
             "totalNotasFiscais": ant.get("totalNotasFiscais", 0),
+            "despesas": ant.get("despesas", []),
         }
-        try:
-            ceap = buscar_ceap_deputado_agregado(dep_id, ANO)
-        except Exception as e:
-            log(f"    CEAP erro para {d.get('nome')}: {e} — mantendo dado anterior")
-            ceap = ceap_anterior
-        ceap = _preservar_ceap_se_vazio(ceap, ceap_anterior, d.get("nome"))
+        ceap = ceap_do_deputado(dep_id, ceap_anterior, d.get("nome"), incluir_notas=True)
 
         resultado.append({
             "id": dep_id,
@@ -550,10 +656,8 @@ def coletar_dep_federais_brasil():
         r.raise_for_status()
         deputados = r.json().get("dados", [])
     except Exception as e:
+        deputados = None
         log(f"  ⚠️ API Câmara indisponível: {e}")
-        return None
-
-    log(f"  {len(deputados)} deputados federais em exercício")
 
     try:
         dados_ant = json.load(open(DADOS / "deputados_federais_brasil.json", encoding="utf-8"))
@@ -561,24 +665,27 @@ def coletar_dep_federais_brasil():
     except:
         ceap_ant = {}
 
+    if not deputados:
+        if not ceap_ant or carregar_ceap_bulk(ANO) is None:
+            log("  ⚠️ Sem lista de deputados — mantendo dados anteriores")
+            return None
+        log("  Usando a lista de deputados da coleta anterior")
+        deputados = [{"id": a["id"], "nome": a.get("nome"), "siglaPartido": a.get("partido"),
+                      "siglaUf": a.get("uf"), "urlFoto": a.get("foto")} for a in ceap_ant.values()]
+
+    log(f"  {len(deputados)} deputados federais em exercício")
+    usa_bulk = carregar_ceap_bulk(ANO) is not None
+
     resultado = []
     for i, d in enumerate(deputados):
-        time.sleep(0.3)
+        if not usa_bulk:
+            time.sleep(0.3)  # respeitar rate limit da API por deputado
         ant = ceap_ant.get(d["id"], {})
-        ceap = {
+        ceap = ceap_do_deputado(d["id"], {
             "cotaGastaAno": ant.get("cotaGastaAno"),
             "ceapCategorias": ant.get("ceapCategorias", []),
             "totalNotasFiscais": ant.get("totalNotasFiscais", 0),
-        }
-        try:
-            ceap = buscar_ceap_deputado_agregado(d["id"], ANO)
-        except Exception as e:
-            log(f"    CEAP erro para {d.get('nome')}: {e} — mantendo dado anterior")
-        ceap = _preservar_ceap_se_vazio(ceap, {
-            "cotaGastaAno": ant.get("cotaGastaAno"),
-            "ceapCategorias": ant.get("ceapCategorias", []),
-            "totalNotasFiscais": ant.get("totalNotasFiscais", 0),
-        }, d.get("nome"))
+        }, d.get("nome"), incluir_notas=False)
 
         resultado.append({
             "id": d["id"],
