@@ -1663,6 +1663,68 @@ function renderDetalheDeputado(d, todos, ano, panel) {
 }
 
 // ===================== RENDER SENADORES =====================
+// Notas fiscais individuais da CEAPS (senadores de MS) — carregadas só ao abrir um senador
+let _notasSenadoresMS = null;
+function carregarNotasSenadoresMS() {
+  if (!_notasSenadoresMS) {
+    _notasSenadoresMS = carregarJSON("dados/senadores_ms.json").then(d => {
+      const mapa = {};
+      (d?.senadores || []).forEach(x => { mapa[String(x.id)] = x.notasCeaps || []; });
+      return mapa;
+    }).catch(() => ({}));
+  }
+  return _notasSenadoresMS;
+}
+
+function renderNotasSenador(box, notas) {
+  if (!notas.length) {
+    box.innerHTML = `<p class="section-note">Nenhuma nota fiscal publicada pelo Senado para este ano.</p>`;
+    return;
+  }
+  const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  let filtro = "";
+  let limite = 30;
+  const desenhar = () => {
+    const f = filtro.toLowerCase();
+    const lista = f
+      ? notas.filter(n => `${n.fornecedor} ${n.categoria} ${n.detalhamento || ""} ${n.cnpjCpf}`.toLowerCase().includes(f))
+      : notas;
+    const total = lista.reduce((a, n) => a + (n.valor || 0), 0);
+    box.querySelector("tbody").innerHTML = lista.slice(0, limite).map(n => `
+      <tr>
+        <td style="white-space:nowrap;font-size:.75rem;padding-left:8px;padding-right:6px">${n.data ? formatDate(n.data) : "—"}</td>
+        <td style="font-size:.8rem;overflow-wrap:anywhere;padding-left:6px;padding-right:6px">
+          <b>${esc(n.fornecedor) || "—"}</b>${n.cnpjCpf ? ` <span style="opacity:.6">· ${esc(n.cnpjCpf)}</span>` : ""}
+          <div style="font-size:.7rem;opacity:.65">${esc(n.categoria)}${n.tipoDocumento ? ` · ${esc(n.tipoDocumento)}` : ""}${n.doc ? ` nº ${esc(n.doc)}` : ""}</div>
+          ${n.detalhamento ? `<div style="font-size:.7rem;opacity:.55">${esc(n.detalhamento)}</div>` : ""}
+        </td>
+        <td class="num" style="white-space:nowrap;padding-left:6px;padding-right:8px">${formatBRL(n.valor)}</td>
+      </tr>`).join("");
+    box.querySelector(".sen-notas-resumo").textContent =
+      `${lista.length.toLocaleString("pt-BR")} notas · ${formatBRL(total)}`;
+    const mais = box.querySelector(".sen-notas-mais");
+    mais.style.display = lista.length > limite ? "" : "none";
+    mais.textContent = `Mostrar mais (${(lista.length - limite).toLocaleString("pt-BR")} restantes)`;
+  };
+  box.innerHTML = `
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+      <input type="text" class="sen-notas-filtro" placeholder="Filtrar por fornecedor, categoria ou CNPJ…"
+        style="flex:1;min-width:0;box-sizing:border-box;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px 10px;color:var(--ink);font-size:.82rem"/>
+      <span class="sen-notas-resumo" style="font-size:.75rem;color:var(--ink-soft)"></span>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="notes-table sen-notas-table" style="white-space:normal;min-width:0">
+        <thead><tr><th>Data</th><th>Fornecedor / descrição</th><th class="num">Valor</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <button type="button" class="sen-notas-mais" style="margin-top:8px;background:none;border:1px solid var(--border);border-radius:8px;padding:6px 12px;color:var(--ink);cursor:pointer;font-size:.8rem"></button>
+    <p class="section-note" style="margin-top:6px;font-size:.72rem">Fonte: API de dados abertos do Senado (adm.senado.gov.br) — notas reembolsadas pela CEAPS.</p>`;
+  box.querySelector(".sen-notas-filtro").addEventListener("input", e => { filtro = e.target.value.trim(); limite = 30; desenhar(); });
+  box.querySelector(".sen-notas-mais").addEventListener("click", () => { limite += 50; desenhar(); });
+  desenhar();
+}
+
 function renderSenadores(data) {
   const senadores = data.senadores || [];
   document.getElementById("sen-qtd").textContent = senadores.length || "0";
@@ -1752,6 +1814,11 @@ function renderSenadores(data) {
           </tbody>
         </table>
 
+        <div class="subhead">Notas fiscais da CEAPS ${s.anoReferencia || ANO_REFERENCIA}</div>
+        <div id="sen-notas-box" style="margin-bottom:16px">
+          <p class="section-note">${s.uf === "MS" ? "Carregando notas fiscais…" : "Notas individuais disponíveis para os senadores de MS. Para os demais, veja o portal de transparência do Senado."}</p>
+        </div>
+
         <div class="subhead">Gastos Não Inclusos nas Cotas</div>
         <table class="notes-table" style="margin-bottom:16px">
           <thead><tr><th>Categoria</th><th class="num">Valor</th><th>Detalhe</th></tr></thead>
@@ -1806,6 +1873,14 @@ function renderSenadores(data) {
       panel.dataset.senadorId = id;
       panel.classList.add("active");
       panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+      if (s.uf === "MS") {
+        carregarNotasSenadoresMS().then(mapa => {
+          if (panel.dataset.senadorId !== id) return;
+          const box = document.getElementById("sen-notas-box");
+          if (box) renderNotasSenador(box, mapa[String(id)] || []);
+        });
+      }
 
       buscarBioSenador(id).then(bio => {
         if (panel.dataset.senadorId !== id) return; // usuário já trocou de senador

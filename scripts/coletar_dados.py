@@ -281,6 +281,45 @@ def buscar_recursos_senador(sen_id, ano):
     }
 
 
+_CEAPS_NOTAS = {}
+
+def carregar_notas_ceaps_senado(ano):
+    """Notas fiscais individuais da CEAPS de todos os senadores no ano, da API
+    de dados abertos do Senado. Devolve {codSenador: [notas]} ou None."""
+    if ano in _CEAPS_NOTAS:
+        return _CEAPS_NOTAS[ano]
+    import re
+    url = f"https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/despesas_ceaps/{ano}"
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=180)
+        r.raise_for_status()
+        itens = r.json()
+        if not isinstance(itens, list):
+            raise ValueError("formato inesperado")
+    except Exception as e:
+        log(f"  ⚠️ Notas CEAPS indisponíveis: {e} — mantendo notas anteriores")
+        _CEAPS_NOTAS[ano] = None
+        return None
+    por_sen = {}
+    for n in itens:
+        por_sen.setdefault(n.get("codSenador"), []).append({
+            "data": n.get("data"),
+            "mes": n.get("mes"),
+            "categoria": re.split(r",\s*(?:compreendendo|inclusive)\b", n.get("tipoDespesa") or "")[0].strip().rstrip("."),
+            "fornecedor": (n.get("fornecedor") or "").strip(),
+            "cnpjCpf": (n.get("cpfCnpj") or "").strip(),
+            "doc": (n.get("documento") or "").strip(),
+            "tipoDocumento": n.get("tipoDocumento"),
+            "detalhamento": n.get("detalhamento"),
+            "valor": round(float(n.get("valorReembolsado") or 0), 2),
+        })
+    for L in por_sen.values():
+        L.sort(key=lambda x: x["data"] or "", reverse=True)
+    log(f"  Notas CEAPS {ano}: {len(itens)} notas de {len(por_sen)} senadores")
+    _CEAPS_NOTAS[ano] = por_sen
+    return por_sen
+
+
 def coletar_senadores_ms():
     log("Coletando senadores de MS...")
 
@@ -309,11 +348,21 @@ def coletar_senadores_ms():
             dados_ant[s["id"]] = s
     except: pass
 
+    notas_ant = {}
+    try:
+        for s_ant in json.load(open(DADOS / "senadores_ms.json", encoding="utf-8")).get("senadores", []):
+            notas_ant[s_ant["id"]] = s_ant.get("notasCeaps", [])
+    except: pass
+    notas_ceaps = carregar_notas_ceaps_senado(ANO)
+
     resultado = []
     for p in senadores_ms:
         ident = p["IdentificacaoParlamentar"]
         sen_id = int(ident["CodigoParlamentar"])
         time.sleep(0.5)
+        notas = (notas_ceaps or {}).get(sen_id) if notas_ceaps is not None else None
+        if not notas:
+            notas = notas_ant.get(sen_id, [])  # API fora do ar ou vazia: não apaga as notas já publicadas
 
         # Buscar recursos utilizados via API JSON — tenta o ano corrente, cai para o anterior
         recursos = None
@@ -351,11 +400,13 @@ def coletar_senadores_ms():
             "ceapsCategorias": [{"categoria": k, "valor": round(v, 2)}
                                 for k, v in sorted(recursos["ceaps"].items(), key=lambda x: -x[1]) if v > 0],
             "despesas": ant_s.get("despesas", []),
+            "notasCeaps": notas,
+            "totalNotasFiscais": len(notas),
             "escritorioApoio": ant_s.get("escritorioApoio", ""),
             "fonteCeaps": f"adm.senado.gov.br — dados de {hoje}",
             "nota": "" if total_ceaps else f"Dados de {ANO} ainda não publicados. Exibindo {ano_dados}.",
         })
-        log(f"  ✓ {ident.get('NomeParlamentar')} — CEAPS {ano_dados}: R$ {total_ceaps:,.2f}")
+        log(f"  ✓ {ident.get('NomeParlamentar')} — CEAPS {ano_dados}: R$ {total_ceaps:,.2f} — {len(notas)} notas")
 
     data = {
         "ultimaAtualizacao": hoje,
