@@ -1,0 +1,139 @@
+#!/usr/bin/env node
+/*
+ * Cofre Aberto MS — teste de fumaça do site (roda no GitHub Actions)
+ *
+ * Abre a capa, as páginas estáticas e todas as abas do painel, clica em
+ * cada vereador, deputado estadual, senador e deputado federal de MS (e em
+ * amostras das listas nacionais e das câmaras do interior) e falha se
+ * encontrar erro de JavaScript, "NaN"/"undefined" na tela, detalhe que não
+ * abre ou rolagem horizontal no celular.
+ *
+ * Exemplo de bug que este teste teria pegado: em nov/2026, 5 deputados
+ * estaduais sem "id" no JSON não abriam ao clicar (erro "reading 'gabinete'").
+ *
+ * Uso:  node tests/smoke.js http://localhost:8000/
+ */
+const { chromium } = require("playwright");
+
+const BASE = (process.argv[2] || "http://localhost:8000/").replace(/\/?$/, "/");
+const BAD = /\bNaN\b|\bundefined\b|\[object Object\]|\bInfinity\b/g;
+const TODOS = ["deputados", "senadores", "camara", "deputados-estaduais"];      // clica em todos os itens
+const AMOSTRA = ["prefeitura", "judiciario", "deputados-brasil", "senado-brasil"]; // clica em alguns
+const PAGINAS = ["", "press.html", "vereadores-campo-grande.html", "deputados-estaduais-ms.html", "senadores-ms.html"];
+
+const problemas = [];
+const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
+
+(async () => {
+  const browser = await chromium.launch();
+  for (const [nome, viewport] of [["desktop", { width: 1366, height: 900 }], ["mobile", { width: 375, height: 812 }]]) {
+    console.log(`\n=== ${nome} (${viewport.width}px)`);
+    const page = await browser.newPage({ viewport });
+    let onde = "";
+    page.on("pageerror", (e) => falha(`[${nome}] erro de JavaScript em ${onde}: ${e.message}`));
+
+    // ---- páginas estáticas ----
+    for (const pg of PAGINAS) {
+      onde = pg || "index.html";
+      const resp = await page.goto(BASE + pg, { waitUntil: "load" });
+      if (!resp || resp.status() >= 400) { falha(`[${nome}] ${onde} respondeu ${resp && resp.status()}`); continue; }
+      await page.waitForTimeout(800);
+      const r = await page.evaluate(() => ({ tx: document.body.innerText, ovX: document.documentElement.scrollWidth - innerWidth }));
+      const m = r.tx.match(BAD);
+      if (m) falha(`[${nome}] ${onde} mostra ${[...new Set(m)]}`);
+      if (r.ovX > 1) falha(`[${nome}] ${onde} tem rolagem horizontal (${r.ovX}px)`);
+    }
+    // selo de data da capa deve estar dentro do layout
+    await page.goto(BASE, { waitUntil: "load" });
+    await page.waitForTimeout(800);
+    const selo = await page.evaluate(() => {
+      const b = document.querySelector(".hero-badge"), t = document.getElementById("data-atualizacao");
+      if (!b || !t) return null;
+      const bb = b.getBoundingClientRect(), tb = t.getBoundingClientRect();
+      return { dentro: tb.left >= bb.left - 1 && tb.right <= bb.right + 1 && tb.width > 30, texto: t.textContent };
+    });
+    if (!selo) falha(`[${nome}] capa sem o selo "Dados atualizados"`);
+    else if (!selo.dentro) falha(`[${nome}] data do selo "Dados atualizados" fora do layout`);
+    else console.log(`  ✅ capa — dados atualizados em ${selo.texto}`);
+
+    // ---- painel ----
+    onde = "painel (carregamento)";
+    await page.goto(BASE + "cofre-aberto-ms.html", { waitUntil: "load" });
+    await page.waitForTimeout(6000);
+
+    for (const tab of [...TODOS, ...AMOSTRA]) {
+      onde = `aba ${tab}`;
+      await page.locator(`button[data-tab="${tab}"]`).evaluate((e) => e.click());
+      await page.waitForTimeout(2500);
+      const info = await page.evaluate((t) => {
+        const el = document.getElementById("tab-" + t);
+        return el ? { tx: el.innerText, linhas: el.querySelectorAll("tr.clickable").length,
+                      ovX: document.documentElement.scrollWidth - innerWidth } : null;
+      }, tab);
+      if (!info) { falha(`[${nome}] aba ${tab} não existe`); continue; }
+      const m = info.tx.match(BAD);
+      if (m) falha(`[${nome}] aba ${tab} mostra ${[...new Set(m)]}`);
+      if (info.ovX > 1) falha(`[${nome}] aba ${tab} tem rolagem horizontal (${info.ovX}px)`);
+      if (!info.linhas) { falha(`[${nome}] aba ${tab} sem nenhum item na lista`); continue; }
+
+      const n = info.linhas;
+      const idxs = TODOS.includes(tab) ? [...Array(n).keys()]
+        : [...new Set([0, 1, Math.floor(n / 2), n - 1])];
+      let abertos = 0;
+      for (const i of idxs) {
+        onde = `aba ${tab}, item ${i + 1}`;
+        await page.locator(`#tab-${tab} tr.clickable`).nth(i).evaluate((e) => e.click());
+        // partes do detalhe vêm de APIs ao vivo (ex.: dados pessoais do Senado):
+        // espera até 15 s o "Carregando…" sumir antes de avaliar
+        let d = null;
+        for (let k = 0; k < 30; k++) {
+          await page.waitForTimeout(500);
+          d = await page.evaluate((t) => {
+            const p = [...document.querySelectorAll(`#tab-${t} .detail-panel`)].find((x) => x.classList.contains("active"));
+            return p ? { h: (p.querySelector("h3") || {}).innerText || "", tx: p.innerText } : null;
+          }, tab);
+          if (d && d.tx.length >= 50 && !/Carregando/.test(d.tx)) break;
+        }
+        if (!d || d.tx.length < 50) { falha(`[${nome}] ${onde}: detalhe não abriu`); continue; }
+        const mm = d.tx.match(BAD);
+        if (mm) falha(`[${nome}] ${onde} (${d.h}): mostra ${[...new Set(mm)]}`);
+        if (/Carregando/.test(d.tx)) falha(`[${nome}] ${onde} (${d.h}): ficou em "Carregando"`);
+        abertos++;
+      }
+      console.log(`  ✅ ${tab}: ${n} itens, ${abertos}/${idxs.length} detalhes abertos`);
+    }
+
+    // câmaras do interior: todas
+    onde = "aba camaras-ms";
+    await page.locator('button[data-tab="camaras-ms"]').evaluate((e) => e.click());
+    await page.waitForTimeout(1500);
+    const cards = await page.locator("#grid-camaras-ms .card.clickable").count();
+    for (let i = 0; i < cards; i++) {
+      onde = `câmara do interior ${i + 1}`;
+      await page.locator("#grid-camaras-ms .card.clickable").nth(i).evaluate((e) => e.click());
+      await page.waitForTimeout(1200);
+      const tx = await page.textContent("#detail-camara-cidade");
+      const mm = tx.match(BAD);
+      if (mm) falha(`[${nome}] ${onde}: mostra ${[...new Set(mm)]}`);
+      if (/indisponíveis no momento/.test(tx)) falha(`[${nome}] ${onde}: JSON não carregou`);
+    }
+    console.log(`  ✅ câmaras do interior: ${cards} abertas`);
+
+    // busca global
+    onde = "busca global";
+    await page.evaluate(() => {
+      const i = document.getElementById("busca-global");
+      i.value = "Trad"; i.dispatchEvent(new Event("input", { bubbles: true }));
+    });
+    await page.waitForTimeout(1200);
+    const achou = await page.evaluate(() => [...document.querySelectorAll("body *")]
+      .some((e) => e.offsetParent && /absolute|fixed/.test(getComputedStyle(e).position) && /Trad/.test(e.innerText)));
+    if (!achou) falha(`[${nome}] busca global por "Trad" não mostrou resultados`);
+    else console.log("  ✅ busca global");
+    await page.close();
+  }
+  await browser.close();
+
+  console.log(problemas.length ? `\n❌ ${problemas.length} problema(s) encontrado(s)` : "\n✅ Site OK — nenhum problema encontrado");
+  process.exit(problemas.length ? 1 : 0);
+})().catch((e) => { console.error(e); process.exit(2); });

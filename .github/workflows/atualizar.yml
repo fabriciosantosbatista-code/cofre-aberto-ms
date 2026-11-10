@@ -250,3 +250,86 @@ jobs:
 
           sincronizar || (echo "Tentando novamente em 10s..." && sleep 10 && sincronizar) || { echo "❌ Falha ao sincronizar com origin/main"; exit 1; }
           git push origin main
+
+  # ------------------------------------------------------------------
+  # Saúde dos dados + teste do painel. Os coletores mantêm o dado antigo
+  # quando a fonte falha, então "sucesso" na coleta não garante dado novo:
+  # este job olha o conteúdo, abre/atualiza a issue "alerta-dados" e falha
+  # o run (e-mail do GitHub) se houver erro.
+  # ------------------------------------------------------------------
+  verificar:
+    needs: [commit_e_push]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Checkout (versão recém-publicada)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 50
+
+      - name: Verificar saúde dos dados
+        id: dados
+        continue-on-error: true
+        run: python3 scripts/verificar_dados.py --relatorio relatorio.md
+
+      - name: Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar Playwright (Chromium)
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.63.0
+          npx playwright install --with-deps chromium
+
+      - name: Testar o painel (todas as abas e parlamentares)
+        id: site
+        continue-on-error: true
+        run: |
+          python3 -m http.server 8000 >/dev/null 2>&1 &
+          sleep 2
+          node tests/smoke.js http://localhost:8000/ | tee smoke.log
+
+      - name: Abrir / atualizar / fechar a issue de alerta
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          LABEL="alerta-dados"
+          gh label create "$LABEL" --color D93F0B --description "Alerta automático: dado parado ou site com erro" 2>/dev/null || true
+          {
+            cat relatorio.md
+            if [ "${{ steps.site.outcome }}" != "success" ]; then
+              echo; echo "## ❌ Teste do painel falhou"; echo; echo '```'
+              grep -E "❌" smoke.log | head -40 || echo "(veja o log do run)"
+              echo '```'
+            fi
+            echo; echo "Run: $RUN_URL"
+          } > corpo.md
+          NUM=$(gh issue list --label "$LABEL" --state open --json number --jq '.[0].number // empty')
+          if [ "${{ steps.dados.outcome }}" != "success" ] || [ "${{ steps.site.outcome }}" != "success" ]; then
+            if [ -n "$NUM" ]; then
+              ANTES=$(gh issue view "$NUM" --json body --jq .body | grep -E "^- \*\*|❌ \[" | sort)
+              DEPOIS=$(grep -E "^- \*\*|❌ \[" corpo.md | grep -v "^- \*\*Câmara de " | sort)
+              gh issue edit "$NUM" --body-file corpo.md
+              # só notifica (comentário) quando a lista de problemas muda
+              if [ "$(echo "$ANTES" | grep -v '^- \*\*Câmara de ')" != "$DEPOIS" ]; then
+                gh issue comment "$NUM" --body "A lista de problemas mudou nesta coleta — veja a descrição atualizada. $RUN_URL"
+              fi
+            else
+              gh issue create --title "⚠️ Alerta de dados — Cofre Aberto MS" --label "$LABEL" --body-file corpo.md
+            fi
+          elif [ -n "$NUM" ]; then
+            gh issue close "$NUM" --comment "✅ Tudo normalizado nesta coleta ($(date -u +%d/%m/%Y)). $RUN_URL"
+          fi
+
+      - name: Resultado
+        run: |
+          echo "Dados: ${{ steps.dados.outcome }} — Painel: ${{ steps.site.outcome }}"
+          cat relatorio.md >> "$GITHUB_STEP_SUMMARY"
+          [ "${{ steps.dados.outcome }}" = "success" ] && [ "${{ steps.site.outcome }}" = "success" ]

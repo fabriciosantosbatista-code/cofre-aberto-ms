@@ -28,6 +28,32 @@ O GitHub Actions roda todo dia às **6h BRT** e:
 4. Rebuilda o HTML com os dados novos
 5. Commita e faz push — o Netlify detecta e faz deploy automático
 
+### Monitoramento (alerta quando algo para)
+
+Os coletores mantêm o dado anterior quando uma fonte falha — então o Actions
+pode ficar ✅ com o site desatualizado. Por isso, ao fim de cada coleta, o job
+`verificar` roda:
+
+- **`scripts/verificar_dados.py`** — olha o conteúdo dos JSONs: data da nota/
+  empenho mais recente de cada fonte, mês de referência da folha dos tribunais,
+  contagens esperadas (29 vereadores, 8 deputados federais, 3 senadores…) e
+  quedas bruscas em relação à coleta anterior. ❌ erro = fonte principal parada;
+  ⚠️ aviso = fonte secundária (câmaras do interior).
+- **`tests/smoke.js`** — abre o site num navegador (desktop e celular), clica em
+  todas as abas e em todos os parlamentares de MS e falha com erro de
+  JavaScript, `NaN`/`undefined` na tela, detalhe que não abre ou rolagem lateral.
+
+Se houver erro, o run fica vermelho (o GitHub envia e-mail) e a issue
+**"⚠️ Alerta de dados"** (label `alerta-dados`) é aberta com o relatório; ela é
+atualizada a cada coleta e fecha sozinha quando tudo volta ao normal. O teste
+do painel também roda a cada push que muda HTML ou scripts (workflow
+*Testar site*). Para rodar localmente:
+
+```bash
+python3 scripts/verificar_dados.py
+python3 -m http.server 8000 & node tests/smoke.js http://localhost:8000/
+```
+
 ### Como configurar do zero
 
 #### 1. Fork / Clone este repositório

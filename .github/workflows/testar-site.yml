@@ -1,0 +1,31 @@
+name: Testar site
+
+# Teste de fumaça do painel a cada mudança no HTML/scripts (pega erro de
+# edição manual antes que alguém perceba no site). Também roda à mão.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'tests/**'
+      - 'scripts/**'
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Instalar Playwright (Chromium)
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.63.0
+          npx playwright install --with-deps chromium
+      - name: Testar o painel
+        run: |
+          python3 -m http.server 8000 >/dev/null 2>&1 &
+          sleep 2
+          node tests/smoke.js http://localhost:8000/
