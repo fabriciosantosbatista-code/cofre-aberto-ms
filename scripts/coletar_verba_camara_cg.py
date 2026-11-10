@@ -721,25 +721,27 @@ def coletar_pessoal_gabinetes():
     log(f" lotações mais frequentes ({campo_lot}): {sorted(lotacoes.items(), key=lambda x: -x[1])[:40]}")
 
     atual = json.load(open(ARQUIVO_CAMARA, encoding="utf-8"))
-    gab = {}
+    # No Fiorilli da CG a lotação (LOCALDETRABALHO) de cada servidor de gabinete
+    # é o próprio nome parlamentar do vereador ("PAPY", "DR. VICTOR ROCHA"...);
+    # a equipe da Mesa fica em "PRESIDÊNCIA".
+    norm = lambda t: re.sub(r"[^A-Z0-9 ]", "", _sem_acento(t)).strip()
+    por_lotacao = {norm(v["nome"]): v["nome"] for v in atual["vereadores"]}
+    gab, presidencia = {}, {"n": 0, "total": 0.0}
     for reg in registros:
-        lot = _sem_acento(reg.get(campo_lot))
-        if "GAB" not in lot or "PRESID" in lot:
+        if _sem_acento(reg.get("CARGO")).startswith("VEREADOR"):
             continue
-        cargo = _sem_acento(reg.get("CARGO"))
-        if cargo.startswith("VEREADOR"):
+        lot = norm(reg.get(campo_lot))
+        valor = _valor_fiorilli(reg.get(campo_val))
+        if lot == "PRESIDENCIA":
+            presidencia["n"] += 1
+            presidencia["total"] += valor
             continue
-        melhor, pontos = None, 0
-        for v in atual["vereadores"]:
-            for nome in (v.get("nome"), v.get("nomeCompleto")):
-                toks = [t for t in re.split(r"[^A-Z]+", _sem_acento(nome)) if len(t) >= 3 and t not in ("DR", "PROF", "PROFESSOR", "VEREADOR")]
-                p = sum(1 for t in toks if re.search(rf"\b{t}\b", lot))
-                if p > pontos:
-                    melhor, pontos = v["nome"], p
-        if melhor:
-            g = gab.setdefault(melhor, {"n": 0, "total": 0.0})
-            g["n"] += 1
-            g["total"] += _valor_fiorilli(reg.get(campo_val))
+        nome = por_lotacao.get(lot)
+        if not nome:
+            continue
+        g = gab.setdefault(nome, {"n": 0, "total": 0.0})
+        g["n"] += 1
+        g["total"] += valor
     log(f" gabinetes reconhecidos: {len(gab)}/29 — {[(k, v['n'], round(v['total'], 2)) for k, v in sorted(gab.items())]}")
     if len(gab) < 20:
         log(" ⚠️ Menos de 20 gabinetes reconhecidos pela lotação — mantendo dados anteriores (ver log acima para ajustar)")
@@ -754,6 +756,10 @@ def coletar_pessoal_gabinetes():
     resumo = atual.setdefault("resumo", {})
     resumo["totalFuncionariosGabinetes"] = sum(v.get("gabinete", {}).get("numFuncionarios") or 0 for v in atual["vereadores"])
     resumo["totalGastoPessoalMensal"] = round(sum(v.get("gabinete", {}).get("gastoPessoalMensal") or 0 for v in atual["vereadores"]), 2)
+    if presidencia["n"]:
+        atual.setdefault("presidencia", {})
+        atual["presidencia"]["servidoresAdicionais"] = presidencia["n"]
+        atual["presidencia"]["gastoMensal"] = round(presidencia["total"], 2)
     atual["referenciaPessoal"] = f"{MESES_NOME[mes - 1]}/{ano}"
     json.dump(atual, open(ARQUIVO_CAMARA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     log(f"✅ Pessoal dos gabinetes atualizado ({atual['referenciaPessoal']}): "
