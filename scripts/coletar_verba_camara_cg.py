@@ -619,6 +619,14 @@ def mesclar_dados(resultado_extraido):
 
     if vereadores_atualizados:
         atual["ultimaAtualizacao"] = hoje
+        # O resumo (exibido no topo da aba Câmara CG) precisa acompanhar os
+        # totais individuais — antes ficava congelado no valor da carga manual.
+        resumo = atual.setdefault("resumo", {})
+        resumo[f"totalVerbaIndenizatoriaPaga{ANO_STR}"] = round(sum(
+            (v.get("verbaIndenizatoria") or {}).get(f"gastoPago{ANO_STR}") or 0
+            for v in atual["vereadores"]), 2)
+        atual["fonte"] = re.sub(r",\s*(atualizado em\s*)?\d{2}/\d{2}/\d{4}\.?$", "", atual.get("fonte", "")).rstrip(". ") + \
+            f", atualizado em {datetime.now().strftime('%d/%m/%Y')}."
         json.dump(atual, open(ARQUIVO_CAMARA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         log(f"✅ camara_municipal.json atualizado — {vereadores_atualizados} vereadores, {total_notas_novas} notas fiscais novas")
     else:

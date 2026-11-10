@@ -1835,7 +1835,8 @@ function renderCamaraMunicipal(data) {
   document.getElementById("cam-folha").textContent = formatBRL(resumo.totalGastoPessoalMensal);
   document.getElementById("cam-funcionarios").textContent = resumo.totalFuncionariosGabinetes ?? "—";
   document.getElementById("cam-verba-total").textContent = formatCompact(resumo.totalVerbaIndenizatoriaAnual);
-  document.getElementById("cam-verba-paga").textContent = formatCompact(resumo.totalVerbaIndenizatoriaPaga2026);
+  const somaVerbaPaga = vereadores.reduce((s, v) => s + (v.verbaIndenizatoria?.gastoPago2026 || 0), 0);
+  document.getElementById("cam-verba-paga").textContent = formatCompact(somaVerbaPaga || resumo.totalVerbaIndenizatoriaPaga2026);
   document.getElementById("cam-subsidio").textContent = formatBRL(SUBSIDIO_VEREADOR);
 
   if (data.fonte) {
