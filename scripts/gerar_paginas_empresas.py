@@ -32,6 +32,8 @@ CSS_EXTRA = """
 .busca{width:100%;padding:10px 14px;margin:6px 0 16px;border:1px solid var(--border);border-radius:9px;background:var(--surface-2);color:var(--ink);font-size:.9rem}
 .lst{width:100%}.lst td:first-child a{color:var(--ink);font-weight:600}
 .citar{overflow-wrap:anywhere}
+.vals-m{display:none;color:var(--amber);font-weight:700;font-size:.8rem;margin-top:3px}
+@media(max-width:560px){.lst td.num,.lst th.num{display:none}.vals-m{display:block}}
 .tags span{display:inline-block;font-size:.68rem;border:1px solid var(--border);border-radius:999px;padding:1px 7px;margin:2px 3px 0 0;color:var(--ink-soft)}
 """
 
@@ -112,7 +114,21 @@ def coletar():
     return mapa
 
 
+# órgãos públicos não são "empresas": prefeituras, fundos, autarquias, tribunais...
+PUBLICO_RE = re.compile(r"^(MUNIC[IÍ]PIO|PREFEITURA|GOVERNO|ESTADO D|SECRETARIA|SEC\.? ?(DE )?ESTADO|FUNDO|FUNDA[CÇ][AÃ]O (MUNICIPAL|ESTADUAL)|"
+                        r"INSTITUTO (MUNICIPAL|ESTADUAL|NACIONAL)|C[AÂ]MARA (MUNICIPAL|DOS DEPUTADOS)|ASSEMBL[EÉ]IA|TRIBUNAL|MINIST[EÉ]RIO|"
+                        r"AG[EÊ]NCIA (ESTADUAL|MUNICIPAL|NACIONAL)|DEPARTAMENTO (ESTADUAL|NACIONAL)|SENADO|UNIVERSIDADE (FEDERAL|ESTADUAL)|"
+                        r"INSS|RECEITA FEDERAL|DEFENSORIA|PROCURADORIA|DETRAN)", re.I)
+
+
+def eh_publico(x):
+    nomes = [n for n, _ in x["nomes"].most_common(3)]
+    return any(PUBLICO_RE.search(n.strip()) for n in nomes)
+
+
 def relevante(x):
+    if eh_publico(x):
+        return False
     parl = sum(p["total"] for p in x["parl"].values())
     fontes = sum(bool(v) for v in (parl, x["pref"]["total"], x["contratos"], x["licitacoes"], x["gov"]["pago"], x["emendas"]["valor"]))
     return (parl >= 1000 and (fontes >= 2 or parl >= 5000 or len(x["parl"]) >= 2)) or x["contratos"] or x["licitacoes"] \
@@ -226,14 +242,26 @@ def indice(lista):
     url = "/empresa/"
     titulo = f"Empresas que recebem de políticos e governos de MS — {ANO} | Cofre Aberto MS"
     desc = f"{milhar(len(lista))} empresas pagas por parlamentares, pela Prefeitura de Campo Grande e pelo Governo de MS em {ANO}, com contratos e licitações."
+    def valor(v):
+        return compacto(v) if v >= 0.01 else "<span style='color:var(--ink-caption);font-weight:400'>—</span>"
+    def vals_m(x):
+        partes = [f"pago {compacto(x['total'])}" if x["total"] >= 0.01 else "sem pagamento no ano"]
+        if x["contratos"] >= 0.01:
+            partes.append(f"contratos {compacto(x['contratos'])}")
+        return " · ".join(partes)
     linhas = "".join(
-        f"<tr><td><a href='/empresa/{x['raiz']}/'>{e(x['nome'])}</a><div class='tags'>{''.join(f'<span>{t}</span>' for t in x['tags'])}</div></td>"
-        f"<td class='num'>{compacto(x['total'])}</td></tr>" for x in lista)
+        f"<tr><td><a href='/empresa/{x['raiz']}/'>{e(x['nome'])}</a><div class='vals-m'>{vals_m(x)}</div>"
+        f"<div class='tags'>{''.join(f'<span>{t}</span>' for t in x['tags'])}</div></td>"
+        f"<td class='num'>{valor(x['total'])}</td><td class='num'>{valor(x['contratos'])}</td></tr>" for x in lista)
+    so_contrato = sum(1 for x in lista if x["total"] < 0.01)
     corpo = f"""<p class="breadcrumb"><a href="/">Início</a> / Empresas</p>
 <article><h1>Empresas</h1>
 <p class="cargo" style="margin-bottom:6px">{milhar(len(lista))} empresas que receberam dinheiro público em MS em {ANO}: de vereadores, deputados e senadores, da Prefeitura de Campo Grande (pagamentos, contratos e licitações), do Governo do Estado e de emendas.</p>
+<p class="cargo" style="font-size:.8rem;margin-bottom:6px"><b>Pago no ano</b> soma o que a empresa já recebeu (notas de parlamentares, Prefeitura, Governo e emendas).
+<b>Contratos</b> é o valor dos contratos assinados com a Prefeitura de Campo Grande, que vai sendo pago ao longo da vigência.
+{milhar(so_contrato)} empresas têm contrato ou licitação vencida mas ainda nenhum pagamento no ano, e aparecem com "—" no pago.</p>
 <input class="busca" id="busca" type="search" placeholder="buscar empresa ou CNPJ…" aria-label="Buscar empresa"/>
-<div class="tabela-wrap"><table class="lst" id="lst"><thead><tr><th>Empresa</th><th class="num">Total recebido</th></tr></thead><tbody>{linhas}</tbody></table></div>
+<div class="tabela-wrap"><table class="lst" id="lst"><thead><tr><th>Empresa</th><th class="num">Pago no ano</th><th class="num">Contratos</th></tr></thead><tbody>{linhas}</tbody></table></div>
 </article>
 <script>
 (function(){{var b=document.getElementById("busca"),rs=[].slice.call(document.querySelectorAll("#lst tbody tr"));
@@ -266,8 +294,9 @@ def main():
         if r["emendas"]:
             tags.append("emendas")
         escolhidas.append({"raiz": x["raiz"], "nome": nome, "x": x, "tags": tags,
-                           "total": r["parl"] + r["pref"] + r["gov"] + r["emendas"]})
-    escolhidas.sort(key=lambda x: -x["total"])
+                           "total": r["parl"] + r["pref"] + r["gov"] + r["emendas"], "contratos": r["contratos"]})
+    # quem só tem contrato/licitação (ainda sem pagamento) entra pelo valor contratado
+    escolhidas.sort(key=lambda x: -max(x["total"], x["contratos"]))
     PASTA.mkdir(exist_ok=True)
     validos, mudou = set(), 0
     for x in escolhidas:
