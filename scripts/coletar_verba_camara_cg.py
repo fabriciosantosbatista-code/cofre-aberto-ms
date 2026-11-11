@@ -763,6 +763,7 @@ def mesclar_dados(resultado_extraido):
 
     if vereadores_atualizados:
         atual["ultimaAtualizacao"] = hoje
+        atual["ultimaVerificacao"] = hoje
         atual["ano"] = ANO
         # O resumo (exibido no topo da aba Câmara CG) precisa acompanhar os
         # totais individuais — antes ficava congelado no valor da carga manual.
@@ -775,7 +776,10 @@ def mesclar_dados(resultado_extraido):
         json.dump(atual, open(ARQUIVO_CAMARA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         log(f"✅ camara_municipal.json atualizado — {vereadores_atualizados} vereadores, {total_notas_novas} notas fiscais novas")
     else:
-        log(" Nenhuma mudança confiável encontrada — camara_municipal.json inalterado")
+        log(" Nenhuma mudança confiável encontrada — dados da verba inalterados")
+        # registra que o portal foi consultado hoje (o painel mostra "verificado em")
+        atual["ultimaVerificacao"] = hoje
+        json.dump(atual, open(ARQUIVO_CAMARA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
 # ============================================================
 # 4. PESSOAL DOS GABINETES (folha de servidores do Fiorilli)

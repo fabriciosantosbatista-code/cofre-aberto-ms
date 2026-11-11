@@ -21,7 +21,9 @@ import requests
 import coletar_dados as cd
 import coletar_tjms
 
-CAMARAS_BLOQUEADAS = ["Sonora", "Itaporã"]
+# Itaporã voltou a responder ao GitHub em 11/11/2026 (portal novo); fica aqui só Sonora.
+# Para incluir outra câmara: python3 scripts/coleta_brasil.py Sonora "Outra Cidade"
+CAMARAS_BLOQUEADAS = ["Sonora"]
 
 
 def portal_responde(base):

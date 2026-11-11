@@ -66,11 +66,11 @@ URL de imagem). Roda no job de commit da coleta diária; só reescreve o que mud
 
 ### Coleta pelo Brasil (opcional)
 
-O TJMS e as câmaras de Sonora e Itaporã recusam conexões de fora do Brasil
+O TJMS e a Câmara de Sonora recusam conexões de fora do Brasil
 (inclusive do GitHub Actions). Para coletá-los direto da fonte, rode
 `scripts/coleta_brasil.sh` por cron numa máquina no Brasil — passo a passo em
 [`docs/coleta-brasil.md`](docs/coleta-brasil.md). Sem ela, o TJMS vem do
-DadosJusBr e essas câmaras ficam com os últimos dados obtidos (com aviso no painel).
+DadosJusBr e Sonora fica com os últimos dados obtidos (com aviso no painel).
 
 ### Monitoramento (alerta quando algo para)
 

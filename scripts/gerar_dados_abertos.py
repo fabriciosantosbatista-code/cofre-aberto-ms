@@ -211,9 +211,9 @@ def status_fontes():
                 ult = max(ult, MESES.index(m))
     atraso = ((HOJE.year * 12 + HOJE.month) - (ANO * 12 + ult + 1)) if ult >= 0 else 99
     add("camara", "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
-        "http://45.225.6.93:8079/transparencia/", cg.get("ultimaAtualizacao"),
+        "http://45.225.6.93:8079/transparencia/", max(filter(None, [cg.get("ultimaAtualizacao"), cg.get("ultimaVerificacao")])),
         f"verba indenizatória até {MESES[ult]}/{ANO}" if ult >= 0 else None,
-        atraso <= 3 and em_dia(cg.get("ultimaAtualizacao"), 3),
+        atraso <= 3 and em_dia(max(filter(None, [cg.get("ultimaAtualizacao"), cg.get("ultimaVerificacao")])), 3),
         None if atraso <= 3 else "a Câmara ainda não publicou os PDFs dos meses mais recentes")
 
     est = carregar("deputados_estaduais_ms.json")

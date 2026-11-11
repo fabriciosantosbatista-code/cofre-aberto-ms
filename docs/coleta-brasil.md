@@ -1,4 +1,4 @@
-# Coleta pelo Brasil (TJMS, Sonora e Itaporã)
+# Coleta pelo Brasil (TJMS e Câmara de Sonora)
 
 Algumas fontes **recusam conexões de fora do Brasil**, inclusive dos servidores
 do GitHub Actions, que ficam nos EUA:
@@ -7,7 +7,10 @@ do GitHub Actions, que ficam nos EUA:
 |---|---|
 | TJMS (portal oficial) | a folha vem do DadosJusBr, que publica o mesmo Anexo VIII do CNJ, mas com cerca de 1 mês a mais de atraso |
 | Câmara de Sonora | o painel mostra os últimos dados obtidos, com o aviso "⚠️ dados de dd/mm" |
-| Câmara de Itaporã | idem; o portal também mudou de endereço (já atualizado no coletor) |
+
+O portal da **Câmara de Itaporã** também ficou fora do ar de julho a novembro de
+2026. Ele voltou num endereço novo, que já está no coletor, e responde ao GitHub
+normalmente.
 
 A coleta pelo Brasil é um **agendamento (cron)** numa máquina no Brasil. Ele roda
 só essas fontes (`scripts/coleta_brasil.py`) e publica os arquivos no
