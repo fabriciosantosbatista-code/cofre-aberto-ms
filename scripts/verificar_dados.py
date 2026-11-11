@@ -214,6 +214,23 @@ def main():
         if ant and ((ant.get("totais") or {}).get("pago") or 0) > pago * 1.02:
             avisos.append(f"**Governo do Estado MS**: total pago caiu de R$ {ant['totais']['pago']:,.2f} para R$ {pago:,.2f}")
 
+    # ---------- Emendas por município, servidores da ALEMS, alertas e páginas de empresa ----------
+    em = carregar("emendas_municipios.json")
+    if em:
+        recente("Emendas por município", em.get("ultimaAtualizacao"), 3, nivel="aviso", o_que="última coleta")
+        checa(em.get("totalMunicipios", 0) >= 40, f"Emendas: {em.get('totalMunicipios')} municípios de MS",
+              f"**Emendas por município**: só {em.get('totalMunicipios')} municípios", "aviso")
+    al = carregar("alems_servidores.json")
+    if al:
+        recente("Servidores da ALEMS", al.get("ultimaAtualizacao"), 7, nivel="aviso", o_que="última coleta")
+        checa(al.get("total", 0) >= 800, f"ALEMS: {al.get('total')} servidores", f"**Servidores da ALEMS**: só {al.get('total')}", "aviso")
+        checa(bool(al.get("tabelaSalarios")), "ALEMS: tabela de salários lida", "**Servidores da ALEMS**: tabela de salários não lida", "aviso")
+    alc = carregar("alertas_contratos.json")
+    if alc:
+        recente("Pontos de atenção (contratos CG)", alc.get("ultimaAtualizacao"), 2, nivel="aviso", o_que="última geração")
+    emp = list(ROOT.glob("empresa/*/index.html"))
+    checa(len(emp) >= 500, f"Páginas de empresas: {len(emp)}", f"**Páginas de empresas**: só {len(emp)}", "aviso")
+
     # ---------- Judiciário ----------
     ativos = 0
     for arq, nome in (("trt24_magistrados.json", "TRT24"), ("tre_ms_magistrados.json", "TRE-MS"), ("tjms_magistrados.json", "TJMS")):
@@ -255,7 +272,7 @@ def main():
     if sf:
         recente("Status das fontes", sf.get("geradoEm"), 2, o_que="última geração")
     csvs = list((DADOS / "csv").glob("*.csv"))
-    checa(len(csvs) >= 15, f"Planilhas CSV: {len(csvs)}", f"**Planilhas CSV**: só {len(csvs)} (esperado 15)", "aviso")
+    checa(len(csvs) >= 25, f"Planilhas CSV: {len(csvs)}", f"**Planilhas CSV**: só {len(csvs)} (esperado 25)", "aviso")
 
     # ---------- versões leves do painel (gerar_painel_leve.py) ----------
     for nome in ("camara_municipal.json", "deputados_estaduais_ms.json", "deputados_federais_ms.json", "prefeitura.json"):

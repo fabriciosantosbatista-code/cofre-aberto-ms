@@ -18,10 +18,11 @@ const { chromium } = require("playwright");
 const BASE = (process.argv[2] || "http://localhost:8000/").replace(/\/?$/, "/");
 const BAD = /\bNaN\b|\bundefined\b|\[object Object\]|\bInfinity\b/g;
 const TODOS = ["deputados", "senadores", "camara", "deputados-estaduais"];      // clica em todos os itens
-const AMOSTRA = ["prefeitura", "judiciario", "deputados-brasil", "senado-brasil", "conexoes"]; // clica em alguns
+const AMOSTRA = ["prefeitura", "judiciario", "deputados-brasil", "senado-brasil", "conexoes", "emendas"]; // clica em alguns
 const PAGINAS = ["", "press.html", "metodologia.html", "vereadores-campo-grande.html", "deputados-estaduais-ms.html", "senadores-ms.html",
   "vereador/", "deputado-estadual/", "deputado-federal/", "senador/",
-  "vereador/papy/", "deputado-estadual/zeca-do-pt/", "deputado-federal/geraldo-resende/", "senador/tereza-cristina/"];
+  "vereador/papy/", "deputado-estadual/zeca-do-pt/", "deputado-federal/geraldo-resende/", "senador/tereza-cristina/",
+  "empresa/", "empresa/34028316/", "empresa/29376294/"];
 
 const problemas = [];
 const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
@@ -124,6 +125,22 @@ const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
       info.linhas.forEach((n, i) => { if (n < 2) falha(`[${nome}] aba ${tab}: tabela ${tabelas[i]} com ${n} linhas`); });
       console.log(`  ✅ ${tab}: ${info.hero} · linhas ${info.linhas.join("/")}`);
     }
+
+    // pontos de atenção (Contratos CG) e servidores da ALEMS (aba de deputados estaduais)
+    onde = "pontos de atenção";
+    await page.locator('button[data-tab="contratos-cg"]').evaluate((e) => e.click());
+    await page.waitForTimeout(1500);
+    const nAlertas = await page.locator("#ct-alertas .alerta-card").count();
+    if (nAlertas < 1) falha(`[${nome}] Contratos CG: nenhum ponto de atenção`);
+    onde = "servidores da ALEMS";
+    await page.locator('button[data-tab="deputados-estaduais"]').evaluate((e) => e.click());
+    await page.waitForTimeout(2000);
+    const al = await page.evaluate(() => ({ n: document.querySelectorAll("#tabela-alems tbody tr").length,
+      tx: document.getElementById("alems-servidores").innerText, ovX: document.documentElement.scrollWidth - innerWidth }));
+    if (al.n < 10) falha(`[${nome}] servidores da ALEMS: tabela com ${al.n} linhas`);
+    if (BAD.test(al.tx)) falha(`[${nome}] servidores da ALEMS mostram ${al.tx.match(BAD)}`);
+    if (al.ovX > 1) falha(`[${nome}] servidores da ALEMS: rolagem horizontal (${al.ovX}px)`);
+    console.log(`  ✅ pontos de atenção: ${nAlertas} · servidores ALEMS: ${al.n} linhas`);
 
     // evolução: os 4 grupos têm gráfico e ranking; clicar num parlamentar troca o gráfico
     onde = "aba evolucao";

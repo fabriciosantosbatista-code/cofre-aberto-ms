@@ -289,6 +289,12 @@ def main():
     n_ct = (carregar("prefeitura_contratos.json").get("resumo") or {}).get("contratos")
     if n_ct:
         html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Contratos e licitações)', rf"\g<1>{n_ct}\2", html)
+    n_mun = carregar("emendas_municipios.json").get("totalMunicipios")
+    if n_mun:
+        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Emendas por município)', rf"\g<1>{n_mun}\2", html)
+    n_emp = len(carregar("empresas_index.json") or {})
+    if n_emp:
+        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Páginas de empresas)', rf"\g<1>{n_emp}\2", html)
     nf = len(carregar("feeds/index.json").get("parlamentares") or [])
     if nf:
         html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Siga um político)', rf"\g<1>{nf}\2", html)

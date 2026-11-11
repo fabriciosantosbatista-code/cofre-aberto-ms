@@ -23,7 +23,12 @@ jobs:
       - name: Instalar Playwright (Chromium)
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.63.0
-          npx playwright install --with-deps chromium
+          for i in 1 2 3; do
+            npx playwright install --with-deps chromium && break
+            echo "⚠️ instalação do Chromium falhou (tentativa $i) — tentando de novo em 30 s"
+            sleep 30; sudo apt-get update -q || true
+          done
+          npx playwright install chromium
       - name: Testar o painel
         run: |
           python3 -m http.server 8000 >/dev/null 2>&1 &

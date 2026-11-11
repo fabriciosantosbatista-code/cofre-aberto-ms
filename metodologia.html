@@ -105,6 +105,10 @@ como citar e como baixar os dados.</p>
 <td>Exportação das consultas "Contratos" e "Licitações" do SIG-Transparência da Prefeitura. O portal não traz o CNPJ nos contratos: ele é completado pelo nome do fornecedor, cruzando com as licitações e as despesas pagas. Dívidas parceladas e demandas judiciais ficam fora do total de compras.</td><td>dias</td></tr>
 <tr><td><b>Governo MS</b></td><td>Despesas do Estado por órgão e credor, mês a mês, diárias de viagem e remuneração do primeiro escalão</td>
 <td>API pública do Portal da Transparência do Estado (<code>www.transparencia.ms.gov.br</code>, servida por <code>gw.sgi.ms.gov.br</code>). O filtro de mês das diárias se sobrepõe entre consultas, então os trechos são juntados sem repetição e agrupados pela data da viagem. Primeiro escalão = vínculo "agente político" na folha (governador, vice e secretários com esse vínculo).</td><td>dias (folha: 1 mês)</td></tr>
+<tr><td><b>Emendas</b></td><td>Dinheiro de emendas parlamentares pago a prefeituras, fundos, entidades e empresas de MS, por município e por autor</td>
+<td>Arquivo completo de emendas do Portal da Transparência do Governo Federal (CGU), tabela "por favorecido": cada pagamento com quem recebeu e onde. Conta o mês do pagamento, não o ano da emenda.</td><td>dias a semanas</td></tr>
+<tr><td><b>Servidores da ALEMS</b></td><td>Servidores da Assembleia por cargo e símbolo, com o vencimento-base da tabela oficial</td>
+<td>Consulta de servidores da ALEMS (<code>transparencia2.al.ms.gov.br/consulta-servidores</code>) e a tabela de salários do ano. A ALEMS <strong>não publica a lotação</strong> (em que gabinete cada um trabalha) nem a remuneração individual, então o site mostra o total e a média por deputado.</td><td>semanas</td></tr>
 <tr><td><b>Câmaras MS</b></td><td>Subsídio, diárias e despesas institucionais das câmaras do interior</td>
 <td>Sistemas de transparência de cada câmara (Fiorilli SCPI, "Dados Abertos"; SAPL/Interlegis em Dourados).</td><td>dias</td></tr>
 <tr><td><b>Judiciário MS</b></td><td>Remuneração dos magistrados ativos (bruto, descontos, líquido, diárias)</td>
@@ -154,6 +158,9 @@ como citar e como baixar os dados.</p>
 <tr><td><b>Prefeitura de Campo Grande</b> — despesas pagas</td><td><a href="/dados/csv/prefeitura_despesas.csv" download>prefeitura_despesas.csv</a></td><td><a href="/dados/prefeitura.json">prefeitura.json</a></td></tr>
 <tr><td><b>Prefeitura de Campo Grande</b> — contratos e licitações</td><td><a href="/dados/csv/prefeitura_contratos.csv" download>prefeitura_contratos.csv</a> · <a href="/dados/csv/prefeitura_licitacoes.csv" download>prefeitura_licitacoes.csv</a></td><td><a href="/dados/prefeitura_contratos.json">prefeitura_contratos.json</a></td></tr>
 <tr><td><b>Governo do Estado de MS</b> — órgãos, credores, diárias e primeiro escalão</td><td><a href="/dados/csv/governo_ms_orgaos.csv" download>órgãos</a> · <a href="/dados/csv/governo_ms_credores.csv" download>credores (todos)</a> · <a href="/dados/csv/governo_ms_diarias.csv" download>diárias</a> · <a href="/dados/csv/governo_ms_primeiro_escalao.csv" download>primeiro escalão</a></td><td><a href="/dados/governo_ms.json">governo_ms.json</a></td></tr>
+<tr><td><b>Emendas parlamentares</b> — por município e quem recebeu</td><td><a href="/dados/csv/emendas_municipios.csv" download>emendas_municipios.csv</a> · <a href="/dados/csv/emendas_favorecidos.csv" download>emendas_favorecidos.csv</a></td><td><a href="/dados/emendas_municipios.json">emendas_municipios.json</a></td></tr>
+<tr><td><b>Servidores da ALEMS</b></td><td><a href="/dados/csv/alems_servidores.csv" download>alems_servidores.csv</a></td><td><a href="/dados/alems_servidores.json">alems_servidores.json</a></td></tr>
+<tr><td><b>Pontos de atenção</b> nos contratos da Prefeitura</td><td><a href="/dados/csv/alertas_contratos.csv" download>alertas_contratos.csv</a></td><td><a href="/dados/alertas_contratos.json">alertas_contratos.json</a> · <a href="/dados/feeds/contratos-cg.xml">RSS</a></td></tr>
 <tr><td><b>Judiciário MS</b> — magistrados (TRT24, TRE-MS, TJMS)</td><td><a href="/dados/csv/judiciario_magistrados.csv" download>judiciario_magistrados.csv</a></td><td><a href="/dados/tjms_magistrados.json">TJMS</a> · <a href="/dados/trt24_magistrados.json">TRT24</a> · <a href="/dados/tre_ms_magistrados.json">TRE-MS</a></td></tr>
 <tr><td><b>Câmaras do interior</b></td><td><a href="/dados/csv/camaras_interior.csv" download>camaras_interior.csv</a></td><td><a href="https://github.com/fabriciosantosbatista-code/cofre-aberto-ms/tree/main/dados/camaras" target="_blank" rel="noopener">dados/camaras/</a></td></tr>
 <tr><td><b>Deputados federais — Brasil</b> (513)</td><td><a href="/dados/csv/deputados_federais_brasil.csv" download>deputados_federais_brasil.csv</a></td><td><a href="/dados/deputados_federais_brasil.json">deputados_federais_brasil.json</a> · notas por UF em <code>/dados/ceap_federal/UF.json</code></td></tr>
@@ -161,6 +168,7 @@ como citar e como baixar os dados.</p>
 <tr><td><b>Conexões entre fornecedores</b></td><td><a href="/dados/csv/conexoes_fornecedores.csv" download>conexoes_fornecedores.csv</a></td><td><a href="/dados/conexoes_fornecedores.json">conexoes_fornecedores.json</a></td></tr>
 <tr><td><b>Evolução mensal</b> (ano atual × anterior)</td><td><a href="/dados/csv/evolucao_mensal.csv" download>evolucao_mensal.csv</a></td><td><a href="/dados/evolucao_mensal.json">evolucao_mensal.json</a></td></tr>
 </tbody></table></div>
+<p>Cada empresa paga por parlamentares, com contrato ou licitação na Prefeitura, ou que recebeu valores altos do Estado ou de emendas, tem uma <strong>página própria</strong> em <a href="/empresa/">/empresa/</a>, com tudo o que recebeu em MS no ano.</p>
 <p>Notas novas de cada parlamentar de MS também saem em <strong>RSS</strong>, no botão "🔔 Seguir notas novas" de cada página ou no <a href="/dados/feeds/todas.xml">feed geral</a>.</p>
 
 <h2 id="citar">Como citar</h2>
@@ -189,7 +197,7 @@ como citar e como baixar os dados.</p>
 <script>
 (function () {
   const ABAS = { "camara": "Câmara CG", "deputados-estaduais": "Dep. Estaduais", "deputados": "Dep. Federais MS", "senadores": "Senadores MS",
-    "prefeitura": "Prefeitura CG", "contratos-cg": "Contratos CG", "governo-ms": "Governo MS", "camaras-ms": "Câmaras MS", "judiciario": "Judiciário MS", "deputados-brasil": "Dep. Federais Brasil",
+    "prefeitura": "Prefeitura CG", "contratos-cg": "Contratos CG", "governo-ms": "Governo MS", "emendas": "Emendas", "camaras-ms": "Câmaras MS", "judiciario": "Judiciário MS", "deputados-brasil": "Dep. Federais Brasil",
     "senado-brasil": "Senado Brasil", "conexoes": "Conexões", "evolucao": "Evolução" };
   const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const dataBR = iso => { if (!iso) return "—"; const [a, m, d] = String(iso).slice(0, 10).split("-"); return `${d}/${m}/${a}`; };

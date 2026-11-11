@@ -223,8 +223,40 @@ jobs:
           path: dados/prefeitura_contratos.json
           retention-days: 1
 
+  coletar_emendas_alems:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests pypdf
+
+      - name: Coletar emendas por município (arquivo completo da CGU)
+        run: python3 scripts/coletar_emendas_municipios.py || echo "⚠️ emendas por município não atualizadas — arquivo anterior mantido"
+
+      - name: Coletar servidores da ALEMS
+        run: python3 scripts/coletar_servidores_alems.py || echo "⚠️ servidores da ALEMS não atualizados — arquivo anterior mantido"
+
+      - name: Upload artifact — emendas e ALEMS
+        uses: actions/upload-artifact@v4
+        with:
+          name: dados-emendas-alems
+          path: |
+            dados/emendas_municipios.json
+            dados/alems_servidores.json
+          retention-days: 1
+
   commit_e_push:
-    needs: [coletar_dados, coletar_verba_camara, coletar_trt24, coletar_tre_ms, coletar_tjms, coletar_governo_ms, coletar_contratos_cg]
+    needs: [coletar_dados, coletar_verba_camara, coletar_trt24, coletar_tre_ms, coletar_tjms, coletar_governo_ms, coletar_contratos_cg, coletar_emendas_alems]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -283,14 +315,27 @@ jobs:
           name: dados-contratos-cg
           path: dados/
 
+      - name: Baixar artifact — emendas e ALEMS
+        if: needs.coletar_emendas_alems.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: dados-emendas-alems
+          path: dados/
+
       - name: Gerar conexões entre fornecedores, evolução mensal e feeds RSS
         run: python3 scripts/gerar_analises.py || echo "⚠️ gerar_analises.py falhou — análises anteriores mantidas"
+
+      - name: Pontos de atenção nos contratos da Prefeitura (+ feed RSS)
+        run: python3 scripts/gerar_alertas_contratos.py || echo "⚠️ gerar_alertas_contratos.py falhou — alertas anteriores mantidos"
 
       - name: Gerar planilhas CSV e status das fontes
         run: python3 scripts/gerar_dados_abertos.py || echo "⚠️ gerar_dados_abertos.py falhou — planilhas anteriores mantidas"
 
       - name: Gerar uma página por parlamentar (+ sitemap)
         run: python3 scripts/gerar_paginas_parlamentares.py || echo "⚠️ gerar_paginas_parlamentares.py falhou — páginas anteriores mantidas"
+
+      - name: Gerar uma página por empresa (+ sitemap)
+        run: python3 scripts/gerar_paginas_empresas.py || echo "⚠️ gerar_paginas_empresas.py falhou — páginas anteriores mantidas"
 
       - name: Versões leves dos dados para o painel (carregamento rápido no celular)
         run: python3 scripts/gerar_painel_leve.py || echo "⚠️ gerar_painel_leve.py falhou — o painel usa os arquivos completos"
@@ -303,7 +348,7 @@ jobs:
           git config user.name "Cofre Aberto Bot"
           git config user.email "bot@cofreabertoms.com.br"
           git add dados/ index.html vereadores-campo-grande.html deputados-estaduais-ms.html senadores-ms.html press.html PRESS.md \
-                  vereador/ deputado-estadual/ deputado-federal/ senador/ fotos/p/ sitemap.xml
+                  vereador/ deputado-estadual/ deputado-federal/ senador/ empresa/ fotos/p/ sitemap.xml
 
           if git diff --staged --quiet; then
             echo "Sem mudanças"
@@ -384,7 +429,13 @@ jobs:
       - name: Instalar Playwright (Chromium)
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.63.0
-          npx playwright install --with-deps chromium
+          # o apt dos runners às vezes falha por DNS: tenta de novo antes de desistir
+          for i in 1 2 3; do
+            npx playwright install --with-deps chromium && break
+            echo "⚠️ instalação do Chromium falhou (tentativa $i) — tentando de novo em 30 s"
+            sleep 30; sudo apt-get update -q || true
+          done
+          npx playwright install chromium
 
       - name: Testar o painel (todas as abas e parlamentares)
         id: site

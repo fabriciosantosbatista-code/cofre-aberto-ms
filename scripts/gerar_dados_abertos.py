@@ -160,6 +160,25 @@ def gerar_csvs():
           num(l.get("valorEstimado")), v.get("nome"), v.get("cnpj")]
          for l in ct.get("licitacoes", []) for v in (l.get("vencedores") or [{}])])
 
+    em = carregar("emendas_municipios.json")
+    contagem["emendas_municipios.csv"] = grava_csv("emendas_municipios.csv",
+        ["municipio", "autor_da_emenda", "parlamentar_atual_de_ms", f"valor_recebido_{ANO}"],
+        [[m["municipio"], a["autor"], "sim" if a.get("atual") else "não", num(a["valor"])]
+         for m in em.get("municipios", []) for a in m.get("autores", [])])
+    contagem["emendas_favorecidos.csv"] = grava_csv("emendas_favorecidos.csv",
+        ["favorecido", "cnpj_cpf", "natureza_juridica", "municipio", f"valor_recebido_{ANO}", "autores"],
+        [[f["nome"], f.get("doc"), f.get("natureza"), f.get("municipio"), num(f["valor"]),
+          " | ".join(f"{a['autor']} ({num(a['valor'])})" for a in f.get("autores", []))] for f in em.get("favorecidos", [])])
+    al = carregar("alems_servidores.json")
+    contagem["alems_servidores.csv"] = grava_csv("alems_servidores.csv",
+        ["matricula", "nome", "cargo", "simbolo", "vencimento_base_tabela"],
+        [[x.get("matricula"), x.get("nome"), x.get("cargo"), x.get("simbolo"), num(x.get("vencimento"))] for x in al.get("servidores", [])])
+    alc = carregar("alertas_contratos.json")
+    contagem["alertas_contratos.csv"] = grava_csv("alertas_contratos.csv",
+        ["visto_em", "tipo", "titulo", "descricao", "empresa", "cnpj", "valor", "data"],
+        [[a.get("vistoEm"), a.get("rotulo"), a.get("titulo"), a.get("descricao"), a.get("empresa"), a.get("cnpj"),
+          num(a.get("valor")), a.get("data")] for a in alc.get("alertas", [])])
+
     gov = carregar("governo_ms.json")
     contagem["governo_ms_orgaos.csv"] = grava_csv("governo_ms_orgaos.csv",
         ["codigo_unidade_gestora", "orgao", "empenhado", "liquidado", "pago"],
@@ -284,6 +303,12 @@ def status_fontes():
         gov.get("ultimaAtualizacao"), ", ".join(p for p in partes if p) or None,
         gov.get("ano") == ANO and bool(gov.get("totais")) and not gov.get("coletaParcial"),
         "parte das consultas do portal estadual falhou na última coleta" if gov.get("coletaParcial") else None)
+
+    em = carregar("emendas_municipios.json")
+    add("emendas", "Portal da Transparência do Governo Federal (CGU) — emendas por favorecido",
+        "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares", em.get("ultimaAtualizacao"),
+        f"pagamentos até {em['mesMaisRecente']}" if em.get("mesMaisRecente") else None,
+        em.get("ano") == ANO and em_dia(em.get("ultimaAtualizacao"), 3))
 
     cidades, paradas = 0, []
     for f in sorted((DADOS / "camaras").glob("*.json")):

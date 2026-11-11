@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-11T10:42:52",
+ "geradoEm": "2026-11-11T14:56:41",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
@@ -57,6 +57,14 @@
    "nivel": "ok",
    "mensagem": null
   },
+  "emendas": {
+   "fonte": "Portal da Transparência do Governo Federal (CGU) — emendas por favorecido",
+   "url": "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares",
+   "coleta": "2026-11-11T14:48:13",
+   "dadoMaisRecente": "pagamentos até 11/2026",
+   "nivel": "ok",
+   "mensagem": null
+  },
   "camaras-ms": {
    "fonte": "Portais de transparência das câmaras (Fiorilli SCPI / SAPL)",
    "url": null,
@@ -92,7 +100,7 @@
   "conexoes": {
    "fonte": "Cruzamento das notas fiscais de todas as fontes acima",
    "url": null,
-   "coleta": "2026-11-11T10:42:52",
+   "coleta": "2026-11-11T14:56:40",
    "dadoMaisRecente": "gerado a cada coleta",
    "nivel": "ok",
    "mensagem": null
@@ -100,7 +108,7 @@
   "evolucao": {
    "fonte": "Notas fiscais das fontes acima + histórico do ano anterior",
    "url": null,
-   "coleta": "2026-11-11T10:42:52",
+   "coleta": "2026-11-11T14:56:40",
    "dadoMaisRecente": "gerado a cada coleta",
    "nivel": "ok",
    "mensagem": null
