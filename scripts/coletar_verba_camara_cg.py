@@ -848,6 +848,26 @@ def coletar_pessoal_gabinetes():
     log(f" lotações mais frequentes ({campo_lot}): {sorted(lotacoes.items(), key=lambda x: -x[1])[:40]}")
 
     atual = json.load(open(ARQUIVO_CAMARA, encoding="utf-8"))
+    # Maiores salários da Câmara (vereadores e servidores) para a aba Supersalários
+    try:
+        campo_desc = next((c for c in chaves if "DESCONTO" in c.upper()), None)
+        campo_liq = next((c for c in chaves if "LIQUID" in _sem_acento(c)), None)
+        campo_cargo = next((c for c in chaves if c.upper() == "CARGO"), None) or next((c for c in chaves if "CARGO" in c.upper()), None)
+        lst = []
+        for reg in registros:
+            bruto = _valor_fiorilli(reg.get(campo_val))
+            desc = _valor_fiorilli(reg.get(campo_desc)) if campo_desc else 0.0
+            liq = _valor_fiorilli(reg.get(campo_liq)) if campo_liq else bruto - desc
+            lst.append({"nome": str(reg.get("NOME") or "").strip().title(), "cargo": str(reg.get(campo_cargo) or "").strip().capitalize(),
+                        "lotacao": str(reg.get(campo_lot) or "").strip().title(), "bruto": round(bruto, 2),
+                        "descontos": round(desc, 2), "liquido": round(liq, 2)})
+        lst.sort(key=lambda x: -x["bruto"])
+        atual["maioresSalarios"] = {"referencia": f"{mes:02d}/{ano}", "servidores": len(lst), "lista": lst[:60],
+                                    "campos": {"bruto": campo_val, "descontos": campo_desc, "liquido": campo_liq}}
+        json.dump(atual, open(ARQUIVO_CAMARA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+        log(f" maiores salários da Câmara ({mes:02d}/{ano}): {[(x['nome'], x['bruto']) for x in lst[:3]]}")
+    except Exception as e:
+        log(f" ⚠️ maiores salários: {e}")
     # No Fiorilli da CG a lotação (LOCALDETRABALHO) de cada servidor de gabinete
     # é o próprio nome parlamentar do vereador ("PAPY", "DR. VICTOR ROCHA"...);
     # a equipe da Mesa fica em "PRESIDÊNCIA".

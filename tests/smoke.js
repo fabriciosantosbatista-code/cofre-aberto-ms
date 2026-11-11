@@ -22,7 +22,7 @@ const AMOSTRA = ["prefeitura", "judiciario", "deputados-brasil", "senado-brasil"
 const PAGINAS = ["", "press.html", "metodologia.html", "vereadores-campo-grande.html", "deputados-estaduais-ms.html", "senadores-ms.html",
   "vereador/", "deputado-estadual/", "deputado-federal/", "senador/",
   "vereador/papy/", "deputado-estadual/zeca-do-pt/", "deputado-federal/geraldo-resende/", "senador/tereza-cristina/",
-  "empresa/", "empresa/34028316/", "empresa/29376294/", "boletim/"];
+  "empresa/", "empresa/34028316/", "empresa/29376294/", "boletim/", "orgao/", "orgao/tjms/", "orgao/tce-ms/", "orgao/governo-sefaz/"];
 
 const problemas = [];
 const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };

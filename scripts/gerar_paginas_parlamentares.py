@@ -305,7 +305,7 @@ def cabecalho(titulo, descricao, url, imagem, jsonld, tipo="profile"):
 
 
 RODAPE = f"""<footer><span>© {ANO} Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
-<span><a href="/">Início</a> · <a href="/cofre-aberto-ms.html">Painel</a> · <a href="/boletim/">Boletim semanal</a> · <a href="/empresa/">Empresas</a> · <a href="/metodologia.html">Metodologia e dados</a> · <a href="/press.html">Imprensa</a></span></footer>
+<span><a href="/">Início</a> · <a href="/cofre-aberto-ms.html">Painel</a> · <a href="/boletim/">Boletim semanal</a> · <a href="/empresa/">Empresas</a> · <a href="/orgao/">Órgãos</a> · <a href="/metodologia.html">Metodologia e dados</a> · <a href="/press.html">Imprensa</a></span></footer>
 </div>
 </body>
 </html>

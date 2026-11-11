@@ -11,6 +11,11 @@ Fontes:
       janeiro do ano anterior.
   Governo do Estado de MS  folha de pagamento do Portal da Transparência do
       Estado (gw.sgi.ms.gov.br), todos os vínculos, ativos e inativos.
+  Tribunal de Contas (TCE-MS)  API do Portal da Transparência do TCE
+      (servidores: remuneração + outros pagamentos) e exportação em PDF da
+      página "Membros" (conselheiros e procuradores de contas, com cada rubrica).
+  Comparação  resumo do mês mais recente de todos os Tribunais de Justiça do
+      país no DadosJusBr (média por magistrado).
 
 Teto de referência: subsídio de ministro do STF (Lei 14.520/2023), R$ 46.366,19
 desde fev/2025. Verbas indenizatórias ficam fora do teto por lei; "acima do teto"
@@ -160,8 +165,133 @@ def governo():
                         "base": round(fixa, 2), "outras": round(ev, 2), "bruto": round(fixa + ev, 2),
                         "descontos": round(max(0, fixa + ev - (x.get("remuneracaoAposDeducoes") or 0)), 2),
                         "liquido": round(x.get("remuneracaoAposDeducoes") or 0, 2), "itens": []})
+    siglas = {}
+    try:
+        for o in requests.get(folha + "/orgaos", params={"anoexercicio": ANO}, timeout=60,
+                              headers={**UA, "Authorization": "Bearer " + tok()}).json().get("data") or []:
+            nome = re.sub(r"\s*\([^)]*\)\s*$", "", (o.get("descricao") or "")).strip()
+            if o.get("id") and nome:
+                siglas.setdefault(o["id"].strip(), nome)
+    except Exception as e:
+        print(f"  ⚠️ nomes dos órgãos: {e}")
     print(f"  Governo do Estado: {len(pessoas)} registros na folha de {mes:02d}/{ANO}")
-    return pessoas, f"{mes:02d}/{ANO}"
+    return pessoas, f"{mes:02d}/{ANO}", siglas
+
+
+# ── Tribunal de Contas (TCE-MS) ───────────────────────────────────────
+TCE = "https://sip-barramento.tce.ms.gov.br/barramento/api/Transparencia/GestaoPessoas"
+
+
+def tce_lista(ep, a, m):
+    out, p = [], 0
+    while True:
+        j = requests.get(f"{TCE}/{ep}", params={"ano": a, "mes": m, "pageNumber": p, "pageSize": 200}, headers=UA, timeout=120).json()
+        out += j.get("items") or []
+        p += 1
+        if p >= (j.get("totalPages") or 0):
+            return out
+
+
+def tce_membros(a, m):
+    """Conselheiros, conselheiros substitutos e procuradores de contas: a página "Membros"
+    do portal só publica o contracheque detalhado (Tabela de Remuneração Unificada, TRU)
+    na exportação em PDF — uma coluna por rubrica, inclusive o abate-teto."""
+    import pypdf
+    r = requests.get(f"{TCE}/Servidores/Exportar", params={"ano": a, "mes": m, "tipo": 2, "vinculo": 2, "tipoConteudo": 1},
+                     headers=UA, timeout=120)
+    r.raise_for_status()
+    txt = "\n".join(p.extract_text() or "" for p in pypdf.PdfReader(io.BytesIO(r.content)).pages)
+    fim = txt.find("Margem consign")
+    cab = txt[:fim]
+    codigos = re.findall(r"TRU-(\d{4}) - ", cab)
+    nomes = [re.sub(r"\s+", " ", x).strip() for x in re.split(r"TRU-\d{4} - ", cab)[1:]]
+    nomes[-1] = nomes[-1].split("Margem")[0].strip()
+    rubrica = dict(zip(codigos, nomes))
+    n = len(codigos) + 5
+    corpo = txt[fim:]
+    corpo = corpo[corpo.find("(teto)") + 6:]
+    num = r"-?\d+(?:,\d+)?"
+    pat = re.compile(r"(Ativo|Inativo|Aposentado|Licenciado|Afastado)\s+(\d{2}/\d{4})\s+((?:" + num + r"\s+){" + str(n - 1) + r"}" + num + r")")
+    pos, pessoas = 0, []
+    for mt in pat.finditer(corpo):
+        antes = re.sub(r"\s+", " ", corpo[pos:mt.start()]).strip()
+        pos = mt.end()
+        cab_p = re.match(r"(\d+) (.+?) (\d{1,2} de \w{3}\.? de \d{4}) \d{2}:\d{2} (.+)$", antes)
+        if not cab_p:
+            continue
+        vals = dict(zip(codigos, (float(v.replace(",", ".")) for v in mt.group(3).split())))
+        cargo_lot = cab_p.group(4)
+        cargo = next((c for c in ("Conselheiro do Tribunal de Contas MS", "Conselheiro Substituto", "Procurador-Geral do Ministério Público de Contas",
+                                  "Procurador do Ministério Público de Contas") if cargo_lot.startswith(c)), cargo_lot[:40])
+        ganhos = {c: v for c, v in vals.items() if c[0] in "12348" and v}
+        base = vals.get("1001", 0)
+        bruto = sum(ganhos.values())
+        desc = sum(v for c, v in vals.items() if c[0] == "9")
+        pessoas.append({"nome": cab_p.group(2).title(), "cargo": cargo, "lotacao": cargo_lot[len(cargo):].strip().title(),
+                        "orgao": "TCE-MS — Tribunal de Contas (membros)", "orgaoId": "tce", "poder": "Controle externo",
+                        "situacao": mt.group(1), "mes": mt.group(2), "base": round(base, 2), "outras": round(bruto - base, 2),
+                        "bruto": round(bruto, 2), "descontos": round(desc, 2), "liquido": round(bruto - desc, 2),
+                        "abateTeto": round(vals.get("9001", 0), 2),
+                        "itens": sorted(({"item": rubrica[c], "valor": round(v, 2)} for c, v in ganhos.items() if c != "1001"),
+                                        key=lambda x: -x["valor"])})
+    return pessoas
+
+
+def tce():
+    for a, m in meses_para_tras(5):
+        rem = tce_lista("Remuneracao", a, m)
+        if rem:
+            break
+    else:
+        raise RuntimeError("nenhuma folha nos últimos 5 meses")
+    outros = {x["matricula"]: x for x in tce_lista("OutroPagamento", a, m)}
+    pessoas = []
+    for x in rem:
+        o = outros.get(x["matricula"], {})
+        base, ev = x.get("totalVencimentosRemuneracao") or 0, o.get("totalVencimentoOutrosPagamentos") or 0
+        pessoas.append({"nome": re.sub(r"\s+", " ", x["nome"]).strip().title(), "cargo": re.sub(r"\s+", " ", x.get("cargoDescr") or "").strip(),
+                        "lotacao": (x.get("lotacaoDescr") or "").strip().title(), "orgao": "TCE-MS — Tribunal de Contas (servidores)",
+                        "orgaoId": "tce", "poder": "Controle externo", "situacao": (x.get("vinculo") or "").capitalize(),
+                        "mes": f"{m:02d}/{a}", "base": round(base, 2), "outras": round(ev, 2), "bruto": round(base + ev, 2),
+                        "descontos": round((x.get("totalDescontoRemuneracao") or 0) + (o.get("totalDescontoOutrosPagamentos") or 0), 2),
+                        "liquido": round((x.get("totalCalculadoRemuneracao") or 0) + (o.get("totalCalculadoOutrosPagamentos") or 0), 2), "itens": []})
+    try:
+        membros = tce_membros(a, m)
+    except Exception as e:
+        print(f"  ⚠️ TCE-MS membros: {e}")
+        membros = []
+    print(f"  TCE-MS: {len(pessoas)} servidores e {len(membros)} membros em {m:02d}/{a}")
+    return pessoas, membros, f"{m:02d}/{a}"
+
+
+# ── Comparação com os Tribunais de Justiça dos outros estados (DadosJusBr) ──
+def comparacao_tjs():
+    orgs = requests.get("https://api.dadosjusbr.org/v2/orgaos", headers=UA, timeout=60).json()
+    tjs = [o for o in orgs if o.get("entidade") == "Tribunal" and o.get("jurisdicao") == "Estadual"]
+    out = []
+    for o in tjs:
+        for a, m in meses_para_tras(6):
+            try:
+                d = dj_mes(o["id_orgao"], a, m)
+            except Exception:
+                d = None
+            if d:
+                s = d["sumarios"].get("membros_ativos") or {}
+                q = s.get("quantidade") or 0
+                base = (s.get("remuneracao_base") or {}).get("total") or 0
+                outras = (s.get("outras_remuneracoes") or {}).get("total") or 0
+                if q and base > 0:
+                    out.append({"orgao": o["id_orgao"].upper(), "nome": o["nome"], "uf": o.get("uf"), "mes": f"{m:02d}/{a}",
+                                "magistrados": q, "mediaBase": round(base / q, 2), "mediaOutras": round(outras / q, 2),
+                                "mediaBruta": round((base + outras) / q, 2),
+                                "mediaLiquida": round((s.get("remuneracoes") or {}).get("media") or 0, 2)})
+                break
+            time.sleep(0.15)
+    out.sort(key=lambda x: -x["mediaBruta"])
+    for i, x in enumerate(out):
+        x["posicao"] = i + 1
+    print(f"  comparação: {len(out)} tribunais de justiça com dados")
+    return out
 
 
 def resumo_orgao(nome, lst, mes, fonte):
@@ -206,7 +336,7 @@ def main():
                 penduricalhos[oid] = anterior["penduricalhos"][oid]
                 evolucao[oid] = anterior["evolucao"][oid]
     try:
-        gov, mes_gov = governo()
+        gov, mes_gov, siglas_gov = governo()
         todos += gov
         ativos = [p for p in gov if p["situacao"].lower().startswith("ativo")]
         inativos = [p for p in gov if not p["situacao"].lower().startswith("ativo")]
@@ -217,14 +347,61 @@ def main():
         por = {}
         for p in gov:
             por.setdefault(p["orgaoSigla"], []).append(p)
-        orgaos_gov = sorted((resumo_orgao(f"Governo MS — {k}", v, mes_gov, fonte) for k, v in por.items()),
-                            key=lambda o: (-o["acimaTeto"], -o["mediaBruta"]))
+        orgaos_gov = []
+        for k, v in por.items():
+            o = resumo_orgao(f"Governo MS — {k}", v, mes_gov, fonte)
+            o["sigla"] = k
+            o["maiores"] = [{c: x[c] for c in ("nome", "cargo", "situacao", "base", "outras", "bruto", "liquido")}
+                            for x in sorted(v, key=lambda x: -x["bruto"])[:15]]
+            orgaos_gov.append(o)
+        orgaos_gov.sort(key=lambda o: (-o["acimaTeto"], -o["mediaBruta"]))
     except Exception as e:
         falhas.append(f"Governo do Estado: {e}")
         print(f"  ⚠️ Governo do Estado: {e}")
         todos += [p for p in anterior.get("ranking", []) if p.get("orgaoId") == "governo"]
         orgaos += [o for o in anterior.get("orgaos", []) if o["orgao"].startswith("Governo do Estado")]
         orgaos_gov = anterior.get("orgaosGoverno", [])
+        siglas_gov = anterior.get("siglasGoverno", {})
+    try:
+        serv_tce, membros_tce, mes_tce = tce()
+        todos += serv_tce + membros_tce
+        fonte = "Portal da Transparência do TCE-MS"
+        if membros_tce:
+            orgaos.append(resumo_orgao("TCE-MS — conselheiros e procuradores de contas", membros_tce, mes_tce, fonte + " (membros, contracheque detalhado)"))
+            pend = {}
+            for p in membros_tce:
+                for i in p["itens"]:
+                    t = pend.setdefault(i["item"], {"item": i["item"], "categoria": "rubrica da TRU", "valor": 0.0, "pessoas": 0})
+                    t["valor"] += i["valor"]
+                    t["pessoas"] += 1
+            penduricalhos["tce"] = {"orgao": "TCE-MS — membros", "mes": mes_tce,
+                                    "itens": sorted(({**t, "valor": round(t["valor"], 2)} for t in pend.values()), key=lambda t: -t["valor"])}
+        orgaos.append(resumo_orgao("TCE-MS — servidores", serv_tce, mes_tce, fonte))
+    except Exception as e:
+        falhas.append(f"TCE-MS: {e}")
+        print(f"  ⚠️ TCE-MS: {e}")
+        todos += [p for p in anterior.get("ranking", []) if p.get("orgaoId") == "tce"]
+        orgaos += [o for o in anterior.get("orgaos", []) if o["orgao"].startswith("TCE-MS")]
+        if "tce" in (anterior.get("penduricalhos") or {}):
+            penduricalhos["tce"] = anterior["penduricalhos"]["tce"]
+    try:
+        cg = json.load(open(ROOT / "dados" / "camara_municipal.json", encoding="utf-8")).get("maioresSalarios") or {}
+        lista_cg = [{**x, "orgao": "Câmara Municipal de Campo Grande", "orgaoId": "camara-cg", "poder": "Legislativo municipal",
+                     "situacao": "Ativo", "mes": cg["referencia"], "base": x["bruto"], "outras": 0.0, "itens": []}
+                    for x in cg.get("lista", []) if x.get("bruto")]
+        if lista_cg:
+            todos += lista_cg
+            o = resumo_orgao("Câmara Municipal de Campo Grande (60 maiores)", lista_cg, cg["referencia"],
+                             "Portal da Transparência da Câmara (folha Fiorilli)")
+            o["totalServidores"] = cg.get("servidores")
+            orgaos.append(o)
+    except Exception as e:
+        print(f"  ⚠️ Câmara CG: {e}")
+    try:
+        comp = comparacao_tjs()
+    except Exception as e:
+        print(f"  ⚠️ comparação com outros TJs: {e}")
+        comp = anterior.get("comparacaoTJs", [])
     if not todos:
         print("❌ nada coletado — arquivo anterior mantido")
         sys.exit(1)
@@ -236,11 +413,12 @@ def main():
     acima = [p for p in todos if p["bruto"] > TETO]
     out = {"ano": ANO, "ultimaAtualizacao": datetime.now().isoformat(timespec="seconds"),
            "teto": TETO, "tetoFonte": TETO_FONTE,
-           "fontes": {"judiciario": "https://dadosjusbr.org/", "governo": "https://www.transparencia.ms.gov.br/"},
+           "fontes": {"judiciario": "https://dadosjusbr.org/", "governo": "https://www.transparencia.ms.gov.br/",
+                      "tce": "https://transparencia.tce.ms.gov.br/"},
            "totalPessoas": len(todos), "acimaTeto": len(acima), "valorAcimaTeto": round(sum(p["bruto"] - TETO for p in acima), 2),
            "liquidoAcimaTeto": sum(1 for p in todos if p["liquido"] > TETO), "avisos": avisos,
-           "orgaos": orgaos, "orgaosGoverno": [o for o in orgaos_gov if o["acimaTeto"] > 0][:40],
-           "penduricalhos": penduricalhos, "evolucao": evolucao, "ranking": ranking, "falhas": falhas}
+           "orgaos": orgaos, "orgaosGoverno": orgaos_gov, "siglasGoverno": siglas_gov,
+           "penduricalhos": penduricalhos, "evolucao": evolucao, "comparacaoTJs": comp, "ranking": ranking, "falhas": falhas}
     SAIDA.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"  {len(todos):,} pessoas · {len(acima):,} com bruto acima do teto (R$ {out['valorAcimaTeto']:,.2f} acima no mês)")
     print(f"✅ {SAIDA.relative_to(ROOT)} ({SAIDA.stat().st_size // 1024} KB)")

@@ -242,6 +242,8 @@ def main():
     if dc:
         checa(len(dc.get("orgaos", [])) >= 4, f"Comparação de diárias: {len(dc.get('orgaos', []))} órgãos",
               f"**Comparação de diárias**: só {len(dc.get('orgaos', []))} órgãos", "aviso")
+    org = list(ROOT.glob("orgao/*/index.html"))
+    checa(len(org) >= 20, f"Páginas de órgãos: {len(org)}", f"**Páginas de órgãos**: só {len(org)}", "aviso")
     emp = list(ROOT.glob("empresa/*/index.html"))
     checa(len(emp) >= 500, f"Páginas de empresas: {len(emp)}", f"**Páginas de empresas**: só {len(emp)}", "aviso")
 

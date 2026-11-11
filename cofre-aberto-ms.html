@@ -468,6 +468,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="nav-group-label">Publicações</div>
       <a class="nav-link" href="boletim/"><span class="dot"></span> Boletim semanal</a>
       <a class="nav-link" href="empresa/"><span class="dot"></span> Empresas</a>
+      <a class="nav-link" href="orgao/"><span class="dot"></span> Órgãos</a>
       <div class="nav-group-label">Sobre o projeto</div>
       <button data-tab="sobre"><span class="dot"></span> Sobre</button>
       <a class="nav-link" href="metodologia.html"><span class="dot"></span> Metodologia e dados</a>
@@ -1024,6 +1025,13 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="bar-list largo" id="ss-orgaos-gov"></div>
     </div>
 
+    <div class="section" id="ss-comp-sec">
+      <div class="section-head"><h2 class="section-title">O TJMS entre os tribunais de justiça do país</h2></div>
+      <div class="section-note" id="ss-comp-nota"></div>
+      <div class="bar-list largo" id="ss-comp"></div>
+      <p class="section-note" style="margin-top:8px">Média por magistrado ativo no mês mais recente de cada tribunal no DadosJusBr (os meses podem variar). Azul: remuneração base; laranja: outras remunerações e benefícios.</p>
+    </div>
+
     <div class="section">
       <div class="section-head"><h2 class="section-title">Os penduricalhos, item por item</h2></div>
       <div class="ev-grupos" id="ss-pend-orgaos" style="display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 12px"></div>
@@ -1040,7 +1048,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 
     <div class="section">
       <div class="section-head"><h2 class="section-title">Ranking das maiores remunerações</h2></div>
-      <div class="section-note">Os 600 maiores brutos do mês somando todos os órgãos. Clique num nome para ver o contracheque.
+      <div class="section-note">Os 600 maiores brutos do mês somando todos os órgãos (Judiciário, Governo do Estado, TCE-MS e Câmara de Campo Grande). Clique num nome para ver o contracheque.
         No Governo do Estado, a folha não separa o corte do teto: quando os descontos são muito altos, parte do bruto foi cortada.</div>
       <div class="cx-filtros">
         <input class="search-box" id="busca-ss" type="text" placeholder="buscar por nome, cargo ou órgão…" />
@@ -1059,7 +1067,10 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         Fontes: Judiciário — <a href="https://dadosjusbr.org/" target="_blank" rel="noopener">DadosJusBr</a>, projeto da
         <a href="https://www.transparencia.org.br/" target="_blank" rel="noopener">Transparência Brasil</a>, com os contracheques enviados pelos tribunais
         ao CNJ e a classificação de rubricas do projeto; Governo do Estado —
-        <a href="https://www.transparencia.ms.gov.br/" target="_blank" rel="noopener">Portal da Transparência de MS</a> (folha de pagamento).
+        <a href="https://www.transparencia.ms.gov.br/" target="_blank" rel="noopener">Portal da Transparência de MS</a> (folha de pagamento);
+        TCE-MS — <a href="https://transparencia.tce.ms.gov.br/" target="_blank" rel="noopener">Portal da Transparência do TCE</a>.
+        Não entram: Ministério Público (o portal bloqueia acessos de fora do Brasil e o DadosJusBr não o coleta desde 2023),
+        Defensoria Pública (a consulta de remuneração exige login) e Prefeitura de Campo Grande (não publica a remuneração individual).
         Teto: <span id="ss-teto-fonte"></span>. Atualização automática diária; os tribunais publicam com um a dois meses de atraso.
       </p>
     </div>
@@ -4232,18 +4243,34 @@ function renderSupersalarios(d) {
   document.getElementById("ss-teto-fonte").textContent = `${formatBRL(T)} (${d.tetoFonte})`;
   document.getElementById("ss-avisos").textContent = (d.avisos || []).join(" ");
 
+  const PG_ORGAO = o => o.startsWith("TJMS") ? "/orgao/tjms/" : o.startsWith("TRT24") ? "/orgao/trt24/" : o.startsWith("TCE-MS") ? "/orgao/tce-ms/" :
+    o.startsWith("Câmara Municipal") ? "/orgao/camara-campo-grande/" : o.startsWith("Governo do Estado") ? "/orgao/" : null;
   document.querySelector("#tabela-ss-orgaos tbody").innerHTML = (d.orgaos || []).map(o => `
-    <tr><td style="white-space:normal;min-width:170px"><b>${escHTML(o.orgao)}</b><br><span class="rank-meta">${escHTML(o.mes)} · ${o.fonte.startsWith("DadosJusBr") ? "DadosJusBr" : "Portal da Transparência MS"}</span></td>
+    <tr><td style="white-space:normal;min-width:170px"><b>${PG_ORGAO(o.orgao) ? `<a href="${PG_ORGAO(o.orgao)}">${escHTML(o.orgao)}</a>` : escHTML(o.orgao)}</b><br><span class="rank-meta">${escHTML(o.mes)} · ${o.fonte.startsWith("DadosJusBr") ? "DadosJusBr" : "Portal da Transparência MS"}</span></td>
       <td class="num">${nf(o.pessoas)}</td><td class="num">${formatBRL(o.mediaBruta)}</td>
       <td class="num">${nf(o.liquidoAcimaTeto)} <span style="opacity:.6">(${o.pessoas ? (o.liquidoAcimaTeto / o.pessoas * 100).toFixed(1).replace(".", ",") : 0}%)</span></td>
       <td class="num">${nf(o.acimaTeto)}</td>
       <td class="num">${formatCompact(o.totalOutras)} <span style="opacity:.6">(${(o.totalBase + o.totalOutras) ? (o.totalOutras / (o.totalBase + o.totalOutras) * 100).toFixed(0) : 0}% do total)</span></td></tr>`).join("");
 
-  const og = d.orgaosGoverno || [], maxG = Math.max(1, ...og.map(o => o.acimaTeto));
+  const og = (d.orgaosGoverno || []).filter(o => o.acimaTeto > 0), maxG = Math.max(1, ...og.map(o => o.acimaTeto));
   document.getElementById("ss-orgaos-gov").innerHTML = og.slice(0, 15).map(o => `
-    <div class="bar-list-row"><div class="bar-list-label" title="${escHTML(o.orgao)}">${escHTML(o.orgao.replace("Governo MS — ", ""))} <span style="opacity:.6">· ${nf(o.liquidoAcimaTeto)} com líquido acima</span></div>
+    <div class="bar-list-row"><div class="bar-list-label" title="${escHTML(o.orgao)}"><a href="/orgao/governo-${(o.sigla || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}/">${escHTML(o.orgao.replace("Governo MS — ", ""))}</a> <span style="opacity:.6">· ${nf(o.liquidoAcimaTeto)} com líquido acima</span></div>
       <div class="bar-list-track"><div class="bar-list-fill amber" style="width:${(o.acimaTeto / maxG * 100).toFixed(1)}%"></div></div>
       <div class="bar-list-value">${nf(o.acimaTeto)} <span style="opacity:.6;font-weight:400">no bruto</span></div></div>`).join("") || `<p class="section-note">Ninguém acima do teto no Governo do Estado no mês.</p>`;
+
+  // comparação com os TJs do país
+  const comp = d.comparacaoTJs || [];
+  if (comp.length) {
+    const ms = comp.find(x => x.orgao === "TJMS"), mx = comp[0].mediaBruta || 1;
+    document.getElementById("ss-comp-nota").innerHTML = ms
+      ? `Com média de <b>${formatBRL(ms.mediaBruta)}</b> por magistrado (${ms.mes}), o TJMS tem a <b>${ms.posicao}ª maior remuneração bruta média</b> entre ${comp.length} tribunais de justiça estaduais com dados no DadosJusBr. ${formatBRL(ms.mediaOutras)} desse valor, em média, vêm de outras remunerações e benefícios.`
+      : "";
+    document.getElementById("ss-comp").innerHTML = comp.map(x => `
+      <div class="bar-list-row"${x.orgao === "TJMS" ? ' style="background:var(--surface-2);border-radius:6px;padding:2px 4px"' : ""}>
+        <div class="bar-list-label" title="${escHTML(x.nome)} · ${x.magistrados} magistrados · ${x.mes}">${x.posicao}. ${x.orgao === "TJMS" ? "<b>TJMS</b>" : escHTML(x.orgao)} <span style="opacity:.6">· ${escHTML(x.uf || "")} · ${x.mes}</span></div>
+        <div class="bar-list-track" style="display:flex"><div style="width:${(x.mediaBase / mx * 100).toFixed(1)}%;background:#3987e5;height:100%"></div><div style="width:${(x.mediaOutras / mx * 100).toFixed(1)}%;background:#d95926;height:100%"></div></div>
+        <div class="bar-list-value">${formatCompact(x.mediaBruta)}</div></div>`).join("");
+  } else document.getElementById("ss-comp-sec").hidden = true;
 
   // penduricalhos por item (Judiciário)
   const pend = d.penduricalhos || {}, chavesP = Object.keys(pend);
@@ -4282,6 +4309,12 @@ function renderSupersalarios(d) {
   };
   botoes("ss-ev-orgaos", Object.keys(ev), k => ev[k].orgao.split(" — ")[0], desenhaEv);
 
+  const FONTE_SS = {
+    governo: `Portal da Transparência do Estado de MS. <a href="https://www.transparencia.ms.gov.br/" target="_blank" rel="noopener">Consultar a folha ↗</a>`,
+    tce: `Portal da Transparência do TCE-MS (rendimentos; membros pela exportação da página "Membros"). <a href="https://transparencia.tce.ms.gov.br/pessoal/rendimentos" target="_blank" rel="noopener">Consultar ↗</a>`,
+    "camara-cg": `Portal da Transparência da Câmara Municipal de Campo Grande (folha de servidores).`,
+  };
+  ["tjms", "trt24", "trems"].forEach(o => { FONTE_SS[o] = `DadosJusBr / Transparência Brasil (contracheque enviado ao CNJ). <a href="https://dadosjusbr.org/orgao/${o}" target="_blank" rel="noopener">Ver o órgão no DadosJusBr ↗</a>`; });
   // ranking nominal
   // sem remuneração base e com valor alto só em eventuais: típico de retroativo, rescisão ou indenização paga de uma vez
   const eventual = p => p.base < 1 && p.outras > 0;
@@ -4315,15 +4348,15 @@ function renderSupersalarios(d) {
         <div class="detail-meta">${escHTML(p.cargo)} · ${escHTML(p.orgao)}${p.lotacao ? ` · ${escHTML(p.lotacao)}` : ""} · ${escHTML(p.situacao || "")} · contracheque de ${escHTML(p.mes)}</div></div></div>
       <div class="stat-grid" style="margin-bottom:14px">
         <div class="stat-card"><p class="stat-label">Remuneração base</p><p class="stat-value">${formatBRL(p.base)}</p></div>
-        <div class="stat-card alt"><p class="stat-label">${p.poder === "Judiciário" ? "Outras remunerações e benefícios" : "Remunerações eventuais"}</p><p class="stat-value">${formatBRL(p.outras)}</p></div>
+        <div class="stat-card alt"><p class="stat-label">${p.poder === "Judiciário" ? "Outras remunerações e benefícios" : p.orgaoId === "tce" ? (p.itens && p.itens.length ? "Outras rubricas" : "Outros pagamentos") : "Remunerações eventuais"}</p><p class="stat-value">${formatBRL(p.outras)}</p></div>
         <div class="stat-card"><p class="stat-label">Bruto</p><p class="stat-value">${formatBRL(p.bruto)}</p><p class="stat-note">${p.acimaTeto ? `${formatBRL(p.acimaTeto)} acima do teto` : "dentro do teto"}</p></div>
-        <div class="stat-card"><p class="stat-label">Descontos</p><p class="stat-value">${formatBRL(p.descontos)}</p></div>
+        <div class="stat-card"><p class="stat-label">Descontos</p><p class="stat-value">${formatBRL(p.descontos)}</p>${p.abateTeto != null ? `<p class="stat-note">${p.abateTeto ? `inclui ${formatBRL(p.abateTeto)} de abate-teto` : "sem abate-teto no mês"}</p>` : ""}</div>
         <div class="stat-card alt"><p class="stat-label">Líquido</p><p class="stat-value">${formatBRL(p.liquido)}</p><p class="stat-note">${p.liquido > T ? "acima do teto mesmo após os descontos" : ""}</p></div>
       </div>
       ${itens.length ? `<div class="subhead">Itens além da remuneração base</div><div style="overflow-x:auto"><table class="notes-table"><thead><tr><th>Item do contracheque</th><th class="num">Valor</th></tr></thead><tbody>${itens.map(i => `<tr><td>${escHTML(i.item)}</td><td class="num">${formatBRL(i.valor)}</td></tr>`).join("")}</tbody></table></div>` :
-        `<p class="section-note">${p.poder === "Judiciário" ? "" : "A folha do Estado publica só o total fixo e o total eventual, sem o detalhe de cada item. Valores muito altos num único mês costumam ser pagamentos retroativos."}</p>`}
+        `<p class="section-note">${p.orgaoId === "governo" ? "A folha do Estado publica só o total fixo e o total eventual, sem o detalhe de cada item. Valores muito altos num único mês costumam ser pagamentos retroativos." : p.orgaoId === "tce" ? "Para os servidores, o TCE-MS publica a remuneração e os outros pagamentos (indenizações, auxílios) em totais, sem cada item." : ""}</p>`}
       ${eventual(p) ? `<p class="aviso" style="margin-top:8px;font-size:.8rem">⚠️ Não houve remuneração base neste mês: todo o valor veio de pagamentos eventuais. Isso costuma ser um pagamento único — atrasados (retroativos), rescisão, férias ou licença-prêmio indenizadas — e não um salário mensal.</p>` : ""}
-      <p class="section-note" style="margin-top:8px">Fonte: ${p.poder === "Judiciário" ? `DadosJusBr / Transparência Brasil (contracheque enviado ao CNJ). <a href="https://dadosjusbr.org/orgao/${p.orgaoId}" target="_blank" rel="noopener">Ver o órgão no DadosJusBr ↗</a>` : `Portal da Transparência do Estado de MS. <a href="https://www.transparencia.ms.gov.br/" target="_blank" rel="noopener">Consultar a folha ↗</a>`}</p>`;
+      <p class="section-note" style="margin-top:8px">Fonte: ${FONTE_SS[p.orgaoId] || FONTE_SS.governo}</p>`;
     painel.classList.add("active");
     painel.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };

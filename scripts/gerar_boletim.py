@@ -57,7 +57,8 @@ def totais_atuais():
     return {"governoPago": (gov.get("totais") or {}).get("pago") if gov.get("ano") == ANO else None,
             "prefeituraPago": pref.get("totalDespesas") if pref.get("ano") == ANO else None,
             "emendasMS": em.get("totalMS") if em.get("ano") == ANO else None,
-            "contratosCompras": (ct.get("resumo") or {}).get("valorCompras") if ct.get("ano") == ANO else None}
+            "contratosCompras": (ct.get("resumo") or {}).get("valorCompras") if ct.get("ano") == ANO else None,
+            "supersalariosLiquido": carregar("supersalarios.json").get("liquidoAcimaTeto")}
 
 
 def frase_periodo(ini, fim):
@@ -163,6 +164,17 @@ def main():
         linhas_zap.append(f"📑 {len(contratos)} contrato(s) novo(s) publicado(s) pela Prefeitura de CG; o maior: {c['fornecedor']} ({compacto(c['valor'])}).")
     if alertas:
         linhas_zap.append(f"⚠️ {len(alertas)} ponto(s) de atenção novo(s) nos contratos da Prefeitura.")
+    # supersalários: retrato atual e variação contra a semana anterior
+    ss = carregar("supersalarios.json")
+    ss_ok = ss.get("ano") == ANO and ss.get("liquidoAcimaTeto") is not None
+    sem_ant = sorted(k for k in retratos if k < sem)
+    ss_ant = (retratos.get(sem_ant[-1]) or {}).get("supersalariosLiquido") if sem_ant else None
+    if ss_ok:
+        var = ""
+        if ss_ant is not None and ss_ant != ss["liquidoAcimaTeto"]:
+            dif = ss["liquidoAcimaTeto"] - ss_ant
+            var = f" ({'+' if dif > 0 else ''}{dif} em relação à semana passada)"
+        linhas_zap.append(f"💸 {milhar(ss['liquidoAcimaTeto'])} pessoas receberam líquido acima do teto (R$ 46,4 mil) no último mês publicado{var}.")
     if len(linhas_zap) == 2:
         linhas_zap.append("Semana sem novidades nas fontes oficiais até agora.")
     linhas_zap += ["", f"Veja tudo, com as fontes oficiais: {SITE}{url}"]
@@ -200,6 +212,23 @@ somando <strong>{brl(total_novas)}</strong>. A data de cada nota é a de emissã
     if alertas:
         blocos.append("<h2>Pontos de atenção novos</h2><p class='aviso'>Critérios objetivos para facilitar a apuração. <strong>Nenhum deles indica irregularidade.</strong></p>" + "".join(
             f"<div class='dest'><b>{e(a['titulo'])}</b><small>{e(a['rotulo'])} · {e(a['descricao'][:240])}</small></div>" for a in alertas[:15]))
+    if ss_ok:
+        top = sorted(ss.get("ranking", []), key=lambda p: -p.get("liquido", 0))[:5]
+        orgs = "".join(f"<tr><td class='f'>{e(o['orgao'])}<small>{e(o['mes'])}</small></td><td class='num'>{milhar(o.get('liquidoAcimaTeto', 0))}</td>"
+                       f"<td class='num'>{milhar(o['pessoas'])}</td></tr>" for o in ss.get("orgaos", []) if o.get("liquidoAcimaTeto"))
+        lin = "".join(f"<tr><td class='f'>{e(p['nome'])}<small>{e(p['cargo'])} · {e(p['orgao'])} · {e(p['mes'])}</small></td>"
+                      f"<td class='num'>{brl(p['liquido'])}</td></tr>" for p in top)
+        var_txt = ""
+        if ss_ant is not None and ss_ant != ss["liquidoAcimaTeto"]:
+            var_txt = f" Na semana passada eram {milhar(ss_ant)}."
+        blocos.append(f"""<h2>Supersalários</h2>
+<p><strong>{milhar(ss['liquidoAcimaTeto'])}</strong> pessoas receberam no último mês publicado um líquido acima do teto constitucional
+({brl(ss['teto'])}), mesmo depois de imposto, previdência e corte do teto.{var_txt} Acima do teto não é sinônimo de irregular:
+verbas indenizatórias ficam fora do teto por lei.</p>
+<div class="tabela-wrap"><table><thead><tr><th>Órgão</th><th class="num">Líquido acima do teto</th><th class="num">Pessoas</th></tr></thead><tbody>{orgs}</tbody></table></div>
+<h2 style="font-size:1rem">Os maiores líquidos</h2>
+<div class="tabela-wrap"><table><thead><tr><th>Nome</th><th class="num">Líquido</th></tr></thead><tbody>{lin}</tbody></table></div>
+<p style="margin-top:10px"><a href="/cofre-aberto-ms.html#aba=supersalarios">Ver o ranking completo e os penduricalhos →</a></p>""")
     if not blocos:
         blocos.append("<p class='aviso'>Nenhuma novidade nas fontes oficiais nesta semana até agora. O boletim é atualizado todos os dias.</p>")
 
