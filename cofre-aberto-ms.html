@@ -704,7 +704,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="section-head"><h2 class="section-title">Servidores da Assembleia</h2></div>
       <div class="section-note" id="alems-nota">⏳ Carregando os servidores da ALEMS…</div>
       <div class="stat-grid" id="alems-stats" style="margin:12px 0"></div>
-      <div class="subhead">Assessores de gabinete parlamentar por nível</div>
+      <div class="subhead">Assessores de gabinete parlamentar por nível — vencimento-base da tabela oficial</div>
+      <p class="section-note" id="alems-nota-base" style="margin:0 0 10px"></p>
       <div class="bar-list largo" id="alems-niveis"></div>
       <div class="subhead">Buscar servidor</div>
       <input class="search-box" id="busca-alems" type="text" placeholder="buscar por nome, cargo, símbolo ou matrícula…" />
@@ -4210,14 +4211,20 @@ function renderServidoresAlems(d) {
   document.getElementById("alems-stats").innerHTML = [
     [nf(d.total), "servidores na Assembleia"], [nf(d.comissionados), "em cargos de comissão"],
     [nf(d.assessoresGabinete), "assessores de gabinete parlamentar"], [String(d.mediaPorGabinete).replace(".", ","), "assessores por deputado, em média"],
-    [formatCompact(d.vencimentosComissionadosMes), "por mês só em vencimento-base dos comissionados"],
+    [formatCompact(d.vencimentosComissionadosMes), "por mês só em vencimento-base dos comissionados (sem gratificações)"],
   ].map(([v, l]) => `<div class="stat-card"><p class="stat-label">${l}</p><p class="stat-value">${v}</p></div>`).join("");
   const nv = d.niveisGabinete || [], maxN = Math.max(1, ...nv.map(n => n.quantidade));
+  const abaixo = nv.filter(n => n.vencimento && n.vencimento < 1621);
+  document.getElementById("alems-nota-base").innerHTML =
+    `Os valores são <b>só o vencimento-base</b> de cada nível, como publicado na tabela de salários da ALEMS. O que o assessor recebe de fato é maior: ` +
+    `a própria tabela diz que se somam os direitos e vantagens do Estatuto dos Servidores do Legislativo (Lei nº 6.279/2024), e a ALEMS não publica ` +
+    `quanto cada servidor recebe.` + (abaixo.length ? ` Por isso ${abaixo.length} níveis têm base menor que o salário mínimo — pela Constituição (Súmula Vinculante 16 do STF), ` +
+    `o que não pode ficar abaixo do mínimo é a remuneração total, não o vencimento-base.` : "") + ` A barra mostra quantos assessores há em cada nível.`;
   document.getElementById("alems-niveis").innerHTML = nv.map(n => `
     <div class="bar-list-row">
-      <div class="bar-list-label" title="${escHTML(n.cargo)}">${escHTML(n.cargo.replace(/^ASSESSOR DE GABINETE PARLAMENTAR /, "Nível "))} <span style="opacity:.6">· ${n.vencimento ? formatBRL(n.vencimento) : "—"}</span></div>
+      <div class="bar-list-label" title="${escHTML(n.cargo)}">${escHTML(n.cargo.replace(/^ASSESSOR DE GABINETE PARLAMENTAR /, "Nível "))} <span style="opacity:.6">· base ${n.vencimento ? formatBRL(n.vencimento) : "—"}</span></div>
       <div class="bar-list-track"><div class="bar-list-fill amber" style="width:${(n.quantidade / maxN * 100).toFixed(1)}%"></div></div>
-      <div class="bar-list-value">${n.quantidade}</div>
+      <div class="bar-list-value">${n.quantidade} <span style="opacity:.6;font-weight:400">assessores</span></div>
     </div>`).join("");
   const serv = d.servidores || [];
   const b = document.getElementById("busca-alems");
