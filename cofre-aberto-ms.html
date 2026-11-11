@@ -710,6 +710,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         <h2 class="section-title">Buscar notas fiscais</h2>
       </div>
       <div class="section-note">Busque diretamente por fornecedor, órgão ou categoria de despesa entre todas as notas pagas.</div>
+      <p class="section-note" id="pref-carregando" hidden>⏳ Carregando todas as despesas do ano…</p>
       <input class="search-box" id="busca-pref-notas" type="text" placeholder="buscar por fornecedor, órgão ou categoria…" />
       <div class="card card-x-scroll">
         <table class="notes-table" id="tabela-pref-notas">
@@ -1477,6 +1478,25 @@ async function buscarSenadoresAoVivo(siglaUf) {
 }
 
 
+// Versões leves para o painel (dados/painel/, geradas por scripts/gerar_painel_leve.py):
+// se a leve não existir, usa o arquivo completo de dados/.
+async function carregarLeve(nome) {
+  return (await carregarJSON(`dados/painel/${nome}`)) || carregarJSON(`dados/${nome}`);
+}
+// Notas fiscais baixadas só quando a pessoa abre um parlamentar (um arquivo por grupo).
+const _notasPainel = {};
+function garantirNotas(arquivo, obj) {
+  if (!obj || (obj.despesas && obj.despesas.length)) return Promise.resolve(obj);
+  if (!_notasPainel[arquivo]) {
+    _notasPainel[arquivo] = carregarJSON(`dados/painel/${arquivo}`).then(m => m || {}).catch(() => ({}));
+  }
+  return _notasPainel[arquivo].then(m => { if (m[obj.nome]) obj.despesas = m[obj.nome]; return obj; });
+}
+function mostrarCarregandoNotas(panel, nome) {
+  panel.innerHTML = `<p class="section-note">Carregando notas fiscais de ${escHTML(nome)}…</p>`;
+  panel.classList.add("active");
+}
+
 async function carregarJSON(url) {
   try {
     const r = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(8000) });
@@ -1585,15 +1605,16 @@ function renderDeputados(data) {
           renderDetalheDeputado(d, deputados, data.anoReferencia, panel);
           return;
         }
-        // Veio do caminho rápido (só o total agregado) — busca as notas individuais sob demanda.
-        panel.innerHTML = `<p class="section-note">Carregando notas fiscais de ${d.nome}…</p>`;
-        panel.classList.add("active");
+        // Veio da versão leve (só o total) — notas do arquivo do grupo; API ao vivo só como reserva.
+        mostrarCarregandoNotas(panel, d.nome);
         panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        buscarDespesasDeputadoAoVivo(d.id, data.anoReferencia).then(despesas => {
-          d.despesas = despesas;
-          d.totalNotasFiscais = despesas.length;
-          renderDetalheDeputado(d, deputados, data.anoReferencia, panel);
-        });
+        garantirNotas("notas_federais_ms.json", d)
+          .then(x => (x.despesas && x.despesas.length) ? x.despesas : buscarDespesasDeputadoAoVivo(d.id, data.anoReferencia))
+          .then(despesas => {
+            d.despesas = despesas;
+            d.totalNotasFiscais = despesas.length || d.totalNotasFiscais;
+            renderDetalheDeputado(d, deputados, data.anoReferencia, panel);
+          });
       });
     });
   }
@@ -2081,7 +2102,9 @@ function renderCamaraMunicipal(data) {
       row.addEventListener("click", () => {
         const id = parseInt(row.dataset.id, 10);
         const v = vereadores.find(x => x.id === id);
-        renderDetalheVereador(v, panel);
+        if (!v) return;
+        if (!(v.despesas && v.despesas.length)) mostrarCarregandoNotas(panel, v.nome);
+        garantirNotas("notas_vereadores.json", v).then(() => renderDetalheVereador(v, panel));
       });
     });
   }
@@ -2356,7 +2379,9 @@ function renderDeputadosEstaduais(data) {
       row.addEventListener("click", () => {
         // pela posição na lista filtrada: 5 deputados não têm "id" no JSON da ALEMS
         const d = filtrados[parseInt(row.dataset.idx, 10)];
-        if (d) renderDetalheDepEstadual(d, panel);
+        if (!d) return;
+        if (!(d.despesas && d.despesas.length)) mostrarCarregandoNotas(panel, d.nome);
+        garantirNotas("notas_estaduais.json", d).then(() => renderDetalheDepEstadual(d, panel));
       });
     });
   }
@@ -2869,7 +2894,32 @@ function renderDetalheCamaraCidade(d, panel) {
 function renderPrefeitura(data) {
   const total = data.totalDespesas || 0;
   const por = data.porSecretaria || {};
-  const despesas = data.despesas || [];
+  // Versão leve (dados/painel/prefeitura.json): ranking de fornecedores pronto e só as
+  // despesas mais recentes; o arquivo completo vem na 1ª busca/paginação/clique.
+  let despesas = data.despesas || data.despesasRecentes || [];
+  let completo = !!data.despesas;
+  let _carregandoCompleto = null;
+  const agregarFornecedores = lista => {
+    const m = {};
+    for (const d of lista) {
+      const key = d.fornecedor || "—";
+      if (!m[key]) m[key] = { fornecedor: key, cnpj: d.cnpj, total: 0, notas: 0 };
+      m[key].total += d.valor || 0;
+      m[key].notas += 1;
+    }
+    return Object.values(m).sort((a, b) => b.total - a.total);
+  };
+  const garantirCompleto = () => {
+    if (completo) return Promise.resolve();
+    if (!_carregandoCompleto) {
+      document.getElementById("pref-carregando").hidden = false;
+      _carregandoCompleto = carregarJSON("dados/prefeitura.json").then(full => {
+        if (full && full.despesas) { despesas = full.despesas; completo = true; fornecedores = agregarFornecedores(despesas); }
+        document.getElementById("pref-carregando").hidden = true;
+      });
+    }
+    return _carregandoCompleto;
+  };
   const max = Math.max(...Object.values(por), 1);
   document.getElementById("pref-total").textContent = formatCompact(total);
   document.getElementById("pref-ano").textContent = data.ano || ANO_REFERENCIA;
@@ -2892,16 +2942,9 @@ function renderPrefeitura(data) {
   document.getElementById("pref-notas").textContent = (data.totalNotasFiscais ?? despesas.length).toLocaleString("pt-BR");
   if (!despesas.length) return;
 
-  // ---- Ranking de fornecedores (agregado a partir das notas individuais) ----
-  const porFornecedor = {};
-  for (const d of despesas) {
-    const key = d.fornecedor || "—";
-    if (!porFornecedor[key]) porFornecedor[key] = { fornecedor: key, cnpj: d.cnpj, total: 0, notas: 0 };
-    porFornecedor[key].total += d.valor || 0;
-    porFornecedor[key].notas += 1;
-  }
-  const fornecedores = Object.values(porFornecedor).sort((a, b) => b.total - a.total);
-  document.getElementById("pref-fornecedores").textContent = fornecedores.length.toLocaleString("pt-BR");
+  // ---- Ranking de fornecedores (pronto na versão leve; senão agregado das notas) ----
+  let fornecedores = data.fornecedores || agregarFornecedores(despesas);
+  document.getElementById("pref-fornecedores").textContent = (data.totalFornecedores || fornecedores.length).toLocaleString("pt-BR");
 
   const maxFornecedor = fornecedores[0]?.total || 1;
   const tbodyFor = document.querySelector("#ranking-pref-fornecedores tbody");
@@ -2926,8 +2969,13 @@ function renderPrefeitura(data) {
     `).join("") || `<tr><td colspan="5" style="padding:16px;color:var(--ink-soft)">Nenhum fornecedor encontrado.</td></tr>`;
 
     tbodyFor.querySelectorAll("tr.clickable").forEach(row => {
-      row.addEventListener("click", () => {
+      row.addEventListener("click", async () => {
         const nome = row.dataset.fornecedor;
+        if (!completo) {
+          painelFor.innerHTML = `<p class="section-note">Carregando as notas de ${escHTML(nome)}…</p>`;
+          painelFor.classList.add("active");
+          await garantirCompleto();
+        }
         const notasFornecedor = despesas.filter(d => d.fornecedor === nome);
         const totalFornecedor = notasFornecedor.reduce((a, d) => a + (d.valor || 0), 0);
         painelFor.innerHTML = `
@@ -2961,7 +3009,9 @@ function renderPrefeitura(data) {
   renderRankingFornecedores();
   document.getElementById("busca-pref-fornecedor").addEventListener("input", e => {
     painelFor.classList.remove("active");
-    renderRankingFornecedores(e.target.value);
+    const v = e.target.value;
+    renderRankingFornecedores(v);
+    if (!completo && v) garantirCompleto().then(() => renderRankingFornecedores(document.getElementById("busca-pref-fornecedor").value));
   });
 
   // ---- Busca livre entre todas as notas fiscais (paginada) ----
@@ -2988,21 +3038,27 @@ function renderPrefeitura(data) {
       </tr>
     `).join("") || `<tr><td colspan="6" style="padding:16px;color:var(--ink-soft)">Nenhuma nota encontrada.</td></tr>`;
     btnAnteriorNotas.disabled = paginaNotas <= 1;
-    btnProximoNotas.disabled = paginaNotas >= totalPaginas;
+    btnProximoNotas.disabled = completo && paginaNotas >= totalPaginas;
   }
   renderTabelaNotas();
-  document.getElementById("busca-pref-notas").addEventListener("input", e => {
-    const f = e.target.value.toLowerCase();
+  const filtrarNotas = () => {
+    const f = document.getElementById("busca-pref-notas").value.toLowerCase();
     notasFiltradas = despesas.filter(d =>
       (d.fornecedor || "").toLowerCase().includes(f) ||
       (d.orgao || "").toLowerCase().includes(f) ||
       (d.categoria || "").toLowerCase().includes(f)
     );
-    paginaNotas = 1;
-    renderTabelaNotas();
+  };
+  document.getElementById("busca-pref-notas").addEventListener("input", () => {
+    filtrarNotas(); paginaNotas = 1; renderTabelaNotas();
+    if (!completo) garantirCompleto().then(() => { filtrarNotas(); renderTabelaNotas(); });
   });
   btnAnteriorNotas.addEventListener("click", () => { if (paginaNotas > 1) { paginaNotas--; renderTabelaNotas(); } });
-  btnProximoNotas.addEventListener("click", () => { paginaNotas++; renderTabelaNotas(); });
+  btnProximoNotas.addEventListener("click", async () => {
+    // além das despesas recentes da versão leve: baixa o arquivo completo
+    if (!completo && paginaNotas * PAGE_SIZE_NOTAS >= notasFiltradas.length) { await garantirCompleto(); filtrarNotas(); }
+    paginaNotas++; renderTabelaNotas();
+  });
 }
 
 // ===================== RENDER DEPUTADOS BRASIL =====================
@@ -4071,16 +4127,16 @@ async function init() {
       document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
       if (btn.dataset.tab === "deputados-brasil" && !window._depBrLoaded) { window._depBrLoaded = true; carregarDeputadosBrasil(); }
       if (btn.dataset.tab === "senado-brasil" && !window._senBrLoaded) { window._senBrLoaded = true; carregarSenadoBrasil(); }
-      if (btn.dataset.tab === "deputados-estaduais" && !window._notasEstLoaded) { window._notasEstLoaded = true; carregarJSON("dados/ceap_notas_estaduais.json").then(d => { if (d) CEAP_NOTAS_ESTADUAIS = d; }); }
+      // (o antigo ceap_notas_estaduais.json, carga de jun/2026, não é mais baixado: as notas atuais vêm sob demanda)
       if (btn.dataset.tab === "camara" && !window._camaraLoaded) {
         window._camaraLoaded = true;
-        carregarJSON("dados/camara_municipal.json").then(d => {
+        carregarLeve("camara_municipal.json").then(d => {
           if (d) { DADOS_CAMARA_MUNICIPAL = d; anoDosDados(d); renderCamaraMunicipal(d); }
         });
       }
       if (btn.dataset.tab === "prefeitura" && !window._prefeituraLoaded) {
         window._prefeituraLoaded = true;
-        carregarJSON("dados/prefeitura.json").then(d => {
+        carregarLeve("prefeitura.json").then(d => {
           if (d) renderPrefeitura(d);
         });
       }
@@ -4120,7 +4176,7 @@ async function init() {
   setTimeout(abrirDoHash, 300);
 
   // Carregar JSONs em paralelo (não bloqueante)
-  carregarJSON("dados/deputados_estaduais_ms.json").then(d => {
+  carregarLeve("deputados_estaduais_ms.json").then(d => {
     if (d) { DADOS_DEPUTADOS_ESTADUAIS = d; anoDosDados(d); renderDeputadosEstaduais(d); }
   });
 
@@ -4135,7 +4191,7 @@ async function init() {
   // à API da Câmara logo na abertura do site). As notas fiscais individuais de cada um
   // são buscadas sob demanda ao clicar (ver bindClicks em renderDeputados).
   async function carregarDeputadosMsRapido(aceitarSemCota = false) {
-    const local = await carregarJSON("dados/deputados_federais_ms.json");
+    const local = await carregarLeve("deputados_federais_ms.json");
     if (!local?.deputados?.length) return null;
     if (!aceitarSemCota && !local.deputados.some(d => d.cotaGastaAno != null)) return null;
     return local.deputados.map(d => ({

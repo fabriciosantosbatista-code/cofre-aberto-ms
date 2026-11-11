@@ -236,6 +236,15 @@ def main():
     csvs = list((DADOS / "csv").glob("*.csv"))
     checa(len(csvs) >= 15, f"Planilhas CSV: {len(csvs)}", f"**Planilhas CSV**: só {len(csvs)} (esperado 15)", "aviso")
 
+    # ---------- versões leves do painel (gerar_painel_leve.py) ----------
+    for nome in ("camara_municipal.json", "deputados_estaduais_ms.json", "deputados_federais_ms.json", "prefeitura.json"):
+        leve, completo = DADOS / "painel" / nome, DADOS / nome
+        if not leve.exists():
+            avisos.append(f"**Painel leve**: falta dados/painel/{nome} (o painel usa o arquivo completo, mais lento)")
+        elif completo.exists() and leve.stat().st_mtime + 3 * 86400 < completo.stat().st_mtime:
+            avisos.append(f"**Painel leve**: dados/painel/{nome} está mais antigo que o arquivo completo")
+    ok.append("Painel: versões leves presentes")
+
     # ---------- páginas próprias dos parlamentares ----------
     paginas = list(ROOT.glob("vereador/*/index.html")) + list(ROOT.glob("deputado-estadual/*/index.html")) + \
               list(ROOT.glob("deputado-federal/*/index.html")) + list(ROOT.glob("senador/*/index.html"))

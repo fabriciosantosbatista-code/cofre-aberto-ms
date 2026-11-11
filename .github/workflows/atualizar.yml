@@ -222,6 +222,9 @@ jobs:
       - name: Gerar uma página por parlamentar (+ sitemap)
         run: python3 scripts/gerar_paginas_parlamentares.py || echo "⚠️ gerar_paginas_parlamentares.py falhou — páginas anteriores mantidas"
 
+      - name: Versões leves dos dados para o painel (carregamento rápido no celular)
+        run: python3 scripts/gerar_painel_leve.py || echo "⚠️ gerar_painel_leve.py falhou — o painel usa os arquivos completos"
+
       - name: Atualizar números da capa e das páginas de SEO
         run: python3 scripts/atualizar_paginas.py || echo "⚠️ atualizar_paginas.py falhou — páginas estáticas mantidas"
 

@@ -72,6 +72,14 @@ O TJMS e a Câmara de Sonora recusam conexões de fora do Brasil
 [`docs/coleta-brasil.md`](docs/coleta-brasil.md). Sem ela, o TJMS vem do
 DadosJusBr e Sonora fica com os últimos dados obtidos (com aviso no painel).
 
+### Painel leve (`scripts/gerar_painel_leve.py`)
+
+O painel lê versões enxutas em `dados/painel/` (sem notas fiscais, fotos como
+arquivo); as notas de cada grupo são baixadas só quando alguém abre um
+parlamentar, e o arquivo completo da Prefeitura só na busca/paginação. Abrir o
+painel caiu de ~3,8 MB para ~0,45 MB; a aba Prefeitura, de 4,3 MB para 0,2 MB.
+Os arquivos completos em `dados/` continuam sendo a fonte de verdade.
+
 ### Monitoramento (alerta quando algo para)
 
 Os coletores mantêm o dado anterior quando uma fonte falha — então o Actions
