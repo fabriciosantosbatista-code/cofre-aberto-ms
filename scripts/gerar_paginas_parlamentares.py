@@ -406,7 +406,7 @@ def bloco_emendas(p):
         return f"<tr><td class='f'>{nome}<small>{e(f.get('municipio') or '')}</small></td><td class='num'>{brl(f['valor'])}</td></tr>"
     tipos = " · ".join(f"{e(t['tipo'])}: <strong>{brl(t['valor'])}</strong>" for t in a.get("tipos", []))
     fora = f" Mais {brl(a['totalBR'] - a['totalMS'])} foram para fora de MS." if a["totalBR"] - a["totalMS"] > 1 else ""
-    return (f"<h2>Para onde foram as emendas</h2>"
+    return (f"<h2 id='emendas'>Para onde foram as emendas</h2>"
             f"<p>Em {ANO}, emendas de <strong>{e(p['nome'])}</strong> pagaram <strong>{brl(a['totalMS'])}</strong> a "
             f"{len(a['municipios'])} município(s) de MS.{fora} {tipos}.</p>"
             f"<div class='bars'>{barras}</div>"
@@ -449,6 +449,9 @@ def pagina(p, irmaos):
     for k, val in (p.get("extra") or {}).items():
         if val:
             itens.append((val, k))
+    em_p = emendas_de(p) if p["grupo"] in ("federal", "senador") and p.get("ms") else None
+    if em_p:
+        itens.append((compacto(em_p[0]["totalMS"]), f"em emendas pagas em MS ({len(em_p[0]['municipios'])} municípios)"))
     resumo = "".join(f'<div class="resumo-item"><div class="resumo-val">{e(v)}</div><div class="resumo-label">{e(r)}</div></div>' for v, r in itens)
 
     # categorias
@@ -521,9 +524,9 @@ def pagina(p, irmaos):
 </div>
 {grafico(ev, ANO)}
 {bloco_cat}
+{bloco_emendas(p)}
 {bloco_notas}
 {bloco_cx}
-{bloco_emendas(p)}
 {bloco_irmaos}
 <h2>Como citar</h2>
 <div class="citar">COFRE ABERTO MS. <i>{e(p['nome'])} ({e(cargo)}): gastos de {e(g['cota'])} em {ANO}</i>. Fonte dos dados: {e(FONTE_OFICIAL[p['grupo']])}. Coletados em {data_br(fonte_data)}. Disponível em: {e(url_abs)}. Acesso em: {data_br(HOJE.isoformat())}.</div>

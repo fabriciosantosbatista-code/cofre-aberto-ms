@@ -1331,39 +1331,47 @@ function colorForName(nome) {
 // sizeClass: "avatar" (pequeno, ranking) ou "avatar-lg" (grande, painel de detalhe)
 // Monta o bloco "Emendas Parlamentares" para deputados federais e senadores de MS.
 // Retorna "" se não houver dados (parlamentar sem emendas coletadas ou fonte indisponível).
+let DADOS_EMENDAS_MUN = null;
+function _normNome(t) { return String(t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().replace(/\s+/g, " ").trim(); }
 function renderEmendasHTML(nome) {
   const p = buscarEmendasParlamentar(nome);
-  if (!p || !p.emendas?.length) return "";
+  const a = DADOS_EMENDAS_MUN && (DADOS_EMENDAS_MUN.autores || []).find(x => x.atual && _normNome(x.autor) === _normNome(nome));
+  if (!a && (!p || !p.emendas?.length)) return "";
 
-  const porTipo = p.porTipo || {};
-  const linhasEmendas = p.emendas.map(e => `
-    <tr>
-      <td class="num">${formatBRL(e.valorPago)}</td>
-      <td>${e.municipio || "—"}</td>
-      <td>${e.funcao || "—"}</td>
-      <td style="font-size:.78rem">${e.tipo}</td>
-    </tr>`).join("");
-
-  return `
-    <div class="subhead">Emendas Parlamentares ${DADOS_EMENDAS_MS.ano || ANO_REFERENCIA}</div>
-    <div class="stat-grid" style="margin-bottom:16px">
-      <div class="stat-card alt">
-        <p class="stat-label">Total pago</p>
-        <p class="stat-value">${formatBRL(p.totalPago)}</p>
-        <p class="stat-note">${p.totalEmendas} emenda(s) · empenhado ${formatCompact(p.totalEmpenhado)}</p>
-      </div>
-      ${Object.entries(porTipo).map(([tipo, valor]) => `
-        <div class="stat-card">
-          <p class="stat-label">${tipo}</p>
-          <p class="stat-value">${formatBRL(valor)}</p>
-        </div>`).join("")}
-    </div>
-    <table class="notes-table" style="margin-bottom:16px">
+  const tabelaAntiga = p && p.emendas?.length ? `
+    <table class="notes-table" style="margin-bottom:8px">
       <thead><tr><th class="num">Valor pago</th><th>Município</th><th>Área</th><th>Tipo</th></tr></thead>
-      <tbody>${linhasEmendas}</tbody>
-    </table>
-    <p class="section-note" style="opacity:.6">Fonte: ${DADOS_EMENDAS_MS.fonte || "Portal da Transparência"}</p>
-  `;
+      <tbody>${p.emendas.map(e => `<tr><td class="num">${formatBRL(e.valorPago)}</td><td>${escHTML(e.municipio || "—")}</td>
+        <td>${escHTML(e.funcao || "—")}</td><td style="font-size:.78rem">${escHTML(e.tipo)}</td></tr>`).join("")}</tbody>
+    </table>` : "";
+  if (!a) {
+    return `<div class="subhead">Emendas Parlamentares ${DADOS_EMENDAS_MS.ano || ANO_REFERENCIA}</div>
+      <div class="stat-grid" style="margin-bottom:16px"><div class="stat-card alt"><p class="stat-label">Total pago</p>
+      <p class="stat-value">${formatBRL(p.totalPago)}</p><p class="stat-note">${p.totalEmendas} emenda(s)</p></div></div>
+      ${tabelaAntiga}<p class="section-note" style="opacity:.6">Fonte: ${escHTML(DADOS_EMENDAS_MS.fonte || "Portal da Transparência")}</p>`;
+  }
+  const mun = a.municipios || [], maxM = mun[0]?.valor || 1;
+  const ano = DADOS_EMENDAS_MUN.ano || ANO_REFERENCIA;
+  return `
+    <div class="subhead">Para onde foram as emendas — ${ano}</div>
+    <div class="stat-grid" style="margin-bottom:14px">
+      <div class="stat-card alt"><p class="stat-label">Pago em MS</p><p class="stat-value">${formatBRL(a.totalMS)}</p>
+        <p class="stat-note">${mun.length} município(s)${a.totalBR - a.totalMS > 1 ? ` · mais ${formatCompact(a.totalBR - a.totalMS)} fora de MS` : ""}</p></div>
+      ${(a.tipos || []).map(t => `<div class="stat-card"><p class="stat-label">${escHTML(t.tipo)}</p><p class="stat-value">${formatBRL(t.valor)}</p></div>`).join("")}
+    </div>
+    <div class="bar-list largo" style="margin-bottom:14px">${mun.slice(0, 10).map(m => `
+      <div class="bar-list-row"><div class="bar-list-label">${escHTML(m.municipio)}</div>
+        <div class="bar-list-track"><div class="bar-list-fill positive" style="width:${(m.valor / maxM * 100).toFixed(1)}%"></div></div>
+        <div class="bar-list-value">${formatCompact(m.valor)}</div></div>`).join("")}</div>
+    ${mun.length > 10 ? `<p class="section-note">E mais ${mun.length - 10} municípios com valores menores.</p>` : ""}
+    <div style="overflow-x:auto"><table class="notes-table" style="margin-bottom:10px">
+      <thead><tr><th>Quem recebeu</th><th>Município</th><th class="num">Valor</th></tr></thead>
+      <tbody>${(a.favorecidos || []).slice(0, 8).map(f => `<tr><td>${escHTML(f.nome)}<br><span class="rank-meta">${linksCNPJ(f.doc)}</span></td>
+        <td style="font-size:.78rem">${escHTML(f.municipio || "")}</td><td class="num">${formatBRL(f.valor)}</td></tr>`).join("")}</tbody>
+    </table></div>
+    ${tabelaAntiga ? `<details style="margin-bottom:10px"><summary style="cursor:pointer;font-size:.8rem;color:var(--ink-soft)">Ver por número de emenda</summary>${tabelaAntiga}</details>` : ""}
+    <p class="section-note" style="opacity:.7">Fonte: Portal da Transparência do Governo Federal (CGU), pagamentos de emendas por favorecido, no mês do pagamento.
+      <a href="#aba=emendas">Ver todas as emendas em MS →</a></p>`;
 }
 
 function avatarHTML(nome, fotoUrl, sizeClass = "avatar") {
@@ -4885,6 +4893,7 @@ async function init() {
   });
 
   carregarJSON("dados/emendas_ms.json").then(d => { if (d) DADOS_EMENDAS_MS = d; });
+  carregarLeve("emendas_municipios.json").then(d => { if (d) DADOS_EMENDAS_MUN = d; });
 
   // Notas fiscais estaduais: carregar por demanda (só quando clicar no deputado)
 
