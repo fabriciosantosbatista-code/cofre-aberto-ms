@@ -228,6 +228,13 @@ def main():
     alc = carregar("alertas_contratos.json")
     if alc:
         recente("Pontos de atenção (contratos CG)", alc.get("ultimaAtualizacao"), 2, nivel="aviso", o_que="última geração")
+    ss = carregar("supersalarios.json")
+    if ss:
+        recente("Supersalários", ss.get("ultimaAtualizacao"), 3, nivel="aviso", o_que="última coleta")
+        checa(ss.get("totalPessoas", 0) >= 50000, f"Supersalários: {ss.get('totalPessoas')} contracheques",
+              f"**Supersalários**: só {ss.get('totalPessoas')} contracheques (folha do Estado faltando?)", "aviso")
+        for f in ss.get("falhas") or []:
+            avisos.append(f"**Supersalários**: {f}")
     bol = carregar("boletim_estado.json")
     if bol:
         recente("Boletim semanal", bol.get("atualizado"), 2, nivel="aviso", o_que="última geração")

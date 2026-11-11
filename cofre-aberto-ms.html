@@ -173,7 +173,7 @@ p{margin:0;}
 .bar-list-row.clickable{border-radius:8px;padding:4px 6px;margin:-4px -6px;transition:background .15s;}
 .bar-list-row.clickable:hover{background:var(--surface-2);}
 .bar-list-label{color:var(--ink);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.bar-list.largo .bar-list-row{grid-template-columns:minmax(170px,340px) 1fr 96px;}
+.bar-list.largo .bar-list-row{grid-template-columns:minmax(170px,340px) 1fr auto;}
 @media (max-width:640px){.bar-list.largo .bar-list-row{grid-template-columns:120px 1fr auto;}}
 .bar-list-track{background:var(--surface-3);height:7px;border-radius:4px;overflow:hidden;}
 .bar-list-fill{background:linear-gradient(90deg,var(--accent),#8fb0ff);height:100%;border-radius:4px;transition:width .4s ease;}
@@ -459,6 +459,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button data-tab="emendas"><span class="dot"></span> Emendas</button>
       <button data-tab="camaras-ms"><span class="dot"></span> Câmaras MS</button>
       <button data-tab="judiciario"><span class="dot"></span> Judiciário MS</button>
+      <button data-tab="supersalarios"><span class="dot"></span> Supersalários</button>
       <button data-tab="conexoes"><span class="dot"></span> Conexões</button>
       <button data-tab="evolucao"><span class="dot"></span> Evolução</button>
       <div class="nav-group-label">Brasil</div>
@@ -983,6 +984,83 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         Fonte: <a href="https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares" target="_blank" rel="noopener">Portal da Transparência do Governo Federal (CGU)</a>,
         tabela de emendas "por favorecido" — cada pagamento com quem recebeu e onde. Considera o mês do pagamento, não o ano da emenda;
         inclui emendas de anos anteriores pagas agora. Atualização automática diária.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== SUPERSALÁRIOS ===================== -->
+  <section class="tabpanel" id="tab-supersalarios">
+    <div class="hero">
+      <div class="hero-label">Supersalários · As maiores remunerações do poder público em MS</div>
+      <div class="hero-number" id="ss-liquido">—</div>
+      <div class="hero-desc">
+        pessoas receberam no mês um <b>líquido acima do teto constitucional</b> (<span id="ss-teto">R$ 46.366,19</span>), mesmo depois de
+        imposto, previdência e corte do teto. No bruto, <b id="ss-bruto">—</b> passaram do teto, somando <b id="ss-valor">—</b> acima dele.
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="ss-pessoas">—</div><div class="mini-stat-label">contracheques analisados</div></div>
+        <div><div class="mini-stat-value" id="ss-maior">—</div><div class="mini-stat-label">maior bruto do mês</div></div>
+        <div><div class="mini-stat-value" id="ss-pend">—</div><div class="mini-stat-label">em penduricalhos no TJMS no mês</div></div>
+        <div><div class="mini-stat-value" id="ss-data">—</div><div class="mini-stat-label">atualizado em</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-note cx-aviso">
+        ℹ️ <b>Receber acima do teto nem sempre é irregular.</b> Pela Constituição, verbas <b>indenizatórias</b> (auxílios, diárias, indenização de férias)
+        ficam fora do teto, e pagamentos atrasados (retroativos) podem inflar um único mês. Esta aba mostra o que os próprios órgãos publicam e
+        compara com o teto. O STF definiu, em 2026, limites para essas verbas
+        (<a href="https://noticias.stf.jus.br/?p=159907" target="_blank" rel="noopener">Tema 966</a>). <span id="ss-avisos"></span>
+      </p>
+      <div class="section-head"><h2 class="section-title">Por órgão</h2></div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-ss-orgaos">
+          <thead><tr><th>Órgão</th><th class="num">Pessoas</th><th class="num">Média bruta</th><th class="num">Líquido acima<br>do teto</th><th class="num">Bruto acima<br>do teto</th><th class="num">Penduricalhos¹</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="section-note" style="margin-top:8px">¹ Tudo o que vem além da remuneração base: no Judiciário, a parcela "outras remunerações e benefícios" do DadosJusBr; no Governo do Estado, as "remunerações eventuais" da folha.</p>
+      <div class="subhead">Dentro do Governo do Estado: órgãos com alguém acima do teto</div>
+      <div class="bar-list largo" id="ss-orgaos-gov"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Os penduricalhos, item por item</h2></div>
+      <div class="ev-grupos" id="ss-pend-orgaos" style="display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 12px"></div>
+      <div class="section-note" id="ss-pend-nota"></div>
+      <div class="bar-list largo" id="ss-pend-lista"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Mês a mês: salário base x penduricalhos</h2></div>
+      <div class="section-note">Total pago por mês aos magistrados, separando a remuneração base das outras remunerações e benefícios. Meses que faltam não foram publicados pelo tribunal ou não foram coletados pelo DadosJusBr.</div>
+      <div class="ev-grupos" id="ss-ev-orgaos" style="display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 12px"></div>
+      <div id="ss-evolucao"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Ranking das maiores remunerações</h2></div>
+      <div class="section-note">Os 600 maiores brutos do mês somando todos os órgãos. Clique num nome para ver o contracheque.
+        No Governo do Estado, a folha não separa o corte do teto: quando os descontos são muito altos, parte do bruto foi cortada.</div>
+      <div class="cx-filtros">
+        <input class="search-box" id="busca-ss" type="text" placeholder="buscar por nome, cargo ou órgão…" />
+        <select class="search-box" id="ss-filtro-orgao" aria-label="Órgão"><option value="">Todos os órgãos</option></select>
+        <label class="cx-check"><input type="checkbox" id="ss-so-liquido"> só quem recebeu líquido acima do teto</label>
+      </div>
+      <div class="card card-x-scroll">
+        <table class="ranking" id="ranking-ss">
+          <thead><tr><th class="num">#</th><th>Nome</th><th class="num">Bruto</th><th class="num">Líquido</th><th class="num">Acima do teto (bruto)</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="ss-mais" style="margin-top:10px;display:none"></button>
+      <div class="detail-panel" id="detail-ss"></div>
+      <p class="section-note" style="margin-top:16px">
+        Fontes: Judiciário — <a href="https://dadosjusbr.org/" target="_blank" rel="noopener">DadosJusBr</a>, projeto da
+        <a href="https://www.transparencia.org.br/" target="_blank" rel="noopener">Transparência Brasil</a>, com os contracheques enviados pelos tribunais
+        ao CNJ e a classificação de rubricas do projeto; Governo do Estado —
+        <a href="https://www.transparencia.ms.gov.br/" target="_blank" rel="noopener">Portal da Transparência de MS</a> (folha de pagamento).
+        Teto: <span id="ss-teto-fonte"></span>. Atualização automática diária; os tribunais publicam com um a dois meses de atraso.
       </p>
     </div>
   </section>
@@ -4137,6 +4215,123 @@ function renderEmendasMunicipios(d) {
   desenhar();
 }
 
+
+// ===================== SUPERSALÁRIOS =====================
+function renderSupersalarios(d) {
+  const T = d.teto;
+  const nf = n => (n || 0).toLocaleString("pt-BR");
+  document.getElementById("ss-liquido").textContent = nf(d.liquidoAcimaTeto);
+  document.getElementById("ss-teto").textContent = formatBRL(T);
+  document.getElementById("ss-bruto").textContent = nf(d.acimaTeto) + " pessoas";
+  document.getElementById("ss-valor").textContent = formatCompact(d.valorAcimaTeto);
+  document.getElementById("ss-pessoas").textContent = nf(d.totalPessoas);
+  document.getElementById("ss-maior").textContent = d.ranking?.[0] ? formatCompact(d.ranking[0].bruto) : "—";
+  const pt = (d.penduricalhos || {}).tjms;
+  document.getElementById("ss-pend").textContent = pt ? formatCompact(pt.itens.reduce((s, i) => s + i.valor, 0)) : "—";
+  document.getElementById("ss-data").textContent = d.ultimaAtualizacao ? formatDateTime(d.ultimaAtualizacao) : "—";
+  document.getElementById("ss-teto-fonte").textContent = `${formatBRL(T)} (${d.tetoFonte})`;
+  document.getElementById("ss-avisos").textContent = (d.avisos || []).join(" ");
+
+  document.querySelector("#tabela-ss-orgaos tbody").innerHTML = (d.orgaos || []).map(o => `
+    <tr><td style="white-space:normal;min-width:170px"><b>${escHTML(o.orgao)}</b><br><span class="rank-meta">${escHTML(o.mes)} · ${o.fonte.startsWith("DadosJusBr") ? "DadosJusBr" : "Portal da Transparência MS"}</span></td>
+      <td class="num">${nf(o.pessoas)}</td><td class="num">${formatBRL(o.mediaBruta)}</td>
+      <td class="num">${nf(o.liquidoAcimaTeto)} <span style="opacity:.6">(${o.pessoas ? (o.liquidoAcimaTeto / o.pessoas * 100).toFixed(1).replace(".", ",") : 0}%)</span></td>
+      <td class="num">${nf(o.acimaTeto)}</td>
+      <td class="num">${formatCompact(o.totalOutras)} <span style="opacity:.6">(${(o.totalBase + o.totalOutras) ? (o.totalOutras / (o.totalBase + o.totalOutras) * 100).toFixed(0) : 0}% do total)</span></td></tr>`).join("");
+
+  const og = d.orgaosGoverno || [], maxG = Math.max(1, ...og.map(o => o.acimaTeto));
+  document.getElementById("ss-orgaos-gov").innerHTML = og.slice(0, 15).map(o => `
+    <div class="bar-list-row"><div class="bar-list-label" title="${escHTML(o.orgao)}">${escHTML(o.orgao.replace("Governo MS — ", ""))} <span style="opacity:.6">· ${nf(o.liquidoAcimaTeto)} com líquido acima</span></div>
+      <div class="bar-list-track"><div class="bar-list-fill amber" style="width:${(o.acimaTeto / maxG * 100).toFixed(1)}%"></div></div>
+      <div class="bar-list-value">${nf(o.acimaTeto)} <span style="opacity:.6;font-weight:400">no bruto</span></div></div>`).join("") || `<p class="section-note">Ninguém acima do teto no Governo do Estado no mês.</p>`;
+
+  // penduricalhos por item (Judiciário)
+  const pend = d.penduricalhos || {}, chavesP = Object.keys(pend);
+  const desenhaPend = k => {
+    const p = pend[k]; if (!p) return;
+    const itens = p.itens.filter(i => i.valor > 0), mx = itens[0]?.valor || 1, tot = itens.reduce((s, i) => s + i.valor, 0);
+    document.getElementById("ss-pend-nota").textContent = `${p.orgao}, ${p.mes}: ${formatBRL(tot)} pagos além da remuneração base, em ${itens.length} itens. Os nomes são os do contracheque; a classificação (indenização, direito eventual, direito pessoal) é do DadosJusBr.`;
+    document.getElementById("ss-pend-lista").innerHTML = itens.map(i => `
+      <div class="bar-list-row"><div class="bar-list-label" title="${escHTML(i.categoria)}">${escHTML(i.item)} <span style="opacity:.6">· ${escHTML(i.categoria)} · ${i.pessoas} pessoas</span></div>
+        <div class="bar-list-track"><div class="bar-list-fill amber" style="width:${(i.valor / mx * 100).toFixed(1)}%"></div></div>
+        <div class="bar-list-value">${formatCompact(i.valor)}</div></div>`).join("");
+  };
+  const botoes = (id, chaves, rot, fn) => {
+    const el = document.getElementById(id);
+    el.innerHTML = chaves.map((k, i) => `<button class="${i ? "" : "active"}" data-k="${k}">${escHTML(rot(k))}</button>`).join("");
+    el.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+      el.querySelectorAll("button").forEach(x => x.classList.toggle("active", x === b)); fn(b.dataset.k);
+    }));
+    if (chaves[0]) fn(chaves[0]);
+  };
+  botoes("ss-pend-orgaos", chavesP, k => pend[k].orgao.split(" — ")[0], desenhaPend);
+
+  // evolução mensal (Judiciário): barras empilhadas base x outras
+  const ev = d.evolucao || {};
+  const desenhaEv = k => {
+    const ms = (ev[k] || {}).meses || [], mx = Math.max(1, ...ms.map(m => m.base + m.outras));
+    document.getElementById("ss-evolucao").innerHTML = `<div style="display:flex;gap:16px;font-size:.78rem;color:var(--ink-soft);margin-bottom:8px">
+        <span><i style="display:inline-block;width:12px;height:8px;background:#3987e5;border-radius:2px;margin-right:5px"></i>remuneração base</span>
+        <span><i style="display:inline-block;width:12px;height:8px;background:#d95926;border-radius:2px;margin-right:5px"></i>outras remunerações e benefícios</span></div>` +
+      ms.map(m => `<div style="display:grid;grid-template-columns:62px 1fr 92px;gap:8px;align-items:center;margin-bottom:5px">
+        <span style="font-size:.76rem;color:var(--ink-soft)">${m.mes}</span>
+        <div style="display:flex;height:11px;border-radius:3px;overflow:hidden;background:var(--surface-2)" title="base ${formatBRL(m.base)} · outras ${formatBRL(m.outras)} · ${m.pessoas} pessoas">
+          <div style="width:${(m.base / mx * 100).toFixed(1)}%;background:#3987e5"></div><div style="width:${(m.outras / mx * 100).toFixed(1)}%;background:#d95926"></div></div>
+        <span style="font-size:.76rem;text-align:right;font-variant-numeric:tabular-nums">${formatCompact(m.base + m.outras)}</span></div>`).join("") +
+      `<details style="margin-top:8px"><summary style="cursor:pointer;font-size:.8rem;color:var(--ink-soft)">Ver como tabela</summary><div style="overflow-x:auto"><table class="notes-table"><thead><tr><th>Mês</th><th class="num">Pessoas</th><th class="num">Base</th><th class="num">Outras</th></tr></thead><tbody>${ms.map(m => `<tr><td>${m.mes}</td><td class="num">${m.pessoas}</td><td class="num">${formatBRL(m.base)}</td><td class="num">${formatBRL(m.outras)}</td></tr>`).join("")}</tbody></table></div></details>`;
+  };
+  botoes("ss-ev-orgaos", Object.keys(ev), k => ev[k].orgao.split(" — ")[0], desenhaEv);
+
+  // ranking nominal
+  // sem remuneração base e com valor alto só em eventuais: típico de retroativo, rescisão ou indenização paga de uma vez
+  const eventual = p => p.base < 1 && p.outras > 0;
+  const rk = (d.ranking || []).map((p, i) => ({ ...p, pos: i + 1 }));
+  const fo = document.getElementById("ss-filtro-orgao"), bs = document.getElementById("busca-ss"), sl = document.getElementById("ss-so-liquido");
+  [...new Set(rk.map(p => p.orgao.startsWith("Governo MS") ? "Governo do Estado" : p.orgao))].forEach(o => fo.insertAdjacentHTML("beforeend", `<option>${escHTML(o)}</option>`));
+  const painel = document.getElementById("detail-ss"), tb = document.querySelector("#ranking-ss tbody");
+  let filtrados = rk, limite = 50;
+  const linha = (p, i) => `
+    <tr class="clickable" data-idx="${i}"><td class="rank-pos">${String(p.pos).padStart(2, "0")}</td>
+      <td><div class="rank-name">${escHTML(p.nome)}</div><div class="rank-meta">${escHTML(p.cargo)} · ${escHTML(p.orgao)}${p.situacao && p.situacao !== "Ativo" ? ` · ${escHTML(p.situacao)}` : ""} · ${escHTML(p.mes)}</div>
+        ${eventual(p) ? `<span class="cx-tag" style="border-color:var(--amber);color:var(--amber)" title="Sem remuneração base no mês: o valor é todo de pagamentos eventuais">pagamento eventual no mês</span>` : ""}</td>
+      <td class="num">${formatBRL(p.bruto)}</td><td class="num">${formatBRL(p.liquido)}</td>
+      <td class="num">${p.acimaTeto ? formatBRL(p.acimaTeto) : "—"}</td></tr>`;
+  const desenhar = () => {
+    tb.innerHTML = filtrados.slice(0, limite).map(linha).join("") || `<tr><td colspan="5" style="padding:14px;color:var(--ink-soft)">Ninguém encontrado.</td></tr>`;
+    tb.querySelectorAll("tr.clickable").forEach(r => r.addEventListener("click", () => detalhe(filtrados[+r.dataset.idx])));
+    const m = document.getElementById("ss-mais"), resto = filtrados.length - limite;
+    m.style.display = resto > 0 ? "" : "none"; m.textContent = `Mostrar mais (${resto} restantes)`;
+  };
+  const filtrar = () => {
+    const f = bs.value.trim().toLowerCase(), o = fo.value;
+    filtrados = rk.filter(p => (!o || (o === "Governo do Estado" ? p.orgao.startsWith("Governo MS") : p.orgao === o)) &&
+      (!sl.checked || p.liquido > T) && (!f || [p.nome, p.cargo, p.orgao, p.lotacao].some(x => (x || "").toLowerCase().includes(f))));
+    limite = 50; painel.classList.remove("active"); desenhar();
+  };
+  const detalhe = p => {
+    const itens = p.itens || [];
+    painel.innerHTML = `
+      <div class="detail-header"><div class="detail-header-text"><h3>${escHTML(p.nome)}</h3>
+        <div class="detail-meta">${escHTML(p.cargo)} · ${escHTML(p.orgao)}${p.lotacao ? ` · ${escHTML(p.lotacao)}` : ""} · ${escHTML(p.situacao || "")} · contracheque de ${escHTML(p.mes)}</div></div></div>
+      <div class="stat-grid" style="margin-bottom:14px">
+        <div class="stat-card"><p class="stat-label">Remuneração base</p><p class="stat-value">${formatBRL(p.base)}</p></div>
+        <div class="stat-card alt"><p class="stat-label">${p.poder === "Judiciário" ? "Outras remunerações e benefícios" : "Remunerações eventuais"}</p><p class="stat-value">${formatBRL(p.outras)}</p></div>
+        <div class="stat-card"><p class="stat-label">Bruto</p><p class="stat-value">${formatBRL(p.bruto)}</p><p class="stat-note">${p.acimaTeto ? `${formatBRL(p.acimaTeto)} acima do teto` : "dentro do teto"}</p></div>
+        <div class="stat-card"><p class="stat-label">Descontos</p><p class="stat-value">${formatBRL(p.descontos)}</p></div>
+        <div class="stat-card alt"><p class="stat-label">Líquido</p><p class="stat-value">${formatBRL(p.liquido)}</p><p class="stat-note">${p.liquido > T ? "acima do teto mesmo após os descontos" : ""}</p></div>
+      </div>
+      ${itens.length ? `<div class="subhead">Itens além da remuneração base</div><div style="overflow-x:auto"><table class="notes-table"><thead><tr><th>Item do contracheque</th><th class="num">Valor</th></tr></thead><tbody>${itens.map(i => `<tr><td>${escHTML(i.item)}</td><td class="num">${formatBRL(i.valor)}</td></tr>`).join("")}</tbody></table></div>` :
+        `<p class="section-note">${p.poder === "Judiciário" ? "" : "A folha do Estado publica só o total fixo e o total eventual, sem o detalhe de cada item. Valores muito altos num único mês costumam ser pagamentos retroativos."}</p>`}
+      ${eventual(p) ? `<p class="aviso" style="margin-top:8px;font-size:.8rem">⚠️ Não houve remuneração base neste mês: todo o valor veio de pagamentos eventuais. Isso costuma ser um pagamento único — atrasados (retroativos), rescisão, férias ou licença-prêmio indenizadas — e não um salário mensal.</p>` : ""}
+      <p class="section-note" style="margin-top:8px">Fonte: ${p.poder === "Judiciário" ? `DadosJusBr / Transparência Brasil (contracheque enviado ao CNJ). <a href="https://dadosjusbr.org/orgao/${p.orgaoId}" target="_blank" rel="noopener">Ver o órgão no DadosJusBr ↗</a>` : `Portal da Transparência do Estado de MS. <a href="https://www.transparencia.ms.gov.br/" target="_blank" rel="noopener">Consultar a folha ↗</a>`}</p>`;
+    painel.classList.add("active");
+    painel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  };
+  bs.addEventListener("input", filtrar); fo.addEventListener("change", filtrar); sl.addEventListener("change", filtrar);
+  document.getElementById("ss-mais").onclick = () => { limite += 100; desenhar(); };
+  desenhar();
+}
+
 // ===================== GOVERNO DO ESTADO DE MS =====================
 // "SECRETARIA DE ESTADO DE SAÚDE" → "Sec. de Saúde": cabe na lista sem cortar o que importa
 function orgaoCurto(t) {
@@ -4693,6 +4888,7 @@ const FONTE_ABA = {
   "contratos-cg": { titulo: "Contratos e licitações da Prefeitura de Campo Grande", csv: [["Contratos", "prefeitura_contratos.csv"], ["Licitações", "prefeitura_licitacoes.csv"]], json: "prefeitura_contratos.json" },
   "governo-ms": { titulo: "Despesas do Governo do Estado de MS", csv: [["Órgãos", "governo_ms_orgaos.csv"], ["Credores", "governo_ms_credores.csv"], ["Diárias", "governo_ms_diarias.csv"], ["Primeiro escalão", "governo_ms_primeiro_escalao.csv"]], json: "governo_ms.json" },
   "emendas": { titulo: "Emendas parlamentares recebidas em MS, por município", csv: [["Municípios e autores", "emendas_municipios.csv"], ["Quem recebeu", "emendas_favorecidos.csv"]], json: "emendas_municipios.json" },
+  "supersalarios": { titulo: "Supersalários: as maiores remunerações do poder público em MS", csv: [["Ranking", "supersalarios_ranking.csv"], ["Por órgão", "supersalarios_orgaos.csv"], ["Penduricalhos por item", "supersalarios_penduricalhos.csv"]], json: "supersalarios.json" },
   "camaras-ms": { titulo: "Câmaras municipais do interior de MS", csv: [["Vereadores", "camaras_interior.csv"]], json: null },
   "judiciario": { titulo: "Remuneração dos magistrados de MS", csv: [["Magistrados", "judiciario_magistrados.csv"]], json: "tjms_magistrados.json" },
   "deputados-brasil": { titulo: "CEAP dos deputados federais do Brasil", csv: [["Resumo", "deputados_federais_brasil.csv"]], json: "deputados_federais_brasil.json" },
@@ -4840,6 +5036,10 @@ async function init() {
         window._contratosLoaded = true;
         carregarLeve("prefeitura_contratos.json").then(d => { if (d) renderContratosCG(d); });
         carregarJSON("dados/alertas_contratos.json").then(d => { if (d) renderAlertasContratos(d); else document.getElementById("ct-alertas-sec").hidden = true; });
+      }
+      if (btn.dataset.tab === "supersalarios" && !window._ssLoaded) {
+        window._ssLoaded = true;
+        carregarLeve("supersalarios.json").then(d => { if (d) renderSupersalarios(d); });
       }
       if (btn.dataset.tab === "emendas" && !window._emendasLoaded) {
         window._emendasLoaded = true;

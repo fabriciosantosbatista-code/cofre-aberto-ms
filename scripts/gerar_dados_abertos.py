@@ -169,6 +169,24 @@ def gerar_csvs():
         ["favorecido", "cnpj_cpf", "natureza_juridica", "municipio", f"valor_recebido_{ANO}", "autores"],
         [[f["nome"], f.get("doc"), f.get("natureza"), f.get("municipio"), num(f["valor"]),
           " | ".join(f"{a['autor']} ({num(a['valor'])})" for a in f.get("autores", []))] for f in em.get("favorecidos", [])])
+    ss = carregar("supersalarios.json")
+    contagem["supersalarios_ranking.csv"] = grava_csv("supersalarios_ranking.csv",
+        ["posicao", "nome", "cargo", "orgao", "lotacao_ou_vinculo", "situacao", "mes", "remuneracao_base", "outras_ou_eventuais",
+         "bruto", "descontos", "liquido", "bruto_acima_do_teto", "itens_alem_da_base"],
+        [[i + 1, p.get("nome"), p.get("cargo"), p.get("orgao"), p.get("lotacao"), p.get("situacao"), p.get("mes"), num(p.get("base")),
+          num(p.get("outras")), num(p.get("bruto")), num(p.get("descontos")), num(p.get("liquido")), num(p.get("acimaTeto")),
+          " | ".join(f"{x['item']}: {num(x['valor'])}" for x in p.get("itens") or [])] for i, p in enumerate(ss.get("ranking", []))])
+    contagem["supersalarios_orgaos.csv"] = grava_csv("supersalarios_orgaos.csv",
+        ["orgao", "mes", "pessoas", "media_bruta", "maior_bruto", "liquido_acima_do_teto", "bruto_acima_do_teto",
+         "valor_bruto_acima_do_teto", "total_base", "total_outras", "fonte"],
+        [[o["orgao"], o["mes"], o["pessoas"], num(o["mediaBruta"]), num(o["maiorBruto"]), o.get("liquidoAcimaTeto"), o["acimaTeto"],
+          num(o["valorAcimaTeto"]), num(o["totalBase"]), num(o["totalOutras"]), o["fonte"]]
+         for o in ss.get("orgaos", []) + ss.get("orgaosGoverno", [])])
+    contagem["supersalarios_penduricalhos.csv"] = grava_csv("supersalarios_penduricalhos.csv",
+        ["orgao", "mes", "item", "categoria_dadosjusbr", "valor_total", "pessoas"],
+        [[p["orgao"], p["mes"], i["item"], i["categoria"], num(i["valor"]), i["pessoas"]]
+         for p in (ss.get("penduricalhos") or {}).values() for i in p["itens"] if i["valor"]])
+
     al = carregar("alems_servidores.json")
     contagem["alems_servidores.csv"] = grava_csv("alems_servidores.csv",
         ["matricula", "nome", "cargo", "simbolo", "vencimento_base_tabela"],
@@ -309,6 +327,13 @@ def status_fontes():
         "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares", em.get("ultimaAtualizacao"),
         f"pagamentos até {em['mesMaisRecente']}" if em.get("mesMaisRecente") else None,
         em.get("ano") == ANO and em_dia(em.get("ultimaAtualizacao"), 3))
+
+    ss = carregar("supersalarios.json")
+    add("supersalarios", "DadosJusBr / Transparência Brasil (Judiciário) e Portal da Transparência de MS (folha do Estado)",
+        "https://dadosjusbr.org/", ss.get("ultimaAtualizacao"),
+        "contracheques de " + ", ".join(sorted({o["mes"] for o in ss.get("orgaos", [])})) if ss.get("orgaos") else None,
+        ss.get("ano") == ANO and em_dia(ss.get("ultimaAtualizacao"), 3) and not ss.get("falhas"),
+        "; ".join(ss.get("falhas") or []) or None)
 
     cidades, paradas = 0, []
     for f in sorted((DADOS / "camaras").glob("*.json")):

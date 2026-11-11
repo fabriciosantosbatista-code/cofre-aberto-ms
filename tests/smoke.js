@@ -18,7 +18,7 @@ const { chromium } = require("playwright");
 const BASE = (process.argv[2] || "http://localhost:8000/").replace(/\/?$/, "/");
 const BAD = /\bNaN\b|\bundefined\b|\[object Object\]|\bInfinity\b/g;
 const TODOS = ["deputados", "senadores", "camara", "deputados-estaduais"];      // clica em todos os itens
-const AMOSTRA = ["prefeitura", "judiciario", "deputados-brasil", "senado-brasil", "conexoes", "emendas"]; // clica em alguns
+const AMOSTRA = ["prefeitura", "judiciario", "deputados-brasil", "senado-brasil", "conexoes", "emendas", "supersalarios"]; // clica em alguns
 const PAGINAS = ["", "press.html", "metodologia.html", "vereadores-campo-grande.html", "deputados-estaduais-ms.html", "senadores-ms.html",
   "vereador/", "deputado-estadual/", "deputado-federal/", "senador/",
   "vereador/papy/", "deputado-estadual/zeca-do-pt/", "deputado-federal/geraldo-resende/", "senador/tereza-cristina/",

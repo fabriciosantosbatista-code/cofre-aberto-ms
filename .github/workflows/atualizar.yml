@@ -225,7 +225,7 @@ jobs:
 
   coletar_emendas_alems:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -243,6 +243,9 @@ jobs:
       - name: Coletar emendas por município (arquivo completo da CGU)
         run: python3 scripts/coletar_emendas_municipios.py || echo "⚠️ emendas por município não atualizadas — arquivo anterior mantido"
 
+      - name: Coletar supersalários (DadosJusBr + folha do Estado)
+        run: python3 scripts/coletar_supersalarios.py || echo "⚠️ supersalários não atualizados — arquivo anterior mantido"
+
       - name: Coletar servidores da ALEMS
         run: python3 scripts/coletar_servidores_alems.py || echo "⚠️ servidores da ALEMS não atualizados — arquivo anterior mantido"
 
@@ -253,6 +256,7 @@ jobs:
           path: |
             dados/emendas_municipios.json
             dados/alems_servidores.json
+            dados/supersalarios.json
           retention-days: 1
 
   commit_e_push:

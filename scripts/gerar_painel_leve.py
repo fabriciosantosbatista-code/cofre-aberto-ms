@@ -108,7 +108,7 @@ def main():
     p = prefeitura_leve()
     if p is not None:
         tam["prefeitura.json"] = salvar("prefeitura.json", p)
-    for nome in ("governo_ms.json", "prefeitura_contratos.json", "emendas_municipios.json", "alems_servidores.json"):  # só minificados
+    for nome in ("governo_ms.json", "prefeitura_contratos.json", "emendas_municipios.json", "alems_servidores.json", "supersalarios.json"):  # só minificados
         d = carregar(nome)
         if d is not None:
             tam[nome] = salvar(nome, d)
