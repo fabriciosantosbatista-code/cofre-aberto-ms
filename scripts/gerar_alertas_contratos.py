@@ -36,6 +36,11 @@ ROTULO = {"contrato_grande": "Contrato grande recente", "sem_licitacao": "Sem li
           "vigencia_longa": "Vigência longa"}
 
 
+def corta(t, n):
+    t = (t or "").strip()
+    return t if len(t) <= n else t[:n].rsplit(" ", 1)[0].rstrip(" ,;-") + "…"
+
+
 def dias_atras(iso):
     try:
         return (HOJE - date.fromisoformat(str(iso)[:10])).days
@@ -84,7 +89,7 @@ def main():
         if d is not None and 0 <= d <= 45 and c["valor"] >= LIMITE_GRANDE:
             add("contrato_grande", (c["fornecedor"], c["inicio"], c["valor"]),
                 f"{c['fornecedor']}: contrato de {brl(c['valor'])}",
-                f"{c['tipo'].capitalize()} iniciado em {c['inicio'][8:10]}/{c['inicio'][5:7]}: {c['objeto'][:220]}",
+                f"{c['tipo'].capitalize()} iniciado em {c['inicio'][8:10]}/{c['inicio'][5:7]}: {corta(c['objeto'], 220)}",
                 c["valor"], c["inicio"], c["fornecedor"], c["cnpj"], busca)
         try:
             anos = (date.fromisoformat(c["fim"]) - date.fromisoformat(c["inicio"])).days / 365.25
@@ -94,7 +99,7 @@ def main():
             add("vigencia_longa", (c["fornecedor"], c["inicio"], c["fim"]),
                 f"{c['fornecedor']}: contrato de {anos:.0f} anos",
                 f"Vigência de {c['inicio'][8:10]}/{c['inicio'][5:7]}/{c['inicio'][:4]} a {c['fim'][8:10]}/{c['fim'][5:7]}/{c['fim'][:4]}"
-                f", {brl(c['valor'])}: {c['objeto'][:200]}", c["valor"], c["inicio"], c["fornecedor"], c["cnpj"], busca)
+                f", {brl(c['valor'])}: {corta(c['objeto'], 200)}", c["valor"], c["inicio"], c["fornecedor"], c["cnpj"], busca)
 
     for l in ct.get("licitacoes", []):
         mod = (l.get("modalidade") or "").lower()
@@ -104,7 +109,7 @@ def main():
             venc = ", ".join(v["nome"] for v in l["vencedores"][:3]) or "vencedor ainda não publicado"
             add("sem_licitacao", (l["processo"], l["numero"]),
                 f"{l['modalidade']} de {brl(l['valorEstimado'])}",
-                f"{l['objeto'][:220]} — {venc}. Processo {l['processo']}.",
+                f"{corta(l['objeto'], 220)} — {venc}. Processo {l['processo']}.",
                 l["valorEstimado"], l["data"], (l["vencedores"][0]["nome"] if l["vencedores"] else None),
                 (l["vencedores"][0]["cnpj"] if l["vencedores"] else None), f"#aba=contratos-cg&p={l['processo']}")
 

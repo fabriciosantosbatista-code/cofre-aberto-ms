@@ -210,6 +210,23 @@ p{margin:0;}
 .cx-tag{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 7px;border-radius:999px;border:1px solid var(--border);color:var(--ink-soft);margin:1px 3px 1px 0;white-space:nowrap}
 .cx-mais,.ev-voltar,.ev-grupos button,.seguir-btn{background:none;border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--ink);cursor:pointer;font-family:inherit;font-size:.8rem}
 .cx-mais{margin-top:10px}
+/* No celular, tabelas largas viram cartões: cada linha empilhada, com o rótulo da coluna */
+@media(max-width:640px){
+  table[data-cartoes]{min-width:0!important;white-space:normal!important}
+  table[data-cartoes] thead{display:none}
+  table[data-cartoes],table[data-cartoes] tbody,table[data-cartoes] tr,table[data-cartoes] td{display:block;width:100%}
+  table[data-cartoes] tr{padding:12px 14px;border-bottom:1px solid var(--border)}
+  table[data-cartoes] td{padding:3px 0!important;border:none!important;text-align:left!important;white-space:normal!important;max-width:none!important;min-width:0!important;background:none!important}
+  table[data-cartoes] td[data-label]{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  table[data-cartoes] td[data-label]::before{content:attr(data-label);font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);font-weight:700;flex-shrink:0}
+  table[data-cartoes] td .cartao-v{text-align:right}
+  table[data-cartoes] td.cartao-largo{display:block}
+  table[data-cartoes] td.cartao-largo::before{display:block;margin-bottom:2px}
+  table[data-cartoes] td.cartao-titulo{font-size:.88rem!important;margin-bottom:4px}
+  table[data-cartoes] td.cartao-valor{font-size:.95rem}
+  table[data-cartoes] td.rank-pos{display:none}
+  .card-x-scroll:has(table[data-cartoes]),.card:has(> table[data-cartoes]){overflow-x:visible}
+}
 .nav-toggle{display:none;align-items:center;justify-content:space-between;gap:10px;width:100%;margin:4px 0 8px;padding:11px 14px;min-height:44px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--ink);font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer}
 .nav-toggle span:last-child{color:var(--ink-soft);font-weight:500;font-size:.78rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mvv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -819,7 +836,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         "Conexões" mostra se a empresa também recebeu de vereadores, deputados ou senadores.</div>
       <input class="search-box" id="busca-ct-forn" type="text" placeholder="buscar empresa ou CNPJ…" />
       <div class="card card-x-scroll">
-        <table class="ranking" id="ranking-ct-forn">
+        <table class="ranking" id="ranking-ct-forn" data-cartoes>
           <thead><tr><th class="num">#</th><th>Fornecedor</th><th class="num">Contratos</th><th class="num">Licitações vencidas</th><th class="num">Valor dos contratos</th></tr></thead>
           <tbody></tbody>
         </table>
@@ -834,7 +851,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         <select class="search-box" id="ct-filtro-tipo" aria-label="Tipo de contrato"><option value="compras">Compras, serviços, obras e locações</option><option value="">Todos os tipos (inclui dívidas e demandas judiciais)</option></select>
       </div>
       <div class="card card-x-scroll">
-        <table class="notes-table" id="tabela-ct-contratos">
+        <table class="notes-table" id="tabela-ct-contratos" data-cartoes>
           <thead><tr><th>Início</th><th>Tipo</th><th>Fornecedor</th><th>Objeto</th><th>Vigência até</th><th class="num">Valor</th></tr></thead>
           <tbody></tbody>
         </table>
@@ -851,7 +868,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         <select class="search-box" id="ct-filtro-status" aria-label="Situação"><option value="">Todas as situações</option></select>
       </div>
       <div class="card card-x-scroll">
-        <table class="notes-table" id="tabela-ct-licit">
+        <table class="notes-table" id="tabela-ct-licit" data-cartoes>
           <thead><tr><th>Data</th><th>Modalidade</th><th>Objeto</th><th>Situação</th><th class="num">Valor estimado</th><th>Vencedor(es)</th></tr></thead>
           <tbody></tbody>
         </table>
@@ -4114,10 +4131,10 @@ function renderContratosCG(d) {
     const f = bf.value.trim().toLowerCase(), fd = f.replace(/\D/g, "");
     const lista = forn.filter(x => !f || x.nome.toLowerCase().includes(f) || (fd.length >= 4 && (x.cnpj || "").includes(fd)));
     paginarTabela(document.querySelector("#ranking-ct-forn tbody"), document.getElementById("ct-forn-mais"), lista, (x, i) => `
-      <tr><td class="rank-pos">${String(i + 1).padStart(2, "0")}</td>
-        <td><div class="rank-name">${escHTML(x.nome)}</div><div class="rank-meta">${linksCNPJ(x.cnpj)}</div></td>
-        <td class="num">${x.contratos}</td><td class="num">${x.licitacoesVencidas}</td>
-        <td class="num">${x.valorContratos ? formatBRL(x.valorContratos) : "—"}</td></tr>`,
+      <tr><td class="rank-pos" data-label="#">${String(i + 1).padStart(2, "0")}</td>
+        <td class="cartao-titulo"><div class="rank-name">${escHTML(x.nome)}</div><div class="rank-meta">${linksCNPJ(x.cnpj)}</div></td>
+        <td class="num" data-label="Contratos">${x.contratos}</td><td class="num" data-label="Licitações vencidas">${x.licitacoesVencidas}</td>
+        <td class="num" data-label="Valor dos contratos">${x.valorContratos ? formatBRL(x.valorContratos) : "—"}</td></tr>`,
       `<tr><td colspan="5" style="padding:14px;color:var(--ink-soft)">Nenhum fornecedor encontrado.</td></tr>`);
   };
   bf.addEventListener("input", desenhaForn);
@@ -4131,12 +4148,12 @@ function renderContratosCG(d) {
     const lista = contratos.filter(c => (!ft.value || c.compra) &&
       (!f || c.fornecedor.toLowerCase().includes(f) || c.objeto.toLowerCase().includes(f) || (fd.length >= 4 && (c.cnpj || "").includes(fd))));
     paginarTabela(document.querySelector("#tabela-ct-contratos tbody"), document.getElementById("ct-contratos-mais"), lista, c => `
-      <tr><td style="white-space:nowrap">${formatDate(c.inicio)}</td>
-        <td class="quebra-curta" style="font-size:.75rem;min-width:110px">${escHTML(c.tipo)}${c.situacao && c.situacao !== "ATIVO" ? `<br><span style="opacity:.7">${escHTML(c.situacao)}</span>` : ""}</td>
-        <td class="quebra-curta" style="font-size:.8rem"><b>${escHTML(c.fornecedor)}</b><br><span class="rank-meta">${linksCNPJ(c.cnpj)}</span></td>
-        <td class="quebra" style="font-size:.78rem">${escHTML(c.objeto)}</td>
-        <td style="white-space:nowrap">${formatDate(c.fim)}</td>
-        <td class="num">${formatBRL(c.valor)}</td></tr>`,
+      <tr><td style="white-space:nowrap" data-label="Início">${formatDate(c.inicio)}</td>
+        <td class="quebra-curta" data-label="Tipo" style="font-size:.75rem;min-width:110px"><span class="cartao-v">${escHTML(c.tipo)}${c.situacao && c.situacao !== "ATIVO" ? `<br><span style="opacity:.7">${escHTML(c.situacao)}</span>` : ""}</span></td>
+        <td class="quebra-curta cartao-titulo" style="font-size:.8rem"><b>${escHTML(c.fornecedor)}</b><br><span class="rank-meta">${linksCNPJ(c.cnpj)}</span></td>
+        <td class="quebra cartao-largo" data-label="Objeto" style="font-size:.78rem">${escHTML(c.objeto)}</td>
+        <td style="white-space:nowrap" data-label="Vigência até">${formatDate(c.fim)}</td>
+        <td class="num cartao-valor" data-label="Valor">${formatBRL(c.valor)}</td></tr>`,
       `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Nenhum contrato encontrado.</td></tr>`);
   };
   bc.addEventListener("input", desenhaContratos);
@@ -4154,12 +4171,12 @@ function renderContratosCG(d) {
       (!f || l.objeto.toLowerCase().includes(f) || l.numero.toLowerCase().includes(f) || l.processo.toLowerCase().includes(f) ||
         l.vencedores.some(v => v.nome.toLowerCase().includes(f) || (fd.length >= 4 && (v.cnpj || "").includes(fd)))));
     paginarTabela(document.querySelector("#tabela-ct-licit tbody"), document.getElementById("ct-licit-mais"), lista, l => `
-      <tr><td style="white-space:nowrap">${formatDate(l.data)}</td>
-        <td style="font-size:.75rem">${escHTML(l.modalidade)}<br><span style="opacity:.7">nº ${escHTML(l.numero)}</span></td>
-        <td class="quebra" style="font-size:.78rem">${escHTML(l.objeto)}<br><span style="opacity:.6">processo ${escHTML(l.processo)} · ${escHTML(l.gestor)}</span></td>
-        <td style="font-size:.75rem">${escHTML(l.status)}</td>
-        <td class="num">${l.valorEstimado ? formatBRL(l.valorEstimado) : "—"}</td>
-        <td class="quebra-curta" style="font-size:.76rem">${l.vencedores.length ? l.vencedores.slice(0, 6).map(v => `${escHTML(v.nome)}<br><span class="rank-meta">${linksCNPJ(v.cnpj)}</span>`).join("<br>") + (l.vencedores.length > 6 ? `<br>+ ${l.vencedores.length - 6} empresas` : "") : `<span style="opacity:.6">—</span>`}</td></tr>`,
+      <tr><td style="white-space:nowrap" data-label="Data">${formatDate(l.data)}</td>
+        <td data-label="Modalidade" style="font-size:.75rem"><span class="cartao-v">${escHTML(l.modalidade)}<br><span style="opacity:.7">nº ${escHTML(l.numero)}</span></span></td>
+        <td class="quebra cartao-largo cartao-titulo" style="font-size:.78rem">${escHTML(l.objeto)}<br><span style="opacity:.6">processo ${escHTML(l.processo)} · ${escHTML(l.gestor)}</span></td>
+        <td data-label="Situação" style="font-size:.75rem">${escHTML(l.status)}</td>
+        <td class="num cartao-valor" data-label="Valor estimado">${l.valorEstimado ? formatBRL(l.valorEstimado) : "—"}</td>
+        <td class="quebra-curta cartao-largo" data-label="Vencedor(es)" style="font-size:.76rem">${l.vencedores.length ? l.vencedores.slice(0, 6).map(v => `${escHTML(v.nome)}<br><span class="rank-meta">${linksCNPJ(v.cnpj)}</span>`).join("<br>") + (l.vencedores.length > 6 ? `<br>+ ${l.vencedores.length - 6} empresas` : "") : `<span style="opacity:.6">—</span>`}</td></tr>`,
       `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Nenhuma licitação encontrada.</td></tr>`);
   };
   [bl, fm, fs].forEach(el => el.addEventListener(el.tagName === "SELECT" ? "change" : "input", desenhaLicit));
@@ -4176,13 +4193,16 @@ function renderAlertasContratos(d) {
   const crit = d.criterios || {};
   const tipos = Object.entries(d.resumo || {}).filter(([, n]) => n > 0);
   let tipo = "", limite = 8;
+  // "novo" = apareceu nos últimos 7 dias, sem contar o primeiro dia (quando todos foram registrados de uma vez)
+  const base = lista.reduce((m, a) => a.vistoEm < m ? a.vistoEm : m, "9999");
+  const recente = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10);
   filtros.innerHTML = `<button class="active" data-t="">Todos (${lista.length})</button>` +
     tipos.map(([t, n]) => `<button data-t="${t}" title="${escHTML(crit[t] || "")}">${escHTML((lista.find(a => a.tipo === t) || {}).rotulo || t)} (${n})</button>`).join("");
   const desenhar = () => {
     const f = lista.filter(a => !tipo || a.tipo === tipo);
     caixa.innerHTML = f.slice(0, limite).map(a => `
       <div class="alerta-card">
-        <div class="alerta-topo"><span class="cx-tag">${escHTML(a.rotulo)}</span>${a.data ? `<span class="alerta-data">${formatDate(a.data)}</span>` : ""}${a.vistoEm === new Date().toISOString().slice(0, 10) ? `<span class="cx-tag" style="border-color:var(--amber);color:var(--amber)">novo</span>` : ""}</div>
+        <div class="alerta-topo"><span class="cx-tag">${escHTML(a.rotulo)}</span>${a.data ? `<span class="alerta-data">${formatDate(a.data)}</span>` : ""}${a.vistoEm > base && a.vistoEm >= recente ? `<span class="cx-tag" style="border-color:var(--amber);color:var(--amber)">novo</span>` : ""}</div>
         <div class="alerta-titulo">${escHTML(a.titulo)}</div>
         <div class="alerta-desc">${escHTML(a.descricao)}</div>
         <div class="alerta-links">${a.cnpj ? linksCNPJ(a.cnpj) : ""}${a.link && a.link.startsWith("#aba=contratos-cg") ? "" : ` · <a href="${a.link}">ver no painel</a>`}</div>
