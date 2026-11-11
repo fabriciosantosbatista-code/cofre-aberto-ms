@@ -2,7 +2,7 @@
  "ano": 2026,
  "fonte": "https://www.transparencia.ms.gov.br",
  "fonteApi": "https://gw.sgi.ms.gov.br",
- "ultimaAtualizacao": "2026-11-11T14:02:16",
+ "ultimaAtualizacao": "2026-11-11T14:54:29",
  "totais": {
   "empenhado": 23171879712.26,
   "liquidado": 21633267551.07,
@@ -9274,6 +9274,7 @@
    "tipo": "fornecedor"
   }
  ],
+ "totalCredores": 24276,
  "meses": {
   "2025": [
    1782091016.53,
@@ -9303,7 +9304,6 @@
    274875055.36
   ]
  },
- "totalCredores": 24276,
  "credoresPorTipo": {
   "fornecedor": 5685245453.74,
   "folha": 3360702784.7,
@@ -9612,11 +9612,11 @@
     "valor": 206000.0,
     "trechos": 109,
     "destinos": [
+     "Três Lagoas",
      "ANASTÁCIO",
      "Aquidauana",
      "Dois Irmãos do Buriti",
-     "Miranda",
-     "Terenos"
+     "Miranda"
     ]
    },
    {
@@ -9628,11 +9628,11 @@
     "valor": 169680.0,
     "trechos": 92,
     "destinos": [
-     "BONITO",
-     "Sidrolândia",
      "Alcinópolis",
      "Coxim",
-     "Pedro Gomes"
+     "Pedro Gomes",
+     "Rio Verde de Mato Grosso",
+     "Sonora"
     ]
    },
    {
@@ -9644,11 +9644,11 @@
     "valor": 163980.0,
     "trechos": 86,
     "destinos": [
-     "Bela Vista",
-     "Caracol",
-     "Guia Lopes da Laguna",
-     "Jardim",
-     "Nioaque"
+     "Três Lagoas",
+     "Alcinópolis",
+     "Coxim",
+     "Pedro Gomes",
+     "Rio Verde de Mato Grosso"
     ]
    },
    {
@@ -9696,7 +9696,7 @@
      "Batayporã",
      "Nova Alvorada do Sul",
      "Nova Andradina",
-     "Bandeirantes"
+     "Três Lagoas"
     ]
    },
    {
@@ -9740,11 +9740,11 @@
     "valor": 147140.0,
     "trechos": 77,
     "destinos": [
-     "Bodoquena",
-     "BONITO",
-     "Sidrolândia",
      "Bela Vista",
-     "Caracol"
+     "Caracol",
+     "Guia Lopes da Laguna",
+     "Jardim",
+     "Nioaque"
     ]
    },
    {
@@ -9840,7 +9840,7 @@
      "Batayporã",
      "Nova Alvorada do Sul",
      "Nova Andradina",
-     "ANASTÁCIO"
+     "Bela Vista"
     ]
    },
    {
@@ -9884,11 +9884,11 @@
     "valor": 135800.0,
     "trechos": 72,
     "destinos": [
+     "Três Lagoas",
      "Bandeirantes",
      "Camapuã",
      "Corguinho",
-     "Jaraguari",
-     "Rio Negro"
+     "Jaraguari"
     ]
    },
    {
@@ -9932,10 +9932,10 @@
     "valor": 134500.0,
     "trechos": 69,
     "destinos": [
+     "Três Lagoas",
      "Chapadão do Sul",
      "Costa Rica",
      "PARAÍSO DAS ÁGUAS",
-     "Três Lagoas",
      "Bela Vista"
     ]
    },
@@ -9952,7 +9952,7 @@
      "Aquidauana",
      "Miranda",
      "Terenos",
-     "Corumbá"
+     "Dois Irmãos do Buriti"
     ]
    },
    {
@@ -9966,9 +9966,9 @@
     "destinos": [
      "Deodápolis",
      "Ivinhema",
-     "Angélica",
      "Itaquiraí",
-     "Jutí"
+     "Jutí",
+     "NAVIRAI"
     ]
    },
    {
@@ -9981,10 +9981,10 @@
     "trechos": 68,
     "destinos": [
      "Três Lagoas",
-     "Bandeirantes",
-     "Camapuã",
-     "Corguinho",
-     "Jaraguari"
+     "Cassilândia",
+     "Inocência",
+     "Ribas do Rio Pardo",
+     "Bandeirantes"
     ]
    },
    {
@@ -10044,11 +10044,11 @@
     "valor": 124160.0,
     "trechos": 68,
     "destinos": [
-     "ANASTÁCIO",
-     "Aquidauana",
-     "Miranda",
-     "Terenos",
-     "Chapadão do Sul"
+     "Aparecida do Taboado",
+     "Paranaíba",
+     "Selvíria",
+     "Chapadão do Sul",
+     "Costa Rica"
     ]
    },
    {
@@ -10063,8 +10063,8 @@
      "Bodoquena",
      "BONITO",
      "Sidrolândia",
-     "Dois Irmãos do Buriti",
-     "Bela Vista"
+     "Bela Vista",
+     "Caracol"
     ]
    },
    {
@@ -10096,7 +10096,7 @@
      "Água Clara",
      "Bataguassu",
      "Santa Rita do Pardo",
-     "Aparecida do Taboado"
+     "Brasilândia"
     ]
    },
    {
@@ -10111,8 +10111,8 @@
      "Itaquiraí",
      "Jutí",
      "NAVIRAI",
-     "Novo Horizonte do Sul",
-     "Laguna Carapã"
+     "Laguna Carapã",
+     "Novo Horizonte do Sul"
     ]
    },
    {
@@ -10128,7 +10128,7 @@
      "Batayporã",
      "Nova Alvorada do Sul",
      "Nova Andradina",
-     "Chapadão do Sul"
+     "Campo Grande"
     ]
    },
    {
@@ -10141,10 +10141,10 @@
     "trechos": 60,
     "destinos": [
      "Três Lagoas",
-     "Dois Irmãos do Buriti",
      "Aparecida do Taboado",
      "Paranaíba",
-     "Selvíria"
+     "Selvíria",
+     "Dois Irmãos do Buriti"
     ]
    },
    {
@@ -10156,9 +10156,9 @@
     "valor": 111480.0,
     "trechos": 70,
     "destinos": [
+     "Ponta Porã",
      "Douradina",
      "Rio Brilhante",
-     "Ponta Porã",
      "Fátima do Sul",
      "Maracaju"
     ]
@@ -10175,7 +10175,7 @@
      "Rio Brilhante",
      "Douradina",
      "Maracaju",
-     "Ponta Porã",
+     "Itaporã",
      "Amambaí"
     ]
    },
@@ -10188,10 +10188,10 @@
     "valor": 108720.0,
     "trechos": 67,
     "destinos": [
-     "Ponta Porã",
      "Itaquiraí",
      "Jutí",
      "NAVIRAI",
+     "Ponta Porã",
      "Angélica"
     ]
    },
@@ -10204,11 +10204,11 @@
     "valor": 108440.0,
     "trechos": 57,
     "destinos": [
-     "Três Lagoas",
      "Chapadão do Sul",
      "Costa Rica",
      "PARAÍSO DAS ÁGUAS",
-     "Bodoquena"
+     "Três Lagoas",
+     "Água Clara"
     ]
    },
    {
@@ -10221,10 +10221,10 @@
     "trechos": 66,
     "destinos": [
      "Laguna Carapã",
-     "Caarapó",
-     "Fátima do Sul",
-     "Glória de Dourados",
-     "Douradina"
+     "Douradina",
+     "Maracaju",
+     "Rio Brilhante",
+     "Caarapó"
     ]
    },
    {
@@ -10252,11 +10252,11 @@
     "valor": 102540.0,
     "trechos": 59,
     "destinos": [
-     "Caarapó",
-     "Angélica",
-     "Deodápolis",
-     "Ivinhema",
-     "Itaquiraí"
+     "Itaquiraí",
+     "Jutí",
+     "Laguna Carapã",
+     "NAVIRAI",
+     "Angélica"
     ]
    },
    {
@@ -10269,10 +10269,10 @@
     "trechos": 53,
     "destinos": [
      "Três Lagoas",
-     "Corumbá",
-     "Ladário",
-     "Aparecida do Taboado",
-     "Paranaíba"
+     "Cassilândia",
+     "Inocência",
+     "Ribas do Rio Pardo",
+     "Corumbá"
     ]
    },
    {
@@ -10285,10 +10285,10 @@
     "trechos": 57,
     "destinos": [
      "Ponta Porã",
-     "Douradina",
-     "Itaporã",
-     "Maracaju",
-     "Rio Brilhante"
+     "Antônio João",
+     "Aral Moreira",
+     "Coronel Sapucaia",
+     "Eldorado"
     ]
    },
    {
@@ -10303,8 +10303,8 @@
      "Fátima do Sul",
      "Douradina",
      "Rio Brilhante",
-     "Angélica",
-     "Deodápolis"
+     "Caarapó",
+     "Glória de Dourados"
     ]
    },
    {
@@ -10349,10 +10349,10 @@
     "trechos": 57,
     "destinos": [
      "Ponta Porã",
+     "Vicentina",
      "Douradina",
      "Maracaju",
-     "Rio Brilhante",
-     "Vicentina"
+     "Rio Brilhante"
     ]
    },
    {
@@ -10399,8 +10399,8 @@
      "São Paulo",
      "Rio de Janeiro",
      "BUENOS AIRES",
-     "Aquidauana",
-     "Fortaleza"
+     "Salvador",
+     "Belo Horizonte"
     ]
    },
    {
@@ -10431,8 +10431,8 @@
      "Dourados",
      "Rio Brilhante",
      "Ponta Porã",
-     "Porto Murtinho",
-     "Maracaju"
+     "Maracaju",
+     "Porto Murtinho"
     ]
    },
    {
@@ -10448,7 +10448,7 @@
      "Japorã",
      "Paranhos",
      "Miranda",
-     "Corumbá"
+     "Rio Verde de Mato Grosso"
     ]
    },
    {
@@ -10464,7 +10464,7 @@
      "Itaquiraí",
      "Jutí",
      "NAVIRAI",
-     "Itaporã"
+     "Fátima do Sul"
     ]
    },
    {
@@ -10476,11 +10476,11 @@
     "valor": 83100.0,
     "trechos": 46,
     "destinos": [
-     "Chapadão do Sul",
-     "Costa Rica",
-     "PARAÍSO DAS ÁGUAS",
-     "ANASTÁCIO",
-     "Aquidauana"
+     "Bandeirantes",
+     "Camapuã",
+     "Corguinho",
+     "Jaraguari",
+     "Rio Negro"
     ]
    },
    {
@@ -10509,10 +10509,10 @@
     "trechos": 54,
     "destinos": [
      "Campo Grande",
-     "Três Lagoas",
      "Chapadão do Sul",
      "Costa Rica",
-     "PARAÍSO DAS ÁGUAS"
+     "PARAÍSO DAS ÁGUAS",
+     "Três Lagoas"
     ]
    },
    {
@@ -10543,8 +10543,8 @@
      "Campo Grande",
      "Corumbá",
      "Ladário",
-     "Aparecida do Taboado",
-     "Paranaíba"
+     "Bodoquena",
+     "BONITO"
     ]
    },
    {
@@ -10557,10 +10557,10 @@
     "trechos": 100,
     "destinos": [
      "Miranda",
-     "Sete Quedas",
      "Japorã",
+     "Sete Quedas",
      "Paranhos",
-     "Terenos"
+     "Corumbá"
     ]
    },
    {
@@ -10592,7 +10592,7 @@
      "Ribas do Rio Pardo",
      "Selvíria",
      "Três Lagoas",
-     "Aparecida do Taboado"
+     "Bandeirantes"
     ]
    },
    {
@@ -10606,8 +10606,8 @@
     "destinos": [
      "Japorã",
      "Dois Irmãos do Buriti",
-     "Ladário",
      "Corumbá",
+     "Ladário",
      "Miranda"
     ]
    },
@@ -10624,7 +10624,7 @@
      "Aral Moreira",
      "Coronel Sapucaia",
      "Amambaí",
-     "Campo Grande"
+     "Itaquiraí"
     ]
    },
    {
@@ -10653,10 +10653,10 @@
     "trechos": 21,
     "destinos": [
      "Rio de Janeiro",
-     "São Paulo",
      "BONITO",
-     "LONDRES",
-     "Guadalajara"
+     "São Paulo",
+     "Aquidauana",
+     "CIDADE DO MÉXICO"
     ]
    },
    {
@@ -10670,9 +10670,9 @@
     "destinos": [
      "Coxim",
      "Sonora",
+     "São Gabriel do Oeste",
      "Jardim",
-     "Maracaju",
-     "São Gabriel do Oeste"
+     "Maracaju"
     ]
    },
    {
@@ -10687,8 +10687,8 @@
      "Três Lagoas",
      "Água Clara",
      "Ribas do Rio Pardo",
-     "Jardim",
-     "Maracaju"
+     "Bataguassu",
+     "Jardim"
     ]
    },
    {
@@ -10720,7 +10720,7 @@
      "BONITO",
      "Maracaju",
      "Sidrolândia",
-     "Chapadão do Sul"
+     "Coxim"
     ]
    },
    {
@@ -10733,8 +10733,8 @@
     "trechos": 80,
     "destinos": [
      "Angélica",
-     "NAVIRAI",
      "Batayporã",
+     "NAVIRAI",
      "Ivinhema",
      "Jutí"
     ]
@@ -10750,9 +10750,9 @@
     "destinos": [
      "Bataguassu",
      "Três Lagoas",
-     "Selvíria",
-     "Coxim",
-     "Sonora"
+     "Brasilândia",
+     "Nova Alvorada do Sul",
+     "Coxim"
     ]
    },
    {
@@ -10783,8 +10783,8 @@
      "Amambaí",
      "Jutí",
      "Iguatemi",
-     "Tacuru",
-     "Nova Andradina"
+     "Nova Andradina",
+     "Tacuru"
     ]
    },
    {
@@ -10800,7 +10800,7 @@
      "Glória de Dourados",
      "Brasilândia",
      "Bataguassu",
-     "Taquarussu"
+     "Nova Andradina"
     ]
    },
    {
@@ -10815,8 +10815,8 @@
      "São Paulo",
      "Brasília",
      "Cuiabá",
-     "BONITO",
-     "Porto Murtinho"
+     "João Pessoa",
+     "San Pedro do Atacama"
     ]
    },
    {
@@ -10861,9 +10861,9 @@
     "trechos": 40,
     "destinos": [
      "São Paulo",
-     "Dourados",
      "Brasília",
      "Corumbá",
+     "Dourados",
      "Sorocaba"
     ]
    },
@@ -10879,8 +10879,8 @@
      "Rio Brilhante",
      "Ponta Porã",
      "Dourados",
-     "Aral Moreira",
-     "Paranaíba"
+     "Caarapó",
+     "Aral Moreira"
     ]
    },
    {
@@ -10894,9 +10894,9 @@
     "destinos": [
      "Brasília",
      "Goiânia",
-     "Corumbá",
      "Dourados",
-     "Chapadão do Sul"
+     "Corumbá",
+     "Cassilândia"
     ]
    },
    {
@@ -10942,9 +10942,9 @@
     "destinos": [
      "Inocência",
      "Campo Grande",
-     "Chapadão do Sul",
      "Três Lagoas",
-     "Figueirão"
+     "Chapadão do Sul",
+     "Paraíso"
     ]
    },
    {
@@ -10956,11 +10956,11 @@
     "valor": 43800.0,
     "trechos": 24,
     "destinos": [
-     "Bandeirantes",
-     "Camapuã",
-     "Corguinho",
-     "Jaraguari",
-     "Rio Negro"
+     "Bela Vista",
+     "Caracol",
+     "Guia Lopes da Laguna",
+     "Jardim",
+     "Nioaque"
     ]
    },
    {
@@ -10972,9 +10972,9 @@
     "valor": 42900.0,
     "trechos": 67,
     "destinos": [
-     "Ribas do Rio Pardo",
-     "Paranaíba",
      "Ponta Porã",
+     "Paranaíba",
+     "Ribas do Rio Pardo",
      "Água Clara",
      "PARAÍSO DAS ÁGUAS"
     ]
@@ -10992,7 +10992,7 @@
      "Mundo Novo",
      "Dourados",
      "Bataguassu",
-     "Selvíria"
+     "NAVIRAI"
     ]
    },
    {
@@ -11007,7 +11007,7 @@
      "BONITO",
      "Campo Grande",
      "Corumbá",
-     "São Paulo",
+     "Dourados",
      "Miranda"
     ]
    },
@@ -11024,7 +11024,7 @@
      "Jaraguari",
      "Cassilândia",
      "Paranaíba",
-     "Chapadão do Sul"
+     "PARAÍSO DAS ÁGUAS"
     ]
    },
    {
@@ -11040,7 +11040,7 @@
      "São Paulo",
      "Brasília",
      "Uruaçu",
-     "Jardim"
+     "Corumbá"
     ]
    },
    {
@@ -11054,9 +11054,9 @@
     "destinos": [
      "Coxim",
      "Coronel Sapucaia",
+     "Sete Quedas",
      "Eldorado",
-     "Japorã",
-     "Sete Quedas"
+     "Japorã"
     ]
    },
    {
@@ -11086,9 +11086,9 @@
     "destinos": [
      "Brasília",
      "São Paulo",
-     "Maceió",
-     "Foz do Iguaçu",
-     "Goiânia"
+     "Goiânia",
+     "São Luís",
+     "Curitiba"
     ]
    },
    {
@@ -11103,8 +11103,8 @@
      "Dourados",
      "BONITO",
      "Maracaju",
-     "Bodoquena",
-     "Santa Rita do Pardo"
+     "Santa Rita do Pardo",
+     "Corumbá"
     ]
    },
    {
@@ -11117,10 +11117,10 @@
     "trechos": 9,
     "destinos": [
      "Corumbá",
-     "Brasília",
-     "São Paulo",
-     "Dourados",
-     "Recife"
+     "Recife",
+     "BONITO",
+     "Fortaleza",
+     "São Paulo"
     ]
    },
    {
@@ -11146,9 +11146,9 @@
     "destinos": [
      "São Paulo",
      "Corumbá",
-     "BONITO",
      "Cuiabá",
-     "Ponta Porã"
+     "BONITO",
+     "Brasília"
     ]
    },
    {
@@ -11161,10 +11161,10 @@
     "trechos": 54,
     "destinos": [
      "Ponta Porã",
-     "Quadrante MS 1016B/PORTO MURTINHO",
      "Quadrante MS 979/PORTO MURTINHO",
-     "Quadrante MS 944/PORTO MURTINHO",
-     "Bela Vista"
+     "Quadrante MS 1016B/PORTO MURTINHO",
+     "Quadrante MS 1014/PORTO MURTINHO",
+     "Quadrante MS 795/PORTO MURTINHO"
     ]
    },
    {
@@ -11177,10 +11177,10 @@
     "trechos": 18,
     "destinos": [
      "Corumbá",
-     "Bataguassu",
-     "Aquidauana",
-     "Brasília",
-     "Chapadão do Sul"
+     "Miranda",
+     "Caarapó",
+     "Dourados",
+     "Presidente Venceslau"
     ]
    },
    {
@@ -11193,10 +11193,10 @@
     "trechos": 33,
     "destinos": [
      "Ponta Porã",
-     "Corumbá",
      "Dourados",
+     "Corumbá",
      "NAVIRAI",
-     "Coxim"
+     "Bandeirantes"
     ]
    },
    {
@@ -11210,8 +11210,8 @@
     "destinos": [
      "BONITO",
      "Bandeirantes",
-     "Terenos",
      "Dourados",
+     "Terenos",
      "Ribas do Rio Pardo"
     ]
    },
@@ -11226,9 +11226,9 @@
     "destinos": [
      "Dourados",
      "Corumbá",
-     "NAVIRAI",
      "Ponta Porã",
-     "Dois Irmãos do Buriti"
+     "NAVIRAI",
+     "Ribas do Rio Pardo"
     ]
    },
    {
@@ -11242,8 +11242,8 @@
     "destinos": [
      "Corumbá",
      "NAVIRAI",
-     "Dourados",
      "Três Lagoas",
+     "Dourados",
      "Nova Andradina"
     ]
    },
@@ -11256,11 +11256,11 @@
     "valor": 33970.0,
     "trechos": 18,
     "destinos": [
-     "Cassilândia",
-     "Inocência",
-     "Ribas do Rio Pardo",
-     "Anaurilândia",
-     "Batayporã"
+     "BONITO",
+     "Corumbá",
+     "Dois Irmãos do Buriti",
+     "Ladário",
+     "Chapadão do Sul"
     ]
    },
    {
@@ -11287,8 +11287,8 @@
     "destinos": [
      "Corumbá",
      "Ponta Porã",
-     "Cuiabá",
      "BONITO",
+     "Cuiabá",
      "Rondonópolis"
     ]
    },
@@ -11303,8 +11303,8 @@
     "destinos": [
      "São Paulo",
      "Toronto",
-     "Brasília",
-     "LONDRES"
+     "LONDRES",
+     "Brasília"
     ]
    },
    {
@@ -11318,9 +11318,9 @@
     "destinos": [
      "Corumbá",
      "Três Lagoas",
-     "Fátima do Sul",
-     "Cassilândia",
-     "Maracaju"
+     "NAVIRAI",
+     "Maracaju",
+     "Nova Andradina"
     ]
    },
    {
@@ -11346,10 +11346,10 @@
     "trechos": 17,
     "destinos": [
      "São Paulo",
-     "Ribas do Rio Pardo",
      "Brasília",
-     "ASSUNÇÃO",
-     "Ponta Porã"
+     "Ribas do Rio Pardo",
+     "Aquidauana",
+     "BONITO"
     ]
    },
    {
@@ -11375,18 +11375,18 @@
     "valor": 32550.0,
     "trechos": 15,
     "destinos": [
-     "Corumbá",
      "BONITO",
-     "Chapadão do Sul",
-     "São Gabriel do Oeste",
-     "Bataguassu"
+     "Corumbá",
+     "Aquidauana",
+     "Recife",
+     "Cuiabá"
     ]
    },
    {
-    "nome": "ADALTO DE OLIVEIRA CAMPOS",
-    "cpf": "***.313.581-**",
+    "nome": "GABRIEL LOBO DE OLIVEIRA",
+    "cpf": "***.732.721-**",
     "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
+    "cargo": "CABOS E SOLDADOS",
     "tipo": "SERVIDOR",
     "valor": 32550.0,
     "trechos": 7,
@@ -11395,10 +11395,10 @@
     ]
    },
    {
-    "nome": "GABRIEL LOBO DE OLIVEIRA",
-    "cpf": "***.732.721-**",
+    "nome": "ADALTO DE OLIVEIRA CAMPOS",
+    "cpf": "***.313.581-**",
     "orgao": "SEJUSP",
-    "cargo": "CABOS E SOLDADOS",
+    "cargo": "SUBTENENTE E SARGENTOS",
     "tipo": "SERVIDOR",
     "valor": 32550.0,
     "trechos": 7,
@@ -11430,8 +11430,8 @@
      "Campo Grande",
      "Quadrante MS 394/CAMAPUÃ",
      "Bandeirantes",
-     "BONITO",
-     "Quadrante MS 395/CAMAPUÃ"
+     "Quadrante MS 395/CAMAPUÃ",
+     "Quadrante MS 393B/CAMAPUÃ"
     ]
    },
    {
@@ -11443,8 +11443,8 @@
     "valor": 31335.0,
     "trechos": 91,
     "destinos": [
-     "Quadrante MS 1019B/CARACOL",
      "ALTO CARACOL",
+     "Quadrante MS 1019B/CARACOL",
      "Quadrante MS 1018/CARACOL",
      "Ponta Porã",
      "Quadrante MS 984B/CARACOL"
@@ -11459,11 +11459,11 @@
     "valor": 31250.0,
     "trechos": 12,
     "destinos": [
-     "Corumbá",
      "Brasília",
+     "Corumbá",
      "BONITO",
-     "Três Lagoas",
-     "Dourados"
+     "Rondonópolis",
+     "Três Lagoas"
     ]
    },
    {
@@ -11478,8 +11478,8 @@
      "Figueirão",
      "PARAÍSO DAS ÁGUAS",
      "Inocência",
-     "Alcinópolis",
-     "Chapadão do Sul"
+     "Chapadão do Sul",
+     "Alcinópolis"
     ]
    },
    {
@@ -11507,8 +11507,8 @@
      "Corumbá",
      "Dourados",
      "NAVIRAI",
-     "Costa Rica",
-     "Itaquiraí"
+     "Bela Vista",
+     "Ponta Porã"
     ]
    },
    {
@@ -11534,8 +11534,8 @@
     "destinos": [
      "Nova Andradina",
      "Ponta Porã",
-     "Fátima do Sul",
      "Novo Horizonte do Sul",
+     "Fátima do Sul",
      "Dourados"
     ]
    },
@@ -11549,10 +11549,10 @@
     "trechos": 25,
     "destinos": [
      "NAVIRAI",
-     "Sonora",
-     "Três Lagoas",
      "Dourados",
-     "Mundo Novo"
+     "Mundo Novo",
+     "Três Lagoas",
+     "Sonora"
     ]
    },
    {
@@ -11596,11 +11596,27 @@
     "valor": 29825.0,
     "trechos": 20,
     "destinos": [
-     "Corumbá",
-     "Ponta Porã",
      "Coxim",
-     "Dourados",
-     "Terenos"
+     "Ponta Porã",
+     "Corumbá",
+     "Jaraguari",
+     "NAVIRAI"
+    ]
+   },
+   {
+    "nome": "NELSON DE SOUZA NETO",
+    "cpf": "***.638.531-**",
+    "orgao": "IAGRO",
+    "cargo": "FISCAL ESTADUAL AGROPECUÁRIO",
+    "tipo": "SERVIDOR",
+    "valor": 29300.0,
+    "trechos": 39,
+    "destinos": [
+     "Três Lagoas",
+     "Bataguassu",
+     "Brasilândia",
+     "Aparecida do Taboado",
+     "Campo Grande"
     ]
    },
    {
@@ -11620,22 +11636,6 @@
     ]
    },
    {
-    "nome": "NELSON DE SOUZA NETO",
-    "cpf": "***.638.531-**",
-    "orgao": "IAGRO",
-    "cargo": "FISCAL ESTADUAL AGROPECUÁRIO",
-    "tipo": "SERVIDOR",
-    "valor": 29300.0,
-    "trechos": 39,
-    "destinos": [
-     "Três Lagoas",
-     "Bataguassu",
-     "Brasilândia",
-     "Aparecida do Taboado",
-     "Ponta Porã"
-    ]
-   },
-   {
     "nome": "JOÃO PAULO MARTINEZ",
     "cpf": "***.633.061-**",
     "orgao": "IMASUL",
@@ -11646,9 +11646,9 @@
     "destinos": [
      "Corumbá",
      "BONITO",
-     "Camapuã",
      "Sonora",
-     "Dourados"
+     "Dourados",
+     "Camapuã"
     ]
    },
    {
@@ -11678,9 +11678,9 @@
     "destinos": [
      "Corumbá",
      "Dourados",
+     "Sidrolândia",
      "Jardim",
-     "Porto Murtinho",
-     "Sidrolândia"
+     "Porto Murtinho"
     ]
    },
    {
@@ -11695,8 +11695,8 @@
      "Nova Andradina",
      "Ivinhema",
      "Campo Grande",
-     "NAVIRAI",
-     "Três Lagoas"
+     "Três Lagoas",
+     "NAVIRAI"
     ]
    },
    {
@@ -11725,7 +11725,7 @@
      "Corumbá",
      "São Paulo",
      "Maracaju",
-     "Sonora"
+     "Bataguassu"
     ]
    },
    {
@@ -11767,10 +11767,10 @@
     "valor": 27580.0,
     "trechos": 6,
     "destinos": [
-     "Toronto",
      "São Paulo",
-     "Três Lagoas",
-     "Brasília"
+     "Toronto",
+     "Brasília",
+     "Três Lagoas"
     ]
    },
    {
@@ -11783,10 +11783,10 @@
     "trechos": 15,
     "destinos": [
      "Brasília",
-     "Dourados",
-     "Punta Del Arenal",
-     "Maracaju",
-     "São Paulo"
+     "Aquidauana",
+     "BONITO",
+     "Porto Alegre",
+     "NAVIRAI"
     ]
    },
    {
@@ -11798,11 +11798,11 @@
     "valor": 27135.0,
     "trechos": 18,
     "destinos": [
-     "Costa Rica",
-     "Coxim",
-     "Fátima do Sul",
-     "Jateí",
-     "Cassilândia"
+     "Iguatemi",
+     "Mundo Novo",
+     "Aquidauana",
+     "Maracaju",
+     "Miranda"
     ]
    },
    {
@@ -11817,24 +11817,24 @@
      "Aquidauana",
      "Rio Negro",
      "Água Clara",
-     "Santa Rita do Pardo",
-     "Corguinho"
+     "Corguinho",
+     "Santa Rita do Pardo"
     ]
    },
    {
     "nome": "LUIZ FELIPE GOMES DA SILVA BARROS",
     "cpf": "***.548.611-**",
     "orgao": "SEJUSP",
-    "cargo": "AGENTE DE POLÍCIA JUDICIÁRIA",
+    "cargo": "DIREÇÃO ESP. E ASSESSORAMENTO - CCA - 08",
     "tipo": "SERVIDOR",
     "valor": 26925.0,
     "trechos": 8,
     "destinos": [
      "Corumbá",
      "Brasília",
-     "Ponta Porã",
+     "São Paulo",
      "Cuiabá",
-     "São Paulo"
+     "Ponta Porã"
     ]
    },
    {
@@ -11873,8 +11873,8 @@
     "destinos": [
      "BONITO",
      "Jardim",
-     "Fátima do Sul",
      "Bodoquena",
+     "Fátima do Sul",
      "Culturama"
     ]
    },
@@ -11889,9 +11889,9 @@
     "destinos": [
      "Três Lagoas",
      "Quadrante MS 903/BRASILANDIA",
-     "Quadrante MS 867A/BRASILANDIA",
      "Quadrante MS 866/BRASILANDIA",
-     "Campo Grande"
+     "Quadrante MS 867A/BRASILANDIA",
+     "Selvíria"
     ]
    },
    {
@@ -11903,8 +11903,8 @@
     "valor": 26235.0,
     "trechos": 47,
     "destinos": [
-     "Corumbá",
      "BONITO",
+     "Corumbá",
      "Dourados",
      "Ivinhema",
      "Três Lagoas"
@@ -11933,10 +11933,10 @@
     "trechos": 184,
     "destinos": [
      "Campo Grande",
-     "Rio Brilhante",
      "Glória de Dourados",
+     "Rio Brilhante",
      "Deodápolis",
-     "Fazenda Panduí- Iguatemi"
+     "Jateí"
     ]
    },
    {
@@ -11964,8 +11964,8 @@
     "destinos": [
      "ASSUNÇÃO",
      "Brasília",
+     "Chapadão do Sul",
      "Três Lagoas",
-     "São Paulo",
      "Dourados"
     ]
    },
@@ -11982,7 +11982,7 @@
      "Antônio João",
      "Bela Vista",
      "Porto Murtinho",
-     "Ponta Porã"
+     "BONITO"
     ]
    },
    {
@@ -11994,8 +11994,8 @@
     "valor": 25747.5,
     "trechos": 4,
     "destinos": [
-     "Toronto",
-     "São Paulo"
+     "São Paulo",
+     "Toronto"
     ]
    },
    {
@@ -12008,10 +12008,10 @@
     "trechos": 20,
     "destinos": [
      "Corumbá",
-     "Bela Vista",
      "Porto Murtinho",
      "Ivinhema",
-     "PARAÍSO DAS ÁGUAS"
+     "Bela Vista",
+     "Água Clara"
     ]
    },
    {
@@ -12024,21 +12024,9 @@
     "trechos": 10,
     "destinos": [
      "Corumbá",
-     "Santa Cruz do Sul",
      "São Paulo",
-     "Dourados"
-    ]
-   },
-   {
-    "nome": "ELISCARLOS FERREIRA SANTOS",
-    "cpf": "***.316.601-**",
-    "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 25200.0,
-    "trechos": 6,
-    "destinos": [
-     "Corumbá"
+     "Dourados",
+     "Santa Cruz do Sul"
     ]
    },
    {
@@ -12055,6 +12043,18 @@
      "Rio Negro",
      "Rio Verde de Mato Grosso",
      "São Gabriel do Oeste"
+    ]
+   },
+   {
+    "nome": "ELISCARLOS FERREIRA SANTOS",
+    "cpf": "***.316.601-**",
+    "orgao": "SEJUSP",
+    "cargo": "SUBTENENTE E SARGENTOS",
+    "tipo": "SERVIDOR",
+    "valor": 25200.0,
+    "trechos": 6,
+    "destinos": [
+     "Corumbá"
     ]
    },
    {
@@ -12080,9 +12080,9 @@
     "destinos": [
      "BONITO",
      "Quadrante MS 878C/JARDIM",
-     "Quadrante MS 914B/JARDIM",
      "Quadrante MS 915B/JARDIM",
-     "Bodoquena"
+     "Quadrante MS 914B/JARDIM",
+     "Quadrante MS 877B/JARDIM"
     ]
    },
    {
@@ -12111,7 +12111,7 @@
      "Corumbá",
      "Ponta Porã",
      "Miranda",
-     "Nova Andradina"
+     "Maracaju"
     ]
    },
    {
@@ -12125,9 +12125,9 @@
     "destinos": [
      "Campo Grande",
      "Quadrante MS 966A/NOVA ALVORADA DO SUL",
-     "Dourados",
      "NOVA ALVORADA DO SUL",
-     "BONITO"
+     "BONITO",
+     "Dourados"
     ]
    },
    {
@@ -12143,7 +12143,7 @@
      "Coxim",
      "Quadrante MS 346B/RIO NEGRO",
      "São Gabriel do Oeste",
-     "Quadrante MS 388A/RIO NEGRO"
+     "Pedro Gomes"
     ]
    },
    {
@@ -12156,10 +12156,10 @@
     "trechos": 62,
     "destinos": [
      "Sidrolândia",
-     "Bandeirantes",
      "Jaraguari",
+     "Bandeirantes",
      "Camapuã",
-     "Rochedo"
+     "Terenos"
     ]
    },
    {
@@ -12172,10 +12172,10 @@
     "trechos": 13,
     "destinos": [
      "Paranaíba",
-     "ANASTÁCIO",
-     "Aquidauana",
-     "Dois Irmãos do Buriti",
-     "Miranda"
+     "Três Lagoas",
+     "Bodoquena",
+     "BONITO",
+     "Sidrolândia"
     ]
    },
    {
@@ -12214,10 +12214,10 @@
     "trechos": 13,
     "destinos": [
      "São Paulo",
-     "BONITO",
-     "Dourados",
-     "Rio de Janeiro",
-     "Jaraguari"
+     "Belo Horizonte",
+     "Salvador",
+     "Jaraguari",
+     "Fortaleza"
     ]
    },
    {
@@ -12245,11 +12245,11 @@
     "valor": 24500.0,
     "trechos": 24,
     "destinos": [
-     "Dourados",
      "Ponta Porã",
+     "Dourados",
      "Sidrolândia",
      "BONITO",
-     "Ivinhema"
+     "Bataguassu"
     ]
    },
    {
@@ -12262,8 +12262,8 @@
     "trechos": 7,
     "destinos": [
      "Corumbá",
-     "Santa Cruz do Sul",
-     "Dourados"
+     "Dourados",
+     "Santa Cruz do Sul"
     ]
    },
    {
@@ -12275,11 +12275,11 @@
     "valor": 24375.0,
     "trechos": 30,
     "destinos": [
-     "Três Lagoas",
-     "Sonora",
      "Dourados",
+     "Sonora",
+     "Três Lagoas",
      "Bataguassu",
-     "Mundo Novo"
+     "Ponta Porã"
     ]
    },
    {
@@ -12291,11 +12291,11 @@
     "valor": 24335.0,
     "trechos": 63,
     "destinos": [
-     "PARAÍSO DAS ÁGUAS",
      "Figueirão",
+     "PARAÍSO DAS ÁGUAS",
      "Paranaíba",
      "Campo Grande",
-     "Quadrante MS 213A/COSTA RICA"
+     "Chapadão do Sul"
     ]
    },
    {
@@ -12309,9 +12309,9 @@
     "destinos": [
      "Dourados",
      "Três Lagoas",
-     "Itaporã",
+     "Coxim",
      "Angélica",
-     "Coxim"
+     "Itaporã"
     ]
    },
    {
@@ -12339,11 +12339,11 @@
     "valor": 24120.0,
     "trechos": 16,
     "destinos": [
-     "Sidrolândia",
-     "Terenos",
-     "Aral Moreira",
-     "Coronel Sapucaia",
-     "Bataguassu"
+     "Iguatemi",
+     "Mundo Novo",
+     "Dourados",
+     "Corumbá",
+     "Ladário"
     ]
    },
    {
@@ -12355,11 +12355,11 @@
     "valor": 24120.0,
     "trechos": 16,
     "destinos": [
-     "Água Clara",
-     "Ribas do Rio Pardo",
-     "Fátima do Sul",
-     "Jateí",
-     "Cassilândia"
+     "Itaporã",
+     "Antônio João",
+     "Coronel Sapucaia",
+     "Ponta Porã",
+     "Glória de Dourados"
     ]
    },
    {
@@ -12375,7 +12375,7 @@
      "Dourados",
      "Brasília",
      "São Paulo",
-     "Cuiabá"
+     "Três Lagoas"
     ]
    },
    {
@@ -12389,8 +12389,8 @@
     "destinos": [
      "Dourados",
      "Ponta Porã",
-     "Três Lagoas",
      "Corumbá",
+     "Três Lagoas",
      "Inocência"
     ]
    },
@@ -12404,9 +12404,9 @@
     "trechos": 11,
     "destinos": [
      "São Paulo",
-     "Brasília",
      "Caarapó",
-     "Corumbá",
+     "Brasília",
+     "Salvador",
      "Dourados"
     ]
    },
@@ -12420,10 +12420,10 @@
     "trechos": 26,
     "destinos": [
      "Brasília",
-     "Ribas do Rio Pardo",
-     "Fátima do Sul",
      "Maracaju",
-     "Laguna Carapã"
+     "Fátima do Sul",
+     "Ribas do Rio Pardo",
+     "Corumbá"
     ]
    },
    {
@@ -12437,9 +12437,9 @@
     "destinos": [
      "Campo Grande",
      "Londrina",
-     "Costa Rica",
-     "Corumbá",
-     "Rio do Sul"
+     "Rio do Sul",
+     "NAVIRAI",
+     "Costa Rica"
     ]
    },
    {
@@ -12491,13 +12491,13 @@
     "nome": "CARLOS MATHEUS DE SOUZA SOBRINHO",
     "cpf": "***.759.471-**",
     "orgao": "IAGRO",
-    "cargo": "FISCAL ESTADUAL AGROPECUÁRIO",
+    "cargo": "AGENTE FISCAL AGROPECUÁRIO",
     "tipo": "SERVIDOR",
     "valor": 23600.0,
     "trechos": 50,
     "destinos": [
-     "Campo Grande",
      "Aparecida do Taboado",
+     "Campo Grande",
      "Bataguassu",
      "Selvíria",
      "Água Clara"
@@ -12512,11 +12512,11 @@
     "valor": 23560.0,
     "trechos": 47,
     "destinos": [
-     "Dourados",
      "Camapuã",
+     "Dourados",
      "Corumbá",
      "Ponta Porã",
-     "BONITO"
+     "Porto Murtinho"
     ]
    },
    {
@@ -12529,8 +12529,8 @@
     "trechos": 19,
     "destinos": [
      "Corumbá",
-     "NAVIRAI",
-     "BONITO"
+     "BONITO",
+     "NAVIRAI"
     ]
    },
    {
@@ -12557,9 +12557,9 @@
     "destinos": [
      "Selvíria",
      "Água Clara",
+     "Bataguassu",
      "Quadrante MS 622/TRÊS LAGOAS",
-     "Santa Rita do Pardo",
-     "Bataguassu"
+     "Santa Rita do Pardo"
     ]
    },
    {
@@ -12633,9 +12633,9 @@
     "destinos": [
      "Rio Verde de Mato Grosso",
      "Quadrante MS 389/RIO NEGRO",
-     "Campo Grande",
      "Quadrante MS 346B/RIO NEGRO",
-     "Quadrante MS 432B/RIO NEGRO"
+     "Quadrante MS 432B/RIO NEGRO",
+     "Campo Grande"
     ]
    },
    {
@@ -12649,8 +12649,8 @@
     "destinos": [
      "Três Lagoas",
      "Corumbá",
-     "Caarapó",
-     "NAVIRAI"
+     "NAVIRAI",
+     "Caarapó"
     ]
    },
    {
@@ -12665,8 +12665,8 @@
      "Ponta Porã",
      "Aquidauana",
      "Brasília",
-     "Camapuã",
-     "Maceió"
+     "Bandeirantes",
+     "Porto Murtinho"
     ]
    },
    {
@@ -12968,5 +12968,6 @@
     "somaAno": 240788.8
    }
   ]
- }
+ },
+ "coletaParcial": true
 }
