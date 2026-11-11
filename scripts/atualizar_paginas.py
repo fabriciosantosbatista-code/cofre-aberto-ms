@@ -260,16 +260,34 @@ def main():
                      rf'(<(div|span) class="stat-val")[^>]*>[^<]*(</\2>\s*<(?:div|span) class="stat-label">{re.escape(rotulo)}<)',
                      rf'\1{attr}>{valor_txt}\3', f"capa: {rotulo}")
 
-    html = stat(html, "Vereadores CG", len(vereadores), len(vereadores))
-    html = stat(html, "Dep. Estaduais", len(deps_est), len(deps_est))
-    html = stat(html, "Senadores MS", len(senadores), len(senadores))
-    html = stat(html, "Notas fiscais", milhar(n_total), n_total)
-    if ativos:
-        html = stat(html, "Magistrados MS", ativos, ativos)
-    if ceap_est:
-        html = stat(html, f"CEAP Estadual {ANO}", compacto_mi(ceap_est))
-    if emendas.get("totalGeralPago"):
-        html = stat(html, f"Emendas Parlamentares MS {ANO}", compacto_mi(emendas["totalGeralPago"]))
+    n_parl = len(vereadores) + len(deps_est) + len(deps_fed) + len(senadores)
+    html = stat(html, "Parlamentares de MS", n_parl, n_parl)
+    html = stat(html, "Notas fiscais de parlamentares", milhar(n_total), n_total)
+    html = re.sub(r'(<span data-auto="notas">)[^<]*(</span>)', rf"\g<1>{milhar(n_total)}\2", html)
+    gov_p = (carregar("governo_ms.json").get("totais") or {}).get("pago")
+    if gov_p:
+        html = stat(html, "Pagos pelo Governo MS", valor_curto(gov_p))
+    pref_p = carregar("prefeitura.json").get("totalDespesas")
+    if pref_p:
+        html = stat(html, "Pagos pela Prefeitura de CG", valor_curto(pref_p))
+        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Despesas da Prefeitura)', rf"\g<1>{valor_curto(pref_p)}\2", html)
+    em_ms = carregar("emendas_municipios.json").get("totalMS")
+    if em_ms:
+        html = stat(html, "Emendas recebidas em MS", valor_curto(em_ms))
+    ss_liq = carregar("supersalarios.json").get("liquidoAcimaTeto")
+    if ss_liq is not None:
+        html = stat(html, "Líquido acima do teto", milhar(ss_liq), ss_liq)
+        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Supersalários)', rf"\g<1>{milhar(ss_liq)}\2", html)
+    n_ctr = (carregar("prefeitura_contratos.json").get("resumo") or {}).get("contratos")
+    if n_ctr:
+        html = stat(html, "Contratos da Prefeitura", milhar(n_ctr), n_ctr)
+    n_emp_i = len(carregar("empresas_index.json") or {})
+    if n_emp_i:
+        html = stat(html, "Páginas de empresas", milhar(n_emp_i), n_emp_i)
+    n_org = len(carregar("orgaos_index.json") or {})
+    if n_org:
+        html = stat(html, "Páginas de órgãos", milhar(n_org), n_org)
+        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Páginas de órgãos)', rf"\g<1>{n_org}\2", html)
     html = re.sub(r"\d{1,3}(?:\.\d{3})* notas fiscais reais", f"{milhar(n_total)} notas fiscais reais", html)
     html = re.sub(r"<p>\d{1,3}(?:\.\d{3})* notas fiscais com fornecedor", f"<p>{milhar(n_total)} notas fiscais com fornecedor", html)
     html = re.sub(r"(pessoal dos gabinetes, )\d{1,3}(?:\.\d{3})*( notas fiscais)", rf"\g<1>{milhar(n_cg)}\2", html)
@@ -294,7 +312,7 @@ def main():
         html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Emendas por município)', rf"\g<1>{n_mun}\2", html)
     n_emp = len(carregar("empresas_index.json") or {})
     if n_emp:
-        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Páginas de empresas)', rf"\g<1>{n_emp}\2", html)
+        html = re.sub(r'(<div class="aba-num">)[\d.]+(</div>\s*<div class="aba-title">Páginas de empresas)', rf"\g<1>{milhar(n_emp)}\2", html)
     nf = len(carregar("feeds/index.json").get("parlamentares") or [])
     if nf:
         html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Siga um político)', rf"\g<1>{nf}\2", html)

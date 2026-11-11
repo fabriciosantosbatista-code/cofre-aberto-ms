@@ -210,6 +210,8 @@ p{margin:0;}
 .cx-tag{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 7px;border-radius:999px;border:1px solid var(--border);color:var(--ink-soft);margin:1px 3px 1px 0;white-space:nowrap}
 .cx-mais,.ev-voltar,.ev-grupos button,.seguir-btn{background:none;border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--ink);cursor:pointer;font-family:inherit;font-size:.8rem}
 .cx-mais{margin-top:10px}
+.nav-toggle{display:none;align-items:center;justify-content:space-between;gap:10px;width:100%;margin:4px 0 8px;padding:11px 14px;min-height:44px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--ink);font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer}
+.nav-toggle span:last-child{color:var(--ink-soft);font-weight:500;font-size:.78rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mvv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:640px){.mvv-grid{grid-template-columns:1fr}}
 .mvv-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius,12px);padding:18px 20px}
@@ -316,6 +318,11 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   .sidebar nav button,.sidebar nav a.nav-link{width:auto;white-space:nowrap;flex-shrink:0;padding:11px 14px;font-size:.8rem;min-height:44px;}
   .sidebar-status,.sidebar-divider{display:none;}
   .nav-group-label{font-size:0;padding:0;width:1px;align-self:stretch;background:var(--border);flex-shrink:0;margin:2px 4px;}
+  .nav-toggle{display:flex!important}
+  .sidebar.nav-aberto nav{display:grid;grid-template-columns:1fr 1fr;overflow:visible;gap:4px;padding-bottom:8px}
+  .sidebar.nav-aberto nav .nav-group-label{font-size:.62rem;width:auto;height:auto;background:none;grid-column:1/-1;margin:12px 2px 2px;padding:0;align-self:auto}
+  .sidebar.nav-aberto nav button,.sidebar.nav-aberto nav a.nav-link{width:100%;white-space:normal;justify-content:flex-start;background:var(--surface);border:1px solid var(--border)}
+  .sidebar.nav-aberto nav button.active{border-color:var(--accent)}
   .main{padding:20px 16px 48px;}
   .section-hero{padding:20px;border-radius:var(--radius-lg);}
   #busca-global{min-height:44px!important;font-size:16px!important;padding:11px 14px!important;}
@@ -450,7 +457,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   <aside class="sidebar">
     <img src="logo.svg" alt="Cofre Aberto MS" width="400" height="120" style="width:100%;max-width:180px;height:auto;aspect-ratio:400/120;display:block"/>
     <div style="padding:8px 12px 4px">
-      <input id="busca-global" type="text" placeholder="🔍 Buscar qualquer parlamentar…"
+      <input id="busca-global" type="text" placeholder="🔍 Buscar parlamentar, empresa, órgão ou cidade…"
         style="width:100%;box-sizing:border-box;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--ink);font-size:0.85rem;outline:none"/>
     </div>
     <nav>
@@ -3924,9 +3931,30 @@ function montarIndiceBusca() {
     if (m.situacao === "ATIVO") todos.push({ nome: m.nome, partido: m.cargo, tab: "judiciario", label: "Magistrado(a) TRE-MS" });
   for (const m of DADOS_TJMS.magistrados || [])
     if (m.situacao === "ATIVO") todos.push({ nome: m.nome, partido: m.cargo, tab: "judiciario", label: "Magistrado(a) TJMS" });
-
+  // parlamentares cujas abas ainda não carregaram (vereadores, estaduais): pelo índice das páginas próprias
+  const ja = new Set(todos.map(p => p.nome));
+  const ABA_GRUPO = { vereador: ["camara", "Vereador CG"], estadual: ["deputados-estaduais", "Dep. Estadual"],
+                      federal: ["deputados", "Dep. Federal"], senador: ["senadores", "Senador(a)"] };
+  for (const [chave, url] of Object.entries(PAGINAS_BUSCA || {})) {
+    const [g, nome] = chave.split("|");
+    if (ja.has(nome) || !ABA_GRUPO[g]) continue;
+    ja.add(nome);
+    const noPainel = g === "vereador" || g === "estadual";
+    todos.push({ nome, partido: "", tab: ABA_GRUPO[g][0], label: ABA_GRUPO[g][1],
+                 hash: noPainel ? `#aba=${ABA_GRUPO[g][0]}&p=${encodeURIComponent(nome)}` : "", href: noPainel ? "" : url });
+  }
+  // empresas, órgãos e municípios: levam a uma página própria ou à aba de emendas
+  for (const [raiz, nome] of Object.entries(EMPRESAS || {}))
+    todos.push({ nome, partido: raiz, href: `/empresa/${raiz}/`, label: "Empresa", doc: raiz });
+  for (const [sigla, o] of Object.entries(ORGAOS_BUSCA || {}))
+    todos.push({ nome: o.nome || sigla, partido: sigla, href: o.url, label: "Órgão" });
+  for (const m of (DADOS_EMENDAS_MUN && DADOS_EMENDAS_MUN.municipios) || [])
+    if (m.municipio && m.municipio !== "—") todos.push({ nome: m.municipio, partido: "emendas recebidas", tab: "emendas", label: "Município", hash: `#aba=emendas&p=${encodeURIComponent(m.municipio)}` });
   return todos;
 }
+let ORGAOS_BUSCA = {}, PAGINAS_BUSCA = {};
+carregarJSON("dados/paginas_index.json").then(d => { if (d) PAGINAS_BUSCA = d; });
+carregarJSON("dados/orgaos_index.json").then(d => { if (d) ORGAOS_BUSCA = d; });
 
 function initBuscaGlobal() {
   const input = document.getElementById("busca-global");
@@ -3934,7 +3962,7 @@ function initBuscaGlobal() {
 
   // Autocomplete dropdown
   const dropdown = document.createElement("div");
-  dropdown.style.cssText = "position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:8px;z-index:1000;max-height:280px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.4);display:none;width:220px";
+  dropdown.style.cssText = "position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:8px;z-index:1000;max-height:340px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.4);display:none;width:min(320px,calc(100vw - 32px))";
   input.parentNode.style.position = "relative";
   input.parentNode.appendChild(dropdown);
 
@@ -3943,22 +3971,27 @@ function initBuscaGlobal() {
     if (q.length < 2) { dropdown.style.display = "none"; return; }
 
     const todos = montarIndiceBusca();
+    const qd = q.replace(/\D/g, "");
+    const sa = t => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const qs = sa(q);
     const matches = todos.filter(p =>
-      p.nome.toLowerCase().includes(q) || (p.partido||"").toLowerCase().includes(q)
-    ).slice(0, 8);
+      sa(p.nome).includes(qs) || sa(p.partido).includes(qs) || (qd.length >= 5 && p.doc && qd.startsWith(p.doc.slice(0, Math.min(8, qd.length))))
+    ).sort((a, b) => (sa(a.nome).startsWith(qs) ? 0 : 1) - (sa(b.nome).startsWith(qs) ? 0 : 1)).slice(0, 10);
 
     if (!matches.length) { dropdown.style.display = "none"; return; }
 
     dropdown.innerHTML = matches.map(p => `
-      <div class="busca-item" data-tab="${p.tab}" data-nome="${p.nome}"
+      <div class="busca-item" data-tab="${escHTML(p.tab || "")}" data-nome="${escHTML(p.nome)}" data-href="${escHTML(p.href || "")}" data-hash="${escHTML(p.hash || "")}"
         style="padding:10px 14px;cursor:pointer;border-bottom:1px solid var(--border);font-size:.85rem">
-        <div style="font-weight:600">${p.nome}</div>
-        <div style="font-size:.75rem;opacity:.6">${p.label} · ${p.partido || p.uf || ""}</div>
+        <div style="font-weight:600">${escHTML(p.nome)}</div>
+        <div style="font-size:.75rem;opacity:.6">${escHTML(p.label)}${p.partido || p.uf ? ` · ${escHTML(p.partido || p.uf)}` : ""}</div>
       </div>`).join("");
     dropdown.style.display = "block";
 
     dropdown.querySelectorAll(".busca-item").forEach(item => {
       item.addEventListener("click", () => {
+        if (item.dataset.href) { location.href = item.dataset.href; return; }
+        if (item.dataset.hash) { location.hash = item.dataset.hash; dropdown.style.display = "none"; input.value = ""; return; }
         // Navegar para a aba correta
         const tab = item.dataset.tab;
         const nome = item.dataset.nome;
@@ -5071,6 +5104,37 @@ function addShareButtons() {
   });
 }
 
+
+// ===================== MENU NO CELULAR =====================
+// No celular a barra lateral vira uma faixa que rola para o lado e só mostra 2 ou 3 abas;
+// o botão abre todas as seções numa grade, agrupadas como na barra lateral.
+function montarMenuCelular() {
+  const sidebar = document.querySelector(".sidebar"), nav = sidebar && sidebar.querySelector("nav");
+  if (!nav || document.querySelector(".nav-toggle")) return;
+  const bt = document.createElement("button");
+  bt.type = "button";
+  bt.className = "nav-toggle";
+  bt.setAttribute("aria-expanded", "false");
+  const rotulo = () => {
+    const at = nav.querySelector("button.active");
+    bt.innerHTML = `<span>${sidebar.classList.contains("nav-aberto") ? "✕ Fechar seções" : "☰ Todas as seções"}</span><span>${at ? escHTML(at.textContent.trim()) : ""}</span>`;
+  };
+  bt.addEventListener("click", () => {
+    sidebar.classList.toggle("nav-aberto");
+    bt.setAttribute("aria-expanded", sidebar.classList.contains("nav-aberto"));
+    rotulo();
+  });
+  nav.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+    if (sidebar.classList.contains("nav-aberto")) {
+      sidebar.classList.remove("nav-aberto");
+      bt.setAttribute("aria-expanded", "false");
+      window.scrollTo({ top: 0 });
+    }
+    setTimeout(rotulo, 0);
+  }));
+  nav.parentNode.insertBefore(bt, nav);
+  rotulo();
+}
 // ===================== INIT =====================
 async function init() {
   // Renderizar esqueleto imediatamente — não bloqueia a tela
@@ -5149,6 +5213,7 @@ async function init() {
     });
   });
 
+  montarMenuCelular();
   initBuscaGlobal();
   addShareButtons();
   document.querySelectorAll(".ano-ref").forEach(el => { el.textContent = ANO_REFERENCIA; });

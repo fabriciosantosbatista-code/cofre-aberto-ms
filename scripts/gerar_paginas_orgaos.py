@@ -217,7 +217,8 @@ def main():
         novos = [f"  <url><loc>{SITE}/orgao/{x}</loc><lastmod>{HOJE.isoformat()}</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>"
                  for x in [""] + [p["slug"] + "/" for p in paginas]]
         escreve_se_mudou(sm, txt.replace("</urlset>", "\n".join(novos) + "\n</urlset>"))
-    escreve_se_mudou(DADOS / "orgaos_index.json", json.dumps({p["sigla"]: f"/orgao/{p['slug']}/" for p in paginas}, ensure_ascii=False))
+    escreve_se_mudou(DADOS / "orgaos_index.json", json.dumps({p["sigla"]: {"url": f"/orgao/{p['slug']}/", "nome": p["nome"]} for p in paginas},
+                                                             ensure_ascii=False, separators=(",", ":")))
     print(f"✅ {len(paginas)} páginas de órgãos ({mudou} alteradas) + índice /orgao/ + sitemap")
 
 
