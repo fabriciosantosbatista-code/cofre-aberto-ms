@@ -22,7 +22,7 @@ const AMOSTRA = ["prefeitura", "judiciario", "deputados-brasil", "senado-brasil"
 const PAGINAS = ["", "press.html", "metodologia.html", "vereadores-campo-grande.html", "deputados-estaduais-ms.html", "senadores-ms.html",
   "vereador/", "deputado-estadual/", "deputado-federal/", "senador/",
   "vereador/papy/", "deputado-estadual/zeca-do-pt/", "deputado-federal/geraldo-resende/", "senador/tereza-cristina/",
-  "empresa/", "empresa/34028316/", "empresa/29376294/"];
+  "empresa/", "empresa/34028316/", "empresa/29376294/", "boletim/"];
 
 const problemas = [];
 const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
@@ -108,7 +108,7 @@ const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
 
     // abas de tabelas (sem detalhe por clique): Contratos CG e Governo MS
     for (const [tab, tabelas] of [["contratos-cg", ["ranking-ct-forn", "tabela-ct-contratos", "tabela-ct-licit"]],
-                                  ["governo-ms", ["ranking-gov-credores", "tabela-gov-escalao", "tabela-gov-diarias"]]]) {
+                                  ["governo-ms", ["ranking-gov-credores", "tabela-gov-escalao", "tabela-gov-diarias", "tabela-diarias-comp"]]]) {
       onde = `aba ${tab}`;
       await page.locator(`button[data-tab="${tab}"]`).evaluate((e) => e.click());
       await page.waitForTimeout(3000);

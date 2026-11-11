@@ -328,6 +328,9 @@ jobs:
       - name: Pontos de atenção nos contratos da Prefeitura (+ feed RSS)
         run: python3 scripts/gerar_alertas_contratos.py || echo "⚠️ gerar_alertas_contratos.py falhou — alertas anteriores mantidos"
 
+      - name: Diárias — comparação entre os órgãos de MS
+        run: python3 scripts/gerar_diarias_comparacao.py || echo "⚠️ gerar_diarias_comparacao.py falhou — comparação anterior mantida"
+
       - name: Gerar planilhas CSV e status das fontes
         run: python3 scripts/gerar_dados_abertos.py || echo "⚠️ gerar_dados_abertos.py falhou — planilhas anteriores mantidas"
 
@@ -336,6 +339,9 @@ jobs:
 
       - name: Gerar uma página por empresa (+ sitemap)
         run: python3 scripts/gerar_paginas_empresas.py || echo "⚠️ gerar_paginas_empresas.py falhou — páginas anteriores mantidas"
+
+      - name: Boletim semanal (+ feed RSS e sitemap)
+        run: python3 scripts/gerar_boletim.py || echo "⚠️ gerar_boletim.py falhou — boletim anterior mantido"
 
       - name: Versões leves dos dados para o painel (carregamento rápido no celular)
         run: python3 scripts/gerar_painel_leve.py || echo "⚠️ gerar_painel_leve.py falhou — o painel usa os arquivos completos"
@@ -348,7 +354,7 @@ jobs:
           git config user.name "Cofre Aberto Bot"
           git config user.email "bot@cofreabertoms.com.br"
           git add dados/ index.html vereadores-campo-grande.html deputados-estaduais-ms.html senadores-ms.html press.html PRESS.md \
-                  vereador/ deputado-estadual/ deputado-federal/ senador/ empresa/ fotos/p/ sitemap.xml
+                  vereador/ deputado-estadual/ deputado-federal/ senador/ empresa/ boletim/ fotos/p/ sitemap.xml
 
           if git diff --staged --quiet; then
             echo "Sem mudanças"

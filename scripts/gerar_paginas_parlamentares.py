@@ -305,7 +305,7 @@ def cabecalho(titulo, descricao, url, imagem, jsonld, tipo="profile"):
 
 
 RODAPE = f"""<footer><span>© {ANO} Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
-<span><a href="/">Início</a> · <a href="/cofre-aberto-ms.html">Painel</a> · <a href="/metodologia.html">Metodologia e dados</a> · <a href="/press.html">Imprensa</a></span></footer>
+<span><a href="/">Início</a> · <a href="/cofre-aberto-ms.html">Painel</a> · <a href="/boletim/">Boletim semanal</a> · <a href="/empresa/">Empresas</a> · <a href="/metodologia.html">Metodologia e dados</a> · <a href="/press.html">Imprensa</a></span></footer>
 </div>
 </body>
 </html>
@@ -371,6 +371,50 @@ def _grafico(evol, ano, W, H, fs, passo_mes):
               f"<thead><tr><th>Mês</th><th class='num'>{ano}</th>{f'<th class=num>{ano - 1}</th>' if ant else ''}</tr></thead>"
               f"<tbody>{linhas}</tbody></table></div></details>")
     return "".join(out), leg, tabela
+
+
+_EMENDAS = None
+
+
+def emendas_de(p):
+    """Emendas pagas em MS no ano por este deputado federal/senador (dados/emendas_municipios.json)."""
+    global _EMENDAS
+    if _EMENDAS is None:
+        em = carregar("emendas_municipios.json")
+        _EMENDAS = {}
+        if em.get("ano") == ANO:
+            emp = carregar("empresas_index.json") or {}
+            for a in em.get("autores", []):
+                if a.get("atual"):
+                    _EMENDAS[(a.get("grupo"), slug(a["autor"]))] = (a, emp)
+    return _EMENDAS.get((p["grupo"], slug(p["nome"])))
+
+
+def bloco_emendas(p):
+    achado = emendas_de(p) if p["grupo"] in ("federal", "senador") and p.get("ms") else None
+    if not achado:
+        return ""
+    a, emp = achado
+    mun = a["municipios"][:10]
+    mx = mun[0]["valor"] if mun else 1
+    barras = "".join(f"<div class='bar'><span>{e(m['municipio'])}</span><b>{brl(m['valor'])}</b><div class='t'><i style='width:{m['valor'] / mx * 100:.1f}%'></i></div></div>" for m in mun)
+    def fav(f):
+        d = re.sub(r"\D", "", f.get("doc") or "")
+        nome = e(f["nome"])
+        if len(d) == 14 and d[:8] in emp:
+            nome = f"<a href='/empresa/{d[:8]}/'>{nome}</a>"
+        return f"<tr><td class='f'>{nome}<small>{e(f.get('municipio') or '')}</small></td><td class='num'>{brl(f['valor'])}</td></tr>"
+    tipos = " · ".join(f"{e(t['tipo'])}: <strong>{brl(t['valor'])}</strong>" for t in a.get("tipos", []))
+    fora = f" Mais {brl(a['totalBR'] - a['totalMS'])} foram para fora de MS." if a["totalBR"] - a["totalMS"] > 1 else ""
+    return (f"<h2>Para onde foram as emendas</h2>"
+            f"<p>Em {ANO}, emendas de <strong>{e(p['nome'])}</strong> pagaram <strong>{brl(a['totalMS'])}</strong> a "
+            f"{len(a['municipios'])} município(s) de MS.{fora} {tipos}.</p>"
+            f"<div class='bars'>{barras}</div>"
+            + (f"<p style='margin-top:12px'>{len(a['municipios']) - 10} outros municípios receberam valores menores.</p>" if len(a["municipios"]) > 10 else "")
+            + f"<h2 style='font-size:1rem;margin-top:22px'>Quem recebeu</h2><div class='tabela-wrap'><table><thead><tr><th>Favorecido</th>"
+            f"<th class='num'>Valor</th></tr></thead><tbody>{''.join(fav(f) for f in a['favorecidos'][:10])}</tbody></table></div>"
+            f"<p style='margin-top:10px;font-size:.8rem'>Fonte: Portal da Transparência do Governo Federal (CGU), pagamentos de emendas por favorecido. "
+            f"Conta o mês do pagamento, inclusive de emendas de anos anteriores. <a href='/cofre-aberto-ms.html#aba=emendas'>Ver todas as emendas no painel →</a></p>")
 
 
 def pagina(p, irmaos):
@@ -479,6 +523,7 @@ def pagina(p, irmaos):
 {bloco_cat}
 {bloco_notas}
 {bloco_cx}
+{bloco_emendas(p)}
 {bloco_irmaos}
 <h2>Como citar</h2>
 <div class="citar">COFRE ABERTO MS. <i>{e(p['nome'])} ({e(cargo)}): gastos de {e(g['cota'])} em {ANO}</i>. Fonte dos dados: {e(FONTE_OFICIAL[p['grupo']])}. Coletados em {data_br(fonte_data)}. Disponível em: {e(url_abs)}. Acesso em: {data_br(HOJE.isoformat())}.</div>

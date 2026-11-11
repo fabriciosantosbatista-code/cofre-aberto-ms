@@ -105,6 +105,22 @@ def tabela_salarios():
     return tab, pdfs[0], (f"Lei nº {lei.group(1)}, de {lei.group(2)}" if lei else None)
 
 
+def diarias_declaradas():
+    """A consulta de diárias da ALEMS exporta CSV por ano; em meses sem diária ela
+    escreve "Não houve despesa com a concessão de diárias nesse período"."""
+    out = {}
+    for ano in range(ANO - 3, ANO + 1):
+        r = requests.get("https://transparencia2.al.ms.gov.br/consulta-diarias/exportar-csv", params={"ano": ano},
+                         headers=UA, timeout=90)
+        r.raise_for_status()
+        linhas = r.content.decode("utf-8-sig", "replace").splitlines()
+        sem = sum("Não houve" in l for l in linhas)
+        valores = [float(v.replace(".", "").replace(",", ".")) for l in linhas if "Não houve" not in l
+                   for v in re.findall(r"\b\d{1,3}(?:\.\d{3})*,\d{2}\b", l)]
+        out[str(ano)] = {"mesesSemDiarias": sem, "linhas": len(linhas), "totalEncontrado": round(sum(valores), 2)}
+    return out
+
+
 def main():
     print("🏛️  Servidores da ALEMS")
     try:
@@ -152,6 +168,12 @@ def main():
            "grupos": sorted(grupos.values(), key=lambda g: -g["quantidade"]),
            "niveisGabinete": sorted(niveis.values(), key=lambda n: int(n["simbolo"].split(".")[-1])),
            "tabelaSalarios": tab, "servidores": lista}
+    try:
+        out["diarias"] = diarias_declaradas()
+        out["fonteDiarias"] = "https://transparencia2.al.ms.gov.br/consulta-diarias"
+        print("  diárias declaradas: " + ", ".join(f"{a}: {d['mesesSemDiarias']} meses sem diárias" for a, d in out["diarias"].items()))
+    except Exception as e:
+        print(f"  ⚠️ consulta de diárias: {e}")
     SAIDA.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"  {len(lista)} servidores · {plap} assessores de gabinete (~{out['mediaPorGabinete']} por deputado) · "
           f"vencimento-base dos comissionados R$ {out['vencimentosComissionadosMes']:,.2f}/mês")

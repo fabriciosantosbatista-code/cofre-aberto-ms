@@ -228,6 +228,13 @@ def main():
     alc = carregar("alertas_contratos.json")
     if alc:
         recente("Pontos de atenção (contratos CG)", alc.get("ultimaAtualizacao"), 2, nivel="aviso", o_que="última geração")
+    bol = carregar("boletim_estado.json")
+    if bol:
+        recente("Boletim semanal", bol.get("atualizado"), 2, nivel="aviso", o_que="última geração")
+    dc = carregar("diarias_comparacao.json")
+    if dc:
+        checa(len(dc.get("orgaos", [])) >= 4, f"Comparação de diárias: {len(dc.get('orgaos', []))} órgãos",
+              f"**Comparação de diárias**: só {len(dc.get('orgaos', []))} órgãos", "aviso")
     emp = list(ROOT.glob("empresa/*/index.html"))
     checa(len(emp) >= 500, f"Páginas de empresas: {len(emp)}", f"**Páginas de empresas**: só {len(emp)}", "aviso")
 

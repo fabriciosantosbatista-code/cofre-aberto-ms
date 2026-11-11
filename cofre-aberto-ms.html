@@ -466,6 +466,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button data-tab="senado-brasil"><span class="dot"></span> Senado Brasil</button>
       <div class="nav-group-label">Sobre o projeto</div>
       <button data-tab="sobre"><span class="dot"></span> Sobre</button>
+      <a class="nav-link" href="boletim/"><span class="dot"></span> Boletim semanal</a>
+      <a class="nav-link" href="empresa/"><span class="dot"></span> Empresas</a>
       <a class="nav-link" href="metodologia.html"><span class="dot"></span> Metodologia e dados</a>
     </nav>
     <div class="sidebar-status" id="status-row">
@@ -918,6 +920,14 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="card card-x-scroll">
         <table class="notes-table" id="tabela-gov-diarias">
           <thead><tr><th>Nome</th><th>Cargo</th><th>Órgão</th><th class="num">Trechos</th><th>Destinos mais frequentes</th><th class="num">Valor</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="subhead">Diárias em outros órgãos de MS</div>
+      <div class="section-note" id="gov-diarias-comp-nota"></div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-diarias-comp">
+          <thead><tr><th>Órgão</th><th>O que publica</th><th class="num">Diárias no ano</th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
@@ -4005,7 +4015,10 @@ function renderServidoresAlems(d) {
   document.getElementById("alems-nota").innerHTML =
     `A ALEMS publica nome, cargo e símbolo de cada servidor, mas <b>não informa em qual gabinete cada um trabalha</b> nem a remuneração individual. ` +
     `Por isso não dá para dizer quantos assessores tem cada deputado: o número abaixo é a média (${nf(d.assessoresGabinete)} assessores ÷ ${d.deputados} deputados). ` +
-    `O vencimento-base vem da tabela oficial de salários${d.leiTabela ? ` (${escHTML(d.leiTabela)})` : ""} e não inclui gratificações nem vantagens pessoais.`;
+    `O vencimento-base vem da tabela oficial de salários${d.leiTabela ? ` (${escHTML(d.leiTabela)})` : ""} e não inclui gratificações nem vantagens pessoais.` +
+    (d.diarias && d.diarias[String(d.ano)] && !d.diarias[String(d.ano)].totalEncontrado
+      ? ` <b>Diárias:</b> a consulta de diárias da ALEMS declara que não houve diárias em nenhum mês de ${Object.keys(d.diarias).filter(a => !d.diarias[a].totalEncontrado).join(", ")} — as viagens dos deputados entram na cota parlamentar (CEAP), que está na lista acima.`
+      : "");
   document.getElementById("alems-stats").innerHTML = [
     [nf(d.total), "servidores na Assembleia"], [nf(d.comissionados), "em cargos de comissão"],
     [nf(d.assessoresGabinete), "assessores de gabinete parlamentar"], [String(d.mediaPorGabinete).replace(".", ","), "assessores por deputado, em média"],
@@ -4215,6 +4228,18 @@ function renderGovernoMS(d) {
   bc.addEventListener("input", desenhaCred);
   fc.addEventListener("change", desenhaCred);
   desenhaCred();
+
+  // Comparação de diárias entre órgãos (dados/diarias_comparacao.json)
+  carregarJSON("dados/diarias_comparacao.json").then(c => {
+    const tb = document.querySelector("#tabela-diarias-comp tbody");
+    if (!c || !c.orgaos) { tb.closest(".card").hidden = true; return; }
+    const SIT = { publica: "", zero: "declara zero", nao_publica: "não publica" };
+    document.getElementById("gov-diarias-comp-nota").textContent = c.nota || "";
+    tb.innerHTML = c.orgaos.map(o => `
+      <tr><td style="white-space:normal;min-width:150px"><b>${escHTML(o.orgao)}</b>${SIT[o.situacao] ? `<br><span class="cx-tag" style="border-color:var(--amber);color:var(--amber)">${SIT[o.situacao]}</span>` : ""}</td>
+        <td style="font-size:.78rem;white-space:normal;min-width:220px">${escHTML(o.detalhe || "")}<br><span style="opacity:.6">${escHTML(o.fonte || "")}${o.aba && o.aba !== "governo-ms" ? ` · <a href="#aba=${o.aba}">ver aba</a>` : ""}</span></td>
+        <td class="num">${o.situacao === "nao_publica" ? "—" : formatBRL(o.total)}</td></tr>`).join("");
+  });
 
   // Diárias
   const di = d.diarias;

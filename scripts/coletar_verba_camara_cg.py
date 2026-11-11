@@ -892,6 +892,44 @@ def coletar_pessoal_gabinetes():
     log(f"✅ Pessoal dos gabinetes atualizado ({atual['referenciaPessoal']}): "
         f"{resumo['totalFuncionariosGabinetes']} servidores, R$ {resumo['totalGastoPessoalMensal']:,.2f}/mês")
 
+def coletar_diarias_camara():
+    """Diárias pagas pela Câmara (mesmo endpoint Fiorilli das câmaras do interior).
+    Em 2025–2026 o portal da CG devolve lista vazia: o registro guarda essa
+    verificação, para o site dizer que a Câmara não publica diárias."""
+    log("Verificando diárias publicadas — Câmara Municipal de Campo Grande...")
+    sessao = requests.Session()
+    sessao.headers.update({"User-Agent": HEADERS_AJAX["User-Agent"]})
+    ano = date.today().year if date.today().month >= 2 else date.today().year - 1
+    registros, respondeu = [], False
+    for param in (f"Ano={ano}&ConectarExercicio={ano}", f"Exercicio={ano}"):
+        url = (f"{BASE_URL}/VersaoJson/Despesas/?Listagem=Diarias&DiaInicioPeriodo=01&MesInicialPeriodo=01"
+               f"&DiaFinalPeriodo=31&MesFinalPeriodo=12&{param}&Empresa={EMPRESA_CAMARA}&MostraDadosConsolidado=False")
+        try:
+            r = sessao.get(url, timeout=120)
+            if r.status_code == 200 and isinstance(r.json(), list):
+                respondeu = True
+                if r.json():
+                    registros = r.json()
+                    break
+        except Exception as e:
+            log(f"   diárias ({param.split('=')[0]}): {e}")
+    if not respondeu:
+        log(" ⚠️ Endpoint de diárias não respondeu — registro anterior mantido")
+        return
+    por = {}
+    for d in registros:
+        nome = (d.get("FAVORECIDO") or "").strip() or "—"
+        f = por.setdefault(nome, {"nome": nome, "cargo": (d.get("CARGO") or "").strip(), "valor": 0.0, "quantidade": 0})
+        f["valor"] += _valor_fiorilli(d.get("VALOR"))
+        f["quantidade"] += 1
+    atual = json.load(open(ARQUIVO_CAMARA, encoding="utf-8"))
+    atual["diarias"] = {"ano": ano, "verificadoEm": datetime.now().isoformat(timespec="seconds"),
+                        "registros": len(registros), "total": round(sum(f["valor"] for f in por.values()), 2),
+                        "favorecidos": sorted(({**f, "valor": round(f["valor"], 2)} for f in por.values()), key=lambda f: -f["valor"])[:50],
+                        "fonte": f"{BASE_URL}/ (Despesas → Diárias)"}
+    json.dump(atual, open(ARQUIVO_CAMARA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    log(f"✅ Diárias da Câmara CG {ano}: {len(registros)} registros, R$ {atual['diarias']['total']:,.2f}")
+
 if __name__ == "__main__":
     virada_do_ano()
     resultado = coletar_verba_indenizatoria()
@@ -900,3 +938,7 @@ if __name__ == "__main__":
         coletar_pessoal_gabinetes()
     except Exception as e:
         log(f" ⚠️ Pessoal dos gabinetes: erro inesperado — {e} (dados anteriores mantidos)")
+    try:
+        coletar_diarias_camara()
+    except Exception as e:
+        log(f" ⚠️ Diárias da Câmara: erro inesperado — {e} (registro anterior mantido)")
