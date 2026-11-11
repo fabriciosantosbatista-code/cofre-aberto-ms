@@ -70,6 +70,156 @@ def link_nome(grupo, nome):
     return f'<td class="nome"><a href="{url}" style="color:inherit;text-decoration:underline;text-decoration-color:var(--border)">{nome}</a></td>' if url else f'<td class="nome">{nome}</td>'
 
 
+MESES_EXTENSO = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto",
+                 "setembro", "outubro", "novembro", "dezembro"]
+
+
+def valor_curto(v):
+    """R$ 4,1 bi / R$ 323,5 mi / R$ 5,7 mi / R$ 214,5 mil — para o kit de imprensa."""
+    v = float(v or 0)
+    for lim, suf in ((1e9, "bi"), (1e6, "mi"), (1e3, "mil")):
+        if v >= lim:
+            return f"R$ {v / lim:,.1f} {suf}".replace(",", "X").replace(".", ",").replace("X", ".")
+    return brl(v)
+
+
+def troca_auto(html, nome, novo):
+    """Substitui o conteúdo entre <!-- auto:nome --> e <!-- /auto:nome -->."""
+    padrao = rf"(<!-- auto:{nome} -->).*?(<!-- /auto:{nome} -->)"
+    if not re.search(padrao, html, re.S):
+        print(f"  ⚠️ marcador auto:{nome} não encontrado")
+        return html
+    return re.sub(padrao, lambda m: m.group(1) + novo + m.group(2), html, count=1, flags=re.S)
+
+
+def atualizar_kit_imprensa(cg, est, fed, sen, pref, emendas, mags, status, cx, camaras_n):
+    p = ROOT / "press.html"
+    if not p.exists():
+        return
+    html = p.read_text(encoding="utf-8")
+    vereadores, deps_est = cg.get("vereadores", []), est.get("vereadores", [])
+    deps_fed, senadores = fed.get("deputados", []), sen.get("senadores", [])
+    vi = lambda v: v.get("verbaIndenizatoria") or {}
+    verba_cg = sum(vi(v).get(f"gastoPago{ANO}") or 0 for v in vereadores)
+    ceap_est = sum(vi(d).get(f"gastoPago{ANO}") or 0 for d in deps_est)
+    ceap_fed = sum(d.get("cotaGastaAno") or 0 for d in deps_fed)
+    ceaps_sen = sum(s.get("cotaGastaAno") or 0 for s in senadores)
+    n_notas = (sum(v.get("totalNotasFiscais") or 0 for v in vereadores) + sum(len(d.get("despesas") or []) for d in deps_est)
+               + sum(len(d.get("despesas") or []) for d in deps_fed) + sum(len(s.get("notasCeaps") or []) for s in senadores)
+               + (pref.get("totalNotasFiscais") or 0))
+    folha_cg = (cg.get("resumo") or {}).get("totalGastoPessoalMensal") or 0
+    func_cg = (cg.get("resumo") or {}).get("totalFuncionariosGabinetes") or 0
+    ref_pessoal = cg.get("referenciaPessoal") or ""
+    emendas_tot = emendas.get("totalGeralPago") or 0
+    pref_tot = pref.get("totalDespesas") or 0
+    folha_jud = sum((m.get("resumo") or {}).get("totalFolhaMensalBrutaAtivos") or 0 for m in mags)
+    ativos = sum((m.get("resumo") or {}).get("totalAtivos") or 0 for m in mags)
+    total_cat = pref_tot + verba_cg + ceap_est + ceap_fed + ceaps_sen + emendas_tot
+
+    data_ref = (status.get("ultimaAtualizacao") or date.today().isoformat())[:10]
+    a, m, d = data_ref.split("-")
+    html = troca_auto(html, "data", f'<p class="nota">Última atualização: {int(d)} de {MESES_EXTENSO[int(m) - 1]} de {a} '
+                                    f'(números recalculados automaticamente a cada coleta diária)</p>')
+    html = troca_auto(html, "cobertura", f"""<ul>
+      <li>{len(vereadores)} vereadores da Câmara Municipal de Campo Grande</li>
+      <li>{len(deps_est)} deputados estaduais da Assembleia Legislativa de MS (ALEMS)</li>
+      <li>{len(deps_fed)} deputados federais de Mato Grosso do Sul</li>
+      <li>{len(senadores)} senadores de Mato Grosso do Sul</li>
+      <li>Prefeitura Municipal de Campo Grande</li>
+      <li>{ativos} magistrados ativos do TJMS, TRT24 e TRE-MS</li>
+      <li>Além de listas completas dos 513 deputados federais e 81 senadores do Brasil, e de câmaras municipais de {camaras_n} cidades do interior de MS.</li>
+    </ul>""")
+    linhas = [
+        (milhar(n_notas), "Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor)"),
+        (valor_curto(total_cat) + "+", f"Total de gastos públicos catalogados em {ANO} (Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares)"),
+        (valor_curto(pref_tot), f"Pagos pela Prefeitura de Campo Grande em {ANO}, em {milhar(pref.get('totalNotasFiscais') or 0)} empenhos"),
+        (valor_curto(verba_cg), f"Verba indenizatória paga aos {len(vereadores)} vereadores de Campo Grande em {ANO}"),
+        (valor_curto(ceap_est), f"CEAP paga aos {len(deps_est)} deputados estaduais de MS em {ANO}"),
+        (valor_curto(ceap_fed), f"CEAP dos {len(deps_fed)} deputados federais de MS em {ANO}"),
+        (valor_curto(ceaps_sen), f"CEAPS dos {len(senadores)} senadores de MS em {ANO}"),
+        (valor_curto(emendas_tot), f"Emendas parlamentares pagas em Mato Grosso do Sul em {ANO}"),
+        (valor_curto(folha_cg) + "/mês", f"Folha de pessoal dos {len(vereadores)} gabinetes da Câmara de Campo Grande ({milhar(func_cg)} funcionários, {ref_pessoal})"),
+        (valor_curto(folha_jud) + "/mês", f"Folha bruta dos {ativos} magistrados ativos de MS (TJMS, TRT24, TRE-MS)"),
+    ]
+    if cx:
+        linhas.append((milhar(cx), "Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões)"))
+    linhas.append(("100%", "Dos dados vêm de fontes oficiais — estimativas são sempre marcadas (ver Metodologia)"))
+    tabela = "\n".join(f'      <tr><td class="valor">{v}</td><td class="desc">{t}</td></tr>' for v, t in linhas)
+    html = troca_auto(html, "numeros", '<table class="numeros">\n' + tabela + "\n    </table>")
+
+    # pauta: uso da cota (do maior ao menor), com nomes
+    uso = sorted(((vi(v).get(f"gastoPago{ANO}") or 0) / (vi(v).get(f"cotaAnual{ANO}") or 300000) * 100, v["nome"]) for v in vereadores)
+    if uso:
+        (pmin, nmin), (pmax, nmax) = uso[0], uso[-1]
+        html = troca_auto(html, "pauta-verba",
+            f'<li><strong>"Quem mais e quem menos gastou a verba indenizatória em {ANO}"</strong> — entre os {len(vereadores)} vereadores '
+            f'de Campo Grande, o uso da cota anual de R$ 300 mil por gabinete vai de {pmin:.0f}% ({nmin}) a {pmax:.0f}% ({nmax}). '
+            f'Bom gancho para pedir explicação aos gabinetes nos dois extremos — o painel mostra mês a mês e nota a nota.</li>')
+    if folha_cg:
+        media = func_cg / len(vereadores) if vereadores else 0
+        html = troca_auto(html, "pauta-folha",
+            f'<li><strong>"{valor_curto(folha_cg)} por mês: o custo da folha de pessoal dos gabinetes da Câmara de Campo Grande"</strong> '
+            f'— com {milhar(func_cg)} funcionários distribuídos entre {len(vereadores)} gabinetes ({ref_pessoal}), uma média de '
+            f'{media:.1f}'.replace(".", ",") + ' funcionários por vereador. Bom gancho para comparar com outras capitais de porte semelhante.</li>')
+    if emendas_tot:
+        html = troca_auto(html, "pauta-emendas",
+            f'<li><strong>"Emendas parlamentares somam {valor_curto(emendas_tot)} em MS neste ano"</strong> — matéria sobre para onde vai '
+            f'o dinheiro das emendas de deputados e senadores sul-mato-grossenses, com o ranking por parlamentar disponível no painel.</li>')
+    p.write_text(html, encoding="utf-8")
+    md = press_md(html)
+    if md:
+        (ROOT / "PRESS.md").write_text(md, encoding="utf-8")
+    print(f"✅ press.html + PRESS.md — {milhar(n_notas)} notas, total {valor_curto(total_cat)}")
+
+
+
+def press_md(html):
+    """Gera o PRESS.md a partir do <article> do press.html (mesmo conteúdo, sem manter duas versões)."""
+    import html as _h
+    art = re.search(r"<article>(.*?)</article>", html, re.S)
+    if not art:
+        return None
+    t = re.sub(r"<!--.*?-->", "", art.group(1), flags=re.S)
+
+    def inline(x):
+        x = re.sub(r"<(strong|b)>(.*?)</\1>", r"**\2**", x, flags=re.S)
+        x = re.sub(r"<(em|i)>(.*?)</\1>", r"*\2*", x, flags=re.S)
+        x = re.sub(r'<a [^>]*href="([^"]+)"[^>]*>(.*?)</a>', r"[\2](\1)", x, flags=re.S)
+        x = re.sub(r"<[^>]+>", "", x)
+        return re.sub(r"\s+", " ", _h.unescape(x)).strip()
+
+    def tabela(m):
+        linhas = re.findall(r"<tr>(.*?)</tr>", m.group(0), re.S)
+        out = []
+        if linhas and re.search(r'class="valor"', linhas[0]):
+            out += ["| Número | O que é |", "|---|---|"]
+        for i, l in enumerate(linhas):
+            cels = [inline(c) for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", l, re.S)]
+            if cels and re.search(r'class="valor"', l):
+                cels[0] = f"**{cels[0]}**"
+            out.append("| " + " | ".join(cels) + " |")
+            if i == 0 and len(out) == 1:
+                out.append("|" + "---|" * len(cels))
+        return "\n" + "\n".join(out) + "\n"
+
+    t = re.sub(r"<table.*?</table>", tabela, t, flags=re.S)
+    t = re.sub(r"<h2[^>]*>(.*?)</h2>", lambda m: "\n## " + inline(m.group(1)) + "\n", t, flags=re.S)
+    t = re.sub(r"<h3[^>]*>(.*?)</h3>", lambda m: "\n### " + inline(m.group(1)) + "\n", t, flags=re.S)
+    def lista(m, ordenada):
+        itens = re.findall(r"<li>(.*?)</li>", m.group(0), re.S)
+        return "\n" + "\n".join((f"{i + 1}. " if ordenada else "- ") + inline(x) for i, x in enumerate(itens)) + "\n"
+    t = re.sub(r"<ol>.*?</ol>", lambda m: lista(m, True), t, flags=re.S)
+    t = re.sub(r"<ul>.*?</ul>", lambda m: lista(m, False), t, flags=re.S)
+    t = re.sub(r"<p[^>]*>(.*?)</p>", lambda m: "\n" + inline(m.group(1)) + "\n", t, flags=re.S)
+    t = re.sub(r"<[^>]+>", "", t)
+    t = "\n".join(l.rstrip() for l in t.split("\n"))
+    t = re.sub(r"\n{3,}", "\n\n", t).strip()
+    data = re.search(r"Última atualização: ([^<(]+)", html)
+    topo = "# Kit de Imprensa — Cofre Aberto MS\n\n"
+    if data:
+        topo += f"*Última atualização: {data.group(1).strip()} — gerado automaticamente a partir de press.html*\n\n"
+    return topo + t + "\n"
+
 def main():
     cg = carregar("camara_municipal.json")
     est = carregar("deputados_estaduais_ms.json")
@@ -209,3 +359,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+    atualizar_kit_imprensa(carregar("camara_municipal.json"), carregar("deputados_estaduais_ms.json"),
+                           carregar("deputados_federais_ms.json"), carregar("senadores_ms.json"),
+                           carregar("prefeitura.json"), carregar("emendas_ms.json"),
+                           [carregar(f) for f in ("trt24_magistrados.json", "tre_ms_magistrados.json", "tjms_magistrados.json")],
+                           carregar("status.json"), carregar("conexoes_fornecedores.json").get("totalEmpresas"),
+                           len(list((DADOS / "camaras").glob("*.json"))))

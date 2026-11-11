@@ -232,7 +232,7 @@ jobs:
         run: |
           git config user.name "Cofre Aberto Bot"
           git config user.email "bot@cofreabertoms.com.br"
-          git add dados/ index.html vereadores-campo-grande.html deputados-estaduais-ms.html senadores-ms.html \
+          git add dados/ index.html vereadores-campo-grande.html deputados-estaduais-ms.html senadores-ms.html press.html PRESS.md \
                   vereador/ deputado-estadual/ deputado-federal/ senador/ fotos/p/ sitemap.xml
 
           if git diff --staged --quiet; then
