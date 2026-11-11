@@ -1,12 +1,12 @@
 {
  "ano": 2026,
- "ultimaAtualizacao": "2026-11-11T10:32:19",
+ "ultimaAtualizacao": "2026-11-11T11:03:43",
  "fonte": "https://sig-transparencia.campogrande.ms.gov.br/contratos/consulta",
  "fonteLicitacoes": "https://sig-transparencia.campogrande.ms.gov.br/licitacoes/consulta",
  "resumo": {
-  "contratos": 347,
-  "contratosCompras": 293,
-  "valorCompras": 616169725.94,
+  "contratos": 348,
+  "contratosCompras": 294,
+  "valorCompras": 617466265.94,
   "valorNaoCompras": 2607965824.61,
   "porTipo": {
    "DIVIDA": {
@@ -20,8 +20,8 @@
     "compra": true
    },
    "SERVIÇO": {
-    "quantidade": 97,
-    "valor": 208214129.54,
+    "quantidade": 98,
+    "valor": 209510669.54,
     "compra": true
    },
    "AQUISIÇÃO": {
@@ -80,7 +80,7 @@
   },
   "valorEstimadoLicitacoes": 1044181322.26,
   "comVencedor": 209,
-  "contratosComCnpj": 326
+  "contratosComCnpj": 327
  },
  "fornecedores": [
   {
@@ -508,6 +508,13 @@
    "cnpj": "15571482000107",
    "contratos": 1,
    "valorContratos": 1297306.44,
+   "licitacoesVencidas": 1
+  },
+  {
+   "nome": "AZ TECNOLOGIA EM GESTAO LTDA",
+   "cnpj": "24598492000127",
+   "contratos": 1,
+   "valorContratos": 1296540.0,
    "licitacoesVencidas": 1
   },
   {
@@ -1307,13 +1314,6 @@
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 2
-  },
-  {
-   "nome": "AZ TECNOLOGIA EM GESTAO LTDA",
-   "cnpj": "24598492000127",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
   },
   {
    "nome": "52.024.285 LEONARDO DE PAIVA PAVÃO",
@@ -3044,6 +3044,18 @@
    "valor": 1297306.44,
    "situacao": "ATIVO",
    "registro": 212490
+  },
+  {
+   "tipo": "SERVIÇO",
+   "compra": true,
+   "objeto": "CONTRATAÇÃO DE SERVIÇOS CONTINUADOS DE SUSTENTAÇÃO, MANUTENÇÃO E SUPORTE TÉCNICO DE SISTEMA INTEGRADO DE GESTÃO ADMINISTRATIVA PARA AUTOMATIZAÇÃO DE PROCESSOS ADMINISTRATIVOS",
+   "fornecedor": "AZ TECNOLOGIA EM GESTAO LTDA",
+   "cnpj": "24598492000127",
+   "inicio": "2026-10-21",
+   "fim": "2027-10-20",
+   "valor": 1296540.0,
+   "situacao": "ATIVO",
+   "registro": 215252
   },
   {
    "tipo": "AQUISIÇÃO",

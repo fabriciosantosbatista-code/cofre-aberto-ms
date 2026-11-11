@@ -2,7 +2,7 @@
  "ano": 2026,
  "fonte": "https://www.transparencia.ms.gov.br",
  "fonteApi": "https://gw.sgi.ms.gov.br",
- "ultimaAtualizacao": "2026-11-11T10:32:12",
+ "ultimaAtualizacao": "2026-11-11T11:03:44",
  "totais": {
   "empenhado": 23171879712.26,
   "liquidado": 21633267551.07,
@@ -9274,6 +9274,7 @@
    "tipo": "fornecedor"
   }
  ],
+ "totalCredores": 24276,
  "meses": {
   "2025": [
    1782091016.53,
@@ -9303,7 +9304,6 @@
    274875055.36
   ]
  },
- "totalCredores": 24276,
  "credoresPorTipo": {
   "fornecedor": 5685245453.74,
   "folha": 3360702784.7,
@@ -10885,7 +10885,7 @@
      "Ponta Porã",
      "Dourados",
      "Aral Moreira",
-     "Caarapó"
+     "Paranaíba"
     ]
    },
    {
@@ -11124,8 +11124,8 @@
      "Brasília",
      "São Paulo",
      "São Luís",
-     "Goiânia",
-     "Curitiba"
+     "Maceió",
+     "Foz do Iguaçu"
     ]
    },
    {
@@ -11156,8 +11156,8 @@
      "Corumbá",
      "Fortaleza",
      "BONITO",
-     "Dourados",
-     "Recife"
+     "Brasília",
+     "Dourados"
     ]
    },
    {
@@ -11216,8 +11216,8 @@
      "Corumbá",
      "Ponta Porã",
      "São Paulo",
-     "Cuiabá",
-     "BONITO"
+     "BONITO",
+     "Cuiabá"
     ]
    },
    {
@@ -11324,10 +11324,10 @@
     "trechos": 18,
     "destinos": [
      "BONITO",
-     "Corumbá",
-     "Dois Irmãos do Buriti",
-     "Ladário",
-     "Chapadão do Sul"
+     "Cassilândia",
+     "Inocência",
+     "Ribas do Rio Pardo",
+     "Anaurilândia"
     ]
    },
    {
@@ -11396,9 +11396,9 @@
     "valor": 33093.3,
     "trechos": 17,
     "destinos": [
-     "São Paulo",
      "Ribas do Rio Pardo",
      "Brasília",
+     "São Paulo",
      "Concepción",
      "Dourados"
     ]
@@ -11546,7 +11546,7 @@
      "Corumbá",
      "BONITO",
      "Três Lagoas",
-     "Goiânia"
+     "Dourados"
     ]
    },
    {
@@ -11562,7 +11562,7 @@
      "Aquidauana",
      "Ponta Porã",
      "Bataguassu",
-     "Brasília"
+     "Ivinhema"
     ]
    },
    {
@@ -11727,7 +11727,7 @@
      "Coxim",
      "Corumbá",
      "NAVIRAI",
-     "Jaraguari"
+     "Dourados"
     ]
    },
    {
@@ -11877,8 +11877,8 @@
     "destinos": [
      "BONITO",
      "Corumbá",
-     "São Paulo",
      "Maracaju",
+     "São Paulo",
      "Bataguassu"
     ]
    },
@@ -11939,8 +11939,8 @@
      "Brasília",
      "Porto Alegre",
      "Dourados",
-     "Bruxelas",
-     "Ivinhema"
+     "Punta Del Arenal",
+     "NAVIRAI"
     ]
    },
    {
@@ -12654,7 +12654,7 @@
      "Ladário",
      "Sidrolândia",
      "Terenos",
-     "Cassilândia"
+     "Aral Moreira"
     ]
    },
    {
@@ -12956,5 +12956,6 @@
     "somaAno": 240788.8
    }
   ]
- }
+ },
+ "coletaParcial": true
 }
