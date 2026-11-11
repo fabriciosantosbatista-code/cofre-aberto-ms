@@ -9,6 +9,10 @@ on:
       urls:
         description: 'URLs separadas por espaço'
         required: true
+      termo:
+        description: 'Opcional: conta e mostra itens do JSON que contêm este termo (sem acento, maiúsculas)'
+        required: false
+        default: ''
 
 jobs:
   diagnostico:
@@ -18,17 +22,25 @@ jobs:
       - name: Buscar
         env:
           URLS: ${{ inputs.urls }}
+          TERMO: ${{ inputs.termo }}
         run: |
           for u in $URLS; do
             echo "================ $u"
             curl -sS -m 180 -A "Mozilla/5.0 (CofreAbertoMS)" -o resp.bin -w "HTTP %{http_code} · %{size_download} bytes · %{time_total}s\n" "$u" || true
             head -c 3000 resp.bin; echo
             python3 - <<'PY' || true
-          import json
+          import json, os, unicodedata
           try:
               d = json.load(open("resp.bin", encoding="utf-8-sig"))
               if isinstance(d, list):
                   print(f"JSON: lista com {len(d)} itens; campos: {list(d[0].keys()) if d else []}")
+                  termo = os.environ.get("TERMO", "").strip().upper()
+                  if termo:
+                      sa = lambda t: unicodedata.normalize("NFD", str(t)).encode("ascii", "ignore").decode().upper()
+                      achados = [x for x in d if termo in sa(json.dumps(x, ensure_ascii=False))]
+                      print(f"itens com '{termo}': {len(achados)}")
+                      for x in achados[:15]:
+                          print("  ", json.dumps(x, ensure_ascii=False)[:400])
           except Exception as e:
               print("não é JSON:", str(e)[:120])
           PY
