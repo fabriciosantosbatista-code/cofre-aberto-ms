@@ -242,6 +242,9 @@ p{margin:0;}
 .alerta-titulo{font-weight:600;font-size:.9rem;color:var(--ink);overflow-wrap:anywhere}
 .alerta-desc{font-size:.8rem;color:var(--ink-soft);margin-top:4px;line-height:1.5;overflow-wrap:anywhere}
 .alerta-links{font-size:.74rem;color:var(--ink-faint);margin-top:6px;overflow-wrap:anywhere}
+.alerta-evid{margin:6px 0 0;padding-left:18px;font-size:.76rem;color:var(--ink-soft);line-height:1.5}
+.alerta-card.forte{border-left:3px solid var(--red, #c0392b)}
+.alerta-card.medio{border-left:3px solid var(--amber)}
 .ev-grupos button.active,#ct-alertas-filtros button.active{border-color:var(--accent);color:var(--ink)}
 .cx-mais:hover,.ev-voltar:hover,.ev-grupos button:hover,.seguir-btn:hover{border-color:var(--accent)}
 .cx-aviso{max-width:none;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}
@@ -493,6 +496,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button data-tab="camaras-ms"><span class="dot"></span> Câmaras MS</button>
       <button data-tab="judiciario"><span class="dot"></span> Judiciário MS</button>
       <button data-tab="supersalarios"><span class="dot"></span> Supersalários</button>
+      <button data-tab="auditoria"><span class="dot"></span> Auditoria</button>
       <button data-tab="conexoes"><span class="dot"></span> Conexões</button>
       <button data-tab="evolucao"><span class="dot"></span> Evolução</button>
       <div class="nav-group-label">Brasil</div>
@@ -1107,6 +1111,49 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         Defensoria Pública (a consulta de remuneração exige login) e Prefeitura de Campo Grande (não publica a remuneração individual).
         Teto: <span id="ss-teto-fonte"></span>. Atualização automática diária; os tribunais publicam com um a dois meses de atraso.
       </p>
+    </div>
+  </section>
+
+  <section class="tabpanel" id="tab-auditoria">
+    <div class="hero">
+      <div class="hero-label">Auditoria · Sinais de atenção nas contas públicas de MS</div>
+      <div class="hero-number" id="au-total">—</div>
+      <div class="hero-desc">
+        <b>sinais de atenção</b> encontrados por testes automáticos que cruzam as notas dos parlamentares, as despesas e contratos da
+        Prefeitura de Campo Grande e o cadastro das empresas na Receita Federal. <b id="au-fortes">—</b> são de nível forte.
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="au-empresas">—</div><div class="mini-stat-label">empresas checadas na Receita</div></div>
+        <div><div class="mini-stat-value" id="au-valor">—</div><div class="mini-stat-label">em valores com sinal</div></div>
+        <div><div class="mini-stat-value" id="au-testes">—</div><div class="mini-stat-label">testes publicados</div></div>
+        <div><div class="mini-stat-value" id="au-data">—</div><div class="mini-stat-label">atualizado em</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-note cx-aviso">
+        ⚠️ <b>Sinal de atenção não é acusação.</b> Cada teste aponta um padrão atípico que costuma aparecer em irregularidades, mas muitos
+        têm explicação legal: um advogado exclusivo de um gabinete, uma empresa nova que ganhou um contrato legítimo, uma dispensa com outra
+        base legal. O site não afirma que houve fraude. Os números vêm das fontes oficiais e podem ser conferidos nos links de cada sinal.
+        <b>Direito de resposta:</b> se você é citado e tem uma explicação, envie pelos <a href="metodologia.html#correcoes">canais de correção</a> — ela é publicada junto ao sinal
+        ou, se mostrar um erro de critério, o sinal é retirado. As regras de cada teste estão na <a href="metodologia.html#auditoria">metodologia</a>.
+      </p>
+      <div class="section-head"><h2 class="section-title">Sinais encontrados</h2></div>
+      <div class="ev-grupos" id="au-filtros" style="margin:8px 0 12px"></div>
+      <div id="au-sinais"></div>
+      <button class="pager-btn" id="au-mais" style="margin-top:10px;display:none"></button>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Placar por parlamentar, órgão ou empresa pagadora</h2></div>
+      <p class="section-note">Quantos sinais envolvem cada pagador. Nível forte: regra objetiva da lei ou do cadastro da Receita (MEI acima do limite, CNPJ irregular, possível fracionamento de dispensa, sócio com o nome do parlamentar). Nível médio: padrão atípico que pede contexto.</p>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-au-placar" data-cartoes>
+          <thead><tr><th>Quem pagou</th><th class="num">Sinais fortes</th><th class="num">Sinais médios</th><th class="num">Valor envolvido</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="section-note" style="margin-top:8px">Os testes da Lei de Benford e de valores redondos foram feitos, mas não são publicados: nos dados de MS deram muitos falsos positivos.</p>
     </div>
   </section>
 
@@ -4220,6 +4267,56 @@ function renderAlertasContratos(d) {
   desenhar();
 }
 
+// ===================== AUDITORIA =====================
+function renderAuditoria(d) {
+  const lista = d.sinais || [];
+  const fmt = v => "R$ " + (v || 0).toLocaleString("pt-BR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  document.getElementById("au-total").textContent = lista.length.toLocaleString("pt-BR");
+  document.getElementById("au-fortes").textContent = lista.filter(s => s.nivel === "forte").length.toLocaleString("pt-BR");
+  document.getElementById("au-empresas").textContent = (d.empresasConsultadas || 0).toLocaleString("pt-BR");
+  document.getElementById("au-valor").textContent = fmt(lista.reduce((t, s) => t + (s.valor || 0), 0));
+  document.getElementById("au-testes").textContent = Object.keys(d.regras || {}).length;
+  document.getElementById("au-data").textContent = d.ultimaAtualizacao ? formatDate(d.ultimaAtualizacao.slice(0, 10)) : "—";
+  const filtros = document.getElementById("au-filtros"), caixa = document.getElementById("au-sinais"), mais = document.getElementById("au-mais");
+  const base = lista.reduce((m, a) => a.vistoEm < m ? a.vistoEm : m, "9999");
+  const recente = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10);
+  let teste = "", limite = 10;
+  filtros.innerHTML = `<button class="active" data-t="">Todos (${lista.length})</button>` +
+    Object.entries(d.resumo || {}).filter(([, n]) => n > 0).map(([t, n]) => `<button data-t="${t}">${escHTML(d.regras[t] || t)} (${n})</button>`).join("");
+  const links = s => {
+    const l = [];
+    if (s.cnpj) l.push(linksCNPJ(s.cnpj));
+    if (s.link && s.link.startsWith("/")) l.push(`<a href="${s.link}">página do parlamentar</a>`);
+    else if (s.link && s.link.startsWith("#")) l.push(`<a href="${s.link}">ver no painel</a>`);
+    else if (s.link && /^https?:/.test(s.link)) l.push(`<a href="${escHTML(s.link)}" target="_blank" rel="noopener">ver na fonte</a>`);
+    return l.join(" · ");
+  };
+  const desenhar = () => {
+    const f = lista.filter(s => !teste || s.teste === teste);
+    caixa.innerHTML = f.slice(0, limite).map(s => `
+      <div class="alerta-card ${s.nivel === "forte" ? "forte" : "medio"}" id="sinal-${s.id}">
+        <div class="alerta-topo"><span class="cx-tag">${escHTML(s.rotulo)}</span><span class="alerta-data">nível ${escHTML(s.nivel)}</span>${s.vistoEm > base && s.vistoEm >= recente ? `<span class="cx-tag" style="border-color:var(--amber);color:var(--amber)">novo</span>` : ""}</div>
+        <div class="alerta-titulo">${escHTML(s.titulo)}</div>
+        <div class="alerta-desc">${escHTML(s.descricao)}</div>
+        ${(s.evidencias || []).length ? `<ul class="alerta-evid">${s.evidencias.map(e => `<li>${escHTML(e)}</li>`).join("")}</ul>` : ""}
+        <div class="alerta-links">${links(s)}</div>
+      </div>`).join("") || `<p class="section-note">Nenhum sinal com esse teste.</p>`;
+    mais.style.display = f.length > limite ? "" : "none";
+    mais.textContent = `Mostrar mais (${f.length - limite} restantes)`;
+  };
+  filtros.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+    filtros.querySelectorAll("button").forEach(x => x.classList.toggle("active", x === b));
+    teste = b.dataset.t; limite = 10; desenhar();
+  }));
+  mais.onclick = () => { limite += 20; desenhar(); };
+  desenhar();
+  const tb = document.querySelector("#tabela-au-placar tbody");
+  tb.innerHTML = (d.porQuem || []).map(q => `<tr><td data-label="Quem pagou">${escHTML(q.quem)}</td><td class="num" data-label="Sinais fortes">${q.fortes}</td><td class="num" data-label="Sinais médios">${q.medios}</td><td class="num" data-label="Valor envolvido">${fmt(q.valor)}</td></tr>`).join("")
+    || `<tr><td colspan="4">Nenhum sinal.</td></tr>`;
+  const alvo = (location.hash.match(/sinal=([0-9a-f]+)/) || [])[1];
+  if (alvo) { const lim = lista.findIndex(s => s.id === alvo); if (lim >= limite) { limite = lim + 1; desenhar(); } const el = document.getElementById("sinal-" + alvo); if (el) el.scrollIntoView({ block: "center" }); }
+}
+
 // ===================== SERVIDORES DA ALEMS =====================
 function renderServidoresAlems(d) {
   const nf = n => (n || 0).toLocaleString("pt-BR");
@@ -5041,6 +5138,7 @@ const FONTE_ABA = {
   "contratos-cg": { titulo: "Contratos e licitações da Prefeitura de Campo Grande", csv: [["Contratos", "prefeitura_contratos.csv"], ["Licitações", "prefeitura_licitacoes.csv"]], json: "prefeitura_contratos.json" },
   "governo-ms": { titulo: "Despesas do Governo do Estado de MS", csv: [["Órgãos", "governo_ms_orgaos.csv"], ["Credores", "governo_ms_credores.csv"], ["Diárias", "governo_ms_diarias.csv"], ["Primeiro escalão", "governo_ms_primeiro_escalao.csv"]], json: "governo_ms.json" },
   "emendas": { titulo: "Emendas parlamentares recebidas em MS, por município", csv: [["Municípios e autores", "emendas_municipios.csv"], ["Quem recebeu", "emendas_favorecidos.csv"]], json: "emendas_municipios.json" },
+  "auditoria": { titulo: "Auditoria: sinais de atenção nas contas públicas de MS", csv: [["Sinais", "auditoria_sinais.csv"]], json: "auditoria.json" },
   "supersalarios": { titulo: "Supersalários: as maiores remunerações do poder público em MS", csv: [["Ranking", "supersalarios_ranking.csv"], ["Por órgão", "supersalarios_orgaos.csv"], ["Penduricalhos por item", "supersalarios_penduricalhos.csv"]], json: "supersalarios.json" },
   "camaras-ms": { titulo: "Câmaras municipais do interior de MS", csv: [["Vereadores", "camaras_interior.csv"]], json: null },
   "judiciario": { titulo: "Remuneração dos magistrados de MS", csv: [["Magistrados", "judiciario_magistrados.csv"]], json: "tjms_magistrados.json" },
@@ -5224,6 +5322,10 @@ async function init() {
       if (btn.dataset.tab === "supersalarios" && !window._ssLoaded) {
         window._ssLoaded = true;
         carregarLeve("supersalarios.json").then(d => { if (d) renderSupersalarios(d); });
+      }
+      if (btn.dataset.tab === "auditoria" && !window._auLoaded) {
+        window._auLoaded = true;
+        carregarJSON("dados/auditoria.json").then(d => { if (d) renderAuditoria(d); });
       }
       if (btn.dataset.tab === "emendas" && !window._emendasLoaded) {
         window._emendasLoaded = true;

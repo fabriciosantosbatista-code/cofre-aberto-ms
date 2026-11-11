@@ -188,6 +188,27 @@ def pagina(x, nome):
 <div class="acoes"><a class="btn prim" href="/cofre-aberto-ms.html#aba=conexoes&p={cnpjs[0]}">Ver nas Conexões do painel</a>
 <a class="btn" href="/dados/csv/conexoes_fornecedores.csv" download>Baixar planilha (CSV)</a></div>"""]
 
+    cad = next((CNPJ_CAD[c] for c in cnpjs if c in CNPJ_CAD and not CNPJ_CAD[c].get("naoEncontrado")), None)
+    if cad:
+        socios = ", ".join(f"{e(q['nome'])} <small style='display:inline'>({e(q.get('qualificacao') or 'sócio')})</small>" for q in cad.get("socios", [])[:8]) or "não informado"
+        lin = [("Abertura", data_br(cad.get("abertura"))), ("Situação", f"{cad.get('situacao') or '—'}" + (f" desde {data_br(cad['dataSituacao'])}" if cad.get("dataSituacao") else "")),
+               ("Atividade principal", f"{cad.get('cnae') or ''} — {cad.get('cnaeDesc') or '—'}"),
+               ("Atividades secundárias", str(len(cad.get("cnaesSec") or []))),
+               ("Natureza jurídica", cad.get("natureza") or "—"), ("Porte", (cad.get("porte") or "—") + (" · optante pelo MEI" if cad.get("mei") else "")),
+               ("Capital social", brl(cad["capital"]) if cad.get("capital") is not None else "—"),
+               ("Sede", f"{cad.get('municipio') or '—'}/{cad.get('uf') or ''}")]
+        tab = "".join(f"<tr><td class='f'>{e(k)}</td><td>{e(v)}</td></tr>" for k, v in lin) + f"<tr><td class='f'>Sócios</td><td>{socios}</td></tr>"
+        corpo.append(f"""<h2>Cadastro na Receita Federal</h2>
+<p>Dados do CNPJ {fmt_cnpj(cnpjs[0])}, consultados em {data_br(cad.get('consultadoEm'))} na BrasilAPI (espelho público do cadastro da Receita).</p>
+<div class="tabela-wrap"><table><tbody>{tab}</tbody></table></div>""")
+    sinais = [s_ for s_ in SINAIS if (s_.get("cnpj") or "")[:8] == raiz]
+    if sinais:
+        cards = "".join(f"<li style='margin-bottom:8px'><b>{e(s_['rotulo'])}</b> (nível {e(s_['nivel'])}): {e(s_['descricao'])} "
+                        f"<a href='/cofre-aberto-ms.html#aba=auditoria&sinal={s_['id']}'>ver na Auditoria →</a></li>" for s_ in sinais)
+        corpo.append(f"""<h2>Sinais de atenção</h2>
+<p class="aviso">Os testes automáticos da <a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a> apontaram os padrões abaixo. <b>Sinal de atenção não é acusação</b>: muitos têm explicação legal. Se você representa a empresa, pode enviar sua explicação pelos <a href="/metodologia.html#correcoes">canais de correção</a> — ela é publicada aqui.</p>
+<ul>{cards}</ul>""")
+
     if x["parl"]:
         def nome_link(p):
             return f"<a href='{p['url']}'>{e(p['nome'])}</a>" if p["url"] else e(p["nome"])
@@ -270,6 +291,10 @@ rs.forEach(function(r){{var a=r.querySelector("a");r.style.display=(!f||r.textCo
 </script>"""
     jsonld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": titulo, "url": SITE + url}
     return cabecalho(titulo, desc, url, None, jsonld, tipo="website").replace("</style>", CSS_EXTRA + "</style>", 1) + corpo + RODAPE
+
+
+CNPJ_CAD = carregar("cnpj_cache.json") or {}
+SINAIS = (carregar("auditoria.json") or {}).get("sinais", [])
 
 
 def main():

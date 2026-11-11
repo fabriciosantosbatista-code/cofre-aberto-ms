@@ -335,6 +335,13 @@ jobs:
       - name: Pontos de atenção nos contratos da Prefeitura (+ feed RSS)
         run: python3 scripts/gerar_alertas_contratos.py || echo "⚠️ gerar_alertas_contratos.py falhou — alertas anteriores mantidos"
 
+      - name: Cadastro na Receita das empresas novas (CNPJ, incremental)
+        timeout-minutes: 15
+        run: python3 scripts/coletar_cnpj.py 300 || echo "⚠️ coletar_cnpj.py falhou — cadastro anterior mantido"
+
+      - name: Auditoria — sinais de atenção (cruza notas, contratos e Receita)
+        run: python3 scripts/gerar_auditoria.py || echo "⚠️ gerar_auditoria.py falhou — sinais anteriores mantidos"
+
       - name: Diárias — comparação entre os órgãos de MS
         run: python3 scripts/gerar_diarias_comparacao.py || echo "⚠️ gerar_diarias_comparacao.py falhou — comparação anterior mantida"
 

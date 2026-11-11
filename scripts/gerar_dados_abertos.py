@@ -196,6 +196,11 @@ def gerar_csvs():
         ["visto_em", "tipo", "titulo", "descricao", "empresa", "cnpj", "valor", "data"],
         [[a.get("vistoEm"), a.get("rotulo"), a.get("titulo"), a.get("descricao"), a.get("empresa"), a.get("cnpj"),
           num(a.get("valor")), a.get("data")] for a in alc.get("alertas", [])])
+    au = carregar("auditoria.json")
+    contagem["auditoria_sinais.csv"] = grava_csv("auditoria_sinais.csv",
+        ["visto_em", "teste", "nivel", "titulo", "descricao", "quem_pagou", "empresa", "cnpj", "valor", "evidencias"],
+        [[s.get("vistoEm"), s.get("rotulo"), s.get("nivel"), s.get("titulo"), s.get("descricao"), s.get("quem"), s.get("empresa"),
+          s.get("cnpj"), num(s.get("valor")), " | ".join(s.get("evidencias") or [])] for s in au.get("sinais", [])])
 
     gov = carregar("governo_ms.json")
     contagem["governo_ms_orgaos.csv"] = grava_csv("governo_ms_orgaos.csv",
@@ -334,6 +339,12 @@ def status_fontes():
         "contracheques de " + ", ".join(sorted({o["mes"] for o in ss.get("orgaos", [])})) if ss.get("orgaos") else None,
         ss.get("ano") == ANO and em_dia(ss.get("ultimaAtualizacao"), 3) and not ss.get("falhas"),
         "; ".join(ss.get("falhas") or []) or None)
+
+    au = carregar("auditoria.json")
+    add("auditoria", "Cruzamento das bases do site com o cadastro de CNPJ da Receita Federal (BrasilAPI / Minha Receita)",
+        "https://brasilapi.com.br/docs#tag/CNPJ", au.get("ultimaAtualizacao"),
+        f"{au.get('empresasConsultadas', 0)} empresas checadas na Receita" if au else None,
+        au.get("ano") == ANO and em_dia(au.get("ultimaAtualizacao"), 3))
 
     cidades, paradas = 0, []
     for f in sorted((DADOS / "camaras").glob("*.json")):

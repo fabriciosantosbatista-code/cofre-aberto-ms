@@ -141,6 +141,16 @@ const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
     if (BAD.test(al.tx)) falha(`[${nome}] servidores da ALEMS mostram ${al.tx.match(BAD)}`);
     if (al.ovX > 1) falha(`[${nome}] servidores da ALEMS: rolagem horizontal (${al.ovX}px)`);
     console.log(`  ✅ pontos de atenção: ${nAlertas} · servidores ALEMS: ${al.n} linhas`);
+    onde = "auditoria";
+    await page.locator('button[data-tab="auditoria"]').evaluate((e) => e.click());
+    await page.waitForTimeout(1500);
+    const au = await page.evaluate(() => ({ n: document.querySelectorAll("#au-sinais .alerta-card").length,
+      p: document.querySelectorAll("#tabela-au-placar tbody tr").length,
+      tx: document.getElementById("tab-auditoria").innerText, ovX: document.documentElement.scrollWidth - innerWidth }));
+    if (au.n < 1) falha(`[${nome}] Auditoria: nenhum sinal na lista`);
+    if (BAD.test(au.tx)) falha(`[${nome}] Auditoria mostra ${au.tx.match(BAD)}`);
+    if (au.ovX > 1) falha(`[${nome}] Auditoria: rolagem horizontal (${au.ovX}px)`);
+    console.log(`  ✅ auditoria: ${au.n} sinais na tela · placar com ${au.p} linhas`);
 
     // evolução: os 4 grupos têm gráfico e ranking; clicar num parlamentar troca o gráfico
     onde = "aba evolucao";

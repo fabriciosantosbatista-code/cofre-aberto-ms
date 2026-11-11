@@ -228,6 +228,11 @@ def main():
     alc = carregar("alertas_contratos.json")
     if alc:
         recente("Pontos de atenção (contratos CG)", alc.get("ultimaAtualizacao"), 2, nivel="aviso", o_que="última geração")
+    au = carregar("auditoria.json")
+    if au:
+        recente("Auditoria", au.get("ultimaAtualizacao"), 2, nivel="aviso", o_que="última geração")
+        checa(au.get("empresasConsultadas", 0) >= 1000, f"Auditoria: {au.get('empresasConsultadas')} empresas checadas na Receita",
+              f"**Auditoria**: só {au.get('empresasConsultadas')} empresas no cadastro da Receita (BrasilAPI fora?)", "aviso")
     ss = carregar("supersalarios.json")
     if ss:
         recente("Supersalários", ss.get("ultimaAtualizacao"), 3, nivel="aviso", o_que="última coleta")

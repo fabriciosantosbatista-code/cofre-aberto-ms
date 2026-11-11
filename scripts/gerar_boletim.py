@@ -134,12 +134,15 @@ def main():
 
     al = carregar("alertas_contratos.json")
     alertas = novos_desde("alertasVistos", al.get("alertas", []) if al.get("ano") == ANO else [], lambda a: a["id"])
+    au = carregar("auditoria.json")
+    sinais = novos_desde("sinaisVistos", au.get("sinais", []) if au.get("ano") == ANO else [], lambda s_: s_["id"])
     ct = carregar("prefeitura_contratos.json")
     contratos = sorted(novos_desde("contratosVistos", [c for c in ct.get("contratos", []) if c.get("compra")] if ct.get("ano") == ANO else [],
                                    lambda c: hashlib.sha1(f"{c['fornecedor']}|{c['inicio']}|{c['valor']}|{c['objeto'][:80]}".encode()).hexdigest()[:12]),
                        key=lambda c: -c["valor"])
     salvar(ESTADO, {"atualizado": HOJE.isoformat(), "vistas": vistas, "retratos": retratos,
-                    "alertasVistos": estado["alertasVistos"], "contratosVistos": estado["contratosVistos"]})
+                    "alertasVistos": estado["alertasVistos"], "contratosVistos": estado["contratosVistos"],
+                    "sinaisVistos": estado.get("sinaisVistos", {})})
 
     deltas = []
     for chave, rotulo, aba in (("governoPago", "pagos pelo Governo do Estado", "governo-ms"),
@@ -164,6 +167,8 @@ def main():
         linhas_zap.append(f"📑 {len(contratos)} contrato(s) novo(s) publicado(s) pela Prefeitura de CG; o maior: {c['fornecedor']} ({compacto(c['valor'])}).")
     if alertas:
         linhas_zap.append(f"⚠️ {len(alertas)} ponto(s) de atenção novo(s) nos contratos da Prefeitura.")
+    if sinais:
+        linhas_zap.append(f"🔎 {len(sinais)} sinal(is) novo(s) na Auditoria automática (padrões atípicos, não acusações).")
     # supersalários: retrato atual e variação contra a semana anterior
     ss = carregar("supersalarios.json")
     ss_ok = ss.get("ano") == ANO and ss.get("liquidoAcimaTeto") is not None
@@ -212,6 +217,11 @@ somando <strong>{brl(total_novas)}</strong>. A data de cada nota é a de emissã
     if alertas:
         blocos.append("<h2>Pontos de atenção novos</h2><p class='aviso'>Critérios objetivos para facilitar a apuração. <strong>Nenhum deles indica irregularidade.</strong></p>" + "".join(
             f"<div class='dest'><b>{e(a['titulo'])}</b><small>{e(a['rotulo'])} · {e(a['descricao'][:240])}</small></div>" for a in alertas[:15]))
+    if sinais:
+        blocos.append("<h2>Auditoria: sinais de atenção novos</h2><p class='aviso'>Padrões atípicos encontrados pelos testes automáticos. "
+                      "<strong>Sinal de atenção não é acusação</strong> — muitos têm explicação legal.</p>" + "".join(
+            f"<div class='dest'><b>{e(s_['titulo'])}</b><small>{e(s_['rotulo'])} (nível {e(s_['nivel'])}) · {e(s_['descricao'][:240])} "
+            f"<a href='/cofre-aberto-ms.html#aba=auditoria&sinal={s_['id']}'>ver →</a></small></div>" for s_ in sinais[:15]))
     if ss_ok:
         top = sorted(ss.get("ranking", []), key=lambda p: -p.get("liquido", 0))[:5]
         orgs = "".join(f"<tr><td class='f'>{e(o['orgao'])}<small>{e(o['mes'])}</small></td><td class='num'>{milhar(o.get('liquidoAcimaTeto', 0))}</td>"
@@ -253,7 +263,7 @@ verbas indenizatórias ficam fora do teto por lei.</p>
     escreve_se_mudou(PASTA / sem / "index.html", html)
     resumo_sem = {"semana": sem, "periodo": periodo, "inicio": ini.isoformat(), "url": url, "notas": len(novas),
                   "valorNotas": round(total_novas, 2), "contratos": len(contratos), "alertas": len(alertas),
-                  "texto": texto_zap, "atualizado": HOJE.isoformat()}
+                  "sinais": len(sinais), "texto": texto_zap, "atualizado": HOJE.isoformat()}
     escreve_se_mudou(PASTA / sem / "resumo.json", json.dumps(resumo_sem, ensure_ascii=False, indent=1))
 
     # --- índice, feed e sitemap ---

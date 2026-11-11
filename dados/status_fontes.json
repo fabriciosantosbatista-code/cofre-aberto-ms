@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-11T21:04:00",
+ "geradoEm": "2026-11-11T22:46:55",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
@@ -36,7 +36,7 @@
   "prefeitura": {
    "fonte": "SIG-Transparência da Prefeitura de Campo Grande",
    "url": "https://sig-transparencia.campogrande.ms.gov.br/despesas/consulta",
-   "coleta": "2026-11-11T20:55:54",
+   "coleta": "2026-11-11T22:23:26",
    "dadoMaisRecente": "empenho de 02/10/2026",
    "nivel": "ok",
    "mensagem": null
@@ -70,6 +70,14 @@
    "url": "https://dadosjusbr.org/",
    "coleta": "2026-11-11T20:53:53",
    "dadoMaisRecente": "contracheques de 08/2026, 09/2026, 10/2026",
+   "nivel": "ok",
+   "mensagem": null
+  },
+  "auditoria": {
+   "fonte": "Cruzamento das bases do site com o cadastro de CNPJ da Receita Federal (BrasilAPI / Minha Receita)",
+   "url": "https://brasilapi.com.br/docs#tag/CNPJ",
+   "coleta": "2026-11-11T22:46:55",
+   "dadoMaisRecente": "1644 empresas checadas na Receita",
    "nivel": "ok",
    "mensagem": null
   },

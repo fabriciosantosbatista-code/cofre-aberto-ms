@@ -977,6 +977,8 @@ def coletar_prefeitura():
                 }
                 if row.get("modalidadelicitacao"):
                     item["modalidade"] = row["modalidadelicitacao"].strip()
+                if str(row.get("processoorigem") or "").strip():
+                    item["processo"] = str(row["processoorigem"]).strip()
                 despesas.append(item)
         except Exception:
             continue
