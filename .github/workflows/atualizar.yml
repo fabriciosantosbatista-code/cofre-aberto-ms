@@ -326,6 +326,9 @@ jobs:
           name: dados-emendas-alems
           path: dados/
 
+      - name: Supersalários — inclui a Câmara CG coletada hoje
+        run: pip install requests -q && python3 scripts/coletar_supersalarios.py --so-camara || echo "⚠️ Câmara CG fora dos supersalários hoje"
+
       - name: Gerar conexões entre fornecedores, evolução mensal e feeds RSS
         run: python3 scripts/gerar_analises.py || echo "⚠️ gerar_analises.py falhou — análises anteriores mantidas"
 

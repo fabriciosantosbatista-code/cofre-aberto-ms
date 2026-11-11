@@ -294,6 +294,42 @@ def comparacao_tjs():
     return out
 
 
+def camara_cg():
+    """Os 60 maiores salários da Câmara de CG, gravados em camara_municipal.json pelo
+    coletor da verba indenizatória (único que alcança o portal da Câmara)."""
+    try:
+        cg = json.load(open(ROOT / "dados" / "camara_municipal.json", encoding="utf-8")).get("maioresSalarios") or {}
+        lista = [{**x, "orgao": "Câmara Municipal de Campo Grande", "orgaoId": "camara-cg", "poder": "Legislativo municipal",
+                  "situacao": "Ativo", "mes": cg["referencia"], "base": x["bruto"], "outras": 0.0, "itens": []}
+                 for x in cg.get("lista", []) if x.get("bruto")]
+        if not lista:
+            return [], None
+        o = resumo_orgao("Câmara Municipal de Campo Grande (60 maiores)", lista, cg["referencia"],
+                         "Portal da Transparência da Câmara (folha Fiorilli)")
+        o["totalServidores"] = cg.get("servidores")
+        return lista, o
+    except Exception as e:
+        print(f"  ⚠️ Câmara CG: {e}")
+        return [], None
+
+
+def so_camara():
+    """--so-camara: refaz só a parte da Câmara no arquivo já coletado (sem rede).
+    Roda no fim da coleta diária, depois que o arquivo da Câmara do dia chegou."""
+    d = json.load(open(SAIDA, encoding="utf-8"))
+    lista, o = camara_cg()
+    if not lista:
+        print("  Câmara CG sem maiores salários — nada a fazer")
+        return
+    resto = [p for p in d["ranking"] if p.get("orgaoId") != "camara-cg"]
+    for p in lista:
+        p["acimaTeto"] = round(max(0, p["bruto"] - TETO), 2)
+    d["ranking"] = sorted(resto + lista, key=lambda p: -p["bruto"])[:RANKING]
+    d["orgaos"] = [x for x in d["orgaos"] if not x["orgao"].startswith("Câmara Municipal")] + [o]
+    SAIDA.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"✅ supersalários: Câmara CG ({o['mes']}) incluída — {len(lista)} salários")
+
+
 def resumo_orgao(nome, lst, mes, fonte):
     br = [p["bruto"] for p in lst]
     acima = [p for p in lst if p["bruto"] > TETO]
@@ -384,19 +420,10 @@ def main():
         orgaos += [o for o in anterior.get("orgaos", []) if o["orgao"].startswith("TCE-MS")]
         if "tce" in (anterior.get("penduricalhos") or {}):
             penduricalhos["tce"] = anterior["penduricalhos"]["tce"]
-    try:
-        cg = json.load(open(ROOT / "dados" / "camara_municipal.json", encoding="utf-8")).get("maioresSalarios") or {}
-        lista_cg = [{**x, "orgao": "Câmara Municipal de Campo Grande", "orgaoId": "camara-cg", "poder": "Legislativo municipal",
-                     "situacao": "Ativo", "mes": cg["referencia"], "base": x["bruto"], "outras": 0.0, "itens": []}
-                    for x in cg.get("lista", []) if x.get("bruto")]
-        if lista_cg:
-            todos += lista_cg
-            o = resumo_orgao("Câmara Municipal de Campo Grande (60 maiores)", lista_cg, cg["referencia"],
-                             "Portal da Transparência da Câmara (folha Fiorilli)")
-            o["totalServidores"] = cg.get("servidores")
-            orgaos.append(o)
-    except Exception as e:
-        print(f"  ⚠️ Câmara CG: {e}")
+    lista_cg, o_cg = camara_cg()
+    if lista_cg:
+        todos += lista_cg
+        orgaos.append(o_cg)
     try:
         comp = comparacao_tjs()
     except Exception as e:
@@ -425,4 +452,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    so_camara() if "--so-camara" in sys.argv else main()
