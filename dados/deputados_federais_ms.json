@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-10T22:30:02",
+  "ultimaAtualizacao": "2026-11-11T13:06:21",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-10T22:30:02",
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-11T13:06:21",
   "total": 8,
   "deputados": [
     {
@@ -1257,11 +1257,11 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220548",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220548/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 422034.07,
+      "cotaGastaAno": 424641.07,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 179700.4
+          "valor": 182307.4
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -1284,7 +1284,7 @@
           "valor": 3008.91
         }
       ],
-      "totalNotasFiscais": 353,
+      "totalNotasFiscais": 354,
       "despesas": [
         {
           "data": "2026-11-02",
@@ -1354,6 +1354,16 @@
           "valor": 280.43,
           "doc": "1134032",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8171820",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-28",
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "fornecedor": "THAMIRES L MULATINHO",
+          "cnpjCpfFornecedor": "39.763.306/0001-35",
+          "valor": 2607.0,
+          "doc": "00000112",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8170326.pdf",
           "mes": 10
         },
         {
@@ -6617,11 +6627,11 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/204351",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/204351/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 235393.47,
+      "cotaGastaAno": 238860.14,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 86688.82
+          "valor": 90155.49
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -6656,7 +6666,7 @@
           "valor": -23923.0
         }
       ],
-      "totalNotasFiscais": 334,
+      "totalNotasFiscais": 335,
       "despesas": [
         {
           "data": "2026-11-03",
@@ -6686,6 +6696,16 @@
           "valor": 25000.0,
           "doc": "1127",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3393/2026/8169865.pdf",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-26",
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "fornecedor": "RX3 MARKETING E PERFORMANCE LTDA",
+          "cnpjCpfFornecedor": "24.474.037/0001-10",
+          "valor": 3466.67,
+          "doc": "61",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3393/2026/8169003.pdf",
           "mes": 10
         },
         {
@@ -13604,7 +13624,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220546",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220546/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 438703.41,
+      "cotaGastaAno": 438856.31,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -13628,10 +13648,10 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 8012.5
+          "valor": 8165.4
         }
       ],
-      "totalNotasFiscais": 333,
+      "totalNotasFiscais": 334,
       "despesas": [
         {
           "data": "2026-10-29",
@@ -13732,6 +13752,16 @@
           "doc": "8449",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8168675",
           "mes": 10
+        },
+        {
+          "data": "2026-10-11",
+          "categoria": "TELEFONIA",
+          "fornecedor": "CLARO NXT TELECOMUNICACOES S/A",
+          "cnpjCpfFornecedor": "66.970.229/0018-05",
+          "valor": 152.9,
+          "doc": "407293",
+          "urlNotaFiscal": null,
+          "mes": 9
         },
         {
           "data": "2026-10-09",
