@@ -546,30 +546,48 @@ def coletar_dep_estaduais():
         if not token:
             continue
         try:
-            notas = []
-            pagina = 1
-            while True:
-                r2 = requests.get(f"{BASE}/notas", params={
-                    "ano": ANO, "token": token, "sort": "emissao", "dir": "desc",
-                    "page": pagina, "perPage": 50,
-                }, headers={**HEADERS, "Accept": "application/json"}, timeout=30)
-                r2.raise_for_status()
-                pag = r2.json()
-                for n in pag.get("rows", []):
-                    notas.append({
-                        "categoria": n.get("categoria", ""),
-                        "mes": n.get("mes", ""),
-                        "fornecedor": (n.get("fornecedor") or "").strip(),
-                        "cnpj": (n.get("cpfCnpj") or "").strip(),
-                        "nf": (n.get("documento") or "").strip(),
-                        "data": _alems_parse_data(n.get("emissao", "")),
-                        "valor": round(_alems_parse_valor(n.get("valor")), 2),
-                        "urlPdf": n.get("comprovante", ""),
-                    })
-                if not pag.get("hasMore"):
+            # A API pagina de 50 em 50. Ordenada por data de emissão (muitas notas com a
+            # mesma data), a ordem entre páginas não é estável: notas se repetiam e
+            # outras sumiam (6 deputados com total diferente do portal em nov/2026).
+            # Ordenando por documento e por valor, junta-se sem repetição e confere-se
+            # a soma com o total que o próprio portal informa para o deputado.
+            total_portal = _alems_parse_valor(linha.get("total")) if linha.get("total") else None
+            vistas, notas = set(), []
+            for ordem in ("documento", "valor", "emissao"):
+                pagina = 1
+                while True:
+                    r2 = requests.get(f"{BASE}/notas", params={
+                        "ano": ANO, "token": token, "sort": ordem, "dir": "asc",
+                        "page": pagina, "perPage": 50,
+                    }, headers={**HEADERS, "Accept": "application/json"}, timeout=30)
+                    r2.raise_for_status()
+                    pag = r2.json()
+                    for n in pag.get("rows", []):
+                        chave = tuple(str(n.get(k) or "") for k in ("documento", "comprovante", "valor", "emissao",
+                                                                     "lancamento", "fornecedor", "cpfCnpj", "mes", "categoria"))
+                        if chave in vistas:
+                            continue
+                        vistas.add(chave)
+                        notas.append({
+                            "categoria": n.get("categoria", ""),
+                            "mes": n.get("mes", ""),
+                            "fornecedor": (n.get("fornecedor") or "").strip(),
+                            "cnpj": (n.get("cpfCnpj") or "").strip(),
+                            "nf": (n.get("documento") or "").strip(),
+                            "data": _alems_parse_data(n.get("emissao", "")),
+                            "valor": round(_alems_parse_valor(n.get("valor")), 2),
+                            "urlPdf": n.get("comprovante", ""),
+                        })
+                    if not pag.get("hasMore"):
+                        break
+                    pagina += 1
+                    time.sleep(0.2)
+                soma = round(sum(n["valor"] for n in notas), 2)
+                if total_portal is None or abs(soma - total_portal) < 0.01:
                     break
-                pagina += 1
-                time.sleep(0.2)
+            if total_portal is not None and abs(round(sum(n["valor"] for n in notas), 2) - total_portal) >= 0.01:
+                log(f"  ⚠️ {nome_dep}: soma das notas R$ {sum(n['valor'] for n in notas):,.2f} ≠ total do portal R$ {total_portal:,.2f}")
+            notas.sort(key=lambda n: n["data"] or "", reverse=True)
 
             if not notas:
                 continue
@@ -931,7 +949,10 @@ def coletar_prefeitura():
     despesas = []
     for row in linhas:
         try:
-            secretaria = (row.get("orgao") or "Outros").strip()
+            # A exportação do SIG traz em "orgao" nomes antigos/trocados (ex.: "FUNDO MUNICIPAL
+            # DO IDOSO" em empenhos da FUNDAC, "GABINETE DO PREFEITO" na Casa Civil); a
+            # unidade gestora é a que de fato fez a despesa — e é a que aparece no detalhe.
+            secretaria = (row.get("nomeunidadegestora") or row.get("orgao") or "Outros").strip()
             valor = parse_valor(row.get("total_pago"))
             empenhado = parse_valor(row.get("total_empenhado"))
             liquidado = parse_valor(row.get("total_liquidado"))

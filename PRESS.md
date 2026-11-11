@@ -34,7 +34,7 @@ O projeto nasceu da constatação de que, embora esses dados sejam legalmente p�
 | **R$ 325,3 mi** | Emendas parlamentares pagas em Mato Grosso do Sul em 2026 |
 | **R$ 4,4 mi/mês** | Folha de pessoal dos 29 gabinetes da Câmara de Campo Grande (684 funcionários, outubro/2026) |
 | **R$ 24,0 mi/mês** | Folha bruta dos 286 magistrados ativos de MS (TJMS e TRT24, com a gratificação eleitoral do TRE-MS) |
-| **545** | Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões) |
+| **546** | Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões) |
 | **100%** | Dos dados vêm de fontes oficiais — estimativas são sempre marcadas (ver Metodologia) |
 
 Todos os números são recalculados automaticamente pela coleta diária e podem variar ligeiramente a cada consulta — os valores acima refletem o estado do painel na data desta atualização.

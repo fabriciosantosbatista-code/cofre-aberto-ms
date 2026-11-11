@@ -1022,7 +1022,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 
     <div class="section">
       <p class="section-note cx-aviso">
-        ℹ️ <b>Receber acima do teto nem sempre é irregular.</b> Pela Constituição, verbas <b>indenizatórias</b> (auxílios, diárias, indenização de férias)
+        ℹ️ <b>Receber acima do teto nem sempre é irregular.</b> Diárias de viagem ficam fora das contas (são reembolso), como no padrão do CNJ. Pela Constituição, verbas <b>indenizatórias</b> (auxílios, diárias, indenização de férias)
         ficam fora do teto, e pagamentos atrasados (retroativos) podem inflar um único mês. Esta aba mostra o que os próprios órgãos publicam e
         compara com o teto. O STF definiu, em 2026, limites para essas verbas
         (<a href="https://noticias.stf.jus.br/?p=159907" target="_blank" rel="noopener">Tema 966</a>). <span id="ss-avisos"></span>
@@ -2561,7 +2561,7 @@ function renderCamaraMunicipal(data) {
         <td><span style="font-size:0.7rem;opacity:.6">${item.ato||""}</span></td>
         <td>${item.fornecedor || "—"}</td>
         <td style="font-size:0.75rem;opacity:.7">${item.cnpj || "—"}</td>
-        <td class="num">${formatBRL(item.valor)}</td>
+        <td class="num">${item.valor ? formatBRL(item.valor) : `<span style="color:var(--ink-faint);font-weight:400;font-size:.75rem" title="O PDF escaneado da Câmara não permitiu ler o valor desta nota; o total do mês vem da linha de TOTAL do próprio PDF">valor ilegível no PDF</span>`}</td>
         <td style="font-size:0.78rem">${item.descricao || item.nf || ""}</td>
       </tr>
     `).join("") : `<tr><td colspan="6" style="padding:12px;opacity:.6">${
@@ -4440,6 +4440,7 @@ function renderSupersalarios(d) {
         <div class="stat-card"><p class="stat-label">Remuneração base</p><p class="stat-value">${formatBRL(p.base)}</p></div>
         <div class="stat-card alt"><p class="stat-label">${p.poder === "Judiciário" ? "Outras remunerações e benefícios" : p.orgaoId === "tce" ? (p.itens && p.itens.length ? "Outras rubricas" : "Outros pagamentos") : "Remunerações eventuais"}</p><p class="stat-value">${formatBRL(p.outras)}</p></div>
         <div class="stat-card"><p class="stat-label">Bruto</p><p class="stat-value">${formatBRL(p.bruto)}</p><p class="stat-note">${p.acimaTeto ? `${formatBRL(p.acimaTeto)} acima do teto` : "dentro do teto"}</p></div>
+        ${p.diarias ? `<div class="stat-card"><p class="stat-label">Diárias de viagem (à parte)</p><p class="stat-value">${formatBRL(p.diarias)}</p><p class="stat-note">reembolso, fora do bruto e do líquido</p></div>` : ""}
         <div class="stat-card"><p class="stat-label">Descontos</p><p class="stat-value">${formatBRL(p.descontos)}</p>${p.abateTeto != null ? `<p class="stat-note">${p.abateTeto ? `inclui ${formatBRL(p.abateTeto)} de abate-teto` : "sem abate-teto no mês"}</p>` : ""}</div>
         <div class="stat-card alt"><p class="stat-label">Líquido</p><p class="stat-value">${formatBRL(p.liquido)}</p><p class="stat-note">${p.liquido > T ? "acima do teto mesmo após os descontos" : ""}</p></div>
       </div>

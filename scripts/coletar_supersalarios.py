@@ -99,11 +99,22 @@ def tribunal(orgao, rotulo):
         v = num(r["valor"])
         if p:
             p["itens"][item] = round(p["itens"].get(item, 0) + v, 2)
+        if item.lower().startswith(("diária", "diaria")):
+            continue
         t = tipos.setdefault(item, {"item": item, "categoria": r["categoria"], "valor": 0.0, "pessoas": 0})
         t["valor"] += v
         t["pessoas"] += 1
     for p in pessoas.values():
-        p["itens"] = sorted(({"item": k, "valor": v} for k, v in p["itens"].items()), key=lambda x: -x["valor"])
+        # diárias são reembolso de viagem, não remuneração: ficam fora do bruto e do líquido
+        # (como no Anexo VIII do CNJ e na aba Judiciário) e aparecem à parte
+        diar = round(sum(v for k, v in p["itens"].items() if k.lower().startswith("diária") or k.lower().startswith("diaria")), 2)
+        if diar:
+            p["diarias"] = diar
+            p["outras"] = round(p["outras"] - diar, 2)
+            p["bruto"] = round(p["bruto"] - diar, 2)
+            p["liquido"] = round(p["liquido"] - diar, 2)
+        p["itens"] = sorted(({"item": k, "valor": v} for k, v in p["itens"].items()
+                             if not (k.lower().startswith("diária") or k.lower().startswith("diaria"))), key=lambda x: -x["valor"])
     # resumos mensais (evolução): base x outras, desde janeiro do ano anterior
     serie = []
     for aa in (ANO - 1, ANO):
@@ -223,7 +234,8 @@ def tce_membros(a, m):
         cargo_lot = cab_p.group(4)
         cargo = next((c for c in ("Conselheiro do Tribunal de Contas MS", "Conselheiro Substituto", "Procurador-Geral do Ministério Público de Contas",
                                   "Procurador do Ministério Público de Contas") if cargo_lot.startswith(c)), cargo_lot[:40])
-        ganhos = {c: v for c, v in vals.items() if c[0] in "12348" and v}
+        diarias = round(vals.get("2004", 0) + vals.get("2005", 0), 2)  # diárias nacionais/internacionais: fora do bruto
+        ganhos = {c: v for c, v in vals.items() if c[0] in "12348" and v and c not in ("2004", "2005")}
         base = vals.get("1001", 0)
         bruto = sum(ganhos.values())
         desc = sum(v for c, v in vals.items() if c[0] == "9")
@@ -231,7 +243,7 @@ def tce_membros(a, m):
                         "orgao": "TCE-MS — Tribunal de Contas (membros)", "orgaoId": "tce", "poder": "Controle externo",
                         "situacao": mt.group(1), "mes": mt.group(2), "base": round(base, 2), "outras": round(bruto - base, 2),
                         "bruto": round(bruto, 2), "descontos": round(desc, 2), "liquido": round(bruto - desc, 2),
-                        "abateTeto": round(vals.get("9001", 0), 2),
+                        "abateTeto": round(vals.get("9001", 0), 2), "diarias": diarias,
                         "itens": sorted(({"item": rubrica[c], "valor": round(v, 2)} for c, v in ganhos.items() if c != "1001"),
                                         key=lambda x: -x["valor"])})
     return pessoas

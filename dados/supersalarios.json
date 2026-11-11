@@ -1,6 +1,6 @@
 {
  "ano": 2026,
- "ultimaAtualizacao": "2026-11-11T14:57:31",
+ "ultimaAtualizacao": "2026-11-11T20:53:53",
  "teto": 46366.19,
  "tetoFonte": "Subsídio de ministro do STF — Lei nº 14.520/2023, em vigor desde fev/2025",
  "fontes": {
@@ -8,10 +8,10 @@
   "governo": "https://www.transparencia.ms.gov.br/",
   "tce": "https://transparencia.tce.ms.gov.br/"
  },
- "totalPessoas": 92736,
- "acimaTeto": 2446,
- "valorAcimaTeto": 57225781.74,
- "liquidoAcimaTeto": 427,
+ "totalPessoas": 92796,
+ "acimaTeto": 2450,
+ "valorAcimaTeto": 56739083.16,
+ "liquidoAcimaTeto": 421,
  "avisos": [
   "TRE-MS — Justiça Eleitoral: o DadosJusBr publicou 09/2026 com valores zerados; o órgão fica fora do ranking"
  ],
@@ -21,30 +21,30 @@
    "mes": "09/2026",
    "fonte": "DadosJusBr / Transparência Brasil (contracheques enviados ao CNJ)",
    "pessoas": 227,
-   "mediaBruta": 85864.57,
+   "mediaBruta": 84002.4,
    "maiorBruto": 156810.72,
    "acimaTeto": 226,
-   "valorAcimaTeto": 8982700.28,
-   "liquidoAcimaTeto": 216,
+   "valorAcimaTeto": 8559986.07,
+   "liquidoAcimaTeto": 215,
    "maiorLiquido": 102153.16,
-   "mediaLiquida": 61284.47,
+   "mediaLiquida": 59422.29,
    "totalBase": 8910028.25,
-   "totalOutras": 10581229.78
+   "totalOutras": 10158515.57
   },
   {
    "orgao": "TRT24 — Justiça do Trabalho",
    "mes": "08/2026",
    "fonte": "DadosJusBr / Transparência Brasil (contracheques enviados ao CNJ)",
    "pessoas": 80,
-   "mediaBruta": 72158.19,
+   "mediaBruta": 71215.59,
    "maiorBruto": 140054.15,
    "acimaTeto": 73,
-   "valorAcimaTeto": 2103536.58,
-   "liquidoAcimaTeto": 41,
+   "valorAcimaTeto": 2028128.29,
+   "liquidoAcimaTeto": 36,
    "maiorLiquido": 118360.84,
-   "mediaLiquida": 57454.74,
+   "mediaLiquida": 56512.14,
    "totalBase": 3137933.68,
-   "totalOutras": 2634721.76
+   "totalOutras": 2559313.47
   },
   {
    "orgao": "Governo do Estado — ativos",
@@ -5975,12 +5975,6 @@
      "pessoas": 105
     },
     {
-     "item": "Diárias",
-     "categoria": "contracheque",
-     "valor": 422714.21,
-     "pessoas": 76
-    },
-    {
      "item": "Abono de permanência",
      "categoria": "direitos-pessoais",
      "valor": 289428.11,
@@ -6045,12 +6039,6 @@
      "categoria": "direitos-pessoais",
      "valor": 88711.74,
      "pessoas": 19
-    },
-    {
-     "item": "Diárias",
-     "categoria": "contracheque",
-     "valor": 75408.29,
-     "pessoas": 17
     },
     {
      "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO , VPNI (GEL) - MAGISTRADO",
@@ -7195,48 +7183,6 @@
    "acimaTeto": 83521.47
   },
   {
-   "nome": "Marcelino Gonçalves",
-   "cargo": "Juiz titular de vara",
-   "lotacao": "Vara Do Trabalho De Ponta Porã",
-   "orgao": "TRT24 — Justiça do Trabalho",
-   "orgaoId": "trt24",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "08/2026",
-   "base": 39753.21,
-   "outras": 89808.64,
-   "bruto": 129561.85,
-   "descontos": 19196.58,
-   "liquido": 110365.27,
-   "itens": [
-    {
-     "item": "Indenização de férias",
-     "valor": 36130.55
-    },
-    {
-     "item": "Antecipação de férias",
-     "valor": 17362.56
-    },
-    {
-     "item": "Abono constitucional de 1/3 de férias",
-     "valor": 14241.24
-    },
-    {
-     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Diárias",
-     "valor": 5190.17
-    },
-    {
-     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
-     "valor": 2970.5
-    }
-   ],
-   "acimaTeto": 83195.66
-  },
-  {
    "nome": "Joao Enildo Bogarim Insfran",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -7483,86 +7429,6 @@
    "acimaTeto": 79469.3
   },
   {
-   "nome": "Marcio Kurihara Inada",
-   "cargo": "Juiz titular de vara",
-   "lotacao": "Vara Do Trabalho De Paranaíba",
-   "orgao": "TRT24 — Justiça do Trabalho",
-   "orgaoId": "trt24",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "08/2026",
-   "base": 39753.21,
-   "outras": 85745.46,
-   "bruto": 125498.67,
-   "descontos": 20157.36,
-   "liquido": 105341.31,
-   "itens": [
-    {
-     "item": "Indenização de férias",
-     "valor": 34455.82
-    },
-    {
-     "item": "Antecipação de férias",
-     "valor": 23775.54
-    },
-    {
-     "item": "Abono constitucional de 1/3 de férias",
-     "valor": 13581.13
-    },
-    {
-     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
-     "valor": 9938.3
-    },
-    {
-     "item": "Diárias",
-     "valor": 3004.5
-    },
-    {
-     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
-     "valor": 990.17
-    }
-   ],
-   "acimaTeto": 79132.48
-  },
-  {
-   "nome": "João De Deus Gomes De Souza",
-   "cargo": "Desembargador do trabalho",
-   "lotacao": "Gab. Desembargador João De Deus Gomes De Souza",
-   "orgao": "TRT24 — Justiça do Trabalho",
-   "orgaoId": "trt24",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "08/2026",
-   "base": 41845.49,
-   "outras": 83315.9,
-   "bruto": 125161.39,
-   "descontos": 24037.7,
-   "liquido": 101123.69,
-   "itens": [
-    {
-     "item": "Indenização de férias",
-     "valor": 49481.61
-    },
-    {
-     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
-     "valor": 14645.92
-    },
-    {
-     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO , VPNI (GEL) - MAGISTRADO",
-     "valor": 7598.9
-    },
-    {
-     "item": "Abono de permanência",
-     "valor": 7552.67
-    },
-    {
-     "item": "Diárias",
-     "valor": 4036.8
-    }
-   ],
-   "acimaTeto": 78795.2
-  },
-  {
    "nome": "Aurelio Vaz Rolim",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -7581,44 +7447,6 @@
    "acimaTeto": 78413.49
   },
   {
-   "nome": "Francisco Das Chagas Lima Filho",
-   "cargo": "Desembargador do trabalho",
-   "lotacao": "Gab. Desembargador Francisco Das Chagas Lima Filho",
-   "orgao": "TRT24 — Justiça do Trabalho",
-   "orgaoId": "trt24",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "08/2026",
-   "base": 41845.49,
-   "outras": 82582.08,
-   "bruto": 124427.57,
-   "descontos": 26528.16,
-   "liquido": 97899.41,
-   "itens": [
-    {
-     "item": "Indenização de férias",
-     "valor": 49306.34
-    },
-    {
-     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
-     "valor": 14645.92
-    },
-    {
-     "item": "Abono de permanência",
-     "valor": 7552.67
-    },
-    {
-     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO , VPNI (GEL) - MAGISTRADO",
-     "valor": 7040.35
-    },
-    {
-     "item": "Diárias",
-     "valor": 4036.8
-    }
-   ],
-   "acimaTeto": 78061.38
-  },
-  {
    "nome": "Julio Cesar Borges",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -7635,6 +7463,45 @@
    "liquido": 51394.06,
    "itens": [],
    "acimaTeto": 78008.76
+  },
+  {
+   "nome": "Marcelino Gonçalves",
+   "cargo": "Juiz titular de vara",
+   "lotacao": "Vara Do Trabalho De Ponta Porã",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "orgaoId": "trt24",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "08/2026",
+   "base": 39753.21,
+   "outras": 84618.47,
+   "bruto": 124371.68,
+   "descontos": 19196.58,
+   "liquido": 105175.1,
+   "itens": [
+    {
+     "item": "Indenização de férias",
+     "valor": 36130.55
+    },
+    {
+     "item": "Antecipação de férias",
+     "valor": 17362.56
+    },
+    {
+     "item": "Abono constitucional de 1/3 de férias",
+     "valor": 14241.24
+    },
+    {
+     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
+     "valor": 13913.62
+    },
+    {
+     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
+     "valor": 2970.5
+    }
+   ],
+   "diarias": 5190.17,
+   "acimaTeto": 78005.49
   },
   {
    "nome": "Valgney Cherri Ishimi",
@@ -7673,6 +7540,45 @@
    "acimaTeto": 76440.54
   },
   {
+   "nome": "Marcio Kurihara Inada",
+   "cargo": "Juiz titular de vara",
+   "lotacao": "Vara Do Trabalho De Paranaíba",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "orgaoId": "trt24",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "08/2026",
+   "base": 39753.21,
+   "outras": 82740.96,
+   "bruto": 122494.17,
+   "descontos": 20157.36,
+   "liquido": 102336.81,
+   "itens": [
+    {
+     "item": "Indenização de férias",
+     "valor": 34455.82
+    },
+    {
+     "item": "Antecipação de férias",
+     "valor": 23775.54
+    },
+    {
+     "item": "Abono constitucional de 1/3 de férias",
+     "valor": 13581.13
+    },
+    {
+     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
+     "valor": 9938.3
+    },
+    {
+     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
+     "valor": 990.17
+    }
+   ],
+   "diarias": 3004.5,
+   "acimaTeto": 76127.98
+  },
+  {
    "nome": "Adalto Jose Manzano",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -7689,40 +7595,6 @@
    "liquido": 47970.03,
    "itens": [],
    "acimaTeto": 76069.03
-  },
-  {
-   "nome": "João Marcelo Balsanelli",
-   "cargo": "Desembargador do trabalho",
-   "lotacao": "Gab. Desembargador João Marcelo Balsanelli",
-   "orgao": "TRT24 — Justiça do Trabalho",
-   "orgaoId": "trt24",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "08/2026",
-   "base": 41845.49,
-   "outras": 80341.69,
-   "bruto": 122187.18,
-   "descontos": 14392.45,
-   "liquido": 107794.73,
-   "itens": [
-    {
-     "item": "Indenização de férias",
-     "valor": 59685.5
-    },
-    {
-     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
-     "valor": 14645.92
-    },
-    {
-     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
-     "valor": 3126.84
-    },
-    {
-     "item": "Diárias",
-     "valor": 2883.43
-    }
-   ],
-   "acimaTeto": 75820.99
   },
   {
    "nome": "Ricardo Piera Coll",
@@ -7779,6 +7651,41 @@
    "acimaTeto": 74921.08
   },
   {
+   "nome": "João De Deus Gomes De Souza",
+   "cargo": "Desembargador do trabalho",
+   "lotacao": "Gab. Desembargador João De Deus Gomes De Souza",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "orgaoId": "trt24",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "08/2026",
+   "base": 41845.49,
+   "outras": 79279.1,
+   "bruto": 121124.59,
+   "descontos": 24037.7,
+   "liquido": 97086.89,
+   "itens": [
+    {
+     "item": "Indenização de férias",
+     "valor": 49481.61
+    },
+    {
+     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
+     "valor": 14645.92
+    },
+    {
+     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO , VPNI (GEL) - MAGISTRADO",
+     "valor": 7598.9
+    },
+    {
+     "item": "Abono de permanência",
+     "valor": 7552.67
+    }
+   ],
+   "diarias": 4036.8,
+   "acimaTeto": 74758.4
+  },
+  {
    "nome": "Vicente Da Fonseca Bezerra Junior",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -7815,6 +7722,41 @@
    "acimaTeto": 74311.27
   },
   {
+   "nome": "Francisco Das Chagas Lima Filho",
+   "cargo": "Desembargador do trabalho",
+   "lotacao": "Gab. Desembargador Francisco Das Chagas Lima Filho",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "orgaoId": "trt24",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "08/2026",
+   "base": 41845.49,
+   "outras": 78545.28,
+   "bruto": 120390.77,
+   "descontos": 26528.16,
+   "liquido": 93862.61,
+   "itens": [
+    {
+     "item": "Indenização de férias",
+     "valor": 49306.34
+    },
+    {
+     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
+     "valor": 14645.92
+    },
+    {
+     "item": "Abono de permanência",
+     "valor": 7552.67
+    },
+    {
+     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO , VPNI (GEL) - MAGISTRADO",
+     "valor": 7040.35
+    }
+   ],
+   "diarias": 4036.8,
+   "acimaTeto": 74024.58
+  },
+  {
    "nome": "Bruno Gouvea Bastos",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -7849,6 +7791,37 @@
    "liquido": 105202.9,
    "itens": [],
    "acimaTeto": 73192.81
+  },
+  {
+   "nome": "João Marcelo Balsanelli",
+   "cargo": "Desembargador do trabalho",
+   "lotacao": "Gab. Desembargador João Marcelo Balsanelli",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "orgaoId": "trt24",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "08/2026",
+   "base": 41845.49,
+   "outras": 77458.26,
+   "bruto": 119303.75,
+   "descontos": 14392.45,
+   "liquido": 104911.3,
+   "itens": [
+    {
+     "item": "Indenização de férias",
+     "valor": 59685.5
+    },
+    {
+     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
+     "valor": 14645.92
+    },
+    {
+     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
+     "valor": 3126.84
+    }
+   ],
+   "diarias": 2883.43,
+   "acimaTeto": 72937.56
   },
   {
    "nome": "Ewerton Cruz Cordeiros",
@@ -7905,44 +7878,6 @@
    "acimaTeto": 72109.72
   },
   {
-   "nome": "Carlos Roberto Cunha",
-   "cargo": "Juiz titular de vara",
-   "lotacao": "1ª Vara Do Trabalho De Dourados",
-   "orgao": "TRT24 — Justiça do Trabalho",
-   "orgaoId": "trt24",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "08/2026",
-   "base": 39753.21,
-   "outras": 78648.11,
-   "bruto": 118401.32,
-   "descontos": 17507.97,
-   "liquido": 100893.35,
-   "itens": [
-    {
-     "item": "Indenização de férias",
-     "valor": 57573.41
-    },
-    {
-     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
-     "valor": 11925.96
-    },
-    {
-     "item": "Diárias",
-     "valor": 5190.17
-    },
-    {
-     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
-     "valor": 2970.5
-    },
-    {
-     "item": "Abono de permanência",
-     "valor": 988.07
-    }
-   ],
-   "acimaTeto": 72035.13
-  },
-  {
    "nome": "Redel Furtado Neres",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -7961,52 +7896,6 @@
    "acimaTeto": 71658.21
   },
   {
-   "nome": "Marco Andre Nogueira Hanson",
-   "cargo": "Desembargador",
-   "lotacao": "Escola Judicial Do Estado De Mato Grosso Do Sul",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 45365.49,
-   "outras": 72140.26,
-   "bruto": 117505.75,
-   "descontos": 45701.01,
-   "liquido": 71804.74,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 14645.92
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 14645.92
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13947.1
-    },
-    {
-     "item": "ATS",
-     "valor": 10461.37
-    },
-    {
-     "item": "Abono de permanência",
-     "valor": 6491.27
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 6369.28
-    },
-    {
-     "item": "Diárias",
-     "valor": 5579.4
-    }
-   ],
-   "acimaTeto": 71139.56
-  },
-  {
    "nome": "Cloves Silva",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -8023,40 +7912,6 @@
    "liquido": 52186.25,
    "itens": [],
    "acimaTeto": 71084.44
-  },
-  {
-   "nome": "Bóris Luiz Cardozo De Souza",
-   "cargo": "Juiz titular de vara",
-   "lotacao": "Vara Do Trabalho De Naviraí",
-   "orgao": "TRT24 — Justiça do Trabalho",
-   "orgaoId": "trt24",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "08/2026",
-   "base": 39753.21,
-   "outras": 77390.6,
-   "bruto": 117143.81,
-   "descontos": 13829.68,
-   "liquido": 103314.13,
-   "itens": [
-    {
-     "item": "Indenização de férias",
-     "valor": 60281.79
-    },
-    {
-     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
-     "valor": 9938.3
-    },
-    {
-     "item": "Diárias",
-     "valor": 5190.17
-    },
-    {
-     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
-     "valor": 1980.34
-    }
-   ],
-   "acimaTeto": 70777.62
   },
   {
    "nome": "Ricardo Gomes Facanha",
@@ -8099,52 +7954,6 @@
     }
    ],
    "acimaTeto": 70398.61
-  },
-  {
-   "nome": "Dorival Renato Pavan",
-   "cargo": "Desembargador",
-   "lotacao": "Presidência",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 41845.49,
-   "outras": 74837.49,
-   "bruto": 116682.98,
-   "descontos": 38168.88,
-   "liquido": 78514.1,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 14645.92
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 14645.92
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13947.1
-    },
-    {
-     "item": "ATS",
-     "valor": 10461.37
-    },
-    {
-     "item": "Diárias",
-     "valor": 8369.09
-    },
-    {
-     "item": "Abono de permanência",
-     "valor": 6491.27
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 6276.82
-    }
-   ],
-   "acimaTeto": 70316.79
   },
   {
    "nome": "Kedma Carla Monteiro Dias",
@@ -8357,102 +8166,6 @@
    "acimaTeto": 68927.26
   },
   {
-   "nome": "Ruy Celso Barbosa Florence",
-   "cargo": "Desembargador",
-   "lotacao": "Corregedoria Geral De Justiça",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 41845.49,
-   "outras": 73442.63,
-   "bruto": 115288.12,
-   "descontos": 36128.74,
-   "liquido": 79159.38,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 14645.92
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 14645.92
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13947.1
-    },
-    {
-     "item": "ATS",
-     "valor": 8369.1
-    },
-    {
-     "item": "Diárias",
-     "valor": 8369.08
-    },
-    {
-     "item": "Abono de permanência",
-     "valor": 6491.27
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 6276.82
-    },
-    {
-     "item": "Gratificação por encargo Curso/Concurso",
-     "valor": 697.42
-    }
-   ],
-   "acimaTeto": 68921.93
-  },
-  {
-   "nome": "Monique Rafaele Antunes Krieger",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Cassilândia",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 77447.02,
-   "bruto": 115212.57,
-   "descontos": 21575.99,
-   "liquido": 93636.58,
-   "itens": [
-    {
-     "item": "Indenização de férias",
-     "valor": 22379.03
-    },
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Abono constitucional de 1/3 de férias",
-     "valor": 11189.51
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5484.76
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 3776.56
-    }
-   ],
-   "acimaTeto": 68846.38
-  },
-  {
    "nome": "Carlos Eduardo Martins De Araujo",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -8645,6 +8358,41 @@
    "acimaTeto": 67551.07
   },
   {
+   "nome": "Carlos Roberto Cunha",
+   "cargo": "Juiz titular de vara",
+   "lotacao": "1ª Vara Do Trabalho De Dourados",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "orgaoId": "trt24",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "08/2026",
+   "base": 39753.21,
+   "outras": 73457.94,
+   "bruto": 113211.15,
+   "descontos": 17507.97,
+   "liquido": 95703.18,
+   "itens": [
+    {
+     "item": "Indenização de férias",
+     "valor": 57573.41
+    },
+    {
+     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
+     "valor": 11925.96
+    },
+    {
+     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
+     "valor": 2970.5
+    },
+    {
+     "item": "Abono de permanência",
+     "valor": 988.07
+    }
+   ],
+   "diarias": 5190.17,
+   "acimaTeto": 66844.96
+  },
+  {
    "nome": "Odemilson Roberto Castro Fassa",
    "cargo": "Desembargador",
    "lotacao": "Conselho De Supervisão Dos Juizados Especiais",
@@ -8817,6 +8565,80 @@
    "liquido": 45612.77,
    "itens": [],
    "acimaTeto": 65692.73
+  },
+  {
+   "nome": "Bóris Luiz Cardozo De Souza",
+   "cargo": "Juiz titular de vara",
+   "lotacao": "Vara Do Trabalho De Naviraí",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "orgaoId": "trt24",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "08/2026",
+   "base": 39753.21,
+   "outras": 72200.43,
+   "bruto": 111953.64,
+   "descontos": 13829.68,
+   "liquido": 98123.96,
+   "itens": [
+    {
+     "item": "Indenização de férias",
+     "valor": 60281.79
+    },
+    {
+     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
+     "valor": 9938.3
+    },
+    {
+     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
+     "valor": 1980.34
+    }
+   ],
+   "diarias": 5190.17,
+   "acimaTeto": 65587.45
+  },
+  {
+   "nome": "Marco Andre Nogueira Hanson",
+   "cargo": "Desembargador",
+   "lotacao": "Escola Judicial Do Estado De Mato Grosso Do Sul",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 45365.49,
+   "outras": 66560.86,
+   "bruto": 111926.35,
+   "descontos": 45701.01,
+   "liquido": 66225.34,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 14645.92
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 14645.92
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13947.1
+    },
+    {
+     "item": "ATS",
+     "valor": 10461.37
+    },
+    {
+     "item": "Abono de permanência",
+     "valor": 6491.27
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 6369.28
+    }
+   ],
+   "diarias": 5579.4,
+   "acimaTeto": 65560.16
   },
   {
    "nome": "Edilson Barzotto",
@@ -9177,6 +8999,49 @@
    "acimaTeto": 62059.47
   },
   {
+   "nome": "Dorival Renato Pavan",
+   "cargo": "Desembargador",
+   "lotacao": "Presidência",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 41845.49,
+   "outras": 66468.4,
+   "bruto": 108313.89,
+   "descontos": 38168.88,
+   "liquido": 70145.01,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 14645.92
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 14645.92
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13947.1
+    },
+    {
+     "item": "ATS",
+     "valor": 10461.37
+    },
+    {
+     "item": "Abono de permanência",
+     "valor": 6491.27
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 6276.82
+    }
+   ],
+   "diarias": 8369.09,
+   "acimaTeto": 61947.7
+  },
+  {
    "nome": "Waldir Marques",
    "cargo": "Desembargador",
    "lotacao": "Gabinete Dos Desembargadores",
@@ -9217,52 +9082,6 @@
     }
    ],
    "acimaTeto": 61859.1
-  },
-  {
-   "nome": "Eduardo Machado Rocha",
-   "cargo": "Desembargador",
-   "lotacao": "Vice-Presidência",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 41845.49,
-   "outras": 66285.27,
-   "bruto": 108130.76,
-   "descontos": 33718.65,
-   "liquido": 74412.11,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 14645.92
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 14645.92
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13947.1
-    },
-    {
-     "item": "ATS",
-     "valor": 10461.37
-    },
-    {
-     "item": "Abono de permanência",
-     "valor": 6491.27
-    },
-    {
-     "item": "Diárias",
-     "valor": 3487.13
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 2606.56
-    }
-   ],
-   "acimaTeto": 61764.57
   },
   {
    "nome": "Celina Rocha Goncalves",
@@ -9615,6 +9434,53 @@
    "acimaTeto": 60581.14
   },
   {
+   "nome": "Ruy Celso Barbosa Florence",
+   "cargo": "Desembargador",
+   "lotacao": "Corregedoria Geral De Justiça",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 41845.49,
+   "outras": 65073.55,
+   "bruto": 106919.04,
+   "descontos": 36128.74,
+   "liquido": 70790.3,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 14645.92
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 14645.92
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13947.1
+    },
+    {
+     "item": "ATS",
+     "valor": 8369.1
+    },
+    {
+     "item": "Abono de permanência",
+     "valor": 6491.27
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 6276.82
+    },
+    {
+     "item": "Gratificação por encargo Curso/Concurso",
+     "valor": 697.42
+    }
+   ],
+   "diarias": 8369.08,
+   "acimaTeto": 60552.85
+  },
+  {
    "nome": "Leodomiro Lopes Flores",
    "cargo": "Fiscal tributário estadual",
    "lotacao": "Estatutario",
@@ -9649,6 +9515,49 @@
    "liquido": 41541.76,
    "itens": [],
    "acimaTeto": 60286.61
+  },
+  {
+   "nome": "Monique Rafaele Antunes Krieger",
+   "cargo": "Juiz de direito de segunda entrância",
+   "lotacao": "Cassilândia",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 37765.55,
+   "outras": 68635.06,
+   "bruto": 106400.61,
+   "descontos": 21575.99,
+   "liquido": 84824.62,
+   "itens": [
+    {
+     "item": "Indenização de férias",
+     "valor": 22379.03
+    },
+    {
+     "item": "GECJAO",
+     "valor": 13217.94
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 12587.26
+    },
+    {
+     "item": "Abono constitucional de 1/3 de férias",
+     "valor": 11189.51
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 5484.76
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 3776.56
+    }
+   ],
+   "diarias": 8811.96,
+   "acimaTeto": 60034.42
   },
   {
    "nome": "Jesiel Pereira",
@@ -9921,52 +9830,6 @@
    "acimaTeto": 59855.43
   },
   {
-   "nome": "Aluizio Pereira Dos Santos",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Campo Grande",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 66452.47,
-   "bruto": 106205.68,
-   "descontos": 32868.51,
-   "liquido": 73337.17,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "ATS",
-     "valor": 7950.64
-    },
-    {
-     "item": "Abono de permanência",
-     "valor": 6491.27
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 6295.7
-    },
-    {
-     "item": "Diárias",
-     "valor": 4637.88
-    }
-   ],
-   "acimaTeto": 59839.49
-  },
-  {
    "nome": "Airton Alves Bernardes",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -10219,52 +10082,6 @@
    "acimaTeto": 58790.82
   },
   {
-   "nome": "Luiz Tadeu Barbosa Silva",
-   "cargo": "Desembargador",
-   "lotacao": "Gabinete Dos Desembargadores",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 41845.49,
-   "outras": 63147.47,
-   "bruto": 104992.96,
-   "descontos": 34036.46,
-   "liquido": 70956.5,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 14645.92
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 14645.92
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13947.1
-    },
-    {
-     "item": "Abono de permanência",
-     "valor": 6491.27
-    },
-    {
-     "item": "ATS",
-     "valor": 6276.82
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 4350.74
-    },
-    {
-     "item": "Diárias",
-     "valor": 2789.7
-    }
-   ],
-   "acimaTeto": 58626.77
-  },
-  {
    "nome": "Andre Luiz Gomide",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -10409,46 +10226,47 @@
    "acimaTeto": 58457.44
   },
   {
-   "nome": "Luiz Felipe Medeiros Vieira",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Campo Grande",
+   "nome": "Eduardo Machado Rocha",
+   "cargo": "Desembargador",
+   "lotacao": "Vice-Presidência",
    "orgao": "TJMS — Tribunal de Justiça",
    "orgaoId": "tjms",
    "poder": "Judiciário",
    "situacao": "Ativo",
    "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 64857.91,
-   "bruto": 104611.12,
-   "descontos": 31031.27,
-   "liquido": 73579.85,
+   "base": 41845.49,
+   "outras": 62798.14,
+   "bruto": 104643.63,
+   "descontos": 33718.65,
+   "liquido": 70924.98,
    "itens": [
     {
      "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "Diárias",
-     "valor": 11263.42
+     "valor": 14645.92
     },
     {
      "item": "VALORIZ. TEMPO MAG.",
-     "valor": 9938.3
+     "valor": 14645.92
     },
     {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 8542.19
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13947.1
     },
     {
      "item": "ATS",
-     "valor": 7950.64
+     "valor": 10461.37
+    },
+    {
+     "item": "Abono de permanência",
+     "valor": 6491.27
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 2606.56
     }
    ],
-   "acimaTeto": 58244.93
+   "diarias": 3487.13,
+   "acimaTeto": 58277.44
   },
   {
    "nome": "Cleverton Messias Miotto Corazza",
@@ -10882,6 +10700,49 @@
    "acimaTeto": 55932.01
   },
   {
+   "nome": "Luiz Tadeu Barbosa Silva",
+   "cargo": "Desembargador",
+   "lotacao": "Gabinete Dos Desembargadores",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 41845.49,
+   "outras": 60357.77,
+   "bruto": 102203.26,
+   "descontos": 34036.46,
+   "liquido": 68166.8,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 14645.92
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 14645.92
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13947.1
+    },
+    {
+     "item": "Abono de permanência",
+     "valor": 6491.27
+    },
+    {
+     "item": "ATS",
+     "valor": 6276.82
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 4350.74
+    }
+   ],
+   "diarias": 2789.7,
+   "acimaTeto": 55837.07
+  },
+  {
    "nome": "Aniano Areco",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -10970,40 +10831,6 @@
    "liquido": 32188.49,
    "itens": [],
    "acimaTeto": 55832.29
-  },
-  {
-   "nome": "Júlio César Bebber",
-   "cargo": "Juiz titular de vara",
-   "lotacao": "2ª Vara Do Trabalho De Campo Grande",
-   "orgao": "TRT24 — Justiça do Trabalho",
-   "orgaoId": "trt24",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "08/2026",
-   "base": 39753.21,
-   "outras": 62371.56,
-   "bruto": 102124.77,
-   "descontos": 12365.82,
-   "liquido": 89758.95,
-   "itens": [
-    {
-     "item": "Indenização de férias",
-     "valor": 39465.35
-    },
-    {
-     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
-     "valor": 13913.62
-    },
-    {
-     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO , VPNI (GEL) - MAGISTRADO",
-     "valor": 4955.79
-    },
-    {
-     "item": "Diárias",
-     "valor": 4036.8
-    }
-   ],
-   "acimaTeto": 55758.58
   },
   {
    "nome": "Jaceguara Dantas Da Silva",
@@ -11208,19 +11035,19 @@
    "acimaTeto": 55360.46
   },
   {
-   "nome": "Alexandre Antunes Da Silva",
+   "nome": "Aluizio Pereira Dos Santos",
    "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Vice-Presidência",
+   "lotacao": "Campo Grande",
    "orgao": "TJMS — Tribunal de Justiça",
    "orgaoId": "tjms",
    "poder": "Judiciário",
    "situacao": "Ativo",
    "mes": "09/2026",
    "base": 39753.21,
-   "outras": 61605.81,
-   "bruto": 101359.02,
+   "outras": 61814.59,
+   "bruto": 101567.8,
    "descontos": 32868.51,
-   "liquido": 68490.51,
+   "liquido": 68699.29,
    "itens": [
     {
      "item": "GECJAO",
@@ -11243,15 +11070,12 @@
      "valor": 6491.27
     },
     {
-     "item": "Diárias",
-     "valor": 3312.77
-    },
-    {
      "item": "BAMES+REEMB.CURSOS",
-     "valor": 2774.15
+     "valor": 6295.7
     }
    ],
-   "acimaTeto": 54992.83
+   "diarias": 4637.88,
+   "acimaTeto": 55201.61
   },
   {
    "nome": "Joao Carlos Nascimento Ferreira Junior",
@@ -11970,6 +11794,7 @@
    "descontos": 11841.97,
    "liquido": 88117.74,
    "abateTeto": 0.0,
+   "diarias": 0.0,
    "itens": [
     {
      "item": "Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício (GECJAO)",
@@ -12145,48 +11970,6 @@
    "acimaTeto": 53002.26
   },
   {
-   "nome": "Jacqueline Machado",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Corregedoria Geral De Justiça",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 59496.07,
-   "bruto": 99249.28,
-   "descontos": 26788.22,
-   "liquido": 72461.06,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 13118.67
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 11925.96
-    },
-    {
-     "item": "ATS",
-     "valor": 3975.32
-    },
-    {
-     "item": "Diárias",
-     "valor": 3312.76
-    }
-   ],
-   "acimaTeto": 52883.09
-  },
-  {
    "nome": "Silvia Eliane Tedardi Da Silva",
    "cargo": "Juiz de direito - entrância especial",
    "lotacao": "Campo Grande",
@@ -12265,48 +12048,6 @@
     }
    ],
    "acimaTeto": 52790.23
-  },
-  {
-   "nome": "Eduardo Eugênio Siravegna Junior",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Presidência",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 59377.27,
-   "bruto": 99130.48,
-   "descontos": 24650.95,
-   "liquido": 74479.53,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "Diárias",
-     "valor": 11925.97
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 9938.3
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 8361.98
-    },
-    {
-     "item": "ATS",
-     "valor": 1987.66
-    }
-   ],
-   "acimaTeto": 52764.29
   },
   {
    "nome": "Onofre Lopes Da Silva",
@@ -12607,6 +12348,80 @@
    "acimaTeto": 52029.19
   },
   {
+   "nome": "Júlio César Bebber",
+   "cargo": "Juiz titular de vara",
+   "lotacao": "2ª Vara Do Trabalho De Campo Grande",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "orgaoId": "trt24",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "08/2026",
+   "base": 39753.21,
+   "outras": 58334.76,
+   "bruto": 98087.97,
+   "descontos": 12365.82,
+   "liquido": 85722.15,
+   "itens": [
+    {
+     "item": "Indenização de férias",
+     "valor": 39465.35
+    },
+    {
+     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
+     "valor": 13913.62
+    },
+    {
+     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO , VPNI (GEL) - MAGISTRADO",
+     "valor": 4955.79
+    }
+   ],
+   "diarias": 4036.8,
+   "acimaTeto": 51721.78
+  },
+  {
+   "nome": "Alexandre Antunes Da Silva",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Vice-Presidência",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 58293.04,
+   "bruto": 98046.25,
+   "descontos": 32868.51,
+   "liquido": 65177.74,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "ATS",
+     "valor": 7950.64
+    },
+    {
+     "item": "Abono de permanência",
+     "valor": 6491.27
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 2774.15
+    }
+   ],
+   "diarias": 3312.77,
+   "acimaTeto": 51680.06
+  },
+  {
    "nome": "Luiz Gonzaga Maciel E Souza",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -12693,6 +12508,7 @@
    "descontos": 11789.83,
    "liquido": 85851.57,
    "abateTeto": 0.0,
+   "diarias": 0.0,
    "itens": [
     {
      "item": "Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício (GECJAO)",
@@ -12990,48 +12806,6 @@
    "liquido": 34690.61,
    "itens": [],
    "acimaTeto": 50764.84
-  },
-  {
-   "nome": "Marcus Vinicius De Oliveira Elias",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Campo Grande",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 57266.25,
-   "bruto": 97019.46,
-   "descontos": 26788.22,
-   "liquido": 70231.24,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 11925.96
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 10888.84
-    },
-    {
-     "item": "ATS",
-     "valor": 3975.32
-    },
-    {
-     "item": "Diárias",
-     "valor": 3312.77
-    }
-   ],
-   "acimaTeto": 50653.27
   },
   {
    "nome": "Arao Coelho Salgado",
@@ -13430,6 +13204,45 @@
    "acimaTeto": 49907.47
   },
   {
+   "nome": "Jacqueline Machado",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Corregedoria Geral De Justiça",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 56183.31,
+   "bruto": 95936.52,
+   "descontos": 26788.22,
+   "liquido": 69148.3,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 13118.67
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 11925.96
+    },
+    {
+     "item": "ATS",
+     "valor": 3975.32
+    }
+   ],
+   "diarias": 3312.76,
+   "acimaTeto": 49570.33
+  },
+  {
    "nome": "Marcelo Cabral Komatsu",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -13646,90 +13459,6 @@
    "liquido": 46966.71,
    "itens": [],
    "acimaTeto": 48985.06
-  },
-  {
-   "nome": "Joseliza Alessandra Vanzela Turine",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Presidência",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 55519.81,
-   "bruto": 95273.02,
-   "descontos": 24546.68,
-   "liquido": 70726.34,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 11925.96
-    },
-    {
-     "item": "Diárias",
-     "valor": 7950.65
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 6492.18
-    },
-    {
-     "item": "ATS",
-     "valor": 1987.66
-    }
-   ],
-   "acimaTeto": 48906.83
-  },
-  {
-   "nome": "Rodrigo Barbosa Sanches",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Dourados",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39620.7,
-   "outras": 55420.05,
-   "bruto": 95040.75,
-   "descontos": 22271.43,
-   "liquido": 72769.32,
-   "itens": [
-    {
-     "item": "Ajuda de Custo",
-     "valor": 13913.62
-    },
-    {
-     "item": "GECJAO",
-     "valor": 13217.95
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13205.58
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 7924.14
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 4011.63
-    },
-    {
-     "item": "Diárias",
-     "valor": 3147.13
-    }
-   ],
-   "acimaTeto": 48674.56
   },
   {
    "nome": "Marcus Vinicius Nunes De Sousa",
@@ -13986,6 +13715,45 @@
    "acimaTeto": 47619.07
   },
   {
+   "nome": "Marcus Vinicius De Oliveira Elias",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Campo Grande",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 53953.48,
+   "bruto": 93706.69,
+   "descontos": 26788.22,
+   "liquido": 66918.47,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 11925.96
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 10888.84
+    },
+    {
+     "item": "ATS",
+     "valor": 3975.32
+    }
+   ],
+   "diarias": 3312.77,
+   "acimaTeto": 47340.5
+  },
+  {
    "nome": "Denize De Barros Dodero",
    "cargo": "Juiz de direito - entrância especial",
    "lotacao": "Gabinete Dos Desembargadores",
@@ -14116,24 +13884,20 @@
    "acimaTeto": 47119.61
   },
   {
-   "nome": "Helena Alice Machado Coelho",
+   "nome": "Luiz Felipe Medeiros Vieira",
    "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Corregedoria Geral De Justiça",
+   "lotacao": "Campo Grande",
    "orgao": "TJMS — Tribunal de Justiça",
    "orgaoId": "tjms",
    "poder": "Judiciário",
    "situacao": "Ativo",
    "mes": "09/2026",
    "base": 39753.21,
-   "outras": 53614.01,
-   "bruto": 93367.22,
-   "descontos": 22357.27,
-   "liquido": 71009.95,
+   "outras": 53594.49,
+   "bruto": 93347.7,
+   "descontos": 31031.27,
+   "liquido": 62316.43,
    "itens": [
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 15152.38
-    },
     {
      "item": "GECJAO",
      "valor": 13913.62
@@ -14144,18 +13908,19 @@
     },
     {
      "item": "VALORIZ. TEMPO MAG.",
+     "valor": 9938.3
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 8542.19
+    },
+    {
+     "item": "ATS",
      "valor": 7950.64
-    },
-    {
-     "item": "Diárias",
-     "valor": 2650.21
-    },
-    {
-     "item": "Gratificação por encargo Curso/Concurso",
-     "valor": 697.42
     }
    ],
-   "acimaTeto": 47001.03
+   "diarias": 11263.42,
+   "acimaTeto": 46981.51
   },
   {
    "nome": "Jose De Alencar Santelli",
@@ -14212,40 +13977,6 @@
    "acimaTeto": 46715.37
   },
   {
-   "nome": "Leonardo Ely",
-   "cargo": "Juiz titular de vara",
-   "lotacao": "Vara Do Trabalho De Fátima Do Sul",
-   "orgao": "TRT24 — Justiça do Trabalho",
-   "orgaoId": "trt24",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "08/2026",
-   "base": 39753.21,
-   "outras": 53248.92,
-   "bruto": 93002.13,
-   "descontos": 21479.79,
-   "liquido": 71522.34,
-   "itens": [
-    {
-     "item": "Indenização de férias",
-     "valor": 36838.87
-    },
-    {
-     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
-     "valor": 11925.96
-    },
-    {
-     "item": "Diárias",
-     "valor": 2503.75
-    },
-    {
-     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
-     "valor": 1980.34
-    }
-   ],
-   "acimaTeto": 46635.94
-  },
-  {
    "nome": "Joao Batista Goncalves",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -14262,86 +13993,6 @@
    "liquido": 29956.41,
    "itens": [],
    "acimaTeto": 46539.8
-  },
-  {
-   "nome": "Kelly Gaspar Duarte",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Dourados",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 43493.21,
-   "outras": 49326.4,
-   "bruto": 92819.61,
-   "descontos": 31175.03,
-   "liquido": 61644.58,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "Diárias",
-     "valor": 10600.87
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5962.98
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5599.19
-    }
-   ],
-   "acimaTeto": 46453.42
-  },
-  {
-   "nome": "Thiago Nagasawa Tanaka",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Presidência",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 53057.84,
-   "bruto": 92811.05,
-   "descontos": 24598.81,
-   "liquido": 68212.24,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 9938.3
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 7342.98
-    },
-    {
-     "item": "Diárias",
-     "valor": 6625.54
-    },
-    {
-     "item": "ATS",
-     "valor": 1987.66
-    }
-   ],
-   "acimaTeto": 46444.86
   },
   {
    "nome": "Gilberto Uechi",
@@ -14488,42 +14139,43 @@
    "acimaTeto": 45567.11
   },
   {
-   "nome": "Alexsandro Motta",
+   "nome": "Rodrigo Barbosa Sanches",
    "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Campo Grande",
+   "lotacao": "Dourados",
    "orgao": "TJMS — Tribunal de Justiça",
    "orgaoId": "tjms",
    "poder": "Judiciário",
    "situacao": "Ativo",
    "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 52168.64,
-   "bruto": 91921.85,
-   "descontos": 22409.41,
-   "liquido": 69512.44,
+   "base": 39620.7,
+   "outras": 52272.92,
+   "bruto": 91893.62,
+   "descontos": 22271.43,
+   "liquido": 69622.19,
    "itens": [
     {
-     "item": "GECJAO",
+     "item": "Ajuda de Custo",
      "valor": 13913.62
     },
     {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
+     "item": "GECJAO",
+     "valor": 13217.95
     },
     {
-     "item": "Diárias",
-     "valor": 9938.31
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13205.58
     },
     {
      "item": "VALORIZ. TEMPO MAG.",
-     "valor": 9938.3
+     "valor": 7924.14
     },
     {
      "item": "BAMES+REEMB.CURSOS",
-     "valor": 5128.67
+     "valor": 4011.63
     }
    ],
-   "acimaTeto": 45555.66
+   "diarias": 3147.13,
+   "acimaTeto": 45527.43
   },
   {
    "nome": "Wilson Alonso Costa",
@@ -14650,48 +14302,6 @@
    "liquido": 46004.74,
    "itens": [],
    "acimaTeto": 45177.39
-  },
-  {
-   "nome": "Flávio Renato Almeida Reyes",
-   "cargo": "Juiz de direito de primeira entrância",
-   "lotacao": "Nioaque",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 35877.27,
-   "outras": 55648.65,
-   "bruto": 91525.92,
-   "descontos": 18345.94,
-   "liquido": 73179.98,
-   "itens": [
-    {
-     "item": "Abono constitucional de 1/3 de férias",
-     "valor": 15945.05
-    },
-    {
-     "item": "GECJAO",
-     "valor": 12557.04
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 11957.89
-    },
-    {
-     "item": "Diárias",
-     "valor": 10165.26
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 3587.73
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 1435.68
-    }
-   ],
-   "acimaTeto": 45159.73
   },
   {
    "nome": "Marlene Fernandes Da Cruz",
@@ -14924,6 +14534,45 @@
    "acimaTeto": 44458.23
   },
   {
+   "nome": "Helena Alice Machado Coelho",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Corregedoria Geral De Justiça",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 50963.8,
+   "bruto": 90717.01,
+   "descontos": 22357.27,
+   "liquido": 68359.74,
+   "itens": [
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 15152.38
+    },
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 7950.64
+    },
+    {
+     "item": "Gratificação por encargo Curso/Concurso",
+     "valor": 697.42
+    }
+   ],
+   "diarias": 2650.21,
+   "acimaTeto": 44350.82
+  },
+  {
    "nome": "Sergio Contar",
    "cargo": "Fiscal tributário estadual",
    "lotacao": "Estatutario",
@@ -14987,6 +14636,37 @@
      "valor": 1980.34
     }
    ],
+   "acimaTeto": 44132.19
+  },
+  {
+   "nome": "Leonardo Ely",
+   "cargo": "Juiz titular de vara",
+   "lotacao": "Vara Do Trabalho De Fátima Do Sul",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "orgaoId": "trt24",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "08/2026",
+   "base": 39753.21,
+   "outras": 50745.17,
+   "bruto": 90498.38,
+   "descontos": 21479.79,
+   "liquido": 69018.59,
+   "itens": [
+    {
+     "item": "Indenização de férias",
+     "valor": 36838.87
+    },
+    {
+     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO",
+     "valor": 11925.96
+    },
+    {
+     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
+     "valor": 1980.34
+    }
+   ],
+   "diarias": 2503.75,
    "acimaTeto": 44132.19
   },
   {
@@ -15170,48 +14850,6 @@
    "acimaTeto": 43509.84
   },
   {
-   "nome": "Cesar De Souza Lima",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Dourados",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 50081.45,
-   "bruto": 89834.66,
-   "descontos": 26840.36,
-   "liquido": 62994.3,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 11925.96
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 6354.26
-    },
-    {
-     "item": "ATS",
-     "valor": 3975.32
-    },
-    {
-     "item": "Diárias",
-     "valor": 662.55
-    }
-   ],
-   "acimaTeto": 43468.47
-  },
-  {
    "nome": "Eduardo Augusto Alves",
    "cargo": "Juiz de direito de segunda entrância",
    "lotacao": "Nova Andradina",
@@ -15322,48 +14960,6 @@
    "acimaTeto": 43154.95
   },
   {
-   "nome": "David De Oliveira Gomes Filho",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Campo Grande",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 49756.88,
-   "bruto": 89510.09,
-   "descontos": 25655.0,
-   "liquido": 63855.09,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 11925.96
-    },
-    {
-     "item": "Diárias",
-     "valor": 3975.33
-    },
-    {
-     "item": "ATS",
-     "valor": 3975.32
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 2716.91
-    }
-   ],
-   "acimaTeto": 43143.9
-  },
-  {
    "nome": "Eliane De Freitas Lima Vicente",
    "cargo": "Juiz de direito - entrância especial",
    "lotacao": "Gabinete Dos Desembargadores",
@@ -15400,6 +14996,45 @@
     }
    ],
    "acimaTeto": 42853.69
+  },
+  {
+   "nome": "Cesar De Souza Lima",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Dourados",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 49418.9,
+   "bruto": 89172.11,
+   "descontos": 26840.36,
+   "liquido": 62331.75,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 11925.96
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 6354.26
+    },
+    {
+     "item": "ATS",
+     "valor": 3975.32
+    }
+   ],
+   "diarias": 662.55,
+   "acimaTeto": 42805.92
   },
   {
    "nome": "Adriana Lampert",
@@ -15454,6 +15089,7 @@
    "descontos": 11789.83,
    "liquido": 77258.41,
    "abateTeto": 0.0,
+   "diarias": 0.0,
    "itens": [
     {
      "item": "Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício (GECJAO)",
@@ -15716,6 +15352,7 @@
    "descontos": 11737.69,
    "liquido": 76902.24,
    "abateTeto": 0.0,
+   "diarias": 0.0,
    "itens": [
     {
      "item": "Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício (GECJAO)",
@@ -15757,44 +15394,6 @@
    "liquido": 44101.85,
    "itens": [],
    "acimaTeto": 42201.13
-  },
-  {
-   "nome": "Ricardo Adelino Suaid",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Amambai",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 50564.08,
-   "bruto": 88329.63,
-   "descontos": 19661.8,
-   "liquido": 68667.83,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 10700.22
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 8393.83
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5664.83
-    }
-   ],
-   "acimaTeto": 41963.44
   },
   {
    "nome": "Wilson Leite Correa",
@@ -15943,44 +15542,6 @@
     }
    ],
    "acimaTeto": 41727.83
-  },
-  {
-   "nome": "Beatriz Maki Shinzato Capucho",
-   "cargo": "Juiz titular de vara",
-   "lotacao": "2ª Vara Do Trabalho De Três Lagoas",
-   "orgao": "TRT24 — Justiça do Trabalho",
-   "orgaoId": "trt24",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "08/2026",
-   "base": 39753.21,
-   "outras": 48286.12,
-   "bruto": 88039.33,
-   "descontos": 13640.73,
-   "liquido": 74398.6,
-   "itens": [
-    {
-     "item": "Indenização de férias",
-     "valor": 18108.17
-    },
-    {
-     "item": "Abono constitucional de 1/3 de férias",
-     "valor": 13581.13
-    },
-    {
-     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO , RESTITUIÇÃO COMBUSTÍVEL - MAGISTRADO",
-     "valor": 10416.48
-    },
-    {
-     "item": "Diárias",
-     "valor": 5190.17
-    },
-    {
-     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
-     "valor": 990.17
-    }
-   ],
-   "acimaTeto": 41673.14
   },
   {
    "nome": "Juliano Rodrigues Valentim",
@@ -16209,6 +15770,45 @@
    "acimaTeto": 41003.56
   },
   {
+   "nome": "Joseliza Alessandra Vanzela Turine",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Presidência",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 47569.16,
+   "bruto": 87322.37,
+   "descontos": 24546.68,
+   "liquido": 62775.69,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 11925.96
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 6492.18
+    },
+    {
+     "item": "ATS",
+     "valor": 1987.66
+    }
+   ],
+   "diarias": 7950.65,
+   "acimaTeto": 40956.18
+  },
+  {
    "nome": "Marinete De Jesus Bezerra",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -16279,6 +15879,45 @@
    "acimaTeto": 40840.39
   },
   {
+   "nome": "Eduardo Eugênio Siravegna Junior",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Presidência",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 47451.3,
+   "bruto": 87204.51,
+   "descontos": 24650.95,
+   "liquido": 62553.56,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 9938.3
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 8361.98
+    },
+    {
+     "item": "ATS",
+     "valor": 1987.66
+    }
+   ],
+   "diarias": 11925.97,
+   "acimaTeto": 40838.32
+  },
+  {
    "nome": "Jose Carlos Montani",
    "cargo": "Fiscal tributário estadual",
    "lotacao": "Estatutario",
@@ -16315,44 +15954,6 @@
    "acimaTeto": 40668.15
   },
   {
-   "nome": "Flavia Simone Cavalcante",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Corumbá",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 47232.3,
-   "bruto": 86985.51,
-   "descontos": 22409.41,
-   "liquido": 64576.1,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 8805.53
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 7950.64
-    },
-    {
-     "item": "Diárias",
-     "valor": 3312.77
-    }
-   ],
-   "acimaTeto": 40619.32
-  },
-  {
    "nome": "Suely Rita Dos Santos Silveira",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -16387,44 +15988,6 @@
    "liquido": 45206.35,
    "itens": [],
    "acimaTeto": 40466.86
-  },
-  {
-   "nome": "Rafael Gustavo Mateucci Cassia",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Rio Verde De Mato Grosso",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 49053.62,
-   "bruto": 86819.17,
-   "descontos": 19557.52,
-   "liquido": 67261.65,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 8771.63
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5664.83
-    }
-   ],
-   "acimaTeto": 40452.98
   },
   {
    "nome": "Anderson Vasconcelos Dos Santos",
@@ -16644,48 +16207,6 @@
    "acimaTeto": 40094.33
   },
   {
-   "nome": "Jose Henrique Kaster Franco",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Campo Grande",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 46593.09,
-   "bruto": 86346.3,
-   "descontos": 24703.09,
-   "liquido": 61643.21,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 9938.3
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 6178.66
-    },
-    {
-     "item": "ATS",
-     "valor": 1987.66
-    },
-    {
-     "item": "Diárias",
-     "valor": 1325.11
-    }
-   ],
-   "acimaTeto": 39980.11
-  },
-  {
    "nome": "Doracy Marquez Ney Quevedo",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -16740,6 +16261,45 @@
    "acimaTeto": 39844.26
   },
   {
+   "nome": "Thiago Nagasawa Tanaka",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Presidência",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 46432.3,
+   "bruto": 86185.51,
+   "descontos": 24598.81,
+   "liquido": 61586.7,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 9938.3
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 7342.98
+    },
+    {
+     "item": "ATS",
+     "valor": 1987.66
+    }
+   ],
+   "diarias": 6625.54,
+   "acimaTeto": 39819.32
+  },
+  {
    "nome": "Edes Valdecir Faccin",
    "cargo": "Fiscal tributário estadual",
    "lotacao": "Estatutario",
@@ -16774,44 +16334,6 @@
    "liquido": 43243.23,
    "itens": [],
    "acimaTeto": 39778.4
-  },
-  {
-   "nome": "Juliano Duailibi Baungart",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Aquidauana",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 48364.3,
-   "bruto": 86129.85,
-   "descontos": 19557.52,
-   "liquido": 66572.33,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 7553.11
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 6194.03
-    }
-   ],
-   "acimaTeto": 39763.66
   },
   {
    "nome": "André Luiz Monteiro",
@@ -16884,44 +16406,6 @@
    "acimaTeto": 39693.63
   },
   {
-   "nome": "Maurício Cleber Miglioranzi Santos",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Corumbá",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 46201.23,
-   "bruto": 85954.44,
-   "descontos": 22409.41,
-   "liquido": 63545.03,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 7950.64
-    },
-    {
-     "item": "Diárias",
-     "valor": 5962.99
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5124.24
-    }
-   ],
-   "acimaTeto": 39588.25
-  },
-  {
    "nome": "Dario Fameli",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -16974,6 +16458,45 @@
    "liquido": 41234.4,
    "itens": [],
    "acimaTeto": 39367.74
+  },
+  {
+   "nome": "David De Oliveira Gomes Filho",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Campo Grande",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 45781.55,
+   "bruto": 85534.76,
+   "descontos": 25655.0,
+   "liquido": 59879.76,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 11925.96
+    },
+    {
+     "item": "ATS",
+     "valor": 3975.32
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 2716.91
+    }
+   ],
+   "diarias": 3975.33,
+   "acimaTeto": 39168.57
   },
   {
    "nome": "Andrea Neves Craveiro De Sa",
@@ -17044,6 +16567,7 @@
    "descontos": 11841.97,
    "liquido": 73471.82,
    "abateTeto": 0.0,
+   "diarias": 0.0,
    "itens": [
     {
      "item": "Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício (GECJAO)",
@@ -17287,6 +16811,45 @@
    "acimaTeto": 38699.89
   },
   {
+   "nome": "Jose Henrique Kaster Franco",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Campo Grande",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 45267.98,
+   "bruto": 85021.19,
+   "descontos": 24703.09,
+   "liquido": 60318.1,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 9938.3
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 6178.66
+    },
+    {
+     "item": "ATS",
+     "valor": 1987.66
+    }
+   ],
+   "diarias": 1325.11,
+   "acimaTeto": 38655.0
+  },
+  {
    "nome": "Manoel Bertoldo Neto",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -17355,44 +16918,6 @@
    "liquido": 63688.9,
    "itens": [],
    "acimaTeto": 38459.45
-  },
-  {
-   "nome": "Juliano Luiz Pereira",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Nova Andradina",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 47050.25,
-   "bruto": 84815.8,
-   "descontos": 19661.8,
-   "liquido": 65154.0,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 6768.26
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5664.83
-    }
-   ],
-   "acimaTeto": 38449.61
   },
   {
    "nome": "Paulinne Simoes De Souza",
@@ -17485,6 +17010,7 @@
    "descontos": 10004.73,
    "liquido": 74780.78,
    "abateTeto": 0.0,
+   "diarias": 0.0,
    "itens": [
     {
      "item": "Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício (GECJAO)",
@@ -17615,44 +17141,6 @@
    "acimaTeto": 38149.85
   },
   {
-   "nome": "Eguiliell Ricardo Da Silva",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Dourados",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 44718.04,
-   "bruto": 84471.25,
-   "descontos": 22513.68,
-   "liquido": 61957.57,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 7950.64
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 6291.27
-    },
-    {
-     "item": "Diárias",
-     "valor": 3312.77
-    }
-   ],
-   "acimaTeto": 38105.06
-  },
-  {
    "nome": "Fernando Cezar Henrique Nascimento Siqueira",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -17725,44 +17213,6 @@
    "liquido": 29956.41,
    "itens": [],
    "acimaTeto": 37736.63
-  },
-  {
-   "nome": "Idail De Toni Filho",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Corumbá",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 44339.82,
-   "bruto": 84093.03,
-   "descontos": 22409.41,
-   "liquido": 61683.62,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 7950.64
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5913.05
-    },
-    {
-     "item": "Diárias",
-     "valor": 3312.77
-    }
-   ],
-   "acimaTeto": 37726.84
   },
   {
    "nome": "Deoclerio Lube Filho",
@@ -17839,120 +17289,6 @@
    "acimaTeto": 37638.94
   },
   {
-   "nome": "Camila De Melo Mattioli Pereira",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Nova Alvorada Do Sul",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 46221.84,
-   "bruto": 83987.39,
-   "descontos": 19661.8,
-   "liquido": 64325.59,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5939.85
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5664.83
-    }
-   ],
-   "acimaTeto": 37621.2
-  },
-  {
-   "nome": "Rafael Condé Tostes",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Aquidauana",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 46195.79,
-   "bruto": 83961.34,
-   "descontos": 16032.62,
-   "liquido": 67928.72,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5913.8
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5664.83
-    }
-   ],
-   "acimaTeto": 37595.15
-  },
-  {
-   "nome": "Bruno Palhano Gonçalves",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Coxim",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 46138.74,
-   "bruto": 83904.29,
-   "descontos": 19505.39,
-   "liquido": 64398.9,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 7745.02
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 3776.56
-    }
-   ],
-   "acimaTeto": 37538.1
-  },
-  {
    "nome": "Deni Luis Dalla Riva",
    "cargo": "Juiz de direito - entrância especial",
    "lotacao": "Campo Grande",
@@ -18009,133 +17345,19 @@
    "acimaTeto": 37522.84
   },
   {
-   "nome": "Francisco Soliman",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Ribas Do Rio Pardo",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 45946.82,
-   "bruto": 83712.37,
-   "descontos": 19609.66,
-   "liquido": 64102.71,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5664.83
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5664.83
-    }
-   ],
-   "acimaTeto": 37346.18
-  },
-  {
-   "nome": "Valter Tadeu Carvalho",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Terenos",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 45946.82,
-   "bruto": 83712.37,
-   "descontos": 19557.52,
-   "liquido": 64154.85,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5664.83
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5664.83
-    }
-   ],
-   "acimaTeto": 37346.18
-  },
-  {
-   "nome": "Felipe Brigido Lage",
-   "cargo": "Juiz de direito de primeira entrância",
-   "lotacao": "Bandeirantes",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 35877.27,
-   "outras": 47756.96,
-   "bruto": 83634.23,
-   "descontos": 13449.64,
-   "liquido": 70184.59,
-   "itens": [
-    {
-     "item": "Diárias",
-     "valor": 13155.06
-    },
-    {
-     "item": "GECJAO",
-     "valor": 12557.04
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 11957.89
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 6499.24
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 3587.73
-    }
-   ],
-   "acimaTeto": 37268.04
-  },
-  {
-   "nome": "Vinicius Pedrosa Santos",
+   "nome": "Flavia Simone Cavalcante",
    "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Corregedoria Geral De Justiça",
+   "lotacao": "Corumbá",
    "orgao": "TJMS — Tribunal de Justiça",
    "orgaoId": "tjms",
    "poder": "Judiciário",
    "situacao": "Ativo",
    "mes": "09/2026",
    "base": 39753.21,
-   "outras": 43843.93,
-   "bruto": 83597.14,
-   "descontos": 22461.55,
-   "liquido": 61135.59,
+   "outras": 43919.53,
+   "bruto": 83672.74,
+   "descontos": 22409.41,
+   "liquido": 61263.33,
    "itens": [
     {
      "item": "GECJAO",
@@ -18146,19 +17368,16 @@
      "valor": 13249.74
     },
     {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 8805.53
+    },
+    {
      "item": "VALORIZ. TEMPO MAG.",
      "valor": 7950.64
-    },
-    {
-     "item": "Diárias",
-     "valor": 6625.54
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 2104.39
     }
    ],
-   "acimaTeto": 37230.95
+   "diarias": 3312.77,
+   "acimaTeto": 37306.55
   },
   {
    "nome": "Bruno Leda De Barros Mendonça",
@@ -18271,44 +17490,6 @@
    "acimaTeto": 37070.56
   },
   {
-   "nome": "Emerson Ricardo Fernandes",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Dourados",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 43646.59,
-   "bruto": 83399.8,
-   "descontos": 20275.12,
-   "liquido": 63124.68,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 9938.3
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5219.83
-    },
-    {
-     "item": "Diárias",
-     "valor": 1325.1
-    }
-   ],
-   "acimaTeto": 37033.61
-  },
-  {
    "nome": "Katy Braun Do Prado",
    "cargo": "Juiz de direito - entrância especial",
    "lotacao": "Campo Grande",
@@ -18385,44 +17566,6 @@
    "acimaTeto": 36917.84
   },
   {
-   "nome": "Daniel Raymundo Da Matta",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Sidrolândia",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 45483.33,
-   "bruto": 83248.88,
-   "descontos": 19505.39,
-   "liquido": 63743.49,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5664.83
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5201.34
-    }
-   ],
-   "acimaTeto": 36882.69
-  },
-  {
    "nome": "Hereni Pereira Da Costa",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -18491,44 +17634,6 @@
    "liquido": 38884.69,
    "itens": [],
    "acimaTeto": 36811.75
-  },
-  {
-   "nome": "Lídia Geanne Ferreira E Cândido",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Rio Brilhante",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 45350.57,
-   "bruto": 83116.12,
-   "descontos": 19661.8,
-   "liquido": 63454.32,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5664.83
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5068.58
-    }
-   ],
-   "acimaTeto": 36749.93
   },
   {
    "nome": "Nadia Pelissari",
@@ -18635,6 +17740,41 @@
    "liquido": 39060.19,
    "itens": [],
    "acimaTeto": 36578.49
+  },
+  {
+   "nome": "Beatriz Maki Shinzato Capucho",
+   "cargo": "Juiz titular de vara",
+   "lotacao": "2ª Vara Do Trabalho De Três Lagoas",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "orgaoId": "trt24",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "08/2026",
+   "base": 39753.21,
+   "outras": 43095.95,
+   "bruto": 82849.16,
+   "descontos": 13640.73,
+   "liquido": 69208.43,
+   "itens": [
+    {
+     "item": "Indenização de férias",
+     "valor": 18108.17
+    },
+    {
+     "item": "Abono constitucional de 1/3 de férias",
+     "valor": 13581.13
+    },
+    {
+     "item": "INDENIZAÇÃO DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA - MAGISTRADO , RESTITUIÇÃO COMBUSTÍVEL - MAGISTRADO",
+     "valor": 10416.48
+    },
+    {
+     "item": "VPNI (ADICIONAL POR TEMPO DE SERVIÇO) - MAGISTRADO",
+     "valor": 990.17
+    }
+   ],
+   "diarias": 5190.17,
+   "acimaTeto": 36482.97
   },
   {
    "nome": "Ana Carolina Farah Borges Da Silva",
@@ -18837,44 +17977,6 @@
    "acimaTeto": 36010.38
   },
   {
-   "nome": "Luciano Pedro Beladelli",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Anastacio",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 44546.08,
-   "bruto": 82311.63,
-   "descontos": 19609.66,
-   "liquido": 62701.97,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 9441.38
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 7553.11
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 1746.39
-    }
-   ],
-   "acimaTeto": 35945.44
-  },
-  {
    "nome": "Sérgio Ronaldo Alves De Sousa",
    "cargo": "Fiscal tributário estadual",
    "lotacao": "Estatutario",
@@ -18893,19 +17995,19 @@
    "acimaTeto": 35896.28
   },
   {
-   "nome": "Roberto Hipolito Da Silva Junior",
+   "nome": "Kelly Gaspar Duarte",
    "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Três Lagoas",
+   "lotacao": "Dourados",
    "orgao": "TJMS — Tribunal de Justiça",
    "orgaoId": "tjms",
    "poder": "Judiciário",
    "situacao": "Ativo",
    "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 42402.09,
-   "bruto": 82155.3,
-   "descontos": 22461.55,
-   "liquido": 59693.75,
+   "base": 43493.21,
+   "outras": 38725.53,
+   "bruto": 82218.74,
+   "descontos": 31175.03,
+   "liquido": 51043.71,
    "itens": [
     {
      "item": "GECJAO",
@@ -18921,14 +18023,11 @@
     },
     {
      "item": "BAMES+REEMB.CURSOS",
-     "valor": 5962.98
-    },
-    {
-     "item": "Diárias",
-     "valor": 3312.77
+     "valor": 5599.19
     }
    ],
-   "acimaTeto": 35789.11
+   "diarias": 10600.87,
+   "acimaTeto": 35852.55
   },
   {
    "nome": "Edilson Souza Gouveia",
@@ -18947,6 +18046,41 @@
    "liquido": 39978.62,
    "itens": [],
    "acimaTeto": 35779.46
+  },
+  {
+   "nome": "Emerson Ricardo Fernandes",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Dourados",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 42321.49,
+   "bruto": 82074.7,
+   "descontos": 20275.12,
+   "liquido": 61799.58,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 9938.3
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 5219.83
+    }
+   ],
+   "diarias": 1325.1,
+   "acimaTeto": 35708.51
   },
   {
    "nome": "Penelope Mota Calarge Regasso",
@@ -18983,6 +18117,41 @@
    "acimaTeto": 35617.71
   },
   {
+   "nome": "Alexsandro Motta",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Campo Grande",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 42230.33,
+   "bruto": 81983.54,
+   "descontos": 22409.41,
+   "liquido": 59574.13,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 9938.3
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 5128.67
+    }
+   ],
+   "diarias": 9938.31,
+   "acimaTeto": 35617.35
+  },
+  {
    "nome": "Eduardo Lacerda Trevisan",
    "cargo": "Juiz de direito - entrância especial",
    "lotacao": "Campo Grande",
@@ -19015,48 +18184,6 @@
     }
    ],
    "acimaTeto": 35604.36
-  },
-  {
-   "nome": "Silvio Cezar Do Prado",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Chapadão Do Sul",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 44199.72,
-   "bruto": 81965.27,
-   "descontos": 23717.41,
-   "liquido": 58247.86,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 11329.66
-    },
-    {
-     "item": "ATS",
-     "valor": 3776.56
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 2910.65
-    },
-    {
-     "item": "Diárias",
-     "valor": 377.65
-    }
-   ],
-   "acimaTeto": 35599.08
   },
   {
    "nome": "Giuliano Máximo Martins",
@@ -19189,6 +18316,45 @@
    "acimaTeto": 35420.22
   },
   {
+   "nome": "Silvio Cezar Do Prado",
+   "cargo": "Juiz de direito de segunda entrância",
+   "lotacao": "Chapadão Do Sul",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 37765.55,
+   "outras": 43822.07,
+   "bruto": 81587.62,
+   "descontos": 23717.41,
+   "liquido": 57870.21,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13217.94
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 12587.26
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 11329.66
+    },
+    {
+     "item": "ATS",
+     "valor": 3776.56
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 2910.65
+    }
+   ],
+   "diarias": 377.65,
+   "acimaTeto": 35221.43
+  },
+  {
    "nome": "Luiz Augusto Nunes Ferreira",
    "cargo": "Fiscal tributário estadual",
    "lotacao": "Estatutario",
@@ -19207,44 +18373,6 @@
    "acimaTeto": 35220.21
   },
   {
-   "nome": "Larissa Ribeiro Fiuza",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Sidrolândia",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 43732.13,
-   "bruto": 81497.68,
-   "descontos": 16084.76,
-   "liquido": 65412.92,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 6294.26
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5967.84
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5664.83
-    }
-   ],
-   "acimaTeto": 35131.49
-  },
-  {
    "nome": "Gerson De Matos Torraca",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -19261,6 +18389,45 @@
    "liquido": 29904.27,
    "itens": [],
    "acimaTeto": 35081.58
+  },
+  {
+   "nome": "Flávio Renato Almeida Reyes",
+   "cargo": "Juiz de direito de primeira entrância",
+   "lotacao": "Nioaque",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 35877.27,
+   "outras": 45483.39,
+   "bruto": 81360.66,
+   "descontos": 18345.94,
+   "liquido": 63014.72,
+   "itens": [
+    {
+     "item": "Abono constitucional de 1/3 de férias",
+     "valor": 15945.05
+    },
+    {
+     "item": "GECJAO",
+     "valor": 12557.04
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 11957.89
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 3587.73
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 1435.68
+    }
+   ],
+   "diarias": 10165.26,
+   "acimaTeto": 34994.47
   },
   {
    "nome": "Jose Domingues Filho",
@@ -19331,80 +18498,39 @@
    "acimaTeto": 34978.18
   },
   {
-   "nome": "Marco Antonio Montagnana Morais",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Maracaju",
+   "nome": "Eguiliell Ricardo Da Silva",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Dourados",
    "orgao": "TJMS — Tribunal de Justiça",
    "orgaoId": "tjms",
    "poder": "Judiciário",
    "situacao": "Ativo",
    "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 43429.12,
-   "bruto": 81194.67,
-   "descontos": 19609.66,
-   "liquido": 61585.01,
+   "base": 39753.21,
+   "outras": 41405.27,
+   "bruto": 81158.48,
+   "descontos": 22513.68,
+   "liquido": 58644.8,
    "itens": [
     {
      "item": "GECJAO",
-     "valor": 13217.94
+     "valor": 13913.62
     },
     {
      "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
+     "valor": 13249.74
     },
     {
      "item": "VALORIZ. TEMPO MAG.",
-     "valor": 9441.39
+     "valor": 7950.64
     },
     {
      "item": "BAMES+REEMB.CURSOS",
-     "valor": 5664.83
-    },
-    {
-     "item": "Diárias",
-     "valor": 2517.7
+     "valor": 6291.27
     }
    ],
-   "acimaTeto": 34828.48
-  },
-  {
-   "nome": "Thielly Dias De Alencar Pitthan",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Ponta Porã",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 43429.12,
-   "bruto": 81194.67,
-   "descontos": 19661.8,
-   "liquido": 61532.87,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 6294.26
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5664.83
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5664.83
-    }
-   ],
-   "acimaTeto": 34828.48
+   "diarias": 3312.77,
+   "acimaTeto": 34792.29
   },
   {
    "nome": "Daniel Scaramella Moreira",
@@ -19459,44 +18585,6 @@
    "acimaTeto": 34741.2
   },
   {
-   "nome": "Milton Zanutto Junior",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Bonito",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 43340.57,
-   "bruto": 81106.12,
-   "descontos": 19661.8,
-   "liquido": 61444.32,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 8093.98
-    },
-    {
-     "item": "Diárias",
-     "valor": 5664.83
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 3776.56
-    }
-   ],
-   "acimaTeto": 34739.93
-  },
-  {
    "nome": "Neida Maria De Lima Flores",
    "cargo": "Fiscal tributário estadual",
    "lotacao": "Estatutario",
@@ -19547,6 +18635,7 @@
    "descontos": 10056.87,
    "liquido": 70980.03,
    "abateTeto": 0.0,
+   "diarias": 0.0,
    "itens": [
     {
      "item": "Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício (GECJAO)",
@@ -19582,6 +18671,7 @@
    "descontos": 11920.74,
    "liquido": 69089.69,
    "abateTeto": 0.0,
+   "diarias": 0.0,
    "itens": [
     {
      "item": "Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício (GECJAO)",
@@ -19605,44 +18695,6 @@
     }
    ],
    "acimaTeto": 34644.24
-  },
-  {
-   "nome": "Maurício Pinto Filho",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Jardim",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 43223.16,
-   "bruto": 80988.71,
-   "descontos": 19661.8,
-   "liquido": 61326.91,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 4829.44
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 3776.56
-    }
-   ],
-   "acimaTeto": 34622.52
   },
   {
    "nome": "Eduardo Floriano Almeida",
@@ -19953,42 +19005,39 @@
    "acimaTeto": 34418.04
   },
   {
-   "nome": "Cezar Fidel Volpi",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Rio Brilhante",
+   "nome": "Idail De Toni Filho",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Corumbá",
    "orgao": "TJMS — Tribunal de Justiça",
    "orgaoId": "tjms",
    "poder": "Judiciário",
    "situacao": "Ativo",
    "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 42997.11,
-   "bruto": 80762.66,
-   "descontos": 19609.66,
-   "liquido": 61153.0,
+   "base": 39753.21,
+   "outras": 41027.05,
+   "bruto": 80780.26,
+   "descontos": 22409.41,
+   "liquido": 58370.85,
    "itens": [
     {
      "item": "GECJAO",
-     "valor": 13217.94
+     "valor": 13913.62
     },
     {
      "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "Diárias",
-     "valor": 8811.96
+     "valor": 13249.74
     },
     {
      "item": "VALORIZ. TEMPO MAG.",
-     "valor": 5664.83
+     "valor": 7950.64
     },
     {
      "item": "BAMES+REEMB.CURSOS",
-     "valor": 2715.12
+     "valor": 5913.05
     }
    ],
-   "acimaTeto": 34396.47
+   "diarias": 3312.77,
+   "acimaTeto": 34414.07
   },
   {
    "nome": "Luciane Buriasco Isquerdo",
@@ -20483,6 +19532,41 @@
    "acimaTeto": 33675.23
   },
   {
+   "nome": "Maurício Cleber Miglioranzi Santos",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Corumbá",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 40238.24,
+   "bruto": 79991.45,
+   "descontos": 22409.41,
+   "liquido": 57582.04,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 7950.64
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 5124.24
+    }
+   ],
+   "diarias": 5962.99,
+   "acimaTeto": 33625.26
+  },
+  {
    "nome": "Anderson Royer",
    "cargo": "Juiz de direito - entrância especial",
    "lotacao": "Três Lagoas",
@@ -20755,44 +19839,6 @@
    "acimaTeto": 33076.2
   },
   {
-   "nome": "Naria Cassiana Silva Barros",
-   "cargo": "Juiz de direito de segunda entrância",
-   "lotacao": "Paranaíba",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 37765.55,
-   "outras": 41536.65,
-   "bruto": 79302.2,
-   "descontos": 19505.39,
-   "liquido": 59796.81,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13217.94
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 12587.26
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 7553.11
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 5031.21
-    },
-    {
-     "item": "Diárias",
-     "valor": 3147.13
-    }
-   ],
-   "acimaTeto": 32936.01
-  },
-  {
    "nome": "Sergio Mendes Alves",
    "cargo": "Auditor fiscal da rec estadual",
    "lotacao": "Estatutario",
@@ -20881,44 +19927,6 @@
    "liquido": 36360.46,
    "itens": [],
    "acimaTeto": 32770.49
-  },
-  {
-   "nome": "Alan Robson De Souza Gonçalves",
-   "cargo": "Juiz de direito - entrância especial",
-   "lotacao": "Corumbá",
-   "orgao": "TJMS — Tribunal de Justiça",
-   "orgaoId": "tjms",
-   "poder": "Judiciário",
-   "situacao": "Ativo",
-   "mes": "09/2026",
-   "base": 39753.21,
-   "outras": 39373.22,
-   "bruto": 79126.43,
-   "descontos": 22409.41,
-   "liquido": 56717.02,
-   "itens": [
-    {
-     "item": "GECJAO",
-     "valor": 13913.62
-    },
-    {
-     "item": "Gratificação por exercício cumulativo",
-     "valor": 13249.74
-    },
-    {
-     "item": "BAMES+REEMB.CURSOS",
-     "valor": 4921.77
-    },
-    {
-     "item": "VALORIZ. TEMPO MAG.",
-     "valor": 3975.32
-    },
-    {
-     "item": "Diárias",
-     "valor": 3312.77
-    }
-   ],
-   "acimaTeto": 32760.24
   },
   {
    "nome": "Douglas Da Silva Moraes",
@@ -21223,6 +20231,41 @@
    "acimaTeto": 32476.34
   },
   {
+   "nome": "Roberto Hipolito Da Silva Junior",
+   "cargo": "Juiz de direito - entrância especial",
+   "lotacao": "Três Lagoas",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.21,
+   "outras": 39089.32,
+   "bruto": 78842.53,
+   "descontos": 22461.55,
+   "liquido": 56380.98,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13913.62
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 13249.74
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 5962.98
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 5962.98
+    }
+   ],
+   "diarias": 3312.77,
+   "acimaTeto": 32476.34
+  },
+  {
    "nome": "Sergio De Paula",
    "cargo": "Conselheiro do Tribunal de Contas MS",
    "lotacao": "Gabinete Cons. Sérgio De Paula",
@@ -21237,6 +20280,7 @@
    "descontos": 11920.74,
    "liquido": 66901.79,
    "abateTeto": 0.0,
+   "diarias": 0.0,
    "itens": [
     {
      "item": "Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício (GECJAO)",
@@ -21298,6 +20342,7 @@
    "descontos": 9900.46,
    "liquido": 68840.46,
    "abateTeto": 0.0,
+   "diarias": 0.0,
    "itens": [
     {
      "item": "Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício (GECJAO)",
@@ -21317,6 +20362,41 @@
     }
    ],
    "acimaTeto": 32374.73
+  },
+  {
+   "nome": "Marco Antonio Montagnana Morais",
+   "cargo": "Juiz de direito de segunda entrância",
+   "lotacao": "Maracaju",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 37765.55,
+   "outras": 40911.42,
+   "bruto": 78676.97,
+   "descontos": 19609.66,
+   "liquido": 59067.31,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13217.94
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 12587.26
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 9441.39
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 5664.83
+    }
+   ],
+   "diarias": 2517.7,
+   "acimaTeto": 32310.78
   },
   {
    "nome": "Samantha Ferreira Barione",
@@ -21495,6 +20575,468 @@
    "liquido": 36298.4,
    "itens": [],
    "acimaTeto": 32066.69
+  },
+  {
+   "nome": "Ademir De Oliveira Previato",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 67516.0,
+   "outras": 10906.78,
+   "bruto": 78422.78,
+   "descontos": 42127.66,
+   "liquido": 36295.12,
+   "itens": [],
+   "acimaTeto": 32056.59
+  },
+  {
+   "nome": "Carlos Roberto Antunes",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 67516.0,
+   "outras": 10906.78,
+   "bruto": 78422.78,
+   "descontos": 37224.13,
+   "liquido": 41198.65,
+   "itens": [],
+   "acimaTeto": 32056.59
+  },
+  {
+   "nome": "Ivan Lopes Magalhães",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 67516.0,
+   "outras": 10906.78,
+   "bruto": 78422.78,
+   "descontos": 42075.52,
+   "liquido": 36347.26,
+   "itens": [],
+   "acimaTeto": 32056.59
+  },
+  {
+   "nome": "Luciene Siles Fernandes",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 67516.0,
+   "outras": 10906.78,
+   "bruto": 78422.78,
+   "descontos": 42127.66,
+   "liquido": 36295.12,
+   "itens": [],
+   "acimaTeto": 32056.59
+  },
+  {
+   "nome": "Luiz Antonio Ruiz Filipe",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 67516.0,
+   "outras": 10906.78,
+   "bruto": 78422.78,
+   "descontos": 42075.52,
+   "liquido": 36347.26,
+   "itens": [],
+   "acimaTeto": 32056.59
+  },
+  {
+   "nome": "Odenir Lopes Flores",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 67516.0,
+   "outras": 10906.78,
+   "bruto": 78422.78,
+   "descontos": 42075.52,
+   "liquido": 36347.26,
+   "itens": [],
+   "acimaTeto": 32056.59
+  },
+  {
+   "nome": "Waldir Bortollato Bianchi",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 67516.0,
+   "outras": 10906.78,
+   "bruto": 78422.78,
+   "descontos": 42127.66,
+   "liquido": 36295.12,
+   "itens": [],
+   "acimaTeto": 32056.59
+  },
+  {
+   "nome": "Wesley Lemes De Melo",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 67516.0,
+   "outras": 10906.78,
+   "bruto": 78422.78,
+   "descontos": 42127.66,
+   "liquido": 36295.12,
+   "itens": [],
+   "acimaTeto": 32056.59
+  },
+  {
+   "nome": "Rolemberg Donizett Alves",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — AGEPREV",
+   "orgaoId": "governo",
+   "orgaoSigla": "AGEPREV",
+   "poder": "Executivo estadual",
+   "situacao": "Inativo - aposentado",
+   "mes": "10/2026",
+   "base": 66472.58,
+   "outras": 11927.3,
+   "bruto": 78399.88,
+   "descontos": 38732.92,
+   "liquido": 39666.96,
+   "itens": [],
+   "acimaTeto": 32033.69
+  },
+  {
+   "nome": "Edinaldo Lima Da Silva",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 60718.86,
+   "outras": 17618.41,
+   "bruto": 78337.27,
+   "descontos": 37175.31,
+   "liquido": 41161.96,
+   "itens": [],
+   "acimaTeto": 31971.08
+  },
+  {
+   "nome": "Isabela Ferreira Chaves Coelho",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 59878.83,
+   "outras": 18348.33,
+   "bruto": 78227.16,
+   "descontos": 36238.48,
+   "liquido": 41988.68,
+   "itens": [],
+   "acimaTeto": 31860.97
+  },
+  {
+   "nome": "Marcos Jose De Brito Rodrigues",
+   "cargo": "Desembargador",
+   "lotacao": "Gabinete Dos Desembargadores",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 41845.49,
+   "outras": 36205.12,
+   "bruto": 78050.61,
+   "descontos": 24273.91,
+   "liquido": 53776.7,
+   "itens": [
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 14645.92
+    },
+    {
+     "item": "ATS",
+     "valor": 10461.37
+    },
+    {
+     "item": "Abono de permanência",
+     "valor": 6491.27
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 4606.56
+    }
+   ],
+   "acimaTeto": 31684.42
+  },
+  {
+   "nome": "Nelson Jose Pincela Vasconcelos",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 59878.83,
+   "outras": 18169.21,
+   "bruto": 78048.04,
+   "descontos": 36238.48,
+   "liquido": 41809.56,
+   "itens": [],
+   "acimaTeto": 31681.85
+  },
+  {
+   "nome": "Rafael Gustavo Mateucci Cassia",
+   "cargo": "Juiz de direito de segunda entrância",
+   "lotacao": "Rio Verde De Mato Grosso",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 37765.55,
+   "outras": 40241.66,
+   "bruto": 78007.21,
+   "descontos": 19557.52,
+   "liquido": 58449.69,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13217.94
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 12587.26
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 8771.63
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 5664.83
+    }
+   ],
+   "diarias": 8811.96,
+   "acimaTeto": 31641.02
+  },
+  {
+   "nome": "Aguinaldo Luiz Moreira",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 58897.95,
+   "outras": 18964.33,
+   "bruto": 77862.28,
+   "descontos": 34554.41,
+   "liquido": 43307.87,
+   "itens": [],
+   "acimaTeto": 31496.09
+  },
+  {
+   "nome": "Marcelo Guimarães Marques",
+   "cargo": "Juiz de direito de segunda entrância",
+   "lotacao": "Naviraí",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 37765.55,
+   "outras": 39983.1,
+   "bruto": 77748.65,
+   "descontos": 19557.52,
+   "liquido": 58191.13,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13217.94
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 12587.26
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 9441.39
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 4736.51
+    }
+   ],
+   "acimaTeto": 31382.46
+  },
+  {
+   "nome": "Rogerio Paiva Colman",
+   "cargo": "Fiscal tributário estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 54670.38,
+   "outras": 23016.62,
+   "bruto": 77687.0,
+   "descontos": 32316.69,
+   "liquido": 45370.31,
+   "itens": [],
+   "acimaTeto": 31320.81
+  },
+  {
+   "nome": "Leandro Lobo Ribeiro Pimentel",
+   "cargo": "Conselheiro Substituto",
+   "lotacao": "Gabinete Cons.Sub. Leandro Lobo",
+   "orgao": "TCE-MS — Tribunal de Contas (membros)",
+   "orgaoId": "tce",
+   "poder": "Controle externo",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 39753.22,
+   "outras": 37924.29,
+   "bruto": 77677.51,
+   "descontos": 9952.6,
+   "liquido": 67724.91,
+   "abateTeto": 0.0,
+   "diarias": 0.0,
+   "itens": [
+    {
+     "item": "Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício (GECJAO)",
+     "valor": 16228.17
+    },
+    {
+     "item": "Parcela de Valorização por Tempo de Antiguidade na Carreira (PVTAC)",
+     "valor": 9273.24
+    },
+    {
+     "item": "Gratificação por Exercício Cumulativo de Jurisdição (GAJU)",
+     "valor": 6612.97
+    },
+    {
+     "item": "Auxílio- Saúde",
+     "valor": 5809.91
+    }
+   ],
+   "acimaTeto": 31311.32
+  },
+  {
+   "nome": "Matias Saul Zagonel",
+   "cargo": "Auditor fiscal da rec estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — SEFAZ",
+   "orgaoId": "governo",
+   "orgaoSigla": "SEFAZ",
+   "poder": "Executivo estadual",
+   "situacao": "Ativo",
+   "mes": "10/2026",
+   "base": 66706.14,
+   "outras": 10929.29,
+   "bruto": 77635.43,
+   "descontos": 40596.75,
+   "liquido": 37038.68,
+   "itens": [],
+   "acimaTeto": 31269.24
+  },
+  {
+   "nome": "Ricardo Adelino Suaid",
+   "cargo": "Juiz de direito de segunda entrância",
+   "lotacao": "Amambai",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "orgaoId": "tjms",
+   "poder": "Judiciário",
+   "situacao": "Ativo",
+   "mes": "09/2026",
+   "base": 37765.55,
+   "outras": 39863.86,
+   "bruto": 77629.41,
+   "descontos": 19661.8,
+   "liquido": 57967.61,
+   "itens": [
+    {
+     "item": "GECJAO",
+     "valor": 13217.94
+    },
+    {
+     "item": "Gratificação por exercício cumulativo",
+     "valor": 12587.26
+    },
+    {
+     "item": "BAMES+REEMB.CURSOS",
+     "valor": 8393.83
+    },
+    {
+     "item": "VALORIZ. TEMPO MAG.",
+     "valor": 5664.83
+    }
+   ],
+   "diarias": 10700.22,
+   "acimaTeto": 31263.22
+  },
+  {
+   "nome": "Rosana Leite Da Fonseca",
+   "cargo": "Auditor fiscal da rec estadual",
+   "lotacao": "Estatutario",
+   "orgao": "Governo MS — AGEPREV",
+   "orgaoId": "governo",
+   "orgaoSigla": "AGEPREV",
+   "poder": "Executivo estadual",
+   "situacao": "Inativo - pensão por morte",
+   "mes": "10/2026",
+   "base": 75336.3,
+   "outras": 2216.75,
+   "bruto": 77553.05,
+   "descontos": 48172.37,
+   "liquido": 29380.68,
+   "itens": [],
+   "acimaTeto": 31186.86
   }
  ],
  "falhas": []

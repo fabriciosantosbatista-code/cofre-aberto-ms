@@ -474,7 +474,7 @@ def pagina(p, irmaos):
             forn = f'<a href="{e(x["url"])}" target="_blank" rel="noopener nofollow">{forn}</a>'
         sub = e((x.get("categoria") or x.get("descricao") or "")[:90])
         return (f"<tr><td style='white-space:nowrap'>{data_br(x['data'])}</td><td class='f'>{forn}<small>{sub}</small></td>"
-                f"<td class='num'>{brl(x.get('valor'))}</td></tr>")
+                f"<td class='num'>{brl(x.get('valor')) if x.get('valor') else '<small>valor ilegível no PDF</small>'}</td></tr>")
     bloco_notas = (f"<h2>Últimas notas fiscais</h2><div class='tabela-wrap'><table><thead><tr><th>Data</th><th>Fornecedor</th>"
                    f"<th class='num'>Valor</th></tr></thead><tbody>{''.join(linha_nota(x) for x in notas)}</tbody></table></div>"
                    f"<p style='margin-top:10px'>{'As ' + str(len(notas)) + ' mais recentes de ' + milhar(n) + ' notas. ' if n > len(notas) else ''}"
