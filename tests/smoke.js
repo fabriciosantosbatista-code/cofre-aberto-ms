@@ -105,6 +105,26 @@ const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
       console.log(`  ✅ ${tab}: ${n} itens, ${abertos}/${idxs.length} detalhes abertos`);
     }
 
+    // abas de tabelas (sem detalhe por clique): Contratos CG e Governo MS
+    for (const [tab, tabelas] of [["contratos-cg", ["ranking-ct-forn", "tabela-ct-contratos", "tabela-ct-licit"]],
+                                  ["governo-ms", ["ranking-gov-credores", "tabela-gov-escalao", "tabela-gov-diarias"]]]) {
+      onde = `aba ${tab}`;
+      await page.locator(`button[data-tab="${tab}"]`).evaluate((e) => e.click());
+      await page.waitForTimeout(3000);
+      const info = await page.evaluate(([t, ids]) => ({
+        tx: document.getElementById("tab-" + t).innerText,
+        ovX: document.documentElement.scrollWidth - innerWidth,
+        hero: (document.querySelector(`#tab-${t} .hero-number`) || {}).innerText,
+        linhas: ids.map((id) => document.querySelectorAll(`#${id} tbody tr`).length),
+      }), [tab, tabelas]);
+      const m = info.tx.match(BAD);
+      if (m) falha(`[${nome}] aba ${tab} mostra ${[...new Set(m)]}`);
+      if (info.ovX > 1) falha(`[${nome}] aba ${tab} tem rolagem horizontal (${info.ovX}px)`);
+      if (!info.hero || /—/.test(info.hero)) falha(`[${nome}] aba ${tab}: total do topo vazio`);
+      info.linhas.forEach((n, i) => { if (n < 2) falha(`[${nome}] aba ${tab}: tabela ${tabelas[i]} com ${n} linhas`); });
+      console.log(`  ✅ ${tab}: ${info.hero} · linhas ${info.linhas.join("/")}`);
+    }
+
     // evolução: os 4 grupos têm gráfico e ranking; clicar num parlamentar troca o gráfico
     onde = "aba evolucao";
     await page.locator('button[data-tab="evolucao"]').evaluate((e) => e.click());

@@ -101,11 +101,15 @@ como citar e como baixar os dados.</p>
 <td>API de dados abertos do Senado (<code>adm.senado.gov.br/adm-dadosabertos</code>) e lista de senadores em exercício (<code>legis.senado.leg.br/dadosabertos</code>).</td><td>dias</td></tr>
 <tr><td><b>Prefeitura CG</b></td><td>Despesas do ano: empenhado, liquidado, pago, por órgão e fornecedor</td>
 <td>Exportação da consulta de despesas do SIG-Transparência (<code>sig-transparencia.campogrande.ms.gov.br</code>); reserva: CSV de dados abertos da Prefeitura.</td><td>dias a semanas</td></tr>
+<tr><td><b>Contratos CG</b></td><td>Contratos iniciados no ano, licitações, dispensas e inexigibilidades, com os vencedores</td>
+<td>Exportação das consultas "Contratos" e "Licitações" do SIG-Transparência da Prefeitura. O portal não traz o CNPJ nos contratos: ele é completado pelo nome do fornecedor, cruzando com as licitações e as despesas pagas. Dívidas parceladas e demandas judiciais ficam fora do total de compras.</td><td>dias</td></tr>
+<tr><td><b>Governo MS</b></td><td>Despesas do Estado por órgão e credor, mês a mês, diárias de viagem e remuneração do primeiro escalão</td>
+<td>API pública do Portal da Transparência do Estado (<code>www.transparencia.ms.gov.br</code>, servida por <code>gw.sgi.ms.gov.br</code>). O filtro de mês das diárias se sobrepõe entre consultas, então os trechos são juntados sem repetição e agrupados pela data da viagem. Primeiro escalão = vínculo "agente político" na folha (governador, vice e secretários com esse vínculo).</td><td>dias (folha: 1 mês)</td></tr>
 <tr><td><b>Câmaras MS</b></td><td>Subsídio, diárias e despesas institucionais das câmaras do interior</td>
 <td>Sistemas de transparência de cada câmara (Fiorilli SCPI, "Dados Abertos"; SAPL/Interlegis em Dourados).</td><td>dias</td></tr>
 <tr><td><b>Judiciário MS</b></td><td>Remuneração dos magistrados ativos (bruto, descontos, líquido, diárias)</td>
 <td>Anexo VIII da Resolução CNJ 102/2009, publicado por cada tribunal: TRT24 e TRE-MS direto dos portais. O TJMS bloqueia acessos de fora do Brasil, então a folha vem do <a href="https://dadosjusbr.org/" target="_blank" rel="noopener">DadosJusBr</a>, que coleta o mesmo Anexo VIII.</td><td>1 a 2 meses</td></tr>
-<tr><td><b>Conexões</b></td><td>Empresas pagas por mais de um político de MS ou também pela Prefeitura</td>
+<tr><td><b>Conexões</b></td><td>Empresas pagas por mais de um político de MS, ou por um político e também pela Prefeitura ou pelo Governo do Estado</td>
 <td>Cruzamento, feito pelo site, das notas fiscais de todas as fontes acima pelo CNPJ.</td><td>—</td></tr>
 <tr><td><b>Evolução</b></td><td>Gasto mês a mês em comparação com o ano anterior</td>
 <td>Mesmas notas fiscais, agrupadas pelo mês de competência; o ano anterior vem das mesmas fontes oficiais (arquivo de 2025 da Câmara, API do Senado, portal da ALEMS).</td><td>—</td></tr>
@@ -148,6 +152,8 @@ como citar e como baixar os dados.</p>
 <tr><td><b>Senadores de MS</b> — resumo</td><td><a href="/dados/csv/senadores_ms.csv" download>senadores_ms.csv</a></td><td><a href="/dados/senadores_ms.json">senadores_ms.json</a></td></tr>
 <tr><td><b>Senadores de MS</b> — notas fiscais</td><td><a href="/dados/csv/senadores_ms_notas.csv" download>senadores_ms_notas.csv</a></td><td>—</td></tr>
 <tr><td><b>Prefeitura de Campo Grande</b> — despesas pagas</td><td><a href="/dados/csv/prefeitura_despesas.csv" download>prefeitura_despesas.csv</a></td><td><a href="/dados/prefeitura.json">prefeitura.json</a></td></tr>
+<tr><td><b>Prefeitura de Campo Grande</b> — contratos e licitações</td><td><a href="/dados/csv/prefeitura_contratos.csv" download>prefeitura_contratos.csv</a> · <a href="/dados/csv/prefeitura_licitacoes.csv" download>prefeitura_licitacoes.csv</a></td><td><a href="/dados/prefeitura_contratos.json">prefeitura_contratos.json</a></td></tr>
+<tr><td><b>Governo do Estado de MS</b> — órgãos, credores, diárias e primeiro escalão</td><td><a href="/dados/csv/governo_ms_orgaos.csv" download>órgãos</a> · <a href="/dados/csv/governo_ms_credores.csv" download>credores (todos)</a> · <a href="/dados/csv/governo_ms_diarias.csv" download>diárias</a> · <a href="/dados/csv/governo_ms_primeiro_escalao.csv" download>primeiro escalão</a></td><td><a href="/dados/governo_ms.json">governo_ms.json</a></td></tr>
 <tr><td><b>Judiciário MS</b> — magistrados (TRT24, TRE-MS, TJMS)</td><td><a href="/dados/csv/judiciario_magistrados.csv" download>judiciario_magistrados.csv</a></td><td><a href="/dados/tjms_magistrados.json">TJMS</a> · <a href="/dados/trt24_magistrados.json">TRT24</a> · <a href="/dados/tre_ms_magistrados.json">TRE-MS</a></td></tr>
 <tr><td><b>Câmaras do interior</b></td><td><a href="/dados/csv/camaras_interior.csv" download>camaras_interior.csv</a></td><td><a href="https://github.com/fabriciosantosbatista-code/cofre-aberto-ms/tree/main/dados/camaras" target="_blank" rel="noopener">dados/camaras/</a></td></tr>
 <tr><td><b>Deputados federais — Brasil</b> (513)</td><td><a href="/dados/csv/deputados_federais_brasil.csv" download>deputados_federais_brasil.csv</a></td><td><a href="/dados/deputados_federais_brasil.json">deputados_federais_brasil.json</a> · notas por UF em <code>/dados/ceap_federal/UF.json</code></td></tr>
@@ -183,7 +189,7 @@ como citar e como baixar os dados.</p>
 <script>
 (function () {
   const ABAS = { "camara": "Câmara CG", "deputados-estaduais": "Dep. Estaduais", "deputados": "Dep. Federais MS", "senadores": "Senadores MS",
-    "prefeitura": "Prefeitura CG", "camaras-ms": "Câmaras MS", "judiciario": "Judiciário MS", "deputados-brasil": "Dep. Federais Brasil",
+    "prefeitura": "Prefeitura CG", "contratos-cg": "Contratos CG", "governo-ms": "Governo MS", "camaras-ms": "Câmaras MS", "judiciario": "Judiciário MS", "deputados-brasil": "Dep. Federais Brasil",
     "senado-brasil": "Senado Brasil", "conexoes": "Conexões", "evolucao": "Evolução" };
   const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const dataBR = iso => { if (!iso) return "—"; const [a, m, d] = String(iso).slice(0, 10).split("-"); return `${d}/${m}/${a}`; };

@@ -193,6 +193,27 @@ def main():
             erros.append(f"**Prefeitura CG**: total pago caiu de R$ {ant['totalDespesas']:,.2f} para "
                          f"R$ {pref.get('totalDespesas', 0):,.2f} — voltou a ler um arquivo antigo?")
 
+    # ---------- Contratos e licitações (Prefeitura CG) ----------
+    ct = carregar("prefeitura_contratos.json")
+    if ct:
+        recente("Contratos/licitações CG", ct.get("ultimaAtualizacao"), 3, nivel="aviso", o_que="última coleta")
+        r = ct.get("resumo") or {}
+        ant = versao_anterior("prefeitura_contratos.json")  # só devolve se for do mesmo ano
+        if ant:
+                queda("Contratos CG", r.get("contratos", 0), (ant.get("resumo") or {}).get("contratos", 0), nivel="aviso")
+                queda("Licitações CG", r.get("licitacoes", 0), (ant.get("resumo") or {}).get("licitacoes", 0), nivel="aviso")
+
+    # ---------- Governo do Estado ----------
+    gov = carregar("governo_ms.json")
+    if gov:
+        recente("Governo do Estado MS", gov.get("ultimaAtualizacao"), 3, nivel="aviso", o_que="última coleta")
+        checa(not gov.get("coletaParcial"), "Governo MS: despesas, diárias e folha coletadas",
+              "**Governo do Estado MS**: parte das consultas falhou na última coleta (dados anteriores mantidos)", "aviso")
+        ant = versao_anterior("governo_ms.json")
+        pago = (gov.get("totais") or {}).get("pago") or 0
+        if ant and ((ant.get("totais") or {}).get("pago") or 0) > pago * 1.02:
+            avisos.append(f"**Governo do Estado MS**: total pago caiu de R$ {ant['totais']['pago']:,.2f} para R$ {pago:,.2f}")
+
     # ---------- Judiciário ----------
     ativos = 0
     for arq, nome in (("trt24_magistrados.json", "TRT24"), ("tre_ms_magistrados.json", "TRE-MS"), ("tjms_magistrados.json", "TJMS")):

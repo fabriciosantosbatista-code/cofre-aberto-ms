@@ -282,6 +282,13 @@ def main():
     cx = carregar("conexoes_fornecedores.json").get("totalEmpresas")
     if cx:
         html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Conexões entre fornecedores)', rf"\g<1>{cx}\2", html)
+    gov_pago = (carregar("governo_ms.json").get("totais") or {}).get("pago")
+    if gov_pago:
+        gtxt = f"R$ {gov_pago / 1e9:.1f} bi".replace(".", ",")
+        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Governo do Estado de MS)', rf"\g<1>{gtxt}\2", html)
+    n_ct = (carregar("prefeitura_contratos.json").get("resumo") or {}).get("contratos")
+    if n_ct:
+        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Contratos e licitações)', rf"\g<1>{n_ct}\2", html)
     nf = len(carregar("feeds/index.json").get("parlamentares") or [])
     if nf:
         html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Siga um político)', rf"\g<1>{nf}\2", html)

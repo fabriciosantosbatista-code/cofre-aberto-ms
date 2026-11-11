@@ -139,10 +139,18 @@ def gerar_conexoes(lista):
         registra(d.get("cnpj"), d.get("fornecedor"), d.get("valor"), "prefeitura",
                  {"tipo": "prefeitura", "rotulo": "Prefeitura de CG", "nome": "Prefeitura de Campo Grande",
                   "aba": "prefeitura"})
+    gov = carregar("governo_ms_credores.json")
+    if gov.get("ano") == ANO:  # [cnpj, nome, pago, empenhado] — um registro por credor no ano
+        for c in gov.get("credores", []):
+            registra(c[0], c[1], c[2], "governo",
+                     {"tipo": "governo", "rotulo": "Governo do Estado", "nome": "Governo do Estado de MS",
+                      "aba": "governo-ms"})
 
     conexoes = []
     for e in empresas.values():
-        if len(e["pagadores"]) < 2:
+        # Prefeitura e Governo pagam milhares de empresas: só entra quem também
+        # recebeu de algum parlamentar (é isso que a aba investiga)
+        if len(e["pagadores"]) < 2 or all(p["tipo"] in ("prefeitura", "governo") for p in e["pagadores"].values()):
             continue
         pag = sorted(e["pagadores"].values(), key=lambda p: -p["total"])
         for p in pag:

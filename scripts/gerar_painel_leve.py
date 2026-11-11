@@ -12,6 +12,7 @@ mesmo para quem nunca abre essa aba) e 4,3 MB na aba Prefeitura — lento num
   notas_estaduais.json
   deputados_federais_ms.json   idem, deputados federais de MS
   notas_federais_ms.json
+  governo_ms.json, prefeitura_contratos.json  cópias minificadas
   prefeitura.json              totais, órgãos, 1.000 maiores fornecedores e as
                                300 despesas mais recentes; o arquivo completo
                                (dados/prefeitura.json) só é baixado na busca,
@@ -107,6 +108,10 @@ def main():
     p = prefeitura_leve()
     if p is not None:
         tam["prefeitura.json"] = salvar("prefeitura.json", p)
+    for nome in ("governo_ms.json", "prefeitura_contratos.json"):  # só minificados
+        d = carregar(nome)
+        if d is not None:
+            tam[nome] = salvar(nome, d)
     print("✅ dados/painel/: " + ", ".join(f"{k} {v // 1024} KB" for k, v in tam.items()))
 
 

@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-11T13:16:49",
+ "geradoEm": "2026-11-11T14:25:07",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
@@ -41,6 +41,22 @@
    "nivel": "ok",
    "mensagem": null
   },
+  "contratos-cg": {
+   "fonte": "SIG-Transparência da Prefeitura de Campo Grande — Contratos e Licitações",
+   "url": "https://sig-transparencia.campogrande.ms.gov.br/contratos/consulta",
+   "coleta": "2026-11-11T14:06:58",
+   "dadoMaisRecente": "contrato de 05/11/2026, licitação de 11/11/2026",
+   "nivel": "ok",
+   "mensagem": null
+  },
+  "governo-ms": {
+   "fonte": "Portal da Transparência do Estado de Mato Grosso do Sul",
+   "url": "https://www.transparencia.ms.gov.br/",
+   "coleta": "2026-11-11T14:14:42",
+   "dadoMaisRecente": "despesas até 11/11/2026, folha de 10/2026, 68.348 trechos de diárias",
+   "nivel": "ok",
+   "mensagem": null
+  },
   "camaras-ms": {
    "fonte": "Portais de transparência das câmaras (Fiorilli SCPI / SAPL)",
    "url": null,
@@ -76,7 +92,7 @@
   "conexoes": {
    "fonte": "Cruzamento das notas fiscais de todas as fontes acima",
    "url": null,
-   "coleta": "2026-11-11T13:16:49",
+   "coleta": "2026-11-11T14:25:06",
    "dadoMaisRecente": "gerado a cada coleta",
    "nivel": "ok",
    "mensagem": null
@@ -84,7 +100,7 @@
   "evolucao": {
    "fonte": "Notas fiscais das fontes acima + histórico do ano anterior",
    "url": null,
-   "coleta": "2026-11-11T13:16:49",
+   "coleta": "2026-11-11T14:25:06",
    "dadoMaisRecente": "gerado a cada coleta",
    "nivel": "ok",
    "mensagem": null

@@ -167,8 +167,64 @@ jobs:
           path: dados/tjms_magistrados.json
           retention-days: 1
 
+  coletar_governo_ms:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests
+
+      - name: Coletar despesas, diárias e primeiro escalão (Governo do Estado de MS)
+        run: python3 scripts/coletar_governo_ms.py
+
+      - name: Upload artifact — Governo MS
+        uses: actions/upload-artifact@v4
+        with:
+          name: dados-governo-ms
+          path: |
+            dados/governo_ms.json
+            dados/governo_ms_credores.json
+          retention-days: 1
+
+  coletar_contratos_cg:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests
+
+      - name: Coletar contratos e licitações (Prefeitura de CG)
+        run: python3 scripts/coletar_contratos_cg.py
+
+      - name: Upload artifact — contratos CG
+        uses: actions/upload-artifact@v4
+        with:
+          name: dados-contratos-cg
+          path: dados/prefeitura_contratos.json
+          retention-days: 1
+
   commit_e_push:
-    needs: [coletar_dados, coletar_verba_camara, coletar_trt24, coletar_tre_ms, coletar_tjms]
+    needs: [coletar_dados, coletar_verba_camara, coletar_trt24, coletar_tre_ms, coletar_tjms, coletar_governo_ms, coletar_contratos_cg]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -211,6 +267,20 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dados-tjms
+          path: dados/
+
+      - name: Baixar artifact — Governo MS
+        if: needs.coletar_governo_ms.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: dados-governo-ms
+          path: dados/
+
+      - name: Baixar artifact — contratos CG
+        if: needs.coletar_contratos_cg.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: dados-contratos-cg
           path: dados/
 
       - name: Gerar conexões entre fornecedores, evolução mensal e feeds RSS

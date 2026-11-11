@@ -149,6 +149,36 @@ def gerar_csvs():
         [[d.get("data"), d.get("orgao"), d.get("categoria"), d.get("fornecedor"), d.get("cnpj"), num(d.get("valor")),
           num(d.get("empenhado")), d.get("modalidade"), d.get("urlDetalhe")] for d in pref])
 
+    ct = carregar("prefeitura_contratos.json")
+    contagem["prefeitura_contratos.csv"] = grava_csv("prefeitura_contratos.csv",
+        ["inicio", "fim", "tipo", "compra_ou_servico", "fornecedor", "cnpj", "objeto", "valor", "situacao", "registro_cadastral"],
+        [[c.get("inicio"), c.get("fim"), c.get("tipo"), "sim" if c.get("compra") else "não", c.get("fornecedor"), c.get("cnpj"),
+          c.get("objeto"), num(c.get("valor")), c.get("situacao"), c.get("registro")] for c in ct.get("contratos", [])])
+    contagem["prefeitura_licitacoes.csv"] = grava_csv("prefeitura_licitacoes.csv",
+        ["data", "modalidade", "numero", "processo", "situacao", "objeto", "gestor", "valor_estimado", "vencedor", "cnpj_vencedor"],
+        [[l.get("data"), l.get("modalidade"), l.get("numero"), l.get("processo"), l.get("status"), l.get("objeto"), l.get("gestor"),
+          num(l.get("valorEstimado")), v.get("nome"), v.get("cnpj")]
+         for l in ct.get("licitacoes", []) for v in (l.get("vencedores") or [{}])])
+
+    gov = carregar("governo_ms.json")
+    contagem["governo_ms_orgaos.csv"] = grava_csv("governo_ms_orgaos.csv",
+        ["codigo_unidade_gestora", "orgao", "empenhado", "liquidado", "pago"],
+        [[o.get("codigo"), o.get("orgao"), num(o.get("empenhado")), num(o.get("liquidado")), num(o.get("pago"))] for o in gov.get("orgaos", [])])
+    gcred = carregar("governo_ms_credores.json")
+    contagem["governo_ms_credores.csv"] = grava_csv("governo_ms_credores.csv",
+        ["cnpj_cpf", "credor", f"pago_{ANO}", f"empenhado_{ANO}", "tipo"],
+        [[c[0], c[1], num(c[2]), num(c[3]), c[4] if len(c) > 4 else ""] for c in sorted(gcred.get("credores", []), key=lambda c: -(c[2] or 0))])
+    di = gov.get("diarias") or {}
+    contagem["governo_ms_diarias.csv"] = grava_csv("governo_ms_diarias.csv",
+        ["nome", "cpf_mascarado", "cargo", "orgao", "tipo_beneficiario", "trechos", "valor", "destinos_mais_frequentes"],
+        [[p.get("nome"), p.get("cpf"), p.get("cargo"), p.get("orgao"), p.get("tipo"), p.get("trechos"), num(p.get("valor")),
+          " | ".join(p.get("destinos") or [])] for p in di.get("maiores", [])])
+    pe = gov.get("primeiroEscalao") or {}
+    contagem["governo_ms_primeiro_escalao.csv"] = grava_csv("governo_ms_primeiro_escalao.csv",
+        ["competencia", "nome", "cargo", "orgao", "situacao", "remuneracao_fixa", "remuneracoes_eventuais", "bruto", "liquido", f"bruto_soma_{ANO}"],
+        [[pe.get("competencia"), p.get("nome"), p.get("cargo"), p.get("orgao"), p.get("situacao"), num(p.get("fixa")),
+          num(p.get("eventuais")), num(p.get("bruto")), num(p.get("liquido")), num(p.get("somaAno"))] for p in pe.get("pessoas", [])])
+
     linhas = []
     for arq, trib in (("trt24_magistrados.json", "TRT24"), ("tre_ms_magistrados.json", "TRE-MS"), ("tjms_magistrados.json", "TJMS")):
         j = carregar(arq)
@@ -235,6 +265,25 @@ def status_fontes():
     d = pref.get("ultimoEmpenho")
     add("prefeitura", "SIG-Transparência da Prefeitura de Campo Grande", "https://sig-transparencia.campogrande.ms.gov.br/despesas/consulta",
         pref.get("ultimaAtualizacao"), f"empenho de {data_br(d)}" if d else None, em_dia(d, 45))
+
+    ct = carregar("prefeitura_contratos.json")
+    d = max_data(c.get("inicio") for c in ct.get("contratos", []))
+    dl = max_data(l.get("data") for l in ct.get("licitacoes", []))
+    add("contratos-cg", "SIG-Transparência da Prefeitura de Campo Grande — Contratos e Licitações",
+        "https://sig-transparencia.campogrande.ms.gov.br/contratos/consulta", ct.get("ultimaAtualizacao"),
+        f"contrato de {data_br(d)}, licitação de {data_br(dl)}" if d and dl else None,
+        ct.get("ano") == ANO and em_dia(max_data([d, dl]), 45))
+
+    gov = carregar("governo_ms.json")
+    trechos = (gov.get("diarias") or {}).get("trechos")
+    pe = gov.get("primeiroEscalao") or {}
+    partes = [f"despesas até {data_br((gov.get('ultimaAtualizacao') or '')[:10])}" if gov.get("totais") else None,
+              f"folha de {pe['competencia']}" if pe.get("competencia") else None,
+              f"{trechos:,} trechos de diárias".replace(",", ".") if trechos else None]
+    add("governo-ms", "Portal da Transparência do Estado de Mato Grosso do Sul", "https://www.transparencia.ms.gov.br/",
+        gov.get("ultimaAtualizacao"), ", ".join(p for p in partes if p) or None,
+        gov.get("ano") == ANO and bool(gov.get("totais")) and not gov.get("coletaParcial"),
+        "parte das consultas do portal estadual falhou na última coleta" if gov.get("coletaParcial") else None)
 
     cidades, paradas = 0, []
     for f in sorted((DADOS / "camaras").glob("*.json")):

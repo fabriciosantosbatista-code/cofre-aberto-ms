@@ -173,6 +173,8 @@ p{margin:0;}
 .bar-list-row.clickable{border-radius:8px;padding:4px 6px;margin:-4px -6px;transition:background .15s;}
 .bar-list-row.clickable:hover{background:var(--surface-2);}
 .bar-list-label{color:var(--ink);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.bar-list.largo .bar-list-row{grid-template-columns:minmax(170px,340px) 1fr 96px;}
+@media (max-width:640px){.bar-list.largo .bar-list-row{grid-template-columns:120px 1fr auto;}}
 .bar-list-track{background:var(--surface-3);height:7px;border-radius:4px;overflow:hidden;}
 .bar-list-fill{background:linear-gradient(90deg,var(--accent),#8fb0ff);height:100%;border-radius:4px;transition:width .4s ease;}
 .bar-list-fill.alt,.bar-list-fill.amber{background:linear-gradient(90deg,var(--amber),#ffe18a);}
@@ -445,6 +447,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button data-tab="camara"><span class="dot"></span> Câmara CG</button>
       <button data-tab="deputados-estaduais"><span class="dot"></span> Dep. Estaduais MS</button>
       <button data-tab="prefeitura"><span class="dot"></span> Prefeitura CG</button>
+      <button data-tab="contratos-cg"><span class="dot"></span> Contratos CG</button>
+      <button data-tab="governo-ms"><span class="dot"></span> Governo MS</button>
       <button data-tab="camaras-ms"><span class="dot"></span> Câmaras MS</button>
       <button data-tab="judiciario"><span class="dot"></span> Judiciário MS</button>
       <button data-tab="conexoes"><span class="dot"></span> Conexões</button>
@@ -728,6 +732,167 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
   </section>
 
+  <!-- ===================== CONTRATOS E LICITAÇÕES — PREFEITURA DE CG ===================== -->
+  <section class="tabpanel" id="tab-contratos-cg">
+    <div class="hero">
+      <div class="hero-label">Prefeitura de Campo Grande · Contratos e licitações <span class="ano-ref">2026</span></div>
+      <div class="hero-number" id="ct-total">R$ —</div>
+      <div class="hero-desc">
+        em <b id="ct-qtd">—</b> contratos de compras, serviços, obras e locações iniciados no ano.
+        Dívidas parceladas e demandas judiciais aparecem na consulta oficial, mas não são compras e ficam fora deste total
+        (<span id="ct-nao-compra">—</span>).
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="ct-licit">—</div><div class="mini-stat-label">licitações e dispensas</div></div>
+        <div><div class="mini-stat-value" id="ct-vencedor">—</div><div class="mini-stat-label">com vencedor publicado</div></div>
+        <div><div class="mini-stat-value" id="ct-forn">—</div><div class="mini-stat-label">fornecedores</div></div>
+        <div><div class="mini-stat-value" id="ct-data">—</div><div class="mini-stat-label">atualizado em</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Contratos por tipo</h2></div>
+      <div class="bar-list largo" id="ct-tipos" style="margin-top:12px"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Quem mais tem contratos</h2></div>
+      <div class="section-note">Valor somado dos contratos de compras e serviços e quantas licitações cada empresa venceu no ano.
+        O portal publica um valor estimado por licitação, sem dividir entre os vencedores, por isso aqui aparece só a contagem.
+        "Conexões" mostra se a empresa também recebeu de vereadores, deputados ou senadores.</div>
+      <input class="search-box" id="busca-ct-forn" type="text" placeholder="buscar empresa ou CNPJ…" />
+      <div class="card card-x-scroll">
+        <table class="ranking" id="ranking-ct-forn">
+          <thead><tr><th class="num">#</th><th>Fornecedor</th><th class="num">Contratos</th><th class="num">Licitações vencidas</th><th class="num">Valor dos contratos</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="ct-forn-mais" style="margin-top:10px;display:none"></button>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Contratos</h2></div>
+      <div class="cx-filtros">
+        <input class="search-box" id="busca-ct-contratos" type="text" placeholder="buscar por fornecedor, objeto ou CNPJ…" />
+        <select class="search-box" id="ct-filtro-tipo" aria-label="Tipo de contrato"><option value="compras">Compras, serviços, obras e locações</option><option value="">Todos os tipos (inclui dívidas e demandas judiciais)</option></select>
+      </div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-ct-contratos">
+          <thead><tr><th>Início</th><th>Tipo</th><th>Fornecedor</th><th>Objeto</th><th>Vigência até</th><th class="num">Valor</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="ct-contratos-mais" style="margin-top:10px;display:none"></button>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Licitações, dispensas e inexigibilidades</h2></div>
+      <div class="section-note">Cada processo de compra do ano, com o valor estimado e as empresas vencedoras quando já publicadas.</div>
+      <div class="cx-filtros">
+        <input class="search-box" id="busca-ct-licit" type="text" placeholder="buscar por objeto, empresa, número ou processo…" />
+        <select class="search-box" id="ct-filtro-modalidade" aria-label="Modalidade"><option value="">Todas as modalidades</option></select>
+        <select class="search-box" id="ct-filtro-status" aria-label="Situação"><option value="">Todas as situações</option></select>
+      </div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-ct-licit">
+          <thead><tr><th>Data</th><th>Modalidade</th><th>Objeto</th><th>Situação</th><th class="num">Valor estimado</th><th>Vencedor(es)</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="ct-licit-mais" style="margin-top:10px;display:none"></button>
+      <p class="section-note" style="margin-top:16px">
+        Fonte: <a href="https://sig-transparencia.campogrande.ms.gov.br/contratos/consulta" target="_blank" rel="noopener">SIG-Transparência — Contratos</a> e
+        <a href="https://sig-transparencia.campogrande.ms.gov.br/licitacoes/consulta" target="_blank" rel="noopener">Licitações</a> (Prefeitura de Campo Grande) · Atualização automática diária.
+        O CNPJ dos contratos é completado pelo nome do fornecedor, cruzando com as licitações e as despesas pagas.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== GOVERNO DO ESTADO DE MS ===================== -->
+  <section class="tabpanel" id="tab-governo-ms">
+    <div class="hero">
+      <div class="hero-label">Governo do Estado de Mato Grosso do Sul · Despesas <span class="ano-ref">2026</span></div>
+      <div class="hero-number" id="gov-total">R$ —</div>
+      <div class="hero-desc">
+        pagos pelo Governo do Estado no ano (todas as secretarias, autarquias e fundos), com
+        <b id="gov-empenhado">—</b> empenhados e <b id="gov-liquidado">—</b> liquidados.
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="gov-orgaos">—</div><div class="mini-stat-label">órgãos</div></div>
+        <div><div class="mini-stat-value" id="gov-credores">—</div><div class="mini-stat-label">fornecedores</div></div>
+        <div><div class="mini-stat-value" id="gov-diarias">—</div><div class="mini-stat-label">em diárias</div></div>
+        <div><div class="mini-stat-value" id="gov-data">—</div><div class="mini-stat-label">atualizado em</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Pago mês a mês</h2></div>
+      <div class="section-note" id="gov-meses-nota"></div>
+      <div class="ev-legenda" id="gov-meses-legenda" style="display:flex;gap:16px;font-size:.78rem;color:var(--ink-soft);margin:6px 0 10px"></div>
+      <div id="gov-meses"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Despesas por órgão</h2></div>
+      <div class="bar-list largo" id="gov-orgaos-lista" style="margin-top:12px"></div>
+      <button class="pager-btn" id="gov-orgaos-mais" style="margin-top:10px;display:none"></button>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Primeiro escalão</h2></div>
+      <div class="section-note" id="gov-escalao-nota"></div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-gov-escalao">
+          <thead><tr><th>Nome</th><th>Cargo</th><th>Órgão</th><th class="num">Bruto no mês</th><th class="num">Líquido no mês</th><th class="num">Bruto no ano</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Maiores credores</h2></div>
+      <div class="section-note">Quem mais recebeu do Estado no ano. O valor pago inclui restos a pagar de anos anteriores, por isso pode passar do empenhado.
+        Os 1.000 maiores fornecedores estão aqui; a lista completa está na planilha.</div>
+      <div class="section-note" id="gov-credores-tipos"></div>
+      <div class="cx-filtros">
+        <input class="search-box" id="busca-gov-credor" type="text" placeholder="buscar credor ou CNPJ…" />
+        <select class="search-box" id="gov-filtro-credor" aria-label="Tipo de credor">
+          <option value="fornecedor">Fornecedores e prestadores de serviço</option>
+          <option value="publico">Repasses a órgãos públicos, municípios e previdência</option>
+          <option value="folha">Folha, aposentadorias e pensões (códigos internos do portal)</option>
+          <option value="financeiro">Bancos e dívida</option>
+          <option value="">Todos</option>
+        </select>
+      </div>
+      <div class="card card-x-scroll">
+        <table class="ranking" id="ranking-gov-credores">
+          <thead><tr><th class="num">#</th><th>Credor</th><th class="num">Empenhado</th><th class="num">Pago</th><th class="progress-cell">Em relação ao maior</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="gov-credores-mais" style="margin-top:10px;display:none"></button>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Diárias de viagem</h2></div>
+      <div class="section-note" id="gov-diarias-nota"></div>
+      <div class="subhead">Por órgão</div>
+      <div class="bar-list largo" id="gov-diarias-orgaos"></div>
+      <div class="subhead">Quem mais recebeu diárias</div>
+      <input class="search-box" id="busca-gov-diarias" type="text" placeholder="buscar por nome, cargo, órgão ou destino…" />
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-gov-diarias">
+          <thead><tr><th>Nome</th><th>Cargo</th><th>Órgão</th><th class="num">Trechos</th><th>Destinos mais frequentes</th><th class="num">Valor</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="section-note" style="margin-top:16px">
+        Fonte: <a href="https://www.transparencia.ms.gov.br/" target="_blank" rel="noopener">Portal da Transparência do Estado de MS</a>
+        (despesas, diárias e folha de pagamento) · Atualização automática diária. O portal publica o CPF já mascarado.
+      </p>
+    </div>
+  </section>
+
   <!-- ===================== CÂMARAS MUNICIPAIS DO INTERIOR DE MS ===================== -->
   <section class="tabpanel" id="tab-camaras-ms">
     <div class="hero">
@@ -890,11 +1055,12 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="hero-number" id="cx-total">—</div>
       <div class="hero-desc">
         empresas que receberam, em <span id="cx-ano">2026</span>, de <b>dois ou mais</b> pagadores públicos de MS —
-        vereadores de Campo Grande, deputados estaduais e federais, senadores e a Prefeitura de CG.
+        vereadores de Campo Grande, deputados estaduais e federais, senadores, a Prefeitura de CG e o
+        Governo do Estado. Só entram empresas pagas por pelo menos um parlamentar.
       </div>
       <div class="mini-stats">
         <div><div class="mini-stat-value" id="cx-multi">—</div><div class="mini-stat-label">pagas por 3+ esferas</div></div>
-        <div><div class="mini-stat-value" id="cx-pref">—</div><div class="mini-stat-label">também pagas pela Prefeitura</div></div>
+        <div><div class="mini-stat-value" id="cx-pref">—</div><div class="mini-stat-label">também pagas pela Prefeitura ou Governo</div></div>
         <div><div class="mini-stat-value" id="cx-max">—</div><div class="mini-stat-label">máx. de pagadores numa empresa</div></div>
       </div>
     </div>
@@ -908,7 +1074,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="cx-filtros">
         <input class="search-box" id="busca-cx" type="text" placeholder="buscar empresa, CNPJ ou parlamentar…" />
         <label class="cx-check"><input type="checkbox" id="cx-esferas"> só empresas pagas por esferas diferentes (ex.: vereador + deputado)</label>
-        <label class="cx-check"><input type="checkbox" id="cx-so-pref"> só empresas que também receberam da Prefeitura</label>
+        <label class="cx-check"><input type="checkbox" id="cx-so-pref"> só empresas que também receberam da Prefeitura ou do Governo do Estado</label>
       </div>
       <div class="card">
         <table class="ranking" id="ranking-cx">
@@ -3604,10 +3770,247 @@ function linkParlamentar(aba, nome) {
   return `#aba=${encodeURIComponent(aba)}&p=${encodeURIComponent(nome)}`;
 }
 
+// ===================== CONTRATOS E LICITAÇÕES — PREFEITURA DE CG =====================
+function fmtDoc(d) {
+  const x = String(d || "").replace(/\D/g, "");
+  if (x.length === 14) return `${x.slice(0, 2)}.${x.slice(2, 5)}.${x.slice(5, 8)}/${x.slice(8, 12)}-${x.slice(12)}`;
+  return d || "";
+}
+// Links de CNPJ: Conexões (fornecedor também pago por parlamentares?) e comprovante na Receita
+function linksCNPJ(doc) {
+  const x = String(doc || "").replace(/\D/g, "");
+  if (x.length !== 14) return escHTML(doc || "—");
+  return `${escHTML(fmtDoc(x))} · <a href="#aba=conexoes&p=${x}" title="Ver se a empresa também recebeu de parlamentares">conexões</a> · ` +
+    `<a href="${urlReceitaCNPJ(x)}" target="_blank" rel="noopener" title="Comprovante de CNPJ na Receita Federal">Receita</a>`;
+}
+// "Mostrar mais" genérico para tabelas longas
+function paginarTabela(tbody, botao, lista, linha, vazio, passo = 50) {
+  let limite = passo;
+  const desenhar = () => {
+    tbody.innerHTML = lista.slice(0, limite).map(linha).join("") || vazio;
+    const resto = lista.length - limite;
+    botao.style.display = resto > 0 ? "" : "none";
+    botao.textContent = `Mostrar mais (${resto.toLocaleString("pt-BR")} restantes)`;
+  };
+  botao.onclick = () => { limite += passo * 2; desenhar(); };
+  desenhar();
+}
+
+function renderContratosCG(d) {
+  const r = d.resumo || {};
+  document.getElementById("ct-total").textContent = formatCompact(r.valorCompras || 0);
+  document.getElementById("ct-qtd").textContent = (r.contratosCompras || 0).toLocaleString("pt-BR");
+  document.getElementById("ct-nao-compra").textContent = `${formatCompact(r.valorNaoCompras || 0)} em ${(r.contratos - r.contratosCompras) || 0} registros`;
+  document.getElementById("ct-licit").textContent = (r.licitacoes || 0).toLocaleString("pt-BR");
+  document.getElementById("ct-vencedor").textContent = (r.comVencedor || 0).toLocaleString("pt-BR");
+  document.getElementById("ct-forn").textContent = (d.fornecedores || []).length.toLocaleString("pt-BR");
+  document.getElementById("ct-data").textContent = d.ultimaAtualizacao ? formatDateTime(d.ultimaAtualizacao) : "—";
+
+  const tipos = Object.entries(r.porTipo || {});
+  const maxT = Math.max(1, ...tipos.map(([, t]) => t.valor));
+  document.getElementById("ct-tipos").innerHTML = tipos.map(([nome, t]) => `
+    <div class="bar-list-row">
+      <div class="bar-list-label" title="${escHTML(nome)}">${escHTML(nome.charAt(0) + nome.slice(1).toLowerCase())} <span style="opacity:.6">· ${t.quantidade}${t.compra ? "" : " · não é compra"}</span></div>
+      <div class="bar-list-track"><div class="bar-list-fill ${t.compra ? "positive" : "amber"}" style="width:${(t.valor / maxT * 100).toFixed(1)}%"></div></div>
+      <div class="bar-list-value">${formatCompact(t.valor)}</div>
+    </div>`).join("");
+
+  // Fornecedores
+  const forn = d.fornecedores || [];
+  const bf = document.getElementById("busca-ct-forn");
+  const desenhaForn = () => {
+    const f = bf.value.trim().toLowerCase(), fd = f.replace(/\D/g, "");
+    const lista = forn.filter(x => !f || x.nome.toLowerCase().includes(f) || (fd.length >= 4 && (x.cnpj || "").includes(fd)));
+    paginarTabela(document.querySelector("#ranking-ct-forn tbody"), document.getElementById("ct-forn-mais"), lista, (x, i) => `
+      <tr><td class="rank-pos">${String(i + 1).padStart(2, "0")}</td>
+        <td><div class="rank-name">${escHTML(x.nome)}</div><div class="rank-meta">${linksCNPJ(x.cnpj)}</div></td>
+        <td class="num">${x.contratos}</td><td class="num">${x.licitacoesVencidas}</td>
+        <td class="num">${x.valorContratos ? formatBRL(x.valorContratos) : "—"}</td></tr>`,
+      `<tr><td colspan="5" style="padding:14px;color:var(--ink-soft)">Nenhum fornecedor encontrado.</td></tr>`);
+  };
+  bf.addEventListener("input", desenhaForn);
+  desenhaForn();
+
+  // Contratos
+  const contratos = d.contratos || [];
+  const bc = document.getElementById("busca-ct-contratos"), ft = document.getElementById("ct-filtro-tipo");
+  const desenhaContratos = () => {
+    const f = bc.value.trim().toLowerCase(), fd = f.replace(/\D/g, "");
+    const lista = contratos.filter(c => (!ft.value || c.compra) &&
+      (!f || c.fornecedor.toLowerCase().includes(f) || c.objeto.toLowerCase().includes(f) || (fd.length >= 4 && (c.cnpj || "").includes(fd))));
+    paginarTabela(document.querySelector("#tabela-ct-contratos tbody"), document.getElementById("ct-contratos-mais"), lista, c => `
+      <tr><td style="white-space:nowrap">${formatDate(c.inicio)}</td>
+        <td style="font-size:.75rem">${escHTML(c.tipo)}${c.situacao && c.situacao !== "ATIVO" ? `<br><span style="opacity:.7">${escHTML(c.situacao)}</span>` : ""}</td>
+        <td style="font-size:.8rem"><b>${escHTML(c.fornecedor)}</b><br><span class="rank-meta">${linksCNPJ(c.cnpj)}</span></td>
+        <td style="font-size:.78rem;max-width:360px">${escHTML(c.objeto)}</td>
+        <td style="white-space:nowrap">${formatDate(c.fim)}</td>
+        <td class="num">${formatBRL(c.valor)}</td></tr>`,
+      `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Nenhum contrato encontrado.</td></tr>`);
+  };
+  bc.addEventListener("input", desenhaContratos);
+  ft.addEventListener("change", desenhaContratos);
+  desenhaContratos();
+
+  // Licitações
+  const licit = d.licitacoes || [];
+  const bl = document.getElementById("busca-ct-licit"), fm = document.getElementById("ct-filtro-modalidade"), fs = document.getElementById("ct-filtro-status");
+  Object.keys(r.porModalidade || {}).forEach(m => fm.insertAdjacentHTML("beforeend", `<option>${escHTML(m)}</option>`));
+  Object.keys(r.porStatus || {}).forEach(m => fs.insertAdjacentHTML("beforeend", `<option>${escHTML(m)}</option>`));
+  const desenhaLicit = () => {
+    const f = bl.value.trim().toLowerCase(), fd = f.replace(/\D/g, "");
+    const lista = licit.filter(l => (!fm.value || l.modalidade === fm.value) && (!fs.value || l.status === fs.value) &&
+      (!f || l.objeto.toLowerCase().includes(f) || l.numero.toLowerCase().includes(f) || l.processo.toLowerCase().includes(f) ||
+        l.vencedores.some(v => v.nome.toLowerCase().includes(f) || (fd.length >= 4 && (v.cnpj || "").includes(fd)))));
+    paginarTabela(document.querySelector("#tabela-ct-licit tbody"), document.getElementById("ct-licit-mais"), lista, l => `
+      <tr><td style="white-space:nowrap">${formatDate(l.data)}</td>
+        <td style="font-size:.75rem">${escHTML(l.modalidade)}<br><span style="opacity:.7">nº ${escHTML(l.numero)}</span></td>
+        <td style="font-size:.78rem;max-width:360px">${escHTML(l.objeto)}<br><span style="opacity:.6">processo ${escHTML(l.processo)} · ${escHTML(l.gestor)}</span></td>
+        <td style="font-size:.75rem">${escHTML(l.status)}</td>
+        <td class="num">${l.valorEstimado ? formatBRL(l.valorEstimado) : "—"}</td>
+        <td style="font-size:.76rem">${l.vencedores.length ? l.vencedores.slice(0, 6).map(v => `${escHTML(v.nome)}<br><span class="rank-meta">${linksCNPJ(v.cnpj)}</span>`).join("<br>") + (l.vencedores.length > 6 ? `<br>+ ${l.vencedores.length - 6} empresas` : "") : `<span style="opacity:.6">—</span>`}</td></tr>`,
+      `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Nenhuma licitação encontrada.</td></tr>`);
+  };
+  [bl, fm, fs].forEach(el => el.addEventListener(el.tagName === "SELECT" ? "change" : "input", desenhaLicit));
+  desenhaLicit();
+}
+
+// ===================== GOVERNO DO ESTADO DE MS =====================
+// "SECRETARIA DE ESTADO DE SAÚDE" → "Sec. de Saúde": cabe na lista sem cortar o que importa
+function orgaoCurto(t) {
+  return String(t || "").replace(/\s+/g, " ").trim()
+    .replace(/^SECRETARIA DE ESTADO D[AEO]S? /i, "Sec. ").replace(/^SEC\.? ?DE ESTADO D[AEO]S? /i, "Sec. ")
+    .replace(/^AG[ÊE]NCIA ESTADUAL DE /i, "Ag. Est. de ").replace(/^FUNDO ESPECIAL D[AEO]S? /i, "Fundo Esp. ")
+    .replace(/^FUNDA[ÇC][ÃA]O /i, "Fund. ").replace(/^AG[ÊE]NCIA DE /i, "Agência de ");
+}
+const MESES_CURTOS = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+function renderGovernoMS(d) {
+  const t = d.totais || {};
+  document.getElementById("gov-total").textContent = formatCompact(t.pago || 0);
+  document.getElementById("gov-empenhado").textContent = formatCompact(t.empenhado || 0);
+  document.getElementById("gov-liquidado").textContent = formatCompact(t.liquidado || 0);
+  document.getElementById("gov-orgaos").textContent = (d.orgaos || []).length.toLocaleString("pt-BR");
+  document.getElementById("gov-credores").textContent = (d.totalFornecedores || d.totalCredores || 0).toLocaleString("pt-BR");
+  document.getElementById("gov-diarias").textContent = d.diarias ? formatCompact(d.diarias.total) : "—";
+  document.getElementById("gov-data").textContent = d.ultimaAtualizacao ? formatDateTime(d.ultimaAtualizacao) : "—";
+
+  // Mês a mês (ano atual x anterior), barras horizontais com o valor escrito
+  const ano = String(d.ano), ant = String(d.ano - 1);
+  const A = (d.meses || {})[ano] || [], B = (d.meses || {})[ant] || [];
+  const maxM = Math.max(1, ...A.filter(Boolean), ...B.filter(Boolean));
+  const COR_A = "#3987e5", COR_B = "#d95926";
+  document.getElementById("gov-meses-legenda").innerHTML = `<span><i style="display:inline-block;width:12px;height:8px;background:${COR_A};border-radius:2px;margin-right:5px"></i>${ano}</span>` +
+    (B.length ? `<span><i style="display:inline-block;width:12px;height:8px;background:${COR_B};border-radius:2px;margin-right:5px;opacity:.75"></i>${ant}</span>` : "");
+  document.getElementById("gov-meses").innerHTML = MESES_CURTOS.map((m, i) => {
+    if (A[i] == null && B[i] == null) return "";
+    const barra = (v, cor, op) => v == null ? "" : `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">
+        <div style="flex:1;height:9px;background:var(--surface-2);border-radius:3px;overflow:hidden"><div style="width:${(v / maxM * 100).toFixed(1)}%;height:100%;background:${cor};opacity:${op}"></div></div>
+        <span style="min-width:74px;text-align:right;font-size:.76rem;font-variant-numeric:tabular-nums">${formatCompact(v)}</span></div>`;
+    return `<div style="display:grid;grid-template-columns:38px 1fr;gap:8px;align-items:center;margin-bottom:6px">
+      <span style="font-size:.78rem;color:var(--ink-soft)">${m}</span><div>${barra(A[i], COR_A, 1)}${barra(B[i], COR_B, .75)}</div></div>`;
+  }).join("");
+  // compara só meses fechados: o mês corrente ainda está em andamento
+  const hoje = new Date();
+  let n = A.filter(v => v != null).length;
+  if (String(hoje.getFullYear()) === ano && n === hoje.getMonth() + 1) n -= 1;
+  const sA = A.slice(0, n).reduce((s, v) => s + (v || 0), 0), sB = B.slice(0, n).reduce((s, v) => s + (v || 0), 0);
+  document.getElementById("gov-meses-nota").textContent = sB && n > 0
+    ? `Pago de jan a ${MESES_CURTOS[n - 1]}: ${formatCompact(sA)} em ${ano} contra ${formatCompact(sB)} no mesmo período de ${ant} (${sA >= sB ? "+" : ""}${((sA / sB - 1) * 100).toFixed(1).replace(".", ",")}%). ${MESES_CURTOS[A.length - 1]}/${ano} ainda está em andamento.`
+    : "";
+
+  // Órgãos
+  const orgaos = d.orgaos || [];
+  const maxO = orgaos[0]?.pago || 1;
+  let limO = 20;
+  const desenhaOrgaos = () => {
+    document.getElementById("gov-orgaos-lista").innerHTML = orgaos.slice(0, limO).map(o => `
+      <div class="bar-list-row">
+        <div class="bar-list-label" title="${escHTML(o.orgao)} — empenhado ${formatBRL(o.empenhado)}">${escHTML(orgaoCurto(o.orgao))}</div>
+        <div class="bar-list-track"><div class="bar-list-fill positive" style="width:${(o.pago / maxO * 100).toFixed(1)}%"></div></div>
+        <div class="bar-list-value">${formatCompact(o.pago)}</div>
+      </div>`).join("");
+    const b = document.getElementById("gov-orgaos-mais");
+    b.style.display = orgaos.length > limO ? "" : "none";
+    b.textContent = `Ver todos os ${orgaos.length} órgãos`;
+  };
+  document.getElementById("gov-orgaos-mais").onclick = () => { limO = orgaos.length; desenhaOrgaos(); };
+  desenhaOrgaos();
+
+  // Primeiro escalão
+  const pe = d.primeiroEscalao;
+  const tbE = document.querySelector("#tabela-gov-escalao tbody");
+  if (pe && pe.pessoas) {
+    document.getElementById("gov-escalao-nota").textContent =
+      `Governador, vice e secretários com vínculo de agente político na folha de ${pe.competencia}. Secretários que são servidores de carreira ` +
+      `(ou cedidos) aparecem na folha com o vínculo de origem e não estão nesta lista. "Bruto no ano" soma os ${pe.mesesNoAno} meses publicados. ` +
+      `Ex-governadores e pensionistas com esse vínculo aparecem no fim, como inativos.`;
+    tbE.innerHTML = pe.pessoas.map(p => `
+      <tr${p.ativo ? "" : ' style="opacity:.65"'}><td><b>${escHTML(p.nome)}</b>${p.ativo ? "" : `<br><span style="font-size:.72rem">${escHTML(p.situacao)}</span>`}</td>
+        <td style="font-size:.78rem">${escHTML(p.cargo.charAt(0) + p.cargo.slice(1).toLowerCase())}</td>
+        <td style="font-size:.78rem">${escHTML(p.orgao)}</td>
+        <td class="num">${formatBRL(p.bruto)}</td><td class="num">${formatBRL(p.liquido)}</td><td class="num">${formatBRL(p.somaAno)}</td></tr>`).join("");
+  } else {
+    tbE.innerHTML = `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Folha ainda não publicada para o ano.</td></tr>`;
+  }
+
+  // Credores
+  const cred = d.credores || [];
+  const bc = document.getElementById("busca-gov-credor"), fc = document.getElementById("gov-filtro-credor");
+  const pt = d.credoresPorTipo;
+  if (pt) document.getElementById("gov-credores-tipos").textContent =
+    `Do total pago: ${formatCompact(pt.fornecedor)} a fornecedores e prestadores (${(d.totalFornecedores || 0).toLocaleString("pt-BR")}), ` +
+    `${formatCompact(pt.publico)} em repasses a órgãos públicos e municípios, ${formatCompact(pt.folha)} em folha e aposentadorias e ${formatCompact(pt.financeiro)} a bancos e dívida.`;
+  const desenhaCred = () => {
+    const f = bc.value.trim().toLowerCase(), fd = f.replace(/\D/g, "");
+    const doTipo = cred.filter(c => !fc.value || (c.tipo || "fornecedor") === fc.value);
+    const maxC = doTipo[0]?.pago || 1;
+    const lista = doTipo.map((c, i) => ({ ...c, pos: i + 1, maxC })).filter(c => !f || c.credor.toLowerCase().includes(f) || (fd.length >= 4 && c.cnpj.replace(/\D/g, "").includes(fd)));
+    paginarTabela(document.querySelector("#ranking-gov-credores tbody"), document.getElementById("gov-credores-mais"), lista, c => `
+      <tr><td class="rank-pos">${String(c.pos).padStart(2, "0")}</td>
+        <td><div class="rank-name">${escHTML(c.credor)}</div><div class="rank-meta">${linksCNPJ(c.cnpj)}</div></td>
+        <td class="num">${formatBRL(c.empenhado)}</td><td class="num">${formatBRL(c.pago)}</td>
+        <td class="progress-cell">${progressBar(c.pago / c.maxC * 100, "positive")}</td></tr>`,
+      `<tr><td colspan="5" style="padding:14px;color:var(--ink-soft)">Nenhum credor encontrado entre os maiores. A lista completa está na planilha de credores.</td></tr>`);
+  };
+  bc.addEventListener("input", desenhaCred);
+  fc.addEventListener("change", desenhaCred);
+  desenhaCred();
+
+  // Diárias
+  const di = d.diarias;
+  if (di) {
+    document.getElementById("gov-diarias-nota").textContent =
+      `${formatBRL(di.total)} pagos em diárias em ${d.ano}, em ${(di.trechos || 0).toLocaleString("pt-BR")} trechos de viagem, para ` +
+      `${(di.beneficiarios || 0).toLocaleString("pt-BR")} beneficiários (servidores, colaboradores e convidados). Cada trecho é um pagamento.`;
+    const po = di.porOrgao || [], maxD = po[0]?.valor || 1;
+    document.getElementById("gov-diarias-orgaos").innerHTML = po.slice(0, 15).map(o => `
+      <div class="bar-list-row">
+        <div class="bar-list-label" title="${escHTML(o.orgao)}">${escHTML(o.orgao)} <span style="opacity:.6">· ${o.trechos.toLocaleString("pt-BR")} trechos</span></div>
+        <div class="bar-list-track"><div class="bar-list-fill amber" style="width:${(o.valor / maxD * 100).toFixed(1)}%"></div></div>
+        <div class="bar-list-value">${formatCompact(o.valor)}</div>
+      </div>`).join("");
+    const bd = document.getElementById("busca-gov-diarias"), tbD = document.querySelector("#tabela-gov-diarias tbody");
+    const desenhaD = () => {
+      const f = bd.value.trim().toLowerCase();
+      const lista = (di.maiores || []).filter(p => !f || [p.nome, p.cargo, p.orgao, ...(p.destinos || [])].some(x => (x || "").toLowerCase().includes(f)));
+      tbD.innerHTML = lista.slice(0, 200).map(p => `
+        <tr><td><b>${escHTML(p.nome)}</b><br><span class="rank-meta">${escHTML(p.cpf)} · ${escHTML(p.tipo)}</span></td>
+          <td style="font-size:.76rem">${escHTML(p.cargo)}</td><td style="font-size:.78rem">${escHTML(p.orgao)}</td>
+          <td class="num">${p.trechos}</td><td style="font-size:.76rem">${escHTML((p.destinos || []).join(", "))}</td>
+          <td class="num">${formatBRL(p.valor)}</td></tr>`).join("") ||
+        `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Ninguém encontrado entre os 200 maiores.</td></tr>`;
+    };
+    bd.addEventListener("input", desenhaD);
+    desenhaD();
+  } else {
+    document.getElementById("gov-diarias-nota").textContent = "Diárias ainda não coletadas.";
+  }
+}
+
 // ===================== CONEXÕES ENTRE FORNECEDORES =====================
 const TIPO_ROTULO = {
   vereador: ["vereador", "vereadores"], estadual: ["dep. estadual", "dep. estaduais"],
   federal: ["dep. federal", "dep. federais"], senador: ["senador", "senadores"], prefeitura: ["Prefeitura", "Prefeitura"],
+  governo: ["Governo MS", "Governo MS"],
 };
 let DADOS_CONEXOES = null;
 // Comprovante de CNPJ da Receita com o número já preenchido. O caminho precisa
@@ -3622,7 +4025,7 @@ function renderConexoes(d) {
   document.getElementById("cx-total").textContent = lista.length.toLocaleString("pt-BR");
   document.getElementById("cx-ano").textContent = d.ano || ANO_REFERENCIA;
   document.getElementById("cx-multi").textContent = lista.filter(c => c.tipos.length >= 3).length;
-  document.getElementById("cx-pref").textContent = lista.filter(c => c.tipos.includes("prefeitura")).length;
+  document.getElementById("cx-pref").textContent = lista.filter(c => c.tipos.includes("prefeitura") || c.tipos.includes("governo")).length;
   document.getElementById("cx-max").textContent = Math.max(0, ...lista.map(c => c.numPagadores));
 
   const tbody = document.querySelector("#ranking-cx tbody");
@@ -3636,7 +4039,7 @@ function renderConexoes(d) {
   const tags = c => {
     const n = {};
     c.pagadores.forEach(p => { n[p.tipo] = (n[p.tipo] || 0) + 1; });
-    return Object.entries(n).map(([t, q]) => `<span class="cx-tag">${t === "prefeitura" ? "Prefeitura" : `${q} ${TIPO_ROTULO[t][q > 1 ? 1 : 0]}`}</span>`).join("");
+    return Object.entries(n).map(([t, q]) => `<span class="cx-tag">${t === "prefeitura" ? "Prefeitura" : t === "governo" ? "Governo MS" : `${q} ${TIPO_ROTULO[t][q > 1 ? 1 : 0]}`}</span>`).join("");
   };
 
   function desenhar() {
@@ -3659,7 +4062,7 @@ function renderConexoes(d) {
     const fDig = f.replace(/\D/g, "");
     filtrados = lista.filter(c =>
       (!soEsferas.checked || c.tipos.length >= 2) &&
-      (!soPref.checked || c.tipos.includes("prefeitura")) &&
+      (!soPref.checked || c.tipos.includes("prefeitura") || c.tipos.includes("governo")) &&
       (!f || c.nome.toLowerCase().includes(f) ||
         (fDig.length >= 4 && c.cnpjs.some(x => x.replace(/\D/g, "").includes(fDig))) ||
         c.pagadores.some(p => p.nome.toLowerCase().includes(f))));
@@ -3683,7 +4086,7 @@ function renderConexoes(d) {
       <div style="overflow-x:auto"><table class="notes-table">
         <thead><tr><th>Pagador</th><th>Cargo</th><th class="num">Notas</th><th class="num">Valor</th></tr></thead>
         <tbody>${c.pagadores.map(p => `
-          <tr><td>${p.tipo === "prefeitura" ? escHTML(p.nome) : `<a href="${linkParlamentar(p.aba, p.nome)}">${escHTML(p.nome)}</a>`}${p.partido ? ` <span style="opacity:.6">· ${escHTML(p.partido)}</span>` : ""}</td>
+          <tr><td>${p.tipo === "prefeitura" || p.tipo === "governo" ? `<a href="#aba=${p.aba}">${escHTML(p.nome)}</a>` : `<a href="${linkParlamentar(p.aba, p.nome)}">${escHTML(p.nome)}</a>`}${p.partido ? ` <span style="opacity:.6">· ${escHTML(p.partido)}</span>` : ""}</td>
               <td style="font-size:.78rem">${escHTML(p.rotulo)}</td><td class="num">${p.notas}</td><td class="num">${formatBRL(p.total)}</td></tr>`).join("")}
         </tbody></table></div>
       <p class="section-note" style="margin-top:10px">Clique no nome para ver as notas fiscais do parlamentar. Um fornecedor em comum não indica irregularidade.
@@ -3997,6 +4400,8 @@ const FONTE_ABA = {
   "deputados": { titulo: "CEAP dos deputados federais de MS", csv: [["Resumo", "deputados_federais_ms.csv"], ["Notas fiscais", "deputados_federais_ms_notas.csv"]], json: "deputados_federais_ms.json" },
   "senadores": { titulo: "CEAPS dos senadores de MS", csv: [["Resumo", "senadores_ms.csv"], ["Notas fiscais", "senadores_ms_notas.csv"]], json: "senadores_ms.json" },
   "prefeitura": { titulo: "Despesas da Prefeitura de Campo Grande", csv: [["Despesas pagas", "prefeitura_despesas.csv"]], json: "prefeitura.json" },
+  "contratos-cg": { titulo: "Contratos e licitações da Prefeitura de Campo Grande", csv: [["Contratos", "prefeitura_contratos.csv"], ["Licitações", "prefeitura_licitacoes.csv"]], json: "prefeitura_contratos.json" },
+  "governo-ms": { titulo: "Despesas do Governo do Estado de MS", csv: [["Órgãos", "governo_ms_orgaos.csv"], ["Credores", "governo_ms_credores.csv"], ["Diárias", "governo_ms_diarias.csv"], ["Primeiro escalão", "governo_ms_primeiro_escalao.csv"]], json: "governo_ms.json" },
   "camaras-ms": { titulo: "Câmaras municipais do interior de MS", csv: [["Vereadores", "camaras_interior.csv"]], json: null },
   "judiciario": { titulo: "Remuneração dos magistrados de MS", csv: [["Magistrados", "judiciario_magistrados.csv"]], json: "tjms_magistrados.json" },
   "deputados-brasil": { titulo: "CEAP dos deputados federais do Brasil", csv: [["Resumo", "deputados_federais_brasil.csv"]], json: "deputados_federais_brasil.json" },
@@ -4139,6 +4544,14 @@ async function init() {
         carregarLeve("prefeitura.json").then(d => {
           if (d) renderPrefeitura(d);
         });
+      }
+      if (btn.dataset.tab === "contratos-cg" && !window._contratosLoaded) {
+        window._contratosLoaded = true;
+        carregarLeve("prefeitura_contratos.json").then(d => { if (d) renderContratosCG(d); });
+      }
+      if (btn.dataset.tab === "governo-ms" && !window._governoLoaded) {
+        window._governoLoaded = true;
+        carregarLeve("governo_ms.json").then(d => { if (d) renderGovernoMS(d); });
       }
       if (btn.dataset.tab === "conexoes" && !window._conexoesLoaded) {
         window._conexoesLoaded = true;
