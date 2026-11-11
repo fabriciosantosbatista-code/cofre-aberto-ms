@@ -2,7 +2,7 @@
  "ano": 2026,
  "fonte": "https://www.transparencia.ms.gov.br",
  "fonteApi": "https://gw.sgi.ms.gov.br",
- "ultimaAtualizacao": "2026-11-11T11:20:01",
+ "ultimaAtualizacao": "2026-11-11T11:42:24",
  "totais": {
   "empenhado": 23171879712.26,
   "liquidado": 21633267551.07,
@@ -9312,63 +9312,63 @@
  },
  "totalFornecedores": 23763,
  "diarias": {
-  "total": 44263383.35,
-  "trechos": 68348,
+  "total": 38503170.29,
+  "trechos": 60547,
   "meses": [
    {
-    "valor": 1503589.5,
-    "trechos": 3247
+    "valor": 1407059.5,
+    "trechos": 3034
    },
    {
-    "valor": 3557760.0,
-    "trechos": 5973
+    "valor": 3134160.0,
+    "trechos": 5228
    },
    {
-    "valor": 4689408.19,
-    "trechos": 7605
+    "valor": 4168713.19,
+    "trechos": 6779
    },
    {
-    "valor": 4302274.7,
-    "trechos": 7308
+    "valor": 3840537.2,
+    "trechos": 6513
    },
    {
-    "valor": 4951293.3,
-    "trechos": 7887
+    "valor": 4454131.3,
+    "trechos": 7036
    },
    {
-    "valor": 4961069.25,
-    "trechos": 7520
+    "valor": 4352429.15,
+    "trechos": 6640
    },
    {
-    "valor": 4760584.4,
-    "trechos": 7395
+    "valor": 4034436.2,
+    "trechos": 6518
    },
    {
-    "valor": 5991877.75,
-    "trechos": 8274
+    "valor": 5172223.25,
+    "trechos": 7292
    },
    {
-    "valor": 5260203.25,
-    "trechos": 7487
+    "valor": 4516386.75,
+    "trechos": 6739
    },
    {
-    "valor": 3308930.13,
-    "trechos": 4719
+    "valor": 2731692.5,
+    "trechos": 4076
    },
    {
-    "valor": 975542.88,
-    "trechos": 930
+    "valor": 691401.25,
+    "trechos": 692
    }
   ],
   "consultas": 11,
   "consultasPrevistas": 11,
   "trechosForaDoAno": 0,
-  "beneficiarios": 9901,
+  "beneficiarios": 8420,
   "porOrgao": [
    {
     "orgao": "SEJUSP",
-    "valor": 15597823.9,
-    "trechos": 21556
+    "valor": 10236373.2,
+    "trechos": 14364
    },
    {
     "orgao": "DETRAN",
@@ -9434,11 +9434,6 @@
     "orgao": "FUNTUR",
     "valor": 401235.55,
     "trechos": 288
-   },
-   {
-    "orgao": "SEMADESC",
-    "valor": 398762.36,
-    "trechos": 609
    },
    {
     "orgao": "FUNRESPMS",
@@ -9748,8 +9743,8 @@
      "Bodoquena",
      "BONITO",
      "Sidrolândia",
-     "Alcinópolis",
-     "Coxim"
+     "Bela Vista",
+     "Caracol"
     ]
    },
    {
@@ -9937,10 +9932,10 @@
     "valor": 134500.0,
     "trechos": 69,
     "destinos": [
-     "Três Lagoas",
      "Chapadão do Sul",
      "Costa Rica",
      "PARAÍSO DAS ÁGUAS",
+     "Três Lagoas",
      "Bela Vista"
     ]
    },
@@ -10053,7 +10048,7 @@
      "Aquidauana",
      "Miranda",
      "Terenos",
-     "Aparecida do Taboado"
+     "Chapadão do Sul"
     ]
    },
    {
@@ -10101,7 +10096,7 @@
      "Água Clara",
      "Bataguassu",
      "Santa Rita do Pardo",
-     "Brasilândia"
+     "Aparecida do Taboado"
     ]
    },
    {
@@ -10133,7 +10128,7 @@
      "Batayporã",
      "Nova Alvorada do Sul",
      "Nova Andradina",
-     "Campo Grande"
+     "Chapadão do Sul"
     ]
    },
    {
@@ -10146,10 +10141,10 @@
     "trechos": 60,
     "destinos": [
      "Três Lagoas",
+     "Dois Irmãos do Buriti",
      "Aparecida do Taboado",
      "Paranaíba",
-     "Selvíria",
-     "Dois Irmãos do Buriti"
+     "Selvíria"
     ]
    },
    {
@@ -10181,7 +10176,7 @@
      "Douradina",
      "Maracaju",
      "Ponta Porã",
-     "Itaporã"
+     "Amambaí"
     ]
    },
    {
@@ -10290,10 +10285,10 @@
     "trechos": 57,
     "destinos": [
      "Ponta Porã",
-     "Eldorado",
-     "Iguatemi",
-     "Mundo Novo",
-     "Paranhos"
+     "Douradina",
+     "Itaporã",
+     "Maracaju",
+     "Rio Brilhante"
     ]
    },
    {
@@ -10658,8 +10653,8 @@
     "trechos": 21,
     "destinos": [
      "Rio de Janeiro",
-     "BONITO",
      "São Paulo",
+     "BONITO",
      "LONDRES",
      "Guadalajara"
     ]
@@ -10755,9 +10750,9 @@
     "destinos": [
      "Bataguassu",
      "Três Lagoas",
-     "Brasilândia",
-     "Nova Alvorada do Sul",
-     "Selvíria"
+     "Selvíria",
+     "Coxim",
+     "Sonora"
     ]
    },
    {
@@ -10805,7 +10800,7 @@
      "Glória de Dourados",
      "Brasilândia",
      "Bataguassu",
-     "Angélica"
+     "Taquarussu"
     ]
    },
    {
@@ -10867,8 +10862,8 @@
     "destinos": [
      "São Paulo",
      "Dourados",
-     "Corumbá",
      "Brasília",
+     "Corumbá",
      "Sorocaba"
     ]
    },
@@ -10885,7 +10880,7 @@
      "Ponta Porã",
      "Dourados",
      "Aral Moreira",
-     "Caarapó"
+     "Paranaíba"
     ]
    },
    {
@@ -10899,8 +10894,8 @@
     "destinos": [
      "Brasília",
      "Goiânia",
-     "Dourados",
      "Corumbá",
+     "Dourados",
      "Chapadão do Sul"
     ]
    },
@@ -10953,22 +10948,6 @@
     ]
    },
    {
-    "nome": "ARTUR HENRIQUE LEITE FALCETTE",
-    "cpf": "***.880.568-**",
-    "orgao": "SEMADESC",
-    "cargo": "ADMINISTRAÇÃO SUPERIOR DIRETA - CCA-SEC",
-    "tipo": "SERVIDOR",
-    "valor": 44501.43,
-    "trechos": 22,
-    "destinos": [
-     "São Paulo",
-     "Brasília",
-     "Singapura",
-     "Antalya",
-     "Inocência"
-    ]
-   },
-   {
     "nome": "ELIAS PERES BATISTA",
     "cpf": "***.513.698-**",
     "orgao": "DETRAN",
@@ -11013,7 +10992,7 @@
      "Mundo Novo",
      "Dourados",
      "Bataguassu",
-     "NAVIRAI"
+     "Selvíria"
     ]
    },
    {
@@ -11028,8 +11007,8 @@
      "BONITO",
      "Campo Grande",
      "Corumbá",
-     "Miranda",
-     "Dourados"
+     "São Paulo",
+     "Miranda"
     ]
    },
    {
@@ -11075,9 +11054,9 @@
     "destinos": [
      "Coxim",
      "Coronel Sapucaia",
-     "Sete Quedas",
      "Eldorado",
-     "Japorã"
+     "Japorã",
+     "Sete Quedas"
     ]
    },
    {
@@ -11097,22 +11076,6 @@
     ]
    },
    {
-    "nome": "DAYANE SANTOS DA SILVA",
-    "cpf": "***.507.951-**",
-    "orgao": "SEJUSP",
-    "cargo": "CABOS E SOLDADOS",
-    "tipo": "SERVIDOR",
-    "valor": 37975.0,
-    "trechos": 14,
-    "destinos": [
-     "São Paulo",
-     "Corumbá",
-     "BONITO",
-     "Cuiabá",
-     "Ponta Porã"
-    ]
-   },
-   {
     "nome": "MARYUZA RAMIREZ DA COSTA DORBACAO SA",
     "cpf": "***.432.671-**",
     "orgao": "FUNFAZ",
@@ -11123,9 +11086,9 @@
     "destinos": [
      "Brasília",
      "São Paulo",
-     "Goiânia",
-     "Curitiba",
-     "São Luís"
+     "Maceió",
+     "Foz do Iguaçu",
+     "Goiânia"
     ]
    },
    {
@@ -11140,7 +11103,7 @@
      "Dourados",
      "BONITO",
      "Maracaju",
-     "Corumbá",
+     "Bodoquena",
      "Santa Rita do Pardo"
     ]
    },
@@ -11154,26 +11117,10 @@
     "trechos": 9,
     "destinos": [
      "Corumbá",
-     "BONITO",
-     "Fortaleza",
+     "Brasília",
+     "São Paulo",
      "Dourados",
      "Recife"
-    ]
-   },
-   {
-    "nome": "RICARDO OLIVEIRA DA CRUZ",
-    "cpf": "***.849.921-**",
-    "orgao": "SEJUSP",
-    "cargo": "CABOS E SOLDADOS",
-    "tipo": "SERVIDOR",
-    "valor": 36850.0,
-    "trechos": 13,
-    "destinos": [
-     "Corumbá",
-     "Aparecida do Taboado",
-     "Jardim",
-     "Maracaju",
-     "Dourados"
     ]
    },
    {
@@ -11189,6 +11136,22 @@
     ]
    },
    {
+    "nome": "DAYANE SANTOS DA SILVA",
+    "cpf": "***.507.951-**",
+    "orgao": "SEJUSP",
+    "cargo": "CABOS E SOLDADOS",
+    "tipo": "SERVIDOR",
+    "valor": 36050.0,
+    "trechos": 13,
+    "destinos": [
+     "São Paulo",
+     "Corumbá",
+     "BONITO",
+     "Cuiabá",
+     "Ponta Porã"
+    ]
+   },
+   {
     "nome": "THIAGO DA SILVA SOUZA",
     "cpf": "***.963.531-**",
     "orgao": "IAGRO",
@@ -11198,26 +11161,10 @@
     "trechos": 54,
     "destinos": [
      "Ponta Porã",
-     "Quadrante MS 979/PORTO MURTINHO",
      "Quadrante MS 1016B/PORTO MURTINHO",
+     "Quadrante MS 979/PORTO MURTINHO",
      "Quadrante MS 944/PORTO MURTINHO",
      "Bela Vista"
-    ]
-   },
-   {
-    "nome": "CLAUDINEI CASSIANO MOTA",
-    "cpf": "***.296.091-**",
-    "orgao": "SEJUSP",
-    "cargo": "OFICIAIS SUBALTERNOS",
-    "tipo": "SERVIDOR",
-    "valor": 35651.0,
-    "trechos": 16,
-    "destinos": [
-     "Corumbá",
-     "Ponta Porã",
-     "Cuiabá",
-     "São Paulo",
-     "BONITO"
     ]
    },
    {
@@ -11232,8 +11179,8 @@
      "Corumbá",
      "Bataguassu",
      "Aquidauana",
-     "Caarapó",
-     "Brasília"
+     "Brasília",
+     "Chapadão do Sul"
     ]
    },
    {
@@ -11246,10 +11193,10 @@
     "trechos": 33,
     "destinos": [
      "Ponta Porã",
-     "Dourados",
      "Corumbá",
+     "Dourados",
      "NAVIRAI",
-     "Florianópolis"
+     "Coxim"
     ]
    },
    {
@@ -11266,20 +11213,6 @@
      "Terenos",
      "Dourados",
      "Ribas do Rio Pardo"
-    ]
-   },
-   {
-    "nome": "MARIO ANGELO AJALA",
-    "cpf": "***.997.691-**",
-    "orgao": "SEJUSP",
-    "cargo": "OFICIAIS SUPERIORES",
-    "tipo": "SERVIDOR",
-    "valor": 34650.0,
-    "trechos": 8,
-    "destinos": [
-     "Brasília",
-     "Cuiabá",
-     "Goiânia"
     ]
    },
    {
@@ -11323,11 +11256,11 @@
     "valor": 33970.0,
     "trechos": 18,
     "destinos": [
-     "Corumbá",
-     "Dois Irmãos do Buriti",
-     "Ladário",
-     "Chapadão do Sul",
-     "Costa Rica"
+     "Cassilândia",
+     "Inocência",
+     "Ribas do Rio Pardo",
+     "Anaurilândia",
+     "Batayporã"
     ]
    },
    {
@@ -11341,6 +11274,22 @@
     "destinos": [
      "Três Lagoas",
      "Deodápolis"
+    ]
+   },
+   {
+    "nome": "CLAUDINEI CASSIANO MOTA",
+    "cpf": "***.296.091-**",
+    "orgao": "SEJUSP",
+    "cargo": "OFICIAIS SUBALTERNOS",
+    "tipo": "SERVIDOR",
+    "valor": 33726.0,
+    "trechos": 15,
+    "destinos": [
+     "Corumbá",
+     "Ponta Porã",
+     "Cuiabá",
+     "BONITO",
+     "Rondonópolis"
     ]
    },
    {
@@ -11369,9 +11318,9 @@
     "destinos": [
      "Corumbá",
      "Três Lagoas",
-     "NAVIRAI",
-     "Maracaju",
-     "Fátima do Sul"
+     "Fátima do Sul",
+     "Cassilândia",
+     "Maracaju"
     ]
    },
    {
@@ -11397,26 +11346,10 @@
     "trechos": 17,
     "destinos": [
      "São Paulo",
-     "Brasília",
      "Ribas do Rio Pardo",
+     "Brasília",
      "ASSUNÇÃO",
-     "Concepción"
-    ]
-   },
-   {
-    "nome": "LUCIANO GOMES DE FIGUEIREDO",
-    "cpf": "***.465.771-**",
-    "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 32800.0,
-    "trechos": 15,
-    "destinos": [
-     "Corumbá",
-     "Dourados",
-     "Jardim",
-     "Porto Murtinho",
-     "Bataguassu"
+     "Ponta Porã"
     ]
    },
    {
@@ -11431,22 +11364,6 @@
      "BONITO",
      "Campo Grande",
      "Região do Nabileque / Corumbá"
-    ]
-   },
-   {
-    "nome": "TENNER FLORES TEODORO",
-    "cpf": "***.617.131-**",
-    "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 32625.0,
-    "trechos": 21,
-    "destinos": [
-     "Corumbá",
-     "Aparecida do Taboado",
-     "Porto Murtinho",
-     "Bataguassu",
-     "Costa Rica"
     ]
    },
    {
@@ -11546,23 +11463,7 @@
      "Brasília",
      "BONITO",
      "Três Lagoas",
-     "Goiânia"
-    ]
-   },
-   {
-    "nome": "LUIZ ALVES DE OLIVEIRA JUNIOR",
-    "cpf": "***.558.794-**",
-    "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 31075.0,
-    "trechos": 14,
-    "destinos": [
-     "Corumbá",
-     "Aquidauana",
-     "Bataguassu",
-     "Brasília",
-     "Ponta Porã"
+     "Dourados"
     ]
    },
    {
@@ -11606,8 +11507,8 @@
      "Corumbá",
      "Dourados",
      "NAVIRAI",
-     "BONITO",
-     "Colombo"
+     "Costa Rica",
+     "Itaquiraí"
     ]
    },
    {
@@ -11623,22 +11524,6 @@
     ]
    },
    {
-    "nome": "LUIZ FELIPE GOMES DA SILVA BARROS",
-    "cpf": "***.548.611-**",
-    "orgao": "SEJUSP",
-    "cargo": "DIREÇÃO ESP. E ASSESSORAMENTO - CCA - 08",
-    "tipo": "SERVIDOR",
-    "valor": 30450.0,
-    "trechos": 12,
-    "destinos": [
-     "Corumbá",
-     "Ponta Porã",
-     "Brasília",
-     "Cuiabá",
-     "Três Lagoas"
-    ]
-   },
-   {
     "nome": "ELVIS MUNIZ FERREIRA",
     "cpf": "***.231.611-**",
     "orgao": "AGESUL",
@@ -11649,21 +11534,9 @@
     "destinos": [
      "Nova Andradina",
      "Ponta Porã",
-     "Novo Horizonte do Sul",
      "Fátima do Sul",
+     "Novo Horizonte do Sul",
      "Dourados"
-    ]
-   },
-   {
-    "nome": "RONILTON CARMO NATARANGELL DOS SANTOS",
-    "cpf": "***.682.131-**",
-    "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 30150.0,
-    "trechos": 7,
-    "destinos": [
-     "Corumbá"
     ]
    },
    {
@@ -11723,27 +11596,11 @@
     "valor": 29825.0,
     "trechos": 20,
     "destinos": [
+     "Corumbá",
+     "Ponta Porã",
      "Coxim",
-     "Ponta Porã",
-     "Corumbá",
-     "NAVIRAI",
-     "Jaraguari"
-    ]
-   },
-   {
-    "nome": "ORIVALDO GONÇALVES DE MENDONÇA JUNIOR",
-    "cpf": "***.979.661-**",
-    "orgao": "SEJUSP",
-    "cargo": "PERITO PAPILOSCOPISTA",
-    "tipo": "SERVIDOR",
-    "valor": 29450.0,
-    "trechos": 12,
-    "destinos": [
-     "Corumbá",
-     "Brasília",
-     "Ponta Porã",
-     "Três Lagoas",
-     "São Paulo"
+     "Dourados",
+     "Terenos"
     ]
    },
    {
@@ -11775,7 +11632,7 @@
      "Bataguassu",
      "Brasilândia",
      "Aparecida do Taboado",
-     "Campo Grande"
+     "Ponta Porã"
     ]
    },
    {
@@ -11795,19 +11652,6 @@
     ]
    },
    {
-    "nome": "LUCIANO LEITE QUINTANA",
-    "cpf": "***.428.501-**",
-    "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 28475.0,
-    "trechos": 8,
-    "destinos": [
-     "Corumbá",
-     "Campo Grande"
-    ]
-   },
-   {
     "nome": "MARCELO SHIGUEO PEREIRA DA SILVA",
     "cpf": "***.600.711-**",
     "orgao": "IAGRO",
@@ -11818,23 +11662,25 @@
     "destinos": [
      "BONITO",
      "Campo Grande",
+     "Quadrante MS 842A/GUIA LOPES DA LAGUNA",
      "Nioaque",
-     "Porto Murtinho",
-     "Quadrante MS 842A/GUIA LOPES DA LAGUNA"
+     "Porto Murtinho"
     ]
    },
    {
-    "nome": "RONALDO CADARIO DA SILVA JUNIOR",
-    "cpf": "***.727.351-**",
+    "nome": "LUCIANO GOMES DE FIGUEIREDO",
+    "cpf": "***.465.771-**",
     "orgao": "SEJUSP",
     "cargo": "SUBTENENTE E SARGENTOS",
     "tipo": "SERVIDOR",
-    "valor": 28200.0,
-    "trechos": 7,
+    "valor": 28300.0,
+    "trechos": 12,
     "destinos": [
      "Corumbá",
-     "BONITO",
-     "Douradina"
+     "Dourados",
+     "Jardim",
+     "Porto Murtinho",
+     "Sidrolândia"
     ]
    },
    {
@@ -11849,8 +11695,8 @@
      "Nova Andradina",
      "Ivinhema",
      "Campo Grande",
-     "Três Lagoas",
-     "NAVIRAI"
+     "NAVIRAI",
+     "Três Lagoas"
     ]
    },
    {
@@ -11879,7 +11725,7 @@
      "Corumbá",
      "São Paulo",
      "Maracaju",
-     "Porto Murtinho"
+     "Sonora"
     ]
    },
    {
@@ -11892,8 +11738,8 @@
     "trechos": 8,
     "destinos": [
      "Corumbá",
-     "BONITO",
-     "Campo Grande"
+     "Campo Grande",
+     "BONITO"
     ]
    },
    {
@@ -11905,11 +11751,11 @@
     "valor": 27660.0,
     "trechos": 41,
     "destinos": [
+     "Coronel Sapucaia",
+     "Sete Quedas",
      "Eldorado",
      "Itaquiraí",
-     "Japorã",
-     "Mundo Novo",
-     "Coronel Sapucaia"
+     "Japorã"
     ]
    },
    {
@@ -11921,8 +11767,8 @@
     "valor": 27580.0,
     "trechos": 6,
     "destinos": [
-     "São Paulo",
      "Toronto",
+     "São Paulo",
      "Três Lagoas",
      "Brasília"
     ]
@@ -11938,25 +11784,9 @@
     "destinos": [
      "Brasília",
      "Dourados",
-     "Porto Alegre",
-     "Bruxelas",
-     "Ivinhema"
-    ]
-   },
-   {
-    "nome": "RENATO DOS ANJOS GARNES",
-    "cpf": "***.686.631-**",
-    "orgao": "SEJUSP",
-    "cargo": "OFICIAIS SUPERIORES",
-    "tipo": "SERVIDOR",
-    "valor": 27275.0,
-    "trechos": 20,
-    "destinos": [
-     "Brasília",
-     "São Paulo",
-     "João Pessoa",
-     "Corumbá",
-     "Caarapó"
+     "Punta Del Arenal",
+     "Maracaju",
+     "São Paulo"
     ]
    },
    {
@@ -11970,9 +11800,9 @@
     "destinos": [
      "Costa Rica",
      "Coxim",
-     "Aquidauana",
-     "Maracaju",
-     "Miranda"
+     "Fátima do Sul",
+     "Jateí",
+     "Cassilândia"
     ]
    },
    {
@@ -11992,19 +11822,19 @@
     ]
    },
    {
-    "nome": "JESSICA DE MOURA MARTINS",
-    "cpf": "***.270.791-**",
+    "nome": "LUIZ FELIPE GOMES DA SILVA BARROS",
+    "cpf": "***.548.611-**",
     "orgao": "SEJUSP",
-    "cargo": "OFICIAIS SUBALTERNOS",
+    "cargo": "AGENTE DE POLÍCIA JUDICIÁRIA",
     "tipo": "SERVIDOR",
     "valor": 26925.0,
-    "trechos": 12,
+    "trechos": 8,
     "destinos": [
-     "São Paulo",
-     "Brasília",
-     "Caarapó",
      "Corumbá",
-     "Salvador"
+     "Brasília",
+     "Ponta Porã",
+     "Cuiabá",
+     "São Paulo"
     ]
    },
    {
@@ -12017,22 +11847,6 @@
     "trechos": 6,
     "destinos": [
      "Corumbá"
-    ]
-   },
-   {
-    "nome": "ALEX MARCEL MELOTTO",
-    "cpf": "***.023.591-**",
-    "orgao": "SEMADESC",
-    "cargo": "ADMIN.SUPERIOR E ASSESSORAMENTO - CCA-00",
-    "tipo": "SERVIDOR",
-    "valor": 26660.1,
-    "trechos": 14,
-    "destinos": [
-     "BONITO",
-     "Brasília",
-     "Três Lagoas",
-     "Aquidauana",
-     "Maracaju"
     ]
    },
    {
@@ -12078,22 +11892,6 @@
      "Quadrante MS 867A/BRASILANDIA",
      "Quadrante MS 866/BRASILANDIA",
      "Campo Grande"
-    ]
-   },
-   {
-    "nome": "DOUGLAS LAERTES DE FREITAS",
-    "cpf": "***.275.431-**",
-    "orgao": "SEJUSP",
-    "cargo": "OFICIAIS SUBALTERNOS",
-    "tipo": "SERVIDOR",
-    "valor": 26350.0,
-    "trechos": 11,
-    "destinos": [
-     "Corumbá",
-     "Dourados",
-     "Santa Cruz do Sul",
-     "Caxias do Sul",
-     "São Paulo"
     ]
    },
    {
@@ -12156,19 +11954,6 @@
     ]
    },
    {
-    "nome": "RENAN DE SOUZA NANTES SOARES",
-    "cpf": "***.234.251-**",
-    "orgao": "SEJUSP",
-    "cargo": "CABOS E SOLDADOS",
-    "tipo": "SERVIDOR",
-    "valor": 26100.0,
-    "trechos": 13,
-    "destinos": [
-     "Douradina",
-     "Corumbá"
-    ]
-   },
-   {
     "nome": "CRHISTINNE CAVALHEIRO MAYMONE GONCALVES",
     "cpf": "***.612.561-**",
     "orgao": "FESA",
@@ -12180,8 +11965,8 @@
      "ASSUNÇÃO",
      "Brasília",
      "Três Lagoas",
-     "Dourados",
-     "São Paulo"
+     "São Paulo",
+     "Dourados"
     ]
    },
    {
@@ -12195,8 +11980,8 @@
     "destinos": [
      "Jardim",
      "Antônio João",
-     "Porto Murtinho",
      "Bela Vista",
+     "Porto Murtinho",
      "Ponta Porã"
     ]
    },
@@ -12209,32 +11994,8 @@
     "valor": 25747.5,
     "trechos": 4,
     "destinos": [
-     "São Paulo",
-     "Toronto"
-    ]
-   },
-   {
-    "nome": "ROGERS BONFIM FERREIRA",
-    "cpf": "***.776.421-**",
-    "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 25650.0,
-    "trechos": 7,
-    "destinos": [
-     "Corumbá"
-    ]
-   },
-   {
-    "nome": "WANDERLEY ALVES PINTO",
-    "cpf": "***.734.861-**",
-    "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 25650.0,
-    "trechos": 5,
-    "destinos": [
-     "Corumbá"
+     "Toronto",
+     "São Paulo"
     ]
    },
    {
@@ -12248,9 +12009,24 @@
     "destinos": [
      "Corumbá",
      "Bela Vista",
-     "Ivinhema",
      "Porto Murtinho",
+     "Ivinhema",
      "PARAÍSO DAS ÁGUAS"
+    ]
+   },
+   {
+    "nome": "DOUGLAS LAERTES DE FREITAS",
+    "cpf": "***.275.431-**",
+    "orgao": "SEJUSP",
+    "cargo": "OFICIAIS SUBALTERNOS",
+    "tipo": "SERVIDOR",
+    "valor": 25350.0,
+    "trechos": 10,
+    "destinos": [
+     "Corumbá",
+     "Santa Cruz do Sul",
+     "São Paulo",
+     "Dourados"
     ]
    },
    {
@@ -12286,18 +12062,6 @@
     "cpf": "***.333.361-**",
     "orgao": "SEJUSP",
     "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 25200.0,
-    "trechos": 6,
-    "destinos": [
-     "Corumbá"
-    ]
-   },
-   {
-    "nome": "NILSON DA SILVA FREITAS",
-    "cpf": "***.196.701-**",
-    "orgao": "SEJUSP",
-    "cargo": "OFICIAIS SUBALTERNOS",
     "tipo": "SERVIDOR",
     "valor": 25200.0,
     "trechos": 6,
@@ -12347,7 +12111,7 @@
      "Corumbá",
      "Ponta Porã",
      "Miranda",
-     "Maracaju"
+     "Nova Andradina"
     ]
    },
    {
@@ -12392,8 +12156,8 @@
     "trechos": 62,
     "destinos": [
      "Sidrolândia",
-     "Jaraguari",
      "Bandeirantes",
+     "Jaraguari",
      "Camapuã",
      "Rochedo"
     ]
@@ -12452,8 +12216,8 @@
      "São Paulo",
      "BONITO",
      "Dourados",
-     "Belo Horizonte",
-     "Salvador"
+     "Rio de Janeiro",
+     "Jaraguari"
     ]
    },
    {
@@ -12481,41 +12245,11 @@
     "valor": 24500.0,
     "trechos": 24,
     "destinos": [
-     "Ponta Porã",
      "Dourados",
+     "Ponta Porã",
      "Sidrolândia",
      "BONITO",
-     "Bataguassu"
-    ]
-   },
-   {
-    "nome": "DENIER JAUBERT RAMIRES",
-    "cpf": "***.328.351-**",
-    "orgao": "SEJUSP",
-    "cargo": "CABOS E SOLDADOS",
-    "tipo": "SERVIDOR",
-    "valor": 24475.0,
-    "trechos": 8,
-    "destinos": [
-     "Campo Grande",
-     "BONITO",
-     "Amolar"
-    ]
-   },
-   {
-    "nome": "ORDILEI OROSCO FIGUEIRA",
-    "cpf": "***.156.661-**",
-    "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 24450.0,
-    "trechos": 17,
-    "destinos": [
-     "Nova Andradina",
-     "Corumbá",
-     "Bataguassu",
-     "Três Lagoas",
-     "Brasília"
+     "Ivinhema"
     ]
    },
    {
@@ -12528,22 +12262,8 @@
     "trechos": 7,
     "destinos": [
      "Corumbá",
-     "Dourados",
-     "Santa Cruz do Sul"
-    ]
-   },
-   {
-    "nome": "UILIAN LUIZ BATISTA",
-    "cpf": "***.068.681-**",
-    "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 24425.0,
-    "trechos": 7,
-    "destinos": [
-     "Corumbá",
-     "Campo Grande",
-     "Aparecida do Taboado"
+     "Santa Cruz do Sul",
+     "Dourados"
     ]
    },
    {
@@ -12559,38 +12279,7 @@
      "Sonora",
      "Dourados",
      "Bataguassu",
-     "NAVIRAI"
-    ]
-   },
-   {
-    "nome": "REGINALDO CORREA",
-    "cpf": "***.606.001-**",
-    "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 24375.0,
-    "trechos": 12,
-    "destinos": [
-     "Dourados",
-     "Campo Grande",
-     "Douradina",
-     "Corumbá",
-     "Vicentina"
-    ]
-   },
-   {
-    "nome": "ARLINDO JOSE FERREIRA",
-    "cpf": "***.705.499-**",
-    "orgao": "SEJUSP",
-    "cargo": "SUBTENENTE E SARGENTOS",
-    "tipo": "SERVIDOR",
-    "valor": 24350.0,
-    "trechos": 9,
-    "destinos": [
-     "Itaquiraí",
-     "Corumbá",
-     "NAVIRAI",
-     "Campo Grande"
+     "Mundo Novo"
     ]
    },
    {
@@ -12620,9 +12309,9 @@
     "destinos": [
      "Dourados",
      "Três Lagoas",
+     "Itaporã",
      "Angélica",
-     "Coxim",
-     "Itaporã"
+     "Coxim"
     ]
    },
    {
@@ -12652,9 +12341,9 @@
     "destinos": [
      "Sidrolândia",
      "Terenos",
-     "Corumbá",
-     "Ladário",
-     "Cassilândia"
+     "Aral Moreira",
+     "Coronel Sapucaia",
+     "Bataguassu"
     ]
    },
    {
@@ -12668,25 +12357,348 @@
     "destinos": [
      "Água Clara",
      "Ribas do Rio Pardo",
-     "Antônio João",
-     "Coronel Sapucaia",
+     "Fátima do Sul",
+     "Jateí",
+     "Cassilândia"
+    ]
+   },
+   {
+    "nome": "LEONARDO SAMPAIO COSTA",
+    "cpf": "***.832.521-**",
+    "orgao": "IMASUL",
+    "cargo": "FISCAL AMBIENTAL",
+    "tipo": "SERVIDOR",
+    "valor": 24025.0,
+    "trechos": 22,
+    "destinos": [
+     "BONITO",
+     "Dourados",
+     "Brasília",
+     "São Paulo",
+     "Cuiabá"
+    ]
+   },
+   {
+    "nome": "ORLANDO GUILHERMINDO FIGUEIREDO",
+    "cpf": "***.046.818-**",
+    "orgao": "FESA",
+    "cargo": "AUXILIAR DE SERVIÇOS DE SAÚDE",
+    "tipo": "SERVIDOR",
+    "valor": 23900.0,
+    "trechos": 31,
+    "destinos": [
+     "Dourados",
+     "Ponta Porã",
+     "Três Lagoas",
+     "Corumbá",
+     "Inocência"
+    ]
+   },
+   {
+    "nome": "JESSICA DE MOURA MARTINS",
+    "cpf": "***.270.791-**",
+    "orgao": "SEJUSP",
+    "cargo": "OFICIAIS SUBALTERNOS",
+    "tipo": "SERVIDOR",
+    "valor": 23900.0,
+    "trechos": 11,
+    "destinos": [
+     "São Paulo",
+     "Brasília",
+     "Caarapó",
+     "Corumbá",
+     "Dourados"
+    ]
+   },
+   {
+    "nome": "MANUELA NICODEMOS BAILOSA",
+    "cpf": "***.836.101-**",
+    "orgao": "SEC",
+    "cargo": "DIR.GER.SUP. E ASSESSORAMENTO - CCA - 07",
+    "tipo": "SERVIDOR",
+    "valor": 23876.2,
+    "trechos": 26,
+    "destinos": [
+     "Brasília",
+     "Ribas do Rio Pardo",
+     "Fátima do Sul",
+     "Maracaju",
+     "Laguna Carapã"
+    ]
+   },
+   {
+    "nome": "GABRIEL FERREIRA LOPES",
+    "cpf": "***.826.801-**",
+    "orgao": "SEJUSP",
+    "cargo": "OFICIAIS INTERMEDIÁRIOS",
+    "tipo": "SERVIDOR",
+    "valor": 23875.0,
+    "trechos": 13,
+    "destinos": [
+     "Campo Grande",
+     "Londrina",
+     "Costa Rica",
+     "Corumbá",
+     "Rio do Sul"
+    ]
+   },
+   {
+    "nome": "JULIO CESAR TELES ARGUELHO",
+    "cpf": "***.552.521-**",
+    "orgao": "FUNFAZ",
+    "cargo": "SUBTENENTE E SARGENTOS",
+    "tipo": "SERVIDOR",
+    "valor": 23800.0,
+    "trechos": 21,
+    "destinos": [
+     "Dourados",
+     "Amambaí",
+     "Mundo Novo",
+     "NAVIRAI",
      "Ponta Porã"
     ]
    },
    {
-    "nome": "LUIS ALBERTO ALBANO DA SILVA",
-    "cpf": "***.766.131-**",
+    "nome": "GERSON BUENO ZAHDI FILHO",
+    "cpf": "***.465.371-**",
+    "orgao": "IAGRO",
+    "cargo": "FISCAL ESTADUAL AGROPECUÁRIO",
+    "tipo": "SERVIDOR",
+    "valor": 23720.0,
+    "trechos": 45,
+    "destinos": [
+     "Corumbá",
+     "Quadrante MS 695/CAMPO GRANDE",
+     "Quadrante MS 737B/CAMPO GRANDE",
+     "Quadrante MS 652B/CAMPO GRANDE",
+     "Quadrante MS 816/CAMPO GRANDE"
+    ]
+   },
+   {
+    "nome": "JEAN CARLOS CESARIO DA SILVA",
+    "cpf": "***.330.541-**",
     "orgao": "SEJUSP",
     "cargo": "CABOS E SOLDADOS",
     "tipo": "SERVIDOR",
-    "valor": 24030.0,
+    "valor": 23700.0,
+    "trechos": 6,
+    "destinos": [
+     "Corumbá",
+     "BONITO"
+    ]
+   },
+   {
+    "nome": "CARLOS MATHEUS DE SOUZA SOBRINHO",
+    "cpf": "***.759.471-**",
+    "orgao": "IAGRO",
+    "cargo": "FISCAL ESTADUAL AGROPECUÁRIO",
+    "tipo": "SERVIDOR",
+    "valor": 23600.0,
+    "trechos": 50,
+    "destinos": [
+     "Campo Grande",
+     "Aparecida do Taboado",
+     "Bataguassu",
+     "Selvíria",
+     "Água Clara"
+    ]
+   },
+   {
+    "nome": "TALITA OLIVEIRA DOMINGUES",
+    "cpf": "***.535.191-**",
+    "orgao": "AGESUL",
+    "cargo": "CONTRATO PUBLICO",
+    "tipo": "SERVIDOR",
+    "valor": 23560.0,
+    "trechos": 47,
+    "destinos": [
+     "Dourados",
+     "Camapuã",
+     "Corumbá",
+     "Ponta Porã",
+     "BONITO"
+    ]
+   },
+   {
+    "nome": "GUILHERME ALEXANDRE BEZERRA DA CRUZ",
+    "cpf": "***.592.301-**",
+    "orgao": "AGESUL",
+    "cargo": "CONTRATO PUBLICO",
+    "tipo": "SERVIDOR",
+    "valor": 23500.0,
+    "trechos": 19,
+    "destinos": [
+     "Corumbá",
+     "NAVIRAI",
+     "BONITO"
+    ]
+   },
+   {
+    "nome": "JOAO CARLOS PERALTA",
+    "cpf": "***.932.261-**",
+    "orgao": "SEJUSP",
+    "cargo": "SUBTENENTE E SARGENTOS",
+    "tipo": "SERVIDOR",
+    "valor": 23250.0,
+    "trechos": 5,
+    "destinos": [
+     "Corumbá",
+     "BONITO"
+    ]
+   },
+   {
+    "nome": "CLAUDIO QUINTINO HILDEBRANDO",
+    "cpf": "***.845.811-**",
+    "orgao": "IAGRO",
+    "cargo": "AUXILIAR DE SERVIÇOS AGROPECUÁRIOS",
+    "tipo": "SERVIDOR",
+    "valor": 23150.0,
+    "trechos": 53,
+    "destinos": [
+     "Selvíria",
+     "Água Clara",
+     "Quadrante MS 622/TRÊS LAGOAS",
+     "Santa Rita do Pardo",
+     "Bataguassu"
+    ]
+   },
+   {
+    "nome": "GELSON DE OLIVEIRA BORGES",
+    "cpf": "***.889.761-**",
+    "orgao": "SEJUSP",
+    "cargo": "SUBTENENTE E SARGENTOS",
+    "tipo": "SERVIDOR",
+    "valor": 23100.0,
+    "trechos": 6,
+    "destinos": [
+     "Corumbá"
+    ]
+   },
+   {
+    "nome": "MARCOS RODRIGUES DA SILVA",
+    "cpf": "***.853.768-**",
+    "orgao": "IAGRO",
+    "cargo": "AGENTE FISCAL AGROPECUÁRIO",
+    "tipo": "SERVIDOR",
+    "valor": 23025.0,
+    "trechos": 84,
+    "destinos": [
+     "Antônio João",
+     "Cabeceira do Apa / PONTA PORÃ",
+     "Itamarati - Ponta Porã",
+     "Porto Murtinho",
+     "Assentamento ITAMARATI - PONTA PORÃ"
+    ]
+   },
+   {
+    "nome": "ALEXANDRO MARCOS MARIA",
+    "cpf": "***.142.701-**",
+    "orgao": "FUNFAZ",
+    "cargo": "SUBTENENTE E SARGENTOS",
+    "tipo": "SERVIDOR",
+    "valor": 23000.0,
+    "trechos": 19,
+    "destinos": [
+     "Dourados",
+     "Amambaí",
+     "Mundo Novo",
+     "NAVIRAI",
+     "Ponta Porã"
+    ]
+   },
+   {
+    "nome": "EDUARDO NAVARRO DA SILVA",
+    "cpf": "***.071.578-**",
+    "orgao": "SEJUSP",
+    "cargo": "SUBTENENTE E SARGENTOS",
+    "tipo": "SERVIDOR",
+    "valor": 22850.0,
+    "trechos": 26,
+    "destinos": [
+     "Corumbá",
+     "Ponta Porã",
+     "Dourados",
+     "Nioaque",
+     "Amambaí"
+    ]
+   },
+   {
+    "nome": "LAÍS ARIADNE GONÇALVES ÁVALOS",
+    "cpf": "***.347.491-**",
+    "orgao": "IAGRO",
+    "cargo": "FISCAL ESTADUAL AGROPECUÁRIO",
+    "tipo": "SERVIDOR",
+    "valor": 22835.0,
+    "trechos": 56,
+    "destinos": [
+     "Rio Verde de Mato Grosso",
+     "Quadrante MS 389/RIO NEGRO",
+     "Campo Grande",
+     "Quadrante MS 346B/RIO NEGRO",
+     "Quadrante MS 432B/RIO NEGRO"
+    ]
+   },
+   {
+    "nome": "REGIS GLAUCIR QUADRA VILHAGRA",
+    "cpf": "***.083.691-**",
+    "orgao": "FESA",
+    "cargo": "AGENTE DE SERVIÇOS GRÁFICOS",
+    "tipo": "SERVIDOR",
+    "valor": 22825.0,
+    "trechos": 20,
+    "destinos": [
+     "Três Lagoas",
+     "Corumbá",
+     "Caarapó",
+     "NAVIRAI"
+    ]
+   },
+   {
+    "nome": "CRISTIANO MOREIRA DE OLIVEIRA",
+    "cpf": "***.068.001-**",
+    "orgao": "IAGRO",
+    "cargo": "FISCAL ESTADUAL AGROPECUÁRIO",
+    "tipo": "SERVIDOR",
+    "valor": 22709.65,
     "trechos": 18,
     "destinos": [
-     "Amolar",
-     "Campo Grande",
-     "MORRO DO AZEITE / MIRANDA",
-     "Miranda",
-     "Amambaí"
+     "Ponta Porã",
+     "Aquidauana",
+     "Brasília",
+     "Camapuã",
+     "Maceió"
+    ]
+   },
+   {
+    "nome": "EDUARDO MENDES PINTO",
+    "cpf": "***.308.778-**",
+    "orgao": "FCMS",
+    "cargo": "ADMINISTRAÇÃO SUPERIOR INDIRETA - CCA-DP",
+    "tipo": "SERVIDOR",
+    "valor": 22700.0,
+    "trechos": 28,
+    "destinos": [
+     "Corumbá",
+     "BONITO",
+     "Brasília",
+     "NAVIRAI",
+     "Alcinópolis"
+    ]
+   },
+   {
+    "nome": "STENIO RIBEIRO LATA",
+    "cpf": "***.767.761-**",
+    "orgao": "AGESUL",
+    "cargo": "CONTRATO PUBLICO",
+    "tipo": "SERVIDOR",
+    "valor": 22580.0,
+    "trechos": 32,
+    "destinos": [
+     "Paranaíba",
+     "Selvíria",
+     "Dourados",
+     "Corumbá",
+     "Ponta Porã"
     ]
    }
   ]

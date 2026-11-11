@@ -1,12 +1,12 @@
 {
  "ano": 2026,
- "ultimaAtualizacao": "2026-11-11T11:20:10",
+ "ultimaAtualizacao": "2026-11-11T11:42:30",
  "fonte": "https://sig-transparencia.campogrande.ms.gov.br/contratos/consulta",
  "fonteLicitacoes": "https://sig-transparencia.campogrande.ms.gov.br/licitacoes/consulta",
  "resumo": {
-  "contratos": 348,
-  "contratosCompras": 294,
-  "valorCompras": 617466265.94,
+  "contratos": 349,
+  "contratosCompras": 295,
+  "valorCompras": 618003904.71,
   "valorNaoCompras": 2607965824.61,
   "porTipo": {
    "DIVIDA": {
@@ -20,8 +20,8 @@
     "compra": true
    },
    "SERVIÇO": {
-    "quantidade": 98,
-    "valor": 209510669.54,
+    "quantidade": 99,
+    "valor": 210048308.31,
     "compra": true
    },
    "AQUISIÇÃO": {
@@ -80,7 +80,7 @@
   },
   "valorEstimadoLicitacoes": 1044407222.26,
   "comVencedor": 210,
-  "contratosComCnpj": 327
+  "contratosComCnpj": 328
  },
  "fornecedores": [
   {
@@ -637,6 +637,13 @@
    "licitacoesVencidas": 3
   },
   {
+   "nome": "BANCO DO BRASIL S.A",
+   "cnpj": "00000000481602",
+   "contratos": 2,
+   "valorContratos": 541742.96,
+   "licitacoesVencidas": 0
+  },
+  {
    "nome": "FORTALEZA COMERCIAL ATACADISTA LTDA",
    "cnpj": "15930373000139",
    "contratos": 2,
@@ -1118,13 +1125,6 @@
    "contratos": 1,
    "valorContratos": 4349.9,
    "licitacoesVencidas": 1
-  },
-  {
-   "nome": "BANCO DO BRASIL SA",
-   "cnpj": "00000000481602",
-   "contratos": 1,
-   "valorContratos": 4104.19,
-   "licitacoesVencidas": 0
   },
   {
    "nome": "CRISTÁLIA PRODUTOS QUÍMICOS FARMACÊUTICOS LTDA",
@@ -3411,6 +3411,18 @@
    "valor": 543718.62,
    "situacao": "ATIVO",
    "registro": 214744
+  },
+  {
+   "tipo": "SERVIÇO",
+   "compra": true,
+   "objeto": "Prestação dos serviços de pagamentos, recebimentos e gestão financeira para a utilização de soluções de mobilidade urbana, por meio de plataforma inteligente de seleção de viagens, com solução complementar para cotação e seleção das melhores condições de deslocamento (corridas de carro privado e táxi), entre os parceiros integrados, por meio do aplicativo.",
+   "fornecedor": "BANCO DO BRASIL S.A",
+   "cnpj": "00000000481602",
+   "inicio": "2026-11-06",
+   "fim": "2027-11-05",
+   "valor": 537638.77,
+   "situacao": "ATIVO",
+   "registro": 216046
   },
   {
    "tipo": "SERVIÇO",
