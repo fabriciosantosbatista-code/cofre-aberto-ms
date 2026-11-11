@@ -174,7 +174,7 @@ p{margin:0;}
 .bar-list-row.clickable:hover{background:var(--surface-2);}
 .bar-list-label{color:var(--ink);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .bar-list.largo .bar-list-row{grid-template-columns:minmax(170px,340px) 1fr auto;}
-@media (max-width:640px){.bar-list.largo .bar-list-row{grid-template-columns:120px 1fr auto;}}
+@media (max-width:640px){.bar-list.largo .bar-list-row{grid-template-columns:1fr auto;}}
 .bar-list-track{background:var(--surface-3);height:7px;border-radius:4px;overflow:hidden;}
 .bar-list-fill{background:linear-gradient(90deg,var(--accent),#8fb0ff);height:100%;border-radius:4px;transition:width .4s ease;}
 .bar-list-fill.alt,.bar-list-fill.amber{background:linear-gradient(90deg,var(--amber),#ffe18a);}
@@ -303,6 +303,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 .card-pad{padding:20px 24px;}
 .card.card-x-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .card-x-scroll table.notes-table{white-space:nowrap;}
+.card-x-scroll table.notes-table td.quebra,.detail-panel table.notes-table td.quebra{white-space:normal;min-width:200px;max-width:380px;overflow-wrap:anywhere;line-height:1.45}
+.card-x-scroll table.notes-table td.quebra-curta,.detail-panel table.notes-table td.quebra-curta{white-space:normal;min-width:140px;max-width:240px;overflow-wrap:anywhere;line-height:1.45}
 
 /* FOOTER */
 .site-footer{padding-top:20px;font-size:.74rem;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid var(--border);margin-top:8px;}
@@ -386,8 +388,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   #ranking-verba-camara td.progress-cell{display:table-cell;}
 }
 @media(max-width:600px){
-  .bar-list-row{grid-template-columns:90px 1fr auto;}
-  .bar-list-label{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25;}
+  .bar-list-row{grid-template-columns:1fr auto;row-gap:4px;}
+  .bar-list-label{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25;grid-column:1/-1;overflow-wrap:anywhere;}
   .bar-list-value{white-space:nowrap;}
   .progress-cell{display:none;}
   .stat-grid{grid-template-columns:1fr 1fr;}
@@ -4130,9 +4132,9 @@ function renderContratosCG(d) {
       (!f || c.fornecedor.toLowerCase().includes(f) || c.objeto.toLowerCase().includes(f) || (fd.length >= 4 && (c.cnpj || "").includes(fd))));
     paginarTabela(document.querySelector("#tabela-ct-contratos tbody"), document.getElementById("ct-contratos-mais"), lista, c => `
       <tr><td style="white-space:nowrap">${formatDate(c.inicio)}</td>
-        <td style="font-size:.75rem">${escHTML(c.tipo)}${c.situacao && c.situacao !== "ATIVO" ? `<br><span style="opacity:.7">${escHTML(c.situacao)}</span>` : ""}</td>
-        <td style="font-size:.8rem"><b>${escHTML(c.fornecedor)}</b><br><span class="rank-meta">${linksCNPJ(c.cnpj)}</span></td>
-        <td style="font-size:.78rem;max-width:360px">${escHTML(c.objeto)}</td>
+        <td class="quebra-curta" style="font-size:.75rem;min-width:110px">${escHTML(c.tipo)}${c.situacao && c.situacao !== "ATIVO" ? `<br><span style="opacity:.7">${escHTML(c.situacao)}</span>` : ""}</td>
+        <td class="quebra-curta" style="font-size:.8rem"><b>${escHTML(c.fornecedor)}</b><br><span class="rank-meta">${linksCNPJ(c.cnpj)}</span></td>
+        <td class="quebra" style="font-size:.78rem">${escHTML(c.objeto)}</td>
         <td style="white-space:nowrap">${formatDate(c.fim)}</td>
         <td class="num">${formatBRL(c.valor)}</td></tr>`,
       `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Nenhum contrato encontrado.</td></tr>`);
@@ -4154,10 +4156,10 @@ function renderContratosCG(d) {
     paginarTabela(document.querySelector("#tabela-ct-licit tbody"), document.getElementById("ct-licit-mais"), lista, l => `
       <tr><td style="white-space:nowrap">${formatDate(l.data)}</td>
         <td style="font-size:.75rem">${escHTML(l.modalidade)}<br><span style="opacity:.7">nº ${escHTML(l.numero)}</span></td>
-        <td style="font-size:.78rem;max-width:360px">${escHTML(l.objeto)}<br><span style="opacity:.6">processo ${escHTML(l.processo)} · ${escHTML(l.gestor)}</span></td>
+        <td class="quebra" style="font-size:.78rem">${escHTML(l.objeto)}<br><span style="opacity:.6">processo ${escHTML(l.processo)} · ${escHTML(l.gestor)}</span></td>
         <td style="font-size:.75rem">${escHTML(l.status)}</td>
         <td class="num">${l.valorEstimado ? formatBRL(l.valorEstimado) : "—"}</td>
-        <td style="font-size:.76rem">${l.vencedores.length ? l.vencedores.slice(0, 6).map(v => `${escHTML(v.nome)}<br><span class="rank-meta">${linksCNPJ(v.cnpj)}</span>`).join("<br>") + (l.vencedores.length > 6 ? `<br>+ ${l.vencedores.length - 6} empresas` : "") : `<span style="opacity:.6">—</span>`}</td></tr>`,
+        <td class="quebra-curta" style="font-size:.76rem">${l.vencedores.length ? l.vencedores.slice(0, 6).map(v => `${escHTML(v.nome)}<br><span class="rank-meta">${linksCNPJ(v.cnpj)}</span>`).join("<br>") + (l.vencedores.length > 6 ? `<br>+ ${l.vencedores.length - 6} empresas` : "") : `<span style="opacity:.6">—</span>`}</td></tr>`,
       `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Nenhuma licitação encontrada.</td></tr>`);
   };
   [bl, fm, fs].forEach(el => el.addEventListener(el.tagName === "SELECT" ? "change" : "input", desenhaLicit));
@@ -4256,7 +4258,7 @@ function renderEmendasMunicipios(d) {
   document.getElementById("em-data").textContent = d.ultimaAtualizacao ? formatDateTime(d.ultimaAtualizacao) : "—";
 
   const favTabela = lst => `<div style="overflow-x:auto"><table class="notes-table"><thead><tr><th>Quem recebeu</th><th>Município</th><th class="num">Valor</th></tr></thead><tbody>` +
-    lst.map(f => `<tr><td>${escHTML(f.nome)}<br><span class="rank-meta">${linksCNPJ(f.doc)}${f.natureza ? ` · ${escHTML(f.natureza)}` : ""}</span></td><td style="font-size:.78rem">${escHTML(f.municipio || "")}</td><td class="num">${formatBRL(f.valor)}</td></tr>`).join("") +
+    lst.map(f => `<tr><td class="quebra">${escHTML(f.nome)}<br><span class="rank-meta">${linksCNPJ(f.doc)}${f.natureza ? ` · ${escHTML(f.natureza)}` : ""}</span></td><td style="font-size:.78rem">${escHTML(f.municipio || "")}</td><td class="num">${formatBRL(f.valor)}</td></tr>`).join("") +
     `</tbody></table></div>`;
 
   // autores: atuais primeiro, depois comissões/bancada/ex-parlamentares
@@ -4595,8 +4597,8 @@ function renderGovernoMS(d) {
       const lista = (di.maiores || []).filter(p => !f || [p.nome, p.cargo, p.orgao, ...(p.destinos || [])].some(x => (x || "").toLowerCase().includes(f)));
       tbD.innerHTML = lista.slice(0, 200).map(p => `
         <tr><td><b>${escHTML(p.nome)}</b><br><span class="rank-meta">${escHTML(p.cpf)} · ${escHTML(p.tipo)}</span></td>
-          <td style="font-size:.76rem">${escHTML(p.cargo)}</td><td style="font-size:.78rem">${escHTML(p.orgao)}</td>
-          <td class="num">${p.trechos}</td><td style="font-size:.76rem">${escHTML((p.destinos || []).join(", "))}</td>
+          <td class="quebra-curta" style="font-size:.76rem">${escHTML(p.cargo)}</td><td style="font-size:.78rem">${escHTML(p.orgao)}</td>
+          <td class="num">${p.trechos}</td><td class="quebra-curta" style="font-size:.76rem">${escHTML((p.destinos || []).join(", "))}</td>
           <td class="num">${formatBRL(p.valor)}</td></tr>`).join("") ||
         `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Ninguém encontrado entre os 200 maiores.</td></tr>`;
     };
@@ -5382,7 +5384,7 @@ async function carregarSenadoBrasil() {
 init();
 
 
-function skeletonRows(n=8){return Array.from({length:n},()=>'<div class="skeleton-row"><div class="skeleton skeleton-avatar"></div><div class="skeleton-text"><div class="skeleton skeleton-line long"></div><div class="skeleton skeleton-line short"></div></div><div class="skeleton skeleton-val"></div></div>').join("");}  function addTooltips(){document.querySelectorAll('.ranking td.num').forEach(td=>{const val=td.textContent.trim();if(val.startsWith('R$')&&!td.querySelector('.tooltip-wrap')){const num=parseFloat(val.replace('R$','').replace(/\./g,'').replace(',','.').trim());if(!isNaN(num)&&num>1000){const mensal=(num/12).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});const wrap=document.createElement('span');wrap.className='tooltip-wrap';wrap.innerHTML=td.innerHTML+'<span class="tooltip-content">\u2248 '+mensal+'/m\xeas</span>';td.innerHTML='';td.appendChild(wrap);}}});} function initScrollTop(){const btn=document.createElement('button');btn.className='scroll-top';btn.innerHTML='\u2191';btn.title='Voltar ao topo';btn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});document.body.appendChild(btn);window.addEventListener('scroll',()=>{btn.classList.toggle('visible',window.scrollY>400);},{passive:true});} function addPrintBtn(panel){const ex=panel.querySelector('.print-btn');if(ex)ex.remove();const btn=document.createElement('button');btn.className='print-btn';btn.innerHTML='\uD83D\uDDA8\uFE0F Imprimir';btn.onclick=()=>window.print();panel.appendChild(btn);} document.querySelectorAll('.detail-panel').forEach(panel=>{new MutationObserver(()=>{if(panel.classList.contains('active')){setTimeout(()=>{addPrintBtn(panel);addTooltips();},200);}}).observe(panel,{attributes:true,attributeFilter:['class']});}); document.addEventListener('DOMContentLoaded',()=>{initScrollTop();['tab-deputados-brasil','tab-senado-brasil'].forEach(id=>{const tbody=document.querySelector('#'+id+' .ranking tbody');if(tbody&&!tbody.children.length)tbody.innerHTML=skeletonRows();});});
+function skeletonRows(n=8){return Array.from({length:n},()=>'<div class="skeleton-row"><div class="skeleton skeleton-avatar"></div><div class="skeleton-text"><div class="skeleton skeleton-line long"></div><div class="skeleton skeleton-line short"></div></div><div class="skeleton skeleton-val"></div></div>').join("");}  function addTooltips(){document.querySelectorAll(['deputados','senadores','camara','deputados-estaduais','deputados-brasil','senado-brasil'].map(t=>'#tab-'+t+' .ranking td.num').join(',')).forEach(td=>{const val=td.textContent.trim();if(val.startsWith('R$')&&!td.querySelector('.tooltip-wrap')){const num=parseFloat(val.replace('R$','').replace(/\./g,'').replace(',','.').trim());if(!isNaN(num)&&num>1000){const mensal=(num/12).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});const wrap=document.createElement('span');wrap.className='tooltip-wrap';wrap.innerHTML=td.innerHTML+'<span class="tooltip-content">\u2248 '+mensal+'/m\xeas</span>';td.innerHTML='';td.appendChild(wrap);}}});} function initScrollTop(){const btn=document.createElement('button');btn.className='scroll-top';btn.innerHTML='\u2191';btn.title='Voltar ao topo';btn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});document.body.appendChild(btn);window.addEventListener('scroll',()=>{btn.classList.toggle('visible',window.scrollY>400);},{passive:true});} function addPrintBtn(panel){const ex=panel.querySelector('.print-btn');if(ex)ex.remove();const btn=document.createElement('button');btn.className='print-btn';btn.innerHTML='\uD83D\uDDA8\uFE0F Imprimir';btn.onclick=()=>window.print();panel.appendChild(btn);} document.querySelectorAll('.detail-panel').forEach(panel=>{new MutationObserver(()=>{if(panel.classList.contains('active')){setTimeout(()=>{addPrintBtn(panel);addTooltips();},200);}}).observe(panel,{attributes:true,attributeFilter:['class']});}); document.addEventListener('DOMContentLoaded',()=>{initScrollTop();['tab-deputados-brasil','tab-senado-brasil'].forEach(id=>{const tbody=document.querySelector('#'+id+' .ranking tbody');if(tbody&&!tbody.children.length)tbody.innerHTML=skeletonRows();});});
 </script>
 </body>
 </html>
