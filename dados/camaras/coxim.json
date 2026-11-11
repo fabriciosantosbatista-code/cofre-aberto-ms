@@ -1,7 +1,7 @@
 {
   "cidade": "Coxim",
-  "ultimaAtualizacao": "2026-11-11T13:06:21",
-  "fonte": "Portal Transparência Fiorilli (pmcoxim.rcmsuporte.com.br:8079) — Dados Abertos — 2026-11-11T13:06:21",
+  "ultimaAtualizacao": "2026-11-11T10:32:14",
+  "fonte": "Portal Transparência Fiorilli (pmcoxim.rcmsuporte.com.br:8079) — Dados Abertos — 2026-11-11T10:32:14",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camaracoxim.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -812,6 +812,11 @@
       "referenciaFolha": "Folha Mensal - Outubro",
       "diarias": [
         {
+          "data": "2026-11-10",
+          "valor": 2250.0,
+          "descricao": "valor refere ao pagto de tres diarias para vvereador cumprir agena em campo grande nos dias 11 de novembro na AGEMS, no dia 12 de novembro na SETESC e no dia 13 de novembro com dep dagoberto"
+        },
+        {
           "data": "2026-11-03",
           "valor": 2250.0,
           "descricao": "valor refere ao pagto de tres diarias para vereador cumrpir agenda em campo grande nos dias 03/11 participar do II forum MS/Sustenbilidade, no dia 04/11 agenda com deputado junior mochi, noo dia 05/11 agenda na governadoria do estado de MS e no dia 06/11 agenda com senador nelson trad"
@@ -992,8 +997,8 @@
           "descricao": "VALOR SE REFERE AO EMPENHO DE TRES DIARIAS PARA VEREADOR CUMPRIUR AGENDA EM CAMPO GRANDE NOS DIAS 04/02 COM DEPUTADO DAGOBERTO NOGUEIRA, DIA 05/02 DEPUTADO JUINIOR MOCHI E  NO DIA 06/02 NA GOVERNADORIA DO ESTADO DE MS"
         }
       ],
-      "totalDiarias2026": 55000.0,
-      "numDiarias2026": 36
+      "totalDiarias2026": 57250.0,
+      "numDiarias2026": 37
     },
     {
       "nome": "MARIA DE LOURDES DA SILVA",
@@ -1484,7 +1489,7 @@
   ],
   "despesasInstitucionais": {
     "totalGeral": 7824670.3,
-    "totalNotas": 696,
+    "totalNotas": 697,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 4303932.87,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 1112929.84,
@@ -6843,7 +6848,7 @@
         "descricao": "valor referente ao suprimento de fundo numero 02-2026"
       },
       {
-        "data": "2026-08-31",
+        "data": "2026-08-20",
         "fornecedor": "TREVIA SOLUCOES TECNOLOGICAS LTDA",
         "cnpj": "62.713.546/0001-47",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
@@ -6851,7 +6856,7 @@
         "descricao": "contratação de empresa para fornecimento de IA, destinada ao apoio de gestão, versionamento, colaboração demais fases de planejamento em execução de licitações conforme contrato"
       },
       {
-        "data": "2026-08-20",
+        "data": "2026-08-31",
         "fornecedor": "TREVIA SOLUCOES TECNOLOGICAS LTDA",
         "cnpj": "62.713.546/0001-47",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
@@ -7065,6 +7070,14 @@
         "categoria": "Diárias — Civil",
         "valor": 0.0,
         "descricao": "valor refere ao pagto de tres diarias para vvereador cumprir agena em campo grande nos dias 11 de novembro na AGEMS, no dia 12 de novembro na SETESC e no dia 13 de novembro com dep dagoberto"
+      },
+      {
+        "data": "2026-11-10",
+        "fornecedor": "CÂMARA MUNICIPAL DE COXIM",
+        "cnpj": "03.969.623/0001-65",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 0.0,
+        "descricao": "valor refere ao empenho do auxilio alimentação de novambro de 2026"
       }
     ]
   }
