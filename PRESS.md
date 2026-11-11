@@ -13,7 +13,7 @@ O **Cofre Aberto MS** ([cofreabertoms.com.br](https://cofreabertoms.com.br)) é 
 - 8 deputados federais de Mato Grosso do Sul
 - 3 senadores de Mato Grosso do Sul
 - Prefeitura Municipal de Campo Grande
-- 347 magistrados ativos do TJMS, TRT24 e TRE-MS
+- 286 magistrados ativos do TJMS e do TRT24 (os juízes eleitorais do TRE-MS são juízes do TJMS)
 - Além de listas completas dos 513 deputados federais e 81 senadores do Brasil, e de câmaras municipais de 14 cidades do interior de MS.
 
 Todos os dados vêm diretamente de fontes oficiais — Portal da Transparência da Câmara de Campo Grande, da ALEMS, da Câmara dos Deputados e do Senado Federal — e são **coletados e publicados automaticamente todos os dias**, sem edição manual. Cada nota fiscal é individualizada: fornecedor, CNPJ, valor e, quando disponível, link para o documento original.
@@ -33,7 +33,7 @@ O projeto nasceu da constatação de que, embora esses dados sejam legalmente p�
 | **R$ 1,3 mi** | CEAPS dos 3 senadores de MS em 2026 |
 | **R$ 325,3 mi** | Emendas parlamentares pagas em Mato Grosso do Sul em 2026 |
 | **R$ 4,4 mi/mês** | Folha de pessoal dos 29 gabinetes da Câmara de Campo Grande (684 funcionários, outubro/2026) |
-| **R$ 24,0 mi/mês** | Folha bruta dos 347 magistrados ativos de MS (TJMS, TRT24, TRE-MS) |
+| **R$ 24,0 mi/mês** | Folha bruta dos 286 magistrados ativos de MS (TJMS e TRT24, com a gratificação eleitoral do TRE-MS) |
 | **545** | Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões) |
 | **100%** | Dos dados vêm de fontes oficiais — estimativas são sempre marcadas (ver Metodologia) |
 

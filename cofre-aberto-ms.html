@@ -1118,9 +1118,10 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="hero-label" id="judic-mes">Judiciário MS · Magistrados de todos os tribunais</div>
       <div class="hero-number" id="judic-folha">R$ —</div>
       <div class="hero-desc">
-        de folha bruta mensal para <b id="judic-qtd">—</b> magistrados ativos de Mato Grosso do Sul, somando
-        Justiça do Trabalho (TRT24), Justiça Eleitoral (TRE-MS) e Justiça Estadual (TJMS). Magistrados
-        inativos/pensionistas não entram nesta contagem.
+        de folha bruta mensal para <b id="judic-qtd">—</b> magistrados ativos de Mato Grosso do Sul — Justiça Estadual (TJMS)
+        e Justiça do Trabalho (TRT24) — somando a gratificação paga pela Justiça Eleitoral (TRE-MS). Os juízes eleitorais
+        são juízes do TJMS que acumulam a função: no TRE-MS eles recebem só a gratificação eleitoral, proporcional aos dias
+        no cargo, e o salário vem do TJMS. Inativos e pensionistas não entram nesta contagem.
       </div>
       <div class="mini-stats">
         <div>
@@ -1129,7 +1130,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         </div>
         <div>
           <div class="mini-stat-value" id="judic-trems">—</div>
-          <div class="mini-stat-label" id="judic-trems-label">TRE-MS (Eleitoral)</div>
+          <div class="mini-stat-label" id="judic-trems-label">TRE-MS (juízes eleitorais)</div>
         </div>
         <div>
           <div class="mini-stat-value" id="judic-tjms">—</div>
@@ -3000,6 +3001,12 @@ function renderJudiciario() {
 
   const panel = document.getElementById("detail-magistrado");
   const totalFolha = todosMagistrados.reduce((acc, m) => acc + (m.remuneracaoBruta || 0), 0);
+  // juízes eleitorais (TRE-MS) são juízes do TJMS: não contam como outra pessoa
+  const normNome = t => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().trim();
+  const eleitorais = new Map(todosMagistrados.filter(m => m.tribunal === "TRE-MS").map(m => [normNome(m.nome), m]));
+  const gratCheia = Math.max(0, ...[...eleitorais.values()].map(m => m.subsidio || 0));
+  const unicos = todosMagistrados.filter(m => m.tribunal !== "TRE-MS").length;
+  window._JUDIC_TRE = { eleitorais, gratCheia, normNome };
 
   function parseMesRef(mesRef) {
     const m = /^(\d{2})\/(\d{4})$/.exec(mesRef || "");
@@ -3018,14 +3025,14 @@ function renderJudiciario() {
   document.getElementById("judic-mes").textContent =
     `Judiciário MS · Magistrados ativos de todos os tribunais — folha de ${mesMaisRecenteFmt}`;
   document.getElementById("judic-folha").textContent = formatBRL(totalFolha);
-  document.getElementById("judic-qtd").textContent = todosMagistrados.length;
+  document.getElementById("judic-qtd").textContent = unicos;
   document.getElementById("judic-trt24").textContent = todosMagistrados.filter(m => m.tribunal === "TRT24").length;
   document.getElementById("judic-trems").textContent = todosMagistrados.filter(m => m.tribunal === "TRE-MS").length;
   document.getElementById("judic-tjms").textContent = todosMagistrados.filter(m => m.tribunal === "TJMS").length;
   document.getElementById("judic-trt24-label").textContent = `TRT24 (Trabalho) · ref. ${DADOS_TRT24.mesReferencia || "—"}`;
-  document.getElementById("judic-trems-label").textContent = `TRE-MS (Eleitoral) · ref. ${DADOS_TRE_MS.mesReferencia || "—"}`;
+  document.getElementById("judic-trems-label").textContent = `TRE-MS (juízes eleitorais, também no TJMS) · ref. ${DADOS_TRE_MS.mesReferencia || "—"}`;
   document.getElementById("judic-tjms-label").textContent = `TJMS (Estadual) · ref. ${DADOS_TJMS.mesReferencia || "—"}`;
-  const media = todosMagistrados.length ? totalFolha / todosMagistrados.length : 0;
+  const media = unicos ? totalFolha / unicos : 0;
   document.getElementById("judic-media").textContent = formatCompact(media);
 
   const tbody = document.querySelector("#ranking-judiciario tbody");
@@ -3052,6 +3059,8 @@ function renderJudiciario() {
               <div>
                 <div class="rank-name">${m.nome}</div>
                 <div class="rank-meta">${m.cargo} · ${m.lotacao}</div>
+                ${m.tribunal === "TRE-MS" ? `<span class="cx-tag" title="O salário deste juiz vem do TJMS; aqui está só a gratificação pela função eleitoral">só a gratificação eleitoral${gratCheia && m.subsidio && m.subsidio < gratCheia - 1 ? ` · ~${Math.round(m.subsidio / (gratCheia / 30))} dia(s) na função` : ""}</span>` :
+                  m.tribunal === "TJMS" && eleitorais.has(normNome(m.nome)) ? `<span class="cx-tag">também juiz eleitoral</span>` : ""}
               </div>
             </div>
           </td>
@@ -3084,7 +3093,20 @@ function renderJudiciario() {
 }
 
 function renderDetalheMagistrado(m, panel) {
-  panel.innerHTML = `
+  const J = window._JUDIC_TRE || {};
+  let nota = "";
+  if (m.tribunal === "TRE-MS") {
+    const dias = J.gratCheia && m.subsidio && m.subsidio < J.gratCheia - 1 ? Math.round(m.subsidio / (J.gratCheia / 30)) : null;
+    nota = `<p class="aviso" style="margin:0 0 14px;font-size:.82rem">ℹ️ <b>Este não é o salário do juiz.</b> Os juízes eleitorais são juízes do TJMS que
+      acumulam a função na Justiça Eleitoral. O TRE-MS paga só a <b>gratificação eleitoral</b>${J.gratCheia ? ` (${formatBRL(J.gratCheia)} por mês completo)` : ""},
+      proporcional aos dias no cargo${dias ? ` — este valor corresponde a cerca de <b>${dias} dia(s)</b> na função no mês, o que é comum em substituições` : ""}.
+      O salário vem do TJMS — <a href="#aba=judiciario&p=${encodeURIComponent(m.nome)}" onclick="setTimeout(()=>document.querySelector('#tab-judiciario .rank-filter-btn[data-tribunal=TJMS]')?.click(),50)">veja o contracheque no TJMS</a>.</p>`;
+  } else if (m.tribunal === "TJMS" && J.eleitorais && J.eleitorais.has(J.normNome(m.nome))) {
+    const e = J.eleitorais.get(J.normNome(m.nome));
+    nota = `<p class="aviso" style="margin:0 0 14px;font-size:.82rem">Também atua como juiz eleitoral (${escHTML(e.lotacao || "TRE-MS")}) e recebeu
+      ${formatBRL(e.remuneracaoBruta)} de gratificação eleitoral no TRE-MS em ${escHTML(DADOS_TRE_MS.mesReferencia || "")}, além do contracheque abaixo.</p>`;
+  }
+  panel.innerHTML = nota + `
     <div class="detail-header">
       ${avatarHTML(m.nome, null, "avatar-lg")}
       <div class="detail-header-text">

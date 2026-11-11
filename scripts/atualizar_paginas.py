@@ -113,7 +113,7 @@ def atualizar_kit_imprensa(cg, est, fed, sen, pref, emendas, mags, status, cx, c
     emendas_tot = emendas.get("totalGeralPago") or 0
     pref_tot = pref.get("totalDespesas") or 0
     folha_jud = sum((m.get("resumo") or {}).get("totalFolhaMensalBrutaAtivos") or 0 for m in mags)
-    ativos = sum((m.get("resumo") or {}).get("totalAtivos") or 0 for m in mags)
+    ativos = sum((m.get("resumo") or {}).get("totalAtivos") or 0 for m in mags if "TRE" not in str(m.get("fonte", "")))  # juízes eleitorais = juízes do TJMS
     total_cat = pref_tot + verba_cg + ceap_est + ceap_fed + ceaps_sen + emendas_tot
 
     data_ref = (status.get("ultimaAtualizacao") or date.today().isoformat())[:10]
@@ -126,7 +126,7 @@ def atualizar_kit_imprensa(cg, est, fed, sen, pref, emendas, mags, status, cx, c
       <li>{len(deps_fed)} deputados federais de Mato Grosso do Sul</li>
       <li>{len(senadores)} senadores de Mato Grosso do Sul</li>
       <li>Prefeitura Municipal de Campo Grande</li>
-      <li>{ativos} magistrados ativos do TJMS, TRT24 e TRE-MS</li>
+      <li>{ativos} magistrados ativos do TJMS e do TRT24 (os juízes eleitorais do TRE-MS são juízes do TJMS)</li>
       <li>Além de listas completas dos 513 deputados federais e 81 senadores do Brasil, e de câmaras municipais de {camaras_n} cidades do interior de MS.</li>
     </ul>""")
     linhas = [
@@ -139,7 +139,7 @@ def atualizar_kit_imprensa(cg, est, fed, sen, pref, emendas, mags, status, cx, c
         (valor_curto(ceaps_sen), f"CEAPS dos {len(senadores)} senadores de MS em {ANO}"),
         (valor_curto(emendas_tot), f"Emendas parlamentares pagas em Mato Grosso do Sul em {ANO}"),
         (valor_curto(folha_cg) + "/mês", f"Folha de pessoal dos {len(vereadores)} gabinetes da Câmara de Campo Grande ({milhar(func_cg)} funcionários, {ref_pessoal})"),
-        (valor_curto(folha_jud) + "/mês", f"Folha bruta dos {ativos} magistrados ativos de MS (TJMS, TRT24, TRE-MS)"),
+        (valor_curto(folha_jud) + "/mês", f"Folha bruta dos {ativos} magistrados ativos de MS (TJMS e TRT24, com a gratificação eleitoral do TRE-MS)"),
     ]
     if cx:
         linhas.append((milhar(cx), "Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões)"))
@@ -243,7 +243,7 @@ def main():
     ceap_est = (est.get("resumo") or {}).get(f"totalVerbaIndenizatoriaPaga{ANO}") or \
         sum((d.get("verbaIndenizatoria") or {}).get(f"gastoPago{ANO}") or 0 for d in deps_est)
     verba_cg = sum((v.get("verbaIndenizatoria") or {}).get(f"gastoPago{ANO}") or 0 for v in vereadores)
-    ativos = sum((m.get("resumo") or {}).get("totalAtivos") or 0 for m in mags)
+    ativos = sum((m.get("resumo") or {}).get("totalAtivos") or 0 for m in mags if "TRE" not in str(m.get("fonte", "")))  # juízes eleitorais = juízes do TJMS
     mes_fim = "Dez" if ANO < date.today().year else MESES[date.today().month - 1]
     periodo = f"Jan–{mes_fim}/{ANO}"
 

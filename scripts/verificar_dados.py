@@ -253,13 +253,14 @@ def main():
         j = carregar(arq)
         if not j:
             continue
-        ativos += (j.get("resumo") or {}).get("totalAtivos") or 0
+        if nome != "TRE-MS":  # juízes eleitorais são juízes do TJMS
+            ativos += (j.get("resumo") or {}).get("totalAtivos") or 0
         ref = mes_ref_ord(j.get("mesReferencia"))
         atraso = (HOJE.year * 12 + HOJE.month) - ref if ref else None
         # tribunais publicam a folha com ~1–2 meses de atraso
         checa(atraso is not None and atraso <= 3, f"{nome}: folha de {j.get('mesReferencia')}",
               f"**{nome}**: folha mais recente é de {j.get('mesReferencia')} ({atraso} meses)")
-    checa(ativos >= 320, f"Judiciário: {ativos} magistrados ativos", f"**Judiciário**: só {ativos} magistrados ativos (esperado ~348)")
+    checa(ativos >= 260, f"Judiciário: {ativos} magistrados ativos", f"**Judiciário**: só {ativos} magistrados ativos (esperado ~286)")
 
     # ---------- Câmaras do interior (aviso) ----------
     for f in sorted((DADOS / "camaras").glob("*.json")):
