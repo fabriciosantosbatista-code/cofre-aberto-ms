@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-11T11:13:54",
+ "geradoEm": "2026-11-11T11:28:38",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
@@ -12,7 +12,7 @@
   "deputados-estaduais": {
    "fonte": "Portal da Transparência da ALEMS — CEAP",
    "url": "https://transparencia2.al.ms.gov.br/ceap",
-   "coleta": "2026-11-11T11:03:43",
+   "coleta": "2026-11-11T11:20:03",
    "dadoMaisRecente": "nota fiscal de 06/11/2026",
    "nivel": "ok",
    "mensagem": null
@@ -20,7 +20,7 @@
   "deputados": {
    "fonte": "Câmara dos Deputados — arquivo completo da CEAP",
    "url": "https://www.camara.leg.br/cotas/",
-   "coleta": "2026-11-11T11:03:43",
+   "coleta": "2026-11-11T11:20:03",
    "dadoMaisRecente": "nota fiscal de 05/11/2026",
    "nivel": "ok",
    "mensagem": null
@@ -28,7 +28,7 @@
   "senadores": {
    "fonte": "Senado Federal — dados abertos da CEAPS",
    "url": "https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html",
-   "coleta": "2026-11-11T11:03:43",
+   "coleta": "2026-11-11T11:20:03",
    "dadoMaisRecente": "nota fiscal de 03/11/2026",
    "nivel": "ok",
    "mensagem": null
@@ -36,7 +36,7 @@
   "prefeitura": {
    "fonte": "SIG-Transparência da Prefeitura de Campo Grande",
    "url": "https://sig-transparencia.campogrande.ms.gov.br/despesas/consulta",
-   "coleta": "2026-11-11T11:03:43",
+   "coleta": "2026-11-11T11:20:03",
    "dadoMaisRecente": "empenho de 02/10/2026",
    "nivel": "ok",
    "mensagem": null
@@ -44,7 +44,7 @@
   "contratos-cg": {
    "fonte": "SIG-Transparência da Prefeitura de Campo Grande — Contratos e Licitações",
    "url": "https://sig-transparencia.campogrande.ms.gov.br/contratos/consulta",
-   "coleta": "2026-11-11T11:03:43",
+   "coleta": "2026-11-11T11:20:10",
    "dadoMaisRecente": "contrato de 05/11/2026, licitação de 11/11/2026",
    "nivel": "ok",
    "mensagem": null
@@ -52,15 +52,15 @@
   "governo-ms": {
    "fonte": "Portal da Transparência do Estado de Mato Grosso do Sul",
    "url": "https://www.transparencia.ms.gov.br/",
-   "coleta": "2026-11-11T11:03:44",
+   "coleta": "2026-11-11T11:20:01",
    "dadoMaisRecente": "despesas até 11/11/2026, folha de 10/2026, 68.348 trechos de diárias",
-   "nivel": "atencao",
-   "mensagem": "parte das consultas do portal estadual falhou na última coleta"
+   "nivel": "ok",
+   "mensagem": null
   },
   "emendas": {
    "fonte": "Portal da Transparência do Governo Federal (CGU) — emendas por favorecido",
    "url": "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares",
-   "coleta": "2026-11-11T11:03:50",
+   "coleta": "2026-11-11T11:20:04",
    "dadoMaisRecente": "pagamentos até 11/2026",
    "nivel": "ok",
    "mensagem": null
@@ -68,7 +68,7 @@
   "camaras-ms": {
    "fonte": "Portais de transparência das câmaras (Fiorilli SCPI / SAPL)",
    "url": null,
-   "coleta": "2026-11-11T11:03:43",
+   "coleta": "2026-11-11T11:20:03",
    "dadoMaisRecente": "13 de 14 câmaras atualizadas",
    "nivel": "atencao",
    "mensagem": "sem resposta do portal: Sonora (27/10/2026)"
@@ -76,7 +76,7 @@
   "judiciario": {
    "fonte": "Anexo VIII (Res. CNJ 102/2009) — portais do TRT24 e TRE-MS; TJMS via DadosJusBr",
    "url": "https://dadosjusbr.org/",
-   "coleta": "2026-11-11T11:03:41",
+   "coleta": "2026-11-11T11:20:01",
    "dadoMaisRecente": "folha de TRT24 10/2026, TRE-MS 09/2026, TJMS 09/2026",
    "nivel": "ok",
    "mensagem": null
@@ -84,7 +84,7 @@
   "deputados-brasil": {
    "fonte": "Câmara dos Deputados — arquivo completo da CEAP",
    "url": "https://www.camara.leg.br/cotas/",
-   "coleta": "2026-11-11T11:03:43",
+   "coleta": "2026-11-11T11:20:03",
    "dadoMaisRecente": "512 de 513 com CEAP",
    "nivel": "ok",
    "mensagem": null
@@ -92,7 +92,7 @@
   "senado-brasil": {
    "fonte": "Senado Federal — dados abertos",
    "url": "https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html",
-   "coleta": "2026-11-11T11:03:43",
+   "coleta": "2026-11-11T11:20:03",
    "dadoMaisRecente": "81 senadores",
    "nivel": "ok",
    "mensagem": null
@@ -100,7 +100,7 @@
   "conexoes": {
    "fonte": "Cruzamento das notas fiscais de todas as fontes acima",
    "url": null,
-   "coleta": "2026-11-11T11:13:53",
+   "coleta": "2026-11-11T11:28:37",
    "dadoMaisRecente": "gerado a cada coleta",
    "nivel": "ok",
    "mensagem": null
@@ -108,7 +108,7 @@
   "evolucao": {
    "fonte": "Notas fiscais das fontes acima + histórico do ano anterior",
    "url": null,
-   "coleta": "2026-11-11T11:13:53",
+   "coleta": "2026-11-11T11:28:37",
    "dadoMaisRecente": "gerado a cada coleta",
    "nivel": "ok",
    "mensagem": null
