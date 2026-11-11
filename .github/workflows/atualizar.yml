@@ -6,7 +6,16 @@ on:
     # redondos (ex.: 12:00) são os mais disputados no GitHub e o run chegava a
     # começar 5–10 h atrasado. Assim os dados ficam prontos antes do expediente.
     - cron: '23 7 * * *'
+    # Reserva: o GitHub às vezes atrasa muito ou pula execuções agendadas
+    # (em 11/11/2026 a das 07:23 UTC não tinha rodado até as 13h). Se as duas
+    # rodarem, não há problema: a coleta é idempotente.
+    - cron: '47 13 * * *'
   workflow_dispatch:
+
+# Horários gravados nos JSONs ("ultimaAtualizacao") no fuso de MS — sem isso o
+# runner usa UTC e uma coleta às 22h de Brasília apareceria com a data do dia seguinte.
+env:
+  TZ: America/Campo_Grande
 
 jobs:
   coletar_dados:

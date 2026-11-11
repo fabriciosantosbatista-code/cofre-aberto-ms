@@ -21,7 +21,7 @@ Fiscalize os gastos de vereadores, deputados estaduais, deputados federais e sen
 
 ## Atualização automática
 
-O GitHub Actions roda todo dia às **4h23 de Brasília** (07:23 UTC — horário escolhido para fugir da fila do GitHub) e:
+O GitHub Actions roda todo dia às **4h23 de Brasília** (07:23 UTC — horário escolhido para fugir da fila do GitHub), com um horário reserva às **10h47** caso o GitHub pule o primeiro, e:
 1. Coleta dados das APIs públicas da Câmara e do Senado
 2. Baixa o CSV de CEAP da ALEMS
 3. Atualiza os JSONs em `dados/`
