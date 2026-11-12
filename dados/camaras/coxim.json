@@ -1,7 +1,7 @@
 {
   "cidade": "Coxim",
-  "ultimaAtualizacao": "2026-11-11T14:54:28",
-  "fonte": "Portal Transparência Fiorilli (pmcoxim.rcmsuporte.com.br:8079) — Dados Abertos — 2026-11-11T14:54:28",
+  "ultimaAtualizacao": "2026-11-12T09:40:34",
+  "fonte": "Portal Transparência Fiorilli (pmcoxim.rcmsuporte.com.br:8079) — Dados Abertos — 2026-11-12T09:40:34",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camaracoxim.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -1488,18 +1488,18 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 7824670.3,
-    "totalNotas": 697,
+    "totalGeral": 8048490.14,
+    "totalNotas": 698,
     "porCategoria": {
-      "Vencimentos e Vantagens Fixas — Pessoal Civil": 4303932.87,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1112929.84,
+      "Vencimentos e Vantagens Fixas — Pessoal Civil": 4327432.87,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1195232.99,
       "Obrigações Patronais": 834543.76,
-      "Diárias — Civil": 505125.0,
-      "Indenizações e Restituições": 298400.33,
-      "Serviços de Consultoria": 278150.57,
+      "Diárias — Civil": 571875.0,
+      "Serviços de Consultoria": 312994.43,
+      "Indenizações e Restituições": 299571.14,
       "Obras e Instalações": 219355.24,
-      "Serviços de Tecnologia da Informação": 147543.35,
-      "Material de Consumo": 121089.34,
+      "Serviços de Tecnologia da Informação": 161793.35,
+      "Material de Consumo": 122091.36,
       "Equipamentos e Material Permanente": 3600.0
     },
     "despesas": [
@@ -1508,7 +1508,7 @@
         "fornecedor": "JMRS PUBLICIDADE LTDA ME",
         "cnpj": "07.603.857/0001-45",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 562161.93,
+        "valor": 603732.09,
         "descricao": "SERVIÇO DE AGENCIA DE PUBLICIDADE, COM CRIAÇÃO, GERENCIAMENTO DE MIDIA, CONFORME CONTRATO"
       },
       {
@@ -1524,7 +1524,7 @@
         "fornecedor": "JPM CONSULTORIA CONTABIL  LTDA",
         "cnpj": "07.310.267/0001-24",
         "categoria": "Serviços de Consultoria",
-        "valor": 168150.57,
+        "valor": 187994.43,
         "descricao": "serviço de consultoria tecnica especializada, conforme contrato"
       },
       {
@@ -1776,6 +1776,22 @@
         "descricao": "adiantamento da 1 parcela do 13 salario"
       },
       {
+        "data": "2026-06-08",
+        "fornecedor": "INTECO TECNOLOGIA INFORMATICA COXIM LTDA",
+        "cnpj": "07.266.202/0001-29",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 75000.0,
+        "descricao": "serviço de locação de software de contabilidade, orçamento e planejamento para atender o  SIAFIC, conforme contrato"
+      },
+      {
+        "data": "2026-07-20",
+        "fornecedor": "ADVOCACIA OLIVEIRA E ARAUJO SS",
+        "cnpj": "27.241.584/0001-43",
+        "categoria": "Serviços de Consultoria",
+        "valor": 75000.0,
+        "descricao": "PRESTAÇÃO DE CONSULTORIA E ASSESSORIA JURIDICA, CONFORME CONTRATO"
+      },
+      {
         "data": "2026-01-05",
         "fornecedor": "INTECO TECNOLOGIA INFORMATICA COXIM LTDA",
         "cnpj": "07.266.202/0001-29",
@@ -1784,28 +1800,20 @@
         "descricao": "SERVIÇO DE LOCAÇÃO DE SOFTWARE, CONFORME CONTRATO"
       },
       {
-        "data": "2026-06-08",
-        "fornecedor": "INTECO TECNOLOGIA INFORMATICA COXIM LTDA",
-        "cnpj": "07.266.202/0001-29",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 60750.0,
-        "descricao": "serviço de locação de software de contabilidade, orçamento e planejamento para atender o  SIAFIC, conforme contrato"
-      },
-      {
-        "data": "2026-07-20",
-        "fornecedor": "ADVOCACIA OLIVEIRA E ARAUJO SS",
-        "cnpj": "27.241.584/0001-43",
-        "categoria": "Serviços de Consultoria",
-        "valor": 60000.0,
-        "descricao": "PRESTAÇÃO DE CONSULTORIA E ASSESSORIA JURIDICA, CONFORME CONTRATO"
-      },
-      {
         "data": "2026-06-03",
         "fornecedor": "CÂMARA MUNICIPAL DE COXIM",
         "cnpj": "03.969.623/0001-65",
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 59800.0,
         "descricao": "adiantamento da 1 parcela do 13 salario"
+      },
+      {
+        "data": "2026-01-05",
+        "fornecedor": "M M DA SILVA ENGENHARIA LTDA",
+        "cnpj": "42.624.162/0001-40",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 55000.0,
+        "descricao": "REFERENTE AO SERVIÇO TECNICO PROFISSIONAL DE ENGENHARIA, PARA ATUAR NA FISCALIZAÇÃO DA OBRA DE CONSTRUÇÃO DA NOVA SEDE, CONFORME CONTRATO"
       },
       {
         "data": "2026-06-03",
@@ -1824,12 +1832,12 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000002/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 1 - Mod. Formatada: 1 - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA AQUISIÇÃO DE PEÇAS DE H"
       },
       {
-        "data": "2026-01-05",
-        "fornecedor": "M M DA SILVA ENGENHARIA LTDA",
-        "cnpj": "42.624.162/0001-40",
+        "data": "2026-09-01",
+        "fornecedor": "TREVIA SOLUCOES TECNOLOGICAS LTDA",
+        "cnpj": "62.713.546/0001-47",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 50000.0,
-        "descricao": "REFERENTE AO SERVIÇO TECNICO PROFISSIONAL DE ENGENHARIA, PARA ATUAR NA FISCALIZAÇÃO DA OBRA DE CONSTRUÇÃO DA NOVA SEDE, CONFORME CONTRATO"
+        "valor": 47400.0,
+        "descricao": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM IA, DESTINADA A GESTÃO DE APOIO, COLABORAÇÃO E DEMAIS FASES DE PLANEJAMENTO E EXECUÇÃO DE LICITAÇÕES CONFORME CONTRATO"
       },
       {
         "data": "2026-01-05",
@@ -1840,12 +1848,28 @@
         "descricao": "Referente ao fornecimento de energia eletrica, conforme comprovantes anexo a primeira via do presente processo."
       },
       {
+        "data": "2026-01-05",
+        "fornecedor": "COMSYSTEM COMPUTADORES E SISTEMAS LTDA",
+        "cnpj": "37.556.958/0001-73",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 38484.0,
+        "descricao": "serviços diversos conf nota fiscal, CONFORME CONTRATO"
+      },
+      {
         "data": "2026-01-08",
         "fornecedor": "CÂMARA MUNICIPAL DE COXIM",
         "cnpj": "03.969.623/0001-65",
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 36800.04,
         "descricao": "1/3 DE FERIAS DOS VEREADORES"
+      },
+      {
+        "data": "2026-06-08",
+        "fornecedor": "KOHL ADVOGADOS ASSOCIADOS",
+        "cnpj": "22.706.943/0001-77",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 35760.66,
+        "descricao": "empenho se refere ao contrato com a empresa para implantação, adequação e manutenção da LGPD, comforme contrato"
       },
       {
         "data": "2026-09-30",
@@ -1856,14 +1880,6 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000010/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 4 - Mod. Formatada: 4 -  03.Contratação de empresa com intuito de realizar curso d"
       },
       {
-        "data": "2026-01-05",
-        "fornecedor": "COMSYSTEM COMPUTADORES E SISTEMAS LTDA",
-        "cnpj": "37.556.958/0001-73",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 33914.02,
-        "descricao": "serviços diversos conf nota fiscal, CONFORME CONTRATO"
-      },
-      {
         "data": "2026-06-03",
         "fornecedor": "UCVMS-UNIÃO DE CÂMARA DE VEREADORES MS",
         "cnpj": "01.941.195/0001-37",
@@ -1872,28 +1888,12 @@
         "descricao": "valor refere a contribuição associativa da ucv/ms referente ao mes de maio 26"
       },
       {
-        "data": "2026-09-01",
-        "fornecedor": "TREVIA SOLUCOES TECNOLOGICAS LTDA",
-        "cnpj": "62.713.546/0001-47",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 31837.1,
-        "descricao": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM IA, DESTINADA A GESTÃO DE APOIO, COLABORAÇÃO E DEMAIS FASES DE PLANEJAMENTO E EXECUÇÃO DE LICITAÇÕES CONFORME CONTRATO"
-      },
-      {
         "data": "2026-01-05",
         "fornecedor": "ADVOCACIA OLIVEIRA E ARAUJO SS",
         "cnpj": "27.241.584/0001-43",
         "categoria": "Serviços de Consultoria",
         "valor": 30000.0,
         "descricao": "prestação de serviço de assessoria e consultoria juridica conforme contrato"
-      },
-      {
-        "data": "2026-06-08",
-        "fornecedor": "KOHL ADVOGADOS ASSOCIADOS",
-        "cnpj": "22.706.943/0001-77",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 29800.55,
-        "descricao": "empenho se refere ao contrato com a empresa para implantação, adequação e manutenção da LGPD, comforme contrato"
       },
       {
         "data": "2026-02-19",
@@ -2016,6 +2016,14 @@
         "descricao": "VALRO REFERE AO AUXILIO ALIMENTAÇÃO DE OUTUBRO"
       },
       {
+        "data": "2026-11-10",
+        "fornecedor": "CÂMARA MUNICIPAL DE COXIM",
+        "cnpj": "03.969.623/0001-65",
+        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
+        "valor": 23500.0,
+        "descricao": "valor refere ao empenho do auxilio alimentação de novambro de 2026"
+      },
+      {
         "data": "2026-01-05",
         "fornecedor": "PATRICIA BARROS DA SILVA MEI",
         "cnpj": "33.235.236/0001-66",
@@ -2038,6 +2046,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 22700.0,
         "descricao": "valor refere ao empenho do auxilio alimentação conforme resolução n 134"
+      },
+      {
+        "data": "2026-03-10",
+        "fornecedor": "EMPRESA JORNALISTICA NOCKO LTDA",
+        "cnpj": "03.339.711/0001-83",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 22400.0,
+        "descricao": "empenho se refere a contratação de empresa para divulgação de editais, atos publicos, convocações, lçicitações, e outros de interesse do legislativo municipal conforme contrato"
       },
       {
         "data": "2026-09-18",
@@ -2150,14 +2166,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 20000.0,
         "descricao": "REFERE-SE AO SERVIÇO DE CONSULTORIA TECNICA ESPECIALIZADA, CONFORME CONTATO"
-      },
-      {
-        "data": "2026-03-10",
-        "fornecedor": "EMPRESA JORNALISTICA NOCKO LTDA",
-        "cnpj": "03.339.711/0001-83",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 19600.0,
-        "descricao": "empenho se refere a contratação de empresa para divulgação de editais, atos publicos, convocações, lçicitações, e outros de interesse do legislativo municipal conforme contrato"
       },
       {
         "data": "2026-09-10",
@@ -2544,6 +2552,78 @@
         "descricao": "refere ao pagto de cinco diaria spara secretaria geral participar de seminario d egestao publcia em brasilia df nos dias 12 a 17 de outubro de 12026"
       },
       {
+        "data": "2026-11-06",
+        "fornecedor": "ADEMIR FERREIRA DA SILVA",
+        "cnpj": "018.XXX.XXX-88",
+        "categoria": "Diárias — Civil",
+        "valor": 6250.0,
+        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
+      },
+      {
+        "data": "2026-11-06",
+        "fornecedor": "JEFFERSON AISLAN SILVA",
+        "cnpj": "952.XXX.XXX-00",
+        "categoria": "Diárias — Civil",
+        "valor": 6250.0,
+        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
+      },
+      {
+        "data": "2026-11-06",
+        "fornecedor": "SIMONE GOMES DO NASCIMENTO",
+        "cnpj": "582.XXX.XXX-91",
+        "categoria": "Diárias — Civil",
+        "valor": 6250.0,
+        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
+      },
+      {
+        "data": "2026-11-06",
+        "fornecedor": "MARIA DE LOURDES DA SILVA",
+        "cnpj": "799.XXX.XXX-87",
+        "categoria": "Diárias — Civil",
+        "valor": 6250.0,
+        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
+      },
+      {
+        "data": "2026-11-06",
+        "fornecedor": "ADRIANA APARECIDA MARIANO NABHAN",
+        "cnpj": "013.XXX.XXX-08",
+        "categoria": "Diárias — Civil",
+        "valor": 6250.0,
+        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
+      },
+      {
+        "data": "2026-11-06",
+        "fornecedor": "HUGO ZERBATO CRIPPA",
+        "cnpj": "029.XXX.XXX-83",
+        "categoria": "Diárias — Civil",
+        "valor": 6250.0,
+        "descricao": "valor refere ao pagto de cinco diarias para diretor de jornalismo cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandore"
+      },
+      {
+        "data": "2026-11-06",
+        "fornecedor": "MAURICIO HELPIS DE OLIVEIRA",
+        "cnpj": "030.XXX.XXX-93",
+        "categoria": "Diárias — Civil",
+        "valor": 6250.0,
+        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
+      },
+      {
+        "data": "2026-11-06",
+        "fornecedor": "JOHNNY GUERRA GAI",
+        "cnpj": "856.XXX.XXX-20",
+        "categoria": "Diárias — Civil",
+        "valor": 6250.0,
+        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
+      },
+      {
+        "data": "2026-11-06",
+        "fornecedor": "LUCIMEIRE ELIAS DA SILVA RAMOS",
+        "cnpj": "367.XXX.XXX-30",
+        "categoria": "Diárias — Civil",
+        "valor": 6250.0,
+        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
+      },
+      {
         "data": "2026-04-14",
         "fornecedor": "CÂMARA MUNICIPAL DE COXIM",
         "cnpj": "03.969.623/0001-65",
@@ -2592,12 +2672,12 @@
         "descricao": "REFERENTE AO PAGAMENTO DA RESCISÃO DE SERVIDOR COMISSIONADO"
       },
       {
-        "data": "2026-10-05",
-        "fornecedor": "ELAINE CRISTINA TEIXEIRA GAUDIOSO",
-        "cnpj": "215.XXX.XXX-35",
-        "categoria": "Material de Consumo",
-        "valor": 5000.0,
-        "descricao": "suprimento de fundo n 004-2026"
+        "data": "2026-11-06",
+        "fornecedor": "MD CONFECCAO LTDA",
+        "cnpj": "43.444.572/0001-72",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 5250.0,
+        "descricao": "A presente contratação tem por finalidade a confecção e o fornecimento de 350 (trezentas e cinquenta) camisetas tradicionais, na cor branca, personalizadas com o logotipo do Projeto Parlamento Jovem,"
       },
       {
         "data": "2026-01-05",
@@ -2622,6 +2702,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 4872.8,
         "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000018/24 - Ano Mod.: 2024 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 3 - Mod. Formatada:  - Prestação de serviços técnicos de con"
+      },
+      {
+        "data": "2026-10-05",
+        "fornecedor": "ELAINE CRISTINA TEIXEIRA GAUDIOSO",
+        "cnpj": "215.XXX.XXX-35",
+        "categoria": "Material de Consumo",
+        "valor": 4846.41,
+        "descricao": "suprimento de fundo n 004-2026"
       },
       {
         "data": "2026-01-05",
@@ -4184,6 +4272,38 @@
         "descricao": "valor refere ao pagto de tres diarias para vereador umprir agenda em campo grande nos dias 21,22,23 d eoputubro em seminario legisltaivo KCM"
       },
       {
+        "data": "2026-11-03",
+        "fornecedor": "ELAINE CRISTINA TEIXEIRA GAUDIOSO",
+        "cnpj": "215.XXX.XXX-35",
+        "categoria": "Diárias — Civil",
+        "valor": 2250.0,
+        "descricao": "valor refere ao pagamento de tres diairas para secretaria geral, participar de treinamento em campo grande nos dias 04,05 e 06 de novembro de 2026, reazlizado pela empresa athuali, com o tema \" emenda"
+      },
+      {
+        "data": "2026-11-03",
+        "fornecedor": "MARCIO BARBOSA DE SOUZA",
+        "cnpj": "034.XXX.XXX-66",
+        "categoria": "Diárias — Civil",
+        "valor": 2250.0,
+        "descricao": "valor refere ao pagto de tres diarias para vereador cumrpir agenda em campo grande nos dias 03/11 participar do II forum MS/Sustenbilidade, no dia 04/11 agenda com deputado junior mochi, noo dia 05/11"
+      },
+      {
+        "data": "2026-11-10",
+        "fornecedor": "WILLIAM MENDES DA ROCHA MEIRA",
+        "cnpj": "003.XXX.XXX-70",
+        "categoria": "Diárias — Civil",
+        "valor": 2250.0,
+        "descricao": "valor refere ao pagto de tres diarias para vereador participar de seminario legislativo KCM, em campo grande nos dias 11,12 e 13 de novembro de 20026"
+      },
+      {
+        "data": "2026-11-10",
+        "fornecedor": "MARCIO BARBOSA DE SOUZA",
+        "cnpj": "034.XXX.XXX-66",
+        "categoria": "Diárias — Civil",
+        "valor": 2250.0,
+        "descricao": "valor refere ao pagto de tres diarias para vvereador cumprir agena em campo grande nos dias 11 de novembro na AGEMS, no dia 12 de novembro na SETESC e no dia 13 de novembro com dep dagoberto"
+      },
+      {
         "data": "2026-10-20",
         "fornecedor": "INSTITUTO MUNICIPAL DE PREVIDENCIA DOS SERVIDORES",
         "cnpj": "04.942.949/0001-61",
@@ -4518,6 +4638,14 @@
         "categoria": "Material de Consumo",
         "valor": 1612.88,
         "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000010/24 - Ano Mod.: 2024 - Modalidade: DISPENSA - Nº Mod.: 10 - Mod. Formatada: 10 - Contratação de empresa especializada para"
+      },
+      {
+        "data": "2026-11-03",
+        "fornecedor": "ATHUALI CURSOS LTDA",
+        "cnpj": "48.702.557/0001-09",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1590.0,
+        "descricao": "refere ao curso de emendas impositivas par ao pder legisativo, conforme docuemntação emc anxeo"
       },
       {
         "data": "2026-09-18",
@@ -5342,6 +5470,14 @@
         "categoria": "Indenizações e Restituições",
         "valor": 1264.1,
         "descricao": "referente ao pagto da verba indenizatoria n.º 05/2026"
+      },
+      {
+        "data": "2026-10-28",
+        "fornecedor": "KJAD TECNOLOGIA LTDA",
+        "cnpj": "08.928.162/0001-04",
+        "categoria": "Material de Consumo",
+        "valor": 1155.61,
+        "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000003/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 2 - Mod. Formatada: 2 -  AQUISIÇÃO DE MATERIAL DE EXPEDIENTE (PAPEL"
       },
       {
         "data": "2026-09-30",
@@ -6264,6 +6400,22 @@
         "descricao": "valor refere ao pagto de uma diaria para vereador cumrpir agenda em campo grande no dia 29/10 coma  senadora tereza cristina"
       },
       {
+        "data": "2026-11-04",
+        "fornecedor": "GIANI MARCIO SCHOLZ",
+        "cnpj": "808.XXX.XXX-20",
+        "categoria": "Diárias — Civil",
+        "valor": 750.0,
+        "descricao": "REFERE AO APGTO D UMA DIARIA PARA DIRETOR FINANCEIRO CUMPRIR AGEND AEM CAMPO GRANDE NO DIA 05/11/26, NA AGENCIA R9 PUBLCIIDADE, PARA TRATAR DE ASSUNTOS DO INTERESSE DO LEGIALTIVO"
+      },
+      {
+        "data": "2026-11-06",
+        "fornecedor": "LUIZ EDUARDO DOS SANTOS",
+        "cnpj": "039.XXX.XXX-60",
+        "categoria": "Diárias — Civil",
+        "valor": 750.0,
+        "descricao": "REFERE AO PAGTO DE UMA DIARIA PARA VEREADOR CUMPRIR AGENDA EM CAMPO GRANDE NO DIA 06-11 NO GABINETE DO DEPUTADO GERSON CLARO"
+      },
+      {
         "data": "2026-02-19",
         "fornecedor": "SUPERMERCADO ROMA LTDA",
         "cnpj": "24.642.985/0001-17",
@@ -6496,6 +6648,14 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000006/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 4 - Mod. Formatada: 4 - CONTRATAÇÃO DE EMPRESA MEDIANTE REGISTRO DE"
       },
       {
+        "data": "2026-11-03",
+        "fornecedor": "GIANI MARCIO SCHOLZ",
+        "cnpj": "808.XXX.XXX-20",
+        "categoria": "Indenizações e Restituições",
+        "valor": 467.66,
+        "descricao": "valor refere ao indenização de despesas de viagens a campo grande no dia 29/10/2026"
+      },
+      {
         "data": "2026-10-27",
         "fornecedor": "HUGO ZERBATO CRIPPA",
         "cnpj": "029.XXX.XXX-83",
@@ -6510,6 +6670,14 @@
         "categoria": "Indenizações e Restituições",
         "valor": 461.48,
         "descricao": "valor se refere ao pagto de despeass de viagem para campo grande, cofnorme diaria"
+      },
+      {
+        "data": "2026-11-06",
+        "fornecedor": "GIANI MARCIO SCHOLZ",
+        "cnpj": "808.XXX.XXX-20",
+        "categoria": "Indenizações e Restituições",
+        "valor": 456.46,
+        "descricao": "VALOR REERE A RESTITUIÇÃOD ESPESA E VIAGENS A CAMPO GRANDE NO DIA 05/11"
       },
       {
         "data": "2026-03-10",
@@ -6744,6 +6912,14 @@
         "descricao": "pagamento de despesa de combistuvel de viagem para camppo grnade ocnforme diaria"
       },
       {
+        "data": "2026-11-10",
+        "fornecedor": "ELAINE CRISTINA TEIXEIRA GAUDIOSO",
+        "cnpj": "215.XXX.XXX-35",
+        "categoria": "Indenizações e Restituições",
+        "valor": 246.69,
+        "descricao": "valor refere a restiutiçãod e despesa de viagem"
+      },
+      {
         "data": "2026-09-08",
         "fornecedor": "HUGO ZERBATO CRIPPA",
         "cnpj": "029.XXX.XXX-83",
@@ -6904,180 +7080,12 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000010/26 - Ano Mod.: 2026 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 4 - Mod. Formatada: 4 -  03.Contratação de empresa com intuito de realizar curso d"
       },
       {
-        "data": "2026-10-28",
-        "fornecedor": "KJAD TECNOLOGIA LTDA",
-        "cnpj": "08.928.162/0001-04",
+        "data": "2026-11-09",
+        "fornecedor": "ELAINE CRISTINA TEIXEIRA GAUDIOSO",
+        "cnpj": "215.XXX.XXX-35",
         "categoria": "Material de Consumo",
         "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000003/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 2 - Mod. Formatada: 2 -  AQUISIÇÃO DE MATERIAL DE EXPEDIENTE (PAPEL"
-      },
-      {
-        "data": "2026-11-03",
-        "fornecedor": "ELAINE CRISTINA TEIXEIRA GAUDIOSO",
-        "cnpj": "215.XXX.XXX-35",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagamento de tres diairas para secretaria geral, participar de treinamento em campo grande nos dias 04,05 e 06 de novembro de 2026, reazlizado pela empresa athuali, com o tema \" emenda"
-      },
-      {
-        "data": "2026-11-03",
-        "fornecedor": "MARCIO BARBOSA DE SOUZA",
-        "cnpj": "034.XXX.XXX-66",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de tres diarias para vereador cumrpir agenda em campo grande nos dias 03/11 participar do II forum MS/Sustenbilidade, no dia 04/11 agenda com deputado junior mochi, noo dia 05/11"
-      },
-      {
-        "data": "2026-11-03",
-        "fornecedor": "GIANI MARCIO SCHOLZ",
-        "cnpj": "808.XXX.XXX-20",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere ao indenização de despesas de viagens a campo grande no dia 29/10/2026"
-      },
-      {
-        "data": "2026-11-03",
-        "fornecedor": "ATHUALI CURSOS LTDA",
-        "cnpj": "48.702.557/0001-09",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "refere ao curso de emendas impositivas par ao pder legisativo, conforme docuemntação emc anxeo"
-      },
-      {
-        "data": "2026-11-04",
-        "fornecedor": "GIANI MARCIO SCHOLZ",
-        "cnpj": "808.XXX.XXX-20",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERE AO APGTO D UMA DIARIA PARA DIRETOR FINANCEIRO CUMPRIR AGEND AEM CAMPO GRANDE NO DIA 05/11/26, NA AGENCIA R9 PUBLCIIDADE, PARA TRATAR DE ASSUNTOS DO INTERESSE DO LEGIALTIVO"
-      },
-      {
-        "data": "2026-11-06",
-        "fornecedor": "LUIZ EDUARDO DOS SANTOS",
-        "cnpj": "039.XXX.XXX-60",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERE AO PAGTO DE UMA DIARIA PARA VEREADOR CUMPRIR AGENDA EM CAMPO GRANDE NO DIA 06-11 NO GABINETE DO DEPUTADO GERSON CLARO"
-      },
-      {
-        "data": "2026-11-06",
-        "fornecedor": "MD CONFECCAO LTDA",
-        "cnpj": "43.444.572/0001-72",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "A presente contratação tem por finalidade a confecção e o fornecimento de 350 (trezentas e cinquenta) camisetas tradicionais, na cor branca, personalizadas com o logotipo do Projeto Parlamento Jovem,"
-      },
-      {
-        "data": "2026-11-06",
-        "fornecedor": "GIANI MARCIO SCHOLZ",
-        "cnpj": "808.XXX.XXX-20",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "VALOR REERE A RESTITUIÇÃOD ESPESA E VIAGENS A CAMPO GRANDE NO DIA 05/11"
-      },
-      {
-        "data": "2026-11-06",
-        "fornecedor": "ADEMIR FERREIRA DA SILVA",
-        "cnpj": "018.XXX.XXX-88",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
-      },
-      {
-        "data": "2026-11-06",
-        "fornecedor": "JEFFERSON AISLAN SILVA",
-        "cnpj": "952.XXX.XXX-00",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
-      },
-      {
-        "data": "2026-11-06",
-        "fornecedor": "SIMONE GOMES DO NASCIMENTO",
-        "cnpj": "582.XXX.XXX-91",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
-      },
-      {
-        "data": "2026-11-06",
-        "fornecedor": "MARIA DE LOURDES DA SILVA",
-        "cnpj": "799.XXX.XXX-87",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
-      },
-      {
-        "data": "2026-11-06",
-        "fornecedor": "ADRIANA APARECIDA MARIANO NABHAN",
-        "cnpj": "013.XXX.XXX-08",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
-      },
-      {
-        "data": "2026-11-06",
-        "fornecedor": "HUGO ZERBATO CRIPPA",
-        "cnpj": "029.XXX.XXX-83",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de cinco diarias para diretor de jornalismo cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandore"
-      },
-      {
-        "data": "2026-11-06",
-        "fornecedor": "MAURICIO HELPIS DE OLIVEIRA",
-        "cnpj": "030.XXX.XXX-93",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
-      },
-      {
-        "data": "2026-11-06",
-        "fornecedor": "JOHNNY GUERRA GAI",
-        "cnpj": "856.XXX.XXX-20",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
-      },
-      {
-        "data": "2026-11-06",
-        "fornecedor": "LUCIMEIRE ELIAS DA SILVA RAMOS",
-        "cnpj": "367.XXX.XXX-30",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de cinco diarias para vereadror cumprir agenda em Brasilia -DF nos dias 09, 10, 11, 12, 13 e 14 de novembro de 2026, em agendas com os depustados federais e senandores de MS, Dep"
-      },
-      {
-        "data": "2026-11-10",
-        "fornecedor": "ELAINE CRISTINA TEIXEIRA GAUDIOSO",
-        "cnpj": "215.XXX.XXX-35",
-        "categoria": "Indenizações e Restituições",
-        "valor": 0.0,
-        "descricao": "valor refere a restiutiçãod e despesa de viagem"
-      },
-      {
-        "data": "2026-11-10",
-        "fornecedor": "WILLIAM MENDES DA ROCHA MEIRA",
-        "cnpj": "003.XXX.XXX-70",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de tres diarias para vereador participar de seminario legislativo KCM, em campo grande nos dias 11,12 e 13 de novembro de 20026"
-      },
-      {
-        "data": "2026-11-10",
-        "fornecedor": "MARCIO BARBOSA DE SOUZA",
-        "cnpj": "034.XXX.XXX-66",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao pagto de tres diarias para vvereador cumprir agena em campo grande nos dias 11 de novembro na AGEMS, no dia 12 de novembro na SETESC e no dia 13 de novembro com dep dagoberto"
-      },
-      {
-        "data": "2026-11-10",
-        "fornecedor": "CÂMARA MUNICIPAL DE COXIM",
-        "cnpj": "03.969.623/0001-65",
-        "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
-        "valor": 0.0,
-        "descricao": "valor refere ao empenho do auxilio alimentação de novambro de 2026"
+        "descricao": "suprimento de fundo n 004-2026"
       }
     ]
   }

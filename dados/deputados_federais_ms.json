@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-11T14:54:28",
+  "ultimaAtualizacao": "2026-11-12T09:40:34",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-11T14:54:28",
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-12T09:40:34",
   "total": 8,
   "deputados": [
     {
@@ -24,7 +24,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/204358",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/204358/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 354890.97,
+      "cotaGastaAno": 352657.42,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -55,15 +55,11 @@
           "valor": 2397.96
         },
         {
-          "categoria": "PASSAGEM AÉREA - RPA",
-          "valor": 2233.55
-        },
-        {
           "categoria": "PASSAGEM AÉREA - REEMBOLSO",
           "valor": 442.77
         }
       ],
-      "totalNotasFiscais": 117,
+      "totalNotasFiscais": 116,
       "despesas": [
         {
           "data": "2026-10-30",
@@ -106,16 +102,6 @@
           "mes": 9
         },
         {
-          "data": "2026-10-07",
-          "categoria": "PASSAGEM AÉREA - RPA",
-          "fornecedor": "Cia Aérea - AZUL",
-          "cnpjCpfFornecedor": "09.296.295/0001-60",
-          "valor": 2233.55,
-          "doc": "Bilhete: FMHIGG",
-          "urlNotaFiscal": null,
-          "mes": 10
-        },
-        {
           "data": "2026-10-05",
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
           "fornecedor": "RENTAL LOCADORA DE BENS E VEICULOS LTDA",
@@ -132,7 +118,7 @@
           "cnpjCpfFornecedor": "02.558.157/0021-06",
           "valor": 712.01,
           "doc": "006504328",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8168578.pdf",
           "mes": 10
         },
         {
@@ -202,7 +188,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 132.89,
           "doc": "011782334",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8161010.pdf",
           "mes": 8
         },
         {
@@ -252,7 +238,7 @@
           "cnpjCpfFornecedor": "02.558.157/0021-06",
           "valor": 712.01,
           "doc": "005925034",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8158108.pdf",
           "mes": 9
         },
         {
@@ -462,7 +448,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 132.67,
           "doc": "0019403772",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8142043.pdf",
           "mes": 6
         },
         {
@@ -482,7 +468,7 @@
           "cnpjCpfFornecedor": "02.558.157/0021-06",
           "valor": 719.98,
           "doc": "004759542",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8132886.pdf",
           "mes": 7
         },
         {
@@ -582,7 +568,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 132.89,
           "doc": "0019066661",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8122861.pdf",
           "mes": 5
         },
         {
@@ -602,7 +588,7 @@
           "cnpjCpfFornecedor": "02.558.157/0021-06",
           "valor": 735.86,
           "doc": "004186176",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8120511.pdf",
           "mes": 6
         },
         {
@@ -772,7 +758,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 132.89,
           "doc": "0018730107",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8104875.pdf",
           "mes": 4
         },
         {
@@ -812,7 +798,7 @@
           "cnpjCpfFornecedor": "02.558.157/0021-06",
           "valor": 735.86,
           "doc": "003599683",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8101545.pdf",
           "mes": 5
         },
         {
@@ -862,7 +848,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 132.89,
           "doc": "0018394499",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8091239.pdf",
           "mes": 3
         },
         {
@@ -892,7 +878,7 @@
           "cnpjCpfFornecedor": "02.558.157/0021-06",
           "valor": 700.86,
           "doc": "303177",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8101056.pdf",
           "mes": 4
         },
         {
@@ -992,7 +978,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 132.89,
           "doc": "00180559106",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8074277.pdf",
           "mes": 2
         },
         {
@@ -1042,7 +1028,7 @@
           "cnpjCpfFornecedor": "02.558.157/0021-06",
           "valor": 715.31,
           "doc": "002419295",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8068556.pdf",
           "mes": 3
         },
         {
@@ -1152,7 +1138,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 188.41,
           "doc": "0017726046",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8057270.pdf",
           "mes": 1
         },
         {
@@ -1162,7 +1148,7 @@
           "cnpjCpfFornecedor": "02.558.157/0021-06",
           "valor": 700.86,
           "doc": "001819536",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8054532.pdf",
           "mes": 2
         },
         {
@@ -1222,7 +1208,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 700.86,
           "doc": "001326138",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3432/2026/8043229.pdf",
           "mes": 1
         },
         {
@@ -1257,7 +1243,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220548",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220548/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 424641.07,
+      "cotaGastaAno": 425091.07,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -1273,7 +1259,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 46787.57
+          "valor": 47237.57
         },
         {
           "categoria": "TELEFONIA",
@@ -1284,8 +1270,18 @@
           "valor": 3008.91
         }
       ],
-      "totalNotasFiscais": 354,
+      "totalNotasFiscais": 355,
       "despesas": [
+        {
+          "data": "2026-11-09",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "POSTO ITAMARATY LTDA",
+          "cnpjCpfFornecedor": "00.314.831/0001-38",
+          "valor": 200.0,
+          "doc": "164477",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8175228",
+          "mes": 11
+        },
         {
           "data": "2026-11-02",
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -1295,6 +1291,16 @@
           "doc": "1136641",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8171812",
           "mes": 11
+        },
+        {
+          "data": "2026-10-31",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "076 - MELHOR 10 - CASCOL COMBUSTIVEIS PARA VEICULOS LTDA",
+          "cnpjCpfFornecedor": "00.306.597/0076-14",
+          "valor": 250.0,
+          "doc": "1506928",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8175216",
+          "mes": 10
         },
         {
           "data": "2026-10-30",
@@ -1763,7 +1769,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 263.0,
           "doc": "0065144778",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8169804.pdf",
           "mes": 10
         },
         {
@@ -1773,7 +1779,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 476.92,
           "doc": "006516696",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8169779.pdf",
           "mes": 10
         },
         {
@@ -2033,7 +2039,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 332.68,
           "doc": "005938475",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8161102.pdf",
           "mes": 9
         },
         {
@@ -2053,7 +2059,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 263.0,
           "doc": "005936542",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8161101.pdf",
           "mes": 9
         },
         {
@@ -2383,7 +2389,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 262.99,
           "doc": "005359943",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8148988.pdf",
           "mes": 8
         },
         {
@@ -2393,7 +2399,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 476.91,
           "doc": "005359985",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8148984.pdf",
           "mes": 8
         },
         {
@@ -2532,16 +2538,6 @@
           "fornecedor": "SMART VEICULOS LTDA",
           "cnpjCpfFornecedor": "29.139.111/0001-65",
           "valor": 3500.0,
-          "doc": "5347",
-          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8143868.pdf",
-          "mes": 8
-        },
-        {
-          "data": "2026-07-24",
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "fornecedor": "SMART VEICULOS LTDA",
-          "cnpjCpfFornecedor": "29.139.111/0001-65",
-          "valor": 0.0,
           "doc": "5347",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8143868.pdf",
           "mes": 8
@@ -2833,7 +2829,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 263.0,
           "doc": "004776414",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8141517.pdf",
           "mes": 7
         },
         {
@@ -2843,7 +2839,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 144.25,
           "doc": "004778319",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8141525.pdf",
           "mes": 7
         },
         {
@@ -3503,7 +3499,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 476.91,
           "doc": "003619936",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8116443.pdf",
           "mes": 5
         },
         {
@@ -3513,7 +3509,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 262.0,
           "doc": "003620515",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8116444.pdf",
           "mes": 5
         },
         {
@@ -3863,7 +3859,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 256.22,
           "doc": "003047848",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8091189.pdf",
           "mes": 4
         },
         {
@@ -3873,7 +3869,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 451.91,
           "doc": "003047945",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8086607.pdf",
           "mes": 4
         },
         {
@@ -4103,7 +4099,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 242.0,
           "doc": "002429954",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8075269.pdf",
           "mes": 3
         },
         {
@@ -4233,7 +4229,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 451.91,
           "doc": "002429943",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8073630.pdf",
           "mes": 3
         },
         {
@@ -4573,7 +4569,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 397.71,
           "doc": "001812117",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8055960.pdf",
           "mes": 2
         },
         {
@@ -4583,7 +4579,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 242.0,
           "doc": "001807907",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8059090.pdf",
           "mes": 2
         },
         {
@@ -4803,7 +4799,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 242.0,
           "doc": "001318757",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8046270.pdf",
           "mes": 1
         },
         {
@@ -4813,7 +4809,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 331.92,
           "doc": "001319805",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3637/2026/8040772.pdf",
           "mes": 1
         },
         {
@@ -4848,11 +4844,11 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/141411",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/141411/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 434948.81,
+      "cotaGastaAno": 438948.81,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 143918.2
+          "valor": 147918.2
         },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -4883,7 +4879,7 @@
           "valor": 1970.83
         }
       ],
-      "totalNotasFiscais": 172,
+      "totalNotasFiscais": 173,
       "despesas": [
         {
           "data": "2026-11-03",
@@ -4913,6 +4909,16 @@
           "valor": 300.0,
           "doc": "305",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8168483.pdf",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-21",
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "fornecedor": "VISUALIZA ALUGUEL DE CARROS LTDA",
+          "cnpjCpfFornecedor": "09.315.090/0001-84",
+          "valor": 4000.0,
+          "doc": "5581",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8168184.pdf",
           "mes": 10
         },
         {
@@ -5032,7 +5038,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 1502.66,
           "doc": "006228893",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8163789.pdf",
           "mes": 9
         },
         {
@@ -5062,7 +5068,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 116.9,
           "doc": "171376",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8163816.pdf",
           "mes": 9
         },
         {
@@ -5182,7 +5188,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 1502.71,
           "doc": "005677957",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8153468.pdf",
           "mes": 8
         },
         {
@@ -5192,7 +5198,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 143.9,
           "doc": "0019861494",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8153470.pdf",
           "mes": 8
         },
         {
@@ -5352,7 +5358,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 1502.71,
           "doc": "01129261317",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8144026.pdf",
           "mes": 7
         },
         {
@@ -5372,7 +5378,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 143.9,
           "doc": "0019523247",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8144099.pdf",
           "mes": 7
         },
         {
@@ -5542,7 +5548,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 1502.71,
           "doc": "004499981",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8129528.pdf",
           "mes": 6
         },
         {
@@ -5562,7 +5568,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 137.0,
           "doc": "0019186126",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8129539.pdf",
           "mes": 6
         },
         {
@@ -5692,7 +5698,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 1542.51,
           "doc": "003916794",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8113592.pdf",
           "mes": 5
         },
         {
@@ -5712,7 +5718,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 137.0,
           "doc": "0018849600",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8113614.pdf",
           "mes": 5
         },
         {
@@ -5912,7 +5918,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 1538.0,
           "doc": "003343130",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8096496.pdf",
           "mes": 4
         },
         {
@@ -5922,7 +5928,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 137.0,
           "doc": "0018513898",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8096528.pdf",
           "mes": 4
         },
         {
@@ -6092,7 +6098,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 1482.71,
           "doc": "002762721",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8076114.pdf",
           "mes": 3
         },
         {
@@ -6112,7 +6118,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 137.0,
           "doc": "0018178504",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8076138.pdf",
           "mes": 3
         },
         {
@@ -6312,7 +6318,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 1479.71,
           "doc": "01129261317",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8064116.pdf",
           "mes": 2
         },
         {
@@ -6372,7 +6378,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 137.0,
           "doc": "0017844964",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8059645.pdf",
           "mes": 2
         },
         {
@@ -6522,7 +6528,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 1522.51,
           "doc": "01129261317",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8047300.pdf",
           "mes": 1
         },
         {
@@ -6532,7 +6538,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 137.0,
           "doc": "0017512527",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8047306.pdf",
           "mes": 1
         },
         {
@@ -6627,11 +6633,11 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/204351",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/204351/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 238860.14,
+      "cotaGastaAno": 267254.09,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 90155.49
+          "valor": 94155.49
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -6643,7 +6649,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 36525.65
+          "valor": 36996.6
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -6660,13 +6666,9 @@
         {
           "categoria": "SERVIÇOS POSTAIS",
           "valor": 318.8
-        },
-        {
-          "categoria": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "valor": -23923.0
         }
       ],
-      "totalNotasFiscais": 335,
+      "totalNotasFiscais": 329,
       "despesas": [
         {
           "data": "2026-11-03",
@@ -6677,6 +6679,16 @@
           "doc": "265",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8173242",
           "mes": 11
+        },
+        {
+          "data": "2026-11-03",
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "fornecedor": "MS CONSERVADOR LTDA",
+          "cnpjCpfFornecedor": "49.463.701/0001-56",
+          "valor": 4000.0,
+          "doc": "2",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3393/2026/8171486.pdf",
+          "mes": 10
         },
         {
           "data": "2026-10-30",
@@ -6806,6 +6818,16 @@
           "valor": 300.66,
           "doc": "242328",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8167831",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-07",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "SMAFF COMBUSTIVEIS LTDA",
+          "cnpjCpfFornecedor": "05.662.975/0001-07",
+          "valor": 267.57,
+          "doc": "60305",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8175650",
           "mes": 10
         },
         {
@@ -6959,13 +6981,13 @@
           "mes": 9
         },
         {
-          "data": "2026-09-01",
-          "categoria": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "fornecedor": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "cnpjCpfFornecedor": "00.530.352/0001-59",
-          "valor": -2747.0,
-          "doc": "",
-          "urlNotaFiscal": null,
+          "data": "2026-09-03",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "TTZ MARTINS LTDA",
+          "cnpjCpfFornecedor": "45.252.868/0001-17",
+          "valor": 203.38,
+          "doc": "27137",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8174109",
           "mes": 9
         },
         {
@@ -7249,16 +7271,6 @@
           "mes": 8
         },
         {
-          "data": "2026-08-01",
-          "categoria": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "fornecedor": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "cnpjCpfFornecedor": "00.530.352/0001-59",
-          "valor": -2747.0,
-          "doc": "",
-          "urlNotaFiscal": null,
-          "mes": 8
-        },
-        {
           "data": "2026-07-31",
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "fornecedor": "NELSON BENEDITO CONSULTORIA IMOBILIARIA LTDA",
@@ -7495,16 +7507,6 @@
           "cnpjCpfFornecedor": "00.000.000/0000-01",
           "valor": 349.68,
           "doc": "8156377",
-          "urlNotaFiscal": null,
-          "mes": 7
-        },
-        {
-          "data": "2026-07-01",
-          "categoria": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "fornecedor": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "cnpjCpfFornecedor": "00.530.352/0001-59",
-          "valor": -2747.0,
-          "doc": "",
           "urlNotaFiscal": null,
           "mes": 7
         },
@@ -7845,16 +7847,6 @@
           "cnpjCpfFornecedor": "00.000.000/0000-01",
           "valor": 349.68,
           "doc": "8156359",
-          "urlNotaFiscal": null,
-          "mes": 6
-        },
-        {
-          "data": "2026-06-01",
-          "categoria": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "fornecedor": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "cnpjCpfFornecedor": "00.530.352/0001-59",
-          "valor": -2747.0,
-          "doc": "",
           "urlNotaFiscal": null,
           "mes": 6
         },
@@ -8345,16 +8337,6 @@
           "cnpjCpfFornecedor": "00.000.000/0000-01",
           "valor": 233.12,
           "doc": "8151606",
-          "urlNotaFiscal": null,
-          "mes": 5
-        },
-        {
-          "data": "2026-05-01",
-          "categoria": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "fornecedor": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "cnpjCpfFornecedor": "00.530.352/0001-59",
-          "valor": -2747.0,
-          "doc": "",
           "urlNotaFiscal": null,
           "mes": 5
         },
@@ -8899,16 +8881,6 @@
           "mes": 4
         },
         {
-          "data": "2026-04-01",
-          "categoria": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "fornecedor": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "cnpjCpfFornecedor": "00.530.352/0001-59",
-          "valor": -2747.0,
-          "doc": "",
-          "urlNotaFiscal": null,
-          "mes": 4
-        },
-        {
           "data": "2026-03-28",
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
           "fornecedor": "POSTO LIBERDADE LOCATELLI LTDA.",
@@ -9389,16 +9361,6 @@
           "mes": 3
         },
         {
-          "data": "2026-03-01",
-          "categoria": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "fornecedor": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "cnpjCpfFornecedor": "00.530.352/0001-59",
-          "valor": -2747.0,
-          "doc": "",
-          "urlNotaFiscal": null,
-          "mes": 3
-        },
-        {
           "data": "2026-02-27",
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "fornecedor": "nelson benedito consultoria imobiliaria ltda",
@@ -9779,16 +9741,6 @@
           "mes": 2
         },
         {
-          "data": "2026-02-01",
-          "categoria": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "fornecedor": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "cnpjCpfFornecedor": "00.530.352/0001-59",
-          "valor": -2347.0,
-          "doc": "",
-          "urlNotaFiscal": null,
-          "mes": 2
-        },
-        {
           "data": "2026-01-30",
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "fornecedor": "nelson benedito consultoria imobiliaria ltda",
@@ -10005,16 +9957,6 @@
           "cnpjCpfFornecedor": "00.000.000/0000-01",
           "valor": 225.18,
           "doc": "8090751",
-          "urlNotaFiscal": null,
-          "mes": 1
-        },
-        {
-          "data": "2026-01-01",
-          "categoria": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "fornecedor": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "cnpjCpfFornecedor": "00.530.352/0001-59",
-          "valor": -2347.0,
-          "doc": "",
           "urlNotaFiscal": null,
           "mes": 1
         }
@@ -10714,7 +10656,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 2053.21,
           "doc": "3631206",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1649/2026/8102819.pdf",
           "mes": 5
         },
         {
@@ -10974,7 +10916,7 @@
           "cnpjCpfFornecedor": "40.154.884/0001-53",
           "valor": 576.0,
           "doc": "4817454",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1649/2026/8073635.pdf",
           "mes": 4
         },
         {
@@ -11539,7 +11481,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220547",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220547/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 217347.92,
+      "cotaGastaAno": 223347.92,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -11547,7 +11489,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 64772.72
+          "valor": 70772.72
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -11620,6 +11562,16 @@
           "valor": 1343.78,
           "doc": "039818424",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3539/2026/8168562.pdf",
+          "mes": 10
+        },
+        {
+          "data": "2026-09-22",
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "fornecedor": "VITTALICE CORRETORA DE SEGUROS, PLANOS DE SAUDE E IMOVEIS LTDA",
+          "cnpjCpfFornecedor": "29.089.359/0001-69",
+          "valor": 6000.0,
+          "doc": "9",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3539/2026/8160430.pdf",
           "mes": 10
         },
         {
@@ -13093,16 +13045,6 @@
           "mes": 3
         },
         {
-          "data": "2026-04-03",
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "fornecedor": "Facebook Serviços Online do Brasil Ltda.",
-          "cnpjCpfFornecedor": "13.347.016/0001-17",
-          "valor": 0.0,
-          "doc": "134034556",
-          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3539/2026/8076743.pdf",
-          "mes": 3
-        },
-        {
           "data": "2026-04-01",
           "categoria": "TELEFONIA",
           "fornecedor": "CELULAR FUNCIONAL",
@@ -13760,7 +13702,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 152.9,
           "doc": "407293",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8171935.pdf",
           "mes": 9
         },
         {
@@ -13790,7 +13732,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 703.32,
           "doc": "006508327",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8170810.pdf",
           "mes": 10
         },
         {
@@ -13920,7 +13862,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 152.9,
           "doc": "61367",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8165227.pdf",
           "mes": 8
         },
         {
@@ -13970,7 +13912,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 703.32,
           "doc": "005925535",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8165619.pdf",
           "mes": 9
         },
         {
@@ -14370,7 +14312,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 703.32,
           "doc": "005322124",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8149838.pdf",
           "mes": 8
         },
         {
@@ -14770,7 +14712,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 152.9,
           "doc": "0019411684",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8139759.pdf",
           "mes": 6
         },
         {
@@ -14860,7 +14802,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 703.32,
           "doc": "004766406",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8139752.pdf",
           "mes": 7
         },
         {
@@ -15280,7 +15222,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 152.9,
           "doc": "0019074706",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8127412.pdf",
           "mes": 5
         },
         {
@@ -15310,7 +15252,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 703.32,
           "doc": "004189219",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8127430.pdf",
           "mes": 6
         },
         {
@@ -15690,7 +15632,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 152.9,
           "doc": "0018738286",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8109298.pdf",
           "mes": 4
         },
         {
@@ -15770,7 +15712,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 703.32,
           "doc": "003610148",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8108738.pdf",
           "mes": 5
         },
         {
@@ -16150,7 +16092,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 150.0,
           "doc": "0018402800",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8089853.pdf",
           "mes": 3
         },
         {
@@ -16220,7 +16162,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 678.32,
           "doc": "003038446",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8091596.pdf",
           "mes": 4
         },
         {
@@ -16520,7 +16462,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 150.0,
           "doc": "0018067546",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8077201.pdf",
           "mes": 2
         },
         {
@@ -16570,7 +16512,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 684.22,
           "doc": "002417602",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8072117.pdf",
           "mes": 3
         },
         {
@@ -16800,7 +16742,7 @@
           "cnpjCpfFornecedor": "66.970.229/0018-05",
           "valor": 150.0,
           "doc": "0017734589",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8057776.pdf",
           "mes": 1
         },
         {
@@ -16810,7 +16752,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 684.22,
           "doc": "001905253",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8057756.pdf",
           "mes": 2
         },
         {
@@ -16990,7 +16932,7 @@
           "cnpjCpfFornecedor": "02.558.157/0001-62",
           "valor": 684.22,
           "doc": "001314159",
-          "urlNotaFiscal": null,
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8043442.pdf",
           "mes": 1
         }
       ]
@@ -17015,7 +16957,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/74376",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/74376/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 301248.63,
+      "cotaGastaAno": 297265.34,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -17042,15 +16984,11 @@
           "valor": 5048.62
         },
         {
-          "categoria": "PASSAGEM AÉREA - RPA",
-          "valor": 3983.29
-        },
-        {
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
           "valor": 31.46
         }
       ],
-      "totalNotasFiscais": 244,
+      "totalNotasFiscais": 242,
       "despesas": [
         {
           "data": "2026-10-10",
@@ -17061,16 +16999,6 @@
           "doc": "1681981",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8168743",
           "mes": 10
-        },
-        {
-          "data": "2026-08-27",
-          "categoria": "PASSAGEM AÉREA - RPA",
-          "fornecedor": "Cia Aérea - GOL",
-          "cnpjCpfFornecedor": "07.575.651/0001-59",
-          "valor": 90.0,
-          "doc": "Bilhete: 1274443700258",
-          "urlNotaFiscal": null,
-          "mes": 8
         },
         {
           "data": "2026-08-12",
@@ -18610,16 +18538,6 @@
           "valor": 14960.0,
           "doc": "310",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1697/2026/8082728.pdf",
-          "mes": 4
-        },
-        {
-          "data": "2026-04-13",
-          "categoria": "PASSAGEM AÉREA - RPA",
-          "fornecedor": "Cia Aérea - GOL",
-          "cnpjCpfFornecedor": "07.575.651/0001-59",
-          "valor": 3893.29,
-          "doc": "Bilhete: 1272301798211",
-          "urlNotaFiscal": null,
           "mes": 4
         },
         {
