@@ -193,6 +193,26 @@ def main():
         else:
             print(f"  ⚠️ {chave}: {len(eleitos)} candidaturas eleitas encontradas")
 
+    # eleição de 2026: todos os eleitos de MS (governador, senadores, deputados federais e estaduais)
+    if 2026 not in candidatos:
+        try:
+            candidatos[2026] = [r for r in ler_csv(f"{BASE}/consulta_cand/consulta_cand_2026.zip", "consulta_cand_2026_MS.csv")]
+            print(f"  2026: {len(candidatos[2026])} candidaturas em MS")
+        except Exception as e:
+            print(f"  ⚠️ 2026: {e}")
+            candidatos[2026] = []
+    ELEITO = re.compile(r"^ELEITO", re.I)
+    for c in candidatos.get(2026, []):
+        if c["DS_CARGO"].upper() in ("GOVERNADOR", "SENADOR", "DEPUTADO FEDERAL", "DEPUTADO ESTADUAL") and ELEITO.match(c.get("DS_SIT_TOT_TURNO", "")):
+            k = f"eleito2026|{c['DS_CARGO'].title()}|{c['NM_URNA_CANDIDATO'].title()}"
+            saida[k] = {"ano": 2026, "cargo": c["DS_CARGO"].title(), "nomeCompleto": c["NM_CANDIDATO"].title(),
+                        "urna": c["NM_URNA_CANDIDATO"], "partido": c.get("SG_PARTIDO"), "situacao": c.get("DS_SIT_TOT_TURNO", "").title(),
+                        "sq": c["SQ_CANDIDATO"], "cpf6": cpf6(c.get("NR_CPF_CANDIDATO")), "doadores": {}, "fornecedores": {},
+                        "totalReceitas": 0.0, "totalDespesas": 0.0}
+            if c["DS_CARGO"].upper() == "GOVERNADOR":
+                saida["executivo|Governador(a) de MS (campanha de 2026)"] = saida[k]  # o mesmo registro: doadores de 2026
+    print(f"  2026: {sum(1 for k in saida if k.startswith('eleito2026|'))} eleitos")
+
     # eleição anterior de quem se reelegeu (vereadores: 2020; deputados: 2018), pelo CPF + nome civil
     for ano_ant, grupos_ant in ((2020, ("vereador",)), (2018, ("estadual", "federal"))):
         if ano_ant not in candidatos:
@@ -223,7 +243,7 @@ def main():
                 freq[w] = freq.get(w, 0) + 1
     sobrenomes = {w: freq.get(w, 0) for d in saida.values() for w in norm(d["nomeCompleto"]).split()[1:] if len(w) > 3}
 
-    por_sq = {(d["ano"], d["sq"]): d for d in saida.values()}
+    por_sq = {(d["ano"], d["sq"]): d for d in saida.values() if d.get("sq")}
     for d in saida.values():
         for a in d.get("anteriores", []):
             por_sq[(a["ano"], a["sq"])] = d
@@ -259,12 +279,78 @@ def main():
                     x[3].append(ano)
                 m += 1
         print(f"  {ano}: {n} doações de pessoas físicas e {m} despesas com empresas dos parlamentares atuais")
-    for d in saida.values():
+    # bens declarados ao TSE em cada candidatura (2018 a 2026), para a evolução do patrimônio
+    bens = {}
+    for ano_b in (2018, 2020, 2022, 2024, 2026):
+        try:
+            for r in ler_csv(f"{BASE}/bem_candidato/bem_candidato_{ano_b}.zip", f"bem_candidato_{ano_b}_MS.csv"):
+                b = bens.setdefault((ano_b, r["SQ_CANDIDATO"]), [0.0, 0])
+                b[0] += num(r["VR_BEM_CANDIDATO"])
+                b[1] += 1
+        except Exception as e:
+            print(f"  ⚠️ bens {ano_b}: {e}")
+        if ano_b not in candidatos:
+            try:
+                candidatos[ano_b] = [r for r in ler_csv(f"{BASE}/consulta_cand/consulta_cand_{ano_b}.zip", f"consulta_cand_{ano_b}_MS.csv")]
+            except Exception:
+                candidatos[ano_b] = []
+    print(f"  bens: {len(bens)} candidaturas com bens declarados")
+    idx_cpf, idx_nome = {}, {}
+    for ano_b in (2018, 2020, 2022, 2024, 2026):
+        for c in candidatos.get(ano_b, []):
+            idx_cpf.setdefault((ano_b, cpf6(c.get("NR_CPF_CANDIDATO")), norm(c["NM_CANDIDATO"])), []).append(c)
+            idx_nome.setdefault((ano_b, norm(c["NM_CANDIDATO"])), []).append(c)
+    for d in {id(v): v for v in saida.values()}.values():
+        serie = []
+        for ano_b in (2018, 2020, 2022, 2024, 2026):
+            achou = idx_cpf.get((ano_b, d.get("cpf6"), norm(d["nomeCompleto"]))) if d.get("cpf6") else None
+            if not achou:  # 2024 não traz CPF: vale o nome civil completo, se for único no estado
+                achou = idx_nome.get((ano_b, norm(d["nomeCompleto"])))
+                achou = achou if achou and len({c["SQ_CANDIDATO"] for c in achou}) == 1 else None
+            if achou:
+                c = achou[0]
+                b = bens.get((ano_b, c["SQ_CANDIDATO"]))
+                serie.append({"ano": ano_b, "cargo": c["DS_CARGO"].title(), "situacao": c.get("DS_SIT_TOT_TURNO", "").title(),
+                              "patrimonio": round(b[0], 2) if b else 0.0, "itens": b[1] if b else 0})
+        d["patrimonio"] = serie
+    for d in {id(v): v for v in saida.values()}.values():
         d["totalReceitas"], d["totalDespesas"] = round(d["totalReceitas"], 2), round(d["totalDespesas"], 2)
-        d.pop("sq")
+        d.pop("sq", None)
         for a in d.get("anteriores", []):
             a.pop("sq", None)
-    if len([k for k in saida if not k.startswith("executivo|")]) < 40:
+    # arquivo público (sem CPF parcial dos doadores): eleitos de 2026 e evolução do patrimônio
+    def pessoa_pub(k, d):
+        return {"chave": k, "nome": k.split("|")[-1] if not k.startswith("eleito2026|") else d["urna"].title(), "nomeCompleto": d["nomeCompleto"],
+                "cargo": d.get("cargo"), "partido": d.get("partido"), "patrimonio": d.get("patrimonio", [])}
+    eleitos = []
+    for k, d in saida.items():
+        if k.startswith("eleito2026|"):
+            eleitos.append({**pessoa_pub(k, d), "situacao": d["situacao"], "receitas": d["totalReceitas"], "despesas": d["totalDespesas"],
+                            "doadores": [{"nome": v[0], "valor": v[1]} for v in sorted(d["doadores"].values(), key=lambda v: -v[1])[:10]],
+                            "fornecedores": [{"cnpj": c, "nome": v[0], "valor": v[1], "descricao": v[2]}
+                                             for c, v in sorted(d["fornecedores"].items(), key=lambda kv: -kv[1][1])[:10]]})
+    atuais = [pessoa_pub(k, d) for k, d in saida.items() if not k.startswith(("eleito2026|", "executivo|"))]
+    doad26, forn26 = {}, {}
+    for k, d in saida.items():
+        if k.startswith("eleito2026|"):
+            for nm, v in d["doadores"].items():
+                x = doad26.setdefault(nm, {"nome": v[0], "valor": 0.0, "candidatos": []})
+                x["valor"] += v[1]
+                x["candidatos"].append(d["urna"].title())
+            for c, v in d["fornecedores"].items():
+                x = forn26.setdefault(c, {"cnpj": c, "nome": v[0], "valor": 0.0, "candidatos": []})
+                x["valor"] += v[1]
+                x["candidatos"].append(d["urna"].title())
+    (DADOS / "eleicoes.json").write_text(json.dumps({
+        "ultimaAtualizacao": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+        "fonte": "TSE — Portal de Dados Abertos (candidaturas, bens declarados e prestação de contas)",
+        "eleitos2026": sorted(eleitos, key=lambda x: ("GDSF".find(x["cargo"][0]), -x["receitas"])),
+        "atuais": atuais,
+        "maioresDoadores2026": sorted(({**v, "valor": round(v["valor"], 2)} for v in doad26.values()), key=lambda v: -v["valor"])[:40],
+        "maioresFornecedores2026": sorted(({**v, "valor": round(v["valor"], 2)} for v in forn26.values()), key=lambda v: -v["valor"])[:40]},
+        ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    print(f"✅ eleicoes.json — {len(eleitos)} eleitos em 2026, patrimônio de {len(atuais)} parlamentares atuais")
+    if len([k for k in saida if not k.startswith(("executivo|", "eleito2026|"))]) < 40:
         print(f"❌ só {len(saida)} parlamentares encontrados no TSE — arquivo mantido")
         sys.exit(1)
     (DADOS / "tse_campanhas.json").write_text(json.dumps({

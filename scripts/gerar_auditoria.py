@@ -279,6 +279,8 @@ def main():
     for k, d in tse.items():
         if k.startswith("executivo|"):
             executivo[k.split("|", 1)[1]] = d
+        elif k.startswith("eleito2026|"):
+            continue  # eleitos em 2026: o mandato novo começa em 2027
         else:
             camp[k.split("|", 1)[1]] = d
 

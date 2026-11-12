@@ -235,6 +235,16 @@ def gerar_csvs():
     contagem["stf_despesa_pessoal.csv"] = grava_csv("stf_despesa_pessoal.csv",
         ["periodo", "despesa_bruta_12_meses", "ativos", "inativos_e_pensionistas", "despesa_total_com_pessoal", "pct_rcl"],
         [[x["periodo"], num(x.get("bruta")), num(x.get("ativos")), num(x.get("inativos")), num(x.get("dtp")), x.get("pctRCL")] for x in (stf.get("pessoal") or {}).get("serie", [])])
+    el = carregar("eleicoes.json")
+    contagem["eleicoes_2026_eleitos.csv"] = grava_csv("eleicoes_2026_eleitos.csv",
+        ["cargo", "nome_urna", "nome_completo", "partido", "situacao", "patrimonio_2026", "arrecadou", "gastou"],
+        [[x["cargo"], x["nome"], x["nomeCompleto"], x.get("partido"), x.get("situacao"),
+          num(next((p["patrimonio"] for p in x.get("patrimonio", []) if p["ano"] == 2026), None)), num(x.get("receitas")), num(x.get("despesas"))]
+         for x in el.get("eleitos2026", [])])
+    contagem["patrimonio_declarado.csv"] = grava_csv("patrimonio_declarado.csv",
+        ["nome", "nome_completo", "ano_eleicao", "cargo_disputado", "situacao", "patrimonio_declarado"],
+        [[x["nome"], x["nomeCompleto"], p["ano"], p["cargo"], p["situacao"], num(p["patrimonio"])]
+         for x in el.get("atuais", []) + el.get("eleitos2026", []) for p in x.get("patrimonio", [])])
     au = carregar("auditoria.json")
     contagem["auditoria_sinais.csv"] = grava_csv("auditoria_sinais.csv",
         ["visto_em", "teste", "nivel", "titulo", "descricao", "quem_pagou", "empresa", "cnpj", "valor", "evidencias"],
@@ -398,6 +408,11 @@ def status_fontes():
         "https://dadosjusbr.org/", stf.get("ultimaAtualizacao"),
         f"contracheques até {(stf.get('remuneracao') or {}).get('ate', '')[5:]}/{(stf.get('remuneracao') or {}).get('ate', '')[:4]}" if stf else None,
         bool(stf) and em_dia(stf.get("ultimaAtualizacao"), 8))
+
+    el = carregar("eleicoes.json")
+    add("eleicoes", "TSE — Portal de Dados Abertos (candidaturas, bens declarados e prestação de contas)", "https://dadosabertos.tse.jus.br/",
+        el.get("ultimaAtualizacao"), f"{len(el.get('eleitos2026', []))} eleitos em 2026" if el else None,
+        bool(el) and em_dia(el.get("ultimaAtualizacao"), 10))
 
     cidades, paradas = 0, []
     for f in sorted((DADOS / "camaras").glob("*.json")):

@@ -260,7 +260,7 @@ jobs:
           retention-days: 1
 
   coletar_fontes_federais:
-    # TSE, Presidência (CGU), STF (DadosJusBr + SICONFI) e sanções (CEIS/CNEP) — em paralelo com os outros
+    # TSE, Presidência (CGU), STF (DadosJusBr + SICONFI), sanções (CEIS/CNEP) — em paralelo com os outros
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -299,6 +299,7 @@ jobs:
           name: dados-federais
           path: |
             dados/tse_campanhas.json
+            dados/eleicoes.json
             dados/sancoes.json
             dados/presidencia.json
             dados/presidencia_cache.json

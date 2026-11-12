@@ -541,6 +541,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button data-tab="supersalarios"><span class="dot"></span> Supersalários</button>
       <button data-tab="conexoes"><span class="dot"></span> Conexões</button>
       <button data-tab="auditoria"><span class="dot"></span> Auditoria</button>
+      <button data-tab="eleicoes"><span class="dot"></span> Eleições e patrimônio</button>
       <button data-tab="evolucao"><span class="dot"></span> Evolução</button>
       <div class="nav-group-label">Brasil</div>
       <button data-tab="presidencia"><span class="dot"></span> Presidência</button>
@@ -1679,6 +1680,66 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       </div>
       <button type="button" class="cx-mais" id="cx-mais" style="display:none"></button>
       <div class="detail-panel" id="detail-cx"></div>
+    </div>
+  </section>
+
+  <section class="tabpanel" id="tab-eleicoes">
+    <div class="hero">
+      <div class="hero-label">Eleições 2026 e patrimônio declarado · TSE</div>
+      <div class="hero-number" id="el-n">—</div>
+      <div class="hero-desc">eleitos em MS em 2026 — governador, senadores, deputados federais e estaduais —, com o patrimônio que declararam ao TSE,
+        quanto arrecadaram e quem pagou as campanhas. Abaixo, a evolução do patrimônio declarado de cada parlamentar atual, eleição a eleição.</div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="el-receitas">—</div><div class="mini-stat-label">arrecadados pelas campanhas dos eleitos</div></div>
+        <div><div class="mini-stat-value" id="el-patrimonio">—</div><div class="mini-stat-label">de patrimônio declarado pelos eleitos</div></div>
+        <div><div class="mini-stat-value" id="el-doadores">—</div><div class="mini-stat-label">maior doação de pessoa física</div></div>
+        <div><div class="mini-stat-value" id="el-data">—</div><div class="mini-stat-label">atualizado em</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-note cx-aviso">ℹ️ <b>Como ler.</b> O patrimônio é o que cada candidato declarou ao TSE no registro de candidatura — em geral pelo valor de compra,
+        não de mercado — e os valores são nominais (sem correção pela inflação). Crescer ou diminuir não indica irregularidade: herança, venda de bens e
+        mudança no jeito de declarar explicam muitos casos. A prestação de contas de 2026 ainda pode ser retificada.</p>
+      <div class="section-head"><h2 class="section-title">Eleitos em 2026</h2></div>
+      <div class="card card-x-scroll">
+        <table class="ranking" id="tabela-el-eleitos">
+          <thead><tr><th>Eleito(a)</th><th>Cargo</th><th class="num">Patrimônio 2026</th><th class="num">Eleição anterior</th><th class="num">Arrecadou</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="detail-panel" id="detail-el"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Evolução do patrimônio declarado</h2></div>
+      <div class="section-note">Parlamentares com mandato hoje e eleitos em 2026, da primeira à última candidatura desde 2018. Ordenado pela variação em reais.</div>
+      <input class="search-box" id="busca-el-pat" type="text" placeholder="buscar nome…" />
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-el-pat" data-cartoes>
+          <thead><tr><th>Nome</th><th>Candidaturas (ano: patrimônio)</th><th class="num">Primeira</th><th class="num">Última</th><th class="num">Variação</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="el-pat-mais" style="margin-top:10px;display:none"></button>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Quem financiou e quem recebeu nas campanhas de 2026</h2></div>
+      <div class="capa-roscas" style="grid-template-columns:1fr 1fr">
+        <div class="card card-x-scroll">
+          <table class="notes-table" id="tabela-el-doad" data-cartoes>
+            <thead><tr><th>Maiores doadores (pessoas físicas)</th><th class="num">Doou</th></tr></thead><tbody></tbody>
+          </table>
+        </div>
+        <div class="card card-x-scroll">
+          <table class="notes-table" id="tabela-el-forn" data-cartoes>
+            <thead><tr><th>Empresas que mais receberam das campanhas</th><th class="num">Recebeu</th></tr></thead><tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <p class="section-note" style="margin-top:12px">Soma das campanhas dos eleitos de MS em 2026. Fonte: <a href="https://dadosabertos.tse.jus.br/" target="_blank" rel="noopener">Portal de Dados Abertos do TSE</a>
+        (candidaturas, bens declarados e prestação de contas). Atualização automática semanal.</p>
     </div>
   </section>
 
@@ -4960,6 +5021,72 @@ function renderPresidencia(d) {
   bm.addEventListener("input", desM); desM();
 }
 
+// ===================== ELEIÇÕES 2026 E PATRIMÔNIO =====================
+function renderEleicoes(d) {
+  const fmt = v => formatBRL(v || 0), el = d.eleitos2026 || [];
+  const ultP = p => (p.patrimonio || []).slice(-1)[0], antP = p => (p.patrimonio || []).filter(x => x.ano < 2026).slice(-1)[0];
+  document.getElementById("el-n").textContent = el.length;
+  document.getElementById("el-receitas").textContent = formatCompact(el.reduce((t, x) => t + (x.receitas || 0), 0));
+  document.getElementById("el-patrimonio").textContent = formatCompact(el.reduce((t, x) => t + ((ultP(x) || {}).patrimonio || 0), 0));
+  const md = (d.maioresDoadores2026 || [])[0];
+  document.getElementById("el-doadores").textContent = md ? formatCompact(md.valor) : "—";
+  document.getElementById("el-data").textContent = d.ultimaAtualizacao ? formatDate(d.ultimaAtualizacao.slice(0, 10)) : "—";
+  const pagina = nome => PAGINAS_BUSCA && Object.entries(PAGINAS_BUSCA).find(([k]) => _normNome(k.split("|")[1]) === _normNome(nome));
+  const tb = document.querySelector("#tabela-el-eleitos tbody"), det = document.getElementById("detail-el");
+  tb.innerHTML = el.map((x, i) => {
+    const u = ultP(x), a = antP(x);
+    return `<tr class="clickable" data-i="${i}"><td><div class="rank-name">${escHTML(x.nome)}</div><div class="rank-meta">${escHTML(x.partido || "")} · ${escHTML(x.nomeCompleto)}</div></td>
+      <td>${escHTML(x.cargo)}</td><td class="num">${u ? fmt(u.patrimonio) : "—"}</td>
+      <td class="num">${a ? `${fmt(a.patrimonio)} <span style="opacity:.6">(${a.ano})</span>` : "—"}</td><td class="num">${fmt(x.receitas)}</td></tr>`;
+  }).join("");
+  tb.querySelectorAll("tr.clickable").forEach(r => r.addEventListener("click", () => {
+    const x = el[+r.dataset.i], max = Math.max(1, ...(x.patrimonio || []).map(p => p.patrimonio));
+    const pg = pagina(x.nome);
+    det.innerHTML = `<div class="detail-header"><div class="detail-header-text"><h3>${escHTML(x.nome)} <span style="opacity:.6;font-size:.8em">${escHTML(x.partido || "")}</span></h3>
+        <div class="detail-meta">${escHTML(x.cargo)} eleito(a) em 2026 · ${escHTML(x.nomeCompleto)}${pg ? ` · <a href="${pg[1]}">página do parlamentar</a>` : ""}</div></div></div>
+      <div class="subhead">Patrimônio declarado ao TSE</div>
+      <div class="bar-list largo">${(x.patrimonio || []).map(p => `<div class="bar-list-row"><div class="bar-list-label">${p.ano} · ${escHTML(p.cargo)}</div>
+        <div class="bar-list-track"><div class="bar-list-fill amber" style="width:${(p.patrimonio / max * 100).toFixed(1)}%"></div></div><div class="bar-list-value">${formatCompact(p.patrimonio)}</div></div>`).join("")}</div>
+      <div class="subhead">Campanha de 2026: arrecadou ${fmt(x.receitas)} e gastou ${fmt(x.despesas)}</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+        <div style="overflow-x:auto"><table class="notes-table"><thead><tr><th>Maiores doadores (pessoas físicas)</th><th class="num">Valor</th></tr></thead><tbody>
+          ${(x.doadores || []).map(v => `<tr><td>${escHTML(v.nome)}</td><td class="num">${fmt(v.valor)}</td></tr>`).join("") || `<tr><td colspan="2">Sem doações de pessoas físicas.</td></tr>`}</tbody></table></div>
+        <div style="overflow-x:auto"><table class="notes-table"><thead><tr><th>Maiores fornecedores</th><th class="num">Valor</th></tr></thead><tbody>
+          ${(x.fornecedores || []).map(v => `<tr><td class="quebra">${escHTML(v.nome)}<div class="rank-meta">${linksCNPJ(v.cnpj)}</div></td><td class="num">${fmt(v.valor)}</td></tr>`).join("") || `<tr><td colspan="2">—</td></tr>`}</tbody></table></div>
+      </div>`;
+    det.classList.add("active"); det.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }));
+  // evolução do patrimônio: atuais + eleitos (sem repetir a mesma pessoa)
+  const vistos = new Set(), pessoas = [];
+  for (const x of [...(d.atuais || []), ...el]) {
+    const k = _normNome(x.nomeCompleto);
+    if (vistos.has(k) || (x.patrimonio || []).length < 2) continue;
+    vistos.add(k);
+    const s = x.patrimonio, p0 = s[0], p1 = s[s.length - 1];
+    pessoas.push({ ...x, p0, p1, dif: p1.patrimonio - p0.patrimonio });
+  }
+  pessoas.sort((a, b) => b.dif - a.dif);
+  const bp = document.getElementById("busca-el-pat");
+  const des = () => {
+    const f = _normNome(bp.value.trim());
+    paginarTabela(document.querySelector("#tabela-el-pat tbody"), document.getElementById("el-pat-mais"),
+      pessoas.filter(x => !f || _normNome(x.nome + " " + x.nomeCompleto).includes(f)), x => `
+      <tr><td data-label="Nome"><b>${escHTML(x.nome)}</b><div class="rank-meta">${escHTML(x.nomeCompleto)}</div></td>
+        <td data-label="Candidaturas" class="quebra" style="font-size:.78rem">${x.patrimonio.map(p => `${p.ano}: ${formatCompact(p.patrimonio)}`).join(" · ")}</td>
+        <td data-label="Primeira" class="num">${fmt(x.p0.patrimonio)} <span style="opacity:.6">(${x.p0.ano})</span></td>
+        <td data-label="Última" class="num">${fmt(x.p1.patrimonio)} <span style="opacity:.6">(${x.p1.ano})</span></td>
+        <td data-label="Variação" class="num">${x.dif >= 0 ? "+" : "−"}${formatCompact(Math.abs(x.dif))}</td></tr>`,
+      `<tr><td colspan="5">Ninguém encontrado.</td></tr>`, 25);
+  };
+  bp.addEventListener("input", des); des();
+  document.querySelector("#tabela-el-doad tbody").innerHTML = (d.maioresDoadores2026 || []).slice(0, 20).map(v => `
+    <tr><td data-label="Doador">${escHTML(v.nome)}<div class="rank-meta">para ${escHTML(v.candidatos.slice(0, 4).join(", "))}${v.candidatos.length > 4 ? ` e mais ${v.candidatos.length - 4}` : ""}</div></td>
+      <td data-label="Doou" class="num">${fmt(v.valor)}</td></tr>`).join("");
+  document.querySelector("#tabela-el-forn tbody").innerHTML = (d.maioresFornecedores2026 || []).slice(0, 20).map(v => `
+    <tr><td data-label="Empresa" class="quebra">${escHTML(v.nome)}<div class="rank-meta">${linksCNPJ(v.cnpj)} · ${v.candidatos.length} campanha(s)</div></td>
+      <td data-label="Recebeu" class="num">${fmt(v.valor)}</td></tr>`).join("");
+}
+
 // ===================== AUDITORIA =====================
 function renderAuditoria(d) {
   const lista = d.sinais || [];
@@ -5889,6 +6016,7 @@ const FONTE_ABA = {
   "contratos-cg": { titulo: "Contratos e licitações da Prefeitura de Campo Grande", csv: [["Contratos", "prefeitura_contratos.csv"], ["Licitações", "prefeitura_licitacoes.csv"]], json: "prefeitura_contratos.json" },
   "governo-ms": { titulo: "Despesas do Governo do Estado de MS", csv: [["Órgãos", "governo_ms_orgaos.csv"], ["Credores", "governo_ms_credores.csv"], ["Diárias", "governo_ms_diarias.csv"], ["Primeiro escalão", "governo_ms_primeiro_escalao.csv"], ["Contratos", "governo_ms_contratos.csv"], ["Obras", "governo_ms_obras.csv"], ["Licitações (PNCP)", "governo_ms_licitacoes.csv"]], json: "governo_ms.json" },
   "emendas": { titulo: "Emendas parlamentares recebidas em MS, por município", csv: [["Municípios e autores", "emendas_municipios.csv"], ["Quem recebeu", "emendas_favorecidos.csv"]], json: "emendas_municipios.json" },
+  "eleicoes": { titulo: "Eleições 2026 e patrimônio declarado dos políticos de MS", csv: [["Eleitos 2026", "eleicoes_2026_eleitos.csv"], ["Patrimônio declarado", "patrimonio_declarado.csv"]], json: "eleicoes.json" },
   "auditoria": { titulo: "Auditoria: sinais de atenção nas contas públicas de MS", csv: [["Sinais", "auditoria_sinais.csv"]], json: "auditoria.json" },
   "supersalarios": { titulo: "Supersalários: as maiores remunerações do poder público em MS", csv: [["Ranking", "supersalarios_ranking.csv"], ["Por órgão", "supersalarios_orgaos.csv"], ["Penduricalhos por item", "supersalarios_penduricalhos.csv"]], json: "supersalarios.json" },
   "camaras-ms": { titulo: "Câmaras municipais do interior de MS", csv: [["Vereadores", "camaras_interior.csv"]], json: null },
@@ -6083,6 +6211,10 @@ async function init() {
       if (btn.dataset.tab === "presidencia" && !window._prLoaded) {
         window._prLoaded = true;
         carregarJSON("dados/presidencia.json").then(d => { if (d) renderPresidencia(d); });
+      }
+      if (btn.dataset.tab === "eleicoes" && !window._elLoaded) {
+        window._elLoaded = true;
+        carregarJSON("dados/eleicoes.json").then(d => { if (d) renderEleicoes(d); });
       }
       if (btn.dataset.tab === "auditoria" && !window._auLoaded) {
         window._auLoaded = true;
