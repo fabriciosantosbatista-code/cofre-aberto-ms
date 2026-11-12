@@ -454,8 +454,16 @@ def main():
     def vale_para(x, pagador, grupo):
         """A sanção alcança este pagador? (abrangência + ente que aplicou)"""
         ab, esf, uf, org = norm(x.get("abrangencia")), norm(x.get("esfera")), norm(x.get("uf")), norm(x.get("orgao"))
-        if "TODAS AS ESFERAS" in ab or "INIDONEIDADE" in norm(x.get("categoria")):
+        if "TODAS AS ESFERAS" in ab or ("INIDONEIDADE" in norm(x.get("categoria")) and not ab):
             return True
+        if "NO PODER DO ORGAO" in ab:  # "na esfera e no Poder do órgão sancionador": só o mesmo Poder
+            judiciario = re.search(r"TRIBUNAL|JUSTICA|TJMS|MINISTERIO PUBLICO|VARA|DEFENSORIA|TRIBUNAL DE CONTAS", org)
+            legislativo = re.search(r"ASSEMBLEIA|CAMARA MUNICIPAL|CAMARA DOS DEPUTADOS|SENADO", org)
+            if pagador in ("Governo de MS", "Prefeitura de CG"):
+                if judiciario or legislativo:
+                    return False
+            elif not legislativo:
+                return False
         if "NO ORGAO SANCIONADOR" in ab:
             return (pagador == "Prefeitura de CG" and "CAMPO GRANDE" in org) or (pagador == "Governo de MS" and False)
         if pagador == "Governo de MS":
