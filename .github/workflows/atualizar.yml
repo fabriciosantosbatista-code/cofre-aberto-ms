@@ -259,11 +259,113 @@ jobs:
             dados/supersalarios.json
           retention-days: 1
 
+  coletar_fontes_federais:
+    # TSE, Presidência (CGU), STF (DadosJusBr + SICONFI) e sanções (CEIS/CNEP) — em paralelo com os outros
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests
+
+      - name: Campanhas dos parlamentares e do Executivo no TSE (1 vez por semana)
+        timeout-minutes: 15
+        run: python3 scripts/coletar_tse.py --se-velho || echo "⚠️ coletar_tse.py falhou — campanhas anteriores mantidas"
+
+      - name: Sanções da CGU (CEIS e CNEP) das empresas pagas em MS
+        timeout-minutes: 10
+        run: python3 scripts/coletar_sancoes.py || echo "⚠️ coletar_sancoes.py falhou — sanções anteriores mantidas"
+
+      - name: Presidência da República e transferências da União para MS (CGU)
+        timeout-minutes: 30
+        run: python3 scripts/coletar_presidencia.py $( [ "$(date +%u)" = "1" ] || echo --rapido ) || echo "⚠️ coletar_presidencia.py falhou — dados anteriores mantidos"
+
+      - name: STF — contracheques dos ministros (DadosJusBr) e despesa com pessoal (SICONFI)
+        timeout-minutes: 10
+        run: python3 scripts/coletar_stf.py || echo "⚠️ coletar_stf.py falhou — dados anteriores mantidos"
+
+      - name: Upload artifact — fontes federais
+        uses: actions/upload-artifact@v4
+        with:
+          name: dados-federais
+          path: |
+            dados/tse_campanhas.json
+            dados/sancoes.json
+            dados/presidencia.json
+            dados/presidencia_cache.json
+            dados/stf.json
+            dados/stf_cache.json
+          if-no-files-found: ignore
+          retention-days: 1
+
+  coletar_fontes_auditoria:
+    # Receita (CNPJ), folha × sócios, contratos/obras/pagadores do Estado, aditivos da Prefeitura e licitações (PNCP)
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests
+
+      - name: Cadastro na Receita das empresas novas (CNPJ, incremental)
+        timeout-minutes: 15
+        run: python3 scripts/coletar_cnpj.py 400 || echo "⚠️ coletar_cnpj.py falhou — cadastro anterior mantido"
+
+      - name: Servidores do Estado que são sócios de empresas pagas (folha × Receita)
+        timeout-minutes: 15
+        run: python3 scripts/coletar_servidores_socios.py || echo "⚠️ coletar_servidores_socios.py falhou — cruzamento anterior mantido"
+
+      - name: Contratos e obras do Governo do Estado (+ órgão que paga as empresas acompanhadas)
+        timeout-minutes: 30
+        run: python3 scripts/coletar_contratos_governo.py || echo "⚠️ coletar_contratos_governo.py falhou — contratos anteriores mantidos"
+
+      - name: Aditivos dos contratos da Prefeitura de CG (incremental, 7 dias)
+        timeout-minutes: 15
+        run: python3 scripts/coletar_aditivos_cg.py || echo "⚠️ coletar_aditivos_cg.py falhou — aditivos anteriores mantidos"
+
+      - name: Licitações dos órgãos estaduais no PNCP (vencedores e preços, incremental)
+        timeout-minutes: 30
+        run: python3 scripts/coletar_licitacoes_governo.py 800 || echo "⚠️ coletar_licitacoes_governo.py falhou — licitações anteriores mantidas"
+
+      - name: Upload artifact — fontes da auditoria
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dados-auditoria
+          path: |
+            dados/cnpj_cache.json
+            dados/servidores_socios.json
+            dados/governo_ms_contratos.json
+            dados/prefeitura_aditivos.json
+            dados/governo_ms_licitacoes.json
+            dados/licitacoes_governo_cache.json
+          if-no-files-found: ignore
+          retention-days: 1
+
   commit_e_push:
-    needs: [coletar_dados, coletar_verba_camara, coletar_trt24, coletar_tre_ms, coletar_tjms, coletar_governo_ms, coletar_contratos_cg, coletar_emendas_alems]
+    needs: [coletar_dados, coletar_verba_camara, coletar_trt24, coletar_tre_ms, coletar_tjms, coletar_governo_ms, coletar_contratos_cg, coletar_emendas_alems,
+            coletar_fontes_federais, coletar_fontes_auditoria]
     if: always()
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -326,6 +428,21 @@ jobs:
           name: dados-emendas-alems
           path: dados/
 
+      - name: Baixar artifact — fontes federais (TSE, sanções, Presidência, STF)
+        if: needs.coletar_fontes_federais.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: dados-federais
+          path: dados/
+
+      - name: Baixar artifact — fontes da auditoria (Receita, contratos do Estado, PNCP)
+        if: needs.coletar_fontes_auditoria.result != 'skipped'
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: dados-auditoria
+          path: dados/
+
       - name: Supersalários — inclui a Câmara CG coletada hoje
         run: pip install requests -q && python3 scripts/coletar_supersalarios.py --so-camara || echo "⚠️ Câmara CG fora dos supersalários hoje"
 
@@ -334,42 +451,6 @@ jobs:
 
       - name: Pontos de atenção nos contratos da Prefeitura (+ feed RSS)
         run: python3 scripts/gerar_alertas_contratos.py || echo "⚠️ gerar_alertas_contratos.py falhou — alertas anteriores mantidos"
-
-      - name: Cadastro na Receita das empresas novas (CNPJ, incremental)
-        timeout-minutes: 15
-        run: python3 scripts/coletar_cnpj.py 400 || echo "⚠️ coletar_cnpj.py falhou — cadastro anterior mantido"
-
-      - name: Campanhas dos parlamentares no TSE (doadores e fornecedores; 1 vez por semana)
-        timeout-minutes: 15
-        run: python3 scripts/coletar_tse.py --se-velho || echo "⚠️ coletar_tse.py falhou — campanhas anteriores mantidas"
-
-      - name: Servidores do Estado que são sócios de empresas pagas (folha × Receita)
-        timeout-minutes: 15
-        run: python3 scripts/coletar_servidores_socios.py || echo "⚠️ coletar_servidores_socios.py falhou — cruzamento anterior mantido"
-
-      - name: Sanções da CGU (CEIS e CNEP) das empresas pagas em MS
-        timeout-minutes: 10
-        run: python3 scripts/coletar_sancoes.py || echo "⚠️ coletar_sancoes.py falhou — sanções anteriores mantidas"
-
-      - name: Contratos e obras do Governo do Estado (+ órgão que paga as empresas acompanhadas)
-        timeout-minutes: 30
-        run: python3 scripts/coletar_contratos_governo.py || echo "⚠️ coletar_contratos_governo.py falhou — contratos anteriores mantidos"
-
-      - name: Aditivos dos contratos da Prefeitura de CG (incremental, 7 dias)
-        timeout-minutes: 20
-        run: python3 scripts/coletar_aditivos_cg.py || echo "⚠️ coletar_aditivos_cg.py falhou — aditivos anteriores mantidos"
-
-      - name: Licitações dos órgãos estaduais no PNCP (vencedores e preços, incremental)
-        timeout-minutes: 40
-        run: python3 scripts/coletar_licitacoes_governo.py 1500 || echo "⚠️ coletar_licitacoes_governo.py falhou — licitações anteriores mantidas"
-
-      - name: Presidência da República e transferências da União para MS (CGU)
-        timeout-minutes: 30
-        run: python3 scripts/coletar_presidencia.py $( [ "$(date +%u)" = "1" ] || echo --rapido ) || echo "⚠️ coletar_presidencia.py falhou — dados anteriores mantidos"
-
-      - name: STF — contracheques dos ministros (DadosJusBr) e despesa com pessoal (SICONFI)
-        timeout-minutes: 15
-        run: python3 scripts/coletar_stf.py || echo "⚠️ coletar_stf.py falhou — dados anteriores mantidos"
 
       - name: Auditoria — sinais de atenção (cruza notas, contratos e Receita)
         run: python3 scripts/gerar_auditoria.py || echo "⚠️ gerar_auditoria.py falhou — sinais anteriores mantidos"
