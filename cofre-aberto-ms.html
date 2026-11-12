@@ -487,7 +487,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="nav-group-label">Mato Grosso do Sul</div>
       <button data-tab="senadores"><span class="dot"></span> Senado MS</button>
       <button data-tab="governo-ms"><span class="dot"></span> Governo MS</button>
-      <button class="active" data-tab="deputados"><span class="dot"></span> Dep. Federais MS</button>
+      <button data-tab="deputados"><span class="dot"></span> Dep. Federais MS</button>
       <button data-tab="deputados-estaduais"><span class="dot"></span> Dep. Estaduais MS</button>
       <button data-tab="prefeitura"><span class="dot"></span> Prefeitura CG</button>
       <button data-tab="contratos-cg"><span class="dot"></span> Contratos CG</button>
@@ -509,7 +509,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <a class="nav-link" href="empresa/"><span class="dot"></span> Empresas</a>
       <a class="nav-link" href="orgao/"><span class="dot"></span> Órgãos</a>
       <div class="nav-group-label">Sobre o projeto</div>
-      <button data-tab="sobre"><span class="dot"></span> Sobre</button>
+      <button class="active" data-tab="sobre"><span class="dot"></span> Sobre</button>
       <a class="nav-link" href="metodologia.html"><span class="dot"></span> Metodologia e dados</a>
     </nav>
     <div class="sidebar-status" id="status-row">
@@ -522,7 +522,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   <main class="main">
 
   <!-- ===================== DEPUTADOS ===================== -->
-  <section class="tabpanel active" id="tab-deputados">
+  <section class="tabpanel" id="tab-deputados">
 
     <div class="hero">
       <div class="hero-label">Auditoria da cota · Exercício <span class="ano-ref">2026</span> · Deputados Federais de MS</div>
@@ -1676,7 +1676,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
   </section>
 
-  <section class="tabpanel" id="tab-sobre">
+  <section class="tabpanel active" id="tab-sobre">
     <!-- usado por renderCamaraMunicipal (fonte da Câmara CG) -->
     <div class="notice" id="notice-camara" hidden></div>
     <div class="hero">
