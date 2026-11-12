@@ -104,16 +104,30 @@ def pagadores():
     hashes = {dig(c["cpfCnpj"]): c for c in cred if len(dig(c["cpfCnpj"])) == 14}
     alvo = [c for c in vig if c in hashes and (hashes[c].get("pago") or hashes[c].get("empenhado"))]
     out = {}
+    antes = carregar("governo_ms_contratos.json").get("pagadores") or {}
+    vazios = 0
     for c in alvo:
         h = hashes[c]
-        try:
-            j = g.api(g.DESPESAS + "/despesaporcredores", {"credor": h["hash"], "nomeCredor": h["credor"],
-                                                           "dataInicio": ini.strftime("%d/%m/%Y"), "dataFim": fim.strftime("%d/%m/%Y")})
-            out[c] = [[re.sub(r"\s+", " ", d.get("orgao") or "").strip(), round(d.get("pago") or 0, 2), round(d.get("empenhado") or 0, 2),
-                       d.get("elementoDespesa"), d.get("tipoLicitacao")] for d in j["data"][0].get("despesas") or []]
-        except Exception as e:
-            print(f"  ⚠️ pagadores de {c}: {e}")
+        for t in range(2):  # a API às vezes devolve a lista vazia: tenta de novo e, se seguir vazia, fica o valor anterior
+            try:
+                j = g.api(g.DESPESAS + "/despesaporcredores", {"credor": h["hash"], "nomeCredor": h["credor"],
+                                                               "dataInicio": ini.strftime("%d/%m/%Y"), "dataFim": fim.strftime("%d/%m/%Y")})
+                lst = [[re.sub(r"\s+", " ", d.get("orgao") or "").strip(), round(d.get("pago") or 0, 2), round(d.get("empenhado") or 0, 2),
+                        d.get("elementoDespesa"), d.get("tipoLicitacao")] for d in j["data"][0].get("despesas") or []]
+            except Exception as e:
+                print(f"  ⚠️ pagadores de {c}: {e}")
+                lst = []
+            if lst:
+                break
+            time.sleep(2)
+        if lst:
+            out[c] = lst
+        elif antes.get(c):
+            out[c] = antes[c]
+            vazios += 1
         time.sleep(0.2)
+    if vazios:
+        print(f"  pagadores: {vazios} respostas vazias — mantido o valor anterior")
     print(f"  pagadores: {len(out)} de {len(alvo)} empresas acompanhadas")
     return out
 

@@ -72,6 +72,18 @@ def cnpjs_alvo():
     for c in carregar("governo_ms_credores.json").get("credores", []):
         if len(c) > 4 and c[4] == "fornecedor" and (c[2] or 0) >= 50000:
             soma(c[0], c[2])
+    # contratos e licitações do Estado; fornecedores da Prefeitura com R$ 50 mil ou mais pagos
+    for c in carregar("governo_ms_contratos.json").get("contratos", []):
+        soma(c.get("cnpj"), c.get("valor"))
+    for f in carregar("governo_ms_licitacoes.json").get("fornecedores", []):
+        soma(f.get("cnpj"), f.get("valor"))
+    pref = {}
+    for x in carregar("prefeitura.json").get("despesas", []):
+        d = dig(x.get("cnpj"))
+        pref[d] = pref.get(d, 0) + (x.get("valor") or 0)
+    for d, v in pref.items():
+        if v >= 50000:
+            soma(d, v)
     return sorted(valor, key=lambda c: -valor[c])
 
 

@@ -222,6 +222,12 @@ def gerar_csvs():
     ms = pr.get("ms") or {}
     contagem["uniao_transferencias_ms.csv"] = grava_csv("uniao_transferencias_ms.csv", ["recorte", "nome", f"valor_{ms.get('ano')}"],
         [[r, x["nome"], num(x["valor"])] for r in ("tipo", "orgao", "municipio") for x in ms.get(r, [])])
+    gl = carregar("governo_ms_licitacoes.json")
+    contagem["governo_ms_licitacoes.csv"] = grava_csv("governo_ms_licitacoes.csv",
+        ["id_pncp", "orgao", "unidade", "modalidade", "numero", "processo", "data", "objeto", "situacao", "valor_estimado", "valor_homologado", "vencedores", "link"],
+        [[c.get("id"), c.get("orgao"), c.get("unidade"), c.get("modalidade"), c.get("numero"), c.get("processo"), c.get("data"), c.get("objeto"),
+          c.get("situacao"), num(c.get("estimado")), num(c.get("homologado")),
+          " | ".join(f"{v['nome']} ({v['cnpj']}): {num(v['valor'])}" for v in c.get("vencedores") or []), c.get("link")] for c in gl.get("compras", [])])
     au = carregar("auditoria.json")
     contagem["auditoria_sinais.csv"] = grava_csv("auditoria_sinais.csv",
         ["visto_em", "teste", "nivel", "titulo", "descricao", "quem_pagou", "empresa", "cnpj", "valor", "evidencias"],

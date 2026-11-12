@@ -119,6 +119,10 @@ def main():
         gc["obras"] = sorted((o for o in gc.get("obras", []) if (o.get("diasAditados") or 0) > 0),
                              key=lambda o: -(o["diasAditados"] / (o.get("prazoInicial") or 1)))[:400]
         tam["governo_ms_contratos.json"] = salvar("governo_ms_contratos.json", gc)
+    gl = carregar("governo_ms_licitacoes.json")
+    if gl is not None:  # painel: as 2.000 maiores compras, objeto curto (a lista inteira está no CSV)
+        gl["compras"] = [{**c, "objeto": (c.get("objeto") or "")[:220]} for c in gl.get("compras", [])[:2000]]
+        tam["governo_ms_licitacoes.json"] = salvar("governo_ms_licitacoes.json", gl)
     print("✅ dados/painel/: " + ", ".join(f"{k} {v // 1024} KB" for k, v in tam.items()))
 
 

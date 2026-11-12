@@ -89,6 +89,7 @@ def main():
     atuais = parlamentares_atuais()
 
     municipios, autores, favorecidos = {}, {}, {}
+    pix = {}  # ano → autor → município → valor (Emendas Pix pagas a MS desde 2020)
     total_ms, linhas, ultimo_mes = 0.0, 0, ""
     with z.open(nome) as f:
         r = csv.reader(io.TextIOWrapper(f, encoding="latin-1", newline=""), delimiter=";")
@@ -96,6 +97,12 @@ def main():
         ix = {c: i for i, c in enumerate(cab)}
         for row in r:
             anomes = row[ix["Ano/Mês"]]
+            if "Especiais" in row[ix["Tipo de Emenda"]] and row[ix["UF Favorecido"]].strip() == "MS" and anomes[:4] >= "2020":
+                vp = valor(row[ix["Valor Recebido"]])
+                if vp:
+                    pa = pix.setdefault(anomes[:4], {}).setdefault(row[ix["Nome do Autor da Emenda"]].strip(), {})
+                    mp = titulo(row[ix["Município Favorecido"]]) or "—"
+                    pa[mp] = pa.get(mp, 0) + vp
             if not anomes.startswith(str(ANO)):
                 continue
             autor = row[ix["Nome do Autor da Emenda"]].strip()
@@ -188,6 +195,23 @@ def main():
            "mesMaisRecente": f"{ultimo_mes[4:]}/{ultimo_mes[:4]}" if ultimo_mes else None,
            "totalMS": round(total_ms, 2), "pagamentos": linhas, "totalMunicipios": len(lista_m),
            "municipios": lista_m, "autores": lista_a, "favorecidos": fav}
+    # Emendas Pix: por ano, quem mandou e para qual município (o arquivo não diz em que a prefeitura gastou)
+    out["pix"] = {"anos": {a: round(sum(v for m in au.values() for v in m.values()), 2) for a, au in sorted(pix.items())}, "porAno": {}}
+    for a, au in sorted(pix.items()):
+        lst_a = [{"autor": atuais[norm(n)]["nome"] if norm(n) in atuais else titulo(n), "atual": norm(n) in atuais,
+                  "cargo": atuais[norm(n)]["cargo"] if norm(n) in atuais else None,
+                  "valor": round(sum(m.values()), 2), "municipios": pares(m, "municipio")} for n, m in au.items()]
+        mun = {}
+        for x in lst_a:
+            for mm in x["municipios"]:
+                d_ = mun.setdefault(mm["municipio"], {"municipio": mm["municipio"], "valor": 0.0, "autores": []})
+                d_["valor"] += mm["valor"]
+                d_["autores"].append({"autor": x["autor"], "atual": x["atual"], "valor": mm["valor"]})
+        for d_ in mun.values():
+            d_["valor"] = round(d_["valor"], 2)
+            d_["autores"].sort(key=lambda y: -y["valor"])
+        out["pix"]["porAno"][a] = {"autores": sorted(lst_a, key=lambda x: -x["valor"]),
+                                   "municipios": sorted(mun.values(), key=lambda x: -x["valor"])}
     SAIDA.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     atuais_ms = sum(a["totalMS"] for a in lista_a if a["atual"])
     print(f"  {linhas} pagamentos · R$ {total_ms:,.2f} recebidos em MS ({len(lista_m)} municípios) · "

@@ -58,7 +58,8 @@ NIVEL = {"mei_acima_limite": "forte", "situacao_irregular": "forte", "socio_parl
          "gasto_acima_colegas": "médio", "socio_doador": "forte", "fornecedor_campanha": "médio",
          "servidor_socio_pagador": "forte", "servidor_socio": "médio", "endereco_comum": "médio",
          "empresa_sancionada": "forte", "sancionada_outro_ente": "médio", "socio_sancionado": "forte",
-         "possivel_parente": "médio", "entidade_parlamentar": "médio", "obra_prazo_estourado": "médio", "aditivo_acima_limite": "médio"}
+         "possivel_parente": "médio", "entidade_parlamentar": "médio",
+         "doador_executivo": "forte", "fornecedor_campanha_executivo": "médio", "preco_acima_estimado": "médio", "obra_prazo_estourado": "médio", "aditivo_acima_limite": "médio"}
 ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_irregular": "Empresa com CNPJ irregular",
           "socio_parlamentar": "Parlamentar é sócio", "socios_licitacao": "Sócios em comum na mesma licitação",
           "dispensa_acima_limite": "Possível fracionamento de dispensa", "empresa_nova": "Empresa recém-aberta",
@@ -70,6 +71,9 @@ ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_ir
           "empresa_sancionada": "Empresa punida recebendo", "sancionada_outro_ente": "Empresa punida em outro estado ou órgão",
           "socio_sancionado": "Sócio punido por improbidade ou fraude", "possivel_parente": "Sócio com o sobrenome do parlamentar",
           "entidade_parlamentar": "Entidade ligada a parlamentar recebe dinheiro público",
+          "doador_executivo": "Sócio doou ao governador ou à prefeita e a empresa recebe",
+          "fornecedor_campanha_executivo": "Fornecedor da campanha do governador ou da prefeita recebe do governo",
+          "preco_acima_estimado": "Licitação do Estado homologada acima do preço estimado",
           "obra_prazo_estourado": "Obra do Estado com prazo mais que dobrado", "aditivo_acima_limite": "Aditivos acima de 25%"}
 
 # naturezas jurídicas de empresa privada (associações, fundos, órgãos e consórcios públicos não têm capital social)
@@ -271,8 +275,12 @@ def main():
     for n in notas:
         grupo_de[n["p"]] = n["grupo"]
     camp = {}  # nome do parlamentar no site → dados de campanha
+    executivo = {}
     for k, d in tse.items():
-        camp[k.split("|", 1)[1]] = d
+        if k.startswith("executivo|"):
+            executivo[k.split("|", 1)[1]] = d
+        else:
+            camp[k.split("|", 1)[1]] = d
 
     def mesma_pessoa(nome_socio, cpf_socio, nome, cpf):
         """Mesmo nome e, se os dois lados têm, os mesmos 6 dígitos do meio do CPF."""
@@ -367,6 +375,69 @@ def main():
                     f"não pode pagar dívida nem serviço de campanha.",
                     pg["total"], [f"Contratada pela campanha ({anos_de(fc, d)}): {brl(fc[1])}", f"Pago pela cota/verba em {ANO}: {brl(pg['total'])}"],
                     p, c, pg["n"]["url"])
+
+    # ── Doadores e fornecedores das campanhas do governador e da prefeita × quem recebe do Estado / da Prefeitura ──
+    gct = carregar("governo_ms_contratos.json") or {}
+    lic_gov = carregar("governo_ms_licitacoes.json") or {}
+    venc_gov = {}
+    for f in lic_gov.get("fornecedores", []):
+        venc_gov[dig(f["cnpj"])] = f["valor"]
+    ctr_gov = {}
+    for k_ in gct.get("contratos", []):
+        if len(k_.get("cnpj") or "") == 14:
+            ctr_gov[k_["cnpj"]] = ctr_gov.get(k_["cnpj"], 0) + (k_.get("valor") or 0)
+    for quem_e, d in executivo.items():
+        estado = "Governador" in quem_e
+        pagador = "Governo de MS" if estado else "Prefeitura de CG"
+        doad = d.get("doadores") or {}
+        for c, info in cad.items():
+            if info.get("naoEncontrado") or not EMPRESARIAL.search(info.get("natureza") or ""):
+                continue
+            if estado:
+                recebe = {"pago pelo Governo em " + str(ANO): gov_cnpj.get(c, 0), "em contratos do Estado em " + str(ANO): ctr_gov.get(c, 0),
+                          "homologado em licitações do Estado em " + str(ANO): venc_gov.get(c, 0)}
+            else:
+                recebe = {"pago pela Prefeitura em " + str(ANO): pref_cnpj.get(c, 0), "em contratos da Prefeitura em " + str(ANO): ctr_cnpj.get(c, 0)}
+            recebe = {k: v for k, v in recebe.items() if v}
+            if not recebe or max(recebe.values()) < 50000:
+                continue
+            txt_rec = "; ".join(f"{brl(v)} {k}" for k, v in recebe.items())
+            for q in info.get("socios") or []:
+                dd = doad.get(norm(q.get("nome")))
+                if dd and mesma_pessoa(q["nome"], q.get("cpf"), dd[0], dd[2] if len(dd) > 2 else None):
+                    conf = "nome e 6 dígitos do meio do CPF iguais" if q.get("cpf") and len(dd) > 2 and dd[2] else "mesmo nome completo"
+                    add("doador_executivo", (c, quem_e, norm(q["nome"])), f"{info.get('razao') or c}: sócio doou {brl(dd[1])} à campanha de {d['urna'].title()}",
+                        f"{q['nome']} ({q.get('qualificacao') or 'sócio'}) doou {brl(dd[1])} para a campanha de {d['nomeCompleto']} ({quem_e}, eleição de "
+                        f"{d['ano']}) — {conf}, segundo o TSE e a Receita. A empresa: {txt_rec}. Doar não é proibido e não impede a empresa de "
+                        f"contratar; é um conflito de interesse que merece transparência, sobretudo em contratação sem licitação.",
+                        max(recebe.values()), [f"Doação em {d['ano']}: {brl(dd[1])} (TSE)"] + [f"{brl(v)} {k}" for k, v in recebe.items()]
+                        + [f"Sócio desde {data_br(q.get('entrada'))}"], pagador, c, "#aba=governo-ms" if estado else "#aba=contratos-cg")
+                    break
+            fc = (d.get("fornecedores") or {}).get(c) or next((v for k, v in (d.get("fornecedores") or {}).items() if k[:8] == c[:8]), None)
+            pessoal = any((info.get("cnae") or "").startswith(x) for x in ("69", "70", "73", "74", "59", "82", "62", "90", "94", "18"))
+            if fc and fc[1] >= 10000 and max(recebe.values()) >= 100000 and pessoal:
+                add("fornecedor_campanha_executivo", (c, quem_e), f"{info.get('razao') or fc[0]}: trabalhou na campanha de {d['urna'].title()} e recebe do governo",
+                    f"A campanha de {d['nomeCompleto']} ({quem_e}, {d['ano']}) contratou a empresa por {brl(fc[1])} ({fc[2].strip().lower() or 'despesa'}). "
+                    f"Depois da posse: {txt_rec}. Contratar a mesma agência ou consultoria é legal se houve licitação; vale conferir como a empresa foi escolhida.",
+                    max(recebe.values()), [f"Contratada pela campanha ({d['ano']}): {brl(fc[1])}"] + [f"{brl(v)} {k}" for k, v in recebe.items()],
+                    pagador, c, "#aba=governo-ms" if estado else "#aba=contratos-cg")
+
+    # ── Itens de licitação do Estado homologados acima do preço estimado (PNCP) ──
+    por_compra = {}
+    for a in lic_gov.get("acimaEstimado", []):
+        por_compra.setdefault(a["compra"], []).append(a)
+    for cid, lst in por_compra.items():
+        dif = sum(a["diferenca"] for a in lst)
+        if dif < 20000:
+            continue
+        a0 = max(lst, key=lambda a: a["diferenca"])
+        add("preco_acima_estimado", (cid,), f"{a0['orgao']}: {len(lst)} item(ns) homologado(s) acima do estimado, {brl(dif)} a mais",
+            f"{a0['objeto']}. No item de maior diferença ({a0['descricao'][:120]}), o preço estimado era {brl(a0['estimado'])} por unidade e o "
+            f"homologado foi {brl(a0['homologado'])} ({a0['fornecedor']}). A Lei 14.133/2021 (art. 59) manda desclassificar proposta acima do "
+            f"orçamento estimado, salvo justificativa — que deve constar no processo.",
+            dif, [f"{a['descricao'][:80]}: {brl(a['estimado'])} → {brl(a['homologado'])} × {a['quantidade']:g}" for a in sorted(lst, key=lambda a: -a["diferenca"])[:4]],
+            "Governo de MS", dig(a0.get("cnpj")) if len(dig(a0.get("cnpj"))) == 14 else None,
+            f"https://pncp.gov.br/app/editais/{cid.split('-')[0]}/{cid.split('/')[-1]}/{int(cid.split('-')[-1].split('/')[0])}")
 
     # ── Sócio é servidor público ──
     gct = carregar("governo_ms_contratos.json") or {}

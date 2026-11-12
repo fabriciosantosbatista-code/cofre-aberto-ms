@@ -180,6 +180,19 @@ def main():
         if k not in saida:
             faltam.append(k)
 
+    # chefes do Executivo: governador eleito em 2022 e prefeito(a) de Campo Grande eleito(a) em 2024
+    for chave, ano_e, cargo_e, ue_e in (("executivo|Governador(a) de MS", 2022, "GOVERNADOR", None),
+                                        ("executivo|Prefeito(a) de Campo Grande", 2024, "PREFEITO", "CAMPO GRANDE")):
+        eleitos = [c for c in candidatos.get(ano_e, []) if c["DS_CARGO"].upper() == cargo_e and (not ue_e or c["NM_UE"].upper() == ue_e)
+                   and re.match(r"ELEITO", c.get("DS_SIT_TOT_TURNO", "").upper())]
+        if len({c["SQ_CANDIDATO"] for c in eleitos}) == 1:
+            c = eleitos[0]
+            saida[chave] = {"ano": ano_e, "cargo": c["DS_CARGO"].title(), "nomeCompleto": c["NM_CANDIDATO"].title(),
+                            "urna": c["NM_URNA_CANDIDATO"], "situacao": c.get("DS_SIT_TOT_TURNO", "").title(), "sq": c["SQ_CANDIDATO"],
+                            "cpf6": cpf6(c.get("NR_CPF_CANDIDATO")), "doadores": {}, "fornecedores": {}, "totalReceitas": 0.0, "totalDespesas": 0.0}
+        else:
+            print(f"  ⚠️ {chave}: {len(eleitos)} candidaturas eleitas encontradas")
+
     # eleição anterior de quem se reelegeu (vereadores: 2020; deputados: 2018), pelo CPF + nome civil
     for ano_ant, grupos_ant in ((2020, ("vereador",)), (2018, ("estadual", "federal"))):
         if ano_ant not in candidatos:
@@ -251,7 +264,7 @@ def main():
         d.pop("sq")
         for a in d.get("anteriores", []):
             a.pop("sq", None)
-    if len(saida) < 40:
+    if len([k for k in saida if not k.startswith("executivo|")]) < 40:
         print(f"❌ só {len(saida)} parlamentares encontrados no TSE — arquivo mantido")
         sys.exit(1)
     (DADOS / "tse_campanhas.json").write_text(json.dumps({

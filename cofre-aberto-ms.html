@@ -979,6 +979,44 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button class="pager-btn" id="gov-obras-mais" style="margin-top:10px;display:none"></button>
     </div>
 
+    <div class="section" id="gov-lic-sec" hidden>
+      <div class="section-head"><h2 class="section-title">Licitações do Estado: vencedores e preços</h2></div>
+      <div class="section-note" id="gov-lic-nota"></div>
+      <div class="subhead">Por modalidade</div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-gov-lic-mod" data-cartoes>
+          <thead><tr><th>Modalidade</th><th class="num">Compras</th><th class="num">Estimado</th><th class="num">Homologado</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="subhead">Empresas que mais venceram</div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-gov-lic-forn" data-cartoes>
+          <thead><tr><th>Empresa</th><th class="num">Compras</th><th>Órgãos</th><th class="num">Homologado</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="gov-lic-forn-mais" style="margin-top:10px;display:none"></button>
+      <div class="subhead">Compras</div>
+      <input class="search-box" id="busca-gov-lic" type="text" placeholder="buscar objeto, órgão, processo ou empresa…" />
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-gov-lic" data-cartoes>
+          <thead><tr><th>Compra</th><th>Vencedor(es)</th><th class="num">Estimado</th><th class="num">Homologado</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="gov-lic-mais" style="margin-top:10px;display:none"></button>
+      <div class="subhead">Itens homologados acima do preço estimado</div>
+      <div class="section-note">Pela Lei 14.133/2021 (art. 59), a proposta acima do orçamento estimado deve ser desclassificada, salvo justificativa. Diferença = (preço homologado − estimado) × quantidade. Itens com preço homologado mais de 3 vezes acima do estimado ficam de fora: em geral são erro de cadastro no PNCP (vírgula, unidade ou preço do lote no lugar do unitário).</div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-gov-lic-acima" data-cartoes>
+          <thead><tr><th>Item</th><th>Vencedor</th><th class="num">Estimado (un.)</th><th class="num">Homologado (un.)</th><th class="num">Diferença</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="gov-lic-acima-mais" style="margin-top:10px;display:none"></button>
+    </div>
+
     <div class="section">
       <div class="section-head"><h2 class="section-title">Diárias de viagem</h2></div>
       <div class="section-note" id="gov-diarias-nota"></div>
@@ -1047,6 +1085,33 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         </table>
       </div>
       <div class="detail-panel" id="detail-em-mun"></div>
+    </div>
+
+    <div class="section" id="em-pix-sec" hidden>
+      <div class="section-head"><h2 class="section-title">Emendas Pix</h2></div>
+      <p class="section-note cx-aviso">💸 <b>O que é Emenda Pix:</b> a "transferência especial" (Constituição, art. 166-A) cai direto no caixa da prefeitura ou do
+        Estado, sem convênio e sem dizer de antemão em que o dinheiro será gasto. Desde 2024 o município precisa registrar um plano de ação no Transferegov,
+        mas esse sistema não aceita consultas de fora do Brasil — então aqui aparece quem mandou, quanto e para onde, não o uso final.
+        <span id="em-pix-nota"></span></p>
+      <div class="subhead">Por ano (pagas a MS)</div>
+      <div class="bar-list largo" id="em-pix-anos"></div>
+      <select class="search-box" id="em-pix-ano" aria-label="Ano" style="max-width:160px;margin-top:12px"></select>
+      <div class="subhead">Quem mais mandou Emenda Pix para MS</div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-em-pix-autores" data-cartoes>
+          <thead><tr><th>Autor</th><th>Para onde</th><th class="num">Valor</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="em-pix-autores-mais" style="margin-top:10px;display:none"></button>
+      <div class="subhead">Municípios que mais receberam</div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-em-pix-mun" data-cartoes>
+          <thead><tr><th>Município</th><th>De quem</th><th class="num">Valor</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="em-pix-mun-mais" style="margin-top:10px;display:none"></button>
       <p class="section-note" style="margin-top:16px">
         Fonte: <a href="https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares" target="_blank" rel="noopener">Portal da Transparência do Governo Federal (CGU)</a>,
         tabela de emendas "por favorecido" — cada pagamento com quem recebeu e onde. Considera o mês do pagamento, não o ano da emenda;
@@ -4410,6 +4475,39 @@ function renderAlertasContratos(d) {
   desenhar();
 }
 
+function renderLicitacoesGoverno(l) {
+  document.getElementById("gov-lic-sec").hidden = false;
+  const fmt = v => v ? formatBRL(v) : "—";
+  document.getElementById("gov-lic-nota").innerHTML = `${(l.total || 0).toLocaleString("pt-BR")} compras de órgãos estaduais de MS publicadas no PNCP em ${l.ano} ` +
+    `(Executivo, Assembleia, Judiciário, MP, TCE e Defensoria), ${(l.homologadas || 0).toLocaleString("pt-BR")} já homologadas; vencedores e preços lidos item a item em ` +
+    `${(l.comResultado || 0).toLocaleString("pt-BR")} delas. Fonte: <a href="https://pncp.gov.br/" target="_blank" rel="noopener">Portal Nacional de Contratações Públicas</a>.`;
+  document.querySelector("#tabela-gov-lic-mod tbody").innerHTML = (l.modalidades || []).map(m => `
+    <tr><td data-label="Modalidade">${escHTML(m.modalidade)}</td><td data-label="Compras" class="num">${m.compras.toLocaleString("pt-BR")}</td>
+      <td data-label="Estimado" class="num">${fmt(m.estimado)}</td><td data-label="Homologado" class="num">${fmt(m.homologado)}</td></tr>`).join("");
+  paginarTabela(document.querySelector("#tabela-gov-lic-forn tbody"), document.getElementById("gov-lic-forn-mais"), l.fornecedores || [], f => `
+    <tr><td data-label="Empresa" class="quebra"><b>${escHTML(f.nome)}</b><div class="rank-meta">${f.cnpj && f.cnpj.length === 14 ? linksCNPJ(f.cnpj) : escHTML(f.cnpj || "")}</div></td>
+      <td data-label="Compras" class="num">${f.compras}</td><td data-label="Órgãos" class="quebra-curta">${escHTML((f.orgaos || []).join(", ").slice(0, 160))}</td>
+      <td data-label="Homologado" class="num">${fmt(f.valor)}</td></tr>`, `<tr><td colspan="4">Resultados ainda não carregados.</td></tr>`, 20);
+  const b = document.getElementById("busca-gov-lic");
+  const des = () => {
+    const f = b.value.trim().toLowerCase();
+    const lst = (l.compras || []).filter(c => !f || (c.objeto || "").toLowerCase().includes(f) || (c.orgao || "").toLowerCase().includes(f) ||
+      (c.processo || "").toLowerCase().includes(f) || (c.vencedores || []).some(v => (v.nome || "").toLowerCase().includes(f) || (v.cnpj || "").includes(f.replace(/\D/g, "") || "x")));
+    paginarTabela(document.querySelector("#tabela-gov-lic tbody"), document.getElementById("gov-lic-mais"), lst, c => `
+      <tr><td data-label="Compra" class="quebra"><b>${escHTML(c.modalidade)} ${escHTML(c.numero || "")}</b> · ${escHTML(c.orgao || "")}
+          <div class="rank-meta">${escHTML((c.objeto || "").slice(0, 200))} · ${c.data ? formatDate(c.data) : ""} · <a href="${c.link}" target="_blank" rel="noopener">PNCP</a></div></td>
+        <td data-label="Vencedor(es)" class="quebra">${(c.vencedores || []).slice(0, 3).map(v => `${escHTML(v.nome)} (${formatCompact(v.valor)})`).join("; ") || (c.homologado ? "—" : "<span style='opacity:.6'>não homologada</span>")}</td>
+        <td data-label="Estimado" class="num">${fmt(c.estimado)}</td><td data-label="Homologado" class="num">${fmt(c.homologado)}</td></tr>`,
+      `<tr><td colspan="4">Nenhuma compra encontrada.</td></tr>`, 30);
+  };
+  b.addEventListener("input", des); des();
+  paginarTabela(document.querySelector("#tabela-gov-lic-acima tbody"), document.getElementById("gov-lic-acima-mais"), l.acimaEstimado || [], a => `
+    <tr><td data-label="Item" class="quebra">${escHTML(a.descricao)}<div class="rank-meta">${escHTML(a.orgao || "")} · ${escHTML((a.objeto || "").slice(0, 100))}</div></td>
+      <td data-label="Vencedor" class="quebra">${escHTML(a.fornecedor)}</td>
+      <td data-label="Estimado (un.)" class="num">${formatBRL(a.estimado)}</td><td data-label="Homologado (un.)" class="num">${formatBRL(a.homologado)}</td>
+      <td data-label="Diferença" class="num">${formatBRL(a.diferenca)}</td></tr>`, `<tr><td colspan="5">Nenhum item acima do estimado.</td></tr>`, 15);
+}
+
 // ===================== CONTRATOS DO GOVERNO DO ESTADO =====================
 function renderContratosGoverno(g) {
   document.getElementById("gov-contratos-sec").hidden = false;
@@ -4656,7 +4754,35 @@ function renderServidoresAlems(d) {
 }
 
 // ===================== EMENDAS POR MUNICÍPIO =====================
+function renderEmendasPix(d) {
+  const px = d.pix; if (!px || !px.porAno) return;
+  document.getElementById("em-pix-sec").hidden = false;
+  const anos = Object.keys(px.anos).sort(), maxA = Math.max(...Object.values(px.anos), 1), ref = String(new Date().getFullYear());
+  document.getElementById("em-pix-anos").innerHTML = anos.map(a => `
+    <div class="bar-list-row"><div class="bar-list-label">${a}${a === ref ? " (até agora)" : ""}</div>
+      <div class="bar-list-track"><div class="bar-list-fill amber" style="width:${(px.anos[a] / maxA * 100).toFixed(1)}%"></div></div>
+      <div class="bar-list-value">${formatCompact(px.anos[a])}</div></div>`).join("");
+  const tot = Object.values(px.anos).reduce((t, v) => t + v, 0);
+  document.getElementById("em-pix-nota").textContent = `De ${anos[0]} a ${anos[anos.length - 1]}, MS recebeu ${formatCompact(tot)} em Emendas Pix.`;
+  const sel = document.getElementById("em-pix-ano");
+  sel.innerHTML = anos.slice().reverse().map(a => `<option>${a}</option>`).join("");
+  const tag = x => x.atual ? ` <span class="cx-tag">${escHTML(x.cargo || "de MS")}</span>` : "";
+  const des = () => {
+    const a = px.porAno[sel.value] || { autores: [], municipios: [] };
+    paginarTabela(document.querySelector("#tabela-em-pix-autores tbody"), document.getElementById("em-pix-autores-mais"), a.autores, x => `
+      <tr><td data-label="Autor"><b>${escHTML(x.autor)}</b>${tag(x)}</td>
+        <td data-label="Para onde" class="quebra">${x.municipios.slice(0, 6).map(m => `${escHTML(m.municipio)} (${formatCompact(m.valor)})`).join(", ")}${x.municipios.length > 6 ? ` e mais ${x.municipios.length - 6}` : ""}</td>
+        <td data-label="Valor" class="num">${formatBRL(x.valor)}</td></tr>`, `<tr><td colspan="3">Nenhuma Emenda Pix no ano.</td></tr>`, 15);
+    paginarTabela(document.querySelector("#tabela-em-pix-mun tbody"), document.getElementById("em-pix-mun-mais"), a.municipios, m => `
+      <tr><td data-label="Município"><b>${escHTML(m.municipio)}</b></td>
+        <td data-label="De quem" class="quebra">${m.autores.slice(0, 5).map(x => `${escHTML(x.autor)} (${formatCompact(x.valor)})`).join(", ")}${m.autores.length > 5 ? ` e mais ${m.autores.length - 5}` : ""}</td>
+        <td data-label="Valor" class="num">${formatBRL(m.valor)}</td></tr>`, `<tr><td colspan="3">—</td></tr>`, 15);
+  };
+  sel.addEventListener("change", des); des();
+}
+
 function renderEmendasMunicipios(d) {
+  renderEmendasPix(d);
   const atuais = (d.autores || []).filter(a => a.atual);
   document.getElementById("em-total").textContent = formatCompact(d.totalMS || 0);
   document.getElementById("em-municipios").textContent = (d.totalMunicipios || 0).toLocaleString("pt-BR");
@@ -4977,6 +5103,7 @@ function renderGovernoMS(d) {
 
   // Contratos do Estado (dados/painel/governo_ms_contratos.json)
   carregarLeve("governo_ms_contratos.json").then(g => { if (g && (g.contratos || []).length) renderContratosGoverno(g); });
+  carregarLeve("governo_ms_licitacoes.json").then(l => { if (l && (l.compras || []).length) renderLicitacoesGoverno(l); });
 
   // Comparação de diárias entre órgãos (dados/diarias_comparacao.json)
   carregarJSON("dados/diarias_comparacao.json").then(c => {
@@ -5312,7 +5439,7 @@ function abrirDoHash() {
   if (!btn) return;
   btn.click();
   if (!nome) return;
-  const BUSCA_ABA = { "contratos-cg": ["busca-ct-forn", "busca-ct-contratos", "busca-ct-licit"], "governo-ms": ["busca-gov-credor", "busca-gov-contratos"],
+  const BUSCA_ABA = { "contratos-cg": ["busca-ct-forn", "busca-ct-contratos", "busca-ct-licit"], "governo-ms": ["busca-gov-credor", "busca-gov-contratos", "busca-gov-lic"],
                      "emendas": ["busca-em-mun"] };
   if (BUSCA_ABA[aba]) {
     let n = 0;
@@ -5431,7 +5558,7 @@ const FONTE_ABA = {
   "senadores": { titulo: "CEAPS dos senadores de MS", csv: [["Resumo", "senadores_ms.csv"], ["Notas fiscais", "senadores_ms_notas.csv"]], json: "senadores_ms.json" },
   "prefeitura": { titulo: "Despesas da Prefeitura de Campo Grande", csv: [["Despesas pagas", "prefeitura_despesas.csv"]], json: "prefeitura.json" },
   "contratos-cg": { titulo: "Contratos e licitações da Prefeitura de Campo Grande", csv: [["Contratos", "prefeitura_contratos.csv"], ["Licitações", "prefeitura_licitacoes.csv"]], json: "prefeitura_contratos.json" },
-  "governo-ms": { titulo: "Despesas do Governo do Estado de MS", csv: [["Órgãos", "governo_ms_orgaos.csv"], ["Credores", "governo_ms_credores.csv"], ["Diárias", "governo_ms_diarias.csv"], ["Primeiro escalão", "governo_ms_primeiro_escalao.csv"], ["Contratos", "governo_ms_contratos.csv"], ["Obras", "governo_ms_obras.csv"]], json: "governo_ms.json" },
+  "governo-ms": { titulo: "Despesas do Governo do Estado de MS", csv: [["Órgãos", "governo_ms_orgaos.csv"], ["Credores", "governo_ms_credores.csv"], ["Diárias", "governo_ms_diarias.csv"], ["Primeiro escalão", "governo_ms_primeiro_escalao.csv"], ["Contratos", "governo_ms_contratos.csv"], ["Obras", "governo_ms_obras.csv"], ["Licitações (PNCP)", "governo_ms_licitacoes.csv"]], json: "governo_ms.json" },
   "emendas": { titulo: "Emendas parlamentares recebidas em MS, por município", csv: [["Municípios e autores", "emendas_municipios.csv"], ["Quem recebeu", "emendas_favorecidos.csv"]], json: "emendas_municipios.json" },
   "auditoria": { titulo: "Auditoria: sinais de atenção nas contas públicas de MS", csv: [["Sinais", "auditoria_sinais.csv"]], json: "auditoria.json" },
   "supersalarios": { titulo: "Supersalários: as maiores remunerações do poder público em MS", csv: [["Ranking", "supersalarios_ranking.csv"], ["Por órgão", "supersalarios_orgaos.csv"], ["Penduricalhos por item", "supersalarios_penduricalhos.csv"]], json: "supersalarios.json" },
