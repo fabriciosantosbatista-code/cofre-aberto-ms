@@ -229,6 +229,47 @@ p{margin:0;}
 }
 .nav-toggle{display:none;align-items:center;justify-content:space-between;gap:10px;width:100%;margin:4px 0 8px;padding:11px 14px;min-height:44px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--ink);font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer}
 .nav-toggle span:last-child{color:var(--ink-soft);font-weight:500;font-size:.78rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* Contracapa (aba Sobre) */
+.capa{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:var(--radius-xl);padding:44px 40px 36px;margin-bottom:28px;
+  background:radial-gradient(1200px 400px at 110% -10%,rgba(57,135,229,.18),transparent 60%),radial-gradient(800px 300px at -10% 120%,rgba(245,200,66,.12),transparent 60%),var(--surface)}
+.capa-eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px}
+.capa-titulo{font-family:var(--font-display);font-size:clamp(1.7rem,4.2vw,2.9rem);line-height:1.08;letter-spacing:-.03em;font-weight:800;max-width:820px;margin:0 0 16px;color:var(--ink)}
+.capa-titulo span{color:var(--accent)}
+.capa-sub{font-size:1rem;color:var(--ink-soft);line-height:1.7;max-width:760px;margin:0 0 26px}
+.capa-sub b{color:var(--ink)}
+.capa-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:24px}
+.capa-kpi{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px}
+.capa-kpi b{display:block;font-family:var(--font-display);font-size:1.45rem;letter-spacing:-.02em;color:var(--ink)}
+.capa-kpi span{font-size:.74rem;color:var(--ink-soft);line-height:1.4;display:block;margin-top:2px}
+.capa-acoes{display:flex;flex-wrap:wrap;gap:8px}
+.capa-btn{font:600 .85rem var(--font-body);padding:9px 16px;border-radius:999px;border:1px solid var(--border);background:var(--surface-2);color:var(--ink);cursor:pointer;transition:all .15s}
+.capa-btn:hover{border-color:var(--accent)}
+.capa-btn.prim{background:var(--accent);color:#14120a;border-color:var(--accent)}
+.capa-roscas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.rosca-card{margin:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px}
+.rosca-card figcaption{font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:12px;line-height:1.4}
+.rosca-corpo{display:flex;flex-direction:column;align-items:center;gap:14px}
+.rosca-svg{width:100%;max-width:200px;height:auto;overflow:visible}
+.rosca-svg path{cursor:pointer;transition:opacity .15s}
+.rosca-svg.foco path:not(.ativo){opacity:.35}
+.rosca-centro-v{font:800 18px var(--font-display);fill:var(--ink)}
+.rosca-centro-l{font:500 10px var(--font-body);fill:var(--ink-soft)}
+.rosca-leg{list-style:none;margin:0;padding:0;width:100%;display:flex;flex-direction:column;gap:6px}
+.rosca-leg li{display:grid;grid-template-columns:12px 1fr auto;gap:8px;align-items:baseline;font-size:.8rem;color:var(--ink-soft);cursor:default;border-radius:6px;padding:2px 4px}
+.rosca-leg li:hover,.rosca-leg li.ativo{background:var(--surface-2);color:var(--ink)}
+.rosca-leg i{width:10px;height:10px;border-radius:3px;display:inline-block;transform:translateY(1px)}
+.rosca-leg .v{color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.rosca-leg .v small{color:var(--ink-soft);margin-left:4px}
+.rosca-tip{position:fixed;z-index:50;pointer-events:none;background:#0b0d13;border:1px solid var(--border);border-radius:10px;padding:8px 10px;font-size:.78rem;color:var(--ink);box-shadow:var(--shadow-md);max-width:260px}
+.capa-temas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.capa-tema{text-align:left;display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;cursor:pointer;color:var(--ink);font:inherit;text-decoration:none;transition:border-color .15s,transform .15s}
+.capa-tema:hover{border-color:var(--accent);transform:translateY(-2px)}
+.capa-tema b{font-size:.92rem}
+.capa-tema span{font-size:.8rem;color:var(--ink-soft);line-height:1.55}
+@media(max-width:1100px){.capa-roscas{grid-template-columns:1fr 1fr}.capa-temas{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.capa{padding:28px 18px 24px}.capa-kpis{grid-template-columns:1fr 1fr;gap:8px}.capa-kpi{padding:12px}.capa-kpi b{font-size:1.1rem;white-space:nowrap}.capa-roscas,.capa-temas{grid-template-columns:1fr}}
+.rosca-leg a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--ink-faint)}
+.rosca-leg a:hover{color:var(--ink);border-bottom-color:var(--accent)}
 .mvv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:640px){.mvv-grid{grid-template-columns:1fr}}
 .mvv-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius,12px);padding:18px 20px}
@@ -1679,15 +1720,47 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   <section class="tabpanel active" id="tab-sobre">
     <!-- usado por renderCamaraMunicipal (fonte da Câmara CG) -->
     <div class="notice" id="notice-camara" hidden></div>
-    <div class="hero">
-      <div class="hero-label">Sobre este painel</div>
-      <div class="hero-desc" style="font-size:0.92rem;">
-        O Cofre Aberto MS reúne, num só lugar, o dinheiro público de Mato Grosso do Sul: os gastos de vereadores, deputados e senadores,
-        as despesas, contratos e licitações da Prefeitura de Campo Grande e do Governo do Estado, as emendas parlamentares e as maiores
-        remunerações do serviço público. Todos os números vêm de <b style="color:var(--ink)">fontes oficiais</b> e são coletados automaticamente
-        todos os dias, sem edição manual. O site mostra quanto foi gasto, com quem e quando, e <b style="color:var(--ink)">não acusa ninguém</b>.
+    <div class="capa">
+      <div class="capa-eyebrow">Cofre Aberto MS · transparência pública</div>
+      <h1 class="capa-titulo">O dinheiro público de Mato Grosso do Sul, <span>num só lugar.</span></h1>
+      <p class="capa-sub">Gastos de vereadores, deputados e senadores, despesas, contratos e licitações da Prefeitura de Campo Grande e do Governo
+        do Estado, emendas, supersalários e uma auditoria automática. Tudo vem de <b>fontes oficiais</b>, é atualizado todos os dias e mostra
+        quanto foi gasto, com quem e quando, <b>sem acusar ninguém</b>.</p>
+      <div class="capa-kpis" id="capa-kpis"></div>
+      <div class="capa-acoes">
+        <button class="capa-btn prim" data-ir="governo-ms">Governo do Estado</button>
+        <button class="capa-btn" data-ir="prefeitura">Prefeitura de CG</button>
+        <button class="capa-btn" data-ir="deputados">Parlamentares</button>
+        <button class="capa-btn" data-ir="auditoria">Auditoria</button>
+        <button class="capa-btn" data-ir="supersalarios">Supersalários</button>
       </div>
     </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Para onde vai o dinheiro</h2></div>
+      <div class="section-note" id="capa-nota">Valores pagos no ano, segundo as fontes oficiais. Passe o mouse (ou toque) em cada parte do gráfico.</div>
+      <div class="capa-roscas">
+        <figure class="rosca-card" id="rosca-dinheiro"><figcaption>Dinheiro público catalogado no ano</figcaption><div class="rosca-corpo"></div></figure>
+        <figure class="rosca-card" id="rosca-governo"><figcaption>Pagamentos do Governo do Estado, por tipo de credor</figcaption><div class="rosca-corpo"></div></figure>
+        <figure class="rosca-card" id="rosca-emendas"><figcaption>Emendas pagas em MS, por tipo</figcaption><div class="rosca-corpo"></div></figure>
+      </div>
+      <div class="rosca-tip" id="rosca-tip" hidden></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Por onde começar</h2></div>
+      <div class="capa-temas">
+        <button class="capa-tema" data-ir="senadores"><b>🏛️ Parlamentares de MS</b><span>Notas fiscais da cota de senadores, deputados federais e estaduais e da verba dos vereadores de CG.</span></button>
+        <button class="capa-tema" data-ir="governo-ms"><b>🏢 Governo do Estado</b><span>Despesas por órgão e credor, contratos, obras, licitações com vencedores e preços, diárias.</span></button>
+        <button class="capa-tema" data-ir="contratos-cg"><b>📑 Prefeitura de CG</b><span>Empenhos, contratos, licitações e aditivos, com pontos de atenção.</span></button>
+        <button class="capa-tema" data-ir="emendas"><b>💸 Emendas e Emendas Pix</b><span>Quanto cada município recebeu, de quem, e as transferências especiais desde 2020.</span></button>
+        <button class="capa-tema" data-ir="supersalarios"><b>💰 Supersalários</b><span>Quem recebe acima do teto em MS, com nome e cada penduricalho do contracheque.</span></button>
+        <button class="capa-tema" data-ir="auditoria"><b>🔎 Auditoria automática</b><span>Sinais de atenção cruzando notas e contratos com a Receita, o TSE, a folha e as sanções da CGU.</span></button>
+        <button class="capa-tema" data-ir="presidencia"><b>🇧🇷 Brasil</b><span>Presidência (cartão corporativo desde 2013), STF, Senado e Câmara dos Deputados.</span></button>
+        <a class="capa-tema" href="boletim/"><b>📰 Boletim semanal</b><span>O que mudou na semana, com texto pronto para compartilhar.</span></a>
+      </div>
+    </div>
+
     <div class="section">
       <div class="section-head"><h2 class="section-title">Visão, missão e valores</h2></div>
       <div class="mvv-grid">
@@ -4688,6 +4761,74 @@ function renderSTF(d) {
       <td data-label="Aposentados e pensionistas" class="num">${fmt(t.inativos)}</td><td data-label="Despesa bruta" class="num">${fmt(t.bruta)}</td>
       <td data-label="% da receita" class="num">${pct(t.pctRCL)}</td></tr>`).join("");
 }
+
+// ===================== CONTRACAPA (aba Sobre) =====================
+// Rosca (donut) em SVG: fatias com 2px de folga da cor do fundo, legenda com valor e %, dica ao passar o mouse.
+// Cores: paleta categórica validada para o fundo escuro (contraste ≥ 3:1 e separação para daltonismo).
+const CORES_ROSCA = ["#3987e5", "#d95926", "#199e70", "#c98500", "#9085e9"];
+function rosca(fig, fatias, rotuloCentro) {
+  const corpo = fig.querySelector(".rosca-corpo"), tip = document.getElementById("rosca-tip");
+  fatias = fatias.filter(f => f.valor > 0);
+  const total = fatias.reduce((t, f) => t + f.valor, 0);
+  if (!total) { corpo.innerHTML = `<p class="section-note">Sem dados.</p>`; return; }
+  const R = 90, r = 58, C = 100, pct = v => (v / total * 100).toLocaleString("pt-BR", { maximumFractionDigits: v / total < 0.01 ? 2 : 1 }) + "%";
+  let a0 = -Math.PI / 2, paths = "";
+  const pt = (rad, a) => `${(C + rad * Math.cos(a)).toFixed(2)} ${(C + rad * Math.sin(a)).toFixed(2)}`;
+  fatias.forEach((f, i) => {
+    const ang = Math.max(f.valor / total * 2 * Math.PI, 0.012);  // fatia minúscula ainda aparece como um fio
+    const a1 = Math.min(a0 + ang, a0 + 2 * Math.PI - 0.0001), g = ang > 2 * Math.PI - 0.01 ? 0 : 1;
+    const big = a1 - a0 > Math.PI ? 1 : 0;
+    paths += `<path data-i="${i}" fill="${CORES_ROSCA[i % CORES_ROSCA.length]}" stroke="var(--surface)" stroke-width="${2 * g}"
+      d="M ${pt(R, a0)} A ${R} ${R} 0 ${big} 1 ${pt(R, a1)} L ${pt(r, a1)} A ${r} ${r} 0 ${big} 0 ${pt(r, a0)} Z"><title>${escHTML(f.nome)}: ${formatBRL(f.valor)} (${pct(f.valor)})</title></path>`;
+    a0 = a1;
+  });
+  corpo.innerHTML = `<svg class="rosca-svg" viewBox="0 0 200 200" role="img" aria-label="${escHTML(fig.querySelector("figcaption").textContent)}">${paths}
+      <text class="rosca-centro-v" x="100" y="98" text-anchor="middle">${formatCompact(total)}</text>
+      <text class="rosca-centro-l" x="100" y="116" text-anchor="middle">${escHTML(rotuloCentro)}</text></svg>
+    <ul class="rosca-leg">${fatias.map((f, i) => `<li data-i="${i}"><i style="background:${CORES_ROSCA[i % CORES_ROSCA.length]}"></i>
+      <span>${f.aba ? `<a href="#aba=${f.aba}">${escHTML(f.nome)}</a>` : escHTML(f.nome)}</span>
+      <span class="v">${formatCompact(f.valor)}<small>${pct(f.valor)}</small></span></li>`).join("")}</ul>`;
+  const svg = corpo.querySelector("svg");
+  const foca = (i, ev) => {
+    svg.classList.toggle("foco", i != null);
+    svg.querySelectorAll("path").forEach(p => p.classList.toggle("ativo", p.dataset.i == i));
+    corpo.querySelectorAll(".rosca-leg li").forEach(l => l.classList.toggle("ativo", l.dataset.i == i));
+    if (i == null || !ev) { tip.hidden = true; return; }
+    const f = fatias[i];
+    tip.innerHTML = `<b>${escHTML(f.nome)}</b><br>${formatBRL(f.valor)} · ${pct(f.valor)}`;
+    tip.hidden = false;
+    tip.style.left = Math.min(ev.clientX + 14, innerWidth - 270) + "px";
+    tip.style.top = (ev.clientY + 14) + "px";
+  };
+  corpo.querySelectorAll("path, .rosca-leg li").forEach(el => {
+    el.addEventListener("mousemove", ev => foca(+el.dataset.i, ev));
+    el.addEventListener("mouseleave", () => foca(null));
+    el.addEventListener("click", ev => foca(+el.dataset.i, ev));
+  });
+}
+
+function renderCapa(d) {
+  const k = d.kpis || {}, n = v => (v || 0).toLocaleString("pt-BR");
+  const total = (d.dinheiro || []).reduce((t, f) => t + f.valor, 0);
+  document.getElementById("capa-kpis").innerHTML = [
+    [formatCompact(total), `de dinheiro público catalogado em ${d.ano}`],
+    [n(k.parlamentares), "parlamentares de MS acompanhados"],
+    [n(k.notas), "notas fiscais de parlamentares"],
+    [n(k.sinais), `sinais de atenção na Auditoria (${n(k.sinaisFortes)} fortes)`],
+  ].map(([v, l]) => `<div class="capa-kpi"><b>${v}</b><span>${l}</span></div>`).join("");
+  document.getElementById("capa-nota").textContent = `Valores pagos em ${d.ano}, segundo as fontes oficiais (atualizado em ${formatDate(d.atualizado)}). ` +
+    `Passe o mouse ou toque em cada parte. As cotas dos parlamentares são uma fatia mínima do total — por isso aparecem como um fio.`;
+  rosca(document.getElementById("rosca-dinheiro"), d.dinheiro || [], `pagos em ${d.ano}`);
+  rosca(document.getElementById("rosca-governo"), d.governoCredores || [], "Governo de MS");
+  rosca(document.getElementById("rosca-emendas"), d.emendasTipos || [], "emendas em MS");
+}
+document.addEventListener("click", ev => {
+  const b = ev.target.closest("[data-ir]");
+  if (!b) return;
+  const alvo = document.querySelector(`.sidebar nav button[data-tab="${b.dataset.ir}"]`);
+  if (alvo) { alvo.click(); scrollTo({ top: 0, behavior: "smooth" }); }
+});
+carregarJSON("dados/resumo_capa.json").then(d => { if (d) renderCapa(d); });
 
 // ===================== PRESIDÊNCIA =====================
 function renderPresidencia(d) {

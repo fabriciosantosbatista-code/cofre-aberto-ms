@@ -1,0 +1,76 @@
+{
+ "ano": 2026,
+ "atualizado": "2026-11-12",
+ "dinheiro": [
+  {
+   "nome": "Governo do Estado de MS",
+   "valor": 20989177739.5,
+   "aba": "governo-ms"
+  },
+  {
+   "nome": "Prefeitura de Campo Grande",
+   "valor": 4128715458.41,
+   "aba": "prefeitura"
+  },
+  {
+   "nome": "Emendas parlamentares pagas em MS",
+   "valor": 574578040.53,
+   "aba": "emendas"
+  },
+  {
+   "nome": "Cotas e verbas dos parlamentares de MS",
+   "valor": 23107425.32,
+   "aba": "deputados"
+  }
+ ],
+ "governoCredores": [
+  {
+   "nome": "Repasses a municípios, órgãos e previdência",
+   "valor": 10658803962.73
+  },
+  {
+   "nome": "Fornecedores e prestadores de serviço",
+   "valor": 5685245453.74
+  },
+  {
+   "nome": "Folha, aposentadorias e pensões",
+   "valor": 3360702784.7
+  },
+  {
+   "nome": "Bancos e dívida",
+   "valor": 1284425538.33
+  }
+ ],
+ "emendasTipos": [
+  {
+   "nome": "Individual (finalidade definida)",
+   "valor": 270227951.63
+  },
+  {
+   "nome": "Comissão",
+   "valor": 132214302.49
+  },
+  {
+   "nome": "Emenda Pix (transferência especial)",
+   "valor": 109582163.65
+  },
+  {
+   "nome": "Bancada",
+   "valor": 55033071.81
+  },
+  {
+   "nome": "Emenda de Relator",
+   "valor": 7520550.95
+  }
+ ],
+ "kpis": {
+  "parlamentares": 65,
+  "notas": 10556,
+  "empresas": 1403,
+  "sinais": 289,
+  "sinaisFortes": 27,
+  "acimaTeto": 421,
+  "contratosEstado": 2758,
+  "fontes": 18
+ }
+}

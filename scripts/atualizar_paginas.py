@@ -407,8 +407,47 @@ def main():
         print("✅ senadores-ms.html")
 
 
+def resumo_capa():
+    """dados/resumo_capa.json — os poucos números da contracapa (aba Sobre), para ela abrir sem baixar os arquivos grandes."""
+    cg, est, fed, sen = (carregar(n) for n in ("camara_municipal.json", "deputados_estaduais_ms.json", "deputados_federais_ms.json", "senadores_ms.json"))
+    vi = lambda v: v.get("verbaIndenizatoria") or {}
+    cotas = (sum(vi(v).get(f"gastoPago{ANO}") or 0 for v in cg.get("vereadores", []))
+             + sum(vi(d).get(f"gastoPago{ANO}") or 0 for d in est.get("vereadores", []))
+             + sum(d.get("cotaGastaAno") or 0 for d in fed.get("deputados", []))
+             + sum(x.get("cotaGastaAno") or 0 for x in sen.get("senadores", [])))
+    gov, pref, em = carregar("governo_ms.json"), carregar("prefeitura.json"), carregar("emendas_municipios.json")
+    au, ss, gc = carregar("auditoria.json"), carregar("supersalarios.json"), carregar("governo_ms_contratos.json")
+    gov_pago = ((gov.get("totais") or {}).get("pago") or 0) if gov.get("ano") == ANO else 0
+    pref_pago = pref.get("totalDespesas") or sum(x.get("valor") or 0 for x in pref.get("despesas", []))
+    tipos = {}
+    for m in em.get("municipios", []):
+        for t in m.get("tipos", []):
+            tipos[t["tipo"]] = tipos.get(t["tipo"], 0) + t["valor"]
+    n_parl = len(cg.get("vereadores", [])) + len(est.get("vereadores", [])) + len(fed.get("deputados", [])) + len(sen.get("senadores", []))
+    n_notas = (sum(len(v.get("despesas") or []) for v in cg.get("vereadores", [])) + sum(len(d.get("despesas") or []) for d in est.get("vereadores", []))
+               + sum(len(d.get("despesas") or []) for d in fed.get("deputados", [])) + sum(len(x.get("notasCeaps") or []) for x in sen.get("senadores", [])))
+    out = {"ano": ANO, "atualizado": date.today().isoformat(),
+           "dinheiro": [{"nome": "Governo do Estado de MS", "valor": round(gov_pago, 2), "aba": "governo-ms"},
+                        {"nome": "Prefeitura de Campo Grande", "valor": round(pref_pago, 2), "aba": "prefeitura"},
+                        {"nome": "Emendas parlamentares pagas em MS", "valor": round(em.get("totalMS") or 0, 2), "aba": "emendas"},
+                        {"nome": "Cotas e verbas dos parlamentares de MS", "valor": round(cotas, 2), "aba": "deputados"}],
+           "governoCredores": [{"nome": n, "valor": round(v or 0, 2)} for n, v in (
+               ("Repasses a municípios, órgãos e previdência", (gov.get("credoresPorTipo") or {}).get("publico")),
+               ("Fornecedores e prestadores de serviço", (gov.get("credoresPorTipo") or {}).get("fornecedor")),
+               ("Folha, aposentadorias e pensões", (gov.get("credoresPorTipo") or {}).get("folha")),
+               ("Bancos e dívida", (gov.get("credoresPorTipo") or {}).get("financeiro"))) if v],
+           "emendasTipos": [{"nome": n, "valor": round(v, 2)} for n, v in sorted(tipos.items(), key=lambda kv: -kv[1]) if v],
+           "kpis": {"parlamentares": n_parl, "notas": n_notas, "empresas": len(carregar("empresas_index.json") or {}),
+                    "sinais": len(au.get("sinais") or []), "sinaisFortes": sum(1 for x in au.get("sinais") or [] if x.get("nivel") == "forte"),
+                    "acimaTeto": ss.get("liquidoAcimaTeto"), "contratosEstado": len(gc.get("contratos") or []),
+                    "fontes": len((carregar("status_fontes.json").get("fontes") or carregar("status_fontes.json")))}}
+    (DADOS / "resumo_capa.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    print("✅ resumo_capa.json")
+
+
 if __name__ == "__main__":
     main()
+    resumo_capa()
     atualizar_kit_imprensa(carregar("camara_municipal.json"), carregar("deputados_estaduais_ms.json"),
                            carregar("deputados_federais_ms.json"), carregar("senadores_ms.json"),
                            carregar("prefeitura.json"), carregar("emendas_ms.json"),
