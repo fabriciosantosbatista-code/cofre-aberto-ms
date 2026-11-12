@@ -73,6 +73,7 @@ def separa_notas(arquivo, lista_chave, grupo, campo_notas="despesas"):
         p["totalNotasFiscais"] = p.get("totalNotasFiscais") or len(n)
         p["foto"] = foto_leve(grupo, p["nome"], p.get("foto"))
         lista.append(p)
+    d.pop("servidoresNomes", None)  # nomes dos servidores da Câmara: só a Auditoria usa, o painel não
     return {**d, lista_chave: lista, "notasSeparadas": True}, notas
 
 
