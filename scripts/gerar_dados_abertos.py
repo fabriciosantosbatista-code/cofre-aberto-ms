@@ -196,6 +196,17 @@ def gerar_csvs():
         ["visto_em", "tipo", "titulo", "descricao", "empresa", "cnpj", "valor", "data"],
         [[a.get("vistoEm"), a.get("rotulo"), a.get("titulo"), a.get("descricao"), a.get("empresa"), a.get("cnpj"),
           num(a.get("valor")), a.get("data")] for a in alc.get("alertas", [])])
+    gc = carregar("governo_ms_contratos.json")
+    contagem["governo_ms_contratos.csv"] = grava_csv("governo_ms_contratos.csv",
+        ["orgao", "orgao_nome", "numero", "fornecedor", "cnpj_cpf", "modalidade", "situacao", "inicio", "fim", "renovacoes", "valor_inicial", "valor_atual"],
+        [[c.get("orgao"), c.get("orgaoNome"), c.get("numero"), c.get("fornecedor"), c.get("cnpj"), c.get("modalidade"), c.get("situacao"),
+          c.get("inicio"), c.get("fim"), c.get("renovacoes"), num(c.get("valorInicial")), num(c.get("valor"))] for c in gc.get("contratos", [])])
+    contagem["governo_ms_obras.csv"] = grava_csv("governo_ms_obras.csv",
+        ["orgao", "numero", "processo", "fornecedor", "cnpj", "objeto", "municipios", "situacao", "inicio", "fim", "prazo_inicial_dias",
+         "dias_aditados", "dias_paralisados", "percentual_executado", "valor_atual"],
+        [[o.get("orgao"), o.get("numero"), o.get("processo"), o.get("fornecedor"), o.get("cnpj"), o.get("objeto"), o.get("municipios"),
+          o.get("situacao"), o.get("inicio"), o.get("fim"), o.get("prazoInicial"), o.get("diasAditados"), o.get("diasParalisados"),
+          o.get("executado"), num(o.get("valor"))] for o in gc.get("obras", [])])
     au = carregar("auditoria.json")
     contagem["auditoria_sinais.csv"] = grava_csv("auditoria_sinais.csv",
         ["visto_em", "teste", "nivel", "titulo", "descricao", "quem_pagou", "empresa", "cnpj", "valor", "evidencias"],

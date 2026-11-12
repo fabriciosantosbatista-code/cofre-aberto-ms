@@ -347,6 +347,18 @@ jobs:
         timeout-minutes: 15
         run: python3 scripts/coletar_servidores_socios.py || echo "⚠️ coletar_servidores_socios.py falhou — cruzamento anterior mantido"
 
+      - name: Sanções da CGU (CEIS e CNEP) das empresas pagas em MS
+        timeout-minutes: 10
+        run: python3 scripts/coletar_sancoes.py || echo "⚠️ coletar_sancoes.py falhou — sanções anteriores mantidas"
+
+      - name: Contratos e obras do Governo do Estado (+ órgão que paga as empresas acompanhadas)
+        timeout-minutes: 30
+        run: python3 scripts/coletar_contratos_governo.py || echo "⚠️ coletar_contratos_governo.py falhou — contratos anteriores mantidos"
+
+      - name: Aditivos dos contratos da Prefeitura de CG (incremental, 7 dias)
+        timeout-minutes: 20
+        run: python3 scripts/coletar_aditivos_cg.py || echo "⚠️ coletar_aditivos_cg.py falhou — aditivos anteriores mantidos"
+
       - name: Auditoria — sinais de atenção (cruza notas, contratos e Receita)
         run: python3 scripts/gerar_auditoria.py || echo "⚠️ gerar_auditoria.py falhou — sinais anteriores mantidos"
 

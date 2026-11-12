@@ -238,6 +238,17 @@ def main():
         recente("Campanhas (TSE)", tse.get("ultimaAtualizacao"), 10, nivel="aviso", o_que="última coleta")
         checa(len(tse.get("parlamentares", {})) >= 60, f"TSE: {len(tse.get('parlamentares', {}))} parlamentares com prestação de contas",
               f"**TSE**: só {len(tse.get('parlamentares', {}))} parlamentares encontrados", "aviso")
+    sc = carregar("sancoes.json")
+    if sc:
+        recente("Sanções CEIS/CNEP", sc.get("ultimaAtualizacao"), 3, nivel="aviso", o_que="última coleta")
+    gc = carregar("governo_ms_contratos.json")
+    if gc:
+        recente("Contratos do Governo de MS", gc.get("ultimaAtualizacao"), 3, nivel="aviso", o_que="última coleta")
+        checa(len(gc.get("contratos", [])) >= 1000, f"Governo MS: {len(gc.get('contratos', []))} contratos",
+              f"**Contratos do Governo**: só {len(gc.get('contratos', []))}", "aviso")
+    ad = carregar("prefeitura_aditivos.json")
+    if ad:
+        recente("Aditivos da Prefeitura", ad.get("ultimaAtualizacao"), 3, nivel="aviso", o_que="última coleta")
     sso = carregar("servidores_socios.json")
     if sso:
         recente("Servidores sócios (folha do Estado)", sso.get("ultimaAtualizacao"), 3, nivel="aviso", o_que="último cruzamento")

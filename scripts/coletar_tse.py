@@ -175,8 +175,41 @@ def main():
         if k not in saida:
             faltam.append(k)
 
+    # eleição anterior de quem se reelegeu (vereadores: 2020; deputados: 2018), pelo CPF + nome civil
+    for ano_ant, grupos_ant in ((2020, ("vereador",)), (2018, ("estadual", "federal"))):
+        if ano_ant not in candidatos:
+            candidatos[ano_ant] = [r for r in ler_csv(f"{BASE}/consulta_cand/consulta_cand_{ano_ant}.zip", f"consulta_cand_{ano_ant}_MS.csv")]
+            print(f"  {ano_ant}: {len(candidatos[ano_ant])} candidaturas em MS")
+        idx = {(cpf6(c.get("NR_CPF_CANDIDATO")), norm(c["NM_CANDIDATO"])): c for c in candidatos[ano_ant]}
+        so_nome = {}
+        for c in candidatos[ano_ant]:
+            so_nome.setdefault(norm(c["NM_CANDIDATO"]), []).append(c)
+        for k, d in saida.items():
+            if k.split("|")[0] in grupos_ant:
+                # o arquivo de 2024 não traz o CPF: aí vale o nome civil completo, se for único no estado
+                c = idx.get((d.get("cpf6"), norm(d["nomeCompleto"]))) if d.get("cpf6") else \
+                    (so_nome.get(norm(d["nomeCompleto"])) or [None, None])[0] if len(so_nome.get(norm(d["nomeCompleto"]), [])) == 1 else None
+                if c:
+                    d["cpf6"] = d.get("cpf6") or cpf6(c.get("NR_CPF_CANDIDATO"))
+                    d.setdefault("anteriores", []).append({"ano": ano_ant, "sq": c["SQ_CANDIDATO"], "cargo": c["DS_CARGO"].title(),
+                                                           "situacao": c.get("DS_SIT_TOT_TURNO", "").title()})
+    # frequência dos sobrenomes entre todos os candidatos de MS (pessoas únicas), para o teste de parentes
+    pessoas = {}
+    for lst in candidatos.values():
+        for c in lst:
+            pessoas[cpf6(c.get("NR_CPF_CANDIDATO")) or c["SQ_CANDIDATO"]] = norm(c["NM_CANDIDATO"])
+    freq = {}
+    for nm in pessoas.values():
+        for w in set(nm.split()[1:]):
+            if len(w) > 3:
+                freq[w] = freq.get(w, 0) + 1
+    sobrenomes = {w: freq.get(w, 0) for d in saida.values() for w in norm(d["nomeCompleto"]).split()[1:] if len(w) > 3}
+
     por_sq = {(d["ano"], d["sq"]): d for d in saida.values()}
-    for ano in sorted({d["ano"] for d in saida.values()}):
+    for d in saida.values():
+        for a in d.get("anteriores", []):
+            por_sq[(a["ano"], a["sq"])] = d
+    for ano in sorted({a for (a, _) in por_sq}):
         zurl = f"{BASE}/prestacao_contas/prestacao_de_contas_eleitorais_candidatos_{ano}.zip"
         n = 0
         for r in ler_csv(zurl, f"receitas_candidatos_{ano}_MS.csv"):
@@ -188,8 +221,10 @@ def main():
             if "pessoas f" in r["DS_ORIGEM_RECEITA"].lower():
                 nm = norm(r.get("NM_DOADOR_RFB") or r["NM_DOADOR"])
                 if len(nm.split()) >= 2:
-                    x = d["doadores"].setdefault(nm, [(r.get("NM_DOADOR_RFB") or r["NM_DOADOR"]).title(), 0.0, cpf6(r["NR_CPF_CNPJ_DOADOR"])])
+                    x = d["doadores"].setdefault(nm, [(r.get("NM_DOADOR_RFB") or r["NM_DOADOR"]).title(), 0.0, cpf6(r["NR_CPF_CNPJ_DOADOR"]), []])
                     x[1] = round(x[1] + val, 2)
+                    if ano not in x[3]:
+                        x[3].append(ano)
                     n += 1
         m = 0
         for r in ler_csv(zurl, f"despesas_contratadas_candidatos_{ano}_MS.csv"):
@@ -200,20 +235,24 @@ def main():
             d["totalDespesas"] += val
             doc = re.sub(r"\D", "", r["NR_CPF_CNPJ_FORNECEDOR"])
             if len(doc) == 14:
-                x = d["fornecedores"].setdefault(doc, [(r.get("NM_FORNECEDOR_RFB") or r["NM_FORNECEDOR"]).strip(), 0.0, r["DS_DESPESA"][:80]])
+                x = d["fornecedores"].setdefault(doc, [(r.get("NM_FORNECEDOR_RFB") or r["NM_FORNECEDOR"]).strip(), 0.0, r["DS_DESPESA"][:80], []])
                 x[1] = round(x[1] + val, 2)
+                if ano not in x[3]:
+                    x[3].append(ano)
                 m += 1
         print(f"  {ano}: {n} doações de pessoas físicas e {m} despesas com empresas dos parlamentares atuais")
     for d in saida.values():
         d["totalReceitas"], d["totalDespesas"] = round(d["totalReceitas"], 2), round(d["totalDespesas"], 2)
         d.pop("sq")
+        for a in d.get("anteriores", []):
+            a.pop("sq", None)
     if len(saida) < 40:
         print(f"❌ só {len(saida)} parlamentares encontrados no TSE — arquivo mantido")
         sys.exit(1)
     (DADOS / "tse_campanhas.json").write_text(json.dumps({
         "ultimaAtualizacao": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
         "fonte": "TSE — Portal de Dados Abertos (prestação de contas eleitorais de candidatos)",
-        "naoEncontrados": faltam, "parlamentares": saida}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        "naoEncontrados": faltam, "candidatosMS": len(pessoas), "sobrenomes": sobrenomes, "parlamentares": saida}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"✅ tse_campanhas.json — {len(saida)} parlamentares; sem correspondência no TSE: {', '.join(faltam) or 'nenhum'}")
 
 

@@ -951,6 +951,33 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button class="pager-btn" id="gov-credores-mais" style="margin-top:10px;display:none"></button>
     </div>
 
+    <div class="section" id="gov-contratos-sec" hidden>
+      <div class="section-head"><h2 class="section-title">Contratos do Estado</h2></div>
+      <div class="section-note" id="gov-ct-nota"></div>
+      <div class="subhead">Por órgão</div>
+      <div class="bar-list largo" id="gov-ct-orgaos"></div>
+      <div class="subhead">Contratos celebrados no ano</div>
+      <div class="cx-filtros">
+        <input class="search-box" id="busca-gov-contratos" type="text" placeholder="buscar empresa, CNPJ, órgão ou modalidade…" />
+      </div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-gov-contratos" data-cartoes>
+          <thead><tr><th>Empresa</th><th>Órgão</th><th>Modalidade</th><th>Vigência</th><th class="num">Valor atual</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="gov-contratos-mais" style="margin-top:10px;display:none"></button>
+      <div class="subhead">Obras com mais dias aditados</div>
+      <div class="section-note">Contratos de obras do Estado: prazo inicial, dias acrescentados por aditivo e quanto já foi executado.</div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-gov-obras" data-cartoes>
+          <thead><tr><th>Obra</th><th>Empresa</th><th class="num">Prazo inicial</th><th class="num">Dias aditados</th><th class="num">Executado</th><th class="num">Valor</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="gov-obras-mais" style="margin-top:10px;display:none"></button>
+    </div>
+
     <div class="section">
       <div class="section-head"><h2 class="section-title">Diárias de viagem</h2></div>
       <div class="section-note" id="gov-diarias-nota"></div>
@@ -4268,6 +4295,44 @@ function renderAlertasContratos(d) {
   desenhar();
 }
 
+// ===================== CONTRATOS DO GOVERNO DO ESTADO =====================
+function renderContratosGoverno(g) {
+  document.getElementById("gov-contratos-sec").hidden = false;
+  const ct = g.contratos || [], ob = g.obras || [];
+  const dt = x => x ? formatDate(x) : "—";
+  document.getElementById("gov-ct-nota").innerHTML =
+    `${ct.length.toLocaleString("pt-BR")} contratos celebrados em ${g.ano}, somando <b>${formatCompact(g.totalCelebrado || ct.reduce((t, c) => t + c.valor, 0))}</b>, ` +
+    `em ${(g.orgaos || []).length} órgãos. O portal estadual não publica o objeto dos contratos comuns, só o das obras. Fonte: Portal da Transparência do Estado de MS.`;
+  const org = (g.orgaos || []).slice(0, 15), maxO = org[0]?.valor || 1;
+  document.getElementById("gov-ct-orgaos").innerHTML = org.map(o => `
+    <div class="bar-row"><div class="bar-label" title="${escHTML(o.nome)}">${escHTML(o.sigla)} <span style="opacity:.6">· ${o.contratos} contratos</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:${(o.valor / maxO * 100).toFixed(1)}%"></div></div><div class="bar-value">${formatCompact(o.valor)}</div></div>`).join("");
+  const busca = document.getElementById("busca-gov-contratos");
+  const desenha = () => {
+    const f = busca.value.trim().toLowerCase(), fd = f.replace(/\D/g, "");
+    const lista = ct.filter(c => !f || c.fornecedor.toLowerCase().includes(f) || (c.orgao || "").toLowerCase().includes(f) ||
+      (c.orgaoNome || "").toLowerCase().includes(f) || (c.modalidade || "").toLowerCase().includes(f) || (fd.length >= 4 && (c.cnpj || "").includes(fd)));
+    paginarTabela(document.querySelector("#tabela-gov-contratos tbody"), document.getElementById("gov-contratos-mais"), lista, c => `
+      <tr><td data-label="Empresa" class="quebra"><b>${escHTML(c.fornecedor)}</b><div class="rank-meta">${c.cnpj && c.cnpj.length === 14 ? linksCNPJ(c.cnpj) : escHTML(c.cnpj || "")} · contrato ${escHTML(c.numero)}</div></td>
+        <td data-label="Órgão" title="${escHTML(c.orgaoNome || "")}">${escHTML(c.orgao || "")}</td>
+        <td data-label="Modalidade" class="quebra-curta">${escHTML((c.modalidade || "—").toLowerCase())}${c.renovacoes ? `<br><span class="cx-tag">${c.renovacoes} renovação(ões)</span>` : ""}</td>
+        <td data-label="Vigência">${dt(c.inicio)} a ${dt(c.fim)}</td>
+        <td data-label="Valor atual" class="num">${formatBRL(c.valor)}</td></tr>`,
+      `<tr><td colspan="5" style="padding:14px;color:var(--ink-soft)">Nenhum contrato encontrado.</td></tr>`);
+  };
+  busca.addEventListener("input", desenha);
+  desenha();
+  const obs = ob.filter(o => (o.diasAditados || 0) > 0).sort((a, b) => (b.diasAditados / (b.prazoInicial || 1)) - (a.diasAditados / (a.prazoInicial || 1)) || b.valor - a.valor);
+  paginarTabela(document.querySelector("#tabela-gov-obras tbody"), document.getElementById("gov-obras-mais"), obs, o => `
+    <tr><td data-label="Obra" class="quebra"><b>${escHTML(o.orgao || "")} ${escHTML(o.numero || "")}</b><div class="rank-meta">${escHTML((o.objeto || "").slice(0, 160))}${o.municipios ? ` · ${escHTML(o.municipios)}` : ""}</div></td>
+      <td data-label="Empresa" class="quebra">${escHTML(o.fornecedor)}</td>
+      <td data-label="Prazo inicial" class="num">${Math.round(o.prazoInicial || 0)} dias</td>
+      <td data-label="Dias aditados" class="num">${Math.round(o.diasAditados || 0)}${o.prazoInicial ? ` <span style="opacity:.6">(${Math.round(o.diasAditados / o.prazoInicial * 100)}%)</span>` : ""}</td>
+      <td data-label="Executado" class="num">${Math.round(o.executado || 0)}%</td>
+      <td data-label="Valor" class="num">${formatBRL(o.valor)}</td></tr>`,
+    `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Nenhuma obra com aditivo de prazo.</td></tr>`, 20);
+}
+
 // ===================== AUDITORIA =====================
 function renderAuditoria(d) {
   const lista = d.sinais || [];
@@ -4684,6 +4749,9 @@ function renderGovernoMS(d) {
   fc.addEventListener("change", desenhaCred);
   desenhaCred();
 
+  // Contratos do Estado (dados/painel/governo_ms_contratos.json)
+  carregarLeve("governo_ms_contratos.json").then(g => { if (g && (g.contratos || []).length) renderContratosGoverno(g); });
+
   // Comparação de diárias entre órgãos (dados/diarias_comparacao.json)
   carregarJSON("dados/diarias_comparacao.json").then(c => {
     const tb = document.querySelector("#tabela-diarias-comp tbody");
@@ -5018,7 +5086,7 @@ function abrirDoHash() {
   if (!btn) return;
   btn.click();
   if (!nome) return;
-  const BUSCA_ABA = { "contratos-cg": ["busca-ct-forn", "busca-ct-contratos", "busca-ct-licit"], "governo-ms": ["busca-gov-credor"],
+  const BUSCA_ABA = { "contratos-cg": ["busca-ct-forn", "busca-ct-contratos", "busca-ct-licit"], "governo-ms": ["busca-gov-credor", "busca-gov-contratos"],
                      "emendas": ["busca-em-mun"] };
   if (BUSCA_ABA[aba]) {
     let n = 0;
@@ -5137,7 +5205,7 @@ const FONTE_ABA = {
   "senadores": { titulo: "CEAPS dos senadores de MS", csv: [["Resumo", "senadores_ms.csv"], ["Notas fiscais", "senadores_ms_notas.csv"]], json: "senadores_ms.json" },
   "prefeitura": { titulo: "Despesas da Prefeitura de Campo Grande", csv: [["Despesas pagas", "prefeitura_despesas.csv"]], json: "prefeitura.json" },
   "contratos-cg": { titulo: "Contratos e licitações da Prefeitura de Campo Grande", csv: [["Contratos", "prefeitura_contratos.csv"], ["Licitações", "prefeitura_licitacoes.csv"]], json: "prefeitura_contratos.json" },
-  "governo-ms": { titulo: "Despesas do Governo do Estado de MS", csv: [["Órgãos", "governo_ms_orgaos.csv"], ["Credores", "governo_ms_credores.csv"], ["Diárias", "governo_ms_diarias.csv"], ["Primeiro escalão", "governo_ms_primeiro_escalao.csv"]], json: "governo_ms.json" },
+  "governo-ms": { titulo: "Despesas do Governo do Estado de MS", csv: [["Órgãos", "governo_ms_orgaos.csv"], ["Credores", "governo_ms_credores.csv"], ["Diárias", "governo_ms_diarias.csv"], ["Primeiro escalão", "governo_ms_primeiro_escalao.csv"], ["Contratos", "governo_ms_contratos.csv"], ["Obras", "governo_ms_obras.csv"]], json: "governo_ms.json" },
   "emendas": { titulo: "Emendas parlamentares recebidas em MS, por município", csv: [["Municípios e autores", "emendas_municipios.csv"], ["Quem recebeu", "emendas_favorecidos.csv"]], json: "emendas_municipios.json" },
   "auditoria": { titulo: "Auditoria: sinais de atenção nas contas públicas de MS", csv: [["Sinais", "auditoria_sinais.csv"]], json: "auditoria.json" },
   "supersalarios": { titulo: "Supersalários: as maiores remunerações do poder público em MS", csv: [["Ranking", "supersalarios_ranking.csv"], ["Por órgão", "supersalarios_orgaos.csv"], ["Penduricalhos por item", "supersalarios_penduricalhos.csv"]], json: "supersalarios.json" },

@@ -71,6 +71,14 @@ def main():
             if s.get("cpf") and len(s["cpf"]) == 6 and s.get("nome"):
                 socios.setdefault((norm(s["nome"]), s["cpf"]), []).append((c, info.get("razao"), s.get("qualificacao"), s.get("entrada")))
     linhas, mes = folha_estado()
+    nomes_org = {}
+    try:  # sigla do órgão (como vem na folha) → nome completo, para comparar com o órgão que pagou a empresa
+        for o in requests.get(FOLHA + "/orgaos", params={"anoexercicio": ANO}, timeout=60,
+                              headers={**UA, "Authorization": "Bearer " + token()}).json().get("data") or []:
+            if o.get("id") and o.get("descricao"):
+                nomes_org.setdefault(o["id"].strip(), re.sub(r"\s*\([^)]*\)\s*$", "", o["descricao"]).strip())
+    except Exception as e:
+        print(f"  ⚠️ nomes dos órgãos: {e}")
     achados = []
     for x in linhas:
         sit = (x.get("situacao") or "").upper()
@@ -79,6 +87,7 @@ def main():
         cpf = re.sub(r"\D", "", x.get("cpf") or "")
         for c, razao, qual, entrada in socios.get((norm(x.get("nome")), cpf), []):
             achados.append({"nome": re.sub(r"\s+", " ", x.get("nome") or "").strip().title(), "orgao": (x.get("orgao") or "").strip(),
+                            "orgaoNome": nomes_org.get((x.get("orgao") or "").strip()),
                             "cargo": (x.get("cargo") or "").strip().capitalize(), "vinculo": (x.get("vinculo") or "").strip().capitalize(),
                             "situacao": sit.capitalize(), "admissao": x.get("dataAdmissao"), "cnpj": c, "empresa": razao,
                             "qualificacao": qual, "entradaSociedade": entrada})

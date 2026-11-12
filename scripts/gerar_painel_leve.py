@@ -112,6 +112,13 @@ def main():
         d = carregar(nome)
         if d is not None:
             tam[nome] = salvar(nome, d)
+    gc = carregar("governo_ms_contratos.json")
+    if gc is not None:  # o painel não usa a lista de pagadores (só a Auditoria)
+        gc.pop("pagadores", None)
+        # obras: só as que têm aditivo de prazo (as 400 com maior proporção) — o resto está no CSV
+        gc["obras"] = sorted((o for o in gc.get("obras", []) if (o.get("diasAditados") or 0) > 0),
+                             key=lambda o: -(o["diasAditados"] / (o.get("prazoInicial") or 1)))[:400]
+        tam["governo_ms_contratos.json"] = salvar("governo_ms_contratos.json", gc)
     print("✅ dados/painel/: " + ", ".join(f"{k} {v // 1024} KB" for k, v in tam.items()))
 
 
