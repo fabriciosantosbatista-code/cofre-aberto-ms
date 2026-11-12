@@ -207,6 +207,21 @@ def gerar_csvs():
         [[o.get("orgao"), o.get("numero"), o.get("processo"), o.get("fornecedor"), o.get("cnpj"), o.get("objeto"), o.get("municipios"),
           o.get("situacao"), o.get("inicio"), o.get("fim"), o.get("prazoInicial"), o.get("diasAditados"), o.get("diasParalisados"),
           o.get("executado"), num(o.get("valor"))] for o in gc.get("obras", [])])
+    pr = carregar("presidencia.json")
+    contagem["presidencia_cartao.csv"] = grava_csv("presidencia_cartao.csv",
+        ["mes", "presidente", "presidencia_total", "presidencia_sigiloso", "vice_total", "vice_sigiloso"],
+        [[x["mes"], x["presidente"], num(x["pr"]), num(x["prSig"]), num(x["vice"]), num(x["viceSig"])] for x in (pr.get("cartao") or {}).get("serie", [])])
+    contagem["presidencia_viagens_ministros.csv"] = grava_csv("presidencia_viagens_ministros.csv",
+        ["ano", "ministro", "orgao", "viagens", "diarias", "passagens", "outros", "total", "destinos_mais_frequentes"],
+        [[a, m["nome"], m["orgao"], m["viagens"], num(m["diarias"]), num(m["passagens"]), num(m["outros"]), num(m["total"]), " | ".join(m["destinos"])]
+         for a, v in sorted((pr.get("viagens") or {}).items()) for m in v.get("ministros", [])])
+    contagem["presidencia_ministros.csv"] = grava_csv("presidencia_ministros.csv",
+        ["mes", "ministro", "orgao", "remuneracao_bruta", "abate_teto", "eventuais_jetons", "ferias", "gratificacao_natalina", "liquido", "indenizatorias"],
+        [[(pr.get("remuneracao") or {}).get("mes"), m["nome"], m["orgao"], num(m["bruto"]), num(m["abateTeto"]), num(m["eventuais"]),
+          num(m["ferias"]), num(m["natalina"]), num(m["liquido"]), num(m["indenizatorias"])] for m in (pr.get("remuneracao") or {}).get("ministros", [])])
+    ms = pr.get("ms") or {}
+    contagem["uniao_transferencias_ms.csv"] = grava_csv("uniao_transferencias_ms.csv", ["recorte", "nome", f"valor_{ms.get('ano')}"],
+        [[r, x["nome"], num(x["valor"])] for r in ("tipo", "orgao", "municipio") for x in ms.get(r, [])])
     au = carregar("auditoria.json")
     contagem["auditoria_sinais.csv"] = grava_csv("auditoria_sinais.csv",
         ["visto_em", "teste", "nivel", "titulo", "descricao", "quem_pagou", "empresa", "cnpj", "valor", "evidencias"],
@@ -356,6 +371,12 @@ def status_fontes():
         "https://brasilapi.com.br/docs#tag/CNPJ", au.get("ultimaAtualizacao"),
         f"{au.get('empresasConsultadas', 0)} empresas checadas na Receita" if au else None,
         au.get("ano") == ANO and em_dia(au.get("ultimaAtualizacao"), 3))
+
+    pr = carregar("presidencia.json")
+    ult_cartao = ((pr.get("cartao") or {}).get("serie") or [{}])[-1].get("mes")
+    add("presidencia", "Portal da Transparência do Governo Federal (CGU) — cartão de pagamento, viagens, orçamento, servidores e transferências",
+        "https://portaldatransparencia.gov.br/download-de-dados", pr.get("ultimaAtualizacao"),
+        f"cartão até {ult_cartao[5:]}/{ult_cartao[:4]}" if ult_cartao else None, bool(pr) and em_dia(pr.get("ultimaAtualizacao"), 8))
 
     cidades, paradas = 0, []
     for f in sorted((DADOS / "camaras").glob("*.json")):

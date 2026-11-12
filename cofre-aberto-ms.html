@@ -502,6 +502,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="nav-group-label">Brasil</div>
       <button data-tab="deputados-brasil"><span class="dot"></span> Dep. Federais Brasil</button>
       <button data-tab="senado-brasil"><span class="dot"></span> Senado Brasil</button>
+      <button data-tab="presidencia"><span class="dot"></span> Presidência</button>
       <div class="nav-group-label">Publicações</div>
       <a class="nav-link" href="boletim/"><span class="dot"></span> Boletim semanal</a>
       <a class="nav-link" href="empresa/"><span class="dot"></span> Empresas</a>
@@ -1339,6 +1340,120 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         </table>
       </div>
       <div class="detail-panel" id="detail-senbr"></div>
+    </div>
+  </section>
+
+  <section class="tabpanel" id="tab-presidencia">
+    <div class="hero">
+      <div class="hero-label">Presidência da República · Gastos e Governo Federal em MS</div>
+      <div class="hero-number" id="pr-cartao-atual">—</div>
+      <div class="hero-desc">no <b>cartão corporativo da Presidência</b> no mandato atual (<span id="pr-periodo">—</span>), dos quais
+        <b id="pr-sig-pct">—</b> são gastos classificados como sigilosos. Abaixo, a mesma conta para os presidentes anteriores, desde 2013.</div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="pr-media">—</div><div class="mini-stat-label">média mensal no cartão (mandato atual)</div></div>
+        <div><div class="mini-stat-value" id="pr-orc">—</div><div class="mini-stat-label" id="pr-orc-label">despesa da Presidência no ano</div></div>
+        <div><div class="mini-stat-value" id="pr-ms">—</div><div class="mini-stat-label" id="pr-ms-label">transferidos pela União a MS no ano</div></div>
+        <div><div class="mini-stat-value" id="pr-data">—</div><div class="mini-stat-label">atualizado em</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-note cx-aviso">ℹ️ <b>Mesma régua para todos os governos.</b> Os números vêm dos arquivos de dados abertos do Portal da Transparência (CGU),
+        com os mesmos critérios para cada presidente. Os valores são nominais (sem correção pela inflação). Gasto sigiloso é o que a Presidência
+        classifica por segurança do presidente e da família (Lei 12.527/2011, art. 24): o site mostra quanto é, sem supor nada sobre o conteúdo.
+        As viagens do próprio presidente são feitas pela FAB e não aparecem nos arquivos de viagens a serviço.</p>
+      <div class="section-head"><h2 class="section-title">Cartão corporativo por presidente</h2></div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-pr-cartao" data-cartoes>
+          <thead><tr><th>Presidente</th><th>Período</th><th class="num">Total no cartão</th><th class="num">Média mensal</th><th class="num">Sigiloso</th><th class="num">Vice-Presidência</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="section-note" style="margin-top:8px">Período pelo mês do extrato do cartão. Dilma Rousseff foi afastada em 12/05/2016: de maio em diante, os gastos contam para Michel Temer. O CPGF só está nos dados abertos a partir de 2013.</p>
+      <div class="subhead">Ano a ano (Presidência)</div>
+      <div class="bar-list largo" id="pr-cartao-anos"></div>
+      <div class="subhead">Para onde foi a parte não sigilosa</div>
+      <select class="search-box" id="pr-fav-pres" aria-label="Presidente" style="max-width:320px"></select>
+      <div class="card card-x-scroll" style="margin-top:8px">
+        <table class="notes-table" id="tabela-pr-fav" data-cartoes>
+          <thead><tr><th>Favorecido</th><th class="num">Transações</th><th class="num">Valor</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Viagens a serviço — mandato atual</h2></div>
+      <div class="section-note" id="pr-viag-nota"></div>
+      <select class="search-box" id="pr-viag-ano" aria-label="Ano" style="max-width:160px"></select>
+      <div class="subhead">Ministros (cargos de natureza especial) que mais gastaram com viagens</div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-pr-ministros-viag" data-cartoes>
+          <thead><tr><th>Ministro(a)</th><th class="num">Viagens</th><th class="num">Diárias</th><th class="num">Passagens</th><th class="num">Total</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="pr-ministros-viag-mais" style="margin-top:10px;display:none"></button>
+      <div class="subhead">Comitiva e servidores da Presidência e da Vice que mais gastaram</div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-pr-viag" data-cartoes>
+          <thead><tr><th>Nome</th><th>Cargo</th><th class="num">Viagens</th><th class="num">Total</th><th>Destinos mais frequentes</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="pr-viag-mais" style="margin-top:10px;display:none"></button>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Despesas da Presidência — mandato atual</h2></div>
+      <div class="section-note">Orçamento da Presidência da República (inclui Vice-Presidência, EBC e Imprensa Nacional). Realizado = pago no ano.
+        Não entram os empréstimos (inversões financeiras) de fundos que passaram a ser geridos pela Presidência em 2025 — eles aparecem à parte, na última coluna.</div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-pr-orc" data-cartoes>
+          <thead><tr><th>Ano</th><th class="num">Orçamento atualizado</th><th class="num">Empenhado</th><th class="num">Realizado</th><th class="num">Empréstimos (à parte)</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <select class="search-box" id="pr-orc-ano" aria-label="Ano" style="max-width:160px;margin-top:12px"></select>
+      <div class="subhead">Por órgão</div>
+      <div class="bar-list largo" id="pr-orc-orgaos"></div>
+      <div class="subhead">Principais ações</div>
+      <div class="bar-list largo" id="pr-orc-acoes"></div>
+      <div class="subhead">Por tipo de despesa</div>
+      <div class="bar-list largo" id="pr-orc-elem"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Quanto ganham o presidente, o vice e os ministros</h2></div>
+      <div class="section-note" id="pr-rem-nota"></div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-pr-rem" data-cartoes>
+          <thead><tr><th>Ministro(a)</th><th class="num">Remuneração bruta</th><th class="num">Abate-teto</th><th class="num">Jetons e eventuais¹</th><th class="num">Líquido</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="section-note" style="margin-top:8px">¹ "Outras remunerações eventuais" da folha — sobretudo jetons por participação em conselhos de estatais, que ficam fora do teto.
+        Ministros que são servidores de carreira podem ter bruto acima do subsídio; o abate-teto corta o que passa do teto.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">O Governo Federal em Mato Grosso do Sul</h2></div>
+      <div class="section-note" id="pr-ms-nota"></div>
+      <div class="subhead">Por tipo de transferência</div>
+      <div class="bar-list largo" id="pr-ms-tipos"></div>
+      <div class="subhead">Por ministério</div>
+      <div class="bar-list largo" id="pr-ms-orgaos"></div>
+      <div class="subhead">Por município</div>
+      <input class="search-box" id="busca-pr-mun" type="text" placeholder="buscar município…" />
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-pr-mun" data-cartoes>
+          <thead><tr><th>Município</th><th class="num">Recebido da União no ano</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="pager-btn" id="pr-mun-mais" style="margin-top:10px;display:none"></button>
+      <p class="section-note" style="margin-top:16px">Fonte: <a href="https://portaldatransparencia.gov.br/download-de-dados" target="_blank" rel="noopener">Portal da Transparência do Governo Federal (CGU)</a>
+        — cartão de pagamento (CPGF), viagens a serviço, orçamento da despesa, servidores (SIAPE) e transferências. Atualização automática.</p>
     </div>
   </section>
 
@@ -4305,8 +4420,8 @@ function renderContratosGoverno(g) {
     `em ${(g.orgaos || []).length} órgãos. O portal estadual não publica o objeto dos contratos comuns, só o das obras. Fonte: Portal da Transparência do Estado de MS.`;
   const org = (g.orgaos || []).slice(0, 15), maxO = org[0]?.valor || 1;
   document.getElementById("gov-ct-orgaos").innerHTML = org.map(o => `
-    <div class="bar-row"><div class="bar-label" title="${escHTML(o.nome)}">${escHTML(o.sigla)} <span style="opacity:.6">· ${o.contratos} contratos</span></div>
-      <div class="bar-track"><div class="bar-fill" style="width:${(o.valor / maxO * 100).toFixed(1)}%"></div></div><div class="bar-value">${formatCompact(o.valor)}</div></div>`).join("");
+    <div class="bar-list-row"><div class="bar-list-label" title="${escHTML(o.nome)}">${escHTML(o.sigla)} <span style="opacity:.6">· ${o.contratos} contratos</span></div>
+      <div class="bar-list-track"><div class="bar-list-fill" style="width:${(o.valor / maxO * 100).toFixed(1)}%"></div></div><div class="bar-list-value">${formatCompact(o.valor)}</div></div>`).join("");
   const busca = document.getElementById("busca-gov-contratos");
   const desenha = () => {
     const f = busca.value.trim().toLowerCase(), fd = f.replace(/\D/g, "");
@@ -4331,6 +4446,117 @@ function renderContratosGoverno(g) {
       <td data-label="Executado" class="num">${Math.round(o.executado || 0)}%</td>
       <td data-label="Valor" class="num">${formatBRL(o.valor)}</td></tr>`,
     `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Nenhuma obra com aditivo de prazo.</td></tr>`, 20);
+}
+
+// ===================== PRESIDÊNCIA =====================
+function renderPresidencia(d) {
+  const fmt = v => formatBRL(v || 0), pct = (a, b) => b ? (a / b * 100).toFixed(1).replace(".", ",") + "%" : "—";
+  const mesBR = m => m ? `${m.slice(5, 7)}/${m.slice(0, 4)}` : "—";
+  const barras = (el, lst, val, rot, cls = "") => {
+    const max = Math.max(...lst.map(val), 1);
+    document.getElementById(el).innerHTML = lst.map(x => `
+      <div class="bar-list-row"><div class="bar-list-label" title="${escHTML(rot(x))}">${escHTML(rot(x))}</div>
+        <div class="bar-list-track"><div class="bar-list-fill ${cls}" style="width:${(val(x) / max * 100).toFixed(1)}%"></div></div>
+        <div class="bar-list-value">${formatCompact(val(x))}</div></div>`).join("") || `<p class="section-note">Sem dados.</p>`;
+  };
+  const c = d.cartao || {}, pp = c.porPresidente || [];
+  const atual = pp[pp.length - 1];
+  if (atual) {
+    document.getElementById("pr-cartao-atual").textContent = formatCompact(atual.total);
+    document.getElementById("pr-periodo").textContent = `${mesBR(atual.de)} a ${mesBR(atual.ate)}`;
+    document.getElementById("pr-sig-pct").textContent = pct(atual.sigiloso, atual.total);
+    document.getElementById("pr-media").textContent = formatCompact(atual.mediaMensal);
+  }
+  document.getElementById("pr-data").textContent = d.ultimaAtualizacao ? formatDate(d.ultimaAtualizacao.slice(0, 10)) : "—";
+  document.querySelector("#tabela-pr-cartao tbody").innerHTML = pp.map(p => `
+    <tr><td data-label="Presidente"><b>${escHTML(p.presidente)}</b></td><td data-label="Período">${mesBR(p.de)} a ${mesBR(p.ate)} <span style="opacity:.6">(${p.meses} meses)</span></td>
+      <td data-label="Total no cartão" class="num">${fmt(p.total)}</td><td data-label="Média mensal" class="num">${fmt(p.mediaMensal)}</td>
+      <td data-label="Sigiloso" class="num">${fmt(p.sigiloso)} <span style="opacity:.6">(${pct(p.sigiloso, p.total)})</span></td>
+      <td data-label="Vice-Presidência" class="num">${fmt(p.vice)}</td></tr>`).join("");
+  const anos = {};
+  (c.serie || []).forEach(s => { const a = s.mes.slice(0, 4); anos[a] = anos[a] || { ano: a, v: 0, sig: 0, pres: new Set() }; anos[a].v += s.pr; anos[a].sig += s.prSig; anos[a].pres.add(s.presidente.split(" ")[0]); });
+  barras("pr-cartao-anos", Object.values(anos), x => x.v, x => `${x.ano} · ${[...x.pres].join(" / ")}${x.ano === String(new Date().getFullYear()) ? " (parcial)" : ""}`);
+  const sel = document.getElementById("pr-fav-pres");
+  sel.innerHTML = pp.map((p, i) => `<option value="${i}">${escHTML(p.presidente)}</option>`).reverse().join("");
+  const desFav = () => {
+    const p = pp[+sel.value];
+    document.querySelector("#tabela-pr-fav tbody").innerHTML = (p?.favorecidos || []).map(f => `
+      <tr><td data-label="Favorecido" class="quebra">${escHTML(f.nome)}${f.doc && f.doc.replace(/\D/g, "").length === 14 ? `<div class="rank-meta">${linksCNPJ(f.doc)}</div>` : ""}</td>
+        <td data-label="Transações" class="num">${f.transacoes.toLocaleString("pt-BR")}</td><td data-label="Valor" class="num">${fmt(f.valor)}</td></tr>`).join("")
+      || `<tr><td colspan="3">Sem gastos abertos identificados.</td></tr>`;
+  };
+  sel.addEventListener("change", desFav); desFav();
+
+  // Viagens
+  const vg = d.viagens || {}, anosV = Object.keys(vg).sort().reverse();
+  const sv = document.getElementById("pr-viag-ano");
+  sv.innerHTML = anosV.map(a => `<option>${a}</option>`).join("");
+  const desV = () => {
+    const v = vg[sv.value]; if (!v) return;
+    const t = v.presidencia || {};
+    document.getElementById("pr-viag-nota").textContent =
+      `Em ${sv.value}, servidores da Presidência e da Vice-Presidência fizeram ${(t.viagens || 0).toLocaleString("pt-BR")} viagens a serviço (${(v.pessoasPresidencia || 0).toLocaleString("pt-BR")} pessoas), ` +
+      `com ${formatCompact(t.diarias)} em diárias e ${formatCompact(t.passagens)} em passagens. Os ministros aparecem pela função "cargo de natureza especial" (CNE), a dos ministros de Estado e de poucos postos equivalentes.`;
+    paginarTabela(document.querySelector("#tabela-pr-ministros-viag tbody"), document.getElementById("pr-ministros-viag-mais"), v.ministros || [], m => `
+      <tr><td data-label="Ministro(a)" class="quebra"><b>${escHTML(m.nome)}</b><div class="rank-meta">${escHTML(m.orgao)}${m.destinos.length ? " · " + escHTML(m.destinos.join(", ")) : ""}</div></td>
+        <td data-label="Viagens" class="num">${m.viagens}</td><td data-label="Diárias" class="num">${fmt(m.diarias)}</td>
+        <td data-label="Passagens" class="num">${fmt(m.passagens)}</td><td data-label="Total" class="num">${fmt(m.total)}</td></tr>`,
+      `<tr><td colspan="5">Sem viagens de ministros no ano.</td></tr>`, 20);
+    paginarTabela(document.querySelector("#tabela-pr-viag tbody"), document.getElementById("pr-viag-mais"), v.viajantesPresidencia || [], m => `
+      <tr><td data-label="Nome">${escHTML(m.nome)}</td><td data-label="Cargo" class="quebra-curta">${escHTML(m.cargo || "—")}</td>
+        <td data-label="Viagens" class="num">${m.viagens}</td><td data-label="Total" class="num">${fmt(m.total)}</td>
+        <td data-label="Destinos" class="quebra">${escHTML(m.destinos.join(", "))}</td></tr>`,
+      `<tr><td colspan="5">Sem viagens no ano.</td></tr>`, 15);
+  };
+  sv.addEventListener("change", desV); desV();
+
+  // Orçamento
+  const orc = d.orcamento || [];
+  document.querySelector("#tabela-pr-orc tbody").innerHTML = orc.map(o => `
+    <tr><td data-label="Ano"><b>${o.ano}</b>${o.ano === new Date().getFullYear() ? " (parcial)" : ""}</td><td data-label="Orçamento atualizado" class="num">${fmt(o.atualizado)}</td>
+      <td data-label="Empenhado" class="num">${fmt(o.empenhado)}</td><td data-label="Realizado" class="num">${fmt(o.realizado)}</td>
+      <td data-label="Empréstimos (à parte)" class="num" title="${escHTML(((o.financeiro || {}).acoes || []).map(a => a.nome).join("; "))}">${(o.financeiro || {}).realizado ? fmt(o.financeiro.realizado) : "—"}</td></tr>`).join("");
+  const so = document.getElementById("pr-orc-ano");
+  so.innerHTML = orc.map(o => `<option>${o.ano}</option>`).reverse().join("");
+  const desO = () => {
+    const o = orc.find(x => String(x.ano) === so.value); if (!o) return;
+    barras("pr-orc-orgaos", o.orgaos, x => x.realizado, x => x.nome);
+    barras("pr-orc-acoes", o.acoes.slice(0, 15), x => x.realizado, x => x.nome, "alt");
+    barras("pr-orc-elem", o.elementos.slice(0, 12), x => x.realizado, x => x.nome, "positive");
+  };
+  so.addEventListener("change", desO); desO();
+  const oa = orc[orc.length - 1];
+  if (oa) { document.getElementById("pr-orc").textContent = formatCompact(oa.realizado); document.getElementById("pr-orc-label").textContent = `pagos pela Presidência em ${oa.ano} (até agora)`; }
+
+  // Remuneração
+  const sub = (d.subsidio || []).slice(-1)[0];
+  const r = d.remuneracao || {};
+  document.getElementById("pr-rem-nota").innerHTML = sub ?
+    `O presidente, o vice-presidente e os ministros recebem o mesmo subsídio, fixado pelo Congresso (Decreto Legislativo 172/2022): <b>${fmt(sub.valor)}</b> por mês desde ${formatDate(sub.desde)} — igual ao teto do funcionalismo. ` +
+    `O presidente e o vice não estão na folha SIAPE; abaixo, os ministros na folha de ${escHTML(r.mes || "—")}.` : "";
+  document.querySelector("#tabela-pr-rem tbody").innerHTML = (r.ministros || []).map(m => `
+    <tr><td data-label="Ministro(a)" class="quebra"><b>${escHTML(m.nome)}</b><div class="rank-meta">${escHTML(m.orgao)}</div></td>
+      <td data-label="Remuneração bruta" class="num">${fmt(m.bruto)}</td><td data-label="Abate-teto" class="num">${m.abateTeto ? fmt(m.abateTeto) : "—"}</td>
+      <td data-label="Jetons e eventuais" class="num">${m.eventuais ? fmt(m.eventuais) : "—"}</td><td data-label="Líquido" class="num">${fmt(m.liquido)}</td></tr>`).join("")
+    || `<tr><td colspan="5">Folha ainda não carregada.</td></tr>`;
+
+  // MS
+  const ms = d.ms || {};
+  document.getElementById("pr-ms").textContent = formatCompact(ms.total);
+  document.getElementById("pr-ms-label").textContent = `transferidos pela União a MS em ${ms.ano || ""}${ms.ate ? " (até " + ms.ate + ")" : ""}`;
+  document.getElementById("pr-ms-nota").textContent = `${formatBRL(ms.total || 0)} transferidos pela União ao Governo do Estado, aos municípios e a entidades de MS em ${ms.ano}` +
+    `${ms.ate ? ", até " + ms.ate : ""}: transferências constitucionais (FPE, FPM), legais (SUS, educação) e voluntárias (convênios e emendas).`;
+  barras("pr-ms-tipos", ms.tipo || [], x => x.valor, x => x.nome, "positive");
+  barras("pr-ms-orgaos", (ms.orgao || []).slice(0, 15), x => x.valor, x => x.nome);
+  const bm = document.getElementById("busca-pr-mun");
+  const desM = () => {
+    const f = bm.value.trim().toLowerCase();
+    paginarTabela(document.querySelector("#tabela-pr-mun tbody"), document.getElementById("pr-mun-mais"),
+      (ms.municipio || []).filter(m => !f || m.nome.toLowerCase().includes(f)), m => `
+      <tr><td data-label="Município">${escHTML(m.nome)}</td><td data-label="Recebido" class="num">${fmt(m.valor)}</td></tr>`,
+      `<tr><td colspan="2">Nenhum município encontrado.</td></tr>`, 25);
+  };
+  bm.addEventListener("input", desM); desM();
 }
 
 // ===================== AUDITORIA =====================
@@ -5212,6 +5438,7 @@ const FONTE_ABA = {
   "camaras-ms": { titulo: "Câmaras municipais do interior de MS", csv: [["Vereadores", "camaras_interior.csv"]], json: null },
   "judiciario": { titulo: "Remuneração dos magistrados de MS", csv: [["Magistrados", "judiciario_magistrados.csv"]], json: "tjms_magistrados.json" },
   "deputados-brasil": { titulo: "CEAP dos deputados federais do Brasil", csv: [["Resumo", "deputados_federais_brasil.csv"]], json: "deputados_federais_brasil.json" },
+  "presidencia": { titulo: "Presidência da República: cartão corporativo, viagens, despesas, remuneração e Governo Federal em MS", csv: [["Cartão por mês", "presidencia_cartao.csv"], ["Viagens de ministros", "presidencia_viagens_ministros.csv"], ["Remuneração dos ministros", "presidencia_ministros.csv"], ["Transferências a MS", "uniao_transferencias_ms.csv"]], json: "presidencia.json" },
   "senado-brasil": { titulo: "CEAPS dos senadores do Brasil", csv: [["Resumo", "senadores_brasil.csv"]], json: "senadores_brasil.json" },
   "conexoes": { titulo: "Conexões entre fornecedores de políticos de MS", csv: [["Conexões", "conexoes_fornecedores.csv"]], json: "conexoes_fornecedores.json" },
   "evolucao": { titulo: "Evolução mensal dos gastos de políticos de MS", csv: [["Mês a mês", "evolucao_mensal.csv"]], json: "evolucao_mensal.json" },
@@ -5391,6 +5618,10 @@ async function init() {
       if (btn.dataset.tab === "supersalarios" && !window._ssLoaded) {
         window._ssLoaded = true;
         carregarLeve("supersalarios.json").then(d => { if (d) renderSupersalarios(d); });
+      }
+      if (btn.dataset.tab === "presidencia" && !window._prLoaded) {
+        window._prLoaded = true;
+        carregarJSON("dados/presidencia.json").then(d => { if (d) renderPresidencia(d); });
       }
       if (btn.dataset.tab === "auditoria" && !window._auLoaded) {
         window._auLoaded = true;

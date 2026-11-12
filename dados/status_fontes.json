@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-12T01:35:31",
+ "geradoEm": "2026-11-12T02:13:33",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
@@ -78,6 +78,14 @@
    "url": "https://brasilapi.com.br/docs#tag/CNPJ",
    "coleta": "2026-11-12T01:35:31",
    "dadoMaisRecente": "3442 empresas checadas na Receita",
+   "nivel": "ok",
+   "mensagem": null
+  },
+  "presidencia": {
+   "fonte": "Portal da Transparência do Governo Federal (CGU) — cartão de pagamento, viagens, orçamento, servidores e transferências",
+   "url": "https://portaldatransparencia.gov.br/download-de-dados",
+   "coleta": "2026-11-12T02:11:00",
+   "dadoMaisRecente": "cartão até 08/2026",
    "nivel": "ok",
    "mensagem": null
   },

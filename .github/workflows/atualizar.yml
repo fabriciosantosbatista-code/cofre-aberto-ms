@@ -359,6 +359,10 @@ jobs:
         timeout-minutes: 20
         run: python3 scripts/coletar_aditivos_cg.py || echo "⚠️ coletar_aditivos_cg.py falhou — aditivos anteriores mantidos"
 
+      - name: Presidência da República e transferências da União para MS (CGU)
+        timeout-minutes: 30
+        run: python3 scripts/coletar_presidencia.py $( [ "$(date +%u)" = "1" ] || echo --rapido ) || echo "⚠️ coletar_presidencia.py falhou — dados anteriores mantidos"
+
       - name: Auditoria — sinais de atenção (cruza notas, contratos e Receita)
         run: python3 scripts/gerar_auditoria.py || echo "⚠️ gerar_auditoria.py falhou — sinais anteriores mantidos"
 

@@ -19,7 +19,7 @@ Os doadores ficam guardados pelo nome e pelos 6 dígitos do meio do CPF (o trech
 Receita já publica no quadro de sócios), não pelo CPF inteiro; e só os de quem tem mandato hoje.
 """
 
-import csv, io, json, re, sys, unicodedata, zipfile
+import csv, io, json, re, sys, time, unicodedata, zipfile
 from datetime import datetime
 from pathlib import Path
 
@@ -64,13 +64,18 @@ class ArquivoRemoto(io.RawIOBase):
         if self.pos >= self.size:
             return 0
         fim = min(self.pos + len(b), self.size) - 1
-        for t in range(4):
+        esperado = fim - self.pos + 1
+        for t in range(6):
             try:
-                d = requests.get(self.url, headers={**UA, "Range": f"bytes={self.pos}-{fim}"}, timeout=120).content
-                break
+                r = requests.get(self.url, headers={**UA, "Range": f"bytes={self.pos}-{fim}"}, timeout=120)
+                d = r.content
+                if r.status_code == 206 and len(d) == esperado:  # pedaço completo; senão, tenta de novo
+                    break
             except requests.RequestException:
-                if t == 3:
-                    raise
+                pass
+            if t == 5:
+                raise IOError(f"leitura parcial falhou em {self.url} ({self.pos}-{fim})")
+            time.sleep(2 * (t + 1))
         b[:len(d)] = d
         self.pos += len(d)
         return len(d)
