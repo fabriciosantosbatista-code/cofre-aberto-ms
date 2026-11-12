@@ -1413,7 +1413,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     <div class="hero">
       <div class="hero-label">Presidência da República · Gastos e Governo Federal em MS</div>
       <div class="hero-number" id="pr-cartao-atual">—</div>
-      <div class="hero-desc">no <b>cartão corporativo da Presidência</b> no mandato atual (<span id="pr-periodo">—</span>), dos quais
+      <div class="hero-desc">no <b>cartão corporativo da Presidência</b> no mandato atual (<span id="pr-periodo">—</span>, último mês publicado pela CGU) — somando a
+        Secretaria de Administração, que paga as despesas do presidente, a ABIN e o GSI —, dos quais
         <b id="pr-sig-pct">—</b> são gastos classificados como sigilosos. Abaixo, a mesma conta para os presidentes anteriores, desde 2013.</div>
       <div class="mini-stats">
         <div><div class="mini-stat-value" id="pr-media">—</div><div class="mini-stat-label">média mensal no cartão (mandato atual)</div></div>
@@ -1436,6 +1437,15 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         </table>
       </div>
       <p class="section-note" style="margin-top:8px">Período pelo mês do extrato do cartão. Dilma Rousseff foi afastada em 12/05/2016: de maio em diante, os gastos contam para Michel Temer. O CPGF só está nos dados abertos a partir de 2013.</p>
+      <div class="subhead">Por unidade da Presidência</div>
+      <div class="section-note">O cartão "da Presidência" não é só do presidente: inclui a ABIN (operações de inteligência) e o GSI (segurança). A Secretaria de Administração é
+        a que paga as despesas do presidente, das residências oficiais e das viagens.</div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-pr-unidades" data-cartoes>
+          <thead><tr><th>Presidente</th><th class="num">Secretaria de Administração</th><th class="num">ABIN</th><th class="num">GSI</th><th class="num">Total</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
       <div class="subhead">Ano a ano (Presidência)</div>
       <div class="bar-list largo" id="pr-cartao-anos"></div>
       <div class="subhead">Para onde foi a parte não sigilosa</div>
@@ -4685,6 +4695,11 @@ function renderPresidencia(d) {
       <td data-label="Total no cartão" class="num">${fmt(p.total)}</td><td data-label="Média mensal" class="num">${fmt(p.mediaMensal)}</td>
       <td data-label="Sigiloso" class="num">${fmt(p.sigiloso)} <span style="opacity:.6">(${pct(p.sigiloso, p.total)})</span></td>
       <td data-label="Vice-Presidência" class="num">${fmt(p.vice)}</td></tr>`).join("");
+  const un = (p, chave) => ((p.unidades || []).find(u => u.unidade.startsWith(chave)) || {}).valor || 0;
+  document.querySelector("#tabela-pr-unidades tbody").innerHTML = pp.map(p => `
+    <tr><td data-label="Presidente"><b>${escHTML(p.presidente)}</b></td>
+      <td data-label="Secretaria de Administração" class="num">${fmt(un(p, "Secretaria"))}</td><td data-label="ABIN" class="num">${fmt(un(p, "ABIN"))}</td>
+      <td data-label="GSI" class="num">${fmt(un(p, "GSI"))}</td><td data-label="Total" class="num">${fmt(p.total)}</td></tr>`).join("");
   const anos = {};
   (c.serie || []).forEach(s => { const a = s.mes.slice(0, 4); anos[a] = anos[a] || { ano: a, v: 0, sig: 0, pres: new Set() }; anos[a].v += s.pr; anos[a].sig += s.prSig; anos[a].pres.add(s.presidente.split(" ")[0]); });
   barras("pr-cartao-anos", Object.values(anos), x => x.v, x => `${x.ano} · ${[...x.pres].join(" / ")}${x.ano === String(new Date().getFullYear()) ? " (parcial)" : ""}`);

@@ -150,7 +150,19 @@ def cartao(cache):
                     x = fav.setdefault(f, [0.0, 0, doc])
                     x[0] += val
                     x[1] += n
+        uni = {}
+        for k, v in c.items():
+            if presidente(f"{k[:4]}-{k[4:]}") == p:
+                for u, val in v.get("unidades", {}).items():
+                    if "VICE" in u.upper():
+                        continue
+                    # a Secretaria de Administração aparece com dois nomes desde 2023 ("/PR" e "- PECULIARIDADES")
+                    nome = ("Secretaria de Administração (despesas do presidente, residências e viagens)" if "SECRETARIA DE ADMINISTRACAO" in u.upper()
+                            else "ABIN — Agência Brasileira de Inteligência" if "INTELIGENCIA" in u.upper()
+                            else "GSI — Gabinete de Segurança Institucional" if "SEGURANCA INSTITUCIONAL" in u.upper() else u.title())
+                    uni[nome] = uni.get(nome, 0) + val
         por_pres.append({"presidente": p, "de": lst[0]["mes"], "ate": lst[-1]["mes"], "meses": len(lst), "total": round(tot, 2),
+                         "unidades": [{"unidade": u, "valor": round(v, 2)} for u, v in sorted(uni.items(), key=lambda kv: -kv[1]) if v >= 1],
                          "sigiloso": round(sig, 2), "mediaMensal": round(tot / len(lst), 2),
                          "vice": round(sum(s["vice"] for s in lst), 2), "viceSigiloso": round(sum(s["viceSig"] for s in lst), 2),
                          "favorecidos": [{"nome": f, "valor": round(v[0], 2), "transacoes": v[1], "doc": v[2]}
