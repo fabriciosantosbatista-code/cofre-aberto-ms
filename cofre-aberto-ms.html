@@ -5020,12 +5020,13 @@ function cofreSVG(cx, cy, s, aberto) {
 const COFRE_DEFS = `<linearGradient id="cofreCorpo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9c55a"/><stop offset=".55" stop-color="#c9a23c"/><stop offset="1" stop-color="#8f7224"/></linearGradient>
 <linearGradient id="cofrePorta" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7d86f"/><stop offset="1" stop-color="#b48f2d"/></linearGradient>
 <linearGradient id="cofreOuro" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0a8"/><stop offset="1" stop-color="#d4a21f"/></linearGradient>`;
-// Torneira dourada (no cano que desce pela lateral do cofre): braço, registro em cruz (gira) e bico virado para baixo.
-// xc = cano vertical; xb = centro do bico; yb = altura do braço; w = largura do jato (a faixa que sai).
-function torneiraSVG(xc, xb, yb, w, g, k = 1.4) {
-  const f = n => n.toFixed(1), bw = Math.max(w * .8 + 6, 10 * k), xh = xc + (xb - xc) * .45, a = 5 * k;
+// Torneira dourada na lateral de um cofre: braço saindo do cofre, registro em cruz (gira) e bico virado para baixo.
+// xc = onde o braço sai do cofre; xb = centro do bico; yb = altura do braço; w = largura do jato.
+function torneiraSVG(xc, xb, yb, w, g, k = 1) {
+  const f = n => n.toFixed(1), bw = Math.max(w + 4, 10 * k), xh = xc + (xb - xc) * .42, a = 5 * k;
   return `<g class="torneira" data-g="${g}">
     <rect x="${f(xc)}" y="${f(yb - a)}" width="${f(xb - xc + bw / 2)}" height="${f(2 * a)}" rx="${f(a)}" fill="url(#cofrePorta)" stroke="#5c4a14" stroke-width=".9"/>
+    <rect x="${f(xc - 2)}" y="${f(yb - a - 2)}" width="${f(4 * k)}" height="${f(2 * a + 4)}" rx="1.5" fill="#8a6f1f"/>
     <path d="M${f(xb - bw / 2)} ${f(yb)} V${f(yb + 13 * k)} Q${f(xb - bw / 2)} ${f(yb + 16 * k)} ${f(xb - bw / 2 + 3 * k)} ${f(yb + 16 * k)} H${f(xb + bw / 2 - 3 * k)} Q${f(xb + bw / 2)} ${f(yb + 16 * k)} ${f(xb + bw / 2)} ${f(yb + 13 * k)} V${f(yb)} Z"
       fill="url(#cofrePorta)" stroke="#5c4a14" stroke-width=".9"/>
     <rect x="${f(xb - bw / 2 - 1)}" y="${f(yb + 12 * k)}" width="${f(bw + 2)}" height="${f(3 * k)}" rx="1.5" fill="#8a6f1f"/>
@@ -5050,31 +5051,31 @@ function renderFluxo(d, ano) {
   let defs = "", fitas = "", nos = "";
   // entradas: empilhadas na borda esquerda do círculo central
   const rMax = Math.sqrt(Math.max(...fontes.map(x => x.valor)));
-  let acc = CY - LARG / 2;
+  const LJ = m ? 40 : 52, KT = m ? .85 : 1.05;  // jato das torneiras (mais fino que as saídas) e tamanho da torneira
+  let torneiras = "";
+  let acc = CY - LJ / 2;
   fontes.forEach((x, i) => {
-    const y = 62 + i * (H - 124) / Math.max(fontes.length - 1, 1), w = Math.max(x.valor / total * LARG, 3);
-    const yc = acc + w / 2; acc += w;
+    const y = 62 + i * (H - 124) / Math.max(fontes.length - 1, 1), w = Math.max(x.valor / total * LARG, 3), wj = Math.max(x.valor / total * LJ, 3);
+    const yc = acc + wj / 2; acc += wj;
     const cs = (m ? 40 : 44) + (m ? 14 : 26) * Math.sqrt(x.valor) / rMax, cy = y - 14, ch = cs * .92;
     defs += `<linearGradient id="fg-e${i}" gradientUnits="userSpaceOnUse" x1="${sx}" x2="${CX}"><stop offset="0" stop-color="#f5c842" stop-opacity=".25"/><stop offset="1" stop-color="#f5c842" stop-opacity=".75"/></linearGradient>`;
-    const p = curva(sx + cs / 2 + cs * .1, cy, CX - CW / 2 + 10, yc);
-    fitas += `<path class="fita" data-g="e${i}" d="${p}" stroke="url(#fg-e${i})" stroke-width="${w.toFixed(1)}"/>`;
-    fitas += cifroes(p, `e${i}`, w);
+    const xc = sx + cs / 2 + cs * .12, xb = xc + (m ? 22 : 30), yb = cy + ch * .08, my = yb + 15 * KT, x1 = CX - CW / 2 + 10;
+    torneiras += torneiraSVG(xc - 2, xb, yb, wj, `e${i}`, KT);
+    const p = `M ${xb.toFixed(1)} ${my.toFixed(1)} C ${xb.toFixed(1)} ${(my + 40).toFixed(1)} ${((xb + x1) / 2).toFixed(1)} ${yc.toFixed(1)} ${x1.toFixed(1)} ${yc.toFixed(1)}`;
+    fitas += `<path class="fita" data-g="e${i}" d="${p}" stroke="url(#fg-e${i})" stroke-width="${wj.toFixed(1)}"/>`;
+    fitas += cifroes(p, `e${i}`, wj);
     nos += `<g class="no" data-g="e${i}" data-aba="${x.aba}"><title>${escHTML(x.nome)}: ${formatBRL(x.valor)}</title>
       ${cofreSVG(sx, cy, cs, false)}
       <text class="v" x="${sx}" y="${cy + ch / 2 + (m ? 18 : 17)}" text-anchor="middle" style="font-size:${m ? 15 : 14}px">${formatCompact(x.valor)}</text>
       <text class="l" x="${sx}" y="${cy + ch / 2 + (m ? 30 : 29)}" text-anchor="middle" style="font-size:${m ? 9.5 : 8.5}px;fill:#f5c842">${escHTML(m ? x.nome.replace("Deputados ", "Dep. ").replace("Vereadores de CG", "Vereadores") : x.nome)}${m ? "" : ` · ${x.pessoas}`}</text></g>`;
   });
-  // saídas: um cano sai do cofre e desce pela lateral; em cada categoria uma torneira, e o jato vira a faixa até o valor
-  const XC = CX + CW / 2 + CW * .12 + (m ? 2 : 4), XB = XC + (m ? 34 : 46), KT = m ? 1.1 : 1.4;
-  const ys = cats.map((c, i) => 48 + i * (H - 96) / Math.max(cats.length - 1, 1));
-  let torneiras = `<rect x="${(CX + CW / 2).toFixed(1)}" y="${CY - 6}" width="${(XC - CX - CW / 2 + 6).toFixed(1)}" height="12" fill="url(#cofrePorta)" stroke="#5c4a14" stroke-width=".8"/>
-    <rect x="${XC - 1}" y="${ys[0] - (m ? 30 : 38)}" width="12" height="${ys[ys.length - 1] - ys[0] + 14}" rx="6" fill="url(#cofrePorta)" stroke="#5c4a14" stroke-width=".8"/>
-    <rect x="${XC - 4}" y="${CY - 9}" width="18" height="18" rx="3" fill="#8a6f1f" stroke="#5c4a14" stroke-width=".8"/>`;
+  // saídas: da borda direita do círculo para cada categoria
+  acc = CY - LARG / 2;
   cats.forEach((c, i) => {
-    const y = ys[i], w = Math.max(c.valor / totCat * (m ? 44 : 60), 3), k = cor(c, i), yb = y - (m ? 26 : 32);
-    torneiras += torneiraSVG(XC + 5, XB, yb, w, `s${i}`, KT);
-    defs += `<linearGradient id="fg-s${i}" gradientUnits="userSpaceOnUse" x1="${XB}" x2="${tx}"><stop offset="0" stop-color="#f5c842" stop-opacity=".7"/><stop offset="1" stop-color="${k}" stop-opacity=".9"/></linearGradient>`;
-    const p = `M ${XB} ${yb + 15 * KT} Q ${XB} ${y} ${XB + w / 2 + 10} ${y} L ${tx} ${y}`;
+    const y = 48 + i * (H - 96) / Math.max(cats.length - 1, 1), w = Math.max(c.valor / totCat * LARG, 3), k = cor(c, i);
+    const yc = acc + w / 2; acc += w;
+    defs += `<linearGradient id="fg-s${i}" gradientUnits="userSpaceOnUse" x1="${CX}" x2="${tx}"><stop offset="0" stop-color="#f5c842" stop-opacity=".7"/><stop offset="1" stop-color="${k}" stop-opacity=".9"/></linearGradient>`;
+    const p = curva(CX + CW / 2 - 10, yc, tx, y);
     fitas += `<path class="fita" data-g="s${i}" d="${p}" stroke="url(#fg-s${i})" stroke-width="${w.toFixed(1)}"/>`;
     fitas += cifroes(p, `s${i}`, w);
     const pct = (c.valor / totCat * 100).toLocaleString("pt-BR", { maximumFractionDigits: 0 }) + "%";
@@ -5088,7 +5089,7 @@ function renderFluxo(d, ano) {
       <text class="l" x="${CX + CW * .06}" y="${CY - CW * .58 - 26}" text-anchor="middle">Total ${ano}</text>
       <text class="v" x="${CX + CW * .06}" y="${CY - CW * .58 - 9}" text-anchor="middle" style="font-size:${m ? 18 : 20}px;fill:#f5c842">${formatCompact(total)}</text>
       <text class="l" x="${CX + CW * .06}" y="${CY + CW * .46 + 26}" text-anchor="middle" style="font-size:8px">${fontes.reduce((t, x) => t + x.pessoas, 0)} parlamentares</text></g>`;
-  box.innerHTML = `<svg class="fluxo-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Fluxo das cotas e verbas dos parlamentares de MS: de cada casa para o total e daí para as categorias de gasto"><defs>${COFRE_DEFS}${defs}</defs>${centro}${fitas}${torneiras}${nos}</svg>`;
+  box.innerHTML = `<svg class="fluxo-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Fluxo das cotas e verbas dos parlamentares de MS: de cada casa para o total e daí para as categorias de gasto"><defs>${COFRE_DEFS}${defs}</defs>${centro}${fitas}${nos}${torneiras}</svg>`;
   const svg = box.querySelector("svg");
   const foca = g => { svg.classList.toggle("foco", !!g); svg.querySelectorAll(".fita,.trilha").forEach(p => p.classList.toggle("ativo", p.dataset.g === g)); };
   svg.querySelectorAll(".no,.fita").forEach(el => { el.addEventListener("mouseenter", () => foca(el.dataset.g)); el.addEventListener("mouseleave", () => foca(null)); });
