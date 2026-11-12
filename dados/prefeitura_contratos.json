@@ -1,12 +1,12 @@
 {
  "ano": 2026,
- "ultimaAtualizacao": "2026-11-12T12:00:54",
+ "ultimaAtualizacao": "2026-11-12T17:08:56",
  "fonte": "https://sig-transparencia.campogrande.ms.gov.br/contratos/consulta",
  "fonteLicitacoes": "https://sig-transparencia.campogrande.ms.gov.br/licitacoes/consulta",
  "resumo": {
   "contratos": 349,
   "contratosCompras": 295,
-  "valorCompras": 618003904.71,
+  "valorCompras": 617883451.41,
   "valorNaoCompras": 2607965824.61,
   "porTipo": {
    "DIVIDA": {
@@ -21,7 +21,7 @@
    },
    "SERVIÇO": {
     "quantidade": 99,
-    "valor": 210048308.31,
+    "valor": 209927855.01,
     "compra": true
    },
    "AQUISIÇÃO": {
@@ -735,13 +735,6 @@
    "licitacoesVencidas": 2
   },
   {
-   "nome": "SOBRAL - CHAVES E CARIMBOS LTDA",
-   "cnpj": "01088055000168",
-   "contratos": 4,
-   "valorContratos": 347873.39,
-   "licitacoesVencidas": 1
-  },
-  {
    "nome": "CGA NEGOCIOS E DISTRIBUIÇÃO LTDA",
    "cnpj": "11868737000147",
    "contratos": 3,
@@ -809,6 +802,13 @@
    "cnpj": "44931075000161",
    "contratos": 1,
    "valorContratos": 229989.99,
+   "licitacoesVencidas": 1
+  },
+  {
+   "nome": "SOBRAL - CHAVES E CARIMBOS LTDA",
+   "cnpj": "01088055000168",
+   "contratos": 4,
+   "valorContratos": 227420.09,
    "licitacoesVencidas": 1
   },
   {
@@ -4075,18 +4075,6 @@
   {
    "tipo": "SERVIÇO",
    "compra": true,
-   "objeto": "Serviço de cópia de chave de carro.",
-   "fornecedor": "SOBRAL - CHAVES E CARIMBOS LTDA",
-   "cnpj": "01088055000168",
-   "inicio": "2026-01-07",
-   "fim": "2028-01-06",
-   "valor": 269754.95,
-   "situacao": "ATIVO",
-   "registro": 206679
-  },
-  {
-   "tipo": "SERVIÇO",
-   "compra": true,
    "objeto": "LINHA 29 - SERVIÇO DE TRANSPORTE ESCOLAR RURAL EM VEÍCULO COMPATIVEL COM Nº DE ALUNOS,COM MOTORISTA E GPS VEICULAR,",
    "fornecedor": "TRANSPICCOLI TRANSPORTES LTDA",
    "cnpj": "08394430000147",
@@ -4575,6 +4563,18 @@
    "valor": 152000.0,
    "situacao": "ATIVO",
    "registro": 210153
+  },
+  {
+   "tipo": "SERVIÇO",
+   "compra": true,
+   "objeto": "Serviço de cópia de chave de carro.",
+   "fornecedor": "SOBRAL - CHAVES E CARIMBOS LTDA",
+   "cnpj": "01088055000168",
+   "inicio": "2026-01-07",
+   "fim": "2027-01-06",
+   "valor": 149301.65,
+   "situacao": "ATIVO",
+   "registro": 206679
   },
   {
    "tipo": "AQUISIÇÃO",
@@ -8937,12 +8937,12 @@
    "processo": "031467/2025-68",
    "vencedores": [
     {
-     "cnpj": "53129760000160",
-     "nome": "DOIS AMORES GARDEN LTDA"
-    },
-    {
      "cnpj": "21632366000153",
      "nome": "CAMPOS EVENTOS E COMERCIO LTDA"
+    },
+    {
+     "cnpj": "53129760000160",
+     "nome": "DOIS AMORES GARDEN LTDA"
     }
    ]
   },
@@ -9903,12 +9903,12 @@
    "processo": "035772/2026-18",
    "vencedores": [
     {
-     "cnpj": "44734671002286",
-     "nome": "CRISTÁLIA PRODUTOS QUÍMICOS FARMACÊUTICOS LTDA"
-    },
-    {
      "cnpj": "02816696000154",
      "nome": "PONTAMED FARMACEUTICA LTDA"
+    },
+    {
+     "cnpj": "44734671002286",
+     "nome": "CRISTÁLIA PRODUTOS QUÍMICOS FARMACÊUTICOS LTDA"
     },
     {
      "cnpj": "18483775000120",
@@ -10541,12 +10541,12 @@
    "processo": "021438/2026-79",
    "vencedores": [
     {
-     "cnpj": "16907526000190",
-     "nome": "ZION PRIME OBRAS E PAVIMENTAÇÃO LTDA"
-    },
-    {
      "cnpj": "07981809000190",
      "nome": "RR BARROS SERVIÇOS E CONSTRUÇÕES LTDA"
+    },
+    {
+     "cnpj": "16907526000190",
+     "nome": "ZION PRIME OBRAS E PAVIMENTAÇÃO LTDA"
     },
     {
      "cnpj": "08946897000152",
@@ -10716,16 +10716,16 @@
    "processo": "064516/2025-49",
    "vencedores": [
     {
-     "cnpj": "42351193000175",
-     "nome": "N & N COMÉRCIO DE PRODUTOS LTDA"
+     "cnpj": "45508404000129",
+     "nome": "JAVA MED MATERIAIS HOSPITALARES LTDA"
     },
     {
      "cnpj": "73765877000147",
      "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
     },
     {
-     "cnpj": "45508404000129",
-     "nome": "JAVA MED MATERIAIS HOSPITALARES LTDA"
+     "cnpj": "42351193000175",
+     "nome": "N & N COMÉRCIO DE PRODUTOS LTDA"
     }
    ]
   },
@@ -10894,12 +10894,12 @@
    "processo": "042652/2025-88",
    "vencedores": [
     {
-     "cnpj": "14992591000135",
-     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
-    },
-    {
      "cnpj": "12264207000152",
      "nome": "IVAN MAURICIO NEMOTO DA SILVA LTDA"
+    },
+    {
+     "cnpj": "14992591000135",
+     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
     }
    ]
   },
