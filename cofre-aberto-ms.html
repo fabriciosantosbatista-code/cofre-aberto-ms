@@ -953,6 +953,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button class="pager-btn" id="gov-credores-mais" style="margin-top:10px;display:none"></button>
     </div>
 
+    <div class="section-note carregar-ao-ver" id="gov-ct-carregar" style="padding:18px 0">📄 Contratos e obras do Estado — carregam quando você chega aqui…</div>
     <div class="section" id="gov-contratos-sec" hidden>
       <div class="section-head"><h2 class="section-title">Contratos do Estado</h2></div>
       <div class="section-note" id="gov-ct-nota"></div>
@@ -980,6 +981,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button class="pager-btn" id="gov-obras-mais" style="margin-top:10px;display:none"></button>
     </div>
 
+    <div class="section-note carregar-ao-ver" id="gov-lic-carregar" style="padding:18px 0">📄 Licitações do Estado (vencedores e preços) — carregam quando você chega aqui…</div>
     <div class="section" id="gov-lic-sec" hidden>
       <div class="section-head"><h2 class="section-title">Licitações do Estado: vencedores e preços</h2></div>
       <div class="section-note" id="gov-lic-nota"></div>
@@ -4583,6 +4585,23 @@ function renderLicitacoesGoverno(l) {
       <td data-label="Diferença" class="num">${formatBRL(a.diferenca)}</td></tr>`, `<tr><td colspan="5">Nenhum item acima do estimado.</td></tr>`, 15);
 }
 
+// Baixa um bloco pesado só quando o marcador entra na tela (ou na hora, se não houver IntersectionObserver
+// ou se o endereço já traz uma busca para a aba). O carregador devolve true quando deu certo.
+function carregarAoVer(idMarcador, carregar) {
+  const el = document.getElementById(idMarcador);
+  if (!el) return;
+  let feito = false;
+  const vai = () => {
+    if (feito) return; feito = true;
+    el.textContent = "Carregando…";
+    Promise.resolve(carregar()).then(ok => { if (ok) el.remove(); else el.textContent = "Dados indisponíveis no momento."; })
+      .catch(() => { el.textContent = "Não foi possível carregar agora — recarregue a página."; });
+  };
+  if (!("IntersectionObserver" in window) || /[#&]p=/.test(location.hash)) { vai(); return; }
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); vai(); } }, { rootMargin: "300px 0px" });
+  io.observe(el);
+}
+
 // ===================== CONTRATOS DO GOVERNO DO ESTADO =====================
 function renderContratosGoverno(g) {
   document.getElementById("gov-contratos-sec").hidden = false;
@@ -5231,8 +5250,15 @@ function renderGovernoMS(d) {
   desenhaCred();
 
   // Contratos do Estado (dados/painel/governo_ms_contratos.json)
-  carregarLeve("governo_ms_contratos.json").then(g => { if (g && (g.contratos || []).length) renderContratosGoverno(g); });
-  carregarLeve("governo_ms_licitacoes.json").then(l => { if (l && (l.compras || []).length) renderLicitacoesGoverno(l); });
+  // Contratos e licitações (~1 MB cada): só baixam quando a pessoa rola até eles — ou já, se o link pediu uma busca na aba
+  const licitacoes = () => carregarAoVer("gov-lic-carregar", () => carregarLeve("governo_ms_licitacoes.json").then(l => {
+    if (l && (l.compras || []).length) { renderLicitacoesGoverno(l); return true; } }));
+  // as licitações só passam a ser observadas depois que os contratos aparecem (antes, os dois marcadores ficam colados)
+  carregarAoVer("gov-ct-carregar", () => carregarLeve("governo_ms_contratos.json").then(g => {
+    const ok = !!(g && (g.contratos || []).length);
+    if (ok) renderContratosGoverno(g);
+    setTimeout(licitacoes, 300);
+    return ok; }));
 
   // Comparação de diárias entre órgãos (dados/diarias_comparacao.json)
   carregarJSON("dados/diarias_comparacao.json").then(c => {

@@ -157,7 +157,12 @@ const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
     for (const [aba, ids] of Object.entries(tabelasPorAba)) {
       onde = aba;
       await page.locator(`button[data-tab="${aba}"]`).evaluate((e) => e.click());
-      await page.waitForTimeout(3000);
+      await page.waitForTimeout(1500);
+      // blocos que só carregam ao rolar até eles
+      for (let k = 0; k < 2; k++) {
+        await page.evaluate(() => document.querySelectorAll(".tabpanel.active .carregar-ao-ver").forEach((m) => m.scrollIntoView()));
+        await page.waitForTimeout(2500);
+      }
       const r = await page.evaluate(([a, ids]) => ({ n: ids.map((i) => document.querySelectorAll(`#${i} tbody tr`).length),
         tx: document.getElementById("tab-" + a).innerText, ovX: document.documentElement.scrollWidth - innerWidth }), [aba, ids]);
       r.n.forEach((n, i) => { if (n < 1) falha(`[${nome}] ${aba}: tabela ${ids[i]} vazia`); });
