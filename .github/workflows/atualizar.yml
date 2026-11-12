@@ -470,6 +470,9 @@ jobs:
       - name: Gerar uma página por órgão (+ sitemap)
         run: python3 scripts/gerar_paginas_orgaos.py || echo "⚠️ gerar_paginas_orgaos.py falhou — páginas anteriores mantidas"
 
+      - name: Gerar uma página por município (+ sitemap)
+        run: python3 scripts/gerar_paginas_municipios.py || echo "⚠️ gerar_paginas_municipios.py falhou — páginas anteriores mantidas"
+
       - name: Boletim semanal (+ feed RSS e sitemap)
         run: python3 scripts/gerar_boletim.py || echo "⚠️ gerar_boletim.py falhou — boletim anterior mantido"
 
@@ -484,7 +487,7 @@ jobs:
           git config user.name "Cofre Aberto Bot"
           git config user.email "bot@cofreabertoms.com.br"
           git add dados/ index.html vereadores-campo-grande.html deputados-estaduais-ms.html senadores-ms.html press.html PRESS.md \
-                  vereador/ deputado-estadual/ deputado-federal/ senador/ empresa/ orgao/ boletim/ fotos/p/ sitemap.xml
+                  vereador/ deputado-estadual/ deputado-federal/ senador/ empresa/ orgao/ municipio/ boletim/ fotos/p/ sitemap.xml
 
           if git diff --staged --quiet; then
             echo "Sem mudanças"

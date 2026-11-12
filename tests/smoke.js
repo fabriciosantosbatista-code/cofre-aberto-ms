@@ -22,7 +22,7 @@ const AMOSTRA = ["prefeitura", "judiciario", "deputados-brasil", "senado-brasil"
 const PAGINAS = ["", "press.html", "metodologia.html", "vereadores-campo-grande.html", "deputados-estaduais-ms.html", "senadores-ms.html",
   "vereador/", "deputado-estadual/", "deputado-federal/", "senador/",
   "vereador/papy/", "deputado-estadual/zeca-do-pt/", "deputado-federal/geraldo-resende/", "senador/tereza-cristina/",
-  "empresa/", "empresa/34028316/", "empresa/29376294/", "boletim/", "orgao/", "orgao/tjms/", "orgao/tce-ms/", "orgao/governo-sefaz/"];
+  "empresa/", "empresa/34028316/", "empresa/29376294/", "boletim/", "orgao/", "orgao/tjms/", "municipio/", "municipio/dourados/", "municipio/campo-grande/", "orgao/tce-ms/", "orgao/governo-sefaz/"];
 
 const problemas = [];
 const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
@@ -68,6 +68,11 @@ const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
       onde = `aba ${tab}`;
       await page.locator(`button[data-tab="${tab}"]`).evaluate((e) => e.click());
       await page.waitForTimeout(2500);
+      // blocos que só carregam quando a pessoa rola até eles
+      if (await page.locator(`#tab-${tab} .carregar-ao-ver`).count()) {
+        await page.evaluate((t) => document.querySelectorAll(`#tab-${t} .carregar-ao-ver`).forEach((m) => m.scrollIntoView()), tab);
+        await page.waitForTimeout(3000);
+      }
       const info = await page.evaluate((t) => {
         const el = document.getElementById("tab-" + t);
         return el ? { tx: el.innerText, linhas: el.querySelectorAll("tr.clickable").length,

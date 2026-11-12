@@ -108,7 +108,32 @@ def main():
     p = prefeitura_leve()
     if p is not None:
         tam["prefeitura.json"] = salvar("prefeitura.json", p)
-    for nome in ("governo_ms.json", "prefeitura_contratos.json", "emendas_municipios.json", "alems_servidores.json", "supersalarios.json"):  # só minificados
+    # emendas: o painel não usa a lista geral de favorecidos; as Emendas Pix e os autores vão em arquivos à parte
+    em = carregar("emendas_municipios.json")
+    if em is not None:
+        pix = em.pop("pix", None)
+        em.pop("favorecidos", None)
+        tam["emendas_municipios.json"] = salvar("emendas_municipios.json", em)
+        if pix:
+            tam["emendas_pix.json"] = salvar("emendas_pix.json", {"ano": em.get("ano"), "pix": pix})
+        # carregado em toda abertura do painel (detalhe de cada parlamentar): só os autores atuais de MS
+        tam["emendas_autores.json"] = salvar("emendas_autores.json", {"ano": em.get("ano"), "autores": [a for a in em.get("autores", []) if a.get("atual")]})
+    # supersalários: o ranking nominal (o maior pedaço) só baixa quando a pessoa rola até ele
+    ss = carregar("supersalarios.json")
+    if ss is not None:
+        rk = ss.pop("ranking", [])
+        ss["maiorBruto"] = rk[0]["bruto"] if rk else None
+        tam["supersalarios.json"] = salvar("supersalarios.json", ss)
+        tam["supersalarios_ranking.json"] = salvar("supersalarios_ranking.json", {"ranking": rk})
+    # auditoria: abre com os 40 primeiros sinais; a lista inteira (dados/auditoria.json) vem sob demanda
+    au = carregar("auditoria.json")
+    if au is not None:
+        sinais = au.get("sinais", [])
+        au["totais"] = {"sinais": len(sinais), "fortes": sum(1 for x in sinais if x.get("nivel") == "forte"),
+                        "valor": round(sum(x.get("valor") or 0 for x in sinais), 2)}
+        au["sinais"], au["parcial"] = sinais[:40], len(sinais) > 40
+        tam["auditoria.json"] = salvar("auditoria.json", au)
+    for nome in ("governo_ms.json", "prefeitura_contratos.json", "alems_servidores.json"):  # só minificados
         d = carregar(nome)
         if d is not None:
             tam[nome] = salvar(nome, d)

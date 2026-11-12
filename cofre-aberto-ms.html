@@ -550,6 +550,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <a class="nav-link" href="boletim/"><span class="dot"></span> Boletim semanal</a>
       <a class="nav-link" href="empresa/"><span class="dot"></span> Empresas</a>
       <a class="nav-link" href="orgao/"><span class="dot"></span> Órgãos</a>
+      <a class="nav-link" href="municipio/"><span class="dot"></span> Municípios</a>
       <div class="nav-group-label">Sobre o projeto</div>
       <button data-tab="sobre"><span class="dot"></span> Sobre</button>
       <a class="nav-link" href="metodologia.html"><span class="dot"></span> Metodologia e dados</a>
@@ -1132,6 +1133,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="detail-panel" id="detail-em-mun"></div>
     </div>
 
+    <div class="section-note carregar-ao-ver" id="em-pix-carregar" style="padding:18px 0">💸 Emendas Pix desde 2020 — carregam quando você chega aqui…</div>
     <div class="section" id="em-pix-sec" hidden>
       <div class="section-head"><h2 class="section-title">Emendas Pix</h2></div>
       <p class="section-note cx-aviso">💸 <b>O que é Emenda Pix:</b> a "transferência especial" (Constituição, art. 166-A) cai direto no caixa da prefeitura ou do
@@ -1226,6 +1228,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="section-head"><h2 class="section-title">Ranking das maiores remunerações</h2></div>
       <div class="section-note">Os 600 maiores brutos do mês somando todos os órgãos (Judiciário, Governo do Estado, TCE-MS e Câmara de Campo Grande). Clique num nome para ver o contracheque.
         No Governo do Estado, a folha não separa o corte do teto: quando os descontos são muito altos, parte do bruto foi cortada.</div>
+      <div class="section-note carregar-ao-ver" id="ss-rank-carregar" style="padding:12px 0">👤 O ranking com nomes carrega quando você chega aqui…</div>
       <div class="cx-filtros">
         <input class="search-box" id="busca-ss" type="text" placeholder="buscar por nome, cargo ou órgão…" />
         <select class="search-box" id="ss-filtro-orgao" aria-label="Órgão"><option value="">Todos os órgãos</option></select>
@@ -4406,11 +4409,11 @@ function montarIndiceBusca() {
     todos.push({ nome, partido: raiz, href: `/empresa/${raiz}/`, label: "Empresa", doc: raiz });
   for (const [sigla, o] of Object.entries(ORGAOS_BUSCA || {}))
     todos.push({ nome: o.nome || sigla, partido: sigla, href: o.url, label: "Órgão" });
-  for (const m of (DADOS_EMENDAS_MUN && DADOS_EMENDAS_MUN.municipios) || [])
-    if (m.municipio && m.municipio !== "—") todos.push({ nome: m.municipio, partido: "emendas recebidas", tab: "emendas", label: "Município", hash: `#aba=emendas&p=${encodeURIComponent(m.municipio)}` });
+  for (const [nome, url] of Object.entries(MUNICIPIOS_BUSCA || {}))
+    todos.push({ nome, partido: "emendas e Emendas Pix", href: url, label: "Município" });
   return todos;
 }
-let ORGAOS_BUSCA = {}, PAGINAS_BUSCA = {};
+let ORGAOS_BUSCA = {}, PAGINAS_BUSCA = {}, MUNICIPIOS_BUSCA = {};
 carregarJSON("dados/paginas_index.json").then(d => { if (d) PAGINAS_BUSCA = d; });
 carregarJSON("dados/orgaos_index.json").then(d => { if (d) ORGAOS_BUSCA = d; });
 
@@ -4961,17 +4964,20 @@ function renderPresidencia(d) {
 function renderAuditoria(d) {
   const lista = d.sinais || [];
   const fmt = v => "R$ " + (v || 0).toLocaleString("pt-BR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-  document.getElementById("au-total").textContent = lista.length.toLocaleString("pt-BR");
-  document.getElementById("au-fortes").textContent = lista.filter(s => s.nivel === "forte").length.toLocaleString("pt-BR");
+  // o arquivo leve traz só os 40 primeiros sinais e os totais; a lista inteira vem ao filtrar ou pedir mais
+  const T = d.totais || { sinais: lista.length, fortes: lista.filter(s => s.nivel === "forte").length, valor: lista.reduce((t, s) => t + (s.valor || 0), 0) };
+  document.getElementById("au-total").textContent = T.sinais.toLocaleString("pt-BR");
+  document.getElementById("au-fortes").textContent = T.fortes.toLocaleString("pt-BR");
   document.getElementById("au-empresas").textContent = (d.empresasConsultadas || 0).toLocaleString("pt-BR");
-  document.getElementById("au-valor").textContent = fmt(lista.reduce((t, s) => t + (s.valor || 0), 0));
+  document.getElementById("au-valor").textContent = fmt(T.valor);
   document.getElementById("au-testes").textContent = Object.keys(d.regras || {}).length;
   document.getElementById("au-data").textContent = d.ultimaAtualizacao ? formatDate(d.ultimaAtualizacao.slice(0, 10)) : "—";
   const filtros = document.getElementById("au-filtros"), caixa = document.getElementById("au-sinais"), mais = document.getElementById("au-mais");
   const base = lista.reduce((m, a) => a.vistoEm < m ? a.vistoEm : m, "9999");
   const recente = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10);
   let teste = "", limite = 10;
-  filtros.innerHTML = `<button class="active" data-t="">Todos (${lista.length})</button>` +
+  const completar = acao => { const fn = window._auCompleta; window._auCompleta = null; mais.textContent = "Carregando todos os sinais…"; fn().then(() => acao && acao()); };
+  filtros.innerHTML = `<button class="active" data-t="">Todos (${T.sinais})</button>` +
     Object.entries(d.resumo || {}).filter(([, n]) => n > 0).map(([t, n]) => `<button data-t="${t}">${escHTML(d.regras[t] || t)} (${n})</button>`).join("");
   const links = s => {
     const l = [];
@@ -4991,14 +4997,22 @@ function renderAuditoria(d) {
         ${(s.evidencias || []).length ? `<ul class="alerta-evid">${s.evidencias.map(e => `<li>${escHTML(e)}</li>`).join("")}</ul>` : ""}
         <div class="alerta-links">${links(s)}</div>
       </div>`).join("") || `<p class="section-note">Nenhum sinal com esse teste.</p>`;
-    mais.style.display = f.length > limite ? "" : "none";
-    mais.textContent = `Mostrar mais (${f.length - limite} restantes)`;
+    const faltam = d.parcial && window._auCompleta;
+    mais.style.display = f.length > limite || faltam ? "" : "none";
+    mais.textContent = faltam && f.length <= limite ? `Mostrar todos os ${T.sinais} sinais` : `Mostrar mais (${f.length - limite} restantes)`;
   };
   filtros.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+    if (d.parcial && window._auCompleta) {  // filtro precisa da lista inteira: baixa e reaplica
+      const t = b.dataset.t;
+      return completar(() => { const nb = document.querySelector(`#au-filtros button[data-t="${t}"]`); if (nb) nb.click(); });
+    }
     filtros.querySelectorAll("button").forEach(x => x.classList.toggle("active", x === b));
     teste = b.dataset.t; limite = 10; desenhar();
   }));
-  mais.onclick = () => { limite += 20; desenhar(); };
+  mais.onclick = () => {
+    if (d.parcial && window._auCompleta && limite + 20 > lista.length) return completar(() => document.getElementById("au-mais").click());
+    limite += 20; desenhar();
+  };
   desenhar();
   const tb = document.querySelector("#tabela-au-placar tbody");
   tb.innerHTML = (d.porQuem || []).map(q => `<tr><td data-label="Quem pagou">${escHTML(q.quem)}</td><td class="num" data-label="Sinais fortes">${q.fortes}</td><td class="num" data-label="Sinais médios">${q.medios}</td><td class="num" data-label="Valor envolvido">${fmt(q.valor)}</td></tr>`).join("")
@@ -5054,6 +5068,7 @@ function renderServidoresAlems(d) {
 }
 
 // ===================== EMENDAS POR MUNICÍPIO =====================
+const slugMun = t => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 function renderEmendasPix(d) {
   const px = d.pix; if (!px || !px.porAno) return;
   document.getElementById("em-pix-sec").hidden = false;
@@ -5082,7 +5097,8 @@ function renderEmendasPix(d) {
 }
 
 function renderEmendasMunicipios(d) {
-  renderEmendasPix(d);
+  if (d.pix) renderEmendasPix(d);
+  else carregarAoVer("em-pix-carregar", () => carregarLeve("emendas_pix.json").then(x => { if (x && x.pix) { renderEmendasPix(x); return true; } }));
   const atuais = (d.autores || []).filter(a => a.atual);
   document.getElementById("em-total").textContent = formatCompact(d.totalMS || 0);
   document.getElementById("em-municipios").textContent = (d.totalMunicipios || 0).toLocaleString("pt-BR");
@@ -5144,7 +5160,7 @@ function renderEmendasMunicipios(d) {
       const m = mun[+r.dataset.idx];
       pM.innerHTML = `
         <div class="detail-header"><div class="detail-header-text"><h3>${escHTML(m.municipio)}</h3>
-          <div class="detail-meta">${formatBRL(m.total)} recebidos por emendas em ${d.ano}</div></div></div>
+          <div class="detail-meta">${formatBRL(m.total)} recebidos por emendas em ${d.ano} · <a href="/municipio/${slugMun(m.municipio)}/">página do município, com as Emendas Pix desde 2020 →</a></div></div></div>
         <div class="subhead">De quem veio</div>
         <div style="overflow-x:auto"><table class="notes-table"><thead><tr><th>Autor da emenda</th><th class="num">Valor</th></tr></thead><tbody>
           ${m.autores.map(a => `<tr><td>${escHTML(a.autor)}${a.atual ? "" : ` <span style="opacity:.6">· comissão, bancada ou ex-parlamentar</span>`}</td><td class="num">${formatBRL(a.valor)}</td></tr>`).join("")}
@@ -5170,7 +5186,8 @@ function renderSupersalarios(d) {
   document.getElementById("ss-bruto").textContent = nf(d.acimaTeto) + " pessoas";
   document.getElementById("ss-valor").textContent = formatCompact(d.valorAcimaTeto);
   document.getElementById("ss-pessoas").textContent = nf(d.totalPessoas);
-  document.getElementById("ss-maior").textContent = d.ranking?.[0] ? formatCompact(d.ranking[0].bruto) : "—";
+  const maior = d.maiorBruto ?? d.ranking?.[0]?.bruto;
+  document.getElementById("ss-maior").textContent = maior ? formatCompact(maior) : "—";
   const pt = (d.penduricalhos || {}).tjms;
   document.getElementById("ss-pend").textContent = pt ? formatCompact(pt.itens.reduce((s, i) => s + i.valor, 0)) : "—";
   document.getElementById("ss-data").textContent = d.ultimaAtualizacao ? formatDateTime(d.ultimaAtualizacao) : "—";
@@ -5249,55 +5266,60 @@ function renderSupersalarios(d) {
     "camara-cg": `Portal da Transparência da Câmara Municipal de Campo Grande (folha de servidores).`,
   };
   ["tjms", "trt24", "trems"].forEach(o => { FONTE_SS[o] = `DadosJusBr / Transparência Brasil (contracheque enviado ao CNJ). <a href="https://dadosjusbr.org/orgao/${o}" target="_blank" rel="noopener">Ver o órgão no DadosJusBr ↗</a>`; });
-  // ranking nominal
-  // sem remuneração base e com valor alto só em eventuais: típico de retroativo, rescisão ou indenização paga de uma vez
-  const eventual = p => p.base < 1 && p.outras > 0;
-  const rk = (d.ranking || []).map((p, i) => ({ ...p, pos: i + 1 }));
-  const fo = document.getElementById("ss-filtro-orgao"), bs = document.getElementById("busca-ss"), sl = document.getElementById("ss-so-liquido");
-  [...new Set(rk.map(p => p.orgao.startsWith("Governo MS") ? "Governo do Estado" : p.orgao))].forEach(o => fo.insertAdjacentHTML("beforeend", `<option>${escHTML(o)}</option>`));
-  const painel = document.getElementById("detail-ss"), tb = document.querySelector("#ranking-ss tbody");
-  let filtrados = rk, limite = 50;
-  const linha = (p, i) => `
-    <tr class="clickable" data-idx="${i}"><td class="rank-pos">${String(p.pos).padStart(2, "0")}</td>
-      <td><div class="rank-name">${escHTML(p.nome)}</div><div class="rank-meta">${escHTML(p.cargo)} · ${escHTML(p.orgao)}${p.situacao && p.situacao !== "Ativo" ? ` · ${escHTML(p.situacao)}` : ""} · ${escHTML(p.mes)}</div>
-        ${eventual(p) ? `<span class="cx-tag" style="border-color:var(--amber);color:var(--amber)" title="Sem remuneração base no mês: o valor é todo de pagamentos eventuais">pagamento eventual no mês</span>` : ""}</td>
-      <td class="num">${formatBRL(p.bruto)}</td><td class="num">${formatBRL(p.liquido)}</td>
-      <td class="num">${p.acimaTeto ? formatBRL(p.acimaTeto) : "—"}</td></tr>`;
-  const desenhar = () => {
-    tb.innerHTML = filtrados.slice(0, limite).map(linha).join("") || `<tr><td colspan="5" style="padding:14px;color:var(--ink-soft)">Ninguém encontrado.</td></tr>`;
-    tb.querySelectorAll("tr.clickable").forEach(r => r.addEventListener("click", () => detalhe(filtrados[+r.dataset.idx])));
-    const m = document.getElementById("ss-mais"), resto = filtrados.length - limite;
-    m.style.display = resto > 0 ? "" : "none"; m.textContent = `Mostrar mais (${resto} restantes)`;
+  // ranking nominal (o maior pedaço do arquivo): só baixa quando a pessoa rola até ele
+  const rankingSS = ranking => {
+    // ranking nominal
+    // sem remuneração base e com valor alto só em eventuais: típico de retroativo, rescisão ou indenização paga de uma vez
+    const eventual = p => p.base < 1 && p.outras > 0;
+    const rk = (ranking || []).map((p, i) => ({ ...p, pos: i + 1 }));
+    const fo = document.getElementById("ss-filtro-orgao"), bs = document.getElementById("busca-ss"), sl = document.getElementById("ss-so-liquido");
+    [...new Set(rk.map(p => p.orgao.startsWith("Governo MS") ? "Governo do Estado" : p.orgao))].forEach(o => fo.insertAdjacentHTML("beforeend", `<option>${escHTML(o)}</option>`));
+    const painel = document.getElementById("detail-ss"), tb = document.querySelector("#ranking-ss tbody");
+    let filtrados = rk, limite = 50;
+    const linha = (p, i) => `
+      <tr class="clickable" data-idx="${i}"><td class="rank-pos">${String(p.pos).padStart(2, "0")}</td>
+        <td><div class="rank-name">${escHTML(p.nome)}</div><div class="rank-meta">${escHTML(p.cargo)} · ${escHTML(p.orgao)}${p.situacao && p.situacao !== "Ativo" ? ` · ${escHTML(p.situacao)}` : ""} · ${escHTML(p.mes)}</div>
+          ${eventual(p) ? `<span class="cx-tag" style="border-color:var(--amber);color:var(--amber)" title="Sem remuneração base no mês: o valor é todo de pagamentos eventuais">pagamento eventual no mês</span>` : ""}</td>
+        <td class="num">${formatBRL(p.bruto)}</td><td class="num">${formatBRL(p.liquido)}</td>
+        <td class="num">${p.acimaTeto ? formatBRL(p.acimaTeto) : "—"}</td></tr>`;
+    const desenhar = () => {
+      tb.innerHTML = filtrados.slice(0, limite).map(linha).join("") || `<tr><td colspan="5" style="padding:14px;color:var(--ink-soft)">Ninguém encontrado.</td></tr>`;
+      tb.querySelectorAll("tr.clickable").forEach(r => r.addEventListener("click", () => detalhe(filtrados[+r.dataset.idx])));
+      const m = document.getElementById("ss-mais"), resto = filtrados.length - limite;
+      m.style.display = resto > 0 ? "" : "none"; m.textContent = `Mostrar mais (${resto} restantes)`;
+    };
+    const filtrar = () => {
+      const f = bs.value.trim().toLowerCase(), o = fo.value;
+      filtrados = rk.filter(p => (!o || (o === "Governo do Estado" ? p.orgao.startsWith("Governo MS") : p.orgao === o)) &&
+        (!sl.checked || p.liquido > T) && (!f || [p.nome, p.cargo, p.orgao, p.lotacao].some(x => (x || "").toLowerCase().includes(f))));
+      limite = 50; painel.classList.remove("active"); desenhar();
+    };
+    const detalhe = p => {
+      const itens = p.itens || [];
+      painel.innerHTML = `
+        <div class="detail-header"><div class="detail-header-text"><h3>${escHTML(p.nome)}</h3>
+          <div class="detail-meta">${escHTML(p.cargo)} · ${escHTML(p.orgao)}${p.lotacao ? ` · ${escHTML(p.lotacao)}` : ""} · ${escHTML(p.situacao || "")} · contracheque de ${escHTML(p.mes)}</div></div></div>
+        <div class="stat-grid" style="margin-bottom:14px">
+          <div class="stat-card"><p class="stat-label">Remuneração base</p><p class="stat-value">${formatBRL(p.base)}</p></div>
+          <div class="stat-card alt"><p class="stat-label">${p.poder === "Judiciário" ? "Outras remunerações e benefícios" : p.orgaoId === "tce" ? (p.itens && p.itens.length ? "Outras rubricas" : "Outros pagamentos") : "Remunerações eventuais"}</p><p class="stat-value">${formatBRL(p.outras)}</p></div>
+          <div class="stat-card"><p class="stat-label">Bruto</p><p class="stat-value">${formatBRL(p.bruto)}</p><p class="stat-note">${p.acimaTeto ? `${formatBRL(p.acimaTeto)} acima do teto` : "dentro do teto"}</p></div>
+          ${p.diarias ? `<div class="stat-card"><p class="stat-label">Diárias de viagem (à parte)</p><p class="stat-value">${formatBRL(p.diarias)}</p><p class="stat-note">reembolso, fora do bruto e do líquido</p></div>` : ""}
+          <div class="stat-card"><p class="stat-label">Descontos</p><p class="stat-value">${formatBRL(p.descontos)}</p>${p.abateTeto != null ? `<p class="stat-note">${p.abateTeto ? `inclui ${formatBRL(p.abateTeto)} de abate-teto` : "sem abate-teto no mês"}</p>` : ""}</div>
+          <div class="stat-card alt"><p class="stat-label">Líquido</p><p class="stat-value">${formatBRL(p.liquido)}</p><p class="stat-note">${p.liquido > T ? "acima do teto mesmo após os descontos" : ""}</p></div>
+        </div>
+        ${itens.length ? `<div class="subhead">Itens além da remuneração base</div><div style="overflow-x:auto"><table class="notes-table"><thead><tr><th>Item do contracheque</th><th class="num">Valor</th></tr></thead><tbody>${itens.map(i => `<tr><td>${escHTML(i.item)}</td><td class="num">${formatBRL(i.valor)}</td></tr>`).join("")}</tbody></table></div>` :
+          `<p class="section-note">${p.orgaoId === "governo" ? "A folha do Estado publica só o total fixo e o total eventual, sem o detalhe de cada item. Valores muito altos num único mês costumam ser pagamentos retroativos." : p.orgaoId === "tce" ? "Para os servidores, o TCE-MS publica a remuneração e os outros pagamentos (indenizações, auxílios) em totais, sem cada item." : ""}</p>`}
+        ${eventual(p) ? `<p class="aviso" style="margin-top:8px;font-size:.8rem">⚠️ Não houve remuneração base neste mês: todo o valor veio de pagamentos eventuais. Isso costuma ser um pagamento único — atrasados (retroativos), rescisão, férias ou licença-prêmio indenizadas — e não um salário mensal.</p>` : ""}
+        <p class="section-note" style="margin-top:8px">Fonte: ${FONTE_SS[p.orgaoId] || FONTE_SS.governo}</p>`;
+      painel.classList.add("active");
+      painel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    };
+    bs.addEventListener("input", filtrar); fo.addEventListener("change", filtrar); sl.addEventListener("change", filtrar);
+    document.getElementById("ss-mais").onclick = () => { limite += 100; desenhar(); };
+    desenhar();
   };
-  const filtrar = () => {
-    const f = bs.value.trim().toLowerCase(), o = fo.value;
-    filtrados = rk.filter(p => (!o || (o === "Governo do Estado" ? p.orgao.startsWith("Governo MS") : p.orgao === o)) &&
-      (!sl.checked || p.liquido > T) && (!f || [p.nome, p.cargo, p.orgao, p.lotacao].some(x => (x || "").toLowerCase().includes(f))));
-    limite = 50; painel.classList.remove("active"); desenhar();
-  };
-  const detalhe = p => {
-    const itens = p.itens || [];
-    painel.innerHTML = `
-      <div class="detail-header"><div class="detail-header-text"><h3>${escHTML(p.nome)}</h3>
-        <div class="detail-meta">${escHTML(p.cargo)} · ${escHTML(p.orgao)}${p.lotacao ? ` · ${escHTML(p.lotacao)}` : ""} · ${escHTML(p.situacao || "")} · contracheque de ${escHTML(p.mes)}</div></div></div>
-      <div class="stat-grid" style="margin-bottom:14px">
-        <div class="stat-card"><p class="stat-label">Remuneração base</p><p class="stat-value">${formatBRL(p.base)}</p></div>
-        <div class="stat-card alt"><p class="stat-label">${p.poder === "Judiciário" ? "Outras remunerações e benefícios" : p.orgaoId === "tce" ? (p.itens && p.itens.length ? "Outras rubricas" : "Outros pagamentos") : "Remunerações eventuais"}</p><p class="stat-value">${formatBRL(p.outras)}</p></div>
-        <div class="stat-card"><p class="stat-label">Bruto</p><p class="stat-value">${formatBRL(p.bruto)}</p><p class="stat-note">${p.acimaTeto ? `${formatBRL(p.acimaTeto)} acima do teto` : "dentro do teto"}</p></div>
-        ${p.diarias ? `<div class="stat-card"><p class="stat-label">Diárias de viagem (à parte)</p><p class="stat-value">${formatBRL(p.diarias)}</p><p class="stat-note">reembolso, fora do bruto e do líquido</p></div>` : ""}
-        <div class="stat-card"><p class="stat-label">Descontos</p><p class="stat-value">${formatBRL(p.descontos)}</p>${p.abateTeto != null ? `<p class="stat-note">${p.abateTeto ? `inclui ${formatBRL(p.abateTeto)} de abate-teto` : "sem abate-teto no mês"}</p>` : ""}</div>
-        <div class="stat-card alt"><p class="stat-label">Líquido</p><p class="stat-value">${formatBRL(p.liquido)}</p><p class="stat-note">${p.liquido > T ? "acima do teto mesmo após os descontos" : ""}</p></div>
-      </div>
-      ${itens.length ? `<div class="subhead">Itens além da remuneração base</div><div style="overflow-x:auto"><table class="notes-table"><thead><tr><th>Item do contracheque</th><th class="num">Valor</th></tr></thead><tbody>${itens.map(i => `<tr><td>${escHTML(i.item)}</td><td class="num">${formatBRL(i.valor)}</td></tr>`).join("")}</tbody></table></div>` :
-        `<p class="section-note">${p.orgaoId === "governo" ? "A folha do Estado publica só o total fixo e o total eventual, sem o detalhe de cada item. Valores muito altos num único mês costumam ser pagamentos retroativos." : p.orgaoId === "tce" ? "Para os servidores, o TCE-MS publica a remuneração e os outros pagamentos (indenizações, auxílios) em totais, sem cada item." : ""}</p>`}
-      ${eventual(p) ? `<p class="aviso" style="margin-top:8px;font-size:.8rem">⚠️ Não houve remuneração base neste mês: todo o valor veio de pagamentos eventuais. Isso costuma ser um pagamento único — atrasados (retroativos), rescisão, férias ou licença-prêmio indenizadas — e não um salário mensal.</p>` : ""}
-      <p class="section-note" style="margin-top:8px">Fonte: ${FONTE_SS[p.orgaoId] || FONTE_SS.governo}</p>`;
-    painel.classList.add("active");
-    painel.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  };
-  bs.addEventListener("input", filtrar); fo.addEventListener("change", filtrar); sl.addEventListener("change", filtrar);
-  document.getElementById("ss-mais").onclick = () => { limite += 100; desenhar(); };
-  desenhar();
+  if (d.ranking) rankingSS(d.ranking);
+  else carregarAoVer("ss-rank-carregar", () => carregarLeve("supersalarios_ranking.json").then(r => { if (r && r.ranking) { rankingSS(r.ranking); return true; } }));
 }
 
 // ===================== GOVERNO DO ESTADO DE MS =====================
@@ -6064,11 +6086,13 @@ async function init() {
       }
       if (btn.dataset.tab === "auditoria" && !window._auLoaded) {
         window._auLoaded = true;
-        carregarJSON("dados/auditoria.json").then(d => { if (d) renderAuditoria(d); });
+        const completa = () => carregarJSON("dados/auditoria.json").then(d => { if (d) renderAuditoria(d); return !!d; });
+        if (/sinal=/.test(location.hash)) completa();
+        else carregarLeve("auditoria.json").then(d => { if (!d) return; renderAuditoria(d); if (d.parcial) window._auCompleta = completa; });
       }
       if (btn.dataset.tab === "emendas" && !window._emendasLoaded) {
         window._emendasLoaded = true;
-        carregarLeve("emendas_municipios.json").then(d => { if (d) renderEmendasMunicipios(d); });
+        carregarLeve("emendas_municipios.json").then(d => { if (d) { DADOS_EMENDAS_MUN = d; renderEmendasMunicipios(d); } });
       }
       if (btn.dataset.tab === "deputados-estaduais" && !window._alemsLoaded) {
         window._alemsLoaded = true;
@@ -6120,7 +6144,8 @@ async function init() {
   });
 
   carregarJSON("dados/emendas_ms.json").then(d => { if (d) DADOS_EMENDAS_MS = d; });
-  carregarLeve("emendas_municipios.json").then(d => { if (d) DADOS_EMENDAS_MUN = d; });
+  carregarLeve("emendas_autores.json").then(d => { if (d && !DADOS_EMENDAS_MUN) DADOS_EMENDAS_MUN = d; });
+  carregarJSON("dados/municipios_index.json").then(d => { if (d) MUNICIPIOS_BUSCA = d; });
 
   // Notas fiscais estaduais: carregar por demanda (só quando clicar no deputado)
 
