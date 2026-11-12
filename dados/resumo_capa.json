@@ -72,5 +72,101 @@
   "acimaTeto": 421,
   "contratosEstado": 2758,
   "fontes": 19
+ },
+ "fluxoCota": {
+  "fontes": [
+   {
+    "nome": "Vereadores de CG",
+    "valor": 5908281.13,
+    "aba": "camara-municipal",
+    "pessoas": 29
+   },
+   {
+    "nome": "Deputados estaduais",
+    "valor": 13021165.08,
+    "aba": "deputados-estaduais",
+    "pessoas": 25
+   },
+   {
+    "nome": "Deputados federais",
+    "valor": 2945094.83,
+    "aba": "deputados",
+    "pessoas": 8
+   },
+   {
+    "nome": "Senadores",
+    "valor": 1265511.39,
+    "aba": "senadores",
+    "pessoas": 3
+   }
+  ],
+  "categorias": [
+   {
+    "nome": "Verba dos vereadores de CG (sem categoria)",
+    "valor": 5908281.13
+   },
+   {
+    "nome": "Consultorias e assessorias",
+    "valor": 5810419.45
+   },
+   {
+    "nome": "Divulgação",
+    "valor": 4137808.23
+   },
+   {
+    "nome": "Veículos e combustível",
+    "valor": 3468866.14
+   },
+   {
+    "nome": "Viagens, passagens e hospedagem",
+    "valor": 2201720.74
+   },
+   {
+    "nome": "Escritório, aluguel e apoio",
+    "valor": 1612956.74
+   }
+  ],
+  "fornecedores": [
+   {
+    "nome": "ANCELMO PAULINO LTDA",
+    "valor": 382861.4,
+    "gabinetes": 12
+   },
+   {
+    "nome": "Visualiza Aluguel de Carros",
+    "valor": 375899.29,
+    "gabinetes": 7
+   },
+   {
+    "nome": "RENTAL LOCADORA DE BENS E VEICULOS LTDA",
+    "valor": 360921.23,
+    "gabinetes": 3
+   },
+   {
+    "nome": "Mc Mobilidade e Serv. LTDA ME",
+    "valor": 299500.0,
+    "gabinetes": 4
+   },
+   {
+    "nome": "BARBOSA MILAN SOCIEDADE DE ADVOGADOS",
+    "valor": 270000.0,
+    "gabinetes": 1
+   },
+   {
+    "nome": "SAHIB ADVOCACIA - SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+    "valor": 260600.0,
+    "gabinetes": 1
+   },
+   {
+    "nome": "ROSSI & MACHADO ADVOGADAS ASSOCIADAS",
+    "valor": 252000.0,
+    "gabinetes": 2
+   },
+   {
+    "nome": "NOUSX AGENCIA DIGITAL LTDA",
+    "valor": 234500.0,
+    "gabinetes": 2
+   }
+  ]
  }
 }
