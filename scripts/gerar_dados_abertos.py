@@ -341,7 +341,7 @@ def status_fontes():
         "; ".join(ss.get("falhas") or []) or None)
 
     au = carregar("auditoria.json")
-    add("auditoria", "Cruzamento das bases do site com o cadastro de CNPJ da Receita Federal (BrasilAPI / Minha Receita)",
+    add("auditoria", "Cruzamento das bases do site com a Receita Federal (BrasilAPI / Minha Receita), o TSE e a folha do Estado",
         "https://brasilapi.com.br/docs#tag/CNPJ", au.get("ultimaAtualizacao"),
         f"{au.get('empresasConsultadas', 0)} empresas checadas na Receita" if au else None,
         au.get("ano") == ANO and em_dia(au.get("ultimaAtualizacao"), 3))

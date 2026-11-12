@@ -23,6 +23,14 @@ ficaram de fora depois do teste com os dados de nov/2026):
                         empresa não recebe de nenhum outro órgão que o site cobre
   capital_baixo         capital social muito baixo para o volume recebido
   gasto_acima_colegas   gasto mensal numa categoria muito acima dos colegas do mesmo cargo
+  socio_doador          sócio da empresa (nome + 6 dígitos do CPF) doou para a campanha do
+                        parlamentar que hoje paga a empresa com a cota/verba (TSE)
+  fornecedor_campanha   empresa contratada pela campanha que depois passou a receber da cota
+  servidor_socio_pagador sócio é servidor ativo do Governo de MS (nome + CPF parcial), que paga a empresa
+  servidor_socio        sócio é servidor público ativo (Estado, ALEMS ou Câmara CG) e a empresa
+                        recebe de parlamentar ou da Prefeitura
+  endereco_comum        empresas diferentes, pagas pelo mesmo parlamentar ou vencedoras da mesma
+                        licitação, com o mesmo endereço ou telefone na Receita
   dispensa_acima_limite um mesmo processo de dispensa somando mais que o limite legal
                         (exclui aluguel de imóvel, bancos e concessionárias, que têm
                         outra base legal)
@@ -41,12 +49,16 @@ LIM_DISPENSA, LIM_DISPENSA_OBRA = 65492.11, 130984.20  # Decreto 12.807/2025, de
 NIVEL = {"mei_acima_limite": "forte", "situacao_irregular": "forte", "socio_parlamentar": "forte",
          "socios_licitacao": "médio", "dispensa_acima_limite": "forte", "empresa_nova": "médio",
          "atividade_incompativel": "médio", "cliente_unico": "médio", "capital_baixo": "médio",
-         "gasto_acima_colegas": "médio"}
+         "gasto_acima_colegas": "médio", "socio_doador": "forte", "fornecedor_campanha": "médio",
+         "servidor_socio_pagador": "forte", "servidor_socio": "médio", "endereco_comum": "médio"}
 ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_irregular": "Empresa com CNPJ irregular",
-          "socio_parlamentar": "Sócio com o nome do parlamentar", "socios_licitacao": "Sócios em comum na mesma licitação",
+          "socio_parlamentar": "Parlamentar é sócio", "socios_licitacao": "Sócios em comum na mesma licitação",
           "dispensa_acima_limite": "Possível fracionamento de dispensa", "empresa_nova": "Empresa recém-aberta",
           "atividade_incompativel": "Atividade não combina com o serviço", "cliente_unico": "Fornecedor de um cliente só",
-          "capital_baixo": "Capital social muito baixo", "gasto_acima_colegas": "Gasto muito acima dos colegas"}
+          "capital_baixo": "Capital social muito baixo", "gasto_acima_colegas": "Gasto muito acima dos colegas",
+          "socio_doador": "Sócio doou para a campanha", "fornecedor_campanha": "Fornecedor da campanha pago pela cota",
+          "servidor_socio_pagador": "Sócio é servidor do órgão que paga", "servidor_socio": "Sócio é servidor público",
+          "endereco_comum": "Endereço ou telefone em comum"}
 
 # naturezas jurídicas de empresa privada (associações, fundos, órgãos e consórcios públicos não têm capital social)
 EMPRESARIAL = re.compile(r"Limitada|Empres[aá]rio|EIRELI|Unipessoal|Sociedade Simples|An[oô]nima Fechada", re.I)
@@ -141,11 +153,13 @@ def main():
             pref_raiz[c[:8]] = pref_raiz.get(c[:8], 0) + (x.get("valor") or 0)
             pref_cnpj[c] = pref_cnpj.get(c, 0) + (x.get("valor") or 0)
             pref_emp.setdefault(c, []).append(x)
-    gov_raiz = {}
+    gov_raiz, gov_cnpj = {}, {}
     for c in (carregar("governo_ms_credores.json") or {}).get("credores", []):
         d = dig(c[0])
         if len(d) == 14:
             gov_raiz[d[:8]] = gov_raiz.get(d[:8], 0) + (c[2] or 0)
+            if len(c) > 4 and c[4] == "fornecedor":
+                gov_cnpj[d] = gov_cnpj.get(d, 0) + (c[2] or 0)
     ct = carregar("prefeitura_contratos.json")
     contratos = ct.get("contratos", []) if ct.get("ano") == ANO else []
     licit = ct.get("licitacoes", []) if ct.get("ano") == ANO else []
@@ -164,17 +178,21 @@ def main():
             continue
         rec_parl = por_cnpj.get(c, {}).get("total", 0)
         rec_pref = pref_cnpj.get(c, 0)
-        rec = rec_parl + rec_pref
+        rec_gov = gov_cnpj.get(c, 0)
+        rec = rec_parl + rec_pref + rec_gov
         nome = info.get("razao") or c
         quem_lst = sorted(por_cnpj.get(c, {}).get("pagadores", {}).items(), key=lambda kv: -kv[1]["total"])
-        quem = ", ".join([f"{p} ({brl(v['total'])})" for p, v in quem_lst[:3]] + ([f"Prefeitura de CG ({brl(rec_pref)})"] if rec_pref else []))
+        quem = ", ".join([f"{p} ({brl(v['total'])})" for p, v in quem_lst[:3]] + ([f"Prefeitura de CG ({brl(rec_pref)})"] if rec_pref else [])
+                         + ([f"Governo de MS ({brl(rec_gov)})"] if rec_gov else []))
+        # quem pagou mais, para o placar
+        maior = max([(v["total"], p) for p, v in quem_lst] + [(rec_pref, "Prefeitura de CG"), (rec_gov, "Governo de MS")])[1]
         if info.get("mei") and rec > LIMITE_MEI:
             add("mei_acima_limite", (c,), f"{nome}: MEI recebeu {brl(rec)} de órgãos públicos em {ANO}",
                 f"A empresa está registrada como MEI, cujo limite de faturamento em {ANO} é {brl(LIMITE_MEI)} por ano — só os pagamentos "
                 f"públicos que o site acompanha já passam disso. Quem pagou: {quem}.",
                 rec, [f"Opção pelo MEI: sim (Receita Federal, consulta em {data_br(info.get('consultadoEm'))})",
-                      f"Recebido de parlamentares: {brl(rec_parl)}" , f"Recebido da Prefeitura de CG: {brl(rec_pref)}"],
-                quem_lst[0][0] if quem_lst else "Prefeitura de CG", c)
+                      f"Recebido de parlamentares: {brl(rec_parl)}", f"Recebido da Prefeitura de CG: {brl(rec_pref)}",
+                      f"Pago pelo Governo de MS: {brl(rec_gov)}"], maior, c)
         sit = (info.get("situacao") or "").upper()
         dt = info.get("dataSituacao") or ""
         if sit and sit != "ATIVA" and rec > 0 and dt:
@@ -195,12 +213,21 @@ def main():
                     f"pode ter sido regularizada depois da consulta.",
                     v, [f"Situação cadastral: {sit} desde {data_br(dt)} (consulta em {data_br(info.get('consultadoEm'))})"]
                     + [f"{data_br(d_[0])}: {brl(d_[1])} — {d_[2]}" for d_ in sorted(depois)[:5]], pq[0][0], c)
+            elif rec_gov >= 1000 and dt < f"{ANO}-01-01":
+                # o Governo só publica o total pago no ano; a situação é anterior a todo o ano
+                st = {"BAIXADA": "baixado", "INAPTA": "inapto", "SUSPENSA": "suspenso", "NULA": "nulo"}.get(sit, sit.lower())
+                add("situacao_irregular", (c, "gov"), f"{nome}: CNPJ {st} desde {data_br(dt)} e pago pelo Governo de MS em {ANO}",
+                    f"A Receita registra o CNPJ como {sit.lower()} ({(info.get('motivoSituacao') or 'motivo não informado').lower()}) "
+                    f"desde {data_br(dt)}, e o Governo do Estado pagou {brl(rec_gov)} à empresa em {ANO}. Pode ser pagamento de "
+                    f"restos a pagar por serviço prestado antes da baixa — o portal estadual não mostra a data de cada nota.",
+                    rec_gov, [f"Situação cadastral: {sit} desde {data_br(dt)} (consulta em {data_br(info.get('consultadoEm'))})",
+                              f"Pago pelo Governo de MS em {ANO}: {brl(rec_gov)}"], "Governo de MS", c, "#aba=governo-ms")
         cap = info.get("capital")
         if cap is not None and cap <= 10000 and rec >= 300000 and EMPRESARIAL.search(info.get("natureza") or ""):
             add("capital_baixo", (c,), f"{nome}: capital social de {brl(cap)} e {brl(rec)} recebidos",
                 f"Empresa com capital social de {brl(cap)} recebeu {brl(rec)} de órgãos públicos em {ANO}. Capital baixo é comum em "
                 f"prestadoras de serviço, mas destoa do volume. Quem pagou: {quem}.", rec,
-                [f"Capital social: {brl(cap)}", f"Porte: {info.get('porte') or '—'}"], quem_lst[0][0] if quem_lst else "Prefeitura de CG", c)
+                [f"Capital social: {brl(cap)}", f"Porte: {info.get('porte') or '—'}"], maior, c)
         ab = info.get("abertura")
         if ab:
             for p, pg in quem_lst:
@@ -219,21 +246,206 @@ def main():
                         add("empresa_nova", (c, x["inicio"], x["valor"]), f"{nome}: contrato de {brl(x['valor'])} com empresa aberta {dias} dias antes",
                             f"A empresa foi aberta em {data_br(ab)} e assinou contrato com a Prefeitura de Campo Grande em {data_br(x['inicio'])}: {x['objeto'][:180]}.",
                             x["valor"], [f"Abertura: {data_br(ab)}", f"Início do contrato: {data_br(x['inicio'])}"], "Prefeitura de CG", c, "#aba=contratos-cg")
+            if rec_gov >= 1_000_000 and ab >= f"{ANO - 1}-01-01":
+                add("empresa_nova", (c, "gov"), f"{nome}: aberta em {data_br(ab)} e já recebeu {brl(rec_gov)} do Governo de MS",
+                    f"A empresa foi aberta em {data_br(ab)} e recebeu {brl(rec_gov)} do Governo do Estado em {ANO}. "
+                    f"Empresa nova com contrato grande pode ser legítima, mas vale conferir a experiência exigida na licitação.",
+                    rec_gov, [f"Abertura: {data_br(ab)}", f"Atividade principal: {info.get('cnaeDesc') or '—'}",
+                              f"Capital social: {brl(info.get('capital'))}"], "Governo de MS", c, "#aba=governo-ms")
 
-    # ── Sócio com o mesmo nome completo do parlamentar ──
-    parl_nomes = {}
+    # ── Campanhas (TSE): sócio = parlamentar, sócio doador e fornecedor da campanha ──
+    tse = (carregar("tse_campanhas.json") or {}).get("parlamentares", {})
+    grupo_de = {}
     for n in notas:
-        for nm in {n["nomeCompleto"], n["p"]}:
-            if len(norm(nm).split()) >= 3:
-                parl_nomes[norm(nm)] = n["p"]
-    for c, e in por_cnpj.items():
-        for s in (cad.get(c) or {}).get("socios", []):
-            p = parl_nomes.get(norm(s.get("nome")))
-            if p and p in e["pagadores"]:
-                add("socio_parlamentar", (c, p), f"{(cad[c].get('razao') or c)}: sócio com o nome de {p}",
-                    f"O quadro de sócios na Receita tem {s['nome']} ({s.get('qualificacao') or 'sócio'}), mesmo nome completo do parlamentar, "
-                    f"que pagou {brl(e['pagadores'][p]['total'])} à empresa com dinheiro da cota/verba. Pode ser homônimo — confira o CPF.",
-                    e["pagadores"][p]["total"], [f"Sócio: {s['nome']} — {s.get('qualificacao') or ''}"], p, c)
+        grupo_de[n["p"]] = n["grupo"]
+    camp = {}  # nome do parlamentar no site → dados de campanha
+    for k, d in tse.items():
+        camp[k.split("|", 1)[1]] = d
+
+    def mesma_pessoa(nome_socio, cpf_socio, nome, cpf):
+        """Mesmo nome e, se os dois lados têm, os mesmos 6 dígitos do meio do CPF."""
+        if norm(nome_socio) != norm(nome):
+            return False
+        if cpf_socio and cpf:
+            return cpf_socio == cpf
+        return len(norm(nome).split()) >= 3
+
+    def pagos_por(c):
+        """Quem pagou a empresa: {pagador: valor}."""
+        out = {p: v["total"] for p, v in por_cnpj.get(c, {}).get("pagadores", {}).items()}
+        if pref_cnpj.get(c):
+            out["Prefeitura de CG"] = pref_cnpj[c]
+        if gov_cnpj.get(c):
+            out["Governo de MS"] = gov_cnpj[c]
+        return out
+
+    parl_pessoas = []  # (nome no site, nome civil, cpf6)
+    vistos_p = set()
+    for n in notas:
+        if n["p"] in vistos_p:
+            continue
+        vistos_p.add(n["p"])
+        d = camp.get(n["p"]) or {}
+        parl_pessoas.append((n["p"], d.get("nomeCompleto") or n["nomeCompleto"], d.get("cpf6")))
+    for c, info in cad.items():
+        socios = info.get("socios") or []
+        if not socios or not EMPRESARIAL.search(info.get("natureza") or ""):  # fundações e associações têm outra regra
+            continue
+        pg = pagos_por(c)
+        if not pg:
+            continue
+        for p, civil, cpf in parl_pessoas:
+            for q in socios:
+                if not mesma_pessoa(q.get("nome"), q.get("cpf"), civil, cpf):
+                    continue
+                # pela cota, pela Prefeitura ou pelo Estado: empresa de quem tem mandato recebendo dinheiro público
+                conf = "nome completo e os 6 dígitos do meio do CPF iguais aos do registro de candidatura no TSE" if (q.get("cpf") and cpf) \
+                    else "mesmo nome completo (pode ser homônimo: a Receita não mostrou o CPF parcial)"
+                add("socio_parlamentar", (c, p), f"{info.get('razao') or c}: {p} aparece como sócio(a)",
+                    f"O quadro de sócios na Receita tem {q['nome']} ({q.get('qualificacao') or 'sócio'}) — {conf}. A empresa recebeu: "
+                    + ", ".join(f"{k} ({brl(v)})" for k, v in sorted(pg.items(), key=lambda kv: -kv[1])[:4])
+                    + ". A lei proíbe que parlamentar seja dono de empresa que tenha contrato com o poder público ou que receba da própria cota.",
+                    sum(pg.values()), [f"Sócio: {q['nome']} — {q.get('qualificacao') or ''}, desde {data_br(q.get('entrada'))}",
+                                       f"Parlamentar: {p} ({civil})"], p if p in pg else max(pg, key=pg.get), c)
+                break
+
+    for p, d in camp.items():
+        doad = d.get("doadores") or {}
+        forn = d.get("fornecedores") or {}
+        for c, e in por_cnpj.items():
+            pg = e["pagadores"].get(p)
+            if not pg or pg["total"] < 1000:
+                continue
+            info = cad.get(c) or {}
+            for q in info.get("socios") or []:
+                dd = doad.get(norm(q.get("nome")))
+                if dd and mesma_pessoa(q["nome"], q.get("cpf"), dd[0], dd[2] if len(dd) > 2 else None):
+                    conf = "nome e 6 dígitos do meio do CPF iguais" if q.get("cpf") and len(dd) > 2 and dd[2] else "mesmo nome completo"
+                    add("socio_doador", (c, p, norm(q["nome"])), f"{info.get('razao') or c}: sócio doou {brl(dd[1])} à campanha de {p}",
+                        f"{q['nome']} ({q.get('qualificacao') or 'sócio'}) doou {brl(dd[1])} para a campanha de {p} em {d['ano']} ({conf}, "
+                        f"segundo o TSE e a Receita). Depois, {p} pagou {brl(pg['total'])} à empresa com a cota/verba em {ANO}. "
+                        f"Doar e depois prestar serviço não é proibido, mas é um conflito de interesse que merece transparência.",
+                        pg["total"], [f"Doação em {d['ano']}: {brl(dd[1])} (TSE — prestação de contas)",
+                                      f"Pago pela cota/verba em {ANO}: {brl(pg['total'])}", f"Sócio desde {data_br(q.get('entrada'))}"],
+                        p, c, pg["n"]["url"])
+            fc = forn.get(c) or next((v for k, v in forn.items() if k[:8] == c[:8]), None)
+            # só serviços de confiança pessoal (advocacia, contabilidade, marketing, consultoria, comunicação) de quem atende
+            # no máximo 2 parlamentares — posto, locadora, gráfica e rede social atendem todo mundo, na campanha e fora dela
+            cnaes = [info.get("cnae") or ""]
+            pessoal = any(cn.startswith(x) for cn in cnaes for x in ("69", "70", "73", "74", "59", "82", "62", "90", "94"))
+            if fc and pg["total"] >= 10000 and pessoal and len(e["pagadores"]) <= 2:
+                add("fornecedor_campanha", (c, p), f"{info.get('razao') or fc[0]}: trabalhou na campanha de {p} e hoje recebe da cota",
+                    f"A campanha de {p} em {d['ano']} contratou a empresa por {brl(fc[1])} ({fc[2].strip().lower() or 'despesa'}); em {ANO} o "
+                    f"mandato pagou {brl(pg['total'])} a ela com a cota/verba. É comum manter a mesma agência ou gráfica, mas a cota "
+                    f"não pode pagar dívida nem serviço de campanha.",
+                    pg["total"], [f"Contratada pela campanha ({d['ano']}): {brl(fc[1])}", f"Pago pela cota/verba em {ANO}: {brl(pg['total'])}"],
+                    p, c, pg["n"]["url"])
+
+    # ── Sócio é servidor público ──
+    ss = carregar("servidores_socios.json") or {}
+    por_emp = {}
+    for x in ss.get("achados", []):
+        if EMPRESARIAL.search((cad.get(x["cnpj"]) or {}).get("natureza") or ""):  # federações, conselhos e associações ficam de fora
+            por_emp.setdefault(x["cnpj"], []).append(x)
+    for c, lst in por_emp.items():
+        pg = pagos_por(c)
+        if not pg or sum(pg.values()) < 5000:
+            continue
+        orgs = sorted({x["orgao"] for x in lst})
+        quem_s = "; ".join(f"{x['nome']} ({x['cargo'].lower()}, {x['orgao']})" for x in lst[:6]) + (f" e mais {len(lst) - 6}" if len(lst) > 6 else "")
+        emp = lst[0].get("empresa") or c
+        plural = len(lst) > 1
+        if "Governo de MS" in pg:
+            add("servidor_socio_pagador", (c,), f"{emp}: {len(lst)} sócio(s) {'são servidores ativos' if plural else 'é servidor(a) ativo(a)'} do Governo de MS",
+                f"Na folha do Estado de {ss.get('mesFolha')} {'estão' if plural else 'está'}, com o mesmo nome e os mesmos 6 dígitos do meio do CPF "
+                f"do quadro de sócios: {quem_s}. O Governo pagou {brl(pg['Governo de MS'])} à empresa em {ANO}. A Lei 14.133/2021 (art. 9º) proíbe "
+                f"contratar empresa de servidor do órgão contratante; o portal não mostra qual secretaria pagou — se for outro órgão, pode ser legal.",
+                pg["Governo de MS"], [f"Órgãos dos servidores: {', '.join(orgs)}"] + [f"{x['nome']}: {x.get('qualificacao') or 'sócio'} desde {data_br(x.get('entradaSociedade'))}" for x in lst[:5]],
+                "Governo de MS", c, "#aba=governo-ms")
+        else:
+            add("servidor_socio", (c,), f"{emp}: {len(lst)} sócio(s) {'são servidores ativos' if plural else 'é servidor(a) ativo(a)'} do Governo de MS",
+                f"Na folha do Estado {'estão' if plural else 'está'}, com o mesmo nome e os mesmos 6 dígitos do meio do CPF: {quem_s}. A empresa recebeu: "
+                + ", ".join(f"{k} ({brl(v)})" for k, v in pg.items()) + ". Servidor pode ser sócio cotista, mas em geral não pode administrar a empresa.",
+                sum(pg.values()), [f"Órgãos: {', '.join(orgs)}"], max(pg, key=pg.get), c)
+    # ALEMS e Câmara CG: só o nome é publicado (sem CPF) — exige nome com 3+ palavras, único na folha, e pagamento da própria casa
+    for arq, chave, grupo_pag, casa in (("alems_servidores.json", None, "estadual", "ALEMS"), ("camara_municipal.json", "servidoresNomes", "vereador", "Câmara de CG")):
+        j = carregar(arq) or {}
+        lst = [(x["nome"], x.get("cargo")) for x in j.get("servidores", [])] if chave is None else \
+              [(x[0], x[1]) for x in (j.get(chave) or {}).get("lista", [])]
+        cont = {}
+        for nm, _ in lst:
+            cont[norm(nm)] = cont.get(norm(nm), 0) + 1
+        idx = {norm(nm): cg for nm, cg in lst if cont[norm(nm)] == 1 and len(norm(nm).split()) >= 3}
+        for c, e in por_cnpj.items():
+            pag = {p: v["total"] for p, v in e["pagadores"].items() if grupo_de.get(p) == grupo_pag}
+            if not pag or sum(pag.values()) < 5000:
+                continue
+            for q in (cad.get(c) or {}).get("socios") or []:
+                cg = idx.get(norm(q.get("nome")))
+                if cg is not None:
+                    add("servidor_socio", (c, casa, norm(q["nome"])), f"{cad[c].get('razao') or c}: sócio(a) com o nome de um(a) servidor(a) da {casa}",
+                        f"{q['nome']} ({q.get('qualificacao') or 'sócio'}) tem o mesmo nome de um(a) servidor(a) da {casa} ({(cg or 'cargo não informado').lower()}), "
+                        f"e a empresa recebeu da verba de: " + ", ".join(f"{p} ({brl(v)})" for p, v in sorted(pag.items(), key=lambda kv: -kv[1])[:3])
+                        + f". A {casa} não publica o CPF dos servidores, então pode ser homônimo.",
+                        sum(pag.values()), [f"Servidor(a) da {casa}: {q['nome']} — {cg or '—'}"], max(pag, key=pag.get), c)
+
+    # ── Endereço ou telefone em comum (mesmo pagador ou mesma licitação) ──
+    por_end, por_tel = {}, {}
+    for c, info in cad.items():
+        if info.get("naoEncontrado") or not EMPRESARIAL.search(info.get("natureza") or ""):
+            continue
+        if info.get("endereco") and re.search(r"\d", info["endereco"]) and info.get("cep"):
+            por_end.setdefault(norm(info["endereco"]) + "|" + info["cep"], set()).add(c[:8])
+        for t in info.get("telefones") or []:
+            por_tel.setdefault(t, set()).add(c[:8])
+    raiz_cnpj = {}
+    for c in cad:
+        raiz_cnpj.setdefault(c[:8], c)
+
+    def ligacoes(a, b):
+        ia, ib = cad.get(a) or {}, cad.get(b) or {}
+        out = []
+        ka = norm(ia.get("endereco")) + "|" + str(ia.get("cep"))
+        if ia.get("endereco") and ka == norm(ib.get("endereco")) + "|" + str(ib.get("cep")) and 2 <= len(por_end.get(ka, ())) <= 4:
+            out.append(f"mesmo endereço ({ia['endereco']}, CEP {ia['cep']})")
+        for t in set(ia.get("telefones") or []) & set(ib.get("telefones") or []):
+            if 2 <= len(por_tel.get(t, ())) <= 4:
+                out.append(f"mesmo telefone ({t[:2]}) {t[2:]}")
+        return out
+
+    for p in {n["p"] for n in notas}:
+        emp = sorted({c for c, e in por_cnpj.items() if p in e["pagadores"] and c in cad})
+        for i in range(len(emp)):
+            for j in range(i + 1, len(emp)):
+                a, b = emp[i], emp[j]
+                if a[:8] == b[:8]:
+                    continue
+                lig = ligacoes(a, b)
+                if lig:
+                    va, vb = por_cnpj[a]["pagadores"][p]["total"], por_cnpj[b]["pagadores"][p]["total"]
+                    if va + vb < 5000:
+                        continue
+                    add("endereco_comum", (p, a, b), f"{cad[a].get('razao')} e {cad[b].get('razao')}: {lig[0].split(' (')[0]}, mesmo pagador",
+                        f"As duas empresas receberam de {p} ({brl(va)} e {brl(vb)}) e têm {' e '.join(lig)} na Receita. Pode ser o mesmo "
+                        f"escritório de contabilidade ou um prédio comercial; também pode indicar empresas do mesmo grupo.",
+                        va + vb, [f"{cad[a].get('razao')}: sócios {', '.join(q['nome'] for q in cad[a].get('socios', [])[:3]) or '—'}",
+                                  f"{cad[b].get('razao')}: sócios {', '.join(q['nome'] for q in cad[b].get('socios', [])[:3]) or '—'}"], p, a)
+    for l in licit:
+        if re.search(r"chamada|credenciamento|inexig|dispensa", l.get("modalidade") or "", re.I):
+            continue
+        venc = sorted({dig(w.get("cnpj")) for w in l.get("vencedores", []) if len(dig(w.get("cnpj"))) == 14})
+        for i in range(len(venc)):
+            for j in range(i + 1, len(venc)):
+                a, b = venc[i], venc[j]
+                if a[:8] == b[:8]:
+                    continue
+                lig = ligacoes(a, b)
+                if lig:
+                    add("endereco_comum", (l["processo"], a, b), f"{l['modalidade']} nº {l['numero']}: vencedoras com {lig[0].split(' (')[0]}",
+                        f"{cad[a].get('razao')} e {cad[b].get('razao')} venceram a mesma licitação ({l['objeto'][:140]}) e têm {' e '.join(lig)} "
+                        f"na Receita. Em licitação por lotes, empresas do mesmo grupo podem vencer itens diferentes.",
+                        l.get("valorEstimado") or 0, [f"Processo {l['processo']}", f"Data: {data_br(l['data'])}"], "Prefeitura de CG", a,
+                        "#aba=contratos-cg&p=" + l["processo"])
 
     # ── Sócios em comum entre vencedoras da mesma licitação ──
     for l in licit:
@@ -245,9 +457,9 @@ def main():
                 a, b = dig(venc[i]["cnpj"]), dig(venc[j]["cnpj"])
                 if a[:8] == b[:8]:
                     continue
-                sa = {norm(s["nome"]) for s in (cad.get(a) or {}).get("socios", []) if s.get("nome")}
-                sb = {norm(s["nome"]) for s in (cad.get(b) or {}).get("socios", []) if s.get("nome")}
-                comum = sa & sb
+                sa = {(norm(s["nome"]), s.get("cpf")) for s in (cad.get(a) or {}).get("socios", []) if s.get("nome")}
+                sb = {(norm(s["nome"]), s.get("cpf")) for s in (cad.get(b) or {}).get("socios", []) if s.get("nome")}
+                comum = {x[0] for x in sa & sb}
                 if comum:
                     add("socios_licitacao", (l["processo"], l["numero"], a, b), f"{l['modalidade']} nº {l['numero']}: vencedoras com sócio em comum",
                         f"{venc[i]['nome']} e {venc[j]['nome']} venceram a mesma licitação ({l['objeto'][:160]}) e têm em comum o(s) sócio(s) "

@@ -68,6 +68,10 @@ def cnpjs_alvo():
     for l in ct.get("licitacoes", []):
         for w in l.get("vencedores", []):
             soma(w.get("cnpj"), 1)
+    # credores do Governo do Estado: só empresas privadas que receberam R$ 50 mil ou mais no ano
+    for c in carregar("governo_ms_credores.json").get("credores", []):
+        if len(c) > 4 and c[4] == "fornecedor" and (c[2] or 0) >= 50000:
+            soma(c[0], c[2])
     return sorted(valor, key=lambda c: -valor[c])
 
 
@@ -80,8 +84,14 @@ def resumir(d):
             "dataSituacao": d.get("data_situacao_cadastral"), "motivoSituacao": d.get("descricao_motivo_situacao_cadastral"),
             "municipio": d.get("municipio"), "uf": d.get("uf"), "porte": d.get("porte"),
             "mei": d.get("opcao_pelo_mei"), "natureza": d.get("natureza_juridica"),
+            "endereco": " ".join(str(x) for x in (d.get("descricao_tipo_de_logradouro"), d.get("logradouro"), d.get("numero"),
+                                                   d.get("complemento")) if x).strip() or None,
+            "bairro": d.get("bairro") or None, "cep": re.sub(r"\D", "", str(d.get("cep") or "")) or None,
+            "telefones": [re.sub(r"\D", "", t) for t in (d.get("ddd_telefone_1"), d.get("ddd_telefone_2")) if t and len(re.sub(r"\D", "", t)) >= 10],
+            # "cpf": os 6 dígitos do meio do CPF do sócio, como a Receita publica (***123456**)
             "socios": [{"nome": q.get("nome_socio"), "qualificacao": q.get("qualificacao_socio"),
-                        "entrada": q.get("data_entrada_sociedade")} for q in d.get("qsa") or []],
+                        "entrada": q.get("data_entrada_sociedade"),
+                        "cpf": re.sub(r"\D", "", str(q.get("cnpj_cpf_do_socio") or ""))[:6] or None} for q in d.get("qsa") or []],
             "consultadoEm": date.today().isoformat()}
 
 
@@ -111,8 +121,12 @@ def main():
         cache = {}
     alvo = cnpjs_alvo()
     hoje = date.today()
-    pendentes = [c for c in alvo if c not in cache or
-                 (hoje - date.fromisoformat(cache[c].get("consultadoEm", "2000-01-01"))) > VALIDADE][:limite]
+    # novos primeiro, depois os vencidos e os consultados antes de o endereço ser guardado (sem "cep")
+    novos_ = [c for c in alvo if c not in cache]
+    velhos = [c for c in alvo if c in cache and ((hoje - date.fromisoformat(cache[c].get("consultadoEm", "2000-01-01"))) > VALIDADE
+                                                 or (("cep" not in cache[c] or any("cpf" not in q for q in cache[c].get("socios", [])))
+                                                     and not cache[c].get("naoEncontrado")))]
+    pendentes = (novos_ + velhos)[:limite]
     print(f"🔎 CNPJ: {len(alvo)} empresas, {len(pendentes)} para consultar agora (cache com {len(cache)})")
     novos, falhas = 0, 0
     for i, c in enumerate(pendentes):

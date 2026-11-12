@@ -233,6 +233,14 @@ def main():
         recente("Auditoria", au.get("ultimaAtualizacao"), 2, nivel="aviso", o_que="última geração")
         checa(au.get("empresasConsultadas", 0) >= 1000, f"Auditoria: {au.get('empresasConsultadas')} empresas checadas na Receita",
               f"**Auditoria**: só {au.get('empresasConsultadas')} empresas no cadastro da Receita (BrasilAPI fora?)", "aviso")
+    tse = carregar("tse_campanhas.json")
+    if tse:
+        recente("Campanhas (TSE)", tse.get("ultimaAtualizacao"), 10, nivel="aviso", o_que="última coleta")
+        checa(len(tse.get("parlamentares", {})) >= 60, f"TSE: {len(tse.get('parlamentares', {}))} parlamentares com prestação de contas",
+              f"**TSE**: só {len(tse.get('parlamentares', {}))} parlamentares encontrados", "aviso")
+    sso = carregar("servidores_socios.json")
+    if sso:
+        recente("Servidores sócios (folha do Estado)", sso.get("ultimaAtualizacao"), 3, nivel="aviso", o_que="último cruzamento")
     ss = carregar("supersalarios.json")
     if ss:
         recente("Supersalários", ss.get("ultimaAtualizacao"), 3, nivel="aviso", o_que="última coleta")

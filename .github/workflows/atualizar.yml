@@ -337,7 +337,15 @@ jobs:
 
       - name: Cadastro na Receita das empresas novas (CNPJ, incremental)
         timeout-minutes: 15
-        run: python3 scripts/coletar_cnpj.py 300 || echo "⚠️ coletar_cnpj.py falhou — cadastro anterior mantido"
+        run: python3 scripts/coletar_cnpj.py 400 || echo "⚠️ coletar_cnpj.py falhou — cadastro anterior mantido"
+
+      - name: Campanhas dos parlamentares no TSE (doadores e fornecedores; 1 vez por semana)
+        timeout-minutes: 15
+        run: python3 scripts/coletar_tse.py --se-velho || echo "⚠️ coletar_tse.py falhou — campanhas anteriores mantidas"
+
+      - name: Servidores do Estado que são sócios de empresas pagas (folha × Receita)
+        timeout-minutes: 15
+        run: python3 scripts/coletar_servidores_socios.py || echo "⚠️ coletar_servidores_socios.py falhou — cruzamento anterior mantido"
 
       - name: Auditoria — sinais de atenção (cruza notas, contratos e Receita)
         run: python3 scripts/gerar_auditoria.py || echo "⚠️ gerar_auditoria.py falhou — sinais anteriores mantidos"

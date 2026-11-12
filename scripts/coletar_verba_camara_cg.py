@@ -862,6 +862,9 @@ def coletar_pessoal_gabinetes():
                         "lotacao": str(reg.get(campo_lot) or "").strip().title(), "bruto": round(bruto, 2),
                         "descontos": round(desc, 2), "liquido": round(liq, 2)})
         lst.sort(key=lambda x: -x["bruto"])
+        # nomes e cargos de todos (sem valores), para a Auditoria cruzar com os sócios das empresas pagas pelos vereadores
+        atual["servidoresNomes"] = {"referencia": f"{mes:02d}/{ano}",
+                                    "lista": sorted({(x["nome"], x["cargo"], x["lotacao"]) for x in lst if x["nome"]})}
         atual["maioresSalarios"] = {"referencia": f"{mes:02d}/{ano}", "servidores": len(lst), "lista": lst[:60],
                                     "campos": {"bruto": campo_val, "descontos": campo_desc, "liquido": campo_liq}}
         json.dump(atual, open(ARQUIVO_CAMARA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
