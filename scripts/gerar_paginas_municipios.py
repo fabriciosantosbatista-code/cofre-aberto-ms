@@ -120,7 +120,7 @@ def main():
         titulo = f"{nome} (MS): emendas parlamentares e Emendas Pix em {ano_em} | Cofre Aberto MS"
         jsonld = {"@context": "https://schema.org", "@type": "City", "name": f"{nome} (MS)", "url": SITE + url,
                   "containedInPlace": {"@type": "State", "name": "Mato Grosso do Sul"}}
-        corpo = f"""<p class="breadcrumb"><a href="/">Início</a> / <a href="/municipio/">Municípios</a> / {e(nome)}</p>
+        corpo = f"""<p class="breadcrumb"><a href="/">Início</a> / <a href="/municipio/">Emendas Municípios</a> / {e(nome)}</p>
 <article><h1>{e(nome)}</h1>
 <p class="cargo" style="margin-bottom:16px">{e(resumo)}</p>
 {''.join(blocos)}
@@ -146,11 +146,11 @@ def main():
     linhas = "".join(f"<tr data-n='{e(chave(p['nome']).lower())}'><td><a href='/municipio/{p['slug']}/'>{e(p['nome'])}</a></td><td class='num'>{brl(p['total'])}</td>"
                      f"<td class='num'>{brl(p['pix'])}</td><td class='num'>{brl(p['uniao']) if p['uniao'] else '—'}</td></tr>"
                      for p in sorted(paginas, key=lambda p: -p["total"]))
-    idx = cabecalho(f"Municípios de MS — emendas parlamentares e Emendas Pix {ano_em} | Cofre Aberto MS",
+    idx = cabecalho(f"Emendas Municípios — emendas parlamentares e Emendas Pix em MS {ano_em} | Cofre Aberto MS",
                     f"Os {len(paginas)} municípios de Mato Grosso do Sul: quanto cada um recebeu de emendas parlamentares, de quem, Emendas Pix e transferências da União.",
-                    "/municipio/", None, {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Municípios de MS", "url": SITE + "/municipio/"},
-                    tipo="website").replace("</style>", CSS_EXTRA + "</style>", 1) + f"""<p class="breadcrumb"><a href="/">Início</a> / Municípios</p>
-<article><h1>Municípios de MS</h1><p class="cargo" style="margin-bottom:12px">{len(paginas)} municípios: emendas parlamentares pagas em {ano_em}, Emendas Pix desde 2020
+                    "/municipio/", None, {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Emendas Municípios", "url": SITE + "/municipio/"},
+                    tipo="website").replace("</style>", CSS_EXTRA + "</style>", 1) + f"""<p class="breadcrumb"><a href="/">Início</a> / Emendas Municípios</p>
+<article><h1>Emendas Municípios</h1><p class="cargo" style="margin-bottom:12px">{len(paginas)} municípios: emendas parlamentares pagas em {ano_em}, Emendas Pix desde 2020
 e transferências da União em {ANO}. Clique no nome para ver de quem veio o dinheiro e quem recebeu.</p>
 <input class="busca" id="busca-mun" type="search" placeholder="buscar município…" oninput="var q=this.value.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().replace(/[^a-z]/g,'');document.querySelectorAll('#lst-mun tbody tr').forEach(function(t){{t.style.display=t.dataset.n.indexOf(q)>-1?'':'none'}})">
 <div class="tabela-wrap"><table class="lst" id="lst-mun"><thead><tr><th>Município</th><th class="num">Emendas {ano_em}</th><th class="num">Emendas Pix (desde 2020)</th><th class="num">União {ANO}</th></tr></thead><tbody>{linhas}</tbody></table></div>
