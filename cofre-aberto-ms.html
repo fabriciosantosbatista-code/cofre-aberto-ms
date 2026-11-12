@@ -5023,9 +5023,10 @@ function renderFluxo(d, ano) {
   const f = d && d.fluxoCota; if (!f || !f.fontes?.length || !f.categorias?.length) return;
   const card = document.getElementById("fluxo-cota"); card.hidden = false;
   const fontes = f.fontes.filter(x => x.valor > 0), total = fontes.reduce((t, x) => t + x.valor, 0);
-  const cats = f.categorias.slice().sort((a, b) => (a.nome.includes("sem categoria") - b.nome.includes("sem categoria")) || b.valor - a.valor);
+  const resto = c => c.nome === "Outros" || c.nome.includes("sem categoria");
+  const cats = f.categorias.slice().sort((a, b) => (resto(a) - resto(b)) || b.valor - a.valor);
   const totCat = cats.reduce((t, x) => t + x.valor, 0);
-  const cor = (c, i) => c.nome.includes("sem categoria") ? CINZA_FLUXO : CORES_FLUXO[i % CORES_FLUXO.length];
+  const cor = (c, i) => resto(c) ? CINZA_FLUXO : CORES_FLUXO[i % CORES_FLUXO.length];
   document.getElementById("fluxo-eyebrow").textContent = `// Parlamentares de MS · cotas e verbas · ${ano}`;
   const box = document.getElementById("fluxo-svg"), m = box.clientWidth < 560;  // celular: desenho mais enxuto, nomes das categorias na legenda
   const W = m ? 484 : 660, H = 500, CX = m ? 225 : 300, CY = 250, CR = m ? 58 : 70, CW = m ? 104 : 124, LARG = m ? 70 : 84, sx = m ? 68 : 78, tx = m ? 360 : 478;
@@ -5075,7 +5076,8 @@ function renderFluxo(d, ano) {
   svg.querySelectorAll(".no[data-aba]").forEach(el => el.addEventListener("click", () => document.querySelector(`.sidebar nav button[data-tab="${el.dataset.aba}"]`)?.click()));
   document.getElementById("fluxo-forn").innerHTML = `<h3>▸ Maiores fornecedores</h3>` + (f.fornecedores || []).map((x, i) =>
     `<li><i style="background:#f5c842;box-shadow:0 0 6px #f5c842"></i><span>${escHTML(x.nome.length > 34 ? x.nome.slice(0, 33) + "…" : x.nome)}<small>${formatCompact(x.valor)} · ${x.gabinetes} ${x.gabinetes > 1 ? "gabinetes" : "gabinete"}</small></span></li>`).join("");
-  document.getElementById("fluxo-nota").textContent = `Valores pagos em ${ano} com as cotas de senadores e deputados federais, a verba indenizatória dos deputados estaduais e a dos vereadores de Campo Grande (publicada sem categoria). ` +
+  document.getElementById("fluxo-nota").textContent = `Valores pagos em ${ano} com as cotas de senadores e deputados federais e a verba indenizatória dos deputados estaduais e dos vereadores de Campo Grande. ` +
+    `A Câmara de CG não publica o tipo de gasto: ele foi identificado pela descrição de cada nota (o Ato 028, de assessoria técnica, entra em consultorias). ` +
     `A largura de cada faixa é proporcional ao valor. Fornecedores somados por CNPJ (senadores, deputados federais e estaduais). Toque numa casa para abrir a aba.`;
   document.getElementById("fluxo-leg").innerHTML = m ? cats.map((c, i) => `<li><i style="background:${cor(c, i)}"></i><span>${escHTML(c.nome)}</span><b>${formatCompact(c.valor)} <small>${(c.valor / totCat * 100).toLocaleString("pt-BR", { maximumFractionDigits: 0 })}%</small></b></li>`).join("") : "";
   if (!renderFluxo.redim) { renderFluxo.redim = true; let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(() => { if ((box.clientWidth < 560) !== m) renderFluxo(d, ano); }, 250); }); }

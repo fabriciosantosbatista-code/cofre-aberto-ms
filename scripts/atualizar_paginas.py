@@ -416,6 +416,42 @@ GRUPOS_CATEGORIA = (  # categorias das quatro casas agrupadas em poucas família
 )
 
 
+# Notas da verba dos vereadores de CG: a Câmara não publica categoria, então ela sai da descrição e do
+# fornecedor de cada nota (texto lido dos PDFs). Ato 028 é, por definição, assessoria técnica.
+PALAVRAS_CG = (
+    ("Divulgação", ("DIVULGA", "PUBLICIDADE", "PUBLICAÇ", "PUBLICAC", "MATERIAL GRÁF", "MATERIAL GRAF", "GRÁFIC", "GRAFIC", "MÍDIA", "MIDIA",
+                    "INSERÇ", "INSERC", "IMPRESS", "COMUNICA", "RÁDIO", "RADIO", "VÍDEO", "VIDEO", "PROPAGANDA", "MARKETING", "JORNAL", "PANFLET", "BANNER", "ADESIV")),
+    ("Escritório, aluguel e apoio", ("SOFTWARE", "SISTEMA", "EQUIPAMENTO", "EXPEDIENTE", "PAPELARIA", "TELEFON", "INTERNET", "IMÓVEL", "IMOVEL",
+                                     "ALUGUEL DE SALA", "CONDOMÍN", "CONDOMIN", "ENERGIA", "INFORMÁTICA", "INFORMATICA", "TONER", "IMPRESSORA")),
+    ("Veículos e combustível", ("GASOLINA", "ETANOL", "ÁLCOOL", "ALCOOL", "DIESEL", "COMBUST", "POSTO", "PETROLEO", "PETRÓLEO", "LUBRIF",
+                                "VEÍCULO", "VEICULO", "AUTOMÓV", "AUTOMOV", "CARRO", "MOTORS", "LOCADORA", "LOCAÇÃO DE AUTO", "LOCACAO DE AUTO")),
+    ("Viagens, passagens e hospedagem", ("PASSAGE", "HOSPEDAG", "HOTEL", "DIÁRIA", "DIARIA", "ALIMENTA", "RESTAURANTE", "TÁXI", "TAXI", "UBER")),
+    ("Consultorias e assessorias", ("ASSESSORIA", "CONSULTORIA", "ADVOCACIA", "ADVOGAD", "CONTÁBIL", "CONTABIL", "PESQUISA")),
+)
+
+
+def categorias_vereador_cg(v):
+    """{família: valor} de um vereador de CG: Ato 028 inteiro em assessoria; Ato 027 dividido pela descrição das notas,
+    em proporção ao total pago (as notas lidas dos PDFs somam um pouco menos que o total impresso)."""
+    vi = v.get("verbaIndenizatoria") or {}
+    out, notas = {}, {}
+    for d in v.get("despesas") or []:
+        if d.get("ato") != "ATO 027":
+            continue
+        t = f"{d.get('descricao') or ''} {d.get('fornecedor') or ''}".upper()
+        g = next((g for g, chaves in PALAVRAS_CG if any(k in t for k in chaves)), "Outros")
+        notas[g] = notas.get(g, 0) + float(d.get("valor") or 0)
+    g27, g28 = vi.get(f"gastoAto027_{ANO}") or 0, vi.get(f"gastoAto028_{ANO}") or 0
+    tot = sum(notas.values())
+    for g, x in notas.items():
+        out[g] = x / tot * g27
+    if g27 and not tot:
+        out["Outros"] = g27
+    if g28:
+        out["Consultorias e assessorias"] = out.get("Consultorias e assessorias", 0) + g28
+    return out
+
+
 def fluxo_cota(cg, est, fed, sen):
     """Fontes (as quatro casas) → total → famílias de categoria, e os maiores fornecedores somados."""
     def grupo(cat):
@@ -435,8 +471,9 @@ def fluxo_cota(cg, est, fed, sen):
         for c, v in (vi(x).get("categorias") or {}).items():
             soma(por["est"], grupo(c), v if isinstance(v, (int, float)) else 0)
     v_cg = sum(vi(v).get(f"gastoPago{ANO}") or 0 for v in cg.get("vereadores", []))
-    if v_cg:  # a verba dos vereadores de CG é publicada sem categoria
-        por["cg"]["Verba dos vereadores de CG (sem categoria)"] = v_cg
+    for v in cg.get("vereadores", []):  # a verba de CG vem sem categoria: classifica cada nota pela descrição
+        for g, x in categorias_vereador_cg(v).items():
+            soma(por["cg"], g, x)
     for lst, chave in ((sen.get("senadores", []), "notasCeaps"), (fed.get("deputados", []), "despesas"), (est.get("vereadores", []), "despesas")):
         for x in lst:
             for n in x.get(chave) or []:
