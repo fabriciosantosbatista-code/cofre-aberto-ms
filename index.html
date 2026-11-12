@@ -644,5 +644,14 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
   });
 </script>
   
+<script>
+// faixa do topo: notas novas de hoje e da semana (dados/atividade.json, gerado pelo robô)
+fetch("dados/atividade.json", { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(a => {
+  if (!a) return;
+  const el = document.getElementById("data-atualizacao"); if (!el) return;
+  const n = v => (v || 0).toLocaleString("pt-BR");
+  el.insertAdjacentHTML("afterend", ` · +${n(a.notasHoje)} notas hoje · +${n(a.notasSemana)} na semana · ${n(a.registros)} registros`);
+}).catch(() => {});
+</script>
 </body>
 </html>

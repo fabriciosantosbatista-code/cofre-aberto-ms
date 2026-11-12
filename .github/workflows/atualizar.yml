@@ -477,6 +477,9 @@ jobs:
       - name: Boletim semanal (+ feed RSS e sitemap)
         run: python3 scripts/gerar_boletim.py || echo "⚠️ gerar_boletim.py falhou — boletim anterior mantido"
 
+      - name: Atividade recente — notas novas do dia e da semana
+        run: python3 scripts/gerar_atividade.py || echo "⚠️ gerar_atividade.py falhou — atividade anterior mantida"
+
       - name: Versões leves dos dados para o painel (carregamento rápido no celular)
         run: python3 scripts/gerar_painel_leve.py || echo "⚠️ gerar_painel_leve.py falhou — o painel usa os arquivos completos"
 

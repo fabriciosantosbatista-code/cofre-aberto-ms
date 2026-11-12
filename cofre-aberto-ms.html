@@ -275,6 +275,22 @@ p{margin:0;}
 @media(max-width:900px){.fluxo-grid{grid-template-columns:1fr}.fluxo-forn{border-left:0;border-top:1px solid var(--border);padding:14px 0 0;display:grid;grid-template-columns:1fr 1fr}.fluxo-forn h3{grid-column:1/-1}}
 @media(max-width:640px){.fluxo-card{padding:16px 12px}.fluxo-forn{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.fluxo-card::before,.fluxo-svg .trilha,.fluxo-svg .anel,.fluxo-svg .ponto{animation:none}}
+.sinc{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin:-8px 0 20px;padding:9px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface);font-size:.78rem;color:var(--ink-soft)}
+.sinc b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.sinc .vivo{display:inline-flex;align-items:center;gap:7px;color:var(--positive);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.7rem}
+.sinc .vivo i{width:8px;height:8px;border-radius:50%;background:var(--positive);box-shadow:0 0 0 0 rgba(45,212,160,.6);animation:sincPulso 2s infinite}
+@keyframes sincPulso{70%{box-shadow:0 0 0 7px rgba(45,212,160,0)}100%{box-shadow:0 0 0 0 rgba(45,212,160,0)}}
+.sinc .mais{color:var(--accent);font-weight:600}
+.sinc a{color:var(--accent);text-decoration:none;margin-left:auto}
+.sinc a:hover{text-decoration:underline}
+@media(max-width:640px){.sinc{gap:4px 12px;font-size:.74rem}.sinc a{margin-left:0}}
+@media(prefers-reduced-motion:reduce){.sinc .vivo i{animation:none}}
+.novos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.novo-card{display:flex;flex-direction:column;gap:3px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:13px 15px;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+a.novo-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.novo-card .q{font:700 1.05rem var(--font-display);color:var(--accent)}
+.novo-card .nm{font-weight:600;font-size:.88rem}
+.novo-card .mt{font-size:.74rem;color:var(--ink-soft)}
 .capa-roscas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .rosca-card{margin:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px}
 .rosca-card figcaption{font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:12px;line-height:1.4}
@@ -594,6 +610,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   </aside>
 
   <main class="main">
+  <div class="sinc" id="sinc" hidden></div>
 
   <!-- ===================== DEPUTADOS ===================== -->
   <section class="tabpanel" id="tab-deputados">
@@ -1833,6 +1850,12 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         <div class="fluxo-grid"><div><div id="fluxo-svg"></div><ul class="fluxo-leg" id="fluxo-leg"></ul></div><ul class="fluxo-forn" id="fluxo-forn"></ul></div>
         <div class="fluxo-nota" id="fluxo-nota"></div>
       </div>
+    </div>
+
+    <div class="section" id="sec-novos" hidden>
+      <div class="section-head"><h2 class="section-title">Gastos novos esta semana</h2></div>
+      <div class="section-note" id="novos-nota"></div>
+      <div class="novos-grid" id="novos-grid"></div>
     </div>
 
     <div class="section">
@@ -5029,6 +5052,36 @@ document.addEventListener("click", ev => {
   if (alvo) { alvo.click(); scrollTo({ top: 0, behavior: "smooth" }); }
 });
 carregarJSON("dados/resumo_capa.json").then(d => { if (d) renderCapa(d); });
+// ===================== ATIVIDADE: faixa "atualizado" + gastos novos da semana =====================
+function renderAtividade(a) {
+  const n = v => (v || 0).toLocaleString("pt-BR");
+  const ult = a.ultimaAtualizacao ? new Date(a.ultimaAtualizacao) : null;
+  const hoje = new Date(), ontem = new Date(Date.now() - 864e5);
+  const dia = !ult ? "—" : ult.toDateString() === hoje.toDateString() ? "hoje" : ult.toDateString() === ontem.toDateString() ? "ontem" : formatDate(a.ultimaAtualizacao.slice(0, 10));
+  const hora = ult ? ult.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }) : "";
+  const sinc = document.getElementById("sinc");
+  sinc.innerHTML = `<span class="vivo"><i></i>Atualizado</span>
+    <span>Última coleta <b>${dia}${hora ? " às " + hora : ""}</b></span>
+    <span><b>${n(a.registros)}</b> registros</span>
+    <span>Notas novas hoje <b class="mais">+${n(a.notasHoje)}</b></span>
+    <span>Na semana <b class="mais">+${n(a.notasSemana)}</b> (${formatCompact(a.valorSemana)})</span>
+    ${a.semana?.length ? `<a href="#aba=panorama" data-novos>Ver quem →</a>` : ""}`;
+  sinc.hidden = false;
+  sinc.querySelector("[data-novos]")?.addEventListener("click", ev => { ev.preventDefault();
+    document.querySelector('.sidebar nav button[data-tab="panorama"]')?.click();
+    setTimeout(() => document.getElementById("sec-novos")?.scrollIntoView({ behavior: "smooth", block: "start" }), 60); });
+  const lst = a.semana || [];
+  if (!lst.length) return;
+  const cargo = { vereador: "Vereador(a) de CG", estadual: "Deputado(a) estadual", federal: "Deputado(a) federal", senador: "Senador(a)" };
+  document.getElementById("novos-nota").textContent = `Notas fiscais que entraram nos dados oficiais de ${formatDate(a.desde)} até hoje: ${n(a.notasSemana)} notas, ${formatBRL(a.valorSemana)}. ` +
+    `A data é a do dia em que a nota apareceu na fonte, não a da compra (as casas publicam com atraso).`;
+  document.getElementById("novos-grid").innerHTML = lst.map(x => `<${x.url ? `a href="${x.url}"` : "div"} class="novo-card">
+      <span class="q">+${n(x.notas)} ${x.notas > 1 ? "notas" : "nota"}</span><span class="nm">${escHTML(x.nome)}</span>
+      <span class="mt">${cargo[x.grupo] || ""}${x.partido ? " · " + escHTML(x.partido) : ""} · ${formatCompact(x.valor)}</span></${x.url ? "a" : "div"}>`).join("");
+  document.getElementById("sec-novos").hidden = false;
+}
+carregarJSON("dados/atividade.json").then(a => { if (a) renderAtividade(a); });
+
 
 // ===================== PRESIDÊNCIA =====================
 function renderPresidencia(d) {
