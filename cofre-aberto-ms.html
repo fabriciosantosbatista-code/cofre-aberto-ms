@@ -253,7 +253,7 @@ p{margin:0;}
 .fluxo-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:18px;align-items:center}
 .fluxo-svg{width:100%;height:auto;display:block;overflow:visible}
 .fluxo-svg .fita{fill:none;stroke-linecap:round;transition:opacity .2s}
-.fluxo-svg .trilha{fill:none;stroke:rgba(255,255,255,.55);stroke-width:1.2;stroke-dasharray:6 9;animation:fluxoTraco 6s linear infinite}
+.fluxo-svg .trilha{font-family:var(--font-display);font-weight:800;fill:#fff3c4;stroke:#14120a;stroke-width:.6px;paint-order:stroke;pointer-events:none;filter:drop-shadow(0 0 3px rgba(245,200,66,.8))}
 @keyframes fluxoTraco{to{stroke-dashoffset:-220}}
 .fluxo-svg .anel{fill:none;stroke-dasharray:1 6;stroke-linecap:round;transform-box:fill-box;transform-origin:center;animation:fluxoGira 52s linear infinite}
 .fluxo-svg .anel.rev{animation-duration:74s;animation-direction:reverse}
@@ -4928,6 +4928,14 @@ function contarAte(el, alvo, dur = 1400) {
     el.textContent = formatBRL(Math.round(alvo * e)).replace(/,\d\d$/, ""); if (k < 1) requestAnimationFrame(passo); };
   requestAnimationFrame(passo);
 }
+// "$" dourados correndo pelas faixas, no lugar do tracejado (quanto mais larga a faixa, maior o cifrão)
+function cifroes(p, g, w) {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return "";
+  const n = 3, dur = 6, fs = Math.max(10, Math.min(18, w * 0.7 + 6)).toFixed(0);
+  let out = "";
+  for (let k = 0; k < n; k++) out += `<text class="trilha" data-g="${g}" text-anchor="middle" dominant-baseline="central" style="font-size:${fs}px">$<animateMotion dur="${dur}s" begin="${(-k * dur / n).toFixed(2)}s" repeatCount="indefinite" path="${p}"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="${dur}s" begin="${(-k * dur / n).toFixed(2)}s" repeatCount="indefinite"/></text>`;
+  return out;
+}
 function renderFluxo(d, ano) {
   const f = d && d.fluxoCota; if (!f || !f.fontes?.length || !f.categorias?.length) return;
   const card = document.getElementById("fluxo-cota"); card.hidden = false;
@@ -4950,7 +4958,8 @@ function renderFluxo(d, ano) {
     const r = (m ? 40 : 28) + (m ? 16 : 22) * Math.sqrt(x.valor) / rMax;
     defs += `<linearGradient id="fg-e${i}" gradientUnits="userSpaceOnUse" x1="${sx}" x2="${CX}"><stop offset="0" stop-color="#f5c842" stop-opacity=".25"/><stop offset="1" stop-color="#f5c842" stop-opacity=".75"/></linearGradient>`;
     const p = curva(sx + r - 4, y, CX - CR + 8, yc);
-    fitas += `<path class="fita" data-g="e${i}" d="${p}" stroke="url(#fg-e${i})" stroke-width="${w.toFixed(1)}"/><path class="trilha" data-g="e${i}" d="${p}"/>`;
+    fitas += `<path class="fita" data-g="e${i}" d="${p}" stroke="url(#fg-e${i})" stroke-width="${w.toFixed(1)}"/>`;
+    fitas += cifroes(p, "e${i}", w);
     nos += `<g class="no" data-g="e${i}" data-aba="${x.aba}"><title>${escHTML(x.nome)}: ${formatBRL(x.valor)}</title>
       <circle cx="${sx}" cy="${y}" r="${r.toFixed(1)}" fill="#0b0d13"/><circle class="disco" cx="${sx}" cy="${y}" r="${r.toFixed(1)}" fill="none" stroke="#f5c842" stroke-opacity=".5"/>
       <circle class="anel" cx="${sx}" cy="${y}" r="${(r + 7).toFixed(1)}" stroke="#f5c842" stroke-opacity=".6"/>
@@ -4965,7 +4974,8 @@ function renderFluxo(d, ano) {
     const yc = acc + w / 2; acc += w;
     defs += `<linearGradient id="fg-s${i}" gradientUnits="userSpaceOnUse" x1="${CX}" x2="${tx}"><stop offset="0" stop-color="#f5c842" stop-opacity=".7"/><stop offset="1" stop-color="${k}" stop-opacity=".9"/></linearGradient>`;
     const p = curva(CX + CR - 8, yc, tx, y);
-    fitas += `<path class="fita" data-g="s${i}" d="${p}" stroke="url(#fg-s${i})" stroke-width="${w.toFixed(1)}"/><path class="trilha" data-g="s${i}" d="${p}"/>`;
+    fitas += `<path class="fita" data-g="s${i}" d="${p}" stroke="url(#fg-s${i})" stroke-width="${w.toFixed(1)}"/>`;
+    fitas += cifroes(p, "s${i}", w);
     const pct = (c.valor / totCat * 100).toLocaleString("pt-BR", { maximumFractionDigits: 0 }) + "%";
     const [l1, l2] = c.nome.length > 26 ? [c.nome.slice(0, c.nome.lastIndexOf(" ", 26)), c.nome.slice(c.nome.lastIndexOf(" ", 26) + 1)] : [c.nome, ""];
     nos += `<g class="no" data-g="s${i}"><title>${escHTML(c.nome)}: ${formatBRL(c.valor)} (${pct})</title>
