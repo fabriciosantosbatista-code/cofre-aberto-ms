@@ -525,6 +525,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
     <nav>
       <a href="index.html" style="display:flex;align-items:center;gap:9px;color:var(--ink-soft);font-size:.83rem;font-weight:500;padding:8px 10px;border-radius:8px;text-decoration:none;transition:all .15s;margin-bottom:4px" onmouseover="this.style.background='var(--surface-2)';this.style.color='var(--ink)'" onmouseout="this.style.background='';this.style.color='var(--ink-soft)'"><span style="width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;display:inline-block"></span> 🏠 Home</a>
+      <button class="active" data-tab="panorama"><span class="dot"></span> 📊 Panorama</button>
       <div class="nav-group-label">Mato Grosso do Sul</div>
       <button data-tab="senadores"><span class="dot"></span> Senado MS</button>
       <button data-tab="governo-ms"><span class="dot"></span> Governo MS</button>
@@ -550,7 +551,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <a class="nav-link" href="empresa/"><span class="dot"></span> Empresas</a>
       <a class="nav-link" href="orgao/"><span class="dot"></span> Órgãos</a>
       <div class="nav-group-label">Sobre o projeto</div>
-      <button class="active" data-tab="sobre"><span class="dot"></span> Sobre</button>
+      <button data-tab="sobre"><span class="dot"></span> Sobre</button>
       <a class="nav-link" href="metodologia.html"><span class="dot"></span> Metodologia e dados</a>
     </nav>
     <div class="sidebar-status" id="status-row">
@@ -1717,9 +1718,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
   </section>
 
-  <section class="tabpanel active" id="tab-sobre">
-    <!-- usado por renderCamaraMunicipal (fonte da Câmara CG) -->
-    <div class="notice" id="notice-camara" hidden></div>
+  <section class="tabpanel active" id="tab-panorama">
     <div class="capa">
       <div class="capa-eyebrow">Cofre Aberto MS · transparência pública</div>
       <h1 class="capa-titulo">O dinheiro público de Mato Grosso do Sul, <span>num só lugar.</span></h1>
@@ -1761,6 +1760,18 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       </div>
     </div>
 
+  </section>
+
+  <section class="tabpanel" id="tab-sobre">
+    <!-- usado por renderCamaraMunicipal (fonte da Câmara CG) -->
+    <div class="notice" id="notice-camara" hidden></div>
+    <div class="hero">
+      <div class="hero-label">Sobre o projeto</div>
+      <div class="hero-desc" style="font-size:0.92rem;">
+        O Cofre Aberto MS reúne, num só lugar, o dinheiro público de Mato Grosso do Sul. Todos os números vêm de <b style="color:var(--ink)">fontes oficiais</b>
+        e são coletados automaticamente todos os dias, sem edição manual. O site mostra quanto foi gasto, com quem e quando, e <b style="color:var(--ink)">não acusa ninguém</b>.
+      </div>
+    </div>
     <div class="section">
       <div class="section-head"><h2 class="section-title">Visão, missão e valores</h2></div>
       <div class="mvv-grid">
