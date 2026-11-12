@@ -78,26 +78,48 @@
    {
     "nome": "Vereadores de CG",
     "valor": 5908281.13,
-    "aba": "camara-municipal",
-    "pessoas": 29
+    "aba": "camara",
+    "pessoas": 29,
+    "categorias": {
+     "Verba dos vereadores de CG (sem categoria)": 5908281.13
+    }
    },
    {
     "nome": "Deputados estaduais",
     "valor": 13021165.08,
     "aba": "deputados-estaduais",
-    "pessoas": 25
+    "pessoas": 25,
+    "categorias": {
+     "Divulgação": 2487487.09,
+     "Escritório, aluguel e apoio": 795728.38,
+     "Consultorias e assessorias": 5810419.45,
+     "Veículos e combustível": 2094590.71,
+     "Viagens, passagens e hospedagem": 1832939.45
+    }
    },
    {
     "nome": "Deputados federais",
     "valor": 2945094.83,
     "aba": "deputados",
-    "pessoas": 8
+    "pessoas": 8,
+    "categorias": {
+     "Divulgação": 1261168.5,
+     "Veículos e combustível": 1063314.57,
+     "Viagens, passagens e hospedagem": 98771.4,
+     "Escritório, aluguel e apoio": 521840.36
+    }
    },
    {
     "nome": "Senadores",
     "valor": 1265511.39,
     "aba": "senadores",
-    "pessoas": 3
+    "pessoas": 3,
+    "categorias": {
+     "Divulgação": 389152.64,
+     "Escritório, aluguel e apoio": 295388.0,
+     "Viagens, passagens e hospedagem": 270009.89,
+     "Veículos e combustível": 310960.86
+    }
    }
   ],
   "categorias": [

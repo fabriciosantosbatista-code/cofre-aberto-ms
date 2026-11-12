@@ -422,20 +422,21 @@ def fluxo_cota(cg, est, fed, sen):
         c = (cat or "").upper()
         return next((g for g, chaves in GRUPOS_CATEGORIA if any(k in c for k in chaves)), "Outros")
     vi = lambda v: v.get("verbaIndenizatoria") or {}
-    cats, forn = {}, {}
+    forn = {}
     soma = lambda d, g, v: d.__setitem__(g, d.get(g, 0) + (v or 0))
+    por = {"cg": {}, "est": {}, "fed": {}, "sen": {}}  # categorias de cada casa
     for x in sen.get("senadores", []):
         for c in x.get("ceapsCategorias") or []:
-            soma(cats, grupo(c["categoria"]), c["valor"])
+            soma(por["sen"], grupo(c["categoria"]), c["valor"])
     for x in fed.get("deputados", []):
         for c in x.get("ceapCategorias") or []:
-            soma(cats, grupo(c["categoria"]), c["valor"])
+            soma(por["fed"], grupo(c["categoria"]), c["valor"])
     for x in est.get("vereadores", []):
         for c, v in (vi(x).get("categorias") or {}).items():
-            soma(cats, grupo(c), v if isinstance(v, (int, float)) else 0)
+            soma(por["est"], grupo(c), v if isinstance(v, (int, float)) else 0)
     v_cg = sum(vi(v).get(f"gastoPago{ANO}") or 0 for v in cg.get("vereadores", []))
     if v_cg:  # a verba dos vereadores de CG é publicada sem categoria
-        soma(cats, "Verba dos vereadores de CG (sem categoria)", v_cg)
+        por["cg"]["Verba dos vereadores de CG (sem categoria)"] = v_cg
     for lst, chave in ((sen.get("senadores", []), "notasCeaps"), (fed.get("deputados", []), "despesas"), (est.get("vereadores", []), "despesas")):
         for x in lst:
             for n in x.get(chave) or []:
@@ -446,12 +447,19 @@ def fluxo_cota(cg, est, fed, sen):
                 f = forn.setdefault(k, {"nome": (n.get("fornecedor") or "").strip(), "valor": 0.0, "gabinetes": set()})
                 f["valor"] += float(n.get("valor") or 0)
                 f["gabinetes"].add(x.get("nome"))
-    fontes = [("Vereadores de CG", v_cg, "camara"),
-              ("Deputados estaduais", sum(vi(d).get(f"gastoPago{ANO}") or 0 for d in est.get("vereadores", [])), "deputados-estaduais"),
-              ("Deputados federais", sum(d.get("cotaGastaAno") or 0 for d in fed.get("deputados", [])), "deputados"),
-              ("Senadores", sum(x.get("cotaGastaAno") or 0 for x in sen.get("senadores", [])), "senadores")]
+    fontes = [("Vereadores de CG", v_cg, "camara", "cg"),
+              ("Deputados estaduais", sum(vi(d).get(f"gastoPago{ANO}") or 0 for d in est.get("vereadores", [])), "deputados-estaduais", "est"),
+              ("Deputados federais", sum(d.get("cotaGastaAno") or 0 for d in fed.get("deputados", [])), "deputados", "fed"),
+              ("Senadores", sum(x.get("cotaGastaAno") or 0 for x in sen.get("senadores", [])), "senadores", "sen")]
     ns = (len(cg.get("vereadores", [])), len(est.get("vereadores", [])), len(fed.get("deputados", [])), len(sen.get("senadores", [])))
-    return {"fontes": [{"nome": n, "valor": round(v, 2), "aba": a, "pessoas": p} for (n, v, a), p in zip(fontes, ns)],
+    saida, cats = [], {}
+    for (n, v, aba, k), p in zip(fontes, ns):
+        soma_c = sum(por[k].values()) or 1
+        fl = {g: round(x * v / soma_c, 2) for g, x in por[k].items() if x > 0}  # categorias reescaladas ao valor pago da casa
+        for g, x in fl.items():
+            soma(cats, g, x)
+        saida.append({"nome": n, "valor": round(v, 2), "aba": aba, "pessoas": p, "categorias": fl})
+    return {"fontes": saida,
             "categorias": [{"nome": g, "valor": round(v, 2)} for g, v in sorted(cats.items(), key=lambda kv: -kv[1]) if v > 0],
             "fornecedores": [{"nome": f["nome"], "valor": round(f["valor"], 2), "gabinetes": len(f["gabinetes"])}
                              for f in sorted(forn.values(), key=lambda f: -f["valor"])[:8]]}
