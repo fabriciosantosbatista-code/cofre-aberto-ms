@@ -417,6 +417,34 @@ def bloco_emendas(p):
             f"Conta o mês do pagamento, inclusive de emendas de anos anteriores. <a href='/cofre-aberto-ms.html#aba=emendas'>Ver todas as emendas no painel →</a></p>")
 
 
+_PATRIMONIO = None
+
+
+def bloco_patrimonio(p):
+    """Patrimônio declarado ao TSE em cada candidatura desde 2018 (dados/eleicoes.json, coletar_tse.py)."""
+    global _PATRIMONIO
+    if _PATRIMONIO is None:
+        el = carregar("eleicoes.json") or {}
+        _PATRIMONIO = {x["chave"]: x for x in el.get("atuais", [])}
+    x = _PATRIMONIO.get(f"{p['grupo']}|{p['nome']}")
+    serie = (x or {}).get("patrimonio") or []
+    if not serie:
+        return ""
+    mx = max(s_["patrimonio"] for s_ in serie) or 1
+    barras = "".join(f"<div class='bar'><span>{s_['ano']} · {e(s_['cargo'])}</span><b>{brl(s_['patrimonio'])}</b>"
+                     f"<div class='t'><i style='width:{s_['patrimonio'] / mx * 100:.1f}%'></i></div></div>" for s_ in serie)
+    var = ""
+    if len(serie) > 1:
+        d = serie[-1]["patrimonio"] - serie[0]["patrimonio"]
+        var = (f" De {serie[0]['ano']} a {serie[-1]['ano']}, o patrimônio declarado {'subiu' if d >= 0 else 'caiu'} "
+               f"<strong>{brl(abs(d))}</strong>.")
+    return (f"<h2 id='patrimonio'>Patrimônio declarado ao TSE</h2>"
+            f"<p>O que {e(p['nome'])} declarou em cada candidatura desde 2018.{var}</p><div class='bars'>{barras}</div>"
+            f"<p style='margin-top:10px;font-size:.8rem'>Fonte: TSE, bens declarados no registro de candidatura — em geral pelo valor de compra, "
+            f"em valores nominais. Crescer ou diminuir não indica irregularidade (herança, venda de bens, forma de declarar). "
+            f"<a href='/cofre-aberto-ms.html#aba=eleicoes'>Ver todos no painel →</a></p>")
+
+
 def pagina(p, irmaos):
     g = GRUPOS[p["grupo"]]
     cargo = g["cargo"] if p["grupo"] in ("vereador", "estadual") else f"{g['cargo']} por {p['uf']}"
@@ -525,6 +553,7 @@ def pagina(p, irmaos):
 {grafico(ev, ANO)}
 {bloco_cat}
 {bloco_emendas(p)}
+{bloco_patrimonio(p)}
 {bloco_notas}
 {bloco_cx}
 {bloco_irmaos}
