@@ -12,9 +12,12 @@ O **Cofre Aberto MS** ([cofreabertoms.com.br](https://cofreabertoms.com.br)) é 
 - 25 deputados estaduais da Assembleia Legislativa de MS (ALEMS)
 - 8 deputados federais de Mato Grosso do Sul
 - 3 senadores de Mato Grosso do Sul
-- Prefeitura Municipal de Campo Grande
+- Governo do Estado de MS (despesas, contratos, obras, licitações, diárias e folha) e Prefeitura Municipal de Campo Grande (despesas, contratos e aditivos)
 - 286 magistrados ativos do TJMS e do TRT24 (os juízes eleitorais do TRE-MS são juízes do TJMS)
-- Além de listas completas dos 513 deputados federais e 81 senadores do Brasil, e de câmaras municipais de 14 cidades do interior de MS.
+- Supersalários: as maiores remunerações do poder público em MS, com nome e penduricalhos
+- Auditoria automática: 25 testes que cruzam notas e contratos com a Receita Federal, o TSE, a folha do Estado e as sanções da CGU
+- Brasil: Presidência da República (cartão corporativo desde 2013, viagens, despesas, salários), STF (contracheques dos ministros), 513 deputados federais e 81 senadores
+- Câmaras municipais de 14 cidades do interior de MS.
 
 Todos os dados vêm diretamente de fontes oficiais — Portal da Transparência da Câmara de Campo Grande, da ALEMS, da Câmara dos Deputados e do Senado Federal — e são **coletados e publicados automaticamente todos os dias**, sem edição manual. Cada nota fiscal é individualizada: fornecedor, CNPJ, valor e, quando disponível, link para o documento original.
 
@@ -25,7 +28,8 @@ O projeto nasceu da constatação de que, embora esses dados sejam legalmente p�
 | Número | O que é |
 |---|---|
 | **22.519** | Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor) |
-| **R$ 4,5 bi+** | Total de gastos públicos catalogados em 2026 (Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares) |
+| **R$ 25,5 bi+** | Total de gastos públicos catalogados em 2026 (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares) |
+| **R$ 21,0 bi** | Pagos pelo Governo do Estado de MS em 2026 |
 | **R$ 4,1 bi** | Pagos pela Prefeitura de Campo Grande em 2026, em 11.963 empenhos |
 | **R$ 5,9 mi** | Verba indenizatória paga aos 29 vereadores de Campo Grande em 2026 |
 | **R$ 13,0 mi** | CEAP paga aos 25 deputados estaduais de MS em 2026 |
@@ -35,6 +39,8 @@ O projeto nasceu da constatação de que, embora esses dados sejam legalmente p�
 | **R$ 4,4 mi/mês** | Folha de pessoal dos 29 gabinetes da Câmara de Campo Grande (684 funcionários, outubro/2026) |
 | **R$ 24,0 mi/mês** | Folha bruta dos 286 magistrados ativos de MS (TJMS e TRT24, com a gratificação eleitoral do TRE-MS) |
 | **546** | Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões) |
+| **421** | Pessoas com líquido acima do teto constitucional no último mês publicado (aba Supersalários) |
+| **289** | Sinais de atenção da Auditoria automática (27 de nível forte) |
 | **100%** | Dos dados vêm de fontes oficiais — estimativas são sempre marcadas (ver Metodologia) |
 
 Todos os números são recalculados automaticamente pela coleta diária e podem variar ligeiramente a cada consulta — os valores acima refletem o estado do painel na data desta atualização.

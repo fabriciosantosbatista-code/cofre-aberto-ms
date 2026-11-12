@@ -345,7 +345,9 @@ def status_fontes():
     pref = carregar("prefeitura.json")
     d = pref.get("ultimoEmpenho")
     add("prefeitura", "SIG-Transparência da Prefeitura de Campo Grande", "https://sig-transparencia.campogrande.ms.gov.br/despesas/consulta",
-        pref.get("ultimaAtualizacao"), f"empenho de {data_br(d)}" if d else None, em_dia(d, 45))
+        pref.get("ultimaAtualizacao"), f"empenho de {data_br(d)}" if d else None, em_dia(d, 45),
+        f"o SIG-Transparência da Prefeitura não publica empenhos novos desde {data_br(d)} — a coleta diária confere todo dia"
+        if d and not em_dia(d, 15) else None)
 
     ct = carregar("prefeitura_contratos.json")
     d = max_data(c.get("inicio") for c in ct.get("contratos", []))

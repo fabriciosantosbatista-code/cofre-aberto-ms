@@ -114,7 +114,11 @@ def atualizar_kit_imprensa(cg, est, fed, sen, pref, emendas, mags, status, cx, c
     pref_tot = pref.get("totalDespesas") or 0
     folha_jud = sum((m.get("resumo") or {}).get("totalFolhaMensalBrutaAtivos") or 0 for m in mags)
     ativos = sum((m.get("resumo") or {}).get("totalAtivos") or 0 for m in mags if "TRE" not in str(m.get("fonte", "")))  # juízes eleitorais = juízes do TJMS
-    total_cat = pref_tot + verba_cg + ceap_est + ceap_fed + ceaps_sen + emendas_tot
+    gov = carregar("governo_ms.json")
+    gov_tot = ((gov.get("totais") or {}).get("pago") or 0) if gov.get("ano") == ANO else 0
+    ss = carregar("supersalarios.json")
+    au = carregar("auditoria.json")
+    total_cat = gov_tot + pref_tot + verba_cg + ceap_est + ceap_fed + ceaps_sen + emendas_tot
 
     data_ref = (status.get("ultimaAtualizacao") or date.today().isoformat())[:10]
     a, m, d = data_ref.split("-")
@@ -125,13 +129,17 @@ def atualizar_kit_imprensa(cg, est, fed, sen, pref, emendas, mags, status, cx, c
       <li>{len(deps_est)} deputados estaduais da Assembleia Legislativa de MS (ALEMS)</li>
       <li>{len(deps_fed)} deputados federais de Mato Grosso do Sul</li>
       <li>{len(senadores)} senadores de Mato Grosso do Sul</li>
-      <li>Prefeitura Municipal de Campo Grande</li>
+      <li>Governo do Estado de MS (despesas, contratos, obras, licitações, diárias e folha) e Prefeitura Municipal de Campo Grande (despesas, contratos e aditivos)</li>
       <li>{ativos} magistrados ativos do TJMS e do TRT24 (os juízes eleitorais do TRE-MS são juízes do TJMS)</li>
-      <li>Além de listas completas dos 513 deputados federais e 81 senadores do Brasil, e de câmaras municipais de {camaras_n} cidades do interior de MS.</li>
+      <li>Supersalários: as maiores remunerações do poder público em MS, com nome e penduricalhos</li>
+      <li>Auditoria automática: {len(au.get("regras") or {})} testes que cruzam notas e contratos com a Receita Federal, o TSE, a folha do Estado e as sanções da CGU</li>
+      <li>Brasil: Presidência da República (cartão corporativo desde 2013, viagens, despesas, salários), STF (contracheques dos ministros), 513 deputados federais e 81 senadores</li>
+      <li>Câmaras municipais de {camaras_n} cidades do interior de MS.</li>
     </ul>""")
     linhas = [
         (milhar(n_notas), "Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor)"),
-        (valor_curto(total_cat) + "+", f"Total de gastos públicos catalogados em {ANO} (Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares)"),
+        (valor_curto(total_cat) + "+", f"Total de gastos públicos catalogados em {ANO} (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares)"),
+        *([(valor_curto(gov_tot), f"Pagos pelo Governo do Estado de MS em {ANO}")] if gov_tot else []),
         (valor_curto(pref_tot), f"Pagos pela Prefeitura de Campo Grande em {ANO}, em {milhar(pref.get('totalNotasFiscais') or 0)} empenhos"),
         (valor_curto(verba_cg), f"Verba indenizatória paga aos {len(vereadores)} vereadores de Campo Grande em {ANO}"),
         (valor_curto(ceap_est), f"CEAP paga aos {len(deps_est)} deputados estaduais de MS em {ANO}"),
@@ -143,6 +151,10 @@ def atualizar_kit_imprensa(cg, est, fed, sen, pref, emendas, mags, status, cx, c
     ]
     if cx:
         linhas.append((milhar(cx), "Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões)"))
+    if ss.get("liquidoAcimaTeto"):
+        linhas.append((milhar(ss["liquidoAcimaTeto"]), f"Pessoas com líquido acima do teto constitucional no último mês publicado (aba Supersalários)"))
+    if au.get("sinais"):
+        linhas.append((milhar(len(au["sinais"])), f"Sinais de atenção da Auditoria automática ({sum(1 for x in au['sinais'] if x['nivel'] == 'forte')} de nível forte)"))
     linhas.append(("100%", "Dos dados vêm de fontes oficiais — estimativas são sempre marcadas (ver Metodologia)"))
     tabela = "\n".join(f'      <tr><td class="valor">{v}</td><td class="desc">{t}</td></tr>' for v, t in linhas)
     html = troca_auto(html, "numeros", '<table class="numeros">\n' + tabela + "\n    </table>")
@@ -316,6 +328,13 @@ def main():
     nf = len(carregar("feeds/index.json").get("parlamentares") or [])
     if nf:
         html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Siga um político)', rf"\g<1>{nf}\2", html)
+    au = carregar("auditoria.json")
+    if au.get("regras"):
+        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Auditoria automática)', rf"\g<1>{len(au['regras'])} testes\2", html)
+    stf = carregar("stf.json")
+    n_stf = len((((stf.get("remuneracao") or {}).get("ultimoMes")) or {}).get("ministros") or [])
+    if n_stf:
+        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Supremo Tribunal Federal)', rf"\g<1>{n_stf} ministros\2", html)
     if status.get("ultimaAtualizacao"):
         a, m, d = status["ultimaAtualizacao"][:10].split("-")
         html = re.sub(r'(<time id="data-atualizacao">)[^<]*(</time>)', rf"\g<1>{d}/{m}/{a}\2", html)

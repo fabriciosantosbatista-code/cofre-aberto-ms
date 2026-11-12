@@ -151,6 +151,20 @@ const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
     if (BAD.test(au.tx)) falha(`[${nome}] Auditoria mostra ${au.tx.match(BAD)}`);
     if (au.ovX > 1) falha(`[${nome}] Auditoria: rolagem horizontal (${au.ovX}px)`);
     console.log(`  ✅ auditoria: ${au.n} sinais na tela · placar com ${au.p} linhas`);
+    // abas sem lista clicável: conferem se as tabelas principais têm linhas e se não há NaN/undefined
+    const tabelasPorAba = { presidencia: ["tabela-pr-cartao", "tabela-pr-unidades", "tabela-pr-orc", "tabela-pr-rem", "tabela-pr-mun"],
+      stf: ["tabela-stf-min", "tabela-stf-ult", "tabela-stf-comp"], "governo-ms": ["tabela-gov-contratos", "tabela-gov-lic"] };
+    for (const [aba, ids] of Object.entries(tabelasPorAba)) {
+      onde = aba;
+      await page.locator(`button[data-tab="${aba}"]`).evaluate((e) => e.click());
+      await page.waitForTimeout(3000);
+      const r = await page.evaluate(([a, ids]) => ({ n: ids.map((i) => document.querySelectorAll(`#${i} tbody tr`).length),
+        tx: document.getElementById("tab-" + a).innerText, ovX: document.documentElement.scrollWidth - innerWidth }), [aba, ids]);
+      r.n.forEach((n, i) => { if (n < 1) falha(`[${nome}] ${aba}: tabela ${ids[i]} vazia`); });
+      if (BAD.test(r.tx)) falha(`[${nome}] ${aba} mostra ${r.tx.match(BAD)}`);
+      if (r.ovX > 1) falha(`[${nome}] ${aba}: rolagem horizontal (${r.ovX}px)`);
+      console.log(`  ✅ ${aba}: linhas ${r.n.join("/")}`);
+    }
 
     // evolução: os 4 grupos têm gráfico e ranking; clicar num parlamentar troca o gráfico
     onde = "aba evolucao";
