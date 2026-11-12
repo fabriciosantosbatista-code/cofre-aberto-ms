@@ -5160,7 +5160,7 @@ function renderEmendasMunicipios(d) {
       const m = mun[+r.dataset.idx];
       pM.innerHTML = `
         <div class="detail-header"><div class="detail-header-text"><h3>${escHTML(m.municipio)}</h3>
-          <div class="detail-meta">${formatBRL(m.total)} recebidos por emendas em ${d.ano} · <a href="/municipio/${slugMun(m.municipio)}/">página do município, com as Emendas Pix desde 2020 →</a></div></div></div>
+          <div class="detail-meta">${formatBRL(m.total)} recebidos por emendas em ${d.ano} · <a href="/municipio/${slugMun(m.municipio)}/">página do município, com as Emendas Pix do ano →</a></div></div></div>
         <div class="subhead">De quem veio</div>
         <div style="overflow-x:auto"><table class="notes-table"><thead><tr><th>Autor da emenda</th><th class="num">Valor</th></tr></thead><tbody>
           ${m.autores.map(a => `<tr><td>${escHTML(a.autor)}${a.atual ? "" : ` <span style="opacity:.6">· comissão, bancada ou ex-parlamentar</span>`}</td><td class="num">${formatBRL(a.valor)}</td></tr>`).join("")}

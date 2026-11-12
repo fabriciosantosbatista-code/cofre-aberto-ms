@@ -5,7 +5,7 @@ Cofre Aberto MS — Página de cada município de MS: /municipio/<slug>/
 Junta, para cada um dos 79 municípios:
   - emendas parlamentares pagas no ano (dados/emendas_municipios.json): total,
     de quem (com link para a página do parlamentar de MS), por tipo e quem recebeu
-  - Emendas Pix (transferências especiais) desde 2020, ano a ano, e os autores
+  - Emendas Pix (transferências especiais) pagas no ano e quem mandou
   - transferências da União no ano (dados/presidencia.json → ms.municipio)
 
 Gera /municipio/<slug>/index.html, o índice /municipio/, dados/municipios_index.json
@@ -87,12 +87,12 @@ def main():
             continue
         sl = slug(nome)
         url = f"/municipio/{sl}/"
-        pm = pix_mun.get(chave(nome), {})
-        pix_total = sum(x["valor"] for x in pm.values())
+        pix_ano = pix_mun.get(chave(nome), {}).get(str(ano_em))  # só o ano de referência
+        pix_total = pix_ano["valor"] if pix_ano else 0
         tu = uniao.get(chave(nome))
         itens = [(brl(m["total"]), f"em emendas parlamentares pagas em {ano_em}"),
                  (milhar(len(m["autores"])), "autores de emenda"),
-                 (brl(pix_total), f"em Emendas Pix desde {min(pm) if pm else 2020}")]
+                 (brl(pix_total), f"em Emendas Pix pagas em {ano_em}")]
         if tu:
             itens.append((brl(tu), f"transferidos pela União em {ANO}" + (f" (até {uniao_ano})" if uniao_ano else "")))
         grid = "<div class='resumo-grid'>" + "".join(f"<div class='resumo-item'><div class='resumo-val'>{e(v)}</div><div class='resumo-label'>{e(l)}</div></div>" for v, l in itens) + "</div>"
@@ -108,15 +108,12 @@ def main():
                 ["Favorecido", "#Valor"], [
                     f"<tr><td class='f'>{e(f['nome'])}<small>{e(f.get('natureza') or '')}</small></td><td class='num'>{brl(f['valor'])}</td></tr>"
                     for f in m["favorecidos"][:20]]))
-        if pm:
-            anos = sorted(pm)
-            blocos.append(f"<h2>Emendas Pix (transferências especiais)</h2><p>Dinheiro que cai direto no caixa da prefeitura, sem convênio. "
-                          f"{brl(pix_total)} de {anos[0]} a {anos[-1]}.</p>" + barras([(a + (' (até agora)' if a == str(HOJE.year) else ''), pm[a]["valor"]) for a in anos]))
-            ult = pm[anos[-1]]
-            blocos.append(f"<h3 style='font-size:.95rem;margin-top:14px'>Quem mandou Emenda Pix em {anos[-1]}</h3>" + tabela(["Autor", "#Valor"], [
-                f"<tr><td class='f'>{autor_link(a)}</td><td class='num'>{brl(a['valor'])}</td></tr>" for a in ult["autores"][:20]]))
+        if pix_ano:
+            blocos.append(f"<h2>Emendas Pix em {ano_em}</h2><p>Transferências especiais: dinheiro que cai direto no caixa da prefeitura, sem convênio. "
+                          f"{brl(pix_total)} pagos em {ano_em}{' até agora' if ano_em == HOJE.year else ''}, de:</p>" + tabela(["Autor", "#Valor"], [
+                f"<tr><td class='f'>{autor_link(a)}</td><td class='num'>{brl(a['valor'])}</td></tr>" for a in pix_ano["autores"][:20]]))
         resumo = (f"{nome} recebeu {compacto(m['total'])} em emendas parlamentares pagas em {ano_em}, de {len(m['autores'])} autores"
-                  + (f", e {compacto(pix_total)} em Emendas Pix desde {min(pm)}" if pm else "") + ".")
+                  + (f", dos quais {compacto(pix_total)} em Emendas Pix" if pix_total else "") + ".")
         titulo = f"{nome} (MS): emendas parlamentares e Emendas Pix em {ano_em} | Cofre Aberto MS"
         jsonld = {"@context": "https://schema.org", "@type": "City", "name": f"{nome} (MS)", "url": SITE + url,
                   "containedInPlace": {"@type": "State", "name": "Mato Grosso do Sul"}}
@@ -147,13 +144,13 @@ def main():
                      f"<td class='num'>{brl(p['pix'])}</td><td class='num'>{brl(p['uniao']) if p['uniao'] else '—'}</td></tr>"
                      for p in sorted(paginas, key=lambda p: -p["total"]))
     idx = cabecalho(f"Emendas Municípios — emendas parlamentares e Emendas Pix em MS {ano_em} | Cofre Aberto MS",
-                    f"Os {len(paginas)} municípios de Mato Grosso do Sul: quanto cada um recebeu de emendas parlamentares, de quem, Emendas Pix e transferências da União.",
+                    f"Os {len(paginas)} municípios de Mato Grosso do Sul: quanto cada um recebeu de emendas parlamentares em {ano_em}, de quem, Emendas Pix e transferências da União.",
                     "/municipio/", None, {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Emendas Municípios", "url": SITE + "/municipio/"},
                     tipo="website").replace("</style>", CSS_EXTRA + "</style>", 1) + f"""<p class="breadcrumb"><a href="/">Início</a> / Emendas Municípios</p>
-<article><h1>Emendas Municípios</h1><p class="cargo" style="margin-bottom:12px">{len(paginas)} municípios: emendas parlamentares pagas em {ano_em}, Emendas Pix desde 2020
+<article><h1>Emendas Municípios</h1><p class="cargo" style="margin-bottom:12px">{len(paginas)} municípios: emendas parlamentares e Emendas Pix pagas em {ano_em}
 e transferências da União em {ANO}. Clique no nome para ver de quem veio o dinheiro e quem recebeu.</p>
 <input class="busca" id="busca-mun" type="search" placeholder="buscar município…" oninput="var q=this.value.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().replace(/[^a-z]/g,'');document.querySelectorAll('#lst-mun tbody tr').forEach(function(t){{t.style.display=t.dataset.n.indexOf(q)>-1?'':'none'}})">
-<div class="tabela-wrap"><table class="lst" id="lst-mun"><thead><tr><th>Município</th><th class="num">Emendas {ano_em}</th><th class="num">Emendas Pix (desde 2020)</th><th class="num">União {ANO}</th></tr></thead><tbody>{linhas}</tbody></table></div>
+<div class="tabela-wrap"><table class="lst" id="lst-mun"><thead><tr><th>Município</th><th class="num">Emendas {ano_em}</th><th class="num">Emendas Pix {ano_em}</th><th class="num">União {ANO}</th></tr></thead><tbody>{linhas}</tbody></table></div>
 </article>""" + RODAPE
     escreve_se_mudou(PASTA / "index.html", idx)
     sm = ROOT / "sitemap.xml"
