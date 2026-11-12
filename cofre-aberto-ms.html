@@ -4959,6 +4959,29 @@ function cifroes(p, g, w) {
   for (let k = 0; k < n; k++) out += `<text class="trilha" data-g="${g}" text-anchor="middle" dominant-baseline="central" style="font-size:${fs}px">$<animateMotion dur="${dur}s" begin="${(-k * dur / n).toFixed(2)}s" repeatCount="indefinite" path="${p}"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="${dur}s" begin="${(-k * dur / n).toFixed(2)}s" repeatCount="indefinite"/></text>`;
   return out;
 }
+// Cofre em SVG: corpo, porta, dobradiças, disco do segredo (girando), maçaneta e pés.
+// aberto = porta aberta para a esquerda (o cofre do centro, por onde o dinheiro entra).
+function cofreSVG(cx, cy, hw, hh, aberto = false, brilho = false) {
+  const x0 = cx - hw, y0 = cy - hh, w = hw * 2, h = hh * 2, ins = Math.max(5, hw * .1), dr = Math.max(5, hh * .17);
+  const dx = cx + hw - ins - dr - 4, dy = y0 + ins + dr + 3, pe = Math.max(4, hh * .14);
+  const ticks = Array.from({ length: 12 }, (_, k) => { const a = k * Math.PI / 6, r1 = dr * .62, r2 = dr * (k % 3 ? .82 : .95);
+    return `M${(dx + r1 * Math.cos(a)).toFixed(1)} ${(dy + r1 * Math.sin(a)).toFixed(1)}L${(dx + r2 * Math.cos(a)).toFixed(1)} ${(dy + r2 * Math.sin(a)).toFixed(1)}`; }).join("");
+  const porta = aberto
+    ? `<path d="M${x0} ${y0 + 3} L${x0 - hw * .5} ${y0 - hh * .16} L${x0 - hw * .5} ${y0 + h + hh * .16} L${x0} ${y0 + h - 3} Z" fill="rgba(245,200,66,.05)" stroke="#f5c842" stroke-opacity=".7" stroke-width="1.3" stroke-dasharray="0"/>
+       <circle cx="${x0 - hw * .3}" cy="${cy}" r="${dr * .8}" fill="none" stroke="#f5c842" stroke-opacity=".6"/>
+       <rect x="${x0 + ins}" y="${y0 + ins}" width="${w - 2 * ins}" height="${h - 2 * ins}" rx="4" fill="rgba(245,200,66,.07)" stroke="#f5c842" stroke-opacity=".25"/>`
+    : `<rect x="${x0 + ins}" y="${y0 + ins}" width="${w - 2 * ins}" height="${h - 2 * ins}" rx="4" fill="none" stroke="#f5c842" stroke-opacity=".28"/>
+       <rect x="${x0 - 2.5}" y="${y0 + h * .2}" width="4" height="${h * .14}" rx="1.5" fill="#f5c842" opacity=".75"/>
+       <rect x="${x0 - 2.5}" y="${y0 + h * .66}" width="4" height="${h * .14}" rx="1.5" fill="#f5c842" opacity=".75"/>`;
+  return `<g class="cofre">
+    <rect x="${x0 + w * .1}" y="${y0 + h - 2}" width="${w * .16}" height="${pe}" rx="1.5" fill="#f5c842" opacity=".55"/>
+    <rect x="${x0 + w * .74}" y="${y0 + h - 2}" width="${w * .16}" height="${pe}" rx="1.5" fill="#f5c842" opacity=".55"/>
+    <rect class="disco" x="${x0}" y="${y0}" width="${w}" height="${h}" rx="${Math.max(6, hw * .14)}" fill="#0b0d13" stroke="#f5c842" stroke-width="${brilho ? 1.8 : 1.3}"
+      stroke-opacity="${brilho ? 1 : .7}" ${brilho ? 'style="filter:drop-shadow(0 0 14px rgba(245,200,66,.35))"' : ""}/>
+    ${porta}
+    ${aberto ? "" : `<g class="anel"><circle cx="${dx}" cy="${dy}" r="${dr}" fill="#12151d" stroke="#f5c842" stroke-opacity=".7"/><path d="${ticks}" stroke="#f5c842" stroke-opacity=".75" stroke-width="1"/></g>
+    <circle cx="${dx}" cy="${dy}" r="${dr * .25}" fill="#f5c842"/>`}</g>`;
+}
 function renderFluxo(d, ano) {
   const f = d && d.fluxoCota; if (!f || !f.fontes?.length || !f.categorias?.length) return;
   const card = document.getElementById("fluxo-cota"); card.hidden = false;
@@ -4968,7 +4991,7 @@ function renderFluxo(d, ano) {
   const cor = (c, i) => c.nome.includes("sem categoria") ? CINZA_FLUXO : CORES_FLUXO[i % CORES_FLUXO.length];
   document.getElementById("fluxo-eyebrow").textContent = `// Parlamentares de MS · cotas e verbas · ${ano}`;
   const box = document.getElementById("fluxo-svg"), m = box.clientWidth < 560;  // celular: desenho mais enxuto, nomes das categorias na legenda
-  const W = m ? 484 : 660, H = 500, CX = m ? 225 : 300, CY = 250, CR = m ? 62 : 70, LARG = 100, sx = m ? 62 : 78, tx = m ? 360 : 478;
+  const W = m ? 484 : 660, H = 500, CX = m ? 225 : 300, CY = 250, CR = m ? 58 : 70, LARG = 100, sx = m ? 68 : 78, tx = m ? 360 : 478;
   const M = (x, y) => `${x.toFixed(1)} ${y.toFixed(1)}`;
   const curva = (x1, y1, x2, y2) => { const m = (x1 + x2) / 2; return `M ${M(x1, y1)} C ${M(m, y1)} ${M(m, y2)} ${M(x2, y2)}`; };
   let defs = "", fitas = "", nos = "";
@@ -4978,17 +5001,16 @@ function renderFluxo(d, ano) {
   fontes.forEach((x, i) => {
     const y = 62 + i * (H - 124) / Math.max(fontes.length - 1, 1), w = Math.max(x.valor / total * LARG, 3);
     const yc = acc + w / 2; acc += w;
-    const r = (m ? 40 : 28) + (m ? 16 : 22) * Math.sqrt(x.valor) / rMax;
+    const r = (m ? 36 : 28) + (m ? 14 : 22) * Math.sqrt(x.valor) / rMax;
     defs += `<linearGradient id="fg-e${i}" gradientUnits="userSpaceOnUse" x1="${sx}" x2="${CX}"><stop offset="0" stop-color="#f5c842" stop-opacity=".25"/><stop offset="1" stop-color="#f5c842" stop-opacity=".75"/></linearGradient>`;
-    const p = curva(sx + r - 4, y, CX - CR + 8, yc);
+    const p = curva(sx + r * 1.12 - 4, y, CX - CR * 1.05 + 8, yc);
     fitas += `<path class="fita" data-g="e${i}" d="${p}" stroke="url(#fg-e${i})" stroke-width="${w.toFixed(1)}"/>`;
-    fitas += cifroes(p, "e${i}", w);
+    fitas += cifroes(p, `e${i}`, w);
     nos += `<g class="no" data-g="e${i}" data-aba="${x.aba}"><title>${escHTML(x.nome)}: ${formatBRL(x.valor)}</title>
-      <circle cx="${sx}" cy="${y}" r="${r.toFixed(1)}" fill="#0b0d13"/><circle class="disco" cx="${sx}" cy="${y}" r="${r.toFixed(1)}" fill="none" stroke="#f5c842" stroke-opacity=".5"/>
-      <circle class="anel" cx="${sx}" cy="${y}" r="${(r + 7).toFixed(1)}" stroke="#f5c842" stroke-opacity=".6"/>
-      <text class="v" x="${sx}" y="${y + 2}" text-anchor="middle" style="font-size:${m ? 17 : r > 40 ? 15 : 13}px">${formatCompact(x.valor)}</text>
-      <text class="l" x="${sx}" y="${y + 16}" text-anchor="middle" style="font-size:${m ? 11 : 8}px;fill:#f5c842">${escHTML(m ? x.nome.replace("Deputados ", "Dep. ").replace("Vereadores de CG", "Vereadores") : x.nome.replace("Deputados ", "Dep. "))}</text>
-      ${m ? "" : `<text class="l" x="${sx}" y="${y + 27}" text-anchor="middle" style="font-size:7.5px;letter-spacing:.04em;text-transform:none">${x.pessoas} pessoas</text>`}</g>`;
+      ${cofreSVG(sx, y, r * 1.15, Math.max(r * .95, 38))}
+      <text class="v" x="${sx}" y="${y + 6}" text-anchor="middle" style="font-size:${m ? 14 : r > 40 ? 15 : 13}px">${formatCompact(x.valor)}</text>
+      <text class="l" x="${sx}" y="${y + 20}" text-anchor="middle" style="font-size:${m ? 9 : 8}px;fill:#f5c842">${escHTML(m ? x.nome.replace("Deputados ", "Dep. ").replace("Vereadores de CG", "Vereadores") : x.nome.replace("Deputados ", "Dep. "))}</text>
+      ${m ? "" : `<text class="l" x="${sx}" y="${y + 31}" text-anchor="middle" style="font-size:7.5px;letter-spacing:.04em;text-transform:none">${x.pessoas} pessoas</text>`}</g>`;
   });
   // saídas: da borda direita do círculo para cada categoria
   acc = CY - LARG / 2;
@@ -4996,9 +5018,9 @@ function renderFluxo(d, ano) {
     const y = 48 + i * (H - 96) / Math.max(cats.length - 1, 1), w = Math.max(c.valor / totCat * LARG, 3), k = cor(c, i);
     const yc = acc + w / 2; acc += w;
     defs += `<linearGradient id="fg-s${i}" gradientUnits="userSpaceOnUse" x1="${CX}" x2="${tx}"><stop offset="0" stop-color="#f5c842" stop-opacity=".7"/><stop offset="1" stop-color="${k}" stop-opacity=".9"/></linearGradient>`;
-    const p = curva(CX + CR - 8, yc, tx, y);
+    const p = curva(CX + CR * 1.05 - 8, yc, tx, y);
     fitas += `<path class="fita" data-g="s${i}" d="${p}" stroke="url(#fg-s${i})" stroke-width="${w.toFixed(1)}"/>`;
-    fitas += cifroes(p, "s${i}", w);
+    fitas += cifroes(p, `s${i}`, w);
     const pct = (c.valor / totCat * 100).toLocaleString("pt-BR", { maximumFractionDigits: 0 }) + "%";
     const [l1, l2] = c.nome.length > 26 ? [c.nome.slice(0, c.nome.lastIndexOf(" ", 26)), c.nome.slice(c.nome.lastIndexOf(" ", 26) + 1)] : [c.nome, ""];
     nos += `<g class="no" data-g="s${i}"><title>${escHTML(c.nome)}: ${formatBRL(c.valor)} (${pct})</title>
@@ -5006,10 +5028,7 @@ function renderFluxo(d, ano) {
       <text class="v" x="${tx + 14}" y="${y + (m ? 4 : 1)}" style="${m ? "font-size:20px" : ""}">${formatCompact(c.valor)}${m ? "" : ` <tspan style="font-size:11px;fill:var(--ink-soft)">${pct}</tspan>`}</text>
       ${m ? "" : `<text class="l" x="${tx + 14}" y="${y + 15}">${escHTML(l1)}</text>${l2 ? `<text class="l" x="${tx + 14}" y="${y + 26}">${escHTML(l2)}</text>` : ""}`}</g>`;
   });
-  const centro = `<g><circle cx="${CX}" cy="${CY}" r="${CR}" fill="#0b0d13" stroke="#f5c842" stroke-width="1.5" style="filter:drop-shadow(0 0 14px rgba(245,200,66,.35))"/>
-      <circle cx="${CX}" cy="${CY}" r="${CR - 9}" fill="none" stroke="#f5c842" stroke-opacity=".18"/>
-      <circle class="anel" cx="${CX}" cy="${CY}" r="${CR + 10}" stroke="#f5c842" stroke-opacity=".7"/>
-      <circle class="anel rev" cx="${CX}" cy="${CY}" r="${CR + 18}" stroke="#f5c842" stroke-opacity=".3"/>
+  const centro = `<g>${cofreSVG(CX, CY, CR * 1.05, CR * .88, true, true)}
       <text class="l" x="${CX}" y="${CY - 18}" text-anchor="middle">Total ${ano}</text>
       <text class="v" x="${CX}" y="${CY + 6}" text-anchor="middle" style="font-size:20px;fill:#f5c842">${formatCompact(total)}</text>
       <text class="l" x="${CX}" y="${CY + 22}" text-anchor="middle" style="font-size:8px">${fontes.reduce((t, x) => t + x.pessoas, 0)} parlamentares</text></g>`;
