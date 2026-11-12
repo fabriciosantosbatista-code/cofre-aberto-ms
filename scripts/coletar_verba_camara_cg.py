@@ -620,6 +620,42 @@ def total_mes_confiavel(dados_mes):
     total = dados_mes.get("totalDeclarado")
     return total if total is not None and total > 0 else None
 
+# Cada ato (027 e 028) tem cota de R$ 150 mil/ano = R$ 12.500/mês. Um total mensal acima disso
+# (com folga de 2%) é erro de leitura do PDF (dígito trocado, total de outro ato ou do ano).
+LIMITE_MES_ATO = 12500 * 1.02
+MESES_NUM = {"jan": "01", "fev": "02", "mar": "03", "abr": "04", "mai": "05", "jun": "06",
+             "jul": "07", "ago": "08", "set": "09", "out": "10", "nov": "11", "dez": "12"}
+
+
+def sanear_meses(v):
+    """Troca totais mensais impossíveis (acima do limite do ato) pela soma das notas daquele mês,
+    marcando o mês como 'total pelos itens'; recalcula os totais. Devolve True se mudou algo."""
+    vi = v.get("verbaIndenizatoria") or {}
+    mudou = False
+    for ato in ("027", "028"):
+        meses = vi.get(f"mesesAto{ato}") or {}
+        for m, total in list(meses.items()):
+            if total <= LIMITE_MES_ATO:
+                continue
+            itens = round(sum(float(d.get("valor") or 0) for d in v.get("despesas") or []
+                              if d.get("ato") == f"ATO {ato}" and (d.get("data") or "")[5:7] == MESES_NUM.get(m)), 2)
+            if 0 < itens <= LIMITE_MES_ATO:
+                meses[m] = itens
+                orig = set(vi.get(f"mesesTotalPelosItens{ato}") or []) | {m}
+                vi[f"mesesTotalPelosItens{ato}"] = sorted(orig, key=MESES_ABREV_ORDEM.index)
+            else:
+                meses.pop(m)
+            log(f"  ⚠️ {v['nome']} Ato {ato} {m}: total R$ {total:,.2f} acima do limite — trocado pela soma das notas (R$ {itens:,.2f})")
+            mudou = True
+    if mudou:
+        g27 = round(sum((vi.get("mesesAto027") or {}).values()), 2)
+        g28 = round(sum((vi.get("mesesAto028") or {}).values()), 2)
+        vi[f"gastoAto027_{ANO_STR}"], vi[f"gastoAto028_{ANO_STR}"] = g27, g28
+        vi[f"gastoPago{ANO_STR}"] = round(g27 + g28, 2)
+        vi["percentualUsado"] = round((g27 + g28) / (vi.get(f"cotaAnual{ANO_STR}") or 1) * 100, 1)
+    return mudou
+
+
 MESES_ABREV_ORDEM = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 
 
@@ -708,6 +744,9 @@ def mesclar_dados(resultado_extraido):
                 abrev = MESES_NUM_PARA_ABREV[mes_num]
 
                 total = total_mes_confiavel(dados_mes)
+                if total is not None and total > LIMITE_MES_ATO:
+                    log(f"  ⚠️ {v['nome']} Ato {ato_num} {abrev}: total lido R$ {total:,.2f} passa do limite mensal — descartado (erro de leitura do PDF)")
+                    total = None
                 if total is not None and meses_dict.get(abrev) != total:
                     meses_dict[abrev] = total
                     mes_mudou = True
@@ -760,6 +799,10 @@ def mesclar_dados(resultado_extraido):
             vereadores_atualizados += 1
             total_notas_novas += notas_novas_vereador
             log(f" {v['nome']}: +{notas_novas_vereador} notas novas" + (", meses atualizados" if mes_mudou else ""))
+
+    for v in atual["vereadores"]:
+        if sanear_meses(v):
+            vereadores_atualizados += 1
 
     if vereadores_atualizados:
         atual["ultimaAtualizacao"] = hoje
