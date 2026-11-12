@@ -5023,7 +5023,7 @@ const COFRE_DEFS = `<linearGradient id="cofreCorpo" x1="0" y1="0" x2="1" y2="1">
 // Torneira dourada na lateral de um cofre: braço saindo do cofre, registro em cruz (gira) e bico virado para baixo.
 // xc = onde o braço sai do cofre; xb = centro do bico; yb = altura do braço; w = largura do jato.
 function torneiraSVG(xc, xb, yb, w, g, k = 1) {
-  const f = n => n.toFixed(1), bw = Math.max(w + 4, 10 * k), xh = xc + (xb - xc) * .42, a = 5 * k;
+  const f = n => n.toFixed(1), bw = 16 * k, xh = xc + (xb - xc) * .42, a = 5 * k;
   return `<g class="torneira" data-g="${g}">
     <rect x="${f(xc)}" y="${f(yb - a)}" width="${f(xb - xc + bw / 2)}" height="${f(2 * a)}" rx="${f(a)}" fill="url(#cofrePorta)" stroke="#5c4a14" stroke-width=".9"/>
     <rect x="${f(xc - 2)}" y="${f(yb - a - 2)}" width="${f(4 * k)}" height="${f(2 * a + 4)}" rx="1.5" fill="#8a6f1f"/>
@@ -5051,11 +5051,11 @@ function renderFluxo(d, ano) {
   let defs = "", fitas = "", nos = "";
   // entradas: empilhadas na borda esquerda do círculo central
   const rMax = Math.sqrt(Math.max(...fontes.map(x => x.valor)));
-  const LJ = m ? 40 : 52, KT = m ? .85 : 1.05;  // jato das torneiras (mais fino que as saídas) e tamanho da torneira
+  const KT = m ? .85 : 1.05, LJ = 16 * KT - 3, maxF = Math.max(...fontes.map(x => x.valor));  // jato das torneiras (mais fino que as saídas) e tamanho da torneira
   let torneiras = "";
   let acc = CY - LJ / 2;
   fontes.forEach((x, i) => {
-    const y = 62 + i * (H - 124) / Math.max(fontes.length - 1, 1), w = Math.max(x.valor / total * LARG, 3), wj = Math.max(x.valor / total * LJ, 3);
+    const y = 62 + i * (H - 124) / Math.max(fontes.length - 1, 1), w = Math.max(x.valor / total * LARG, 3), wj = Math.max(x.valor / maxF * LJ, 2.5);  // todas as torneiras iguais; o jato mais grosso cabe no bico
     const yc = acc + wj / 2; acc += wj;
     const cs = (m ? 40 : 44) + (m ? 14 : 26) * Math.sqrt(x.valor) / rMax, cy = y - 14, ch = cs * .92;
     defs += `<linearGradient id="fg-e${i}" gradientUnits="userSpaceOnUse" x1="${sx}" x2="${CX}"><stop offset="0" stop-color="#f5c842" stop-opacity=".25"/><stop offset="1" stop-color="#f5c842" stop-opacity=".75"/></linearGradient>`;
