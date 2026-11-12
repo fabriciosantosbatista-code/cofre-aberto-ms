@@ -228,6 +228,13 @@ def gerar_csvs():
         [[c.get("id"), c.get("orgao"), c.get("unidade"), c.get("modalidade"), c.get("numero"), c.get("processo"), c.get("data"), c.get("objeto"),
           c.get("situacao"), num(c.get("estimado")), num(c.get("homologado")),
           " | ".join(f"{v['nome']} ({v['cnpj']}): {num(v['valor'])}" for v in c.get("vencedores") or []), c.get("link")] for c in gl.get("compras", [])])
+    stf = carregar("stf.json")
+    contagem["stf_contracheques.csv"] = grava_csv("stf_contracheques.csv",
+        ["ministro", "mes", "bruto", "liquido"],
+        [[m["nome"], s_["mes"], num(s_["bruto"]), num(s_["liquido"])] for m in (stf.get("remuneracao") or {}).get("ministros", []) for s_ in m["serie"]])
+    contagem["stf_despesa_pessoal.csv"] = grava_csv("stf_despesa_pessoal.csv",
+        ["periodo", "despesa_bruta_12_meses", "ativos", "inativos_e_pensionistas", "despesa_total_com_pessoal", "pct_rcl"],
+        [[x["periodo"], num(x.get("bruta")), num(x.get("ativos")), num(x.get("inativos")), num(x.get("dtp")), x.get("pctRCL")] for x in (stf.get("pessoal") or {}).get("serie", [])])
     au = carregar("auditoria.json")
     contagem["auditoria_sinais.csv"] = grava_csv("auditoria_sinais.csv",
         ["visto_em", "teste", "nivel", "titulo", "descricao", "quem_pagou", "empresa", "cnpj", "valor", "evidencias"],
@@ -383,6 +390,12 @@ def status_fontes():
     add("presidencia", "Portal da Transparência do Governo Federal (CGU) — cartão de pagamento, viagens, orçamento, servidores e transferências",
         "https://portaldatransparencia.gov.br/download-de-dados", pr.get("ultimaAtualizacao"),
         f"cartão até {ult_cartao[5:]}/{ult_cartao[:4]}" if ult_cartao else None, bool(pr) and em_dia(pr.get("ultimaAtualizacao"), 8))
+
+    stf = carregar("stf.json")
+    add("stf", "DadosJusBr (contracheques publicados pelo STF) e Tesouro Nacional — SICONFI (Relatório de Gestão Fiscal)",
+        "https://dadosjusbr.org/", stf.get("ultimaAtualizacao"),
+        f"contracheques até {(stf.get('remuneracao') or {}).get('ate', '')[5:]}/{(stf.get('remuneracao') or {}).get('ate', '')[:4]}" if stf else None,
+        bool(stf) and em_dia(stf.get("ultimaAtualizacao"), 8))
 
     cidades, paradas = 0, []
     for f in sorted((DADOS / "camaras").glob("*.json")):

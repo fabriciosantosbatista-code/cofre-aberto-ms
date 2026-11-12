@@ -367,6 +367,10 @@ jobs:
         timeout-minutes: 30
         run: python3 scripts/coletar_presidencia.py $( [ "$(date +%u)" = "1" ] || echo --rapido ) || echo "⚠️ coletar_presidencia.py falhou — dados anteriores mantidos"
 
+      - name: STF — contracheques dos ministros (DadosJusBr) e despesa com pessoal (SICONFI)
+        timeout-minutes: 15
+        run: python3 scripts/coletar_stf.py || echo "⚠️ coletar_stf.py falhou — dados anteriores mantidos"
+
       - name: Auditoria — sinais de atenção (cruza notas, contratos e Receita)
         run: python3 scripts/gerar_auditoria.py || echo "⚠️ gerar_auditoria.py falhou — sinais anteriores mantidos"
 

@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-12T03:15:05",
+ "geradoEm": "2026-11-12T11:58:26",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
@@ -86,6 +86,14 @@
    "url": "https://portaldatransparencia.gov.br/download-de-dados",
    "coleta": "2026-11-12T02:11:00",
    "dadoMaisRecente": "cartão até 08/2026",
+   "nivel": "ok",
+   "mensagem": null
+  },
+  "stf": {
+   "fonte": "DadosJusBr (contracheques publicados pelo STF) e Tesouro Nacional — SICONFI (Relatório de Gestão Fiscal)",
+   "url": "https://dadosjusbr.org/",
+   "coleta": "2026-11-12T11:54:23",
+   "dadoMaisRecente": "contracheques até 08/2026",
    "nivel": "ok",
    "mensagem": null
   },

@@ -503,6 +503,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button data-tab="deputados-brasil"><span class="dot"></span> Dep. Federais Brasil</button>
       <button data-tab="senado-brasil"><span class="dot"></span> Senado Brasil</button>
       <button data-tab="presidencia"><span class="dot"></span> Presidência</button>
+      <button data-tab="stf"><span class="dot"></span> STF</button>
       <div class="nav-group-label">Publicações</div>
       <a class="nav-link" href="boletim/"><span class="dot"></span> Boletim semanal</a>
       <a class="nav-link" href="empresa/"><span class="dot"></span> Empresas</a>
@@ -1519,6 +1520,70 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button class="pager-btn" id="pr-mun-mais" style="margin-top:10px;display:none"></button>
       <p class="section-note" style="margin-top:16px">Fonte: <a href="https://portaldatransparencia.gov.br/download-de-dados" target="_blank" rel="noopener">Portal da Transparência do Governo Federal (CGU)</a>
         — cartão de pagamento (CPGF), viagens a serviço, orçamento da despesa, servidores (SIAPE) e transferências. Atualização automática.</p>
+    </div>
+  </section>
+
+  <section class="tabpanel" id="tab-stf">
+    <div class="hero">
+      <div class="hero-label">Supremo Tribunal Federal · Remuneração dos ministros e despesa com pessoal</div>
+      <div class="hero-number" id="stf-pessoal">—</div>
+      <div class="hero-desc">de <b>despesa com pessoal</b> do STF nos 12 meses até <span id="stf-periodo">—</span> (ativos, aposentados e pensionistas),
+        segundo o Relatório de Gestão Fiscal. Abaixo, o contracheque de cada ministro mês a mês.</div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="stf-n">—</div><div class="mini-stat-label">ministros com contracheque no período</div></div>
+        <div><div class="mini-stat-value" id="stf-media">—</div><div class="mini-stat-label">média bruta mensal por ministro</div></div>
+        <div><div class="mini-stat-value" id="stf-maior">—</div><div class="mini-stat-label" id="stf-maior-label">maior bruto num mês</div></div>
+        <div><div class="mini-stat-value" id="stf-data">—</div><div class="mini-stat-label">atualizado em</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-note cx-aviso">ℹ️ <b>Como ler.</b> O subsídio do ministro do STF (<span id="stf-sub">R$ 46.366,19</span>) é o teto do funcionalismo.
+        O bruto pode passar dele por verbas que a Constituição deixa fora do teto — férias com o terço constitucional, 13º, abono de permanência
+        (de quem já poderia se aposentar), indenizações e pagamentos de exercícios anteriores —, e o "abate-teto" corta o que excede nas demais.
+        Meses de férias e dezembro (13º) ficam naturalmente mais altos. <b>Diárias, passagens e contratos não entram:</b> o portal de transparência
+        do STF recusa acessos de fora do Brasil, e o DadosJusBr não recebe esses dados do tribunal.</p>
+      <div class="section-head"><h2 class="section-title">Quanto cada ministro recebeu</h2></div>
+      <div class="section-note" id="stf-rem-nota"></div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-stf-min" data-cartoes>
+          <thead><tr><th>Ministro(a)</th><th class="num">Meses</th><th class="num">Média bruta/mês</th><th class="num">Bruto no período</th><th class="num">Líquido no período</th><th class="num">Maior mês</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="subhead">O que compõe o contracheque</div>
+      <select class="search-box" id="stf-sel" aria-label="Ministro" style="max-width:360px"></select>
+      <div class="bar-list largo" id="stf-itens" style="margin-top:10px"></div>
+      <div class="subhead">Mês a mês (bruto)</div>
+      <div class="bar-list largo" id="stf-serie"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Último contracheque publicado</h2></div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-stf-ult" data-cartoes>
+          <thead><tr><th>Ministro(a)</th><th class="num">Subsídio e vantagens</th><th class="num">Outras verbas¹</th><th class="num">Descontos²</th><th class="num">Líquido</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="section-note" style="margin-top:8px">¹ Férias, 13º, auxílios, indenizações, exercícios anteriores. ² Imposto de renda, previdência, abate-teto e outros.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Despesa com pessoal do STF</h2></div>
+      <div class="section-note">Soma dos 12 meses anteriores ao fim de cada quadrimestre, como manda a Lei de Responsabilidade Fiscal. Inclui servidores,
+        ministros, aposentados e pensionistas. Despesa total com pessoal (DTP) é a que conta para o limite da LRF.</div>
+      <div class="bar-list largo" id="stf-pes-serie"></div>
+      <div class="subhead">Comparação com os outros tribunais superiores (último quadrimestre)</div>
+      <div class="card card-x-scroll">
+        <table class="notes-table" id="tabela-stf-comp" data-cartoes>
+          <thead><tr><th>Tribunal</th><th class="num">Ativos</th><th class="num">Aposentados e pensionistas</th><th class="num">Despesa bruta</th><th class="num">% da receita da União³</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="section-note" style="margin-top:8px">³ Despesa total com pessoal sobre a receita corrente líquida da União.
+        Fontes: <a href="https://dadosjusbr.org/" target="_blank" rel="noopener">DadosJusBr</a> (contracheques publicados pelo STF) e
+        <a href="https://siconfi.tesouro.gov.br/" target="_blank" rel="noopener">Tesouro Nacional — SICONFI</a> (Relatório de Gestão Fiscal). Atualização automática.</p>
     </div>
   </section>
 
@@ -4546,6 +4611,55 @@ function renderContratosGoverno(g) {
     `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Nenhuma obra com aditivo de prazo.</td></tr>`, 20);
 }
 
+// ===================== STF =====================
+function renderSTF(d) {
+  const fmt = v => formatBRL(v || 0), mesBR = k => k ? `${k.slice(5, 7)}/${k.slice(0, 4)}` : "—";
+  const barras = (el, lst, val, rot, cls = "") => {
+    const max = Math.max(...lst.map(val), 1);
+    document.getElementById(el).innerHTML = lst.map(x => `
+      <div class="bar-list-row"><div class="bar-list-label" title="${escHTML(rot(x))}">${escHTML(rot(x))}</div>
+        <div class="bar-list-track"><div class="bar-list-fill ${cls}" style="width:${(val(x) / max * 100).toFixed(1)}%"></div></div>
+        <div class="bar-list-value">${formatCompact(val(x))}</div></div>`).join("") || `<p class="section-note">Sem dados.</p>`;
+  };
+  const r = d.remuneracao || {}, pes = d.pessoal || {};
+  const ms = r.ministros || [];
+  const qLabel = p => p ? `${["abr.", "ago.", "dez."][p.quadrimestre - 1]}/${p.ano}` : "—";
+  const ultP = (pes.serie || []).slice(-1)[0];
+  if (ultP) { document.getElementById("stf-pessoal").textContent = formatCompact(ultP.bruta); document.getElementById("stf-periodo").textContent = qLabel(ultP); }
+  document.getElementById("stf-sub").textContent = fmt(d.subsidio);
+  document.getElementById("stf-n").textContent = ms.length;
+  const brutoMes = m => (m.base + m.outras) / (m.meses || 1);
+  const atuais = ms.filter(m => m.serie.some(s => s.mes === r.ate));
+  document.getElementById("stf-media").textContent = formatCompact(atuais.reduce((t, m) => t + brutoMes(m), 0) / (atuais.length || 1));
+  const top = ms.slice().sort((a, b) => b.maiorBruto - a.maiorBruto)[0];
+  if (top) { document.getElementById("stf-maior").textContent = formatCompact(top.maiorBruto); document.getElementById("stf-maior-label").textContent = `maior bruto num mês (${top.nome.split(" ")[0]}, ${mesBR(top.maiorMes)})`; }
+  document.getElementById("stf-data").textContent = d.ultimaAtualizacao ? formatDate(d.ultimaAtualizacao.slice(0, 10)) : "—";
+  document.getElementById("stf-rem-nota").textContent = `Contracheques de ${mesBR(r.de)} a ${mesBR(r.ate)}. Bruto = subsídio e vantagens + outras verbas (antes dos descontos). Ministros que saíram ou entraram no período têm menos meses.`;
+  document.querySelector("#tabela-stf-min tbody").innerHTML = ms.map(m => `
+    <tr><td data-label="Ministro(a)"><b>${escHTML(m.nome)}</b></td><td data-label="Meses" class="num">${m.meses}</td>
+      <td data-label="Média bruta/mês" class="num">${fmt(brutoMes(m))}</td><td data-label="Bruto no período" class="num">${fmt(m.base + m.outras)}</td>
+      <td data-label="Líquido no período" class="num">${fmt(m.liquido)}</td><td data-label="Maior mês" class="num">${fmt(m.maiorBruto)} <span style="opacity:.6">(${mesBR(m.maiorMes)})</span></td></tr>`).join("");
+  const sel = document.getElementById("stf-sel");
+  sel.innerHTML = ms.map((m, i) => `<option value="${i}">${escHTML(m.nome)}</option>`).join("");
+  const des = () => {
+    const m = ms[+sel.value]; if (!m) return;
+    barras("stf-itens", m.itens.slice(0, 12), x => x.valor, x => x.item, "amber");
+    barras("stf-serie", m.serie, x => x.bruto, x => mesBR(x.mes));
+  };
+  sel.addEventListener("change", des); des();
+  const u = r.ultimoMes || {};
+  document.querySelector("#tabela-stf-ult tbody").innerHTML = (u.ministros || []).map(m => `
+    <tr><td data-label="Ministro(a)"><b>${escHTML(m.nome)}</b> <span style="opacity:.6">${mesBR(u.mes)}</span></td>
+      <td data-label="Subsídio e vantagens" class="num">${fmt(m.base)}</td><td data-label="Outras verbas" class="num">${fmt(m.outras)}</td>
+      <td data-label="Descontos" class="num">${fmt(m.descontos)}</td><td data-label="Líquido" class="num">${fmt(m.liquido)}</td></tr>`).join("");
+  barras("stf-pes-serie", pes.serie || [], x => x.bruta, x => `12 meses até ${qLabel(x)}`, "positive");
+  const pct = v => v != null ? (v.toFixed(3).replace(".", ",") + "%") : "—";
+  document.querySelector("#tabela-stf-comp tbody").innerHTML = (pes.comparacao || []).map(t => `
+    <tr><td data-label="Tribunal"><b>${escHTML(t.tribunal)}</b></td><td data-label="Ativos" class="num">${fmt(t.ativos)}</td>
+      <td data-label="Aposentados e pensionistas" class="num">${fmt(t.inativos)}</td><td data-label="Despesa bruta" class="num">${fmt(t.bruta)}</td>
+      <td data-label="% da receita" class="num">${pct(t.pctRCL)}</td></tr>`).join("");
+}
+
 // ===================== PRESIDÊNCIA =====================
 function renderPresidencia(d) {
   const fmt = v => formatBRL(v || 0), pct = (a, b) => b ? (a / b * 100).toFixed(1).replace(".", ",") + "%" : "—";
@@ -5565,6 +5679,7 @@ const FONTE_ABA = {
   "camaras-ms": { titulo: "Câmaras municipais do interior de MS", csv: [["Vereadores", "camaras_interior.csv"]], json: null },
   "judiciario": { titulo: "Remuneração dos magistrados de MS", csv: [["Magistrados", "judiciario_magistrados.csv"]], json: "tjms_magistrados.json" },
   "deputados-brasil": { titulo: "CEAP dos deputados federais do Brasil", csv: [["Resumo", "deputados_federais_brasil.csv"]], json: "deputados_federais_brasil.json" },
+  "stf": { titulo: "Supremo Tribunal Federal: remuneração dos ministros e despesa com pessoal", csv: [["Contracheques dos ministros", "stf_contracheques.csv"], ["Despesa com pessoal", "stf_despesa_pessoal.csv"]], json: "stf.json" },
   "presidencia": { titulo: "Presidência da República: cartão corporativo, viagens, despesas, remuneração e Governo Federal em MS", csv: [["Cartão por mês", "presidencia_cartao.csv"], ["Viagens de ministros", "presidencia_viagens_ministros.csv"], ["Remuneração dos ministros", "presidencia_ministros.csv"], ["Transferências a MS", "uniao_transferencias_ms.csv"]], json: "presidencia.json" },
   "senado-brasil": { titulo: "CEAPS dos senadores do Brasil", csv: [["Resumo", "senadores_brasil.csv"]], json: "senadores_brasil.json" },
   "conexoes": { titulo: "Conexões entre fornecedores de políticos de MS", csv: [["Conexões", "conexoes_fornecedores.csv"]], json: "conexoes_fornecedores.json" },
@@ -5745,6 +5860,10 @@ async function init() {
       if (btn.dataset.tab === "supersalarios" && !window._ssLoaded) {
         window._ssLoaded = true;
         carregarLeve("supersalarios.json").then(d => { if (d) renderSupersalarios(d); });
+      }
+      if (btn.dataset.tab === "stf" && !window._stfLoaded) {
+        window._stfLoaded = true;
+        carregarJSON("dados/stf.json").then(d => { if (d) renderSTF(d); });
       }
       if (btn.dataset.tab === "presidencia" && !window._prLoaded) {
         window._prLoaded = true;

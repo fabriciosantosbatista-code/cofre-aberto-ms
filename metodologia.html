@@ -123,6 +123,8 @@ como citar e como baixar os dados.</p>
 <td><a href="https://pncp.gov.br/" target="_blank" rel="noopener">Portal Nacional de Contratações Públicas (PNCP)</a>, API pública de consulta.</td><td>dias</td></tr>
 <tr><td><b>Emendas Pix</b></td><td>Transferências especiais pagas a MS desde 2020, por autor e município (aba Emendas)</td>
 <td>Portal da Transparência (CGU), emendas "por favorecido", tipo "Transferências Especiais". O plano de ação do município (Transferegov) não está disponível para consulta de fora do Brasil.</td><td>dias</td></tr>
+<tr><td><b>STF</b></td><td>Contracheque de cada ministro mês a mês e despesa com pessoal do tribunal, comparada aos outros tribunais superiores</td>
+<td>DadosJusBr e Tesouro Nacional (SICONFI). <a href="#stf">Detalhes</a>.</td><td>1 a 2 meses</td></tr>
 <tr><td><b>Auditoria</b></td><td>Sinais de atenção: padrões atípicos nas notas, despesas e contratos</td>
 <td>Cruzamento, feito pelo site, das fontes acima com o cadastro de CNPJ da Receita Federal (BrasilAPI / Minha Receita), as sanções do CEIS e do CNEP (CGU), os contratos e obras do Estado, os aditivos da Prefeitura, a prestação de contas de campanha no <a href="https://dadosabertos.tse.jus.br/" target="_blank" rel="noopener">Portal de Dados Abertos do TSE</a> e a folha de pagamento do Estado. <a href="#auditoria">Regras de cada teste</a>.</td><td>diária</td></tr>
 <tr><td><b>Evolução</b></td><td>Gasto mês a mês em comparação com o ano anterior</td>
@@ -149,6 +151,13 @@ como citar e como baixar os dados.</p>
   <li><strong>Despesas da Presidência:</strong> orçamento da despesa do órgão superior Presidência da República (inclui Vice, EBC e Imprensa Nacional) no mandato atual; "realizado" é o valor pago.</li>
   <li><strong>Remuneração:</strong> presidente, vice e ministros recebem o subsídio fixado pelo Decreto Legislativo 172/2022. Os ministros vêm da folha SIAPE (bruto, abate-teto, "outras remunerações eventuais", em geral jetons de conselhos de estatais, e líquido). O presidente e o vice não estão na folha SIAPE.</li>
   <li><strong>Governo Federal em MS:</strong> transferências da União com UF = MS no ano, por tipo, órgão e município.</li>
+</ul>
+
+<h2 id="stf">Supremo Tribunal Federal</h2>
+<ul>
+  <li><strong>Contracheques dos ministros:</strong> do <a href="https://dadosjusbr.org/" target="_blank" rel="noopener">DadosJusBr</a> (Transparência Brasil), que coleta o que o próprio STF publica, mês a mês desde janeiro de 2025. "Bruto" = subsídio e vantagens + outras verbas (férias, 13º, auxílios, indenizações, exercícios anteriores), antes dos descontos (imposto, previdência, abate-teto).</li>
+  <li><strong>Despesa com pessoal:</strong> do Relatório de Gestão Fiscal (Anexo 1) do STF e dos outros tribunais superiores, na API do <a href="https://siconfi.tesouro.gov.br/" target="_blank" rel="noopener">SICONFI</a> (Tesouro Nacional): soma dos 12 meses até o fim de cada quadrimestre.</li>
+  <li><strong>O que não entra:</strong> diárias, passagens e contratos do STF. O portal de transparência do tribunal recusa acessos de fora do Brasil (onde o robô do site roda), o DadosJusBr não recebe esses dados e os arquivos da CGU só cobrem o Poder Executivo.</li>
 </ul>
 
 <h2 id="auditoria">Auditoria: como funcionam os sinais de atenção</h2>
