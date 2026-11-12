@@ -118,7 +118,9 @@ def atualizar_kit_imprensa(cg, est, fed, sen, pref, emendas, mags, status, cx, c
     gov_tot = ((gov.get("totais") or {}).get("pago") or 0) if gov.get("ano") == ANO else 0
     ss = carregar("supersalarios.json")
     au = carregar("auditoria.json")
-    total_cat = gov_tot + pref_tot + verba_cg + ceap_est + ceap_fed + ceaps_sen + emendas_tot
+    # mesmo total da capa do painel (resumo_capa.json: Governo, Prefeitura, emendas pagas em MS e cotas)
+    total_cat = sum(x.get("valor") or 0 for x in carregar("resumo_capa.json").get("dinheiro") or []) or \
+        (gov_tot + pref_tot + verba_cg + ceap_est + ceap_fed + ceaps_sen + emendas_tot)
 
     data_ref = (status.get("ultimaAtualizacao") or date.today().isoformat())[:10]
     a, m, d = data_ref.split("-")
@@ -138,7 +140,7 @@ def atualizar_kit_imprensa(cg, est, fed, sen, pref, emendas, mags, status, cx, c
     </ul>""")
     linhas = [
         (milhar(n_notas), "Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor)"),
-        (valor_curto(total_cat) + "+", f"Total de gastos públicos catalogados em {ANO} (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares)"),
+        (valor_curto(total_cat) + "+", f"Total de gastos públicos catalogados em {ANO} (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares pagas em MS)"),
         *([(valor_curto(gov_tot), f"Pagos pelo Governo do Estado de MS em {ANO}")] if gov_tot else []),
         (valor_curto(pref_tot), f"Pagos pela Prefeitura de Campo Grande em {ANO}, em {milhar(pref.get('totalNotasFiscais') or 0)} empenhos"),
         (valor_curto(verba_cg), f"Verba indenizatória paga aos {len(vereadores)} vereadores de Campo Grande em {ANO}"),

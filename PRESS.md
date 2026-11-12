@@ -28,7 +28,7 @@ O projeto nasceu da constatação de que, embora esses dados sejam legalmente p�
 | Número | O que é |
 |---|---|
 | **22.512** | Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor) |
-| **R$ 25,5 bi+** | Total de gastos públicos catalogados em 2026 (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares) |
+| **R$ 25,8 bi+** | Total de gastos públicos catalogados em 2026 (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares pagas em MS) |
 | **R$ 21,0 bi** | Pagos pelo Governo do Estado de MS em 2026 |
 | **R$ 4,1 bi** | Pagos pela Prefeitura de Campo Grande em 2026, em 11.963 empenhos |
 | **R$ 5,8 mi** | Verba indenizatória paga aos 29 vereadores de Campo Grande em 2026 |
