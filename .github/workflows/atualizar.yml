@@ -548,6 +548,10 @@ jobs:
   # este job olha o conteúdo, abre/atualiza a issue "alerta-dados" e falha
   # o run (e-mail do GitHub) se houver erro.
   # ------------------------------------------------------------------
+      - name: Avisar buscadores das páginas que mudaram (IndexNow — Bing, DuckDuckGo, Yahoo)
+        continue-on-error: true
+        run: python3 scripts/avisar_buscadores.py || echo "⚠️ aviso aos buscadores falhou — sem impacto no site"
+
   verificar:
     needs: [commit_e_push]
     if: always()
