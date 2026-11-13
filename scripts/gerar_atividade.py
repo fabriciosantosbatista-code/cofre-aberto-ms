@@ -49,7 +49,7 @@ def notas(arquivos):
                     continue
                 doc = str(n.get("nf") or n.get("doc") or n.get("documento") or "").strip()
                 k = f"{grupo}|{p['nome']}|{n.get('data') or ''}|{valor:.2f}|{doc}|{(n.get('fornecedor') or '').strip()[:40]}"
-                out[k] = {"grupo": grupo, "nome": p["nome"], "partido": p.get("partido"), "valor": valor}
+                out[k] = {"grupo": grupo, "nome": p["nome"], "partido": p.get("partido"), "valor": valor, "data": (n.get("data") or "")[:10]}
     return out
 
 
@@ -110,7 +110,12 @@ def main():
     VISTAS.write_text(json.dumps(vistas, ensure_ascii=False, separators=(",", ":"), sort_keys=True), encoding="utf-8")
 
     desde = (date.today() - timedelta(days=6)).isoformat()
-    novas = [k for k, d in vistas.items() if d != "antes" and d >= desde]
+    # só gasto recente: nota publicada na semana com data do gasto de até 60 dias atrás. Notas antigas que a casa
+    # publica com atraso (ex.: a Câmara de CG soltando junho a setembro de uma vez) não viram "gastos novos".
+    recente = (date.today() - timedelta(days=60)).isoformat()
+    publicadas = [k for k, d in vistas.items() if d != "antes" and d >= desde]
+    novas = [k for k in publicadas if (atuais[k].get("data") or "") >= recente]
+    atrasadas = len(publicadas) - len(novas)
     hoje = [k for k in novas if vistas[k] == HOJE]
     urls = carregar("paginas_index.json")
     por = {}
@@ -120,6 +125,9 @@ def main():
                                                      "url": urls.get(f"{n['grupo']}|{n['nome']}")})
         x["notas"] += 1
         x["valor"] += n["valor"]
+        if n.get("data"):
+            x["de"] = min(x.get("de") or n["data"], n["data"])
+            x["ate"] = max(x.get("ate") or n["data"], n["data"])
     ranking = sorted(({**x, "valor": round(x["valor"], 2)} for x in por.values()), key=lambda x: (-x["notas"], -x["valor"]))
 
     gc, gl, pc = carregar("governo_ms_contratos.json"), carregar("governo_ms_licitacoes.json"), carregar("prefeitura_contratos.json")
@@ -135,7 +143,7 @@ def main():
         "registros": sum(registros.values()), "registrosPorTipo": registros,
         "notasHoje": len(hoje), "valorHoje": round(sum(atuais[k]["valor"] for k in hoje), 2),
         "notasSemana": len(novas), "valorSemana": round(sum(atuais[k]["valor"] for k in novas), 2),
-        "desde": desde, "semana": ranking[:12]}, ensure_ascii=False, indent=1), encoding="utf-8")
+        "desde": desde, "semana": ranking[:12], "atrasadasSemana": atrasadas, "limiteGasto": recente}, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"✅ atividade.json — {len(hoje)} notas novas hoje, {len(novas)} na semana, {sum(registros.values())} registros")
 
 

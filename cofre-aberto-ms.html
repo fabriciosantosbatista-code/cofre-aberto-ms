@@ -1870,7 +1870,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
 
     <div class="section" id="sec-novos" hidden>
-      <div class="section-head"><h2 class="section-title">Gastos novos esta semana</h2></div>
+      <div class="section-head"><h2 class="section-title">Notas publicadas esta semana</h2></div>
       <div class="section-note" id="novos-nota"></div>
       <div class="novos-grid" id="novos-grid"></div>
     </div>
@@ -5159,7 +5159,7 @@ function renderAtividade(a) {
     <span>Última coleta <b>${dia}${hora ? " às " + hora : ""}</b></span>
     <span><b>${n(a.registros)}</b> registros</span>
     <span>Notas novas ${rotDia} <b class="mais">+${n(a.notasHoje)}</b></span>
-    <span>Na semana <b class="mais">+${n(a.notasSemana)}</b> (${formatCompact(a.valorSemana)})</span>
+    <span>Publicadas na semana <b class="mais">+${n(a.notasSemana)}</b> (${formatCompact(a.valorSemana)})</span>
     ${a.semana?.length ? `<a href="#aba=panorama" data-novos>Ver quem →</a>` : ""}`;
   sinc.hidden = false;
   sinc.querySelector("[data-novos]")?.addEventListener("click", ev => { ev.preventDefault();
@@ -5168,11 +5168,13 @@ function renderAtividade(a) {
   const lst = a.semana || [];
   if (!lst.length) return;
   const cargo = { vereador: "Vereador(a) de CG", estadual: "Deputado(a) estadual", federal: "Deputado(a) federal", senador: "Senador(a)" };
-  document.getElementById("novos-nota").textContent = `Notas fiscais que entraram nos dados oficiais de ${formatDate(a.desde)} até hoje: ${n(a.notasSemana)} notas, ${formatBRL(a.valorSemana)}. ` +
-    `A data é a do dia em que a nota apareceu na fonte, não a da compra (as casas publicam com atraso).`;
+  document.getElementById("novos-nota").textContent = `Notas fiscais que as casas legislativas publicaram de ${formatDate(a.desde)} até hoje, de gastos feitos a partir de ${formatDate(a.limiteGasto || a.desde)}: ` +
+    `${n(a.notasSemana)} notas, ${formatBRL(a.valorSemana)}. Cada cartão mostra o período dos gastos — as casas publicam com semanas de atraso.` +
+    (a.atrasadasSemana ? ` Outras ${n(a.atrasadasSemana)} notas de gastos mais antigos também foram publicadas na semana e não entram aqui.` : "");
   document.getElementById("novos-grid").innerHTML = lst.map(x => `<${x.url ? `a href="${x.url}"` : "div"} class="novo-card">
       <span class="q">+${n(x.notas)} ${x.notas > 1 ? "notas" : "nota"}</span><span class="nm">${escHTML(x.nome)}</span>
-      <span class="mt">${cargo[x.grupo] || ""}${x.partido ? " · " + escHTML(x.partido) : ""} · ${formatCompact(x.valor)}</span></${x.url ? "a" : "div"}>`).join("");
+      <span class="mt">${cargo[x.grupo] || ""}${x.partido ? " · " + escHTML(x.partido) : ""} · ${formatCompact(x.valor)}</span>
+      ${x.de ? `<span class="mt">gastos de ${formatDate(x.de)}${x.ate && x.ate !== x.de ? " a " + formatDate(x.ate) : ""}</span>` : ""}</${x.url ? "a" : "div"}>`).join("");
   document.getElementById("sec-novos").hidden = false;
 }
 carregarJSON("dados/atividade.json").then(a => { if (a) renderAtividade(a); });
