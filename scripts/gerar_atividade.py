@@ -53,6 +53,12 @@ def notas(arquivos):
     return out
 
 
+# Dias em que notas entraram no site por mudança NOSSA no coletor, não por publicação da fonte. Essas notas contam
+# como antigas ("antes"). 10 e 11/11/2026: o leitor de PDFs da Câmara de CG passou a ler os PDFs grandes por
+# inteiro (commit 36a0f5f) e a reconhecer mais meses e totais (commit d6ccdd8) — ~260 notas de jun–set apareceram.
+REPROCESSAMENTOS = {("vereador", "2026-11-10"), ("vereador", "2026-11-11")}
+
+
 def carga_inicial(novas, vistas, atuais):
     """Quando um parlamentar ganha de uma vez mais de 30 notas e elas são mais de 60% das dele, é carga
     do ano inteiro (fonte nova ou formato novo), não gasto novo: essas notas ficam como "antes"."""
@@ -107,6 +113,7 @@ def main():
     if massa:
         print(f"  {len(massa)} notas tratadas como carga inicial, não como novas")
     vistas = {k: vistas.get(k) or ("antes" if k in massa else HOJE) for k in atuais}  # só as notas que existem hoje
+    vistas = {k: "antes" if (k.split("|")[0], d) in REPROCESSAMENTOS else d for k, d in vistas.items()}
     VISTAS.write_text(json.dumps(vistas, ensure_ascii=False, separators=(",", ":"), sort_keys=True), encoding="utf-8")
 
     desde = (date.today() - timedelta(days=6)).isoformat()
