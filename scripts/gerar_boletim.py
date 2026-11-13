@@ -54,6 +54,7 @@ def totais_atuais():
     pref = carregar("prefeitura.json")
     em = carregar("emendas_municipios.json")
     ct = carregar("prefeitura_contratos.json")
+
     return {"governoPago": (gov.get("totais") or {}).get("pago") if gov.get("ano") == ANO else None,
             "prefeituraPago": pref.get("totalDespesas") if pref.get("ano") == ANO else None,
             "emendasMS": em.get("totalMS") if em.get("ano") == ANO else None,
@@ -137,8 +138,20 @@ def main():
     au = carregar("auditoria.json")
     sinais = novos_desde("sinaisVistos", au.get("sinais", []) if au.get("ano") == ANO else [], lambda s_: s_["id"])
     ct = carregar("prefeitura_contratos.json")
+    # cada contrato é reconhecido pelo nº de registro da Prefeitura, que não muda; antes era um hash com o valor,
+    # e um contrato antigo que teve o valor alterado aparecia como "novo" (ex.: registro 206679, janeiro, valor revisto em 12/11)
+    def hash_antigo(c):
+        return hashlib.sha1(f"{c['fornecedor']}|{c['inicio']}|{c['valor']}|{c['objeto'][:80]}".encode()).hexdigest()[:12]
+
+    def id_contrato(c):
+        return f"r{c['registro']}" if c.get("registro") else hash_antigo(c)
+
+    cv = estado.get("contratosVistos") or {}
+    if cv and not any(k.startswith("r") and k[1:].isdigit() for k in cv):  # migra o estado para o nº de registro, mantendo as datas
+        base = min(cv.values())
+        estado["contratosVistos"] = {id_contrato(c): cv.get(hash_antigo(c), base) for c in ct.get("contratos", []) if c.get("compra")}
     contratos = sorted(novos_desde("contratosVistos", [c for c in ct.get("contratos", []) if c.get("compra")] if ct.get("ano") == ANO else [],
-                                   lambda c: hashlib.sha1(f"{c['fornecedor']}|{c['inicio']}|{c['valor']}|{c['objeto'][:80]}".encode()).hexdigest()[:12]),
+                                   id_contrato),
                        key=lambda c: -c["valor"])
     salvar(ESTADO, {"atualizado": HOJE.isoformat(), "vistas": vistas, "retratos": retratos,
                     "alertasVistos": estado["alertasVistos"], "contratosVistos": estado["contratosVistos"],
