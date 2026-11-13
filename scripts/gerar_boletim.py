@@ -162,8 +162,8 @@ def main():
 
     cv = estado.get("contratosVistos") or {}
     if cv and not any(k.startswith("r") and k[1:].isdigit() for k in cv):  # migra o estado para o nº de registro, mantendo as datas
-        base = min(cv.values())
-        estado["contratosVistos"] = {id_contrato(c): cv.get(hash_antigo(c), base) for c in ct.get("contratos", []) if c.get("compra")}
+        data_base = min(cv.values())
+        estado["contratosVistos"] = {id_contrato(c): cv.get(hash_antigo(c), data_base) for c in ct.get("contratos", []) if c.get("compra")}
     contratos = sorted(novos_desde("contratosVistos", [c for c in ct.get("contratos", []) if c.get("compra")] if ct.get("ano") == ANO else [],
                                    id_contrato),
                        key=lambda c: -c["valor"])

@@ -299,6 +299,7 @@ def cabecalho(titulo, descricao, url, imagem, jsonld, tipo="profile"):
 <style>{CSS}</style>
 <script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>
 <script defer data-domain="cofreabertoms.com.br" src="https://plausible.io/js/script.js"></script>
+<script defer src="/analytics.js"></script>
 </head>
 <body>
 <div class="page">
