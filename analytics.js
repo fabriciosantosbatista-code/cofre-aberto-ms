@@ -1,24 +1,14 @@
-/* Cofre Aberto MS — Google Analytics com aviso de cookies (LGPD).
-   Para ligar: coloque o ID da métrica do GA4 abaixo (ex.: "G-ABC123XYZ").
-   Com o ID vazio, nada é carregado e nenhum aviso aparece.
-   O GA só é carregado depois que o visitante aceita; a escolha fica guardada no navegador. */
+/* Cofre Aberto MS — aviso de cookies do Google Analytics (LGPD, Modo de consentimento do Google).
+   A tag do GA (G-D3SHQ303HR) fica no <head> de cada página com o consentimento "negado" por padrão:
+   assim o Google só recebe sinais anônimos, sem cookies. Este arquivo mostra o aviso e, se o visitante
+   aceitar, libera os cookies de análise (consent update). A escolha fica guardada no navegador. */
 (function () {
-  var GA_ID = "G-D3SHQ303HR";
-  if (!GA_ID) return;
   var CHAVE = "cofre-cookies";
   function ler() { try { return localStorage.getItem(CHAVE); } catch (e) { return null; } }
   function gravar(v) { try { localStorage.setItem(CHAVE, v); } catch (e) {} }
-  function carregarGA() {
-    var s = document.createElement("script");
-    s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { dataLayer.push(arguments); };
-    gtag("js", new Date());
-    gtag("config", GA_ID, { anonymize_ip: true });
-  }
+  function liberar() { if (window.gtag) gtag("consent", "update", { analytics_storage: "granted" }); }
   var escolha = ler();
-  if (escolha === "sim") return carregarGA();
+  if (escolha === "sim") return liberar();
   if (escolha === "nao") return;
   function aviso() {
     var d = document.createElement("div");
@@ -33,7 +23,7 @@
     d.addEventListener("click", function (ev) {
       var c = ev.target.getAttribute && ev.target.getAttribute("data-c");
       if (!c) return;
-      gravar(c); d.remove(); if (c === "sim") carregarGA();
+      gravar(c); d.remove(); if (c === "sim") liberar();
     });
     document.body.appendChild(d);
   }
