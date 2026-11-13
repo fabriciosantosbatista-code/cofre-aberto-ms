@@ -3,7 +3,7 @@
    Com o ID vazio, nada é carregado e nenhum aviso aparece.
    O GA só é carregado depois que o visitante aceita; a escolha fica guardada no navegador. */
 (function () {
-  var GA_ID = "";
+  var GA_ID = "G-D3SHQ303HR";
   if (!GA_ID) return;
   var CHAVE = "cofre-cookies";
   function ler() { try { return localStorage.getItem(CHAVE); } catch (e) { return null; } }
