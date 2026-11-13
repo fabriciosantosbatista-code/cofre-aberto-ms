@@ -63,6 +63,45 @@ def folha_estado():
     return linhas, f"{mes:02d}/{ANO}"
 
 
+def acumulos_de_cargos(linhas, mes):
+    """Servidor ativo do Estado que também aparece na folha da ALEMS ou num gabinete da Câmara de CG.
+
+    A ALEMS e a Câmara não publicam CPF: o cruzamento é pelo nome completo, só com nomes de 3+ palavras que aparecem
+    uma única vez entre os ativos do Estado (reduz homônimos). Acumular pode ser legal (CF, art. 37, XVI: dois de
+    professor, professor + técnico/científico, dois da saúde) — é sinal de atenção, não acusação."""
+    ativos = {}
+    for x in linhas:
+        sit = (x.get("situacao") or "").upper()
+        if sit.startswith("INATIVO") or "PENSION" in sit:
+            continue
+        ativos.setdefault(norm(x.get("nome")), []).append(x)
+    outros = []
+    try:
+        for s_ in json.load(open(DADOS / "alems_servidores.json", encoding="utf-8")).get("servidores") or []:
+            outros.append(("ALEMS (Assembleia Legislativa)", s_.get("nome"), (s_.get("cargo") or "").capitalize(), s_.get("vencimento")))
+    except Exception as e:
+        print(f"  ⚠️ ALEMS: {e}")
+    try:
+        for nome, cargo, lot in (json.load(open(DADOS / "camara_municipal.json", encoding="utf-8")).get("servidoresNomes") or {}).get("lista") or []:
+            if (cargo or "").lower() == "vereador":
+                continue
+            outros.append(("Câmara Municipal de Campo Grande", nome, f"{cargo} — {lot}", None))
+    except Exception as e:
+        print(f"  ⚠️ Câmara CG: {e}")
+    achados = []
+    for onde, nome, cargo, venc in outros:
+        n = norm(nome)
+        if len(n.split()) < 3 or len(ativos.get(n) or []) != 1:
+            continue
+        e_ = ativos[n][0]
+        achados.append({"nome": re.sub(r"\s+", " ", nome).strip().title(), "outroOrgao": onde, "outroCargo": cargo, "outroVencimento": venc,
+                        "estadoOrgao": (e_.get("orgao") or "").strip(), "estadoCargo": (e_.get("cargo") or "").strip().capitalize(),
+                        "estadoVinculo": (e_.get("vinculo") or "").strip().capitalize(), "estadoSituacao": (e_.get("situacao") or "").strip().capitalize(),
+                        "estadoBruto": e_.get("remuneracaoBruta") or e_.get("bruto") or e_.get("valorBruto"), "mesFolha": mes})
+    print(f"  acúmulo de cargos: {len(achados)} nomes na folha do Estado e na ALEMS/Câmara de CG")
+    return achados
+
+
 def main():
     cad = json.load(open(DADOS / "cnpj_cache.json", encoding="utf-8"))
     socios = {}
@@ -91,12 +130,13 @@ def main():
                             "cargo": (x.get("cargo") or "").strip().capitalize(), "vinculo": (x.get("vinculo") or "").strip().capitalize(),
                             "situacao": sit.capitalize(), "admissao": x.get("dataAdmissao"), "cnpj": c, "empresa": razao,
                             "qualificacao": qual, "entradaSociedade": entrada})
+    acumulos = acumulos_de_cargos(linhas, mes)
     if len(linhas) < 50000:
         print(f"❌ folha do Estado com só {len(linhas)} registros — arquivo mantido")
         sys.exit(1)
     (DADOS / "servidores_socios.json").write_text(json.dumps({
         "ultimaAtualizacao": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"), "mesFolha": mes, "registrosFolha": len(linhas),
-        "sociosComCpf": len(socios), "achados": achados}, ensure_ascii=False, indent=1), encoding="utf-8")
+        "sociosComCpf": len(socios), "achados": achados, "acumulos": acumulos}, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"✅ servidores_socios.json — folha {mes} ({len(linhas)} registros) × {len(socios)} sócios: {len(achados)} servidores ativos sócios")
 
 

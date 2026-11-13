@@ -39,6 +39,8 @@ ficaram de fora depois do teste com os dados de nov/2026):
   aditivo_acima_limite  contrato da Prefeitura com acréscimos (fora prorrogações) acima de 25%
   fracionamento_fornecedor  o mesmo órgão comprou da mesma empresa, por dispensa, em processos diferentes
                         no ano — cada um abaixo do limite legal, mas juntos acima dele (Prefeitura e PNCP)
+  acumulo_cargos        servidor ativo do Estado (efetivo ou professor) que também aparece na folha da ALEMS
+                        ou num gabinete da Câmara de CG, pelo nome completo (único na folha do Estado)
   dispensa_acima_limite um mesmo processo de dispensa somando mais que o limite legal
                         (exclui aluguel de imóvel, bancos e concessionárias, que têm
                         outra base legal)
@@ -62,7 +64,7 @@ NIVEL = {"mei_acima_limite": "forte", "situacao_irregular": "forte", "socio_parl
          "empresa_sancionada": "forte", "sancionada_outro_ente": "médio", "socio_sancionado": "forte",
          "possivel_parente": "médio", "entidade_parlamentar": "médio",
          "doador_executivo": "forte", "fornecedor_campanha_executivo": "médio", "preco_acima_estimado": "médio", "obra_prazo_estourado": "médio", "aditivo_acima_limite": "médio",
-         "fracionamento_fornecedor": "médio"}
+         "fracionamento_fornecedor": "médio", "acumulo_cargos": "médio"}
 ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_irregular": "Empresa com CNPJ irregular",
           "socio_parlamentar": "Parlamentar é sócio", "socios_licitacao": "Sócios em comum na mesma licitação",
           "dispensa_acima_limite": "Possível fracionamento de dispensa", "empresa_nova": "Empresa recém-aberta",
@@ -78,7 +80,8 @@ ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_ir
           "fornecedor_campanha_executivo": "Fornecedor da campanha do governador ou da prefeita recebe do governo",
           "preco_acima_estimado": "Licitação do Estado homologada acima do preço estimado",
           "obra_prazo_estourado": "Obra do Estado com prazo mais que dobrado", "aditivo_acima_limite": "Aditivos acima de 25%",
-          "fracionamento_fornecedor": "Várias dispensas à mesma empresa somando acima do limite"}
+          "fracionamento_fornecedor": "Várias dispensas à mesma empresa somando acima do limite",
+          "acumulo_cargos": "Servidor do Estado com cargo também na ALEMS ou na Câmara de CG"}
 
 # naturezas jurídicas de empresa privada (associações, fundos, órgãos e consórcios públicos não têm capital social)
 EMPRESARIAL = re.compile(r"Limitada|Empres[aá]rio|EIRELI|Unipessoal|Sociedade Simples|An[oô]nima Fechada", re.I)
@@ -855,6 +858,24 @@ def main():
                 f"vale pedi-lo pela Lei de Acesso à Informação.",
                 p_["empenhado"], [f"Empenhado: {brl(p_['empenhado'])}", f"Pago: {brl(p_['pago'])}", f"Empenhos: {p_['n']}"],
                 "Prefeitura de CG", p_["forn"][f0], p_["url"])
+
+    # ── Acúmulo de cargos: Estado × ALEMS / Câmara de CG (coletar_servidores_socios.py, pelo nome completo) ──
+    for x in (carregar("servidores_socios.json") or {}).get("acumulos") or []:
+        vinc, cargo_e, cargo_o = (x.get("estadoVinculo") or "").upper(), (x.get("estadoCargo") or "").upper(), (x.get("outroCargo") or "").upper()
+        if re.search(r"BOLSIST|AUTONOM|RESERVA|ESTAGI", vinc) or re.search(r"BOLSA", cargo_e):
+            continue  # bolsa, autônomo, reserva e estágio não são cargo efetivo
+        if re.search(r"SEGURAN|MILITAR", cargo_o) and re.search(r"SARGENT|SOLDAD|CABO|OFICIA|SUBTENENTE|POLIC|BOMBEIR", cargo_e):
+            continue  # policial cedido para a segurança da Assembleia: cessão, não acúmulo
+        if re.search(r"CEDID", cargo_o):
+            continue  # "cedidos c/ ônus": servidor emprestado oficialmente pelo Estado — cessão, não acúmulo
+        add("acumulo_cargos", (x["nome"], x["outroOrgao"]),
+            f"{x['nome']}: {x['estadoCargo'].lower()} do Estado ({x['estadoOrgao']}) e {x['outroCargo'].split(' — ')[0].lower()} na {x['outroOrgao'].split(' (')[0]}",
+            f"O mesmo nome completo aparece como servidor(a) ativo(a) do Governo de MS ({x['estadoCargo']}, {x['estadoOrgao']}, vínculo "
+            f"{x['estadoVinculo'].lower()}, folha de {x.get('mesFolha')}) e na folha da {x['outroOrgao']} ({x['outroCargo']}). A Constituição só "
+            f"permite acumular cargos públicos em poucos casos (art. 37, XVI: dois de professor, professor com técnico ou científico, dois da "
+            f"saúde) e com horários compatíveis. Pode ser homônimo (ALEMS e Câmara não publicam CPF), cessão ou licença — vale conferir.",
+            0, [f"Estado: {x['estadoCargo']} — {x['estadoOrgao']} ({x['estadoVinculo']})", f"{x['outroOrgao']}: {x['outroCargo']}"],
+            x["outroOrgao"].split(" (")[0].replace("Câmara Municipal de Campo Grande", "Câmara de CG"))
 
     # ── Fracionamento entre processos: mesmo órgão, mesma empresa, várias dispensas no ano ──
     # O teste acima olha um processo só; o fracionamento clássico divide a compra em processos diferentes.
