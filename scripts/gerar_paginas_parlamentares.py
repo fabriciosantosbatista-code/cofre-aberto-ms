@@ -457,14 +457,24 @@ def bloco_votacoes(p):
         extra.append(f"{x['presenteSemVoto']} vez(es) presente sem registrar voto")
     if x.get("justificadas"):
         extra.append(f"{x['justificadas']} ausência(s) justificada(s) (licença, missão ou atividade parlamentar)")
-    lin = "".join(f"<tr><td>{data_br(v.get('data'))}</td><td>{e(v.get('descricao') or '')}</td><td><b>{e(v.get('voto') or '—')}</b></td></tr>"
-                  for v in x.get("ultimas") or [])
+    cor = {"SIM": "#2dd4a0", "NÃO": "#ff7a7a", "ABSTENÇÃO": "#f5c842", "OBSTRUÇÃO": "#f5c842"}
+    def linha(v):
+        c = cor.get((v.get("voto") or "").upper())
+        voto = f"<b style='color:{c}'>{e(v['voto'])}</b>" if c else f"<small>{e(v.get('voto') or '—')}</small>"
+        return (f"<tr><td>{data_br(v.get('data'))}</td><td><b>{e(v.get('proposicao') or '')}</b> {e(v.get('ementa') or '')}"
+                f"<br><small>{e(v.get('descricao') or '')}</small></td><td style='white-space:nowrap'>{voto}</td></tr>")
+    todas = x.get("ultimas") or []
+    cab = "<div class='tabela-wrap'><table><thead><tr><th>Data</th><th>Assunto e o que foi votado</th><th>Voto</th></tr></thead><tbody>"
+    lin = "".join(linha(v) for v in todas[:15])
+    resto = (f"<details><summary>Ver todas as {len(todas)} votações</summary>{cab}{''.join(linha(v) for v in todas[15:])}</tbody></table></div></details>"
+             if len(todas) > 15 else "")
     return (f"<h2>Votações no plenário em {_VOTACOES.get('_ano')}</h2>"
-            f"<p>{e(p['nome'])} votou em <strong>{x['votou']} das {x['nominais']}</strong> votações nominais do plenário do {casa} em {_VOTACOES.get('_ano')} "
+            f"<p>{e(p['nome'])} votou em <strong>{x['votou']} das {x['nominais']}</strong> votações nominais do plenário {"da Câmara" if casa == "Câmara" else "do Senado"} em {_VOTACOES.get('_ano')} "
             f"(<strong>{str(x['participacao']).replace('.', ',')}%</strong>"
             + (f"; a média dos colegas de MS é {media:.1f}%".replace(".", ",") if media is not None and len(pares) > 1 else "") + ")."
             + (" " + "; ".join(extra).capitalize() + "." if extra else "") + "</p>"
-            f"<div class='tabela-wrap'><table><thead><tr><th>Data</th><th>Votação</th><th>Voto</th></tr></thead><tbody>{lin}</tbody></table></div>"
+            f"{cab}{lin}</tbody></table></div>{resto}"
+            f"<p><a href='/presenca-votacoes-parlamentares-ms/'>Compare com os outros parlamentares de MS em cada votação →</a></p>"
             f"<p class='aviso'>Participação nas votações nominais (aquelas em que o voto de cada parlamentar fica registrado). Não é presença em sessão: "
             f"as votações simbólicas não registram quem votou. Fonte: dados abertos da {casa}.</p>")
 

@@ -14,7 +14,7 @@ nas votações nominais do plenário — o momento em que o voto de cada um fica
 Gera dados/votacoes.json; cache em dados/votacoes_cache.json.
 """
 
-import json, sys, time
+import json, re, sys, time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -80,17 +80,40 @@ def camara(cache):
         for v, vs in ex.map(votos, novas):
             if vs is None:
                 continue  # falhou: tenta de novo na próxima coleta
-            cv[v["id"]] = {"data": v.get("data"), "descricao": (v.get("descricao") or "").strip()[:220], "nominal": bool(vs), "total": len(vs),
-                           "votos": {str(x["deputado_"]["id"]): x.get("tipoVoto") for x in vs if str(x["deputado_"]["id"]) in deps}}
-    nominais = sorted((v for k, v in cv.items() if v.get("nominal") and (v.get("data") or "").startswith(str(ANO))), key=lambda v: v["data"])
+            antes = cv.get(v["id"]) or {}
+            cv[v["id"]] = {"data": v.get("data"), "hora": (v.get("dataHoraRegistro") or "")[11:16],
+                           "descricao": (v.get("descricao") or "").strip()[:300], "nominal": bool(vs), "total": len(vs),
+                           "votos": {str(x["deputado_"]["id"]): x.get("tipoVoto") for x in vs if str(x["deputado_"]["id"]) in deps},
+                           **{k: antes[k] for k in ("proposicao", "ementa", "aprovacao") if k in antes}}
+
+    # assunto de cada votação nominal: a proposição afetada (ex.: PL 278/2026) e a ementa — busca uma vez e guarda
+    def detalhe(k):
+        j = get(f"{CAM}/votacoes/{k}")
+        return k, (j or {}).get("dados")
+
+    faltam = [k for k, v in cv.items() if v.get("nominal") and "proposicao" not in v]
+    with ThreadPoolExecutor(4) as ex:
+        for k, d in ex.map(detalhe, faltam):
+            if not d:
+                continue
+            p_ = (d.get("proposicoesAfetadas") or [None])[0] or next((o for o in d.get("objetosPossiveis") or [] if o.get("ano")), None) or {}
+            cv[k]["proposicao"] = f"{p_.get('siglaTipo')} {p_.get('numero')}/{p_.get('ano')}" if p_.get("siglaTipo") and p_.get("ano") else ""
+            cv[k]["ementa"] = re.sub(r"\s+", " ", p_.get("ementa") or "").strip()[:300]
+            cv[k]["aprovacao"] = d.get("aprovacao")
+    print(f"  Câmara: assunto de {len(faltam)} votações nominais lido")
+    nominais = sorted(({**v, "id": k} for k, v in cv.items() if v.get("nominal") and (v.get("data") or "").startswith(str(ANO))),
+                      key=lambda v: (v["data"], v.get("hora") or ""))
     out = []
     for i, nome in deps.items():
         votou = [v for v in nominais if (v["votos"].get(i) or "").upper() in VOTOU]
         out.append({"grupo": "federal", "id": i, "nome": nome, "nominais": len(nominais), "votou": len(votou),
                     "ausente": len(nominais) - len(votou), "justificadas": None,
                     "participacao": round(len(votou) / len(nominais) * 100, 1) if nominais else None,
-                    "ultimas": [{"data": v["data"], "descricao": v["descricao"], "voto": v["votos"].get(i) or "Não votou"} for v in nominais[-15:][::-1]]})
-    return out
+                    "ultimas": [{"data": v["data"], "proposicao": v.get("proposicao"), "ementa": v.get("ementa"), "descricao": v["descricao"],
+                                 "voto": v["votos"].get(i) or "Não votou"} for v in nominais[::-1]]})
+    quadro = [{"id": v["id"], "data": v["data"], "proposicao": v.get("proposicao"), "ementa": v.get("ementa"), "descricao": v["descricao"],
+               "aprovacao": v.get("aprovacao"), "votos": {i: v["votos"].get(i) or "—" for i in deps}} for v in nominais[::-1]]
+    return out, quadro, deps
 
 
 def senado():
@@ -113,8 +136,11 @@ def senado():
                     "presenteSemVoto": len(presente), "ausente": len(vs) - len(votou) - len(presente), "justificadas": len(just),
                     "participacao": round(len(votou) / len(vs) * 100, 1) if vs else None,
                     "ultimas": [{"data": (v.get("SessaoPlenaria") or {}).get("DataSessao"),
-                                 "descricao": f"{(v.get('Materia') or {}).get('DescricaoIdentificacao') or ''} — {v.get('DescricaoVotacao') or ''}".strip(" —")[:220],
-                                 "voto": voto(v) or "—"} for v in vs[-15:][::-1]]})
+                                 "proposicao": (v.get("Materia") or {}).get("DescricaoIdentificacao") or "",
+                                 "ementa": re.sub(r"\s+", " ", (v.get("Materia") or {}).get("Ementa") or "").strip()[:300],
+                                 "descricao": (v.get("DescricaoVotacao") or "")[:300], "resultado": v.get("DescricaoResultado"),
+                                 "chave": f"{(v.get('SessaoPlenaria') or {}).get('CodigoSessao')}-{v.get('CodigoSessaoVotacao')}",
+                                 "voto": voto(v) or "—"} for v in vs[::-1]]})
     return out
 
 
@@ -122,10 +148,12 @@ def main():
     cache = carregar("votacoes_cache.json")
     anterior = carregar("votacoes.json")
     try:
-        cam = camara(cache)
+        cam, quadro, deps = camara(cache)
+        quadro = {"deputados": deps, "votacoes": quadro}
     except Exception as e:
         print(f"  ⚠️ Câmara: {e} — mantido o anterior")
         cam = [p for p in anterior.get("parlamentares", []) if p["grupo"] == "federal"]
+        quadro = anterior.get("quadroCamara") or {}
     CACHE.write_text(json.dumps(cache, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     try:
         sen = senado()
@@ -134,12 +162,20 @@ def main():
         sen = []
     if not sen:
         sen = [p for p in anterior.get("parlamentares", []) if p["grupo"] == "senador"]
+    # quadro do Senado: cada votação nominal (pela sessão + nº da votação) com o voto de cada senador de MS
+    qs = {}
+    for p in sen:
+        for v in p.get("ultimas") or []:
+            q = qs.setdefault(v.get("chave") or v["data"] + v["descricao"], {k: v.get(k) for k in ("data", "proposicao", "ementa", "descricao", "resultado")} | {"votos": {}})
+            q["votos"][p["id"]] = v["voto"]
+    quadro_sen = {"senadores": {p["id"]: p["nome"] for p in sen}, "votacoes": sorted(qs.values(), key=lambda q: q["data"] or "", reverse=True)}
     if not cam and not sen:
         print("❌ sem votações — arquivo mantido")
         sys.exit(1)
     SAIDA.write_text(json.dumps({"ano": ANO, "ultimaAtualizacao": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
                                  "fonte": "Câmara dos Deputados (dadosabertos.camara.leg.br) e Senado Federal (legis.senado.leg.br) — votações nominais do plenário",
-                                 "parlamentares": cam + sen}, ensure_ascii=False, indent=1), encoding="utf-8")
+                                 "parlamentares": cam + sen, "quadroCamara": quadro, "quadroSenado": quadro_sen},
+                                ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"✅ votacoes.json — {len(cam)} deputados federais, {len(sen)} senadores de MS")
     for p in cam + sen:
         print(f"   {p['nome']}: votou em {p['votou']} de {p['nominais']} ({p['participacao']}%)")

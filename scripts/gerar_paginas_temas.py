@@ -353,6 +353,35 @@ def tema_termometro():
             "Termômetro da transparência", corpo)
 
 
+COR_VOTO = {"SIM": "#2dd4a0", "NÃO": "#ff7a7a", "NAO": "#ff7a7a", "ABSTENÇÃO": "#f5c842", "OBSTRUÇÃO": "#f5c842", "VOTOU": "#8b95aa"}
+
+
+def celula_voto(v):
+    c = COR_VOTO.get((v or "").upper())
+    return f"<td style='text-align:center;white-space:nowrap'>{f'<b style=color:{c}>{e(v)}</b>' if c else f'<small>{e(v or chr(8212))}</small>'}</td>"
+
+
+def assunto(v):
+    res = {1: "aprovado", 0: "rejeitado"}.get(v.get("aprovacao")) if v.get("aprovacao") is not None else (v.get("resultado") or "").lower()
+    return (f"<b>{e(v.get('proposicao') or '')}</b> {e(v.get('ementa') or '')}"
+            f"<br><small>{e(v.get('descricao') or '')}{' · ' + e(res) if res and res not in (v.get('descricao') or '').lower() else ''}</small>")
+
+
+def quadro_votos(q, chave, grupo, idx, titulo):
+    """Tabela: cada votação nominal (assunto) × voto de cada parlamentar de MS. As 20 mais recentes abertas, o resto em 'ver todas'."""
+    quem, vs = q.get(chave) or {}, q.get("votacoes") or []
+    if not quem or not vs:
+        return ""
+    ids = list(quem)
+    cab = "".join(f"<th style='text-align:center'>{link_empresa(quem[i].split()[0] if len(quem[i].split()[0]) > 3 else ' '.join(quem[i].split()[:2]), idx.get(grupo + '|' + quem[i]))}</th>" for i in ids)
+    lin = lambda v: f"<tr><td>{data_br(v.get('data'))}</td><td style='min-width:260px'>{assunto(v)}</td>{''.join(celula_voto(v['votos'].get(i)) for i in ids)}</tr>"
+    tab = lambda linhas: f"<div class='tabela-wrap'><table><thead><tr><th>Data</th><th>Assunto e o que foi votado</th>{cab}</tr></thead><tbody>{linhas}</tbody></table></div>"
+    html = f"<h2>{e(titulo)}</h2><p>{len(vs)} votações nominais, da mais recente para a mais antiga. — = não votou.</p>" + tab("".join(lin(v) for v in vs[:20]))
+    if len(vs) > 20:
+        html += f"<details><summary>Ver todas as {len(vs)} votações</summary>{tab(''.join(lin(v) for v in vs[20:]))}</details>"
+    return html
+
+
 def tema_votacoes():
     d = carregar("votacoes.json")
     ps = [x for x in d.get("parlamentares", []) if x.get("nominais")]
@@ -373,7 +402,9 @@ def tema_votacoes():
                 f"<td class='num'>{x['nominais'] - x['votou']}</td><td class='num'><b>{str(x['participacao']).replace('.', ',')}%</b></td>"
                 + (f"<td class='num'>{x.get('presenteSemVoto') or 0}</td><td class='num'>{x.get('justificadas') or 0}</td>" if g == "senador" else "") + "</tr>"
                 for x in gs])
-    corpo += "<p>Em cada página de parlamentar estão as últimas votações, com o voto de cada um.</p>"
+    corpo += quadro_votos(d.get("quadroCamara") or {}, "deputados", "federal", idx, "Como votou cada deputado federal de MS")
+    corpo += quadro_votos(d.get("quadroSenado") or {}, "senadores", "senador", idx, "Como votou cada senador de MS")
+    corpo += "<p>Em cada página de parlamentar estão todas as votações dele, com o assunto e o voto.</p>"
     corpo += f"<p class='aviso'>Fonte: {e(d.get('fonte') or '')}. Atualizado a cada coleta.</p>"
     return ("/presenca-votacoes-parlamentares-ms/", f"Presença nas votações: deputados federais e senadores de MS {ano} | Cofre Aberto MS",
             f"Quantas votações nominais cada deputado federal e senador de MS votou em {ano}, com o voto de cada um nas últimas votações.",
