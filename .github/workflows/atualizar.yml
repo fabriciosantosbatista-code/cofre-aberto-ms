@@ -501,7 +501,7 @@ jobs:
           git config user.email "bot@cofreabertoms.com.br"
           git add dados/ index.html vereadores-campo-grande.html deputados-estaduais-ms.html senadores-ms.html press.html PRESS.md \
                   vereador/ deputado-estadual/ deputado-federal/ senador/ empresa/ orgao/ municipio/ boletim/ \
-                  perguntas/ termometro-da-transparencia/ presenca-votacoes-parlamentares-ms/ governo-ms/ prefeitura-campo-grande/ supersalarios-ms/ auditoria/ emendas-parlamentares-ms/ cartao-corporativo-presidente/ salario-ministros-stf/ fotos/p/ sitemap.xml
+                  perguntas/ apoie/ termometro-da-transparencia/ presenca-votacoes-parlamentares-ms/ governo-ms/ prefeitura-campo-grande/ supersalarios-ms/ auditoria/ emendas-parlamentares-ms/ cartao-corporativo-presidente/ salario-ministros-stf/ fotos/p/ sitemap.xml
 
           if git diff --staged --quiet; then
             echo "Sem mudanças"

@@ -411,6 +411,32 @@ def tema_votacoes():
             f"Presença nas votações: deputados federais e senadores de MS em {ano}", corpo)
 
 
+def tema_apoie():
+    corpo = """<div class="resposta">O Cofre Aberto MS é independente: não tem dono político, não vende anúncio e não cobra pelos dados.
+Ele funciona com o trabalho de quem acredita que o dinheiro público tem de ser visível para todos. Se o site é útil para você, ajude a mantê-lo.</div>
+<h2>Faça um Pix</h2>
+<style>.pix-valores{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}.pix-valores button{background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:999px;padding:8px 16px;font:600 .9rem Inter,sans-serif;cursor:pointer}
+.pix-valores button.ativo{background:#f5c842;color:#14120a;border-color:#f5c842}.pix-corpo{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+#pix-qr{background:#fff;padding:10px;border-radius:12px;line-height:0}.pix-txt{flex:1;min-width:240px}
+#pix-codigo{width:100%;box-sizing:border-box;background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:10px;padding:10px;font:12px ui-monospace,Menlo,monospace;resize:none}
+#pix-copiar{border:0;cursor:pointer}</style>
+<div id="pix"></div>
+<h2>Para onde vai o dinheiro</h2>
+<ul><li>Domínio, hospedagem e serviços que o robô usa para coletar os dados todo dia.</li>
+<li>Tempo para criar novos testes de fiscalização, novas fontes (municípios, saúde, educação) e corrigir erros.</li>
+<li>Pedidos de informação (LAI) e checagens quando um dado não fecha.</li></ul>
+<h2>Nossos compromissos</h2>
+<ul><li><b>Prestação de contas:</b> quanto entrou e no que foi gasto, publicado aqui periodicamente.</li>
+<li><b>Independência:</b> não aceitamos dinheiro de partidos, políticos, candidatos nem de empresas que recebem dinheiro público em MS.</li>
+<li><b>Os dados continuam abertos e gratuitos</b> para todos, apoiando ou não.</li></ul>
+<p>Outras formas de ajudar: compartilhe o <a href="/boletim/">boletim semanal</a>, mande sugestões e correções pelo WhatsApp e indique o site para jornalistas.</p>
+<script src="/vendor/qrcode-generator-1.4.4.js"></script>
+<script src="/apoie-pix.js" defer></script>"""
+    return ("/apoie/", "Apoie o Cofre Aberto MS — transparência independente | Cofre Aberto MS",
+            "Ajude a manter o Cofre Aberto MS: um site independente que mostra o dinheiro público de Mato Grosso do Sul. Doe por Pix.",
+            "Apoie o Cofre Aberto MS", corpo)
+
+
 # ---------------------------------------------------------------- perguntas
 def perguntas():
     out = []
@@ -500,7 +526,7 @@ def perguntas():
 
 
 def main():
-    temas = [t for t in (tema_termometro(), tema_votacoes(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_presidencia(), tema_stf()) if t]
+    temas = [t for t in (tema_apoie(), tema_termometro(), tema_votacoes(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_presidencia(), tema_stf()) if t]
     pergs = perguntas()
     TEMAS[:] = [(u, h1) for u, _, _, h1, _ in temas]
     PERGUNTAS[:] = [(f"/perguntas/{s}/", p) for s, p, *_ in pergs]
