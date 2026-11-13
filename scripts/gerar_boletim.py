@@ -167,9 +167,28 @@ def main():
     contratos = sorted(novos_desde("contratosVistos", [c for c in ct.get("contratos", []) if c.get("compra")] if ct.get("ano") == ANO else [],
                                    id_contrato),
                        key=lambda c: -c["valor"])
+    # contratos com valor alterado: guarda o último valor de cada contrato (pelo nº de registro) e registra cada mudança
+    valores = estado.get("contratosValores") or {}
+    mudancas = estado.get("contratosMudancas") or []
+    sem_valores = not valores
+    for c in ct.get("contratos", []) if ct.get("ano") == ANO else []:
+        if not c.get("registro"):
+            continue
+        k, v = f"r{c['registro']}", round(float(c.get("valor") or 0), 2)
+        if k in valores and abs(valores[k] - v) > 0.5:
+            mudancas.append({"registro": c["registro"], "data": HOJE.isoformat(), "fornecedor": c["fornecedor"], "objeto": (c.get("objeto") or "")[:160],
+                             "inicio": c.get("inicio"), "antes": valores[k], "depois": v})
+        valores[k] = v
+    if sem_valores:  # base: o contrato da Sobral (registro 206679) teve o valor revisto em 12/11, antes de o site guardar os valores
+        mudancas.append({"registro": 206679, "data": "2026-11-12", "fornecedor": "SOBRAL - CHAVES E CARIMBOS LTDA", "objeto": "Serviço de cópia de chave de carro.",
+                         "inicio": "2026-01-07", "antes": 269754.95, "depois": 149301.65})
+    mudancas = [m for m in mudancas if m["data"] >= (HOJE - timedelta(days=90)).isoformat()]
+    estado["contratosValores"], estado["contratosMudancas"] = valores, mudancas
+    alterados = sorted((m for m in mudancas if m["data"] >= ini.isoformat()), key=lambda m: -abs(m["depois"] - m["antes"]))
     salvar(ESTADO, {"atualizado": HOJE.isoformat(), "vistas": vistas, "retratos": retratos,
                     "alertasVistos": estado["alertasVistos"], "contratosVistos": estado["contratosVistos"],
-                    "sinaisVistos": estado.get("sinaisVistos", {}), "regrasVistas": estado.get("regrasVistas", {})})
+                    "sinaisVistos": estado.get("sinaisVistos", {}), "regrasVistas": estado.get("regrasVistas", {}),
+                    "contratosValores": estado["contratosValores"], "contratosMudancas": estado["contratosMudancas"]})
 
     deltas = []
     for chave, rotulo, aba in (("governoPago", "pagos pelo Governo do Estado", "governo-ms"),
@@ -192,6 +211,8 @@ def main():
     if contratos:
         c = contratos[0]
         linhas_zap.append(f"📑 {len(contratos)} contrato(s) novo(s) publicado(s) pela Prefeitura de CG; o maior: {c['fornecedor']} ({compacto(c['valor'])}).")
+    if alterados:
+        linhas_zap.append(f"✏️ {len(alterados)} contrato(s) da Prefeitura de CG tiveram o valor alterado no portal.")
     if alertas:
         linhas_zap.append(f"⚠️ {len(alertas)} ponto(s) de atenção novo(s) nos contratos da Prefeitura.")
     if sinais:
@@ -241,6 +262,16 @@ somando <strong>{brl(total_novas)}</strong>. A data de cada nota é a de emissã
         blocos.append(f"""<h2>Contratos novos na semana — Prefeitura de Campo Grande</h2>
 <p>Contratos que apareceram no portal da Prefeitura nesta semana (a data de início costuma ser anterior à publicação).</p>
 <div class="tabela-wrap"><table><thead><tr><th>Início</th><th>Fornecedor e objeto</th><th class="num">Valor</th></tr></thead><tbody>{lin}</tbody></table></div>""")
+    if alterados:
+        def var(m):
+            d_ = m["depois"] - m["antes"]
+            pct = f" ({d_ / m['antes'] * 100:+.0f}%)".replace(".", ",") if m["antes"] else ""
+            return f"{'+' if d_ > 0 else '−'}{brl(abs(d_))}{pct}"
+        lin = "".join(f"<tr><td>{data_br(m['data'])}</td><td class='f'>{e(m['fornecedor'])}<small>contrato de {data_br(m['inicio'])} · {e(m['objeto'][:120])}</small></td>"
+                      f"<td class='num'>{brl(m['antes'])}</td><td class='num'>{brl(m['depois'])}</td><td class='num'>{var(m)}</td></tr>" for m in alterados[:15])
+        blocos.append(f"""<h2>Contratos com valor alterado na semana — Prefeitura de Campo Grande</h2>
+<p>Contratos antigos cujo valor mudou no portal da Prefeitura nesta semana (aditivo, supressão ou correção). O motivo está no processo de cada um.</p>
+<div class="tabela-wrap"><table><thead><tr><th>Mudou em</th><th>Fornecedor e objeto</th><th class="num">Antes</th><th class="num">Agora</th><th class="num">Diferença</th></tr></thead><tbody>{lin}</tbody></table></div>""")
     if alertas:
         blocos.append("<h2>Pontos de atenção novos</h2><p class='aviso'>Critérios objetivos para facilitar a apuração. <strong>Nenhum deles indica irregularidade.</strong></p>" + "".join(
             f"<div class='dest'><b>{e(a['titulo'])}</b><small>{e(a['rotulo'])} · {e(a['descricao'][:240])}</small></div>" for a in alertas[:15]))
