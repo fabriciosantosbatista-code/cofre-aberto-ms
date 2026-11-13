@@ -83,10 +83,13 @@ def minusc(t):
 
 def compacto(v):
     v = float(v or 0)
+    br = lambda x: f"{x:,.1f}".replace(",", "X").replace(".", ",").replace("X", ".")  # 1.234,5
+    if v >= 1e9:
+        return f"R$ {br(v / 1e9)} bi"
     if v >= 1e6:
-        return f"R$ {v / 1e6:,.1f} mi".replace(".", ",")
+        return f"R$ {br(v / 1e6)} mi"
     if v >= 1e3:
-        return f"R$ {v / 1e3:,.1f} mil".replace(".", ",")
+        return f"R$ {br(v / 1e3)} mil"
     return brl(v)
 
 
@@ -305,7 +308,7 @@ def cabecalho(titulo, descricao, url, imagem, jsonld, tipo="profile"):
 
 
 RODAPE = f"""<footer><span>© {ANO} Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
-<span><a href="/">Início</a> · <a href="/cofre-aberto-ms.html">Painel</a> · <a href="/boletim/">Boletim semanal</a> · <a href="/empresa/">Empresas</a> · <a href="/orgao/">Órgãos</a> · <a href="/metodologia.html">Metodologia e dados</a> · <a href="/press.html">Imprensa</a></span></footer>
+<span><a href="/">Início</a> · <a href="/cofre-aberto-ms.html">Painel</a> · <a href="/boletim/">Boletim semanal</a> · <a href="/empresa/">Empresas</a> · <a href="/orgao/">Órgãos</a> · <a href="/perguntas/">Perguntas</a> · <a href="/governo-ms/">Governo MS</a> · <a href="/prefeitura-campo-grande/">Prefeitura CG</a> · <a href="/supersalarios-ms/">Supersalários</a> · <a href="/metodologia.html">Metodologia e dados</a> · <a href="/press.html">Imprensa</a></span></footer>
 </div>
 </body>
 </html>
