@@ -1,15 +1,15 @@
 {
  "ano": 2026,
- "ultimaAtualizacao": "2026-11-13T11:27:36",
+ "ultimaAtualizacao": "2026-11-13T16:40:19",
  "fonte": "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares/UNICO",
  "mesMaisRecente": "11/2026",
- "totalMS": 599636712.25,
- "pagamentos": 1330,
+ "totalMS": 624237391.36,
+ "pagamentos": 1363,
  "totalMunicipios": 79,
  "municipios": [
   {
    "municipio": "Campo Grande",
-   "total": 137389247.32,
+   "total": 147671236.98,
    "autores": [
     {
      "autor": "Bancada do Mato Grosso do Sul",
@@ -22,24 +22,29 @@
      "atual": true
     },
     {
-     "autor": "Geraldo Resende",
-     "valor": 9942200.0,
+     "autor": "Soraya Thronicke",
+     "valor": 13205317.54,
      "atual": true
     },
     {
      "autor": "Camila Jara",
-     "valor": 9819712.26,
+     "valor": 10444311.75,
      "atual": true
     },
     {
-     "autor": "Soraya Thronicke",
-     "valor": 7533817.54,
+     "autor": "Geraldo Resende",
+     "valor": 9942200.0,
      "atual": true
     },
     {
      "autor": "Com. Assuntos Sociais",
      "valor": 6350230.0,
      "atual": false
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 5596500.0,
+     "atual": true
     },
     {
      "autor": "Tereza Cristina",
@@ -52,18 +57,18 @@
      "atual": false
     },
     {
-     "autor": "Nelsinho Trad",
-     "valor": 4900000.0,
-     "atual": true
-    },
-    {
      "autor": "Dr. Luiz Ovando",
-     "valor": 4605965.54,
+     "valor": 4904465.54,
      "atual": true
     },
     {
      "autor": "Beto Pereira",
-     "valor": 3378979.5,
+     "valor": 4863526.47,
+     "atual": true
+    },
+    {
+     "autor": "Rodolfo Nogueira",
+     "valor": 3192500.0,
      "atual": true
     },
     {
@@ -80,11 +85,6 @@
      "autor": "Com. Esporte",
      "valor": 1854999.9,
      "atual": false
-    },
-    {
-     "autor": "Rodolfo Nogueira",
-     "valor": 1700000.0,
-     "atual": true
     },
     {
      "autor": "Bancada da Bahia",
@@ -207,6 +207,11 @@
      "atual": false
     },
     {
+     "autor": "Bancada de Santa Catarina",
+     "valor": 13843.2,
+     "atual": false
+    },
+    {
      "autor": "Humberto Costa",
      "valor": 12600.0,
      "atual": false
@@ -284,15 +289,15 @@
     },
     {
      "tipo": "Bancada",
-     "valor": 52886583.86
+     "valor": 52900427.06
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 15713046.97
     },
     {
      "tipo": "Comissão",
      "valor": 10205229.9
-    },
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 5444900.51
     },
     {
      "tipo": "Emenda de Relator",
@@ -310,13 +315,19 @@
      "nome": "MUNICIPIO DE CAMPO GRANDE",
      "doc": "03501509000106",
      "natureza": "Município",
-     "valor": 31768253.11
+     "valor": 32193852.6
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
      "doc": "11228564000100",
      "natureza": "Fundo Público da Administração Direta Municipal",
      "valor": 26707304.0
+    },
+    {
+     "nome": "ESTADO DE MATO GROSSO DO SUL",
+     "doc": "15412257000128",
+     "natureza": "Estado ou Distrito Federal",
+     "valor": 12532546.97
     },
     {
      "nome": "FUNDACAO DE APOIO A PESQUISA AO ENSINO E A CULTURA",
@@ -347,12 +358,6 @@
      "doc": "46440953000171",
      "natureza": "Associação Privada",
      "valor": 2891354.1
-    },
-    {
-     "nome": "ESTADO DE MATO GROSSO DO SUL",
-     "doc": "15412257000128",
-     "natureza": "Estado ou Distrito Federal",
-     "valor": 2690000.0
     },
     {
      "nome": "INSTITUTO DE DESENVOLVIMENTO CULTURAL CERRADO CENTRAL",
@@ -629,12 +634,17 @@
   },
   {
    "municipio": "Aquidauana",
-   "total": 26432120.64,
+   "total": 29218120.64,
    "autores": [
     {
      "autor": "Com. Desenv Regional e Turismo",
      "valor": 8752243.2,
      "atual": false
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 3309250.0,
+     "atual": true
     },
     {
      "autor": "Marcos Pollon",
@@ -667,11 +677,6 @@
      "atual": true
     },
     {
-     "autor": "Nelsinho Trad",
-     "valor": 1319250.0,
-     "atual": true
-    },
-    {
      "autor": "Soraya Thronicke",
      "valor": 1160000.0,
      "atual": true
@@ -688,12 +693,17 @@
     },
     {
      "autor": "Dr. Luiz Ovando",
-     "valor": 500000.0,
+     "valor": 898000.0,
      "atual": true
     },
     {
      "autor": "Vander Loubet",
      "valor": 497500.0,
+     "atual": true
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 398000.0,
      "atual": true
     },
     {
@@ -713,7 +723,7 @@
     },
     {
      "tipo": "Emenda Pix (transferência especial)",
-     "valor": 1492500.0
+     "valor": 4278500.0
     },
     {
      "tipo": "Bancada",
@@ -731,119 +741,27 @@
      "nome": "MUNICIPIO DE AQUIDAUANA",
      "doc": "03452299000103",
      "natureza": "Município",
-     "valor": 10266710.64
-    }
-   ]
-  },
-  {
-   "municipio": "Nova Andradina",
-   "total": 19202422.01,
-   "autores": [
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 8500000.0,
-     "atual": false
-    },
-    {
-     "autor": "Geraldo Resende",
-     "valor": 2985000.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. da Saude",
-     "valor": 1974387.0,
-     "atual": false
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 1183035.01,
-     "atual": true
-    },
-    {
-     "autor": "Tereza Cristina",
-     "valor": 1100000.0,
-     "atual": true
-    },
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
-     "autor": "Beto Pereira",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
-     "autor": "Camila Jara",
-     "valor": 750000.0,
-     "atual": true
-    },
-    {
-     "autor": "Marcos Pollon",
-     "valor": 710000.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Comissão",
-     "valor": 10474387.0
-    },
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 5743035.01
-    },
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 2985000.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE NOVA ANDRADINA",
-     "doc": "10711980000194",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 14864036.0
-    },
-    {
-     "nome": "MUNICIPIO DE NOVA ANDRADINA",
-     "doc": "03173317000118",
-     "natureza": "Município",
-     "valor": 3485000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-     "doc": "14848093000113",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 670000.0
-    },
-    {
-     "nome": "S A PICOLI TRANSPORTES LTDA",
-     "doc": "09290616000119",
-     "natureza": "Sociedade Empresária Limitada",
-     "valor": 132552.98
-    },
-    {
-     "nome": "AMERICA MIX COMERCIO DE MATERIAIS DE CONSTRUCAO E SERVICOS DE MANUTENCAO PREDIAL LTDA",
-     "doc": "35604126000150",
-     "natureza": "Sociedade Empresária Limitada",
-     "valor": 50833.03
+     "valor": 13052710.64
     }
    ]
   },
   {
    "municipio": "Caarapó",
-   "total": 17931016.31,
+   "total": 19896979.3,
    "autores": [
     {
      "autor": "Marcos Pollon",
-     "valor": 7956738.87,
+     "valor": 8130424.0,
      "atual": true
     },
     {
      "autor": "Rodolfo Nogueira",
-     "valor": 2978163.52,
+     "valor": 3189996.0,
+     "atual": true
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 2400000.0,
      "atual": true
     },
     {
@@ -855,11 +773,6 @@
      "autor": "Com. Assuntos Sociais",
      "valor": 1250000.0,
      "atual": false
-    },
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 819554.62,
-     "atual": true
     },
     {
      "autor": "Dr. Luiz Ovando",
@@ -900,7 +813,7 @@
    "tipos": [
     {
      "tipo": "Emenda Pix (transferência especial)",
-     "valor": 9974037.01
+     "valor": 11940000.0
     },
     {
      "tipo": "Individual (finalidade definida)",
@@ -916,7 +829,7 @@
      "nome": "MUNICIPIO DE CAARAPO",
      "doc": "03155900000104",
      "natureza": "Município",
-     "valor": 10581955.31
+     "valor": 12547918.3
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE DE CAARAPO",
@@ -929,6 +842,103 @@
      "doc": "14787874000145",
      "natureza": "Fundo Público da Administração Direta Municipal",
      "valor": 200000.0
+    }
+   ]
+  },
+  {
+   "municipio": "Nova Andradina",
+   "total": 19600422.01,
+   "autores": [
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 8500000.0,
+     "atual": false
+    },
+    {
+     "autor": "Geraldo Resende",
+     "valor": 2985000.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. da Saude",
+     "valor": 1974387.0,
+     "atual": false
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 1183035.01,
+     "atual": true
+    },
+    {
+     "autor": "Camila Jara",
+     "valor": 1148000.0,
+     "atual": true
+    },
+    {
+     "autor": "Tereza Cristina",
+     "valor": 1100000.0,
+     "atual": true
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 1000000.0,
+     "atual": true
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 1000000.0,
+     "atual": true
+    },
+    {
+     "autor": "Marcos Pollon",
+     "valor": 710000.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Comissão",
+     "valor": 10474387.0
+    },
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 5743035.01
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 3383000.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE NOVA ANDRADINA",
+     "doc": "10711980000194",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 14864036.0
+    },
+    {
+     "nome": "MUNICIPIO DE NOVA ANDRADINA",
+     "doc": "03173317000118",
+     "natureza": "Município",
+     "valor": 3883000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+     "doc": "14848093000113",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 670000.0
+    },
+    {
+     "nome": "S A PICOLI TRANSPORTES LTDA",
+     "doc": "09290616000119",
+     "natureza": "Sociedade Empresária Limitada",
+     "valor": 132552.98
+    },
+    {
+     "nome": "AMERICA MIX COMERCIO DE MATERIAIS DE CONSTRUCAO E SERVICOS DE MANUTENCAO PREDIAL LTDA",
+     "doc": "35604126000150",
+     "natureza": "Sociedade Empresária Limitada",
+     "valor": 50833.03
     }
    ]
   },
@@ -1018,7 +1028,7 @@
   },
   {
    "municipio": "Ponta Porã",
-   "total": 11839572.69,
+   "total": 12337072.69,
    "autores": [
     {
      "autor": "Com. Desenv Regional e Turismo",
@@ -1027,7 +1037,7 @@
     },
     {
      "autor": "Beto Pereira",
-     "valor": 2000000.0,
+     "valor": 2497500.0,
      "atual": true
     },
     {
@@ -1077,7 +1087,7 @@
     },
     {
      "tipo": "Emenda Pix (transferência especial)",
-     "valor": 1203950.0
+     "valor": 1701450.0
     },
     {
      "tipo": "Emenda de Relator",
@@ -1089,7 +1099,7 @@
      "nome": "MUNICIPIO DE PONTA PORA",
      "doc": "03434792000109",
      "natureza": "Município",
-     "valor": 6544746.69
+     "valor": 7042246.69
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
@@ -1212,7 +1222,7 @@
   },
   {
    "municipio": "Coxim",
-   "total": 10458363.0,
+   "total": 10906113.0,
    "autores": [
     {
      "autor": "Soraya Thronicke",
@@ -1245,6 +1255,11 @@
      "atual": false
     },
     {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 547750.0,
+     "atual": true
+    },
+    {
      "autor": "Nelsinho Trad",
      "valor": 510000.0,
      "atual": true
@@ -1263,11 +1278,6 @@
      "autor": "Rodolfo Nogueira",
      "valor": 200000.0,
      "atual": true
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 100000.0,
-     "atual": true
     }
    ],
    "tipos": [
@@ -1281,7 +1291,7 @@
     },
     {
      "tipo": "Emenda Pix (transferência especial)",
-     "valor": 338300.0
+     "valor": 786050.0
     }
    ],
    "favorecidos": [
@@ -1295,7 +1305,7 @@
      "nome": "MUNICIPIO DE COXIM",
      "doc": "03510211000162",
      "natureza": "Município",
-     "valor": 1038300.0
+     "valor": 1486050.0
     },
     {
      "nome": "CONSORCIO INTERMUNICIPAL PARA O DESENVOLVIMENTO SUSTENTA- VEL DA BACIA DO RIO TAQUARI - COINTA",
@@ -1326,14 +1336,14 @@
      "atual": true
     },
     {
-     "autor": "Dagoberto Nogueira",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
      "autor": "Com. Assuntos Sociais",
      "valor": 1000000.0,
      "atual": false
+    },
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 1000000.0,
+     "atual": true
     },
     {
      "autor": "Geraldo Resende",
@@ -1346,12 +1356,12 @@
      "atual": true
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Dr. Luiz Ovando",
      "valor": 500000.0,
      "atual": true
     },
     {
-     "autor": "Dr. Luiz Ovando",
+     "autor": "Beto Pereira",
      "valor": 500000.0,
      "atual": true
     },
@@ -1397,8 +1407,162 @@
    ]
   },
   {
+   "municipio": "Maracaju",
+   "total": 9977500.0,
+   "autores": [
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 3985000.0,
+     "atual": true
+    },
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 1995000.0,
+     "atual": true
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 1200000.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 1000000.0,
+     "atual": false
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 1000000.0,
+     "atual": true
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 497500.0,
+     "atual": true
+    },
+    {
+     "autor": "Vander Loubet",
+     "valor": 300000.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 4500000.0
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 4477500.0
+    },
+    {
+     "tipo": "Comissão",
+     "valor": 1000000.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "00282872000190",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 5300000.0
+    },
+    {
+     "nome": "MUNICIPIO DE MARACAJU",
+     "doc": "03442597000112",
+     "natureza": "Município",
+     "valor": 4477500.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+     "doc": "01740441000192",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 200000.0
+    }
+   ]
+  },
+  {
+   "municipio": "Costa Rica",
+   "total": 9273007.36,
+   "autores": [
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 4100000.0,
+     "atual": true
+    },
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 1500000.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. da Saude",
+     "valor": 1000000.0,
+     "atual": false
+    },
+    {
+     "autor": "Camila Jara",
+     "valor": 500000.0,
+     "atual": true
+    },
+    {
+     "autor": "Tereza Cristina",
+     "valor": 500000.0,
+     "atual": true
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 497500.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. de Integracao Nacional e Des. Regional",
+     "valor": 429257.36,
+     "atual": false
+    },
+    {
+     "autor": "Geraldo Resende",
+     "valor": 398000.0,
+     "atual": true
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 348250.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 6600000.0
+    },
+    {
+     "tipo": "Comissão",
+     "valor": 1429257.36
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 1243750.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE COSTA RICA-MS",
+     "doc": "13996218000190",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 7600000.0
+    },
+    {
+     "nome": "MUNICIPIO DE COSTA RICA",
+     "doc": "15389596000130",
+     "natureza": "Município",
+     "valor": 1673007.36
+    }
+   ]
+  },
+  {
    "municipio": "Paranaíba",
-   "total": 8778874.68,
+   "total": 9091604.68,
    "autores": [
     {
      "autor": "Com. Assuntos Sociais",
@@ -1438,6 +1602,11 @@
     {
      "autor": "Beto Pereira",
      "valor": 527600.0,
+     "atual": true
+    },
+    {
+     "autor": "Geraldo Resende",
+     "valor": 312730.0,
      "atual": true
     },
     {
@@ -1498,7 +1667,7 @@
     },
     {
      "tipo": "Individual (finalidade definida)",
-     "valor": 2858096.53
+     "valor": 3170826.53
     },
     {
      "tipo": "Emenda Pix (transferência especial)",
@@ -1524,7 +1693,7 @@
      "nome": "FUNDO MUNICIPAL DE SAUDE DE PARANAIBA",
      "doc": "11353020000162",
      "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 3380021.0
+     "valor": 3692751.0
     },
     {
      "nome": "CONVERGINT COMERCIO E SERVICOS DE TECNOLOGIA LTDA",
@@ -1537,150 +1706,6 @@
      "doc": "14795993000140",
      "natureza": "Fundo Público da Administração Direta Municipal",
      "valor": 50000.0
-    }
-   ]
-  },
-  {
-   "municipio": "Costa Rica",
-   "total": 8775507.36,
-   "autores": [
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 4100000.0,
-     "atual": true
-    },
-    {
-     "autor": "Dagoberto Nogueira",
-     "valor": 1500000.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. da Saude",
-     "valor": 1000000.0,
-     "atual": false
-    },
-    {
-     "autor": "Tereza Cristina",
-     "valor": 500000.0,
-     "atual": true
-    },
-    {
-     "autor": "Camila Jara",
-     "valor": 500000.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. de Integracao Nacional e Des. Regional",
-     "valor": 429257.36,
-     "atual": false
-    },
-    {
-     "autor": "Geraldo Resende",
-     "valor": 398000.0,
-     "atual": true
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 348250.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 6600000.0
-    },
-    {
-     "tipo": "Comissão",
-     "valor": 1429257.36
-    },
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 746250.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE COSTA RICA-MS",
-     "doc": "13996218000190",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 7600000.0
-    },
-    {
-     "nome": "MUNICIPIO DE COSTA RICA",
-     "doc": "15389596000130",
-     "natureza": "Município",
-     "valor": 1175507.36
-    }
-   ]
-  },
-  {
-   "municipio": "Maracaju",
-   "total": 8568996.43,
-   "autores": [
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 3073996.43,
-     "atual": true
-    },
-    {
-     "autor": "Dagoberto Nogueira",
-     "valor": 1995000.0,
-     "atual": true
-    },
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 1200000.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 1000000.0,
-     "atual": false
-    },
-    {
-     "autor": "Beto Pereira",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
-     "autor": "Vander Loubet",
-     "valor": 300000.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 4500000.0
-    },
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 3068996.43
-    },
-    {
-     "tipo": "Comissão",
-     "valor": 1000000.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "00282872000190",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 5300000.0
-    },
-    {
-     "nome": "MUNICIPIO DE MARACAJU",
-     "doc": "03442597000112",
-     "natureza": "Município",
-     "valor": 3068996.43
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-     "doc": "01740441000192",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 200000.0
     }
    ]
   },
@@ -2273,6 +2298,89 @@
    ]
   },
   {
+   "municipio": "Naviraí",
+   "total": 6944881.2,
+   "autores": [
+    {
+     "autor": "Com. Desenv Regional e Turismo",
+     "valor": 1720785.0,
+     "atual": false
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 1000000.0,
+     "atual": true
+    },
+    {
+     "autor": "Camila Jara",
+     "valor": 1000000.0,
+     "atual": true
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 995000.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 850000.0,
+     "atual": false
+    },
+    {
+     "autor": "Geraldo Resende",
+     "valor": 646625.0,
+     "atual": true
+    },
+    {
+     "autor": "Relator Geral",
+     "valor": 382471.2,
+     "atual": false
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 300000.0,
+     "atual": true
+    },
+    {
+     "autor": "Marcos Pollon",
+     "valor": 50000.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 2996625.0
+    },
+    {
+     "tipo": "Comissão",
+     "valor": 2570785.0
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 995000.0
+    },
+    {
+     "tipo": "Emenda de Relator",
+     "valor": 382471.2
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "11221619000142",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 3846625.0
+    },
+    {
+     "nome": "MUNICIPIO DE NAVIRAI",
+     "doc": "03155934000190",
+     "natureza": "Município",
+     "valor": 3098256.2
+    }
+   ]
+  },
+  {
    "municipio": "Três Lagoas",
    "total": 6941559.0,
    "autores": [
@@ -2356,6 +2464,71 @@
      "doc": "61925686000116",
      "natureza": "Empresário (Individual)",
      "valor": 30000.0
+    }
+   ]
+  },
+  {
+   "municipio": "Bataguassu",
+   "total": 6547500.0,
+   "autores": [
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 4000000.0,
+     "atual": false
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 1000000.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. da Saude",
+     "valor": 600000.0,
+     "atual": false
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 597500.0,
+     "atual": true
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 350000.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Comissão",
+     "valor": 4600000.0
+    },
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 1450000.0
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 497500.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "10836939000144",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 5600000.0
+    },
+    {
+     "nome": "MUNICIPIO DE BATAGUASSU",
+     "doc": "03576220000156",
+     "natureza": "Município",
+     "valor": 497500.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE BATAGUASSU",
+     "doc": "14761260000194",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 450000.0
     }
    ]
   },
@@ -2704,137 +2877,8 @@
    ]
   },
   {
-   "municipio": "Bataguassu",
-   "total": 6050000.0,
-   "autores": [
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 4000000.0,
-     "atual": false
-    },
-    {
-     "autor": "Beto Pereira",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. da Saude",
-     "valor": 600000.0,
-     "atual": false
-    },
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 350000.0,
-     "atual": true
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 100000.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Comissão",
-     "valor": 4600000.0
-    },
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 1450000.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "10836939000144",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 5600000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE BATAGUASSU",
-     "doc": "14761260000194",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 450000.0
-    }
-   ]
-  },
-  {
-   "municipio": "Naviraí",
-   "total": 5949881.2,
-   "autores": [
-    {
-     "autor": "Com. Desenv Regional e Turismo",
-     "valor": 1720785.0,
-     "atual": false
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
-     "autor": "Camila Jara",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 850000.0,
-     "atual": false
-    },
-    {
-     "autor": "Geraldo Resende",
-     "valor": 646625.0,
-     "atual": true
-    },
-    {
-     "autor": "Relator Geral",
-     "valor": 382471.2,
-     "atual": false
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 300000.0,
-     "atual": true
-    },
-    {
-     "autor": "Marcos Pollon",
-     "valor": 50000.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 2996625.0
-    },
-    {
-     "tipo": "Comissão",
-     "valor": 2570785.0
-    },
-    {
-     "tipo": "Emenda de Relator",
-     "valor": 382471.2
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11221619000142",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 3846625.0
-    },
-    {
-     "nome": "MUNICIPIO DE NAVIRAI",
-     "doc": "03155934000190",
-     "natureza": "Município",
-     "valor": 2103256.2
-    }
-   ]
-  },
-  {
    "municipio": "Bonito",
-   "total": 5861326.08,
+   "total": 6060326.08,
    "autores": [
     {
      "autor": "Tereza Cristina",
@@ -2842,6 +2886,11 @@
      "atual": true
     },
     {
+     "autor": "Nelsinho Trad",
+     "valor": 1000000.0,
+     "atual": true
+    },
+    {
      "autor": "Com. Assuntos Sociais",
      "valor": 1000000.0,
      "atual": false
@@ -2852,13 +2901,8 @@
      "atual": true
     },
     {
-     "autor": "Nelsinho Trad",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
      "autor": "Dr. Luiz Ovando",
-     "valor": 650000.0,
+     "valor": 849000.0,
      "atual": true
     },
     {
@@ -2880,6 +2924,10 @@
     {
      "tipo": "Comissão",
      "valor": 1578648.48
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 199000.0
     }
    ],
    "favorecidos": [
@@ -2893,7 +2941,7 @@
      "nome": "MUNICIPIO DE BONITO",
      "doc": "03073673000160",
      "natureza": "Município",
-     "valor": 2011326.08
+     "valor": 2210326.08
     },
     {
      "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
@@ -2969,6 +3017,75 @@
      "doc": "03342920000186",
      "natureza": "Município",
      "valor": 995000.0
+    }
+   ]
+  },
+  {
+   "municipio": "Bodoquena",
+   "total": 5794828.19,
+   "autores": [
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 1990000.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Turismo",
+     "valor": 1299585.0,
+     "atual": false
+    },
+    {
+     "autor": "Com. Desenv Regional e Turismo",
+     "valor": 960019.0,
+     "atual": false
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 654474.19,
+     "atual": true
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 547250.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. de Previ., Assis. Soci, Infan., Adol. e Famil",
+     "valor": 193500.0,
+     "atual": false
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 150000.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 3191724.19
+    },
+    {
+     "tipo": "Comissão",
+     "valor": 2453104.0
+    },
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 150000.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "MUNICIPIO DE BODOQUENA",
+     "doc": "15465016000147",
+     "natureza": "Município",
+     "valor": 5451328.19
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+     "doc": "13400564000163",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 343500.0
     }
    ]
   },
@@ -3320,6 +3437,91 @@
    ]
   },
   {
+   "municipio": "Sonora",
+   "total": 5332490.66,
+   "autores": [
+    {
+     "autor": "Camila Jara",
+     "valor": 1000000.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 1000000.0,
+     "atual": false
+    },
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 700000.0,
+     "atual": true
+    },
+    {
+     "autor": "Marcos Pollon",
+     "valor": 592500.0,
+     "atual": true
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 529000.0,
+     "atual": true
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 497500.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Esporte",
+     "valor": 457780.0,
+     "atual": false
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 413305.66,
+     "atual": true
+    },
+    {
+     "autor": "Com. da Saude",
+     "valor": 142405.0,
+     "atual": false
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 2737305.66
+    },
+    {
+     "tipo": "Comissão",
+     "valor": 1600185.0
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 995000.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "10381732000122",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 3866405.0
+    },
+    {
+     "nome": "MUNICIPIO DE SONORA",
+     "doc": "24651234000167",
+     "natureza": "Município",
+     "valor": 1452780.0
+    },
+    {
+     "nome": "GADU SEGURANCA LTDA",
+     "doc": "08953397000148",
+     "natureza": "Sociedade Empresária Limitada",
+     "valor": 13305.66
+    }
+   ]
+  },
+  {
    "municipio": "Anastácio",
    "total": 5310453.98,
    "autores": [
@@ -3399,151 +3601,72 @@
    ]
   },
   {
-   "municipio": "Bodoquena",
-   "total": 5247578.19,
+   "municipio": "São Gabriel do Oeste",
+   "total": 5111826.23,
    "autores": [
     {
-     "autor": "Dagoberto Nogueira",
-     "valor": 1990000.0,
+     "autor": "Marcos Pollon",
+     "valor": 1557569.23,
      "atual": true
     },
     {
-     "autor": "Com. Turismo",
-     "valor": 1299585.0,
-     "atual": false
-    },
-    {
-     "autor": "Com. Desenv Regional e Turismo",
-     "valor": 960019.0,
-     "atual": false
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 654474.19,
+     "autor": "Camila Jara",
+     "valor": 1094500.0,
      "atual": true
     },
-    {
-     "autor": "Com. de Previ., Assis. Soci, Infan., Adol. e Famil",
-     "valor": 193500.0,
-     "atual": false
-    },
-    {
-     "autor": "Beto Pereira",
-     "valor": 150000.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 2644474.19
-    },
-    {
-     "tipo": "Comissão",
-     "valor": 2453104.0
-    },
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 150000.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "MUNICIPIO DE BODOQUENA",
-     "doc": "15465016000147",
-     "natureza": "Município",
-     "valor": 4904078.19
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-     "doc": "13400564000163",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 343500.0
-    }
-   ]
-  },
-  {
-   "municipio": "Sonora",
-   "total": 5133490.66,
-   "autores": [
     {
      "autor": "Com. Assuntos Sociais",
      "valor": 1000000.0,
      "atual": false
     },
     {
-     "autor": "Camila Jara",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
-     "autor": "Dagoberto Nogueira",
-     "valor": 700000.0,
-     "atual": true
-    },
-    {
-     "autor": "Marcos Pollon",
-     "valor": 592500.0,
-     "atual": true
-    },
-    {
      "autor": "Nelsinho Trad",
-     "valor": 529000.0,
+     "valor": 510877.0,
      "atual": true
     },
     {
-     "autor": "Com. Esporte",
-     "valor": 457780.0,
-     "atual": false
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 413305.66,
+     "autor": "Geraldo Resende",
+     "valor": 498880.0,
      "atual": true
     },
     {
      "autor": "Dr. Luiz Ovando",
-     "valor": 298500.0,
+     "valor": 450000.0,
      "atual": true
-    },
-    {
-     "autor": "Com. da Saude",
-     "valor": 142405.0,
-     "atual": false
     }
    ],
    "tipos": [
     {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 2089500.0
+    },
+    {
      "tipo": "Individual (finalidade definida)",
-     "valor": 2737305.66
+     "valor": 2022326.23
     },
     {
      "tipo": "Comissão",
-     "valor": 1600185.0
-    },
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 796000.0
+     "valor": 1000000.0
     }
    ],
    "favorecidos": [
     {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "10381732000122",
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE SAO GABRIEL DO OESTE",
+     "doc": "13659627000109",
      "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 3866405.0
+     "valor": 2599757.0
     },
     {
-     "nome": "MUNICIPIO DE SONORA",
-     "doc": "24651234000167",
+     "nome": "MUNICIPIO DE SAO GABRIEL DO OESTE",
+     "doc": "15389588000194",
      "natureza": "Município",
-     "valor": 1253780.0
+     "valor": 2462069.23
     },
     {
-     "nome": "GADU SEGURANCA LTDA",
-     "doc": "08953397000148",
-     "natureza": "Sociedade Empresária Limitada",
-     "valor": 13305.66
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL - FMAS",
+     "doc": "13766791000107",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 50000.0
     }
    ]
   },
@@ -3603,6 +3726,67 @@
      "doc": "24644296000141",
      "natureza": "Município",
      "valor": 1278150.0
+    }
+   ]
+  },
+  {
+   "municipio": "Santa Rita do Pardo",
+   "total": 4835416.14,
+   "autores": [
+    {
+     "autor": "Com. Desenv Regional e Turismo",
+     "valor": 2045503.14,
+     "atual": false
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 1190000.0,
+     "atual": true
+    },
+    {
+     "autor": "Geraldo Resende",
+     "valor": 999913.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 500000.0,
+     "atual": false
+    },
+    {
+     "autor": "Marcos Pollon",
+     "valor": 100000.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Comissão",
+     "valor": 2545503.14
+    },
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 2289913.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE-FMS",
+     "doc": "12022274000160",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 2689913.0
+    },
+    {
+     "nome": "MUNICIPIO DE SANTA RITA DO PARDO",
+     "doc": "01561372000150",
+     "natureza": "Município",
+     "valor": 2045503.14
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE SANTA RITA DO PARDO-MS",
+     "doc": "14004002000163",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 100000.0
     }
    ]
   },
@@ -3911,76 +4095,6 @@
    ]
   },
   {
-   "municipio": "São Gabriel do Oeste",
-   "total": 4116826.23,
-   "autores": [
-    {
-     "autor": "Camila Jara",
-     "valor": 1094500.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 1000000.0,
-     "atual": false
-    },
-    {
-     "autor": "Marcos Pollon",
-     "valor": 562569.23,
-     "atual": true
-    },
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 510877.0,
-     "atual": true
-    },
-    {
-     "autor": "Geraldo Resende",
-     "valor": 498880.0,
-     "atual": true
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 450000.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 2022326.23
-    },
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 1094500.0
-    },
-    {
-     "tipo": "Comissão",
-     "valor": 1000000.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE SAO GABRIEL DO OESTE",
-     "doc": "13659627000109",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 2599757.0
-    },
-    {
-     "nome": "MUNICIPIO DE SAO GABRIEL DO OESTE",
-     "doc": "15389588000194",
-     "natureza": "Município",
-     "valor": 1467069.23
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL - FMAS",
-     "doc": "13766791000107",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 50000.0
-    }
-   ]
-  },
-  {
    "municipio": "Fátima do Sul",
    "total": 4110592.0,
    "autores": [
@@ -4186,6 +4300,75 @@
    ]
   },
   {
+   "municipio": "Jaraguari",
+   "total": 3837186.0,
+   "autores": [
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 1250000.0,
+     "atual": false
+    },
+    {
+     "autor": "Camila Jara",
+     "valor": 700000.0,
+     "atual": true
+    },
+    {
+     "autor": "Rodolfo Nogueira",
+     "valor": 500000.0,
+     "atual": true
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 500000.0,
+     "atual": true
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 497500.0,
+     "atual": true
+    },
+    {
+     "autor": "Tereza Cristina",
+     "valor": 309204.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. da Saude",
+     "valor": 80482.0,
+     "atual": false
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 2009204.0
+    },
+    {
+     "tipo": "Comissão",
+     "valor": 1330482.0
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 497500.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE JARAGUARI",
+     "doc": "12021434000157",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 3030482.0
+    },
+    {
+     "nome": "MUNICIPIO DE JARAGUARI",
+     "doc": "03501533000145",
+     "natureza": "Município",
+     "valor": 806704.0
+    }
+   ]
+  },
+  {
    "municipio": "Coronel Sapucaia",
    "total": 3836287.32,
    "autores": [
@@ -4262,62 +4445,6 @@
    ]
   },
   {
-   "municipio": "Santa Rita do Pardo",
-   "total": 3835503.14,
-   "autores": [
-    {
-     "autor": "Com. Desenv Regional e Turismo",
-     "valor": 2045503.14,
-     "atual": false
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 1190000.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 500000.0,
-     "atual": false
-    },
-    {
-     "autor": "Marcos Pollon",
-     "valor": 100000.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Comissão",
-     "valor": 2545503.14
-    },
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 1290000.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "MUNICIPIO DE SANTA RITA DO PARDO",
-     "doc": "01561372000150",
-     "natureza": "Município",
-     "valor": 2045503.14
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE-FMS",
-     "doc": "12022274000160",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 1690000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE SANTA RITA DO PARDO-MS",
-     "doc": "14004002000163",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 100000.0
-    }
-   ]
-  },
-  {
    "municipio": "Porto Murtinho",
    "total": 3795994.0,
    "autores": [
@@ -4379,14 +4506,14 @@
      "atual": true
     },
     {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 500000.0,
-     "atual": false
-    },
-    {
      "autor": "Geraldo Resende",
      "valor": 500000.0,
      "atual": true
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 500000.0,
+     "atual": false
     },
     {
      "autor": "Com. da Saude",
@@ -4588,75 +4715,6 @@
      "doc": "115458",
      "natureza": "Sem informação",
      "valor": 480.0
-    }
-   ]
-  },
-  {
-   "municipio": "Jaraguari",
-   "total": 3561716.26,
-   "autores": [
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 1250000.0,
-     "atual": false
-    },
-    {
-     "autor": "Camila Jara",
-     "valor": 700000.0,
-     "atual": true
-    },
-    {
-     "autor": "Beto Pereira",
-     "valor": 500000.0,
-     "atual": true
-    },
-    {
-     "autor": "Rodolfo Nogueira",
-     "valor": 500000.0,
-     "atual": true
-    },
-    {
-     "autor": "Tereza Cristina",
-     "valor": 309204.0,
-     "atual": true
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 222030.26,
-     "atual": true
-    },
-    {
-     "autor": "Com. da Saude",
-     "valor": 80482.0,
-     "atual": false
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 2009204.0
-    },
-    {
-     "tipo": "Comissão",
-     "valor": 1330482.0
-    },
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 222030.26
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE JARAGUARI",
-     "doc": "12021434000157",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 3030482.0
-    },
-    {
-     "nome": "MUNICIPIO DE JARAGUARI",
-     "doc": "03501533000145",
-     "natureza": "Município",
-     "valor": 531234.26
     }
    ]
   },
@@ -4913,8 +4971,68 @@
    ]
   },
   {
+   "municipio": "Brasilândia",
+   "total": 2843783.0,
+   "autores": [
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 1500000.0,
+     "atual": false
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 1043783.0,
+     "atual": true
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 250000.0,
+     "atual": true
+    },
+    {
+     "autor": "Marcos Pollon",
+     "valor": 50000.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Comissão",
+     "valor": 1500000.0
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 995000.0
+    },
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 348783.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "10411736000106",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 1798783.0
+    },
+    {
+     "nome": "MUNICIPIO DE BRASILANDIA",
+     "doc": "03184058000120",
+     "natureza": "Município",
+     "valor": 995000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+     "doc": "15283041000100",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 50000.0
+    }
+   ]
+  },
+  {
    "municipio": "Água Clara",
-   "total": 2542219.85,
+   "total": 2644830.0,
    "autores": [
     {
      "autor": "Soraya Thronicke",
@@ -4928,7 +5046,7 @@
     },
     {
      "autor": "Beto Pereira",
-     "valor": 374989.85,
+     "valor": 477600.0,
      "atual": true
     },
     {
@@ -4940,7 +5058,7 @@
    "tipos": [
     {
      "tipo": "Emenda Pix (transferência especial)",
-     "valor": 1722219.85
+     "valor": 1824830.0
     },
     {
      "tipo": "Comissão",
@@ -4956,7 +5074,7 @@
      "nome": "MUNICIPIO DE AGUA CLARA",
      "doc": "03184066000177",
      "natureza": "Município",
-     "valor": 1722219.85
+     "valor": 1824830.0
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE DE AGUA CLARA-MS",
@@ -5242,6 +5360,51 @@
    ]
   },
   {
+   "municipio": "Corguinho",
+   "total": 2142234.0,
+   "autores": [
+    {
+     "autor": "Beto Pereira",
+     "valor": 1278900.0,
+     "atual": true
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 500000.0,
+     "atual": true
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 363334.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 1943234.0
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 199000.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE CORGUINHO",
+     "doc": "14016980000125",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 1943234.0
+    },
+    {
+     "nome": "MUNICIPIO DE CORGUINHO",
+     "doc": "03501525000107",
+     "natureza": "Município",
+     "valor": 199000.0
+    }
+   ]
+  },
+  {
    "municipio": "Dois Irmãos do Buriti",
    "total": 2094011.9,
    "autores": [
@@ -5399,12 +5562,12 @@
    "total": 1962000.0,
    "autores": [
     {
-     "autor": "Geraldo Resende",
+     "autor": "Nelsinho Trad",
      "valor": 500000.0,
      "atual": true
     },
     {
-     "autor": "Nelsinho Trad",
+     "autor": "Geraldo Resende",
      "valor": 500000.0,
      "atual": true
     },
@@ -5451,41 +5614,6 @@
      "doc": "15615736000141",
      "natureza": "Fundo Público da Administração Direta Municipal",
      "valor": 200000.0
-    }
-   ]
-  },
-  {
-   "municipio": "Corguinho",
-   "total": 1943234.0,
-   "autores": [
-    {
-     "autor": "Beto Pereira",
-     "valor": 1079900.0,
-     "atual": true
-    },
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 500000.0,
-     "atual": true
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 363334.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 1943234.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE CORGUINHO",
-     "doc": "14016980000125",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 1943234.0
     }
    ]
   },
@@ -5592,56 +5720,6 @@
      "doc": "15481320000188",
      "natureza": "Fundo Público da Administração Direta Municipal",
      "valor": 150000.0
-    }
-   ]
-  },
-  {
-   "municipio": "Brasilândia",
-   "total": 1848783.0,
-   "autores": [
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 1500000.0,
-     "atual": false
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 250000.0,
-     "atual": true
-    },
-    {
-     "autor": "Marcos Pollon",
-     "valor": 50000.0,
-     "atual": true
-    },
-    {
-     "autor": "Beto Pereira",
-     "valor": 48783.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Comissão",
-     "valor": 1500000.0
-    },
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 348783.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "10411736000106",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 1798783.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-     "doc": "15283041000100",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 50000.0
     }
    ]
   },
@@ -6001,8 +6079,8 @@
    "cargo": "Senador(a)",
    "partido": "PSD",
    "grupo": "senador",
-   "totalMS": 65381335.23,
-   "totalBR": 66120711.31,
+   "totalMS": 70643280.61,
+   "totalBR": 71382656.69,
    "municipios": [
     {
      "municipio": "Dourados",
@@ -6010,7 +6088,7 @@
     },
     {
      "municipio": "Campo Grande",
-     "valor": 4900000.0
+     "valor": 5596500.0
     },
     {
      "municipio": "Itaquiraí",
@@ -6027,6 +6105,14 @@
     {
      "municipio": "Rio Brilhante",
      "valor": 3595348.61
+    },
+    {
+     "municipio": "Aquidauana",
+     "valor": 3309250.0
+    },
+    {
+     "municipio": "Caarapó",
+     "valor": 2400000.0
     },
     {
      "municipio": "Aral Moreira",
@@ -6065,10 +6151,6 @@
      "valor": 1470000.0
     },
     {
-     "municipio": "Aquidauana",
-     "valor": 1319250.0
-    },
-    {
      "municipio": "Maracaju",
      "valor": 1200000.0
     },
@@ -6089,8 +6171,8 @@
      "valor": 998953.0
     },
     {
-     "municipio": "Caarapó",
-     "valor": 819554.62
+     "municipio": "Naviraí",
+     "valor": 995000.0
     },
     {
      "municipio": "Eldorado",
@@ -6117,11 +6199,11 @@
      "valor": 510000.0
     },
     {
-     "municipio": "Camapuã",
+     "municipio": "Selvíria",
      "valor": 510000.0
     },
     {
-     "municipio": "Selvíria",
+     "municipio": "Camapuã",
      "valor": 510000.0
     },
     {
@@ -6208,7 +6290,7 @@
     },
     {
      "tipo": "Emenda Pix (transferência especial)",
-     "valor": 25787903.23
+     "valor": 31049848.61
     }
    ],
    "favorecidos": [
@@ -6247,6 +6329,18 @@
      "doc": "03681582000107",
      "municipio": "Rio Brilhante",
      "valor": 2095348.61
+    },
+    {
+     "nome": "MUNICIPIO DE AQUIDAUANA",
+     "doc": "03452299000103",
+     "municipio": "Aquidauana",
+     "valor": 1990000.0
+    },
+    {
+     "nome": "MUNICIPIO DE CAARAPO",
+     "doc": "03155900000104",
+     "municipio": "Caarapó",
+     "valor": 1990000.0
     },
     {
      "nome": "MUNICIPIO DE ALCINOPOLIS",
@@ -6319,18 +6413,6 @@
      "doc": "13865216000161",
      "municipio": "Aral Moreira",
      "valor": 1000000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE NOVA ANDRADINA",
-     "doc": "10711980000194",
-     "municipio": "Nova Andradina",
-     "valor": 1000000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11803371000128",
-     "municipio": "Bonito",
-     "valor": 1000000.0
     }
    ],
    "foraDeMS": [
@@ -6358,12 +6440,12 @@
    "cargo": "Senador(a)",
    "partido": "PSB",
    "grupo": "senador",
-   "totalMS": 59987125.51,
-   "totalBR": 61924192.0,
+   "totalMS": 66569629.08,
+   "totalBR": 68506695.57,
    "municipios": [
     {
      "municipio": "Campo Grande",
-     "valor": 7533817.54
+     "valor": 13205317.54
     },
     {
      "municipio": "Costa Rica",
@@ -6371,7 +6453,7 @@
     },
     {
      "municipio": "Maracaju",
-     "valor": 3073996.43
+     "valor": 3985000.0
     },
     {
      "municipio": "Coxim",
@@ -6561,15 +6643,27 @@
     },
     {
      "tipo": "Emenda Pix (transferência especial)",
-     "valor": 13167129.05
+     "valor": 19749632.62
     }
    ],
    "favorecidos": [
+    {
+     "nome": "ESTADO DE MATO GROSSO DO SUL",
+     "doc": "15412257000128",
+     "municipio": "Campo Grande",
+     "valor": 7263500.0
+    },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE DE COSTA RICA-MS",
      "doc": "13996218000190",
      "municipio": "Costa Rica",
      "valor": 4100000.0
+    },
+    {
+     "nome": "MUNICIPIO DE MARACAJU",
+     "doc": "03442597000112",
+     "municipio": "Maracaju",
+     "valor": 2985000.0
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE DE COXIM-MS",
@@ -6584,12 +6678,6 @@
      "valor": 2235975.0
     },
     {
-     "nome": "MUNICIPIO DE MARACAJU",
-     "doc": "03442597000112",
-     "municipio": "Maracaju",
-     "valor": 2073996.43
-    },
-    {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
      "doc": "11228564000100",
      "municipio": "Campo Grande",
@@ -6600,12 +6688,6 @@
      "doc": "05443851000122",
      "municipio": "Corumbá",
      "valor": 1799512.0
-    },
-    {
-     "nome": "ESTADO DE MATO GROSSO DO SUL",
-     "doc": "15412257000128",
-     "municipio": "Campo Grande",
-     "valor": 1592000.0
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE DE LAGUNA CARAPA",
@@ -6922,14 +7004,14 @@
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "00282872000190",
-     "municipio": "Maracaju",
+     "doc": "13140956000130",
+     "municipio": "Miranda",
      "valor": 1000000.0
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "13140956000130",
-     "municipio": "Miranda",
+     "doc": "00282872000190",
+     "municipio": "Maracaju",
      "valor": 1000000.0
     },
     {
@@ -7007,24 +7089,24 @@
    "cargo": "Deputado(a) federal",
    "partido": "PL",
    "grupo": "federal",
-   "totalMS": 34952503.52,
-   "totalBR": 34952503.52,
+   "totalMS": 36656836.0,
+   "totalBR": 36656836.0,
    "municipios": [
     {
      "municipio": "Dourados",
      "valor": 20405075.0
     },
     {
+     "municipio": "Campo Grande",
+     "valor": 3192500.0
+    },
+    {
      "municipio": "Caarapó",
-     "valor": 2978163.52
+     "valor": 3189996.0
     },
     {
      "municipio": "Itaporã",
      "valor": 1990000.0
-    },
-    {
-     "municipio": "Campo Grande",
-     "valor": 1700000.0
     },
     {
      "municipio": "Jardim",
@@ -7094,7 +7176,7 @@
    "tipos": [
     {
      "tipo": "Emenda Pix (transferência especial)",
-     "valor": 18181737.52
+     "valor": 19886070.0
     },
     {
      "tipo": "Individual (finalidade definida)",
@@ -7115,16 +7197,16 @@
      "valor": 7484005.0
     },
     {
+     "nome": "MUNICIPIO DE CAARAPO",
+     "doc": "03155900000104",
+     "municipio": "Caarapó",
+     "valor": 1990000.0
+    },
+    {
      "nome": "MUNICIPIO DE ITAPORA",
      "doc": "03156999000150",
      "municipio": "Itaporã",
      "valor": 1990000.0
-    },
-    {
-     "nome": "MUNICIPIO DE CAARAPO",
-     "doc": "03155900000104",
-     "municipio": "Caarapó",
-     "valor": 1778167.52
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
@@ -7137,6 +7219,12 @@
      "doc": "04589955000187",
      "municipio": "Aquidauana",
      "valor": 1500000.0
+    },
+    {
+     "nome": "ESTADO DE MATO GROSSO DO SUL",
+     "doc": "15412257000128",
+     "municipio": "Campo Grande",
+     "valor": 1492500.0
     },
     {
      "nome": "MUNICIPIO DE JARDIM",
@@ -7215,12 +7303,6 @@
      "doc": "11891451000182",
      "municipio": "Jardim",
      "valor": 199744.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE ALCINOPOLIS",
-     "doc": "11955273000106",
-     "municipio": "Alcinópolis",
-     "valor": 192000.0
     }
    ],
    "foraDeMS": []
@@ -7231,8 +7313,8 @@
    "cargo": "Deputado(a) federal",
    "partido": "UNIÃO",
    "grupo": "federal",
-   "totalMS": 33602916.0,
-   "totalBR": 35277119.99,
+   "totalMS": 34915559.0,
+   "totalBR": 36589762.99,
    "municipios": [
     {
      "municipio": "Campo Grande",
@@ -7257,6 +7339,10 @@
     {
      "municipio": "Aquidauana",
      "valor": 1000000.0
+    },
+    {
+     "municipio": "Santa Rita do Pardo",
+     "valor": 999913.0
     },
     {
      "municipio": "Paranhos",
@@ -7363,6 +7449,10 @@
      "valor": 334413.0
     },
     {
+     "municipio": "Paranaíba",
+     "valor": 312730.0
+    },
+    {
      "municipio": "Aral Moreira",
      "valor": 298500.0
     }
@@ -7370,7 +7460,7 @@
    "tipos": [
     {
      "tipo": "Individual (finalidade definida)",
-     "valor": 20618166.0
+     "valor": 21930809.0
     },
     {
      "tipo": "Emenda Pix (transferência especial)",
@@ -7419,6 +7509,12 @@
      "doc": "04589955000187",
      "municipio": "Aquidauana",
      "valor": 1000000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE-FMS",
+     "doc": "12022274000160",
+     "municipio": "Santa Rita do Pardo",
+     "valor": 999913.0
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE DE PARANHOS",
@@ -7490,12 +7586,6 @@
      "nome": "FUNDO MUNICIPAL DE SAUDE",
      "doc": "11343940000108",
      "municipio": "Angélica",
-     "valor": 500000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE ALCINOPOLIS",
-     "doc": "11955273000106",
-     "municipio": "Alcinópolis",
      "valor": 500000.0
     }
    ],
@@ -7823,7 +7913,7 @@
     },
     {
      "uf": "SP",
-     "valor": 357544.74
+     "valor": 354404.19
     },
     {
      "uf": "GO",
@@ -7831,7 +7921,7 @@
     },
     {
      "uf": "ES",
-     "valor": 185332.02
+     "valor": 188472.57
     },
     {
      "uf": "RS",
@@ -7888,17 +7978,699 @@
    ]
   },
   {
+   "autor": "Beto Pereira",
+   "atual": true,
+   "cargo": "Deputado(a) federal",
+   "partido": "REPUBLICANOS",
+   "grupo": "federal",
+   "totalMS": 28342281.47,
+   "totalBR": 29724415.9,
+   "municipios": [
+    {
+     "municipio": "Campo Grande",
+     "valor": 4863526.47
+    },
+    {
+     "municipio": "Ribas do Rio Pardo",
+     "valor": 3980000.0
+    },
+    {
+     "municipio": "Ponta Porã",
+     "valor": 2497500.0
+    },
+    {
+     "municipio": "Corguinho",
+     "valor": 1278900.0
+    },
+    {
+     "municipio": "Brasilândia",
+     "valor": 1043783.0
+    },
+    {
+     "municipio": "Bataguassu",
+     "valor": 1000000.0
+    },
+    {
+     "municipio": "Maracaju",
+     "valor": 1000000.0
+    },
+    {
+     "municipio": "Cassilândia",
+     "valor": 1000000.0
+    },
+    {
+     "municipio": "Nova Andradina",
+     "valor": 1000000.0
+    },
+    {
+     "municipio": "Dois Irmãos do Buriti",
+     "valor": 1000000.0
+    },
+    {
+     "municipio": "Coxim",
+     "valor": 758000.0
+    },
+    {
+     "municipio": "Coronel Sapucaia",
+     "valor": 713281.0
+    },
+    {
+     "municipio": "Ladário",
+     "valor": 607745.0
+    },
+    {
+     "municipio": "Juti",
+     "valor": 597000.0
+    },
+    {
+     "municipio": "Paranaíba",
+     "valor": 527600.0
+    },
+    {
+     "municipio": "Deodápolis",
+     "valor": 500000.0
+    },
+    {
+     "municipio": "Douradina",
+     "valor": 500000.0
+    },
+    {
+     "municipio": "Amambai",
+     "valor": 500000.0
+    },
+    {
+     "municipio": "Jaraguari",
+     "valor": 500000.0
+    },
+    {
+     "municipio": "Costa Rica",
+     "valor": 497500.0
+    },
+    {
+     "municipio": "Água Clara",
+     "valor": 477600.0
+    },
+    {
+     "municipio": "Alcinópolis",
+     "valor": 406855.0
+    },
+    {
+     "municipio": "Aquidauana",
+     "valor": 398000.0
+    },
+    {
+     "municipio": "Taquarussu",
+     "valor": 397260.0
+    },
+    {
+     "municipio": "Rio Verde de Mato Grosso",
+     "valor": 376380.0
+    },
+    {
+     "municipio": "Glória de Dourados",
+     "valor": 350593.0
+    },
+    {
+     "municipio": "Jardim",
+     "valor": 350000.0
+    },
+    {
+     "municipio": "Aral Moreira",
+     "valor": 344253.0
+    },
+    {
+     "municipio": "Nova Alvorada do Sul",
+     "valor": 314200.0
+    },
+    {
+     "municipio": "Três Lagoas",
+     "valor": 200305.0
+    },
+    {
+     "municipio": "Bodoquena",
+     "valor": 150000.0
+    },
+    {
+     "municipio": "Terenos",
+     "valor": 150000.0
+    },
+    {
+     "municipio": "Anaurilândia",
+     "valor": 62000.0
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 18738534.5
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 9603746.97
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "MUNICIPIO DE RIBAS DO RIO PARDO",
+     "doc": "03501541000191",
+     "municipio": "Ribas do Rio Pardo",
+     "valor": 3980000.0
+    },
+    {
+     "nome": "FUNDO ESPECIAL DE SAUDE",
+     "doc": "03517102000177",
+     "municipio": "Campo Grande",
+     "valor": 3000000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "11084263000142",
+     "municipio": "Ponta Porã",
+     "valor": 2000000.0
+    },
+    {
+     "nome": "ESTADO DE MATO GROSSO DO SUL",
+     "doc": "15412257000128",
+     "municipio": "Campo Grande",
+     "valor": 1484546.97
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE CORGUINHO",
+     "doc": "14016980000125",
+     "municipio": "Corguinho",
+     "valor": 1079900.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "10836939000144",
+     "municipio": "Bataguassu",
+     "valor": 1000000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "00282872000190",
+     "municipio": "Maracaju",
+     "valor": 1000000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE CASSILANDIA-MS",
+     "doc": "14540893000172",
+     "municipio": "Cassilândia",
+     "valor": 1000000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE NOVA ANDRADINA",
+     "doc": "10711980000194",
+     "municipio": "Nova Andradina",
+     "valor": 1000000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DO MUNICIPIO DE DOIS IRMAOS DO BURITI",
+     "doc": "11394413000114",
+     "municipio": "Dois Irmãos do Buriti",
+     "valor": 1000000.0
+    },
+    {
+     "nome": "MUNICIPIO DE BRASILANDIA",
+     "doc": "03184058000120",
+     "municipio": "Brasilândia",
+     "valor": 995000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE CORONEL SAPUCAIA",
+     "doc": "13022375000102",
+     "municipio": "Coronel Sapucaia",
+     "valor": 713281.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "15363895000104",
+     "municipio": "Ladário",
+     "valor": 607745.0
+    },
+    {
+     "nome": "MUNICIPIO DE JUTI",
+     "doc": "24644296000141",
+     "municipio": "Juti",
+     "valor": 597000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE DEODAPOLIS-MS",
+     "doc": "12270817000169",
+     "municipio": "Deodápolis",
+     "valor": 500000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "15309267000132",
+     "municipio": "Douradina",
+     "valor": 500000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE AMAMBAI",
+     "doc": "13823697000142",
+     "municipio": "Amambai",
+     "valor": 500000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE JARAGUARI",
+     "doc": "12021434000157",
+     "municipio": "Jaraguari",
+     "valor": 500000.0
+    },
+    {
+     "nome": "MUNICIPIO DE COSTA RICA",
+     "doc": "15389596000130",
+     "municipio": "Costa Rica",
+     "valor": 497500.0
+    },
+    {
+     "nome": "MUNICIPIO DE PONTA PORA",
+     "doc": "03434792000109",
+     "municipio": "Ponta Porã",
+     "valor": 497500.0
+    }
+   ],
+   "foraDeMS": [
+    {
+     "uf": "DF",
+     "valor": 1027096.51
+    },
+    {
+     "uf": "—",
+     "valor": 102693.13
+    },
+    {
+     "uf": "GO",
+     "valor": 102621.0
+    },
+    {
+     "uf": "SP",
+     "valor": 62346.66
+    },
+    {
+     "uf": "SC",
+     "valor": 42593.63
+    },
+    {
+     "uf": "PR",
+     "valor": 39555.1
+    },
+    {
+     "uf": "BA",
+     "valor": 3692.4
+    },
+    {
+     "uf": "PI",
+     "valor": 1536.0
+    }
+   ]
+  },
+  {
+   "autor": "Dr. Luiz Ovando",
+   "atual": true,
+   "cargo": "Deputado(a) federal",
+   "partido": "PP",
+   "grupo": "federal",
+   "totalMS": 28239202.86,
+   "totalBR": 29310344.17,
+   "municipios": [
+    {
+     "municipio": "Campo Grande",
+     "valor": 4904465.54
+    },
+    {
+     "municipio": "Dourados",
+     "valor": 1475250.0
+    },
+    {
+     "municipio": "Bela Vista",
+     "valor": 1116750.0
+    },
+    {
+     "municipio": "Anaurilândia",
+     "valor": 1047500.0
+    },
+    {
+     "municipio": "Aquidauana",
+     "valor": 898000.0
+    },
+    {
+     "municipio": "Bonito",
+     "valor": 849000.0
+    },
+    {
+     "municipio": "Fátima do Sul",
+     "valor": 846250.0
+    },
+    {
+     "municipio": "Rio Verde de Mato Grosso",
+     "valor": 797500.0
+    },
+    {
+     "municipio": "Corumbá",
+     "valor": 760458.78
+    },
+    {
+     "municipio": "Amambai",
+     "valor": 747500.0
+    },
+    {
+     "municipio": "Caarapó",
+     "valor": 700000.0
+    },
+    {
+     "municipio": "Eldorado",
+     "valor": 696500.0
+    },
+    {
+     "municipio": "Nioaque",
+     "valor": 650000.0
+    },
+    {
+     "municipio": "Guia Lopes da Laguna",
+     "valor": 600000.0
+    },
+    {
+     "municipio": "Bataguassu",
+     "valor": 597500.0
+    },
+    {
+     "municipio": "Ribas do Rio Pardo",
+     "valor": 550000.0
+    },
+    {
+     "municipio": "Coxim",
+     "valor": 547750.0
+    },
+    {
+     "municipio": "Bodoquena",
+     "valor": 547250.0
+    },
+    {
+     "municipio": "Deodápolis",
+     "valor": 500000.0
+    },
+    {
+     "municipio": "Rio Negro",
+     "valor": 500000.0
+    },
+    {
+     "municipio": "Jaraguari",
+     "valor": 497500.0
+    },
+    {
+     "municipio": "Maracaju",
+     "valor": 497500.0
+    },
+    {
+     "municipio": "Sonora",
+     "valor": 497500.0
+    },
+    {
+     "municipio": "Bandeirantes",
+     "valor": 497500.0
+    },
+    {
+     "municipio": "Pedro Gomes",
+     "valor": 450000.0
+    },
+    {
+     "municipio": "São Gabriel do Oeste",
+     "valor": 450000.0
+    },
+    {
+     "municipio": "Mundo Novo",
+     "valor": 415856.74
+    },
+    {
+     "municipio": "Aparecida do Taboado",
+     "valor": 400000.0
+    },
+    {
+     "municipio": "Cassilândia",
+     "valor": 400000.0
+    },
+    {
+     "municipio": "Figueirão",
+     "valor": 400000.0
+    },
+    {
+     "municipio": "Vicentina",
+     "valor": 352580.0
+    },
+    {
+     "municipio": "Glória de Dourados",
+     "valor": 350000.0
+    },
+    {
+     "municipio": "Costa Rica",
+     "valor": 348250.0
+    },
+    {
+     "municipio": "Ladário",
+     "valor": 301841.8
+    },
+    {
+     "municipio": "Chapadão do Sul",
+     "valor": 300000.0
+    },
+    {
+     "municipio": "Naviraí",
+     "valor": 300000.0
+    },
+    {
+     "municipio": "Itaporã",
+     "valor": 300000.0
+    },
+    {
+     "municipio": "Paraíso das Águas",
+     "valor": 300000.0
+    },
+    {
+     "municipio": "Caracol",
+     "valor": 300000.0
+    },
+    {
+     "municipio": "Brasilândia",
+     "valor": 250000.0
+    },
+    {
+     "municipio": "Angélica",
+     "valor": 250000.0
+    },
+    {
+     "municipio": "Selvíria",
+     "valor": 200000.0
+    },
+    {
+     "municipio": "Ivinhema",
+     "valor": 200000.0
+    },
+    {
+     "municipio": "Jateí",
+     "valor": 200000.0
+    },
+    {
+     "municipio": "Paranaíba",
+     "valor": 200000.0
+    },
+    {
+     "municipio": "Sidrolândia",
+     "valor": 199000.0
+    },
+    {
+     "municipio": "Rio Brilhante",
+     "valor": 50000.0
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 18139952.86
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 10099250.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO ESPECIAL DE SAUDE",
+     "doc": "03517102000177",
+     "municipio": "Campo Grande",
+     "valor": 1672000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+     "doc": "15232593000199",
+     "municipio": "Campo Grande",
+     "valor": 1130000.0
+    },
+    {
+     "nome": "ESTADO DE MATO GROSSO DO SUL",
+     "doc": "15412257000128",
+     "municipio": "Campo Grande",
+     "valor": 1098000.0
+    },
+    {
+     "nome": "MUNICIPIO DE FATIMA DO SUL",
+     "doc": "03155751000175",
+     "municipio": "Fátima do Sul",
+     "valor": 746250.0
+    },
+    {
+     "nome": "MUNICIPIO DE ELDORADO",
+     "doc": "03741675000180",
+     "municipio": "Eldorado",
+     "valor": 696500.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE NIOAQUE",
+     "doc": "11352312000180",
+     "municipio": "Nioaque",
+     "valor": 650000.0
+    },
+    {
+     "nome": "MUNICIPIO DE CORUMBA",
+     "doc": "03330461000110",
+     "municipio": "Corumbá",
+     "valor": 646750.0
+    },
+    {
+     "nome": "MUNICIPIO DE BELA VISTA",
+     "doc": "03217916000196",
+     "municipio": "Bela Vista",
+     "valor": 646750.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "11417787000108",
+     "municipio": "Guia Lopes da Laguna",
+     "valor": 600000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "11803371000128",
+     "municipio": "Bonito",
+     "valor": 600000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE RIBAS DO RIO PARDO",
+     "doc": "17701982000141",
+     "municipio": "Ribas do Rio Pardo",
+     "valor": 550000.0
+    },
+    {
+     "nome": "MUNICIPIO DE BODOQUENA",
+     "doc": "15465016000147",
+     "municipio": "Bodoquena",
+     "valor": 547250.0
+    },
+    {
+     "nome": "MUNICIPIO DE DOURADOS",
+     "doc": "03155926000144",
+     "municipio": "Dourados",
+     "valor": 547250.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE DEODAPOLIS-MS",
+     "doc": "12270817000169",
+     "municipio": "Deodápolis",
+     "valor": 500000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+     "doc": "03916902000160",
+     "municipio": "Dourados",
+     "valor": 500000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE AQUIDAUANA",
+     "doc": "04589955000187",
+     "municipio": "Aquidauana",
+     "valor": 500000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE CAARAPO",
+     "doc": "97536097000193",
+     "municipio": "Caarapó",
+     "valor": 500000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE RIO NEGRO MS",
+     "doc": "12144238000170",
+     "municipio": "Rio Negro",
+     "valor": 500000.0
+    },
+    {
+     "nome": "MUNICIPIO DE BATAGUASSU",
+     "doc": "03576220000156",
+     "municipio": "Bataguassu",
+     "valor": 497500.0
+    },
+    {
+     "nome": "MUNICIPIO DE JARAGUARI",
+     "doc": "03501533000145",
+     "municipio": "Jaraguari",
+     "valor": 497500.0
+    }
+   ],
+   "foraDeMS": [
+    {
+     "uf": "DF",
+     "valor": 798161.41
+    },
+    {
+     "uf": "RS",
+     "valor": 91965.72
+    },
+    {
+     "uf": "—",
+     "valor": 46048.66
+    },
+    {
+     "uf": "RJ",
+     "valor": 41168.36
+    },
+    {
+     "uf": "SC",
+     "valor": 31272.28
+    },
+    {
+     "uf": "SP",
+     "valor": 21966.6
+    },
+    {
+     "uf": "PR",
+     "valor": 19952.28
+    },
+    {
+     "uf": "BA",
+     "valor": 9007.0
+    },
+    {
+     "uf": "GO",
+     "valor": 6936.7
+    },
+    {
+     "uf": "MG",
+     "valor": 4662.3
+    }
+   ]
+  },
+  {
    "autor": "Camila Jara",
    "atual": true,
    "cargo": "Deputado(a) federal",
    "partido": "PT",
    "grupo": "federal",
-   "totalMS": 26805772.62,
-   "totalBR": 31740876.53,
+   "totalMS": 27828372.11,
+   "totalBR": 32763476.02,
    "municipios": [
     {
      "municipio": "Campo Grande",
-     "valor": 9819712.26
+     "valor": 10444311.75
     },
     {
      "municipio": "Coxim",
@@ -7913,6 +8685,10 @@
      "valor": 1274520.8
     },
     {
+     "municipio": "Nova Andradina",
+     "valor": 1148000.0
+    },
+    {
      "municipio": "São Gabriel do Oeste",
      "valor": 1094500.0
     },
@@ -7921,11 +8697,11 @@
      "valor": 1000000.0
     },
     {
-     "municipio": "Bonito",
+     "municipio": "Naviraí",
      "valor": 1000000.0
     },
     {
-     "municipio": "Naviraí",
+     "municipio": "Bonito",
      "valor": 1000000.0
     },
     {
@@ -7945,10 +8721,6 @@
      "valor": 750000.0
     },
     {
-     "municipio": "Nova Andradina",
-     "valor": 750000.0
-    },
-    {
      "municipio": "Jaraguari",
      "valor": 700000.0
     },
@@ -7961,11 +8733,11 @@
      "valor": 576004.0
     },
     {
-     "municipio": "Selvíria",
+     "municipio": "Ladário",
      "valor": 500000.0
     },
     {
-     "municipio": "Ladário",
+     "municipio": "Selvíria",
      "valor": 500000.0
     },
     {
@@ -7992,7 +8764,7 @@
     },
     {
      "tipo": "Emenda Pix (transferência especial)",
-     "valor": 2161400.51
+     "valor": 3184000.0
     }
    ],
    "favorecidos": [
@@ -8058,14 +8830,14 @@
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11803371000128",
-     "municipio": "Bonito",
+     "doc": "11221619000142",
+     "municipio": "Naviraí",
      "valor": 1000000.0
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11221619000142",
-     "municipio": "Naviraí",
+     "doc": "11803371000128",
+     "municipio": "Bonito",
      "valor": 1000000.0
     },
     {
@@ -8105,16 +8877,16 @@
      "valor": 700000.0
     },
     {
+     "nome": "MUNICIPIO DE CAMPO GRANDE",
+     "doc": "03501509000106",
+     "municipio": "Campo Grande",
+     "valor": 597000.0
+    },
+    {
      "nome": "MUNICIPIO DE CAARAPO",
      "doc": "03155900000104",
      "municipio": "Caarapó",
      "valor": 597000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE BELA VISTA - MS",
-     "doc": "12457020000175",
-     "municipio": "Bela Vista",
-     "valor": 576004.0
     }
    ],
    "foraDeMS": [
@@ -8165,6 +8937,359 @@
     {
      "uf": "—",
      "valor": 592.93
+    }
+   ]
+  },
+  {
+   "autor": "Marcos Pollon",
+   "atual": true,
+   "cargo": "Deputado(a) federal",
+   "partido": "PL",
+   "grupo": "federal",
+   "totalMS": 26951631.48,
+   "totalBR": 29343714.35,
+   "municipios": [
+    {
+     "municipio": "Caarapó",
+     "valor": 8130424.0
+    },
+    {
+     "municipio": "Aquidauana",
+     "valor": 3030000.0
+    },
+    {
+     "municipio": "Bela Vista",
+     "valor": 2202700.0
+    },
+    {
+     "municipio": "Juti",
+     "valor": 2160000.0
+    },
+    {
+     "municipio": "São Gabriel do Oeste",
+     "valor": 1557569.23
+    },
+    {
+     "municipio": "Três Lagoas",
+     "valor": 1355000.0
+    },
+    {
+     "municipio": "Rio Brilhante",
+     "valor": 950000.0
+    },
+    {
+     "municipio": "Campo Grande",
+     "valor": 836176.25
+    },
+    {
+     "municipio": "Chapadão do Sul",
+     "valor": 790000.0
+    },
+    {
+     "municipio": "Nova Andradina",
+     "valor": 710000.0
+    },
+    {
+     "municipio": "Itaporã",
+     "valor": 650000.0
+    },
+    {
+     "municipio": "Sonora",
+     "valor": 592500.0
+    },
+    {
+     "municipio": "Rio Verde de Mato Grosso",
+     "valor": 533000.0
+    },
+    {
+     "municipio": "Fátima do Sul",
+     "valor": 437569.0
+    },
+    {
+     "municipio": "Paraíso das Águas",
+     "valor": 300000.0
+    },
+    {
+     "municipio": "Aral Moreira",
+     "valor": 290000.0
+    },
+    {
+     "municipio": "Sidrolândia",
+     "valor": 280000.0
+    },
+    {
+     "municipio": "Glória de Dourados",
+     "valor": 237000.0
+    },
+    {
+     "municipio": "Bandeirantes",
+     "valor": 230000.0
+    },
+    {
+     "municipio": "Coronel Sapucaia",
+     "valor": 200000.0
+    },
+    {
+     "municipio": "Aparecida do Taboado",
+     "valor": 170000.0
+    },
+    {
+     "municipio": "Amambai",
+     "valor": 130000.0
+    },
+    {
+     "municipio": "Pedro Gomes",
+     "valor": 115000.0
+    },
+    {
+     "municipio": "Santa Rita do Pardo",
+     "valor": 100000.0
+    },
+    {
+     "municipio": "Deodápolis",
+     "valor": 95000.0
+    },
+    {
+     "municipio": "Dourados",
+     "valor": 87693.0
+    },
+    {
+     "municipio": "Caracol",
+     "valor": 62000.0
+    },
+    {
+     "municipio": "Ribas do Rio Pardo",
+     "valor": 60000.0
+    },
+    {
+     "municipio": "Brasilândia",
+     "valor": 50000.0
+    },
+    {
+     "municipio": "Naviraí",
+     "valor": 50000.0
+    },
+    {
+     "municipio": "Rochedo",
+     "valor": 50000.0
+    },
+    {
+     "municipio": "Vicentina",
+     "valor": 50000.0
+    },
+    {
+     "municipio": "Rio Negro",
+     "valor": 50000.0
+    },
+    {
+     "municipio": "Inocência",
+     "valor": 50000.0
+    },
+    {
+     "municipio": "Cassilândia",
+     "valor": 45000.0
+    },
+    {
+     "municipio": "Selvíria",
+     "valor": 40000.0
+    },
+    {
+     "municipio": "Anastácio",
+     "valor": 35000.0
+    },
+    {
+     "municipio": "Batayporã",
+     "valor": 35000.0
+    },
+    {
+     "municipio": "Paranaíba",
+     "valor": 35000.0
+    },
+    {
+     "municipio": "Sete Quedas",
+     "valor": 30000.0
+    },
+    {
+     "municipio": "Figueirão",
+     "valor": 30000.0
+    },
+    {
+     "municipio": "Tacuru",
+     "valor": 30000.0
+    },
+    {
+     "municipio": "Dois Irmãos do Buriti",
+     "valor": 30000.0
+    },
+    {
+     "municipio": "Paranhos",
+     "valor": 25000.0
+    },
+    {
+     "municipio": "Douradina",
+     "valor": 25000.0
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 17140931.48
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 9810700.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "MUNICIPIO DE CAARAPO",
+     "doc": "03155900000104",
+     "municipio": "Caarapó",
+     "valor": 5870500.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE AQUIDAUANA",
+     "doc": "04589955000187",
+     "municipio": "Aquidauana",
+     "valor": 3030000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE CAARAPO",
+     "doc": "97536097000193",
+     "municipio": "Caarapó",
+     "valor": 2259924.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE - FMS",
+     "doc": "10566814000141",
+     "municipio": "Juti",
+     "valor": 2160000.0
+    },
+    {
+     "nome": "MUNICIPIO DE BELA VISTA",
+     "doc": "03217916000196",
+     "municipio": "Bela Vista",
+     "valor": 1452700.0
+    },
+    {
+     "nome": "MUNICIPIO DE SAO GABRIEL DO OESTE",
+     "doc": "15389588000194",
+     "municipio": "São Gabriel do Oeste",
+     "valor": 1367569.23
+    },
+    {
+     "nome": "MUNICIPIO DE TRES LAGOAS",
+     "doc": "03184041000173",
+     "municipio": "Três Lagoas",
+     "valor": 995000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE CHAPADAO DO SUL-MS",
+     "doc": "14004655000142",
+     "municipio": "Chapadão do Sul",
+     "valor": 790000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE BELA VISTA - (FMAS)",
+     "doc": "15316822000153",
+     "municipio": "Bela Vista",
+     "valor": 750000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+     "doc": "14848093000113",
+     "municipio": "Nova Andradina",
+     "valor": 670000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE - RIO BRILHANTE MS",
+     "doc": "12237028000126",
+     "municipio": "Rio Brilhante",
+     "valor": 650000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE ITAPORA",
+     "doc": "11749846000145",
+     "municipio": "Itaporã",
+     "valor": 650000.0
+    },
+    {
+     "nome": "PARISI S.A EM RECUPERACAO JUDICIAL",
+     "doc": "08075240000167",
+     "municipio": "Campo Grande",
+     "valor": 586176.25
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "16656280000120",
+     "municipio": "Rio Verde de Mato Grosso",
+     "valor": 533000.0
+    },
+    {
+     "nome": "MUNICIPIO DE SONORA",
+     "doc": "24651234000167",
+     "municipio": "Sonora",
+     "valor": 497500.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE FATIMA DO SUL",
+     "doc": "11968869000140",
+     "municipio": "Fátima do Sul",
+     "valor": 437569.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+     "doc": "15536539000137",
+     "municipio": "Rio Brilhante",
+     "valor": 300000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE TRES LAGOAS-MS",
+     "doc": "13790575000105",
+     "municipio": "Três Lagoas",
+     "valor": 300000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DO MUNICIPIO DE SIDROLANDIA-MS",
+     "doc": "09290533000120",
+     "municipio": "Sidrolândia",
+     "valor": 280000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+     "doc": "15232593000199",
+     "municipio": "Campo Grande",
+     "valor": 250000.0
+    }
+   ],
+   "foraDeMS": [
+    {
+     "uf": "GO",
+     "valor": 1645282.8
+    },
+    {
+     "uf": "DF",
+     "valor": 579731.85
+    },
+    {
+     "uf": "SP",
+     "valor": 100377.41
+    },
+    {
+     "uf": "—",
+     "valor": 41722.32
+    },
+    {
+     "uf": "BA",
+     "valor": 18477.0
+    },
+    {
+     "uf": "PR",
+     "valor": 6400.0
+    },
+    {
+     "uf": "ES",
+     "valor": 91.49
     }
    ]
   },
@@ -8414,1025 +9539,6 @@
    ]
   },
   {
-   "autor": "Marcos Pollon",
-   "atual": true,
-   "cargo": "Deputado(a) federal",
-   "partido": "PL",
-   "grupo": "federal",
-   "totalMS": 25782946.35,
-   "totalBR": 28175029.22,
-   "municipios": [
-    {
-     "municipio": "Caarapó",
-     "valor": 7956738.87
-    },
-    {
-     "municipio": "Aquidauana",
-     "valor": 3030000.0
-    },
-    {
-     "municipio": "Bela Vista",
-     "valor": 2202700.0
-    },
-    {
-     "municipio": "Juti",
-     "valor": 2160000.0
-    },
-    {
-     "municipio": "Três Lagoas",
-     "valor": 1355000.0
-    },
-    {
-     "municipio": "Rio Brilhante",
-     "valor": 950000.0
-    },
-    {
-     "municipio": "Campo Grande",
-     "valor": 836176.25
-    },
-    {
-     "municipio": "Chapadão do Sul",
-     "valor": 790000.0
-    },
-    {
-     "municipio": "Nova Andradina",
-     "valor": 710000.0
-    },
-    {
-     "municipio": "Itaporã",
-     "valor": 650000.0
-    },
-    {
-     "municipio": "Sonora",
-     "valor": 592500.0
-    },
-    {
-     "municipio": "São Gabriel do Oeste",
-     "valor": 562569.23
-    },
-    {
-     "municipio": "Rio Verde de Mato Grosso",
-     "valor": 533000.0
-    },
-    {
-     "municipio": "Fátima do Sul",
-     "valor": 437569.0
-    },
-    {
-     "municipio": "Paraíso das Águas",
-     "valor": 300000.0
-    },
-    {
-     "municipio": "Aral Moreira",
-     "valor": 290000.0
-    },
-    {
-     "municipio": "Sidrolândia",
-     "valor": 280000.0
-    },
-    {
-     "municipio": "Glória de Dourados",
-     "valor": 237000.0
-    },
-    {
-     "municipio": "Bandeirantes",
-     "valor": 230000.0
-    },
-    {
-     "municipio": "Coronel Sapucaia",
-     "valor": 200000.0
-    },
-    {
-     "municipio": "Aparecida do Taboado",
-     "valor": 170000.0
-    },
-    {
-     "municipio": "Amambai",
-     "valor": 130000.0
-    },
-    {
-     "municipio": "Pedro Gomes",
-     "valor": 115000.0
-    },
-    {
-     "municipio": "Santa Rita do Pardo",
-     "valor": 100000.0
-    },
-    {
-     "municipio": "Deodápolis",
-     "valor": 95000.0
-    },
-    {
-     "municipio": "Dourados",
-     "valor": 87693.0
-    },
-    {
-     "municipio": "Caracol",
-     "valor": 62000.0
-    },
-    {
-     "municipio": "Ribas do Rio Pardo",
-     "valor": 60000.0
-    },
-    {
-     "municipio": "Brasilândia",
-     "valor": 50000.0
-    },
-    {
-     "municipio": "Rochedo",
-     "valor": 50000.0
-    },
-    {
-     "municipio": "Naviraí",
-     "valor": 50000.0
-    },
-    {
-     "municipio": "Vicentina",
-     "valor": 50000.0
-    },
-    {
-     "municipio": "Rio Negro",
-     "valor": 50000.0
-    },
-    {
-     "municipio": "Inocência",
-     "valor": 50000.0
-    },
-    {
-     "municipio": "Cassilândia",
-     "valor": 45000.0
-    },
-    {
-     "municipio": "Selvíria",
-     "valor": 40000.0
-    },
-    {
-     "municipio": "Anastácio",
-     "valor": 35000.0
-    },
-    {
-     "municipio": "Batayporã",
-     "valor": 35000.0
-    },
-    {
-     "municipio": "Paranaíba",
-     "valor": 35000.0
-    },
-    {
-     "municipio": "Sete Quedas",
-     "valor": 30000.0
-    },
-    {
-     "municipio": "Figueirão",
-     "valor": 30000.0
-    },
-    {
-     "municipio": "Tacuru",
-     "valor": 30000.0
-    },
-    {
-     "municipio": "Dois Irmãos do Buriti",
-     "valor": 30000.0
-    },
-    {
-     "municipio": "Paranhos",
-     "valor": 25000.0
-    },
-    {
-     "municipio": "Douradina",
-     "valor": 25000.0
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 17140931.48
-    },
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 8642014.87
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "MUNICIPIO DE CAARAPO",
-     "doc": "03155900000104",
-     "municipio": "Caarapó",
-     "valor": 5696814.87
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE AQUIDAUANA",
-     "doc": "04589955000187",
-     "municipio": "Aquidauana",
-     "valor": 3030000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE CAARAPO",
-     "doc": "97536097000193",
-     "municipio": "Caarapó",
-     "valor": 2259924.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE - FMS",
-     "doc": "10566814000141",
-     "municipio": "Juti",
-     "valor": 2160000.0
-    },
-    {
-     "nome": "MUNICIPIO DE BELA VISTA",
-     "doc": "03217916000196",
-     "municipio": "Bela Vista",
-     "valor": 1452700.0
-    },
-    {
-     "nome": "MUNICIPIO DE TRES LAGOAS",
-     "doc": "03184041000173",
-     "municipio": "Três Lagoas",
-     "valor": 995000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE CHAPADAO DO SUL-MS",
-     "doc": "14004655000142",
-     "municipio": "Chapadão do Sul",
-     "valor": 790000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE BELA VISTA - (FMAS)",
-     "doc": "15316822000153",
-     "municipio": "Bela Vista",
-     "valor": 750000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-     "doc": "14848093000113",
-     "municipio": "Nova Andradina",
-     "valor": 670000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE - RIO BRILHANTE MS",
-     "doc": "12237028000126",
-     "municipio": "Rio Brilhante",
-     "valor": 650000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE ITAPORA",
-     "doc": "11749846000145",
-     "municipio": "Itaporã",
-     "valor": 650000.0
-    },
-    {
-     "nome": "PARISI S.A EM RECUPERACAO JUDICIAL",
-     "doc": "08075240000167",
-     "municipio": "Campo Grande",
-     "valor": 586176.25
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "16656280000120",
-     "municipio": "Rio Verde de Mato Grosso",
-     "valor": 533000.0
-    },
-    {
-     "nome": "MUNICIPIO DE SONORA",
-     "doc": "24651234000167",
-     "municipio": "Sonora",
-     "valor": 497500.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE FATIMA DO SUL",
-     "doc": "11968869000140",
-     "municipio": "Fátima do Sul",
-     "valor": 437569.0
-    },
-    {
-     "nome": "MUNICIPIO DE SAO GABRIEL DO OESTE",
-     "doc": "15389588000194",
-     "municipio": "São Gabriel do Oeste",
-     "valor": 372569.23
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-     "doc": "15536539000137",
-     "municipio": "Rio Brilhante",
-     "valor": 300000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE TRES LAGOAS-MS",
-     "doc": "13790575000105",
-     "municipio": "Três Lagoas",
-     "valor": 300000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DO MUNICIPIO DE SIDROLANDIA-MS",
-     "doc": "09290533000120",
-     "municipio": "Sidrolândia",
-     "valor": 280000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-     "doc": "15232593000199",
-     "municipio": "Campo Grande",
-     "valor": 250000.0
-    }
-   ],
-   "foraDeMS": [
-    {
-     "uf": "GO",
-     "valor": 1645282.8
-    },
-    {
-     "uf": "DF",
-     "valor": 579731.85
-    },
-    {
-     "uf": "SP",
-     "valor": 100377.41
-    },
-    {
-     "uf": "—",
-     "valor": 41722.32
-    },
-    {
-     "uf": "BA",
-     "valor": 18477.0
-    },
-    {
-     "uf": "PR",
-     "valor": 6400.0
-    },
-    {
-     "uf": "ES",
-     "valor": 91.49
-    }
-   ]
-  },
-  {
-   "autor": "Dr. Luiz Ovando",
-   "atual": true,
-   "cargo": "Deputado(a) federal",
-   "partido": "PP",
-   "grupo": "federal",
-   "totalMS": 24879233.12,
-   "totalBR": 25950374.43,
-   "municipios": [
-    {
-     "municipio": "Campo Grande",
-     "valor": 4605965.54
-    },
-    {
-     "municipio": "Dourados",
-     "valor": 1475250.0
-    },
-    {
-     "municipio": "Bela Vista",
-     "valor": 1116750.0
-    },
-    {
-     "municipio": "Anaurilândia",
-     "valor": 1047500.0
-    },
-    {
-     "municipio": "Fátima do Sul",
-     "valor": 846250.0
-    },
-    {
-     "municipio": "Rio Verde de Mato Grosso",
-     "valor": 797500.0
-    },
-    {
-     "municipio": "Corumbá",
-     "valor": 760458.78
-    },
-    {
-     "municipio": "Amambai",
-     "valor": 747500.0
-    },
-    {
-     "municipio": "Caarapó",
-     "valor": 700000.0
-    },
-    {
-     "municipio": "Eldorado",
-     "valor": 696500.0
-    },
-    {
-     "municipio": "Bonito",
-     "valor": 650000.0
-    },
-    {
-     "municipio": "Nioaque",
-     "valor": 650000.0
-    },
-    {
-     "municipio": "Guia Lopes da Laguna",
-     "valor": 600000.0
-    },
-    {
-     "municipio": "Ribas do Rio Pardo",
-     "valor": 550000.0
-    },
-    {
-     "municipio": "Deodápolis",
-     "valor": 500000.0
-    },
-    {
-     "municipio": "Aquidauana",
-     "valor": 500000.0
-    },
-    {
-     "municipio": "Rio Negro",
-     "valor": 500000.0
-    },
-    {
-     "municipio": "Bandeirantes",
-     "valor": 497500.0
-    },
-    {
-     "municipio": "Pedro Gomes",
-     "valor": 450000.0
-    },
-    {
-     "municipio": "São Gabriel do Oeste",
-     "valor": 450000.0
-    },
-    {
-     "municipio": "Mundo Novo",
-     "valor": 415856.74
-    },
-    {
-     "municipio": "Aparecida do Taboado",
-     "valor": 400000.0
-    },
-    {
-     "municipio": "Cassilândia",
-     "valor": 400000.0
-    },
-    {
-     "municipio": "Figueirão",
-     "valor": 400000.0
-    },
-    {
-     "municipio": "Vicentina",
-     "valor": 352580.0
-    },
-    {
-     "municipio": "Glória de Dourados",
-     "valor": 350000.0
-    },
-    {
-     "municipio": "Costa Rica",
-     "valor": 348250.0
-    },
-    {
-     "municipio": "Ladário",
-     "valor": 301841.8
-    },
-    {
-     "municipio": "Chapadão do Sul",
-     "valor": 300000.0
-    },
-    {
-     "municipio": "Naviraí",
-     "valor": 300000.0
-    },
-    {
-     "municipio": "Itaporã",
-     "valor": 300000.0
-    },
-    {
-     "municipio": "Paraíso das Águas",
-     "valor": 300000.0
-    },
-    {
-     "municipio": "Caracol",
-     "valor": 300000.0
-    },
-    {
-     "municipio": "Sonora",
-     "valor": 298500.0
-    },
-    {
-     "municipio": "Brasilândia",
-     "valor": 250000.0
-    },
-    {
-     "municipio": "Angélica",
-     "valor": 250000.0
-    },
-    {
-     "municipio": "Jaraguari",
-     "valor": 222030.26
-    },
-    {
-     "municipio": "Selvíria",
-     "valor": 200000.0
-    },
-    {
-     "municipio": "Ivinhema",
-     "valor": 200000.0
-    },
-    {
-     "municipio": "Jateí",
-     "valor": 200000.0
-    },
-    {
-     "municipio": "Paranaíba",
-     "valor": 200000.0
-    },
-    {
-     "municipio": "Sidrolândia",
-     "valor": 199000.0
-    },
-    {
-     "municipio": "Coxim",
-     "valor": 100000.0
-    },
-    {
-     "municipio": "Bataguassu",
-     "valor": 100000.0
-    },
-    {
-     "municipio": "Rio Brilhante",
-     "valor": 50000.0
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 18139952.86
-    },
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 6739280.26
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO ESPECIAL DE SAUDE",
-     "doc": "03517102000177",
-     "municipio": "Campo Grande",
-     "valor": 1672000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-     "doc": "15232593000199",
-     "municipio": "Campo Grande",
-     "valor": 1130000.0
-    },
-    {
-     "nome": "ESTADO DE MATO GROSSO DO SUL",
-     "doc": "15412257000128",
-     "municipio": "Campo Grande",
-     "valor": 1098000.0
-    },
-    {
-     "nome": "MUNICIPIO DE FATIMA DO SUL",
-     "doc": "03155751000175",
-     "municipio": "Fátima do Sul",
-     "valor": 746250.0
-    },
-    {
-     "nome": "MUNICIPIO DE ELDORADO",
-     "doc": "03741675000180",
-     "municipio": "Eldorado",
-     "valor": 696500.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE NIOAQUE",
-     "doc": "11352312000180",
-     "municipio": "Nioaque",
-     "valor": 650000.0
-    },
-    {
-     "nome": "MUNICIPIO DE CORUMBA",
-     "doc": "03330461000110",
-     "municipio": "Corumbá",
-     "valor": 646750.0
-    },
-    {
-     "nome": "MUNICIPIO DE BELA VISTA",
-     "doc": "03217916000196",
-     "municipio": "Bela Vista",
-     "valor": 646750.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11417787000108",
-     "municipio": "Guia Lopes da Laguna",
-     "valor": 600000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11803371000128",
-     "municipio": "Bonito",
-     "valor": 600000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE RIBAS DO RIO PARDO",
-     "doc": "17701982000141",
-     "municipio": "Ribas do Rio Pardo",
-     "valor": 550000.0
-    },
-    {
-     "nome": "MUNICIPIO DE DOURADOS",
-     "doc": "03155926000144",
-     "municipio": "Dourados",
-     "valor": 547250.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE DEODAPOLIS-MS",
-     "doc": "12270817000169",
-     "municipio": "Deodápolis",
-     "valor": 500000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-     "doc": "03916902000160",
-     "municipio": "Dourados",
-     "valor": 500000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE AQUIDAUANA",
-     "doc": "04589955000187",
-     "municipio": "Aquidauana",
-     "valor": 500000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE CAARAPO",
-     "doc": "97536097000193",
-     "municipio": "Caarapó",
-     "valor": 500000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE RIO NEGRO MS",
-     "doc": "12144238000170",
-     "municipio": "Rio Negro",
-     "valor": 500000.0
-    },
-    {
-     "nome": "MUNICIPIO DE AMAMBAI",
-     "doc": "03568433000136",
-     "municipio": "Amambai",
-     "valor": 497500.0
-    },
-    {
-     "nome": "MUNICIPIO DE BANDEIRANTES",
-     "doc": "03501491000142",
-     "municipio": "Bandeirantes",
-     "valor": 497500.0
-    },
-    {
-     "nome": "MUNICIPIO DE RIO VERDE DE MATO GROSSO",
-     "doc": "03354560000132",
-     "municipio": "Rio Verde de Mato Grosso",
-     "valor": 497500.0
-    }
-   ],
-   "foraDeMS": [
-    {
-     "uf": "DF",
-     "valor": 798161.41
-    },
-    {
-     "uf": "RS",
-     "valor": 91965.72
-    },
-    {
-     "uf": "—",
-     "valor": 46048.66
-    },
-    {
-     "uf": "RJ",
-     "valor": 41168.36
-    },
-    {
-     "uf": "SC",
-     "valor": 31272.28
-    },
-    {
-     "uf": "SP",
-     "valor": 21966.6
-    },
-    {
-     "uf": "PR",
-     "valor": 19952.28
-    },
-    {
-     "uf": "BA",
-     "valor": 9007.0
-    },
-    {
-     "uf": "GO",
-     "valor": 6936.7
-    },
-    {
-     "uf": "MG",
-     "valor": 4662.3
-    }
-   ]
-  },
-  {
-   "autor": "Beto Pereira",
-   "atual": true,
-   "cargo": "Deputado(a) federal",
-   "partido": "REPUBLICANOS",
-   "grupo": "federal",
-   "totalMS": 24168124.35,
-   "totalBR": 25550258.78,
-   "municipios": [
-    {
-     "municipio": "Ribas do Rio Pardo",
-     "valor": 3980000.0
-    },
-    {
-     "municipio": "Campo Grande",
-     "valor": 3378979.5
-    },
-    {
-     "municipio": "Ponta Porã",
-     "valor": 2000000.0
-    },
-    {
-     "municipio": "Corguinho",
-     "valor": 1079900.0
-    },
-    {
-     "municipio": "Bataguassu",
-     "valor": 1000000.0
-    },
-    {
-     "municipio": "Maracaju",
-     "valor": 1000000.0
-    },
-    {
-     "municipio": "Cassilândia",
-     "valor": 1000000.0
-    },
-    {
-     "municipio": "Nova Andradina",
-     "valor": 1000000.0
-    },
-    {
-     "municipio": "Dois Irmãos do Buriti",
-     "valor": 1000000.0
-    },
-    {
-     "municipio": "Coxim",
-     "valor": 758000.0
-    },
-    {
-     "municipio": "Coronel Sapucaia",
-     "valor": 713281.0
-    },
-    {
-     "municipio": "Ladário",
-     "valor": 607745.0
-    },
-    {
-     "municipio": "Juti",
-     "valor": 597000.0
-    },
-    {
-     "municipio": "Paranaíba",
-     "valor": 527600.0
-    },
-    {
-     "municipio": "Deodápolis",
-     "valor": 500000.0
-    },
-    {
-     "municipio": "Douradina",
-     "valor": 500000.0
-    },
-    {
-     "municipio": "Amambai",
-     "valor": 500000.0
-    },
-    {
-     "municipio": "Jaraguari",
-     "valor": 500000.0
-    },
-    {
-     "municipio": "Alcinópolis",
-     "valor": 406855.0
-    },
-    {
-     "municipio": "Taquarussu",
-     "valor": 397260.0
-    },
-    {
-     "municipio": "Rio Verde de Mato Grosso",
-     "valor": 376380.0
-    },
-    {
-     "municipio": "Água Clara",
-     "valor": 374989.85
-    },
-    {
-     "municipio": "Glória de Dourados",
-     "valor": 350593.0
-    },
-    {
-     "municipio": "Jardim",
-     "valor": 350000.0
-    },
-    {
-     "municipio": "Aral Moreira",
-     "valor": 344253.0
-    },
-    {
-     "municipio": "Nova Alvorada do Sul",
-     "valor": 314200.0
-    },
-    {
-     "municipio": "Três Lagoas",
-     "valor": 200305.0
-    },
-    {
-     "municipio": "Bodoquena",
-     "valor": 150000.0
-    },
-    {
-     "municipio": "Terenos",
-     "valor": 150000.0
-    },
-    {
-     "municipio": "Anaurilândia",
-     "valor": 62000.0
-    },
-    {
-     "municipio": "Brasilândia",
-     "valor": 48783.0
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 18738534.5
-    },
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 5429589.85
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "MUNICIPIO DE RIBAS DO RIO PARDO",
-     "doc": "03501541000191",
-     "municipio": "Ribas do Rio Pardo",
-     "valor": 3980000.0
-    },
-    {
-     "nome": "FUNDO ESPECIAL DE SAUDE",
-     "doc": "03517102000177",
-     "municipio": "Campo Grande",
-     "valor": 3000000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11084263000142",
-     "municipio": "Ponta Porã",
-     "valor": 2000000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE CORGUINHO",
-     "doc": "14016980000125",
-     "municipio": "Corguinho",
-     "valor": 1079900.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "10836939000144",
-     "municipio": "Bataguassu",
-     "valor": 1000000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "00282872000190",
-     "municipio": "Maracaju",
-     "valor": 1000000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE CASSILANDIA-MS",
-     "doc": "14540893000172",
-     "municipio": "Cassilândia",
-     "valor": 1000000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE NOVA ANDRADINA",
-     "doc": "10711980000194",
-     "municipio": "Nova Andradina",
-     "valor": 1000000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DO MUNICIPIO DE DOIS IRMAOS DO BURITI",
-     "doc": "11394413000114",
-     "municipio": "Dois Irmãos do Buriti",
-     "valor": 1000000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE CORONEL SAPUCAIA",
-     "doc": "13022375000102",
-     "municipio": "Coronel Sapucaia",
-     "valor": 713281.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "15363895000104",
-     "municipio": "Ladário",
-     "valor": 607745.0
-    },
-    {
-     "nome": "MUNICIPIO DE JUTI",
-     "doc": "24644296000141",
-     "municipio": "Juti",
-     "valor": 597000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE DEODAPOLIS-MS",
-     "doc": "12270817000169",
-     "municipio": "Deodápolis",
-     "valor": 500000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "15309267000132",
-     "municipio": "Douradina",
-     "valor": 500000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE AMAMBAI",
-     "doc": "13823697000142",
-     "municipio": "Amambai",
-     "valor": 500000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE JARAGUARI",
-     "doc": "12021434000157",
-     "municipio": "Jaraguari",
-     "valor": 500000.0
-    },
-    {
-     "nome": "MUNICIPIO DE PARANAIBA",
-     "doc": "03343118000100",
-     "municipio": "Paranaíba",
-     "valor": 477600.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE COXIM-MS",
-     "doc": "11970135000104",
-     "municipio": "Coxim",
-     "valor": 458000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE ALCINOPOLIS",
-     "doc": "11955273000106",
-     "municipio": "Alcinópolis",
-     "valor": 406855.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11330525000101",
-     "municipio": "Taquarussu",
-     "valor": 397260.0
-    }
-   ],
-   "foraDeMS": [
-    {
-     "uf": "DF",
-     "valor": 1027096.51
-    },
-    {
-     "uf": "—",
-     "valor": 102693.13
-    },
-    {
-     "uf": "GO",
-     "valor": 102621.0
-    },
-    {
-     "uf": "SP",
-     "valor": 62346.66
-    },
-    {
-     "uf": "SC",
-     "valor": 42593.63
-    },
-    {
-     "uf": "PR",
-     "valor": 39555.1
-    },
-    {
-     "uf": "BA",
-     "valor": 3692.4
-    },
-    {
-     "uf": "PI",
-     "valor": 1536.0
-    }
-   ]
-  },
-  {
    "autor": "Com. Assuntos Sociais",
    "atual": false,
    "cargo": null,
@@ -9510,11 +9616,11 @@
      "valor": 1000000.0
     },
     {
-     "municipio": "Bonito",
+     "municipio": "Maracaju",
      "valor": 1000000.0
     },
     {
-     "municipio": "Maracaju",
+     "municipio": "Bonito",
      "valor": 1000000.0
     },
     {
@@ -9526,11 +9632,11 @@
      "valor": 1000000.0
     },
     {
-     "municipio": "Guia Lopes da Laguna",
+     "municipio": "Naviraí",
      "valor": 850000.0
     },
     {
-     "municipio": "Naviraí",
+     "municipio": "Guia Lopes da Laguna",
      "valor": 850000.0
     },
     {
@@ -9713,14 +9819,14 @@
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11803371000128",
-     "municipio": "Bonito",
+     "doc": "00282872000190",
+     "municipio": "Maracaju",
      "valor": 1000000.0
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "00282872000190",
-     "municipio": "Maracaju",
+     "doc": "11803371000128",
+     "municipio": "Bonito",
      "valor": 1000000.0
     },
     {
@@ -11160,18 +11266,22 @@
    "cargo": null,
    "partido": null,
    "grupo": null,
-   "totalMS": 439421.62,
-   "totalBR": 439421.62,
+   "totalMS": 453264.82,
+   "totalBR": 453264.82,
    "municipios": [
     {
      "municipio": "Dourados",
      "valor": 439421.62
+    },
+    {
+     "municipio": "Campo Grande",
+     "valor": 13843.2
     }
    ],
    "tipos": [
     {
      "tipo": "Bancada",
-     "valor": 439421.62
+     "valor": 453264.82
     }
    ],
    "favorecidos": [
@@ -11180,6 +11290,12 @@
      "doc": "10705330000136",
      "municipio": "Dourados",
      "valor": 439421.62
+    },
+    {
+     "nome": "MB COMERCIO DE MAQUINAS, FERRAMENTAS E SERVICOS LTDA",
+     "doc": "18272465000167",
+     "municipio": "Campo Grande",
+     "valor": 13843.2
     }
    ],
    "foraDeMS": []
@@ -13310,7 +13426,7 @@
    "doc": "03501509000106",
    "natureza": "Município",
    "municipio": "Campo Grande",
-   "valor": 31768253.11,
+   "valor": 32193852.6,
    "autores": [
     {
      "autor": "Bancada do Mato Grosso do Sul",
@@ -13334,7 +13450,11 @@
     },
     {
      "autor": "Camila Jara",
-     "valor": 469900.51
+     "valor": 597000.0
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 298500.0
     },
     {
      "autor": "Fabio Trad",
@@ -13493,11 +13613,11 @@
      "valor": 1000000.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Dr. Luiz Ovando",
      "valor": 500000.0
     },
     {
-     "autor": "Dr. Luiz Ovando",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
     }
    ]
@@ -13544,6 +13664,117 @@
    ]
   },
   {
+   "nome": "MUNICIPIO DE AQUIDAUANA",
+   "doc": "03452299000103",
+   "natureza": "Município",
+   "municipio": "Aquidauana",
+   "valor": 13052710.64,
+   "autores": [
+    {
+     "autor": "Com. Desenv Regional e Turismo",
+     "valor": 8752243.2
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 1990000.0
+    },
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 995000.0
+    },
+    {
+     "autor": "Vander Loubet",
+     "valor": 497500.0
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 398000.0
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 398000.0
+    },
+    {
+     "autor": "Bancada do Mato Grosso do Sul",
+     "valor": 21967.44
+    }
+   ]
+  },
+  {
+   "nome": "MUNICIPIO DE CAARAPO",
+   "doc": "03155900000104",
+   "natureza": "Município",
+   "municipio": "Caarapó",
+   "valor": 12547918.3,
+   "autores": [
+    {
+     "autor": "Marcos Pollon",
+     "valor": 5870500.0
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 1990000.0
+    },
+    {
+     "autor": "Rodolfo Nogueira",
+     "valor": 1990000.0
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 995000.0
+    },
+    {
+     "autor": "Camila Jara",
+     "valor": 597000.0
+    },
+    {
+     "autor": "Vander Loubet",
+     "valor": 497500.0
+    },
+    {
+     "autor": "Tereza Cristina",
+     "valor": 369168.3
+    },
+    {
+     "autor": "Fabio Trad",
+     "valor": 238750.0
+    }
+   ]
+  },
+  {
+   "nome": "ESTADO DE MATO GROSSO DO SUL",
+   "doc": "15412257000128",
+   "natureza": "Estado ou Distrito Federal",
+   "municipio": "Campo Grande",
+   "valor": 12532546.97,
+   "autores": [
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 7263500.0
+    },
+    {
+     "autor": "Rodolfo Nogueira",
+     "valor": 1492500.0
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 1484546.97
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 1098000.0
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 696500.0
+    },
+    {
+     "autor": "Camila Jara",
+     "valor": 497500.0
+    }
+   ]
+  },
+  {
    "nome": "MUNICIPIO DE RIBAS DO RIO PARDO",
    "doc": "03501541000191",
    "natureza": "Município",
@@ -13577,72 +13808,6 @@
     {
      "autor": "Com. Esporte",
      "valor": 923653.54
-    }
-   ]
-  },
-  {
-   "nome": "MUNICIPIO DE CAARAPO",
-   "doc": "03155900000104",
-   "natureza": "Município",
-   "municipio": "Caarapó",
-   "valor": 10581955.31,
-   "autores": [
-    {
-     "autor": "Marcos Pollon",
-     "valor": 5696814.87
-    },
-    {
-     "autor": "Rodolfo Nogueira",
-     "valor": 1778167.52
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 995000.0
-    },
-    {
-     "autor": "Camila Jara",
-     "valor": 597000.0
-    },
-    {
-     "autor": "Vander Loubet",
-     "valor": 497500.0
-    },
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 409554.62
-    },
-    {
-     "autor": "Tereza Cristina",
-     "valor": 369168.3
-    },
-    {
-     "autor": "Fabio Trad",
-     "valor": 238750.0
-    }
-   ]
-  },
-  {
-   "nome": "MUNICIPIO DE AQUIDAUANA",
-   "doc": "03452299000103",
-   "natureza": "Município",
-   "municipio": "Aquidauana",
-   "valor": 10266710.64,
-   "autores": [
-    {
-     "autor": "Com. Desenv Regional e Turismo",
-     "valor": 8752243.2
-    },
-    {
-     "autor": "Dagoberto Nogueira",
-     "valor": 995000.0
-    },
-    {
-     "autor": "Vander Loubet",
-     "valor": 497500.0
-    },
-    {
-     "autor": "Bancada do Mato Grosso do Sul",
-     "valor": 21967.44
     }
    ]
   },
@@ -13756,11 +13921,11 @@
      "valor": 1000000.0
     },
     {
-     "autor": "Tereza Cristina",
+     "autor": "Camila Jara",
      "valor": 500000.0
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Tereza Cristina",
      "valor": 500000.0
     }
    ]
@@ -13910,7 +14075,7 @@
    "doc": "03434792000109",
    "natureza": "Município",
    "municipio": "Ponta Porã",
-   "valor": 6544746.69,
+   "valor": 7042246.69,
    "autores": [
     {
      "autor": "Com. Desenv Regional e Turismo",
@@ -13923,6 +14088,10 @@
     {
      "autor": "Relator Geral",
      "valor": 960019.0
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 497500.0
     }
    ]
   },
@@ -14004,11 +14173,11 @@
      "valor": 1800000.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Com. Assuntos Sociais",
      "valor": 1000000.0
     },
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Dagoberto Nogueira",
      "valor": 1000000.0
     },
     {
@@ -14016,11 +14185,11 @@
      "valor": 800000.0
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Dr. Luiz Ovando",
      "valor": 500000.0
     },
     {
-     "autor": "Dr. Luiz Ovando",
+     "autor": "Beto Pereira",
      "valor": 500000.0
     },
     {
@@ -14047,6 +14216,35 @@
     {
      "autor": "Com. da Saude",
      "valor": 600000.0
+    }
+   ]
+  },
+  {
+   "nome": "MUNICIPIO DE BODOQUENA",
+   "doc": "15465016000147",
+   "natureza": "Município",
+   "municipio": "Bodoquena",
+   "valor": 5451328.19,
+   "autores": [
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 1990000.0
+    },
+    {
+     "autor": "Com. Turismo",
+     "valor": 1299585.0
+    },
+    {
+     "autor": "Com. Desenv Regional e Turismo",
+     "valor": 960019.0
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 654474.19
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 547250.0
     }
    ]
   },
@@ -14155,31 +14353,6 @@
     {
      "autor": "Geraldo Resende",
      "valor": 499687.0
-    }
-   ]
-  },
-  {
-   "nome": "MUNICIPIO DE BODOQUENA",
-   "doc": "15465016000147",
-   "natureza": "Município",
-   "municipio": "Bodoquena",
-   "valor": 4904078.19,
-   "autores": [
-    {
-     "autor": "Dagoberto Nogueira",
-     "valor": 1990000.0
-    },
-    {
-     "autor": "Com. Turismo",
-     "valor": 1299585.0
-    },
-    {
-     "autor": "Com. Desenv Regional e Turismo",
-     "valor": 960019.0
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 654474.19
     }
    ]
   },
@@ -14341,6 +14514,27 @@
    ]
   },
   {
+   "nome": "MUNICIPIO DE MARACAJU",
+   "doc": "03442597000112",
+   "natureza": "Município",
+   "municipio": "Maracaju",
+   "valor": 4477500.0,
+   "autores": [
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 2985000.0
+    },
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 995000.0
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 497500.0
+    }
+   ]
+  },
+  {
    "nome": "MUNICIPIO DE DEODAPOLIS",
    "doc": "03903176000141",
    "natureza": "Município",
@@ -14456,11 +14650,11 @@
    "valor": 4087256.4,
    "autores": [
     {
-     "autor": "Vander Loubet",
+     "autor": "Dagoberto Nogueira",
      "valor": 995000.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Vander Loubet",
      "valor": 995000.0
     },
     {
@@ -14571,16 +14765,37 @@
      "valor": 550000.0
     },
     {
-     "autor": "Geraldo Resende",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Geraldo Resende",
      "valor": 500000.0
     },
     {
      "autor": "Rodolfo Nogueira",
      "valor": 199744.0
+    }
+   ]
+  },
+  {
+   "nome": "MUNICIPIO DE NOVA ANDRADINA",
+   "doc": "03173317000118",
+   "natureza": "Município",
+   "municipio": "Nova Andradina",
+   "valor": 3883000.0,
+   "autores": [
+    {
+     "autor": "Geraldo Resende",
+     "valor": 2985000.0
+    },
+    {
+     "autor": "Tereza Cristina",
+     "valor": 500000.0
+    },
+    {
+     "autor": "Camila Jara",
+     "valor": 398000.0
     }
    ]
   },
@@ -14592,11 +14807,11 @@
    "valor": 3866405.0,
    "autores": [
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Camila Jara",
      "valor": 1000000.0
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Com. Assuntos Sociais",
      "valor": 1000000.0
     },
     {
@@ -14637,11 +14852,11 @@
      "valor": 607745.0
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Camila Jara",
      "valor": 500000.0
     },
     {
@@ -14759,6 +14974,39 @@
    ]
   },
   {
+   "nome": "FUNDO MUNICIPAL DE SAUDE DE PARANAIBA",
+   "doc": "11353020000162",
+   "natureza": "Fundo Público da Administração Direta Municipal",
+   "municipio": "Paranaíba",
+   "valor": 3692751.0,
+   "autores": [
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 2000000.0
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 1000000.0
+    },
+    {
+     "autor": "Geraldo Resende",
+     "valor": 312730.0
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 200000.0
+    },
+    {
+     "autor": "Rodolfo Nogueira",
+     "valor": 145021.0
+    },
+    {
+     "autor": "Marcos Pollon",
+     "valor": 35000.0
+    }
+   ]
+  },
+  {
    "nome": "MUNICIPIO DE NOVO HORIZONTE DO SUL",
    "doc": "37226644000102",
    "natureza": "Município",
@@ -14795,6 +15043,10 @@
    "valor": 3600000.0,
    "autores": [
     {
+     "autor": "Nelsinho Trad",
+     "valor": 1000000.0
+    },
+    {
      "autor": "Com. Assuntos Sociais",
      "valor": 1000000.0
     },
@@ -14803,58 +15055,8 @@
      "valor": 1000000.0
     },
     {
-     "autor": "Nelsinho Trad",
-     "valor": 1000000.0
-    },
-    {
      "autor": "Dr. Luiz Ovando",
      "valor": 600000.0
-    }
-   ]
-  },
-  {
-   "nome": "MUNICIPIO DE NOVA ANDRADINA",
-   "doc": "03173317000118",
-   "natureza": "Município",
-   "municipio": "Nova Andradina",
-   "valor": 3485000.0,
-   "autores": [
-    {
-     "autor": "Geraldo Resende",
-     "valor": 2985000.0
-    },
-    {
-     "autor": "Tereza Cristina",
-     "valor": 500000.0
-    }
-   ]
-  },
-  {
-   "nome": "FUNDO MUNICIPAL DE SAUDE DE PARANAIBA",
-   "doc": "11353020000162",
-   "natureza": "Fundo Público da Administração Direta Municipal",
-   "municipio": "Paranaíba",
-   "valor": 3380021.0,
-   "autores": [
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 2000000.0
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 1000000.0
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 200000.0
-    },
-    {
-     "autor": "Rodolfo Nogueira",
-     "valor": 145021.0
-    },
-    {
-     "autor": "Marcos Pollon",
-     "valor": 35000.0
     }
    ]
   },
@@ -14884,19 +15086,23 @@
    ]
   },
   {
-   "nome": "MUNICIPIO DE MARACAJU",
-   "doc": "03442597000112",
+   "nome": "MUNICIPIO DE NAVIRAI",
+   "doc": "03155934000190",
    "natureza": "Município",
-   "municipio": "Maracaju",
-   "valor": 3068996.43,
+   "municipio": "Naviraí",
+   "valor": 3098256.2,
    "autores": [
     {
-     "autor": "Soraya Thronicke",
-     "valor": 2073996.43
+     "autor": "Com. Desenv Regional e Turismo",
+     "valor": 1720785.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Nelsinho Trad",
      "valor": 995000.0
+    },
+    {
+     "autor": "Relator Geral",
+     "valor": 382471.2
     }
    ]
   },
@@ -14937,11 +15143,11 @@
      "valor": 700000.0
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Rodolfo Nogueira",
      "valor": 500000.0
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Beto Pereira",
      "valor": 500000.0
     },
     {
@@ -15130,19 +15336,23 @@
    ]
   },
   {
-   "nome": "ESTADO DE MATO GROSSO DO SUL",
-   "doc": "15412257000128",
-   "natureza": "Estado ou Distrito Federal",
-   "municipio": "Campo Grande",
-   "valor": 2690000.0,
+   "nome": "FUNDO MUNICIPAL DE SAUDE-FMS",
+   "doc": "12022274000160",
+   "natureza": "Fundo Público da Administração Direta Municipal",
+   "municipio": "Santa Rita do Pardo",
+   "valor": 2689913.0,
    "autores": [
     {
      "autor": "Soraya Thronicke",
-     "valor": 1592000.0
+     "valor": 1190000.0
     },
     {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 1098000.0
+     "autor": "Geraldo Resende",
+     "valor": 999913.0
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 500000.0
     }
    ]
   },
@@ -15246,7 +15456,7 @@
    "valor": 2580000.0,
    "autores": [
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Geraldo Resende",
      "valor": 500000.0
     },
     {
@@ -15254,7 +15464,7 @@
      "valor": 500000.0
     },
     {
-     "autor": "Geraldo Resende",
+     "autor": "Com. Assuntos Sociais",
      "valor": 500000.0
     },
     {
@@ -15354,12 +15564,29 @@
      "valor": 1489988.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Com. Assuntos Sociais",
      "valor": 500000.0
     },
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
+    }
+   ]
+  },
+  {
+   "nome": "MUNICIPIO DE SAO GABRIEL DO OESTE",
+   "doc": "15389588000194",
+   "natureza": "Município",
+   "municipio": "São Gabriel do Oeste",
+   "valor": 2462069.23,
+   "autores": [
+    {
+     "autor": "Marcos Pollon",
+     "valor": 1367569.23
+    },
+    {
+     "autor": "Camila Jara",
+     "valor": 1094500.0
     }
    ]
   },
@@ -15526,6 +15753,27 @@
    ]
   },
   {
+   "nome": "MUNICIPIO DE BONITO",
+   "doc": "03073673000160",
+   "natureza": "Município",
+   "municipio": "Bonito",
+   "valor": 2210326.08,
+   "autores": [
+    {
+     "autor": "Tereza Cristina",
+     "valor": 1432677.6
+    },
+    {
+     "autor": "Com. Desenv. Urbano",
+     "valor": 578648.48
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 199000.0
+    }
+   ]
+  },
+  {
    "nome": "FUNDO MUNICIPAL DE SAUDE DO MUNICIPIO DE SIDROLANDIA-MS",
    "doc": "09290533000120",
    "natureza": "Fundo Público da Administração Direta Municipal",
@@ -15572,23 +15820,6 @@
     {
      "autor": "Geraldo Resende",
      "valor": 298500.0
-    }
-   ]
-  },
-  {
-   "nome": "MUNICIPIO DE NAVIRAI",
-   "doc": "03155934000190",
-   "natureza": "Município",
-   "municipio": "Naviraí",
-   "valor": 2103256.2,
-   "autores": [
-    {
-     "autor": "Com. Desenv Regional e Turismo",
-     "valor": 1720785.0
-    },
-    {
-     "autor": "Relator Geral",
-     "valor": 382471.2
     }
    ]
   },
@@ -15803,23 +16034,6 @@
    ]
   },
   {
-   "nome": "MUNICIPIO DE BONITO",
-   "doc": "03073673000160",
-   "natureza": "Município",
-   "municipio": "Bonito",
-   "valor": 2011326.08,
-   "autores": [
-    {
-     "autor": "Tereza Cristina",
-     "valor": 1432677.6
-    },
-    {
-     "autor": "Com. Desenv. Urbano",
-     "valor": 578648.48
-    }
-   ]
-  },
-  {
    "nome": "MUNICIPIO DE LAGUNA CARAPA",
    "doc": "01989813000119",
    "natureza": "Município",
@@ -15883,6 +16097,23 @@
     {
      "autor": "Marcos Pollon",
      "valor": 60000.0
+    }
+   ]
+  },
+  {
+   "nome": "MUNICIPIO DE AGUA CLARA",
+   "doc": "03184066000177",
+   "natureza": "Município",
+   "municipio": "Água Clara",
+   "valor": 1824830.0,
+   "autores": [
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 1347230.0
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 477600.0
     }
    ]
   },
@@ -15978,11 +16209,11 @@
    "valor": 1762000.0,
    "autores": [
     {
-     "autor": "Geraldo Resende",
+     "autor": "Nelsinho Trad",
      "valor": 500000.0
     },
     {
-     "autor": "Nelsinho Trad",
+     "autor": "Geraldo Resende",
      "valor": 500000.0
     },
     {
@@ -16067,23 +16298,6 @@
    ]
   },
   {
-   "nome": "MUNICIPIO DE AGUA CLARA",
-   "doc": "03184066000177",
-   "natureza": "Município",
-   "municipio": "Água Clara",
-   "valor": 1722219.85,
-   "autores": [
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 1347230.0
-    },
-    {
-     "autor": "Beto Pereira",
-     "valor": 374989.85
-    }
-   ]
-  },
-  {
    "nome": "MUNICIPIO DE SIDROLANDIA",
    "doc": "03501574000131",
    "natureza": "Município",
@@ -16147,19 +16361,27 @@
    ]
   },
   {
-   "nome": "FUNDO MUNICIPAL DE SAUDE-FMS",
-   "doc": "12022274000160",
-   "natureza": "Fundo Público da Administração Direta Municipal",
-   "municipio": "Santa Rita do Pardo",
-   "valor": 1690000.0,
+   "nome": "MUNICIPIO DE COSTA RICA",
+   "doc": "15389596000130",
+   "natureza": "Município",
+   "municipio": "Costa Rica",
+   "valor": 1673007.36,
    "autores": [
     {
-     "autor": "Soraya Thronicke",
-     "valor": 1190000.0
+     "autor": "Beto Pereira",
+     "valor": 497500.0
     },
     {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 500000.0
+     "autor": "Com. de Integracao Nacional e Des. Regional",
+     "valor": 429257.36
+    },
+    {
+     "autor": "Geraldo Resende",
+     "valor": 398000.0
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 348250.0
     }
    ]
   },
@@ -16273,6 +16495,27 @@
    ]
   },
   {
+   "nome": "MUNICIPIO DE COXIM",
+   "doc": "03510211000162",
+   "natureza": "Município",
+   "municipio": "Coxim",
+   "valor": 1486050.0,
+   "autores": [
+    {
+     "autor": "Tereza Cristina",
+     "valor": 700000.0
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 447750.0
+    },
+    {
+     "autor": "Geraldo Resende",
+     "valor": 338300.0
+    }
+   ]
+  },
+  {
    "nome": "FIBRACAMPO PRODUTOS DE FIBRA LTDA EM RECUPERACAO JUDICIAL",
    "doc": "07407743000120",
    "natureza": "Sociedade Empresária Limitada",
@@ -16298,19 +16541,23 @@
    ]
   },
   {
-   "nome": "MUNICIPIO DE SAO GABRIEL DO OESTE",
-   "doc": "15389588000194",
+   "nome": "MUNICIPIO DE SONORA",
+   "doc": "24651234000167",
    "natureza": "Município",
-   "municipio": "São Gabriel do Oeste",
-   "valor": 1467069.23,
+   "municipio": "Sonora",
+   "valor": 1452780.0,
    "autores": [
     {
-     "autor": "Camila Jara",
-     "valor": 1094500.0
+     "autor": "Dr. Luiz Ovando",
+     "valor": 497500.0
     },
     {
      "autor": "Marcos Pollon",
-     "valor": 372569.23
+     "valor": 497500.0
+    },
+    {
+     "autor": "Com. Esporte",
+     "valor": 457780.0
     }
    ]
   },
@@ -16425,48 +16672,6 @@
    ]
   },
   {
-   "nome": "MUNICIPIO DE SONORA",
-   "doc": "24651234000167",
-   "natureza": "Município",
-   "municipio": "Sonora",
-   "valor": 1253780.0,
-   "autores": [
-    {
-     "autor": "Marcos Pollon",
-     "valor": 497500.0
-    },
-    {
-     "autor": "Com. Esporte",
-     "valor": 457780.0
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 298500.0
-    }
-   ]
-  },
-  {
-   "nome": "MUNICIPIO DE COSTA RICA",
-   "doc": "15389596000130",
-   "natureza": "Município",
-   "municipio": "Costa Rica",
-   "valor": 1175507.36,
-   "autores": [
-    {
-     "autor": "Com. de Integracao Nacional e Des. Regional",
-     "valor": 429257.36
-    },
-    {
-     "autor": "Geraldo Resende",
-     "valor": 398000.0
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 348250.0
-    }
-   ]
-  },
-  {
    "nome": "MUNICIPIO DE RIO VERDE DE MATO GROSSO",
    "doc": "03354560000132",
    "natureza": "Município",
@@ -16543,23 +16748,6 @@
     {
      "autor": "Com. Turismo",
      "valor": 200000.0
-    }
-   ]
-  },
-  {
-   "nome": "MUNICIPIO DE COXIM",
-   "doc": "03510211000162",
-   "natureza": "Município",
-   "municipio": "Coxim",
-   "valor": 1038300.0,
-   "autores": [
-    {
-     "autor": "Tereza Cristina",
-     "valor": 700000.0
-    },
-    {
-     "autor": "Geraldo Resende",
-     "valor": 338300.0
     }
    ]
   },
@@ -16683,6 +16871,19 @@
     {
      "autor": "Soraya Thronicke",
      "valor": 1000000.0
+    }
+   ]
+  },
+  {
+   "nome": "MUNICIPIO DE BRASILANDIA",
+   "doc": "03184058000120",
+   "natureza": "Município",
+   "municipio": "Brasilândia",
+   "valor": 995000.0,
+   "autores": [
+    {
+     "autor": "Beto Pereira",
+     "valor": 995000.0
     }
    ]
   },
@@ -16880,6 +17081,23 @@
    ]
   },
   {
+   "nome": "MUNICIPIO DE JARAGUARI",
+   "doc": "03501533000145",
+   "natureza": "Município",
+   "municipio": "Jaraguari",
+   "valor": 806704.0,
+   "autores": [
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 497500.0
+    },
+    {
+     "autor": "Tereza Cristina",
+     "valor": 309204.0
+    }
+   ]
+  },
+  {
    "nome": "FUNDO MUNICIPAL DE SAUDE",
    "doc": "11161074000126",
    "natureza": "Fundo Público da Administração Direta Municipal",
@@ -17043,23 +17261,6 @@
    ]
   },
   {
-   "nome": "MUNICIPIO DE JARAGUARI",
-   "doc": "03501533000145",
-   "natureza": "Município",
-   "municipio": "Jaraguari",
-   "valor": 531234.26,
-   "autores": [
-    {
-     "autor": "Tereza Cristina",
-     "valor": 309204.0
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 222030.26
-    }
-   ]
-  },
-  {
    "nome": "INSTITUTO PLANETA PANTANAL",
    "doc": "09444280000100",
    "natureza": "Associação Privada",
@@ -17107,6 +17308,19 @@
    "autores": [
     {
      "autor": "Dagoberto Nogueira",
+     "valor": 497500.0
+    }
+   ]
+  },
+  {
+   "nome": "MUNICIPIO DE BATAGUASSU",
+   "doc": "03576220000156",
+   "natureza": "Município",
+   "municipio": "Bataguassu",
+   "valor": 497500.0,
+   "autores": [
+    {
+     "autor": "Dr. Luiz Ovando",
      "valor": 497500.0
     }
    ]
@@ -17334,19 +17548,6 @@
   },
   {
    "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-   "doc": "14788679000130",
-   "natureza": "Fundo Público da Administração Direta Municipal",
-   "municipio": "Ponta Porã",
-   "valor": 350000.0,
-   "autores": [
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 350000.0
-    }
-   ]
-  },
-  {
-   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
    "doc": "15536539000137",
    "natureza": "Fundo Público da Administração Direta Municipal",
    "municipio": "Rio Brilhante",
@@ -17359,6 +17560,19 @@
     {
      "autor": "Dr. Luiz Ovando",
      "valor": 50000.0
+    }
+   ]
+  },
+  {
+   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+   "doc": "14788679000130",
+   "natureza": "Fundo Público da Administração Direta Municipal",
+   "municipio": "Ponta Porã",
+   "valor": 350000.0,
+   "autores": [
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 350000.0
     }
    ]
   },
@@ -17592,19 +17806,6 @@
   },
   {
    "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-   "doc": "01740441000192",
-   "natureza": "Fundo Público da Administração Direta Municipal",
-   "municipio": "Maracaju",
-   "valor": 200000.0,
-   "autores": [
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 200000.0
-    }
-   ]
-  },
-  {
-   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
    "doc": "15615736000141",
    "natureza": "Fundo Público da Administração Direta Municipal",
    "municipio": "Caracol",
@@ -17617,6 +17818,19 @@
     {
      "autor": "Dr. Luiz Ovando",
      "valor": 100000.0
+    }
+   ]
+  },
+  {
+   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+   "doc": "01740441000192",
+   "natureza": "Fundo Público da Administração Direta Municipal",
+   "municipio": "Maracaju",
+   "valor": 200000.0,
+   "autores": [
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 200000.0
     }
    ]
   },
@@ -17656,6 +17870,19 @@
     {
      "autor": "Marcos Pollon",
      "valor": 200000.0
+    }
+   ]
+  },
+  {
+   "nome": "MUNICIPIO DE CORGUINHO",
+   "doc": "03501525000107",
+   "natureza": "Município",
+   "municipio": "Corguinho",
+   "valor": 199000.0,
+   "autores": [
+    {
+     "autor": "Beto Pereira",
+     "valor": 199000.0
     }
    ]
   },
@@ -18001,6 +18228,23 @@
    ]
   },
   {
+   "nome": "MB COMERCIO DE MAQUINAS, FERRAMENTAS E SERVICOS LTDA",
+   "doc": "18272465000167",
+   "natureza": "Sociedade Empresária Limitada",
+   "municipio": "Campo Grande",
+   "valor": 59582.52,
+   "autores": [
+    {
+     "autor": "Bancada de Sao Paulo",
+     "valor": 45739.32
+    },
+    {
+     "autor": "Bancada de Santa Catarina",
+     "valor": 13843.2
+    }
+   ]
+  },
+  {
    "nome": "AMERICA MIX COMERCIO DE MATERIAIS DE CONSTRUCAO E SERVICOS DE MANUTENCAO PREDIAL LTDA",
    "doc": "35604126000150",
    "natureza": "Sociedade Empresária Limitada",
@@ -18028,19 +18272,6 @@
   },
   {
    "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL - FMAS",
-   "doc": "13766791000107",
-   "natureza": "Fundo Público da Administração Direta Municipal",
-   "municipio": "São Gabriel do Oeste",
-   "valor": 50000.0,
-   "autores": [
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 50000.0
-    }
-   ]
-  },
-  {
-   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL - FMAS",
    "doc": "13525049000100",
    "natureza": "Fundo Público da Administração Direta Municipal",
    "municipio": "Rio Negro",
@@ -18048,6 +18279,19 @@
    "autores": [
     {
      "autor": "Marcos Pollon",
+     "valor": 50000.0
+    }
+   ]
+  },
+  {
+   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL - FMAS",
+   "doc": "13766791000107",
+   "natureza": "Fundo Público da Administração Direta Municipal",
+   "municipio": "São Gabriel do Oeste",
+   "valor": 50000.0,
+   "autores": [
+    {
+     "autor": "Dr. Luiz Ovando",
      "valor": 50000.0
     }
    ]
@@ -18092,19 +18336,6 @@
     {
      "autor": "Vander Loubet",
      "valor": 10000.0
-    }
-   ]
-  },
-  {
-   "nome": "MB COMERCIO DE MAQUINAS, FERRAMENTAS E SERVICOS LTDA",
-   "doc": "18272465000167",
-   "natureza": "Sociedade Empresária Limitada",
-   "municipio": "Campo Grande",
-   "valor": 45739.32,
-   "autores": [
-    {
-     "autor": "Bancada de Sao Paulo",
-     "valor": 45739.32
     }
    ]
   },
@@ -19144,7 +19375,7 @@
    "2023": 202683227.0,
    "2024": 134904527.0,
    "2025": 122953690.53,
-   "2026": 119587472.29
+   "2026": 142861665.2
   },
   "porAno": {
    "2020": {
@@ -22208,12 +22439,12 @@
         "valor": 1700000.0
        },
        {
-        "autor": "Soraya Thronicke",
+        "autor": "Dr. Luiz Ovando",
         "atual": true,
         "valor": 100000.0
        },
        {
-        "autor": "Dr. Luiz Ovando",
+        "autor": "Soraya Thronicke",
         "atual": true,
         "valor": 100000.0
        }
@@ -22550,6 +22781,17 @@
       ]
      },
      {
+      "municipio": "Deodápolis",
+      "valor": 800000.0,
+      "autores": [
+       {
+        "autor": "Dr. Luiz Ovando",
+        "atual": true,
+        "valor": 800000.0
+       }
+      ]
+     },
+     {
       "municipio": "Aquidauana",
       "valor": 800000.0,
       "autores": [
@@ -22562,17 +22804,6 @@
         "autor": "Soraya Thronicke",
         "atual": true,
         "valor": 300000.0
-       }
-      ]
-     },
-     {
-      "municipio": "Deodápolis",
-      "valor": 800000.0,
-      "autores": [
-       {
-        "autor": "Dr. Luiz Ovando",
-        "atual": true,
-        "valor": 800000.0
        }
       ]
      },
@@ -23728,22 +23959,22 @@
       ]
      },
      {
-      "municipio": "Juti",
+      "municipio": "Sete Quedas",
       "valor": 500000.0,
       "autores": [
        {
-        "autor": "Vander Loubet",
+        "autor": "Nelsinho Trad",
         "atual": true,
         "valor": 500000.0
        }
       ]
      },
      {
-      "municipio": "Sete Quedas",
+      "municipio": "Juti",
       "valor": 500000.0,
       "autores": [
        {
-        "autor": "Nelsinho Trad",
+        "autor": "Vander Loubet",
         "atual": true,
         "valor": 500000.0
        }
@@ -25490,22 +25721,22 @@
       ]
      },
      {
-      "municipio": "Aral Moreira",
+      "municipio": "Vicentina",
       "valor": 396000.0,
       "autores": [
        {
-        "autor": "Beto Pereira",
+        "autor": "Dr. Luiz Ovando",
         "atual": true,
         "valor": 396000.0
        }
       ]
      },
      {
-      "municipio": "Vicentina",
+      "municipio": "Aral Moreira",
       "valor": 396000.0,
       "autores": [
        {
-        "autor": "Dr. Luiz Ovando",
+        "autor": "Beto Pereira",
         "atual": true,
         "valor": 396000.0
        }
@@ -25563,7 +25794,7 @@
       "autor": "Nelsinho Trad",
       "atual": true,
       "cargo": "Senador(a)",
-      "valor": 25787903.23,
+      "valor": 31049848.61,
       "municipios": [
        {
         "municipio": "Dourados",
@@ -25582,12 +25813,24 @@
         "valor": 2095348.61
        },
        {
+        "municipio": "Aquidauana",
+        "valor": 1990000.0
+       },
+       {
+        "municipio": "Caarapó",
+        "valor": 1990000.0
+       },
+       {
         "municipio": "Alcinópolis",
         "valor": 1990000.0
        },
        {
         "municipio": "Ribas do Rio Pardo",
         "valor": 1990000.0
+       },
+       {
+        "municipio": "Naviraí",
+        "valor": 995000.0
        },
        {
         "municipio": "Sete Quedas",
@@ -25598,12 +25841,12 @@
         "valor": 995000.0
        },
        {
-        "municipio": "Laguna Carapã",
-        "valor": 497500.0
+        "municipio": "Campo Grande",
+        "valor": 696500.0
        },
        {
-        "municipio": "Caarapó",
-        "valor": 409554.62
+        "municipio": "Laguna Carapã",
+        "valor": 497500.0
        }
       ]
      },
@@ -25699,19 +25942,23 @@
       "autor": "Rodolfo Nogueira",
       "atual": true,
       "cargo": "Deputado(a) federal",
-      "valor": 18181737.52,
+      "valor": 19886070.0,
       "municipios": [
        {
         "municipio": "Dourados",
         "valor": 12921070.0
        },
        {
+        "municipio": "Caarapó",
+        "valor": 1990000.0
+       },
+       {
         "municipio": "Itaporã",
         "valor": 1990000.0
        },
        {
-        "municipio": "Caarapó",
-        "valor": 1778167.52
+        "municipio": "Campo Grande",
+        "valor": 1492500.0
        },
        {
         "municipio": "Jardim",
@@ -25723,15 +25970,15 @@
       "autor": "Soraya Thronicke",
       "atual": true,
       "cargo": "Senador(a)",
-      "valor": 13167129.05,
+      "valor": 19749632.62,
       "municipios": [
        {
-        "municipio": "Maracaju",
-        "valor": 2073996.43
+        "municipio": "Campo Grande",
+        "valor": 7263500.0
        },
        {
-        "municipio": "Campo Grande",
-        "valor": 1592000.0
+        "municipio": "Maracaju",
+        "valor": 2985000.0
        },
        {
         "municipio": "Água Clara",
@@ -25840,38 +26087,18 @@
       ]
      },
      {
-      "autor": "Marcos Pollon",
-      "atual": true,
-      "cargo": "Deputado(a) federal",
-      "valor": 8642014.87,
-      "municipios": [
-       {
-        "municipio": "Caarapó",
-        "valor": 5696814.87
-       },
-       {
-        "municipio": "Bela Vista",
-        "valor": 1452700.0
-       },
-       {
-        "municipio": "Três Lagoas",
-        "valor": 995000.0
-       },
-       {
-        "municipio": "Sonora",
-        "valor": 497500.0
-       }
-      ]
-     },
-     {
       "autor": "Dr. Luiz Ovando",
       "atual": true,
       "cargo": "Deputado(a) federal",
-      "valor": 6739280.26,
+      "valor": 10099250.0,
       "municipios": [
        {
         "municipio": "Fátima do Sul",
         "valor": 746250.0
+       },
+       {
+        "municipio": "Campo Grande",
+        "valor": 696500.0
        },
        {
         "municipio": "Eldorado",
@@ -25886,8 +26113,28 @@
         "valor": 646750.0
        },
        {
+        "municipio": "Bodoquena",
+        "valor": 547250.0
+       },
+       {
         "municipio": "Dourados",
         "valor": 547250.0
+       },
+       {
+        "municipio": "Bataguassu",
+        "valor": 497500.0
+       },
+       {
+        "municipio": "Jaraguari",
+        "valor": 497500.0
+       },
+       {
+        "municipio": "Maracaju",
+        "valor": 497500.0
+       },
+       {
+        "municipio": "Sonora",
+        "valor": 497500.0
        },
        {
         "municipio": "Amambai",
@@ -25906,7 +26153,11 @@
         "valor": 497500.0
        },
        {
-        "municipio": "Campo Grande",
+        "municipio": "Coxim",
+        "valor": 447750.0
+       },
+       {
+        "municipio": "Aquidauana",
         "valor": 398000.0
        },
        {
@@ -25914,15 +26165,87 @@
         "valor": 348250.0
        },
        {
-        "municipio": "Sonora",
-        "valor": 298500.0
-       },
-       {
-        "municipio": "Jaraguari",
-        "valor": 222030.26
+        "municipio": "Bonito",
+        "valor": 199000.0
        },
        {
         "municipio": "Sidrolândia",
+        "valor": 199000.0
+       }
+      ]
+     },
+     {
+      "autor": "Marcos Pollon",
+      "atual": true,
+      "cargo": "Deputado(a) federal",
+      "valor": 9810700.0,
+      "municipios": [
+       {
+        "municipio": "Caarapó",
+        "valor": 5870500.0
+       },
+       {
+        "municipio": "Bela Vista",
+        "valor": 1452700.0
+       },
+       {
+        "municipio": "São Gabriel do Oeste",
+        "valor": 995000.0
+       },
+       {
+        "municipio": "Três Lagoas",
+        "valor": 995000.0
+       },
+       {
+        "municipio": "Sonora",
+        "valor": 497500.0
+       }
+      ]
+     },
+     {
+      "autor": "Beto Pereira",
+      "atual": true,
+      "cargo": "Deputado(a) federal",
+      "valor": 9603746.97,
+      "municipios": [
+       {
+        "municipio": "Ribas do Rio Pardo",
+        "valor": 3980000.0
+       },
+       {
+        "municipio": "Campo Grande",
+        "valor": 1484546.97
+       },
+       {
+        "municipio": "Brasilândia",
+        "valor": 995000.0
+       },
+       {
+        "municipio": "Juti",
+        "valor": 597000.0
+       },
+       {
+        "municipio": "Costa Rica",
+        "valor": 497500.0
+       },
+       {
+        "municipio": "Ponta Porã",
+        "valor": 497500.0
+       },
+       {
+        "municipio": "Água Clara",
+        "valor": 477600.0
+       },
+       {
+        "municipio": "Paranaíba",
+        "valor": 477600.0
+       },
+       {
+        "municipio": "Aquidauana",
+        "valor": 398000.0
+       },
+       {
+        "municipio": "Corguinho",
         "valor": 199000.0
        }
       ]
@@ -25964,35 +26287,15 @@
       ]
      },
      {
-      "autor": "Beto Pereira",
-      "atual": true,
-      "cargo": "Deputado(a) federal",
-      "valor": 5429589.85,
-      "municipios": [
-       {
-        "municipio": "Ribas do Rio Pardo",
-        "valor": 3980000.0
-       },
-       {
-        "municipio": "Juti",
-        "valor": 597000.0
-       },
-       {
-        "municipio": "Paranaíba",
-        "valor": 477600.0
-       },
-       {
-        "municipio": "Água Clara",
-        "valor": 374989.85
-       }
-      ]
-     },
-     {
       "autor": "Camila Jara",
       "atual": true,
       "cargo": "Deputado(a) federal",
-      "valor": 2161400.51,
+      "valor": 3184000.0,
       "municipios": [
+       {
+        "municipio": "Campo Grande",
+        "valor": 1094500.0
+       },
        {
         "municipio": "São Gabriel do Oeste",
         "valor": 1094500.0
@@ -26002,8 +26305,8 @@
         "valor": 597000.0
        },
        {
-        "municipio": "Campo Grande",
-        "valor": 469900.51
+        "municipio": "Nova Andradina",
+        "valor": 398000.0
        }
       ]
      }
@@ -26036,18 +26339,64 @@
       ]
      },
      {
-      "municipio": "Caarapó",
-      "valor": 9974037.01,
+      "municipio": "Campo Grande",
+      "valor": 15713046.97,
       "autores": [
        {
-        "autor": "Marcos Pollon",
+        "autor": "Soraya Thronicke",
         "atual": true,
-        "valor": 5696814.87
+        "valor": 7263500.0
+       },
+       {
+        "autor": "Vander Loubet",
+        "atual": true,
+        "valor": 2985000.0
        },
        {
         "autor": "Rodolfo Nogueira",
         "atual": true,
-        "valor": 1778167.52
+        "valor": 1492500.0
+       },
+       {
+        "autor": "Beto Pereira",
+        "atual": true,
+        "valor": 1484546.97
+       },
+       {
+        "autor": "Camila Jara",
+        "atual": true,
+        "valor": 1094500.0
+       },
+       {
+        "autor": "Nelsinho Trad",
+        "atual": true,
+        "valor": 696500.0
+       },
+       {
+        "autor": "Dr. Luiz Ovando",
+        "atual": true,
+        "valor": 696500.0
+       }
+      ]
+     },
+     {
+      "municipio": "Caarapó",
+      "valor": 11940000.0,
+      "autores": [
+       {
+        "autor": "Marcos Pollon",
+        "atual": true,
+        "valor": 5870500.0
+       },
+       {
+        "autor": "Rodolfo Nogueira",
+        "atual": true,
+        "valor": 1990000.0
+       },
+       {
+        "autor": "Nelsinho Trad",
+        "atual": true,
+        "valor": 1990000.0
        },
        {
         "autor": "Soraya Thronicke",
@@ -26063,11 +26412,6 @@
         "autor": "Vander Loubet",
         "atual": true,
         "valor": 497500.0
-       },
-       {
-        "autor": "Nelsinho Trad",
-        "atual": true,
-        "valor": 409554.62
        }
       ]
      },
@@ -26124,32 +26468,6 @@
       ]
      },
      {
-      "municipio": "Campo Grande",
-      "valor": 5444900.51,
-      "autores": [
-       {
-        "autor": "Vander Loubet",
-        "atual": true,
-        "valor": 2985000.0
-       },
-       {
-        "autor": "Soraya Thronicke",
-        "atual": true,
-        "valor": 1592000.0
-       },
-       {
-        "autor": "Camila Jara",
-        "atual": true,
-        "valor": 469900.51
-       },
-       {
-        "autor": "Dr. Luiz Ovando",
-        "atual": true,
-        "valor": 398000.0
-       }
-      ]
-     },
-     {
       "municipio": "Itaquiraí",
       "valor": 4975000.0,
       "autores": [
@@ -26166,16 +26484,68 @@
       ]
      },
      {
-      "municipio": "Itaporã",
-      "valor": 3980000.0,
+      "municipio": "Maracaju",
+      "valor": 4477500.0,
       "autores": [
        {
-        "autor": "Geraldo Resende",
+        "autor": "Soraya Thronicke",
+        "atual": true,
+        "valor": 2985000.0
+       },
+       {
+        "autor": "Dagoberto Nogueira",
+        "atual": true,
+        "valor": 995000.0
+       },
+       {
+        "autor": "Dr. Luiz Ovando",
+        "atual": true,
+        "valor": 497500.0
+       }
+      ]
+     },
+     {
+      "municipio": "Aquidauana",
+      "valor": 4278500.0,
+      "autores": [
+       {
+        "autor": "Nelsinho Trad",
         "atual": true,
         "valor": 1990000.0
        },
        {
+        "autor": "Dagoberto Nogueira",
+        "atual": true,
+        "valor": 995000.0
+       },
+       {
+        "autor": "Vander Loubet",
+        "atual": true,
+        "valor": 497500.0
+       },
+       {
+        "autor": "Beto Pereira",
+        "atual": true,
+        "valor": 398000.0
+       },
+       {
+        "autor": "Dr. Luiz Ovando",
+        "atual": true,
+        "valor": 398000.0
+       }
+      ]
+     },
+     {
+      "municipio": "Itaporã",
+      "valor": 3980000.0,
+      "autores": [
+       {
         "autor": "Rodolfo Nogueira",
+        "atual": true,
+        "valor": 1990000.0
+       },
+       {
+        "autor": "Geraldo Resende",
         "atual": true,
         "valor": 1990000.0
        }
@@ -26208,35 +26578,24 @@
       ]
      },
      {
-      "municipio": "Maracaju",
-      "valor": 3068996.43,
-      "autores": [
-       {
-        "autor": "Soraya Thronicke",
-        "atual": true,
-        "valor": 2073996.43
-       },
-       {
-        "autor": "Dagoberto Nogueira",
-        "atual": true,
-        "valor": 995000.0
-       }
-      ]
-     },
-     {
       "municipio": "Nova Andradina",
-      "valor": 2985000.0,
+      "valor": 3383000.0,
       "autores": [
        {
         "autor": "Geraldo Resende",
         "atual": true,
         "valor": 2985000.0
+       },
+       {
+        "autor": "Camila Jara",
+        "atual": true,
+        "valor": 398000.0
        }
       ]
      },
      {
       "municipio": "Bodoquena",
-      "valor": 2644474.19,
+      "valor": 3191724.19,
       "autores": [
        {
         "autor": "Dagoberto Nogueira",
@@ -26247,6 +26606,11 @@
         "autor": "Soraya Thronicke",
         "atual": true,
         "valor": 654474.19
+       },
+       {
+        "autor": "Dr. Luiz Ovando",
+        "atual": true,
+        "valor": 547250.0
        }
       ]
      },
@@ -26315,6 +26679,22 @@
       ]
      },
      {
+      "municipio": "São Gabriel do Oeste",
+      "valor": 2089500.0,
+      "autores": [
+       {
+        "autor": "Camila Jara",
+        "atual": true,
+        "valor": 1094500.0
+       },
+       {
+        "autor": "Marcos Pollon",
+        "atual": true,
+        "valor": 995000.0
+       }
+      ]
+     },
+     {
       "municipio": "Alcinópolis",
       "valor": 1990000.0,
       "autores": [
@@ -26348,7 +26728,7 @@
      },
      {
       "municipio": "Água Clara",
-      "valor": 1722219.85,
+      "valor": 1824830.0,
       "autores": [
        {
         "autor": "Soraya Thronicke",
@@ -26358,21 +26738,21 @@
        {
         "autor": "Beto Pereira",
         "atual": true,
-        "valor": 374989.85
+        "valor": 477600.0
        }
       ]
      },
      {
-      "municipio": "Aquidauana",
-      "valor": 1492500.0,
+      "municipio": "Ponta Porã",
+      "valor": 1701450.0,
       "autores": [
        {
-        "autor": "Dagoberto Nogueira",
+        "autor": "Soraya Thronicke",
         "atual": true,
-        "valor": 995000.0
+        "valor": 1203950.0
        },
        {
-        "autor": "Vander Loubet",
+        "autor": "Beto Pereira",
         "atual": true,
         "valor": 497500.0
        }
@@ -26427,18 +26807,13 @@
       ]
      },
      {
-      "municipio": "Glória de Dourados",
+      "municipio": "Mundo Novo",
       "valor": 1293500.0,
       "autores": [
        {
-        "autor": "Dagoberto Nogueira",
+        "autor": "Soraya Thronicke",
         "atual": true,
-        "valor": 995000.0
-       },
-       {
-        "autor": "Geraldo Resende",
-        "atual": true,
-        "valor": 298500.0
+        "valor": 1293500.0
        }
       ]
      },
@@ -26459,24 +26834,39 @@
       ]
      },
      {
-      "municipio": "Mundo Novo",
+      "municipio": "Glória de Dourados",
       "valor": 1293500.0,
       "autores": [
        {
-        "autor": "Soraya Thronicke",
+        "autor": "Dagoberto Nogueira",
         "atual": true,
-        "valor": 1293500.0
+        "valor": 995000.0
+       },
+       {
+        "autor": "Geraldo Resende",
+        "atual": true,
+        "valor": 298500.0
        }
       ]
      },
      {
-      "municipio": "Ponta Porã",
-      "valor": 1203950.0,
+      "municipio": "Costa Rica",
+      "valor": 1243750.0,
       "autores": [
        {
-        "autor": "Soraya Thronicke",
+        "autor": "Beto Pereira",
         "atual": true,
-        "valor": 1203950.0
+        "valor": 497500.0
+       },
+       {
+        "autor": "Geraldo Resende",
+        "atual": true,
+        "valor": 398000.0
+       },
+       {
+        "autor": "Dr. Luiz Ovando",
+        "atual": true,
+        "valor": 348250.0
        }
       ]
      },
@@ -26497,13 +26887,35 @@
       ]
      },
      {
-      "municipio": "São Gabriel do Oeste",
-      "valor": 1094500.0,
+      "municipio": "Brasilândia",
+      "valor": 995000.0,
       "autores": [
        {
-        "autor": "Camila Jara",
+        "autor": "Beto Pereira",
         "atual": true,
-        "valor": 1094500.0
+        "valor": 995000.0
+       }
+      ]
+     },
+     {
+      "municipio": "Naviraí",
+      "valor": 995000.0,
+      "autores": [
+       {
+        "autor": "Nelsinho Trad",
+        "atual": true,
+        "valor": 995000.0
+       }
+      ]
+     },
+     {
+      "municipio": "Sete Quedas",
+      "valor": 995000.0,
+      "autores": [
+       {
+        "autor": "Nelsinho Trad",
+        "atual": true,
+        "valor": 995000.0
        }
       ]
      },
@@ -26552,24 +26964,18 @@
       ]
      },
      {
-      "municipio": "Deodápolis",
+      "municipio": "Sonora",
       "valor": 995000.0,
       "autores": [
        {
-        "autor": "Geraldo Resende",
+        "autor": "Dr. Luiz Ovando",
         "atual": true,
-        "valor": 995000.0
-       }
-      ]
-     },
-     {
-      "municipio": "Sete Quedas",
-      "valor": 995000.0,
-      "autores": [
+        "valor": 497500.0
+       },
        {
-        "autor": "Nelsinho Trad",
+        "autor": "Marcos Pollon",
         "atual": true,
-        "valor": 995000.0
+        "valor": 497500.0
        }
       ]
      },
@@ -26579,6 +26985,17 @@
       "autores": [
        {
         "autor": "Marcos Pollon",
+        "atual": true,
+        "valor": 995000.0
+       }
+      ]
+     },
+     {
+      "municipio": "Deodápolis",
+      "valor": 995000.0,
+      "autores": [
+       {
+        "autor": "Geraldo Resende",
         "atual": true,
         "valor": 995000.0
        }
@@ -26639,34 +27056,18 @@
       ]
      },
      {
-      "municipio": "Sonora",
-      "valor": 796000.0,
+      "municipio": "Coxim",
+      "valor": 786050.0,
       "autores": [
-       {
-        "autor": "Marcos Pollon",
-        "atual": true,
-        "valor": 497500.0
-       },
        {
         "autor": "Dr. Luiz Ovando",
         "atual": true,
-        "valor": 298500.0
-       }
-      ]
-     },
-     {
-      "municipio": "Costa Rica",
-      "valor": 746250.0,
-      "autores": [
+        "valor": 447750.0
+       },
        {
         "autor": "Geraldo Resende",
         "atual": true,
-        "valor": 398000.0
-       },
-       {
-        "autor": "Dr. Luiz Ovando",
-        "atual": true,
-        "valor": 348250.0
+        "valor": 338300.0
        }
       ]
      },
@@ -26682,22 +27083,22 @@
       ]
      },
      {
-      "municipio": "Dois Irmãos do Buriti",
+      "municipio": "Juti",
       "valor": 597000.0,
       "autores": [
        {
-        "autor": "Geraldo Resende",
+        "autor": "Beto Pereira",
         "atual": true,
         "valor": 597000.0
        }
       ]
      },
      {
-      "municipio": "Juti",
+      "municipio": "Dois Irmãos do Buriti",
       "valor": 597000.0,
       "autores": [
        {
-        "autor": "Beto Pereira",
+        "autor": "Geraldo Resende",
         "atual": true,
         "valor": 597000.0
        }
@@ -26715,11 +27116,22 @@
       ]
      },
      {
-      "municipio": "Aparecida do Taboado",
+      "municipio": "Bataguassu",
       "valor": 497500.0,
       "autores": [
        {
-        "autor": "Geraldo Resende",
+        "autor": "Dr. Luiz Ovando",
+        "atual": true,
+        "valor": 497500.0
+       }
+      ]
+     },
+     {
+      "municipio": "Jaraguari",
+      "valor": 497500.0,
+      "autores": [
+       {
+        "autor": "Dr. Luiz Ovando",
         "atual": true,
         "valor": 497500.0
        }
@@ -26737,24 +27149,35 @@
       ]
      },
      {
-      "municipio": "Coxim",
-      "valor": 338300.0,
+      "municipio": "Aparecida do Taboado",
+      "valor": 497500.0,
       "autores": [
        {
         "autor": "Geraldo Resende",
         "atual": true,
-        "valor": 338300.0
+        "valor": 497500.0
        }
       ]
      },
      {
-      "municipio": "Jaraguari",
-      "valor": 222030.26,
+      "municipio": "Corguinho",
+      "valor": 199000.0,
+      "autores": [
+       {
+        "autor": "Beto Pereira",
+        "atual": true,
+        "valor": 199000.0
+       }
+      ]
+     },
+     {
+      "municipio": "Bonito",
+      "valor": 199000.0,
       "autores": [
        {
         "autor": "Dr. Luiz Ovando",
         "atual": true,
-        "valor": 222030.26
+        "valor": 199000.0
        }
       ]
      },

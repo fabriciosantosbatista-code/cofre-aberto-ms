@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-11-13T11:27:27",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-11-13T11:27:27",
+  "ultimaAtualizacao": "2026-11-13T16:40:15",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-11-13T16:40:15",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -203,6 +203,11 @@
       "referenciaFolha": "Folha Mensal - Outubro",
       "diarias": [
         {
+          "data": "2026-11-13",
+          "valor": 250.0,
+          "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 1/2 ( MEIA) DIÁRIA  PARA FINS DE CUMPRIMENTO DE AGENDA INSTITUCIONAL, EM CAMPO GRANDE/MS, NO DIA 13 DE NOVEMBRO DE 2026, COM ENTREGA DE OFÍCIOS E REUNIÕES NOS GABINETES DA DEPUTADA FEDERAL CAMILA JARA E O DO DEPUTADO ESTADUAL PEDRO KEMP, VISANDO APOIO PARLAMENTAR PARA A VISIABILIZAÇÃO DE RECURSOS, INVESTIMENTOS E AÇÕES QUE CONTRIBUAM PARA O DESENVOLVIMENTO MUNICIPAL."
+        },
+        {
           "data": "2026-11-06",
           "valor": 4725.0,
           "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 3 1/2 (TRÊS E MEIA) DIÁRIAS PARA VIAGEM INSTITUCIONAL A BRASÍLIA/DF, NO PERÍODO DE 09 A 12 DE NOVEMBRO DE 2026, COM A PARTICIPAÇÃO DO PREFEITO ROBERSON LUIZ MOREIRA, PARA REUNIÃO COM DEPUTADOS E SENADORES REPRESENTANTES DE MATO GROSSO DO SUL, VISANDO APRESENTAR DEMANDAS E PRIORIDADES DO MUNICÍPIO, BEM COMO BUSCAR APOIO POLÍTICO E INSTITUCIONAL PARA A DESTINAÇÃO DE EMENDAS PARLAMENTARES, COM DESPESA EMPENHADA NO EXERCÍCIO DE 2026 E PREVISÃO DE EXECUÇÃO ORÇAMENTÁRIA PARA 2027."
@@ -293,8 +298,8 @@
           "descricao": "LIQUIDAÇÃO REFERENTE À CONCESSÃO DE 02 (DUAS) DIÁRIAS EM FAVOR DO VEREADOR LUCAS LOPES RIBEIRO PARA PARTICIPAR DE REUNIÃO, NA DATA DE 27/02/2026, NA ASSEMBLEIA LEGISLATIVA PARA FINS DE PARCERIA COM O DEPUTADO PEDRO KEMP, E PARTICIPAR DE LANÇAMENTO DO PROGRAMA AGROINDUSTRIALIZAÇÃO DA AGRICULTURA FAMILIAR, NA DATA DE 02/03/2026."
         }
       ],
-      "totalDiarias2026": 16477.5,
-      "numDiarias2026": 18
+      "totalDiarias2026": 16727.5,
+      "numDiarias2026": 19
     },
     {
       "nome": "LUCIMAR ROSA DE CAMPOS",
@@ -381,13 +386,13 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 9892604.6,
+    "totalGeral": 9908670.48,
     "totalNotas": 380,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 5043930.29,
       "Equipamentos e Material Permanente": 1332214.16,
       "Obrigações Patronais": 870373.69,
-      "Serviços de Consultoria": 750500.53,
+      "Serviços de Consultoria": 766566.41,
       "Serviços de Tecnologia da Informação": 490619.37,
       "Auxílio-Alimentação": 442905.15,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 414765.98,
@@ -680,6 +685,14 @@
         "descricao": "EMPENHO REFERENTE AO TERMO ADITIVO Nº 004/2025, PREGÃO PRESENCIAL Nº 005/2021, CONTRATO ADMINISTRATIVO Nº 10/2021, CUJO OBJETO É A PRESTAÇÃO DE SERVIÇOS DE CONEXÃO COM A INTERNET, POR MEIO DE IP DEDIC"
       },
       {
+        "data": "2026-05-20",
+        "fornecedor": "RAMOS GOMES SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+        "cnpj": "36.367.034/0001-66",
+        "categoria": "Serviços de Consultoria",
+        "valor": 96395.28,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO Nº 004/2025, PROCESSO ADMINISTRATIVO Nº 19/2025, INEXIGIBILIDADE DE LICITAÇÃO Nº 004/2025, RELATIVO À CONTRATAÇÃO DE EMPRESA DE ASSESSORIA E CONSULTOR"
+      },
+      {
         "data": "2026-04-10",
         "fornecedor": "ANTONIO FERNANDO DA SILVA",
         "cnpj": "087.XXX.XXX-71",
@@ -694,14 +707,6 @@
         "categoria": "Serviços de Consultoria",
         "valor": 85933.75,
         "descricao": "EMPENHO REFERENTE AO 3º TERMO ADITIVO DO CONTRATO ADMINISTRATIVO Nº 01/2023, INEXIGIBILIDADE Nº 01/2023, CUJO OBJETO É A RENOVAÇÃO CONTRATUAL PARA A PRESTAÇÃO DE SERVIÇOS TÉCNICOS ESPECIALIZADOS DE AS"
-      },
-      {
-        "data": "2026-05-20",
-        "fornecedor": "RAMOS GOMES SOCIEDADE INDIVIDUAL DE ADVOCACIA",
-        "cnpj": "36.367.034/0001-66",
-        "categoria": "Serviços de Consultoria",
-        "valor": 80329.4,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO AO CONTRATO Nº 004/2025, PROCESSO ADMINISTRATIVO Nº 19/2025, INEXIGIBILIDADE DE LICITAÇÃO Nº 004/2025, RELATIVO À CONTRATAÇÃO DE EMPRESA DE ASSESSORIA E CONSULTOR"
       },
       {
         "data": "2026-01-02",

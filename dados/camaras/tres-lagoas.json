@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-11-13T11:27:27",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-11-13T11:27:27",
+  "ultimaAtualizacao": "2026-11-13T16:40:15",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-11-13T16:40:15",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -61,13 +61,18 @@
       "referenciaFolha": "Folha Mensal - Outubro",
       "diarias": [
         {
+          "data": "2026-11-13",
+          "valor": 769.51,
+          "descricao": "DESPESAS REFERENTE A CONCESSÃO DE 1 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 16/11 a 17/11/2026, CONFORME SOLICITAÇÃO. Finalidade: '' VIAGEM A CAMPO GRANDE PARA A REALIZAÇÃO DE UMA REUNIÃO COM O DEPUTADO ESTADUAL CEL. DAVID COM O OBJETIVO DE TRATAR DE ASSUNTOS REFERENTES A POSSIBILIDADE DE UMA EMENDA PARLAMENTAR DE 500 MIL REAIS PARA A COMPRA DE UM VEICULO TIPO ÔNIBUS PARA O PROJETO PENIEL, SITUANO NA CIDADE DE TRES LAGOAS- MS NO DIA 16/11/2026 5H00, COM VOLTA NA DATA DE 17/11/2026 ÁS 08h00. ''\t\t\r\nProc. 653-26"
+        },
+        {
           "data": "2026-07-29",
           "valor": 1539.02,
           "descricao": "DESPESAS REFERENTE A CONCESSÃO DE 1 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 30/07/2026 A 01/08/2026, CONFORME SOLICITAÇÃO. Finalidade: \" VIAGEM À CAMPO GRANDE, PARA REUNIÕES COM O COMANDANTE GERAL DA PMMS CEL. RENATO DOS ANJOS GARNES NO DIA 30/07/26 ÀS 13H00, COM O DEPUTADO ESTADUAL CEL. DAVID NO DIA 31/07/26 ÀS 15H00, AMBOS COM O OBJETIVO DE TRATAR DE ASSUNTOS REFERENTES AO CONCURSO PÚLICO SOLICITANDO APOIO PARA CONSEGUIRMOS A REMANESCÊNCIA DOS APROVADOS DO ÚLTIMO CONCURSO DE OFICIAIS DA POLICIA MILITAR DO ESTADO DO MATO GRASSO DO SUL, AINDA NO DIA 31/07/26 ÀS 17H30, TEREI UMA REUNIÃO COM O DEPUTADO FEDERAL RODOLFO NOGUEIRA, TRATANDO SOBRE A POSSIBILIDADE DE UMA EMENDA PARLAMENTAR PARA UM VEICULO TIPO AMBULÂNCIA PARA O GRÊMIO RECREATIVO E ESPORTIVO 27 DE AGOSTO DO 2º BATALHÃO DE POLICIA MILITAR (2º BPM) DE TRÊS LAGOAS, MS.\""
         }
       ],
-      "totalDiarias2026": 1539.02,
-      "numDiarias2026": 1
+      "totalDiarias2026": 2308.53,
+      "numDiarias2026": 2
     },
     {
       "nome": "ANTONIO LUIZ TEIXEIRA EMPKE JUNIOR",
@@ -569,15 +574,15 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 31107962.43,
+    "totalGeral": 31173630.56,
     "totalNotas": 836,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 17283803.59,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 4708173.21,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 4736596.12,
       "Auxílio-Alimentação": 3130463.55,
       "Obrigações Patronais": 2644178.07,
+      "Serviços de Tecnologia da Informação": 702656.64,
       "Diárias — Civil": 682747.67,
-      "Serviços de Tecnologia da Informação": 665411.42,
       "Serviços de Consultoria": 507203.09,
       "Locação de Mão de Obra": 433829.85,
       "Aporte para Cobertura de Déficit Atuarial do RPPS": 367746.84,
@@ -630,7 +635,7 @@
         "fornecedor": "AGILITÁ PROPAGANDA e MARKETING LTDA",
         "cnpj": "00.974.843/0001-99",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 1254308.0,
+        "valor": 1279041.51,
         "descricao": "3º termo aditivo; Contratação de serviços de publicidade prestados por intermédio de 01 (uma) agência de propaganda para atender as necessidades da Câmara Municipal de Três Lagoas-MS com a prestação d"
       },
       {
@@ -730,6 +735,14 @@
         "descricao": "Processo 042/22 - emissora de televisão para realização de serviço de transmissão, em canal aberto, das sessões ordinárias e extraordinárias da Câmara Municipal de Três Lagoas/MS."
       },
       {
+        "data": "2026-04-22",
+        "fornecedor": "LAMPER DIGITALIZAÇÃO E SISTEMAS LTDA EPP",
+        "cnpj": "97.408.074/0001-01",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 249751.32,
+        "descricao": "Processo 036/25  - Contratação de ferramenta (software) para gestão o processo legislativo municipal, envolvendo o licenciamento, a implantação, o treinamento, o suporte técnico, a manutenção e a capa"
+      },
+      {
         "data": "2026-01-08",
         "fornecedor": "SIMPA ASSESSORIA & PLANEJAMENTO LTDA",
         "cnpj": "97.408.090/0001-96",
@@ -744,14 +757,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 217528.53,
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES COMISSIONADOS (VENCIMENTOS E SALARIOS) VINCULADOS AO RPPS (CEDIDOS),  REF. EMPENHO GLOBAL ESTIMATIVA EXERCÍCIO 2026"
-      },
-      {
-        "data": "2026-04-22",
-        "fornecedor": "LAMPER DIGITALIZAÇÃO E SISTEMAS LTDA EPP",
-        "cnpj": "97.408.074/0001-01",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 214072.56,
-        "descricao": "Processo 036/25  - Contratação de ferramenta (software) para gestão o processo legislativo municipal, envolvendo o licenciamento, a implantação, o treinamento, o suporte técnico, a manutenção e a capa"
       },
       {
         "data": "2026-10-23",
@@ -2234,6 +2239,14 @@
         "descricao": "Processo: 5/25 - Ano Mod.: 2025 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 1 - Mod. Formatada: 000001 - Contratação de empresa especializada para o fornecimento de materiais gráficos para a Câmara Mun"
       },
       {
+        "data": "2026-08-04",
+        "fornecedor": "VETT - VIA EXPRESS TECNOLOGIA E TELECOMUNICACOES L",
+        "cnpj": "11.743.904/0001-23",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 4699.38,
+        "descricao": "Processo 033/25  fornecimento de link dedicado à internet ."
+      },
+      {
         "data": "2026-01-21",
         "fornecedor": "CLEZIO ANTONIO LARA",
         "cnpj": "403.XXX.XXX-78",
@@ -2554,6 +2567,14 @@
         "descricao": "Processo 011/23 prestação de serviços de Segurança para suporte nas Sessões Ordinárias ou Extraordinárias, Audiências Públicas e Eventos realizados pela Câmara Municipal de Três Lagoas-MS."
       },
       {
+        "data": "2026-10-01",
+        "fornecedor": "JULEAN DECORACOES LTDA",
+        "cnpj": "10.525.127/0001-88",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 3689.4,
+        "descricao": "PROCESSO 42/26 Serviço de remoção e instalação de película de controle solar para guarita da Câmara Municipal de Três Lagoas-MS."
+      },
+      {
         "data": "2026-09-29",
         "fornecedor": "FOLHA DE PGTO SERV. COMISSIONADOS (Câmara)",
         "cnpj": "15.410.145/0001-38",
@@ -2664,14 +2685,6 @@
         "categoria": "Indenizações e Restituições",
         "valor": 3189.53,
         "descricao": "Solicito a autorização para compra de passagens, amparada na Lei nº3.960/2023, que “Dispõe sobre a concessão de diárias da Câmara Municipal de Três Lagoas/MS e dá outras providências”, e portarias reg"
-      },
-      {
-        "data": "2026-08-04",
-        "fornecedor": "VETT - VIA EXPRESS TECNOLOGIA E TELECOMUNICACOES L",
-        "cnpj": "11.743.904/0001-23",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 3132.92,
-        "descricao": "Processo 033/25  fornecimento de link dedicado à internet ."
       },
       {
         "data": "2026-03-19",
@@ -7216,14 +7229,6 @@
         "categoria": "Equipamentos e Material Permanente",
         "valor": 0.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000043/26 - Ano Mod.: 2026 - Modalidade: DISPENSA ELETRÔNICA - Nº Mod.: 13 - Mod. Formatada: 13 - Contratação de empresa para aquisição de internet vi"
-      },
-      {
-        "data": "2026-10-01",
-        "fornecedor": "JULEAN DECORACOES LTDA",
-        "cnpj": "10.525.127/0001-88",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "PROCESSO 42/26 Serviço de remoção e instalação de película de controle solar para guarita da Câmara Municipal de Três Lagoas-MS."
       },
       {
         "data": "2026-10-09",
