@@ -434,6 +434,41 @@ def bloco_emendas(p):
 _PATRIMONIO = None
 
 
+_VOTACOES = None
+
+
+def bloco_votacoes(p):
+    """Participação nas votações nominais do plenário (dados/votacoes.json, coletar_votacoes.py) — deputados federais e senadores de MS."""
+    global _VOTACOES
+    if p["grupo"] not in ("federal", "senador") or not p.get("ms"):
+        return ""
+    if _VOTACOES is None:
+        d = carregar("votacoes.json") or {}
+        _VOTACOES = {(x["grupo"], str(x["id"])): x for x in d.get("parlamentares", [])}
+        _VOTACOES["_ano"] = d.get("ano")
+    x = _VOTACOES.get((p["grupo"], str(p.get("id"))))
+    if not x or not x.get("nominais"):
+        return ""
+    casa = "Câmara" if p["grupo"] == "federal" else "Senado"
+    pares = [y for k, y in _VOTACOES.items() if k != "_ano" and y["grupo"] == p["grupo"] and y.get("participacao") is not None]
+    media = sum(y["participacao"] for y in pares) / len(pares) if pares else None
+    extra = []
+    if x.get("presenteSemVoto"):
+        extra.append(f"{x['presenteSemVoto']} vez(es) presente sem registrar voto")
+    if x.get("justificadas"):
+        extra.append(f"{x['justificadas']} ausência(s) justificada(s) (licença, missão ou atividade parlamentar)")
+    lin = "".join(f"<tr><td>{data_br(v.get('data'))}</td><td>{e(v.get('descricao') or '')}</td><td><b>{e(v.get('voto') or '—')}</b></td></tr>"
+                  for v in x.get("ultimas") or [])
+    return (f"<h2>Votações no plenário em {_VOTACOES.get('_ano')}</h2>"
+            f"<p>{e(p['nome'])} votou em <strong>{x['votou']} das {x['nominais']}</strong> votações nominais do plenário do {casa} em {_VOTACOES.get('_ano')} "
+            f"(<strong>{str(x['participacao']).replace('.', ',')}%</strong>"
+            + (f"; a média dos colegas de MS é {media:.1f}%".replace(".", ",") if media is not None and len(pares) > 1 else "") + ")."
+            + (" " + "; ".join(extra).capitalize() + "." if extra else "") + "</p>"
+            f"<div class='tabela-wrap'><table><thead><tr><th>Data</th><th>Votação</th><th>Voto</th></tr></thead><tbody>{lin}</tbody></table></div>"
+            f"<p class='aviso'>Participação nas votações nominais (aquelas em que o voto de cada parlamentar fica registrado). Não é presença em sessão: "
+            f"as votações simbólicas não registram quem votou. Fonte: dados abertos da {casa}.</p>")
+
+
 def bloco_patrimonio(p):
     """Patrimônio declarado ao TSE em cada candidatura desde 2018 (dados/eleicoes.json, coletar_tse.py)."""
     global _PATRIMONIO
@@ -568,6 +603,7 @@ def pagina(p, irmaos):
 {bloco_cat}
 {bloco_emendas(p)}
 {bloco_patrimonio(p)}
+{bloco_votacoes(p)}
 {bloco_notas}
 {bloco_cx}
 {bloco_irmaos}

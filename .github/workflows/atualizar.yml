@@ -293,6 +293,10 @@ jobs:
         timeout-minutes: 10
         run: python3 scripts/coletar_stf.py || echo "⚠️ coletar_stf.py falhou — dados anteriores mantidos"
 
+      - name: Votações nominais dos deputados federais e senadores de MS (Câmara e Senado)
+        timeout-minutes: 15
+        run: python3 scripts/coletar_votacoes.py || echo "⚠️ coletar_votacoes.py falhou — dados anteriores mantidos"
+
       - name: Upload artifact — fontes federais
         uses: actions/upload-artifact@v4
         with:
@@ -305,6 +309,8 @@ jobs:
             dados/presidencia_cache.json
             dados/stf.json
             dados/stf_cache.json
+            dados/votacoes.json
+            dados/votacoes_cache.json
           if-no-files-found: ignore
           retention-days: 1
 
@@ -495,7 +501,7 @@ jobs:
           git config user.email "bot@cofreabertoms.com.br"
           git add dados/ index.html vereadores-campo-grande.html deputados-estaduais-ms.html senadores-ms.html press.html PRESS.md \
                   vereador/ deputado-estadual/ deputado-federal/ senador/ empresa/ orgao/ municipio/ boletim/ \
-                  perguntas/ termometro-da-transparencia/ governo-ms/ prefeitura-campo-grande/ supersalarios-ms/ auditoria/ emendas-parlamentares-ms/ cartao-corporativo-presidente/ salario-ministros-stf/ fotos/p/ sitemap.xml
+                  perguntas/ termometro-da-transparencia/ presenca-votacoes-parlamentares-ms/ governo-ms/ prefeitura-campo-grande/ supersalarios-ms/ auditoria/ emendas-parlamentares-ms/ cartao-corporativo-presidente/ salario-ministros-stf/ fotos/p/ sitemap.xml
 
           if git diff --staged --quiet; then
             echo "Sem mudanças"

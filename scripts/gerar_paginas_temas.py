@@ -353,6 +353,33 @@ def tema_termometro():
             "Termômetro da transparência", corpo)
 
 
+def tema_votacoes():
+    d = carregar("votacoes.json")
+    ps = [x for x in d.get("parlamentares", []) if x.get("nominais")]
+    if not ps:
+        return None
+    ano, idx = d.get("ano", ANO), carregar("paginas_index.json") or {}
+    casa = {"federal": "Deputado(a) federal", "senador": "Senador(a)"}
+    corpo = ("<p>Quantas votações nominais do plenário cada deputado federal e senador de MS votou em " + str(ano) + ". A votação nominal é "
+             "aquela em que o voto de cada parlamentar fica registrado; as simbólicas não registram quem votou. No Senado, \"presente sem voto\" "
+             "é quem estava no plenário mas não votou (por exemplo, presidindo a sessão), e ausências justificadas são licença, missão ou atividade parlamentar.</p>")
+    for g, titulo in (("federal", "Deputados federais de MS — Câmara"), ("senador", "Senadores de MS — Senado")):
+        gs = sorted((x for x in ps if x["grupo"] == g), key=lambda x: -(x["participacao"] or 0))
+        if not gs:
+            continue
+        corpo += f"<h2>{titulo} ({gs[0]['nominais']} votações nominais em {ano})</h2>" + tabela(
+            ["Parlamentar", "#Votou", "#Não votou", "#Participação"] + (["#Presente sem voto", "#Ausência justificada"] if g == "senador" else []), [
+                f"<tr><td>{link_empresa(x['nome'], idx.get(g + '|' + x['nome']))}</td><td class='num'>{x['votou']}</td>"
+                f"<td class='num'>{x['nominais'] - x['votou']}</td><td class='num'><b>{str(x['participacao']).replace('.', ',')}%</b></td>"
+                + (f"<td class='num'>{x.get('presenteSemVoto') or 0}</td><td class='num'>{x.get('justificadas') or 0}</td>" if g == "senador" else "") + "</tr>"
+                for x in gs])
+    corpo += "<p>Em cada página de parlamentar estão as últimas votações, com o voto de cada um.</p>"
+    corpo += f"<p class='aviso'>Fonte: {e(d.get('fonte') or '')}. Atualizado a cada coleta.</p>"
+    return ("/presenca-votacoes-parlamentares-ms/", f"Presença nas votações: deputados federais e senadores de MS {ano} | Cofre Aberto MS",
+            f"Quantas votações nominais cada deputado federal e senador de MS votou em {ano}, com o voto de cada um nas últimas votações.",
+            f"Presença nas votações: deputados federais e senadores de MS em {ano}", corpo)
+
+
 # ---------------------------------------------------------------- perguntas
 def perguntas():
     out = []
@@ -442,7 +469,7 @@ def perguntas():
 
 
 def main():
-    temas = [t for t in (tema_termometro(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_presidencia(), tema_stf()) if t]
+    temas = [t for t in (tema_termometro(), tema_votacoes(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_presidencia(), tema_stf()) if t]
     pergs = perguntas()
     TEMAS[:] = [(u, h1) for u, _, _, h1, _ in temas]
     PERGUNTAS[:] = [(f"/perguntas/{s}/", p) for s, p, *_ in pergs]
