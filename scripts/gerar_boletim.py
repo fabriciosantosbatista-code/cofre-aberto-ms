@@ -137,6 +137,20 @@ def main():
     alertas = novos_desde("alertasVistos", al.get("alertas", []) if al.get("ano") == ANO else [], lambda a: a["id"])
     au = carregar("auditoria.json")
     sinais = novos_desde("sinaisVistos", au.get("sinais", []) if au.get("ano") == ANO else [], lambda s_: s_["id"])
+    # um sinal só é "novo" se o teste que o achou já existia antes da semana; quando um teste entra na Auditoria,
+    # tudo o que ele encontra aparece de uma vez e não é fato novo — vira só um aviso "testes novos: N sinais"
+    sv = estado.get("sinaisVistos") or {}
+    rv = estado.get("regrasVistas") or {}
+    for s_ in au.get("sinais", []):
+        if s_["teste"] not in rv:
+            datas = [sv[x["id"]] for x in au["sinais"] if x["teste"] == s_["teste"] and x["id"] in sv]
+            rv[s_["teste"]] = min(datas) if datas else HOJE.isoformat()
+    estado["regrasVistas"] = rv
+    testes_novos = {}
+    for s_ in sinais:
+        if rv[s_["teste"]] >= ini.isoformat():
+            testes_novos[s_["rotulo"]] = testes_novos.get(s_["rotulo"], 0) + 1
+    sinais = [s_ for s_ in sinais if rv[s_["teste"]] < ini.isoformat()]
     ct = carregar("prefeitura_contratos.json")
     # cada contrato é reconhecido pelo nº de registro da Prefeitura, que não muda; antes era um hash com o valor,
     # e um contrato antigo que teve o valor alterado aparecia como "novo" (ex.: registro 206679, janeiro, valor revisto em 12/11)
@@ -155,7 +169,7 @@ def main():
                        key=lambda c: -c["valor"])
     salvar(ESTADO, {"atualizado": HOJE.isoformat(), "vistas": vistas, "retratos": retratos,
                     "alertasVistos": estado["alertasVistos"], "contratosVistos": estado["contratosVistos"],
-                    "sinaisVistos": estado.get("sinaisVistos", {})})
+                    "sinaisVistos": estado.get("sinaisVistos", {}), "regrasVistas": estado.get("regrasVistas", {})})
 
     deltas = []
     for chave, rotulo, aba in (("governoPago", "pagos pelo Governo do Estado", "governo-ms"),
@@ -230,6 +244,11 @@ somando <strong>{brl(total_novas)}</strong>. A data de cada nota é a de emissã
     if alertas:
         blocos.append("<h2>Pontos de atenção novos</h2><p class='aviso'>Critérios objetivos para facilitar a apuração. <strong>Nenhum deles indica irregularidade.</strong></p>" + "".join(
             f"<div class='dest'><b>{e(a['titulo'])}</b><small>{e(a['rotulo'])} · {e(a['descricao'][:240])}</small></div>" for a in alertas[:15]))
+    if testes_novos:
+        blocos.append("<h2>Auditoria: testes novos</h2><p>Nesta semana a Auditoria automática ganhou testes novos. Os sinais que eles encontraram "
+                      "não são fatos novos da semana — são casos que já existiam e passaram a ser verificados:</p>" + "".join(
+            f"<div class='dest'><b>{n} sinal(is)</b> {e(r)}</div>" for r, n in sorted(testes_novos.items(), key=lambda kv: -kv[1])) +
+            "<p><a href='/cofre-aberto-ms.html#aba=auditoria'>Ver todos na Auditoria →</a></p>")
     if sinais:
         blocos.append("<h2>Auditoria: sinais de atenção novos</h2><p class='aviso'>Padrões atípicos encontrados pelos testes automáticos. "
                       "<strong>Sinal de atenção não é acusação</strong> — muitos têm explicação legal.</p>" + "".join(
