@@ -412,7 +412,7 @@ def tema_votacoes():
 
 
 def tema_apoie():
-    corpo = """<div class="resposta">O Cofre Aberto MS é independente: não tem dono político, não vende anúncio e não cobra pelos dados.
+    corpo = """<div class="resposta">O Cofre Aberto MS é independente: não tem dono político e não cobra pelos dados.
 Ele funciona com o trabalho de quem acredita que o dinheiro público tem de ser visível para todos. Se o site é útil para você, ajude a mantê-lo.</div>
 <h2>Faça um Pix</h2>
 <style>.pix-valores{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}.pix-valores button{background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:999px;padding:8px 16px;font:600 .9rem Inter,sans-serif;cursor:pointer}
