@@ -248,6 +248,111 @@ def tema_stf():
             "Quanto ganham os ministros do STF", corpo)
 
 
+# ---------------------------------------------------------------- termômetro da transparência
+def _fim_mes(mm_aaaa):
+    """'09/2026' ou '2026-09' → último dia do mês (date)"""
+    import calendar
+    from datetime import date
+    m = re.match(r"(\d{2})/(\d{4})$", mm_aaaa or "") or re.match(r"(\d{4})-(\d{2})$", mm_aaaa or "")
+    if not m:
+        return None
+    a, mes = (int(m[2]), int(m[1])) if "/" in mm_aaaa else (int(m[1]), int(m[2]))
+    return date(a, mes, calendar.monthrange(a, mes)[1])
+
+
+def termometro():
+    """Quanto tempo cada órgão leva para publicar: dias desde o dado mais recente publicado x prazo esperado."""
+    from datetime import date
+    hoje = HOJE if isinstance(HOJE, date) else date.today()
+    MES = {"jan": "01", "fev": "02", "mar": "03", "abr": "04", "mai": "05", "jun": "06", "jul": "07", "ago": "08", "set": "09", "out": "10", "nov": "11", "dez": "12"}
+    linhas = []
+
+    def add(orgao, dado, ultimo, prazo, base, obs=""):
+        if ultimo is None:
+            linhas.append({"orgao": orgao, "dado": dado, "ultimo": None, "dias": None, "prazo": prazo, "base": base, "nivel": "fora", "obs": obs})
+            return
+        dias = (hoje - ultimo).days
+        nivel = "ok" if dias <= prazo else ("atencao" if dias <= 2 * prazo else "ruim")
+        linhas.append({"orgao": orgao, "dado": dado, "ultimo": ultimo.isoformat(), "dias": dias, "prazo": prazo, "base": base, "nivel": nivel, "obs": obs})
+
+    iso = lambda t: date.fromisoformat(t[:10]) if t and re.match(r"\d{4}-\d{2}-\d{2}", t) else None
+    maxdata = lambda notas: max((iso(n.get("data")) for n in notas if iso(n.get("data"))), default=None)
+    rt = "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)"
+    mensal = "dado mensal: até 45 dias depois do fim do mês"
+    p = carregar("prefeitura.json")
+    add("Prefeitura de Campo Grande", "despesas (empenhos)", iso(p.get("ultimoEmpenho")), 3, rt)
+    g = carregar("governo_ms.json")
+    add("Governo do Estado de MS", "despesas", iso(g.get("ultimaAtualizacao")), 3, rt)
+    cg = carregar("camara_municipal.json")
+    meses = [MES[m] for v in cg.get("vereadores", []) for a in ("mesesAto027", "mesesAto028") for m in ((v.get("verbaIndenizatoria") or {}).get(a) or {}) if m in MES]
+    add("Câmara Municipal de Campo Grande", "verba indenizatória dos vereadores", _fim_mes(f"{max(meses)}/{ANO}") if meses else None, 45, mensal)
+    est = carregar("deputados_estaduais_ms.json")
+    add("Assembleia Legislativa (ALEMS)", "notas da verba indenizatória", maxdata([n for d in est.get("vereadores", []) for n in d.get("despesas") or []]), 45, mensal)
+    fed = carregar("deputados_federais_ms.json")
+    add("Câmara dos Deputados", "notas da cota parlamentar (CEAP)", maxdata([n for d in fed.get("deputados", []) for n in d.get("despesas") or []]), 45,
+        "a Câmara aceita notas até 90 dias depois da despesa", "o atraso aqui é dos deputados, que apresentam as notas depois")
+    sen = carregar("senadores_ms.json")
+    add("Senado Federal", "notas da cota parlamentar (CEAPS)", maxdata([n for x in sen.get("senadores", []) for n in x.get("notasCeaps") or []]), 45,
+        "o Senado aceita notas até 90 dias depois da despesa", "o atraso aqui é dos senadores, que apresentam as notas depois")
+    # folhas: a data do próprio portal do órgão quando o site lê de lá (TRT24, TRE-MS); o resto vem da folha dos supersalários
+    proprios = {"TRT24": ("TRT24 — Justiça do Trabalho", "trt24_magistrados.json"), "TRE": ("TRE-MS — Justiça Eleitoral", "tre_ms_magistrados.json")}
+    for sigla, (nome, arq) in proprios.items():
+        m_ = carregar(arq)
+        if m_.get("mesReferencia"):
+            add(nome, "folha dos magistrados", _fim_mes(m_["mesReferencia"]), 45, mensal)
+    for o in carregar("supersalarios.json").get("orgaos", []):
+        if o["orgao"].startswith(tuple(proprios)):
+            continue
+        via = "lida via DadosJusBr, que pode ter atraso próprio" if "DadosJusBr" in (o.get("fonte") or "") else ""
+        add(o["orgao"].replace(" (60 maiores)", ""), "folha de pagamento", _fim_mes(o.get("mes")), 45, mensal, via)
+    pr = carregar("presidencia.json")
+    ser = (pr.get("cartao") or {}).get("serie") or []
+    if ser:
+        add("Presidência da República (CGU)", "cartão corporativo", _fim_mes(ser[-1]["mes"]), 45, mensal,
+            "a CGU publica o cartão com cerca de um mês de atraso")
+    import glob
+    for f in sorted(glob.glob(str(DADOS / "camaras" / "*.json"))):
+        c = json.load(open(f, encoding="utf-8"))
+        nome = f"Câmara Municipal de {c.get('cidade')}"
+        col = iso(c.get("ultimaAtualizacao"))
+        if not c.get("temDadosFinanceiros"):
+            linhas.append({"orgao": nome, "dado": "despesas e diárias", "ultimo": None, "dias": None, "prazo": 3, "base": rt, "nivel": "fora",
+                           "obs": "o portal não publica dados financeiros em formato aberto"})
+        elif col and (hoje - col).days > 7:
+            linhas.append({"orgao": nome, "dado": "despesas e diárias", "ultimo": col.isoformat(), "dias": (hoje - col).days, "prazo": 3, "base": rt,
+                           "nivel": "fora", "obs": f"o portal não responde desde {data_br(col.isoformat())}"})
+        else:
+            linhas.append({"orgao": nome, "dado": "despesas e diárias", "ultimo": col.isoformat() if col else None, "dias": 0, "prazo": 3, "base": rt,
+                           "nivel": "ok", "obs": "portal no ar e atualizado"})
+    ordem = {"fora": 0, "ruim": 1, "atencao": 2, "ok": 3}
+    linhas.sort(key=lambda x: (ordem[x["nivel"]], -(x["dias"] or 0)))
+    escreve_se_mudou(DADOS / "termometro.json", json.dumps({"geradoEm": HOJE.isoformat(), "orgaos": linhas}, ensure_ascii=False, indent=1))
+    return linhas
+
+
+def tema_termometro():
+    ls = termometro()
+    if not ls:
+        return None
+    rot = {"ok": ("🟢", "Em dia"), "atencao": ("🟡", "Atrasado"), "ruim": ("🔴", "Muito atrasado"), "fora": ("⚫", "Fora do ar ou não publica")}
+    cont = {k: sum(1 for x in ls if x["nivel"] == k) for k in rot}
+    obs = lambda x: f"<br><small>{e(x['obs'])}</small>" if x.get("obs") else ""
+    corpo = kpis([(f"{rot[k][0]} {cont[k]}", rot[k][1]) for k in ("ok", "atencao", "ruim", "fora")])
+    corpo += ("<p>Quanto tempo cada órgão leva para publicar seus gastos. A lei exige que as despesas sejam publicadas <strong>em tempo real</strong> "
+              "(Lei Complementar 131/2009: até o primeiro dia útil seguinte); folhas de pagamento e notas de verba são mensais. "
+              "O termômetro mostra há quantos dias está o dado mais recente que cada órgão publicou, medido pela coleta automática do site.</p>")
+    corpo += tabela(["Órgão", "O que publica", "Último dado", "#Dias", "Situação"], [
+        f"<tr><td><b>{e(x['orgao'])}</b>{obs(x)}</td><td>{e(x['dado'])}<br><small>{e(x['base'])}</small></td>"
+        f"<td>{data_br(x['ultimo']) if x['ultimo'] else '—'}</td><td class='num'>{x['dias'] if x['dias'] is not None else '—'}</td>"
+        f"<td>{rot[x['nivel']][0]} {rot[x['nivel']][1]}</td></tr>" for x in ls])
+    corpo += ("<p class='aviso'>🟢 dentro do prazo · 🟡 até o dobro do prazo · 🔴 mais que o dobro · ⚫ portal fora do ar ou sem dados abertos. "
+              "Atraso de publicação é falta de transparência, não prova de irregularidade. Se um órgão publicou e o site não captou, "
+              "<a href='/metodologia.html'>avise-nos</a>.</p>")
+    return ("/termometro-da-transparencia/", f"Termômetro da transparência: quem publica os gastos em dia em MS | Cofre Aberto MS",
+            f"Quanto tempo cada órgão de MS leva para publicar seus gastos: {cont['ok']} em dia, {cont['atencao'] + cont['ruim']} atrasados e {cont['fora']} fora do ar ou sem dados abertos.",
+            "Termômetro da transparência", corpo)
+
+
 # ---------------------------------------------------------------- perguntas
 def perguntas():
     out = []
@@ -337,7 +442,7 @@ def perguntas():
 
 
 def main():
-    temas = [t for t in (tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_presidencia(), tema_stf()) if t]
+    temas = [t for t in (tema_termometro(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_presidencia(), tema_stf()) if t]
     pergs = perguntas()
     TEMAS[:] = [(u, h1) for u, _, _, h1, _ in temas]
     PERGUNTAS[:] = [(f"/perguntas/{s}/", p) for s, p, *_ in pergs]

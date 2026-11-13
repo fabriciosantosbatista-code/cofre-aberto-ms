@@ -1,0 +1,295 @@
+{
+ "geradoEm": "2026-11-13",
+ "orgaos": [
+  {
+   "orgao": "Câmara Municipal de Sonora",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-10-27",
+   "dias": 17,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "fora",
+   "obs": "o portal não responde desde 27/10/2026"
+  },
+  {
+   "orgao": "Câmara Municipal de Dourados",
+   "dado": "despesas e diárias",
+   "ultimo": null,
+   "dias": null,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "fora",
+   "obs": "o portal não publica dados financeiros em formato aberto"
+  },
+  {
+   "orgao": "Prefeitura de Campo Grande",
+   "dado": "despesas (empenhos)",
+   "ultimo": "2026-10-02",
+   "dias": 42,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ruim",
+   "obs": ""
+  },
+  {
+   "orgao": "Presidência da República (CGU)",
+   "dado": "cartão corporativo",
+   "ultimo": "2026-08-31",
+   "dias": 74,
+   "prazo": 45,
+   "base": "dado mensal: até 45 dias depois do fim do mês",
+   "nivel": "atencao",
+   "obs": "a CGU publica o cartão com cerca de um mês de atraso"
+  },
+  {
+   "orgao": "Câmara Municipal de Campo Grande",
+   "dado": "verba indenizatória dos vereadores",
+   "ultimo": "2026-09-30",
+   "dias": 44,
+   "prazo": 45,
+   "base": "dado mensal: até 45 dias depois do fim do mês",
+   "nivel": "ok",
+   "obs": ""
+  },
+  {
+   "orgao": "TJMS — Tribunal de Justiça",
+   "dado": "folha de pagamento",
+   "ultimo": "2026-09-30",
+   "dias": 44,
+   "prazo": 45,
+   "base": "dado mensal: até 45 dias depois do fim do mês",
+   "nivel": "ok",
+   "obs": "lida via DadosJusBr, que pode ter atraso próprio"
+  },
+  {
+   "orgao": "TCE-MS — conselheiros e procuradores de contas",
+   "dado": "folha de pagamento",
+   "ultimo": "2026-09-30",
+   "dias": 44,
+   "prazo": 45,
+   "base": "dado mensal: até 45 dias depois do fim do mês",
+   "nivel": "ok",
+   "obs": ""
+  },
+  {
+   "orgao": "TCE-MS — servidores",
+   "dado": "folha de pagamento",
+   "ultimo": "2026-09-30",
+   "dias": 44,
+   "prazo": 45,
+   "base": "dado mensal: até 45 dias depois do fim do mês",
+   "nivel": "ok",
+   "obs": ""
+  },
+  {
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "dado": "folha dos magistrados",
+   "ultimo": "2026-10-31",
+   "dias": 13,
+   "prazo": 45,
+   "base": "dado mensal: até 45 dias depois do fim do mês",
+   "nivel": "ok",
+   "obs": ""
+  },
+  {
+   "orgao": "TRE-MS — Justiça Eleitoral",
+   "dado": "folha dos magistrados",
+   "ultimo": "2026-10-31",
+   "dias": 13,
+   "prazo": 45,
+   "base": "dado mensal: até 45 dias depois do fim do mês",
+   "nivel": "ok",
+   "obs": ""
+  },
+  {
+   "orgao": "Governo do Estado — ativos",
+   "dado": "folha de pagamento",
+   "ultimo": "2026-10-31",
+   "dias": 13,
+   "prazo": 45,
+   "base": "dado mensal: até 45 dias depois do fim do mês",
+   "nivel": "ok",
+   "obs": ""
+  },
+  {
+   "orgao": "Governo do Estado — aposentados e pensionistas",
+   "dado": "folha de pagamento",
+   "ultimo": "2026-10-31",
+   "dias": 13,
+   "prazo": 45,
+   "base": "dado mensal: até 45 dias depois do fim do mês",
+   "nivel": "ok",
+   "obs": ""
+  },
+  {
+   "orgao": "Câmara Municipal de Campo Grande",
+   "dado": "folha de pagamento",
+   "ultimo": "2026-10-31",
+   "dias": 13,
+   "prazo": 45,
+   "base": "dado mensal: até 45 dias depois do fim do mês",
+   "nivel": "ok",
+   "obs": ""
+  },
+  {
+   "orgao": "Senado Federal",
+   "dado": "notas da cota parlamentar (CEAPS)",
+   "ultimo": "2026-11-03",
+   "dias": 10,
+   "prazo": 45,
+   "base": "o Senado aceita notas até 90 dias depois da despesa",
+   "nivel": "ok",
+   "obs": "o atraso aqui é dos senadores, que apresentam as notas depois"
+  },
+  {
+   "orgao": "Assembleia Legislativa (ALEMS)",
+   "dado": "notas da verba indenizatória",
+   "ultimo": "2026-11-06",
+   "dias": 7,
+   "prazo": 45,
+   "base": "dado mensal: até 45 dias depois do fim do mês",
+   "nivel": "ok",
+   "obs": ""
+  },
+  {
+   "orgao": "Câmara dos Deputados",
+   "dado": "notas da cota parlamentar (CEAP)",
+   "ultimo": "2026-11-11",
+   "dias": 2,
+   "prazo": 45,
+   "base": "a Câmara aceita notas até 90 dias depois da despesa",
+   "nivel": "ok",
+   "obs": "o atraso aqui é dos deputados, que apresentam as notas depois"
+  },
+  {
+   "orgao": "Governo do Estado de MS",
+   "dado": "despesas",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": ""
+  },
+  {
+   "orgao": "Câmara Municipal de Aquidauana",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": "portal no ar e atualizado"
+  },
+  {
+   "orgao": "Câmara Municipal de Bonito",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": "portal no ar e atualizado"
+  },
+  {
+   "orgao": "Câmara Municipal de Chapadão do Sul",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": "portal no ar e atualizado"
+  },
+  {
+   "orgao": "Câmara Municipal de Corumbá",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": "portal no ar e atualizado"
+  },
+  {
+   "orgao": "Câmara Municipal de Coxim",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": "portal no ar e atualizado"
+  },
+  {
+   "orgao": "Câmara Municipal de Itaporã",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": "portal no ar e atualizado"
+  },
+  {
+   "orgao": "Câmara Municipal de Jardim",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": "portal no ar e atualizado"
+  },
+  {
+   "orgao": "Câmara Municipal de Paranaíba",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": "portal no ar e atualizado"
+  },
+  {
+   "orgao": "Câmara Municipal de Ponta Porã",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": "portal no ar e atualizado"
+  },
+  {
+   "orgao": "Câmara Municipal de Ribas do Rio Pardo",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": "portal no ar e atualizado"
+  },
+  {
+   "orgao": "Câmara Municipal de Sidrolândia",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": "portal no ar e atualizado"
+  },
+  {
+   "orgao": "Câmara Municipal de Três Lagoas",
+   "dado": "despesas e diárias",
+   "ultimo": "2026-11-13",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": "portal no ar e atualizado"
+  }
+ ]
+}
