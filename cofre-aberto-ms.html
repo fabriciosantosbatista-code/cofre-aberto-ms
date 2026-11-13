@@ -5136,11 +5136,14 @@ function renderAtividade(a) {
   const hoje = new Date(), ontem = new Date(Date.now() - 864e5);
   const dia = !ult ? "—" : ult.toDateString() === hoje.toDateString() ? "hoje" : ult.toDateString() === ontem.toDateString() ? "ontem" : formatDate(a.ultimaAtualizacao.slice(0, 10));
   const hora = ult ? ult.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }) : "";
+  // "hoje" só quando a contagem é mesmo de hoje; senão, a data da coleta que trouxe as notas
+  const ger = a.geradoEm ? new Date(a.geradoEm) : ult;
+  const rotDia = !ger ? "" : ger.toDateString() === hoje.toDateString() ? "hoje" : ger.toDateString() === ontem.toDateString() ? "ontem" : "em " + formatDate(a.geradoEm.slice(0, 10));
   const sinc = document.getElementById("sinc");
   sinc.innerHTML = `<span class="vivo"><i></i>Atualizado</span>
     <span>Última coleta <b>${dia}${hora ? " às " + hora : ""}</b></span>
     <span><b>${n(a.registros)}</b> registros</span>
-    <span>Notas novas hoje <b class="mais">+${n(a.notasHoje)}</b></span>
+    <span>Notas novas ${rotDia} <b class="mais">+${n(a.notasHoje)}</b></span>
     <span>Na semana <b class="mais">+${n(a.notasSemana)}</b> (${formatCompact(a.valorSemana)})</span>
     ${a.semana?.length ? `<a href="#aba=panorama" data-novos>Ver quem →</a>` : ""}`;
   sinc.hidden = false;
