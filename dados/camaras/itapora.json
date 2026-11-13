@@ -1,7 +1,7 @@
 {
   "cidade": "Itaporã",
-  "ultimaAtualizacao": "2026-11-13T08:24:35",
-  "fonte": "Portal Transparência Fiorilli (transparencia.itapora.ms.gov.br) — Dados Abertos — 2026-11-13T08:24:35",
+  "ultimaAtualizacao": "2026-11-13T11:27:27",
+  "fonte": "Portal Transparência Fiorilli (transparencia.itapora.ms.gov.br) — Dados Abertos — 2026-11-13T11:27:27",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camaraitapora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -126,6 +126,11 @@
       "referenciaFolha": "Folha Mensal - Outubro",
       "diarias": [
         {
+          "data": "2026-11-10",
+          "valor": 5696.25,
+          "descricao": "REFERENTE CONCESSÃO DE DIÁRIAS PARA PARTIFICPAÇÃO NO CICLO DE PALESTRAS DO PODER LEGISLATIVO MUNICIPAL, A SER REALIZADO NOS DIAS 10 A 13 DE NOVEMBRO DE 2026 EM FOZ DO IGUAÇU-PR."
+        },
+        {
           "data": "2026-10-20",
           "valor": 2712.5,
           "descricao": "REFERENTE CONCESSÃO DE DIÁRIAS PARA PARTICIPACAO NO CURSO LEGISLATIVO ATUANTE E COERENTE NO MUNICIPIO , A SER REALIZADO NOS DIAS 21, 22 E 23 DEOUTUBRO DE 2026, COM OS SEGUINTES TEMAS:|1. ATUALIZACOES LEGISLATIVAS, JURISPRUDENCIAS E SEUS IMPACTOS NA GESTAO MUNICIPAL.|2. GOVERNANCA CULTURAL: ESTRUTURACAO E OPERACIONALIZACAO DO SISTEMA MUNICIPAL DE CULTURA.|3. EDUCACAO INCLUSIVA: DA LEI A REALIDADE ESCOLAR NOS MUNICIPIOS.|4. COMO FUNCIONA A GESTAO DE DADOS PARA FORTALECER O MUNICIPIO. ."
@@ -246,8 +251,8 @@
           "descricao": "REFERENTE CONCESSÃO DE DIÁRIAS PARA PARTICIPAÇÃO NO SEMINÁRIO DE CAPACITAÇÃO LEGISLATIVO 2026 A SER REALIZADO NOS DIAS 03 A 06 DE FEVEREIRO NO AUDITÓRIO DA ESCOEX NO TCE/MS EM CAMPO GRANDE-MS."
         }
       ],
-      "totalDiarias2026": 56691.0,
-      "numDiarias2026": 24
+      "totalDiarias2026": 62387.25,
+      "numDiarias2026": 25
     },
     {
       "nome": "GILLIARD FERREIRA GIACOBBO",
@@ -1235,11 +1240,11 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 6207528.39,
-    "totalNotas": 394,
+    "totalGeral": 6223178.64,
+    "totalNotas": 397,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 3423879.93,
-      "Diárias — Civil": 686554.0,
+      "Diárias — Civil": 702204.25,
       "Outros Serviços de Terceiros — Pessoa Jurídica": 646958.62,
       "Obrigações Patronais": 586811.97,
       "Serviços de Consultoria": 407459.5,
@@ -1716,6 +1721,14 @@
         "descricao": "REFERENTE CONCESSÃO DE DIÁRIAS PARA PARTIFICPAÇÃO NO CICLO DE PALESTRAS DO PODER LEGISLATIVO MUNICIPAL, A SER REALIZADO NOS DIAS 10 A 13 DE NOVEMBRO DE 2026 EM FOZ DO IGUAÇU-PR."
       },
       {
+        "data": "2026-11-09",
+        "fornecedor": "FLÁVIO DA SILVA DE GODOY",
+        "cnpj": "796.XXX.XXX-00",
+        "categoria": "Diárias — Civil",
+        "valor": 5696.25,
+        "descricao": "REFERENTE CONCESSÃO DE DIÁRIAS PARA PARTIFICPAÇÃO NO CICLO DE PALESTRAS DO PODER LEGISLATIVO MUNICIPAL, A SER REALIZADO NOS DIAS 10 A 13 DE NOVEMBRO DE 2026 EM FOZ DO IGUAÇU-PR."
+      },
+      {
         "data": "2026-07-07",
         "fornecedor": "GILLIARD FERREIRA GIACOBBO",
         "cnpj": "022.XXX.XXX-24",
@@ -1986,6 +1999,30 @@
         "categoria": "Diárias — Civil",
         "valor": 3318.0,
         "descricao": "REFERENTE CONCESSÃO DE DIÁRIAS PARA PARTICIPAÇÃO NO SEMINÁRIO DE CAPACITAÇÃO DO PODER LEGISLATIVO MUNICIPAL A SER REALIZADO NOS DIAS 06 A 10 DE JULHO DE 2026 EM FOZ DO IGUAÇU-PR."
+      },
+      {
+        "data": "2026-11-09",
+        "fornecedor": "REGIANE DA SILVA PECINI ARAUJO",
+        "cnpj": "006.XXX.XXX-63",
+        "categoria": "Diárias — Civil",
+        "valor": 3318.0,
+        "descricao": "REFERENTE CONCESSÃO DE DIÁRIAS PARA PARTIFICPAÇÃO NO CICLO DE PALESTRAS DO PODER LEGISLATIVO MUNICIPAL, A SER REALIZADO NOS DIAS 10 A 13 DE NOVEMBRO DE 2026 EM FOZ DO IGUAÇU-PR."
+      },
+      {
+        "data": "2026-11-09",
+        "fornecedor": "GISELE VEGAS",
+        "cnpj": "636.XXX.XXX-34",
+        "categoria": "Diárias — Civil",
+        "valor": 3318.0,
+        "descricao": "REFERENTE CONCESSÃO DE DIÁRIAS PARA PARTIFICPAÇÃO NO CICLO DE PALESTRAS DO PODER LEGISLATIVO MUNICIPAL, A SER REALIZADO NOS DIAS 10 A 13 DE NOVEMBRO DE 2026 EM FOZ DO IGUAÇU-PR."
+      },
+      {
+        "data": "2026-11-09",
+        "fornecedor": "RAFAEL ANTONIO DE DEUS MOREIRA",
+        "cnpj": "025.XXX.XXX-03",
+        "categoria": "Diárias — Civil",
+        "valor": 3318.0,
+        "descricao": "REFERENTE CONCESSÃO DE DIÁRIAS PARA PARTIFICPAÇÃO NO CICLO DE PALESTRAS DO PODER LEGISLATIVO MUNICIPAL, A SER REALIZADO NOS DIAS 10 A 13 DE NOVEMBRO DE 2026 EM FOZ DO IGUAÇU-PR."
       },
       {
         "data": "2026-01-05",
@@ -4394,14 +4431,6 @@
         "categoria": "Obrigações Patronais",
         "valor": 0.0,
         "descricao": "REFERENTE COMPLEMENTO DO EMPENHO Nº 065/2026 REFERENTE CONTRIBUIÇÃO PATRONAL INSS EXERCICIO 2026."
-      },
-      {
-        "data": "2026-11-09",
-        "fornecedor": "FLÁVIO DA SILVA DE GODOY",
-        "cnpj": "796.XXX.XXX-00",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "REFERENTE CONCESSÃO DE DIÁRIAS PARA PARTIFICPAÇÃO NO CICLO DE PALESTRAS DO PODER LEGISLATIVO MUNICIPAL, A SER REALIZADO NOS DIAS 10 A 13 DE NOVEMBRO DE 2026 EM FOZ DO IGUAÇU-PR."
       }
     ]
   }
