@@ -37,6 +37,8 @@ ficaram de fora depois do teste com os dados de nov/2026):
   possivel_parente      sócio com o sobrenome raro do parlamentar que paga a empresa
   obra_prazo_estourado  obra do Estado com dias aditados maiores que o prazo inicial
   aditivo_acima_limite  contrato da Prefeitura com acréscimos (fora prorrogações) acima de 25%
+  fracionamento_fornecedor  o mesmo órgão comprou da mesma empresa, por dispensa, em processos diferentes
+                        no ano — cada um abaixo do limite legal, mas juntos acima dele (Prefeitura e PNCP)
   dispensa_acima_limite um mesmo processo de dispensa somando mais que o limite legal
                         (exclui aluguel de imóvel, bancos e concessionárias, que têm
                         outra base legal)
@@ -59,7 +61,8 @@ NIVEL = {"mei_acima_limite": "forte", "situacao_irregular": "forte", "socio_parl
          "servidor_socio_pagador": "forte", "servidor_socio": "médio", "endereco_comum": "médio",
          "empresa_sancionada": "forte", "sancionada_outro_ente": "médio", "socio_sancionado": "forte",
          "possivel_parente": "médio", "entidade_parlamentar": "médio",
-         "doador_executivo": "forte", "fornecedor_campanha_executivo": "médio", "preco_acima_estimado": "médio", "obra_prazo_estourado": "médio", "aditivo_acima_limite": "médio"}
+         "doador_executivo": "forte", "fornecedor_campanha_executivo": "médio", "preco_acima_estimado": "médio", "obra_prazo_estourado": "médio", "aditivo_acima_limite": "médio",
+         "fracionamento_fornecedor": "médio"}
 ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_irregular": "Empresa com CNPJ irregular",
           "socio_parlamentar": "Parlamentar é sócio", "socios_licitacao": "Sócios em comum na mesma licitação",
           "dispensa_acima_limite": "Possível fracionamento de dispensa", "empresa_nova": "Empresa recém-aberta",
@@ -74,7 +77,8 @@ ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_ir
           "doador_executivo": "Sócio doou ao governador ou à prefeita e a empresa recebe",
           "fornecedor_campanha_executivo": "Fornecedor da campanha do governador ou da prefeita recebe do governo",
           "preco_acima_estimado": "Licitação do Estado homologada acima do preço estimado",
-          "obra_prazo_estourado": "Obra do Estado com prazo mais que dobrado", "aditivo_acima_limite": "Aditivos acima de 25%"}
+          "obra_prazo_estourado": "Obra do Estado com prazo mais que dobrado", "aditivo_acima_limite": "Aditivos acima de 25%",
+          "fracionamento_fornecedor": "Várias dispensas à mesma empresa somando acima do limite"}
 
 # naturezas jurídicas de empresa privada (associações, fundos, órgãos e consórcios públicos não têm capital social)
 EMPRESARIAL = re.compile(r"Limitada|Empres[aá]rio|EIRELI|Unipessoal|Sociedade Simples|An[oô]nima Fechada", re.I)
@@ -851,6 +855,48 @@ def main():
                 f"vale pedi-lo pela Lei de Acesso à Informação.",
                 p_["empenhado"], [f"Empenhado: {brl(p_['empenhado'])}", f"Pago: {brl(p_['pago'])}", f"Empenhos: {p_['n']}"],
                 "Prefeitura de CG", p_["forn"][f0], p_["url"])
+
+    # ── Fracionamento entre processos: mesmo órgão, mesma empresa, várias dispensas no ano ──
+    # O teste acima olha um processo só; o fracionamento clássico divide a compra em processos diferentes.
+    # Conta só dispensas cujo valor ficou abaixo do limite (as acima são emergência ou outra hipótese legal).
+    excecao = r"LOCA[ÇC][AÃ]O DE IM[OÓ]VE|BANC[AÁ]RI|ENERGIA|[ÁA]GUA E ESGOTO|TELEFON|CORREIO|POSTA"
+    grupos = {}
+    for pr, p_ in proc.items():  # Prefeitura: processos de dispensa (já sem as exceções), por órgão + empresa
+        lim = LIM_DISPENSA_OBRA if re.search(r"OBRA|ENGENHAR", str(p_["cat"]).upper()) else LIM_DISPENSA
+        if len(p_["forn"]) != 1 or p_["empenhado"] > lim:
+            continue
+        nome, doc = next(iter(p_["forn"].items()))
+        if not doc:
+            continue
+        g_ = grupos.setdefault(("Prefeitura de CG", p_["orgao"], doc), {"nome": nome, "lim": lim, "itens": [], "link": p_["url"]})
+        g_["lim"] = min(g_["lim"], lim)
+        g_["itens"].append((pr, p_["empenhado"]))
+    for c in lic_gov.get("compras", []) if str(lic_gov.get("ano")) == str(ANO) else []:  # Governo: dispensas no PNCP
+        if c.get("modalidade") != "Dispensa" or len(c.get("vencedores") or []) != 1 or re.search(excecao, (c.get("objeto") or "").upper()):
+            continue
+        v_ = c["vencedores"][0]
+        # agricultura familiar (merenda escolar, PAA) tem dispensa própria na lei (Lei 11.947/2009, art. 14)
+        if re.search(r"AGRICULTURA FAMILIAR|AGRICULTOR|PNAE|ALIMENTA[ÇC][AÃ]O ESCOLAR|\bPAA\b", (c.get("objeto") or "").upper()) \
+                or re.search(r"COOPERATIVA|ASSOCIA[ÇC][AÃ]O DOS? (PEQUENOS )?PRODUTORES", (v_.get("nome") or "").upper()):
+            continue
+        val = c.get("homologado") or v_.get("valor") or 0
+        lim = LIM_DISPENSA_OBRA if re.search(r"OBRA|ENGENHAR|REFORMA|MANUTEN[ÇC][AÃ]O DE VE[IÍ]CULO", (c.get("objeto") or "").upper()) else LIM_DISPENSA
+        if not val or val > lim or len(dig(v_.get("cnpj"))) != 14:
+            continue
+        g_ = grupos.setdefault(((c.get("orgao") or "Órgão estadual").title(), c.get("orgao"), dig(v_["cnpj"])), {"nome": v_.get("nome"), "lim": lim, "itens": [], "link": c.get("link")})
+        g_["lim"] = min(g_["lim"], lim)
+        g_["itens"].append((c.get("numero") or c.get("id"), val))
+    for (quem, orgao, doc), g_ in grupos.items():
+        tot = sum(v for _, v in g_["itens"])
+        if len(g_["itens"]) >= 2 and tot > g_["lim"]:
+            add("fracionamento_fornecedor", (quem, orgao, doc),
+                f"{g_['nome']}: {len(g_['itens'])} dispensas de {orgao.title() if orgao.isupper() else orgao} somando {brl(tot)}",
+                f"{orgao.title() if orgao.isupper() else orgao}. Em {ANO}, o órgão contratou a mesma empresa sem licitação em {len(g_['itens'])} processos de dispensa "
+                f"diferentes. Cada um ficou abaixo do limite legal ({brl(g_['lim'])}), mas juntos somam {brl(tot)}. Dividir uma compra que "
+                f"poderia ser uma só para fugir da licitação é o que a lei chama de fracionamento (Lei 14.133/2021, art. 75, §1º). "
+                f"Pode haver explicação — objetos diferentes, demandas imprevisíveis — que só os processos mostram; vale pedi-los pela "
+                f"Lei de Acesso à Informação.",
+                tot, [f"{n}: {brl(v)}" for n, v in sorted(g_["itens"], key=lambda t: -t[1])[:6]], quem, doc, g_["link"])
 
     ordem = {"forte": 0, "médio": 1}
     sinais.sort(key=lambda s: (ordem[s["nivel"]], -s["valor"]))
