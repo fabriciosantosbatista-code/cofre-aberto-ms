@@ -587,7 +587,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
     <nav>
       <a href="index.html" style="display:flex;align-items:center;gap:9px;color:var(--ink-soft);font-size:.83rem;font-weight:500;padding:8px 10px;border-radius:8px;text-decoration:none;transition:all .15s;margin-bottom:4px" onmouseover="this.style.background='var(--surface-2)';this.style.color='var(--ink)'" onmouseout="this.style.background='';this.style.color='var(--ink-soft)'"><span style="width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;display:inline-block"></span> 🏠 Home</a>
-      <a href="/apoie/" class="btn-apoie" style="display:none;align-items:center;gap:9px;color:#14120a;background:#f5c842;font-size:.83rem;font-weight:700;padding:8px 10px;border-radius:8px;text-decoration:none;margin-bottom:4px">❤️ Apoie o Cofre Aberto</a>
+      <a href="/apoie/" class="btn-apoie" style="display:none;align-items:center;gap:9px;color:#14120a;background:#f5c842;font-size:.83rem;font-weight:700;padding:8px 10px;border-radius:8px;text-decoration:none;margin-bottom:4px;white-space:nowrap">❤️ Apoie</a>
       <button class="active" data-tab="panorama"><span class="dot"></span> 📊 Panorama</button>
       <div class="nav-group-label">Mato Grosso do Sul</div>
       <button data-tab="senadores"><span class="dot"></span> Senado MS</button>
@@ -605,6 +605,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button data-tab="conexoes"><span class="dot"></span> Conexões</button>
       <button data-tab="auditoria"><span class="dot"></span> Auditoria</button>
       <button data-tab="eleicoes"><span class="dot"></span> Eleições e patrimônio</button>
+      <button data-tab="votacoes"><span class="dot"></span> Presença e votação</button>
       <button data-tab="evolucao"><span class="dot"></span> Evolução</button>
       <div class="nav-group-label">Brasil</div>
       <button data-tab="presidencia"><span class="dot"></span> Presidência</button>
@@ -1744,6 +1745,35 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
   </section>
 
+  <section class="tabpanel" id="tab-votacoes">
+    <div class="hero">
+      <div class="hero-label">Presença e votação · deputados federais e senadores de MS · <span id="vt-ano">—</span></div>
+      <div class="hero-number" id="vt-media">—</div>
+      <div class="hero-desc">de participação média nas votações nominais do plenário — aquelas em que o voto de cada parlamentar fica registrado.
+        Abaixo, quanto cada um votou e, em cada votação, o assunto e o voto de cada parlamentar de MS. Votações simbólicas não registram quem votou.</div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="vt-cam">—</div><div class="mini-stat-label">votações nominais na Câmara</div></div>
+        <div><div class="mini-stat-value" id="vt-sen">—</div><div class="mini-stat-label">votações nominais no Senado</div></div>
+        <div><div class="mini-stat-value" id="vt-data">—</div><div class="mini-stat-label">atualizado em</div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Participação de cada parlamentar</h2></div>
+      <div class="section-note">No Senado, "presente sem voto" é quem estava no plenário e não votou (por exemplo, presidindo a sessão); ausência justificada é licença, missão ou atividade parlamentar.</div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-vt-part"><thead><tr><th>Parlamentar</th><th>Casa</th><th class="num">Votou</th><th class="num">Não votou</th><th class="num">Participação</th><th class="num">Presente sem voto</th><th class="num">Ausência justificada</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Como votou cada um, votação por votação</h2></div>
+      <div class="filtros" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+        <select id="vt-casa" class="search-box" aria-label="Casa" style="max-width:220px"><option value="camara">Câmara — deputados federais de MS</option><option value="senado">Senado — senadores de MS</option></select>
+        <input id="vt-busca" class="search-box" aria-label="Buscar assunto" type="search" placeholder="buscar assunto (ex.: MEI, saúde, PL 278)…" style="flex:1;min-width:200px"/>
+      </div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-vt-quadro"><thead></thead><tbody></tbody></table></div>
+      <button class="pager-btn" id="vt-mais" style="margin-top:10px;display:none">Mostrar mais</button>
+      <div class="section-note" id="vt-fonte"></div>
+    </div>
+  </section>
+
   <section class="tabpanel" id="tab-eleicoes">
     <div class="hero">
       <div class="hero-label">Eleições 2026 e patrimônio declarado · TSE</div>
@@ -2723,6 +2753,7 @@ function renderDetalheDeputado(d, todos, ano, panel) {
       </div>
 
       ${renderEmendasHTML(d.nome)}
+      ${d.uf === "MS" ? `<div id="dep-votos-box"></div>` : ""}
 
       <div class="subhead">Notas fiscais — página ${paginaAtual} de ${totalPaginas} (${despesas.length} no total)</div>
       <table class="notes-table">
@@ -2736,6 +2767,7 @@ function renderDetalheDeputado(d, todos, ano, panel) {
     `;
     document.getElementById("pag-anterior")?.addEventListener("click", () => { if (paginaAtual > 1) { paginaAtual--; render(); } });
     document.getElementById("pag-proximo")?.addEventListener("click", () => { if (paginaAtual < totalPaginas) { paginaAtual++; render(); } });
+    if (d.uf === "MS") preencherVotosParlamentar("dep-votos-box", "federal", d.id);
   }
 
   render();
@@ -2959,6 +2991,7 @@ function renderSenadores(data) {
         </div>
 
         ${renderEmendasHTML(s.nome)}
+        ${s.uf === "MS" ? `<div id="sen-votos-box"></div>` : ""}
 
         <p class="section-note">
           <a href="${s.urlTransparencia || `https://www6g.senado.leg.br/transparencia/sen/${s.id}/?ano=${ANO_REFERENCIA}`}" target="_blank">
@@ -2971,6 +3004,7 @@ function renderSenadores(data) {
       panel.classList.add("active");
       panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
 
+      if (s.uf === "MS") preencherVotosParlamentar("sen-votos-box", "senador", id);
       if (s.uf === "MS") {
         carregarNotasSenadoresMS().then(mapa => {
           if (panel.dataset.senadorId !== id) return;
@@ -5121,6 +5155,83 @@ function renderFluxo(d, ano) {
   io.observe(card);
 }
 
+// ===================== PRESENÇA E VOTAÇÃO (deputados federais e senadores de MS) =====================
+let _votacoes;
+function carregarVotacoes() { return (_votacoes = _votacoes || carregarLeve("votacoes.json")); }
+const COR_VOTO = { "SIM": "var(--positive)", "NÃO": "var(--red)", "ABSTENÇÃO": "var(--amber)", "OBSTRUÇÃO": "var(--amber)" };
+const NOME_VOTO = { "AP": "ausente (atividade parlamentar)", "P-NRV": "presente, sem voto", "VOTOU": "votou (secreto)", "LS": "licença saúde",
+  "LP": "licença particular", "MIS": "ausente (missão oficial)", "NCOM": "não compareceu", "REP": "ausente (representação)", "LAP": "licença", "PRESIDENTE": "presidindo" };
+function votoHTML(v) {
+  const c = COR_VOTO[(v || "").toUpperCase()];
+  return c ? `<b style="color:${c}">${escHTML(v)}</b>` : `<span style="opacity:.7;font-size:.8rem">${escHTML(NOME_VOTO[(v || "").toUpperCase()] || v || "—")}</span>`;
+}
+function assuntoVotacao(v) {
+  const res = v.aprovacao === 1 ? "aprovado" : v.aprovacao === 0 ? "rejeitado" : (v.resultado || "").toLowerCase();
+  return `<b>${escHTML(v.proposicao || "")}</b> ${escHTML(v.ementa || "")}<div class="rank-meta">${escHTML(v.descricao || "")}${res && !(v.descricao || "").toLowerCase().includes(res) ? " · " + escHTML(res) : ""}</div>`;
+}
+function renderVotacoes(d) {
+  const ps = (d.parlamentares || []).filter(p => p.nominais);
+  const media = ps.length ? ps.reduce((t, p) => t + (p.participacao || 0), 0) / ps.length : 0;
+  document.getElementById("vt-ano").textContent = d.ano || "";
+  document.getElementById("vt-media").textContent = media.toFixed(1).replace(".", ",") + "%";
+  const qc = d.quadroCamara || {}, qs = d.quadroSenado || {};
+  document.getElementById("vt-cam").textContent = (qc.votacoes || []).length;
+  document.getElementById("vt-sen").textContent = (qs.votacoes || []).length;
+  document.getElementById("vt-data").textContent = d.ultimaAtualizacao ? formatDate(d.ultimaAtualizacao.slice(0, 10)) : "—";
+  document.getElementById("vt-fonte").textContent = `Fonte: ${d.fonte || ""}. — = não votou.`;
+  document.querySelector("#tabela-vt-part tbody").innerHTML = ps.slice().sort((a, b) => (b.participacao || 0) - (a.participacao || 0)).map(p => `
+    <tr><td data-label="Parlamentar"><b>${escHTML(p.nome)}</b></td><td data-label="Casa">${p.grupo === "senador" ? "Senado" : "Câmara"}</td>
+      <td data-label="Votou" class="num">${p.votou}</td><td data-label="Não votou" class="num">${p.nominais - p.votou}</td>
+      <td data-label="Participação" class="num"><b>${String(p.participacao).replace(".", ",")}%</b></td>
+      <td data-label="Presente sem voto" class="num">${p.grupo === "senador" ? (p.presenteSemVoto || 0) : "—"}</td>
+      <td data-label="Ausência justificada" class="num">${p.grupo === "senador" ? (p.justificadas || 0) : "—"}</td></tr>`).join("");
+  const sel = document.getElementById("vt-casa"), busca = document.getElementById("vt-busca"), mais = document.getElementById("vt-mais");
+  let limite = 25;
+  const sem = t => (t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const desenhar = () => {
+    const q = sel.value === "senado" ? qs : qc, quem = q.senadores || q.deputados || {}, ids = Object.keys(quem);
+    const termo = sem(busca.value.trim());
+    const lst = (q.votacoes || []).filter(v => !termo || sem(`${v.proposicao} ${v.ementa} ${v.descricao}`).includes(termo));
+    document.querySelector("#tabela-vt-quadro thead").innerHTML = `<tr><th>Data</th><th>Assunto e o que foi votado</th>${ids.map(i => `<th style="text-align:center">${escHTML(quem[i].split(" ")[0].length > 3 ? quem[i].split(" ")[0] : quem[i].split(" ").slice(0, 2).join(" "))}</th>`).join("")}</tr>`;
+    document.querySelector("#tabela-vt-quadro tbody").innerHTML = lst.slice(0, limite).map(v => `
+      <tr><td data-label="Data">${formatDate(v.data)}</td><td data-label="Assunto" style="min-width:260px">${assuntoVotacao(v)}</td>
+        ${ids.map(i => `<td data-label="${escHTML(quem[i])}" style="text-align:center">${votoHTML((v.votos || {})[i])}</td>`).join("")}</tr>`).join("")
+      || `<tr><td colspan="${ids.length + 2}">Nenhuma votação com esse assunto.</td></tr>`;
+    mais.style.display = lst.length > limite ? "" : "none";
+    mais.textContent = `Mostrar mais (${lst.length - limite} restantes)`;
+  };
+  sel.addEventListener("change", () => { limite = 25; desenhar(); });
+  busca.addEventListener("input", () => { limite = 25; desenhar(); });
+  mais.addEventListener("click", () => { limite += 50; desenhar(); });
+  desenhar();
+}
+// Bloco "Presença e votação" no detalhe de um senador ou deputado federal de MS
+function preencherVotosParlamentar(boxId, grupo, id) {
+  carregarVotacoes().then(d => {
+    const box = document.getElementById(boxId);
+    if (!box || !d) return;
+    const p = (d.parlamentares || []).find(x => x.grupo === grupo && String(x.id) === String(id));
+    const q = grupo === "senador" ? d.quadroSenado || {} : d.quadroCamara || {};
+    if (!p || !p.nominais) { box.innerHTML = ""; return; }
+    const lst = (q.votacoes || []).filter(v => (v.votos || {})[String(id)] !== undefined);
+    const extra = [p.presenteSemVoto ? `${p.presenteSemVoto} vez(es) presente sem votar` : "", p.justificadas ? `${p.justificadas} ausência(s) justificada(s)` : ""].filter(Boolean).join(" · ");
+    let limite = 10;
+    const desenhar = () => {
+      box.innerHTML = `
+        <h4 style="margin:22px 0 6px">🗳️ Presença e votação em ${d.ano}</h4>
+        <p class="section-note">Votou em <b>${p.votou} das ${p.nominais}</b> votações nominais do plenário ${grupo === "senador" ? "do Senado" : "da Câmara"}
+          (<b>${String(p.participacao).replace(".", ",")}%</b>)${extra ? " · " + extra : ""}.</p>
+        <div class="card card-x-scroll"><table class="ranking"><thead><tr><th>Data</th><th>Assunto e o que foi votado</th><th>Voto</th></tr></thead><tbody>
+        ${lst.slice(0, limite).map(v => `<tr><td data-label="Data">${formatDate(v.data)}</td><td data-label="Assunto">${assuntoVotacao(v)}</td><td data-label="Voto">${votoHTML(v.votos[String(id)])}</td></tr>`).join("")}
+        </tbody></table></div>
+        ${lst.length > limite ? `<button class="pager-btn" data-vt-mais style="margin-top:10px">Mostrar mais (${lst.length - limite} restantes)</button>` : ""}
+        <p class="section-note"><a href="#aba=votacoes" data-ir="votacoes">Comparar com os outros parlamentares de MS →</a></p>`;
+      box.querySelector("[data-vt-mais]")?.addEventListener("click", () => { limite += 30; desenhar(); });
+    };
+    desenhar();
+  });
+}
+
 function renderCapa(d) {
   const k = d.kpis || {}, n = v => (v || 0).toLocaleString("pt-BR");
   const total = (d.dinheiro || []).reduce((t, f) => t + f.valor, 0);
@@ -6481,6 +6592,10 @@ async function init() {
       if (btn.dataset.tab === "presidencia" && !window._prLoaded) {
         window._prLoaded = true;
         carregarJSON("dados/presidencia.json").then(d => { if (d) renderPresidencia(d); });
+      }
+      if (btn.dataset.tab === "votacoes" && !window._vtLoaded) {
+        window._vtLoaded = true;
+        carregarVotacoes().then(d => { if (d) renderVotacoes(d); });
       }
       if (btn.dataset.tab === "eleicoes" && !window._elLoaded) {
         window._elLoaded = true;

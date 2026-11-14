@@ -356,9 +356,14 @@ def tema_termometro():
 COR_VOTO = {"SIM": "#2dd4a0", "NÃO": "#ff7a7a", "NAO": "#ff7a7a", "ABSTENÇÃO": "#f5c842", "OBSTRUÇÃO": "#f5c842", "VOTOU": "#8b95aa"}
 
 
+NOME_VOTO = {"AP": "ausente (atividade parlamentar)", "P-NRV": "presente, sem voto", "VOTOU": "votou (secreto)", "LS": "licença saúde",
+             "LP": "licença particular", "MIS": "ausente (missão oficial)", "NCOM": "não compareceu", "REP": "ausente (representação)", "LAP": "licença"}
+
+
 def celula_voto(v):
     c = COR_VOTO.get((v or "").upper())
-    return f"<td style='text-align:center;white-space:nowrap'>{f'<b style=color:{c}>{e(v)}</b>' if c else f'<small>{e(v or chr(8212))}</small>'}</td>"
+    nome = NOME_VOTO.get((v or "").upper(), v or chr(8212))
+    return f"<td style='text-align:center'>{f'<b style=color:{c}>{e(v)}</b>' if c else f'<small>{e(nome)}</small>'}</td>"
 
 
 def assunto(v):

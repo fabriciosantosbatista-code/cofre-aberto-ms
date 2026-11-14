@@ -461,9 +461,11 @@ def bloco_votacoes(p):
     cor = {"SIM": "#2dd4a0", "NÃO": "#ff7a7a", "ABSTENÇÃO": "#f5c842", "OBSTRUÇÃO": "#f5c842"}
     def linha(v):
         c = cor.get((v.get("voto") or "").upper())
-        voto = f"<b style='color:{c}'>{e(v['voto'])}</b>" if c else f"<small>{e(v.get('voto') or '—')}</small>"
+        nomes = {"AP": "ausente (atividade parlamentar)", "P-NRV": "presente, sem voto", "VOTOU": "votou (secreto)", "LS": "licença saúde",
+                 "LP": "licença particular", "MIS": "ausente (missão oficial)", "NCOM": "não compareceu", "REP": "ausente (representação)"}
+        voto = f"<b style='color:{c}'>{e(v['voto'])}</b>" if c else f"<small>{e(nomes.get((v.get('voto') or '').upper(), v.get('voto') or '—'))}</small>"
         return (f"<tr><td>{data_br(v.get('data'))}</td><td><b>{e(v.get('proposicao') or '')}</b> {e(v.get('ementa') or '')}"
-                f"<br><small>{e(v.get('descricao') or '')}</small></td><td style='white-space:nowrap'>{voto}</td></tr>")
+                f"<br><small>{e(v.get('descricao') or '')}</small></td><td>{voto}</td></tr>")
     todas = x.get("ultimas") or []
     cab = "<div class='tabela-wrap'><table><thead><tr><th>Data</th><th>Assunto e o que foi votado</th><th>Voto</th></tr></thead><tbody>"
     lin = "".join(linha(v) for v in todas[:15])

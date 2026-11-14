@@ -149,6 +149,10 @@ def main():
     if gl is not None:  # painel: as 2.000 maiores compras, objeto curto (a lista inteira está no CSV)
         gl["compras"] = [{**c, "objeto": (c.get("objeto") or "")[:220]} for c in gl.get("compras", [])[:2000]]
         tam["governo_ms_licitacoes.json"] = salvar("governo_ms_licitacoes.json", gl)
+    vt = carregar("votacoes.json")
+    if vt.get("parlamentares"):  # sem a lista repetida de cada um: o painel monta tudo a partir dos quadros
+        vt["parlamentares"] = [{k: v for k, v in x.items() if k != "ultimas"} for x in vt["parlamentares"]]
+        tam["votacoes.json"] = salvar("votacoes.json", vt)
     print("✅ dados/painel/: " + ", ".join(f"{k} {v // 1024} KB" for k, v in tam.items()))
 
 
