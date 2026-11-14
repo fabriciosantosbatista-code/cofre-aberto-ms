@@ -12,29 +12,29 @@ WHATS = "https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Abert
 GRUPOS = [
     ("Parlamentares", "#3987e5", [("Senado MS", P + "senadores"), ("Dep. Federais MS", P + "deputados"), ("Dep. Estaduais MS", P + "deputados-estaduais"),
                                   ("Câmara CG", P + "camara"), ("Câmaras MS", P + "camaras-ms")]),
-    ("Executivo", "#199e70", [("Governo MS", P + "governo-ms"), ("Prefeitura CG", P + "prefeitura"), ("Contratos CG", P + "contratos-cg"),
-                              ("Governo MS em números", "/governo-ms/"), ("Prefeitura CG em números", "/prefeitura-campo-grande/")]),
-    ("Emendas", "#d95926", [("Emendas Parlamentares", P + "emendas"), ("Emendas Municípios", "/municipio/"), ("Emendas de MS em números", "/emendas-parlamentares-ms/")]),
-    ("Justiça e salários", "#9085e9", [("Judiciário MS", P + "judiciario"), ("Supersalários", P + "supersalarios"), ("Supersalários em MS", "/supersalarios-ms/"),
-                                       ("Salário dos ministros do STF", "/salario-ministros-stf/")]),
+    ("Executivo", "#199e70", [("Governo MS", P + "governo-ms"), ("Prefeitura CG", P + "prefeitura"), ("Contratos CG", P + "contratos-cg")]),
+    ("Emendas", "#d95926", [("Emendas Parlamentares", P + "emendas"), ("Emendas Municípios", "/municipio/")]),
+    ("Justiça e salários", "#9085e9", [("Judiciário MS", P + "judiciario"), ("Supersalários", P + "supersalarios")]),
     ("Fiscalização", "#c98500", [("Auditoria", P + "auditoria"), ("Conexões", P + "conexoes"), ("Presença e votação", P + "votacoes"),
-                                 ("Eleições e patrimônio", P + "eleicoes"), ("Evolução", P + "evolucao"), ("Termômetro da transparência", "/termometro-da-transparencia/")]),
+                                 ("Eleições e patrimônio", P + "eleicoes"), ("Evolução", P + "evolucao"), ("Termômetro", "/termometro-da-transparencia/")]),
     ("Brasil", "#2bb3a3", [("Presidência", P + "presidencia"), ("Senado Brasil", P + "senado-brasil"), ("Dep. Federais Brasil", P + "deputados-brasil"),
-                           ("STF", P + "stf"), ("Cartão corporativo", "/cartao-corporativo-presidente/")]),
+                           ("STF", P + "stf")]),
     ("Publicações", "#e0679f", [("Boletim semanal", "/boletim/"), ("Empresas", "/empresa/"), ("Órgãos", "/orgao/"), ("Perguntas frequentes", "/perguntas/")]),
     ("Sobre o projeto", "#7aa2c8", [("Início", "/"), ("Painel", "/cofre-aberto-ms.html"), ("Sobre", P + "sobre"), ("Metodologia e dados", "/metodologia.html"),
                                     ("Imprensa", "/press.html"), ("Apoie", "/apoie/"),
                                     ("Contato", "CONTATO")]),
 ]
 
-CSS = (".mapa-site{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:18px 22px;border-top:1px solid var(--border,#2a2a2a);"
-       "padding:24px 0 8px;margin-top:28px;font-size:.8rem;line-height:1.5}"
-       ".mapa-site h4{margin:0 0 6px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}"
-       ".mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:2px 0}"
-       ".mapa-site a{color:var(--ink-soft,#aaa);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}"
-       ".mapa-contato summary{cursor:pointer;color:var(--ink-soft,#aaa);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}"
+CSS = (".mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);"
+       "padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}"
+       ".mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}"
+       ".mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}"
+       ".mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}"
+       "@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}"
+       ".mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}"
+       ".mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}"
        ".mapa-contato summary::after{content:\" ▾\";font-size:.8em}.mapa-contato[open] summary::after{content:\" ▴\"}.mapa-contato summary:hover{color:var(--cor)}"
-       ".mapa-contato a{display:block;margin-top:4px;color:#25D366!important;overflow-wrap:anywhere}")
+       ".mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}")
 
 def item(n, u):
     if u == "CONTATO":  # só "Contato"; ao abrir, mostra o WhatsApp
