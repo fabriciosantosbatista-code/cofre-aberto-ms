@@ -6881,6 +6881,7 @@ async function init() {
       document.querySelectorAll(".tabpanel").forEach(p => p.classList.remove("active"));
       btn.classList.add("active");
       document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "instant" });  // a aba nova abre no topo, não na altura em que a anterior estava
       if (btn.dataset.tab === "deputados-brasil" && !window._depBrLoaded) { window._depBrLoaded = true; carregarDeputadosBrasil(); }
       if (btn.dataset.tab === "senado-brasil" && !window._senBrLoaded) { window._senBrLoaded = true; carregarSenadoBrasil(); }
       // (o antigo ceap_notas_estaduais.json, carga de jun/2026, não é mais baixado: as notas atuais vêm sob demanda)

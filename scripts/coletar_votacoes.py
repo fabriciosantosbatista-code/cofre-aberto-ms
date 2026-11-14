@@ -28,11 +28,15 @@ CAM = "https://dadosabertos.camara.leg.br/api/v2"
 SEN = "https://legis.senado.leg.br/dadosabertos"
 HOJE = date.today()
 ANO = HOJE.year
+T0 = time.monotonic()
+LIMITE = 9 * 60  # a API da Câmara às vezes fica muito lenta: passou disso, para de ler votações novas e usa o cache
 VOTOU = {"SIM", "NÃO", "NAO", "ABSTENÇÃO", "ABSTENCAO", "OBSTRUÇÃO", "OBSTRUCAO", "ARTIGO 17", "VOTOU"}
 
 
 def get(url, params=None, tent=5):
     for t in range(tent):
+        if time.monotonic() - T0 > LIMITE + 120:
+            return None
         try:
             r = requests.get(url, params=params, headers=H, timeout=60)
             if r.status_code == 200:
@@ -76,8 +80,11 @@ def camara(cache):
         j = get(f"{CAM}/votacoes/{v['id']}/votos")
         return v, (j or {}).get("dados")
 
+    def votos_ou_nada(v):
+        return (v, None) if time.monotonic() - T0 > LIMITE else votos(v)
+
     with ThreadPoolExecutor(4) as ex:
-        for v, vs in ex.map(votos, novas):
+        for v, vs in ex.map(votos_ou_nada, novas):
             if vs is None:
                 continue  # falhou: tenta de novo na próxima coleta
             antes = cv.get(v["id"]) or {}
@@ -88,6 +95,8 @@ def camara(cache):
 
     # assunto de cada votação nominal: a proposição afetada (ex.: PL 278/2026) e a ementa — busca uma vez e guarda
     def detalhe(k):
+        if time.monotonic() - T0 > LIMITE:
+            return k, None
         j = get(f"{CAM}/votacoes/{k}")
         return k, (j or {}).get("dados")
 
@@ -101,6 +110,8 @@ def camara(cache):
             cv[k]["ementa"] = re.sub(r"\s+", " ", p_.get("ementa") or "").strip()[:300]
             cv[k]["aprovacao"] = d.get("aprovacao")
     print(f"  Câmara: assunto de {len(faltam)} votações nominais lido")
+    if time.monotonic() - T0 > LIMITE:
+        print("  ⚠️ Câmara: tempo esgotado — o que faltou fica para a próxima coleta (cache mantido)")
     nominais = sorted(({**v, "id": k} for k, v in cv.items() if v.get("nominal") and (v.get("data") or "").startswith(str(ANO))),
                       key=lambda v: (v["data"], v.get("hora") or ""))
     out = []

@@ -295,7 +295,7 @@ jobs:
 
       - name: Votações nominais dos deputados federais e senadores de MS (Câmara e Senado)
         timeout-minutes: 15
-        run: python3 scripts/coletar_votacoes.py || echo "⚠️ coletar_votacoes.py falhou — dados anteriores mantidos"
+        run: python3 -u scripts/coletar_votacoes.py || echo "⚠️ coletar_votacoes.py falhou — dados anteriores mantidos"
 
       - name: Arrecadação do Governo de MS e da Prefeitura de CG (Tesouro Nacional — Siconfi)
         timeout-minutes: 10

@@ -77,7 +77,7 @@ def mes_stf(a, m):
         p = pessoas.get(r_["id_contracheque"])
         v = num(r_["valor"])
         if p and v:
-            k = f"{r_['tipo']}|{re.sub(r'\\s+', ' ', r_['item']).strip()}"
+            k = r_['tipo'] + "|" + re.sub(r'\s+', ' ', r_['item']).strip()
             p["itens"][k] = round(p["itens"].get(k, 0) + v, 2)
     return {"mes": f"{a}-{m:02d}", "ministros": list(pessoas.values())}
 

@@ -118,7 +118,8 @@ def main():
         "fonte": "Tesouro Nacional — Siconfi, Relatório Resumido da Execução Orçamentária (RREO), Anexo 3",
         "fonteUrl": "https://siconfi.tesouro.gov.br/",
         "entes": out}, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"✅ receitas.json — {', '.join(f'{k} até {v['ultimoMes']}' for k, v in out.items())}")
+    resumo = ", ".join(f"{k} até {v['ultimoMes']}" for k, v in out.items())
+    print(f"✅ receitas.json — {resumo}")
 
 
 if __name__ == "__main__":

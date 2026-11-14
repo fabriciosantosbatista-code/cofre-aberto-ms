@@ -476,7 +476,7 @@ def bloco_votacoes(p):
     resto = (f"<details><summary>Ver todas as {len(todas)} votações</summary>{cab}{''.join(linha(v) for v in todas[15:])}</tbody></table></div></details>"
              if len(todas) > 15 else "")
     return (f"<h2>Votações no plenário em {_VOTACOES.get('_ano')}</h2>"
-            f"<p>{e(p['nome'])} votou em <strong>{x['votou']} das {x['nominais']}</strong> votações nominais do plenário {"da Câmara" if casa == "Câmara" else "do Senado"} em {_VOTACOES.get('_ano')} "
+            f"<p>{e(p['nome'])} votou em <strong>{x['votou']} das {x['nominais']}</strong> votações nominais do plenário {'da Câmara' if casa == 'Câmara' else 'do Senado'} em {_VOTACOES.get('_ano')} "
             f"(<strong>{str(x['participacao']).replace('.', ',')}%</strong>"
             + (f"; a média dos colegas de MS é {media:.1f}%".replace(".", ",") if media is not None and len(pares) > 1 else "") + ")."
             + (" " + "; ".join(extra).capitalize() + "." if extra else "") + "</p>"
