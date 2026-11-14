@@ -24,17 +24,27 @@ GRUPOS = [
     ("Publicações", "#e0679f", [("Boletim semanal", "/boletim/"), ("Empresas", "/empresa/"), ("Órgãos", "/orgao/"), ("Perguntas frequentes", "/perguntas/")]),
     ("Sobre o projeto", "#7aa2c8", [("Início", "/"), ("Painel", "/cofre-aberto-ms.html"), ("Sobre", P + "sobre"), ("Metodologia e dados", "/metodologia.html"),
                                     ("Imprensa", "/press.html"), ("Apoie", "/apoie/"),
-                                    ("💬 WhatsApp: (67) 98209-5384", WHATS)]),
+                                    ("Contato", "CONTATO")]),
 ]
 
 CSS = (".mapa-site{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:18px 22px;border-top:1px solid var(--border,#2a2a2a);"
        "padding:24px 0 8px;margin-top:28px;font-size:.8rem;line-height:1.5}"
        ".mapa-site h4{margin:0 0 6px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}"
        ".mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:2px 0}"
-       ".mapa-site a{color:var(--ink-soft,#aaa);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}")
+       ".mapa-site a{color:var(--ink-soft,#aaa);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}"
+       ".mapa-contato summary{cursor:pointer;color:var(--ink-soft,#aaa);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}"
+       ".mapa-contato summary::after{content:\" ▾\";font-size:.8em}.mapa-contato[open] summary::after{content:\" ▴\"}.mapa-contato summary:hover{color:var(--cor)}"
+       ".mapa-contato a{display:block;margin-top:4px;color:#25D366!important;overflow-wrap:anywhere}")
+
+def item(n, u):
+    if u == "CONTATO":  # só "Contato"; ao abrir, mostra o WhatsApp
+        return (f'<li><details class="mapa-contato"><summary>{n}</summary>'
+                f'<a href="{WHATS}" target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li>')
+    return f'<li><a href="{u}">{n}</a></li>'
+
 
 MAPA_HTML = (f'<style>{CSS}</style><nav class="mapa-site" aria-label="Mapa do site">'
-             + "".join(f'<div style="--cor:{cor}"><h4>{g}</h4><ul>' + "".join((f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' if u.startswith("http") else f'<li><a href="{u}">{n}</a></li>') for n, u in itens) + "</ul></div>"
+             + "".join(f'<div style="--cor:{cor}"><h4>{g}</h4><ul>' + "".join(item(n, u) for n, u in itens) + "</ul></div>"
                        for g, cor, itens in GRUPOS)
              + "</nav>")
 
