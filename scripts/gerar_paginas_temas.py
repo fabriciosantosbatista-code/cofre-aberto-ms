@@ -434,7 +434,7 @@ Ele funciona com o trabalho de quem acredita que o dinheiro público tem de ser 
 <ul><li><b>Os dados continuam abertos e gratuitos</b> para todos, apoiando ou não.</li></ul>
 <p>Outras formas de ajudar: compartilhe o <a href="/boletim/">boletim semanal</a>, mande sugestões e correções pelo WhatsApp e indique o site para jornalistas.</p>
 <script src="/vendor/qrcode-generator-1.4.4.js"></script>
-<script src="/apoie-pix.js" defer></script>"""
+<script src="/apoie-pix.js?v=2" defer></script>"""
     return ("/apoie/", "Apoie o Cofre Aberto MS — transparência independente | Cofre Aberto MS",
             "Ajude a manter o Cofre Aberto MS: um site independente que mostra o dinheiro público de Mato Grosso do Sul. Doe por Pix.",
             "Apoie o Cofre Aberto MS", corpo)
