@@ -2,7 +2,7 @@
  "ano": 2026,
  "fonte": "https://www.transparencia.ms.gov.br",
  "fonteApi": "https://gw.sgi.ms.gov.br",
- "ultimaAtualizacao": "2026-11-14T10:14:27",
+ "ultimaAtualizacao": "2026-11-14T14:52:20",
  "totais": {
   "empenhado": 23259478750.5,
   "liquidado": 21827146928.79,
@@ -9279,13 +9279,13 @@
    1782091016.53,
    1791803924.89,
    1337779820.55,
-   2358026377.53,
+   null,
    1361236630.69,
    1966557683.2,
    1882246774.54,
    1797388791.87,
-   2124451262.41,
-   2440708584.4,
+   null,
+   null,
    980832228.57,
    2840161689.34
   ],
@@ -9299,7 +9299,7 @@
    2671805464.85,
    1563854818.97,
    2157838869.31,
-   2440597328.61,
+   null,
    442457377.67
   ]
  },
@@ -9360,7 +9360,7 @@
     "trechos": 1334
    }
   ],
-  "consultas": 11,
+  "consultas": 10,
   "consultasPrevistas": 11,
   "trechosForaDoAno": 0,
   "beneficiarios": 8508,
@@ -10576,7 +10576,7 @@
      "Aral Moreira",
      "Coronel Sapucaia",
      "Amambaí",
-     "Campo Grande"
+     "Itaquiraí"
     ]
    },
    {
@@ -10622,8 +10622,8 @@
     "destinos": [
      "Água Clara",
      "Ribas do Rio Pardo",
-     "Selvíria",
      "Três Lagoas",
+     "Selvíria",
      "Bandeirantes"
     ]
    },
@@ -11147,9 +11147,9 @@
     "destinos": [
      "Corumbá",
      "Recife",
+     "Dourados",
      "Brasília",
-     "São Paulo",
-     "Dourados"
+     "São Paulo"
     ]
    },
    {
@@ -11221,7 +11221,7 @@
      "Corumbá",
      "Cuiabá",
      "BONITO",
-     "Ponta Porã"
+     "Brasília"
     ]
    },
    {
@@ -11301,7 +11301,7 @@
      "Corumbá",
      "Ponta Porã",
      "NAVIRAI",
-     "Dois Irmãos do Buriti"
+     "Ribas do Rio Pardo"
     ]
    },
    {
@@ -11378,8 +11378,8 @@
     "trechos": 17,
     "destinos": [
      "São Paulo",
-     "Ribas do Rio Pardo",
      "Brasília",
+     "Ribas do Rio Pardo",
      "Aquidauana",
      "BONITO"
     ]
@@ -11553,8 +11553,8 @@
      "Corumbá",
      "BONITO",
      "Sonora",
-     "Dourados",
-     "Camapuã"
+     "Camapuã",
+     "Dourados"
     ]
    },
    {
@@ -11845,8 +11845,8 @@
      "Brasília",
      "Aquidauana",
      "BONITO",
-     "Punta Del Arenal",
-     "NAVIRAI"
+     "NAVIRAI",
+     "Bruxelas"
     ]
    },
    {
@@ -11860,9 +11860,9 @@
     "destinos": [
      "Iguatemi",
      "Mundo Novo",
-     "Fátima do Sul",
-     "Jateí",
-     "Paranhos"
+     "Paranhos",
+     "Sete Quedas",
+     "Tacuru"
     ]
    },
    {
@@ -11909,8 +11909,8 @@
      "Corumbá",
      "Brasília",
      "São Paulo",
-     "Ponta Porã",
-     "Cuiabá"
+     "Cuiabá",
+     "Ponta Porã"
     ]
    },
    {
@@ -12311,9 +12311,9 @@
     "trechos": 13,
     "destinos": [
      "São Paulo",
-     "Rio de Janeiro",
      "Jaraguari",
      "Fortaleza",
+     "Rio de Janeiro",
      "Belo Horizonte"
     ]
    },
@@ -12389,8 +12389,8 @@
     "destinos": [
      "Brasília",
      "Maracaju",
-     "Ribas do Rio Pardo",
      "Fátima do Sul",
+     "Ribas do Rio Pardo",
      "Corumbá"
     ]
    },
@@ -12406,8 +12406,8 @@
      "Iguatemi",
      "Mundo Novo",
      "Dourados",
-     "Aral Moreira",
-     "Coronel Sapucaia"
+     "Paranhos",
+     "Sete Quedas"
     ]
    },
    {
@@ -12420,10 +12420,10 @@
     "trechos": 16,
     "destinos": [
      "Itaporã",
-     "Fátima do Sul",
-     "Jateí",
      "Glória de Dourados",
-     "Vicentina"
+     "Vicentina",
+     "BONITO",
+     "Guia Lopes da Laguna"
     ]
    },
    {
@@ -12681,8 +12681,8 @@
      "Ponta Porã",
      "Aquidauana",
      "Brasília",
-     "Camapuã",
-     "Porto Murtinho"
+     "Porto Murtinho",
+     "BONITO"
     ]
    },
    {
@@ -12697,8 +12697,8 @@
      "Corumbá",
      "BONITO",
      "Brasília",
-     "Alcinópolis",
-     "NAVIRAI"
+     "NAVIRAI",
+     "Alcinópolis"
     ]
    }
   ]
@@ -12718,7 +12718,7 @@
     "eventuais": 0.0,
     "liquido": 25902.52,
     "admissao": "01/01/2023",
-    "somaAno": 354622.7
+    "somaAno": 283698.16
    },
    {
     "nome": "JOSÉ CARLOS BARBOSA",
@@ -12731,7 +12731,7 @@
     "eventuais": 0.0,
     "liquido": 26785.86,
     "admissao": "01/01/2023",
-    "somaAno": 354622.7
+    "somaAno": 283698.16
    },
    {
     "nome": "LAERCIO ALVES DE CARVALHO",
@@ -12744,7 +12744,7 @@
     "eventuais": 1300.0,
     "liquido": 24379.86,
     "admissao": "26/09/2019",
-    "somaAno": 432102.86
+    "somaAno": 332383.3
    },
    {
     "nome": "ALESSANDRO MENEZES DE SOUZA",
@@ -12757,7 +12757,7 @@
     "eventuais": 0.0,
     "liquido": 25131.22,
     "admissao": "02/04/2026",
-    "somaAno": 239642.19
+    "somaAno": 171992.0
    },
    {
     "nome": "ANTONIO CARLOS VIDEIRA",
@@ -12770,7 +12770,7 @@
     "eventuais": 0.0,
     "liquido": 25183.36,
     "admissao": "01/01/2023",
-    "somaAno": 343984.0
+    "somaAno": 275187.2
    },
    {
     "nome": "ARTUR HENRIQUE LEITE FALCETTE",
@@ -12783,7 +12783,7 @@
     "eventuais": 0.0,
     "liquido": 25131.22,
     "admissao": "02/04/2026",
-    "somaAno": 239642.19
+    "somaAno": 171992.0
    },
    {
     "nome": "FLAVIO CESAR MENDES DE OLIVEIRA",
@@ -12796,7 +12796,7 @@
     "eventuais": 0.0,
     "liquido": 25131.22,
     "admissao": "01/01/2023",
-    "somaAno": 355450.13
+    "somaAno": 286653.33
    },
    {
     "nome": "GUILHERME ALCANTARA DE CARVALHO",
@@ -12809,7 +12809,7 @@
     "eventuais": 0.0,
     "liquido": 25131.22,
     "admissao": "28/08/2024",
-    "somaAno": 355450.13
+    "somaAno": 286653.33
    },
    {
     "nome": "HELIO QUEIROZ DAHER",
@@ -12822,7 +12822,7 @@
     "eventuais": 0.0,
     "liquido": 26520.66,
     "admissao": "01/01/2023",
-    "somaAno": 355450.13
+    "somaAno": 286653.33
    },
    {
     "nome": "JOSE FRANCISCO SARMENTO NOGUEIRA",
@@ -12835,7 +12835,7 @@
     "eventuais": 0.0,
     "liquido": 25131.22,
     "admissao": "02/04/2026",
-    "somaAno": 239642.19
+    "somaAno": 171992.0
    },
    {
     "nome": "MAURICIO SIMOES CORREA",
@@ -12848,7 +12848,7 @@
     "eventuais": 0.0,
     "liquido": 25131.22,
     "admissao": "01/01/2023",
-    "somaAno": 355450.13
+    "somaAno": 286653.33
    },
    {
     "nome": "RODRIGO PEREZ RAMOS",
@@ -12861,7 +12861,7 @@
     "eventuais": 0.0,
     "liquido": 25131.22,
     "admissao": "01/02/2024",
-    "somaAno": 343984.0
+    "somaAno": 275187.2
    },
    {
     "nome": "WALTER BENEDITO CARNEIRO JUNIOR",
@@ -12874,7 +12874,7 @@
     "eventuais": 0.0,
     "liquido": 25131.22,
     "admissao": "27/10/2025",
-    "somaAno": 355450.13
+    "somaAno": 286653.33
    },
    {
     "nome": "CARLOS EDUARDO GIRAO DE ARRUDA",
@@ -12887,7 +12887,7 @@
     "eventuais": 22932.27,
     "liquido": 20244.56,
     "admissao": "01/01/2023",
-    "somaAno": 177725.07
+    "somaAno": 143326.67
    },
    {
     "nome": "PATRICIA ELIAS COZZOLINO DE OLIVEIRA",
@@ -12900,7 +12900,7 @@
     "eventuais": 22932.26,
     "liquido": 19278.19,
     "admissao": "26/01/2023",
-    "somaAno": 177725.06
+    "somaAno": 143326.66
    },
    {
     "nome": "ROBERTO GURGEL DE OLIVEIRA FILHO",
@@ -12913,7 +12913,7 @@
     "eventuais": 17199.2,
     "liquido": 12469.42,
     "admissao": "02/04/2026",
-    "somaAno": 125554.15
+    "somaAno": 91729.06
    },
    {
     "nome": "FAIRTE NASSAR TEBET",
@@ -12926,7 +12926,7 @@
     "eventuais": 0.0,
     "liquido": 27687.52,
     "admissao": "01/12/2006",
-    "somaAno": 489382.3
+    "somaAno": 391505.84
    },
    {
     "nome": "JOAO BATISTA PEREIRA",
@@ -12939,7 +12939,7 @@
     "eventuais": 0.0,
     "liquido": 23044.26,
     "admissao": "01/11/2001",
-    "somaAno": 343984.0
+    "somaAno": 275187.2
    },
    {
     "nome": "ABIGAIL DO VALLE PEREIRA",
@@ -12952,7 +12952,7 @@
     "eventuais": 0.0,
     "liquido": 19367.24,
     "admissao": "22/03/2017",
-    "somaAno": 285010.1
+    "somaAno": 228008.08
    },
    {
     "nome": "JORGE OLIVEIRA MARTINS",
@@ -12965,8 +12965,9 @@
     "eventuais": 0.0,
     "liquido": 16662.18,
     "admissao": "01/01/2004",
-    "somaAno": 240788.8
+    "somaAno": 192631.04
    }
   ]
- }
+ },
+ "coletaParcial": true
 }
