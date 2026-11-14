@@ -22,8 +22,7 @@
     "<button data-v='0'>Outro valor</button></div>" +
     "<div class='pix-corpo'><div id='pix-qr'></div><div class='pix-txt'><p id='pix-rot'></p>" +
     "<textarea id='pix-codigo' readonly rows='4'></textarea><button id='pix-copiar' class='btn-painel'>Copiar código Pix</button>" +
-    "<p class='aviso' style='margin-top:10px'>Abra o app do seu banco, escolha Pix → Ler QR Code ou Pix Copia e Cola. Recebedor: <b>" +
-    limpa(cfg.nome, 25).replace(/</g, "") + "</b>.</p></div></div>";
+    "<p class='aviso' style='margin-top:10px'>Abra o app do seu banco, escolha Pix → Ler QR Code ou Pix Copia e Cola. Confira o valor e confirme.</p></div></div>";
   var escolher = function (v, botao) {
     caixa.querySelectorAll(".pix-valores button").forEach(function (b) { b.classList.toggle("ativo", b === botao); });
     var cod = brcode(v);

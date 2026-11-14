@@ -3,7 +3,7 @@
    em todas as páginas e a página /apoie/ mostra "em breve". */
 window.APOIE = {
   chave: "6d93e3cc-c108-42d7-bf5e-e73a5731685a",               // chave Pix: CPF, CNPJ, e-mail, telefone (+5567...) ou chave aleatória
-  nome: "Fabricio Batista",                // nome do recebedor como aparece no banco (até 25 letras)
+  nome: "COFRE ABERTO MS",                 // nome que vai dentro do código Pix (até 25 letras); o app do banco mostra o titular da chave
   cidade: "CAMPO GRANDE",  // cidade do recebedor (até 15 letras)
 };
 (function () {
