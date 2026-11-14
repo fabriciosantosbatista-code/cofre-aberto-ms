@@ -105,18 +105,28 @@ def pagadores():
     alvo = [c for c in vig if c in hashes and (hashes[c].get("pago") or hashes[c].get("empenhado"))]
     out = {}
     antes = carregar("governo_ms_contratos.json").get("pagadores") or {}
-    vazios = 0
-    for c in alvo:
+    vazios, erros, t0 = 0, 0, time.monotonic()
+    for n, c in enumerate(alvo):
+        # trava de segurança: o portal às vezes fica lento ou recusa toda consulta. Passou de 12 min, ou as 10 primeiras
+        # deram erro, para aqui e fica o valor anterior das demais (antes o passo travava até estourar o tempo do workflow)
+        if time.monotonic() - t0 > 12 * 60 or (n == 10 and erros >= 10):
+            print(f"  ⚠️ pagadores: interrompido em {n} de {len(alvo)} ({'erro em todas' if erros >= 10 else 'tempo esgotado'}) — mantidos os anteriores")
+            for k in alvo[n:]:
+                if antes.get(k):
+                    out[k] = antes[k]
+            break
         h = hashes[c]
         for t in range(2):  # a API às vezes devolve a lista vazia: tenta de novo e, se seguir vazia, fica o valor anterior
             try:
                 j = g.api(g.DESPESAS + "/despesaporcredores", {"credor": h["hash"], "nomeCredor": h["credor"],
-                                                               "dataInicio": ini.strftime("%d/%m/%Y"), "dataFim": fim.strftime("%d/%m/%Y")})
+                                                               "dataInicio": g.br(ini), "dataFim": g.br(fim)})
                 lst = [[re.sub(r"\s+", " ", d.get("orgao") or "").strip(), round(d.get("pago") or 0, 2), round(d.get("empenhado") or 0, 2),
                         d.get("elementoDespesa"), d.get("tipoLicitacao")] for d in j["data"][0].get("despesas") or []]
             except Exception as e:
                 print(f"  ⚠️ pagadores de {c}: {e}")
                 lst = []
+                erros += t == 0
+                break
             if lst:
                 break
             time.sleep(2)

@@ -342,7 +342,7 @@ jobs:
 
       - name: Contratos e obras do Governo do Estado (+ órgão que paga as empresas acompanhadas)
         timeout-minutes: 30
-        run: python3 scripts/coletar_contratos_governo.py || echo "⚠️ coletar_contratos_governo.py falhou — contratos anteriores mantidos"
+        run: python3 -u scripts/coletar_contratos_governo.py || echo "⚠️ coletar_contratos_governo.py falhou — contratos anteriores mantidos"
 
       - name: Aditivos dos contratos da Prefeitura de CG (incremental, 7 dias)
         timeout-minutes: 15

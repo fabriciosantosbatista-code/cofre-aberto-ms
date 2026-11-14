@@ -2546,7 +2546,6 @@ async function carregarJSON(url) {
 
 // ===================== RENDER DEPUTADOS =====================
 function renderDeputados(data) {
-  document.getElementById("status-data").textContent = formatDateTime(data.ultimaAtualizacao);
 
   const deputados = data.deputados || [];
   const ranking = document.querySelector("#ranking-deputados tbody");
@@ -6850,12 +6849,14 @@ async function init() {
   }
 
   // API ao vivo: deputados e senadores de MS
-  document.getElementById("status-data").textContent = "buscando ao vivo…";
+  // "Última coleta" = hora da coleta automática (dados/status.json), a mesma da faixa "Atualizado" — não a hora em que a página abriu
+  fetch("dados/status.json", { cache: "no-store" }).then(r => r.ok ? r.json() : null)
+    .then(st => { if (st && st.ultimaAtualizacao) document.getElementById("status-data").textContent = formatDateTime(st.ultimaAtualizacao); }).catch(() => {});
   // Deputados e senadores carregam de forma independente: se a API da Câmara cair
   // ou ficar lenta, a aba do Senado não fica vazia (e vice-versa). A lista local
   // aparece na hora; a busca ao vivo só substitui se terminar com sucesso.
   const agora = () => ({ ultimaAtualizacao: new Date().toISOString(), anoReferencia: ANO_REFERENCIA });
-  const marcarStatus = () => { document.getElementById("status-data").textContent = formatDateTime(new Date().toISOString()); };
+  const marcarStatus = () => {};
 
   senadoresLocaisPromise
     .then(() => buscarSenadoresAoVivo("MS"))
@@ -6875,7 +6876,7 @@ async function init() {
     if (locais) renderDeps(locais);
     buscarDeputadosAoVivo("MS", null, true)
       .then(vivos => { if (vivos?.length) renderDeps(vivos); })
-      .catch(() => { if (!locais) { renderDeps([]); document.getElementById("status-data").textContent = "offline"; } });
+      .catch(() => { if (!locais) { renderDeps([]); } });
   }
 }
 
