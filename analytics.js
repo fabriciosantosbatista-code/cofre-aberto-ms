@@ -7,6 +7,7 @@
   function ler() { try { return localStorage.getItem(CHAVE); } catch (e) { return null; } }
   function gravar(v) { try { localStorage.setItem(CHAVE, v); } catch (e) {} }
   function liberar() { if (window.gtag) gtag("consent", "update", { analytics_storage: "granted" }); }
+  if (window.top !== window.self) return;  // página aberta dentro do painel: o aviso já aparece no painel
   var escolha = ler();
   if (escolha === "sim") return liberar();
   if (escolha === "nao") return;

@@ -57,7 +57,7 @@
 
 <!-- Plausible Analytics (privacidade, sem cookies) -->
 <script defer data-domain="cofreabertoms.com.br" src="https://plausible.io/js/script.js"></script>
-<script defer src="/analytics.js"></script>
+<script defer src="/analytics.js?v=2"></script>
 <script src="/apoie-config.js?v=2"></script>
 <style>
 /* ===== TOKENS ===== */
@@ -273,6 +273,8 @@ p{margin:0;}
 .arr-pan-partes span{font-size:.72rem;color:var(--ink-caption)}
 .arr-pan-nota{font-size:.72rem;color:var(--ink-caption);max-width:640px;margin:0 auto 12px}
 @media(max-width:640px){.arr-pan-partes{grid-template-columns:1fr}.arr-pan{padding:16px 12px}}
+.aba-pagina{display:block;width:100%;min-height:75vh;border:0;background:transparent;margin-top:4px}
+.aba-pagina-abrir{font-size:.75rem;text-align:right;margin:8px 0 0}.aba-pagina-abrir a{color:var(--ink-caption)}
 .fluxo-card{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 40%,rgba(245,200,66,.07),transparent 60%),var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 22px 18px}
 .fluxo-card::before{content:"";position:absolute;inset:-44px 0 0 0;pointer-events:none;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;animation:fluxoGrade 3.2s linear infinite;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%);mask-image:linear-gradient(to bottom,transparent,#000 70%)}
 @keyframes fluxoGrade{to{background-position:0 44px}}
@@ -615,7 +617,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
     <nav>
       <a href="index.html" style="display:flex;align-items:center;gap:9px;color:var(--ink-soft);font-size:.83rem;font-weight:500;padding:8px 10px;border-radius:8px;text-decoration:none;transition:all .15s;margin-bottom:4px" onmouseover="this.style.background='var(--surface-2)';this.style.color='var(--ink)'" onmouseout="this.style.background='';this.style.color='var(--ink-soft)'"><span style="width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;display:inline-block"></span> 🏠 Home</a>
-      <a href="/apoie/" class="btn-apoie" style="display:none;align-items:center;gap:9px;color:#14120a;background:#f5c842;font-size:.83rem;font-weight:700;padding:8px 10px;border-radius:8px;text-decoration:none;margin-bottom:4px;white-space:nowrap">❤️ Apoie</a>
+      <button data-tab="pg-apoie" data-d="flex" class="btn-apoie" style="display:none;align-items:center;gap:9px;color:#14120a;background:#f5c842;font-size:.83rem;font-weight:700;padding:8px 10px;border-radius:8px;margin-bottom:4px;white-space:nowrap;border:0;width:100%;cursor:pointer;font-family:inherit;text-align:left">❤️ Apoie</button>
       <button class="active" data-tab="panorama"><span class="dot"></span> 📊 Panorama</button>
       <div class="nav-group-label">Mato Grosso do Sul</div>
       <div class="nav-sub-label" style="--cor:#3987e5">Parlamentares</div>
@@ -631,7 +633,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button style="--cor:#199e70" data-tab="arrecadacao"><span class="dot"></span> Arrecadação</button>
       <div class="nav-sub-label" style="--cor:#d95926">Emendas</div>
       <button style="--cor:#d95926" data-tab="emendas"><span class="dot"></span> Emendas Parlamentares</button>
-      <a class="nav-link" style="--cor:#d95926" href="municipio/"><span class="dot"></span> Emendas Municípios<span class="nav-ext">↗</span></a>
+      <button style="--cor:#d95926" data-tab="pg-municipios"><span class="dot"></span> Emendas Municípios</button>
       <div class="nav-sub-label" style="--cor:#9085e9">Justiça e salários</div>
       <button style="--cor:#9085e9" data-tab="judiciario"><span class="dot"></span> Judiciário MS</button>
       <button style="--cor:#9085e9" data-tab="supersalarios"><span class="dot"></span> Supersalários</button>
@@ -647,12 +649,12 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button style="--cor:#2bb3a3" data-tab="deputados-brasil"><span class="dot"></span> Dep. Federais Brasil</button>
       <button style="--cor:#2bb3a3" data-tab="stf"><span class="dot"></span> STF</button>
       <div class="nav-group-label" style="--cor:#e0679f">Publicações</div>
-      <a class="nav-link" style="--cor:#e0679f" href="boletim/"><span class="dot"></span> Boletim semanal<span class="nav-ext">↗</span></a>
-      <a class="nav-link" style="--cor:#e0679f" href="empresa/"><span class="dot"></span> Empresas<span class="nav-ext">↗</span></a>
-      <a class="nav-link" style="--cor:#e0679f" href="orgao/"><span class="dot"></span> Órgãos<span class="nav-ext">↗</span></a>
+      <button style="--cor:#e0679f" data-tab="pg-boletim"><span class="dot"></span> Boletim semanal</button>
+      <button style="--cor:#e0679f" data-tab="pg-empresas"><span class="dot"></span> Empresas</button>
+      <button style="--cor:#e0679f" data-tab="pg-orgaos"><span class="dot"></span> Órgãos</button>
       <div class="nav-group-label" style="--cor:#7aa2c8">Sobre o projeto</div>
       <button style="--cor:#7aa2c8" data-tab="sobre"><span class="dot"></span> Sobre</button>
-      <a class="nav-link" style="--cor:#7aa2c8" href="metodologia.html"><span class="dot"></span> Metodologia e dados<span class="nav-ext">↗</span></a>
+      <button style="--cor:#7aa2c8" data-tab="pg-metodologia"><span class="dot"></span> Metodologia e dados</button>
     </nav>
     <div class="sidebar-status" id="status-row">
       <div class="row"><span><span class="live-dot"></span>Status</span><b>Sincronizado</b></div>
@@ -1813,6 +1815,36 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
   </section>
 
+  <section class="tabpanel" id="tab-pg-apoie">
+    <iframe class="aba-pagina" data-src="apoie/" title="Apoie" allow="clipboard-write"></iframe>
+    <p class="aba-pagina-abrir"><a href="apoie/" target="_blank" rel="noopener">Abrir Apoie em página própria ↗</a></p>
+  </section>
+
+  <section class="tabpanel" id="tab-pg-municipios">
+    <iframe class="aba-pagina" data-src="municipio/" title="Emendas Municípios"></iframe>
+    <p class="aba-pagina-abrir"><a href="municipio/" target="_blank" rel="noopener">Abrir Emendas Municípios em página própria ↗</a></p>
+  </section>
+
+  <section class="tabpanel" id="tab-pg-boletim">
+    <iframe class="aba-pagina" data-src="boletim/" title="Boletim semanal"></iframe>
+    <p class="aba-pagina-abrir"><a href="boletim/" target="_blank" rel="noopener">Abrir Boletim semanal em página própria ↗</a></p>
+  </section>
+
+  <section class="tabpanel" id="tab-pg-empresas">
+    <iframe class="aba-pagina" data-src="empresa/" title="Empresas"></iframe>
+    <p class="aba-pagina-abrir"><a href="empresa/" target="_blank" rel="noopener">Abrir Empresas em página própria ↗</a></p>
+  </section>
+
+  <section class="tabpanel" id="tab-pg-orgaos">
+    <iframe class="aba-pagina" data-src="orgao/" title="Órgãos"></iframe>
+    <p class="aba-pagina-abrir"><a href="orgao/" target="_blank" rel="noopener">Abrir Órgãos em página própria ↗</a></p>
+  </section>
+
+  <section class="tabpanel" id="tab-pg-metodologia">
+    <iframe class="aba-pagina" data-src="metodologia.html" title="Metodologia e dados"></iframe>
+    <p class="aba-pagina-abrir"><a href="metodologia.html" target="_blank" rel="noopener">Abrir Metodologia e dados em página própria ↗</a></p>
+  </section>
+
   <section class="tabpanel" id="tab-votacoes">
     <div class="hero">
       <div class="hero-label">Presença e votação · deputados federais e senadores de MS · <span id="vt-ano">—</span></div>
@@ -2079,7 +2111,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   </section>
   </section>
 
-  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/municipio/">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/boletim/">Boletim semanal</a></li><li><a href="/empresa/">Empresas</a></li><li><a href="/orgao/">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/metodologia.html">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/apoie/">Apoie</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
+  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-apoie">Apoie</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
   <footer class="site-footer">
     <span>Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público.</span>
     <span>
@@ -6518,6 +6550,29 @@ carregarJSON("dados/receitas.json").then(d => {
   const e = c.estado || c.cg, of = (c.estado ? c.estado.oficial : 0) + (c.cg ? c.cg.oficial : 0);
   if (e && of) document.getElementById("arp-nota").textContent = `Estimativa: valor oficial até ${e.rotuloMes} (${Arrecadometro.formatar(of)}, Tesouro Nacional — Siconfi) + o ritmo médio dos últimos 12 meses desde então.`;
   document.getElementById("arr-pan").hidden = false;
+});
+
+// ===================== PÁGINAS ABERTAS DENTRO DO PAINEL (boletim, empresas, órgãos, municípios, metodologia) =====================
+// A página carrega num quadro na primeira vez que a aba abre; a altura do quadro acompanha a da página (mesmo domínio).
+function abrirPaginaNaAba(tab) {
+  const f = tab.querySelector("iframe.aba-pagina");
+  if (!f) return;
+  if (!f.src) {
+    f.src = f.dataset.src;
+    const ajustar = () => { try { const h = f.contentDocument.documentElement.scrollHeight; if (h && Math.abs(h - f.offsetHeight) > 4) f.style.height = h + "px"; } catch (e) {} };
+    f.addEventListener("load", () => { ajustar(); try { f.contentWindow.scrollTo(0, 0); } catch (e) {} window.scrollTo({ top: 0 }); });
+    setInterval(() => { if (tab.classList.contains("active")) ajustar(); }, 700);
+  }
+}
+// clicar de novo no item do menu volta para o início da página (ex.: da página de uma empresa para a lista)
+document.querySelectorAll('.sidebar nav button[data-tab^="pg-"]').forEach(b => b.addEventListener("click", () => {
+  const f = document.querySelector(`#tab-${b.dataset.tab} iframe.aba-pagina`);
+  try { if (f && f.src && f.contentWindow.location.pathname !== new URL(f.dataset.src, location.href).pathname) f.src = f.dataset.src; } catch (e) {}
+}));
+document.querySelectorAll(".tabpanel iframe.aba-pagina").forEach(f => {
+  const tab = f.closest(".tabpanel");
+  new MutationObserver(() => { if (tab.classList.contains("active")) abrirPaginaNaAba(tab); }).observe(tab, { attributes: true, attributeFilter: ["class"] });
+  if (tab.classList.contains("active")) abrirPaginaNaAba(tab);
 });
 
 // ===================== LINKS DIRETOS (#aba=...&p=...) =====================
