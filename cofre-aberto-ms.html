@@ -6877,6 +6877,8 @@ async function init() {
   // Navegação
   document.querySelectorAll(".sidebar nav button").forEach(btn => {
     btn.addEventListener("click", () => {
+      // ao trocar de aba, fecha o parlamentar que estava aberto: a aba volta sempre para a lista
+      document.querySelectorAll(".tabpanel .detail-panel.active").forEach(d => d.classList.remove("active"));
       document.querySelectorAll(".sidebar nav button").forEach(b => b.classList.remove("active"));
       document.querySelectorAll(".tabpanel").forEach(p => p.classList.remove("active"));
       btn.classList.add("active");
