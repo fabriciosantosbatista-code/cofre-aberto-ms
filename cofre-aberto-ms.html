@@ -264,6 +264,15 @@ p{margin:0;}
 .capa-btn{font:600 .85rem var(--font-body);padding:9px 16px;border-radius:999px;border:1px solid var(--border);background:var(--surface-2);color:var(--ink);cursor:pointer;transition:all .15s}
 .capa-btn:hover{border-color:var(--accent)}
 .capa-btn.prim{background:var(--accent);color:#14120a;border-color:var(--accent)}
+.arr-pan{background:var(--surface);border:1px solid var(--border);border-top:3px solid #199e70;border-radius:var(--radius-lg);padding:20px 22px;text-align:center}
+.arr-pan-label{font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:#199e70;font-weight:700}
+.arr-pan-total{font-family:"Sora",sans-serif;font-size:clamp(1.6rem,5.5vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.arr-pan-desc{font-size:.85rem;color:var(--ink-soft)}
+.arr-pan-partes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 10px}
+.arr-pan-partes b{display:block;font-family:"Sora",sans-serif;font-size:1rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.arr-pan-partes span{font-size:.72rem;color:var(--ink-caption)}
+.arr-pan-nota{font-size:.72rem;color:var(--ink-caption);max-width:640px;margin:0 auto 12px}
+@media(max-width:640px){.arr-pan-partes{grid-template-columns:1fr}.arr-pan{padding:16px 12px}}
 .fluxo-card{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 40%,rgba(245,200,66,.07),transparent 60%),var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 22px 18px}
 .fluxo-card::before{content:"";position:absolute;inset:-44px 0 0 0;pointer-events:none;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;animation:fluxoGrade 3.2s linear infinite;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%);mask-image:linear-gradient(to bottom,transparent,#000 70%)}
 @keyframes fluxoGrade{to{background-position:0 44px}}
@@ -1946,6 +1955,21 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         <button class="capa-btn" data-ir="deputados">Parlamentares</button>
         <button class="capa-btn" data-ir="auditoria">Auditoria</button>
         <button class="capa-btn" data-ir="supersalarios">Supersalários</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="arr-pan" id="arr-pan" hidden>
+        <div class="arr-pan-label">💰 Arrecadômetro MS · <span id="arp-ano">—</span></div>
+        <div class="arr-pan-total" id="arp-total">—</div>
+        <div class="arr-pan-desc">em impostos pagos no ano ao Governo de MS e à Prefeitura de Campo Grande (estimativa ao vivo)</div>
+        <div class="arr-pan-partes">
+          <div><b id="arp-estado">—</b><span>Governo de MS · ICMS, IPVA, ITCD…</span></div>
+          <div><b id="arp-cg">—</b><span>Prefeitura de CG · IPTU, ISS, ITBI…</span></div>
+          <div><b id="arp-ritmo">—</b><span>por minuto, em média</span></div>
+        </div>
+        <div class="arr-pan-nota" id="arp-nota"></div>
+        <button class="capa-btn" data-ir="arrecadacao">Ver mês a mês e imposto por imposto →</button>
       </div>
     </div>
 
@@ -6483,6 +6507,18 @@ function renderArrecadacao(d) {
     `O Estado e a Prefeitura publicam esse relatório a cada dois meses, até 30 dias após o fim do bimestre — por isso os números oficiais vão até ${ref.rotuloMes}. ` +
     `O número ao vivo do topo é uma estimativa e não um dado oficial. Coletado em ${formatDateTime(d.ultimaAtualizacao)}.`;
 }
+
+// ===================== ARRECADÔMETRO NO PANORAMA =====================
+carregarJSON("dados/receitas.json").then(d => {
+  if (!d || !window.Arrecadometro) return;
+  const c = Arrecadometro.calcular(d);
+  Arrecadometro.animar(c, { total: "arp-total", estado: "arp-estado", cg: "arp-cg" });
+  document.getElementById("arp-ano").textContent = new Date().getFullYear();
+  document.getElementById("arp-ritmo").textContent = Arrecadometro.formatar(c.ritmo * 60);
+  const e = c.estado || c.cg, of = (c.estado ? c.estado.oficial : 0) + (c.cg ? c.cg.oficial : 0);
+  if (e && of) document.getElementById("arp-nota").textContent = `Estimativa: valor oficial até ${e.rotuloMes} (${Arrecadometro.formatar(of)}, Tesouro Nacional — Siconfi) + o ritmo médio dos últimos 12 meses desde então.`;
+  document.getElementById("arr-pan").hidden = false;
+});
 
 // ===================== LINKS DIRETOS (#aba=...&p=...) =====================
 // Abre a aba e o parlamentar de um link compartilhado. Aceita o formato novo
