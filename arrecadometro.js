@@ -1,4 +1,4 @@
-/* Cofre Aberto MS — Arrecadômetro: impostos pagos ao Governo de MS e à Prefeitura de Campo Grande no ano.
+/* Cofre Aberto MS — Impostômetro: impostos pagos ao Governo de MS e à Prefeitura de Campo Grande no ano.
    Os valores por mês são oficiais (Tesouro Nacional, Siconfi — RREO Anexo 3). O número "ao vivo" é uma ESTIMATIVA:
    o total oficial até o último mês publicado + o ritmo médio dos últimos 12 meses desde então. */
 (function () {

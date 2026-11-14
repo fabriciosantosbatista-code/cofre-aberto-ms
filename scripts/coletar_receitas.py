@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Cofre Aberto MS — arrecadação do Governo de MS e da Prefeitura de Campo Grande (Arrecadômetro)
+Cofre Aberto MS — arrecadação do Governo de MS e da Prefeitura de Campo Grande (Impostômetro)
 
 Fonte: Tesouro Nacional, Siconfi (apidatalake.tesouro.gov.br), RREO Anexo 3 — Receita Corrente Líquida. Cada
 relatório bimestral traz os 12 últimos meses, item por item (ICMS, IPVA, ITCD, IPTU, ISS, ITBI, FPE, FPM...).
