@@ -111,6 +111,7 @@ p{margin:0;}
 .sidebar nav button.active{background:var(--accent-soft);color:#7fa8ff;font-weight:600;}
 .sidebar nav button.active .dot{background:var(--accent);box-shadow:0 0 6px var(--accent);}
 .sidebar nav button:hover:not(.active),.sidebar nav a.nav-link:hover{background:var(--surface-2);color:var(--ink);}
+.nav-sub-label{font-size:.7rem;color:var(--ink-soft);font-weight:600;padding:10px 10px 2px 12px;opacity:.8}
 .nav-group-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-caption);font-weight:700;padding:14px 10px 4px;}
 .sidebar-divider{height:1px;background:var(--border);margin:8px 10px;}
 .sidebar-status{margin-top:auto;padding:12px 10px;border-radius:var(--radius-md);background:var(--surface-2);border:1px solid var(--border);font-size:.7rem;color:var(--ink-soft);}
@@ -446,6 +447,8 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   .sidebar nav{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:4px;flex-wrap:nowrap;padding-bottom:4px;}
   .sidebar nav button,.sidebar nav a.nav-link{width:auto;white-space:nowrap;flex-shrink:0;padding:11px 14px;font-size:.8rem;min-height:44px;}
   .sidebar-status,.sidebar-divider{display:none;}
+  .nav-sub-label{display:none}
+  .sidebar.nav-aberto nav .nav-sub-label{display:block;grid-column:1/-1;font-size:.6rem;margin:6px 2px 0;padding:0}
   .nav-group-label{font-size:0;padding:0;width:1px;align-self:stretch;background:var(--border);flex-shrink:0;margin:2px 4px;}
   .nav-toggle{display:flex!important}
   .sidebar.nav-aberto nav{display:grid;grid-template-columns:1fr 1fr;overflow:visible;gap:4px;padding-bottom:8px}
@@ -594,22 +597,27 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <a href="/apoie/" class="btn-apoie" style="display:none;align-items:center;gap:9px;color:#14120a;background:#f5c842;font-size:.83rem;font-weight:700;padding:8px 10px;border-radius:8px;text-decoration:none;margin-bottom:4px;white-space:nowrap">❤️ Apoie</a>
       <button class="active" data-tab="panorama"><span class="dot"></span> 📊 Panorama</button>
       <div class="nav-group-label">Mato Grosso do Sul</div>
+      <div class="nav-sub-label">Parlamentares</div>
       <button data-tab="senadores"><span class="dot"></span> Senado MS</button>
-      <button data-tab="governo-ms"><span class="dot"></span> Governo MS</button>
       <button data-tab="deputados"><span class="dot"></span> Dep. Federais MS</button>
       <button data-tab="deputados-estaduais"><span class="dot"></span> Dep. Estaduais MS</button>
-      <button data-tab="prefeitura"><span class="dot"></span> Prefeitura CG</button>
-      <button data-tab="contratos-cg"><span class="dot"></span> Contratos CG</button>
       <button data-tab="camara"><span class="dot"></span> Câmara CG</button>
       <button data-tab="camaras-ms"><span class="dot"></span> Câmaras MS</button>
+      <div class="nav-sub-label">Executivo</div>
+      <button data-tab="governo-ms"><span class="dot"></span> Governo MS</button>
+      <button data-tab="prefeitura"><span class="dot"></span> Prefeitura CG</button>
+      <button data-tab="contratos-cg"><span class="dot"></span> Contratos CG</button>
+      <div class="nav-sub-label">Emendas</div>
       <button data-tab="emendas"><span class="dot"></span> Emendas Parlamentares</button>
       <a class="nav-link" href="municipio/"><span class="dot"></span> Emendas Municípios</a>
+      <div class="nav-sub-label">Justiça e salários</div>
       <button data-tab="judiciario"><span class="dot"></span> Judiciário MS</button>
       <button data-tab="supersalarios"><span class="dot"></span> Supersalários</button>
-      <button data-tab="conexoes"><span class="dot"></span> Conexões</button>
+      <div class="nav-sub-label">Fiscalização</div>
       <button data-tab="auditoria"><span class="dot"></span> Auditoria</button>
-      <button data-tab="eleicoes"><span class="dot"></span> Eleições e patrimônio</button>
+      <button data-tab="conexoes"><span class="dot"></span> Conexões</button>
       <button data-tab="votacoes"><span class="dot"></span> Presença e votação</button>
+      <button data-tab="eleicoes"><span class="dot"></span> Eleições e patrimônio</button>
       <button data-tab="evolucao"><span class="dot"></span> Evolução</button>
       <div class="nav-group-label">Brasil</div>
       <button data-tab="presidencia"><span class="dot"></span> Presidência</button>
