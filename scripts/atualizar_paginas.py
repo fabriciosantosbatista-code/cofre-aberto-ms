@@ -284,7 +284,7 @@ def main():
     pref_p = carregar("prefeitura.json").get("totalDespesas")
     if pref_p:
         html = stat(html, "Pagos pela Prefeitura de CG", valor_curto(pref_p))
-        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Despesas da Prefeitura)', rf"\g<1>{valor_curto(pref_p)}\2", html)
+        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Prefeitura CG<)', rf"\g<1>{valor_curto(pref_p)}\2", html)
     em_ms = carregar("emendas_municipios.json").get("totalMS")
     if em_ms:
         html = stat(html, "Emendas recebidas em MS", valor_curto(em_ms))
@@ -301,7 +301,7 @@ def main():
     n_org = len(carregar("orgaos_index.json") or {})
     if n_org:
         html = stat(html, "Páginas de órgãos", milhar(n_org), n_org)
-        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Páginas de órgãos)', rf"\g<1>{n_org}\2", html)
+        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Órgãos<)', rf"\g<1>{n_org}\2", html)
     html = re.sub(r"\d{1,3}(?:\.\d{3})* notas fiscais reais", f"{milhar(n_total)} notas fiscais reais", html)
     html = re.sub(r"<p>\d{1,3}(?:\.\d{3})* notas fiscais com fornecedor", f"<p>{milhar(n_total)} notas fiscais com fornecedor", html)
     html = re.sub(r"(pessoal dos gabinetes, )\d{1,3}(?:\.\d{3})*( notas fiscais)", rf"\g<1>{milhar(n_cg)}\2", html)
@@ -313,30 +313,30 @@ def main():
         html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Judiciário MS)', rf"\g<1>{ativos}\2", html)
     cx = carregar("conexoes_fornecedores.json").get("totalEmpresas")
     if cx:
-        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Conexões entre fornecedores)', rf"\g<1>{cx}\2", html)
+        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Conexões<)', rf"\g<1>{cx}\2", html)
     gov_pago = (carregar("governo_ms.json").get("totais") or {}).get("pago")
     if gov_pago:
         gtxt = f"R$ {gov_pago / 1e9:.1f} bi".replace(".", ",")
-        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Governo do Estado de MS)', rf"\g<1>{gtxt}\2", html)
+        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Governo MS<)', rf"\g<1>{gtxt}\2", html)
     n_ct = (carregar("prefeitura_contratos.json").get("resumo") or {}).get("contratos")
     if n_ct:
-        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Contratos e licitações)', rf"\g<1>{n_ct}\2", html)
+        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Contratos CG<)', rf"\g<1>{n_ct}\2", html)
     n_mun = carregar("emendas_municipios.json").get("totalMunicipios")
     if n_mun:
-        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Emendas por município)', rf"\g<1>{n_mun}\2", html)
+        html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Emendas Parlamentares<)', rf"\g<1>{n_mun}\2", html)
     n_emp = len(carregar("empresas_index.json") or {})
     if n_emp:
-        html = re.sub(r'(<div class="aba-num">)[\d.]+(</div>\s*<div class="aba-title">Páginas de empresas)', rf"\g<1>{milhar(n_emp)}\2", html)
+        html = re.sub(r'(<div class="aba-num">)[\d.]+(</div>\s*<div class="aba-title">Empresas<)', rf"\g<1>{milhar(n_emp)}\2", html)
     nf = len(carregar("feeds/index.json").get("parlamentares") or [])
     if nf:
         html = re.sub(r'(<div class="aba-num">)\d+(</div>\s*<div class="aba-title">Siga um político)', rf"\g<1>{nf}\2", html)
     au = carregar("auditoria.json")
     if au.get("regras"):
-        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Auditoria automática)', rf"\g<1>{len(au['regras'])} testes\2", html)
+        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Auditoria<)', rf"\g<1>{len(au['regras'])} testes\2", html)
     stf = carregar("stf.json")
     n_stf = len((((stf.get("remuneracao") or {}).get("ultimoMes")) or {}).get("ministros") or [])
     if n_stf:
-        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Supremo Tribunal Federal)', rf"\g<1>{n_stf} ministros\2", html)
+        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">STF<)', rf"\g<1>{n_stf} ministros\2", html)
     if status.get("ultimaAtualizacao"):
         a, m, d = status["ultimaAtualizacao"][:10].split("-")
         html = re.sub(r'(<time id="data-atualizacao">)[^<]*(</time>)', rf"\g<1>{d}/{m}/{a}\2", html)

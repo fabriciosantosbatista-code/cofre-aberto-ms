@@ -316,12 +316,14 @@ def cabecalho(titulo, descricao, url, imagem, jsonld, tipo="profile"):
 <body>
 <div class="page">
 <nav><a href="/"><img src="/logo.svg" alt="Cofre Aberto MS" width="147" height="44" style="display:block"/></a>
-<span style="display:flex;gap:8px"><a class="nav-cta btn-apoie" href="/apoie/" style="display:none;background:#f5c842;color:#14120a">❤️ Apoie</a><a class="nav-cta" href="/cofre-aberto-ms.html">Painel completo →</a></span></nav>
+<span style="display:flex;gap:8px"><a class="nav-cta btn-apoie" href="/apoie/" style="display:none;background:#f5c842;color:#14120a">❤️ Apoie</a><a class="nav-cta" href="/cofre-aberto-ms.html">Abrir o painel →</a></span></nav>
 """
 
 
-RODAPE = f"""<footer><span>© {ANO} Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
-<span><a href="/">Início</a> · <a href="/cofre-aberto-ms.html">Painel</a> · <a href="/boletim/">Boletim semanal</a> · <a href="/empresa/">Empresas</a> · <a href="/orgao/">Órgãos</a> · <a href="/perguntas/">Perguntas</a> · <a href="/apoie/">Apoie</a> · <a href="/governo-ms/">Governo MS</a> · <a href="/prefeitura-campo-grande/">Prefeitura CG</a> · <a href="/supersalarios-ms/">Supersalários</a> · <a href="/metodologia.html">Metodologia e dados</a> · <a href="/press.html">Imprensa</a></span></footer>
+from mapa_site import MAPA_HTML  # noqa: E402
+
+RODAPE = MAPA_HTML + f"""<footer><span>© {ANO} Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
+<span><a href="/metodologia.html">Metodologia e dados</a> · <a href="/apoie/">Apoie</a></span></footer>
 </div>
 </body>
 </html>

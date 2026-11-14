@@ -318,6 +318,12 @@ a.novo-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .oculto-detalhe{display:none!important}
 .voltar-lista{position:sticky;top:10px;z-index:30;box-shadow:var(--shadow-md);display:inline-flex;align-items:center;gap:6px;margin:0 0 14px;padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:var(--surface-2);color:var(--ink);font:600 .85rem var(--font-body);cursor:pointer}
 .voltar-lista:hover{border-color:var(--accent)}
+.trilha-aba{font-size:.76rem;color:var(--ink-soft);margin:0 0 10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.trilha-aba .sep{opacity:.5}
+.trilha-aba b{color:var(--cor,var(--ink))}
+.tabpanel[style*="--cor"] .hero-label{color:var(--cor)}
+.tabpanel[style*="--cor"] > .hero{border-top:3px solid var(--cor)}
+.nav-ext{font-size:.72rem;opacity:.55;margin-left:auto}
 .capa-roscas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .rosca-card{margin:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px}
 .rosca-card figcaption{font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:12px;line-height:1.4}
@@ -615,7 +621,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button style="--cor:#199e70" data-tab="contratos-cg"><span class="dot"></span> Contratos CG</button>
       <div class="nav-sub-label" style="--cor:#d95926">Emendas</div>
       <button style="--cor:#d95926" data-tab="emendas"><span class="dot"></span> Emendas Parlamentares</button>
-      <a class="nav-link" style="--cor:#d95926" href="municipio/"><span class="dot"></span> Emendas Municípios</a>
+      <a class="nav-link" style="--cor:#d95926" href="municipio/"><span class="dot"></span> Emendas Municípios<span class="nav-ext">↗</span></a>
       <div class="nav-sub-label" style="--cor:#9085e9">Justiça e salários</div>
       <button style="--cor:#9085e9" data-tab="judiciario"><span class="dot"></span> Judiciário MS</button>
       <button style="--cor:#9085e9" data-tab="supersalarios"><span class="dot"></span> Supersalários</button>
@@ -631,12 +637,12 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button style="--cor:#2bb3a3" data-tab="deputados-brasil"><span class="dot"></span> Dep. Federais Brasil</button>
       <button style="--cor:#2bb3a3" data-tab="stf"><span class="dot"></span> STF</button>
       <div class="nav-group-label" style="--cor:#e0679f">Publicações</div>
-      <a class="nav-link" style="--cor:#e0679f" href="boletim/"><span class="dot"></span> Boletim semanal</a>
-      <a class="nav-link" style="--cor:#e0679f" href="empresa/"><span class="dot"></span> Empresas</a>
-      <a class="nav-link" style="--cor:#e0679f" href="orgao/"><span class="dot"></span> Órgãos</a>
+      <a class="nav-link" style="--cor:#e0679f" href="boletim/"><span class="dot"></span> Boletim semanal<span class="nav-ext">↗</span></a>
+      <a class="nav-link" style="--cor:#e0679f" href="empresa/"><span class="dot"></span> Empresas<span class="nav-ext">↗</span></a>
+      <a class="nav-link" style="--cor:#e0679f" href="orgao/"><span class="dot"></span> Órgãos<span class="nav-ext">↗</span></a>
       <div class="nav-group-label" style="--cor:#7aa2c8">Sobre o projeto</div>
       <button style="--cor:#7aa2c8" data-tab="sobre"><span class="dot"></span> Sobre</button>
-      <a class="nav-link" style="--cor:#7aa2c8" href="metodologia.html"><span class="dot"></span> Metodologia e dados</a>
+      <a class="nav-link" style="--cor:#7aa2c8" href="metodologia.html"><span class="dot"></span> Metodologia e dados<span class="nav-ext">↗</span></a>
     </nav>
     <div class="sidebar-status" id="status-row">
       <div class="row"><span><span class="live-dot"></span>Status</span><b>Sincronizado</b></div>
@@ -880,10 +886,10 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 
   <!-- ===================== PREFEITURA ===================== -->
   <section class="tabpanel" id="tab-prefeitura">
-    <div class="section-hero">
+    <div class="hero">
       <div class="hero-label">Prefeitura Municipal de Campo Grande · Despesas <span id="pref-ano">2026</span></div>
       <div class="hero-number" id="pref-total">—</div>
-      <div class="hero-sub">Total pago até o momento<span id="pref-extra"></span></div>
+      <div class="hero-desc">Total pago até o momento<span id="pref-extra"></span></div>
       <div class="mini-stats">
         <div><div class="mini-stat-value" id="pref-linhas">—</div><div class="mini-stat-label">Empenhos</div></div>
         <div><div class="mini-stat-value" id="pref-notas">—</div><div class="mini-stat-label">Notas fiscais pagas</div></div>
@@ -2020,6 +2026,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   </section>
   </section>
 
+  <!--MAPA--><style>.mapa-site{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:18px 22px;border-top:1px solid var(--border,#2a2a2a);padding:24px 0 8px;margin-top:28px;font-size:.8rem;line-height:1.5}.mapa-site h4{margin:0 0 6px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:2px 0}.mapa-site a{color:var(--ink-soft,#aaa);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/governo-ms/">Governo MS em números</a></li><li><a href="/prefeitura-campo-grande/">Prefeitura CG em números</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/municipio/">Emendas Municípios</a></li><li><a href="/emendas-parlamentares-ms/">Emendas de MS em números</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li><li><a href="/supersalarios-ms/">Supersalários em MS</a></li><li><a href="/salario-ministros-stf/">Salário dos ministros do STF</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro da transparência</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li><li><a href="/cartao-corporativo-presidente/">Cartão corporativo</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/boletim/">Boletim semanal</a></li><li><a href="/empresa/">Empresas</a></li><li><a href="/orgao/">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/metodologia.html">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/apoie/">Apoie</a></li></ul></div></nav><!--/MAPA-->
   <footer class="site-footer">
     <span>Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público.</span>
     <span>
@@ -2879,9 +2886,26 @@ function renderNotasSenador(box, notas) {
   desenhar();
 }
 
+
+// Indicadores padrão no topo de uma aba (número principal + até 4 indicadores) — usado nas abas que não tinham
+function heroStats(aba, itens) {
+  const hero = document.querySelector(`#tab-${aba} > .hero, #tab-${aba} > .section-hero`);
+  if (!hero) return;
+  hero.querySelector(".mini-stats.auto")?.remove();
+  const d = document.createElement("div");
+  d.className = "mini-stats auto";
+  d.innerHTML = itens.filter(Boolean).map(([v, r]) => `<div><div class="mini-stat-value">${v}</div><div class="mini-stat-label">${escHTML(r)}</div></div>`).join("");
+  hero.appendChild(d);
+}
+
 function renderSenadores(data) {
   const senadores = data.senadores || [];
   document.getElementById("sen-qtd").textContent = senadores.length || "0";
+  if (senadores.length) {
+    const tot = senadores.reduce((t, x) => t + (x.cotaGastaAno || 0), 0), top = senadores.slice().sort((a, b) => (b.cotaGastaAno || 0) - (a.cotaGastaAno || 0))[0];
+    heroStats("senadores", [[formatCompact(tot), `de cota (CEAPS) gasta em ${ANO_REFERENCIA}`], [formatCompact(tot / senadores.length), "média por senador"],
+      [escHTML(top.nome.split(" ")[0]), `mais gastou (${formatCompact(top.cotaGastaAno)})`]]);
+  }
 
   const tbody = document.querySelector("#ranking-senadores tbody");
   if (senadores.length === 0) {
@@ -3588,6 +3612,8 @@ function renderCamarasMS() {
   const grid = document.getElementById("grid-camaras-ms");
   const panel = document.getElementById("detail-camara-cidade");
   document.getElementById("camaras-ms-total").textContent = CAMARAS_MS_LISTA.length;
+  heroStats("camaras-ms", [[CAMARAS_MS_LISTA.length, "câmaras acompanhadas"], [CAMARAS_MS_LISTA.filter(c => c.dadosUrl).length, "com dados coletados"],
+    [CAMARAS_MS_LISTA.filter(c => c.semDados).length, "sem dados abertos"], [CAMARAS_MS_LISTA.filter(c => !c.dadosUrl && !c.semDados).length, "em breve"]]);
 
   grid.innerHTML = CAMARAS_MS_LISTA.map((c, i) => `
     <div class="card card-pad ${c.dadosUrl ? "clickable" : ""}" data-idx="${i}" style="cursor:${c.dadosUrl ? "pointer" : "default"}">
@@ -4222,6 +4248,11 @@ function renderSenadoBrasil(senadores) {
   if (!senadores || senadores.length === 0) return;
 
   document.getElementById("senbr-qtd").textContent = senadores.length;
+  {
+    const tot = senadores.reduce((t, x) => t + (x.cotaGastaAno || 0), 0), top = senadores.slice().sort((a, b) => (b.cotaGastaAno || 0) - (a.cotaGastaAno || 0))[0];
+    heroStats("senado-brasil", [[formatCompact(tot), `de cota (CEAPS) gasta em ${ANO_REFERENCIA}`], [formatCompact(tot / senadores.length), "média por senador"],
+      [escHTML(top.nome.split(" ").slice(0, 2).join(" ")), `mais gastou (${top.uf} · ${formatCompact(top.cotaGastaAno)})`]]);
+  }
   const tbody = document.querySelector("#ranking-senbr tbody");
   const panel = document.getElementById("detail-senbr");
 
@@ -5291,7 +5322,7 @@ function preencherPatrimonio(boxId, chave) {
     const [c, tab] = cadeia(panel);
     if (!tab) return;
     sair(tab);
-    c.forEach(el => [...el.parentElement.children].forEach(irmao => { if (irmao !== el && !irmao.classList.contains("voltar-lista")) irmao.classList.add("oculto-detalhe"); }));
+    c.forEach(el => [...el.parentElement.children].forEach(irmao => { if (irmao !== el && !irmao.classList.contains("voltar-lista") && !irmao.classList.contains("trilha-aba")) irmao.classList.add("oculto-detalhe"); }));
     let b = tab.querySelector(":scope > .voltar-lista");
     if (!b) {
       b = document.createElement("button");
@@ -5318,6 +5349,32 @@ function preencherPatrimonio(boxId, chave) {
       else if (tab && tab.dataset.detalhe === id) { sair(tab); tab.scrollIntoView({ behavior: "smooth", block: "start" }); }
     }).observe(panel, { attributes: true, attributeFilter: ["class"] });
   });
+})();
+
+// ===================== CAMINHO E COR DE CADA ABA (a partir do menu) =====================
+(function () {
+  let grupo = "", sub = "", cor = "";
+  document.querySelectorAll(".sidebar nav > *").forEach(el => {
+    if (el.classList.contains("nav-group-label")) { grupo = el.textContent.trim(); sub = ""; cor = el.style.getPropertyValue("--cor") || ""; return; }
+    if (el.classList.contains("nav-sub-label")) { sub = el.textContent.trim(); cor = el.style.getPropertyValue("--cor") || cor; return; }
+    const aba = el.dataset && el.dataset.tab;
+    if (!aba || aba === "panorama") return;
+    const tab = document.getElementById("tab-" + aba);
+    if (!tab || tab.querySelector(":scope > .trilha-aba")) return;
+    const c = el.style.getPropertyValue("--cor") || cor;
+    if (c) tab.style.setProperty("--cor", c);
+    const t = document.createElement("div");
+    t.className = "trilha-aba";
+    t.innerHTML = [escHTML(grupo), escHTML(sub), `<b>${escHTML(el.textContent.trim())}</b>`].filter(Boolean).join('<span class="sep">›</span>');
+    tab.prepend(t);
+    tab.dataset.nome = el.textContent.trim();
+  });
+  // título da janela com o mesmo nome do menu ("Câmara CG · Cofre Aberto MS")
+  const base = document.title;
+  const tit = () => { const a = document.querySelector(".tabpanel.active"); document.title = a && a.dataset.nome ? `${a.dataset.nome} · Cofre Aberto MS` : base; };
+  const mo = new MutationObserver(tit);
+  document.querySelectorAll(".tabpanel").forEach(t => mo.observe(t, { attributes: true, attributeFilter: ["class"] }));
+  tit();
 })();
 
 function renderCapa(d) {
@@ -6218,6 +6275,12 @@ function evDesenhar() {
   const acA = evAcum(atual), acB = anterior ? evAcum(anterior) : null;
 
   document.getElementById("ev-total").textContent = formatCompact(acA[ultimo] || 0);
+  {
+    const nomeMes = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+    const varp = acB && acB[M] ? (acA[M] - acB[M]) / acB[M] * 100 : null;
+    heroStats("evolucao", [[formatCompact(acA[M] || 0), `até ${nomeMes[M]}/${d.ano}`], acB ? [formatCompact(acB[M] || 0), `até ${nomeMes[M]}/${d.anoAnterior}`] : null,
+      varp !== null ? [`${varp > 0 ? "+" : ""}${varp.toFixed(1).replace(".", ",")}%`, "variação no mesmo período"] : null]);
+  }
   document.getElementById("ev-desc").textContent = p
     ? `gastos de ${p.nome} (${p.rotulo}) em ${d.ano}, acumulados mês a mês${anterior ? `, comparados com ${d.anoAnterior}` : ""}.`
     : `gastos acumulados de ${g.nome.toLowerCase()} em ${d.ano} (${g.rotulo})${anterior ? `, comparados com o mesmo período de ${d.anoAnterior}` : ""}.`;
@@ -6495,6 +6558,7 @@ const FONTE_ABA = {
   "presidencia": { titulo: "Presidência da República: cartão corporativo, viagens, despesas, remuneração e Governo Federal em MS", csv: [["Cartão por mês", "presidencia_cartao.csv"], ["Viagens de ministros", "presidencia_viagens_ministros.csv"], ["Remuneração dos ministros", "presidencia_ministros.csv"], ["Transferências a MS", "uniao_transferencias_ms.csv"]], json: "presidencia.json" },
   "senado-brasil": { titulo: "CEAPS dos senadores do Brasil", csv: [["Resumo", "senadores_brasil.csv"]], json: "senadores_brasil.json" },
   "conexoes": { titulo: "Conexões entre fornecedores de políticos de MS", csv: [["Conexões", "conexoes_fornecedores.csv"]], json: "conexoes_fornecedores.json" },
+  "votacoes": { titulo: "Presença e votação dos deputados federais e senadores de MS", csv: [], json: "votacoes.json" },
   "evolucao": { titulo: "Evolução mensal dos gastos de políticos de MS", csv: [["Mês a mês", "evolucao_mensal.csv"]], json: "evolucao_mensal.json" },
 };
 

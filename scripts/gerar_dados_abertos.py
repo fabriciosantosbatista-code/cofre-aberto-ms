@@ -414,6 +414,13 @@ def status_fontes():
         el.get("ultimaAtualizacao"), f"{len(el.get('eleitos2026', []))} eleitos em 2026" if el else None,
         bool(el) and em_dia(el.get("ultimaAtualizacao"), 10))
 
+    vt = carregar("votacoes.json")
+    qc, qs = (vt.get("quadroCamara") or {}).get("votacoes") or [], (vt.get("quadroSenado") or {}).get("votacoes") or []
+    add("votacoes", "Câmara dos Deputados e Senado Federal — dados abertos das votações nominais do plenário",
+        "https://dadosabertos.camara.leg.br/", vt.get("ultimaAtualizacao"),
+        f"votação de {data_br(max([v['data'] for v in qc + qs if v.get('data')] or [''])) }" if vt else None,
+        bool(vt) and em_dia(vt.get("ultimaAtualizacao"), 3))
+
     cidades, paradas = 0, []
     for f in sorted((DADOS / "camaras").glob("*.json")):
         j = carregar(f"camaras/{f.name}")

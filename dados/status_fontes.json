@@ -1,12 +1,12 @@
 {
- "geradoEm": "2026-11-13T17:13:41",
+ "geradoEm": "2026-11-14T01:15:11",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
    "url": "http://45.225.6.93:8079/transparencia/",
    "coleta": "2026-11-10T22:30:04",
    "dadoMaisRecente": "verba indenizatória até set/2026",
-   "nivel": "ok",
+   "nivel": "atencao",
    "mensagem": null
   },
   "deputados-estaduais": {
@@ -102,6 +102,14 @@
    "url": "https://dadosabertos.tse.jus.br/",
    "coleta": "2026-11-12T17:15:45",
    "dadoMaisRecente": "35 eleitos em 2026",
+   "nivel": "ok",
+   "mensagem": null
+  },
+  "votacoes": {
+   "fonte": "Câmara dos Deputados e Senado Federal — dados abertos das votações nominais do plenário",
+   "url": "https://dadosabertos.camara.leg.br/",
+   "coleta": "2026-11-13T16:41:58",
+   "dadoMaisRecente": "votação de 12/11/2026",
    "nivel": "ok",
    "mensagem": null
   },

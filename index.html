@@ -117,6 +117,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
 .abas-grupo{font-family:"Sora",sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-caption);margin:28px 0 12px;font-weight:700}
 .abas-grupos .abas-grupo:first-child{margin-top:8px}
+.abas-grupo[style*="--cor"]{color:var(--cor);border-left:3px solid var(--cor);padding-left:9px}
+.abas-grid[style*="--cor"] .aba-card{border-top:3px solid var(--cor)}
+.abas-grid[style*="--cor"] .aba-card .aba-num{color:var(--cor)}
+.abas-grid[style*="--cor"] .aba-card:hover{border-color:var(--cor)}
+.aba-ext{font-size:.75em;opacity:.6;margin-left:4px}
 .feature-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;transition:border-color .2s,transform .2s;}
 .feature-card:hover{border-color:var(--accent);transform:translateY(-2px);}
 .feature-icon{font-size:2rem;margin-bottom:14px;}
@@ -316,7 +321,7 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
       <img src="logo.svg" alt="Cofre Aberto MS" width="147" height="44" style="display:block"/>
     </div>
     <div style="display:flex;gap:8px"><a class="nav-cta btn-apoie" href="/apoie/" style="display:none;background:#f5c842;color:#14120a;text-decoration:none">❤️ Apoie</a>
-    <button class="nav-cta" onclick="window.location.href='cofre-aberto-ms.html'">Acessar o painel →</button></div>
+    <button class="nav-cta" onclick="window.location.href='cofre-aberto-ms.html'">Abrir o painel →</button></div>
   </nav>
 
   <section class="hero">
@@ -423,80 +428,116 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
     <h2>O que está catalogado</h2>
     <p class="dados-sub">Clique em qualquer aba para ir direto aos dados.</p>
     <div class="abas-grupos">
-      <h3 class="abas-grupo">Parlamentares de MS</h3>
-      <div class="abas-grid">
-      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=camara'">
-        <div class="aba-num">29</div>
-        <div class="aba-title">Vereadores — Câmara CG</div>
-        <div class="aba-desc">Subsídio, verba indenizatória ATO 27/28, pessoal dos gabinetes, 2.469 notas fiscais, fotos TSE 2024</div>
-      </div>
-      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=deputados-estaduais'">
-        <div class="aba-num">25</div>
-        <div class="aba-title">Dep. Estaduais — ALEMS</div>
-        <div class="aba-desc">CEAP Jan–Nov/2026, 5.679 notas fiscais com link para PDFs, fotos oficiais ALEMS</div>
-      </div>
+      <h3 class="abas-grupo" style="--cor:#3987e5">Parlamentares de MS</h3>
+      <div class="abas-grid" style="--cor:#3987e5">
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=senadores'">
         <div class="aba-num">3</div>
-        <div class="aba-title">Senadores de MS</div>
+        <div class="aba-title">Senado MS</div>
         <div class="aba-desc">CEAPS 2026 com 506 notas fiscais, pessoal, endereço do escritório, extras fora da cota</div>
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=deputados'">
         <div class="aba-num">8</div>
-        <div class="aba-title">Dep. Federais de MS</div>
+        <div class="aba-title">Dep. Federais MS</div>
         <div class="aba-desc">CEAP 2026 com 1.915 notas fiscais, fotos, partido, custo estimado anual</div>
+      </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=deputados-estaduais'">
+        <div class="aba-num">25</div>
+        <div class="aba-title">Dep. Estaduais MS</div>
+        <div class="aba-desc">CEAP Jan–Nov/2026, 5.679 notas fiscais com link para PDFs, fotos oficiais ALEMS</div>
+      </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=camara'">
+        <div class="aba-num">29</div>
+        <div class="aba-title">Câmara CG</div>
+        <div class="aba-desc">Subsídio, verba indenizatória ATO 27/28, pessoal dos gabinetes, 2.469 notas fiscais, fotos TSE 2024</div>
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=camaras-ms'">
         <div class="aba-num">43</div>
-        <div class="aba-title">Câmaras municipais de MS</div>
+        <div class="aba-title">Câmaras MS</div>
         <div class="aba-desc">Subsídio, diárias e despesas institucionais via Fiorilli e SAPL — dados disponíveis em 13 cidades do interior</div>
       </div>
       </div>
-      <h3 class="abas-grupo">Governo, Prefeitura e emendas</h3>
-      <div class="abas-grid">
+      <h3 class="abas-grupo" style="--cor:#199e70">Executivo</h3>
+      <div class="abas-grid" style="--cor:#199e70">
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=governo-ms'">
+        <div class="aba-num">R$ 21,0 bi</div>
+        <div class="aba-title">Governo MS</div>
+        <div class="aba-desc">Despesas por órgão e credor, contratos, obras, licitações com vencedores e preços, diárias e salário do governador, vice e secretários</div>
+      </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=prefeitura'">
         <div class="aba-num">R$ 4,1 bi</div>
-        <div class="aba-title">Despesas da Prefeitura de CG</div>
+        <div class="aba-title">Prefeitura CG</div>
         <div class="aba-desc">Tudo o que a Prefeitura de Campo Grande pagou no ano, por órgão e por fornecedor, com o link de cada empenho</div>
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=contratos-cg'">
         <div class="aba-num">350</div>
-        <div class="aba-title">Contratos e licitações da Prefeitura</div>
+        <div class="aba-title">Contratos CG</div>
         <div class="aba-desc">Contratos de Campo Grande, licitações e dispensas do ano, quem venceu e quem mais tem contratos</div>
       </div>
-      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=governo-ms'">
-        <div class="aba-num">R$ 21,0 bi</div>
-        <div class="aba-title">Governo do Estado de MS</div>
-        <div class="aba-desc">Despesas por órgão e credor, contratos, obras, licitações com vencedores e preços, diárias e salário do governador, vice e secretários</div>
       </div>
+      <h3 class="abas-grupo" style="--cor:#d95926">Emendas</h3>
+      <div class="abas-grid" style="--cor:#d95926">
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=emendas'">
         <div class="aba-num">79</div>
-        <div class="aba-title">Emendas por município</div>
+        <div class="aba-title">Emendas Parlamentares</div>
         <div class="aba-desc">Quanto cada cidade de MS recebeu de emendas parlamentares, de quais deputados e senadores, quem ficou com o dinheiro e as Emendas Pix do ano</div>
       </div>
+      <div class="aba-card" onclick="window.location.href='municipio/'">
+        <div class="aba-num">79</div>
+        <div class="aba-title">Emendas Municípios<span class="aba-ext">↗</span></div>
+        <div class="aba-desc">Cada município de MS: emendas recebidas no ano, de quem, quem ficou com o dinheiro, Emendas Pix e transferências da União</div>
       </div>
-      <h3 class="abas-grupo">Salários</h3>
-      <div class="abas-grid">
-      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=supersalarios'">
-        <div class="aba-num">421</div>
-        <div class="aba-title">Supersalários</div>
-        <div class="aba-desc">pessoas com líquido acima do teto em MS — magistrados, conselheiros e servidores do Estado — e os penduricalhos item por item</div>
       </div>
+      <h3 class="abas-grupo" style="--cor:#9085e9">Justiça e salários</h3>
+      <div class="abas-grid" style="--cor:#9085e9">
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=judiciario'">
         <div class="aba-num">286</div>
         <div class="aba-title">Judiciário MS</div>
         <div class="aba-desc">Remuneração nominal dos magistrados ativos do TJMS e do TRT24 — bruto, líquido, vantagens, descontos e diárias — e a gratificação dos juízes eleitorais (TRE-MS)</div>
       </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=supersalarios'">
+        <div class="aba-num">421</div>
+        <div class="aba-title">Supersalários</div>
+        <div class="aba-desc">pessoas com líquido acima do teto em MS — magistrados, conselheiros e servidores do Estado — e os penduricalhos item por item</div>
       </div>
-      <h3 class="abas-grupo">Brasil</h3>
-      <div class="abas-grid">
+      </div>
+      <h3 class="abas-grupo" style="--cor:#c98500">Fiscalização</h3>
+      <div class="abas-grid" style="--cor:#c98500">
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=auditoria'">
+        <div class="aba-num">27 testes</div>
+        <div class="aba-title">Auditoria</div>
+        <div class="aba-desc">Sinais de atenção: sócio doador de campanha, sócio servidor público, MEI acima do limite, fracionamento de dispensa — cruzando com a Receita Federal, o TSE e a folha do Estado</div>
+      </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=conexoes'">
+        <div class="aba-num">546</div>
+        <div class="aba-title">Conexões</div>
+        <div class="aba-desc">Empresas pagas por mais de um político de MS ou também pela Prefeitura e pelo Governo do Estado — quem pagou, quanto e quantas notas</div>
+      </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=votacoes'">
+        <div class="aba-num">2026</div>
+        <div class="aba-title">Presença e votação</div>
+        <div class="aba-desc">Em quantas votações nominais do plenário cada deputado federal e senador de MS votou, as ausências e o voto de cada um em cada assunto</div>
+      </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=eleicoes'">
+        <div class="aba-num">TSE</div>
+        <div class="aba-title">Eleições e patrimônio</div>
+        <div class="aba-desc">Eleitos em MS em 2026, patrimônio declarado eleição a eleição, quanto arrecadaram e quem pagou as campanhas</div>
+      </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=evolucao'">
+        <div class="aba-num">2026 × 2025</div>
+        <div class="aba-title">Evolução</div>
+        <div class="aba-desc">Gráficos do gasto acumulado e ranking de quem acelerou os gastos em relação ao ano passado</div>
+      </div>
+      </div>
+      <h3 class="abas-grupo" style="--cor:#2bb3a3">Brasil</h3>
+      <div class="abas-grid" style="--cor:#2bb3a3">
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=presidencia'">
         <div class="aba-num">desde 2013</div>
-        <div class="aba-title">Presidência da República</div>
+        <div class="aba-title">Presidência</div>
         <div class="aba-desc">Cartão corporativo por presidente (aberto e sigiloso), viagens dos ministros, despesas da Presidência, salários e quanto a União manda para MS</div>
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=senado-brasil'">
         <div class="aba-num">81</div>
-        <div class="aba-title">Senado Federal</div>
+        <div class="aba-title">Senado Brasil</div>
         <div class="aba-desc">Todos os senadores do Brasil com partido, UF, foto e notas fiscais da CEAPS 2026</div>
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=deputados-brasil'">
@@ -506,46 +547,26 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=stf'">
         <div class="aba-num">10 ministros</div>
-        <div class="aba-title">Supremo Tribunal Federal</div>
+        <div class="aba-title">STF</div>
         <div class="aba-desc">Contracheque de cada ministro mês a mês, o que passa do teto e a despesa com pessoal do STF comparada aos outros tribunais superiores</div>
       </div>
       </div>
-      <h3 class="abas-grupo">Análises e publicações</h3>
-      <div class="abas-grid">
-      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=conexoes'">
-        <div class="aba-num">546</div>
-        <div class="aba-title">Conexões entre fornecedores</div>
-        <div class="aba-desc">Empresas pagas por mais de um político de MS ou também pela Prefeitura e pelo Governo do Estado — quem pagou, quanto e quantas notas</div>
-      </div>
-      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=auditoria'">
-        <div class="aba-num">27 testes</div>
-        <div class="aba-title">Auditoria automática</div>
-        <div class="aba-desc">Sinais de atenção: sócio doador de campanha, sócio servidor público, MEI acima do limite, fracionamento de dispensa — cruzando com a Receita Federal, o TSE e a folha do Estado</div>
-      </div>
-      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=evolucao'">
-        <div class="aba-num">2026 × 2025</div>
-        <div class="aba-title">Evolução mês a mês</div>
-        <div class="aba-desc">Gráficos do gasto acumulado e ranking de quem acelerou os gastos em relação ao ano passado</div>
+      <h3 class="abas-grupo" style="--cor:#e0679f">Publicações</h3>
+      <div class="abas-grid" style="--cor:#e0679f">
+      <div class="aba-card" onclick="window.location.href='boletim/'">
+        <div class="aba-num">Toda semana</div>
+        <div class="aba-title">Boletim semanal<span class="aba-ext">↗</span></div>
+        <div class="aba-desc">O que apareceu de novo nas fontes: notas de parlamentares, contratos e pagamentos — com texto pronto para o WhatsApp</div>
       </div>
       <div class="aba-card" onclick="window.location.href='empresa/'">
         <div class="aba-num">1.411</div>
-        <div class="aba-title">Páginas de empresas</div>
+        <div class="aba-title">Empresas<span class="aba-ext">↗</span></div>
         <div class="aba-desc">Tudo o que cada fornecedor recebeu em MS: notas de parlamentares, Prefeitura, contratos, licitações, Governo e emendas</div>
       </div>
       <div class="aba-card" onclick="window.location.href='orgao/'">
         <div class="aba-num">41</div>
-        <div class="aba-title">Páginas de órgãos</div>
+        <div class="aba-title">Órgãos<span class="aba-ext">↗</span></div>
         <div class="aba-desc">TJMS, TCE-MS, Câmara de CG e as secretarias do Estado: salários, quem recebe acima do teto, penduricalhos, diárias e despesas</div>
-      </div>
-      <div class="aba-card" onclick="window.location.href='municipio/'">
-        <div class="aba-num">79</div>
-        <div class="aba-title">Emendas Municípios</div>
-        <div class="aba-desc">Cada município de MS: emendas recebidas no ano, de quem, quem ficou com o dinheiro, Emendas Pix e transferências da União</div>
-      </div>
-      <div class="aba-card" onclick="window.location.href='boletim/'">
-        <div class="aba-num">Toda semana</div>
-        <div class="aba-title">Boletim semanal</div>
-        <div class="aba-desc">O que apareceu de novo nas fontes: notas de parlamentares, contratos e pagamentos — com texto pronto para o WhatsApp</div>
       </div>
       <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=camara'">
         <div class="aba-num">65</div>
@@ -594,6 +615,7 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
     </button>
   </div>
 
+  <!--MAPA--><style>.mapa-site{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:18px 22px;border-top:1px solid var(--border,#2a2a2a);padding:24px 0 8px;margin-top:28px;font-size:.8rem;line-height:1.5}.mapa-site h4{margin:0 0 6px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:2px 0}.mapa-site a{color:var(--ink-soft,#aaa);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/governo-ms/">Governo MS em números</a></li><li><a href="/prefeitura-campo-grande/">Prefeitura CG em números</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/municipio/">Emendas Municípios</a></li><li><a href="/emendas-parlamentares-ms/">Emendas de MS em números</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li><li><a href="/supersalarios-ms/">Supersalários em MS</a></li><li><a href="/salario-ministros-stf/">Salário dos ministros do STF</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro da transparência</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li><li><a href="/cartao-corporativo-presidente/">Cartão corporativo</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/boletim/">Boletim semanal</a></li><li><a href="/empresa/">Empresas</a></li><li><a href="/orgao/">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/metodologia.html">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/apoie/">Apoie</a></li></ul></div></nav><!--/MAPA-->
   <footer>
     <div style="display:flex;align-items:center;gap:12px"><img src="logo.svg" alt="Cofre Aberto MS" width="93" height="28"/><p style="margin:0">© 2026 — Dados públicos de MS</p></div>
     <div class="footer-links">

@@ -568,6 +568,8 @@ def coletar_verba_indenizatoria():
             }
             cache_mudou = True
 
+    global VERIFICADO_SEM_MUDANCA
+    VERIFICADO_SEM_MUDANCA = bool(sem_mudanca)  # o portal respondeu: os PDFs foram baixados e conferidos
     if sem_mudanca:
         log(f" 💾 {sem_mudanca} relatório(s) sem mudança desde a última coleta (parsing pulado)")
     if cache_mudou:
@@ -704,8 +706,18 @@ def virada_do_ano():
     json.dump(atual, open(ARQUIVO_CAMARA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
 
+VERIFICADO_SEM_MUDANCA = False
+
+
 def mesclar_dados(resultado_extraido):
     if not resultado_extraido:
+        if VERIFICADO_SEM_MUDANCA and ARQUIVO_CAMARA.exists():
+            # nada novo, mas o portal foi consultado: registra a verificação (o painel e o termômetro mostram "verificado em")
+            atual = json.load(open(ARQUIVO_CAMARA, encoding="utf-8"))
+            atual["ultimaVerificacao"] = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+            json.dump(atual, open(ARQUIVO_CAMARA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+            log(" ✅ PDFs conferidos, sem mudança — verificação registrada")
+            return
         log(" ⚠️ Nenhum dado extraído — mantendo camara_municipal.json inalterado")
         return
 
