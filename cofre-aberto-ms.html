@@ -2753,7 +2753,7 @@ function renderDetalheDeputado(d, todos, ano, panel) {
       </div>
 
       ${renderEmendasHTML(d.nome)}
-      ${d.uf === "MS" ? `<div id="dep-votos-box"></div>` : ""}
+      ${d.uf === "MS" ? `<div id="dep-votos-box"></div><div id="pat-box-fed"></div>` : ""}
 
       <div class="subhead">Notas fiscais — página ${paginaAtual} de ${totalPaginas} (${despesas.length} no total)</div>
       <table class="notes-table">
@@ -2768,6 +2768,7 @@ function renderDetalheDeputado(d, todos, ano, panel) {
     document.getElementById("pag-anterior")?.addEventListener("click", () => { if (paginaAtual > 1) { paginaAtual--; render(); } });
     document.getElementById("pag-proximo")?.addEventListener("click", () => { if (paginaAtual < totalPaginas) { paginaAtual++; render(); } });
     if (d.uf === "MS") preencherVotosParlamentar("dep-votos-box", "federal", d.id);
+    if (d.uf === "MS") preencherPatrimonio("pat-box-fed", "federal|" + d.nome);
   }
 
   render();
@@ -2991,7 +2992,7 @@ function renderSenadores(data) {
         </div>
 
         ${renderEmendasHTML(s.nome)}
-        ${s.uf === "MS" ? `<div id="sen-votos-box"></div>` : ""}
+        ${s.uf === "MS" ? `<div id="sen-votos-box"></div><div id="pat-box-sen"></div>` : ""}
 
         <p class="section-note">
           <a href="${s.urlTransparencia || `https://www6g.senado.leg.br/transparencia/sen/${s.id}/?ano=${ANO_REFERENCIA}`}" target="_blank">
@@ -3005,6 +3006,7 @@ function renderSenadores(data) {
       panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
 
       if (s.uf === "MS") preencherVotosParlamentar("sen-votos-box", "senador", id);
+      if (s.uf === "MS") preencherPatrimonio("pat-box-sen", "senador|" + s.nome);
       if (s.uf === "MS") {
         carregarNotasSenadoresMS().then(mapa => {
           if (panel.dataset.senadorId !== id) return;
@@ -3277,8 +3279,10 @@ function renderCamaraMunicipal(data) {
         <a href="http://45.225.6.93:8079/transparencia/" target="_blank" rel="noopener">acesse o Portal de Transparência da Câmara Municipal de Campo Grande →</a>
       </p>
       ${verba.fonte ? `<p class="section-note" style="margin-top:6px;opacity:.6">Fonte dos valores: ${verba.fonte}</p>` : ""}
+          <div id="pat-box-ver"></div>
     `;
     panel.classList.add("active");
+    preencherPatrimonio("pat-box-ver", "vereador|" + v.nome);
     panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
@@ -3492,8 +3496,10 @@ function renderDeputadosEstaduais(data) {
             </tr>`).join("")}
         </tbody>
       </table>` : ""}
+          <div id="pat-box-est"></div>
     `;
     panel.classList.add("active");
+    preencherPatrimonio("pat-box-est", "estadual|" + d.nome);
     panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
@@ -5229,6 +5235,25 @@ function preencherVotosParlamentar(boxId, grupo, id) {
       box.querySelector("[data-vt-mais]")?.addEventListener("click", () => { limite += 30; desenhar(); });
     };
     desenhar();
+  });
+}
+
+// Patrimônio declarado ao TSE em cada candidatura (dados/painel/patrimonio.json) — no detalhe de cada parlamentar de MS
+let _patrimonio;
+function preencherPatrimonio(boxId, chave) {
+  (_patrimonio = _patrimonio || carregarLeve("patrimonio.json")).then(d => {
+    const box = document.getElementById(boxId);
+    const serie = ((d || {}).parlamentares || {})[chave] || [];
+    if (!box || !serie.length) return;
+    const max = Math.max(1, ...serie.map(p => p.patrimonio || 0));
+    const p0 = serie[0], p1 = serie[serie.length - 1], dif = (p1.patrimonio || 0) - (p0.patrimonio || 0);
+    box.innerHTML = `
+      <h4 style="margin:22px 0 6px">🏠 Patrimônio declarado ao TSE</h4>
+      <p class="section-note">Bens declarados no registro de cada candidatura${serie.length > 1 ? `: de ${p0.ano} a ${p1.ano}, o patrimônio declarado ${dif >= 0 ? "subiu" : "caiu"} <b>${formatBRL(Math.abs(dif))}</b>` : ""}.</p>
+      <div class="bar-list largo">${serie.map(p => `<div class="bar-list-row"><div class="bar-list-label">${p.ano} · ${escHTML(p.cargo || "")}</div>
+        <div class="bar-list-track"><div class="bar-list-fill amber" style="width:${((p.patrimonio || 0) / max * 100).toFixed(1)}%"></div></div>
+        <div class="bar-list-value">${formatCompact(p.patrimonio || 0)}</div></div>`).join("")}</div>
+      <p class="section-note" style="opacity:.75">Valores nominais, em geral pelo valor de compra. Subir ou cair não indica irregularidade (herança, venda de bens, forma de declarar).</p>`;
   });
 }
 
