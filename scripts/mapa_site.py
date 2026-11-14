@@ -8,6 +8,7 @@ import re
 from pathlib import Path
 
 P = "/cofre-aberto-ms.html#aba="
+WHATS = "https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais."
 GRUPOS = [
     ("Parlamentares", "#3987e5", [("Senado MS", P + "senadores"), ("Dep. Federais MS", P + "deputados"), ("Dep. Estaduais MS", P + "deputados-estaduais"),
                                   ("Câmara CG", P + "camara"), ("Câmaras MS", P + "camaras-ms")]),
@@ -22,7 +23,8 @@ GRUPOS = [
                            ("STF", P + "stf"), ("Cartão corporativo", "/cartao-corporativo-presidente/")]),
     ("Publicações", "#e0679f", [("Boletim semanal", "/boletim/"), ("Empresas", "/empresa/"), ("Órgãos", "/orgao/"), ("Perguntas frequentes", "/perguntas/")]),
     ("Sobre o projeto", "#7aa2c8", [("Início", "/"), ("Painel", "/cofre-aberto-ms.html"), ("Sobre", P + "sobre"), ("Metodologia e dados", "/metodologia.html"),
-                                    ("Imprensa", "/press.html"), ("Apoie", "/apoie/")]),
+                                    ("Imprensa", "/press.html"), ("Apoie", "/apoie/"),
+                                    ("💬 WhatsApp: (67) 98209-5384", WHATS)]),
 ]
 
 CSS = (".mapa-site{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:18px 22px;border-top:1px solid var(--border,#2a2a2a);"
@@ -32,7 +34,7 @@ CSS = (".mapa-site{display:grid;grid-template-columns:repeat(auto-fill,minmax(16
        ".mapa-site a{color:var(--ink-soft,#aaa);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}")
 
 MAPA_HTML = (f'<style>{CSS}</style><nav class="mapa-site" aria-label="Mapa do site">'
-             + "".join(f'<div style="--cor:{cor}"><h4>{g}</h4><ul>' + "".join(f'<li><a href="{u}">{n}</a></li>' for n, u in itens) + "</ul></div>"
+             + "".join(f'<div style="--cor:{cor}"><h4>{g}</h4><ul>' + "".join((f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' if u.startswith("http") else f'<li><a href="{u}">{n}</a></li>') for n, u in itens) + "</ul></div>"
                        for g, cor, itens in GRUPOS)
              + "</nav>")
 
