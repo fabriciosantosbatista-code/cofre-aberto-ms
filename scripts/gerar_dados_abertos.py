@@ -414,6 +414,12 @@ def status_fontes():
         el.get("ultimaAtualizacao"), f"{len(el.get('eleitos2026', []))} eleitos em 2026" if el else None,
         bool(el) and em_dia(el.get("ultimaAtualizacao"), 10))
 
+    rc = carregar("receitas.json")
+    ult_rc = min([e.get("ultimoMes") or "" for e in (rc.get("entes") or {}).values()] or [""])
+    add("arrecadacao", "Tesouro Nacional — Siconfi, RREO Anexo 3 (arrecadação do Governo de MS e da Prefeitura de CG)",
+        "https://siconfi.tesouro.gov.br/", rc.get("ultimaAtualizacao"), f"mês {ult_rc[5:]}/{ult_rc[:4]}" if ult_rc else None,
+        bool(rc) and em_dia(rc.get("ultimaAtualizacao"), 3),
+        "O Estado e a Prefeitura publicam esse relatório a cada dois meses, até 30 dias após o fim do bimestre.")
     vt = carregar("votacoes.json")
     qc, qs = (vt.get("quadroCamara") or {}).get("votacoes") or [], (vt.get("quadroSenado") or {}).get("votacoes") or []
     add("votacoes", "Câmara dos Deputados e Senado Federal — dados abertos das votações nominais do plenário",

@@ -619,6 +619,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button style="--cor:#199e70" data-tab="governo-ms"><span class="dot"></span> Governo MS</button>
       <button style="--cor:#199e70" data-tab="prefeitura"><span class="dot"></span> Prefeitura CG</button>
       <button style="--cor:#199e70" data-tab="contratos-cg"><span class="dot"></span> Contratos CG</button>
+      <button style="--cor:#199e70" data-tab="arrecadacao"><span class="dot"></span> Arrecadação</button>
       <div class="nav-sub-label" style="--cor:#d95926">Emendas</div>
       <button style="--cor:#d95926" data-tab="emendas"><span class="dot"></span> Emendas Parlamentares</button>
       <a class="nav-link" style="--cor:#d95926" href="municipio/"><span class="dot"></span> Emendas Municípios<span class="nav-ext">↗</span></a>
@@ -1775,6 +1776,34 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
   </section>
 
+  <section class="tabpanel" id="tab-arrecadacao">
+    <div class="hero">
+      <div class="hero-label">Arrecadômetro MS · impostos pagos ao Governo de MS e à Prefeitura de Campo Grande · <span id="ar-ano">—</span></div>
+      <div class="hero-number" id="ar-total" style="font-variant-numeric:tabular-nums">—</div>
+      <div class="hero-desc">estimativa ao vivo do que já foi pago em impostos no ano. O número parte do valor oficial até o último mês publicado
+        pelo Tesouro Nacional e soma o ritmo médio dos últimos 12 meses desde então. Abaixo, os valores oficiais mês a mês, imposto por imposto.</div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="ar-estado" style="font-variant-numeric:tabular-nums;white-space:nowrap;font-size:clamp(.92rem,4vw,1.5rem)">—</div><div class="mini-stat-label">Governo de MS (estimativa)</div></div>
+        <div><div class="mini-stat-value" id="ar-cg" style="font-variant-numeric:tabular-nums;white-space:nowrap;font-size:clamp(.92rem,4vw,1.5rem)">—</div><div class="mini-stat-label">Prefeitura de CG (estimativa)</div></div>
+        <div><div class="mini-stat-value" id="ar-oficial">—</div><div class="mini-stat-label" id="ar-oficial-r">oficial até</div></div>
+        <div><div class="mini-stat-value" id="ar-var">—</div><div class="mini-stat-label" id="ar-var-r">em relação ao mesmo período do ano anterior</div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Governo do Estado de MS — mês a mês</h2></div>
+      <div class="section-note" id="ar-nota-estado"></div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-ar-estado"><thead></thead><tbody></tbody></table></div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Prefeitura de Campo Grande — mês a mês</h2></div>
+      <div class="section-note" id="ar-nota-cg"></div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-ar-cg"><thead></thead><tbody></tbody></table></div>
+    </div>
+    <div class="section">
+      <div class="section-note" id="ar-fonte"></div>
+    </div>
+  </section>
+
   <section class="tabpanel" id="tab-votacoes">
     <div class="hero">
       <div class="hero-label">Presença e votação · deputados federais e senadores de MS · <span id="vt-ano">—</span></div>
@@ -2026,7 +2055,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   </section>
   </section>
 
-  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/municipio/">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/boletim/">Boletim semanal</a></li><li><a href="/empresa/">Empresas</a></li><li><a href="/orgao/">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/metodologia.html">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/apoie/">Apoie</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
+  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/municipio/">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/boletim/">Boletim semanal</a></li><li><a href="/empresa/">Empresas</a></li><li><a href="/orgao/">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/metodologia.html">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/apoie/">Apoie</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
   <footer class="site-footer">
     <span>Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público.</span>
     <span>
@@ -2042,6 +2071,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   </main>
 </div>
 
+<script src="arrecadometro.js?v=1"></script>
 <script>
 // ===================== FORMATAÇÃO =====================
 function formatBRL(value) {
@@ -6407,6 +6437,53 @@ function evGrafico() {
   s.addEventListener("pointerleave", esconder);
 }
 
+// ===================== ARRECADAÇÃO (Arrecadômetro) =====================
+const AR_COLS = {
+  estado: [["icms", "ICMS"], ["ipva", "IPVA"], ["itcd", "ITCD"], ["irrf", "IRRF"], ["impostos", "Total de impostos"], ["fpe", "FPE (União)"], ["correntes", "Receitas correntes"]],
+  cg: [["iptu", "IPTU"], ["iss", "ISS"], ["itbi", "ITBI"], ["irrf", "IRRF"], ["impostos", "Total de impostos"], ["icms", "Cota do ICMS"], ["fpm", "FPM (União)"], ["correntes", "Receitas correntes"]],
+};
+function renderArrecadacao(d) {
+  const c = Arrecadometro.calcular(d);
+  const ano = new Date().getFullYear();
+  document.getElementById("ar-ano").textContent = ano;
+  if (window._arTimer) clearInterval(window._arTimer);
+  window._arTimer = Arrecadometro.animar(c, { total: "ar-total", estado: "ar-estado", cg: "ar-cg" });
+  const ref = c.estado || c.cg;
+  const of = (c.estado ? c.estado.oficial : 0) + (c.cg ? c.cg.oficial : 0);
+  const ant = (c.estado ? c.estado.anterior : 0) + (c.cg ? c.cg.anterior : 0);
+  document.getElementById("ar-oficial").textContent = formatCompact(of);
+  document.getElementById("ar-oficial-r").textContent = `oficial até ${ref.rotuloMes}`;
+  if (ant) {
+    const v = (of / ant - 1) * 100;
+    document.getElementById("ar-var").textContent = `${v >= 0 ? "+" : ""}${v.toFixed(1).replace(".", ",")}%`;
+    document.getElementById("ar-var-r").textContent = `em relação a jan–${Arrecadometro.MESES[Number(ref.ultimoMes.slice(5)) - 1].slice(0, 3)}/${ano - 1}`;
+  }
+  for (const k of ["estado", "cg"]) {
+    const e = d.entes[k];
+    if (!e) continue;
+    const cols = AR_COLS[k].filter(([c]) => Object.values(e.meses).some(m => m[c]));
+    const tab = document.getElementById(`tabela-ar-${k}`);
+    tab.querySelector("thead").innerHTML = `<tr><th>Mês</th>${cols.map(([, r]) => `<th class="num">${r}</th>`).join("")}</tr>`;
+    const meses = Object.keys(e.meses).sort().reverse();
+    const anoAt = e.ultimoMes.slice(0, 4);
+    const soma = (pref, c, ate) => meses.filter(m => m.startsWith(pref) && (!ate || m.slice(5) <= ate)).reduce((s, m) => s + (e.meses[m][c] || 0), 0);
+    const linhaTot = (rot, pref, ate) => `<tr style="font-weight:700"><td>${rot}</td>${cols.map(([c]) => `<td class="num">${formatBRL(soma(pref, c, ate))}</td>`).join("")}</tr>`;
+    const mesTxt = m => `${Arrecadometro.MESES[Number(m.slice(5)) - 1]}/${m.slice(0, 4)}`;
+    tab.querySelector("tbody").innerHTML =
+      linhaTot(`Total ${anoAt} (até ${Arrecadometro.MESES[Number(e.ultimoMes.slice(5)) - 1]})`, anoAt + "-") +
+      linhaTot(`Mesmo período de ${anoAt - 1}`, (anoAt - 1) + "-", e.ultimoMes.slice(5)) +
+      meses.map(m => `<tr><td>${mesTxt(m)}</td>${cols.map(([c]) => `<td class="num">${e.meses[m][c] != null ? formatBRL(e.meses[m][c]) : "—"}</td>`).join("")}</tr>`).join("");
+    const prev = e.previsaoAno || {};
+    const real = soma(anoAt + "-", "impostos");
+    document.getElementById(`ar-nota-${k}`).innerHTML = prev.impostos
+      ? `Previsão de impostos para ${anoAt} no orçamento: <b>${formatBRL(prev.impostos)}</b> — arrecadado até ${mesTxt(e.ultimoMes)}: <b>${formatBRL(real)}</b> (${(real / prev.impostos * 100).toFixed(0)}%). Valores brutos, antes das transferências aos municípios e ao Fundeb.`
+      : "Valores brutos, antes das transferências aos municípios e ao Fundeb.";
+  }
+  document.getElementById("ar-fonte").innerHTML = `Fonte: <a href="${d.fonteUrl}" target="_blank" rel="noopener">${escHTML(d.fonte)}</a>. ` +
+    `O Estado e a Prefeitura publicam esse relatório a cada dois meses, até 30 dias após o fim do bimestre — por isso os números oficiais vão até ${ref.rotuloMes}. ` +
+    `O número ao vivo do topo é uma estimativa e não um dado oficial. Coletado em ${formatDateTime(d.ultimaAtualizacao)}.`;
+}
+
 // ===================== LINKS DIRETOS (#aba=...&p=...) =====================
 // Abre a aba e o parlamentar de um link compartilhado. Aceita o formato novo
 // (#aba=camara&p=Papy) e o antigo do botão "Copiar link" (#Papy).
@@ -6557,6 +6634,7 @@ const FONTE_ABA = {
   "presidencia": { titulo: "Presidência da República: cartão corporativo, viagens, despesas, remuneração e Governo Federal em MS", csv: [["Cartão por mês", "presidencia_cartao.csv"], ["Viagens de ministros", "presidencia_viagens_ministros.csv"], ["Remuneração dos ministros", "presidencia_ministros.csv"], ["Transferências a MS", "uniao_transferencias_ms.csv"]], json: "presidencia.json" },
   "senado-brasil": { titulo: "CEAPS dos senadores do Brasil", csv: [["Resumo", "senadores_brasil.csv"]], json: "senadores_brasil.json" },
   "conexoes": { titulo: "Conexões entre fornecedores de políticos de MS", csv: [["Conexões", "conexoes_fornecedores.csv"]], json: "conexoes_fornecedores.json" },
+  "arrecadacao": { titulo: "Arrecadação do Governo de MS e da Prefeitura de Campo Grande", csv: [], json: "receitas.json" },
   "votacoes": { titulo: "Presença e votação dos deputados federais e senadores de MS", csv: [], json: "votacoes.json" },
   "evolucao": { titulo: "Evolução mensal dos gastos de políticos de MS", csv: [["Mês a mês", "evolucao_mensal.csv"]], json: "evolucao_mensal.json" },
 };
@@ -6743,6 +6821,10 @@ async function init() {
       if (btn.dataset.tab === "presidencia" && !window._prLoaded) {
         window._prLoaded = true;
         carregarJSON("dados/presidencia.json").then(d => { if (d) renderPresidencia(d); });
+      }
+      if (btn.dataset.tab === "arrecadacao" && !window._arLoaded) {
+        window._arLoaded = true;
+        carregarJSON("dados/receitas.json").then(d => { if (d) renderArrecadacao(d); });
       }
       if (btn.dataset.tab === "votacoes" && !window._vtLoaded) {
         window._vtLoaded = true;

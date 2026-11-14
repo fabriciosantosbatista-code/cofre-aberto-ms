@@ -12,7 +12,7 @@ WHATS = "https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Abert
 GRUPOS = [
     ("Parlamentares", "#3987e5", [("Senado MS", P + "senadores"), ("Dep. Federais MS", P + "deputados"), ("Dep. Estaduais MS", P + "deputados-estaduais"),
                                   ("Câmara CG", P + "camara"), ("Câmaras MS", P + "camaras-ms")]),
-    ("Executivo", "#199e70", [("Governo MS", P + "governo-ms"), ("Prefeitura CG", P + "prefeitura"), ("Contratos CG", P + "contratos-cg")]),
+    ("Executivo", "#199e70", [("Governo MS", P + "governo-ms"), ("Prefeitura CG", P + "prefeitura"), ("Contratos CG", P + "contratos-cg"), ("Arrecadação", P + "arrecadacao")]),
     ("Emendas", "#d95926", [("Emendas Parlamentares", P + "emendas"), ("Emendas Municípios", "/municipio/")]),
     ("Justiça e salários", "#9085e9", [("Judiciário MS", P + "judiciario"), ("Supersalários", P + "supersalarios")]),
     ("Fiscalização", "#c98500", [("Auditoria", P + "auditoria"), ("Conexões", P + "conexoes"), ("Presença e votação", P + "votacoes"),

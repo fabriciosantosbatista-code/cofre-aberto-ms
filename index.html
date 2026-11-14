@@ -116,6 +116,16 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0
 .features-sub{text-align:center;color:var(--ink-soft);margin-bottom:48px;font-size:.95rem;}
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
 .abas-grupo{font-family:"Sora",sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-caption);margin:28px 0 12px;font-weight:700}
+.arrecadometro{margin:36px auto 8px;max-width:980px;padding:26px 24px;border:1px solid var(--border);border-top:3px solid #199e70;border-radius:16px;background:var(--surface);text-align:center}
+.arr-label{font-family:"Sora",sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#199e70;font-weight:700}
+.arr-total{font-family:"Sora",sans-serif;font-size:clamp(1.7rem,6vw,3.2rem);font-weight:800;letter-spacing:-.02em;margin:8px 0 4px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.arr-desc{font-size:.88rem;color:var(--ink-soft)}
+.arr-partes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 12px}
+.arr-v{font-family:"Sora",sans-serif;font-weight:700;font-size:1.05rem;font-variant-numeric:tabular-nums}
+.arr-r{font-size:.74rem;color:var(--ink-caption)}
+.arr-nota{font-size:.72rem;color:var(--ink-caption);max-width:640px;margin:0 auto 10px}
+.arr-link{font-size:.82rem;color:#199e70;text-decoration:none;font-weight:600}
+@media(max-width:640px){.arr-partes{grid-template-columns:1fr}.arrecadometro{margin:28px 16px 4px;padding:20px 14px}}
 .abas-grupos .abas-grupo:first-child{margin-top:8px}
 .abas-grupo[style*="--cor"]{color:var(--cor);border-left:3px solid var(--cor);padding-left:9px}
 .abas-grid[style*="--cor"] .aba-card{border-top:3px solid var(--cor)}
@@ -387,6 +397,19 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
     </div>
   </div>
 
+  <section class="arrecadometro" aria-labelledby="arr-titulo">
+    <div class="arr-label" id="arr-titulo">💰 Arrecadômetro MS · <span id="arr-ano">2026</span></div>
+    <div class="arr-total" id="arr-total" aria-live="off">—</div>
+    <div class="arr-desc">em impostos pagos no ano ao Governo de MS e à Prefeitura de Campo Grande (estimativa ao vivo)</div>
+    <div class="arr-partes">
+      <div><div class="arr-v" id="arr-estado">—</div><div class="arr-r">Governo de MS · ICMS, IPVA, ITCD…</div></div>
+      <div><div class="arr-v" id="arr-cg">—</div><div class="arr-r">Prefeitura de CG · IPTU, ISS, ITBI…</div></div>
+      <div><div class="arr-v" id="arr-ritmo">—</div><div class="arr-r">por minuto, em média</div></div>
+    </div>
+    <div class="arr-nota" id="arr-nota">Valor oficial até o último mês publicado pelo Tesouro Nacional (Siconfi) + o ritmo médio dos últimos 12 meses desde então.</div>
+    <a class="arr-link" href="cofre-aberto-ms.html#aba=arrecadacao">Ver mês a mês e imposto por imposto →</a>
+  </section>
+
   <section class="features">
     <h2>O que você encontra aqui</h2>
     <p class="features-sub">Tudo coletado de fontes oficiais — portais de transparência, APIs públicas e diários oficiais.</p>
@@ -472,6 +495,11 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
         <div class="aba-num">350</div>
         <div class="aba-title">Contratos CG</div>
         <div class="aba-desc">Contratos de Campo Grande, licitações e dispensas do ano, quem venceu e quem mais tem contratos</div>
+      </div>
+      <div class="aba-card" onclick="window.location.href='cofre-aberto-ms.html#aba=arrecadacao'">
+        <div class="aba-num">ao vivo</div>
+        <div class="aba-title">Arrecadação</div>
+        <div class="aba-desc">Arrecadômetro: quanto o Governo de MS e a Prefeitura de Campo Grande arrecadaram em impostos — ICMS, IPVA, IPTU, ISS — mês a mês</div>
       </div>
       </div>
       <h3 class="abas-grupo" style="--cor:#d95926">Emendas</h3>
@@ -615,7 +643,7 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
     </button>
   </div>
 
-  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/municipio/">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/boletim/">Boletim semanal</a></li><li><a href="/empresa/">Empresas</a></li><li><a href="/orgao/">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/metodologia.html">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/apoie/">Apoie</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
+  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/municipio/">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/boletim/">Boletim semanal</a></li><li><a href="/empresa/">Empresas</a></li><li><a href="/orgao/">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/metodologia.html">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/apoie/">Apoie</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
   <footer>
     <div style="display:flex;align-items:center;gap:12px"><img src="logo.svg" alt="Cofre Aberto MS" width="93" height="28"/><p style="margin:0">© 2026 — Dados públicos de MS</p></div>
     <div class="footer-links">
@@ -628,6 +656,18 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
   </footer>
 
 </div>
+<script src="arrecadometro.js?v=1"></script>
+<script>
+  fetch('dados/receitas.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(d => {
+    if (!d || !window.Arrecadometro) return;
+    const c = Arrecadometro.calcular(d);
+    Arrecadometro.animar(c, { total: 'arr-total', estado: 'arr-estado', cg: 'arr-cg' });
+    document.getElementById('arr-ano').textContent = new Date().getFullYear();
+    document.getElementById('arr-ritmo').textContent = Arrecadometro.formatar(c.ritmo * 60);
+    const e = c.estado || c.cg, of = (c.estado ? c.estado.oficial : 0) + (c.cg ? c.cg.oficial : 0);
+    if (e && of) document.getElementById('arr-nota').textContent = `Estimativa: valor oficial até ${e.rotuloMes} (${Arrecadometro.formatar(of)}, Tesouro Nacional — Siconfi) + o ritmo médio dos últimos 12 meses desde então. Os números oficiais saem a cada dois meses.`;
+  }).catch(() => {});
+</script>
 <script>
   // Data da última coleta automática (dados/status.json é regravado todo dia pelo GitHub Actions)
   fetch('dados/status.json', { cache: 'no-store' })

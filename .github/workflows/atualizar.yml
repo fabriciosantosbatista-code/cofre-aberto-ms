@@ -297,6 +297,10 @@ jobs:
         timeout-minutes: 15
         run: python3 scripts/coletar_votacoes.py || echo "⚠️ coletar_votacoes.py falhou — dados anteriores mantidos"
 
+      - name: Arrecadação do Governo de MS e da Prefeitura de CG (Tesouro Nacional — Siconfi)
+        timeout-minutes: 10
+        run: python3 scripts/coletar_receitas.py || echo "⚠️ coletar_receitas.py falhou — dados anteriores mantidos"
+
       - name: Upload artifact — fontes federais
         uses: actions/upload-artifact@v4
         with:
@@ -311,6 +315,7 @@ jobs:
             dados/stf_cache.json
             dados/votacoes.json
             dados/votacoes_cache.json
+            dados/receitas.json
           if-no-files-found: ignore
           retention-days: 1
 
