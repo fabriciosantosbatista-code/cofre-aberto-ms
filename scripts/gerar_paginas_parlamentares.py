@@ -325,7 +325,7 @@ def cabecalho(titulo, descricao, url, imagem, jsonld, tipo="profile"):
 from mapa_site import MAPA_HTML  # noqa: E402
 
 RODAPE = MAPA_HTML + f"""<footer><span>© {ANO} Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
-<span><a href="/metodologia.html">Metodologia e dados</a> · <a href="/apoie/">Apoie</a></span></footer>
+<span><a href="/metodologia.html#licenca">Dados sob CC BY 4.0 (cite a fonte) · código e layout: todos os direitos reservados</a></span></footer>
 </div>
 </body>
 </html>

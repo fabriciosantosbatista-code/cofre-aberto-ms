@@ -46,9 +46,15 @@ def num(v):
         return str(v)
 
 
+ATRIBUICAO = ("Fonte: Cofre Aberto MS (cofreabertoms.com.br) — dados sob licença CC BY 4.0: pode reutilizar citando "
+              "“Cofre Aberto MS” e a fonte oficial. Esta primeira linha não faz parte da tabela.")
+
+
 def grava_csv(nome, cabecalho, linhas):
     buf = io.StringIO()
     w = csv.writer(buf, delimiter=";", quoting=csv.QUOTE_MINIMAL, lineterminator="\n")
+    # 1ª linha: assinatura e licença (quem reutiliza leva a fonte junto). Para ler em programa, pule a 1ª linha.
+    w.writerow([ATRIBUICAO])
     w.writerow(cabecalho)
     for l in linhas:
         w.writerow(["" if x is None else x for x in l])
