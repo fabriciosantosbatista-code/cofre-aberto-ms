@@ -326,7 +326,9 @@ def main():
     for chave, func in (("diarias", coletar_diarias), ("primeiroEscalao", coletar_primeiro_escalao)):
         try:
             v = func()
-            if v:
+            # resposta sem ninguém (o portal recusou a folha, por exemplo) não apaga o que já havia
+            vazio = not v or (isinstance(v, dict) and "pessoas" in v and not v["pessoas"])
+            if not vazio:
                 out[chave] = v
                 ok += 1
             elif mesmo_ano and chave in anterior:
