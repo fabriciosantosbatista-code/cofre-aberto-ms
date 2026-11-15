@@ -47,7 +47,7 @@ Todos os números são recalculados automaticamente pela coleta diária e podem 
 
 ## Sugestões de pauta
 
-Ideias de matéria pensadas para veículos de Mato Grosso do Sul (como **Campo Grande News**, **Correio do Estado** e **Midiamax**), com dados já apurados e prontos para citação:
+Ideias de matéria pensadas para veículos de Mato Grosso do Sul, com dados já apurados e prontos para citação:
 
 1. **"Quem mais e quem menos gastou a verba indenizatória em 2026"** — entre os 29 vereadores de Campo Grande, o uso da cota anual de R$ 300 mil por gabinete vai de 52% (Jean Ferreira) a 75% (Dr. Jamal). Bom gancho para pedir explicação aos gabinetes nos dois extremos — o painel mostra mês a mês e nota a nota.
 2. **"A Câmara de Campo Grande é a única do estado que não publica a verba indenizatória em formato de dados abertos"** — enquanto a maioria das câmaras municipais de MS usa sistemas com API pública (Fiorilli, SAPL), a Câmara de Campo Grande só divulga a verba indenizatória em PDFs individuais por vereador, dificultando a fiscalização por qualquer sistema automatizado, inclusive por este projeto.
