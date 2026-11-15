@@ -71,10 +71,18 @@ def contratos():
 
 
 def obras():
-    out, pag = [], 1
+    # o portal repete as mesmas obras em páginas seguidas (e diz que há mais): guarda cada obra uma vez
+    # (número + processo + CNPJ + órgão) e para quando uma página não traz nenhuma obra nova
+    out, vistos, pag = [], set(), 1
     while True:
         j = g.api("/d0371/transpcontrato/v1/ContratosEkronos", {"ano": ANO, "pageno": pag, "pagesize": 2000, "exportarcsv": "false"})
+        novos = 0
         for x in j.get("data") or []:
+            k = (x.get("numeroContrato"), x.get("numeroProcesso"), dig(x.get("cnpjCpf")), x.get("orgao"))
+            if k in vistos:
+                continue
+            vistos.add(k)
+            novos += 1
             out.append({"numero": x.get("numeroContrato"), "processo": x.get("numeroProcesso"), "orgao": x.get("orgao"),
                         "fornecedor": re.sub(r"\s+", " ", x.get("nome") or "").strip(), "cnpj": dig(x.get("cnpjCpf")),
                         "objeto": re.sub(r"\s+", " ", x.get("objeto") or "").strip()[:300], "valor": round(x.get("valorAtualContrato") or 0, 2),
@@ -82,9 +90,10 @@ def obras():
                         "diasParalisados": x.get("diasParalisados") or 0, "executado": x.get("percentualExecutado"),
                         "situacao": x.get("situacao"), "inicio": iso(x.get("inicioObra")), "fim": iso(x.get("fimObra")),
                         "municipios": x.get("municipios")})
-        if not (j.get("pagination") or {}).get("has_next"):
+        if not novos or not (j.get("pagination") or {}).get("has_next") or pag >= 50:
             break
         pag += 1
+    print(f"  obras: {len(out)} contratos de obra ({pag} páginas lidas)")
     return out
 
 

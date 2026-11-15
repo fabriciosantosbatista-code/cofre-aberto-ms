@@ -471,6 +471,9 @@ jobs:
       - name: Pontos de atenção nos contratos da Prefeitura (+ feed RSS)
         run: python3 scripts/gerar_alertas_contratos.py || echo "⚠️ gerar_alertas_contratos.py falhou — alertas anteriores mantidos"
 
+      - name: Obras atrasadas e paradas do Governo do Estado
+        run: python3 scripts/gerar_obras.py || echo "⚠️ gerar_obras.py falhou — dados anteriores mantidos"
+
       - name: Auditoria — sinais de atenção (cruza notas, contratos e Receita)
         run: python3 scripts/gerar_auditoria.py || echo "⚠️ gerar_auditoria.py falhou — sinais anteriores mantidos"
 

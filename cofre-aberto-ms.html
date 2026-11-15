@@ -275,6 +275,10 @@ p{margin:0;}
 @media(max-width:640px){.arr-pan-partes{grid-template-columns:1fr}.arr-pan{padding:16px 12px}}
 .aba-pagina{display:block;width:100%;min-height:75vh;border:0;background:transparent;margin-top:4px}
 .aba-pagina-abrir{font-size:.75rem;text-align:right;margin:8px 0 0}.aba-pagina-abrir a{color:var(--ink-caption)}
+.ob-filtros{display:flex;flex-wrap:wrap;gap:8px}.ob-filtros button{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--border);border-radius:999px;padding:6px 12px;font:600 .8rem var(--font-body);cursor:pointer}
+.ob-filtros button.ativo{background:#c98500;border-color:#c98500;color:#14120a}
+.ob-tag{display:inline-block;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:6px;padding:1px 6px;margin:3px 4px 0 0}
+.ob-barra{height:6px;border-radius:3px;background:var(--surface-3);position:relative;margin:4px 0;min-width:110px}.ob-barra i{position:absolute;left:0;top:0;bottom:0;border-radius:3px}
 .fluxo-card{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 40%,rgba(245,200,66,.07),transparent 60%),var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 22px 18px}
 .fluxo-card::before{content:"";position:absolute;inset:-44px 0 0 0;pointer-events:none;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;animation:fluxoGrade 3.2s linear infinite;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%);mask-image:linear-gradient(to bottom,transparent,#000 70%)}
 @keyframes fluxoGrade{to{background-position:0 44px}}
@@ -640,6 +644,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="nav-sub-label" style="--cor:#c98500">Fiscalização</div>
       <button style="--cor:#c98500" data-tab="auditoria"><span class="dot"></span> Auditoria</button>
       <button style="--cor:#c98500" data-tab="conexoes"><span class="dot"></span> Conexões</button>
+      <button style="--cor:#c98500" data-tab="obras"><span class="dot"></span> Obras atrasadas</button>
       <button style="--cor:#c98500" data-tab="shows"><span class="dot"></span> Shows</button>
       <button style="--cor:#c98500" data-tab="votacoes"><span class="dot"></span> Presença e votação</button>
       <button style="--cor:#c98500" data-tab="eleicoes"><span class="dot"></span> Eleições e patrimônio</button>
@@ -1846,6 +1851,37 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     <p class="aba-pagina-abrir"><a href="metodologia.html" target="_blank" rel="noopener">Abrir Metodologia e dados em página própria ↗</a></p>
   </section>
 
+  <section class="tabpanel" id="tab-obras">
+    <div class="hero">
+      <div class="hero-label">Obras atrasadas e paradas · Governo do Estado de MS</div>
+      <div class="hero-number" id="ob-n">—</div>
+      <div class="hero-desc">obras do Estado em andamento com algum sinal de atraso — prazo vencido sem terminar, andamento muito lento,
+        paralisação registrada ou prazo mais que dobrado por aditivos. Datas e % executado são os que o próprio Estado publica.</div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="ob-venc">—</div><div class="mini-stat-label">prazo vencido sem terminar</div></div>
+        <div><div class="mini-stat-value" id="ob-lenta">—</div><div class="mini-stat-label">andamento muito lento</div></div>
+        <div><div class="mini-stat-value" id="ob-par">—</div><div class="mini-stat-label">já ficaram paralisadas</div></div>
+        <div><div class="mini-stat-value" id="ob-dob">—</div><div class="mini-stat-label">prazo mais que dobrado</div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">As obras</h2></div>
+      <div class="ob-filtros" id="ob-filtros"></div>
+      <input id="busca-ob" class="search-box" type="search" placeholder="buscar obra, cidade, empresa ou órgão (ex.: Corumbá, escola, MS-228)…" aria-label="Buscar obra" style="width:100%;margin:10px 0 12px"/>
+      <div class="section-note">"Tempo" é quanto do prazo atual já passou; "executado" é o avanço físico informado pelo Estado. Uma obra com 90% do tempo e 20% executado está muito atrás.</div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-ob"><thead><tr><th>Obra</th><th>Empresa</th><th>Prazo</th><th>Tempo × executado</th><th class="num">Aditados / paralisados</th><th class="num">Valor</th></tr></thead><tbody></tbody></table></div>
+      <button class="pager-btn" id="ob-mais" style="margin-top:10px;display:none">Mostrar mais</button>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Empresas e cidades com mais obras atrasadas</h2></div>
+      <div class="grid-2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+        <div class="card card-x-scroll"><table class="ranking" id="tabela-ob-emp"><thead><tr><th>Empresa</th><th class="num">Obras</th><th class="num">Valor</th></tr></thead><tbody></tbody></table></div>
+        <div class="card card-x-scroll"><table class="ranking" id="tabela-ob-cid"><thead><tr><th>Cidade</th><th class="num">Obras</th><th class="num">Valor</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+    <div class="section"><div class="section-note" id="ob-fonte"></div></div>
+  </section>
+
   <section class="tabpanel" id="tab-shows">
     <div class="hero">
       <div class="hero-label">Shows pagos com dinheiro público em MS · <span id="sh-ano">—</span></div>
@@ -2150,7 +2186,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   </section>
   </section>
 
-  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-apoie">Apoie</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
+  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-apoie">Apoie</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
   <footer class="site-footer">
     <span>Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público. © 2026 Cofre Aberto MS · <a href="metodologia.html#licenca">dados sob CC BY 4.0, código e layout: todos os direitos reservados</a></span>
     <span>
@@ -6532,6 +6568,51 @@ function evGrafico() {
   s.addEventListener("pointerleave", esconder);
 }
 
+// ===================== OBRAS ATRASADAS =====================
+const OB_MARCA = { vencida: ["Prazo vencido", "#e5484d"], lenta: ["Muito lenta", "#d95926"], paralisada: ["Já parou", "#9085e9"], dobrada: ["Prazo dobrado", "#c98500"] };
+function renderObras(d) {
+  const brlInt = v => formatBRL(v || 0).replace(/,\d{2}$/, "");
+  const dt = iso => iso ? iso.split("-").reverse().join("/") : "—";
+  document.getElementById("ob-n").textContent = `${d.comProblema.obras} de ${d.abertas.obras}`;
+  for (const [id, m] of [["ob-venc", "vencida"], ["ob-lenta", "lenta"], ["ob-par", "paralisada"], ["ob-dob", "dobrada"]])
+    document.getElementById(id).textContent = `${d.resumo[m].obras} · ${formatCompact(d.resumo[m].valor)}`;
+  let filtro = "problema", busca = "", lim = 25;
+  const fs = document.getElementById("ob-filtros");
+  const opc = [["problema", `Com algum sinal (${d.comProblema.obras})`], ...Object.entries(OB_MARCA).map(([k, [r]]) => [k, `${r} (${d.resumo[k].obras})`]), ["todas", `Todas em andamento (${d.abertas.obras})`]];
+  fs.innerHTML = opc.map(([k, r]) => `<button type="button" data-f="${k}" class="${k === filtro ? "ativo" : ""}">${escHTML(r)}</button>`).join("");
+  const norm = t => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const tb = document.querySelector("#tabela-ob tbody");
+  const desenha = () => {
+    const b = norm(busca);
+    let lst = d.obras.filter(o => filtro === "todas" || (filtro === "problema" ? o.marcas.length : o.marcas.includes(filtro)));
+    if (b) lst = lst.filter(o => norm([o.objeto, o.municipios, o.fornecedor, o.orgao, o.numero].join(" ")).includes(b));
+    if (filtro === "vencida") lst.sort((a, c) => c.diasVencida - a.diasVencida);
+    if (filtro === "paralisada") lst.sort((a, c) => c.diasParalisados - a.diasParalisados);
+    tb.innerHTML = lst.slice(0, lim).map(o => {
+      const t = o.tempoDecorrido ?? 0, e = o.executado || 0;
+      return `<tr><td style="min-width:240px"><b>${escHTML(o.orgao)} ${escHTML(o.numero || "")}</b> · ${escHTML(o.municipios || "")}` +
+        `<div class="section-note" style="margin:2px 0 0">${escHTML((o.objeto || "").slice(0, 170))}${(o.objeto || "").length > 170 ? "…" : ""}</div>` +
+        `<div>${o.marcas.map(m => `<span class="ob-tag" style="background:${OB_MARCA[m][1]}22;color:${OB_MARCA[m][1]}">${OB_MARCA[m][0]}</span>`).join("")}</div></td>` +
+        `<td style="font-size:.82rem">${escHTML(o.fornecedor || "—")}</td>` +
+        `<td style="font-size:.82rem;white-space:nowrap">${dt(o.inicio)} a ${dt(o.fim)}${o.diasVencida ? `<div style="color:#e5484d;font-weight:600">venceu há ${o.diasVencida} dias</div>` : ""}</td>` +
+        `<td style="font-size:.78rem">tempo ${Math.round(t)}%<div class="ob-barra"><i style="width:${t}%;background:var(--ink-faint)"></i></div>executado ${Math.round(e)}%<div class="ob-barra"><i style="width:${e}%;background:${e + 30 < t ? "#e5484d" : "#199e70"}"></i></div></td>` +
+        `<td class="num" style="font-size:.82rem">${Math.round(o.diasAditados)} dias aditados${o.prazoInicial ? `<div class="section-note" style="margin:0">prazo inicial ${Math.round(o.prazoInicial)}</div>` : ""}${o.diasParalisados ? `<div style="color:#9085e9">${Math.round(o.diasParalisados)} dias parada</div>` : ""}</td>` +
+        `<td class="num">${brlInt(o.valor)}</td></tr>`;
+    }).join("") || `<tr><td colspan="6">Nenhuma obra encontrada.</td></tr>`;
+    document.getElementById("ob-mais").style.display = lst.length > lim ? "" : "none";
+  };
+  fs.onclick = ev => { const b = ev.target.closest("button[data-f]"); if (!b) return; filtro = b.dataset.f; lim = 25; fs.querySelectorAll("button").forEach(x => x.classList.toggle("ativo", x === b)); desenha(); };
+  document.getElementById("busca-ob").addEventListener("input", ev => { busca = ev.target.value; lim = 25; desenha(); });
+  document.getElementById("ob-mais").onclick = () => { lim += 50; desenha(); };
+  desenha();
+  const linha = a => `<tr><td>${escHTML(a.nome)}${a.vencidas || a.paralisadas ? `<div class="section-note" style="margin:0">${[a.vencidas && `${a.vencidas} vencida(s)`, a.paralisadas && `${a.paralisadas} já parada(s)`].filter(Boolean).join(" · ")}</div>` : ""}</td><td class="num">${a.obras}</td><td class="num">${formatCompact(a.valor)}</td></tr>`;
+  document.querySelector("#tabela-ob-emp tbody").innerHTML = d.porEmpresa.slice(0, 15).map(linha).join("");
+  document.querySelector("#tabela-ob-cid tbody").innerHTML = d.porCidade.slice(0, 15).map(linha).join("");
+  document.getElementById("ob-fonte").innerHTML = `Fonte: ${escHTML(d.fonte)}, coletado em ${formatDateTime(d.coleta)}. ` +
+    `Critérios: <b>prazo vencido</b> — o prazo atual (já com aditivos) terminou há mais de 30 dias e a obra não chegou a 90%; <b>muito lenta</b> — dentro do prazo, mas o executado está 50 pontos ou mais atrás do tempo decorrido; ` +
+    `<b>já parou</b> — o contrato registra dias de paralisação (o portal não diz se está parada hoje); <b>prazo dobrado</b> — os dias aditados passam do prazo inicial. Atraso pode ter causa justificada (chuva, desapropriação, projeto); é um ponto para perguntar ao Estado.`;
+}
+
 // ===================== SHOWS =====================
 function renderShows(d) {
   const brlInt = v => formatBRL(v).replace(/,\d{2}$/, "");
@@ -6826,6 +6907,7 @@ const FONTE_ABA = {
   "senado-brasil": { titulo: "CEAPS dos senadores do Brasil", csv: [["Resumo", "senadores_brasil.csv"]], json: "senadores_brasil.json" },
   "conexoes": { titulo: "Conexões entre fornecedores de políticos de MS", csv: [["Conexões", "conexoes_fornecedores.csv"]], json: "conexoes_fornecedores.json" },
   "arrecadacao": { titulo: "Arrecadação do Governo de MS e da Prefeitura de Campo Grande", csv: [], json: "receitas.json" },
+  "obras": { titulo: "Obras do Governo do Estado de MS", csv: [["Obras", "governo_ms_obras.csv"]], json: "obras.json" },
   "shows": { titulo: "Shows pagos com dinheiro público em MS (PNCP)", csv: [], json: "shows.json" },
   "votacoes": { titulo: "Presença e votação dos deputados federais e senadores de MS", csv: [], json: "votacoes.json" },
   "evolucao": { titulo: "Evolução mensal dos gastos de políticos de MS", csv: [["Mês a mês", "evolucao_mensal.csv"]], json: "evolucao_mensal.json" },
@@ -7020,6 +7102,10 @@ async function init() {
       if (btn.dataset.tab === "arrecadacao" && !window._arLoaded) {
         window._arLoaded = true;
         carregarJSON("dados/receitas.json").then(d => { if (d) renderArrecadacao(d); });
+      }
+      if (btn.dataset.tab === "obras" && !window._obLoaded) {
+        window._obLoaded = true;
+        carregarJSON("dados/obras.json").then(d => { if (d) renderObras(d); });
       }
       if (btn.dataset.tab === "shows" && !window._shLoaded) {
         window._shLoaded = true;

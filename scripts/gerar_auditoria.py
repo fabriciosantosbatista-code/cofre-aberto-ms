@@ -41,6 +41,7 @@ ficaram de fora depois do teste com os dados de nov/2026):
                         no ano — cada um abaixo do limite legal, mas juntos acima dele (Prefeitura e PNCP)
   acumulo_cargos        servidor ativo do Estado (efetivo ou professor) que também aparece na folha da ALEMS
                         ou num gabinete da Câmara de CG, pelo nome completo (único na folha do Estado)
+  obra_vencida          obra do Estado com o prazo atual vencido há mais de 30 dias e menos de 90% executada
   cache_acima_artista   show pago bem acima do que o mesmo artista cobrou de outros órgãos de MS no ano (PNCP)
   dispensa_acima_limite um mesmo processo de dispensa somando mais que o limite legal
                         (exclui aluguel de imóvel, bancos e concessionárias, que têm
@@ -65,7 +66,7 @@ NIVEL = {"mei_acima_limite": "forte", "situacao_irregular": "forte", "socio_parl
          "empresa_sancionada": "forte", "sancionada_outro_ente": "médio", "socio_sancionado": "forte",
          "possivel_parente": "médio", "entidade_parlamentar": "médio",
          "doador_executivo": "forte", "fornecedor_campanha_executivo": "médio", "preco_acima_estimado": "médio", "obra_prazo_estourado": "médio", "aditivo_acima_limite": "médio",
-         "fracionamento_fornecedor": "médio", "acumulo_cargos": "médio", "cache_acima_artista": "médio"}
+         "fracionamento_fornecedor": "médio", "acumulo_cargos": "médio", "cache_acima_artista": "médio", "obra_vencida": "médio"}
 ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_irregular": "Empresa com CNPJ irregular",
           "socio_parlamentar": "Parlamentar é sócio", "socios_licitacao": "Sócios em comum na mesma licitação",
           "dispensa_acima_limite": "Possível fracionamento de dispensa", "empresa_nova": "Empresa recém-aberta",
@@ -83,7 +84,8 @@ ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_ir
           "obra_prazo_estourado": "Obra do Estado com prazo mais que dobrado", "aditivo_acima_limite": "Aditivos acima de 25%",
           "fracionamento_fornecedor": "Várias dispensas à mesma empresa somando acima do limite",
           "acumulo_cargos": "Servidor do Estado com cargo também na ALEMS ou na Câmara de CG",
-          "cache_acima_artista": "Cachê de show bem acima do que o mesmo artista cobrou de outros órgãos"}
+          "cache_acima_artista": "Cachê de show bem acima do que o mesmo artista cobrou de outros órgãos",
+          "obra_vencida": "Obra do Estado com prazo vencido e longe de terminar"}
 
 # naturezas jurídicas de empresa privada (associações, fundos, órgãos e consórcios públicos não têm capital social)
 EMPRESARIAL = re.compile(r"Limitada|Empres[aá]rio|EIRELI|Unipessoal|Sociedade Simples|An[oô]nima Fechada", re.I)
@@ -920,6 +922,18 @@ def main():
                 f"Pode haver explicação — objetos diferentes, demandas imprevisíveis — que só os processos mostram; vale pedi-los pela "
                 f"Lei de Acesso à Informação.",
                 tot, [f"{n}: {brl(v)}" for n, v in sorted(g_["itens"], key=lambda t: -t[1])[:6]], quem, doc, g_["link"])
+
+    # ── Obra do Estado com prazo vencido e longe de terminar (dados/obras.json, gerado por gerar_obras.py) ──
+    for o in (carregar("obras.json") or {}).get("obras") or []:
+        if "vencida" in (o.get("marcas") or []):
+            add("obra_vencida", (o.get("numero"), o.get("processo"), o.get("cnpj")),
+                f"{o.get('orgao')} {o.get('numero')}: obra {o['executado']:.0f}% executada e prazo vencido há {o['diasVencida']} dias",
+                f"{(o.get('objeto') or '')[:220]} ({o.get('municipios') or 'MS'}). O prazo atual do contrato, já com {o['diasAditados']:.0f} dias "
+                f"acrescentados por aditivo, terminou em {'/'.join(reversed((o.get('fim') or '').split('-')))}, e o Estado informa {o['executado']:.0f}% "
+                f"de execução. Atraso pode ter causa justificada (chuva, desapropriação, mudança de projeto) ou já haver novo aditivo ainda não "
+                f"publicado; vale perguntar ao órgão pela Lei de Acesso à Informação.",
+                o.get("valor") or 0, [f"Empresa: {o.get('fornecedor')}", f"Valor: {brl(o.get('valor') or 0)}", f"Situação: {o.get('situacao')}"],
+                o.get("orgao"), o.get("cnpj"), None)
 
     # ── Cachê acima do que o mesmo artista cobrou de outros órgãos (shows no PNCP) ──
     # Só com 3+ contratações do mesmo artista por 2+ órgãos; compara com a mediana das OUTRAS contratações dele.

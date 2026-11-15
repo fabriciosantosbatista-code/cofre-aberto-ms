@@ -426,6 +426,9 @@ def status_fontes():
         "https://siconfi.tesouro.gov.br/", rc.get("ultimaAtualizacao"), f"mês {ult_rc[5:]}/{ult_rc[:4]}" if ult_rc else None,
         bool(rc) and em_dia(rc.get("ultimaAtualizacao"), 3),
         "O Estado e a Prefeitura publicam esse relatório a cada dois meses, até 30 dias após o fim do bimestre.")
+    obr = carregar("obras.json")
+    add("obras", "Portal da Transparência do Estado de MS — contratos de obras", "https://www.transparencia.ms.gov.br/",
+        obr.get("coleta"), f"{obr['abertas']['obras']} obras em andamento" if obr else None, bool(obr) and em_dia(obr.get("coleta"), 3))
     sh = carregar("shows.json")
     add("shows", "Portal Nacional de Contratações Públicas (PNCP) — contratações de artistas em MS",
         "https://pncp.gov.br/", sh.get("ultimaAtualizacao"),
