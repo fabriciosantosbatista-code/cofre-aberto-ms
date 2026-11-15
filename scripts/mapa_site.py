@@ -15,7 +15,7 @@ GRUPOS = [
     ("Executivo", "#199e70", [("Governo MS", P + "governo-ms"), ("Prefeitura CG", P + "prefeitura"), ("Contratos CG", P + "contratos-cg"), ("Arrecadação", P + "arrecadacao")]),
     ("Emendas", "#d95926", [("Emendas Parlamentares", P + "emendas"), ("Emendas Municípios", P + "pg-municipios")]),
     ("Justiça e salários", "#9085e9", [("Judiciário MS", P + "judiciario"), ("Supersalários", P + "supersalarios")]),
-    ("Fiscalização", "#c98500", [("Auditoria", P + "auditoria"), ("Conexões", P + "conexoes"), ("Obras atrasadas", P + "obras"), ("Shows", P + "shows"), ("Publicidade", P + "publicidade"), ("Presença e votação", P + "votacoes"),
+    ("Fiscalização", "#c98500", [("Auditoria", P + "auditoria"), ("Conexões", P + "conexoes"), ("Obras atrasadas", P + "obras"), ("Shows", P + "shows"), ("Publicidade", P + "publicidade"), ("ONGs e entidades", P + "entidades"), ("Presença e votação", P + "votacoes"),
                                  ("Eleições e patrimônio", P + "eleicoes"), ("Evolução", P + "evolucao"), ("Termômetro", "/termometro-da-transparencia/")]),
     ("Brasil", "#2bb3a3", [("Presidência", P + "presidencia"), ("Senado Brasil", P + "senado-brasil"), ("Dep. Federais Brasil", P + "deputados-brasil"),
                            ("STF", P + "stf")]),

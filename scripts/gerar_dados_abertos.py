@@ -433,6 +433,10 @@ def status_fontes():
     add("publicidade", "Portal da Transparência do Estado de MS e SIG-Transparência da Prefeitura de CG", "https://www.transparencia.ms.gov.br/",
         pbl.get("geradoEm"), f"pagamento da Prefeitura de {data_br((pbl.get('prefeitura') or {}).get('ate') or '')}" if pbl else None,
         bool(pbl) and em_dia(pbl.get("geradoEm"), 3))
+    ent = carregar("entidades.json")
+    add("entidades", "Portal da Transparência do Estado de MS, SIG-Transparência da Prefeitura de CG, emendas (CGU) e cadastro de CNPJ da Receita",
+        "https://www.transparencia.ms.gov.br/", ent.get("geradoEm"), f"{ent.get('quantidade')} entidades" if ent else None,
+        bool(ent) and em_dia(ent.get("geradoEm"), 3))
     sh = carregar("shows.json")
     add("shows", "Portal Nacional de Contratações Públicas (PNCP) — contratações de artistas em MS",
         "https://pncp.gov.br/", sh.get("ultimaAtualizacao"),

@@ -477,6 +477,9 @@ jobs:
       - name: Publicidade do Governo de MS e da Prefeitura de CG
         run: python3 scripts/gerar_publicidade.py || echo "⚠️ gerar_publicidade.py falhou — dados anteriores mantidos"
 
+      - name: Dinheiro público para ONGs e entidades sem fins lucrativos
+        run: python3 scripts/gerar_entidades.py || echo "⚠️ gerar_entidades.py falhou — dados anteriores mantidos"
+
       - name: Auditoria — sinais de atenção (cruza notas, contratos e Receita)
         run: python3 scripts/gerar_auditoria.py || echo "⚠️ gerar_auditoria.py falhou — sinais anteriores mantidos"
 
