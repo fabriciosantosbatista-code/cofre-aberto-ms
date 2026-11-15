@@ -6666,14 +6666,14 @@ function renderPublicidade(d) {
   if (d.agencias[0]) { document.getElementById("pb-maior").textContent = brl(d.agencias[0].total); document.getElementById("pb-maior-r").textContent = `maior agência — ${d.agencias[0].nome}`; }
   const tb = document.querySelector("#tabela-pb tbody");
   tb.innerHTML = d.agencias.map((a, i) => `<tr class="pb-l" data-i="${i}" style="cursor:pointer"><td>${i + 1}</td><td><b>${escHTML(a.nome)}</b> <span class="section-note">▾</span>` +
-    `<div class="section-note" style="margin:0">CNPJ ${a.cnpj ? a.cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, "$1.$2.$3/$4-$5") : "—"}${a.pagina ? ` · <a href="${a.pagina}" onclick="event.stopPropagation()">página da empresa</a>` : ""}</div></td>` +
+    `<div class="section-note" style="margin:0">CNPJ ${a.cnpj ? a.cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, "$1.$2.$3/$4-$5") : "—"}${a.pagina ? ` · <a href="${a.pagina}">página da empresa</a>` : ""}</div></td>` +
     `<td class="num">${a.estado ? brl(a.estado) : "—"}</td><td class="num">${a.prefeitura ? brl(a.prefeitura) : "—"}</td><td class="num"><b>${brl(a.total)}</b></td></tr>` +
     `<tr class="pb-d" data-i="${i}" hidden><td></td><td colspan="4" style="font-size:.82rem">` +
     (a.orgaosPrefeitura.length ? `<div><b>Prefeitura:</b> ${a.orgaosPrefeitura.map(([o, v]) => `${escHTML(o)} (${brl(v)})`).join(" · ")}</div>` : "") +
     (a.orgaosEstado.length ? `<div><b>Estado:</b> ${a.orgaosEstado.map(([o, v]) => `${escHTML(o)} (${brl(v)})`).join(" · ")}</div>` : (a.estado ? `<div><b>Estado:</b> órgão pagador ainda não lido (o robô busca no portal estadual)</div>` : "")) +
     (a.contratosEstado.length ? `<div><b>Contratos com o Estado:</b> ${a.contratosEstado.map(c => `${escHTML(c.orgao || "")} nº ${escHTML(c.numero || "")}, ${escHTML((c.modalidade || "").toLowerCase())}, ${dt(c.inicio)} a ${dt(c.fim)}${c.valor ? `, ${brl(c.valor)}` : ""}`).join(" · ")}</div>` : "") +
     `</td></tr>`).join("");
-  tb.onclick = ev => { const l = ev.target.closest(".pb-l"); if (!l) return; const x = tb.querySelector(`.pb-d[data-i="${l.dataset.i}"]`); x.hidden = !x.hidden; };
+  tb.onclick = ev => { if (ev.target.closest("a")) return; const l = ev.target.closest(".pb-l"); if (!l) return; const x = tb.querySelector(`.pb-d[data-i="${l.dataset.i}"]`); x.hidden = !x.hidden; };
   // mês a mês (Prefeitura)
   const ms = d.prefeitura.porMes, max = Math.max(...ms.map(m => m.valor), 1);
   document.getElementById("pb-meses").innerHTML = `<div style="display:flex;align-items:flex-end;gap:6px;height:170px">${ms.map(m =>
@@ -6833,6 +6833,31 @@ function abrirPaginaNaAba(tab) {
     setInterval(() => { if (tab.classList.contains("active")) ajustar(); }, 700);
   }
 }
+// links do painel para páginas de empresa, órgão, município, boletim, metodologia e apoie abrem DENTRO do painel,
+// na aba correspondente (com o menu ao lado), em vez de trocar a janela inteira
+const PAG_ABA = [[/^\/empresa\//, "pg-empresas"], [/^\/orgao\//, "pg-orgaos"], [/^\/municipio\//, "pg-municipios"], [/^\/boletim\//, "pg-boletim"],
+                 [/^\/metodologia\.html/, "pg-metodologia"], [/^\/apoie\//, "pg-apoie"]];
+function abrirPaginaDentro(url) {
+  const u = new URL(url, location.href);
+  if (u.origin !== location.origin) return false;
+  const par = PAG_ABA.find(([re]) => re.test(u.pathname));
+  const btn = par && document.querySelector(`.sidebar nav button[data-tab="${par[1]}"]`);
+  if (!btn) return false;
+  btn.click();
+  const f = document.querySelector(`#tab-${par[1]} iframe.aba-pagina`);
+  if (!f) return false;
+  if (!f.src) abrirPaginaNaAba(f.closest(".tabpanel"));
+  const alvo = u.pathname + u.search + u.hash;
+  try { if (f.contentWindow.location.pathname + f.contentWindow.location.hash !== u.pathname + u.hash) f.src = alvo; } catch (e) { f.src = alvo; }
+  window.scrollTo({ top: 0, behavior: "instant" });
+  return true;
+}
+document.addEventListener("click", ev => {
+  const a = ev.target.closest && ev.target.closest("a[href]");
+  if (!a || ev.defaultPrevented || ev.button !== 0 || ev.ctrlKey || ev.metaKey || ev.shiftKey) return;
+  if (a.target && a.target !== "_self") return;  // "abrir em página própria" e links externos continuam como estão
+  if (abrirPaginaDentro(a.href)) ev.preventDefault();
+});
 // clicar de novo no item do menu volta para o início da página (ex.: da página de uma empresa para a lista)
 document.querySelectorAll('.sidebar nav button[data-tab^="pg-"]').forEach(b => b.addEventListener("click", () => {
   const f = document.querySelector(`#tab-${b.dataset.tab} iframe.aba-pagina`);
