@@ -429,6 +429,10 @@ def status_fontes():
     obr = carregar("obras.json")
     add("obras", "Portal da Transparência do Estado de MS — contratos de obras", "https://www.transparencia.ms.gov.br/",
         obr.get("coleta"), f"{obr['abertas']['obras']} obras em andamento" if obr else None, bool(obr) and em_dia(obr.get("coleta"), 3))
+    pbl = carregar("publicidade.json")
+    add("publicidade", "Portal da Transparência do Estado de MS e SIG-Transparência da Prefeitura de CG", "https://www.transparencia.ms.gov.br/",
+        pbl.get("geradoEm"), f"pagamento da Prefeitura de {data_br((pbl.get('prefeitura') or {}).get('ate') or '')}" if pbl else None,
+        bool(pbl) and em_dia(pbl.get("geradoEm"), 3))
     sh = carregar("shows.json")
     add("shows", "Portal Nacional de Contratações Públicas (PNCP) — contratações de artistas em MS",
         "https://pncp.gov.br/", sh.get("ultimaAtualizacao"),

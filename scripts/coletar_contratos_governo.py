@@ -110,6 +110,12 @@ def pagadores():
             vig.add(c)
     ini, fim = date(ANO, 1, 1), date.today()
     cred = g.despesas_periodo("despesapordatacredores", ini, fim, 40000)["despesas"]
+    # agências de publicidade (aba Publicidade): também quero saber qual órgão do Estado paga cada uma
+    try:
+        from gerar_publicidade import AGENCIA, NAO
+        vig |= {dig(c["cpfCnpj"]) for c in cred if AGENCIA.search(c.get("credor") or "") and not NAO.search(c.get("credor") or "")}
+    except Exception as e:
+        print(f"  ⚠️ agências de publicidade: {e}")
     hashes = {dig(c["cpfCnpj"]): c for c in cred if len(dig(c["cpfCnpj"])) == 14}
     alvo = [c for c in vig if c in hashes and (hashes[c].get("pago") or hashes[c].get("empenhado"))]
     out = {}

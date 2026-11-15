@@ -651,6 +651,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button style="--cor:#c98500" data-tab="conexoes"><span class="dot"></span> Conexões</button>
       <button style="--cor:#c98500" data-tab="obras"><span class="dot"></span> Obras atrasadas</button>
       <button style="--cor:#c98500" data-tab="shows"><span class="dot"></span> Shows</button>
+      <button style="--cor:#c98500" data-tab="publicidade"><span class="dot"></span> Publicidade</button>
       <button style="--cor:#c98500" data-tab="votacoes"><span class="dot"></span> Presença e votação</button>
       <button style="--cor:#c98500" data-tab="eleicoes"><span class="dot"></span> Eleições e patrimônio</button>
       <button style="--cor:#c98500" data-tab="evolucao"><span class="dot"></span> Evolução</button>
@@ -1925,6 +1926,39 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     <div class="section"><div class="section-note" id="sh-fonte"></div></div>
   </section>
 
+  <section class="tabpanel" id="tab-publicidade">
+    <div class="hero">
+      <div class="hero-label">Publicidade e propaganda · Governo de MS e Prefeitura de Campo Grande · <span id="pb-ano">—</span></div>
+      <div class="hero-number" id="pb-total">—</div>
+      <div class="hero-desc">pagos no ano a agências de publicidade, propaganda e marketing pelo Governo do Estado e pela Prefeitura de Campo Grande.
+        É o dinheiro das campanhas e anúncios oficiais em TV, rádio, internet, jornais e outdoors.</div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="pb-est">—</div><div class="mini-stat-label" id="pb-est-r">Governo de MS</div></div>
+        <div><div class="mini-stat-value" id="pb-pref">—</div><div class="mini-stat-label" id="pb-pref-r">Prefeitura de CG</div></div>
+        <div><div class="mini-stat-value" id="pb-n">—</div><div class="mini-stat-label">agências pagas</div></div>
+        <div><div class="mini-stat-value" id="pb-maior">—</div><div class="mini-stat-label" id="pb-maior-r">maior agência</div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Quanto cada agência recebeu</h2></div>
+      <div class="section-note">Clique numa agência para ver quem pagou e os contratos. No Estado, o valor é tudo o que a agência recebeu no ano (o portal estadual não separa a despesa por tipo na consulta por credor).</div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-pb"><thead><tr><th>#</th><th>Agência</th><th class="num">Governo de MS</th><th class="num">Prefeitura de CG</th><th class="num">Total</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Prefeitura de Campo Grande — mês a mês e por órgão</h2></div>
+      <div class="section-note" id="pb-pref-nota"></div>
+      <div class="card" id="pb-meses" style="padding:16px"></div>
+      <div class="card card-x-scroll" style="margin-top:12px"><table class="ranking" id="tabela-pb-org"><thead><tr><th>Órgão da Prefeitura</th><th class="num">Pago</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Pagamentos da Prefeitura, um a um</h2></div>
+      <input id="busca-pb" class="search-box" type="search" placeholder="buscar agência, órgão ou processo…" aria-label="Buscar pagamento" style="width:100%;margin-bottom:12px"/>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-pb-pag"><thead><tr><th>Data</th><th>Agência</th><th>Órgão</th><th>Processo</th><th class="num">Pago</th></tr></thead><tbody></tbody></table></div>
+      <button class="pager-btn" id="pb-mais" style="margin-top:10px;display:none">Mostrar mais</button>
+    </div>
+    <div class="section"><div class="section-note" id="pb-fonte"></div></div>
+  </section>
+
   <section class="tabpanel" id="tab-votacoes">
     <div class="hero">
       <div class="hero-label">Presença e votação · deputados federais e senadores de MS · <span id="vt-ano">—</span></div>
@@ -2191,7 +2225,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   </section>
   </section>
 
-  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-apoie">Apoie</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
+  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=publicidade">Publicidade</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-apoie">Apoie</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
   <footer class="site-footer">
     <span>Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público. © 2026 Cofre Aberto MS · <a href="metodologia.html#licenca">dados sob CC BY 4.0, código e layout: todos os direitos reservados</a></span>
     <span>
@@ -6618,6 +6652,55 @@ function renderObras(d) {
     `<b>já parou</b> — o contrato registra dias de paralisação (o portal não diz se está parada hoje); <b>prazo dobrado</b> — os dias aditados passam do prazo inicial. Atraso pode ter causa justificada (chuva, desapropriação, projeto); é um ponto para perguntar ao Estado.`;
 }
 
+// ===================== PUBLICIDADE =====================
+function renderPublicidade(d) {
+  const brl = v => formatBRL(v || 0);
+  const dt = iso => iso ? iso.slice(0, 10).split("-").reverse().join("/") : "—";
+  document.getElementById("pb-ano").textContent = d.ano;
+  document.getElementById("pb-total").textContent = brl(d.estado.total + d.prefeitura.total);
+  document.getElementById("pb-est").textContent = brl(d.estado.total);
+  document.getElementById("pb-est-r").textContent = `Governo de MS · ${d.estado.agencias} agências`;
+  document.getElementById("pb-pref").textContent = brl(d.prefeitura.total);
+  document.getElementById("pb-pref-r").textContent = `Prefeitura de CG · ${d.prefeitura.agencias} agências`;
+  document.getElementById("pb-n").textContent = d.agencias.length;
+  if (d.agencias[0]) { document.getElementById("pb-maior").textContent = brl(d.agencias[0].total); document.getElementById("pb-maior-r").textContent = `maior agência — ${d.agencias[0].nome}`; }
+  const tb = document.querySelector("#tabela-pb tbody");
+  tb.innerHTML = d.agencias.map((a, i) => `<tr class="pb-l" data-i="${i}" style="cursor:pointer"><td>${i + 1}</td><td><b>${escHTML(a.nome)}</b> <span class="section-note">▾</span>` +
+    `<div class="section-note" style="margin:0">CNPJ ${a.cnpj ? a.cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, "$1.$2.$3/$4-$5") : "—"}${a.pagina ? ` · <a href="${a.pagina}" onclick="event.stopPropagation()">página da empresa</a>` : ""}</div></td>` +
+    `<td class="num">${a.estado ? brl(a.estado) : "—"}</td><td class="num">${a.prefeitura ? brl(a.prefeitura) : "—"}</td><td class="num"><b>${brl(a.total)}</b></td></tr>` +
+    `<tr class="pb-d" data-i="${i}" hidden><td></td><td colspan="4" style="font-size:.82rem">` +
+    (a.orgaosPrefeitura.length ? `<div><b>Prefeitura:</b> ${a.orgaosPrefeitura.map(([o, v]) => `${escHTML(o)} (${brl(v)})`).join(" · ")}</div>` : "") +
+    (a.orgaosEstado.length ? `<div><b>Estado:</b> ${a.orgaosEstado.map(([o, v]) => `${escHTML(o)} (${brl(v)})`).join(" · ")}</div>` : (a.estado ? `<div><b>Estado:</b> órgão pagador ainda não lido (o robô busca no portal estadual)</div>` : "")) +
+    (a.contratosEstado.length ? `<div><b>Contratos com o Estado:</b> ${a.contratosEstado.map(c => `${escHTML(c.orgao || "")} nº ${escHTML(c.numero || "")}, ${escHTML((c.modalidade || "").toLowerCase())}, ${dt(c.inicio)} a ${dt(c.fim)}${c.valor ? `, ${brl(c.valor)}` : ""}`).join(" · ")}</div>` : "") +
+    `</td></tr>`).join("");
+  tb.onclick = ev => { const l = ev.target.closest(".pb-l"); if (!l) return; const x = tb.querySelector(`.pb-d[data-i="${l.dataset.i}"]`); x.hidden = !x.hidden; };
+  // mês a mês (Prefeitura)
+  const ms = d.prefeitura.porMes, max = Math.max(...ms.map(m => m.valor), 1);
+  document.getElementById("pb-meses").innerHTML = `<div style="display:flex;align-items:flex-end;gap:6px;height:170px">${ms.map(m =>
+    `<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%" title="${m.rotulo}: ${brl(m.valor)}">` +
+    `<div style="font-size:.62rem;color:var(--ink-caption);margin-bottom:3px;white-space:nowrap">${m.valor ? formatCompact(m.valor).replace("R$ ", "") : ""}</div>` +
+    `<div style="width:100%;max-width:38px;height:${Math.max(m.valor ? 3 : 0, m.valor / max * 130)}px;background:#c98500;border-radius:4px 4px 0 0"></div>` +
+    `<div style="font-size:.7rem;color:var(--ink-soft);margin-top:4px">${m.rotulo}</div></div>`).join("")}</div>`;
+  document.getElementById("pb-pref-nota").textContent = `${d.prefeitura.pagamentos} pagamentos da categoria "serviços de publicidade e propaganda", até ${dt(d.prefeitura.ate)} (último dado publicado pelo portal da Prefeitura). Mês sem barra: nenhum pagamento publicado.`;
+  document.querySelector("#tabela-pb-org tbody").innerHTML = d.prefeitura.porOrgao.map(([o, v]) => `<tr><td>${escHTML(o)}</td><td class="num">${brl(v)}</td></tr>`).join("");
+  // pagamentos um a um
+  let lim = 30, f = "";
+  const norm = t => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const tp = document.querySelector("#tabela-pb-pag tbody");
+  const desenha = () => {
+    const lst = f ? d.pagamentosPrefeitura.filter(r => norm([r.fornecedor, r.orgao, r.processo].join(" ")).includes(norm(f))) : d.pagamentosPrefeitura;
+    tp.innerHTML = lst.slice(0, lim).map(r => `<tr><td>${dt(r.data)}</td><td>${escHTML(r.fornecedor || "—")}</td><td style="font-size:.8rem">${escHTML(r.orgao || "—")}</td>` +
+      `<td style="font-size:.8rem">${escHTML(r.processo || "—")}</td><td class="num">${r.urlDetalhe ? `<a href="${r.urlDetalhe}" target="_blank" rel="noopener">${brl(r.valor)}</a>` : brl(r.valor)}</td></tr>`).join("") || `<tr><td colspan="5">Nenhum pagamento encontrado.</td></tr>`;
+    document.getElementById("pb-mais").style.display = lst.length > lim ? "" : "none";
+  };
+  document.getElementById("pb-mais").onclick = () => { lim += 50; desenha(); };
+  document.getElementById("busca-pb").addEventListener("input", ev => { f = ev.target.value; lim = 30; desenha(); });
+  desenha();
+  document.getElementById("pb-fonte").innerHTML = `Fontes: ${escHTML(d.estado.fonte)}, coletado em ${formatDateTime(d.estado.coleta)}; ${escHTML(d.prefeitura.fonte)}, coletado em ${formatDateTime(d.prefeitura.coleta)}. ` +
+    `Agências do Estado identificadas pelo nome (publicidade, propaganda, marketing, comunicação) e pelas que a Prefeitura paga na categoria de publicidade. ` +
+    `Em ano de eleição estadual, como ${d.ano}, a lei eleitoral proíbe publicidade institucional do governo estadual nos três meses antes da eleição e limita o gasto do primeiro semestre (Lei 9.504/1997, art. 73) — o pagamento pode se referir a campanhas veiculadas antes.`;
+}
+
 // ===================== SHOWS =====================
 function renderShows(d) {
   const brlInt = v => formatBRL(v).replace(/,\d{2}$/, "");
@@ -6946,6 +7029,7 @@ const FONTE_ABA = {
   "conexoes": { titulo: "Conexões entre fornecedores de políticos de MS", csv: [["Conexões", "conexoes_fornecedores.csv"]], json: "conexoes_fornecedores.json" },
   "arrecadacao": { titulo: "Arrecadação do Governo de MS e da Prefeitura de Campo Grande", csv: [], json: "receitas.json" },
   "obras": { titulo: "Obras do Governo do Estado de MS", csv: [["Obras", "governo_ms_obras.csv"]], json: "obras.json" },
+  "publicidade": { titulo: "Publicidade do Governo de MS e da Prefeitura de CG", csv: [], json: "publicidade.json" },
   "shows": { titulo: "Shows pagos com dinheiro público em MS (PNCP)", csv: [], json: "shows.json" },
   "votacoes": { titulo: "Presença e votação dos deputados federais e senadores de MS", csv: [], json: "votacoes.json" },
   "evolucao": { titulo: "Evolução mensal dos gastos de políticos de MS", csv: [["Mês a mês", "evolucao_mensal.csv"]], json: "evolucao_mensal.json" },
@@ -7144,6 +7228,10 @@ async function init() {
       if (btn.dataset.tab === "obras" && !window._obLoaded) {
         window._obLoaded = true;
         carregarJSON("dados/obras.json").then(d => { if (d) renderObras(d); });
+      }
+      if (btn.dataset.tab === "publicidade" && !window._pbLoaded) {
+        window._pbLoaded = true;
+        carregarJSON("dados/publicidade.json").then(d => { if (d) renderPublicidade(d); });
       }
       if (btn.dataset.tab === "shows" && !window._shLoaded) {
         window._shLoaded = true;
