@@ -301,7 +301,8 @@ def cabecalho(titulo, descricao, url, imagem, jsonld, tipo="profile"):
 <meta property="og:image" content="{e(img)}"/>
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:site_name" content="Cofre Aberto MS"/>
-<meta name="twitter:card" content="summary"/>
+{'<meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/>' if "/cartoes/" in img else ""}
+<meta name="twitter:card" content="{'summary_large_image' if '/cartoes/' in img else 'summary'}"/>
 <meta name="twitter:title" content="{e(titulo)}"/>
 <meta name="twitter:description" content="{e(descricao)}"/>
 <meta name="twitter:image" content="{e(img)}"/>
@@ -325,6 +326,7 @@ def cabecalho(titulo, descricao, url, imagem, jsonld, tipo="profile"):
 
 
 from mapa_site import MAPA_HTML  # noqa: E402
+from cartoes import cartao  # noqa: E402
 
 RODAPE = MAPA_HTML + f"""<footer><span>© {ANO} Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
 <span><a href="/metodologia.html#licenca">Dados sob CC BY 4.0 (cite a fonte) · código e layout: todos os direitos reservados</a></span></footer>
@@ -632,7 +634,11 @@ def pagina(p, irmaos):
 <p style="margin-top:14px;font-size:.78rem">Dados públicos de {e(g['cota'])}, coletados automaticamente das fontes oficiais — <a href="/metodologia.html">veja a metodologia, as limitações de cada fonte e como baixar os dados</a>. Encontrou um erro? <a href="/metodologia.html#correcoes">Envie uma correção</a>. Última coleta: {data_br(fonte_data)}.</p>
 </article>
 """
-    return cabecalho(titulo, desc, p["url"], foto, jsonld) + corpo + RODAPE
+    imagem = foto
+    if p.get("uf") == "MS":  # cartão de compartilhamento com o número principal (só os parlamentares de MS)
+        imagem = cartao(f"{p['grupo']}-{p['slug']}", p["nome"], f"{cargo} · {p['partido'] or 'sem partido'}", brl(total).split(",")[0],
+                        f"de {g['cota']} em {ANO}", foto if foto and foto.startswith("/fotos/") else None)
+    return cabecalho(titulo, desc, p["url"], imagem, jsonld) + corpo + RODAPE
 
 
 def indice(grupo, lst):

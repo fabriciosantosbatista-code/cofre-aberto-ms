@@ -17,6 +17,7 @@ Roda depois de gerar_paginas_empresas.py (que mexe no sitemap).
 import json, re, unicodedata
 from pathlib import Path
 
+from cartoes import cartao  # noqa: E402
 from gerar_paginas_parlamentares import (ANO, DADOS, HOJE, ROOT, RODAPE, SITE, brl, cabecalho, compacto, data_br, e,  # noqa: E402
                                          escreve_se_mudou, milhar)
 
@@ -100,7 +101,8 @@ def pagina(sl, nome, sigla, blocos, resumo_txt, fonte):
 <h2>Como citar</h2>
 <div class="citar">COFRE ABERTO MS. <i>{e(nome)} — remunerações e gastos em {ANO}</i>. Fonte dos dados: {e(fonte)}. Compilados em {data_br(HOJE.isoformat())}. Disponível em: {SITE}{url}.</div>
 </article>"""
-    return cabecalho(titulo, resumo_txt[:300], url, None, jsonld, tipo="website").replace("</style>", CSS_EXTRA + "</style>", 1) + corpo + RODAPE
+    img = cartao("orgao-" + sl, nome, f"Salários, penduricalhos e gastos em {ANO}")
+    return cabecalho(titulo, resumo_txt[:300], url, img, jsonld, tipo="website").replace("</style>", CSS_EXTRA + "</style>", 1) + corpo + RODAPE
 
 
 def main():

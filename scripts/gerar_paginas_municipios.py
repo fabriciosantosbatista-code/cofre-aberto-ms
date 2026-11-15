@@ -14,6 +14,7 @@ e acrescenta ao sitemap.xml. Roda depois de gerar_paginas_orgaos.py.
 
 import json, re, unicodedata
 
+from cartoes import cartao  # noqa: E402
 from gerar_paginas_parlamentares import (ANO, DADOS, HOJE, ROOT, RODAPE, SITE, brl, cabecalho, compacto, data_br, e,  # noqa: E402
                                          escreve_se_mudou, milhar)
 
@@ -126,7 +127,9 @@ def main():
 <h2>Como citar</h2>
 <div class="citar">COFRE ABERTO MS. <i>{e(nome)} — emendas parlamentares em {ano_em}</i>. Fonte dos dados: Portal da Transparência do Governo Federal (CGU). Compilados em {data_br(HOJE.isoformat())}. Disponível em: {SITE}{url}.</div>
 </article>"""
-        html = cabecalho(titulo, resumo[:300], url, None, jsonld, tipo="website").replace("</style>", CSS_EXTRA + "</style>", 1) + corpo + RODAPE
+        img = cartao("municipio-" + url.strip("/").split("/")[-1], nome, "Município de Mato Grosso do Sul",
+                     brl(m["total"]).split(",")[0], f"em emendas parlamentares pagas em {ano_em}")
+        html = cabecalho(titulo, resumo[:300], url, img, jsonld, tipo="website").replace("</style>", CSS_EXTRA + "</style>", 1) + corpo + RODAPE
         paginas.append({"slug": sl, "nome": nome, "total": m["total"], "pix": pix_total, "uniao": tu or 0, "autores": len(m["autores"]), "html": html})
 
     PASTA.mkdir(exist_ok=True)

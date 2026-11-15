@@ -24,6 +24,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from gerar_paginas_parlamentares import (ANO, DADOS, HOJE, ROOT, RODAPE, SITE, brl, cabecalho, compacto, data_br, e,  # noqa: E402
                                          escreve_se_mudou, milhar)
 from gerar_paginas_municipios import CSS_EXTRA, barras, tabela  # noqa: E402
+from cartoes import cartao  # noqa: E402
 
 CSS_TEMA = CSS_EXTRA + """
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:14px 0 18px}
@@ -72,7 +73,18 @@ def pagina(url, titulo, descricao, h1, corpo, jsonld=None, migalha=None):
     ld = jsonld or {"@context": "https://schema.org", "@type": "WebPage", "name": h1, "url": SITE + url,
                     "dateModified": HOJE.isoformat(), "inLanguage": "pt-BR"}
     trilha = f"<a href='/'>Início</a> / {migalha + ' / ' if migalha else ''}{e(h1)}"
-    html = cabecalho(titulo, descricao, url, None, ld, tipo="article").replace("</style>", CSS_TEMA + "</style>", 1)
+    k = re.search(r"<div class='kpi'><b>(.*?)</b><span>(.*?)</span>", corpo)
+    limpa = lambda t: re.sub(r"<[^>]+>", "", t).replace("&amp;", "&")
+    num, rot = (limpa(k.group(1)), limpa(k.group(2))) if k else (None, None)
+    if not k:  # perguntas: o primeiro valor em reais da resposta e o que vem logo depois dele ("por mês", "em Emendas Pix")
+        rsp = re.search(r"<div class='resposta'>(.*?)</div>", corpo, re.S)
+        m = re.search(r"(R\$\s?[\d.]+(?:,\d{2})?)\s+([^,.;:]{2,40}?)(?=\s+e\s|[,.;:]|$)", limpa(rsp.group(1))) if rsp else None
+        if m:
+            num, rot = m.group(1), m.group(2)
+    img = cartao("tema-" + (url.strip("/").replace("/", "-") or "inicio"), h1,
+                 "Pergunta respondida com dados oficiais" if url.startswith("/perguntas/") and url != "/perguntas/" else "Mato Grosso do Sul",
+                 num, rot)
+    html = cabecalho(titulo, descricao, url, img, ld, tipo="article").replace("</style>", CSS_TEMA + "</style>", 1)
     html += f"""<p class="breadcrumb">{trilha}</p>
 <article><h1>{e(h1)}</h1>
 <p class="cargo" style="margin-bottom:6px">Atualizado em {data_br(HOJE.isoformat())} com dados de fontes oficiais.</p>
