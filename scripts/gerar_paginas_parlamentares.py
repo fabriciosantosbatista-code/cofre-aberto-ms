@@ -305,7 +305,9 @@ def cabecalho(titulo, descricao, url, imagem, jsonld, tipo="profile"):
 <meta name="twitter:title" content="{e(titulo)}"/>
 <meta name="twitter:description" content="{e(descricao)}"/>
 <meta name="twitter:image" content="{e(img)}"/>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2"/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>{CSS}</style>
