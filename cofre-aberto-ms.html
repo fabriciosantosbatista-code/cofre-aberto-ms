@@ -1862,7 +1862,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
     <div class="section">
       <div class="section-head"><h2 class="section-title">Quem mais gastou com shows</h2></div>
-      <div class="section-note">Prefeituras e órgãos de cada cidade somados; o Governo do Estado (Fundação de Cultura, Turismo e Secretaria de Cultura) aparece à parte.
+      <div class="section-note">Clique numa cidade para ver todos os shows dela. Prefeituras e órgãos de cada cidade somados; o Governo do Estado (Fundação de Cultura, Turismo e Secretaria de Cultura) aparece à parte.
         "Por habitante" divide o gasto pela população da cidade (Tesouro Nacional). A Prefeitura de Campo Grande não publica essas contratações no PNCP —
         os pagamentos dela a empresas de eventos estão na aba <a href="#aba=prefeitura" data-ir="prefeitura">Prefeitura CG</a>.</div>
       <div class="card card-x-scroll"><table class="ranking" id="tabela-sh-orgaos"><thead><tr><th>#</th><th>Cidade / órgão</th><th class="num">Shows</th><th class="num">Gasto</th><th class="num">Por habitante</th></tr></thead><tbody></tbody></table></div>
@@ -1870,6 +1870,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     </div>
     <div class="section">
       <div class="section-head"><h2 class="section-title">Todos os shows, do maior cachê ao menor</h2></div>
+      <div id="sh-local" class="section-note" hidden style="margin:0 0 10px;padding:8px 12px;border:1px solid var(--border);border-left:3px solid #c98500;border-radius:8px;background:var(--surface)"></div>
       <input id="busca-sh" class="search-box" type="search" placeholder="buscar artista, cidade, evento ou empresa (ex.: Ana Castela, Bonito, rodeio)…" aria-label="Buscar show" style="width:100%;margin-bottom:12px"/>
       <div class="section-note">Artista, evento e data são lidos do texto que o órgão publicou; quando o texto não diz, aparece o objeto da contratação. Valor homologado ou, quando ainda não houver, o estimado.</div>
       <div class="card card-x-scroll"><table class="ranking" id="tabela-sh"><thead><tr><th>Artista / objeto</th><th>Evento e data</th><th>Cidade</th><th>Contratante</th><th>Empresa contratada</th><th class="num">Valor</th></tr></thead><tbody></tbody></table></div>
@@ -6546,7 +6547,7 @@ function renderShows(d) {
   let todosOrg = false;
   const desenhaOrg = () => {
     const lst = todosOrg ? d.ranking : d.ranking.slice(0, 15);
-    tbo.innerHTML = lst.map((r, i) => `<tr><td>${i + 1}</td><td><b>${escHTML(r.nome)}</b>${r.esfera === "M" && r.orgaos.length > 1 ? `<div class="section-note" style="margin:2px 0 0">${r.orgaos.map(escHTML).join(" · ")}</div>` : ""}</td>` +
+    tbo.innerHTML = lst.map((r, i) => `<tr class="sh-org-l" data-nome="${escHTML(r.nome)}" data-esfera="${r.esfera}" style="cursor:pointer" title="Ver os shows"><td>${i + 1}</td><td><b>${escHTML(r.nome)}</b> <span class="section-note">ver shows →</span>${r.esfera === "M" && r.orgaos.length > 1 ? `<div class="section-note" style="margin:2px 0 0">${r.orgaos.map(escHTML).join(" · ")}</div>` : ""}</td>` +
       `<td class="num">${r.shows}</td><td class="num">${brlInt(r.valor)}</td><td class="num">${r.porHabitante != null ? formatBRL(r.porHabitante) : "—"}</td></tr>`).join("");
     document.getElementById("sh-org-mais").style.display = !todosOrg && d.ranking.length > 15 ? "" : "none";
   };
@@ -6555,11 +6556,15 @@ function renderShows(d) {
   // lista de shows
   const tb = document.querySelector("#tabela-sh tbody");
   const dataBR = iso => iso ? iso.split("-").reverse().join("/") : "";
-  let lim = 30, filtro = "";
+  let lim = 30, filtro = "", local = null;
   const norm = t => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
   const desenha = () => {
     const f = norm(filtro);
-    const lst = f ? d.shows.filter(x => norm([x.artista, x.evento, x.cidade, x.orgao, x.empresa, x.objeto].join(" ")).includes(f)) : d.shows;
+    let lst = local ? d.shows.filter(x => local.esfera === "E" ? x.esfera === "E" : (x.esfera === "M" && x.cidadeOrgao === local.nome)) : d.shows;
+    if (f) lst = lst.filter(x => norm([x.artista, x.evento, x.cidade, x.orgao, x.empresa, x.objeto].join(" ")).includes(f));
+    const chip = document.getElementById("sh-local");
+    chip.hidden = !local;
+    if (local) chip.innerHTML = `Mostrando os ${lst.length} shows de <b>${escHTML(local.nome)}</b> · ${formatBRL(lst.reduce((s, x) => s + x.valor, 0)).replace(/,\d{2}$/, "")} <button type="button" class="pager-btn" style="margin-left:8px;padding:2px 10px">✕ ver todos</button>`;
     tb.innerHTML = lst.slice(0, lim).map(x => `<tr>` +
       `<td>${x.artista ? `<b>${escHTML(x.artista)}</b>` : `<span style="font-size:.8rem">${escHTML(x.objeto.slice(0, 140))}${x.objeto.length > 140 ? "…" : ""}</span>`}</td>` +
       `<td>${escHTML(x.evento || "—")}${x.dataShow ? `<div class="section-note" style="margin:2px 0 0">${dataBR(x.dataShow)}</div>` : ""}</td>` +
@@ -6569,6 +6574,12 @@ function renderShows(d) {
     document.getElementById("sh-mais").style.display = lst.length > lim ? "" : "none";
   };
   document.getElementById("sh-mais").onclick = () => { lim += 50; desenha(); };
+  tbo.onclick = ev => {
+    const l = ev.target.closest(".sh-org-l"); if (!l) return;
+    local = { nome: l.dataset.nome, esfera: l.dataset.esfera }; lim = 200; desenha();
+    document.getElementById("tabela-sh").scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  document.getElementById("sh-local").onclick = ev => { if (ev.target.closest("button")) { local = null; lim = 30; desenha(); } };
   document.getElementById("busca-sh").addEventListener("input", ev => { filtro = ev.target.value; lim = 30; desenha(); });
   desenha();
   // mesmo artista em vários órgãos
