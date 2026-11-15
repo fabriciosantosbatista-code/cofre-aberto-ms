@@ -640,6 +640,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="nav-sub-label" style="--cor:#c98500">Fiscalização</div>
       <button style="--cor:#c98500" data-tab="auditoria"><span class="dot"></span> Auditoria</button>
       <button style="--cor:#c98500" data-tab="conexoes"><span class="dot"></span> Conexões</button>
+      <button style="--cor:#c98500" data-tab="shows"><span class="dot"></span> Shows</button>
       <button style="--cor:#c98500" data-tab="votacoes"><span class="dot"></span> Presença e votação</button>
       <button style="--cor:#c98500" data-tab="eleicoes"><span class="dot"></span> Eleições e patrimônio</button>
       <button style="--cor:#c98500" data-tab="evolucao"><span class="dot"></span> Evolução</button>
@@ -1845,6 +1846,43 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     <p class="aba-pagina-abrir"><a href="metodologia.html" target="_blank" rel="noopener">Abrir Metodologia e dados em página própria ↗</a></p>
   </section>
 
+  <section class="tabpanel" id="tab-shows">
+    <div class="hero">
+      <div class="hero-label">Shows pagos com dinheiro público em MS · <span id="sh-ano">—</span></div>
+      <div class="hero-number" id="sh-total">—</div>
+      <div class="hero-desc">em cachês de shows contratados sem licitação (inexigibilidade para artista) pelo Governo do Estado e pelas prefeituras,
+        câmaras e fundos municipais de MS, segundo o Portal Nacional de Contratações Públicas. Contratar artista sem licitação é permitido por lei;
+        o que se mostra aqui é quanto foi pago, a quem e para qual evento.</div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="sh-n">—</div><div class="mini-stat-label">shows contratados</div></div>
+        <div><div class="mini-stat-value" id="sh-maior">—</div><div class="mini-stat-label" id="sh-maior-r">maior cachê</div></div>
+        <div><div class="mini-stat-value" id="sh-org">—</div><div class="mini-stat-label">cidades e órgãos contratantes</div></div>
+        <div><div class="mini-stat-value" id="sh-rep">—</div><div class="mini-stat-label">artistas pagos por mais de um órgão</div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Quem mais gastou com shows</h2></div>
+      <div class="section-note">Prefeituras e órgãos de cada cidade somados; o Governo do Estado (Fundação de Cultura, Turismo e Secretaria de Cultura) aparece à parte.
+        "Por habitante" divide o gasto pela população da cidade (Tesouro Nacional). A Prefeitura de Campo Grande não publica essas contratações no PNCP —
+        os pagamentos dela a empresas de eventos estão na aba <a href="#aba=prefeitura" data-ir="prefeitura">Prefeitura CG</a>.</div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-sh-orgaos"><thead><tr><th>#</th><th>Cidade / órgão</th><th class="num">Shows</th><th class="num">Gasto</th><th class="num">Por habitante</th></tr></thead><tbody></tbody></table></div>
+      <button class="pager-btn" id="sh-org-mais" style="margin-top:10px;display:none">Mostrar todas</button>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Todos os shows, do maior cachê ao menor</h2></div>
+      <input id="busca-sh" class="search-box" type="search" placeholder="buscar artista, cidade, evento ou empresa (ex.: Ana Castela, Bonito, rodeio)…" aria-label="Buscar show" style="width:100%;margin-bottom:12px"/>
+      <div class="section-note">Artista, evento e data são lidos do texto que o órgão publicou; quando o texto não diz, aparece o objeto da contratação. Valor homologado ou, quando ainda não houver, o estimado.</div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-sh"><thead><tr><th>Artista / objeto</th><th>Evento e data</th><th>Cidade</th><th>Contratante</th><th>Empresa contratada</th><th class="num">Valor</th></tr></thead><tbody></tbody></table></div>
+      <button class="pager-btn" id="sh-mais" style="margin-top:10px;display:none">Mostrar mais</button>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">O mesmo artista pago por mais de um órgão</h2></div>
+      <div class="section-note">Quanto cada órgão pagou pelo mesmo artista. Cachês variam com a data, a duração e a estrutura incluída — diferença grande é um ponto para perguntar, não prova de irregularidade.</div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-sh-rep"><thead><tr><th>Artista</th><th class="num">Contratações</th><th class="num">Menor</th><th class="num">Maior</th><th class="num">Total</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="section"><div class="section-note" id="sh-fonte"></div></div>
+  </section>
+
   <section class="tabpanel" id="tab-votacoes">
     <div class="hero">
       <div class="hero-label">Presença e votação · deputados federais e senadores de MS · <span id="vt-ano">—</span></div>
@@ -2111,7 +2149,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
   </section>
   </section>
 
-  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-apoie">Apoie</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
+  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-apoie">Apoie</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
   <footer class="site-footer">
     <span>Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público.</span>
     <span>
@@ -6493,6 +6531,57 @@ function evGrafico() {
   s.addEventListener("pointerleave", esconder);
 }
 
+// ===================== SHOWS =====================
+function renderShows(d) {
+  const brlInt = v => formatBRL(v).replace(/,\d{2}$/, "");
+  document.getElementById("sh-ano").textContent = d.ano;
+  document.getElementById("sh-total").textContent = formatCompact(d.valorShows);
+  document.getElementById("sh-n").textContent = d.totalShows.toLocaleString("pt-BR");
+  const top = d.shows[0];
+  if (top) { document.getElementById("sh-maior").textContent = formatCompact(top.valor); document.getElementById("sh-maior-r").textContent = `maior cachê${top.artista ? " — " + top.artista : ""}`; }
+  document.getElementById("sh-org").textContent = d.ranking.length;
+  document.getElementById("sh-rep").textContent = d.artistasEmVariosOrgaos.length;
+  // ranking por cidade/órgão
+  const tbo = document.querySelector("#tabela-sh-orgaos tbody");
+  let todosOrg = false;
+  const desenhaOrg = () => {
+    const lst = todosOrg ? d.ranking : d.ranking.slice(0, 15);
+    tbo.innerHTML = lst.map((r, i) => `<tr><td>${i + 1}</td><td><b>${escHTML(r.nome)}</b>${r.esfera === "M" && r.orgaos.length > 1 ? `<div class="section-note" style="margin:2px 0 0">${r.orgaos.map(escHTML).join(" · ")}</div>` : ""}</td>` +
+      `<td class="num">${r.shows}</td><td class="num">${brlInt(r.valor)}</td><td class="num">${r.porHabitante != null ? formatBRL(r.porHabitante) : "—"}</td></tr>`).join("");
+    document.getElementById("sh-org-mais").style.display = !todosOrg && d.ranking.length > 15 ? "" : "none";
+  };
+  document.getElementById("sh-org-mais").onclick = () => { todosOrg = true; desenhaOrg(); };
+  desenhaOrg();
+  // lista de shows
+  const tb = document.querySelector("#tabela-sh tbody");
+  const dataBR = iso => iso ? iso.split("-").reverse().join("/") : "";
+  let lim = 30, filtro = "";
+  const norm = t => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const desenha = () => {
+    const f = norm(filtro);
+    const lst = f ? d.shows.filter(x => norm([x.artista, x.evento, x.cidade, x.orgao, x.empresa, x.objeto].join(" ")).includes(f)) : d.shows;
+    tb.innerHTML = lst.slice(0, lim).map(x => `<tr>` +
+      `<td>${x.artista ? `<b>${escHTML(x.artista)}</b>` : `<span style="font-size:.8rem">${escHTML(x.objeto.slice(0, 140))}${x.objeto.length > 140 ? "…" : ""}</span>`}</td>` +
+      `<td>${escHTML(x.evento || "—")}${x.dataShow ? `<div class="section-note" style="margin:2px 0 0">${dataBR(x.dataShow)}</div>` : ""}</td>` +
+      `<td>${escHTML(x.cidade || "—")}</td><td style="font-size:.8rem">${escHTML(x.orgao)}</td><td style="font-size:.8rem">${escHTML(x.empresa || "—")}</td>` +
+      `<td class="num"><a href="${x.link}" target="_blank" rel="noopener" title="Ver no PNCP">${brlInt(x.valor)}</a>${x.homologado ? "" : `<div class="section-note" style="margin:2px 0 0">estimado</div>`}</td></tr>`).join("") ||
+      `<tr><td colspan="6">Nenhum show encontrado.</td></tr>`;
+    document.getElementById("sh-mais").style.display = lst.length > lim ? "" : "none";
+  };
+  document.getElementById("sh-mais").onclick = () => { lim += 50; desenha(); };
+  document.getElementById("busca-sh").addEventListener("input", ev => { filtro = ev.target.value; lim = 30; desenha(); });
+  desenha();
+  // mesmo artista em vários órgãos
+  const tr = document.querySelector("#tabela-sh-rep tbody");
+  tr.innerHTML = d.artistasEmVariosOrgaos.slice(0, 60).map((r, i) => `<tr class="sh-rep-l" data-i="${i}" style="cursor:pointer"><td><b>${escHTML(r.artista)}</b> <span class="section-note">▾</span></td>` +
+    `<td class="num">${r.contratacoes}</td><td class="num">${brlInt(r.menor)}</td><td class="num">${brlInt(r.maior)}</td><td class="num">${brlInt(r.total)}</td></tr>` +
+    `<tr class="sh-rep-d" data-i="${i}" hidden><td colspan="5"><ul style="margin:4px 0 4px 18px;font-size:.82rem">${r.lista.map(x =>
+      `<li><a href="${x.link}" target="_blank" rel="noopener">${brlInt(x.valor)}</a> — ${escHTML(x.orgao)}${x.cidade ? ` (${escHTML(x.cidade)})` : ""}${x.evento ? ` · ${escHTML(x.evento)}` : ""}${x.data ? ` · ${dataBR(x.data)}` : ""}</li>`).join("")}</ul></td></tr>`).join("");
+  tr.onclick = ev => { const l = ev.target.closest(".sh-rep-l"); if (!l) return; const det = tr.querySelector(`.sh-rep-d[data-i="${l.dataset.i}"]`); det.hidden = !det.hidden; };
+  document.getElementById("sh-fonte").innerHTML = `Fonte: <a href="${d.fonteUrl}" target="_blank" rel="noopener">${escHTML(d.fonte)}</a>. ` +
+    `Além dos shows, há ${d.outras.quantidade} outras contratações artísticas (obras de arte, pareceristas, oficinas) que somam ${brlInt(d.outras.valor)} e não entram nos totais. Coletado em ${formatDateTime(d.ultimaAtualizacao)}.`;
+}
+
 // ===================== ARRECADAÇÃO (Impostômetro) =====================
 const AR_COLS = {
   estado: [["icms", "ICMS"], ["ipva", "IPVA"], ["itcd", "ITCD"], ["irrf", "IRRF"], ["impostos", "Total de impostos"], ["fpe", "FPE (União)"], ["correntes", "Receitas correntes"]],
@@ -6726,6 +6815,7 @@ const FONTE_ABA = {
   "senado-brasil": { titulo: "CEAPS dos senadores do Brasil", csv: [["Resumo", "senadores_brasil.csv"]], json: "senadores_brasil.json" },
   "conexoes": { titulo: "Conexões entre fornecedores de políticos de MS", csv: [["Conexões", "conexoes_fornecedores.csv"]], json: "conexoes_fornecedores.json" },
   "arrecadacao": { titulo: "Arrecadação do Governo de MS e da Prefeitura de Campo Grande", csv: [], json: "receitas.json" },
+  "shows": { titulo: "Shows pagos com dinheiro público em MS (PNCP)", csv: [], json: "shows.json" },
   "votacoes": { titulo: "Presença e votação dos deputados federais e senadores de MS", csv: [], json: "votacoes.json" },
   "evolucao": { titulo: "Evolução mensal dos gastos de políticos de MS", csv: [["Mês a mês", "evolucao_mensal.csv"]], json: "evolucao_mensal.json" },
 };
@@ -6919,6 +7009,10 @@ async function init() {
       if (btn.dataset.tab === "arrecadacao" && !window._arLoaded) {
         window._arLoaded = true;
         carregarJSON("dados/receitas.json").then(d => { if (d) renderArrecadacao(d); });
+      }
+      if (btn.dataset.tab === "shows" && !window._shLoaded) {
+        window._shLoaded = true;
+        carregarJSON("dados/shows.json").then(d => { if (d) renderShows(d); });
       }
       if (btn.dataset.tab === "votacoes" && !window._vtLoaded) {
         window._vtLoaded = true;

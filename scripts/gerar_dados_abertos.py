@@ -420,6 +420,11 @@ def status_fontes():
         "https://siconfi.tesouro.gov.br/", rc.get("ultimaAtualizacao"), f"mês {ult_rc[5:]}/{ult_rc[:4]}" if ult_rc else None,
         bool(rc) and em_dia(rc.get("ultimaAtualizacao"), 3),
         "O Estado e a Prefeitura publicam esse relatório a cada dois meses, até 30 dias após o fim do bimestre.")
+    sh = carregar("shows.json")
+    add("shows", "Portal Nacional de Contratações Públicas (PNCP) — contratações de artistas em MS",
+        "https://pncp.gov.br/", sh.get("ultimaAtualizacao"),
+        f"publicação de {data_br(max([x.get('publicado') or '' for x in sh.get('shows') or []] or ['']))}" if sh else None,
+        bool(sh) and em_dia(sh.get("ultimaAtualizacao"), 3))
     vt = carregar("votacoes.json")
     qc, qs = (vt.get("quadroCamara") or {}).get("votacoes") or [], (vt.get("quadroSenado") or {}).get("votacoes") or []
     add("votacoes", "Câmara dos Deputados e Senado Federal — dados abertos das votações nominais do plenário",

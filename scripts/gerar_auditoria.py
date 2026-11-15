@@ -41,6 +41,7 @@ ficaram de fora depois do teste com os dados de nov/2026):
                         no ano — cada um abaixo do limite legal, mas juntos acima dele (Prefeitura e PNCP)
   acumulo_cargos        servidor ativo do Estado (efetivo ou professor) que também aparece na folha da ALEMS
                         ou num gabinete da Câmara de CG, pelo nome completo (único na folha do Estado)
+  cache_acima_artista   show pago bem acima do que o mesmo artista cobrou de outros órgãos de MS no ano (PNCP)
   dispensa_acima_limite um mesmo processo de dispensa somando mais que o limite legal
                         (exclui aluguel de imóvel, bancos e concessionárias, que têm
                         outra base legal)
@@ -64,7 +65,7 @@ NIVEL = {"mei_acima_limite": "forte", "situacao_irregular": "forte", "socio_parl
          "empresa_sancionada": "forte", "sancionada_outro_ente": "médio", "socio_sancionado": "forte",
          "possivel_parente": "médio", "entidade_parlamentar": "médio",
          "doador_executivo": "forte", "fornecedor_campanha_executivo": "médio", "preco_acima_estimado": "médio", "obra_prazo_estourado": "médio", "aditivo_acima_limite": "médio",
-         "fracionamento_fornecedor": "médio", "acumulo_cargos": "médio"}
+         "fracionamento_fornecedor": "médio", "acumulo_cargos": "médio", "cache_acima_artista": "médio"}
 ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_irregular": "Empresa com CNPJ irregular",
           "socio_parlamentar": "Parlamentar é sócio", "socios_licitacao": "Sócios em comum na mesma licitação",
           "dispensa_acima_limite": "Possível fracionamento de dispensa", "empresa_nova": "Empresa recém-aberta",
@@ -81,7 +82,8 @@ ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_ir
           "preco_acima_estimado": "Licitação do Estado homologada acima do preço estimado",
           "obra_prazo_estourado": "Obra do Estado com prazo mais que dobrado", "aditivo_acima_limite": "Aditivos acima de 25%",
           "fracionamento_fornecedor": "Várias dispensas à mesma empresa somando acima do limite",
-          "acumulo_cargos": "Servidor do Estado com cargo também na ALEMS ou na Câmara de CG"}
+          "acumulo_cargos": "Servidor do Estado com cargo também na ALEMS ou na Câmara de CG",
+          "cache_acima_artista": "Cachê de show bem acima do que o mesmo artista cobrou de outros órgãos"}
 
 # naturezas jurídicas de empresa privada (associações, fundos, órgãos e consórcios públicos não têm capital social)
 EMPRESARIAL = re.compile(r"Limitada|Empres[aá]rio|EIRELI|Unipessoal|Sociedade Simples|An[oô]nima Fechada", re.I)
@@ -918,6 +920,30 @@ def main():
                 f"Pode haver explicação — objetos diferentes, demandas imprevisíveis — que só os processos mostram; vale pedi-los pela "
                 f"Lei de Acesso à Informação.",
                 tot, [f"{n}: {brl(v)}" for n, v in sorted(g_["itens"], key=lambda t: -t[1])[:6]], quem, doc, g_["link"])
+
+    # ── Cachê acima do que o mesmo artista cobrou de outros órgãos (shows no PNCP) ──
+    # Só com 3+ contratações do mesmo artista por 2+ órgãos; compara com a mediana das OUTRAS contratações dele.
+    sh = carregar("shows.json") or {}
+    if str(sh.get("ano")) == str(ANO):
+        for r in sh.get("artistasEmVariosOrgaos") or []:
+            lst = r.get("lista") or []
+            if len(lst) < 3:
+                continue
+            for x in lst:
+                outros = sorted(y["valor"] for y in lst if y is not x and y["valor"] > 0)
+                if len(outros) < 2:
+                    continue
+                med = statistics.median(outros)
+                if x["valor"] > 1.5 * med and x["valor"] - med >= 50000:
+                    add("cache_acima_artista", (r["chave"], x["orgao"], x.get("data"), x["valor"]),
+                        f"{r['artista']}: {brl(x['valor'])} pagos por {x['orgao'].title() if x['orgao'].isupper() else x['orgao']}"
+                        + (f" ({x['cidade']})" if x.get("cidade") else ""),
+                        f"Em {ANO}, {r['artista']} foi contratado(a) {len(lst)} vezes por órgãos de MS. Neste contrato o cachê foi de "
+                        f"{brl(x['valor'])}, {x['valor'] / med:.1f} vezes a mediana das outras contratações do mesmo artista ({brl(med)}). "
+                        f"Cachês variam com a data, a duração do show e o que está incluído (estrutura, transporte, hospedagem) — a diferença "
+                        f"é um ponto para perguntar ao órgão, não prova de irregularidade. O processo pode ser pedido pela Lei de Acesso à Informação.",
+                        x["valor"] - med, [f"{brl(y['valor'])} — {y['orgao']}" + (f" ({y['cidade']})" if y.get("cidade") else "") for y in lst[:6]],
+                        x["orgao"], None, x.get("link"))
 
     ordem = {"forte": 0, "médio": 1}
     sinais.sort(key=lambda s: (ordem[s["nivel"]], -s["valor"]))

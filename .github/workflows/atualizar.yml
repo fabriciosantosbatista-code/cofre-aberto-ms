@@ -198,7 +198,7 @@ jobs:
 
   coletar_contratos_cg:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -216,11 +216,18 @@ jobs:
       - name: Coletar contratos e licitações (Prefeitura de CG)
         run: python3 scripts/coletar_contratos_cg.py
 
+      - name: Shows pagos pelo Estado e pelas prefeituras de MS (PNCP)
+        timeout-minutes: 15
+        run: python3 -u scripts/coletar_shows.py || echo "⚠️ coletar_shows.py falhou — dados anteriores mantidos"
+
       - name: Upload artifact — contratos CG
         uses: actions/upload-artifact@v4
         with:
           name: dados-contratos-cg
-          path: dados/prefeitura_contratos.json
+          path: |
+            dados/prefeitura_contratos.json
+            dados/shows.json
+            dados/shows_cache.json
           retention-days: 1
 
   coletar_emendas_alems:

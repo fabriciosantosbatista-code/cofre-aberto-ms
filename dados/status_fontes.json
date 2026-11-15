@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-14T15:08:37",
+ "geradoEm": "2026-11-15T00:50:28",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
@@ -76,7 +76,7 @@
   "auditoria": {
    "fonte": "Cruzamento das bases do site com a Receita Federal (BrasilAPI / Minha Receita), o TSE e a folha do Estado",
    "url": "https://brasilapi.com.br/docs#tag/CNPJ",
-   "coleta": "2026-11-14T15:08:36",
+   "coleta": "2026-11-15T00:50:27",
    "dadoMaisRecente": "4642 empresas checadas na Receita",
    "nivel": "ok",
    "mensagem": null
@@ -112,6 +112,14 @@
    "dadoMaisRecente": "mês 08/2026",
    "nivel": "ok",
    "mensagem": "O Estado e a Prefeitura publicam esse relatório a cada dois meses, até 30 dias após o fim do bimestre."
+  },
+  "shows": {
+   "fonte": "Portal Nacional de Contratações Públicas (PNCP) — contratações de artistas em MS",
+   "url": "https://pncp.gov.br/",
+   "coleta": "2026-11-15T00:50:24",
+   "dadoMaisRecente": "publicação de 12/11/2026",
+   "nivel": "ok",
+   "mensagem": null
   },
   "votacoes": {
    "fonte": "Câmara dos Deputados e Senado Federal — dados abertos das votações nominais do plenário",
