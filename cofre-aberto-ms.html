@@ -6970,13 +6970,31 @@ document.querySelectorAll(".tabpanel iframe.aba-pagina").forEach(f => {
     const t = box.querySelector("table"); if (t) new ResizeObserver(ajustar).observe(t);
     ajustar();
   };
-  const varrer = () => document.querySelectorAll(".card.card-x-scroll").forEach(b => {
-    if (getComputedStyle(b).overflowX === "visible") return;  // no celular algumas tabelas viram cartões
-    ligar(b);
-  });
+  // todo contêiner com rolagem lateral que tenha uma tabela dentro (cartões das abas e tabelas que aparecem ao abrir um detalhe)
+  const varrer = () => {
+    document.querySelectorAll(".tabpanel.active table").forEach(t => {
+      let b = t.parentElement;
+      if (!b) return;
+      // tabela solta direto num painel de detalhe (ex.: câmaras do interior): ganha um contêiner próprio de rolagem
+      if (b.classList.contains("detail-panel")) {
+        const w = document.createElement("div"); w.className = "rola-x"; w.style.cssText = "overflow-x:auto;-webkit-overflow-scrolling:touch";
+        b.insertBefore(w, t); w.appendChild(t); b = w;
+      }
+      if (b._rolaTopo || b.offsetParent === null) return;
+      const ox = getComputedStyle(b).overflowX;
+      if (ox !== "auto" && ox !== "scroll") return;  // no celular algumas tabelas viram cartões
+      ligar(b);
+    });
+  };
   varrer();
   document.querySelectorAll(".tabpanel").forEach(tab => new MutationObserver(() => { if (tab.classList.contains("active")) setTimeout(varrer, 50); })
     .observe(tab, { attributes: true, attributeFilter: ["class"] }));
+  // conteúdo novo (abrir um município, um parlamentar, uma empresa...): procura de novo, sem pesar (só quando entra elemento novo)
+  let pend = null;
+  new MutationObserver(ms => {
+    if (pend || !ms.some(m => [...m.addedNodes].some(n => n.nodeType === 1 && (n.tagName === "TABLE" || n.querySelector?.("table"))))) return;
+    pend = setTimeout(() => { pend = null; varrer(); }, 250);
+  }).observe(document.querySelector("main") || document.body, { childList: true, subtree: true });
 })();
 
 // ===================== LINKS DIRETOS (#aba=...&p=...) =====================
