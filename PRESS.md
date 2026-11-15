@@ -1,6 +1,6 @@
 # Kit de Imprensa — Cofre Aberto MS
 
-*Última atualização: 14 de novembro de 2026 — gerado automaticamente a partir de press.html*
+*Última atualização: 15 de novembro de 2026 — gerado automaticamente a partir de press.html*
 
 Este documento reúne informações para jornalistas que queiram cobrir o **Cofre Aberto MS**, uma plataforma independente de transparência pública sobre gastos de parlamentares e da Prefeitura de Campo Grande.
 
