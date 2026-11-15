@@ -6,7 +6,8 @@ O painel (cofre-aberto-ms.html) é uma página só, com abas; o que fica dentro 
 abas quase não aparece nas buscas. Este script gera páginas próprias, com título
 no formato em que as pessoas pesquisam e números atualizados a cada coleta:
 
-  temas      /governo-ms/, /prefeitura-campo-grande/, /supersalarios-ms/,
+  temas      /governo-ms/, /prefeitura-campo-grande/, /supersalarios-ms/, /shows-pagos-com-dinheiro-publico-ms/,
+             /obras-atrasadas-ms/, /publicidade-governo-ms-prefeitura-campo-grande/, /ongs-entidades-dinheiro-publico-ms/, /impostometro-ms/,
              /auditoria/, /emendas-parlamentares-ms/, /cartao-corporativo-presidente/,
              /salario-ministros-stf/
   perguntas  /perguntas/<pergunta>/ (quanto ganha o governador, um vereador de CG,
@@ -440,6 +441,167 @@ Ele funciona com o trabalho de quem acredita que o dinheiro público tem de ser 
             "Apoie o Cofre Aberto MS", corpo)
 
 
+
+# ---------------------------------------------------------------- temas das abas de fiscalização
+def _cnpj_link(nome, cnpj):
+    pag = (carregar("empresas_index.json") or {})
+    return link_empresa(nome, f"/empresa/{cnpj[:8]}/" if cnpj and cnpj[:8] in pag else None)
+
+
+def tema_shows():
+    d = carregar("shows.json")
+    if not d.get("shows"):
+        return None
+    ano, sh = d.get("ano", ANO), d["shows"]
+    top = sh[0]
+    cidades = [r for r in d.get("ranking", []) if r["esfera"] == "M"]
+    est = next((r for r in d.get("ranking", []) if r["esfera"] == "E"), None)
+    corpo = kpis([(compacto(d["valorShows"]), f"em cachês de shows em {ano}"), (milhar(d["totalShows"]), "shows contratados"),
+                  (compacto(top["valor"]), f"maior cachê — {top.get('artista') or 'show'}"), (milhar(len(d.get("ranking", []))), "cidades e órgãos contratantes")])
+    corpo += (f"<div class='resposta'>Em {ano}, o Governo de Mato Grosso do Sul e as prefeituras, câmaras e fundos municipais do estado contrataram "
+              f"<strong>{milhar(d['totalShows'])} shows</strong>, somando <strong>{brl(d['valorShows'])}</strong> em cachês, sem licitação "
+              f"(inexigibilidade para artista, permitida pela Lei 14.133/2021). O maior cachê foi de <strong>{e(top.get('artista') or 'um show')}</strong>: "
+              f"{brl(top['valor'])}{', em ' + e(top['cidade']) if top.get('cidade') else ''}.</div>")
+    corpo += "<h2>Os maiores cachês</h2>" + tabela(["Artista", "Evento", "Cidade", "#Cachê"], [
+        f"<tr><td>{e(x.get('artista') or x['objeto'][:80])}</td><td>{e(x.get('evento') or '—')}</td><td>{e(x.get('cidade') or '—')}</td>"
+        f"<td class='num'><a href='{x['link']}' rel='nofollow noopener' target='_blank'>{brl(x['valor'])}</a></td></tr>" for x in sh[:25]])
+    corpo += "<h2>Cidades que mais gastaram com shows</h2>" + tabela(["Cidade", "#Shows", "#Gasto", "#Por habitante"], [
+        f"<tr><td>{e(r['nome'])}</td><td class='num'>{r['shows']}</td><td class='num'>{brl(r['valor'])}</td>"
+        f"<td class='num'>{brl(r['porHabitante']) if r.get('porHabitante') else '—'}</td></tr>" for r in cidades[:20]])
+    if est:
+        corpo += (f"<p>O <strong>Governo do Estado</strong> (Fundação de Cultura, Fundação de Turismo e Secretaria de Turismo, Esporte e Cultura) "
+                  f"contratou {milhar(est['shows'])} shows, somando {brl(est['valor'])}.</p>")
+    rep = d.get("artistasEmVariosOrgaos") or []
+    if rep:
+        corpo += "<h2>O mesmo artista, preços diferentes</h2><p>Quanto cada órgão pagou pelo mesmo artista em " + str(ano) + ":</p>" + tabela(
+            ["Artista", "#Contratações", "#Menor cachê", "#Maior cachê"],
+            [f"<tr><td>{e(r['artista'])}</td><td class='num'>{r['contratacoes']}</td><td class='num'>{brl(r['menor'])}</td><td class='num'>{brl(r['maior'])}</td></tr>" for r in rep[:15]])
+    corpo += "<p>" + painel("shows", "Todos os shows, com busca por artista, cidade e evento") + "</p>"
+    corpo += f"<p class='aviso'>Fonte: {e(d['fonte'])}. A Prefeitura de Campo Grande não publica essas contratações no PNCP.</p>"
+    return ("/shows-pagos-com-dinheiro-publico-ms/", f"Shows pagos com dinheiro público em MS em {ano}: cachês, artistas e cidades | Cofre Aberto MS",
+            f"Quanto o Governo de MS e as prefeituras pagaram em shows em {ano}: {compacto(d['valorShows'])} em {milhar(d['totalShows'])} cachês. Maior: {top.get('artista') or ''} ({compacto(top['valor'])}).",
+            f"Shows pagos com dinheiro público em MS em {ano}", corpo)
+
+
+def tema_obras():
+    d = carregar("obras.json")
+    if not d.get("obras"):
+        return None
+    r = d["resumo"]
+    venc = sorted((o for o in d["obras"] if "vencida" in o["marcas"]), key=lambda o: -o["diasVencida"])
+    lent = sorted((o for o in d["obras"] if "lenta" in o["marcas"]), key=lambda o: -(o["valor"] or 0))
+    corpo = kpis([(f"{d['comProblema']['obras']} de {d['abertas']['obras']}", "obras do Estado em andamento com sinal de atraso"),
+                  (milhar(r["vencida"]["obras"]), f"com prazo vencido ({compacto(r['vencida']['valor'])})"),
+                  (milhar(r["lenta"]["obras"]), f"com andamento muito lento ({compacto(r['lenta']['valor'])})"),
+                  (milhar(r["dobrada"]["obras"]), "com prazo mais que dobrado por aditivos")])
+    corpo += (f"<div class='resposta'>Das {d['abertas']['obras']} obras do Governo de Mato Grosso do Sul em andamento, <strong>{d['comProblema']['obras']}</strong> "
+              f"têm algum sinal de atraso, somando {brl(d['comProblema']['valor'])} em contratos: {r['vencida']['obras']} com o prazo vencido sem terminar, "
+              f"{r['lenta']['obras']} com andamento muito lento, {r['paralisada']['obras']} que já ficaram paralisadas e {r['dobrada']['obras']} com o prazo "
+              f"mais que dobrado por aditivos. Os dados são os que o próprio Estado publica.</div>")
+    fmt = lambda o: (f"<tr><td>{e(o['orgao'])} {e(o.get('numero') or '')}<br><small>{e((o.get('objeto') or '')[:140])}</small></td>"
+                     f"<td>{e(o.get('municipios') or '—')}</td><td>{e(o.get('fornecedor') or '—')}</td><td class='num'>{o['executado']:.0f}%</td>"
+                     f"<td class='num'>{brl(o['valor'])}</td></tr>")
+    if venc:
+        corpo += "<h2>Obras com o prazo vencido e longe de terminar</h2>" + tabela(["Obra", "Cidade", "Empresa", "#Executado", "#Valor"], [fmt(o) for o in venc[:20]])
+    if lent:
+        corpo += "<h2>Obras com andamento muito lento</h2>" + tabela(["Obra", "Cidade", "Empresa", "#Executado", "#Valor"], [fmt(o) for o in lent[:15]])
+    corpo += "<h2>Cidades com mais obras atrasadas</h2>" + barras_n([(c["nome"], c["obras"]) for c in d["porCidade"][:12]])
+    corpo += "<h2>Empresas com mais obras atrasadas</h2>" + barras_n([(c["nome"], c["obras"]) for c in d["porEmpresa"][:12]])
+    corpo += "<p>" + painel("obras", "Todas as obras, com filtros e busca") + "</p>"
+    corpo += f"<p class='aviso'>Fonte: {e(d['fonte'])}. Atraso pode ter causa justificada (chuva, desapropriação, projeto); é um ponto para perguntar ao Estado.</p>"
+    return ("/obras-atrasadas-ms/", f"Obras atrasadas e paradas do Governo de MS em {ANO} | Cofre Aberto MS",
+            f"{d['comProblema']['obras']} obras do Governo de MS em andamento têm sinal de atraso: prazo vencido, andamento lento, paralisação ou prazo dobrado. Veja quais, onde e quem executa.",
+            "Obras atrasadas e paradas do Governo de MS", corpo)
+
+
+def tema_publicidade():
+    d = carregar("publicidade.json")
+    if not d.get("agencias"):
+        return None
+    ano, tot = d.get("ano", ANO), d["estado"]["total"] + d["prefeitura"]["total"]
+    corpo = kpis([(compacto(tot), f"pagos a agências de publicidade em {ano}"), (compacto(d["estado"]["total"]), "pelo Governo de MS"),
+                  (compacto(d["prefeitura"]["total"]), "pela Prefeitura de Campo Grande"), (milhar(len(d["agencias"])), "agências pagas")])
+    corpo += (f"<div class='resposta'>Em {ano}, o Governo de Mato Grosso do Sul pagou <strong>{brl(d['estado']['total'])}</strong> a agências de publicidade, "
+              f"propaganda e marketing, e a Prefeitura de Campo Grande pagou <strong>{brl(d['prefeitura']['total'])}</strong> em serviços de publicidade e "
+              f"propaganda. É o dinheiro das campanhas e anúncios oficiais em TV, rádio, internet, jornais e outdoors.</div>")
+    corpo += "<h2>Quanto cada agência recebeu</h2>" + tabela(["Agência", "#Governo de MS", "#Prefeitura de CG", "#Total"], [
+        f"<tr><td>{_cnpj_link(a['nome'], a.get('cnpj'))}</td><td class='num'>{brl(a['estado']) if a['estado'] else '—'}</td>"
+        f"<td class='num'>{brl(a['prefeitura']) if a['prefeitura'] else '—'}</td><td class='num'>{brl(a['total'])}</td></tr>" for a in d["agencias"][:20]])
+    pm = [m for m in d["prefeitura"]["porMes"] if m["valor"]]
+    if pm:
+        corpo += "<h2>Prefeitura de Campo Grande: publicidade mês a mês</h2>" + barras([(m["rotulo"], m["valor"]) for m in pm])
+    corpo += "<p>" + painel("publicidade", "Agências, órgãos e pagamentos um a um no painel") + "</p>"
+    corpo += (f"<p class='aviso'>Fontes: {e(d['estado']['fonte'])}; {e(d['prefeitura']['fonte'])}. Em ano de eleição estadual, a lei eleitoral proíbe publicidade "
+              f"institucional do governo estadual nos três meses antes da eleição e limita o gasto do primeiro semestre (Lei 9.504/1997, art. 73).</p>")
+    return ("/publicidade-governo-ms-prefeitura-campo-grande/", f"Quanto o Governo de MS e a Prefeitura de Campo Grande gastam com publicidade em {ano} | Cofre Aberto MS",
+            f"{compacto(tot)} pagos a agências de publicidade em {ano}: {compacto(d['estado']['total'])} pelo Governo de MS e {compacto(d['prefeitura']['total'])} pela Prefeitura de CG. Veja cada agência.",
+            f"Gastos com publicidade do Governo de MS e da Prefeitura de Campo Grande em {ano}", corpo)
+
+
+def tema_entidades():
+    d = carregar("entidades.json")
+    if not d.get("entidades"):
+        return None
+    ano = d.get("ano", ANO)
+    corpo = kpis([(compacto(d["total"]), f"pagos a entidades sem fins lucrativos em {ano}"), (compacto(d["estado"]), "pelo Governo de MS"),
+                  (compacto(d["prefeitura"]), "pela Prefeitura de Campo Grande"), (compacto(d["emendas"]), "em emendas parlamentares")])
+    corpo += (f"<div class='resposta'>Em {ano}, <strong>{milhar(d['quantidade'])} entidades sem fins lucrativos</strong> — hospitais filantrópicos, "
+              f"Organizações Sociais que administram unidades de saúde, APAEs, fundações, institutos e associações — receberam <strong>{brl(d['total'])}</strong> "
+              f"do Governo de MS, da Prefeitura de Campo Grande e de emendas parlamentares.</div>")
+    corpo += "<h2>Por área de atuação</h2>" + barras([(a["area"], a["valor"]) for a in d["areas"]])
+    corpo += "<h2>As entidades que mais receberam</h2>" + tabela(["Entidade", "Cidade", "#Governo de MS", "#Prefeitura de CG", "#Emendas", "#Total"], [
+        f"<tr><td>{link_empresa(x['nome'], x.get('pagina'))}<br><small>{e(x['area'])}</small></td><td>{e((x.get('municipio') or '').title())}</td>"
+        f"<td class='num'>{brl(x['estado']) if x['estado'] else '—'}</td><td class='num'>{brl(x['prefeitura']) if x['prefeitura'] else '—'}</td>"
+        f"<td class='num'>{brl(x['emendas']) if x['emendas'] else '—'}</td><td class='num'>{brl(x['total'])}</td></tr>" for x in d["entidades"][:30]])
+    em = sorted((x for x in d["entidades"] if x["emendas"]), key=lambda x: -x["emendas"])[:12]
+    if em:
+        corpo += "<h2>Entidades que receberam emendas parlamentares</h2>" + tabela(["Entidade", "Parlamentares", "#Emendas"], [
+            f"<tr><td>{e(x['nome'])}</td><td>{e(', '.join(a for a, _ in x['autoresEmendas'][:4]))}</td><td class='num'>{brl(x['emendas'])}</td></tr>" for x in em])
+    corpo += "<p>" + painel("entidades", "Todas as entidades, com dirigentes e quem pagou") + "</p>"
+    c = d.get("consignacoes") or {}
+    corpo += (f"<p class='aviso'>Entidade: natureza jurídica no cadastro da Receita Federal (associação, fundação privada, organização religiosa, Organização Social, "
+              f"Sistema S). Ficaram fora dos totais {c.get('quantidade', 0)} associações e caixas de servidores, como a Cassems ({brl(c.get('valor', 0))}): "
+              f"o que o Estado paga a elas é, em geral, o repasse de descontos em folha.</p>")
+    return ("/ongs-entidades-dinheiro-publico-ms/", f"ONGs e entidades que recebem dinheiro público em MS em {ano} | Cofre Aberto MS",
+            f"{compacto(d['total'])} pagos em {ano} a {milhar(d['quantidade'])} ONGs, associações, fundações e Organizações Sociais pelo Governo de MS, pela Prefeitura de CG e por emendas.",
+            f"ONGs e entidades que recebem dinheiro público em MS em {ano}", corpo)
+
+
+def tema_impostometro():
+    d = carregar("receitas.json")
+    ents = d.get("entes") or {}
+    if not ents:
+        return None
+    MESES_ = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
+    ano = d.get("ano", ANO)
+
+    def ytd(e_, k):
+        return sum(v.get(k) or 0 for m, v in e_["meses"].items() if m.startswith(str(ano)))
+
+    es, cg = ents.get("estado"), ents.get("cg")
+    ult = (es or cg)["ultimoMes"]
+    rot = f"{MESES_[int(ult[5:]) - 1]}/{ult[:4]}"
+    tot = (ytd(es, "impostos") if es else 0) + (ytd(cg, "impostos") if cg else 0)
+    corpo = kpis([(compacto(tot), f"em impostos até {rot}"), (compacto(ytd(es, "impostos")) if es else "—", "Governo de MS (ICMS, IPVA, ITCD…)"),
+                  (compacto(ytd(cg, "impostos")) if cg else "—", "Prefeitura de CG (IPTU, ISS, ITBI…)"), (compacto(ytd(es, "icms")) if es else "—", "só de ICMS")])
+    corpo += (f"<div class='resposta'>Até {rot}, o Governo de Mato Grosso do Sul e a Prefeitura de Campo Grande arrecadaram <strong>{brl(tot)}</strong> em impostos "
+              f"em {ano}, segundo os relatórios oficiais enviados ao Tesouro Nacional. No painel, o Impostômetro MS mostra uma estimativa ao vivo do total no ano.</div>")
+    if es:
+        corpo += "<h2>Governo de MS: imposto por imposto</h2>" + tabela(["Imposto", f"#{ano} (até {rot})"], [
+            f"<tr><td>{n}</td><td class='num'>{brl(ytd(es, k))}</td></tr>" for k, n in (("icms", "ICMS"), ("ipva", "IPVA"), ("itcd", "ITCD"), ("irrf", "IRRF"),
+                                                                                       ("impostos", "Total de impostos"), ("fpe", "FPE (repasse da União)"))])
+    if cg:
+        corpo += "<h2>Prefeitura de Campo Grande: imposto por imposto</h2>" + tabela(["Imposto", f"#{ano} (até {rot})"], [
+            f"<tr><td>{n}</td><td class='num'>{brl(ytd(cg, k))}</td></tr>" for k, n in (("iptu", "IPTU"), ("iss", "ISS"), ("itbi", "ITBI"), ("irrf", "IRRF"),
+                                                                                       ("impostos", "Total de impostos"), ("icms", "Cota do ICMS (do Estado)"), ("fpm", "FPM (repasse da União)"))])
+    if es:
+        corpo += "<h2>ICMS mês a mês</h2>" + barras([(f"{MESES_[int(m[5:]) - 1][:3]}/{m[2:4]}", v.get("icms") or 0) for m, v in sorted(es["meses"].items())[-12:]])
+    corpo += "<p>" + painel("arrecadacao", "Impostômetro MS ao vivo e tabelas mês a mês") + "</p>"
+    corpo += f"<p class='aviso'>Fonte: {e(d['fonte'])}. O Estado e a Prefeitura publicam esse relatório a cada dois meses, até 30 dias após o fim do bimestre.</p>"
+    return ("/impostometro-ms/", f"Impostômetro MS: quanto MS e Campo Grande arrecadaram em impostos em {ano} | Cofre Aberto MS",
+            f"{compacto(tot)} em impostos até {rot}: ICMS, IPVA e ITCD do Governo de MS e IPTU, ISS e ITBI de Campo Grande, mês a mês. Fonte: Tesouro Nacional.",
+            f"Impostômetro MS: impostos arrecadados em {ano}", corpo)
+
 # ---------------------------------------------------------------- perguntas
 def perguntas():
     out = []
@@ -529,7 +691,7 @@ def perguntas():
 
 
 def main():
-    temas = [t for t in (tema_apoie(), tema_termometro(), tema_votacoes(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_presidencia(), tema_stf()) if t]
+    temas = [t for t in (tema_apoie(), tema_termometro(), tema_votacoes(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_presidencia(), tema_stf(), tema_shows(), tema_obras(), tema_publicidade(), tema_entidades(), tema_impostometro()) if t]
     pergs = perguntas()
     TEMAS[:] = [(u, h1) for u, _, _, h1, _ in temas]
     PERGUNTAS[:] = [(f"/perguntas/{s}/", p) for s, p, *_ in pergs]
