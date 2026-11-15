@@ -278,7 +278,9 @@ p{margin:0;}
 .ob-filtros{display:flex;flex-wrap:wrap;gap:8px}.ob-filtros button{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--border);border-radius:999px;padding:6px 12px;font:600 .8rem var(--font-body);cursor:pointer}
 .ob-filtros button.ativo{background:#c98500;border-color:#c98500;color:#14120a}
 .ob-tag{display:inline-block;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:6px;padding:1px 6px;margin:3px 4px 0 0}
-.ob-barra{height:6px;border-radius:3px;background:var(--surface-3);position:relative;margin:4px 0;min-width:110px}.ob-barra i{position:absolute;left:0;top:0;bottom:0;border-radius:3px}
+.ob-emp-in{display:none;font-size:.78rem;color:var(--ink-soft);margin-top:3px}
+@media (min-width:901px) and (max-width:1180px){.ob-col-emp{display:none}.ob-emp-in{display:block}}
+.ob-barra{height:6px;border-radius:3px;background:var(--surface-3);position:relative;margin:4px 0;min-width:64px}.ob-barra i{position:absolute;left:0;top:0;bottom:0;border-radius:3px}
 .rola-topo{overflow-x:auto;overflow-y:hidden;margin:0 0 4px;-webkit-overflow-scrolling:touch}.rola-topo>div{height:1px}
 .rola-dica{display:none;font-size:.74rem;color:var(--ink-caption);margin:0 0 4px}
 @media (pointer:coarse){.rola-dica.on{display:block}}
@@ -1872,7 +1874,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="ob-filtros" id="ob-filtros"></div>
       <input id="busca-ob" class="search-box" type="search" placeholder="buscar obra, cidade, empresa ou órgão (ex.: Corumbá, escola, MS-228)…" aria-label="Buscar obra" style="width:100%;margin:10px 0 12px"/>
       <div class="section-note">"Tempo" é quanto do prazo atual já passou; "executado" é o avanço físico informado pelo Estado. Uma obra com 90% do tempo e 20% executado está muito atrás.</div>
-      <div class="card card-x-scroll"><table class="ranking" id="tabela-ob"><thead><tr><th>Obra</th><th>Empresa</th><th>Prazo</th><th>Tempo × executado</th><th class="num">Aditados / paralisados</th><th class="num">Valor</th></tr></thead><tbody></tbody></table></div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-ob"><thead><tr><th>Obra</th><th class="ob-col-emp">Empresa</th><th>Prazo</th><th>Tempo × feito</th><th class="num">Aditivos</th><th class="num">Valor</th></tr></thead><tbody></tbody></table></div>
       <button class="pager-btn" id="ob-mais" style="margin-top:10px;display:none">Mostrar mais</button>
     </div>
     <div class="section">
@@ -6593,14 +6595,14 @@ function renderObras(d) {
     if (filtro === "paralisada") lst.sort((a, c) => c.diasParalisados - a.diasParalisados);
     tb.innerHTML = lst.slice(0, lim).map(o => {
       const t = o.tempoDecorrido ?? 0, e = o.executado || 0;
-      return `<tr><td style="min-width:240px"><b>${escHTML(o.orgao)} ${escHTML(o.numero || "")}</b> · ${escHTML(o.municipios || "")}` +
+      return `<tr><td style="min-width:170px"><b>${escHTML(o.orgao)} ${escHTML(o.numero || "")}</b> · ${escHTML(o.municipios || "")}` +
         `<div class="section-note" style="margin:2px 0 0">${escHTML((o.objeto || "").slice(0, 170))}${(o.objeto || "").length > 170 ? "…" : ""}</div>` +
-        `<div>${o.marcas.map(m => `<span class="ob-tag" style="background:${OB_MARCA[m][1]}22;color:${OB_MARCA[m][1]}">${OB_MARCA[m][0]}</span>`).join("")}</div></td>` +
-        `<td style="font-size:.82rem">${escHTML(o.fornecedor || "—")}</td>` +
-        `<td style="font-size:.82rem;white-space:nowrap">${dt(o.inicio)} a ${dt(o.fim)}${o.diasVencida ? `<div style="color:#e5484d;font-weight:600">venceu há ${o.diasVencida} dias</div>` : ""}</td>` +
+        `<div class="ob-emp-in">${escHTML(o.fornecedor || "")}</div><div>${o.marcas.map(m => `<span class="ob-tag" style="background:${OB_MARCA[m][1]}22;color:${OB_MARCA[m][1]}">${OB_MARCA[m][0]}</span>`).join("")}</div></td>` +
+        `<td class="ob-col-emp" style="font-size:.8rem;min-width:96px">${escHTML(o.fornecedor || "—")}</td>` +
+        `<td style="font-size:.8rem;white-space:nowrap">${dt(o.inicio)}<br>a ${dt(o.fim)}${o.diasVencida ? `<div style="color:#e5484d;font-weight:600;white-space:normal">venceu há ${o.diasVencida} dias</div>` : ""}</td>` +
         `<td style="font-size:.78rem">tempo ${Math.round(t)}%<div class="ob-barra"><i style="width:${t}%;background:var(--ink-faint)"></i></div>executado ${Math.round(e)}%<div class="ob-barra"><i style="width:${e}%;background:${e + 30 < t ? "#e5484d" : "#199e70"}"></i></div></td>` +
-        `<td class="num" style="font-size:.82rem">${Math.round(o.diasAditados)} dias aditados${o.prazoInicial ? `<div class="section-note" style="margin:0">prazo inicial ${Math.round(o.prazoInicial)}</div>` : ""}${o.diasParalisados ? `<div style="color:#9085e9">${Math.round(o.diasParalisados)} dias parada</div>` : ""}</td>` +
-        `<td class="num">${brlInt(o.valor)}</td></tr>`;
+        `<td class="num" style="font-size:.78rem;white-space:normal;min-width:90px">+${Math.round(o.diasAditados)} dias${o.prazoInicial ? `<div class="section-note" style="margin:0">prazo inicial ${Math.round(o.prazoInicial)}</div>` : ""}${o.diasParalisados ? `<div style="color:#9085e9">${Math.round(o.diasParalisados)} dias parada</div>` : ""}</td>` +
+        `<td class="num" style="white-space:nowrap">${formatCompact(o.valor)}</td></tr>`;
     }).join("") || `<tr><td colspan="6">Nenhuma obra encontrada.</td></tr>`;
     document.getElementById("ob-mais").style.display = lst.length > lim ? "" : "none";
   };
