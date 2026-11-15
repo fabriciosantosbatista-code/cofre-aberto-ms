@@ -295,6 +295,15 @@ def main():
     n_ctr = (carregar("prefeitura_contratos.json").get("resumo") or {}).get("contratos")
     if n_ctr:
         html = stat(html, "Contratos da Prefeitura", milhar(n_ctr), n_ctr)
+    ent_t = carregar("entidades.json").get("total")
+    if ent_t:
+        html = stat(html, "Pagos a ONGs e entidades", valor_curto(ent_t))
+    pub = carregar("publicidade.json")
+    if pub:
+        html = stat(html, "Pagos a agências de publicidade", valor_curto((pub.get("estado") or {}).get("total", 0) + (pub.get("prefeitura") or {}).get("total", 0)))
+    sh_v = carregar("shows.json").get("valorShows")
+    if sh_v:
+        html = stat(html, "Em cachês de shows", valor_curto(sh_v))
     n_emp_i = len(carregar("empresas_index.json") or {})
     if n_emp_i:
         html = stat(html, "Páginas de empresas", milhar(n_emp_i), n_emp_i)

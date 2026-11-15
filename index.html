@@ -94,7 +94,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0
 
 /* STATS BAR */
 .stats-bar{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:60px 0;}
-/* Desktop: 3 colunas × 3 linhas = 9 cards perfeitos */
+/* Desktop: 3 colunas × 4 linhas = 12 cards (no celular, 2 × 6) */
 @media (min-width: 768px) {
   .stats-bar {
     grid-template-columns: repeat(3, 1fr);
@@ -394,6 +394,18 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
     <div class="stat-item">
       <div class="stat-val" data-count="41">41</div>
       <div class="stat-label">Páginas de órgãos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">R$ 1,4 bi</div>
+      <div class="stat-label">Pagos a ONGs e entidades</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">R$ 94,4 mi</div>
+      <div class="stat-label">Pagos a agências de publicidade</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">R$ 77,3 mi</div>
+      <div class="stat-label">Em cachês de shows</div>
     </div>
   </div>
 
