@@ -705,7 +705,9 @@ def perguntas():
 def main():
     temas = [t for t in (tema_apoie(), tema_termometro(), tema_votacoes(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_presidencia(), tema_stf(), tema_shows(), tema_obras(), tema_publicidade(), tema_entidades(), tema_impostometro()) if t]
     pergs = perguntas()
-    TEMAS[:] = [(u, h1) for u, _, _, h1, _ in temas]
+    # Apoie desligado (chave Pix vazia em apoie-config.js): a página continua existindo, mas sai dos "Veja também"
+    apoie_on = bool(re.search(r'chave:\s*"[^"]+"', (ROOT / "apoie-config.js").read_text(encoding="utf-8"))) if (ROOT / "apoie-config.js").exists() else False
+    TEMAS[:] = [(u, h1) for u, _, _, h1, _ in temas if apoie_on or u != "/apoie/"]
     PERGUNTAS[:] = [(f"/perguntas/{s}/", p) for s, p, *_ in pergs]
     paginas = []
     for url, tit, desc, h1, corpo in temas:

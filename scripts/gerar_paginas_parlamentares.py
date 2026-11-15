@@ -251,6 +251,18 @@ p{font-size:.93rem;color:var(--ink-soft);line-height:1.7;margin-bottom:12px;max-
 .bar .t{height:6px;border-radius:3px;background:var(--surface-2);grid-column:1/-1;overflow:hidden}.bar .t i{display:block;height:100%;background:var(--amber);border-radius:3px}
 .bar b{color:var(--ink);font-weight:600;white-space:nowrap}
 .tabela-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+@media(max-width:640px){
+.tabela-wrap.cartoes-m{overflow:visible;border:0;background:none}
+.tabela-wrap.cartoes-m table,.tabela-wrap.cartoes-m tbody{display:block;width:100%}
+.tabela-wrap.cartoes-m thead{display:none}
+.tabela-wrap.cartoes-m tr{display:block;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:8px 2px;margin:0 0 10px}
+.tabela-wrap.cartoes-m td{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border:0!important;padding:4px 12px!important;text-align:right!important;min-width:0!important;white-space:normal!important}
+.tabela-wrap.cartoes-m td::before{content:attr(data-label);color:var(--ink-caption);font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;text-align:left;flex-shrink:0;max-width:45%}
+.tabela-wrap.cartoes-m td.primeira{display:block;text-align:left!important;font-weight:600;color:var(--ink);padding-bottom:6px!important}
+.tabela-wrap.cartoes-m td.primeira::before{display:none}
+.tabela-wrap.cartoes-m td.longo{display:block;text-align:left!important}
+.tabela-wrap.cartoes-m td.longo::before{display:block;margin-bottom:2px}
+}
 table{width:100%;border-collapse:collapse;font-size:.83rem}
 th{text-align:left;padding:9px 12px;font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-caption);background:var(--surface-2);border-bottom:1px solid var(--border);white-space:nowrap}
 td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--ink-soft);vertical-align:top}
@@ -331,6 +343,21 @@ from cartoes import cartao  # noqa: E402
 RODAPE = MAPA_HTML + f"""<footer><span>© {ANO} Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
 <span><a href="/metodologia.html#licenca">Dados sob CC BY 4.0 (cite a fonte) · código e layout: todos os direitos reservados</a></span></footer>
 </div>
+<script>
+// celular: tabelas com 3+ colunas viram cartões (cada linha um bloco, com o nome da coluna ao lado do valor)
+document.querySelectorAll(".tabela-wrap table").forEach(function (t) {{
+  var th = [].map.call(t.querySelectorAll("thead th"), function (x) {{ return x.textContent.trim(); }});
+  if (th.length < 3) return;
+  t.parentElement.classList.add("cartoes-m");
+  t.querySelectorAll("tbody tr").forEach(function (tr) {{
+    [].forEach.call(tr.children, function (td, i) {{
+      td.setAttribute("data-label", th[i] || "");
+      if (i === 0 && !/^[0-9]{{2}}.[0-9]{{2}}.[0-9]{{4}}$/.test(td.textContent.trim())) td.classList.add("primeira");
+      else if (td.textContent.trim().length > 60) td.classList.add("longo");
+    }});
+  }});
+}});
+</script>
 </body>
 </html>
 """
