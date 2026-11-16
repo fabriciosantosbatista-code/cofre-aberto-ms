@@ -10,7 +10,7 @@ Fontes:
 """
 
 import json, requests, csv, io, os, sys, time
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
@@ -903,6 +903,79 @@ def _pref_baixar_sig(ano):
     return linhas
 
 
+PREF_PAGOS_CACHE = DADOS / "prefeitura_pagos_cache.json"
+
+
+def _pref_num(v):
+    if isinstance(v, (int, float)):
+        return float(v)
+    t = str(v or "0").replace("R$", "").strip()
+    if "," in t:
+        t = t.replace(".", "").replace(",", ".")
+    try:
+        return float(t or 0)
+    except ValueError:
+        return 0.0
+
+
+def _pref_atualizar_pagos(linhas, limite_seg=12 * 60, hilos=6):
+    """A consulta/exportação do SIG congelou os valores pagos em 02/10/2026, mas a página de detalhe de cada empenho
+    continua recebendo os pagamentos. Aqui lemos o detalhe dos empenhos com saldo a pagar (os nunca lidos primeiro,
+    depois os lidos há mais tempo, os de maior saldo antes) e guardamos empenhado/liquidado/pago em cache."""
+    import html as _html, re as _re, time as _time
+    from concurrent.futures import ThreadPoolExecutor
+    try:
+        cache = json.load(open(PREF_PAGOS_CACHE, encoding="utf-8"))
+    except Exception:
+        cache = {}
+    hoje_s = date.today().isoformat()
+    ontem_s = (date.today() - timedelta(days=1)).isoformat()
+    cand = []
+    for x in linhas:
+        k = f"{x.get('ano')}/{x.get('uge')}/{x.get('num')}"
+        emp, pago = _pref_num(x.get("total_empenhado")), _pref_num(x.get("total_pago"))
+        c = cache.get(k)
+        if c and c.get("p", 0) >= c.get("e", 0) - 0.01:
+            continue  # já quitado no detalhe
+        if c and c.get("d", "") >= ontem_s:
+            continue  # lido há menos de 2 dias
+        if emp - max(pago, (c or {}).get("p", 0)) > 0.01:
+            cand.append((c.get("d", "") if c else "", -(emp - pago), k))
+    cand.sort()
+    s = requests.Session()
+    s.headers.update({"User-Agent": "Mozilla/5.0 (CofreAbertoMS; transparencia publica)"})
+    t0 = _time.monotonic()
+
+    def ler(k):
+        if _time.monotonic() - t0 > limite_seg:
+            return k, None
+        for t in range(3):
+            try:
+                r = s.get(f"https://sig-transparencia.campogrande.ms.gov.br/despesas/detalhe/{k}", timeout=60)
+                if r.status_code != 200:
+                    _time.sleep(2)
+                    continue
+                txt = _re.sub(r"\s+", " ", _html.unescape(_re.sub(r"<[^>]+>", " ", _re.sub(r"<script.*?</script>", "", r.text, flags=_re.S))))
+                m = _re.search(r"Saldo a Pagar \*\* ((?:R\$ [\d.,]+ ){9})", txt)
+                if not m:
+                    return k, None
+                v = [_pref_num(z) for z in _re.findall(r"R\$ [\d.,]+", m.group(1))]
+                return k, {"e": round(v[4], 2), "l": round(v[5], 2), "p": round(v[6], 2), "d": hoje_s}
+            except Exception:
+                _time.sleep(3)
+        return k, None
+
+    n = 0
+    with ThreadPoolExecutor(hilos) as ex:
+        for k, v in ex.map(ler, [k for _, _, k in cand]):
+            if v:
+                cache[k] = v
+                n += 1
+    PREF_PAGOS_CACHE.write_text(json.dumps(cache, separators=(",", ":")), encoding="utf-8")
+    log(f"  detalhes de empenho: {n} lidos agora ({len(cand)} com saldo a pagar; {len(cache)} no cache)")
+    return cache
+
+
 def _pref_baixar_csv_dados_abertos(ano):
     """CSV de 'Despesas – Dados Abertos'. O link muda de pasta a cada upload
     (uploads/AAAA/MM/), então é lido da própria página em vez de fixo."""
@@ -944,6 +1017,11 @@ def coletar_prefeitura():
     except:
         dados_ant = {}
 
+    try:
+        pagos = _pref_atualizar_pagos(linhas) if fonte and fonte.startswith("SIG") else {}
+    except Exception as e:
+        log(f"  ⚠️ detalhes de empenho: {e}")
+        pagos = {}
     por_secretaria = {}
     total_geral = total_empenhado = total_liquidado = 0.0
     despesas = []
@@ -956,6 +1034,9 @@ def coletar_prefeitura():
             valor = parse_valor(row.get("total_pago"))
             empenhado = parse_valor(row.get("total_empenhado"))
             liquidado = parse_valor(row.get("total_liquidado"))
+            c_ = pagos.get(f"{row.get('ano')}/{row.get('uge')}/{row.get('num')}")
+            if c_ and c_.get("p", 0) > valor:  # a página de detalhe tem pagamentos que a exportação ainda não mostra
+                valor, liquidado, empenhado = c_["p"], max(liquidado, c_.get("l", 0)), c_.get("e", empenhado) or empenhado
             por_secretaria[secretaria] = por_secretaria.get(secretaria, 0) + valor
             total_geral += valor
             total_empenhado += empenhado
