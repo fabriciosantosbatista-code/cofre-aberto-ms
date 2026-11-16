@@ -15,7 +15,7 @@ O **Cofre Aberto MS** ([cofreabertoms.com.br](https://cofreabertoms.com.br)) é 
 - Governo do Estado de MS (despesas, contratos, obras, licitações, diárias e folha) e Prefeitura Municipal de Campo Grande (despesas, contratos e aditivos)
 - 286 magistrados ativos do TJMS e do TRT24 (os juízes eleitorais do TRE-MS são juízes do TJMS)
 - Supersalários: as maiores remunerações do poder público em MS, com nome e penduricalhos
-- Auditoria automática: 29 testes que cruzam notas e contratos com a Receita Federal, o TSE, a folha do Estado e as sanções da CGU
+- Auditoria automática: 28 testes que cruzam notas e contratos com a Receita Federal, o TSE, a folha do Estado e as sanções da CGU
 - Brasil: Presidência da República (cartão corporativo desde 2013, viagens, despesas, salários), STF (contracheques dos ministros), 513 deputados federais e 81 senadores
 - Câmaras municipais de 14 cidades do interior de MS.
 

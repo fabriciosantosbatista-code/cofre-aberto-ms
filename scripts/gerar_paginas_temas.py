@@ -614,6 +614,85 @@ def tema_impostometro():
             f"{compacto(tot)} em impostos até {rot}: ICMS, IPVA e ITCD do Governo de MS e IPTU, ISS e ITBI de Campo Grande, mês a mês. Fonte: Tesouro Nacional.",
             f"Impostômetro MS: impostos arrecadados em {ano}", corpo)
 
+
+# ---------------------------------------------------------------- páginas institucionais (termos de uso, privacidade)
+ZAP = "https://wa.me/5567982095384"
+
+
+def paginas_institucionais():
+    termos = f"""<p>Estes termos valem para o site <b>cofreabertoms.com.br</b> (o "Cofre Aberto MS"), um projeto independente de transparência,
+sem vínculo com nenhum órgão público, partido ou candidato. Ao usar o site, você concorda com eles.</p>
+<h2>1. O que o site faz</h2>
+<p>O Cofre Aberto MS reúne, organiza e explica dados <b>públicos</b> sobre o uso do dinheiro público em Mato Grosso do Sul, coletados
+automaticamente de fontes oficiais (portais da transparência, APIs e relatórios de órgãos públicos). Cada página indica a fonte e, sempre que
+possível, o link para conferir o dado na origem. A lista completa de fontes e as limitações de cada uma estão na
+<a href="/metodologia.html">Metodologia</a>.</p>
+<h2>2. Natureza dos dados</h2>
+<ul><li>Os dados são reproduzidos <b>como os órgãos publicam</b>. Erros, atrasos ou omissões da fonte oficial podem aparecer aqui; quando sabemos, avisamos.</li>
+<li>Totais, rankings, estimativas (como o Impostômetro) e cruzamentos são <b>cálculos do site</b> a partir desses dados, com o método explicado na Metodologia.</li>
+<li>O site <b>não substitui</b> os documentos oficiais. Para uso jurídico, administrativo ou jornalístico, confira o documento na fonte.</li></ul>
+<h2>3. Sinais de atenção não são acusação</h2>
+<p>A Auditoria e as abas de fiscalização apontam <b>padrões atípicos</b> definidos por regras objetivas e públicas. Um sinal de atenção
+<b>não é acusação, prova ou indício de crime</b>: muitos têm explicação legal. O site não afirma que nenhuma pessoa ou empresa cometeu irregularidade.</p>
+<h2>4. Correções e direito de resposta</h2>
+<p>Se você encontrou um erro, ou é citado e quer contestar ou explicar um dado, escreva pelo <a href="{ZAP}" target="_blank" rel="noopener">WhatsApp (67) 98209-5384</a>,
+de preferência com o documento ou link da fonte oficial. Respondemos em até <b>7 dias</b>. Todo erro confirmado é corrigido e registrado na
+<a href="/metodologia.html#correcoes">lista de correções</a>; explicações de quem é citado podem ser publicadas junto do dado.</p>
+<h2>5. Uso do conteúdo</h2>
+<p>Os <b>dados</b> podem ser reutilizados sob a licença Creative Commons Atribuição 4.0 (CC BY 4.0), citando "Cofre Aberto MS (cofreabertoms.com.br)"
+e a fonte oficial. O <b>código, o layout, o logotipo e os textos</b> são de uso reservado — veja a <a href="/metodologia.html#licenca">licença</a>.</p>
+<h2>6. Links para outros sites</h2>
+<p>O site aponta para portais oficiais e outros sites. Não respondemos pelo conteúdo, pela disponibilidade nem pelas políticas desses sites.</p>
+<h2>7. Responsabilidade</h2>
+<p>Trabalhamos para que os dados estejam corretos e atualizados, mas não garantimos que estejam livres de erros ou disponíveis o tempo todo.
+O uso das informações é de responsabilidade de quem as usa.</p>
+<h2>8. Privacidade</h2>
+<p>Como tratamos os dados de quem visita o site e das pessoas que aparecem nos dados públicos: veja a página <a href="/privacidade/">Privacidade e LGPD</a>.</p>
+<h2>9. Alterações e lei aplicável</h2>
+<p>Estes termos podem ser atualizados; a data da versão em vigor fica no topo da página. Valem as leis brasileiras, e fica eleito o foro de Campo Grande/MS.</p>"""
+    priv = f"""<p>Esta página explica, em linguagem simples, como o Cofre Aberto MS trata dados pessoais, conforme a Lei Geral de Proteção de Dados
+(LGPD, Lei 13.709/2018).</p>
+<h2>1. Quem é o responsável</h2>
+<p>O responsável pelo tratamento é o projeto Cofre Aberto MS. Pedidos sobre dados pessoais (inclusive ao encarregado) podem ser feitos pelo
+<a href="{ZAP}" target="_blank" rel="noopener">WhatsApp (67) 98209-5384</a>.</p>
+<h2>2. Dados de quem visita o site</h2>
+<ul><li>O site <b>não pede cadastro</b> e não coleta nome, e-mail ou telefone de quem visita.</li>
+<li>Usamos o <b>Google Analytics</b> para contar visitas e saber quais páginas são mais úteis — <b>só se você aceitar</b> no aviso de cookies.
+O endereço IP é anonimizado e nenhum dado é vendido ou usado para publicidade. Se você recusar, nenhum cookie de análise é gravado.</li>
+<li>Para mudar a escolha, apague os dados deste site no seu navegador; o aviso aparece de novo.</li>
+<li>O provedor que hospeda o site (GitHub Pages) pode registrar dados técnicos de acesso, como o IP, por motivos de segurança.</li></ul>
+<h2>3. Dados de pessoas que aparecem no site</h2>
+<p>O site mostra dados de <b>agentes públicos</b> (parlamentares, governador, secretários, magistrados, servidores), de <b>sócios e dirigentes</b>
+de empresas e entidades que recebem dinheiro público e de <b>beneficiários de pagamentos públicos</b> (como diárias), tal como os órgãos publicam.</p>
+<ul><li><b>De onde vêm:</b> de fontes oficiais de acesso público — portais da transparência, folhas de pagamento publicadas, cadastro de CNPJ da
+Receita Federal, prestação de contas eleitorais do TSE, portais da Câmara, do Senado e da CGU.</li>
+<li><b>Para quê:</b> transparência e controle social do uso do dinheiro público, a mesma finalidade pela qual os órgãos os publicam
+(Lei de Acesso à Informação, Lei 12.527/2011).</li>
+<li><b>Base legal:</b> dados tornados públicos pelos próprios órgãos e de acesso público (LGPD, art. 7º, §§ 3º e 4º), tratados para a
+finalidade de interesse público que justificou a publicação. O Supremo Tribunal Federal decidiu que a divulgação do nome e da remuneração de
+servidores públicos é legítima (Tema 483 da repercussão geral).</li></ul>
+<h2>4. O que o site não publica</h2>
+<ul><li><b>CPF completo</b>, endereço residencial, telefone ou e-mail pessoal de ninguém. Quando a fonte já publica o CPF mascarado
+(ex.: ***.123.456-**), ele pode aparecer como na fonte.</li>
+<li>Dados de saúde, religião, orientação sexual, filiação sindical ou outros <b>dados sensíveis</b>, nem dados de crianças e adolescentes.</li>
+<li><b>Suspeitas sem base objetiva:</b> o site não aponta parentesco por sobrenome nem faz acusações; os sinais da Auditoria seguem regras
+públicas e não são acusação.</li></ul>
+<h2>5. Seus direitos</h2>
+<p>Se você aparece nos dados, pode pedir <b>confirmação e acesso</b> aos dados exibidos sobre você, <b>correção</b> de dado incompleto, inexato
+ou desatualizado, e <b>explicação</b> sobre de onde vem cada informação. Como os dados são públicos na origem, a correção definitiva costuma
+depender do órgão que os publicou; nesse caso, indicamos o caminho e registramos a divergência. Respondemos em até <b>15 dias</b>.</p>
+<h2>6. Compartilhamento e guarda</h2>
+<p>Não vendemos nem cedemos dados. Os dados públicos ficam disponíveis para download nos <a href="/metodologia.html#dados-abertos">dados abertos</a>,
+com a mesma origem. As informações são atualizadas conforme as fontes oficiais e substituídas quando o órgão corrige ou retira a publicação.</p>
+<h2>7. Alterações</h2>
+<p>Esta política pode ser atualizada; a data da versão em vigor fica no topo da página.</p>"""
+    return [("/termos/", "Termos de uso e aviso legal | Cofre Aberto MS",
+             "Termos de uso do Cofre Aberto MS: natureza dos dados, sinais de atenção não são acusação, correções e direito de resposta, uso do conteúdo.",
+             "Termos de uso e aviso legal", termos),
+            ("/privacidade/", "Privacidade e LGPD | Cofre Aberto MS",
+             "Como o Cofre Aberto MS trata dados pessoais (LGPD): dados de quem visita, dados públicos de agentes públicos, o que não publicamos e seus direitos.",
+             "Privacidade e LGPD", priv)]
+
 # ---------------------------------------------------------------- perguntas
 def perguntas():
     out = []
@@ -712,6 +791,9 @@ def main():
     paginas = []
     for url, tit, desc, h1, corpo in temas:
         paginas.append((url, pagina(url, tit, desc, h1, corpo)))
+    for url, tit, desc, h1, corpo in paginas_institucionais():  # não entram no "Veja também"
+        html = pagina(url, tit, desc, h1, corpo).replace("com dados de fontes oficiais.", "— versão em vigor.")
+        paginas.append((url, html))
     for s, p, r, corpo, aba, desc in pergs:
         url = f"/perguntas/{s}/"
         corpo += "<p>" + painel(aba) + "</p>"

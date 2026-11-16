@@ -17,7 +17,7 @@
     d.style.cssText = "position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:560px;margin:0 auto;background:#161a23;color:#f0f3fa;" +
       "border:1px solid #232839;border-radius:12px;padding:14px 16px;font:14px/1.5 Inter,system-ui,sans-serif;box-shadow:0 6px 24px rgba(0,0,0,.5)";
     d.innerHTML = "Usamos cookies do Google Analytics só para contar visitas e saber quais páginas são mais úteis. Nenhum dado é vendido. " +
-      "<a href='/metodologia.html#privacidade' style='color:#f5c842'>Saiba mais</a>" +
+      "<a href='/privacidade/' style='color:#f5c842'>Saiba mais</a>" +
       "<div style='display:flex;gap:8px;margin-top:10px;justify-content:flex-end'>" +
       "<button data-c='nao' style='background:none;border:1px solid #232839;color:#8b95aa;border-radius:999px;padding:7px 14px;cursor:pointer'>Recusar</button>" +
       "<button data-c='sim' style='background:#f5c842;border:0;color:#14120a;font-weight:600;border-radius:999px;padding:7px 14px;cursor:pointer'>Aceitar</button></div>";

@@ -34,7 +34,7 @@ ficaram de fora depois do teste com os dados de nov/2026):
   empresa_sancionada    empresa no CEIS/CNEP (CGU) com sanção em vigor que vale para quem a pagou
   sancionada_outro_ente sanção em vigor aplicada por outro ente (não impede contratar em MS)
   socio_sancionado      sócio (nome + CPF parcial) punido no CEIS/CNEP
-  possivel_parente      sócio com o sobrenome raro do parlamentar que paga a empresa
+  possivel_parente      DESLIGADO (16/11/2026): sugerir parentesco só pelo sobrenome é frágil e expõe pessoas sem prova
   obra_prazo_estourado  obra do Estado com dias aditados maiores que o prazo inicial
   aditivo_acima_limite  contrato da Prefeitura com acréscimos (fora prorrogações) acima de 25%
   fracionamento_fornecedor  o mesmo órgão comprou da mesma empresa, por dispensa, em processos diferentes
@@ -57,6 +57,7 @@ from gerar_analises import ANO, DADOS, carregar, cnpj_valido, limpa_nome, salvar
 from coletar_cnpj import abertura_real
 
 HOJE = date.today()
+TESTE_PARENTE = False  # "sócio com o sobrenome do parlamentar": desligado em 16/11/2026
 LIMITE_MEI = 81000.0
 LIM_DISPENSA, LIM_DISPENSA_OBRA = 65492.11, 130984.20  # Decreto 12.807/2025, desde 1º/1/2026
 NIVEL = {"mei_acima_limite": "forte", "situacao_irregular": "forte", "socio_parlamentar": "forte",
@@ -65,7 +66,7 @@ NIVEL = {"mei_acima_limite": "forte", "situacao_irregular": "forte", "socio_parl
          "gasto_acima_colegas": "médio", "socio_doador": "forte", "fornecedor_campanha": "médio",
          "servidor_socio_pagador": "forte", "servidor_socio": "médio", "endereco_comum": "médio",
          "empresa_sancionada": "forte", "sancionada_outro_ente": "médio", "socio_sancionado": "forte",
-         "possivel_parente": "médio", "entidade_parlamentar": "médio",
+         "entidade_parlamentar": "médio",
          "doador_executivo": "forte", "fornecedor_campanha_executivo": "médio", "preco_acima_estimado": "médio", "obra_prazo_estourado": "médio", "aditivo_acima_limite": "médio",
          "fracionamento_fornecedor": "médio", "acumulo_cargos": "médio", "cache_acima_artista": "médio", "obra_vencida": "médio"}
 ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_irregular": "Empresa com CNPJ irregular",
@@ -77,7 +78,7 @@ ROTULO = {"mei_acima_limite": "MEI acima do limite de faturamento", "situacao_ir
           "servidor_socio_pagador": "Sócio é servidor do órgão que paga", "servidor_socio": "Sócio é servidor público",
           "endereco_comum": "Endereço ou telefone em comum",
           "empresa_sancionada": "Empresa punida recebendo", "sancionada_outro_ente": "Empresa punida em outro estado ou órgão",
-          "socio_sancionado": "Sócio punido por improbidade ou fraude", "possivel_parente": "Sócio com o sobrenome do parlamentar",
+          "socio_sancionado": "Sócio punido por improbidade ou fraude",
           "entidade_parlamentar": "Entidade ligada a parlamentar recebe dinheiro público",
           "doador_executivo": "Sócio doou ao governador ou à prefeita e a empresa recebe",
           "fornecedor_campanha_executivo": "Fornecedor da campanha do governador ou da prefeita recebe do governo",
@@ -615,7 +616,7 @@ def main():
 
     # ── Sócio com o sobrenome raro do parlamentar (possível parente) ──
     sob = (carregar("tse_campanhas.json") or {}).get("sobrenomes") or {}
-    for p, civil, cpf in parl_pessoas:
+    for p, civil, cpf in (parl_pessoas if TESTE_PARENTE else []):  # teste desligado: não publica suspeita de parentesco por sobrenome
         raros = {w for w in norm(civil).split()[1:] if len(w) > 3 and 0 < sob.get(w, 99) <= 3}
         if not raros:
             continue

@@ -21,7 +21,7 @@ GRUPOS = [
                            ("STF", P + "stf")]),
     ("Publicações", "#e0679f", [("Boletim semanal", P + "pg-boletim"), ("Empresas", P + "pg-empresas"), ("Órgãos", P + "pg-orgaos"), ("Perguntas frequentes", "/perguntas/")]),
     ("Sobre o projeto", "#7aa2c8", [("Início", "/"), ("Painel", "/cofre-aberto-ms.html"), ("Sobre", P + "sobre"), ("Metodologia e dados", P + "pg-metodologia"),
-                                    ("Imprensa", "/press.html"),
+                                    ("Imprensa", "/press.html"), ("Termos de uso", "/termos/"), ("Privacidade e LGPD", "/privacidade/"),
                                     ("Contato", "CONTATO")]),
 ]
 

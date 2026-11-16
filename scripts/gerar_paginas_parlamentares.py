@@ -326,7 +326,7 @@ def cabecalho(titulo, descricao, url, imagem, jsonld, tipo="profile"):
 <style>{CSS}</style>
 <script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>
 <script defer data-domain="cofreabertoms.com.br" src="https://plausible.io/js/script.js"></script>
-<script defer src="/analytics.js?v=2"></script>
+<script defer src="/analytics.js?v=3"></script>
 <script src="/apoie-config.js?v=3"></script>
 <script src="/embutido.js?v=1"></script>
 </head>
@@ -341,7 +341,7 @@ from mapa_site import MAPA_HTML  # noqa: E402
 from cartoes import cartao  # noqa: E402
 
 RODAPE = MAPA_HTML + f"""<footer><span>© {ANO} Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
-<span><a href="/metodologia.html#licenca">Dados sob CC BY 4.0 (cite a fonte) · código e layout: todos os direitos reservados</a></span></footer>
+<span><a href="/metodologia.html#licenca">Dados sob CC BY 4.0 (cite a fonte) · código e layout: todos os direitos reservados</a> · <a href="/termos/">Termos de uso</a> · <a href="/privacidade/">Privacidade e LGPD</a></span></footer>
 </div>
 <script>
 // celular: tabelas com 3+ colunas viram cartões (cada linha um bloco, com o nome da coluna ao lado do valor)
