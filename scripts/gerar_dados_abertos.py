@@ -492,7 +492,7 @@ def status_fontes():
 
     for v in st.values():
         dd = dias(v["coleta"])
-        if dd is not None and dd > 3 and v["nivel"] == "ok":
+        if dd is not None and dd > (8 if v is st.get("eleicoes") else 3) and v["nivel"] == "ok":  # TSE: o coletor refaz a cada 7 dias
             v["nivel"] = "atencao"
             v["mensagem"] = v["mensagem"] or "a coleta automática não atualizou esta fonte nos últimos dias"
     saida = {"geradoEm": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"), "fontes": st}
