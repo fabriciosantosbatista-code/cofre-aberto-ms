@@ -811,7 +811,8 @@ def main():
                 f"Das {faixa} notas numeradas de {nums[0]} a {nums[-1]}, {len(nums)} ({len(nums) / faixa:.0%}) foram para {p}, em {meses} meses — "
                 f"a empresa parece emitir notas quase só para esse gabinete, e não recebe de nenhum outro órgão que o site acompanha. "
                 f"É comum em advogados e consultores exclusivos; a data de abertura e os sócios ajudam a separar o normal do suspeito.",
-                tot, [f"Abertura: {data_br(info.get('abertura'))}" if info.get("abertura") else "Cadastro na Receita ainda não consultado",
+                tot, [(f"Abertura: {data_br(abertura_real(c, cad) or info.get('abertura'))}" + (f" (a filial é de {data_br(info.get('abertura'))})" if c[8:12] != "0001" and abertura_real(c, cad) else ""))
+                      if info.get("abertura") else "Cadastro na Receita ainda não consultado",
                       f"Atividade principal: {info.get('cnaeDesc') or '—'}",
                       f"Sócios: {', '.join(s['nome'] for s in info.get('socios', [])[:3]) or '—'}"], p, c, lst[0][1]["url"])
 
