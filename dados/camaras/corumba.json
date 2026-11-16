@@ -1,7 +1,7 @@
 {
   "cidade": "Corumbá",
-  "ultimaAtualizacao": "2026-11-16T12:07:04",
-  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-11-16T12:07:04",
+  "ultimaAtualizacao": "2026-11-16T13:06:58",
+  "fonte": "Portal Transparência Fiorilli (swb.corumba.ms.gov.br:8079) — Dados Abertos — 2026-11-16T13:06:58",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camaracorumba.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -654,18 +654,18 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 27315206.46,
+    "totalGeral": 27339215.58,
     "totalNotas": 244,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 17599761.31,
       "Obrigações Patronais": 3218391.2,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 2816101.19,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 2822903.15,
       "Serviços de Consultoria": 1414247.71,
       "Indenizações e Restituições": 1266773.58,
-      "Diárias — Civil": 387900.0,
+      "Diárias — Civil": 390900.0,
       "Elemento 03": 296148.69,
       "Despesas de Exercícios Anteriores": 177920.74,
-      "Elemento 96": 105834.44,
+      "Elemento 96": 120041.6,
       "Contribuições": 20000.0,
       "Material de Consumo": 12127.6
     },
@@ -739,7 +739,7 @@
         "fornecedor": "A & T PUBLICIDADE & ASSESSORIA LTDA",
         "cnpj": "15.427.958/0001-30",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 635102.16,
+        "valor": 638304.68,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS DE AGENCIA PARA ESTE LEGISLATIVO."
       },
       {
@@ -840,19 +840,19 @@
       },
       {
         "data": "2026-01-05",
+        "fornecedor": "MUNICIPIO DE CORUMBA",
+        "cnpj": "03.330.461/0001-10",
+        "categoria": "Elemento 96",
+        "valor": 120041.6,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE RESSARCIMENTO DE DESPESAS DE PESSOAL REQUISITADO (ESTIMATIVA 2026)."
+      },
+      {
+        "data": "2026-01-05",
         "fornecedor": "JAISON COUTINHO",
         "cnpj": "11.103.343/0001-06",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 108000.0,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS DE LOCAÇÃO DE SOFTWARE VIA WEB E APLICATIVO PARA CELULAR E TABLET PARA CONSOLIDAÇÃO DA LEGISLAÇÃO MUNICIPAL COM MAO DE OBRA  INCLUSA. PARA INSER"
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "MUNICIPIO DE CORUMBA",
-        "cnpj": "03.330.461/0001-10",
-        "categoria": "Elemento 96",
-        "valor": 105834.44,
-        "descricao": "VALOR QUE SE EMPENHA, REFERENTE RESSARCIMENTO DE DESPESAS DE PESSOAL REQUISITADO (ESTIMATIVA 2026)."
       },
       {
         "data": "2026-01-05",
@@ -1215,6 +1215,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A PRESTAÇÃO DE SERVIÇOS DE FORNECIMENTO DE BUFFET (CAFÉ EXECUTIVO/COQUETEL/BUFFET COMPLETO) PARA ATENDER AS NECESSIDADES DESTE LEGISLATIVO."
       },
       {
+        "data": "2026-01-05",
+        "fornecedor": "SANESUL-EMPRESA DE SANEAMENTO DE MS",
+        "cnpj": "03.982.931/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 13306.95,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS DE FORNECIMENTO DE AGUA POTÁVEL E ESGOTO PARA ESTE LEGISLATIVO (ESTIMATIVA 2026)."
+      },
+      {
         "data": "2026-08-07",
         "fornecedor": "JAISON COUTINHO",
         "cnpj": "11.103.343/0001-06",
@@ -1245,14 +1253,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 10967.0,
         "descricao": "VALOR QUE SE EMPENHA, REFERENTE À INSCRIÇÕES PARA SEMINÁRIO, DE VEREDORES/SERVIDORES DESTE LEGISLATIVO."
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "SANESUL-EMPRESA DE SANEAMENTO DE MS",
-        "cnpj": "03.982.931/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 9707.51,
-        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A PRESTAÇÃO DE SERVIÇOS DE FORNECIMENTO DE AGUA POTÁVEL E ESGOTO PARA ESTE LEGISLATIVO (ESTIMATIVA 2026)."
       },
       {
         "data": "2026-11-03",
@@ -1976,6 +1976,14 @@
       },
       {
         "data": "2026-11-09",
+        "fornecedor": "JANES DA SILVA STRAL",
+        "cnpj": "408.XXX.XXX-91",
+        "categoria": "Diárias — Civil",
+        "valor": 3000.0,
+        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIGEM À CAMPO GRANDE-MS, PARTICIPAÇÃO NA SENACOP 2026 (Seminário Nacional de Compras Públicas), CONFORME LEIS 2384/2014 E 2900/2023."
+      },
+      {
+        "data": "2026-11-09",
         "fornecedor": "ALEXANDRE ZINEZI DUQUE",
         "cnpj": "693.XXX.XXX-87",
         "categoria": "Diárias — Civil",
@@ -2613,14 +2621,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 0.0,
         "descricao": "VALOR QUE SE EMPENHA, POR Contratação de empresa especializada em capacitação e treinamento para agentes públicos, políticos e servidores deste poder legislativo, atendendo a importância da efetivação"
-      },
-      {
-        "data": "2026-11-09",
-        "fornecedor": "JANES DA SILVA STRAL",
-        "cnpj": "408.XXX.XXX-91",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA, REFERENTE A DIÁRIAS PARA VIGEM À CAMPO GRANDE-MS, PARTICIPAÇÃO NA SENACOP 2026 (Seminário Nacional de Compras Públicas), CONFORME LEIS 2384/2014 E 2900/2023."
       }
     ]
   },
