@@ -3488,7 +3488,7 @@ function renderCamaraMunicipal(data) {
 
       <div class="subhead">Equipe do gabinete (${DADOS_REF_PESSOAL_CG})</div>
       <div class="stat-grid">
-        <div class="stat-card"${(gabinete.equipe || []).length ? ` style="cursor:pointer" title="Ver a lista" onclick="const d=this.closest('.detail-panel').querySelector('.equipe-gab');if(d){d.open=true;d.scrollIntoView({behavior:'smooth',block:'center'})}"` : ""}>
+        <div class="stat-card"${(gabinete.equipe || []).length ? ` style="cursor:pointer" title="Ver a lista" onclick="const d=this.closest('.detail-panel').querySelector('.equipe-gab');if(d){d.scrollIntoView({behavior:'smooth',block:'start'})}"` : ""}>
           <p class="stat-label">Funcionários</p>
           <p class="stat-value">${gabinete.numFuncionarios ?? "—"}</p>
           ${(gabinete.equipe || []).length ? `<p class="stat-note" style="color:var(--accent)">ver a lista ↓</p>` : ""}
@@ -3503,9 +3503,13 @@ function renderCamaraMunicipal(data) {
           <p class="stat-note">${mesesDesdeJaneiro()} meses de folha idêntica</p>
         </div>
       </div>
-      ${(gabinete.equipe || []).length ? `<details class="equipe-gab" style="margin:12px 0 6px"><summary>👥 Ver nome, cargo e salário dos ${gabinete.equipe.length} servidores do gabinete</summary>
-        <ul class="equipe-lista">${gabinete.equipe.map(x => `<li><div><b>${escHTML(x.nome)}</b><span>${escHTML(x.cargo || "—")}</span></div>${x.bruto != null ? `<em>${formatBRL(x.bruto)}</em>` : ""}</li>`).join("")}</ul>
-        <p class="section-note">Servidores com lotação no gabinete na folha de ${DADOS_REF_PESSOAL_CG}, segundo o Portal da Transparência da Câmara (campo "local de trabalho"). Se o vereador é da Mesa Diretora, parte da equipe pode atender à Mesa.</p></details>` : ""}
+      ${(gabinete.equipe || []).length ? `<div class="equipe-gab">
+      <div class="subhead">Servidores do gabinete (${gabinete.equipe.length})</div>
+      <table class="notes-table">
+        <thead><tr><th>Nome</th><th>Cargo</th>${gabinete.equipe.some(x => x.bruto != null) ? '<th class="num">Salário bruto</th>' : ""}</tr></thead>
+        <tbody>${gabinete.equipe.map(x => `<tr><td>${escHTML(x.nome)}</td><td>${escHTML(x.cargo || "—")}</td>${x.bruto != null ? `<td class="num">${formatBRL(x.bruto)}</td>` : ""}</tr>`).join("")}</tbody>
+      </table>
+      <p class="section-note" style="margin-top:10px">Servidores lotados no gabinete na folha de ${DADOS_REF_PESSOAL_CG}, segundo o Portal da Transparência da Câmara (campo "local de trabalho"). Salário bruto do mês, antes dos descontos. Se o vereador é da Mesa Diretora, parte da equipe pode atender à Mesa.</p></div>` : ""}
 
       <div class="subhead">Verba indenizatória ${ANO_VERBA} (Atos da Mesa nº 27 e 28/2017)</div>
       <div class="stat-grid">
