@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-16T13:06:58",
+  "ultimaAtualizacao": "2026-11-16T19:03:59",
   "ano": 2026,
-  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-16T13:06:58",
+  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-16T19:03:59",
   "total": 3,
   "senadores": [
     {
@@ -1263,7 +1263,7 @@
       ],
       "totalNotasFiscais": 105,
       "escritorioApoio": "AV. AMÉRICA, 759 – VILA PLANALTO, CAMPO GRANDE/MS – CEP 79009-060",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-16T13:06:58",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-16T19:03:59",
       "nota": ""
     },
     {
@@ -1425,17 +1425,6 @@
         },
         {
           "data": "2026-10-05",
-          "mes": 10,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "H PLUS ADMINISTRAÇÃO E HOTELARIA LTDA",
-          "cnpjCpf": "05.217.384/0014-37",
-          "doc": "26970",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": null,
-          "valor": 390.48
-        },
-        {
-          "data": "2026-10-05",
           "mes": 9,
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "H PLUS ADMINISTRAÇÃO E HOTELARIA LTDA",
@@ -1444,6 +1433,17 @@
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 3514.32
+        },
+        {
+          "data": "2026-10-05",
+          "mes": 10,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "H PLUS ADMINISTRAÇÃO E HOTELARIA LTDA",
+          "cnpjCpf": "05.217.384/0014-37",
+          "doc": "26970",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": null,
+          "valor": 390.48
         },
         {
           "data": "2026-10-01",
@@ -1570,23 +1570,23 @@
           "data": "2026-09-17",
           "mes": 9,
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
-          "fornecedor": "LM Turismo Ltda",
-          "cnpjCpf": "26.480.780/0001-08",
-          "doc": "GOXVIM",
-          "tipoDocumento": "Passagem / Bilhete / Código Localizador",
-          "detalhamento": "Companhia Aérea: LATAM, Localizador: GOXVIM. Passageiros: CAROLINA REIS BAZZO DA RIVA (Matrícula 249005, COMISSIONADO), Voo: 3807 - CGR-BSB - 24/09/26; ",
-          "valor": 2102.04
-        },
-        {
-          "data": "2026-09-17",
-          "mes": 9,
-          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
           "fornecedor": "LATAM",
           "cnpjCpf": "33.937.681/0001-78",
           "doc": "NZMAYD",
           "tipoDocumento": "Passagem / Bilhete / Código Localizador",
           "detalhamento": "Companhia Aérea: LATAM, Localizador: NZMAYD. Passageiros: ",
           "valor": 2536.5
+        },
+        {
+          "data": "2026-09-17",
+          "mes": 9,
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "fornecedor": "LM Turismo Ltda",
+          "cnpjCpf": "26.480.780/0001-08",
+          "doc": "GOXVIM",
+          "tipoDocumento": "Passagem / Bilhete / Código Localizador",
+          "detalhamento": "Companhia Aérea: LATAM, Localizador: GOXVIM. Passageiros: CAROLINA REIS BAZZO DA RIVA (Matrícula 249005, COMISSIONADO), Voo: 3807 - CGR-BSB - 24/09/26; ",
+          "valor": 2102.04
         },
         {
           "data": "2026-09-12",
@@ -1602,17 +1602,6 @@
         {
           "data": "2026-09-11",
           "mes": 9,
-          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
-          "fornecedor": "LM Turismo Ltda",
-          "cnpjCpf": "26.480.780/0001-08",
-          "doc": "AQSKLG",
-          "tipoDocumento": "Passagem / Bilhete / Código Localizador",
-          "detalhamento": "Companhia Aérea: LATAM, Localizador: AQSKLG. Passageiros: CAROLINA REIS BAZZO DA RIVA (Matrícula 249005, COMISSIONADO), Voo: 3717 - CGR -BSB - 12/09/26; ",
-          "valor": 2526.48
-        },
-        {
-          "data": "2026-09-11",
-          "mes": 9,
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "POSTO LR LTDA",
           "cnpjCpf": "52.212.878/0001-94",
@@ -1620,6 +1609,17 @@
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 536.07
+        },
+        {
+          "data": "2026-09-11",
+          "mes": 9,
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "fornecedor": "LM Turismo Ltda",
+          "cnpjCpf": "26.480.780/0001-08",
+          "doc": "AQSKLG",
+          "tipoDocumento": "Passagem / Bilhete / Código Localizador",
+          "detalhamento": "Companhia Aérea: LATAM, Localizador: AQSKLG. Passageiros: CAROLINA REIS BAZZO DA RIVA (Matrícula 249005, COMISSIONADO), Voo: 3717 - CGR -BSB - 12/09/26; ",
+          "valor": 2526.48
         },
         {
           "data": "2026-09-09",
@@ -2459,17 +2459,6 @@
         },
         {
           "data": "2026-06-01",
-          "mes": 10,
-          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
-          "fornecedor": "LATAM",
-          "cnpjCpf": "33.937.681/0001-78",
-          "doc": "LMUGVF",
-          "tipoDocumento": "Passagem / Bilhete / Código Localizador",
-          "detalhamento": "Companhia Aérea: LATAM, Localizador: LMUGVF. Passageiros: EVERTON DE FREITAS (Matrícula 320253, COMISSIONADO), Voo: 3716 - BSB -CGR - 01/10/26; JOSÉ CARLOS DA SILVA (Matrícula 189835, COMISSIONADO), Voo: 3716 - BSB -CGR - 01/10/26; EVERTON DE FREITAS (Matrícula 320253, COMISSIONADO), Voo: 3807 - CGR -BSB - 05/10/26; JOSÉ CARLOS DA SILVA (Matrícula 189835, COMISSIONADO), Voo: 3807 - CGR - BSB - 05/10/26; ",
-          "valor": 2006.12
-        },
-        {
-          "data": "2026-06-01",
           "mes": 6,
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "Visualiza Aluguel de Carros",
@@ -2489,6 +2478,17 @@
           "tipoDocumento": "Recibo",
           "detalhamento": null,
           "valor": 10000.0
+        },
+        {
+          "data": "2026-06-01",
+          "mes": 10,
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "fornecedor": "LATAM",
+          "cnpjCpf": "33.937.681/0001-78",
+          "doc": "LMUGVF",
+          "tipoDocumento": "Passagem / Bilhete / Código Localizador",
+          "detalhamento": "Companhia Aérea: LATAM, Localizador: LMUGVF. Passageiros: EVERTON DE FREITAS (Matrícula 320253, COMISSIONADO), Voo: 3716 - BSB -CGR - 01/10/26; JOSÉ CARLOS DA SILVA (Matrícula 189835, COMISSIONADO), Voo: 3716 - BSB -CGR - 01/10/26; EVERTON DE FREITAS (Matrícula 320253, COMISSIONADO), Voo: 3807 - CGR -BSB - 05/10/26; JOSÉ CARLOS DA SILVA (Matrícula 189835, COMISSIONADO), Voo: 3807 - CGR - BSB - 05/10/26; ",
+          "valor": 2006.12
         },
         {
           "data": "2026-05-29",
@@ -3497,7 +3497,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HOTEL VALE VERDE LTDA",
           "cnpjCpf": "33.178.278/0001-02",
-          "doc": "115158",
+          "doc": "115160",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 265.0
@@ -3508,7 +3508,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HOTEL VALE VERDE LTDA",
           "cnpjCpf": "33.178.278/0001-02",
-          "doc": "115160",
+          "doc": "115158",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 265.0
@@ -4000,7 +4000,7 @@
       ],
       "totalNotasFiscais": 238,
       "escritorioApoio": "AV. PROF. LUIZ ALEXANDRE DE OLIVEIRA, 879 – TÉRREO, ROYAL PARK, CAMPO GRANDE/MS – CEP 79021-430 | Tel: (67) 3222-8738",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-16T13:06:58",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-16T19:03:59",
       "nota": ""
     },
     {
@@ -5007,6 +5007,17 @@
         {
           "data": "2026-05-04",
           "mes": 4,
+          "categoria": "Aluguel de imóveis para escritório político",
+          "fornecedor": "Águas Guariroba S.A.",
+          "cnpjCpf": "04.089.570/0001-50",
+          "doc": "671624673",
+          "tipoDocumento": "Boleto",
+          "detalhamento": "Referente à utilização de água em escritório parlamentar no estado de Mato Grosso do Sul - 04-2026.",
+          "valor": 261.55
+        },
+        {
+          "data": "2026-05-04",
+          "mes": 4,
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "Ancelmo e Paulino LTDA",
           "cnpjCpf": "04.990.440/0001-94",
@@ -5036,17 +5047,6 @@
           "tipoDocumento": "Recibo",
           "detalhamento": "Utilização de táxi no estado de São Paulo pela Senadora Tereza Cristina - 04-05-2026.",
           "valor": 1000.0
-        },
-        {
-          "data": "2026-05-04",
-          "mes": 4,
-          "categoria": "Aluguel de imóveis para escritório político",
-          "fornecedor": "Águas Guariroba S.A.",
-          "cnpjCpf": "04.089.570/0001-50",
-          "doc": "671624673",
-          "tipoDocumento": "Boleto",
-          "detalhamento": "Referente à utilização de água em escritório parlamentar no estado de Mato Grosso do Sul - 04-2026.",
-          "valor": 261.55
         },
         {
           "data": "2026-05-03",
@@ -5270,6 +5270,39 @@
         },
         {
           "data": "2026-04-01",
+          "mes": 3,
+          "categoria": "Aquisição de material de consumo para uso no escritório político",
+          "fornecedor": "J. Monteiro da Silva - ME - Tech3 Brasil",
+          "cnpjCpf": "21.626.690/0001-69",
+          "doc": "19376",
+          "tipoDocumento": "Boleto",
+          "detalhamento": "Referente à locação de impressora para uso em escritório parlamentar no estado de Mato Grosso do Sul - 03-2026.",
+          "valor": 175.0
+        },
+        {
+          "data": "2026-04-01",
+          "mes": 3,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Ancelmo e Paulino LTDA",
+          "cnpjCpf": "04.990.440/0001-94",
+          "doc": "42239",
+          "tipoDocumento": "Boleto",
+          "detalhamento": "Referente ao uso de combustível para uso no estado de Mato Grosso do Sul - atividades parlamentares - 03-2026.",
+          "valor": 874.51
+        },
+        {
+          "data": "2026-04-01",
+          "mes": 3,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Daleth Veículos LTDA EPP Village Rent a Car",
+          "cnpjCpf": "04.515.963/0001-89",
+          "doc": "910",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": "Referente à locação de veículo modelo GM tracker LT, placa PAL8G29, no período de 01-03-2026 a 31-03-2026.",
+          "valor": 4500.0
+        },
+        {
+          "data": "2026-04-01",
           "mes": 4,
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "Grand Park Eventos e Hospedagem LTDA",
@@ -5366,39 +5399,6 @@
           "tipoDocumento": "Fatura",
           "detalhamento": null,
           "valor": 2262.19
-        },
-        {
-          "data": "2026-04-01",
-          "mes": 3,
-          "categoria": "Aquisição de material de consumo para uso no escritório político",
-          "fornecedor": "J. Monteiro da Silva - ME - Tech3 Brasil",
-          "cnpjCpf": "21.626.690/0001-69",
-          "doc": "19376",
-          "tipoDocumento": "Boleto",
-          "detalhamento": "Referente à locação de impressora para uso em escritório parlamentar no estado de Mato Grosso do Sul - 03-2026.",
-          "valor": 175.0
-        },
-        {
-          "data": "2026-04-01",
-          "mes": 3,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Ancelmo e Paulino LTDA",
-          "cnpjCpf": "04.990.440/0001-94",
-          "doc": "42239",
-          "tipoDocumento": "Boleto",
-          "detalhamento": "Referente ao uso de combustível para uso no estado de Mato Grosso do Sul - atividades parlamentares - 03-2026.",
-          "valor": 874.51
-        },
-        {
-          "data": "2026-04-01",
-          "mes": 3,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Daleth Veículos LTDA EPP Village Rent a Car",
-          "cnpjCpf": "04.515.963/0001-89",
-          "doc": "910",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": "Referente à locação de veículo modelo GM tracker LT, placa PAL8G29, no período de 01-03-2026 a 31-03-2026.",
-          "valor": 4500.0
         },
         {
           "data": "2026-03-31",
@@ -5865,7 +5865,7 @@
       ],
       "totalNotasFiscais": 163,
       "escritorioApoio": "",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-16T13:06:58",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-16T19:03:59",
       "nota": ""
     }
   ]
