@@ -27,10 +27,10 @@ O projeto nasceu da constatação de que, embora esses dados sejam legalmente p�
 
 | Número | O que é |
 |---|---|
-| **22.540** | Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor) |
-| **R$ 25,9 bi+** | Total de gastos públicos catalogados em 2026 (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares pagas em MS) |
+| **23.528** | Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor) |
+| **R$ 26,6 bi+** | Total de gastos públicos catalogados em 2026 (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares pagas em MS) |
 | **R$ 21,2 bi** | Pagos pelo Governo do Estado de MS em 2026 |
-| **R$ 4,1 bi** | Pagos pela Prefeitura de Campo Grande em 2026, em 11.963 empenhos |
+| **R$ 4,7 bi** | Pagos pela Prefeitura de Campo Grande em 2026, em 12.951 empenhos |
 | **R$ 5,8 mi** | Verba indenizatória paga aos 29 vereadores de Campo Grande em 2026 |
 | **R$ 13,0 mi** | CEAP paga aos 25 deputados estaduais de MS em 2026 |
 | **R$ 2,9 mi** | CEAP dos 8 deputados federais de MS em 2026 |
@@ -40,7 +40,7 @@ O projeto nasceu da constatação de que, embora esses dados sejam legalmente p�
 | **R$ 24,0 mi/mês** | Folha bruta dos 286 magistrados ativos de MS (TJMS e TRT24, com a gratificação eleitoral do TRE-MS) |
 | **546** | Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões) |
 | **421** | Pessoas com líquido acima do teto constitucional no último mês publicado (aba Supersalários) |
-| **344** | Sinais de atenção da Auditoria automática (26 de nível forte) |
+| **347** | Sinais de atenção da Auditoria automática (26 de nível forte) |
 | **100%** | Dos dados vêm de fontes oficiais — estimativas são sempre marcadas (ver Metodologia) |
 
 Todos os números são recalculados automaticamente pela coleta diária e podem variar ligeiramente a cada consulta — os valores acima refletem o estado do painel na data desta atualização.
