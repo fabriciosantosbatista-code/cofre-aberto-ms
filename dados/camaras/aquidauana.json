@@ -1,7 +1,7 @@
 {
   "cidade": "Aquidauana",
-  "ultimaAtualizacao": "2026-11-15T15:28:41",
-  "fonte": "Portal Transparência Fiorilli (pmaquidauana.rcmsuporte.com.br:8079) — Dados Abertos — 2026-11-15T15:28:41",
+  "ultimaAtualizacao": "2026-11-16T12:07:04",
+  "fonte": "Portal Transparência Fiorilli (pmaquidauana.rcmsuporte.com.br:8079) — Dados Abertos — 2026-11-16T12:07:04",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmaquidauana.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -418,6 +418,11 @@
       "cargo": "Vereador(a)",
       "diarias": [
         {
+          "data": "2026-11-09",
+          "valor": 3200.0,
+          "descricao": "Solicitação de 04 diárias para participação do “Ciclo de Palestras do Legislativo Municipal”, a ser realizado de 10 a 13 de novembro de 2026, no Município de Foz do Iguaçu/PR."
+        },
+        {
           "data": "2026-10-07",
           "valor": 2500.0,
           "descricao": "Solicitação de 2,5 diárias para participar do Seminário: Legislativo Inteligente - IA Aplicada ao Mandato\r\ne à Gestão Parlamentar, nos dias 07, 08 e 09 de outubro, em Campo Grande - MS"
@@ -468,8 +473,8 @@
           "descricao": "Concessão de duas diárias inteiras e meia diária, pela participação no SEMINÁRIO \"Ano Legislativo em Foco: Planejamento, Segurança Jurídica e Atuação do Vereador em Ano Eleitoral\", a ocorrer nos dias 04, 05 E 06 de fevereiro de 2026, Em Campo Grande/MS."
         }
       ],
-      "totalDiarias2026": 40500.0,
-      "numDiarias2026": 10
+      "totalDiarias2026": 43700.0,
+      "numDiarias2026": 11
     },
     {
       "nome": "MARCOS MOREIRA GOMES",
@@ -680,14 +685,14 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 9230868.47,
+    "totalGeral": 9234190.12,
     "totalNotas": 355,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 6883140.43,
       "Obrigações Patronais": 800158.92,
-      "Diárias — Civil": 616500.0,
+      "Diárias — Civil": 619700.0,
       "Serviços de Consultoria": 406407.76,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 308091.05,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 308212.7,
       "Serviços de Tecnologia da Informação": 148618.0,
       "Equipamentos e Material Permanente": 27330.84,
       "Material de Consumo": 27059.37,
@@ -1872,6 +1877,14 @@
       },
       {
         "data": "2026-11-05",
+        "fornecedor": "JURACI JESUS OLIVEIRA",
+        "cnpj": "367.XXX.XXX-49",
+        "categoria": "Diárias — Civil",
+        "valor": 3200.0,
+        "descricao": "Solicitação de 04 diárias para participação do “Ciclo de Palestras do Legislativo Municipal”, a ser realizado de 10 a 13 de novembro de 2026, no Município de Foz do Iguaçu/PR."
+      },
+      {
+        "data": "2026-11-05",
         "fornecedor": "Raoni Alves Corrêa Marques",
         "cnpj": "015.XXX.XXX-12",
         "categoria": "Diárias — Civil",
@@ -2999,6 +3012,22 @@
         "descricao": "PAGAMENTO REFERENTE AO PRODUTO SSL DV DOMÍNIO ÚNICO, RESPONSÁVEL PELA HOSPEDAGEM DO SITE DA CÂMARA MUNICIPAL DE AQUIDAUANA."
       },
       {
+        "data": "2026-09-10",
+        "fornecedor": "ARENIR DE FATIMA ALVES RIBEIRO & CIA LTDA",
+        "cnpj": "02.568.247/0001-34",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 113.73,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000022/25 - Ano Mod.: 2025 - Modalidade: DISPENSA - Nº Mod.: 20 - Mod. Formatada: 20 - Contratação de empresa para prestar serviço de manutenção predi"
+      },
+      {
+        "data": "2026-08-12",
+        "fornecedor": "ANA PAULA FIGUEIREDO RODRIGUES DO NASCIMENTO",
+        "cnpj": "22.427.119/0001-88",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 7.92,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000022/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 13 - Mod. Formatada: 13 - Contratação de empresa especializada para confecção e fornecime"
+      },
+      {
         "data": "2026-05-18",
         "fornecedor": "INSS - INSTITUTO NACIONAL DE SEGURIDADE SOCIAL",
         "cnpj": "29.979.036/0086-30",
@@ -3464,14 +3493,6 @@
       },
       {
         "data": "2026-08-12",
-        "fornecedor": "ANA PAULA FIGUEIREDO RODRIGUES DO NASCIMENTO",
-        "cnpj": "22.427.119/0001-88",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000022/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 13 - Mod. Formatada: 13 - Contratação de empresa especializada para confecção e fornecime"
-      },
-      {
-        "data": "2026-08-12",
         "fornecedor": "RIBEIRO, GOMES & RIBEIRO LTDA",
         "cnpj": "08.035.987/0001-91",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
@@ -3495,14 +3516,6 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000024/26 - Ano Mod.: 2026 - Modalidade: DISPENSA - Nº Mod.: 14 - Mod. Formatada: 14 - Contratação de empresa especializada para fornecimento de mater"
       },
       {
-        "data": "2026-09-10",
-        "fornecedor": "ARENIR DE FATIMA ALVES RIBEIRO & CIA LTDA",
-        "cnpj": "02.568.247/0001-34",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000022/25 - Ano Mod.: 2025 - Modalidade: DISPENSA - Nº Mod.: 20 - Mod. Formatada: 20 - Contratação de empresa para prestar serviço de manutenção predi"
-      },
-      {
         "data": "2026-10-13",
         "fornecedor": "EDMILSON FERNANDES LEITE",
         "cnpj": "338.XXX.XXX-00",
@@ -3517,14 +3530,6 @@
         "categoria": "Diárias — Civil",
         "valor": 0.0,
         "descricao": "solicitação de 1 diária para o cumprimento de agenda na Assembleia Legislativa do Estado de Mato Grosso do Sul, em Campo Grande - MS, no dia 14 de outubro."
-      },
-      {
-        "data": "2026-11-05",
-        "fornecedor": "JURACI JESUS OLIVEIRA",
-        "cnpj": "367.XXX.XXX-49",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "Solicitação de 04 diárias para participação do “Ciclo de Palestras do Legislativo Municipal”, a ser realizado de 10 a 13 de novembro de 2026, no Município de Foz do Iguaçu/PR."
       },
       {
         "data": "2026-11-09",

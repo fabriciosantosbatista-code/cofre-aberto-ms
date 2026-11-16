@@ -1,7 +1,7 @@
 {
   "cidade": "Ribas do Rio Pardo",
-  "ultimaAtualizacao": "2026-11-15T15:28:41",
-  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-11-15T15:28:41",
+  "ultimaAtualizacao": "2026-11-16T12:07:04",
+  "fonte": "Portal Transparência Fiorilli (45.174.220.245:8079) — Dados Abertos — 2026-11-16T12:07:04",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.ribasdoriopardo.ms.leg.br/",
   "temDadosFinanceiros": true,
@@ -386,20 +386,20 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 9908920.48,
+    "totalGeral": 9967793.54,
     "totalNotas": 381,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 5043930.29,
       "Equipamentos e Material Permanente": 1332214.16,
-      "Obrigações Patronais": 870373.69,
+      "Obrigações Patronais": 924886.65,
       "Serviços de Consultoria": 766566.41,
-      "Serviços de Tecnologia da Informação": 490619.37,
+      "Serviços de Tecnologia da Informação": 491142.99,
       "Auxílio-Alimentação": 442905.15,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 414765.98,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 418467.46,
       "Material de Consumo": 137699.46,
       "Outros Benefícios Assistenciais do Servidor": 134888.89,
       "Outros Serviços de Terceiros — Pessoa Física": 127115.48,
-      "Diárias — Civil": 89263.51,
+      "Diárias — Civil": 89398.51,
       "Indenizações e Restituições": 30937.37,
       "Elemento 96": 27640.72
     },
@@ -997,6 +997,14 @@
         "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - SET/2026."
       },
       {
+        "data": "2026-10-28",
+        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 30414.15,
+        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - OUT/2026."
+      },
+      {
         "data": "2026-08-28",
         "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -1195,6 +1203,14 @@
         "categoria": "Obrigações Patronais",
         "valor": 24098.81,
         "descricao": "EMPENHO REFERENTEAO INSS PATRONAL DOS VEREADORES - SET/2026."
+      },
+      {
+        "data": "2026-10-28",
+        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+        "cnpj": "29.979.036/0001-40",
+        "categoria": "Obrigações Patronais",
+        "valor": 24098.81,
+        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DO SUBSÍDIO DOS VEREADORES - OUT/2026."
       },
       {
         "data": "2026-11-10",
@@ -1885,6 +1901,14 @@
         "descricao": "EMPENHO REFERENTE À CONTRATAÇÃO DE EMPRESA PARA A PRESTAÇÃO DE SERVIÇOS DE APOIO OPERACIONAL À SOLENIDADE DE INAUGURAÇÃO DA NOVA SEDE DA CÂMARA MUNICIPAL, CONFORME DISPENSA DE LICITAÇÃO Nº 10/2026, PR"
       },
       {
+        "data": "2026-10-15",
+        "fornecedor": "PORTO SEGURO - CIA DE SEGUROS GERAIS",
+        "cnpj": "61.198.164/0001-60",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 3701.48,
+        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO, DE PRORROGAÇÃO DE PRAZO E VALOR, AO PROCESSO ADMINISTRATIVO 19/2024, DISPENSA DE LICITAÇÃO 12/2024, CUJO OBJETO É A RENOVAÇÃO DA APÓLICE DO SEGURO DA FROTA OFICI"
+      },
+      {
         "data": "2026-04-09",
         "fornecedor": "ILIVINO PANIAGO NOGUEIRA SOUZA",
         "cnpj": "40.066.088/0001-69",
@@ -2013,6 +2037,14 @@
         "descricao": "EMPENHO REFERENTE AO RESULTADO DA ATA DE REGISTRO DE PREÇOS 04/2025, PREGÃO ELETRÔNICO Nº 03/2025, QUE TEM COMO OBJETO A AQUISIÇÃO DE MATERIAIS DE LIMPEZA, COPA/COZINHA E MATERIAIS ELÉTRICOS DE USO CO"
       },
       {
+        "data": "2026-06-30",
+        "fornecedor": "W3 TECNOLOGIA LTDA",
+        "cnpj": "20.522.727/0001-46",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 2094.48,
+        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO Nº 05/2025 PROCESSO ADMINISTRATIVO Nº 19/2025, DISPENSA ELETRÔNICA Nº 01/2025, QUE TEM COMO OBJETO A PRESTAÇÃO DE SERVIÇOS DE CRIAÇÃO, DESENVOLVIMENT"
+      },
+      {
         "data": "2026-07-28",
         "fornecedor": "UILLIAN MARQUES DA SILVA",
         "cnpj": "27.560.148/0001-37",
@@ -2051,14 +2083,6 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 1600.0,
         "descricao": "EMPENHO REFERENTE À PRESTAÇÃO DE SERVIÇOS POR DEMANDA PARA A EMISSÃO DE CERTIFICADOS DIGITAIS, TIPO A1 E-CPF E A1 E-CNPJ, PERÍODO CONTRATUAL: 09/02/2026 A 08/02/2027. CONTRATO ADMINISTRATIVO Nº 001/20"
-      },
-      {
-        "data": "2026-06-30",
-        "fornecedor": "W3 TECNOLOGIA LTDA",
-        "cnpj": "20.522.727/0001-46",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 1570.86,
-        "descricao": "EMPENHO REFERENTE AO 1º TERMO ADITIVO, AO CONTRATO Nº 05/2025 PROCESSO ADMINISTRATIVO Nº 19/2025, DISPENSA ELETRÔNICA Nº 01/2025, QUE TEM COMO OBJETO A PRESTAÇÃO DE SERVIÇOS DE CRIAÇÃO, DESENVOLVIMENT"
       },
       {
         "data": "2026-06-09",
@@ -2845,6 +2869,14 @@
         "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA-DIÁRIA) EM FAVOR DO SERVIDOR REINALDO CASTANHEIRA DE SIQUEIRA, PARA DESLOCAMENTO À CIDADE DE CAMPO GRANDE/MS, EM 19/10/2026, COM O OBJETIVO DE ENTREGAR OS CO"
       },
       {
+        "data": "2026-11-10",
+        "fornecedor": "REINALDO CASTANHEIRA DE SIQUEIRA",
+        "cnpj": "184.XXX.XXX-50",
+        "categoria": "Diárias — Civil",
+        "valor": 135.0,
+        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA PARA DESLOCAMENTO À CONCESSIONÁRIA KAMPAI, EM CAMPO GRANDE/MS, NO DIA 12/11/2026, A FIM DE REALIZAR A REVISÃO DO VEÍCULO HILUX, PLACA QAP-9611."
+      },
+      {
         "data": "2026-03-03",
         "fornecedor": "STEFANELLO MAT. PARA CONSTRUÇAO LTDA- ME",
         "cnpj": "08.236.688/0001-15",
@@ -3357,30 +3389,6 @@
         "descricao": "ANULAÇÃO DE EMPENHO REFERENTE À RESTITUIÇÃO DA REMUNERAÇÃO E ENCARGOS PATRONAIS DA SERVIDORA SUELEN MACHADO DE OLIVEIRA, CARGO EFETIVO DE AUXILIAR ADMINISTRATIVO, MATRÍCULA 4000-2, CEDIDA PARA A CÂMAR"
       },
       {
-        "data": "2026-10-15",
-        "fornecedor": "PORTO SEGURO - CIA DE SEGUROS GERAIS",
-        "cnpj": "61.198.164/0001-60",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO 2º TERMO ADITIVO, DE PRORROGAÇÃO DE PRAZO E VALOR, AO PROCESSO ADMINISTRATIVO 19/2024, DISPENSA DE LICITAÇÃO 12/2024, CUJO OBJETO É A RENOVAÇÃO DA APÓLICE DO SEGURO DA FROTA OFICI"
-      },
-      {
-        "data": "2026-10-28",
-        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
-        "cnpj": "29.979.036/0001-40",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DO SUBSÍDIO DOS VEREADORES - OUT/2026."
-      },
-      {
-        "data": "2026-10-28",
-        "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
-        "cnpj": "29.979.036/0001-40",
-        "categoria": "Obrigações Patronais",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE AO INSS PATRONAL DOS SERVIDORES EFETIVOS - OUT/2026."
-      },
-      {
         "data": "2026-10-28",
         "fornecedor": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
         "cnpj": "29.979.036/0001-40",
@@ -3443,14 +3451,6 @@
         "categoria": "Material de Consumo",
         "valor": 0.0,
         "descricao": "EMPENHO REFERENTE À AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE E MATERIAIS DE COMUNICAÇÃO VISUAL, CONFORME TERMO DE REFERÊNCIA DA ATA DE REGISTRO DE PREÇOS, DISPENSA ELETRÔNICA Nº 001/2026, PROCESSO ADMINIS"
-      },
-      {
-        "data": "2026-11-10",
-        "fornecedor": "REINALDO CASTANHEIRA DE SIQUEIRA",
-        "cnpj": "184.XXX.XXX-50",
-        "categoria": "Diárias — Civil",
-        "valor": 0.0,
-        "descricao": "EMPENHO REFERENTE À CONCESSÃO DE 1/2 (MEIA) DIÁRIA PARA DESLOCAMENTO À CONCESSIONÁRIA KAMPAI, EM CAMPO GRANDE/MS, NO DIA 12/11/2026, A FIM DE REALIZAR A REVISÃO DO VEÍCULO HILUX, PLACA QAP-9611."
       }
     ]
   }

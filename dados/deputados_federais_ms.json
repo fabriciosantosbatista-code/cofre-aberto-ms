@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-15T15:28:41",
+  "ultimaAtualizacao": "2026-11-16T12:07:04",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-15T15:28:41",
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-16T12:07:04",
   "total": 8,
   "deputados": [
     {
@@ -13734,7 +13734,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220546",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220546/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 444656.31,
+      "cotaGastaAno": 446195.16,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -13746,7 +13746,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 62780.76
+          "valor": 64319.61
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -13761,8 +13761,38 @@
           "valor": 8165.4
         }
       ],
-      "totalNotasFiscais": 335,
+      "totalNotasFiscais": 343,
       "despesas": [
+        {
+          "data": "2026-11-09",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "POSTO SAO BENTO 103 SUL LTDA",
+          "cnpjCpfFornecedor": "63.641.166/0002-98",
+          "valor": 230.12,
+          "doc": "36198",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8176952",
+          "mes": 11
+        },
+        {
+          "data": "2026-11-04",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "POSTO PATRICIA - EIRELI",
+          "cnpjCpfFornecedor": "06.992.021/0001-17",
+          "valor": 311.08,
+          "doc": "1187905",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8176770",
+          "mes": 11
+        },
+        {
+          "data": "2026-10-29",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "POSTO PATRICIA - EIRELI",
+          "cnpjCpfFornecedor": "06.992.021/0001-17",
+          "valor": 296.77,
+          "doc": "14021",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8176775",
+          "mes": 10
+        },
         {
           "data": "2026-10-29",
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -13771,6 +13801,36 @@
           "valor": 30000.0,
           "doc": "10",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8171093.pdf",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-25",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "AUTO POSTO AEROPORTO LTDA",
+          "cnpjCpfFornecedor": "08.202.116/0001-15",
+          "valor": 100.0,
+          "doc": "101121",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8176954",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-25",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "POSTO PATRICIA - EIRELI",
+          "cnpjCpfFornecedor": "06.992.021/0001-17",
+          "valor": 269.94,
+          "doc": "1186407",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8176771",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-24",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "POSTO PATRICIA - EIRELI",
+          "cnpjCpfFornecedor": "06.992.021/0001-17",
+          "valor": 250.94,
+          "doc": "810727",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8176773",
           "mes": 10
         },
         {
@@ -13881,6 +13941,26 @@
           "valor": 127.04,
           "doc": "35168",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8168700",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-07",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "DRA4 DERIVADOS DE PETROLEO LTDA",
+          "cnpjCpfFornecedor": "19.257.042/0001-30",
+          "valor": 30.0,
+          "doc": "250694",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8176963",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-06",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "DRA4 DERIVADOS DE PETROLEO LTDA",
+          "cnpjCpfFornecedor": "19.257.042/0001-30",
+          "valor": 50.0,
+          "doc": "250088",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8176961",
           "mes": 10
         },
         {
