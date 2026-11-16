@@ -54,6 +54,7 @@ import hashlib, json, re, statistics, unicodedata
 from datetime import date, datetime, timedelta
 
 from gerar_analises import ANO, DADOS, carregar, cnpj_valido, limpa_nome, salvar
+from coletar_cnpj import abertura_real
 
 HOJE = date.today()
 LIMITE_MEI = 81000.0
@@ -255,7 +256,7 @@ def main():
                 f"Empresa com capital social de {brl(cap)} recebeu {brl(rec)} de órgãos públicos em {ANO}. Capital baixo é comum em "
                 f"prestadoras de serviço, mas destoa do volume. Quem pagou: {quem}.", rec,
                 [f"Capital social: {brl(cap)}", f"Porte: {info.get('porte') or '—'}"], maior, c)
-        ab = info.get("abertura")
+        ab = abertura_real(c, cad)  # filial: vale a abertura da matriz (a empresa já existia antes da filial)
         if ab:
             for p, pg in quem_lst:
                 prim = min(n["data"] for n in por_cnpj[c]["notas"] if n["p"] == p and n.get("data")) if any(n.get("data") for n in por_cnpj[c]["notas"] if n["p"] == p) else None

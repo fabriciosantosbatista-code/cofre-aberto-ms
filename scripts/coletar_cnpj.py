@@ -84,7 +84,31 @@ def cnpjs_alvo():
     for d, v in pref.items():
         if v >= 50000:
             soma(d, v)
+    # filial (0002, 0016...): também a matriz (0001), para saber desde quando a empresa ou entidade existe de fato
+    for c, v in list(valor.items()):
+        if c[8:12] != "0001":
+            m = matriz(c)
+            valor[m] = max(valor.get(m, 0), v)
     return sorted(valor, key=lambda c: -valor[c])
+
+
+def matriz(c):
+    """CNPJ da matriz (0001) com os dígitos verificadores."""
+    def dv(s, w):
+        r = sum(int(x) * y for x, y in zip(s, w)) % 11
+        return "0" if r < 2 else str(11 - r)
+    b = c[:8] + "0001"
+    w1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+    d1 = dv(b, w1)
+    return b + d1 + dv(b + d1, [6] + w1)
+
+
+def abertura_real(c, cache):
+    """Data em que a empresa/entidade passou a existir: a da matriz quando c é filial (None se a matriz ainda não foi consultada)."""
+    info = cache.get(c) or {}
+    if c[8:12] == "0001":
+        return info.get("abertura")
+    return (cache.get(matriz(c)) or {}).get("abertura")
 
 
 def resumir(d):

@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-15T15:46:29",
+ "geradoEm": "2026-11-16T01:23:26",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
@@ -76,8 +76,8 @@
   "auditoria": {
    "fonte": "Cruzamento das bases do site com a Receita Federal (BrasilAPI / Minha Receita), o TSE e a folha do Estado",
    "url": "https://brasilapi.com.br/docs#tag/CNPJ",
-   "coleta": "2026-11-15T15:46:28",
-   "dadoMaisRecente": "4642 empresas checadas na Receita",
+   "coleta": "2026-11-16T01:23:02",
+   "dadoMaisRecente": "4826 empresas checadas na Receita",
    "nivel": "ok",
    "mensagem": null
   },
@@ -102,8 +102,8 @@
    "url": "https://dadosabertos.tse.jus.br/",
    "coleta": "2026-11-12T17:15:45",
    "dadoMaisRecente": "35 eleitos em 2026",
-   "nivel": "ok",
-   "mensagem": null
+   "nivel": "atencao",
+   "mensagem": "a coleta automática não atualizou esta fonte nos últimos dias"
   },
   "arrecadacao": {
    "fonte": "Tesouro Nacional — Siconfi, RREO Anexo 3 (arrecadação do Governo de MS e da Prefeitura de CG)",
@@ -132,8 +132,8 @@
   "entidades": {
    "fonte": "Portal da Transparência do Estado de MS, SIG-Transparência da Prefeitura de CG, emendas (CGU) e cadastro de CNPJ da Receita",
    "url": "https://www.transparencia.ms.gov.br/",
-   "coleta": "2026-11-15T15:46:25",
-   "dadoMaisRecente": "889 entidades",
+   "coleta": "2026-11-16T01:23:03",
+   "dadoMaisRecente": "890 entidades",
    "nivel": "ok",
    "mensagem": null
   },

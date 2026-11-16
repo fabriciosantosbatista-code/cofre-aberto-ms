@@ -24,6 +24,7 @@ from urllib.parse import quote
 
 sys.path.insert(0, str(Path(__file__).parent))
 from gerar_analises import cnpj_valido, fmt_cnpj, limpa_nome, parlamentares  # noqa: E402
+from coletar_cnpj import matriz  # noqa: E402
 from gerar_paginas_parlamentares import (ANO, CSS, DADOS, HOJE, ROOT, RODAPE, SITE, brl, cabecalho, compacto,  # noqa: E402
                                          data_br, e, escreve_se_mudou, milhar)
 
@@ -191,7 +192,9 @@ def pagina(x, nome):
     cad = next((CNPJ_CAD[c] for c in cnpjs if c in CNPJ_CAD and not CNPJ_CAD[c].get("naoEncontrado")), None)
     if cad:
         socios = ", ".join(f"{e(q['nome'])} <small style='display:inline'>({e(q.get('qualificacao') or 'sócio')})</small>" for q in cad.get("socios", [])[:8]) or "não informado"
-        lin = [("Abertura", data_br(cad.get("abertura"))), ("Situação", f"{cad.get('situacao') or '—'}" + (f" desde {data_br(cad['dataSituacao'])}" if cad.get("dataSituacao") else "")),
+        c_cad = next((c for c in cnpjs if c in CNPJ_CAD and not CNPJ_CAD[c].get("naoEncontrado")), "")
+        ab_mat = (CNPJ_CAD.get(matriz(c_cad)) or {}).get("abertura") if c_cad and c_cad[8:12] != "0001" else None
+        lin = [("Abertura", data_br(cad.get("abertura")) + (f" (esta filial; a matriz existe desde {data_br(ab_mat)})" if ab_mat else "")), ("Situação", f"{cad.get('situacao') or '—'}" + (f" desde {data_br(cad['dataSituacao'])}" if cad.get("dataSituacao") else "")),
                ("Atividade principal", f"{cad.get('cnae') or ''} — {cad.get('cnaeDesc') or '—'}"),
                ("Atividades secundárias", str(len(cad.get("cnaesSec") or []))),
                ("Natureza jurídica", cad.get("natureza") or "—"), ("Porte", (cad.get("porte") or "—") + (" · optante pelo MEI" if cad.get("mei") else "")),

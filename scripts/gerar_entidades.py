@@ -21,6 +21,10 @@ Gera dados/entidades.json.
 import json, re
 from datetime import date, datetime
 from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).parent))
+from coletar_cnpj import abertura_real  # noqa: E402
 
 DADOS = Path(__file__).parent.parent / "dados"
 HOJE = date.today()
@@ -83,10 +87,10 @@ def main():
             return None
         e = ents.get(doc)
         if not e:
-            abertura = c.get("abertura")
+            abertura = abertura_real(doc, cad) or (c.get("abertura") if doc[8:12] == "0001" else None)  # filial: desde quando a entidade existe
             e = ents[doc] = {"cnpj": doc, "nome": re.sub(r"\s+", " ", c.get("razao") or nome or "").strip(), "fantasia": c.get("fantasia"),
                              "natureza": c.get("natureza"), "area": area(c), "atividade": c.get("cnaeDesc"), "municipio": c.get("municipio"),
-                             "uf": c.get("uf"), "abertura": abertura, "situacao": c.get("situacao"),
+                             "uf": c.get("uf"), "abertura": abertura, "aberturaFilial": c.get("abertura") if doc[8:12] != "0001" else None, "situacao": c.get("situacao"),
                              "idadeAnos": round((HOJE - date.fromisoformat(abertura)).days / 365.25, 1) if abertura else None,
                              "dirigentes": [s.get("nome") for s in (c.get("socios") or [])][:6],
                              "consignacao": bool(CONSIGNACAO.search(c.get("razao") or nome or "")),
