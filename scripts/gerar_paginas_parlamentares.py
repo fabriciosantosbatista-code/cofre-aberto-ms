@@ -162,7 +162,7 @@ def coleta():
         for n in v.get("despesas") or []:
             k = (n.get("descricao") or n.get("ato") or "Outros").strip()[:60] or "Outros"
             cats[k] = cats.get(k, 0) + (n.get("valor") or 0)
-        lista.append(dict(grupo="vereador", nome=v["nome"], partido=v.get("partido"), uf="MS", foto=v.get("foto"),
+        lista.append(dict(grupo="vereador", nome=v["nome"], partido=v.get("partido"), uf="MS", foto=v.get("foto"), gabinete=v.get("gabinete"),
                           nomeCompleto=v.get("nomeCompleto"), total=vi.get(f"gastoPago{ANO}") or 0,
                           cota=vi.get(f"cotaAnual{ANO}"), notas=v.get("despesas") or [],
                           totalNotas=v.get("totalNotasFiscais") or len(v.get("despesas") or []),
@@ -650,6 +650,7 @@ def pagina(p, irmaos):
 </div>
 {grafico(ev, ANO)}
 {bloco_cat}
+{bloco_equipe(p)}
 {bloco_emendas(p)}
 {bloco_patrimonio(p)}
 {bloco_votacoes(p)}
@@ -666,6 +667,20 @@ def pagina(p, irmaos):
         imagem = cartao(f"{p['grupo']}-{p['slug']}", p["nome"], f"{cargo} · {p['partido'] or 'sem partido'}", brl(total).split(",")[0],
                         f"de {g['cota']} em {ANO}", foto if foto and foto.startswith("/fotos/") else None)
     return cabecalho(titulo, desc, p["url"], imagem, jsonld) + corpo + RODAPE
+
+
+def bloco_equipe(p):
+    """Vereadores de CG: servidores lotados no gabinete (folha da Câmara)."""
+    eq = (p.get("gabinete") or {}).get("equipe") or []
+    if p.get("grupo") != "vereador" or not eq:
+        return ""
+    ref = carregar("camara_municipal.json").get("referenciaPessoal") or ""
+    tem_v = any(x.get("bruto") is not None for x in eq)
+    lin = "".join(f"<tr><td>{e(x['nome'])}</td><td>{e(x.get('cargo') or '—')}</td>" + (f"<td class='num'>{brl(x['bruto'])}</td>" if tem_v else "") + "</tr>" for x in eq)
+    return (f"<h2>Equipe do gabinete ({len(eq)} servidores)</h2><p>Servidores lotados no gabinete de {e(p['nome'])} na folha de {e(ref)}, segundo o Portal da "
+            f"Transparência da Câmara Municipal de Campo Grande (campo \"local de trabalho\"). Se o vereador é da Mesa Diretora, parte da equipe pode atender à Mesa.</p>"
+            f"<details><summary>Ver a lista</summary><div class='tabela-wrap' style='margin-top:8px'><table><thead><tr><th>Nome</th><th>Cargo</th>"
+            + ("<th class='num'>Bruto no mês</th>" if tem_v else "") + f"</tr></thead><tbody>{lin}</tbody></table></div></details>")
 
 
 def indice(grupo, lst):

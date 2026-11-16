@@ -104,6 +104,11 @@ def gerar_csvs():
           v.get("totalNotasFiscais"), (v.get("gabinete") or {}).get("numFuncionarios"),
           num((v.get("gabinete") or {}).get("gastoPessoalMensal")), num(v.get("salarioBase")),
           (v.get("verbaIndenizatoria") or {}).get("notaColeta")] for v in cg])
+    cmv = carregar("camara_municipal.json")
+    contagem["vereadores_cg_gabinetes.csv"] = grava_csv("vereadores_cg_gabinetes.csv",
+        ["vereador", "partido", "servidor", "cargo", "bruto_mes", "referencia"],
+        [[v["nome"], v.get("partido"), x.get("nome"), x.get("cargo"), num(x.get("bruto")) if x.get("bruto") is not None else None, cmv.get("referenciaPessoal")]
+         for v in cmv.get("vereadores", []) for x in (v.get("gabinete") or {}).get("equipe") or []])
     contagem["vereadores_cg_notas.csv"] = grava_csv("vereadores_cg_notas.csv",
         ["vereador", "data", "fornecedor", "cnpj_cpf", "valor", "ato", "descricao", "documento"],
         [[v["nome"], n.get("data"), n.get("fornecedor"), n.get("cnpj"), num(n.get("valor")), n.get("ato"),

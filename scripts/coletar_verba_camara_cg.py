@@ -944,9 +944,11 @@ def coletar_pessoal_gabinetes():
         nome = por_lotacao.get(lot)
         if not nome:
             continue
-        g = gab.setdefault(nome, {"n": 0, "total": 0.0})
+        g = gab.setdefault(nome, {"n": 0, "total": 0.0, "equipe": []})
         g["n"] += 1
         g["total"] += valor
+        g["equipe"].append({"nome": str(reg.get("NOME") or "").strip().title(), "cargo": str(reg.get("CARGO") or "").strip().capitalize(),
+                            "bruto": round(valor, 2)})
     log(f" gabinetes reconhecidos: {len(gab)}/29 — {[(k, v['n'], round(v['total'], 2)) for k, v in sorted(gab.items())]}")
     if len(gab) < 20:
         log(" ⚠️ Menos de 20 gabinetes reconhecidos pela lotação — mantendo dados anteriores (ver log acima para ajustar)")
@@ -958,6 +960,7 @@ def coletar_pessoal_gabinetes():
         v.setdefault("gabinete", {})
         v["gabinete"]["numFuncionarios"] = g["n"]
         v["gabinete"]["gastoPessoalMensal"] = round(g["total"], 2)
+        v["gabinete"]["equipe"] = sorted(g["equipe"], key=lambda x: (-x["bruto"], x["nome"]))
     resumo = atual.setdefault("resumo", {})
     resumo["totalFuncionariosGabinetes"] = sum(v.get("gabinete", {}).get("numFuncionarios") or 0 for v in atual["vereadores"])
     resumo["totalGastoPessoalMensal"] = round(sum(v.get("gabinete", {}).get("gastoPessoalMensal") or 0 for v in atual["vereadores"]), 2)

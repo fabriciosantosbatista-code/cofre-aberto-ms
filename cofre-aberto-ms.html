@@ -3496,6 +3496,11 @@ function renderCamaraMunicipal(data) {
           <p class="stat-note">${mesesDesdeJaneiro()} meses de folha idêntica</p>
         </div>
       </div>
+      ${(gabinete.equipe || []).length ? `<details class="equipe-gab" style="margin:10px 0 4px"><summary style="cursor:pointer;font-weight:600">Ver os ${gabinete.equipe.length} servidores lotados no gabinete</summary>
+        <div style="overflow-x:auto;margin-top:8px"><table class="notes-table"><thead><tr><th>Nome</th><th>Cargo</th>${gabinete.equipe.some(x => x.bruto != null) ? '<th class="num">Bruto no mês</th>' : ""}</tr></thead><tbody>
+        ${gabinete.equipe.map(x => `<tr><td>${escHTML(x.nome)}</td><td>${escHTML(x.cargo || "—")}</td>${x.bruto != null ? `<td class="num">${formatBRL(x.bruto)}</td>` : ""}</tr>`).join("")}
+        </tbody></table></div>
+        <p class="section-note">Servidores com lotação no gabinete na folha de ${DADOS_REF_PESSOAL_CG}, segundo o Portal da Transparência da Câmara (campo "local de trabalho"). Se o vereador é da Mesa Diretora, parte da equipe pode atender à Mesa.</p></details>` : ""}
 
       <div class="subhead">Verba indenizatória ${ANO_VERBA} (Atos da Mesa nº 27 e 28/2017)</div>
       <div class="stat-grid">
