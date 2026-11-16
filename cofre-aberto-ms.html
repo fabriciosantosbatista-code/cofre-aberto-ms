@@ -284,6 +284,12 @@ p{margin:0;}
 .rola-topo{overflow-x:auto;overflow-y:hidden;margin:0 0 4px;-webkit-overflow-scrolling:touch}.rola-topo>div{height:1px}
 .rola-dica{display:none;font-size:.74rem;color:var(--ink-caption);margin:0 0 4px}
 @media (pointer:coarse){.rola-dica.on{display:block}}
+.equipe-lista{list-style:none;margin:10px 0 0;padding:0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.equipe-lista li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--border)}
+.equipe-lista li:last-child{border-bottom:0}.equipe-lista b{display:block;font-weight:600;font-size:.88rem}.equipe-lista span{font-size:.76rem;color:var(--ink-caption)}
+.equipe-lista em{font-style:normal;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:.86rem}
+.equipe-gab>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1.5px solid #f5c842;color:#f5c842;font-weight:700;font-size:.9rem;background:rgba(245,200,66,.08)}
+.equipe-gab>summary::-webkit-details-marker{display:none}.equipe-gab[open]>summary{background:#f5c842;color:#14120a}
 .fluxo-card{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 40%,rgba(245,200,66,.07),transparent 60%),var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 22px 18px}
 .fluxo-card::before{content:"";position:absolute;inset:-44px 0 0 0;pointer-events:none;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;animation:fluxoGrade 3.2s linear infinite;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%);mask-image:linear-gradient(to bottom,transparent,#000 70%)}
 @keyframes fluxoGrade{to{background-position:0 44px}}
@@ -3482,9 +3488,10 @@ function renderCamaraMunicipal(data) {
 
       <div class="subhead">Equipe do gabinete (${DADOS_REF_PESSOAL_CG})</div>
       <div class="stat-grid">
-        <div class="stat-card">
+        <div class="stat-card"${(gabinete.equipe || []).length ? ` style="cursor:pointer" title="Ver a lista" onclick="const d=this.closest('.detail-panel').querySelector('.equipe-gab');if(d){d.open=true;d.scrollIntoView({behavior:'smooth',block:'center'})}"` : ""}>
           <p class="stat-label">Funcionários</p>
           <p class="stat-value">${gabinete.numFuncionarios ?? "—"}</p>
+          ${(gabinete.equipe || []).length ? `<p class="stat-note" style="color:var(--accent)">ver a lista ↓</p>` : ""}
         </div>
         <div class="stat-card">
           <p class="stat-label">Gasto com pessoal/mês</p>
@@ -3496,10 +3503,8 @@ function renderCamaraMunicipal(data) {
           <p class="stat-note">${mesesDesdeJaneiro()} meses de folha idêntica</p>
         </div>
       </div>
-      ${(gabinete.equipe || []).length ? `<details class="equipe-gab" style="margin:10px 0 4px"><summary style="cursor:pointer;font-weight:600">Ver os ${gabinete.equipe.length} servidores lotados no gabinete</summary>
-        <div style="overflow-x:auto;margin-top:8px"><table class="notes-table"><thead><tr><th>Nome</th><th>Cargo</th>${gabinete.equipe.some(x => x.bruto != null) ? '<th class="num">Bruto no mês</th>' : ""}</tr></thead><tbody>
-        ${gabinete.equipe.map(x => `<tr><td>${escHTML(x.nome)}</td><td>${escHTML(x.cargo || "—")}</td>${x.bruto != null ? `<td class="num">${formatBRL(x.bruto)}</td>` : ""}</tr>`).join("")}
-        </tbody></table></div>
+      ${(gabinete.equipe || []).length ? `<details class="equipe-gab" style="margin:12px 0 6px"><summary>👥 Ver nome, cargo e salário dos ${gabinete.equipe.length} servidores do gabinete</summary>
+        <ul class="equipe-lista">${gabinete.equipe.map(x => `<li><div><b>${escHTML(x.nome)}</b><span>${escHTML(x.cargo || "—")}</span></div>${x.bruto != null ? `<em>${formatBRL(x.bruto)}</em>` : ""}</li>`).join("")}</ul>
         <p class="section-note">Servidores com lotação no gabinete na folha de ${DADOS_REF_PESSOAL_CG}, segundo o Portal da Transparência da Câmara (campo "local de trabalho"). Se o vereador é da Mesa Diretora, parte da equipe pode atender à Mesa.</p></details>` : ""}
 
       <div class="subhead">Verba indenizatória ${ANO_VERBA} (Atos da Mesa nº 27 e 28/2017)</div>

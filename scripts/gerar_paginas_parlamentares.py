@@ -679,7 +679,7 @@ def bloco_equipe(p):
     lin = "".join(f"<tr><td>{e(x['nome'])}</td><td>{e(x.get('cargo') or '—')}</td>" + (f"<td class='num'>{brl(x['bruto'])}</td>" if tem_v else "") + "</tr>" for x in eq)
     return (f"<h2>Equipe do gabinete ({len(eq)} servidores)</h2><p>Servidores lotados no gabinete de {e(p['nome'])} na folha de {e(ref)}, segundo o Portal da "
             f"Transparência da Câmara Municipal de Campo Grande (campo \"local de trabalho\"). Se o vereador é da Mesa Diretora, parte da equipe pode atender à Mesa.</p>"
-            f"<details><summary>Ver a lista</summary><div class='tabela-wrap' style='margin-top:8px'><table><thead><tr><th>Nome</th><th>Cargo</th>"
+            f"<details open><summary>Nome, cargo e salário de cada servidor</summary><div class='tabela-wrap' style='margin-top:8px'><table><thead><tr><th>Nome</th><th>Cargo</th>"
             + ("<th class='num'>Bruto no mês</th>" if tem_v else "") + f"</tr></thead><tbody>{lin}</tbody></table></div></details>")
 
 
