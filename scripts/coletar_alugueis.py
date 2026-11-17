@@ -69,7 +69,10 @@ def get(url, params=None, tent=4):
 
 
 def cpf_doc(doc):
-    """CPF (11 dígitos) de um documento que pode vir com zeros à esquerda até 14."""
+    """CPF (11 dígitos) de um documento que pode vir com zeros à esquerda até 14; o CPF mascarado (***.123.456-**)
+    volta como "000" + os 6 dígitos do meio + "00", o que basta para o cruzamento (cpf6)."""
+    if re.fullmatch(r"\*{3}\.\d{3}\.\d{3}-\*{2}", str(doc or "").strip()):
+        return "000" + dig(doc) + "00"
     d = dig(doc)
     if len(d) == 14 and d.startswith("000"):
         return d[3:]
