@@ -1,9 +1,9 @@
 name: Instagram — post automático
 
-# Terça, quinta e sábado às 11h47 de Campo Grande (15h47 UTC). Também dá para rodar à mão em Actions → Run workflow.
+# Todo dia às 11h47 de Campo Grande (15h47 UTC). Também dá para rodar à mão em Actions → Run workflow.
 on:
   schedule:
-    - cron: '47 15 * * 2,4,6'
+    - cron: '47 15 * * *'
   workflow_dispatch:
     inputs:
       tema:
