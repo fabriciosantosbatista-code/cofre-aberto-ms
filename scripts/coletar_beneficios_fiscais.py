@@ -109,8 +109,10 @@ def main():
     r.raise_for_status()
     linhas = ler(r.content)
     print(f"  {len(linhas)} linhas")
-    emp = {}
+    emp, anos = {}, {}
     for d in linhas:
+        a_ = d.get("ANO") or ""
+        anos[a_] = anos.get(a_, 0) + 1
         cnpj = dig(col(d, "CNPJ"))
         if len(cnpj) != 14:
             continue
@@ -137,7 +139,8 @@ def main():
     for chave, p in (carregar("tse_campanhas.json").get("parlamentares") or {}).items():
         quem = (p.get("urna") or chave.split("|")[-1]).title()
         for nome_n, (nome, valor, c6, anos) in (p.get("doadores") or {}).items():
-            doad.setdefault((sa(nome_n), c6), []).append(f"{quem} ({(p.get('cargo') or '').lower()}, {', '.join(map(str, anos))}): R$ {valor:,.0f}".replace(",", "."))
+            v = f"R$ {valor:,.0f}".replace(",", ".")
+            doad.setdefault((sa(nome_n), c6), []).append(f"{quem} ({(p.get('cargo') or '').lower()}, {', '.join(map(str, anos))}): {v}")
     sinais = {}
     for s in carregar("auditoria.json").get("sinais") or []:
         if s.get("cnpj") and s.get("rotulo"):
@@ -155,7 +158,7 @@ def main():
         socios = []
         for s in (cad.get(e["cnpj"]) or {}).get("socios") or []:
             for t in doad.get((sa(s.get("nome")), s.get("cpf")), []):
-                socios.append(f"{s['nome'].title()} doou para {t}")
+                socios.append(f"o sócio ou dirigente {s['nome'].title()} doou para {t}")
         e["sociosDoadores"] = socios
         e["sinais"] = sorted(sinais.get(e["cnpj"], []))
         e["pagina"] = f"/empresa/{e['cnpj'][:8]}/" if e["cnpj"][:8] in paginas else None
@@ -167,7 +170,7 @@ def main():
     for e in caso:
         por_setor[e["setor"]] = por_setor.get(e["setor"], 0) + 1
     SAIDA.write_text(json.dumps({
-        "anoReferencia": ano - 1, "pagina": ano, "planilha": url, "ultimaAtualizacao": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+        "anoReferencia": int(max(anos, key=anos.get)) if anos and str(max(anos, key=anos.get)).isdigit() else ano, "pagina": ano, "planilha": url, "ultimaAtualizacao": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
         "fonte": f"SEFAZ-MS — Lista de contemplados por benefícios fiscais (publicada em {ano})",
         "fonteUrl": f"https://www.sefaz.ms.gov.br/beneficios-fiscais-{ano}/", "especies": {str(k): v for k, v in ESPECIES.items()},
         "total": len(lista), "porEspecie": por_esp, "casoACaso": len(caso),
