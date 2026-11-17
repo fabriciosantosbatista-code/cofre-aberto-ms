@@ -119,17 +119,32 @@ def brl(v):
 
 # ── PNCP ──
 def listar(ini, fim, mod):
+    """Todas as páginas do mês. Devolve (contratações, completo): completo=False se alguma página não veio depois das
+    tentativas — aí o mês fica com os dados da coleta anterior, em vez de gravar uma lista pela metade."""
     out, p = [], 1
     while True:
-        d = get(f"{API}/consulta/v1/contratacoes/publicacao", {"dataInicial": ini.strftime("%Y%m%d"), "dataFinal": fim.strftime("%Y%m%d"),
-                                                               "codigoModalidadeContratacao": mod, "uf": "MS", "pagina": p, "tamanhoPagina": 50})
-        if not d:
-            break
+        prm = {"dataInicial": ini.strftime("%Y%m%d"), "dataFinal": fim.strftime("%Y%m%d"), "codigoModalidadeContratacao": mod, "uf": "MS",
+               "pagina": p, "tamanhoPagina": 50}
+        d, ok = None, False
+        for t in range(4):
+            try:
+                r = requests.get(f"{API}/consulta/v1/contratacoes/publicacao", params=prm, headers=H, timeout=60)
+                if r.status_code == 204:  # sem contratação no período: resposta legítima e vazia
+                    return out, True
+                if r.status_code == 200:
+                    d, ok = r.json(), True
+                    break
+            except (requests.RequestException, ValueError):
+                pass
+            if time.monotonic() - T0 > LIMITE + 60:
+                break
+            time.sleep(3 * (t + 1))
+        if not ok:
+            return out, False
         out += d.get("data") or []
         if p >= (d.get("totalPaginas") or 1):
-            break
+            return out, True
         p += 1
-    return out
 
 
 def locador(c):
@@ -149,10 +164,15 @@ def pncp(cache):
         fim = min(HOJE, date(ini.year + (ini.month == 12), ini.month % 12 + 1, 1) - timedelta(days=1))
         meses.append((ini, fim))
         ini = fim + timedelta(days=1)
-    lidos = []
+    lidos, falhos = [], set()
+    tarefas = [(i, f, m) for i, f in meses for m in (8, 9)]
     with ThreadPoolExecutor(4) as ex:
-        for r in ex.map(lambda a: listar(*a), [(i, f, m) for i, f in meses for m in (8, 9)]):
+        for (i, f, m), (r, completo) in zip(tarefas, ex.map(lambda a: listar(*a), tarefas)):
             lidos += r
+            if not completo:
+                falhos.add(i.strftime("%Y-%m"))
+    if falhos:
+        print(f"⚠️ PNCP não respondeu todas as páginas de {', '.join(sorted(falhos))} — esses meses ficam com os dados da coleta anterior")
     alvo = {}
     for x in lidos:
         amp = (x.get("amparoLegal") or {}).get("codigo")
@@ -178,7 +198,13 @@ def pncp(cache):
         for c, loc in ex.map(ler, pend):
             if loc is not None:
                 cache[c["id"]] = {"locador": loc, "lido": HOJE.isoformat()}
-    return [{**c, "locador": (cache.get(k) or {}).get("locador") or {}} for k, c in alvo.items()]
+    novos = [{**c, "locador": (cache.get(k) or {}).get("locador") or {}} for k, c in alvo.items()]
+    # meses com página faltando: mantém as contratações da coleta anterior publicadas nesses meses
+    anteriores = (carregar("alugueis.json").get("pncp") or {}).get("lista") or []
+    mantidos = [c for c in anteriores if c.get("id") not in alvo and (c.get("data") or "")[:7] in falhos]
+    if mantidos:
+        print(f"  {len(mantidos)} contratações da coleta anterior mantidas (meses incompletos)")
+    return novos + mantidos, sorted(falhos)
 
 
 def main():
@@ -227,7 +253,7 @@ def main():
     datas = sorted(r.get("data") for r in pag if r.get("data"))
 
     # Estado e interior (PNCP)
-    contr = pncp(cache)
+    contr, falhos = pncp(cache)
     CACHE.write_text(json.dumps(cache, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     for c in contr:
         l = c.pop("locador") or {}
@@ -253,7 +279,7 @@ def main():
                  "estado": {"total": round(sum(c["valor"] or 0 for c in est), 2), "contratacoes": len(est)},
                  "municipios": {"total": round(sum(c["valor"] or 0 for c in mun), 2), "contratacoes": len(mun)},
                  "porCidade": sorted(({**a, "valor": round(a["valor"], 2)} for a in por_cidade.values()), key=lambda a: -a["valor"]),
-                 "lista": contr},
+                 "mesesIncompletos": falhos, "lista": contr},
         "comVinculo": len(com_vinc)}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"✅ alugueis.json — Prefeitura de CG {brl(sum(a['valor'] for a in lista_pref))} a {len(lista_pref)} locadores; "
           f"PNCP {len(contr)} contratações ({brl(sum(c['valor'] or 0 for c in contr))}); {len(com_vinc)} com ligação política ou sinal")

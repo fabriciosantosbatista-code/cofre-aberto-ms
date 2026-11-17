@@ -7,7 +7,7 @@ const BASE = process.argv[2] || "http://localhost:8000/";
 const J = f => JSON.parse(fs.readFileSync(__dirname + "/../dados/" + f, "utf8"));
 const num = t => { // "R$ 21,2 bi" / "R$ 1.234,56" / "2.450" → número (ou intervalo para compactos)
   t = (t || "").replace(/\s+/g, " ").trim();
-  const m = t.match(/(-?[\d.]+(?:,\d+)?)\s*(mi|bi|mil|milhões|bilhões|bilhão|milhão)?/i);
+  const m = t.match(/(-?[\d.]+(?:,\d+)?)\s*(milhões|milhão|mil|mi|bilhões|bilhão|bi)?/i);
   if (!m) return null;
   let v = parseFloat(m[1].replace(/\./g, "").replace(",", "."));
   const u = (m[2] || "").toLowerCase();

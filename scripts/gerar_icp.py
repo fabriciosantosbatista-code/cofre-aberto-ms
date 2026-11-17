@@ -260,6 +260,9 @@ def main():
         f2 = [falhas_por_base({"jobs": {k: {**v_, "bases": JOB_BASES.get(k, [])} for k, v_ in (h.get("jobs") or {}).items()}}) for h in ult2]
         if classe not in ("falha_coleta",) and len(f2) == 2 and all(fid in x for x in f2):
             classe, f["motivo"] = "falha_coleta", "as duas últimas tentativas de coleta falharam (" + "; ".join(falhas_agora.get(fid, [])[:1]) + ") — o dado anterior foi mantido"
+        queda = [x["texto"] for x in testes if x["nivel"] == "erro" and x["texto"].startswith(f"{fid}: registros caíram")]
+        if queda and classe != "falha_coleta":  # a fonte "respondeu" mas veio pela metade: é falha técnica, não dado novo
+            classe, f["motivo"] = "falha_coleta", queda[0] + " — provável coleta incompleta"
         dims, tst = nota_dimensoes(fid, {**f, "classe": classe}, ver, testes, rev, exec_hist, falhas_agora)
         if classe == "importado":
             status = "consistente" if "I" in dims and tst["erros"] == 0 else "pendente"
@@ -354,7 +357,7 @@ th{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--in
 .tw{overflow-x:auto}small{color:var(--ink-caption,#8a93a6)}.crit{border:1px solid #d9363e;background:rgba(217,54,62,.08);border-radius:12px;padding:12px 16px;margin:16px 0}
 .filtros{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.filtros input,.filtros select{background:var(--surface,#11141c);color:inherit;border:1px solid var(--border,#2a2a2a);border-radius:8px;padding:8px 10px;font:inherit}
 .filtros input{flex:1;min-width:200px}tr.base{cursor:pointer}tr.base:hover td{background:rgba(255,255,255,.03)}
-.w li,.w dd,.w td,.w p{overflow-wrap:anywhere}
+.w li,.w dd,.w p{overflow-wrap:anywhere}td{overflow-wrap:break-word}
 dl{display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);gap:6px 14px;font-size:.9rem}dt{color:var(--ink-caption,#8a93a6)}dd{margin:0}
 @media(max-width:640px){dl{grid-template-columns:1fr}dt{margin-top:8px}.nota .n{font-size:3rem}.esconde-cel{display:none}}
 </style>"""
@@ -431,7 +434,13 @@ document.querySelectorAll('#tab tbody tr').forEach(function(r){{var ok=(!st||r.d
 b.addEventListener('input',f);s.addEventListener('change',f);var h=location.hash.match(/status=([a-z_]+)/);if(h){{s.value=h[1];f()}}}})();</script>"""
     html_ = cabecalho("Confiabilidade dos Dados — ICP | Cofre Aberto MS", "ICP — Índice de Confiabilidade Pública: quais bases do Cofre Aberto MS foram conferidas na fonte oficial, estão atualizadas e têm as contas consistentes.",
                       "/confiabilidade/", None, None, tipo="website").replace("</head>", est + "</head>") + corpo + RODAPE
-    escreve_se_mudou(pasta / "index.html", html_)
+    # a página principal do ICP é a aba do painel (com o menu lateral); /confiabilidade/ leva para lá
+    del html_
+    escreve_se_mudou(pasta / "index.html", "<!doctype html><html lang='pt-BR'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>"
+                     "<title>Confiabilidade dos Dados — ICP | Cofre Aberto MS</title><meta name='description' content='ICP — Índice de Confiabilidade Pública do Cofre Aberto MS: o que foi conferido na fonte oficial, o que está atualizado e o que tem pendência.'>"
+                     "<meta http-equiv='refresh' content='0; url=/cofre-aberto-ms.html#aba=confiabilidade'><link rel='canonical' href='https://cofreabertoms.com.br/cofre-aberto-ms.html#aba=confiabilidade'></head>"
+                     "<body><p>Abrindo <a href='/cofre-aberto-ms.html#aba=confiabilidade'>Confiabilidade dos Dados (ICP)</a> no painel…</p>"
+                     "<script>var m=location.hash.match(/status=([a-z_]+)/);location.replace('/cofre-aberto-ms.html#aba=confiabilidade');</script></body></html>")
     # uma página por base
     for fid, b in icp["bases"].items():
         d = b["dimensoes"]
@@ -448,7 +457,7 @@ b.addEventListener('input',f);s.addEventListener('change',f);var h=location.hash
         lim = "".join(f"<li>{e(x)}</li>" for x in b["limitacoes"]) or "<li>Nenhuma limitação específica registrada além das gerais da metodologia.</li>"
         verificado_txt = (f"Conferida em {dt(uv['em'])} ({e(uv.get('metodo') or '')}): resultado <b>{e(uv['resultado'])}</b>, {uv.get('conferidos', 0)} itens comparados."
                           if uv else "<b>Esta base ainda não foi conferida diretamente na fonte oficial.</b> As contas internas são testadas a cada coleta, mas isso prova só que os números fecham entre si.")
-        corpo_b = f"""<main class='w'><p><small><a href='/confiabilidade/'>Confiabilidade dos Dados</a> › base</small></p>
+        corpo_b = f"""<main class='w'><p><small><a href='/cofre-aberto-ms.html#aba=confiabilidade'>Confiabilidade dos Dados</a> › base · <a href='/cofre-aberto-ms.html#aba=confiabilidade&p={fid}'>abrir no painel</a></small></p>
 <h1>{e(b['nome'])}</h1><p>{selo(b)} <span style='font-size:1.4rem;font-weight:800;margin-left:10px'>{nota_txt(b['nota'])}</span><small> / 100</small></p>
 <p class='lead'>{e(b['motivo'])}</p>
 <h2>O que foi verificado</h2><p>{verificado_txt}</p>
@@ -472,7 +481,7 @@ b.addEventListener('input',f);s.addEventListener('change',f);var h=location.hash
 <h2>Histórico de divergências</h2><ul>{div}</ul>
 <h2>Histórico de correções</h2><ul>{cor}</ul>
 <h2>Limitações conhecidas</h2><ul>{lim}</ul>
-<p><small>O ICP é uma metodologia independente do Cofre Aberto MS, não uma certificação oficial. <a href='/confiabilidade/'>Ver todas as bases</a> ·
+<p><small>O ICP é uma metodologia independente do Cofre Aberto MS, não uma certificação oficial. <a href='/cofre-aberto-ms.html#aba=confiabilidade'>Ver todas as bases</a> ·
 <a href='/dados/icp.json'>dados do índice</a></small></p></main>"""
         (pasta / fid).mkdir(exist_ok=True)
         html_b = cabecalho(f"{b['nome']} — confiabilidade dos dados (ICP) | Cofre Aberto MS", f"Status de verificação, nota ICP, origem, testes e histórico de conferências da base {b['nome']}.",
@@ -481,9 +490,9 @@ b.addEventListener('input',f);s.addEventListener('change',f);var h=location.hash
     # /monitoramento/ continua funcionando: leva para a página nova
     (ROOT / "monitoramento").mkdir(exist_ok=True)
     escreve_se_mudou(ROOT / "monitoramento" / "index.html", "<!doctype html><html lang='pt-BR'><head><meta charset='utf-8'><title>Confiabilidade dos Dados — Cofre Aberto MS</title>"
-                     "<meta http-equiv='refresh' content='0; url=/confiabilidade/'><link rel='canonical' href='https://cofreabertoms.com.br/confiabilidade/'></head>"
-                     "<body><p>Esta página mudou para <a href='/confiabilidade/'>Confiabilidade dos Dados (ICP)</a>.</p>"
-                     "<script>var h=location.hash.replace('#','');location.replace('/confiabilidade/'+(h&&h!=='camara-cg'?h+'/':h==='camara-cg'?'camara/':''));</script></body></html>")
+                     "<meta http-equiv='refresh' content='0; url=/cofre-aberto-ms.html#aba=confiabilidade'></head>"
+                     "<body><p>Esta página mudou para <a href='/cofre-aberto-ms.html#aba=confiabilidade'>Confiabilidade dos Dados (ICP)</a>.</p>"
+                     "<script>var h=location.hash.replace('#','');location.replace('/cofre-aberto-ms.html#aba=confiabilidade'+(h==='camara-cg'?'&p=camara':h?'&p='+h:''));</script></body></html>")
 
 
 def sitemap():
@@ -494,10 +503,9 @@ def sitemap():
         return
     hoje = icp["geradoEm"][:10]
     txt = re.sub(r"  <url><loc>[^<]*/(?:confiabilidade|monitoramento)/[^<]*</loc>.*?</url>\n", "", sm.read_text(encoding="utf-8"))
-    novos = [f"  <url><loc>https://cofreabertoms.com.br/confiabilidade/</loc><lastmod>{hoje}</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>"]
-    novos += [f"  <url><loc>https://cofreabertoms.com.br/confiabilidade/{fid}/</loc><lastmod>{hoje}</lastmod><changefreq>daily</changefreq><priority>0.4</priority></url>" for fid in icp["bases"]]
+    novos = [f"  <url><loc>https://cofreabertoms.com.br/confiabilidade/{fid}/</loc><lastmod>{hoje}</lastmod><changefreq>daily</changefreq><priority>0.4</priority></url>" for fid in icp["bases"]]
     escreve_se_mudou(sm, txt.replace("</urlset>", "\n".join(novos) + "\n</urlset>"))
-    print(f"✅ sitemap: /confiabilidade/ + {len(icp['bases'])} páginas de base")
+    print(f"✅ sitemap: {len(icp['bases'])} páginas de base do ICP")
 
 
 if __name__ == "__main__":

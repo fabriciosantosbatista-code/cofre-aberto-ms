@@ -114,14 +114,16 @@ for arq in ("dados/icp_verificacoes.jsonl", "dados/icp_execucoes_historico.jsonl
             break
 
 # ── páginas ──
+painel = (ROOT / "cofre-aberto-ms.html").read_text(encoding="utf-8")
+aba = painel[painel.index('id="tab-confiabilidade"'):painel.index('id="tab-beneficios"')]
+check("não é uma certificação oficial" in aba, "aba do ICP diz que não é certificação oficial")
+check('id="busca-icp"' in aba and 'id="icp-filtros"' in aba and "data-cartoes" in aba, "aba do ICP tem busca, filtro de status e tabela em cartões no celular")
+check('data-tab="confiabilidade"' in painel, "menu lateral do painel tem a aba 'Confiabilidade dos Dados'")
 idx = (ROOT / "confiabilidade/index.html").read_text(encoding="utf-8")
-check("não é uma certificação oficial" in idx.lower() or "Não é uma certificação oficial" in idx, "página do ICP diz que não é certificação oficial")
-check('name="viewport"' in idx and "@media(max-width:640px)" in idx, "página do ICP responsiva (viewport + regra para celular)")
-check('id="busca"' in idx.replace("'", '"') and 'id="fstatus"' in idx.replace("'", '"'), "página do ICP tem busca e filtro de status")
+check("#aba=confiabilidade" in idx, "/confiabilidade/ abre a aba do painel")
 for fid, b in bases.items():
     pg = ROOT / "confiabilidade" / fid / "index.html"
     check(pg.exists(), f"página da base {fid} existe")
-    check(f"/confiabilidade/{fid}/" in idx, f"tabela do ICP leva para a página de {fid}")
     if pg.exists():
         t = pg.read_text(encoding="utf-8")
         if b.get("url"):
@@ -129,12 +131,10 @@ for fid, b in bases.items():
         for sec in ("Transparência técnica", "Histórico de verificações", "Histórico de correções", "Limitações conhecidas", "Testes matemáticos"):
             check(sec in t, f"{fid}: seção '{sec}'")
 mon = (ROOT / "monitoramento/index.html").read_text(encoding="utf-8")
-check("url=/confiabilidade/" in mon, "/monitoramento/ redireciona para /confiabilidade/")
+check("#aba=confiabilidade" in mon, "/monitoramento/ redireciona para a aba do ICP")
 
 # ── integração ──
-painel = (ROOT / "cofre-aberto-ms.html").read_text(encoding="utf-8")
-check('carregarJSON("dados/icp.json")' in painel and "/confiabilidade/${aba}/" in painel, "selo do painel lê icp.json e leva à página da base")
-check('href="/confiabilidade/"' in painel, "menu do painel tem 'Confiabilidade dos Dados'")
+check('carregarJSON("dados/icp.json")' in painel and 'data-icp="${aba}"' in painel, "selo do painel lê icp.json e abre o detalhe da base na aba do ICP")
 wf = (ROOT / ".github/workflows/atualizar.yml").read_text(encoding="utf-8")
 check("registrar_execucao.py" in wf and "gerar_icp.py" in wf and "actions: read" in wf, "robô registra a execução e recalcula o ICP a cada coleta")
 check("confiabilidade/" in wf, "robô publica as páginas /confiabilidade/")

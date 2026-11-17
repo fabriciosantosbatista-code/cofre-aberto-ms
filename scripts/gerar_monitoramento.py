@@ -19,7 +19,7 @@ matemática e aparecem à parte, nunca como verificação.
 
 Entradas: dados/status_fontes.json (gerar_dados_abertos.py), dados/validacao_fontes.json, dados/camara_cg_revisao.json,
           os arquivos de cada fonte. Variável COLETA_INICIO (ISO) = início da execução do robô (última tentativa).
-Saídas:   dados/monitoramento.json, dados/monitoramento_historico.json (um retrato por dia, 400 dias) e /monitoramento/.
+Saídas:   dados/monitoramento.json, dados/monitoramento_historico.json (um retrato por coleta, últimas 800) e /monitoramento/.
 """
 
 import json, os, re, subprocess, sys
@@ -235,10 +235,11 @@ def main():
            "consistenciaInterna": cons, "fontes": out,
            "resumo": {c: sum(1 for f in out.values() if f["classe"] == c) for c in ROTULO}}
     (DADOS / "monitoramento.json").write_text(json.dumps(mon, ensure_ascii=False, indent=1), encoding="utf-8")
-    # histórico (um retrato por dia) — base dos testes de variação
+    # histórico (um retrato por coleta, chave = início da coleta) — base dos testes de variação.
+    # Por coleta e não por dia: duas coletas no mesmo dia também são comparadas (uma queda entre elas não passa despercebida)
     hist = J("monitoramento_historico.json") or {}
-    hist[AGORA.date().isoformat()] = {fid: {k: f[k] for k in ("registros", "total", "dataDadoMaisRecente", "ultimaColeta", "classe")} for fid, f in out.items()}
-    hist = dict(sorted(hist.items())[-400:])
+    hist[TENTATIVA[:16]] = {fid: {k: f[k] for k in ("registros", "total", "dataDadoMaisRecente", "ultimaColeta", "classe")} for fid, f in out.items()}
+    hist = dict(sorted(hist.items())[-800:])
     (DADOS / "monitoramento_historico.json").write_text(json.dumps(hist, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     pagina(mon, rev)
     print("✅ monitoramento.json — " + ", ".join(f"{ROTULO[c]}: {n}" for c, n in mon["resumo"].items() if n) + f" · consistência interna: {cons.get('resumo')}")

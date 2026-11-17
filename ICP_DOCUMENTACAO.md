@@ -1,6 +1,6 @@
 # ICP — Índice de Confiabilidade Pública
 
-Documentação técnica do índice publicado em **https://cofreabertoms.com.br/confiabilidade/**.
+Documentação técnica do índice publicado na aba **Confiabilidade dos Dados** do painel (https://cofreabertoms.com.br/cofre-aberto-ms.html#aba=confiabilidade; o endereço curto /confiabilidade/ leva para lá).
 
 > O ICP é uma **metodologia independente do Cofre Aberto MS**. **Não é uma certificação oficial** do governo, de tribunal de contas ou de qualquer órgão de controle. Ele mede o quanto cada número publicado no site pode ser comprovado, com critérios públicos e recalculáveis por qualquer pessoa a partir dos arquivos em `dados/`.
 
@@ -22,7 +22,7 @@ coletores (jobs do workflow)                       ← já existiam
    ├─ gerar_monitoramento.py classificação de cada fonte                       → dados/monitoramento.json (+ _historico)
    ├─ tests/test_variacoes.py --json           variação, formato, exposição    → dados/icp_testes_variacoes.json
    └─ gerar_icp.py           notas, status, alertas e páginas                  → dados/icp.json
-                                                                               → /confiabilidade/  e  /confiabilidade/<base>/
+                                                                               → aba do painel (lê icp.json)  e  /confiabilidade/<base>/ (página própria por base)
                                                                                → /monitoramento/ (redireciona)
    └─ gerar_icp.py --sitemap (depois dos geradores que refazem o sitemap)
 ```
@@ -97,7 +97,7 @@ Uma base aparece no quadro **"Problemas que a média não esconde"** quando acon
 | Aguardando atualização | 🟡 amarelo | a coleta funciona, mas o órgão não publicou dado novo dentro do atraso normal. **Não é falha do site** |
 | Pendente de revisão manual | 🟡 amarelo | a leitura automática marcou itens para conferência humana (ex.: PDFs da Câmara de CG) |
 | Divergência identificada | 🔴 vermelho | a conferência na fonte encontrou valor diferente |
-| Falha na coleta | 🔴 vermelho | o robô não atualizou (arquivo velho além do intervalo de coleta, ou as **duas últimas** execuções registraram falha da base no log); o dado anterior é mantido |
+| Falha na coleta | 🔴 vermelho | o robô não atualizou (arquivo velho além do intervalo de coleta, ou as **duas últimas** execuções registraram falha da base no log), **ou** os registros caíram mais de 10% de uma coleta para a outra (coleta incompleta); o dado anterior é mantido |
 | Pendente de verificação | ⚪ cinza | sem conferência na fonte e sem testes específicos da base |
 
 **Regra do verde:** o selo verde só aparece com uma conferência registrada (`ultimaVerificacao` com resultado `confere` ou `mudou_na_fonte`). Se a classificação disser "verificado" e não houver o registro, o ICP rebaixa o status para cinza. `tests/test_icp.py` checa isso em toda base.
@@ -135,32 +135,29 @@ Os avisos de log passam pela máscara de CPF antes de serem gravados. Os registr
 
 ## 6. Páginas
 
-- **/confiabilidade/** mostra:
-  - o que é o ICP, o aviso de metodologia independente, a última atualização e quantas bases são monitoradas;
-  - a nota geral com as 6 dimensões e o quadro de problemas críticos;
-  - um painel com: verificadas, consistência aprovada, aguardando, revisão manual, divergências, falhas e pendentes;
-  - a tabela de bases, com busca sem acento, filtro por status (também por `#status=<id>` na URL) e clique para o detalhe;
-  - como funciona a verificação, critérios e fórmulas, legenda dos status e conferências recentes.
-- **/confiabilidade/<base>/** mostra:
-  - o status, a nota e o que foi verificado (com a tabela site × fonte), além das notas por dimensão;
-  - a transparência técnica: órgão, fonte, link, endpoint, método, frequência, última coleta e tentativa, período, registros, identificador, arquivos e última verificação;
-  - as pendências, os testes executados com o resultado de cada um e os históricos de verificações, divergências e correções;
-  - as limitações conhecidas.
-- **Selos no painel:** na barra de fonte de cada aba, o selo mostra o status, a cor e a nota ICP, e leva a `/confiabilidade/<aba>/`. O botão "De onde vem este número" leva à mesma página.
-- **Menu:** "Confiabilidade dos Dados" aparece no menu lateral do painel ("Sobre o projeto"), no mapa do rodapé de todas as páginas (2.255) e na capa.
-- **/monitoramento/** redireciona; `#camara-cg` leva a `/confiabilidade/camara/`.
+- **Aba "Confiabilidade dos Dados" do painel** (`cofre-aberto-ms.html#aba=confiabilidade`, com o menu lateral, grupo "Sobre o projeto"):
+  - o que é o ICP, o aviso de metodologia independente, a nota geral, quantas bases são monitoradas, a última atualização e a última conferência;
+  - o quadro de problemas críticos e o painel de indicadores (os cartões filtram a tabela);
+  - as notas por dimensão;
+  - a tabela de bases com filtro por status e busca sem acento; no celular, cada linha vira um cartão;
+  - ao clicar numa base, o detalhe abre na própria aba: o que foi verificado (site × fonte), notas por dimensão, transparência técnica, pendências, testes, históricos de verificações, divergências e correções, e limitações;
+  - critérios, fórmulas, legenda dos status e links para os dados.
+- **Link direto:** `#aba=confiabilidade&p=<base>` abre a aba já no detalhe da base. `/confiabilidade/` e o antigo `/monitoramento/` (inclusive `#camara-cg`) levam para a aba.
+- **/confiabilidade/<base>/:** uma página própria por base, para compartilhar e para os buscadores, com o mesmo conteúdo do detalhe. Está no sitemap.
+- **Selos no painel:** na barra de fonte de cada aba, o selo mostra o status, a cor e a nota ICP; ao clicar, abre o detalhe da base na aba do ICP. O botão "De onde vem este número" faz o mesmo.
+- **Menu:** a aba fica no menu lateral do painel, no mapa do rodapé de todas as páginas e na capa.
 
 ## 7. Testes
 
 | Teste | Onde roda | O que cobre |
 |---|---|---|
-| `tests/test_icp.py` (460) | `testar-site.yml` e job `verificar` | status públicos e cores; verde só com conferência ≤ 30 dias; notas recalculadas por base; ICP e dimensões gerais recalculados; tetos simulados; indicadores = contagem; críticos; falhas simuladas (conexão recusada, job `failure`, aviso informativo); histórico só cresce e é JSON válido; páginas, seções, link oficial, viewport, filtros; redirecionamento; integração painel/robô |
-| `tests/icp_pagina.js` (42) | `testar-site.yml` | filtros de cada status = dados; busca sem acento; clique abre a base; selo do painel = status e link; base sem conferência não fica verde; 25 páginas sem rolagem horizontal no celular (iPhone 13); link antigo; sem erro JS |
+| `tests/test_icp.py` (440) | `testar-site.yml` e job `verificar` | status públicos e cores; verde só com conferência ≤ 30 dias; notas recalculadas por base; ICP e dimensões gerais recalculados; tetos simulados; indicadores = contagem; críticos; falhas simuladas (conexão recusada, job `failure`, aviso informativo); histórico só cresce e é JSON válido; páginas, seções, link oficial, viewport, filtros; redirecionamento; integração painel/robô |
+| `tests/icp_pagina.js` (27) | `testar-site.yml` | /confiabilidade/ abre a aba com o menu lateral; nota = icp.json; filtros de cada status e cartões = dados; busca sem acento; clique abre o detalhe com todas as seções; selo de outra aba abre o detalhe certo; base sem conferência não fica verde; link antigo; aba e 24 páginas de base sem rolagem horizontal no celular (iPhone 13); sem erro JS |
 | `tests/test_integridade_dados.py` (570) | coleta e site | somas e totais (alimenta a dimensão I) |
 | `tests/test_variacoes.py` | coleta e site | variação, formato, versões, PDFs, exposição de dados |
 | `tests/tela_x_dados.js`, `tests/filtros.js`, `tests/smoke.js` | site | tela = dados, filtros do painel, todas as abas |
 
-O teste foi conferido com falhas injetadas: verde sem conferência, nota adulterada e indicador errado deram 5 erros. Um defeito real também foi encontrado: a página da Câmara de CG rolava para o lado no celular por causa de linhas de log longas. Foi corrigido.
+O teste foi conferido com falhas injetadas: verde sem conferência, nota adulterada e indicador errado deram 5 erros. Os testes também acharam defeitos reais, todos corrigidos: a página da Câmara de CG rolava para o lado no celular; o teste tela × dados lia "R$ 949,4 mil" como milhões; e a coleta de aluguéis do PNCP vinha incompleta no robô (10 em vez de 206 contratações) sem ninguém perceber. A comparação entre coletas passou a ser feita por coleta, não por dia, e uma queda brusca agora vira "Falha na coleta". O caso foi simulado de ponta a ponta: a base fica vermelha, com nota 50, e aparece nos problemas críticos.
 
 ## 8. Limitações
 

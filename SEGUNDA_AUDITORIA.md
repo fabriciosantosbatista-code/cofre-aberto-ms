@@ -31,6 +31,7 @@ Neste relatório, **comprovado** significa que foi conferido na fonte oficial ou
 | **CPF completo em versões antigas do Git** | **Comprovado, não corrigido** (exige reescrever o histórico, que é uma ação destrutiva) | 172 versões de `prefeitura.json` desde 02/07/2026, 4.666 CPFs antes da máscara, ainda acessíveis por commit (GitHub raw, jsDelivr). O site no ar está limpo |
 | **Artefatos do robô com dado sem máscara por 1 dia** | **Corrigido** | máscara antes de cada upload. Nos logs das Actions não há CPF |
 | **Prefeitura de CG: nenhum empenho novo desde 02/10/2026** | **Comprovado, problema da fonte** | 46 dias. O alerta do robô abriu a issue; o pedido de LAI está pronto na aba |
+| **Aluguéis: a coleta do PNCP no robô vinha incompleta** (10 a 16 contratações em vez de 206, ou R$ 0,9 a 1 mi em vez de R$ 39,4 mi), e o teste de variação não pegou porque comparava um retrato por dia | **Comprovado e corrigido**: os dados da coleta completa foram restaurados; páginas sem resposta mantêm o mês anterior; o retrato passou a ser por coleta; queda brusca = "Falha na coleta" no ICP | `git log -- dados/alugueis.json`: as coletas do robô tiveram 11, 16, 15 e 10 contratações, e as completas 206 e 208. Log: "350 dispensas e inexigibilidades em MS". O selo verde da base era de amostras que estavam na lista incompleta, o que mostra o limite da conferência por amostra |
 | **Página de base do ICP rolava para o lado no celular** | **Corrigido** (achado pelo teste novo) | `icp_pagina.js`: 485 px num viewport de 390 px, por linhas de log longas |
 
 ## 3. Testes executados e resultados (17/11/2026)
@@ -38,9 +39,9 @@ Neste relatório, **comprovado** significa que foi conferido na fonte oficial ou
 | Teste | Resultado |
 |---|---|
 | `test_integridade_dados.py` | ✅ 570 OK · ⚠️ 2 avisos (notas repetidas de Camila Jara, que são assim na fonte; Prefeitura 46 dias) · ❌ 0 |
-| `test_variacoes.py` | ✅ 41 OK · ⚠️ 7 avisos (Câmara em revisão, Prefeitura e publicidade aguardando a fonte, itens dos PDFs) · ❌ 0. Com falhas injetadas: 4 erros detectados |
-| `test_icp.py` | ✅ 460 OK · ❌ 0. Com falhas injetadas (verde sem conferência, nota adulterada, indicador errado): 5 erros detectados |
-| `icp_pagina.js` | ✅ 42/42 (filtros dos 7 status, busca, clique, selo do painel, 25 páginas no celular, link antigo, sem erro JS) |
+| `test_variacoes.py` | ✅ 73 OK · ⚠️ 7 avisos (Câmara em revisão, Prefeitura e publicidade aguardando a fonte, itens dos PDFs) · ❌ 0. Com falhas injetadas: 4 erros detectados |
+| `test_icp.py` | ✅ 440 OK · ❌ 0. Com falhas injetadas (verde sem conferência, nota adulterada, indicador errado): 5 erros detectados |
+| `icp_pagina.js` | ✅ 27/27 (aba com menu lateral, filtros, busca, detalhe, selo de outra aba, celular, link antigo, sem erro JS) |
 | `tela_x_dados.js` | ✅ 15 números iguais · 0 diferentes |
 | `filtros.js` | ✅ 8 filtros certos · 0 errados · 0 erros JS |
 | `validar_fontes.py` | 8 de 8 bases: 7 `confere`, 1 `mudou_na_fonte` |
@@ -96,4 +97,4 @@ Neste relatório, **comprovado** significa que foi conferido na fonte oficial ou
 | Rastreabilidade (nova) | — | **72** | 100% dos registros têm link ou identificador na ALEMS, no Governo de MS, na Prefeitura, nos shows e nos aluguéis, e 97–99% no Senado e na Câmara dos Deputados. A Câmara de CG está em 0 até a próxima coleta com o leitor v2. |
 | Segurança e LGPD | 75 | **79** | Máscara nos artefatos e logs, e um teste de exposição que roda a cada coleta. Não sobe mais porque o histórico do Git ainda tem CPFs (depende de autorização) e não há CSP. |
 
-**ICP calculado pelo próprio sistema nesta data: 90/100.** Ele foi calculado sobre as 15 bases avaliadas; 9 não foram avaliadas por falta de dimensões suficientes. Problemas críticos destacados: Câmara de CG (revisão manual e rastreabilidade 0), Prefeitura (atualização 20) e Judiciário (uma integração com falha). A nota do ICP mede o quanto o dado publicado pode ser comprovado. Ela não é a média das notas desta tabela, e não é uma certificação oficial.
+**ICP calculado pelo próprio sistema nesta data: 89/100.** Ele foi calculado sobre as 18 bases avaliadas; 6 não foram avaliadas por falta de dimensões suficientes. Problemas críticos destacados: Câmara de CG (revisão manual e rastreabilidade 0), Prefeitura (atualização 20) e Judiciário (uma integração com falha). A nota do ICP mede o quanto o dado publicado pode ser comprovado. Ela não é a média das notas desta tabela, e não é uma certificação oficial.
