@@ -9,6 +9,9 @@ dos itens da cesta, o resultado homologado: quanto foi pago por unidade e quem v
 Cesta (itens comuns, com unidade comparável):
   gasolina comum (litro) · óleo diesel S10 (litro) · etanol (litro) · gás de cozinha GLP 13 kg (botijão/recarga)
   · água mineral em galão de 20 litros · papel A4 (resma de 500 folhas) · café torrado e moído (kg) · açúcar cristal (kg)
+  merenda: arroz, feijão, leite UHT, óleo de soja, carne moída, coxa e sobrecoxa · saúde: dipirona e paracetamol 500 mg
+  (comprimido), soro fisiológico 500 ml, luva de procedimento (caixa com 100), seringa 5 ml · limpeza: água sanitária (litro),
+  detergente (500 ml), copo descartável 200 ml (pacote com 100) · obras: cimento (saco de 50 kg)
 
 Preço por unidade comparável: o valor unitário homologado, convertido para kg quando a embalagem informa o peso
 (ex.: café 500 g → preço × 2). Itens sem unidade clara ficam de fora.
@@ -57,6 +60,47 @@ def por_unid(desc, unid, preco):
     return preco
 
 
+def _litros(t):
+    """volume em litros escrito no texto: '900 ml', '1 litro', '2l', '5 lts'"""
+    m = re.search(r"(\d+(?:[.,]\d+)?)\s*(ml|mililitros|l|lt|lts|litro|litros)\b", t)
+    if not m:
+        return None
+    q = float(m.group(1).replace(",", "."))
+    q = q / 1000 if m.group(2) in ("ml", "mililitros") else q
+    return q if 0.05 <= q <= 20 else None
+
+
+def volume(ref):
+    """preço por embalagem de `ref` litros (1 = por litro): usa o volume da unidade ou da descrição."""
+    def f(desc, unid, preco):
+        q = _litros(unid) or (None if re.search(r"caixa|\bcx\b|fardo|pacote|\bpct\b|\bfd\b", unid) else _litros(desc))
+        if not q and re.search(r"\blitro|\blt\b|^l$|\bl\b|litros", unid):
+            q = 1
+        return preco / q * ref if q else None
+    return f
+
+
+def por_unidade_avulsa(desc, unid, preco):
+    """comprimido, bolsa, seringa, saco: só quando a unidade é a peça (não caixa nem pacote)"""
+    return None if re.search(r"caixa|\bcx\b|pacote|\bpct\b|blister|cartela|fardo|frasco com|\bc/\s*\d", unid) else preco
+
+
+def luva_caixa(desc, unid, preco):
+    if re.search(r"caixa|\bcx\b", unid) and re.search(r"\b100\b", desc + " " + unid):
+        return preco
+    if re.search(r"\bpar\b|pares", unid):
+        return preco * 50
+    return None
+
+
+def copo_pacote(desc, unid, preco):
+    if re.search(r"pacote|\bpct\b|\bpc\b|\bpt\b", unid) and re.search(r"\b100\b", desc + " " + unid):
+        return preco
+    if re.search(r"caixa|\bcx\b", unid) and re.search(r"2\.?500", desc + " " + unid):
+        return preco / 25
+    return None
+
+
 CESTA = {
     "gasolina": ("Gasolina comum", "litro", r"combust|gasolina", r"gasolina\s*(comum|c\b|tipo c)", r"aditivada|premium|podium|aviac", por_litro),
     "diesel": ("Óleo diesel S10", "litro", r"combust|diesel", r"diesel.{0,15}s[\s-]?10", r"arla|lubrific|motor 2t|gerenciamento|cartao|administra|frota", por_litro),
@@ -66,7 +110,27 @@ CESTA = {
     "papelA4": ("Papel A4 (resma de 500 folhas)", "resma", r"papel|expediente|escritorio", r"papel.{0,30}a4", r"fotogr|adesiv|vergê|verge|cartao|colorido|reciclad|couche|180\s*g|100 folhas|250 folhas", None),
     "cafe": ("Café torrado e moído (kg)", "kg", r"cafe|genero|aliment|copa|cozinha", r"cafe.{0,25}(torrado|moido|po)", r"capsul|soluvel|filtro|garrafa|maquina|xicara", por_kg),
     "acucar": ("Açúcar cristal (kg)", "kg", r"acucar|genero|aliment|copa|cozinha", r"acucar.{0,15}cristal", r"refinado|mascavo|demerara|sache|confeit", por_kg),
+    # merenda e copa
+    "arroz": ("Arroz branco tipo 1 (kg)", "kg", r"arroz|genero|aliment|merenda", r"^[\W\d]*arroz\b.{0,40}(tipo\s*1|branco|agulh|polido)", r"integral|parboiliz|arboreo|farinha|biscoito|doce|pronto|cozido|flocos|creme", por_kg),
+    "feijao": ("Feijão carioca (kg)", "kg", r"feijao|genero|aliment|merenda", r"^[\W\d]*feijao.{0,20}carioc", r"enlatad|cozido|pronto|feijoada|farinha", por_kg),
+    "leite": ("Leite UHT integral (litro)", "litro", r"leite|genero|aliment|merenda", r"^[\W\d]*leite.{0,40}(uht|longa vida).{0,40}integral|^\W*leite.{0,20}integral.{0,40}(uht|longa vida)", r"\bpo\b|condensad|ferment|achocolat|soja|lactose|creme|desnatad|semidesnatad|cabra", volume(1)),
+    "oleo": ("Óleo de soja (litro)", "litro", r"oleo|genero|aliment|merenda", r"^[\W\d]*oleo.{0,20}soja", r"lubrific|motor|hidraul|diesel|composto|spray", volume(1)),
+    "carne": ("Carne bovina moída (kg)", "kg", r"carne|genero|aliment|merenda|acougue|proteina", r"carne.{0,30}(bovina)?.{0,20}moida", r"frango|suina|peixe|soja|enlatad|hamburg|almondeg", por_kg),
+    "frango": ("Frango, coxa e sobrecoxa (kg)", "kg", r"frango|genero|aliment|merenda|acougue|proteina", r"coxa.{0,6}(e|/|com).{0,6}sobrecoxa", r"empanad|temperad|defumad|desossad|file|assad", por_kg),
+    # saúde
+    "dipirona": ("Dipirona 500 mg (comprimido)", "comprimido", r"medicament|farmac|dipirona", r"dipirona.{0,40}500\s*mg.{0,60}(comp|\bcp\b|cpr)", r"gota|solu|injet|ampola|\bml\b|xarope|supositor|1\s*g\b", por_unidade_avulsa),
+    "paracetamol": ("Paracetamol 500 mg (comprimido)", "comprimido", r"medicament|farmac|paracetamol", r"paracetamol.{0,40}500\s*mg.{0,60}(comp|\bcp\b|cpr)", r"gota|solu|injet|\bml\b|xarope|codeina|cafeina|750|associad", por_unidade_avulsa),
+    "soro": ("Soro fisiológico 0,9% (bolsa 500 ml)", "bolsa", r"medicament|farmac|hospitalar|soro|solu", r"(cloreto de sodio|soro fisiolog).{0,40}0[,.]9.{0,60}500\s*ml|500\s*ml.{0,60}(cloreto de sodio|soro fisiolog).{0,40}0[,.]9", r"\b250\b|\b100\s*ml|1000|ampola|\b10\s*ml|nasal|spray|20%|glicos|ringer", por_unidade_avulsa),
+    "luva": ("Luva de procedimento (caixa com 100)", "caixa", r"luva|hospitalar|medic|enfermag|odontolog|epi|protecao", r"luva.{0,40}procediment", r"estéril|esteril|cirurg|nitril|vinil|plastic|domestic|latex natural sem po.{0,5}esteril", luva_caixa),
+    "seringa": ("Seringa descartável 5 ml (unidade)", "unidade", r"seringa|hospitalar|medic|enfermag", r"seringa.{0,40}\b5\s*ml", r"insulina|\b10\s*ml|\b20\s*ml|\b1\s*ml|\b3\s*ml|\b60\s*ml|vidro|carpule|odontol", por_unidade_avulsa),
+    # limpeza
+    "sanitaria": ("Água sanitária (litro)", "litro", r"limpeza|higien|sanitaria|saneantes", r"agua sanitaria", r"gel|perfum|tablete|pastilha", volume(1)),
+    "detergente": ("Detergente líquido (500 ml)", "frasco 500 ml", r"limpeza|higien|detergente|saneantes", r"^[\W\d]*detergente.{0,40}(liquido|neutro|lava.?louc)", r"enzimat|industrial|automotiv|clorad|desincrust|maquina|alcalin|\bpo\b|gel|concentrad", volume(0.5)),
+    "copo": ("Copo descartável 200 ml (pacote com 100)", "pacote", r"descart|copa|cozinha|limpeza|higien|copo", r"copo.{0,20}descart.{0,60}(200|180)\s*ml", r"papel|\bcafe\b|\b50\s*ml|\b80\s*ml|biodegrad|tampa|\b300\s*ml|\b500\s*ml|acrilic", copo_pacote),
+    # obras
+    "cimento": ("Cimento (saco de 50 kg)", "saco", r"cimento|construc|alvenar|pedreir|obra|reforma", r"^[\W\d]*cimento.{0,60}50\s*kg", r"cola|branco|argamassa|cimentici|refratar|aditivo|cal\b|telha|bloco|tubo", por_unidade_avulsa),
 }
+VERSAO_CESTA = 2  # sobe quando entram itens novos: as compras já lidas são relidas
 OBJETO_ALGUM = re.compile("|".join(v[2] for v in CESTA.values()), re.I)
 
 
@@ -173,7 +237,7 @@ def main():
                    "modalidade": x.get("modalidadeNome"), "data": (x.get("dataPublicacaoPncp") or "")[:10],
                    "objeto": (x.get("objetoCompra") or "")[:240],
                    "link": f"https://pncp.gov.br/app/editais/{o.get('cnpj')}/{x.get('anoCompra')}/{x.get('sequencialCompra')}"}
-    pend = [c for k, c in alvo.items() if k not in cache]
+    pend = [c for k, c in alvo.items() if k not in cache] + [c for k, c in alvo.items() if k in cache and (cache[k].get("v") or 1) < VERSAO_CESTA]
     print(f"  PNCP: {len(lidos)} compras em MS em {ANO}; {len(alvo)} com objeto da cesta; {len(pend)} para ler")
 
     def ler(c):
@@ -182,7 +246,7 @@ def main():
     with ThreadPoolExecutor(5) as ex:
         for c, its in ex.map(ler, pend):
             if its is not None:
-                cache[c["id"]] = {**c, "itens": its}
+                cache[c["id"]] = {**c, "itens": its, "v": VERSAO_CESTA}
     if time.monotonic() - T0 > LIMITE:
         print("  ⚠️ tempo esgotado — o que faltou fica para a próxima coleta")
     CACHE.write_text(json.dumps(cache, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
