@@ -90,7 +90,7 @@ def main():
 
     municipios, autores, favorecidos = {}, {}, {}
     pix = {}  # ano → autor → município → valor (Emendas Pix pagas a MS desde 2020)
-    total_ms, linhas, ultimo_mes = 0.0, 0, ""
+    total_ms, linhas, ultimo_mes, pag_ms = 0.0, 0, "", 0
     with z.open(nome) as f:
         r = csv.reader(io.TextIOWrapper(f, encoding="latin-1", newline=""), delimiter=";")
         cab = next(r)
@@ -115,6 +115,7 @@ def main():
             if not v:
                 continue
             linhas += 1
+            pag_ms += uf == "MS"  # o número exibido ao lado do total de MS conta só os pagamentos em MS
             ultimo_mes = max(ultimo_mes, anomes)
             mun = titulo(row[ix["Município Favorecido"]]) or "—"
             doc = re.sub(r"\D", "", row[ix["Código do Favorecido"]])
@@ -193,7 +194,7 @@ def main():
 
     out = {"ano": ANO, "ultimaAtualizacao": datetime.now().isoformat(timespec="seconds"), "fonte": URL,
            "mesMaisRecente": f"{ultimo_mes[4:]}/{ultimo_mes[:4]}" if ultimo_mes else None,
-           "totalMS": round(total_ms, 2), "pagamentos": linhas, "totalMunicipios": len(lista_m),
+           "totalMS": round(total_ms, 2), "pagamentos": pag_ms, "totalMunicipios": len(lista_m),
            "municipios": lista_m, "autores": lista_a, "favorecidos": fav}
     # Emendas Pix: por ano, quem mandou e para qual município (o arquivo não diz em que a prefeitura gastou)
     out["pix"] = {"anos": {a: round(sum(v for m in au.values() for v in m.values()), 2) for a, au in sorted(pix.items())}, "porAno": {}}

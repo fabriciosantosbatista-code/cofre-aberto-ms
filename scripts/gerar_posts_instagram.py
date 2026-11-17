@@ -195,7 +195,7 @@ def t_emendas(n):
 
 def t_supersalarios(n):
     d = carregar("supersalarios.json")
-    r = (d.get("ranking") or [])[:5]
+    r = [x for x in d.get("ranking") or [] if (x.get("base") or 0) >= 1][:5]  # fora pagamento eventual (rescisão, indenização acumulada)
     if not r:
         return None
     return {"tema": "supersalarios", "kicker": "SUPERSALÁRIOS", "titulo": "Quantos ganham acima do teto em MS",

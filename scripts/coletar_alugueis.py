@@ -34,6 +34,7 @@ ANO = HOJE.year
 T0 = time.monotonic()
 LIMITE = 12 * 60
 LOCACAO = re.compile(r"loca[cç][aã]o.{0,60}(im[oó]ve|pr[eé]dio|sala|galp[aã]o|casa|edif[ií]cio|espa[cç]o f[ií]sico|terreno)|aluguel.{0,30}(im[oó]ve|pr[eé]dio|sala|casa|galp)", re.I)
+COMPRA = re.compile(r"aquisi[cç][aã]o|compra d[eo]|desapropria|permuta", re.I)
 NAO = re.compile(r"ve[ií]culo|m[aá]quina|equipamento|software|caminh|[oô]nibus|tenda|palco|banheiro qu[ií]mico|container|cont[eê]iner", re.I)
 
 
@@ -158,6 +159,8 @@ def pncp(cache):
         obj = x.get("objetoCompra") or ""
         if not (amp == 17 or (LOCACAO.search(obj) and not NAO.search(obj))):
             continue
+        if COMPRA.search(obj) and not re.search(r"loca[cç][aã]o|alug", obj, re.I):
+            continue  # o art. 74, V também vale para COMPRA de imóvel; aqui só entra aluguel
         o, u = x.get("orgaoEntidade") or {}, x.get("unidadeOrgao") or {}
         k = x["numeroControlePNCP"]
         alvo[k] = {"id": k, "cnpj": o.get("cnpj"), "orgao": (o.get("razaoSocial") or "").strip(), "esfera": o.get("esferaId"),

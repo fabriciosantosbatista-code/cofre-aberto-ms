@@ -165,7 +165,7 @@ def main():
         "fontes": {"estado": carregar("governo_ms.json").get("ultimaAtualizacao"), "prefeitura": pref.get("ultimaAtualizacao"),
                    "emendas": em.get("ultimaAtualizacao")},
         "total": round(sum(e["total"] for e in principais), 2), "estado": soma("estado"), "prefeitura": soma("prefeitura"),
-        "emendas": soma("emendas"), "quantidade": len(principais),
+        "emendas": soma("emendas"), "quantidade": len(principais), "prefeituraAte": pref.get("ultimoEmpenho"),
         "areas": sorted(({**a, "valor": round(a["valor"], 2)} for a in areas.values()), key=lambda a: -a["valor"]),
         "entidades": principais,
         "consignacoes": {"quantidade": len(lista) - len(principais), "valor": round(sum(e["total"] for e in lista if e["consignacao"]), 2),

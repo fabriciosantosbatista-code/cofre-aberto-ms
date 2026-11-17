@@ -929,10 +929,11 @@ table.notes-table tr:hover td{background:var(--surface-2);}
     <div class="hero">
       <div class="hero-label">Prefeitura Municipal de Campo Grande · Despesas <span id="pref-ano">2026</span></div>
       <div class="hero-number" id="pref-total">—</div>
-      <div class="hero-desc">Total pago até o momento<span id="pref-extra"></span></div>
+      <div class="hero-desc">Total pago até o momento pelo Poder Executivo municipal (a Câmara tem aba própria)<span id="pref-extra"></span>.
+        Inclui as despesas intraorçamentárias, como a contribuição patronal paga ao instituto de previdência (IMPCG), que depois paga as aposentadorias.</div>
       <div class="mini-stats">
         <div><div class="mini-stat-value" id="pref-linhas">—</div><div class="mini-stat-label">Empenhos</div></div>
-        <div><div class="mini-stat-value" id="pref-notas">—</div><div class="mini-stat-label">Notas fiscais pagas</div></div>
+        <div><div class="mini-stat-value" id="pref-notas">—</div><div class="mini-stat-label">Empenhos com pagamento</div></div>
         <div><div class="mini-stat-value" id="pref-fornecedores">—</div><div class="mini-stat-label">Fornecedores</div></div>
         <div><div class="mini-stat-value" id="pref-data">—</div><div class="mini-stat-label">Atualizado em</div></div>
       </div>
@@ -1094,8 +1095,10 @@ Atenciosamente,</textarea>
       <div class="hero-label">Governo do Estado de Mato Grosso do Sul · Despesas <span class="ano-ref">2026</span></div>
       <div class="hero-number" id="gov-total">R$ —</div>
       <div class="hero-desc">
-        pagos pelo Governo do Estado no ano (todas as secretarias, autarquias e fundos), com
-        <b id="gov-empenhado">—</b> empenhados e <b id="gov-liquidado">—</b> liquidados.
+        pagos pelo Poder Executivo estadual no ano (todas as secretarias, autarquias, fundos e a Defensoria), com
+        <b id="gov-empenhado">—</b> empenhados e <b id="gov-liquidado">—</b> liquidados. Não entram o Tribunal de Justiça, a Assembleia,
+        o Ministério Público e o Tribunal de Contas, que têm portais próprios. O total inclui despesas intraorçamentárias (pagamentos
+        entre órgãos do próprio Estado, como a contribuição patronal à AGEPREV), como no portal do Estado.
       </div>
       <div class="mini-stats">
         <div><div class="mini-stat-value" id="gov-orgaos">—</div><div class="mini-stat-label">órgãos</div></div>
@@ -2121,7 +2124,7 @@ Atenciosamente,</textarea>
         Quem é entidade: a natureza jurídica no cadastro da Receita Federal.</div>
       <div class="mini-stats">
         <div><div class="mini-stat-value" id="en-est">—</div><div class="mini-stat-label">Governo de MS</div></div>
-        <div><div class="mini-stat-value" id="en-pref">—</div><div class="mini-stat-label">Prefeitura de CG</div></div>
+        <div><div class="mini-stat-value" id="en-pref">—</div><div class="mini-stat-label" id="en-pref-r">Prefeitura de CG</div></div>
         <div><div class="mini-stat-value" id="en-em">—</div><div class="mini-stat-label">emendas parlamentares</div></div>
         <div><div class="mini-stat-value" id="en-n">—</div><div class="mini-stat-label">entidades</div></div>
       </div>
@@ -2645,7 +2648,7 @@ async function buscarBioSenador(id) {
   try {
     const resp = await fetch(`${SENADO_API}/senador/${id}`, { headers: { Accept: "application/json" } });
     if (!resp.ok) return null;
-    const data = await resp.json();
+    const data = neutralizarTexto(await resp.json());
     const p = data?.DetalheParlamentar?.Parlamentar;
     const basicos = p?.DadosBasicosParlamentar;
     if (!basicos) return null;
@@ -2693,7 +2696,7 @@ async function buscarDeputadosAoVivo(siglaUf, onProgress, incluirDespesas = true
   const ufParam = siglaUf ? `&siglaUf=${siglaUf}` : "";
   const respLista = await fetch(`${CAMARA_API}/deputados?itens=600&ordem=ASC&ordenarPor=nome${ufParam}`);
   if (!respLista.ok) throw new Error("Falha ao listar deputados");
-  const lista = (await respLista.json()).dados || [];
+  const lista = (neutralizarTexto(await respLista.json())).dados || [];
 
   const resultado = [];
   for (let idx = 0; idx < lista.length; idx++) {
@@ -2714,10 +2717,10 @@ async function buscarDeputadosAoVivo(siglaUf, onProgress, incluirDespesas = true
             break;
           }
           if (!resp.ok) break;
-          const itens = (await resp.json()).dados || [];
+          const itens = (neutralizarTexto(await resp.json())).dados || [];
           if (itens.length === 0) break;
           for (const item of itens) {
-            const valor = item.valorLiquido ?? item.valorDocumento ?? 0;
+            const valor = valorCamara(item);
             totalAno += valor;
             todasDespesas.push({
               data: item.dataDocumento,
@@ -2744,8 +2747,8 @@ async function buscarDeputadosAoVivo(siglaUf, onProgress, incluirDespesas = true
       try {
         const resp = await fetch(`${CAMARA_API}/deputados/${dep.id}/despesas?ano=${ANO_REFERENCIA}&itens=100`);
         if (resp.ok) {
-          const itens = (await resp.json()).dados || [];
-          totalAno = itens.reduce((acc, item) => acc + (item.valorLiquido ?? item.valorDocumento ?? 0), 0);
+          const itens = (neutralizarTexto(await resp.json())).dados || [];
+          totalAno = itens.reduce((acc, item) => acc + valorCamara(item), 0);
         }
       } catch { /* ignora */ }
     }
@@ -2783,10 +2786,10 @@ async function buscarDespesasDeputadoAoVivo(id, ano) {
       resp = await fetch(`${CAMARA_API}/deputados/${id}/despesas?ano=${ano}&itens=100&pagina=${pagina}`);
     } catch { break; }
     if (!resp.ok) break;
-    const itens = (await resp.json()).dados || [];
+    const itens = (neutralizarTexto(await resp.json())).dados || [];
     if (itens.length === 0) break;
     for (const item of itens) {
-      const valor = item.valorLiquido ?? item.valorDocumento ?? 0;
+      const valor = valorCamara(item);
       despesas.push({
         data: item.dataDocumento,
         categoria: item.tipoDespesa,
@@ -2810,7 +2813,7 @@ async function buscarSenadoresAoVivo(siglaUf) {
   try {
     const resp = await fetch(`${SENADO_API}/senador/lista/atual`, { headers: { Accept: "application/json" } });
     if (resp.ok) {
-      const data = await resp.json();
+      const data = neutralizarTexto(await resp.json());
       parlamentares = data?.ListaParlamentarEmExercicio?.Parlamentares?.Parlamentar || [];
       if (!Array.isArray(parlamentares)) parlamentares = [parlamentares];
     }
@@ -2835,7 +2838,7 @@ async function buscarSenadoresAoVivo(siglaUf) {
       pessoalReal: s.pessoal || {},
       beneficios: s.beneficios || {},
       despesas: s.despesas || [],
-      totalNotasFiscais: (s.despesas || []).length,
+      totalNotasFiscais: s.totalNotasFiscais ?? (s.notasCeaps || []).length,  // as notas CEAPS; "despesas" é o resumo antigo
       nota: s.nota || "",
       fonteCeaps: s.fonteCeaps || "",
       escritorioApoio: s.escritorioApoio || "",
@@ -2886,7 +2889,7 @@ async function buscarSenadoresAoVivo(siglaUf) {
       pessoalReal: local?.pessoal || {},
       beneficios: local?.beneficios || {},
       despesas: local?.despesas || [],
-      totalNotasFiscais: (local?.despesas || []).length,
+      totalNotasFiscais: local?.totalNotasFiscais ?? (local?.notasCeaps || []).length,
       nota: ceapsTotal ? "" : (local?.nota || ant?.nota || ""),
       fonteCeaps: local?.fonteCeaps || ant?.fonteCeaps || "",
       escritorioApoio: local?.escritorioApoio || ant?.escritorioApoio || "",
@@ -2924,11 +2927,28 @@ function mostrarCarregandoNotas(panel, nome) {
   panel.classList.add("active");
 }
 
+// Valor líquido de uma despesa da API da Câmara. Em nov/2026 a API passou a devolver valorLiquido com o sinal trocado
+// nas despesas comuns (documento positivo, líquido negativo); nas passagens do SIGEPA o sinal está certo (negativo = estorno).
+function valorCamara(item) {
+  const liq = Number(item.valorLiquido ?? item.valorDocumento ?? 0);
+  if (/SIGEPA/.test(item.tipoDespesa || "")) return liq;
+  return liq < 0 && Number(item.valorDocumento || 0) > 0 ? -liq : liq;
+}
+
+// Texto que vem das fontes entra na página por innerHTML em vários lugares: aqui "<" e ">" viram parecidos inofensivos,
+// para que nenhum nome de fornecedor, descrição ou ementa possa injetar HTML ou script (e não quebre a tela).
+function neutralizarTexto(o) {
+  if (typeof o === "string") return o.indexOf("<") < 0 && o.indexOf(">") < 0 ? o : o.replace(/</g, "‹").replace(/>/g, "›");
+  if (Array.isArray(o)) { for (let i = 0; i < o.length; i++) o[i] = neutralizarTexto(o[i]); return o; }
+  if (o && typeof o === "object") { for (const k in o) o[k] = neutralizarTexto(o[k]); return o; }
+  return o;
+}
+
 async function carregarJSON(url) {
   try {
     const r = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(8000) });
     if (!r.ok) return null;
-    return await r.json();
+    return neutralizarTexto(neutralizarTexto(await r.json()));
   } catch(e) { return null; }
 }
 
@@ -3207,7 +3227,7 @@ function carregarNotasPorUF(pasta, uf, id) {
   if (!_notasPorUF[chave]) {
     // timeout maior que o de carregarJSON: o arquivo de SP passa de 3 MB
     _notasPorUF[chave] = fetch(`dados/${chave}.json`, { signal: AbortSignal.timeout(30000) })
-      .then(r => r.ok ? r.json() : null)
+      .then(r => r.ok ? r.json().then(neutralizarTexto) : null)
       .then(d => d?.parlamentares || {})
       .catch(() => { delete _notasPorUF[chave]; return {}; });
   }
@@ -4844,7 +4864,7 @@ async function carregarFotosVereadores() {
     const url = "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/listar/2024/MS50001/50001/candidatos?offset=0&limit=500&suprimir=false&cargo=13";
     const resp = await fetch(url);
     if (!resp.ok) return;
-    const data = await resp.json();
+    const data = neutralizarTexto(await resp.json());
     const candidatos = data.candidatos || [];
 
     // Montar mapa nome → foto
@@ -6972,7 +6992,7 @@ function renderPublicidade(d) {
   document.getElementById("pb-est").textContent = brl(d.estado.total);
   document.getElementById("pb-est-r").textContent = `Governo de MS · ${d.estado.agencias} agências`;
   document.getElementById("pb-pref").textContent = brl(d.prefeitura.total);
-  document.getElementById("pb-pref-r").textContent = `Prefeitura de CG · ${d.prefeitura.agencias} agências`;
+  document.getElementById("pb-pref-r").textContent = `Prefeitura de CG · ${d.prefeitura.agencias} agências${d.prefeitura.ate ? ` · pagamentos até ${formatDate(d.prefeitura.ate)}` : ""}`;
   document.getElementById("pb-n").textContent = d.agencias.length;
   if (d.agencias[0]) { document.getElementById("pb-maior").textContent = brl(d.agencias[0].total); document.getElementById("pb-maior-r").textContent = `maior agência — ${d.agencias[0].nome}`; }
   const tb = document.querySelector("#tabela-pb tbody");
@@ -7020,6 +7040,7 @@ function renderEntidades(d) {
   document.getElementById("en-total").textContent = brl(d.total);
   document.getElementById("en-est").textContent = formatCompact(d.estado);
   document.getElementById("en-pref").textContent = formatCompact(d.prefeitura);
+  if (d.prefeituraAte) document.getElementById("en-pref-r").textContent = `Prefeitura de CG (pagamentos até ${formatDate(d.prefeituraAte)})`;
   document.getElementById("en-em").textContent = formatCompact(d.emendas);
   document.getElementById("en-n").textContent = d.quantidade.toLocaleString("pt-BR");
   let area = "", busca = "", novas = false, lim = 30;
@@ -7951,7 +7972,7 @@ async function init() {
 
   // API ao vivo: deputados e senadores de MS
   // "Última coleta" = hora da coleta automática (dados/status.json), a mesma da faixa "Atualizado" — não a hora em que a página abriu
-  fetch("dados/status.json", { cache: "no-store" }).then(r => r.ok ? r.json() : null)
+  fetch("dados/status.json", { cache: "no-store" }).then(r => r.ok ? r.json().then(neutralizarTexto) : null)
     .then(st => { if (st && st.ultimaAtualizacao) document.getElementById("status-data").textContent = formatDateTime(st.ultimaAtualizacao); }).catch(() => {});
   // Deputados e senadores carregam de forma independente: se a API da Câmara cair
   // ou ficar lenta, a aba do Senado não fica vazia (e vice-versa). A lista local
@@ -8004,7 +8025,7 @@ async function carregarDeputadosBrasil() {
             { signal: AbortSignal.timeout(15000) }
                 );
           if (!r.ok) throw new Error("API indisponível");
-          const data = await r.json();
+          const data = neutralizarTexto(await r.json());
           const deps = (data.dados || []).map(d => ({
                   id: d.id,
                   nome: d.nome,

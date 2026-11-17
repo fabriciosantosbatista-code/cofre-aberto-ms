@@ -48,7 +48,7 @@ def notas(arquivos):
                 except (TypeError, ValueError):
                     continue
                 doc = str(n.get("nf") or n.get("doc") or n.get("documento") or "").strip()
-                k = f"{grupo}|{p['nome']}|{n.get('data') or ''}|{valor:.2f}|{doc}|{(n.get('fornecedor') or '').strip()[:40]}"
+                k = f"{grupo}|{p['nome']}|{n.get('data') or ''}|{valor:.2f}|{doc}|{(n.get('fornecedorOCR') or n.get('fornecedor') or '').strip()[:40]}"
                 out[k] = {"grupo": grupo, "nome": p["nome"], "partido": p.get("partido"), "valor": valor, "data": (n.get("data") or "")[:10]}
     return out
 

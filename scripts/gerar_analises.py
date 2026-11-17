@@ -89,7 +89,7 @@ def parlamentares():
     out = []
     for v in carregar("camara_municipal.json").get("vereadores", []):
         out.append(("vereador", "camara", "Vereador(a) CG", v, [
-            {"data": d.get("data"), "fornecedor": d.get("fornecedor"), "cnpj": d.get("cnpj"),
+            {"data": d.get("data"), "fornecedor": d.get("fornecedor"), "fornecedorOCR": d.get("fornecedorOCR"), "cnpj": d.get("cnpj"),
              "valor": d.get("valor"), "categoria": d.get("descricao") or d.get("ato"), "doc": d.get("nf")}
             for d in v.get("despesas") or []]))
     for v in carregar("deputados_estaduais_ms.json").get("vereadores", []):

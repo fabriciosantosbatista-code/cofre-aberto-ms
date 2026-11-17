@@ -182,12 +182,16 @@ def carregar_ceap_bulk(ano):
 
 
 def _valor_api(item):
-    """Valor líquido de uma despesa da API: documento menos glosa (em nov/2026 a API passou a devolver o valorLiquido
-    com o sinal trocado; o documento e a glosa continuam certos)."""
-    vd, vg = item.get("valorDocumento"), item.get("valorGlosa") or 0
-    if vd is not None:
-        return float(vd) - float(vg)
-    return abs(float(item.get("valorLiquido") or 0))
+    """Valor líquido de uma despesa da API. Em nov/2026 a API passou a devolver o valorLiquido com o sinal trocado nas
+    despesas comuns (documento positivo, líquido negativo); nas passagens do SIGEPA o sinal continua certo. Conferido
+    contra o arquivo anual da Câmara: bate centavo por centavo."""
+    liq = float(item.get("valorLiquido") or 0)
+    if "SIGEPA" in (item.get("tipoDespesa") or ""):
+        return liq  # passagens: o sinal está certo (negativo = estorno de bilhete)
+    vd = float(item.get("valorDocumento") or 0)
+    if liq < 0 and vd > 0:
+        return -liq  # nas demais despesas o líquido veio com o sinal trocado
+    return liq
 
 
 def sigepa_pela_api(dep_ids, ano, limite_seg=9 * 60):

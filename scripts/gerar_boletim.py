@@ -45,7 +45,7 @@ def inicio_semana(d):
 
 
 def id_nota(grupo, nome, n):
-    k = "|".join(str(x) for x in (grupo, nome, n.get("data"), limpa_nome(n.get("fornecedor")), n.get("valor"), n.get("doc")))
+    k = "|".join(str(x) for x in (grupo, nome, n.get("data"), limpa_nome(n.get("fornecedorOCR") or n.get("fornecedor")), n.get("valor"), n.get("doc")))
     return hashlib.sha1(k.encode()).hexdigest()[:12]
 
 

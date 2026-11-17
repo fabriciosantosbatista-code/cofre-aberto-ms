@@ -17,6 +17,10 @@ on:
 env:
   TZ: America/Campo_Grande
 
+# só o necessário: gravar os dados no repositório (a verificação pede issues: write no próprio job)
+permissions:
+  contents: write
+
 jobs:
   coletar_dados:
     runs-on: ubuntu-latest
@@ -490,6 +494,9 @@ jobs:
       - name: Mascarar CPF completo de pessoa física nos dados (LGPD)
         run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
 
+      - name: Limpar o texto (OCR) das notas da verba dos vereadores de CG
+        run: python3 scripts/limpar_notas_camara_cg.py || echo "⚠️ limpar_notas_camara_cg.py falhou"
+
       - name: Gerar conexões entre fornecedores, evolução mensal e feeds RSS
         run: python3 scripts/gerar_analises.py || echo "⚠️ gerar_analises.py falhou — análises anteriores mantidas"
 
@@ -626,6 +633,10 @@ jobs:
         id: dados
         continue-on-error: true
         run: python3 scripts/verificar_dados.py --relatorio relatorio.md
+
+      - name: Conferir as contas dos dados publicados (somas e totais)
+        continue-on-error: true
+        run: python3 tests/test_integridade_dados.py
 
       - name: Node 20
         uses: actions/setup-node@v4
