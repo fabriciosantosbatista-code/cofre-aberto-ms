@@ -17,7 +17,6 @@ DADOS = Path(__file__).parent.parent / "dados"
 CPF = re.compile(r"(?<![\d*.])(\d{3})\.(\d{3})\.(\d{3})-(\d{2})(?![\d])")
 # CPF sem pontuação num campo de documento: 11 dígitos, ou 14 com "000" na frente (como a Prefeitura de CG exporta)
 CAMPO = re.compile(r'("(?:cnpj|cpf|cpfCnpj|cnpjCpf|cnpjCpfFornecedor|niFornecedor|documento|cpfcnpj)"\s*:\s*")(000)?(\d{11})"')
-CSV14 = re.compile(r"(?<![\d*])000(\d{11})(?!\d)")
 
 
 def cnpj_valido(c):
@@ -39,6 +38,30 @@ def campo(m):
     return f'{m.group(1)}{mascara(m.group(3))}"'
 
 
+def csv_colunas(t):
+    """Nas planilhas CSV, mascara só as colunas de CPF/CNPJ (11 dígitos, ou 14 com "000" na frente que não sejam CNPJ)."""
+    linhas = t.split("\n")
+    if not linhas:
+        return t
+    h = next((k for k, l in enumerate(linhas[:3]) if ";" in l), 0)  # a 1ª linha pode ser o aviso de licença
+    cab = [c.strip().strip('"').lower() for c in linhas[h].split(";")]
+    alvo = [i for i, c in enumerate(cab) if "cpf" in c or "cnpj" in c]
+    if not alvo:
+        return t
+    for j in range(h + 1, len(linhas)):
+        cel = linhas[j].split(";")
+        mudou = False
+        for i in alvo:
+            if i < len(cel):
+                d = re.sub(r"\D", "", cel[i])
+                if "/" not in cel[i] and re.fullmatch(r'"?[\d./-]+"?', cel[i].strip() or "x") and (len(d) == 11 or (len(d) == 14 and d.startswith("000") and not cnpj_valido(d))):
+                    cel[i] = mascara(d[-11:])
+                    mudou = True
+        if mudou:
+            linhas[j] = ";".join(cel)
+    return "\n".join(linhas)
+
+
 def main():
     total, arqs = 0, 0
     for f in list(DADOS.rglob("*.json")) + list((DADOS / "csv").glob("*.csv")):
@@ -50,7 +73,7 @@ def main():
         if f.suffix == ".json":
             novo, n2 = CAMPO.subn(campo, novo)
         else:
-            novo, n2 = CSV14.subn(lambda m: m.group(0) if cnpj_valido(m.group(0)) else mascara(m.group(1)), novo)
+            novo = csv_colunas(novo)
         n = len(re.findall(r"\*\*\*\.\d{3}\.\d{3}-\*\*", novo)) - len(re.findall(r"\*\*\*\.\d{3}\.\d{3}-\*\*", t))
         if novo != t:
             f.write_text(novo, encoding="utf-8")
