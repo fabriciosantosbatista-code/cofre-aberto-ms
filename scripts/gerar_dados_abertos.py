@@ -452,6 +452,11 @@ def status_fontes():
         "https://pncp.gov.br/", pr.get("ultimaAtualizacao"),
         f"{sum(p.get('compras') or 0 for p in pr.get('produtos') or [])} preços comparados" if pr else None,
         bool(pr) and em_dia(pr.get("ultimaAtualizacao"), 3))
+    alg = carregar("alugueis.json")
+    add("alugueis", "PNCP (aluguel de imóvel sem licitação em MS) e SIG-Transparência da Prefeitura de CG (locação de imóveis)",
+        "https://pncp.gov.br/", alg.get("ultimaAtualizacao"),
+        f"{(alg.get('pncp') or {}).get('contratacoes')} contratos e {(alg.get('prefeitura') or {}).get('locadores')} locadores da Prefeitura" if alg else None,
+        bool(alg) and em_dia(alg.get("ultimaAtualizacao"), 3))
     pl = carregar("producao_legislativa.json")
     add("producao", "Câmara dos Deputados e Senado Federal — dados abertos das proposições (autoria e situação)",
         "https://dadosabertos.camara.leg.br/", pl.get("ultimaAtualizacao"),

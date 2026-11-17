@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-17T13:05:40",
+ "geradoEm": "2026-11-17T13:59:49",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
@@ -145,10 +145,18 @@
    "nivel": "ok",
    "mensagem": null
   },
+  "alugueis": {
+   "fonte": "PNCP (aluguel de imóvel sem licitação em MS) e SIG-Transparência da Prefeitura de CG (locação de imóveis)",
+   "url": "https://pncp.gov.br/",
+   "coleta": "2026-11-17T13:58:20",
+   "dadoMaisRecente": "208 contratos e 81 locadores da Prefeitura",
+   "nivel": "ok",
+   "mensagem": null
+  },
   "producao": {
    "fonte": "Câmara dos Deputados e Senado Federal — dados abertos das proposições (autoria e situação)",
    "url": "https://dadosabertos.camara.leg.br/",
-   "coleta": "2026-11-17T12:46:09",
+   "coleta": "2026-11-17T13:12:56",
    "dadoMaisRecente": "528 projetos de 11 parlamentares",
    "nivel": "ok",
    "mensagem": null

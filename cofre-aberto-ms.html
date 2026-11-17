@@ -664,6 +664,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button style="--cor:#c98500" data-tab="shows"><span class="dot"></span> Shows</button>
       <!-- PREÇOS PAGOS desligado a pedido (para voltar, descomente):
       <button style="--cor:#c98500" data-tab="precos"><span class="dot"></span> Preços pagos</button> -->
+      <button style="--cor:#c98500" data-tab="alugueis"><span class="dot"></span> Aluguéis</button>
       <button style="--cor:#c98500" data-tab="publicidade"><span class="dot"></span> Publicidade</button>
       <button style="--cor:#c98500" data-tab="entidades"><span class="dot"></span> ONGs e entidades</button>
       <button style="--cor:#c98500" data-tab="votacoes"><span class="dot"></span> Votos e projetos</button>
@@ -1960,6 +1961,45 @@ Atenciosamente,</textarea>
     <div class="section"><div class="section-note" id="pr-fonte"></div></div>
   </section>
 
+  <section class="tabpanel" id="tab-alugueis">
+    <div class="hero">
+      <div class="hero-label">Aluguel de imóveis com dinheiro público em MS · <span id="al-ano">—</span></div>
+      <div class="hero-number" id="al-total">—</div>
+      <div class="hero-desc">em contratos de aluguel de imóveis fechados sem licitação neste ano pelo Governo do Estado, pelas prefeituras, câmaras e outros órgãos de MS,
+        segundo o Portal Nacional de Contratações Públicas — e quanto a Prefeitura de Campo Grande pagou de aluguel. A lei permite alugar sem licitação quando o imóvel
+        é o único que serve (local e instalações); por isso vale olhar quem é o dono e se ele tem ligação com políticos.</div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="al-n">—</div><div class="mini-stat-label">contratos de aluguel no PNCP</div></div>
+        <div><div class="mini-stat-value" id="al-pref">—</div><div class="mini-stat-label">pagos de aluguel pela Prefeitura de CG</div></div>
+        <div><div class="mini-stat-value" id="al-vinc">—</div><div class="mini-stat-label">locadores com ligação política</div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Donos de imóveis com ligação política</h2></div>
+      <div class="section-note">Locador (ou sócio/dirigente da empresa locadora) que doou para campanha de político de MS, pelo nome e pelos dígitos do CPF que o TSE e a Receita publicam, ou empresa locadora com sinal na auditoria do site.
+        Alugar imóvel de quem doou para campanha é permitido; o ponto de atenção é se o preço e a escolha do imóvel foram justificados.</div>
+      <div id="al-vinculos"></div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Contratos de aluguel: Estado, prefeituras e outros órgãos</h2></div>
+      <div class="ob-filtros" id="al-filtros">
+        <button type="button" class="ativo" data-f="">Todos</button><button type="button" data-f="E">Governo do Estado</button>
+        <button type="button" data-f="M">Prefeituras e câmaras</button><button type="button" data-f="F">Órgãos federais em MS</button>
+      </div>
+      <input id="busca-al" class="search-box" type="search" placeholder="buscar órgão, cidade, endereço ou dono do imóvel…" aria-label="Buscar aluguel" style="width:100%;margin:10px 0 12px"/>
+      <div class="section-note">Valor total do contrato (em geral 12 meses ou mais), homologado ou, quando ainda não houver, o estimado. Clique no valor para ver a contratação no PNCP. Pessoa física aparece só pelo nome.</div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-al" data-cartoes><thead><tr><th>Órgão</th><th>Cidade</th><th>Imóvel / objeto</th><th>Dono do imóvel</th><th class="num">Valor do contrato</th></tr></thead><tbody></tbody></table></div>
+      <button class="pager-btn" id="al-mais" style="margin-top:10px;display:none">Mostrar mais</button>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Prefeitura de Campo Grande: a quem paga aluguel</h2></div>
+      <div class="section-note" id="al-pref-nota"></div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-al-pref" data-cartoes><thead><tr><th>#</th><th>Dono do imóvel</th><th>Órgãos</th><th class="num">Pagamentos</th><th class="num">Pago no ano</th></tr></thead><tbody></tbody></table></div>
+      <button class="pager-btn" id="al-pref-mais" style="margin-top:10px;display:none">Mostrar todos</button>
+    </div>
+    <div class="section"><div class="section-note" id="al-fonte"></div></div>
+  </section>
+
   <section class="tabpanel" id="tab-shows">
     <div class="hero">
       <div class="hero-label">Shows pagos com dinheiro público em MS · <span id="sh-ano">—</span></div>
@@ -2332,7 +2372,7 @@ Atenciosamente,</textarea>
   </section>
   </section>
 
-  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=publicidade">Publicidade</a></li><li><a href="/cofre-aberto-ms.html#aba=entidades">ONGs e entidades</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Votos e projetos</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/termos/">Termos de uso</a></li><li><a href="/privacidade/">Privacidade e LGPD</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
+  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=alugueis">Aluguéis</a></li><li><a href="/cofre-aberto-ms.html#aba=publicidade">Publicidade</a></li><li><a href="/cofre-aberto-ms.html#aba=entidades">ONGs e entidades</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Votos e projetos</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/termos/">Termos de uso</a></li><li><a href="/privacidade/">Privacidade e LGPD</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
   <footer class="site-footer">
     <span>Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público. © 2026 Cofre Aberto MS · <a href="metodologia.html#licenca">dados sob CC BY 4.0, código e layout: todos os direitos reservados</a></span>
     <span>
@@ -7114,6 +7154,69 @@ function renderPrecos(d) {
     `Compras de ${d.ano} por pregão e dispensa. O preço é convertido para a mesma unidade quando a descrição informa a embalagem (ex.: café em pacote de 500 g → preço por kg); itens sem unidade clara ficam de fora, e preços mais de 4 vezes acima ou abaixo da mediana são descartados como provável erro de unidade. Coletado em ${formatDateTime(d.ultimaAtualizacao)}.`;
 }
 
+// ===================== ALUGUÉIS =====================
+function renderAlugueis(d) {
+  const P = d.pncp || {}, F = d.prefeitura || {};
+  const brlInt = v => formatBRL(v).replace(/,\d{2}$/, "");
+  const nomeLoc = l => l ? (l.pagina ? `<a href="${l.pagina}">${escHTML(l.nome)}</a>` : escHTML(l.nome)) + (l.tipo === "PF" ? ` <span class="section-note">(pessoa física)</span>` : "") : "—";
+  document.getElementById("al-ano").textContent = d.ano;
+  document.getElementById("al-total").textContent = formatCompact(P.total || 0);
+  document.getElementById("al-n").textContent = (P.contratacoes || 0).toLocaleString("pt-BR");
+  document.getElementById("al-pref").textContent = formatCompact(F.total || 0);
+  document.getElementById("al-vinc").textContent = d.comVinculo || 0;
+  // ligação política
+  const vs = [...(F.lista || []).filter(a => a.vinculos.length).map(a => ({ loc: a, onde: "Prefeitura de Campo Grande", valor: a.valor, rot: "pago no ano", link: null })),
+              ...(P.lista || []).filter(c => c.locador && c.locador.vinculos.length).map(c => ({ loc: c.locador, onde: `${c.orgao}${c.cidade ? " (" + c.cidade + ")" : ""}`, valor: c.valor, rot: "contrato", link: c.link, obj: c.objeto }))];
+  document.getElementById("al-vinculos").innerHTML = vs.length ? vs.map(v => `<div class="card" style="padding:14px 16px;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><b>${nomeLoc(v.loc)}</b><span><b>${v.link ? `<a href="${v.link}" target="_blank" rel="noopener">${brlInt(v.valor)}</a>` : brlInt(v.valor)}</b> <span class="section-note">${v.rot}</span></span></div>
+      <div class="section-note" style="margin:4px 0">Alugou imóvel para <b>${escHTML(v.onde)}</b>${v.obj ? ` — ${escHTML(v.obj.slice(0, 160))}${v.obj.length > 160 ? "…" : ""}` : ""}</div>
+      <ul style="margin:6px 0 0 18px;font-size:.86rem">${v.loc.vinculos.map(x => `<li>${escHTML(x.texto)}</li>`).join("")}</ul></div>`).join("")
+    : `<p class="section-note">Nenhum dono de imóvel com ligação encontrada nos dados atuais.</p>`;
+  // contratos PNCP
+  let esf = "", busca = "", lim = 30;
+  const norm = t => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const tb = document.querySelector("#tabela-al tbody");
+  const desenha = () => {
+    const b = norm(busca);
+    let lst = (P.lista || []).filter(c => !esf || c.esfera === esf);
+    if (b) lst = lst.filter(c => norm([c.orgao, c.cidade, c.objeto, c.locador && c.locador.nome].join(" ")).includes(b));
+    tb.innerHTML = lst.slice(0, lim).map(c => `<tr><td class="cartao-titulo" style="font-size:.82rem"><b>${escHTML(c.orgao)}</b></td><td data-label="Cidade">${escHTML(c.cidade || "—")}</td>` +
+      `<td class="cartao-largo" data-label="Imóvel" style="font-size:.78rem;white-space:normal;min-width:240px">${escHTML(c.objeto.slice(0, 220))}${c.objeto.length > 220 ? "…" : ""}</td>` +
+      `<td data-label="Dono" style="font-size:.82rem">${nomeLoc(c.locador)}${c.locador && c.locador.vinculos.length ? ` <span class="ob-tag" style="background:#c98500;color:#14120a">ligação política</span>` : ""}</td>` +
+      `<td class="num cartao-valor" data-label="Valor"><a href="${c.link}" target="_blank" rel="noopener" title="Ver no PNCP">${brlInt(c.valor)}</a>${c.homologado ? "" : `<div class="section-note" style="margin:2px 0 0">estimado</div>`}</td></tr>`).join("") ||
+      `<tr><td colspan="5">Nenhum contrato encontrado.</td></tr>`;
+    document.getElementById("al-mais").style.display = lst.length > lim ? "" : "none";
+  };
+  document.getElementById("al-filtros").onclick = ev => {
+    const bt = ev.target.closest("[data-f]"); if (!bt) return;
+    esf = bt.dataset.f; lim = 30;
+    document.querySelectorAll("#al-filtros button").forEach(x => x.classList.toggle("ativo", x === bt));
+    desenha();
+  };
+  document.getElementById("busca-al").addEventListener("input", ev => { busca = ev.target.value; lim = 30; desenha(); });
+  document.getElementById("al-mais").onclick = () => { lim += 60; desenha(); };
+  desenha();
+  // Prefeitura de CG
+  document.getElementById("al-pref-nota").innerHTML = `${F.locadores || 0} donos de imóveis receberam ${formatBRL(F.total || 0)} de aluguel da Prefeitura em ${d.ano}, em ${F.pagamentos || 0} pagamentos` +
+    `${F.ate ? ` (até ${formatDate(F.ate)})` : ""}. Clique numa linha para ver cada pagamento. Pessoa física aparece só pelo nome.`;
+  const tp = document.querySelector("#tabela-al-pref tbody");
+  let todos = false;
+  const desenhaPref = () => {
+    const lst = todos ? F.lista || [] : (F.lista || []).slice(0, 15);
+    tp.innerHTML = lst.map((a, i) => `<tr class="al-l" style="cursor:pointer" title="Ver os pagamentos"><td class="rank-pos">${String(i + 1).padStart(2, "0")}</td>` +
+      `<td class="cartao-titulo"><b>${nomeLoc(a)}</b> <span class="section-note">▾</span>${a.vinculos.length ? ` <span class="ob-tag" style="background:#c98500;color:#14120a">ligação política</span>` : ""}</td>` +
+      `<td data-label="Órgãos" style="font-size:.8rem">${a.orgaos.slice(0, 2).map(o => escHTML(o[0])).join(" · ")}${a.orgaos.length > 2 ? ` +${a.orgaos.length - 2}` : ""}</td>` +
+      `<td class="num" data-label="Pagamentos">${a.pagamentos.length}</td><td class="num cartao-valor" data-label="Pago no ano"><b>${formatBRL(a.valor)}</b></td></tr>` +
+      `<tr hidden><td colspan="5"><ul style="margin:4px 0 6px 18px;font-size:.8rem">${a.pagamentos.map(p => `<li>${formatDate(p.data)} · ${escHTML(p.orgao || "")} · ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener">${formatBRL(p.valor)}</a>` : formatBRL(p.valor)}</li>`).join("")}</ul></td></tr>`).join("");
+    document.getElementById("al-pref-mais").style.display = !todos && (F.lista || []).length > 15 ? "" : "none";
+  };
+  tp.onclick = ev => { if (ev.target.closest("a")) return; const l = ev.target.closest(".al-l"); if (!l) return; l.nextElementSibling.hidden = !l.nextElementSibling.hidden; };
+  document.getElementById("al-pref-mais").onclick = () => { todos = true; desenhaPref(); };
+  desenhaPref();
+  document.getElementById("al-fonte").innerHTML = `Fontes: <a href="${P.fonteUrl}" target="_blank" rel="noopener">${escHTML(P.fonte || "")}</a>; ${escHTML(F.fonte || "")}; doações de campanha do TSE; sócios e dirigentes no cadastro da Receita Federal. ` +
+    `Entram no PNCP as contratações com fundamento no art. 74, V da Lei 14.133 (imóvel cuja localização e instalações tornam necessária a escolha) e as dispensas e inexigibilidades cujo objeto é aluguel ou compra de imóvel. Atualizado em ${formatDateTime(d.ultimaAtualizacao)}.`;
+}
+
 // ===================== ARRECADAÇÃO (Impostômetro) =====================
 const AR_COLS = {
   estado: [["icms", "ICMS"], ["ipva", "IPVA"], ["itcd", "ITCD"], ["irrf", "IRRF"], ["impostos", "Total de impostos"], ["fpe", "FPE (União)"], ["correntes", "Receitas correntes"]],
@@ -7427,6 +7530,7 @@ const FONTE_ABA = {
   "publicidade": { titulo: "Publicidade do Governo de MS e da Prefeitura de CG", csv: [], json: "publicidade.json" },
   "entidades": { titulo: "Dinheiro público para ONGs e entidades sem fins lucrativos", csv: [], json: "entidades.json" },
   "precos": { titulo: "Preço unitário pago pelos órgãos de MS pelo mesmo item (PNCP)", csv: [], json: "precos.json" },
+  "alugueis": { titulo: "Aluguel de imóveis com dinheiro público em MS", csv: [], json: "alugueis.json" },
   "shows": { titulo: "Shows pagos com dinheiro público em MS (PNCP)", csv: [], json: "shows.json" },
   "votacoes": { titulo: "Presença e votação dos deputados federais e senadores de MS", csv: [], json: "votacoes.json" },
   "evolucao": { titulo: "Evolução mensal dos gastos de políticos de MS", csv: [["Mês a mês", "evolucao_mensal.csv"]], json: "evolucao_mensal.json" },
@@ -7637,6 +7741,10 @@ async function init() {
       if (btn.dataset.tab === "precos" && !window._prLoaded) {
         window._prLoaded = true;
         carregarJSON("dados/precos.json").then(d => { if (d) renderPrecos(d); });
+      }
+      if (btn.dataset.tab === "alugueis" && !window._alLoaded) {
+        window._alLoaded = true;
+        carregarJSON("dados/alugueis.json").then(d => { if (d) renderAlugueis(d); });
       }
       if (btn.dataset.tab === "shows" && !window._shLoaded) {
         window._shLoaded = true;

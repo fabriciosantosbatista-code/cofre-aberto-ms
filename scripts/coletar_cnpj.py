@@ -77,6 +77,13 @@ def cnpjs_alvo():
         soma(c.get("cnpj"), c.get("valor"))
     for f in carregar("governo_ms_licitacoes.json").get("fornecedores", []):
         soma(f.get("cnpj"), f.get("valor"))
+    al = carregar("alugueis.json")  # locadores de imóveis (Prefeitura de CG e PNCP): para ver os sócios
+    for c in (al.get("pncp") or {}).get("lista") or []:
+        if c.get("locador") and c["locador"].get("tipo") == "PJ":
+            soma(c["locador"].get("doc"), max(c.get("valor") or 0, 50000))
+    for a in (al.get("prefeitura") or {}).get("lista") or []:
+        if a.get("tipo") == "PJ":
+            soma(a.get("doc"), max(a.get("valor") or 0, 50000))
     pref = {}
     for x in carregar("prefeitura.json").get("despesas", []):
         d = dig(x.get("cnpj"))

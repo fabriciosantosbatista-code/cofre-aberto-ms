@@ -225,6 +225,10 @@ jobs:
       #   timeout-minutes: 17
       #   run: python3 -u scripts/coletar_precos.py || echo "⚠️ coletar_precos.py falhou — dados anteriores mantidos"
 
+      - name: Aluguel de imóveis (Prefeitura de CG e PNCP) e ligação política dos donos
+        timeout-minutes: 15
+        run: python3 -u scripts/coletar_alugueis.py || echo "⚠️ coletar_alugueis.py falhou — dados anteriores mantidos"
+
       - name: Upload artifact — contratos CG
         uses: actions/upload-artifact@v4
         with:
@@ -235,6 +239,8 @@ jobs:
             dados/shows_cache.json
             dados/precos.json
             dados/precos_cache.json
+            dados/alugueis.json
+            dados/alugueis_cache.json
           retention-days: 1
 
   coletar_emendas_alems:
