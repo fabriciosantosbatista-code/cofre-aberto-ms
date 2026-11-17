@@ -1944,7 +1944,7 @@ Atenciosamente,</textarea>
     <div class="section">
       <div class="section-head"><h2 class="section-title">A cesta: mediana, menor e maior preço</h2></div>
       <div class="section-note">Clique num item para ver quais órgãos pagaram mais caro por ele.</div>
-      <div class="card card-x-scroll"><table class="ranking" id="tabela-pr-cesta"><thead><tr><th>Item</th><th class="num">Compras</th><th class="num">Menor</th><th class="num">Mediana</th><th class="num">Maior</th><th class="num">Maior ÷ menor</th></tr></thead><tbody></tbody></table></div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-pr-cesta" data-cartoes><thead><tr><th>Item</th><th class="num">Compras</th><th class="num">Menor</th><th class="num">Mediana</th><th class="num">Maior</th><th class="num">Maior ÷ menor</th></tr></thead><tbody></tbody></table></div>
     </div>
     <div class="section">
       <div class="section-head"><h2 class="section-title" id="pr-titulo">Compras do item</h2></div>
@@ -1952,7 +1952,7 @@ Atenciosamente,</textarea>
       <p id="pr-resumo" style="margin:12px 0 0;font-size:.95rem"></p>
       <input id="busca-pr" class="search-box" type="search" placeholder="buscar órgão, cidade ou fornecedor…" aria-label="Buscar compra" style="width:100%;margin:10px 0 12px"/>
       <div class="section-note">Uma linha por órgão, com o preço médio que ele pagou (ponderado pela quantidade comprada), do mais caro ao mais barato. Clique no órgão para ver cada compra e o documento no PNCP.</div>
-      <div class="card card-x-scroll"><table class="ranking" id="tabela-pr"><thead><tr><th>Órgão</th><th>Cidade</th><th class="num">Compras</th><th class="num">Preço médio</th><th class="num">vs. mediana</th></tr></thead><tbody></tbody></table></div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-pr" data-cartoes><thead><tr><th>Órgão</th><th>Cidade</th><th class="num">Compras</th><th class="num">Preço médio</th><th class="num">vs. mediana</th></tr></thead><tbody></tbody></table></div>
       <button class="pager-btn" id="pr-mais" style="margin-top:10px;display:none">Mostrar mais</button>
     </div>
     <div class="section"><div class="section-note" id="pr-fonte"></div></div>
@@ -6954,9 +6954,9 @@ function renderPrecos(d) {
   document.getElementById("pr-orgaos").textContent = new Set(P.flatMap(p => p.itens.map(x => x.orgao))).size;
   document.getElementById("pr-prod").textContent = P.length;
   document.getElementById("pr-acima").textContent = P.reduce((s, p) => s + p.itens.filter(x => x.vsMediana >= 50).length, 0);
-  document.querySelector("#tabela-pr-cesta tbody").innerHTML = P.map((p, i) => `<tr class="pr-l" data-i="${i}" style="cursor:pointer"><td><b>${escHTML(p.nome)}</b> <span class="section-note">ver órgãos →</span></td>` +
-    `<td class="num">${p.compras}</td><td class="num">${formatBRL(p.menor)}</td><td class="num"><b>${formatBRL(p.mediana)}</b></td><td class="num">${formatBRL(p.maior)}</td>` +
-    `<td class="num">${p.menor ? (p.maior / p.menor).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "×" : "—"}</td></tr>`).join("");
+  document.querySelector("#tabela-pr-cesta tbody").innerHTML = P.map((p, i) => `<tr class="pr-l" data-i="${i}" style="cursor:pointer"><td class="cartao-titulo"><b>${escHTML(p.nome)}</b> <span class="section-note">ver órgãos →</span></td>` +
+    `<td class="num" data-label="Compras">${p.compras}</td><td class="num" data-label="Menor">${formatBRL(p.menor)}</td><td class="num cartao-valor" data-label="Mediana"><b>${formatBRL(p.mediana)}</b></td><td class="num" data-label="Maior">${formatBRL(p.maior)}</td>` +
+    `<td class="num" data-label="Maior ÷ menor">${p.menor ? (p.maior / p.menor).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "×" : "—"}</td></tr>`).join("");
   // uma linha por órgão: preço médio (ponderado pela quantidade) de todas as compras do órgão
   const porOrgao = p => {
     const g = {};
@@ -6990,9 +6990,9 @@ function renderPrecos(d) {
     const f = norm(filtro);
     const lst = f ? g.filter(o => norm([o.orgao, o.cidade, ...o.compras.map(x => x.fornecedor)].join(" ")).includes(f)) : g;
     const vis = todos || f ? lst : lst.slice(0, 10);
-    document.querySelector("#tabela-pr tbody").innerHTML = vis.map((o, i) => `<tr class="pr-o" data-i="${i}" style="cursor:pointer" title="Ver as compras"><td style="font-size:.84rem"><b>${escHTML(o.orgao)}</b> <span class="section-note">▾</span></td>` +
-      `<td>${escHTML(o.cidade || "—")}</td><td class="num">${o.compras.length}</td><td class="num"><b>${formatBRL(o.preco)}</b></td>` +
-      `<td class="num" style="font-weight:700;color:${cor(o.vs)}">${pct(o.vs)}</td></tr>` +
+    document.querySelector("#tabela-pr tbody").innerHTML = vis.map((o, i) => `<tr class="pr-o" data-i="${i}" style="cursor:pointer" title="Ver as compras"><td class="cartao-titulo" style="font-size:.84rem"><b>${escHTML(o.orgao)}</b> <span class="section-note">▾ ver compras</span></td>` +
+      `<td data-label="Cidade">${escHTML(o.cidade || "—")}</td><td class="num" data-label="Compras">${o.compras.length}</td><td class="num cartao-valor" data-label="Preço médio"><b>${formatBRL(o.preco)}</b></td>` +
+      `<td class="num" data-label="vs. mediana" style="font-weight:700;color:${cor(o.vs)}">${pct(o.vs)}</td></tr>` +
       `<tr class="pr-od" data-i="${i}" hidden><td colspan="5"><ul style="margin:4px 0 6px 18px;font-size:.8rem;line-height:1.5">${o.compras.map(x =>
         `<li><a href="${x.link}" target="_blank" rel="noopener" title="Ver a compra no PNCP">${formatBRL(x.precoUnidade)}</a> por ${un(p)}` +
         `${x.preco !== x.precoUnidade ? ` (${formatBRL(x.preco)} por ${escHTML(x.unidade || "unid.")})` : ""}` +
