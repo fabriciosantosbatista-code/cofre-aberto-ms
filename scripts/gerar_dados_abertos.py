@@ -452,6 +452,11 @@ def status_fontes():
         "https://pncp.gov.br/", pr.get("ultimaAtualizacao"),
         f"{sum(p.get('compras') or 0 for p in pr.get('produtos') or [])} preços comparados" if pr else None,
         bool(pr) and em_dia(pr.get("ultimaAtualizacao"), 3))
+    bfi = carregar("beneficios_fiscais.json")
+    add("beneficios", "SEFAZ-MS — lista anual de contemplados por benefícios fiscais",
+        bfi.get("fonteUrl") or "https://www.sefaz.ms.gov.br/", bfi.get("ultimaAtualizacao"),
+        f"lista de {bfi.get('anoReferencia')} ({bfi.get('total')} empresas)" if bfi else None,
+        bool(bfi) and em_dia(bfi.get("ultimaAtualizacao"), 400))
     alg = carregar("alugueis.json")
     add("alugueis", "PNCP (aluguel de imóvel sem licitação em MS) e SIG-Transparência da Prefeitura de CG (locação de imóveis)",
         "https://pncp.gov.br/", alg.get("ultimaAtualizacao"),

@@ -651,6 +651,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button style="--cor:#199e70" data-tab="prefeitura"><span class="dot"></span> Prefeitura CG</button>
       <button style="--cor:#199e70" data-tab="contratos-cg"><span class="dot"></span> Contratos CG</button>
       <button style="--cor:#199e70" data-tab="arrecadacao"><span class="dot"></span> Arrecadação</button>
+      <button style="--cor:#199e70" data-tab="beneficios"><span class="dot"></span> Benefícios fiscais</button>
       <div class="nav-sub-label" style="--cor:#d95926">Emendas</div>
       <button style="--cor:#d95926" data-tab="emendas"><span class="dot"></span> Emendas Parlamentares</button>
       <button style="--cor:#d95926" data-tab="pg-municipios"><span class="dot"></span> Emendas Municípios</button>
@@ -2000,6 +2001,46 @@ Atenciosamente,</textarea>
     <div class="section"><div class="section-note" id="al-fonte"></div></div>
   </section>
 
+  <section class="tabpanel" id="tab-beneficios">
+    <div class="hero">
+      <div class="hero-label">Benefícios fiscais de ICMS do Governo de MS · <span id="bf-ano">—</span></div>
+      <div class="hero-number" id="bf-total">—</div>
+      <div class="hero-desc">empresas tiveram algum benefício fiscal de ICMS do Estado no ano, segundo a lista que a própria Secretaria de Fazenda publica.
+        A maioria usa benefícios automáticos (que valem para todo o setor) ou o REFIS. Aqui o destaque é para quem recebeu benefício <b>caso a caso</b>:
+        termo de acordo, regime especial ou programa de desenvolvimento. A SEFAZ não publica quanto cada empresa deixou de pagar.</div>
+      <div class="mini-stats">
+        <div><div class="mini-stat-value" id="bf-caso">—</div><div class="mini-stat-label">com benefício caso a caso</div></div>
+        <div><div class="mini-stat-value" id="bf-termo">—</div><div class="mini-stat-label">termos de acordo (incentivo negociado)</div></div>
+        <div><div class="mini-stat-value" id="bf-doador">—</div><div class="mini-stat-label">com sócio que doou para campanha</div></div>
+        <div><div class="mini-stat-value" id="bf-estado">—</div><div class="mini-stat-label">que também recebem dinheiro do Estado</div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Benefício caso a caso e sócio que doou para campanha</h2></div>
+      <div class="section-note">Empresas com termo de acordo, regime especial ou programa de desenvolvimento cujo sócio ou dirigente doou para a campanha de político de MS (pelo nome e pelos dígitos do CPF publicados pela Receita e pelo TSE).
+        Doar é legal e ter incentivo também; o ponto de atenção é o mesmo grupo estar dos dois lados.</div>
+      <div id="bf-doadores"></div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Todas as empresas com benefício caso a caso</h2></div>
+      <div class="ob-filtros" id="bf-filtros">
+        <button type="button" class="ativo" data-f="">Todas</button><button type="button" data-f="3">Termo de acordo</button><button type="button" data-f="2">Regime especial</button>
+        <button type="button" data-f="4">Programa de desenvolvimento</button><button type="button" data-f="estado">Recebem do Estado</button><button type="button" data-f="doador">Sócio doador</button>
+      </div>
+      <input id="busca-bf" class="search-box" type="search" placeholder="buscar empresa, CNPJ ou setor…" aria-label="Buscar empresa" style="width:100%;margin:10px 0 12px"/>
+      <div class="section-note">"Recebeu do Estado" = pagamentos do Governo de MS à empresa neste ano (compras, obras, serviços). Contrapartida é quando o benefício exige algo em troca (investimento, empregos), como nos termos de acordo.</div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-bf" data-cartoes><thead><tr><th>Empresa</th><th>Setor</th><th>Benefício</th><th>Vigência</th><th class="num">Recebeu do Estado</th></tr></thead><tbody></tbody></table></div>
+      <button class="pager-btn" id="bf-mais" style="margin-top:10px;display:none">Mostrar mais</button>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Os tipos de benefício e os setores</h2></div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-bf-esp" data-cartoes><thead><tr><th>Tipo de benefício</th><th class="num">Empresas</th></tr></thead><tbody></tbody></table></div>
+      <div class="section-note" style="margin-top:14px">Benefício caso a caso, por setor:</div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-bf-setor" data-cartoes><thead><tr><th>Setor</th><th class="num">Empresas</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="section"><div class="section-note" id="bf-fonte"></div></div>
+  </section>
+
   <section class="tabpanel" id="tab-shows">
     <div class="hero">
       <div class="hero-label">Shows pagos com dinheiro público em MS · <span id="sh-ano">—</span></div>
@@ -2372,7 +2413,7 @@ Atenciosamente,</textarea>
   </section>
   </section>
 
-  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=alugueis">Aluguéis</a></li><li><a href="/cofre-aberto-ms.html#aba=publicidade">Publicidade</a></li><li><a href="/cofre-aberto-ms.html#aba=entidades">ONGs e entidades</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Votos e projetos</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/termos/">Termos de uso</a></li><li><a href="/privacidade/">Privacidade e LGPD</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
+  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li><li><a href="/cofre-aberto-ms.html#aba=beneficios">Benefícios fiscais</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=alugueis">Aluguéis</a></li><li><a href="/cofre-aberto-ms.html#aba=publicidade">Publicidade</a></li><li><a href="/cofre-aberto-ms.html#aba=entidades">ONGs e entidades</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Votos e projetos</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/termos/">Termos de uso</a></li><li><a href="/privacidade/">Privacidade e LGPD</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
   <footer class="site-footer">
     <span>Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público. © 2026 Cofre Aberto MS · <a href="metodologia.html#licenca">dados sob CC BY 4.0, código e layout: todos os direitos reservados</a></span>
     <span>
@@ -7217,6 +7258,54 @@ function renderAlugueis(d) {
     `Entram no PNCP as contratações com fundamento no art. 74, V da Lei 14.133 (imóvel cuja localização e instalações tornam necessária a escolha) e as dispensas e inexigibilidades cujo objeto é aluguel ou compra de imóvel. Atualizado em ${formatDateTime(d.ultimaAtualizacao)}.`;
 }
 
+// ===================== BENEFÍCIOS FISCAIS =====================
+function renderBeneficios(d) {
+  const E = d.empresas || [], ESP = d.especies || {};
+  const curtoEsp = { 2: "Regime especial", 3: "Termo de acordo", 4: "Programa de desenvolvimento", 1: "Automático", 5: "REFIS" };
+  const nomeEmp = e => e.pagina ? `<a href="${e.pagina}">${escHTML(e.nome)}</a>` : escHTML(e.nome);
+  const fmtVig = v => /^\d{4}-\d{2}-\d{2}/.test(v) ? "até " + formatDate(v.slice(0, 10)) : v;
+  document.getElementById("bf-ano").textContent = d.anoReferencia;
+  document.getElementById("bf-total").textContent = (d.total || 0).toLocaleString("pt-BR");
+  document.getElementById("bf-caso").textContent = (d.casoACaso || 0).toLocaleString("pt-BR");
+  document.getElementById("bf-termo").textContent = ((d.porEspecie || {})["3"] || 0).toLocaleString("pt-BR");
+  document.getElementById("bf-doador").textContent = d.comSocioDoador || 0;
+  document.getElementById("bf-estado").textContent = d.comDinheiroDoEstado || 0;
+  const ds = E.filter(e => e.sociosDoadores.length);
+  document.getElementById("bf-doadores").innerHTML = ds.length ? ds.map(e => `<div class="card" style="padding:14px 16px;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><b>${nomeEmp(e)}</b><span class="section-note">${e.especies.filter(x => x !== 1 && x !== 5).map(x => curtoEsp[x]).join(" · ")} · ${escHTML(e.setor)}</span></div>
+      ${e.pagoEstado ? `<div class="section-note" style="margin:4px 0">Recebeu ${formatBRL(e.pagoEstado)} do Governo de MS neste ano.</div>` : ""}
+      <ul style="margin:6px 0 0 18px;font-size:.86rem">${e.sociosDoadores.map(x => `<li>${escHTML(x)}</li>`).join("")}</ul></div>`).join("")
+    : `<p class="section-note">Nenhuma encontrada nos dados atuais.</p>`;
+  let f = "", busca = "", lim = 30;
+  const norm = t => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const tb = document.querySelector("#tabela-bf tbody");
+  const desenha = () => {
+    const b = norm(busca);
+    let lst = E.filter(e => !f || (f === "estado" ? e.pagoEstado || e.contratosEstado : f === "doador" ? e.sociosDoadores.length : e.especies.includes(+f)));
+    if (b) lst = lst.filter(e => norm(e.nome + " " + e.cnpj + " " + e.setor).includes(b));
+    tb.innerHTML = lst.slice(0, lim).map(e => `<tr><td class="cartao-titulo" style="font-size:.84rem"><b>${nomeEmp(e)}</b>` +
+      `${e.sociosDoadores.length ? ` <span class="ob-tag" style="background:#c98500;color:#14120a">sócio doador</span>` : ""}${e.sinais.length ? ` <span class="ob-tag" style="background:#e5484d;color:#fff" title="${escHTML(e.sinais.join(" · "))}">sinal na auditoria</span>` : ""}</td>` +
+      `<td data-label="Setor" style="font-size:.8rem">${escHTML(e.setor)}</td>` +
+      `<td data-label="Benefício" style="font-size:.8rem">${e.especies.filter(x => x !== 1 && x !== 5).map(x => curtoEsp[x]).join(", ")}${e.contrapartida ? `<div class="section-note" style="margin:0">com contrapartida</div>` : ""}</td>` +
+      `<td data-label="Vigência" style="font-size:.8rem">${e.vigencia.map(fmtVig).map(escHTML).join("<br>") || "—"}</td>` +
+      `<td class="num cartao-valor" data-label="Recebeu do Estado">${e.pagoEstado ? formatBRL(e.pagoEstado) : "—"}</td></tr>`).join("") || `<tr><td colspan="5">Nenhuma empresa encontrada.</td></tr>`;
+    document.getElementById("bf-mais").style.display = lst.length > lim ? "" : "none";
+  };
+  document.getElementById("bf-filtros").onclick = ev => {
+    const bt = ev.target.closest("[data-f]"); if (!bt) return;
+    f = bt.dataset.f; lim = 30;
+    document.querySelectorAll("#bf-filtros button").forEach(x => x.classList.toggle("ativo", x === bt));
+    desenha();
+  };
+  document.getElementById("busca-bf").addEventListener("input", ev => { busca = ev.target.value; lim = 30; desenha(); });
+  document.getElementById("bf-mais").onclick = () => { lim += 60; desenha(); };
+  desenha();
+  document.querySelector("#tabela-bf-esp tbody").innerHTML = Object.entries(ESP).map(([k, v]) => `<tr><td class="cartao-titulo">${escHTML(v)}${["2", "3", "4"].includes(k) ? ` <span class="section-note">(caso a caso)</span>` : ""}</td><td class="num cartao-valor" data-label="Empresas">${((d.porEspecie || {})[k] || 0).toLocaleString("pt-BR")}</td></tr>`).join("");
+  document.querySelector("#tabela-bf-setor tbody").innerHTML = (d.porSetor || []).map(([s_, n]) => `<tr><td class="cartao-titulo">${escHTML(s_)}</td><td class="num cartao-valor" data-label="Empresas">${n}</td></tr>`).join("");
+  document.getElementById("bf-fonte").innerHTML = `Fonte: <a href="${d.fonteUrl}" target="_blank" rel="noopener">${escHTML(d.fonte)}</a> (<a href="${d.planilha}" target="_blank" rel="noopener">planilha</a>); pagamentos do Estado: Portal da Transparência de MS; doações: TSE; sócios: Receita Federal. ` +
+    `Uma empresa pode ter mais de um tipo de benefício. Não entram as imunidades da Constituição, que não são benefício concedido pelo Estado. Atualizado em ${formatDateTime(d.ultimaAtualizacao)}.`;
+}
+
 // ===================== ARRECADAÇÃO (Impostômetro) =====================
 const AR_COLS = {
   estado: [["icms", "ICMS"], ["ipva", "IPVA"], ["itcd", "ITCD"], ["irrf", "IRRF"], ["impostos", "Total de impostos"], ["fpe", "FPE (União)"], ["correntes", "Receitas correntes"]],
@@ -7530,6 +7619,7 @@ const FONTE_ABA = {
   "publicidade": { titulo: "Publicidade do Governo de MS e da Prefeitura de CG", csv: [], json: "publicidade.json" },
   "entidades": { titulo: "Dinheiro público para ONGs e entidades sem fins lucrativos", csv: [], json: "entidades.json" },
   "precos": { titulo: "Preço unitário pago pelos órgãos de MS pelo mesmo item (PNCP)", csv: [], json: "precos.json" },
+  "beneficios": { titulo: "Empresas com benefício fiscal de ICMS do Governo de MS", csv: [], json: "beneficios_fiscais.json" },
   "alugueis": { titulo: "Aluguel de imóveis com dinheiro público em MS", csv: [], json: "alugueis.json" },
   "shows": { titulo: "Shows pagos com dinheiro público em MS (PNCP)", csv: [], json: "shows.json" },
   "votacoes": { titulo: "Presença e votação dos deputados federais e senadores de MS", csv: [], json: "votacoes.json" },
@@ -7741,6 +7831,10 @@ async function init() {
       if (btn.dataset.tab === "precos" && !window._prLoaded) {
         window._prLoaded = true;
         carregarJSON("dados/precos.json").then(d => { if (d) renderPrecos(d); });
+      }
+      if (btn.dataset.tab === "beneficios" && !window._bfLoaded) {
+        window._bfLoaded = true;
+        carregarJSON("dados/beneficios_fiscais.json").then(d => { if (d) renderBeneficios(d); });
       }
       if (btn.dataset.tab === "alugueis" && !window._alLoaded) {
         window._alLoaded = true;
