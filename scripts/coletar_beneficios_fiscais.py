@@ -109,10 +109,10 @@ def main():
     r.raise_for_status()
     linhas = ler(r.content)
     print(f"  {len(linhas)} linhas")
-    emp, anos = {}, {}
+    emp, anos_lista = {}, {}
     for d in linhas:
         a_ = d.get("ANO") or ""
-        anos[a_] = anos.get(a_, 0) + 1
+        anos_lista[a_] = anos_lista.get(a_, 0) + 1
         cnpj = dig(col(d, "CNPJ"))
         if len(cnpj) != 14:
             continue
@@ -170,7 +170,7 @@ def main():
     for e in caso:
         por_setor[e["setor"]] = por_setor.get(e["setor"], 0) + 1
     SAIDA.write_text(json.dumps({
-        "anoReferencia": int(max(anos, key=anos.get)) if anos and str(max(anos, key=anos.get)).isdigit() else ano, "pagina": ano, "planilha": url, "ultimaAtualizacao": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+        "anoReferencia": int(max(anos_lista, key=anos_lista.get)) if anos_lista and str(max(anos_lista, key=anos_lista.get)).isdigit() else ano, "pagina": ano, "planilha": url, "ultimaAtualizacao": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
         "fonte": f"SEFAZ-MS — Lista de contemplados por benefícios fiscais (publicada em {ano})",
         "fonteUrl": f"https://www.sefaz.ms.gov.br/beneficios-fiscais-{ano}/", "especies": {str(k): v for k, v in ESPECIES.items()},
         "total": len(lista), "porEspecie": por_esp, "casoACaso": len(caso),
