@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-17T00:33:29",
+ "geradoEm": "2026-11-17T12:49:06",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
@@ -148,8 +148,16 @@
   "precos": {
    "fonte": "Portal Nacional de Contratações Públicas (PNCP) — itens e preços homologados das compras de órgãos de MS",
    "url": "https://pncp.gov.br/",
-   "coleta": "2026-11-17T00:33:04",
-   "dadoMaisRecente": "923 preços comparados",
+   "coleta": "2026-11-17T12:38:57",
+   "dadoMaisRecente": "1084 preços comparados",
+   "nivel": "ok",
+   "mensagem": null
+  },
+  "producao": {
+   "fonte": "Câmara dos Deputados e Senado Federal — dados abertos das proposições (autoria e situação)",
+   "url": "https://dadosabertos.camara.leg.br/",
+   "coleta": "2026-11-17T12:46:09",
+   "dadoMaisRecente": "528 projetos de 11 parlamentares",
    "nivel": "ok",
    "mensagem": null
   },

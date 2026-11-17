@@ -651,6 +651,7 @@ def pagina(p, irmaos):
 {grafico(ev, ANO)}
 {bloco_cat}
 {bloco_equipe(p)}
+{bloco_producao(p)}
 {bloco_emendas(p)}
 {bloco_patrimonio(p)}
 {bloco_votacoes(p)}
@@ -667,6 +668,33 @@ def pagina(p, irmaos):
         imagem = cartao(f"{p['grupo']}-{p['slug']}", p["nome"], f"{cargo} · {p['partido'] or 'sem partido'}", brl(total).split(",")[0],
                         f"de {g['cota']} em {ANO}", foto if foto and foto.startswith("/fotos/") else None)
     return cabecalho(titulo, desc, p["url"], imagem, jsonld) + corpo + RODAPE
+
+
+_PRODUCAO = None
+
+
+def bloco_producao(p):
+    """Deputados federais e senadores de MS: projetos apresentados e leis (dados/producao_legislativa.json)."""
+    global _PRODUCAO
+    if _PRODUCAO is None:
+        _PRODUCAO = {(x["grupo"], x["nome"]): x for x in carregar("producao_legislativa.json").get("parlamentares") or []}
+    x = _PRODUCAO.get((p.get("grupo"), p.get("nome")))
+    if not x:
+        return ""
+
+    def li(i, norma):
+        em = i["ementa"] if len(i["ementa"]) <= 220 else i["ementa"][:220] + "…"
+        extra = f" ({e(i['norma'])})" if norma and i.get("norma") else ""
+        return f"<li><a href='{i['link']}' target='_blank' rel='noopener'><b>{e(i['sigla'])}</b></a> — {e(em)}{extra}</li>"
+    leis = "".join(li(i, True) for i in x["listaLeis"])
+    rec = "".join(li(i, False) for i in x["recentes"])
+    casa = "do Senado Federal" if x["grupo"] == "senador" else "da Câmara dos Deputados"
+    return (f"<h2>Projetos e leis (desde fevereiro de 2023)</h2><p>{e(p['nome'])} apresentou <b>{x['projetosPrincipal']} projetos como autor principal</b> "
+            f"(projetos de lei, de lei complementar, de emenda à Constituição e de decreto legislativo) e foi coautor de mais {x['projetos'] - x['projetosPrincipal']}. "
+            f"<b>{x['leis']}</b> desses projetos já viraram lei ({x['leisPrincipal']} como autor principal). Também apresentou {x['requerimentos']} requerimentos. "
+            f"Fonte: dados abertos {casa}. Quantidade de projetos não mede qualidade do mandato.</p>"
+            + (f"<h3>Projetos que viraram lei</h3><ul>{leis}</ul>" if leis else "")
+            + (f"<h3>Projetos mais recentes</h3><ul>{rec}</ul>" if rec else ""))
 
 
 def bloco_equipe(p):

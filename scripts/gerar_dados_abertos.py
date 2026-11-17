@@ -452,6 +452,11 @@ def status_fontes():
         "https://pncp.gov.br/", pr.get("ultimaAtualizacao"),
         f"{sum(p.get('compras') or 0 for p in pr.get('produtos') or [])} preços comparados" if pr else None,
         bool(pr) and em_dia(pr.get("ultimaAtualizacao"), 3))
+    pl = carregar("producao_legislativa.json")
+    add("producao", "Câmara dos Deputados e Senado Federal — dados abertos das proposições (autoria e situação)",
+        "https://dadosabertos.camara.leg.br/", pl.get("ultimaAtualizacao"),
+        f"{sum(p.get('projetosPrincipal') or 0 for p in pl.get('parlamentares') or [])} projetos de {len(pl.get('parlamentares') or [])} parlamentares" if pl else None,
+        bool(pl) and em_dia(pl.get("ultimaAtualizacao"), 3))
     vt = carregar("votacoes.json")
     qc, qs = (vt.get("quadroCamara") or {}).get("votacoes") or [], (vt.get("quadroSenado") or {}).get("votacoes") or []
     add("votacoes", "Câmara dos Deputados e Senado Federal — dados abertos das votações nominais do plenário",

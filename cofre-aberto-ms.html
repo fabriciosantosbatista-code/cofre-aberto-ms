@@ -665,7 +665,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button style="--cor:#c98500" data-tab="precos"><span class="dot"></span> Preços pagos</button>
       <button style="--cor:#c98500" data-tab="publicidade"><span class="dot"></span> Publicidade</button>
       <button style="--cor:#c98500" data-tab="entidades"><span class="dot"></span> ONGs e entidades</button>
-      <button style="--cor:#c98500" data-tab="votacoes"><span class="dot"></span> Presença e votação</button>
+      <button style="--cor:#c98500" data-tab="votacoes"><span class="dot"></span> Votos e projetos</button>
       <button style="--cor:#c98500" data-tab="eleicoes"><span class="dot"></span> Eleições e patrimônio</button>
       <button style="--cor:#c98500" data-tab="evolucao"><span class="dot"></span> Evolução</button>
       <div class="nav-group-label" style="--cor:#2bb3a3">Brasil</div>
@@ -2061,7 +2061,7 @@ Atenciosamente,</textarea>
 
   <section class="tabpanel" id="tab-votacoes">
     <div class="hero">
-      <div class="hero-label">Presença e votação · deputados federais e senadores de MS · <span id="vt-ano">—</span></div>
+      <div class="hero-label">Presença, votação e projetos · deputados federais e senadores de MS · <span id="vt-ano">—</span></div>
       <div class="hero-number" id="vt-media">—</div>
       <div class="hero-desc">de participação média nas votações nominais do plenário — aquelas em que o voto de cada parlamentar fica registrado.
         Abaixo, quanto cada um votou e, em cada votação, o assunto e o voto de cada parlamentar de MS. Votações simbólicas não registram quem votou.</div>
@@ -2075,6 +2075,12 @@ Atenciosamente,</textarea>
       <div class="section-head"><h2 class="section-title">Participação de cada parlamentar</h2></div>
       <div class="section-note">No Senado, "presente sem voto" é quem estava no plenário e não votou (por exemplo, presidindo a sessão); ausência justificada é licença, missão ou atividade parlamentar.</div>
       <div class="card card-x-scroll"><table class="ranking" id="tabela-vt-part"><thead><tr><th>Parlamentar</th><th>Casa</th><th class="num">Votou</th><th class="num">Não votou</th><th class="num">Participação</th><th class="num">Presente sem voto</th><th class="num">Ausência justificada</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2 class="section-title">Projetos apresentados e leis aprovadas</h2></div>
+      <div class="section-note">Desde fevereiro de 2023 (legislatura atual). Clique no nome do parlamentar nas abas Senado MS e Dep. Federais MS para ver a lista dos projetos. Quantidade não mede qualidade: muitos projetos são homenagens ou temas repetidos, e parte do trabalho é relatar e emendar projetos de outros.</div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-prod" data-cartoes><thead><tr><th>Parlamentar</th><th>Casa</th><th class="num">Projetos (autor principal)</th><th class="num">Coautor de</th><th class="num">Viraram lei</th><th class="num">Requerimentos</th><th class="num">Projetos no ano</th></tr></thead><tbody></tbody></table></div>
+      <div class="section-note" id="prod-fonte"></div>
     </div>
     <div class="section">
       <div class="section-head"><h2 class="section-title">Como votou cada um, votação por votação</h2></div>
@@ -2325,7 +2331,7 @@ Atenciosamente,</textarea>
   </section>
   </section>
 
-  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=precos">Preços pagos</a></li><li><a href="/cofre-aberto-ms.html#aba=publicidade">Publicidade</a></li><li><a href="/cofre-aberto-ms.html#aba=entidades">ONGs e entidades</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Presença e votação</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/termos/">Termos de uso</a></li><li><a href="/privacidade/">Privacidade e LGPD</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
+  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=precos">Preços pagos</a></li><li><a href="/cofre-aberto-ms.html#aba=publicidade">Publicidade</a></li><li><a href="/cofre-aberto-ms.html#aba=entidades">ONGs e entidades</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Votos e projetos</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/termos/">Termos de uso</a></li><li><a href="/privacidade/">Privacidade e LGPD</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
   <footer class="site-footer">
     <span>Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público. © 2026 Cofre Aberto MS · <a href="metodologia.html#licenca">dados sob CC BY 4.0, código e layout: todos os direitos reservados</a></span>
     <span>
@@ -3083,7 +3089,7 @@ function renderDetalheDeputado(d, todos, ano, panel) {
       </div>
 
       ${renderEmendasHTML(d.nome)}
-      ${d.uf === "MS" ? `<div id="dep-votos-box"></div><div id="pat-box-fed"></div>` : ""}
+      ${d.uf === "MS" ? `<div id="dep-prod-box"></div><div id="dep-votos-box"></div><div id="pat-box-fed"></div>` : ""}
 
       <div class="subhead">Notas fiscais — página ${paginaAtual} de ${totalPaginas} (${despesas.length} no total)</div>
       <table class="notes-table">
@@ -3097,6 +3103,7 @@ function renderDetalheDeputado(d, todos, ano, panel) {
     `;
     document.getElementById("pag-anterior")?.addEventListener("click", () => { if (paginaAtual > 1) { paginaAtual--; render(); } });
     document.getElementById("pag-proximo")?.addEventListener("click", () => { if (paginaAtual < totalPaginas) { paginaAtual++; render(); } });
+    if (d.uf === "MS") preencherProducao("dep-prod-box", "federal", d.id);
     if (d.uf === "MS") preencherVotosParlamentar("dep-votos-box", "federal", d.id);
     if (d.uf === "MS") preencherPatrimonio("pat-box-fed", "federal|" + d.nome);
   }
@@ -3339,7 +3346,7 @@ function renderSenadores(data) {
         </div>
 
         ${renderEmendasHTML(s.nome)}
-        ${s.uf === "MS" ? `<div id="sen-votos-box"></div><div id="pat-box-sen"></div>` : ""}
+        ${s.uf === "MS" ? `<div id="sen-prod-box"></div><div id="sen-votos-box"></div><div id="pat-box-sen"></div>` : ""}
 
         <p class="section-note">
           <a href="${s.urlTransparencia || `https://www6g.senado.leg.br/transparencia/sen/${s.id}/?ano=${ANO_REFERENCIA}`}" target="_blank">
@@ -3352,6 +3359,7 @@ function renderSenadores(data) {
       panel.classList.add("active");
       panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
 
+      if (s.uf === "MS") preencherProducao("sen-prod-box", "senador", id);
       if (s.uf === "MS") preencherVotosParlamentar("sen-votos-box", "senador", id);
       if (s.uf === "MS") preencherPatrimonio("pat-box-sen", "senador|" + s.nome);
       if (s.uf === "MS") {
@@ -5574,6 +5582,50 @@ function renderVotacoes(d) {
   desenhar();
 }
 // Bloco "Presença e votação" no detalhe de um senador ou deputado federal de MS
+// ===================== PRODUÇÃO LEGISLATIVA =====================
+let _producao = null;
+function carregarProducao() { return _producao || (_producao = carregarJSON("dados/producao_legislativa.json")); }
+function listaProjetosHTML(lst, comNorma) {
+  return `<ul style="margin:6px 0 0 18px;font-size:.84rem;line-height:1.5">${lst.map(x => `<li><a href="${x.link}" target="_blank" rel="noopener"><b>${escHTML(x.sigla)}</b></a>` +
+    ` — ${escHTML(x.ementa.length > 220 ? x.ementa.slice(0, 220) + "…" : x.ementa)}` +
+    `${comNorma && x.norma ? ` <span class="section-note">(${escHTML(x.norma)})</span>` : ""}` +
+    `${!comNorma && x.situacao ? `<div class="section-note" style="margin:0">${formatDate(x.data)} · ${escHTML(x.situacao)}</div>` : ""}</li>`).join("")}</ul>`;
+}
+function preencherProducao(boxId, grupo, id) {
+  carregarProducao().then(d => {
+    const box = document.getElementById(boxId);
+    if (!box || !d) return;
+    const p = (d.parlamentares || []).find(x => x.grupo === grupo && String(x.id) === String(id));
+    if (!p) { box.innerHTML = ""; return; }
+    const tipos = Object.entries(p.porTipo || {}).filter(([, n]) => n).map(([t, n]) => `${n} ${t}`).join(" · ");
+    box.innerHTML = `
+      <h4 style="margin:22px 0 6px">📜 Projetos e leis (desde fevereiro de 2023)</h4>
+      <div class="stat-grid">
+        <div class="stat-card"><p class="stat-label">Projetos como autor principal</p><p class="stat-value">${p.projetosPrincipal}</p>
+          <p class="stat-note">${tipos || "—"}${p.projetos > p.projetosPrincipal ? ` · e coautor de mais ${p.projetos - p.projetosPrincipal}` : ""}</p></div>
+        <div class="stat-card alt"><p class="stat-label">Viraram lei</p><p class="stat-value">${p.leis}</p>
+          <p class="stat-note">${p.leisPrincipal} como autor principal${p.leis > p.leisPrincipal ? `, ${p.leis - p.leisPrincipal} como coautor` : ""}</p></div>
+        <div class="stat-card"><p class="stat-label">Requerimentos</p><p class="stat-value">${p.requerimentos}</p>
+          <p class="stat-note">pedidos de informação, audiências, homenagens; ${p.outras} outras proposições (emendas, pareceres)</p></div>
+      </div>
+      ${p.listaLeis.length ? `<div class="subhead" style="margin-top:14px">Projetos que viraram lei</div>${listaProjetosHTML(p.listaLeis, true)}` : ""}
+      ${p.recentes.length ? `<div class="subhead" style="margin-top:14px">Projetos mais recentes como autor principal</div>${listaProjetosHTML(p.recentes, false)}` : ""}
+      <p class="section-note">Fonte: dados abertos ${grupo === "senador" ? "do Senado Federal" : "da Câmara dos Deputados"}. Quantidade de projetos não mede qualidade do mandato: muitos são homenagens ou temas repetidos, e boa parte do trabalho é relatar, emendar e votar projetos dos outros.
+        <a href="#aba=votacoes" data-ir="votacoes">Comparar com os outros parlamentares de MS →</a></p>`;
+  });
+}
+function renderProducaoRanking(d) {
+  const tb = document.querySelector("#tabela-prod tbody");
+  if (!tb || !d) return;
+  const lst = [...(d.parlamentares || [])].sort((a, b) => b.projetosPrincipal - a.projetosPrincipal);
+  tb.innerHTML = lst.map(p => `<tr><td class="cartao-titulo"><b>${escHTML(p.nome)}</b> <span class="section-note">${escHTML(p.partido || "")}</span></td>` +
+    `<td data-label="Casa">${p.grupo === "senador" ? "Senado" : "Câmara"}</td><td class="num" data-label="Projetos (autor principal)"><b>${p.projetosPrincipal}</b></td>` +
+    `<td class="num" data-label="Coautor de">${p.projetos - p.projetosPrincipal}</td><td class="num" data-label="Viraram lei">${p.leis}</td>` +
+    `<td class="num" data-label="Requerimentos">${p.requerimentos}</td><td class="num" data-label="Projetos em ${d.ano}">${p.projetosNoAno}</td></tr>`).join("");
+  document.getElementById("prod-fonte").innerHTML = `Fonte: dados abertos da <a href="https://dadosabertos.camara.leg.br/" target="_blank" rel="noopener">Câmara dos Deputados</a> e do <a href="https://legis.senado.leg.br/dadosabertos/" target="_blank" rel="noopener">Senado Federal</a>, proposições apresentadas desde ${formatDate(d.inicio)}. ` +
+    `Projetos = projetos de lei, de lei complementar, propostas de emenda à Constituição e de decreto legislativo. "Viraram lei" conta os apresentados nesta legislatura que já foram transformados em norma, como autor ou coautor. Atualizado em ${formatDateTime(d.ultimaAtualizacao)}.`;
+}
+
 function preencherVotosParlamentar(boxId, grupo, id) {
   carregarVotacoes().then(d => {
     const box = document.getElementById(boxId);
@@ -7552,6 +7604,7 @@ async function init() {
       if (btn.dataset.tab === "votacoes" && !window._vtLoaded) {
         window._vtLoaded = true;
         carregarVotacoes().then(d => { if (d) renderVotacoes(d); });
+        carregarProducao().then(renderProducaoRanking);
       }
       if (btn.dataset.tab === "eleicoes" && !window._elLoaded) {
         window._elLoaded = true;
