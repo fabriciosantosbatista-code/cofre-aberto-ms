@@ -198,7 +198,7 @@ jobs:
 
   coletar_contratos_cg:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 45
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -220,6 +220,10 @@ jobs:
         timeout-minutes: 15
         run: python3 -u scripts/coletar_shows.py || echo "⚠️ coletar_shows.py falhou — dados anteriores mantidos"
 
+      - name: Preço unitário pago pelo mesmo item em órgãos de MS (PNCP)
+        timeout-minutes: 17
+        run: python3 -u scripts/coletar_precos.py || echo "⚠️ coletar_precos.py falhou — dados anteriores mantidos"
+
       - name: Upload artifact — contratos CG
         uses: actions/upload-artifact@v4
         with:
@@ -228,6 +232,8 @@ jobs:
             dados/prefeitura_contratos.json
             dados/shows.json
             dados/shows_cache.json
+            dados/precos.json
+            dados/precos_cache.json
           retention-days: 1
 
   coletar_emendas_alems:
@@ -491,6 +497,9 @@ jobs:
 
       - name: Gerar planilhas CSV e status das fontes
         run: python3 scripts/gerar_dados_abertos.py || echo "⚠️ gerar_dados_abertos.py falhou — planilhas anteriores mantidas"
+
+      - name: Marcar servidores de gabinete da Câmara de CG com outro vínculo público
+        run: python3 scripts/gerar_acumulos_gabinetes.py || echo "⚠️ gerar_acumulos_gabinetes.py falhou — marcações anteriores mantidas"
 
       - name: Gerar uma página por parlamentar (+ sitemap)
         run: python3 scripts/gerar_paginas_parlamentares.py || echo "⚠️ gerar_paginas_parlamentares.py falhou — páginas anteriores mantidas"

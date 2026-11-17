@@ -676,9 +676,16 @@ def bloco_equipe(p):
         return ""
     ref = carregar("camara_municipal.json").get("referenciaPessoal") or ""
     tem_v = any(x.get("bruto") is not None for x in eq)
-    lin = "".join(f"<tr><td>{e(x['nome'])}</td><td>{e(x.get('cargo') or '—')}</td>" + (f"<td class='num'>{brl(x['bruto'])}</td>" if tem_v else "") + "</tr>" for x in eq)
+    def vinc(x):
+        return "".join(f"<br><small style='color:{'#777' if o.get('cessao') else '#c98500'};font-weight:600'>"
+                       + ("Também na folha (provável cessão)" if o.get("cessao") else "⚠ Outro vínculo público")
+                       + f": {e(o.get('orgao') or '')} — {e(o.get('cargo') or '')}</small>" for o in x.get("outroVinculo") or [])
+    nota = (" <b>Outro vínculo público</b>: o mesmo nome completo (único em cada folha) aparece também na folha do Governo de MS ou da "
+            "Assembleia. As folhas não publicam CPF, então pode ser homônimo; acumular cargos é permitido em alguns casos (CF, art. 37, XVI) "
+            "e servidor cedido à Câmara é cessão, não acúmulo. É sinal de atenção, não acusação.") if any(x.get("outroVinculo") for x in eq) else ""
+    lin = "".join(f"<tr><td>{e(x['nome'])}{vinc(x)}</td><td>{e(x.get('cargo') or '—')}</td>" + (f"<td class='num'>{brl(x['bruto'])}</td>" if tem_v else "") + "</tr>" for x in eq)
     return (f"<h2>Equipe do gabinete ({len(eq)} servidores)</h2><p>Servidores lotados no gabinete de {e(p['nome'])} na folha de {e(ref)}, segundo o Portal da "
-            f"Transparência da Câmara Municipal de Campo Grande (campo \"local de trabalho\"). Se o vereador é da Mesa Diretora, parte da equipe pode atender à Mesa.</p>"
+            f"Transparência da Câmara Municipal de Campo Grande (campo \"local de trabalho\"). Se o vereador é da Mesa Diretora, parte da equipe pode atender à Mesa.{nota}</p>"
             f"<details open><summary>Nome, cargo e salário de cada servidor</summary><div class='tabela-wrap' style='margin-top:8px'><table><thead><tr><th>Nome</th><th>Cargo</th>"
             + ("<th class='num'>Bruto no mês</th>" if tem_v else "") + f"</tr></thead><tbody>{lin}</tbody></table></div></details>")
 

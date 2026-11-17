@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-16T19:23:19",
+ "geradoEm": "2026-11-17T00:26:49",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
@@ -38,7 +38,7 @@
    "url": "https://sig-transparencia.campogrande.ms.gov.br/despesas/consulta",
    "coleta": "2026-11-16T19:03:59",
    "dadoMaisRecente": "empenho de 02/10/2026",
-   "nivel": "ok",
+   "nivel": "atencao",
    "mensagem": "o SIG-Transparência da Prefeitura não publica empenhos novos desde 02/10/2026 — a coleta diária confere todo dia"
   },
   "contratos-cg": {
@@ -143,6 +143,14 @@
    "coleta": "2026-11-16T19:09:23",
    "dadoMaisRecente": "publicação de 12/11/2026",
    "nivel": "ok",
+   "mensagem": null
+  },
+  "precos": {
+   "fonte": "Portal Nacional de Contratações Públicas (PNCP) — itens e preços homologados das compras de órgãos de MS",
+   "url": "https://pncp.gov.br/",
+   "coleta": null,
+   "dadoMaisRecente": null,
+   "nivel": "atencao",
    "mensagem": null
   },
   "votacoes": {
