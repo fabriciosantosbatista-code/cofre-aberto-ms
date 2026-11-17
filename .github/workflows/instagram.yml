@@ -1,0 +1,56 @@
+name: Instagram — post automático
+
+# Terça, quinta e sábado às 11h47 de Campo Grande (15h47 UTC). Também dá para rodar à mão em Actions → Run workflow.
+on:
+  schedule:
+    - cron: '47 15 * * 2,4,6'
+  workflow_dispatch:
+    inputs:
+      tema:
+        description: 'Tema (vazio = o próximo da fila): precos, shows, obras, vereadores, publicidade, entidades, emendas, supersalarios'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests Pillow
+
+      - name: Gerar o post da vez (imagens + legenda)
+        run: python3 scripts/gerar_posts_instagram.py ${{ github.event.inputs.tema }}
+
+      - name: Publicar as imagens no site
+        run: |
+          git config user.name "Cofre Aberto (robô)"
+          git config user.email "noreply@github.com"
+          git add -A instagram/
+          git diff --cached --quiet || git commit -m "Instagram: imagens do post de $(date +%d/%m)"
+          for i in 1 2 3 4; do git pull -q --rebase origin main && git push -q origin main && break; sleep $((i*10)); done
+
+      - name: Publicar no Instagram
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: python3 -u scripts/publicar_instagram.py
+
+      - name: Guardar o histórico
+        run: |
+          git add -A instagram/
+          git diff --cached --quiet && exit 0
+          git commit -m "Instagram: post publicado"
+          for i in 1 2 3 4; do git pull -q --rebase origin main && git push -q origin main && break; sleep $((i*10)); done
