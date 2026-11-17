@@ -25,6 +25,48 @@ HOJE = date.today()
 ABERTAS = {"Em Execução", "Em Aberto", "Expirado"}
 
 
+def obras_prefeitura():
+    """Contratos de obra da Prefeitura de Campo Grande (portal de contratos: situação, vigência, aditivos e valor pago).
+    A Prefeitura não publica o % executado; os sinais usam o que ela publica:
+      paralisada   o próprio portal marca o contrato como PARALISADO
+      vencida      a vigência terminou há mais de 30 dias, o contrato não foi encerrado e menos de 90% do valor foi pago
+      dobrada      o valor total, com aditivos, é o dobro ou mais do valor original
+      aditivos     5 ou mais termos aditivos"""
+    try:
+        a = json.load(open(DADOS / "prefeitura_aditivos.json", encoding="utf-8"))
+    except Exception:
+        return None
+    out = []
+    for reg, v in (a.get("contratos") or {}).items():
+        if "OBRA" not in (v.get("tipo") or "").upper():
+            continue
+        vt, vc, pg = v.get("valorTotal") or 0, v.get("valorContrato") or 0, v.get("pago") or 0
+        fim = date.fromisoformat(v["fim"]) if v.get("fim") else None
+        sit = (v.get("situacao") or "").upper()
+        n_ad = len(v.get("aditivos") or [])
+        marcas = []
+        if sit == "PARALISADO":
+            marcas.append("paralisada")
+        if fim and (HOJE - fim).days > 30 and vt and pg < 0.9 * vt and "ENCERRADO" not in sit:
+            marcas.append("vencida")
+        if vc and vt >= 2 * vc:
+            marcas.append("dobrada")
+        if n_ad >= 5:
+            marcas.append("aditivos")
+        out.append({"registro": reg, "processo": v.get("processo"), "orgao": v.get("orgao"), "fornecedor": v.get("fornecedor"),
+                    "objeto": (v.get("objeto") or "")[:300], "situacao": sit.title(), "inicio": v.get("inicio"), "fim": v.get("fim"),
+                    "valorOriginal": round(vc, 2), "valorTotal": round(vt, 2), "pago": round(pg, 2), "aditivos": n_ad,
+                    "pctPago": round(pg / vt * 100, 1) if vt else None, "diasVencida": (HOJE - fim).days if fim and fim < HOJE else 0,
+                    "marcas": marcas, "link": f"https://sig-transparencia.campogrande.ms.gov.br/contratos/detalhe/{reg}"})
+    out.sort(key=lambda o: (not o["marcas"], -(o["valorTotal"] or 0)))
+    resumo = {m: {"obras": sum(1 for o in out if m in o["marcas"]), "valor": round(sum(o["valorTotal"] for o in out if m in o["marcas"]), 2)}
+              for m in ("paralisada", "vencida", "dobrada", "aditivos")}
+    com = [o for o in out if o["marcas"]]
+    return {"coleta": a.get("ultimaAtualizacao"), "fonte": "Portal da Transparência da Prefeitura de Campo Grande — contratos (situação, vigência, aditivos e pagamentos)",
+            "total": {"obras": len(out), "valor": round(sum(o["valorTotal"] for o in out), 2)},
+            "comProblema": {"obras": len(com), "valor": round(sum(o["valorTotal"] for o in com), 2)}, "resumo": resumo, "obras": out}
+
+
 def main():
     try:
         g = json.load(open(DADOS / "governo_ms_contratos.json", encoding="utf-8"))
@@ -82,6 +124,7 @@ def main():
                 a["paralisadas"] += "paralisada" in o["marcas"]
         return sorted(({**a, "valor": round(a["valor"], 2)} for a in out.values()), key=lambda a: (-a["obras"], -a["valor"]))
 
+    pref = obras_prefeitura()
     (DADOS / "obras.json").write_text(json.dumps({
         "geradoEm": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"), "coleta": g.get("ultimaAtualizacao"),
         "fonte": "Portal da Transparência do Estado de MS — contratos de obras (transpcontrato/ContratosEkronos)",
@@ -89,7 +132,7 @@ def main():
         "resumo": {m: soma([o for o in abertas if m in o["marcas"]]) for m in ("vencida", "lenta", "paralisada", "dobrada")},
         "comProblema": soma(probl),
         "porEmpresa": agrupa("fornecedor")[:60], "porOrgao": agrupa("orgao"), "porCidade": agrupa("municipios")[:60],
-        "obras": sorted(abertas, key=lambda o: (not o["marcas"], -(o["valor"] or 0)))}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        "obras": sorted(abertas, key=lambda o: (not o["marcas"], -(o["valor"] or 0))), "prefeitura": pref}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     r = {m: sum(1 for o in abertas if m in o["marcas"]) for m in ("vencida", "lenta", "paralisada", "dobrada")}
     print(f"✅ obras.json — {len(obras)} obras, {len(abertas)} em andamento, {len(probl)} com sinal: {r}")
 

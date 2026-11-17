@@ -290,6 +290,9 @@ p{margin:0;}
 .equipe-lista em{font-style:normal;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:.86rem}
 .equipe-gab>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1.5px solid #f5c842;color:#f5c842;font-weight:700;font-size:.9rem;background:rgba(245,200,66,.08)}
 .equipe-gab>summary::-webkit-details-marker{display:none}.equipe-gab[open]>summary{background:#f5c842;color:#14120a}
+.lai-box{margin:0 24px;padding:14px 16px;border:1px solid #c98500;border-left:4px solid #c98500;border-radius:10px;background:rgba(201,133,0,.08);font-size:.86rem;line-height:1.55;color:var(--ink-soft)}
+.lai-box b{color:var(--ink)}.lai-box summary{cursor:pointer;margin-top:8px;font-weight:700;color:#e8a020}
+.lai-box textarea{width:100%;box-sizing:border-box;margin:8px 0;background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:10px;font:12.5px/1.5 var(--font-body)}
 .fluxo-card{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 40%,rgba(245,200,66,.07),transparent 60%),var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 22px 18px}
 .fluxo-card::before{content:"";position:absolute;inset:-44px 0 0 0;pointer-events:none;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;animation:fluxoGrade 3.2s linear infinite;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%);mask-image:linear-gradient(to bottom,transparent,#000 70%)}
 @keyframes fluxoGrade{to{background-position:0 44px}}
@@ -927,6 +930,27 @@ table.notes-table tr:hover td{background:var(--surface-2);}
         <div><div class="mini-stat-value" id="pref-fornecedores">—</div><div class="mini-stat-label">Fornecedores</div></div>
         <div><div class="mini-stat-value" id="pref-data">—</div><div class="mini-stat-label">Atualizado em</div></div>
       </div>
+    </div>
+    <div class="lai-box" id="pref-lai">
+      <b>⚠️ A Prefeitura parou de publicar empenhos novos em 02/10/2026.</b>
+      A consulta de despesas do Portal da Transparência de Campo Grande não mostra nenhum empenho criado depois dessa data. Os valores
+      pagos dos empenhos antigos continuam sendo atualizados (o site lê a página de cada empenho), mas as despesas novas estão fora.
+      A Lei de Acesso à Informação (Lei 12.527/2011, art. 8º) e a Lei de Responsabilidade Fiscal (art. 48-A) exigem a divulgação em tempo real.
+      <details><summary>Peça você também — pedido pronto para o e-SIC da Prefeitura</summary>
+      <textarea id="pref-lai-txt" readonly rows="12">Prezados,
+
+Com base na Lei nº 12.527/2011 (Lei de Acesso à Informação) e no art. 48-A da Lei Complementar nº 101/2000, solicito:
+
+1. A relação de todos os empenhos emitidos pela Prefeitura Municipal de Campo Grande (administração direta, fundos, autarquias e fundações) de 03/10/2026 até a data da resposta, com: número do empenho, unidade gestora, data, credor (nome e CPF/CNPJ), classificação da despesa, objeto/histórico, processo de origem, modalidade de licitação e valores empenhado, liquidado e pago — em formato aberto (CSV ou planilha).
+
+2. A explicação de por que a consulta de despesas do Portal da Transparência (sig-transparencia.campogrande.ms.gov.br/despesas) não exibe empenhos emitidos depois de 02/10/2026, e a previsão de quando a publicação será regularizada.
+
+Peço que a resposta seja enviada em meio eletrônico.
+
+Atenciosamente,</textarea>
+      <button type="button" class="pager-btn" onclick="const t=document.getElementById('pref-lai-txt');t.select();navigator.clipboard?.writeText(t.value);this.textContent='Texto copiado ✓'">Copiar o pedido</button>
+      <a class="pager-btn" style="text-decoration:none;display:inline-block" href="https://sic.campogrande.ms.gov.br/home" target="_blank" rel="noopener">Abrir o e-SIC da Prefeitura ↗</a>
+      <p class="section-note" style="margin-top:6px">O prazo de resposta é de 20 dias, prorrogáveis por mais 10. Se não responderem, cabe recurso à autoridade superior.</p></details>
     </div>
     <div class="section-body" style="padding:24px">
       <div class="subhead">Despesas por órgão (Top 20)</div>
@@ -1866,7 +1890,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
 
   <section class="tabpanel" id="tab-obras">
     <div class="hero">
-      <div class="hero-label">Obras atrasadas e paradas · Governo do Estado de MS</div>
+      <div class="hero-label">Obras atrasadas e paradas · Governo do Estado de MS e Prefeitura de Campo Grande</div>
       <div class="hero-number" id="ob-n">—</div>
       <div class="hero-desc">obras do Estado em andamento com algum sinal de atraso — prazo vencido sem terminar, andamento muito lento,
         paralisação registrada ou prazo mais que dobrado por aditivos. Datas e % executado são os que o próprio Estado publica.</div>
@@ -1884,6 +1908,13 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="section-note">"Tempo" é quanto do prazo atual já passou; "executado" é o avanço físico informado pelo Estado. Uma obra com 90% do tempo e 20% executado está muito atrás.</div>
       <div class="card card-x-scroll"><table class="ranking" id="tabela-ob"><thead><tr><th>Obra</th><th class="ob-col-emp">Empresa</th><th>Prazo</th><th>Tempo × feito</th><th class="num" style="white-space:normal;min-width:96px;line-height:1.3">Aditados / paralisados</th><th class="num">Valor</th></tr></thead><tbody></tbody></table></div>
       <button class="pager-btn" id="ob-mais" style="margin-top:10px;display:none">Mostrar mais</button>
+    </div>
+    <div class="section" id="ob-pref-sec" hidden>
+      <div class="section-head"><h2 class="section-title">Prefeitura de Campo Grande</h2></div>
+      <div class="section-note" id="ob-pref-nota"></div>
+      <div class="ob-filtros" id="ob-pref-filtros"></div>
+      <div class="card card-x-scroll" style="margin-top:10px"><table class="ranking" id="tabela-ob-pref"><thead><tr><th>Obra</th><th>Empresa</th><th>Vigência</th><th class="num">Aditivos</th><th class="num">Valor e pago</th></tr></thead><tbody></tbody></table></div>
+      <button class="pager-btn" id="ob-pref-mais" style="margin-top:10px;display:none">Mostrar mais</button>
     </div>
     <div class="section">
       <div class="section-head"><h2 class="section-title">Empresas e cidades com mais obras atrasadas</h2></div>
@@ -6688,6 +6719,35 @@ function renderObras(d) {
   document.getElementById("busca-ob").addEventListener("input", ev => { busca = ev.target.value; lim = 25; desenha(); });
   document.getElementById("ob-mais").onclick = () => { lim += 50; desenha(); };
   desenha();
+  // Prefeitura de Campo Grande
+  const pf = d.prefeitura;
+  if (pf && pf.obras && pf.obras.length) {
+    document.getElementById("ob-pref-sec").hidden = false;
+    const PM = { paralisada: ["Paralisada", "#9085e9"], vencida: ["Vigência vencida", "#e5484d"], dobrada: ["Valor dobrado", "#c98500"], aditivos: ["5+ aditivos", "#d95926"] };
+    document.getElementById("ob-pref-nota").innerHTML = `<b>${pf.comProblema.obras} de ${pf.total.obras}</b> contratos de obra da Prefeitura têm algum sinal (${formatCompact(pf.comProblema.valor)} em contratos). ` +
+      `A Prefeitura não publica o percentual executado; os sinais usam a situação que ela mesma informa (<b>${pf.resumo.paralisada.obras} marcadas como paralisadas</b>), a vigência, os aditivos e o valor pago. Fonte: ${escHTML(pf.fonte)}.`;
+    let fp = "problema", limP = 20;
+    const fsP = document.getElementById("ob-pref-filtros");
+    fsP.innerHTML = [["problema", `Com algum sinal (${pf.comProblema.obras})`], ...Object.entries(PM).map(([k, [r]]) => [k, `${r} (${pf.resumo[k].obras})`]), ["todas", `Todas (${pf.total.obras})`]]
+      .map(([k, r]) => `<button type="button" data-f="${k}" class="${k === fp ? "ativo" : ""}">${escHTML(r)}</button>`).join("");
+    const tbP = document.querySelector("#tabela-ob-pref tbody");
+    const desenhaP = () => {
+      const lst = pf.obras.filter(o => fp === "todas" || (fp === "problema" ? o.marcas.length : o.marcas.includes(fp)));
+      tbP.innerHTML = lst.slice(0, limP).map(o => `<tr><td style="min-width:200px"><b>${escHTML(o.orgao || "")}</b> · proc. ${escHTML(o.processo || "")}` +
+        `<div class="section-note" style="margin:2px 0 0">${escHTML((o.objeto || "").slice(0, 170))}${(o.objeto || "").length > 170 ? "…" : ""}</div>` +
+        `<div>${o.marcas.map(m => `<span class="ob-tag" style="background:${PM[m][1]}22;color:${PM[m][1]}">${PM[m][0]}</span>`).join("")}</div></td>` +
+        `<td style="font-size:.8rem;min-width:96px">${escHTML(o.fornecedor || "—")}<div class="section-note" style="margin:0">situação: ${escHTML(o.situacao || "—")}</div></td>` +
+        `<td style="font-size:.8rem;white-space:nowrap">${dt(o.inicio)}<br>a ${dt(o.fim)}${o.marcas.includes("vencida") ? `<div style="color:#e5484d;font-weight:600;white-space:normal">venceu há ${o.diasVencida} dias</div>` : ""}</td>` +
+        `<td class="num">${o.aditivos}</td>` +
+        `<td class="num" style="white-space:nowrap;font-size:.82rem"><a href="${o.link}" target="_blank" rel="noopener">${brlInt(o.valorTotal)}</a>` +
+        `${o.valorTotal !== o.valorOriginal ? `<div class="section-note" style="margin:0">original ${brlInt(o.valorOriginal)}</div>` : ""}<div class="section-note" style="margin:0">pago ${o.pctPago ?? 0}%</div></td></tr>`).join("") ||
+        `<tr><td colspan="5">Nenhuma obra.</td></tr>`;
+      document.getElementById("ob-pref-mais").style.display = lst.length > limP ? "" : "none";
+    };
+    fsP.onclick = ev => { const b = ev.target.closest("button[data-f]"); if (!b) return; fp = b.dataset.f; limP = 20; fsP.querySelectorAll("button").forEach(x => x.classList.toggle("ativo", x === b)); desenhaP(); };
+    document.getElementById("ob-pref-mais").onclick = () => { limP += 40; desenhaP(); };
+    desenhaP();
+  }
   const linha = a => `<tr><td>${escHTML(a.nome)}${a.vencidas || a.paralisadas ? `<div class="section-note" style="margin:0">${[a.vencidas && `${a.vencidas} vencida(s)`, a.paralisadas && `${a.paralisadas} já parada(s)`].filter(Boolean).join(" · ")}</div>` : ""}</td><td class="num">${a.obras}</td><td class="num">${formatCompact(a.valor)}</td></tr>`;
   document.querySelector("#tabela-ob-emp tbody").innerHTML = d.porEmpresa.slice(0, 15).map(linha).join("");
   document.querySelector("#tabela-ob-cid tbody").innerHTML = d.porCidade.slice(0, 15).map(linha).join("");

@@ -517,6 +517,15 @@ def tema_obras():
         corpo += "<h2>Obras com o prazo vencido e longe de terminar</h2>" + tabela(["Obra", "Cidade", "Empresa", "#Executado", "#Valor"], [fmt(o) for o in venc[:20]])
     if lent:
         corpo += "<h2>Obras com andamento muito lento</h2>" + tabela(["Obra", "Cidade", "Empresa", "#Executado", "#Valor"], [fmt(o) for o in lent[:15]])
+    pf = d.get("prefeitura") or {}
+    if pf.get("obras"):
+        par = [o for o in pf["obras"] if "paralisada" in o["marcas"]]
+        corpo += (f"<h2>Prefeitura de Campo Grande</h2><p>Dos {pf['total']['obras']} contratos de obra da Prefeitura, <strong>{pf['resumo']['paralisada']['obras']} "
+                  f"estão marcados como paralisados</strong> pela própria Prefeitura ({brl(pf['resumo']['paralisada']['valor'])} em contratos) e "
+                  f"{pf['resumo']['vencida']['obras']} estão com a vigência vencida e menos de 90% pago. A Prefeitura não publica o percentual executado.</p>"
+                  + tabela(["Obra paralisada", "Empresa", "#Valor", "#Pago"], [
+                      f"<tr><td>{e((o.get('objeto') or '')[:140])}</td><td>{e(o.get('fornecedor') or '—')}</td><td class='num'>{brl(o['valorTotal'])}</td>"
+                      f"<td class='num'>{o.get('pctPago') or 0:.0f}%</td></tr>" for o in par[:15]]))
     corpo += "<h2>Cidades com mais obras atrasadas</h2>" + barras_n([(c["nome"], c["obras"]) for c in d["porCidade"][:12]])
     corpo += "<h2>Empresas com mais obras atrasadas</h2>" + barras_n([(c["nome"], c["obras"]) for c in d["porEmpresa"][:12]])
     corpo += "<p>" + painel("obras", "Todas as obras, com filtros e busca") + "</p>"
