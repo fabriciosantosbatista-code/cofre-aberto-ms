@@ -155,6 +155,17 @@ def carregar_ceap_bulk(ano):
         _CEAP_BULK[ano] = None
         return None
 
+    # Em 2026 o arquivo anual deixou de trazer as passagens aéreas emitidas pelo SIGEPA (sistema de passagens da
+    # Câmara), que contam na cota e aparecem na API. Se o arquivo não tiver nenhuma, completa pela API.
+    if not any("SIGEPA" in c for d in por_dep.values() for c in d["cats"]):
+        ordem = sorted(por_dep, key=lambda i: por_dep[i].get("uf") != "MS")  # MS primeiro
+        for dep_id, notas in sigepa_pela_api(ordem, ano).items():
+            d = por_dep[dep_id]
+            for n in notas:
+                d["total"] += n["valor"]
+                d["cats"][n["categoria"]] = d["cats"].get(n["categoria"], 0) + n["valor"]
+                d["despesas"].append(n)
+
     resultado = {}
     for dep_id, d in por_dep.items():
         d["despesas"].sort(key=lambda x: x["data"] or "", reverse=True)
@@ -168,6 +179,55 @@ def carregar_ceap_bulk(ano):
     log(f"  CEAP {ano}: {sum(x['totalNotasFiscais'] for x in resultado.values())} notas de {len(resultado)} deputados")
     _CEAP_BULK[ano] = resultado
     return resultado
+
+
+def _valor_api(item):
+    """Valor líquido de uma despesa da API: documento menos glosa (em nov/2026 a API passou a devolver o valorLiquido
+    com o sinal trocado; o documento e a glosa continuam certos)."""
+    vd, vg = item.get("valorDocumento"), item.get("valorGlosa") or 0
+    if vd is not None:
+        return float(vd) - float(vg)
+    return abs(float(item.get("valorLiquido") or 0))
+
+
+def sigepa_pela_api(dep_ids, ano, limite_seg=9 * 60):
+    """{dep_id: [notas de passagem aérea SIGEPA]} lidas da API por deputado (em paralelo, com limite de tempo)."""
+    from concurrent.futures import ThreadPoolExecutor
+    t0 = time.monotonic()
+
+    def um(dep_id):
+        if time.monotonic() - t0 > limite_seg:
+            return dep_id, None
+        out, pagina = [], 1
+        while True:
+            try:
+                r = requests.get(f"https://dadosabertos.camara.leg.br/api/v2/deputados/{dep_id}/despesas",
+                                 params={"ano": ano, "itens": 100, "pagina": pagina}, headers=HEADERS, timeout=30)
+                r.raise_for_status()
+                itens = r.json().get("dados", [])
+            except Exception:
+                return dep_id, None
+            for it in itens:
+                if "SIGEPA" in (it.get("tipoDespesa") or ""):
+                    v = round(_valor_api(it), 2)
+                    out.append({"data": (it.get("dataDocumento") or "")[:10] or None, "categoria": it.get("tipoDespesa"),
+                                "fornecedor": (it.get("nomeFornecedor") or "").strip(), "cnpjCpfFornecedor": _formata_cnpj_cpf(it.get("cnpjCpfFornecedor")),
+                                "valor": v, "doc": (it.get("numDocumento") or "").strip(), "urlNotaFiscal": it.get("urlDocumento") or None,
+                                "mes": it.get("mes")})
+            if len(itens) < 100:
+                return dep_id, out
+            pagina += 1
+
+    res, falhas = {}, 0
+    with ThreadPoolExecutor(8) as ex:
+        for dep_id, notas in ex.map(um, dep_ids):
+            if notas is None:
+                falhas += 1
+            elif notas:
+                res[dep_id] = notas
+    log(f"  SIGEPA: passagens aéreas de {len(res)} deputados lidas pela API ({sum(len(v) for v in res.values())} bilhetes)"
+        + (f"; {falhas} sem resposta" if falhas else ""))
+    return res
 
 
 def ceap_do_deputado(dep_id, ceap_anterior, nome, incluir_notas):
@@ -770,7 +830,7 @@ def buscar_ceap_deputado_agregado(dep_id, ano):
             break
         for item in itens:
             tipo = item.get("tipoDespesa", "Outros")
-            valor = float(item.get("valorLiquido") or 0)
+            valor = _valor_api(item)
             categorias[tipo] = categorias.get(tipo, 0) + valor
             total += valor
         notas += len(itens)
