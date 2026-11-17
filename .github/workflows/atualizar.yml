@@ -612,6 +612,9 @@ jobs:
       - name: Atualizar números da capa e das páginas de SEO
         run: python3 scripts/atualizar_paginas.py || echo "⚠️ atualizar_paginas.py falhou — páginas estáticas mantidas"
 
+      - name: LGPD — última passada da máscara de CPF nos dados e nas páginas geradas
+        run: python3 scripts/mascarar_cpf.py --paginas
+
       - name: Commit e push
         run: |
           git config user.name "Cofre Aberto Bot"

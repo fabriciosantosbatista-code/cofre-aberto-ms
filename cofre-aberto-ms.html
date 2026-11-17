@@ -3014,9 +3014,24 @@ function camaraInvertida(itens) {
   return _camaraInvertida;
 }
 // CPF de pessoa física que venha de uma API ao vivo: só o formato do Portal da Transparência (***.123.456-**)
+// LGPD: nenhum CPF completo é exibido. CPF = 11 dígitos, ou 14 com "000" na frente que não formam um CNPJ válido
+// (formato da Prefeitura de CG e do Senado). Mostra só os 6 dígitos do meio, como o Portal da Transparência.
+function cnpjValido(x) {
+  if (!/^\d{14}$/.test(x) || /^(\d)\1+$/.test(x)) return false;
+  const dv = (s, w) => { const r = [...s].reduce((a, c, i) => a + +c * w[i], 0) % 11; return r < 2 ? 0 : 11 - r; };
+  return dv(x.slice(0, 12), [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]) === +x[12] && dv(x.slice(0, 13), [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]) === +x[13];
+}
+function cpfDoDoc(t) {
+  const s = String(t || "");
+  if (s.includes("*") || s.includes("/")) return null;
+  const d = s.replace(/\D/g, "");
+  if (d.length === 11) return d;
+  if (d.length === 14 && d.startsWith("000") && !cnpjValido(d)) return d.slice(3);
+  return null;
+}
 function mascaraDoc(t) {
-  const d = String(t || "").replace(/\D/g, "");
-  return d.length === 11 ? `***.${d.slice(3, 6)}.${d.slice(6, 9)}-**` : t;
+  const c = cpfDoDoc(t);
+  return c ? `***.${c.slice(3, 6)}.${c.slice(6, 9)}-**` : t;
 }
 function valorCamara(item) {
   const liq = Number(item.valorLiquido ?? item.valorDocumento ?? 0);
@@ -3212,7 +3227,7 @@ function renderDetalheDeputado(d, todos, ano, panel) {
         <td>${item.categoria || "—"}</td>
         <td>${item.fornecedor || "—"}</td>
         <td class="num">${formatBRL(item.valor)}</td>
-        <td>${item.doc || ""}</td>
+        <td>${escHTML(item.doc || "")}</td>
         <td>${item.urlNotaFiscal ? `<a href="${item.urlNotaFiscal}" target="_blank">ver nota</a>` : "—"}</td>
       </tr>
     `).join("") || `<tr><td colspan="6">Nenhuma despesa encontrada.</td></tr>`;
@@ -3355,7 +3370,7 @@ function renderNotasSenador(box, notas) {
       <tr>
         <td style="white-space:nowrap;font-size:.75rem;padding-left:8px;padding-right:6px">${n.data ? formatDate(n.data) : "—"}</td>
         <td style="font-size:.8rem;overflow-wrap:anywhere;padding-left:6px;padding-right:6px">
-          <b>${esc(n.fornecedor) || "—"}</b>${n.cnpjCpf ? ` <span style="opacity:.6">· ${esc(n.cnpjCpf)}</span>` : ""}
+          <b>${esc(n.fornecedor) || "—"}</b>${n.cnpjCpf ? ` <span style="opacity:.6">· ${esc(mascaraDoc(n.cnpjCpf))}</span>` : ""}
           <div style="font-size:.7rem;opacity:.65">${esc(n.categoria)}${n.tipoDocumento ? ` · ${esc(n.tipoDocumento)}` : ""}${n.doc ? ` nº ${esc(n.doc)}` : ""}</div>
           ${n.detalhamento ? `<div style="font-size:.7rem;opacity:.55">${esc(n.detalhamento)}</div>` : ""}
         </td>
@@ -5245,6 +5260,7 @@ function linkParlamentar(aba, nome) {
 
 // ===================== CONTRATOS E LICITAÇÕES — PREFEITURA DE CG =====================
 function fmtDoc(d) {
+  if (cpfDoDoc(d)) return mascaraDoc(d);
   const x = String(d || "").replace(/\D/g, "");
   if (x.length === 14) return `${x.slice(0, 2)}.${x.slice(2, 5)}.${x.slice(5, 8)}/${x.slice(8, 12)}-${x.slice(12)}`;
   return d || "";
@@ -5258,6 +5274,7 @@ function linkEmpresa(doc) {
   return r.length === 8 && EMPRESAS[r] ? `/empresa/${r}/` : null;
 }
 function linksCNPJ(doc) {
+  if (cpfDoDoc(doc)) return escHTML(mascaraDoc(doc));
   const x = String(doc || "").replace(/\D/g, "");
   if (x.length !== 14) return escHTML(doc || "—");
   const pg = linkEmpresa(x);

@@ -35,6 +35,9 @@ jobs:
       - name: Variações, formato, fontes paradas e exposição de dados
         run: python3 tests/test_variacoes.py
 
+      - name: LGPD — nenhum CPF completo nos arquivos publicados (com e sem pontuação, em qualquer campo)
+        run: python3 tests/test_cpf.py
+
       - name: ICP — status, notas, tetos, histórico, páginas e integração
         run: python3 tests/test_icp.py
 

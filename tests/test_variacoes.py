@@ -10,7 +10,7 @@ Cofre Aberto MS — testes de variação, formato e exposição (rodam na coleta
   versões        meses já fechados (ano anterior do Governo de MS, meses do RREO com mais de 4 meses) não podem mudar
                  de uma versão para outra (git) sem aviso = AVISO
   PDFs (Câmara)  PDFs registrados com hash, notas com origem, vereadores a revisar; piora em relação à coleta anterior = AVISO
-  exposição      CPF completo, e-mail de pessoa física ou termo de credencial em dados/ ou nas páginas = ERRO
+  exposição      CPF completo (com ou sem pontuação, em qualquer campo — tests/test_cpf.py) ou termo de credencial = ERRO
 
 Uso: python3 tests/test_variacoes.py [--relatorio arquivo.md]   (código de saída 1 se houver ERRO)
 """
@@ -163,24 +163,23 @@ else:
     ok("Câmara CG conferência")
 
 # ── exposição de dados pessoais ──
-CPF = re.compile(r"(?<![\d*.])\d{3}\.\d{3}\.\d{3}-\d{2}(?!\d)")
+# CPF completo em qualquer formato e em qualquer campo (tests/test_cpf.py: com e sem pontuação, campos de documento,
+# CSV, páginas, CPF disfarçado de CNPJ — o detector se testa com CPFs sintéticos antes de varrer)
+sys.path.insert(0, str(ROOT / "tests"))
+import test_cpf  # noqa: E402
+_n, _falhas = test_cpf.autoteste()
+if _falhas:
+    erros.append(f"exposição: o detector de CPF falhou no autoteste ({len(_falhas)} de {_n} casos) — a varredura não é confiável")
+_varridos, _achados = test_cpf.varrer(test_cpf.arquivos_locais())
 CRED = re.compile(r"(?i)(api[_-]?key|senha|password|secret|token)\"?\s*[:=]\s*\"[A-Za-z0-9_\-]{16,}")
-achados = []
+achados = [f"CPF completo em {a} ({k}: {q})" for a, k, q in _achados]
 for f in glob.glob(str(D / "**" / "*.json"), recursive=True) + glob.glob(str(D / "csv" / "*.csv")):
-    t = open(f, encoding="utf-8", errors="ignore").read()
-    if CPF.search(t):
-        achados.append(f"CPF completo em {f.split('/dados/')[-1]}")
-    if CRED.search(t):
+    if CRED.search(open(f, encoding="utf-8", errors="ignore").read()):
         achados.append(f"possível credencial em {f.split('/dados/')[-1]}")
-for f in glob.glob(str(ROOT / "**" / "*.html"), recursive=True):
-    if "/node_modules/" in f:
-        continue
-    if CPF.search(open(f, encoding="utf-8", errors="ignore").read()):
-        achados.append(f"CPF completo na página {f.replace(str(ROOT), '')}")
 if achados:
     erros += achados[:20]
 else:
-    ok("exposição de dados pessoais")
+    ok(f"exposição de dados pessoais ({_varridos} arquivos, detector {_n - len(_falhas)}/{_n})")
 
 # ── resultado ──
 cab = f"✅ {len(oks)} checagens OK · ⚠️ {len(avisos)} avisos · ❌ {len(erros)} erros"
