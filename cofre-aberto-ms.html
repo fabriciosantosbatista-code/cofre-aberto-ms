@@ -1938,19 +1938,21 @@ Atenciosamente,</textarea>
       <div class="mini-stats">
         <div><div class="mini-stat-value" id="pr-orgaos">—</div><div class="mini-stat-label">órgãos comparados</div></div>
         <div><div class="mini-stat-value" id="pr-prod">—</div><div class="mini-stat-label">itens na cesta</div></div>
-        <div><div class="mini-stat-value" id="pr-acima">—</div><div class="mini-stat-label">compras 50% ou mais acima da mediana</div></div>
+        <div><div class="mini-stat-value" id="pr-acima">—</div><div class="mini-stat-label">vezes que um órgão pagou 50% ou mais acima da mediana</div></div>
       </div>
     </div>
     <div class="section">
       <div class="section-head"><h2 class="section-title">A cesta: mediana, menor e maior preço</h2></div>
-      <div class="section-note">Clique num item para ver todas as compras dele, da mais cara à mais barata.</div>
+      <div class="section-note">Clique num item para ver quais órgãos pagaram mais caro por ele.</div>
       <div class="card card-x-scroll"><table class="ranking" id="tabela-pr-cesta"><thead><tr><th>Item</th><th class="num">Compras</th><th class="num">Menor</th><th class="num">Mediana</th><th class="num">Maior</th><th class="num">Maior ÷ menor</th></tr></thead><tbody></tbody></table></div>
     </div>
     <div class="section">
       <div class="section-head"><h2 class="section-title" id="pr-titulo">Compras do item</h2></div>
       <div class="ob-filtros" id="pr-filtros"></div>
+      <p id="pr-resumo" style="margin:12px 0 0;font-size:.95rem"></p>
       <input id="busca-pr" class="search-box" type="search" placeholder="buscar órgão, cidade ou fornecedor…" aria-label="Buscar compra" style="width:100%;margin:10px 0 12px"/>
-      <div class="card card-x-scroll"><table class="ranking" id="tabela-pr"><thead><tr><th>Órgão</th><th>Cidade</th><th>Fornecedor</th><th>Item como publicado</th><th class="num">Quantidade</th><th class="num">Preço por unidade</th><th class="num">vs. mediana</th></tr></thead><tbody></tbody></table></div>
+      <div class="section-note">Uma linha por órgão, com o preço médio que ele pagou (ponderado pela quantidade comprada), do mais caro ao mais barato. Clique no órgão para ver cada compra e o documento no PNCP.</div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-pr"><thead><tr><th>Órgão</th><th>Cidade</th><th class="num">Compras</th><th class="num">Preço médio</th><th class="num">vs. mediana</th></tr></thead><tbody></tbody></table></div>
       <button class="pager-btn" id="pr-mais" style="margin-top:10px;display:none">Mostrar mais</button>
     </div>
     <div class="section"><div class="section-note" id="pr-fonte"></div></div>
@@ -6952,33 +6954,67 @@ function renderPrecos(d) {
   document.getElementById("pr-orgaos").textContent = new Set(P.flatMap(p => p.itens.map(x => x.orgao))).size;
   document.getElementById("pr-prod").textContent = P.length;
   document.getElementById("pr-acima").textContent = P.reduce((s, p) => s + p.itens.filter(x => x.vsMediana >= 50).length, 0);
-  document.querySelector("#tabela-pr-cesta tbody").innerHTML = P.map((p, i) => `<tr class="pr-l" data-i="${i}" style="cursor:pointer"><td><b>${escHTML(p.nome)}</b> <span class="section-note">ver compras →</span></td>` +
+  document.querySelector("#tabela-pr-cesta tbody").innerHTML = P.map((p, i) => `<tr class="pr-l" data-i="${i}" style="cursor:pointer"><td><b>${escHTML(p.nome)}</b> <span class="section-note">ver órgãos →</span></td>` +
     `<td class="num">${p.compras}</td><td class="num">${formatBRL(p.menor)}</td><td class="num"><b>${formatBRL(p.mediana)}</b></td><td class="num">${formatBRL(p.maior)}</td>` +
     `<td class="num">${p.menor ? (p.maior / p.menor).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "×" : "—"}</td></tr>`).join("");
-  let atual = 0, lim = 40, filtro = "";
+  // uma linha por órgão: preço médio (ponderado pela quantidade) de todas as compras do órgão
+  const porOrgao = p => {
+    const g = {};
+    p.itens.forEach(x => {
+      const o = g[x.orgao] || (g[x.orgao] = { orgao: x.orgao, cidade: x.cidade, compras: [], sp: 0, sq: 0, s: 0 });
+      o.compras.push(x);
+      const q = Number(x.quantidade) > 0 ? Number(x.quantidade) : 0;
+      o.sp += x.precoUnidade * q; o.sq += q; o.s += x.precoUnidade;
+    });
+    return Object.values(g).map(o => {
+      const preco = o.sq ? o.sp / o.sq : o.s / o.compras.length;
+      return { ...o, preco, vs: (preco / p.mediana - 1) * 100, compras: o.compras.sort((a, b) => b.precoUnidade - a.precoUnidade) };
+    }).sort((a, b) => b.preco - a.preco);
+  };
+  const G = P.map(porOrgao);
+  document.getElementById("pr-acima").textContent = G.reduce((s, g) => s + g.filter(o => o.vs >= 50).length, 0);
+  let atual = 0, todos = false, filtro = "";
   const norm = t => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
   const filtros = document.getElementById("pr-filtros");
+  const cor = v => v >= 50 ? "#e5484d" : v >= 20 ? "#c98500" : v <= -20 ? "#2bb3a3" : "inherit";
+  const pct = v => `${v > 0 ? "+" : ""}${Math.round(v).toLocaleString("pt-BR")}%`;
   const desenha = () => {
     const p = P[atual]; if (!p) return;
+    const g = G[atual];
     filtros.innerHTML = P.map((q, i) => `<button type="button" class="${i === atual ? "ativo" : ""}" data-i="${i}">${escHTML(q.nome)}</button>`).join("");
-    document.getElementById("pr-titulo").textContent = `${p.nome}: ${p.compras} compras, mediana ${formatBRL(p.mediana)} por ${un(p)}`;
+    document.getElementById("pr-titulo").textContent = `${p.nome}: ${g.length} órgãos, ${p.compras} compras`;
+    const topo = g[0];
+    document.getElementById("pr-resumo").innerHTML = topo ? `O preço do meio em MS é <b>${formatBRL(p.mediana)}</b> por ${un(p)}. ` +
+      `Quem pagou mais caro, <b>${escHTML(topo.orgao)}</b>, pagou em média <b>${formatBRL(topo.preco)}</b>` +
+      (topo.preco / p.mediana >= 1.5 ? ` — <b style="color:#e5484d">${(topo.preco / p.mediana).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} vezes</b> o preço do meio.` : ` (${pct(topo.vs)}).`) : "";
     const f = norm(filtro);
-    const lst = f ? p.itens.filter(x => norm([x.orgao, x.cidade, x.fornecedor].join(" ")).includes(f)) : p.itens;
-    document.querySelector("#tabela-pr tbody").innerHTML = lst.slice(0, lim).map(x => `<tr><td style="font-size:.82rem"><b>${escHTML(x.orgao)}</b></td><td>${escHTML(x.cidade || "—")}</td>` +
-      `<td style="font-size:.8rem">${escHTML(x.fornecedor || "—")}</td><td style="font-size:.76rem;color:var(--ink-caption)">${escHTML(x.descricao)}${x.unidade ? ` (${escHTML(x.unidade)})` : ""}</td>` +
-      `<td class="num">${x.quantidade != null ? Number(x.quantidade).toLocaleString("pt-BR") : "—"}</td>` +
-      `<td class="num"><a href="${x.link}" target="_blank" rel="noopener" title="Ver a compra no PNCP">${formatBRL(x.precoUnidade)}</a>${x.preco !== x.precoUnidade ? `<div class="section-note" style="margin:2px 0 0">${formatBRL(x.preco)} por ${escHTML(x.unidade || "unid.")}</div>` : ""}</td>` +
-      `<td class="num" style="font-weight:700;color:${x.vsMediana >= 50 ? "#e5484d" : x.vsMediana >= 20 ? "#c98500" : x.vsMediana <= -20 ? "#2bb3a3" : "inherit"}">${x.vsMediana > 0 ? "+" : ""}${x.vsMediana.toLocaleString("pt-BR")}%</td></tr>`).join("") ||
-      `<tr><td colspan="7">Nenhuma compra encontrada.</td></tr>`;
-    document.getElementById("pr-mais").style.display = lst.length > lim ? "" : "none";
+    const lst = f ? g.filter(o => norm([o.orgao, o.cidade, ...o.compras.map(x => x.fornecedor)].join(" ")).includes(f)) : g;
+    const vis = todos || f ? lst : lst.slice(0, 10);
+    document.querySelector("#tabela-pr tbody").innerHTML = vis.map((o, i) => `<tr class="pr-o" data-i="${i}" style="cursor:pointer" title="Ver as compras"><td style="font-size:.84rem"><b>${escHTML(o.orgao)}</b> <span class="section-note">▾</span></td>` +
+      `<td>${escHTML(o.cidade || "—")}</td><td class="num">${o.compras.length}</td><td class="num"><b>${formatBRL(o.preco)}</b></td>` +
+      `<td class="num" style="font-weight:700;color:${cor(o.vs)}">${pct(o.vs)}</td></tr>` +
+      `<tr class="pr-od" data-i="${i}" hidden><td colspan="5"><ul style="margin:4px 0 6px 18px;font-size:.8rem;line-height:1.5">${o.compras.map(x =>
+        `<li><a href="${x.link}" target="_blank" rel="noopener" title="Ver a compra no PNCP">${formatBRL(x.precoUnidade)}</a> por ${un(p)}` +
+        `${x.preco !== x.precoUnidade ? ` (${formatBRL(x.preco)} por ${escHTML(x.unidade || "unid.")})` : ""}` +
+        `${x.quantidade != null ? ` · ${Number(x.quantidade).toLocaleString("pt-BR")} ${escHTML(x.unidade || "")}` : ""}` +
+        ` · ${escHTML(x.fornecedor || "—")}<div class="section-note" style="margin:0">${escHTML(x.descricao)}</div></li>`).join("")}</ul></td></tr>`).join("") ||
+      `<tr><td colspan="5">Nenhum órgão encontrado.</td></tr>`;
+    const b = document.getElementById("pr-mais");
+    b.style.display = !f && lst.length > 10 ? "" : "none";
+    b.textContent = todos ? "Mostrar só os 10 mais caros" : `Ver todos os ${lst.length} órgãos`;
   };
-  filtros.onclick = ev => { const b = ev.target.closest("[data-i]"); if (!b) return; atual = +b.dataset.i; lim = 40; desenha(); };
+  filtros.onclick = ev => { const b = ev.target.closest("[data-i]"); if (!b) return; atual = +b.dataset.i; todos = false; desenha(); };
   document.querySelector("#tabela-pr-cesta tbody").onclick = ev => {
-    const l = ev.target.closest(".pr-l"); if (!l) return; atual = +l.dataset.i; lim = 40; desenha();
+    const l = ev.target.closest(".pr-l"); if (!l) return; atual = +l.dataset.i; todos = false; desenha();
     document.getElementById("pr-titulo").scrollIntoView({ behavior: "smooth", block: "start" });
   };
-  document.getElementById("pr-mais").onclick = () => { lim += 60; desenha(); };
-  document.getElementById("busca-pr").addEventListener("input", ev => { filtro = ev.target.value; lim = 40; desenha(); });
+  document.querySelector("#tabela-pr tbody").onclick = ev => {
+    if (ev.target.closest("a")) return;
+    const l = ev.target.closest(".pr-o"); if (!l) return;
+    const det = l.nextElementSibling; det.hidden = !det.hidden;
+  };
+  document.getElementById("pr-mais").onclick = () => { todos = !todos; desenha(); };
+  document.getElementById("busca-pr").addEventListener("input", ev => { filtro = ev.target.value; desenha(); });
   desenha();
   document.getElementById("pr-fonte").innerHTML = `Fonte: <a href="${d.fonteUrl}" target="_blank" rel="noopener">${escHTML(d.fonte)}</a>. ` +
     `Compras de ${d.ano} por pregão e dispensa. O preço é convertido para a mesma unidade quando a descrição informa a embalagem (ex.: café em pacote de 500 g → preço por kg); itens sem unidade clara ficam de fora, e preços mais de 4 vezes acima ou abaixo da mediana são descartados como provável erro de unidade. Coletado em ${formatDateTime(d.ultimaAtualizacao)}.`;
