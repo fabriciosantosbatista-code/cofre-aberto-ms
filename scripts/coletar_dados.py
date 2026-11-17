@@ -13,6 +13,9 @@ import json, requests, csv, io, os, sys, time
 from datetime import datetime, date, timedelta
 from pathlib import Path
 
+import re as _re
+PASSAGEM = _re.compile(r"SIGEPA|PASSAGE[MN]S? A[EÉ]REA - RPA", _re.I)  # na API da Câmara só estas não vêm com o sinal invertido (o reembolso de passagem vem)
+
 ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
 sys.path.insert(0, str(Path(__file__).parent))
@@ -181,17 +184,21 @@ def carregar_ceap_bulk(ano):
     return resultado
 
 
-def _valor_api(item):
-    """Valor líquido de uma despesa da API. Em nov/2026 a API passou a devolver o valorLiquido com o sinal trocado nas
-    despesas comuns (documento positivo, líquido negativo); nas passagens do SIGEPA o sinal continua certo. Conferido
-    contra o arquivo anual da Câmara: bate centavo por centavo."""
+def api_invertida(itens):
+    """A API da Câmara passou (nov/2026) a devolver o valorLiquido com o sinal invertido em relação ao arquivo anual
+    oficial em todas as despesas comuns (as passagens do SIGEPA não). Detecta pela própria resposta: se a maioria das
+    despesas comuns com documento positivo vem com líquido negativo, a resposta está invertida."""
+    comuns = [x for x in itens if not PASSAGEM.search(x.get("tipoDespesa") or "") and float(x.get("valorDocumento") or 0) > 0]
+    neg = sum(1 for x in comuns if float(x.get("valorLiquido") or 0) < 0)
+    return bool(comuns) and neg > len(comuns) / 2
+
+
+def _valor_api(item, invertida=False):
+    """Valor líquido de uma despesa da API, com o sinal do arquivo anual oficial da Câmara (conferido centavo por centavo)."""
     liq = float(item.get("valorLiquido") or 0)
-    if "SIGEPA" in (item.get("tipoDespesa") or ""):
-        return liq  # passagens: o sinal está certo (negativo = estorno de bilhete)
-    vd = float(item.get("valorDocumento") or 0)
-    if liq < 0 and vd > 0:
-        return -liq  # nas demais despesas o líquido veio com o sinal trocado
-    return liq
+    if PASSAGEM.search(item.get("tipoDespesa") or ""):  # SIGEPA, RPA...
+        return liq  # passagens: sinal certo (negativo = estorno de bilhete)
+    return -liq if invertida else liq
 
 
 def sigepa_pela_api(dep_ids, ano, limite_seg=9 * 60):
@@ -817,11 +824,9 @@ def _preservar_ceap_se_vazio(ceap, ceap_anterior, nome=None):
 
 
 def buscar_ceap_deputado_agregado(dep_id, ano):
-    """Soma a CEAP de um deputado no ano, paginando (um deputado pode ter 100+ notas/ano)."""
-    total = 0.0
-    categorias = {}
-    notas = 0
-    pagina = 1
+    """Soma a CEAP de um deputado no ano pela API (reserva, quando o arquivo anual não baixa), paginando.
+    A inversão de sinal da API é detectada sobre todas as despesas do deputado, não página a página."""
+    itens_todos, pagina = [], 1
     while True:
         r = requests.get(
             f"https://dadosabertos.camara.leg.br/api/v2/deputados/{dep_id}/despesas"
@@ -832,17 +837,19 @@ def buscar_ceap_deputado_agregado(dep_id, ano):
         itens = r.json().get("dados", [])
         if not itens:
             break
-        for item in itens:
-            tipo = item.get("tipoDespesa", "Outros")
-            valor = _valor_api(item)
-            categorias[tipo] = categorias.get(tipo, 0) + valor
-            total += valor
-        notas += len(itens)
+        itens_todos += itens
         if len(itens) < 100:
             break
         pagina += 1
         time.sleep(0.2)
-
+    inv = api_invertida(itens_todos)
+    total, categorias = 0.0, {}
+    for item in itens_todos:
+        tipo = item.get("tipoDespesa", "Outros")
+        valor = _valor_api(item, inv)
+        categorias[tipo] = categorias.get(tipo, 0) + valor
+        total += valor
+    notas = len(itens_todos)
     cats = [{"categoria": k, "valor": round(v, 2)} for k, v in sorted(categorias.items(), key=lambda x: -x[1])]
     return {"cotaGastaAno": round(total, 2) if notas else None, "ceapCategorias": cats, "totalNotasFiscais": notas}
 

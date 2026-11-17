@@ -32,6 +32,9 @@ jobs:
       - name: Conferir as contas dos dados (somas, totais, CPF mascarado)
         run: python3 tests/test_integridade_dados.py
 
+      - name: Variações, formato, fontes paradas e exposição de dados
+        run: python3 tests/test_variacoes.py
+
       - name: Testar o painel
         run: |
           python3 -m http.server 8000 >/dev/null 2>&1 &

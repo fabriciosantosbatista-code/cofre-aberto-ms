@@ -51,6 +51,9 @@ ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
 ARQUIVO_CAMARA = DADOS / "camara_municipal.json"
 CACHE_ARQUIVO = DADOS / "verba_cg_cache.json"
+MANIFESTO_PDFS = DADOS / "camara_cg_pdfs.json"   # cada PDF baixado: hash, tamanho, páginas, meses lidos, quando
+PASTA_PDFS = ROOT / "pdfs_camara_cg"             # cópia dos PDFs da coleta (vai para os artefatos do robô, 90 dias; não entra no Git)
+PARSER_VERSAO = 2  # sobe quando a leitura muda: os PDFs já lidos são lidos de novo (v2: página e trecho de cada nota)
 # O servidor da Câmara é lento: PDFs grandes levam mais de 30 s só pra baixar.
 # Antes havia um orçamento único de 30 s (download + parsing) e 18 dos 58 PDFs
 # davam "timeout após download" todo dia — nunca eram lidos. Agora são prazos
@@ -198,6 +201,7 @@ def extrai_itens(texto, tipo, ano_contexto):
             "cnpj": m.group(0).replace(' ', '').replace('\n', ''),
             "valor": valor,
             "documento": doc,
+            "trecho": limpa_espacos(texto[inicio_busca + datas[-1].start():m.end() + len(depois)])[:320],  # texto lido do PDF
         }
         item["objeto" if tipo == "notas" else "descricao"] = resto
         itens.append(item)
@@ -229,6 +233,7 @@ def extrai_itens_fallback(texto, tipo, ano_contexto):
             "cnpj": cnpj_m.group(0).replace(' ', '').replace('\n', '') if cnpj_m else None,
             "valor": parse_valor(valor_m.group(0)),
             "documento": limpa_espacos(doc_m.group(0)),
+            "trecho": limpa_espacos(texto[m.start():min(fim, m.end() + 400)])[:320],
         }
         item["objeto" if tipo == "notas" else "descricao"] = resto
         itens.append(item)
@@ -326,6 +331,7 @@ def processa_pdf(caminho, deadline=None, estado=None):
                 continue
             meses.setdefault(chave, novo_mes_dict(chave))
             valor, origem = total_do_resumo(texto)
+            meses[chave].setdefault("paginasResumo", []).append(i + 1)
             if valor is not None:
                 # Páginas "COMPLEMENTO" repetem o mesmo mês com um total PARCIAL que
                 # deve ser somado ao principal, nunca sobrescrito.
@@ -340,6 +346,8 @@ def processa_pdf(caminho, deadline=None, estado=None):
             tp = extrai_total_pagina(texto)
             if not itens and tp:
                 itens = extrai_itens_fallback(texto, "combustivel", ano_ctx)
+            for it in itens:
+                it["pagina"] = i + 1
             meses[chave]["combustivel"].extend(itens)
             if tp is not None:
                 meses[chave]["totalCombustivel"] = round((meses[chave]["totalCombustivel"] or 0) + tp, 2)
@@ -355,6 +363,8 @@ def processa_pdf(caminho, deadline=None, estado=None):
                 soma_fb = round(sum(x["valor"] for x in itens_fb if x["valor"]), 2)
                 if abs(soma_fb - tp) < abs(soma - tp):
                     itens = itens_fb
+            for it in itens:
+                it["pagina"] = i + 1
             meses[chave]["notas"].extend(itens)
             if tp is not None:
                 meses[chave]["totalNotas"] = round((meses[chave]["totalNotas"] or 0) + tp, 2)
@@ -368,6 +378,8 @@ def processa_pdf(caminho, deadline=None, estado=None):
         if d["totalCombustivel"] is not None and abs(soma_comb - d["totalCombustivel"]) > 0.05:
             conferido = False
         d["conferido"] = conferido
+    if estado is not None:
+        estado["paginas"] = len(r.pages)
     return meses
 # ============================================================
 # 1. DESCOBRIR A LISTA DE VEREADORES E CÓDIGOS DOS RELATÓRIOS
@@ -480,8 +492,14 @@ def processar_alvo(alvo, cache_anterior):
         conteudo = r2.content
         sha256 = hashlib.sha256(conteudo).hexdigest()
 
-        hash_anterior = cache_anterior.get(chave_cache(alvo), {}).get("sha256")
-        if hash_anterior == sha256:
+        ent = cache_anterior.get(chave_cache(alvo), {})
+        try:  # cópia do PDF original desta coleta (artefato do robô) — falha aqui não interrompe a coleta
+            PASTA_PDFS.mkdir(exist_ok=True)
+            (PASTA_PDFS / f"{sha256[:16]}.pdf").write_bytes(conteudo)
+        except Exception:
+            pass
+        alvo["_sha256"], alvo["_tamanho"] = sha256, len(conteudo)
+        if ent.get("sha256") == sha256 and ent.get("parser") == PARSER_VERSAO:
             return nome, ato, {}, sha256  # baixado de novo, mas conteúdo idêntico — nada pra reprocessar
 
         with open(caminho_tmp, "wb") as f:
@@ -489,6 +507,9 @@ def processar_alvo(alvo, cache_anterior):
         estado = {"truncado": False}
         meses = processa_pdf(caminho_tmp, deadline=time.time() + TIMEOUT_PARSING, estado=estado)
         truncado = estado["truncado"]
+        alvo["_paginas"] = estado.get("paginas")
+        for d in meses.values():
+            d["pdf"] = sha256[:16]
         def vazio(md):
             return not md["notas"] and not md["combustivel"] and md["totalDeclarado"] is None
         meses = {m: d for m, d in meses.items() if not vazio(d)}
@@ -563,10 +584,30 @@ def coletar_verba_indenizatoria():
                 log(f" [{concluidos}/{total}] {nome} Ato{ato}: leitura incompleta — será relido na próxima coleta")
                 continue
             cache[chave_cache(alvo)] = {
-                "nome": nome, "ato": ato, "sha256": extra,
+                "nome": nome, "ato": ato, "sha256": extra, "parser": PARSER_VERSAO,
                 "processadoEm": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
             }
             cache_mudou = True
+
+    try:  # manifesto dos PDFs: o que foi baixado hoje, com hash (prova de qual documento foi lido)
+        man = json.load(open(MANIFESTO_PDFS, encoding="utf-8")) if MANIFESTO_PDFS.exists() else {}
+        agora = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+        for alvo in alvos:
+            sha = alvo.get("_sha256")
+            if not sha:
+                continue
+            e = man.setdefault(sha, {"vereador": alvo["nome"], "ato": alvo["ato"], "tamanho": alvo.get("_tamanho"),
+                                     "primeiraVez": agora, "arquivo": f"{sha[:16]}.pdf"})
+            e["ultimaVez"] = agora
+            if alvo.get("_paginas"):
+                e["paginas"] = alvo["_paginas"]
+            m = (resultado.get(alvo["nome"]) or {}).get(f"ato{alvo['ato']}") or {}
+            if m:
+                e["meses"] = sorted(m)
+        json.dump(man, open(MANIFESTO_PDFS, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        log(f" 🧾 manifesto: {sum(1 for a in alvos if a.get('_sha256'))} PDFs registrados com hash em {MANIFESTO_PDFS.name}")
+    except Exception as e:
+        log(f" ⚠️ manifesto dos PDFs não gravado: {e}")
 
     global VERIFICADO_SEM_MUDANCA
     VERIFICADO_SEM_MUDANCA = bool(sem_mudanca)  # o portal respondeu: os PDFs foram baixados e conferidos
@@ -709,6 +750,15 @@ def virada_do_ano():
 VERIFICADO_SEM_MUDANCA = False
 
 
+def registra_descarte(vi, ato, mes, motivo, pdf, pagina, trecho):
+    """Guarda o que a leitura não pôde usar (para conferência manual), sem repetir nem crescer sem limite."""
+    lst = vi.setdefault("leituraDescartada", [])
+    item = {"ato": ato, "competencia": mes, "motivo": motivo, "pdf": pdf, "pagina": pagina, "trecho": trecho, "em": hoje[:10]}
+    if not any((x.get("ato"), x.get("competencia"), x.get("motivo"), x.get("trecho")) == (ato, mes, motivo, trecho) for x in lst):
+        lst.append(item)
+    del lst[:-200]
+
+
 def mesclar_dados(resultado_extraido):
     if not resultado_extraido:
         if VERIFICADO_SEM_MUDANCA and ARQUIVO_CAMARA.exists():
@@ -758,6 +808,8 @@ def mesclar_dados(resultado_extraido):
                 total = total_mes_confiavel(dados_mes)
                 if total is not None and total > LIMITE_MES_ATO:
                     log(f"  ⚠️ {v['nome']} Ato {ato_num} {abrev}: total lido R$ {total:,.2f} passa do limite mensal — descartado (erro de leitura do PDF)")
+                    registra_descarte(vi, ato_num, mes_chave, f"total do mês lido como R$ {total:,.2f}, acima do limite mensal — não usado",
+                                      dados_mes.get("pdf"), (dados_mes.get("paginasResumo") or [None])[0], None)
                     total = None
                 if total is not None and meses_dict.get(abrev) != total:
                     meses_dict[abrev] = total
@@ -776,14 +828,23 @@ def mesclar_dados(resultado_extraido):
 
                 for grupo in ("notas", "combustivel"):
                     for item in dados_mes.get(grupo, []):
+                        origem = {"pdf": dados_mes.get("pdf"), "pagina": item.get("pagina"), "trecho": item.get("trecho")}
                         if item.get("valor") is None or not data_valida(item["data"]):
+                            registra_descarte(vi, ato_num, mes_chave, "nota sem valor legível" if item.get("valor") is None else f"data ilegível ({item.get('data')})",
+                                              origem["pdf"], origem["pagina"], origem["trecho"])
                             continue
                         data_iso = data_para_iso(item["data"])
                         doc_limpo = limpa_doc(item.get("documento"))
                         chave = chave_dedup(data_iso, item["valor"], doc_limpo or "")
                         if chave in chaves_existentes:
+                            for d0 in despesas_existentes:  # nota já registrada: completa a origem, sem mexer no valor
+                                if chave_dedup(d0["data"], d0["valor"], d0.get("nf") or "") == chave and not d0.get("origem"):
+                                    d0["origem"], d0["competencia"] = origem, mes_chave
+                                    break
                             continue
                         despesas_existentes.append({
+                            "competencia": mes_chave,
+                            "origem": origem,
                             "data": data_iso,
                             "fornecedor": item.get("fornecedor") or "",
                             "cnpj": item.get("cnpj"),

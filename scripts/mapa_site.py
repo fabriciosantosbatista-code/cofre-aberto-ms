@@ -20,7 +20,7 @@ GRUPOS = [
     ("Brasil", "#2bb3a3", [("Presidência", P + "presidencia"), ("Senado Brasil", P + "senado-brasil"), ("Dep. Federais Brasil", P + "deputados-brasil"),
                            ("STF", P + "stf")]),
     ("Publicações", "#e0679f", [("Boletim semanal", P + "pg-boletim"), ("Empresas", P + "pg-empresas"), ("Órgãos", P + "pg-orgaos"), ("Perguntas frequentes", "/perguntas/")]),
-    ("Sobre o projeto", "#7aa2c8", [("Início", "/"), ("Painel", "/cofre-aberto-ms.html"), ("Sobre", P + "sobre"), ("Metodologia e dados", P + "pg-metodologia"),
+    ("Sobre o projeto", "#7aa2c8", [("Início", "/"), ("Painel", "/cofre-aberto-ms.html"), ("Sobre", P + "sobre"), ("Metodologia e dados", P + "pg-metodologia"), ("Monitoramento das fontes", "/monitoramento/"),
                                     ("Imprensa", "/press.html"), ("Termos de uso", "/termos/"), ("Privacidade e LGPD", "/privacidade/"),
                                     ("Contato", "CONTATO")]),
 ]

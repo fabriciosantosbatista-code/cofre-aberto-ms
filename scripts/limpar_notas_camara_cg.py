@@ -14,7 +14,7 @@ O texto lido pelo OCR fica guardado em fornecedorOCR / descricaoOCR (nada se per
 Roda no fim da coleta, antes de gerar o painel e as páginas.
 """
 
-import json, re
+import json, re, unicodedata
 from pathlib import Path
 
 DADOS = Path(__file__).parent.parent / "dados"
@@ -31,6 +31,16 @@ def palavras(t):
     import unicodedata
     t = "".join(ch for ch in unicodedata.normalize("NFD", (t or "").upper()) if unicodedata.category(ch) != "Mn")
     return {w for w in re.findall(r"[A-Z]{4,}", t) if w not in GENERICAS}
+
+def nome_confere(lido, razao, fantasia=None):
+    """O nome lido no PDF tem alguma palavra do nome na Receita? Também aceita palavra grudada pelo OCR ("APNLOCACOES")."""
+    oficiais = palavras(razao) | palavras(fantasia)
+    if palavras(lido) & oficiais:
+        return True
+    comp = "".join(ch for ch in unicodedata.normalize("NFD", (lido or "").upper()) if unicodedata.category(ch) != "Mn")
+    comp = re.sub(r"[^A-Z]", "", comp)
+    return any(len(w) >= 5 and w in comp for w in oficiais)
+
 
 
 def limpa_nome(t):
@@ -76,7 +86,7 @@ def main():
             razao = c.get("razao")
             # só troca pela razão social se o nome lido no PDF tiver alguma palavra dela ou do nome fantasia —
             # se o OCR errou o CNPJ, não põe o nome de outra empresa na nota
-            if razao and not (palavras(f0) & (palavras(razao) | palavras(c.get("fantasia")))):
+            if razao and not nome_confere(f0, razao, c.get("fantasia")):
                 razao = None
             f1 = re.sub(r"\s+", " ", razao).strip() if razao else limpa_nome(f0)
             s1 = limpa_desc(s0)

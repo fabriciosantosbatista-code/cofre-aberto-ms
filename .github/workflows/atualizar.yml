@@ -87,8 +87,17 @@ jobs:
           path: |
             dados/camara_municipal.json
             dados/verba_cg_cache.json
+            dados/camara_cg_pdfs.json
             dados/historico_*_camara_cg.json
           retention-days: 1
+
+      - name: Guardar os PDFs originais lidos nesta coleta (90 dias)
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdfs-camara-cg-${{ github.run_id }}
+          path: pdfs_camara_cg/
+          retention-days: 90
+          if-no-files-found: ignore
 
   coletar_trt24:
     runs-on: ubuntu-latest
@@ -497,6 +506,9 @@ jobs:
       - name: Limpar o texto (OCR) das notas da verba dos vereadores de CG
         run: python3 scripts/limpar_notas_camara_cg.py || echo "⚠️ limpar_notas_camara_cg.py falhou"
 
+      - name: Conferir a leitura dos PDFs da Câmara de CG (marca para revisão, não muda valores)
+        run: python3 scripts/validar_camara_cg.py || echo "⚠️ validar_camara_cg.py falhou"
+
       - name: Gerar conexões entre fornecedores, evolução mensal e feeds RSS
         run: python3 scripts/gerar_analises.py || echo "⚠️ gerar_analises.py falhou — análises anteriores mantidas"
 
@@ -520,6 +532,17 @@ jobs:
 
       - name: Gerar planilhas CSV e status das fontes
         run: python3 scripts/gerar_dados_abertos.py || echo "⚠️ gerar_dados_abertos.py falhou — planilhas anteriores mantidas"
+
+      - name: Conferir os dados direto nas fontes oficiais (independente da coleta)
+        timeout-minutes: 20
+        run: python3 -u scripts/validar_fontes.py || echo "⚠️ validar_fontes.py falhou — conferência anterior mantida"
+
+      - name: Monitoramento das fontes e classificação de confiabilidade (+ página /monitoramento/)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export COLETA_INICIO=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }} --jq .run_started_at 2>/dev/null || true)
+          python3 scripts/gerar_monitoramento.py || echo "⚠️ gerar_monitoramento.py falhou"
 
       - name: Marcar servidores de gabinete da Câmara de CG com outro vínculo público
         run: python3 scripts/gerar_acumulos_gabinetes.py || echo "⚠️ gerar_acumulos_gabinetes.py falhou — marcações anteriores mantidas"
@@ -557,7 +580,7 @@ jobs:
           git config user.email "bot@cofreabertoms.com.br"
           git add dados/ index.html vereadores-campo-grande.html deputados-estaduais-ms.html senadores-ms.html press.html PRESS.md \
                   vereador/ deputado-estadual/ deputado-federal/ senador/ empresa/ orgao/ municipio/ boletim/ \
-                  perguntas/ apoie/ termometro-da-transparencia/ presenca-votacoes-parlamentares-ms/ governo-ms/ prefeitura-campo-grande/ supersalarios-ms/ auditoria/ emendas-parlamentares-ms/ cartao-corporativo-presidente/ salario-ministros-stf/ shows-pagos-com-dinheiro-publico-ms/ obras-atrasadas-ms/ publicidade-governo-ms-prefeitura-campo-grande/ ongs-entidades-dinheiro-publico-ms/ impostometro-ms/ termos/ privacidade/ cartoes/ fotos/p/ sitemap.xml
+                  perguntas/ monitoramento/ apoie/ termometro-da-transparencia/ presenca-votacoes-parlamentares-ms/ governo-ms/ prefeitura-campo-grande/ supersalarios-ms/ auditoria/ emendas-parlamentares-ms/ cartao-corporativo-presidente/ salario-ministros-stf/ shows-pagos-com-dinheiro-publico-ms/ obras-atrasadas-ms/ publicidade-governo-ms-prefeitura-campo-grande/ ongs-entidades-dinheiro-publico-ms/ impostometro-ms/ termos/ privacidade/ cartoes/ fotos/p/ sitemap.xml
 
           if git diff --staged --quiet; then
             echo "Sem mudanças"
@@ -635,8 +658,16 @@ jobs:
         run: python3 scripts/verificar_dados.py --relatorio relatorio.md
 
       - name: Conferir as contas dos dados publicados (somas e totais)
+        id: integridade
         continue-on-error: true
-        run: python3 tests/test_integridade_dados.py
+        run: |
+          python3 tests/test_integridade_dados.py | tee integridade.log
+          exit ${PIPESTATUS[0]}
+
+      - name: Variações, formato, fontes paradas, PDFs e exposição de dados
+        id: variacoes
+        continue-on-error: true
+        run: python3 tests/test_variacoes.py --relatorio relatorio.md
 
       - name: Node 20
         uses: actions/setup-node@v4
@@ -671,6 +702,9 @@ jobs:
           gh label create "$LABEL" --color D93F0B --description "Alerta automático: dado parado ou site com erro" 2>/dev/null || true
           {
             cat relatorio.md
+            if [ "${{ steps.integridade.outcome }}" != "success" ]; then
+              echo; echo "## ❌ Contas dos dados não fecham"; echo; grep -E "^❌" integridade.log | head -30 | sed 's/^/- /'
+            fi
             if [ "${{ steps.site.outcome }}" != "success" ]; then
               echo; echo "## ❌ Teste do painel falhou"; echo; echo '```'
               grep -E "❌" smoke.log | head -40 || echo "(veja o log do run)"
@@ -679,7 +713,7 @@ jobs:
             echo; echo "Run: $RUN_URL"
           } > corpo.md
           NUM=$(gh issue list --label "$LABEL" --state open --json number --jq '.[0].number // empty')
-          if [ "${{ steps.dados.outcome }}" != "success" ] || [ "${{ steps.site.outcome }}" != "success" ]; then
+          if [ "${{ steps.dados.outcome }}" != "success" ] || [ "${{ steps.site.outcome }}" != "success" ] || [ "${{ steps.variacoes.outcome }}" != "success" ] || [ "${{ steps.integridade.outcome }}" != "success" ]; then
             if [ -n "$NUM" ]; then
               ANTES=$(gh issue view "$NUM" --json body --jq .body | grep -E "^- \*\*|❌ \[" | sort)
               DEPOIS=$(grep -E "^- \*\*|❌ \[" corpo.md | grep -v "^- \*\*Câmara de " | sort)
