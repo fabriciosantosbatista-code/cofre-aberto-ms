@@ -131,7 +131,8 @@ def resumo(p, grupo, itens, req, total):
             "porTipo": {t: sum(1 for i in princ if i["tipo"] == t) for t in ("PL", "PLP", "PEC", "PDL")},
             "leis": len([i for i in itens if i["lei"]]), "leisPrincipal": len([i for i in princ if i["lei"]]),
             "listaLeis": [i for i in itens if i["lei"]][:30],
-            "recentes": [{k: i.get(k) for k in ("sigla", "tipo", "ementa", "data", "situacao", "link")} for i in princ[:8]]}
+            "recentes": [{k: i.get(k) for k in ("sigla", "tipo", "ementa", "data", "situacao", "link")} for i in princ[:8]],
+            "todos": [{k: i.get(k) for k in ("sigla", "tipo", "ementa", "data", "situacao", "link", "lei", "norma", "principal")} for i in itens]}
 
 
 def main():

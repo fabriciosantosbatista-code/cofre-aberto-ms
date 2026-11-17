@@ -3054,6 +3054,8 @@ function renderDetalheDeputado(d, todos, ano, panel) {
         </div>
       </div>
 
+      ${d.uf === "MS" ? `<div id="dep-prod-box"></div>` : ""}
+
       <div class="subhead">Gabinete e equipe</div>
       <div class="stat-grid">
         <div class="stat-card">
@@ -3090,7 +3092,7 @@ function renderDetalheDeputado(d, todos, ano, panel) {
       </div>
 
       ${renderEmendasHTML(d.nome)}
-      ${d.uf === "MS" ? `<div id="dep-prod-box"></div><div id="dep-votos-box"></div><div id="pat-box-fed"></div>` : ""}
+      ${d.uf === "MS" ? `<div id="dep-votos-box"></div><div id="pat-box-fed"></div>` : ""}
 
       <div class="subhead">Notas fiscais — página ${paginaAtual} de ${totalPaginas} (${despesas.length} no total)</div>
       <table class="notes-table">
@@ -3346,8 +3348,9 @@ function renderSenadores(data) {
           ${custo.totalEstimado ? `<div class="stat-card alt"><p class="stat-label">Total estimado</p><p class="stat-value">${formatCompact(custo.totalEstimado)}</p></div>` : ""}
         </div>
 
+        ${s.uf === "MS" ? `<div id="sen-prod-box"></div>` : ""}
         ${renderEmendasHTML(s.nome)}
-        ${s.uf === "MS" ? `<div id="sen-prod-box"></div><div id="sen-votos-box"></div><div id="pat-box-sen"></div>` : ""}
+        ${s.uf === "MS" ? `<div id="sen-votos-box"></div><div id="pat-box-sen"></div>` : ""}
 
         <p class="section-note">
           <a href="${s.urlTransparencia || `https://www6g.senado.leg.br/transparencia/sen/${s.id}/?ano=${ANO_REFERENCIA}`}" target="_blank">
@@ -5590,7 +5593,7 @@ function listaProjetosHTML(lst, comNorma) {
   return `<ul style="margin:6px 0 0 18px;font-size:.84rem;line-height:1.5">${lst.map(x => `<li><a href="${x.link}" target="_blank" rel="noopener"><b>${escHTML(x.sigla)}</b></a>` +
     ` — ${escHTML(x.ementa.length > 220 ? x.ementa.slice(0, 220) + "…" : x.ementa)}` +
     `${comNorma && x.norma ? ` <span class="section-note">(${escHTML(x.norma)})</span>` : ""}` +
-    `${!comNorma && x.situacao ? `<div class="section-note" style="margin:0">${formatDate(x.data)} · ${escHTML(x.situacao)}</div>` : ""}</li>`).join("")}</ul>`;
+    `${!comNorma ? `<div class="section-note" style="margin:0">${formatDate(x.data)}${x.situacao ? " · " + escHTML(x.situacao) : ""}${x.norma ? " · " + escHTML(x.norma) : ""}</div>` : ""}</li>`).join("")}</ul>`;
 }
 function preencherProducao(boxId, grupo, id) {
   carregarProducao().then(d => {
@@ -5610,9 +5613,38 @@ function preencherProducao(boxId, grupo, id) {
           <p class="stat-note">pedidos de informação, audiências, homenagens; ${p.outras} outras proposições (emendas, pareceres)</p></div>
       </div>
       ${p.listaLeis.length ? `<div class="subhead" style="margin-top:14px">Projetos que viraram lei</div>${listaProjetosHTML(p.listaLeis, true)}` : ""}
-      ${p.recentes.length ? `<div class="subhead" style="margin-top:14px">Projetos mais recentes como autor principal</div>${listaProjetosHTML(p.recentes, false)}` : ""}
+      <div class="subhead" style="margin-top:14px">Todos os projetos</div>
+      <div class="ob-filtros prod-filtros" style="margin-top:6px">
+        <button type="button" class="ativo" data-f="principal">Autor principal (${p.projetosPrincipal})</button>
+        <button type="button" data-f="coautor">Coautor (${p.projetos - p.projetosPrincipal})</button>
+        <button type="button" data-f="lei">Viraram lei (${p.leis})</button>
+      </div>
+      <input type="search" class="search-box prod-busca" placeholder="buscar no texto do projeto (ex.: saúde, escola, PL 123)…" aria-label="Buscar projeto" style="width:100%;margin:10px 0 0"/>
+      <div class="prod-lista"></div>
+      <button type="button" class="pager-btn prod-mais" style="margin-top:8px;display:none">Mostrar mais</button>
       <p class="section-note">Fonte: dados abertos ${grupo === "senador" ? "do Senado Federal" : "da Câmara dos Deputados"}. Quantidade de projetos não mede qualidade do mandato: muitos são homenagens ou temas repetidos, e boa parte do trabalho é relatar, emendar e votar projetos dos outros.
         <a href="#aba=votacoes" data-ir="votacoes">Comparar com os outros parlamentares de MS →</a></p>`;
+    const todos = p.todos || [];
+    let filtro = "principal", busca = "", lim = 15;
+    const norm = t => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const desenhar = () => {
+      const b = norm(busca);
+      let lst = todos.filter(x => filtro === "lei" ? x.lei : filtro === "principal" ? x.principal : !x.principal);
+      if (b) lst = lst.filter(x => norm(x.sigla + " " + x.ementa).includes(b));
+      box.querySelector(".prod-lista").innerHTML = lst.length ? listaProjetosHTML(lst.slice(0, lim), false) : `<p class="section-note">Nenhum projeto encontrado.</p>`;
+      const m = box.querySelector(".prod-mais");
+      m.style.display = lst.length > lim ? "" : "none";
+      m.textContent = `Mostrar mais (${lst.length - lim} restantes)`;
+    };
+    box.querySelector(".prod-filtros").onclick = ev => {
+      const bt = ev.target.closest("[data-f]"); if (!bt) return;
+      filtro = bt.dataset.f; lim = 15;
+      box.querySelectorAll(".prod-filtros button").forEach(x => x.classList.toggle("ativo", x === bt));
+      desenhar();
+    };
+    box.querySelector(".prod-busca").addEventListener("input", ev => { busca = ev.target.value; lim = 15; desenhar(); });
+    box.querySelector(".prod-mais").onclick = () => { lim += 30; desenhar(); };
+    desenhar();
   });
 }
 function renderProducaoRanking(d) {

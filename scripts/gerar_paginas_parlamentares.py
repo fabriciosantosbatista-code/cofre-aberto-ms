@@ -687,14 +687,14 @@ def bloco_producao(p):
         extra = f" ({e(i['norma'])})" if norma and i.get("norma") else ""
         return f"<li><a href='{i['link']}' target='_blank' rel='noopener'><b>{e(i['sigla'])}</b></a> — {e(em)}{extra}</li>"
     leis = "".join(li(i, True) for i in x["listaLeis"])
-    rec = "".join(li(i, False) for i in x["recentes"])
+    rec = "".join(li(i, False) for i in (x.get("todos") or x["recentes"]) if i.get("principal", True))
     casa = "do Senado Federal" if x["grupo"] == "senador" else "da Câmara dos Deputados"
     return (f"<h2>Projetos e leis (desde fevereiro de 2023)</h2><p>{e(p['nome'])} apresentou <b>{x['projetosPrincipal']} projetos como autor principal</b> "
             f"(projetos de lei, de lei complementar, de emenda à Constituição e de decreto legislativo) e foi coautor de mais {x['projetos'] - x['projetosPrincipal']}. "
             f"<b>{x['leis']}</b> desses projetos já viraram lei ({x['leisPrincipal']} como autor principal). Também apresentou {x['requerimentos']} requerimentos. "
             f"Fonte: dados abertos {casa}. Quantidade de projetos não mede qualidade do mandato.</p>"
             + (f"<h3>Projetos que viraram lei</h3><ul>{leis}</ul>" if leis else "")
-            + (f"<h3>Projetos mais recentes</h3><ul>{rec}</ul>" if rec else ""))
+            + (f"<details><summary>Todos os {x['projetosPrincipal']} projetos como autor principal</summary><ul>{rec}</ul></details>" if rec else ""))
 
 
 def bloco_equipe(p):
