@@ -1,0 +1,45 @@
+name: Benefícios fiscais (SEFAZ-MS)
+
+# A SEFAZ publica a lista de empresas contempladas uma vez por ano. Confere todo dia 3 às 10h40 de Campo Grande
+# (14h40 UTC) se saiu planilha nova; também dá para rodar à mão em Actions → Run workflow.
+on:
+  schedule:
+    - cron: '40 14 3 * *'
+  workflow_dispatch:
+    inputs:
+      forcar:
+        description: 'Ler de novo mesmo sem planilha nova (sim/não)'
+        required: false
+        default: 'não'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: beneficios-fiscais
+  cancel-in-progress: false
+
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests openpyxl
+
+      - name: Baixar e ler a lista de contemplados
+        run: python3 -u scripts/coletar_beneficios_fiscais.py ${{ github.event.inputs.forcar == 'sim' && '--forcar' || '' }}
+
+      - name: Guardar
+        run: |
+          git config user.name "Cofre Aberto (robô)"
+          git config user.email "noreply@github.com"
+          git add dados/beneficios_fiscais.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Benefícios fiscais: lista da SEFAZ-MS atualizada"
+          for i in 1 2 3 4; do git pull -q --rebase origin main && git push -q origin main && break; sleep $((i*10)); done
