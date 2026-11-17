@@ -35,8 +35,12 @@ jobs:
       - name: Variações, formato, fontes paradas e exposição de dados
         run: python3 tests/test_variacoes.py
 
+      - name: ICP — status, notas, tetos, histórico, páginas e integração
+        run: python3 tests/test_icp.py
+
       - name: Testar o painel
         run: |
           python3 -m http.server 8000 >/dev/null 2>&1 &
           sleep 2
           node tests/smoke.js http://localhost:8000/
+          node tests/icp_pagina.js http://localhost:8000/

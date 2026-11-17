@@ -31,6 +31,7 @@ import requests
 sys.path.insert(0, str(Path(__file__).parent))
 DADOS = Path(__file__).parent.parent / "dados"
 SAIDA = DADOS / "validacao_fontes.json"
+HISTORICO = DADOS / "icp_verificacoes.jsonl"  # histórico PERMANENTE: uma linha por conferência, só acrescenta (nunca reescreve)
 H = {"User-Agent": "Mozilla/5.0 (CofreAbertoMS; +https://cofreabertoms.com.br)", "Accept": "application/json"}
 AGORA = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 
@@ -68,8 +69,9 @@ def resultado(itens, metodo, fonte_url, nota=""):
     if not obtidos:
         return {"resultado": "indisponivel", "em": AGORA, "metodo": metodo, "fonteUrl": fonte_url, "conferidos": 0, "nota": "a fonte não respondeu"}
     div = [{"item": n, "site": round(s, 2), "fonte": round(f, 2), "diferenca": round(s - f, 2)} for n, s, f in obtidos if abs(s - f) > 1]
+    comparados = [{"item": n, "site": round(s, 2), "fonte": round(f, 2), "diferenca": round(s - f, 2)} for n, s, f in obtidos][:60]
     return {"resultado": "confere" if not div else "diverge", "em": AGORA, "metodo": metodo, "fonteUrl": fonte_url,
-            "conferidos": len(obtidos), "divergentes": div[:20], "naoObtidos": len(itens) - len(obtidos), "nota": nota}
+            "conferidos": len(obtidos), "divergentes": div[:20], "comparados": comparados, "naoObtidos": len(itens) - len(obtidos), "nota": nota}
 
 
 def v_governo():
@@ -211,6 +213,11 @@ def main():
         # mantém a última conferência bem-sucedida quando a fonte não responde hoje
         if r["resultado"] == "indisponivel" and (out.get(fonte) or {}).get("resultado") in ("confere", "mudou_na_fonte", "diverge"):
             r = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": "indisponivel"}
+        if r.get("em") == AGORA:  # conferência feita agora (não a anterior mantida) — vai para o histórico permanente
+            with open(HISTORICO, "a", encoding="utf-8") as h:
+                h.write(json.dumps({"em": AGORA, "base": fonte, "resultado": r["resultado"], "metodo": r.get("metodo"), "fonteUrl": r.get("fonteUrl"),
+                                    "conferidos": r.get("conferidos", 0), "comparados": r.get("comparados") or [], "divergentes": r.get("divergentes") or [],
+                                    "nota": r.get("nota", "")}, ensure_ascii=False) + "\n")
         out[fonte] = r
         print(f"  {fonte:20} {r['resultado']:15} {r.get('conferidos', 0)} itens  {r.get('nota', '')}")
     SAIDA.write_text(json.dumps({"geradoEm": AGORA, "fontes": out}, ensure_ascii=False, indent=1), encoding="utf-8")

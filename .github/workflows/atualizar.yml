@@ -20,6 +20,7 @@ env:
 # só o necessário: gravar os dados no repositório (a verificação pede issues: write no próprio job)
 permissions:
   contents: write
+  actions: read   # o ICP lê o log dos robôs desta execução para saber qual coleta falhou
 
 jobs:
   coletar_dados:
@@ -567,12 +568,16 @@ jobs:
         timeout-minutes: 20
         run: python3 -u scripts/validar_fontes.py || echo "⚠️ validar_fontes.py falhou — conferência anterior mantida"
 
-      - name: Monitoramento das fontes e classificação de confiabilidade (+ página /monitoramento/)
+      - name: ICP — Índice de Confiabilidade Pública (registro da coleta, testes por base, notas e páginas /confiabilidade/)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           export COLETA_INICIO=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }} --jq .run_started_at 2>/dev/null || true)
+          python3 scripts/registrar_execucao.py || echo "⚠️ registrar_execucao.py falhou"
+          python3 tests/test_integridade_dados.py --json dados/icp_testes_integridade.json > /dev/null || true
           python3 scripts/gerar_monitoramento.py || echo "⚠️ gerar_monitoramento.py falhou"
+          python3 tests/test_variacoes.py --json dados/icp_testes_variacoes.json > /dev/null || true
+          python3 scripts/gerar_icp.py || echo "⚠️ gerar_icp.py falhou — índice anterior mantido"
 
       - name: Marcar servidores de gabinete da Câmara de CG com outro vínculo público
         run: python3 scripts/gerar_acumulos_gabinetes.py || echo "⚠️ gerar_acumulos_gabinetes.py falhou — marcações anteriores mantidas"
@@ -595,6 +600,9 @@ jobs:
       - name: Boletim semanal (+ feed RSS e sitemap)
         run: python3 scripts/gerar_boletim.py || echo "⚠️ gerar_boletim.py falhou — boletim anterior mantido"
 
+      - name: Páginas do ICP no sitemap
+        run: python3 scripts/gerar_icp.py --sitemap || echo "⚠️ sitemap do ICP não atualizado"
+
       - name: Atividade recente — notas novas do dia e da semana
         run: python3 scripts/gerar_atividade.py || echo "⚠️ gerar_atividade.py falhou — atividade anterior mantida"
 
@@ -610,7 +618,7 @@ jobs:
           git config user.email "bot@cofreabertoms.com.br"
           git add dados/ index.html vereadores-campo-grande.html deputados-estaduais-ms.html senadores-ms.html press.html PRESS.md \
                   vereador/ deputado-estadual/ deputado-federal/ senador/ empresa/ orgao/ municipio/ boletim/ \
-                  perguntas/ monitoramento/ apoie/ termometro-da-transparencia/ presenca-votacoes-parlamentares-ms/ governo-ms/ prefeitura-campo-grande/ supersalarios-ms/ auditoria/ emendas-parlamentares-ms/ cartao-corporativo-presidente/ salario-ministros-stf/ shows-pagos-com-dinheiro-publico-ms/ obras-atrasadas-ms/ publicidade-governo-ms-prefeitura-campo-grande/ ongs-entidades-dinheiro-publico-ms/ impostometro-ms/ termos/ privacidade/ cartoes/ fotos/p/ sitemap.xml
+                  perguntas/ monitoramento/ confiabilidade/ apoie/ termometro-da-transparencia/ presenca-votacoes-parlamentares-ms/ governo-ms/ prefeitura-campo-grande/ supersalarios-ms/ auditoria/ emendas-parlamentares-ms/ cartao-corporativo-presidente/ salario-ministros-stf/ shows-pagos-com-dinheiro-publico-ms/ obras-atrasadas-ms/ publicidade-governo-ms-prefeitura-campo-grande/ ongs-entidades-dinheiro-publico-ms/ impostometro-ms/ termos/ privacidade/ cartoes/ fotos/p/ sitemap.xml
 
           if git diff --staged --quiet; then
             echo "Sem mudanças"
@@ -699,6 +707,11 @@ jobs:
         continue-on-error: true
         run: python3 tests/test_variacoes.py --relatorio relatorio.md
 
+      - name: ICP — notas, status e histórico conferidos
+        id: icp
+        continue-on-error: true
+        run: python3 tests/test_icp.py | tee -a relatorio.md; exit ${PIPESTATUS[0]}
+
       - name: Node 20
         uses: actions/setup-node@v4
         with:
@@ -732,7 +745,7 @@ jobs:
           gh label create "$LABEL" --color D93F0B --description "Alerta automático: dado parado ou site com erro" 2>/dev/null || true
           {
             cat relatorio.md
-            if [ "${{ steps.integridade.outcome }}" != "success" ]; then
+            if [ "${{ steps.integridade.outcome }}" != "success" ] || [ "${{ steps.icp.outcome }}" != "success" ]; then
               echo; echo "## ❌ Contas dos dados não fecham"; echo; grep -E "^❌" integridade.log | head -30 | sed 's/^/- /'
             fi
             if [ "${{ steps.site.outcome }}" != "success" ]; then

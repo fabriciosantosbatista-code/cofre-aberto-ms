@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+"""
+Cofre Aberto MS — testes do ICP (Índice de Confiabilidade Pública)
+
+  status        todo status é um dos 7 públicos; verde SÓ com conferência na fonte registrada (≤ 30 dias, confere/mudou)
+  notas         recalcula a nota de cada base a partir das dimensões, pesos e tetos; recalcula o ICP geral e as dimensões gerais
+  tetos         simulações: divergência ≤ 40, falha ≤ 50, revisão ≤ 70, sem conferência ≤ 80, < 4 dimensões = não avaliado
+  indicadores   os números do painel batem com a contagem das bases
+  alertas       toda base com divergência ou falha de coleta aparece nos problemas críticos
+  falhas        simulação: aviso "Connection refused" no log vira falha da base certa; job "failure" marca todas as bases dele
+  histórico     icp_verificacoes.jsonl e icp_execucoes_historico.jsonl só crescem (a versão do git é prefixo da atual)
+  páginas       /confiabilidade/ e uma página por base existem, com aviso de metodologia independente, viewport, filtros,
+                link oficial e links internos válidos; /monitoramento/ redireciona
+  integração    o painel lê icp.json e leva o selo para /confiabilidade/<base>/; o robô roda registrar_execucao e gerar_icp
+
+Uso: python3 tests/test_icp.py   (código de saída 1 se houver erro)
+"""
+
+import json, re, subprocess, sys
+from datetime import datetime
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+erros, oks = [], []
+
+
+def check(cond, msg):
+    (oks if cond else erros).append(msg)
+
+
+icp = json.load(open(ROOT / "dados/icp.json", encoding="utf-8"))
+import gerar_icp as g  # noqa: E402
+from html import escape as _esc  # noqa: E402
+html_esc = lambda s: _esc(s, quote=True)
+
+bases = icp["bases"]
+check(len(bases) >= 20, f"ICP com {len(bases)} bases")
+
+# ── status ──
+for fid, b in bases.items():
+    check(b["status"] in g.STATUS, f"{fid}: status '{b['status']}' é um dos públicos")
+    check(b["statusCor"] == g.STATUS[b["status"]][1], f"{fid}: cor do status coerente")
+    if b["statusCor"] == "verde":
+        uv = b.get("ultimaVerificacao") or {}
+        idade = (datetime.now() - datetime.fromisoformat(uv["em"][:19])).days if uv.get("em") else 999
+        check(uv.get("resultado") in ("confere", "mudou_na_fonte") and idade <= 30,
+              f"{fid}: verde só com conferência na fonte recente (resultado {uv.get('resultado')}, {idade} dias)")
+    if b["status"] == "consistente":
+        check(b["testes"]["erros"] == 0 and b["testes"]["ok"] > 0, f"{fid}: 'consistência aprovada' exige testes sem erro")
+
+# ── notas ──
+for fid, b in bases.items():
+    check(b["nota"] == g.nota_base(b["dimensoes"], b["classe"]), f"{fid}: nota recalculada = {b['nota']}")
+    for k, v in b["dimensoes"].items():
+        check(v is None or 0 <= v <= 100, f"{fid}: dimensão {k} entre 0 e 100")
+aval = [b for b in bases.values() if b["nota"] is not None]
+geral = round(sum(b["nota"] * b["importancia"] for b in aval) / sum(b["importancia"] for b in aval)) if aval else None
+check(icp["nota"] == geral, f"ICP geral recalculado = {geral}")
+for k in g.PESOS_DIM:
+    xs = [(b["dimensoes"][k], b["importancia"]) for b in bases.values() if b["dimensoes"][k] is not None]
+    esp = round(sum(v * w for v, w in xs) / sum(w for _, w in xs)) if xs else None
+    check(icp["dimensoes"][k] == esp, f"dimensão geral {k} recalculada = {esp}")
+
+# ── tetos (simulação) ──
+cheio = {k: 100 for k in g.PESOS_DIM}
+check(g.nota_base(cheio, "verificado") == 100, "tudo 100 e verificado = 100")
+check(g.nota_base(cheio, "divergencia") == 40, "divergência limita a 40")
+check(g.nota_base(cheio, "falha_coleta") == 50, "falha de coleta limita a 50")
+check(g.nota_base(cheio, "revisao_manual") == 70, "revisão manual limita a 70")
+check(g.nota_base({**cheio, "P": None}, "importado") == 80, "sem conferência na fonte limita a 80")
+check(g.nota_base({"P": 100, "A": 100, "I": 100, "T": None, "R": None, "F": None}, "verificado") is None, "menos de 4 dimensões = não avaliado")
+check(g.nota_base({"P": 0, "A": 100, "I": 100, "T": 100, "R": 100, "F": 100}, "verificado") == 70, "precisão 0 derruba 30 pontos")
+
+# ── indicadores ──
+I = icp["indicadores"]
+conta = lambda st: sum(1 for b in bases.values() if b["status"] == st)
+for chave, st in (("verificadas", "verificado"), ("aguardando", "aguardando_fonte"), ("divergencias", "divergencia"), ("falhas", "falha_coleta"), ("revisaoManual", "revisao_manual")):
+    check(I[chave] == conta(st), f"indicador {chave} = {I[chave]}")
+check(I["total"] == len(bases), "indicador total")
+check(I["naoAvaliadas"] == sum(1 for b in bases.values() if b["nota"] is None), "indicador não avaliadas")
+check(I["pendentesVerificacao"] == sum(1 for b in bases.values() if b["dimensoes"]["P"] is None), "indicador pendentes de verificação")
+
+# ── alertas ──
+ids_crit = {c["id"] for c in icp["criticos"]}
+for fid, b in bases.items():
+    if b["status"] in ("divergencia", "falha_coleta"):
+        check(fid in ids_crit, f"{fid}: {b['status']} aparece nos problemas críticos")
+    if b["importancia"] >= 2 and any(v is not None and v <= 40 for v in b["dimensoes"].values()):
+        check(fid in ids_crit, f"{fid}: dimensão ≤ 40 numa base importante aparece nos problemas críticos")
+
+# ── falhas (simulação) ──
+sim = {"jobs": {"coletar_verba_camara": {"conclusao": "success", "bases": ["camara"], "avisos": ["⚠️ portal da Câmara: Connection refused"]},
+                "coletar_tjms": {"conclusao": "failure", "bases": ["judiciario", "supersalarios"], "avisos": []},
+                "coletar_governo_ms": {"conclusao": "success", "bases": ["governo-ms"], "avisos": ["ℹ️ 0 linhas novas"]}}}
+fb = g.falhas_por_base(sim)
+check("camara" in fb, "aviso de conexão recusada vira falha da Câmara de CG")
+check("judiciario" in fb and "supersalarios" in fb, "job 'failure' marca todas as bases dele")
+check("governo-ms" not in fb, "aviso informativo (sem falha) não vira falha de coleta")
+
+# ── histórico: só cresce ──
+for arq in ("dados/icp_verificacoes.jsonl", "dados/icp_execucoes_historico.jsonl"):
+    atual = (ROOT / arq).read_text(encoding="utf-8") if (ROOT / arq).exists() else ""
+    p = subprocess.run(["git", "-C", str(ROOT), "show", f"HEAD:{arq}"], capture_output=True, text=True)
+    if p.returncode == 0:
+        check(atual.startswith(p.stdout), f"{arq}: histórico preservado (a versão anterior é prefixo da atual)")
+    else:
+        oks.append(f"{arq}: ainda não versionado")
+    for n, l in enumerate(atual.splitlines(), 1):
+        try:
+            json.loads(l)
+        except ValueError:
+            erros.append(f"{arq}: linha {n} não é JSON válido")
+            break
+
+# ── páginas ──
+idx = (ROOT / "confiabilidade/index.html").read_text(encoding="utf-8")
+check("não é uma certificação oficial" in idx.lower() or "Não é uma certificação oficial" in idx, "página do ICP diz que não é certificação oficial")
+check('name="viewport"' in idx and "@media(max-width:640px)" in idx, "página do ICP responsiva (viewport + regra para celular)")
+check('id="busca"' in idx.replace("'", '"') and 'id="fstatus"' in idx.replace("'", '"'), "página do ICP tem busca e filtro de status")
+for fid, b in bases.items():
+    pg = ROOT / "confiabilidade" / fid / "index.html"
+    check(pg.exists(), f"página da base {fid} existe")
+    check(f"/confiabilidade/{fid}/" in idx, f"tabela do ICP leva para a página de {fid}")
+    if pg.exists():
+        t = pg.read_text(encoding="utf-8")
+        if b.get("url"):
+            check(b["url"].startswith("http") and html_esc(b["url"]) in t, f"{fid}: link oficial na página")
+        for sec in ("Transparência técnica", "Histórico de verificações", "Histórico de correções", "Limitações conhecidas", "Testes matemáticos"):
+            check(sec in t, f"{fid}: seção '{sec}'")
+mon = (ROOT / "monitoramento/index.html").read_text(encoding="utf-8")
+check("url=/confiabilidade/" in mon, "/monitoramento/ redireciona para /confiabilidade/")
+
+# ── integração ──
+painel = (ROOT / "cofre-aberto-ms.html").read_text(encoding="utf-8")
+check('carregarJSON("dados/icp.json")' in painel and "/confiabilidade/${aba}/" in painel, "selo do painel lê icp.json e leva à página da base")
+check('href="/confiabilidade/"' in painel, "menu do painel tem 'Confiabilidade dos Dados'")
+wf = (ROOT / ".github/workflows/atualizar.yml").read_text(encoding="utf-8")
+check("registrar_execucao.py" in wf and "gerar_icp.py" in wf and "actions: read" in wf, "robô registra a execução e recalcula o ICP a cada coleta")
+check("confiabilidade/" in wf, "robô publica as páginas /confiabilidade/")
+
+print(f"✅ {len(oks)} checagens OK · ❌ {len(erros)} erros")
+for e in erros:
+    print("❌", e)
+sys.exit(1 if erros else 0)

@@ -300,4 +300,8 @@ for e in erros:
     print("❌", e)
 for a in avisos:
     print("⚠️", a)
+if "--json" in sys.argv:  # resultado por base, para o ICP
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from _bases import grava_json
+    grava_json(sys.argv[sys.argv.index("--json") + 1], "integridade", oks, avisos, erros)
 sys.exit(1 if erros else 0)

@@ -1,0 +1,140 @@
+{
+ "runId": "44150284739",
+ "inicio": "2026-11-17T18:39:55Z",
+ "registradoEm": "2026-11-17T18:57:12",
+ "jobs": {
+  "coletar_trt24": {
+   "conclusao": "success",
+   "inicio": "2026-11-17T18:39:58Z",
+   "fim": "2026-11-17T18:40:18Z",
+   "bases": [
+    "judiciario"
+   ],
+   "avisos": [],
+   "nAvisos": 0
+  },
+  "coletar_fontes_federais": {
+   "conclusao": "success",
+   "inicio": "2026-11-17T18:39:58Z",
+   "fim": "2026-11-17T18:45:56Z",
+   "bases": [
+    "eleicoes",
+    "presidencia",
+    "stf",
+    "votacoes",
+    "producao",
+    "arrecadacao"
+   ],
+   "avisos": [],
+   "nAvisos": 0
+  },
+  "coletar_governo_ms": {
+   "conclusao": "success",
+   "inicio": "2026-11-17T18:39:58Z",
+   "fim": "2026-11-17T18:46:59Z",
+   "bases": [
+    "governo-ms",
+    "obras"
+   ],
+   "avisos": [],
+   "nAvisos": 0
+  },
+  "coletar_verba_camara": {
+   "conclusao": "success",
+   "inicio": "2026-11-17T18:39:58Z",
+   "fim": "2026-11-17T18:43:56Z",
+   "bases": [
+    "camara"
+   ],
+   "avisos": [
+    "[14:40:27]  ⚠️ Tentativa 1/4 de obter a lista de relatórios falhou: HTTPConnectionPool(host='45.225.6.93', port=8079): Max retries exceeded with url: /transparencia/default.aspx (Caused by NewConnectionError(\"HTTPConnection(host='45.225.6.93', port=8079): Failed to establish a new connection: [Errno",
+    "[14:40:48]  ⚠️ Tentativa 2/4 de obter a lista de relatórios falhou: HTTPConnectionPool(host='45.225.6.93', port=8079): Max retries exceeded with url: /transparencia/default.aspx (Caused by NewConnectionError(\"HTTPConnection(host='45.225.6.93', port=8079): Failed to establish a new connection: [Errno",
+    "[14:41:28]  ⚠️ Tentativa 3/4 de obter a lista de relatórios falhou: HTTPConnectionPool(host='45.225.6.93', port=8079): Max retries exceeded with url: /transparencia/default.aspx (Caused by NewConnectionError(\"HTTPConnection(host='45.225.6.93', port=8079): Failed to establish a new connection: [Errno",
+    "[14:42:28]  ⚠️ Tentativa 4/4 de obter a lista de relatórios falhou: HTTPConnectionPool(host='45.225.6.93', port=8079): Max retries exceeded with url: /transparencia/default.aspx (Caused by NewConnectionError(\"HTTPConnection(host='45.225.6.93', port=8079): Failed to establish a new connection: [Errno",
+    "[14:43:48]  ⚠️ Não foi possível obter a lista de relatórios",
+    "[14:43:48]  ⚠️ Nenhum dado extraído — mantendo camara_municipal.json inalterado",
+    "[14:43:50]  ⚠️ Folha de servidores indisponível — mantendo pessoal dos gabinetes anterior",
+    "[14:43:50]  ⚠️ Endpoint de diárias não respondeu — registro anterior mantido"
+   ],
+   "nAvisos": 8
+  },
+  "coletar_dados": {
+   "conclusao": "success",
+   "inicio": "2026-11-17T18:39:58Z",
+   "fim": "2026-11-17T18:53:45Z",
+   "bases": [
+    "deputados",
+    "deputados-estaduais",
+    "senadores",
+    "prefeitura",
+    "deputados-brasil",
+    "senado-brasil"
+   ],
+   "avisos": [
+    "[14:50:54]   ⚠️ Servidores (11/2026) indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+    "[14:51:05]   ⚠️ Diárias indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+    "[14:51:05]   ⚠️ Nenhum dado coletado para Sonora — mantendo dados anteriores"
+   ],
+   "nAvisos": 3
+  },
+  "coletar_tre_ms": {
+   "conclusao": "success",
+   "inicio": "2026-11-17T18:39:58Z",
+   "fim": "2026-11-17T18:40:23Z",
+   "bases": [
+    "judiciario"
+   ],
+   "avisos": [],
+   "nAvisos": 0
+  },
+  "coletar_contratos_cg": {
+   "conclusao": "success",
+   "inicio": "2026-11-17T18:39:58Z",
+   "fim": "2026-11-17T18:49:42Z",
+   "bases": [
+    "contratos-cg",
+    "shows",
+    "alugueis"
+   ],
+   "avisos": [],
+   "nAvisos": 0
+  },
+  "coletar_tjms": {
+   "conclusao": "success",
+   "inicio": "2026-11-17T18:39:58Z",
+   "fim": "2026-11-17T18:45:04Z",
+   "bases": [
+    "judiciario",
+    "supersalarios"
+   ],
+   "avisos": [
+    "[14:45:00]   ⚠️ Portal do TJMS indisponível: HTTPSConnectionPool(host='www5.tjms.jus.br', port=443): Read timed out. (read timeout=90)"
+   ],
+   "nAvisos": 1
+  },
+  "coletar_fontes_auditoria": {
+   "conclusao": null,
+   "inicio": "2026-11-17T18:39:58Z",
+   "fim": null,
+   "bases": [
+    "auditoria",
+    "supersalarios",
+    "camaras-ms"
+   ],
+   "avisos": [],
+   "nAvisos": 0
+  },
+  "coletar_emendas_alems": {
+   "conclusao": "success",
+   "inicio": "2026-11-17T18:39:58Z",
+   "fim": "2026-11-17T18:43:59Z",
+   "bases": [
+    "emendas"
+   ],
+   "avisos": [
+    "  ⚠️ TRE-MS — Justiça Eleitoral: valores zerados em 09/2026 — fora do ranking"
+   ],
+   "nAvisos": 1
+  }
+ }
+}

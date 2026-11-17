@@ -197,4 +197,8 @@ if "--relatorio" in sys.argv:
             fh.write(f"- ❌ {e}\n")
         for a in avisos:
             fh.write(f"- ⚠️ {a}\n")
+if "--json" in sys.argv:  # resultado por base, para o ICP
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from _bases import grava_json
+    grava_json(sys.argv[sys.argv.index("--json") + 1], "variacoes", oks, avisos, erros)
 sys.exit(1 if erros else 0)
