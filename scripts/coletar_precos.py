@@ -42,7 +42,10 @@ def sa(t):
 
 # produto: (regex no objeto da compra, regex na descrição do item, regex que exclui, unidade, função de normalização)
 def por_kg(desc, unid, preco):
-    m = re.search(r"(\d+(?:[.,]\d+)?)[\s-]*(kg|quilo|g|gr|gramas)", unid.replace("quilograma", "kg")) or re.search(r"(\d+(?:[.,]\d+)?)\s*(kg|quilo|g|gr|gramas)\b", desc)
+    m = re.search(r"(\d+(?:[.,]\d+)?)[\s-]*(kg|quilo|g|gr|gramas)", unid.replace("quilograma", "kg")) or \
+        (None if re.search(r"^\W*(kg|quilo|quilograma)", unid) else re.search(r"(\d+(?:[.,]\d+)?)\s*(kg|quilo|g|gr|gramas)\b", desc))
+    if not m and re.search(r"^\W*(kg|quilo|quilograma)", unid):  # a unidade já é o quilo: o preço já é por kg
+        return preco
     if not m:
         return preco if re.search(r"\bkg\b|quilo", unid) else None
     q = float(m.group(1).replace(",", "."))
@@ -122,11 +125,11 @@ CESTA = {
     "paracetamol": ("Paracetamol 500 mg (comprimido)", "comprimido", r"medicament|farmac|paracetamol", r"paracetamol.{0,40}500\s*mg.{0,60}(comp|\bcp\b|cpr)", r"gota|solu|injet|\bml\b|xarope|codeina|cafeina|750|associad", por_unidade_avulsa),
     "soro": ("Soro fisiológico 0,9% (bolsa 500 ml)", "bolsa", r"medicament|farmac|hospitalar|soro|solu", r"(cloreto de sodio|soro fisiolog).{0,40}0[,.]9.{0,60}500\s*ml|500\s*ml.{0,60}(cloreto de sodio|soro fisiolog).{0,40}0[,.]9", r"\b250\b|\b100\s*ml|1000|ampola|\b10\s*ml|nasal|spray|20%|glicos|ringer", por_unidade_avulsa),
     "luva": ("Luva de procedimento (caixa com 100)", "caixa", r"luva|hospitalar|medic|enfermag|odontolog|epi|protecao", r"luva.{0,40}procediment", r"estéril|esteril|cirurg|nitril|vinil|plastic|domestic|latex natural sem po.{0,5}esteril", luva_caixa),
-    "seringa": ("Seringa descartável 5 ml (unidade)", "unidade", r"seringa|hospitalar|medic|enfermag", r"seringa.{0,40}\b5\s*ml", r"insulina|\b10\s*ml|\b20\s*ml|\b1\s*ml|\b3\s*ml|\b60\s*ml|vidro|carpule|odontol", por_unidade_avulsa),
+    "seringa": ("Seringa descartável 5 ml (unidade)", "unidade", r"seringa|hospitalar|medic|enfermag", r"seringa.{0,40}(?<![\d,.])5\s*ml", r"acido|gel|insulina|\b10\s*ml|\b20\s*ml|\b1\s*ml|\b3\s*ml|\b60\s*ml|vidro|carpule|odontol", por_unidade_avulsa),
     # limpeza
-    "sanitaria": ("Água sanitária (litro)", "litro", r"limpeza|higien|sanitaria|saneantes", r"agua sanitaria", r"gel|perfum|tablete|pastilha", volume(1)),
-    "detergente": ("Detergente líquido (500 ml)", "frasco 500 ml", r"limpeza|higien|detergente|saneantes", r"^[\W\d]*detergente.{0,40}(liquido|neutro|lava.?louc)", r"enzimat|industrial|automotiv|clorad|desincrust|maquina|alcalin|\bpo\b|gel|concentrad", volume(0.5)),
-    "copo": ("Copo descartável 200 ml (pacote com 100)", "pacote", r"descart|copa|cozinha|limpeza|higien|copo", r"copo.{0,20}descart.{0,60}(200|180)\s*ml", r"papel|\bcafe\b|\b50\s*ml|\b80\s*ml|biodegrad|tampa|\b300\s*ml|\b500\s*ml|acrilic", copo_pacote),
+    "sanitaria": ("Água sanitária (litro)", "litro", r"limpeza|higien|sanitaria|saneantes", r"agua sanitaria", r"gel|perfum|tablete|pastilha|12\s*%|10\s*%|hospitalar|desinfetante hosp", volume(1)),
+    "detergente": ("Detergente líquido (500 ml)", "frasco 500 ml", r"limpeza|higien|detergente|saneantes", r"^[\W\d]*detergente.{0,40}(liquido|neutro|lava.?louc)", r"enzimat|industrial|automotiv|clorad|desincrust|maquina|alcalin|\bpo\b|gel|concentrad|hospitalar|laborator|limpa bordas|saneante|shampoo|automotiv", volume(0.5)),
+    "copo": ("Copo descartável 180–200 ml (pacote com 100)", "pacote", r"descart|copa|cozinha|limpeza|higien|copo", r"copo.{0,20}descart.{0,60}(200|180)\s*ml", r"papel|\bcafe\b|\b50\s*ml|\b80\s*ml|biodegrad|tampa|\b300\s*ml|\b500\s*ml|acrilic", copo_pacote),
     # obras
     "cimento": ("Cimento (saco de 50 kg)", "saco", r"cimento|construc|alvenar|pedreir|obra|reforma", r"^[\W\d]*cimento.{0,60}50\s*kg", r"cola|branco|argamassa|cimentici|refratar|aditivo|cal\b|telha|bloco|tubo", por_unidade_avulsa),
 }
@@ -263,7 +266,7 @@ def montar(cache):
             d_, u_ = sa(it.get("descricao")), sa(it.get("unidade"))
             if re.search(CESTA[k][4], d_):
                 continue
-            if CESTA[k][5] is por_kg and re.search(r"\d[\s-]*(kg|quilo|g\b|gr\b|gramas)", u_):  # peso na unidade (ex.: "Emb 2 Kg")
+            if CESTA[k][5] is por_kg and (re.search(r"\d[\s-]*(kg|quilo|g\b|gr\b|gramas)", u_) or re.search(r"^\W*(kg|quilo|quilograma)", u_)):  # peso na unidade (ex.: "Emb 2 Kg")
                 it = {**it, "precoUnidade": round(por_kg(d_, u_, it["preco"]), 4)}
             produtos.setdefault(it["produto"], []).append({**it, "orgao": c["orgao"], "esfera": c["esfera"], "cidade": c["cidade"],
                                                            "data": c["data"], "modalidade": c["modalidade"], "link": c["link"]})
