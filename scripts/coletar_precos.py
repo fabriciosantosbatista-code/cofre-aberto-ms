@@ -39,11 +39,13 @@ def sa(t):
 
 # produto: (regex no objeto da compra, regex na descrição do item, regex que exclui, unidade, função de normalização)
 def por_kg(desc, unid, preco):
-    m = re.search(r"(\d+(?:[.,]\d+)?)\s*(kg|quilo|g|gr|gramas)\b", desc)
+    m = re.search(r"(\d+(?:[.,]\d+)?)[\s-]*(kg|quilo|g|gr|gramas)", unid.replace("quilograma", "kg")) or re.search(r"(\d+(?:[.,]\d+)?)\s*(kg|quilo|g|gr|gramas)\b", desc)
     if not m:
         return preco if re.search(r"\bkg\b|quilo", unid) else None
     q = float(m.group(1).replace(",", "."))
     q = q if m.group(2) in ("kg", "quilo") else q / 1000
+    if q > 50:  # "Emb 1000 g" já tratado; número alto sem unidade de peso clara: não converte
+        return None
     return preco / q if q else None
 
 
@@ -57,11 +59,11 @@ def por_unid(desc, unid, preco):
 
 CESTA = {
     "gasolina": ("Gasolina comum", "litro", r"combust|gasolina", r"gasolina\s*(comum|c\b|tipo c)", r"aditivada|premium|podium|aviac", por_litro),
-    "diesel": ("Óleo diesel S10", "litro", r"combust|diesel", r"diesel.{0,15}s[\s-]?10", r"arla|lubrific|motor 2t", por_litro),
-    "etanol": ("Etanol", "litro", r"combust|etanol|alcool", r"etanol|alcool (etilico )?hidratado comb", r"gel|70|46|limpeza|aditivad", por_litro),
-    "glp": ("Gás de cozinha (botijão 13 kg)", "botijão", r"gas|glp", r"(glp|gas liquefeito|gas de cozinha).{0,40}13\s*kg|13\s*kg.{0,40}(glp|gas)", r"vasilhame|casco|botijao vazio|45\s*kg|20\s*kg|p-?45", por_unid),
+    "diesel": ("Óleo diesel S10", "litro", r"combust|diesel", r"diesel.{0,15}s[\s-]?10", r"arla|lubrific|motor 2t|gerenciamento|cartao|administra|frota", por_litro),
+    "etanol": ("Etanol", "litro", r"combust|etanol|alcool", r"etanol|alcool (etilico )?hidratado comb", r"gel|70|46|limpeza|aditivad|gerenciamento|cartao|frota", por_litro),
+    "glp": ("Gás de cozinha (botijão 13 kg)", "botijão", r"gas|glp", r"(glp|gas liquefeito|gas de cozinha).{0,40}13\s*kg|13\s*kg.{0,40}(glp|gas)", r"vasilhame|casco|botijao vazio|45\s*kg|20\s*kg|p-?45|regulador|mangueira|\bkit\b|registro|abracadeira", por_unid),
     "agua20": ("Água mineral (galão 20 litros)", "galão", r"agua", r"agua mineral.{0,40}20\s*(l|litros)", r"vasilhame|casco|garrafao vazio|500\s*ml|1,5|copo", por_unid),
-    "papelA4": ("Papel A4 (resma de 500 folhas)", "resma", r"papel|expediente|escritorio", r"papel.{0,30}a4", r"fotogr|adesiv|vergê|verge|cartao|colorido|reciclad|couche|180\s*g", None),
+    "papelA4": ("Papel A4 (resma de 500 folhas)", "resma", r"papel|expediente|escritorio", r"papel.{0,30}a4", r"fotogr|adesiv|vergê|verge|cartao|colorido|reciclad|couche|180\s*g|100 folhas|250 folhas", None),
     "cafe": ("Café torrado e moído (kg)", "kg", r"cafe|genero|aliment|copa|cozinha", r"cafe.{0,25}(torrado|moido|po)", r"capsul|soluvel|filtro|garrafa|maquina|xicara", por_kg),
     "acucar": ("Açúcar cristal (kg)", "kg", r"acucar|genero|aliment|copa|cozinha", r"acucar.{0,15}cristal", r"refinado|mascavo|demerara|sache|confeit", por_kg),
 }
@@ -148,6 +150,8 @@ def main():
         cache = json.load(open(CACHE, encoding="utf-8"))
     except Exception:
         cache = {}
+    if "--so-saida" in sys.argv:  # só remonta precos.json a partir do cache (sem consultar o PNCP)
+        return montar(cache)
     meses, ini = [], date(ANO, 1, 1)
     while ini <= HOJE:
         fim = min(HOJE, date(ini.year + (ini.month == 12), ini.month % 12 + 1, 1) - timedelta(days=1))
@@ -182,12 +186,21 @@ def main():
     if time.monotonic() - T0 > LIMITE:
         print("  ⚠️ tempo esgotado — o que faltou fica para a próxima coleta")
     CACHE.write_text(json.dumps(cache, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    montar(cache)
 
+
+def montar(cache):
     produtos = {}
     for c in cache.values():
         if str(c.get("ano")) != str(ANO):
             continue
         for it in c.get("itens") or []:
+            k = it["produto"]
+            d_, u_ = sa(it.get("descricao")), sa(it.get("unidade"))
+            if re.search(CESTA[k][4], d_):
+                continue
+            if CESTA[k][5] is por_kg and re.search(r"\d[\s-]*(kg|quilo|g\b|gr\b|gramas)", u_):  # peso na unidade (ex.: "Emb 2 Kg")
+                it = {**it, "precoUnidade": round(por_kg(d_, u_, it["preco"]), 4)}
             produtos.setdefault(it["produto"], []).append({**it, "orgao": c["orgao"], "esfera": c["esfera"], "cidade": c["cidade"],
                                                            "data": c["data"], "modalidade": c["modalidade"], "link": c["link"]})
     saida = []
