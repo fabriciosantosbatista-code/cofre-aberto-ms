@@ -2727,7 +2727,7 @@ async function buscarDeputadosAoVivo(siglaUf, onProgress, incluirDespesas = true
               data: item.dataDocumento,
               categoria: item.tipoDespesa,
               fornecedor: item.nomeFornecedor,
-              cnpjCpfFornecedor: item.cnpjCpfFornecedor,
+              cnpjCpfFornecedor: mascaraDoc(item.cnpjCpfFornecedor),
               valor: valor,
               valorDocumento: item.valorDocumento,
               valorGlosa: item.valorGlosa,
@@ -2797,7 +2797,7 @@ async function buscarDespesasDeputadoAoVivo(id, ano) {
         data: item.dataDocumento,
         categoria: item.tipoDespesa,
         fornecedor: item.nomeFornecedor,
-        cnpjCpfFornecedor: item.cnpjCpfFornecedor,
+        cnpjCpfFornecedor: mascaraDoc(item.cnpjCpfFornecedor),
         valor,
         doc: item.numDocumento || "",
         urlNotaFiscal: item.urlDocumento || null,
@@ -2938,6 +2938,11 @@ function camaraInvertida(itens) {
   const comuns = (itens || []).filter(x => !/SIGEPA|PASSAGE[MN]S? A[EÉ]REA - RPA/i.test(x.tipoDespesa || "") && Number(x.valorDocumento || 0) > 0);
   if (comuns.length) _camaraInvertida = comuns.filter(x => Number(x.valorLiquido || 0) < 0).length > comuns.length / 2;
   return _camaraInvertida;
+}
+// CPF de pessoa física que venha de uma API ao vivo: só o formato do Portal da Transparência (***.123.456-**)
+function mascaraDoc(t) {
+  const d = String(t || "").replace(/\D/g, "");
+  return d.length === 11 ? `***.${d.slice(3, 6)}.${d.slice(6, 9)}-**` : t;
 }
 function valorCamara(item) {
   const liq = Number(item.valorLiquido ?? item.valorDocumento ?? 0);

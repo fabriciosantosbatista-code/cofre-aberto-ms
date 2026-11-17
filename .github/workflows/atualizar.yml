@@ -47,6 +47,9 @@ jobs:
       - name: Histórico do ano que fechou (só na primeira coleta após a virada)
         run: python3 scripts/gerar_historico.py --se-faltar || echo "⚠️ histórico do ano anterior não gerado — tenta de novo amanhã"
 
+      - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
+        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+
       - name: Upload artifact — dados (portal transparência)
         uses: actions/upload-artifact@v4
         with:
@@ -79,6 +82,9 @@ jobs:
 
       - name: Coletar Verba Indenizatória (Câmara CG)
         run: python3 scripts/coletar_verba_camara_cg.py
+
+      - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
+        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
 
       - name: Upload artifact — verba indenizatória (Câmara CG)
         uses: actions/upload-artifact@v4
@@ -119,6 +125,9 @@ jobs:
       - name: Coletar remuneração de magistrados (TRT24)
         run: python3 scripts/coletar_trt24.py
 
+      - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
+        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+
       - name: Upload artifact — TRT24
         uses: actions/upload-artifact@v4
         with:
@@ -145,6 +154,9 @@ jobs:
 
       - name: Coletar remuneração de magistrados (TRE-MS)
         run: python3 scripts/coletar_tre_ms.py
+
+      - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
+        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
 
       - name: Upload artifact — TRE-MS
         uses: actions/upload-artifact@v4
@@ -173,6 +185,9 @@ jobs:
       - name: Coletar remuneração de magistrados (TJMS)
         run: python3 scripts/coletar_tjms.py
 
+      - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
+        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+
       - name: Upload artifact — TJMS
         uses: actions/upload-artifact@v4
         with:
@@ -199,6 +214,9 @@ jobs:
 
       - name: Coletar despesas, diárias e primeiro escalão (Governo do Estado de MS)
         run: python3 scripts/coletar_governo_ms.py
+
+      - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
+        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
 
       - name: Upload artifact — Governo MS
         uses: actions/upload-artifact@v4
@@ -242,6 +260,9 @@ jobs:
         timeout-minutes: 15
         run: python3 -u scripts/coletar_alugueis.py || echo "⚠️ coletar_alugueis.py falhou — dados anteriores mantidos"
 
+      - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
+        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+
       - name: Upload artifact — contratos CG
         uses: actions/upload-artifact@v4
         with:
@@ -281,6 +302,9 @@ jobs:
 
       - name: Coletar servidores da ALEMS
         run: python3 scripts/coletar_servidores_alems.py || echo "⚠️ servidores da ALEMS não atualizados — arquivo anterior mantido"
+
+      - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
+        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
 
       - name: Upload artifact — emendas e ALEMS
         uses: actions/upload-artifact@v4
@@ -337,6 +361,9 @@ jobs:
       - name: Arrecadação do Governo de MS e da Prefeitura de CG (Tesouro Nacional — Siconfi)
         timeout-minutes: 10
         run: python3 scripts/coletar_receitas.py || echo "⚠️ coletar_receitas.py falhou — dados anteriores mantidos"
+
+      - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
+        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
 
       - name: Upload artifact — fontes federais
         uses: actions/upload-artifact@v4
@@ -395,6 +422,9 @@ jobs:
       - name: Licitações dos órgãos estaduais no PNCP (vencedores e preços, incremental)
         timeout-minutes: 30
         run: python3 scripts/coletar_licitacoes_governo.py 800 || echo "⚠️ coletar_licitacoes_governo.py falhou — licitações anteriores mantidas"
+
+      - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
+        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
 
       - name: Upload artifact — fontes da auditoria
         if: always()
