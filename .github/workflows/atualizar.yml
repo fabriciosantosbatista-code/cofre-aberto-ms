@@ -220,9 +220,10 @@ jobs:
         timeout-minutes: 15
         run: python3 -u scripts/coletar_shows.py || echo "⚠️ coletar_shows.py falhou — dados anteriores mantidos"
 
-      - name: Preço unitário pago pelo mesmo item em órgãos de MS (PNCP)
-        timeout-minutes: 17
-        run: python3 -u scripts/coletar_precos.py || echo "⚠️ coletar_precos.py falhou — dados anteriores mantidos"
+      # Preços pagos desligado a pedido — para voltar, descomente:
+      # - name: Preço unitário pago pelo mesmo item em órgãos de MS (PNCP)
+      #   timeout-minutes: 17
+      #   run: python3 -u scripts/coletar_precos.py || echo "⚠️ coletar_precos.py falhou — dados anteriores mantidos"
 
       - name: Upload artifact — contratos CG
         uses: actions/upload-artifact@v4

@@ -29,7 +29,8 @@ SITE = "https://cofreabertoms.com.br"
 W, H = 1080, 1350
 HOJE = date.today()
 VERMELHO, LINHA = (229, 72, 77), (40, 45, 60)
-TEMAS = ["precos", "shows", "obras", "vereadores", "publicidade", "entidades", "emendas", "supersalarios"]
+TEMAS = ["shows",  # "precos" desligado a pedido; para voltar, ponha de novo no começo da lista
+         "obras", "vereadores", "publicidade", "entidades", "emendas", "supersalarios"]
 TAGS = "#MatoGrossoDoSul #CampoGrande #MS #transparencia #dinheiropublico #fiscalizacao #CofreAbertoMS"
 
 

@@ -447,8 +447,8 @@ def status_fontes():
         "https://pncp.gov.br/", sh.get("ultimaAtualizacao"),
         f"publicação de {data_br(max([x.get('publicado') or '' for x in sh.get('shows') or []] or ['']))}" if sh else None,
         bool(sh) and em_dia(sh.get("ultimaAtualizacao"), 3))
-    pr = carregar("precos.json")
-    add("precos", "Portal Nacional de Contratações Públicas (PNCP) — itens e preços homologados das compras de órgãos de MS",
+    pr = {}  # Preços pagos desligado a pedido — para voltar: carregar("precos.json")
+    if pr: add("precos", "Portal Nacional de Contratações Públicas (PNCP) — itens e preços homologados das compras de órgãos de MS",
         "https://pncp.gov.br/", pr.get("ultimaAtualizacao"),
         f"{sum(p.get('compras') or 0 for p in pr.get('produtos') or [])} preços comparados" if pr else None,
         bool(pr) and em_dia(pr.get("ultimaAtualizacao"), 3))
