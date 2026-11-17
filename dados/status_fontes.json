@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-17T11:01:08",
+ "geradoEm": "2026-11-17T15:11:21",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
@@ -76,7 +76,7 @@
   "auditoria": {
    "fonte": "Cruzamento das bases do site com a Receita Federal (BrasilAPI / Minha Receita), o TSE e a folha do Estado",
    "url": "https://brasilapi.com.br/docs#tag/CNPJ",
-   "coleta": "2026-11-17T11:01:07",
+   "coleta": "2026-11-17T15:11:20",
    "dadoMaisRecente": "4925 empresas checadas na Receita",
    "nivel": "ok",
    "mensagem": null
@@ -124,7 +124,7 @@
   "publicidade": {
    "fonte": "Portal da Transparência do Estado de MS e SIG-Transparência da Prefeitura de CG",
    "url": "https://www.transparencia.ms.gov.br/",
-   "coleta": "2026-11-17T11:01:02",
+   "coleta": "2026-11-17T15:11:15",
    "dadoMaisRecente": "pagamento da Prefeitura de 02/10/2026",
    "nivel": "ok",
    "mensagem": null
@@ -132,7 +132,7 @@
   "entidades": {
    "fonte": "Portal da Transparência do Estado de MS, SIG-Transparência da Prefeitura de CG, emendas (CGU) e cadastro de CNPJ da Receita",
    "url": "https://www.transparencia.ms.gov.br/",
-   "coleta": "2026-11-17T11:01:02",
+   "coleta": "2026-11-17T15:11:15",
    "dadoMaisRecente": "939 entidades",
    "nivel": "ok",
    "mensagem": null
@@ -212,7 +212,7 @@
   "conexoes": {
    "fonte": "Cruzamento das notas fiscais de todas as fontes acima",
    "url": null,
-   "coleta": "2026-11-17T11:01:01",
+   "coleta": "2026-11-17T15:11:14",
    "dadoMaisRecente": "gerado a cada coleta",
    "nivel": "ok",
    "mensagem": null
@@ -220,7 +220,7 @@
   "evolucao": {
    "fonte": "Notas fiscais das fontes acima + histórico do ano anterior",
    "url": null,
-   "coleta": "2026-11-17T11:01:01",
+   "coleta": "2026-11-17T15:11:14",
    "dadoMaisRecente": "gerado a cada coleta",
    "nivel": "ok",
    "mensagem": null
