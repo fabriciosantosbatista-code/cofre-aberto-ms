@@ -5651,10 +5651,18 @@ function renderProducaoRanking(d) {
   const tb = document.querySelector("#tabela-prod tbody");
   if (!tb || !d) return;
   const lst = [...(d.parlamentares || [])].sort((a, b) => b.projetosPrincipal - a.projetosPrincipal);
-  tb.innerHTML = lst.map(p => `<tr><td class="cartao-titulo"><b>${escHTML(p.nome)}</b> <span class="section-note">${escHTML(p.partido || "")}</span></td>` +
+  tb.innerHTML = lst.map(p => `<tr class="prod-l" data-g="${p.grupo}" data-id="${p.id}" style="cursor:pointer" title="Ver os projetos"><td class="cartao-titulo"><b>${escHTML(p.nome)}</b> <span class="section-note">${escHTML(p.partido || "")} · ver projetos ▾</span></td>` +
     `<td data-label="Casa">${p.grupo === "senador" ? "Senado" : "Câmara"}</td><td class="num" data-label="Projetos (autor principal)"><b>${p.projetosPrincipal}</b></td>` +
     `<td class="num" data-label="Coautor de">${p.projetos - p.projetosPrincipal}</td><td class="num" data-label="Viraram lei">${p.leis}</td>` +
-    `<td class="num" data-label="Requerimentos">${p.requerimentos}</td><td class="num" data-label="Projetos em ${d.ano}">${p.projetosNoAno}</td></tr>`).join("");
+    `<td class="num" data-label="Requerimentos">${p.requerimentos}</td><td class="num" data-label="Projetos em ${d.ano}">${p.projetosNoAno}</td></tr>` +
+    `<tr class="prod-d" hidden><td colspan="7" style="white-space:normal"><div id="prod-det-${p.grupo}-${p.id}"></div></td></tr>`).join("");
+  tb.onclick = ev => {
+    if (ev.target.closest("a, button, input")) return;
+    const l = ev.target.closest(".prod-l"); if (!l) return;
+    const det = l.nextElementSibling;
+    det.hidden = !det.hidden;
+    if (!det.hidden && !det.dataset.ok) { det.dataset.ok = 1; preencherProducao(`prod-det-${l.dataset.g}-${l.dataset.id}`, l.dataset.g, l.dataset.id); }
+  };
   document.getElementById("prod-fonte").innerHTML = `Fonte: dados abertos da <a href="https://dadosabertos.camara.leg.br/" target="_blank" rel="noopener">Câmara dos Deputados</a> e do <a href="https://legis.senado.leg.br/dadosabertos/" target="_blank" rel="noopener">Senado Federal</a>, proposições apresentadas desde ${formatDate(d.inicio)}. ` +
     `Projetos = projetos de lei, de lei complementar, propostas de emenda à Constituição e de decreto legislativo. "Viraram lei" conta os apresentados nesta legislatura que já foram transformados em norma, como autor ou coautor. Atualizado em ${formatDateTime(d.ultimaAtualizacao)}.`;
 }
