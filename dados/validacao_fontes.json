@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-17T18:31:04",
+ "geradoEm": "2026-11-17T14:59:47",
  "fontes": {
   "governo-ms": {
    "resultado": "confere",
@@ -9,11 +9,13 @@
    "conferidos": 2,
    "divergentes": [],
    "naoObtidos": 0,
-   "nota": ""
+   "nota": "",
+   "ultimaTentativa": "2026-11-17T14:59:47",
+   "ultimaTentativaResultado": "indisponivel"
   },
   "deputados-estaduais": {
    "resultado": "confere",
-   "em": "2026-11-17T18:31:04",
+   "em": "2026-11-17T14:59:47",
    "metodo": "portal da ALEMS (/ceap/data): total do ano de cada deputado",
    "fonteUrl": "https://transparencia2.al.ms.gov.br/ceap",
    "conferidos": 25,
@@ -23,7 +25,7 @@
   },
   "senadores": {
    "resultado": "confere",
-   "em": "2026-11-17T18:31:04",
+   "em": "2026-11-17T14:59:47",
    "metodo": "dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS",
    "fonteUrl": "https://adm.senado.gov.br/adm-dadosabertos/",
    "conferidos": 3,
@@ -32,25 +34,18 @@
    "nota": ""
   },
   "deputados": {
-   "resultado": "mudou_na_fonte",
-   "em": "2026-11-17T18:31:04",
+   "resultado": "confere",
+   "em": "2026-11-17T14:59:47",
    "metodo": "API da Câmara: soma do valor líquido do ano de cada deputado federal de MS",
    "fonteUrl": "https://dadosabertos.camara.leg.br/",
    "conferidos": 8,
-   "divergentes": [
-    {
-     "item": "Rodolfo Nogueira",
-     "site": 467645.3,
-     "fonte": 466282.31,
-     "diferenca": 1362.99
-    }
-   ],
+   "divergentes": [],
    "naoObtidos": 0,
-   "nota": "diferenças até 1% — lançamentos/estornos feitos na Câmara depois da coleta"
+   "nota": ""
   },
   "arrecadacao": {
    "resultado": "confere",
-   "em": "2026-11-17T18:31:04",
+   "em": "2026-11-17T14:59:47",
    "metodo": "Siconfi RREO Anexo 3 (2026, 4º bimestre): ICMS mês a mês",
    "fonteUrl": "https://siconfi.tesouro.gov.br/",
    "conferidos": 12,
@@ -60,7 +55,7 @@
   },
   "supersalarios": {
    "resultado": "confere",
-   "em": "2026-11-17T18:31:04",
+   "em": "2026-11-17T14:59:47",
    "metodo": "DadosJusBr (contracheques do TJMS enviados ao CNJ, 09/2026): quantidade e salário-base",
    "fonteUrl": "https://dadosjusbr.org/",
    "conferidos": 2,
@@ -70,7 +65,7 @@
   },
   "shows": {
    "resultado": "confere",
-   "em": "2026-11-17T18:31:04",
+   "em": "2026-11-17T14:59:47",
    "metodo": "PNCP: 8 contratações de show sorteadas, valor de cada uma na consulta pública",
    "fonteUrl": "https://pncp.gov.br/",
    "conferidos": 8,
@@ -80,7 +75,7 @@
   },
   "alugueis": {
    "resultado": "confere",
-   "em": "2026-11-17T18:31:04",
+   "em": "2026-11-17T14:59:47",
    "metodo": "PNCP: 8 contratações de aluguel sorteadas, valor de cada uma na consulta pública",
    "fonteUrl": "https://pncp.gov.br/",
    "conferidos": 8,

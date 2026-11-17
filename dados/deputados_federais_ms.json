@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-17T12:56:37",
+  "ultimaAtualizacao": "2026-11-17T14:40:13",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-17T12:56:37",
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-17T14:40:13",
   "total": 8,
   "deputados": [
     {
@@ -18728,7 +18728,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220546",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220546/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 467645.3,
+      "cotaGastaAno": 466282.32,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -18743,12 +18743,12 @@
           "valor": 64319.61
         },
         {
-          "categoria": "PASSAGEM AÉREA - SIGEPA",
-          "valor": 14450.14
-        },
-        {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
           "valor": 13891.37
+        },
+        {
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "valor": 13087.16
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -18759,7 +18759,7 @@
           "valor": 8165.4
         }
       ],
-      "totalNotasFiscais": 455,
+      "totalNotasFiscais": 482,
       "despesas": [
         {
           "data": "2026-11-09",
@@ -21202,6 +21202,166 @@
           "mes": 5
         },
         {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -865.27,
+          "doc": "9572285694169",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -826.97,
+          "doc": "9572285693165",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 865.27,
+          "doc": "9572285696372",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 1173.2,
+          "doc": "9572285691458",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 871.92,
+          "doc": "9572285692696",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 865.27,
+          "doc": "9572285698311",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -865.27,
+          "doc": "9572285696372",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -826.97,
+          "doc": "9572285692457",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 826.97,
+          "doc": "9572285693165",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -871.92,
+          "doc": "9572285692696",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -865.27,
+          "doc": "9572285698311",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 906.16,
+          "doc": "9572285697330",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 826.97,
+          "doc": "9572285692457",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -1173.2,
+          "doc": "9572285691458",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 865.27,
+          "doc": "9572285694169",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -906.16,
+          "doc": "9572285697330",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
           "data": "2026-05-06",
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
           "fornecedor": "RODOBRAS COMBUSTIVEIS LTDA",
@@ -21209,6 +21369,106 @@
           "valor": 110.0,
           "doc": "1119002",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8096229",
+          "mes": 5
+        },
+        {
+          "data": "2026-05-05",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 810.2,
+          "doc": "9572285417863",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-05",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -1172.91,
+          "doc": "9572285414251",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-05",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -810.2,
+          "doc": "9572285415757",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-05",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -1432.44,
+          "doc": "9572285414693",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-05",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -810.2,
+          "doc": "9572285417863",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-05",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 771.6,
+          "doc": "9572285417203",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-05",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 810.2,
+          "doc": "9572285415757",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-05",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 1172.91,
+          "doc": "9572285414251",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-05",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -771.6,
+          "doc": "9572285417203",
+          "urlNotaFiscal": null,
+          "mes": 5
+        },
+        {
+          "data": "2026-05-05",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": 1432.44,
+          "doc": "9572285414693",
+          "urlNotaFiscal": null,
           "mes": 5
         },
         {
@@ -21938,6 +22198,16 @@
           "cnpjCpfFornecedor": "02.012.862/0001-60",
           "valor": 866.1,
           "doc": "9572281435755",
+          "urlNotaFiscal": null,
+          "mes": 4
+        },
+        {
+          "data": "2026-04-07",
+          "categoria": "PASSAGEM AÉREA - SIGEPA",
+          "fornecedor": "LATAM Airlines Brasil",
+          "cnpjCpfFornecedor": "02.012.862/0001-60",
+          "valor": -1362.98,
+          "doc": "9572281429631",
           "urlNotaFiscal": null,
           "mes": 4
         },
