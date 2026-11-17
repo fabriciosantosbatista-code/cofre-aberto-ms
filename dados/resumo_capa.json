@@ -19,7 +19,7 @@
   },
   {
    "nome": "Cotas e verbas dos parlamentares de MS",
-   "valor": 23057998.53,
+   "valor": 23556662.94,
    "aba": "deputados"
   }
  ],
@@ -65,7 +65,7 @@
  ],
  "kpis": {
   "parlamentares": 65,
-  "notas": 10601,
+  "notas": 11335,
   "empresas": 1423,
   "sinais": 349,
   "sinaisFortes": 26,
@@ -90,26 +90,26 @@
    },
    {
     "nome": "Deputados estaduais",
-    "valor": 13021165.08,
+    "valor": 13075996.43,
     "aba": "deputados-estaduais",
     "pessoas": 25,
     "categorias": {
      "Divulgação": 2487487.09,
-     "Escritório, aluguel e apoio": 795728.38,
-     "Consultorias e assessorias": 5810419.45,
-     "Veículos e combustível": 2094590.71,
-     "Viagens, passagens e hospedagem": 1832939.45
+     "Escritório, aluguel e apoio": 803228.38,
+     "Consultorias e assessorias": 5841419.45,
+     "Veículos e combustível": 2098022.06,
+     "Viagens, passagens e hospedagem": 1845839.45
     }
    },
    {
     "nome": "Deputados federais",
-    "valor": 2966774.25,
+    "valor": 3410607.31,
     "aba": "deputados",
     "pessoas": 8,
     "categorias": {
      "Divulgação": 1261348.5,
      "Veículos e combustível": 1098454.56,
-     "Viagens, passagens e hospedagem": 108149.88,
+     "Viagens, passagens e hospedagem": 551982.94,
      "Escritório, aluguel e apoio": 525491.31
     }
    },
@@ -129,7 +129,7 @@
   "categorias": [
    {
     "nome": "Consultorias e assessorias",
-    "valor": 8805711.63
+    "valor": 8836711.63
    },
    {
     "nome": "Divulgação",
@@ -137,15 +137,15 @@
    },
    {
     "nome": "Veículos e combustível",
-    "valor": 4580464.3
+    "valor": 4583895.65
    },
    {
     "nome": "Viagens, passagens e hospedagem",
-    "valor": 2219052.15
+    "valor": 2675785.21
    },
    {
     "nome": "Escritório, aluguel e apoio",
-    "valor": 1748334.13
+    "valor": 1755834.13
    },
    {
     "nome": "Outros",
@@ -153,6 +153,11 @@
    }
   ],
   "fornecedores": [
+   {
+    "nome": "LATAM Airlines Brasil",
+    "valor": 408485.36,
+    "gabinetes": 9
+   },
    {
     "nome": "ANCELMO PAULINO LTDA",
     "valor": 382861.4,
@@ -186,11 +191,6 @@
    {
     "nome": "ROSSI & MACHADO ADVOGADAS ASSOCIADAS",
     "valor": 252000.0,
-    "gabinetes": 2
-   },
-   {
-    "nome": "NOUSX AGENCIA DIGITAL LTDA",
-    "valor": 234500.0,
     "gabinetes": 2
    }
   ]

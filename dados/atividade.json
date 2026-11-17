@@ -1,19 +1,29 @@
 {
- "geradoEm": "2026-11-17T15:11:31",
- "ultimaAtualizacao": "2026-11-17T10:42:07",
- "registros": 55159,
+ "geradoEm": "2026-11-17T11:30:42",
+ "ultimaAtualizacao": "2026-11-17T11:12:25",
+ "registros": 55890,
  "registrosPorTipo": {
-  "notas": 10595,
+  "notas": 11326,
   "contratos": 3559,
   "licitacoes": 3802,
   "despesas": 37203
  },
- "notasHoje": 16,
- "valorHoje": 32134.2,
- "notasSemana": 40,
- "valorSemana": 66548.56,
+ "notasHoje": 47,
+ "valorHoje": 92403.5,
+ "notasSemana": 71,
+ "valorSemana": 126817.86,
  "desde": "2026-11-11",
  "semana": [
+  {
+   "grupo": "estadual",
+   "nome": "Londres Machado",
+   "partido": "PP",
+   "notas": 28,
+   "valor": 54831.35,
+   "url": "/deputado-estadual/londres-machado/",
+   "de": "2026-10-02",
+   "ate": "2026-11-04"
+  },
   {
    "grupo": "federal",
    "nome": "Rodolfo Nogueira",
@@ -43,6 +53,16 @@
    "url": "/deputado-federal/geraldo-resende/",
    "de": "2026-10-19",
    "ate": "2026-11-12"
+  },
+  {
+   "grupo": "federal",
+   "nome": "Beto Pereira",
+   "partido": "REPUBLICANOS",
+   "notas": 5,
+   "valor": 8018.5,
+   "url": "/deputado-federal/beto-pereira/",
+   "de": "2026-10-01",
+   "ate": "2026-10-07"
   },
   {
    "grupo": "federal",
@@ -86,16 +106,6 @@
   },
   {
    "grupo": "federal",
-   "nome": "Beto Pereira",
-   "partido": "REPUBLICANOS",
-   "notas": 2,
-   "valor": 2580.55,
-   "url": "/deputado-federal/beto-pereira/",
-   "de": "2026-10-01",
-   "ate": "2026-10-07"
-  },
-  {
-   "grupo": "federal",
    "nome": "Marcos Pollon",
    "partido": "PL",
    "notas": 1,
@@ -115,6 +125,6 @@
    "ate": "2026-10-20"
   }
  ],
- "atrasadasSemana": 22,
+ "atrasadasSemana": 722,
  "limiteGasto": "2026-09-18"
 }

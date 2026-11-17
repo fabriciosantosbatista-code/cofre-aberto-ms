@@ -27,18 +27,18 @@ O projeto nasceu da constatação de que, embora esses dados sejam legalmente p�
 
 | Número | O que é |
 |---|---|
-| **23.552** | Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor) |
+| **24.286** | Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor) |
 | **R$ 26,6 bi+** | Total de gastos públicos catalogados em 2026 (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares pagas em MS) |
 | **R$ 21,2 bi** | Pagos pelo Governo do Estado de MS em 2026 |
 | **R$ 4,7 bi** | Pagos pela Prefeitura de Campo Grande em 2026, em 12.951 empenhos |
 | **R$ 5,8 mi** | Verba indenizatória paga aos 29 vereadores de Campo Grande em 2026 |
-| **R$ 13,0 mi** | CEAP paga aos 25 deputados estaduais de MS em 2026 |
-| **R$ 3,0 mi** | CEAP dos 8 deputados federais de MS em 2026 |
+| **R$ 13,1 mi** | CEAP paga aos 25 deputados estaduais de MS em 2026 |
+| **R$ 3,4 mi** | CEAP dos 8 deputados federais de MS em 2026 |
 | **R$ 1,3 mi** | CEAPS dos 3 senadores de MS em 2026 |
 | **R$ 371,4 mi** | Emendas parlamentares pagas em Mato Grosso do Sul em 2026 |
 | **R$ 4,4 mi/mês** | Folha de pessoal dos 29 gabinetes da Câmara de Campo Grande (684 funcionários, outubro/2026) |
 | **R$ 24,0 mi/mês** | Folha bruta dos 286 magistrados ativos de MS (TJMS e TRT24, com a gratificação eleitoral do TRE-MS) |
-| **549** | Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões) |
+| **550** | Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões) |
 | **421** | Pessoas com líquido acima do teto constitucional no último mês publicado (aba Supersalários) |
 | **349** | Sinais de atenção da Auditoria automática (26 de nível forte) |
 | **100%** | Dos dados vêm de fontes oficiais — estimativas são sempre marcadas (ver Metodologia) |
