@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-16T19:03:59",
+  "ultimaAtualizacao": "2026-11-17T10:42:07",
   "ano": 2026,
-  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-16T19:03:59",
+  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-17T10:42:07",
   "total": 3,
   "senadores": [
     {
@@ -1263,7 +1263,7 @@
       ],
       "totalNotasFiscais": 105,
       "escritorioApoio": "AV. AMÉRICA, 759 – VILA PLANALTO, CAMPO GRANDE/MS – CEP 79009-060",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-16T19:03:59",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-17T10:42:07",
       "nota": ""
     },
     {
@@ -1289,7 +1289,7 @@
         "Viagens Oficiais - Ressarcimento de Passagens": 0.0,
         "Consumo de Material - Outros materiais": 6441.41,
         "Correios": 14509.6,
-        "Cotas para Impulsionamento em Mídias Sociais": 0.0,
+        "Cotas para Impulsionamento em Mídias Sociais": 2520.43,
         "Aquisição de passagens aéreas (ATC 2/2023)": 131763.07
       },
       "pessoal": {
@@ -1303,7 +1303,7 @@
         "imovelFuncional": "Utilizou"
       },
       "cotaGastaAno": 486647.31,
-      "totalGasto": 685996.31,
+      "totalGasto": 688516.74,
       "ceapsCategorias": [
         {
           "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
@@ -3222,6 +3222,17 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "Hoteis Martins Ltda",
           "cnpjCpf": "01.511.724/0001-62",
+          "doc": "73301",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": null,
+          "valor": 735.0
+        },
+        {
+          "data": "2026-03-06",
+          "mes": 2,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Hoteis Martins Ltda",
+          "cnpjCpf": "01.511.724/0001-62",
           "doc": "73300",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
@@ -3234,17 +3245,6 @@
           "fornecedor": "Hoteis Martins Ltda",
           "cnpjCpf": "01.511.724/0001-62",
           "doc": "73299",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": null,
-          "valor": 735.0
-        },
-        {
-          "data": "2026-03-06",
-          "mes": 2,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Hoteis Martins Ltda",
-          "cnpjCpf": "01.511.724/0001-62",
-          "doc": "73301",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 735.0
@@ -4000,7 +4000,7 @@
       ],
       "totalNotasFiscais": 238,
       "escritorioApoio": "AV. PROF. LUIZ ALEXANDRE DE OLIVEIRA, 879 – TÉRREO, ROYAL PARK, CAMPO GRANDE/MS – CEP 79021-430 | Tel: (67) 3222-8738",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-16T19:03:59",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-17T10:42:07",
       "nota": ""
     },
     {
@@ -4018,7 +4018,7 @@
         "Locomoção, hospedagem, alimentação e combustíveis": 60196.46,
         "Contratação de serviços de apoio ao parlamentar": 41617.8,
         "Divulgação da atividade parlamentar": 17500.0,
-        "Passagens aéreas, aquáticas e terrestres nacionais": 144361.29,
+        "Passagens aéreas, aquáticas e terrestres nacionais": 152314.22,
         "Serviços de Segurança Privada": 0.0
       },
       "gastosExtras": {
@@ -4039,12 +4039,12 @@
         "auxilioMoradia": "Não utilizou",
         "imovelFuncional": "Utilizou"
       },
-      "cotaGastaAno": 279461.87,
-      "totalGasto": 418660.39,
+      "cotaGastaAno": 287414.8,
+      "totalGasto": 426613.32,
       "ceapsCategorias": [
         {
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
-          "valor": 144361.29
+          "valor": 152314.22
         },
         {
           "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
@@ -4092,6 +4092,28 @@
           "valor": 4686.3
         },
         {
+          "data": "2026-09-28",
+          "mes": 9,
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "fornecedor": "Aerotur Serviços",
+          "cnpjCpf": "05.120.923/0001-09",
+          "doc": "2303496654",
+          "tipoDocumento": "Fatura",
+          "detalhamento": null,
+          "valor": 2424.97
+        },
+        {
+          "data": "2026-09-28",
+          "mes": 9,
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "fornecedor": "Aerotur Serviços",
+          "cnpjCpf": "05.120.923/0001-09",
+          "doc": "2303495323",
+          "tipoDocumento": "Fatura",
+          "detalhamento": null,
+          "valor": 2573.12
+        },
+        {
           "data": "2026-09-23",
           "mes": 9,
           "categoria": "Divulgação da atividade parlamentar",
@@ -4101,6 +4123,17 @@
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": "Divulgação de matéria das atividades parlamentares da Senadora Tereza Cristina no Jornal Boca do Povo e/ou site Boca do Povo News - 09-2026.",
           "valor": 2500.0
+        },
+        {
+          "data": "2026-09-17",
+          "mes": 9,
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "fornecedor": "Aerotur Serviços",
+          "cnpjCpf": "05.120.923/0001-09",
+          "doc": "2312056690",
+          "tipoDocumento": "Fatura",
+          "detalhamento": null,
+          "valor": 2954.84
         },
         {
           "data": "2026-09-12",
@@ -5863,9 +5896,9 @@
           "valor": 4500.0
         }
       ],
-      "totalNotasFiscais": 163,
+      "totalNotasFiscais": 166,
       "escritorioApoio": "",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-16T19:03:59",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-17T10:42:07",
       "nota": ""
     }
   ]

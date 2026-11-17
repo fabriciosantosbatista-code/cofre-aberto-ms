@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-16T19:03:59",
+  "ultimaAtualizacao": "2026-11-17T10:42:07",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-16T19:03:59",
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-17T10:42:07",
   "total": 8,
   "deputados": [
     {
@@ -4908,11 +4908,11 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/141411",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/141411/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 438948.81,
+      "cotaGastaAno": 444193.81,
       "ceapCategorias": [
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 147918.2
+          "valor": 151918.2
         },
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -4920,7 +4920,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 83946.57
+          "valor": 85191.57
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -4943,7 +4943,7 @@
           "valor": 1970.83
         }
       ],
-      "totalNotasFiscais": 173,
+      "totalNotasFiscais": 175,
       "despesas": [
         {
           "data": "2026-11-03",
@@ -4981,8 +4981,28 @@
           "fornecedor": "VISUALIZA ALUGUEL DE CARROS LTDA",
           "cnpjCpfFornecedor": "09.315.090/0001-84",
           "valor": 4000.0,
+          "doc": "5580",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8167916.pdf",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-21",
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "fornecedor": "VISUALIZA ALUGUEL DE CARROS LTDA",
+          "cnpjCpfFornecedor": "09.315.090/0001-84",
+          "valor": 4000.0,
           "doc": "5581",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8168184.pdf",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-19",
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "fornecedor": "H2L EQUIPAMENTOS E SISTEMAS LTDA",
+          "cnpjCpfFornecedor": "73.505.349/0002-30",
+          "valor": 1245.0,
+          "doc": "000110864",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1807/2026/8173952.pdf",
           "mes": 10
         },
         {
@@ -6697,7 +6717,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/204351",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/204351/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 243331.09,
+      "cotaGastaAno": 241961.54,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -6713,7 +6733,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 36996.6
+          "valor": 38335.43
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -6725,7 +6745,7 @@
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 773.18
+          "valor": 811.8
         },
         {
           "categoria": "SERVIÇOS POSTAIS",
@@ -6733,11 +6753,21 @@
         },
         {
           "categoria": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
-          "valor": -23923.0
+          "valor": -26670.0
         }
       ],
-      "totalNotasFiscais": 338,
+      "totalNotasFiscais": 347,
       "despesas": [
+        {
+          "data": "2026-11-10",
+          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
+          "fornecedor": "TAIOBA SELF-SERVICE LTDA EPP",
+          "cnpjCpfFornecedor": "03.346.671/0013-30",
+          "valor": 38.62,
+          "doc": "662447",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8175663",
+          "mes": 11
+        },
         {
           "data": "2026-11-03",
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -6939,6 +6969,16 @@
           "mes": 10
         },
         {
+          "data": "2026-10-01",
+          "categoria": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
+          "fornecedor": "COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA",
+          "cnpjCpfFornecedor": "00.530.352/0001-59",
+          "valor": -2747.0,
+          "doc": "",
+          "urlNotaFiscal": null,
+          "mes": 10
+        },
+        {
           "data": "2026-09-30",
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
           "fornecedor": "NELSON BENEDITO CONSULTORIA IMOBILIARIA LTDA",
@@ -7091,6 +7131,16 @@
         {
           "data": "2026-08-29",
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "OSHIRO  CIA LTDA",
+          "cnpjCpfFornecedor": "03.622.479/0001-96",
+          "valor": 269.75,
+          "doc": "4457",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8174096",
+          "mes": 8
+        },
+        {
+          "data": "2026-08-29",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
           "fornecedor": "POSTO NELCI MARIA LOCATELLI E CIA LTDA",
           "cnpjCpfFornecedor": "14.967.901/0001-61",
           "valor": 176.92,
@@ -7103,9 +7153,29 @@
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
           "fornecedor": "POSTO LIBERDADE LOCATELLI LTDA.",
           "cnpjCpfFornecedor": "02.394.473/0001-46",
+          "valor": 120.0,
+          "doc": "239930",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8174087",
+          "mes": 8
+        },
+        {
+          "data": "2026-08-28",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "POSTO LIBERDADE LOCATELLI LTDA.",
+          "cnpjCpfFornecedor": "02.394.473/0001-46",
           "valor": 264.68,
           "doc": "239939",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8154764",
+          "mes": 8
+        },
+        {
+          "data": "2026-08-28",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "SHALOM AUTO POSTO LTDA",
+          "cnpjCpfFornecedor": "15.502.263/0001-76",
+          "valor": 274.45,
+          "doc": "9983",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8174091",
           "mes": 8
         },
         {
@@ -7126,6 +7196,16 @@
           "valor": 150.0,
           "doc": "239754",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8154763",
+          "mes": 8
+        },
+        {
+          "data": "2026-08-24",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "POSTO NELCI MARIA LOCATELLI E CIA LTDA",
+          "cnpjCpfFornecedor": "14.967.901/0001-61",
+          "valor": 150.0,
+          "doc": "18306",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8174053",
           "mes": 8
         },
         {
@@ -7189,6 +7269,26 @@
           "mes": 8
         },
         {
+          "data": "2026-08-18",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "POSTO LIBERDADE LOCATELLI LTDA.",
+          "cnpjCpfFornecedor": "02.394.473/0001-46",
+          "valor": 110.02,
+          "doc": "239335",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8174051",
+          "mes": 8
+        },
+        {
+          "data": "2026-08-17",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "POSTO GUENO PROSA LTDA",
+          "cnpjCpfFornecedor": "03.024.296/0001-79",
+          "valor": 150.0,
+          "doc": "312325",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8174030",
+          "mes": 8
+        },
+        {
           "data": "2026-08-15",
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
           "fornecedor": "POSTO LIBERDADE LOCATELLI LTDA.",
@@ -7246,6 +7346,16 @@
           "valor": 1291.38,
           "doc": "18651",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8167816",
+          "mes": 8
+        },
+        {
+          "data": "2026-08-11",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "POSTO NELCI MARIA LOCATELLI E CIA LTDA",
+          "cnpjCpfFornecedor": "14.967.901/0001-61",
+          "valor": 264.61,
+          "doc": "18230",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8174047",
           "mes": 8
         },
         {
@@ -10140,23 +10250,23 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/74374",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/74374/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 501673.87,
+      "cotaGastaAno": 510922.82,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "valor": 263153.71
+          "valor": 263333.71
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 111792.03
+          "valor": 113850.98
+        },
+        {
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "valor": 61200.0
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
           "valor": 55229.55
-        },
-        {
-          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 54400.0
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
@@ -10172,11 +10282,51 @@
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
-          "valor": 812.0
+          "valor": 1022.0
         }
       ],
-      "totalNotasFiscais": 144,
+      "totalNotasFiscais": 149,
       "despesas": [
+        {
+          "data": "2026-11-12",
+          "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
+          "fornecedor": "VITORINO'S BAR E RESTAURANTE LTDA",
+          "cnpjCpfFornecedor": "02.531.736/0001-11",
+          "valor": 210.0,
+          "doc": "30149",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1649/2026/8176971.pdf",
+          "mes": 11
+        },
+        {
+          "data": "2026-11-11",
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "fornecedor": "GTW AGENCIA LTDA",
+          "cnpjCpfFornecedor": "24.001.185/0001-17",
+          "valor": 180.0,
+          "doc": "325",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1649/2026/8176799.pdf",
+          "mes": 11
+        },
+        {
+          "data": "2026-11-05",
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENERGIA S.A.",
+          "cnpjCpfFornecedor": "15.413.826/0001-50",
+          "valor": 858.95,
+          "doc": "19765000",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1649/2026/8176781.pdf",
+          "mes": 11
+        },
+        {
+          "data": "2026-10-31",
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "fornecedor": "CAVALHEIRO COMERCIO E LOCACAO DE VEICULOS LTDA",
+          "cnpjCpfFornecedor": "15.225.644/0001-55",
+          "valor": 6800.0,
+          "doc": "471",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1649/2026/8176959.pdf",
+          "mes": 10
+        },
         {
           "data": "2026-10-30",
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -10216,6 +10366,16 @@
           "doc": "14124066",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1649/2026/8171021.pdf",
           "mes": 11
+        },
+        {
+          "data": "2026-10-19",
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "fornecedor": "H2L EQUIPAMENTOS E SISTEMAS LTDA",
+          "cnpjCpfFornecedor": "73.505.349/0002-30",
+          "valor": 1200.0,
+          "doc": "000110892",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1649/2026/8176774.pdf",
+          "mes": 10
         },
         {
           "data": "2026-10-19",
@@ -13734,7 +13894,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220546",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220546/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 446195.16,
+      "cotaGastaAno": 453195.16,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -13742,7 +13902,7 @@
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 118900.0
+          "valor": 125900.0
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -13761,7 +13921,7 @@
           "valor": 8165.4
         }
       ],
-      "totalNotasFiscais": 343,
+      "totalNotasFiscais": 344,
       "despesas": [
         {
           "data": "2026-11-09",
@@ -13991,6 +14151,16 @@
           "valor": 5800.0,
           "doc": "1350",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8172515.pdf",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-01",
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "fornecedor": "S M SBARDELOTTO & CIA LTDA",
+          "cnpjCpfFornecedor": "32.537.588/0001-03",
+          "valor": 7000.0,
+          "doc": "1352",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8172528.pdf",
           "mes": 10
         },
         {
@@ -17215,7 +17385,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/74376",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/74376/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 301248.63,
+      "cotaGastaAno": 309599.17,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -17223,11 +17393,11 @@
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
-          "valor": 78000.0
+          "valor": 86000.0
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 29905.04
+          "valor": 30255.58
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
@@ -17250,8 +17420,38 @@
           "valor": 31.46
         }
       ],
-      "totalNotasFiscais": 244,
+      "totalNotasFiscais": 248,
       "despesas": [
+        {
+          "data": "2026-10-31",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "AUTO POSTO SHIRAISHI CENTRO LTDA",
+          "cnpjCpfFornecedor": "20.112.808/0001-78",
+          "valor": 212.03,
+          "doc": "690000",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8177142",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-27",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "SOUZA &amp; MIRANDA LTDA",
+          "cnpjCpfFornecedor": "03.623.191/0001-36",
+          "valor": 138.51,
+          "doc": "471243",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8177141",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-22",
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "fornecedor": "HVA CASTRO",
+          "cnpjCpfFornecedor": "23.788.744/0001-18",
+          "valor": 3000.0,
+          "doc": "757",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1697/2026/8174935.pdf",
+          "mes": 10
+        },
         {
           "data": "2026-10-10",
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -17260,6 +17460,16 @@
           "valor": 204.76,
           "doc": "1681981",
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8168743",
+          "mes": 10
+        },
+        {
+          "data": "2026-10-04",
+          "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+          "fornecedor": "HVA CASTRO",
+          "cnpjCpfFornecedor": "23.788.744/0001-18",
+          "valor": 5000.0,
+          "doc": "758",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1697/2026/8174970.pdf",
           "mes": 10
         },
         {

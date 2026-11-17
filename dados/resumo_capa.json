@@ -1,10 +1,10 @@
 {
  "ano": 2026,
- "atualizado": "2026-11-16",
+ "atualizado": "2026-11-17",
  "dinheiro": [
   {
    "nome": "Governo do Estado de MS",
-   "valor": 21156816301.66,
+   "valor": 21246162434.07,
    "aba": "governo-ms"
   },
   {
@@ -19,26 +19,26 @@
   },
   {
    "nome": "Cotas e verbas dos parlamentares de MS",
-   "valor": 23021570.66,
+   "valor": 23057998.53,
    "aba": "deputados"
   }
  ],
  "governoCredores": [
   {
    "nome": "Repasses a municípios, órgãos e previdência",
-   "valor": 10691972271.04
+   "valor": 10706176142.63
   },
   {
    "nome": "Fornecedores e prestadores de serviço",
-   "valor": 5797637849.53
+   "valor": 5872579045.49
   },
   {
    "nome": "Folha, aposentadorias e pensões",
-   "valor": 3360703856.87
+   "valor": 3360904296.1
   },
   {
    "nome": "Bancos e dívida",
-   "valor": 1306502324.22
+   "valor": 1306502949.85
   }
  ],
  "emendasTipos": [
@@ -65,13 +65,13 @@
  ],
  "kpis": {
   "parlamentares": 65,
-  "notas": 10577,
-  "empresas": 1420,
-  "sinais": 346,
+  "notas": 10601,
+  "empresas": 1423,
+  "sinais": 349,
   "sinaisFortes": 26,
   "acimaTeto": 421,
-  "contratosEstado": 2775,
-  "fontes": 25
+  "contratosEstado": 2777,
+  "fontes": 28
  },
  "fluxoCota": {
   "fontes": [
@@ -103,25 +103,25 @@
    },
    {
     "nome": "Deputados federais",
-    "valor": 2938299.31,
+    "valor": 2966774.25,
     "aba": "deputados",
     "pessoas": 8,
     "categorias": {
-     "Divulgação": 1261168.5,
-     "Veículos e combustível": 1070965.19,
-     "Viagens, passagens e hospedagem": 107901.26,
-     "Escritório, aluguel e apoio": 522187.36
+     "Divulgação": 1261348.5,
+     "Veículos e combustível": 1098454.56,
+     "Viagens, passagens e hospedagem": 108149.88,
+     "Escritório, aluguel e apoio": 525491.31
     }
    },
    {
     "nome": "Senadores",
-    "valor": 1265837.42,
+    "valor": 1273790.35,
     "aba": "senadores",
     "pessoas": 3,
     "categorias": {
      "Divulgação": 389152.64,
      "Escritório, aluguel e apoio": 295714.03,
-     "Viagens, passagens e hospedagem": 270009.89,
+     "Viagens, passagens e hospedagem": 277962.82,
      "Veículos e combustível": 310960.86
     }
    }
@@ -133,19 +133,19 @@
    },
    {
     "nome": "Divulgação",
-    "valor": 5573457.59
+    "valor": 5573637.59
    },
    {
     "nome": "Veículos e combustível",
-    "valor": 4552974.93
+    "valor": 4580464.3
    },
    {
     "nome": "Viagens, passagens e hospedagem",
-    "valor": 2210850.6
+    "valor": 2219052.15
    },
    {
     "nome": "Escritório, aluguel e apoio",
-    "valor": 1745030.18
+    "valor": 1748334.13
    },
    {
     "nome": "Outros",
@@ -160,7 +160,7 @@
    },
    {
     "nome": "Visualiza Aluguel de Carros",
-    "valor": 375899.29,
+    "valor": 379899.29,
     "gabinetes": 7
    },
    {
