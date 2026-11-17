@@ -33,6 +33,7 @@ jobs:
             echo "================ $u"
             curl -sS -m 180 -A "Mozilla/5.0 (CofreAbertoMS)" -o resp.bin -w "HTTP %{http_code} · %{size_download} bytes · %{time_total}s\n" "$u" || true
             if [ -n "$TEXTO" ]; then
+              python3 -c "import re;s=open('resp.bin',encoding='utf-8',errors='ignore').read();print('LINKS:');[print(' ',u) for u in sorted(set(re.findall(r'(?:href|src|data-src)=[\x22\x27]([^\x22\x27]+\.(?:pdf|xlsx?|csv|ods|json|zip)[^\x22\x27]*)',s,re.I)))];i=s.find('CNPJ');print('TRECHO EM VOLTA DE CNPJ:', s[max(0,i-1500):i+2500] if i>=0 else 'nenhum')"
               python3 -c "import re,html,os;s=open('resp.bin',encoding='utf-8',errors='ignore').read();s=re.sub(r'(?is)<(script|style).*?</\\1>','',s);s=re.sub(r'(?i)</t[dh]>',' | ',s);s=re.sub(r'(?i)</tr>','\\n',s);s=html.unescape(re.sub(r'<[^>]+>',' ',s));s=re.sub(r'[ \\t]+',' ',s);s=re.sub(r'\\n\\s*\\n+','\\n',s);print(s[:int(os.environ['TEXTO'])])"
             else
               head -c 3000 resp.bin; echo
