@@ -13,6 +13,10 @@ on:
         description: 'Opcional: conta e mostra itens do JSON que contêm este termo (sem acento, maiúsculas)'
         required: false
         default: ''
+      texto:
+        description: 'Opcional: quantos caracteres mostrar do texto da página, sem as tags HTML (ex.: 40000)'
+        required: false
+        default: ''
 
 jobs:
   diagnostico:
@@ -23,11 +27,16 @@ jobs:
         env:
           URLS: ${{ inputs.urls }}
           TERMO: ${{ inputs.termo }}
+          TEXTO: ${{ inputs.texto }}
         run: |
           for u in $URLS; do
             echo "================ $u"
             curl -sS -m 180 -A "Mozilla/5.0 (CofreAbertoMS)" -o resp.bin -w "HTTP %{http_code} · %{size_download} bytes · %{time_total}s\n" "$u" || true
-            head -c 3000 resp.bin; echo
+            if [ -n "$TEXTO" ]; then
+              python3 -c "import re,html,os;s=open('resp.bin',encoding='utf-8',errors='ignore').read();s=re.sub(r'(?is)<(script|style).*?</\\1>','',s);s=re.sub(r'(?i)</t[dh]>',' | ',s);s=re.sub(r'(?i)</tr>','\\n',s);s=html.unescape(re.sub(r'<[^>]+>',' ',s));s=re.sub(r'[ \\t]+',' ',s);s=re.sub(r'\\n\\s*\\n+','\\n',s);print(s[:int(os.environ['TEXTO'])])"
+            else
+              head -c 3000 resp.bin; echo
+            fi
             python3 - <<'PY' || true
           import json, os, unicodedata
           try:
