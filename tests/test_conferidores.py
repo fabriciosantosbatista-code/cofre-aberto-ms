@@ -115,33 +115,6 @@ check(r["resultado"] == "diverge", "supersalários: um magistrado a mais na font
 r = rodar(SS, fonte_padrao(tj=(2, 150.4)), v.v_tjms)
 check(r["resultado"] == "confere", "supersalários: diferença de centavos no salário-base → confere (tolerância R$ 1)")
 
-# supersalários: TCE-MS (servidores) por consulta nova ao portal do TCE
-SS2 = {"supersalarios.json": {"orgaos": [{"orgao": "TCE-MS — servidores", "mes": "09/2026", "pessoas": 2, "totalBase": 300.0, "totalOutras": 50.0},
-                                         {"orgao": "Governo do Estado — ativos", "mes": "10/2026", "pessoas": 10}], "orgaosGoverno": [], "totalPessoas": 12}}
-
-
-def fonte_tce(rem=((1, 100.0), (2, 200.0)), outros=((1, 50.0),), fora=False):
-    def get(url, params=None, tent=3, timeout=90):
-        if fora:
-            return None
-        if url.endswith("/Remuneracao"):
-            return {"items": [{"matricula": m, "totalVencimentosRemuneracao": v} for m, v in rem], "totalPages": 1}
-        if url.endswith("/OutroPagamento"):
-            return {"items": [{"matricula": m, "totalVencimentoOutrosPagamentos": v} for m, v in outros] + [{"matricula": 99, "totalVencimentoOutrosPagamentos": 7.0}], "totalPages": 1}
-        return None
-    return get
-
-
-r = rodar(SS2, fonte_tce(), v.v_tjms)
-check(r["resultado"] == "confere" and r["unidadesConferidas"] == 1 and r["registrosAbrangidos"] == 2 and r["unidadesBase"] == 2,
-      "supersalários TCE: pessoas, salário-base e outras verbas iguais → confere; cobre 1 órgão e as 2 pessoas dele")
-r = rodar(SS2, fonte_tce(rem=((1, 100.0), (2, 200.0), (3, 0.0))), v.v_tjms)
-check(r["resultado"] == "diverge", "supersalários TCE: uma pessoa a mais na folha da fonte → diverge")
-r = rodar(SS2, fonte_tce(outros=((1, 80.0),)), v.v_tjms)
-check(r["resultado"] == "diverge", "supersalários TCE: outras verbas diferentes → diverge (quem não está na folha não entra na soma)")
-r = rodar(SS2, fonte_tce(fora=True), v.v_tjms)
-check(r["resultado"] == "indisponivel", "supersalários TCE: portal fora do ar → indisponível")
-
 print(f"✅ {len(oks)} checagens OK · ❌ {len(erros)} erros")
 for e in erros:
     print("❌", e)

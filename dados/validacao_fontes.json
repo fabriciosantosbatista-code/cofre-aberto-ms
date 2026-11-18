@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-18T19:46:35",
+ "geradoEm": "2026-11-18T19:31:22",
  "fontes": {
   "governo-ms": {
    "resultado": "confere",
@@ -930,58 +930,40 @@
   },
   "supersalarios": {
    "resultado": "confere",
-   "em": "2026-11-18T19:46:35",
-   "metodo": "TJMS no DadosJusBr (contracheques enviados ao CNJ) e TCE-MS (servidores) numa consulta nova ao portal do TCE: quantidade de pessoas, salário-base e outras verbas do mês publicado",
+   "em": "2026-11-18T18:33:50",
+   "metodo": "DadosJusBr (contracheques do TJMS enviados ao CNJ, 09/2026): quantidade e salário-base",
    "fonteUrl": "https://dadosjusbr.org/",
-   "conferidos": 5,
+   "conferidos": 2,
    "divergentes": [],
    "comparados": [
     {
-     "item": "TJMS: magistrados",
+     "item": "magistrados",
      "site": 227,
      "fonte": 227,
      "diferenca": 0
     },
     {
-     "item": "TJMS: salário-base total",
+     "item": "salário-base total",
      "site": 8910028.25,
      "fonte": 8910028.25,
-     "diferenca": 0.0
-    },
-    {
-     "item": "TCE-MS servidores: pessoas",
-     "site": 576,
-     "fonte": 576,
-     "diferenca": 0
-    },
-    {
-     "item": "TCE-MS servidores: salário-base total",
-     "site": 11010774.43,
-     "fonte": 11010774.43,
-     "diferenca": 0.0
-    },
-    {
-     "item": "TCE-MS servidores: outras verbas",
-     "site": 4768570.54,
-     "fonte": 4768570.54,
      "diferenca": 0.0
     }
    ],
    "naoObtidos": 0,
    "nota": "",
    "granularidade": "unidade",
-   "unidade": "órgão no mês publicado (quantidade de pessoas e totais da folha)",
-   "unidadesBase": 46,
+   "unidade": "órgão no mês publicado (quantidade de pessoas e salário-base)",
+   "unidadesBase": 14,
    "registrosBase": 92796,
-   "selecao": "recorte: TJMS e TCE-MS (servidores); MPMS não está na base; Governo do Estado, TRT24, TCE-MS membros e Câmara CG não conferidos",
+   "selecao": "recorte: só o TJMS (único órgão com contracheques no DadosJusBr nesta base)",
    "responsavel": "validar_fontes.py — conferência automática do robô diário (consulta própria à fonte, independente da coleta)",
    "metodologia": "ICP 2.0",
    "unidadesConferidas": 2,
    "idsConferidos": [
-    "TJMS",
-    "TCE-MS — servidores"
+    "magistrados",
+    "salário-base total"
    ],
-   "registrosAbrangidos": 803
+   "registrosAbrangidos": 227
   },
   "shows": {
    "resultado": "confere",
