@@ -25,6 +25,7 @@
    "avisosPlataforma": [
     "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
    ],
+   "origemLinhas": {},
    "etapas": {
     "nConcluidas": 12
    }
@@ -54,6 +55,11 @@
    "avisosPlataforma": [
     "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
    ],
+   "origemLinhas": {
+    "  ❌ primeiroEscalao: /d0125/transpfolhadepagamento/v1/exercicios: 401 None": [
+     "governo-ms"
+    ]
+   },
    "etapas": {
     "nConcluidas": 10
    }
@@ -88,6 +94,11 @@
    "avisosPlataforma": [
     "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
    ],
+   "origemLinhas": {
+    "⚠️ PNCP não respondeu todas as páginas de 2026-01, 2026-02, 2026-03, 2026-04, 2026-05, 2026-06, 2026-07, 2026-08, 2026-09, 2026-10, 2026-11 — esses meses ficam com os dados da coleta anterior": [
+     "alugueis"
+    ]
+   },
    "etapas": {
     "nConcluidas": 12
    }
@@ -116,6 +127,11 @@
    "avisosPlataforma": [
     "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
    ],
+   "origemLinhas": {
+    "  ⚠️ TRE-MS — Justiça Eleitoral: valores zerados em 09/2026 — fora do ranking": [
+     "judiciario"
+    ]
+   },
    "etapas": {
     "nConcluidas": 12
    }
@@ -161,6 +177,23 @@
    "avisosPlataforma": [
     "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
    ],
+   "origemLinhas": {
+    "[12:51:31]   ⚠️ Diárias indisponível para Jardim: HTTPConnectionPool(host='200.209.160.171', port=8079): Max retries exceeded with url: /transparenciacm/VersaoJson/Despesas/?Listagem=Diarias&DiaInicioPeriodo=01&MesInicialPeriodo=01&DiaFinalPeriodo=31&MesFinalPeriodo=12&Ano=2026&ConectarExercicio=202": [
+     "camaras-ms"
+    ],
+    "[12:51:31]   ⚠️ Nenhum dado coletado para Jardim — mantendo dados anteriores": [
+     "camaras-ms"
+    ],
+    "[12:52:04]   ⚠️ Servidores (11/2026) indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))": [
+     "camaras-ms"
+    ],
+    "[12:52:15]   ⚠️ Diárias indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))": [
+     "camaras-ms"
+    ],
+    "[12:52:15]   ⚠️ Nenhum dado coletado para Sonora — mantendo dados anteriores": [
+     "camaras-ms"
+    ]
+   },
    "etapas": {
     "nConcluidas": 11
    }
@@ -192,6 +225,11 @@
    "avisosPlataforma": [
     "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
    ],
+   "origemLinhas": {
+    "[12:35:00]   ⚠️ Portal do TJMS indisponível: HTTPSConnectionPool(host='www5.tjms.jus.br', port=443): Read timed out. (read timeout=90)": [
+     "judiciario"
+    ]
+   },
    "etapas": {
     "nConcluidas": 10
    }
@@ -226,6 +264,17 @@
    "avisosPlataforma": [
     "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
    ],
+   "origemLinhas": {
+    "Traceback (most recent call last):": [
+     "auditoria"
+    ],
+    "RuntimeError: /k0156/transpctpublico/v1/contratopublico/consultar: 401 None": [
+     "auditoria"
+    ],
+    "⚠️ coletar_contratos_governo.py falhou — contratos anteriores mantidos": [
+     "auditoria"
+    ]
+   },
    "etapas": {
     "nConcluidas": 14
    }
@@ -252,6 +301,7 @@
    "avisosPlataforma": [
     "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
    ],
+   "origemLinhas": {},
    "etapas": {
     "nConcluidas": 10
    }
@@ -278,6 +328,7 @@
    "avisosPlataforma": [
     "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
    ],
+   "origemLinhas": {},
    "etapas": {
     "nConcluidas": 10
    }
@@ -309,6 +360,7 @@
    "avisosPlataforma": [
     "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
    ],
+   "origemLinhas": {},
    "etapas": {
     "nConcluidas": 16
    }
@@ -317,20 +369,20 @@
  "bases": {
   "camara": "sem_avisos",
   "governo-ms": "com_erros",
-  "obras": "com_erros",
+  "obras": "sem_avisos",
   "contratos-cg": "sem_avisos",
   "shows": "sem_avisos",
   "alugueis": "fonte_indisponivel",
   "emendas": "com_avisos",
-  "deputados": "fonte_indisponivel",
-  "deputados-estaduais": "fonte_indisponivel",
-  "senadores": "fonte_indisponivel",
-  "prefeitura": "fonte_indisponivel",
+  "deputados": "sem_avisos",
+  "deputados-estaduais": "sem_avisos",
+  "senadores": "sem_avisos",
+  "prefeitura": "sem_publicacao_nova",
   "camaras-ms": "fonte_indisponivel",
-  "deputados-brasil": "fonte_indisponivel",
-  "senado-brasil": "fonte_indisponivel",
+  "deputados-brasil": "sem_avisos",
+  "senado-brasil": "sem_avisos",
   "judiciario": "com_avisos",
-  "supersalarios": "parcial",
+  "supersalarios": "sem_avisos",
   "auditoria": "parcial",
   "eleicoes": "sem_avisos",
   "presidencia": "sem_avisos",
@@ -630,5 +682,6 @@
   },
   "resultado": "publicado",
   "motivos": []
- }
+ },
+ "releitura": "atribuição por trecho do log (2026-11-18)"
 }

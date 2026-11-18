@@ -319,6 +319,11 @@ if leve.exists() and cm:
     dif = [v["nome"] for v in cm["vereadores"] if v["nome"] in vl and not igual((vl[v["nome"]].get("verbaIndenizatoria") or {}).get(f"gastoPago{cm['ano']}"), v["verbaIndenizatoria"].get(f"gastoPago{cm['ano']}"))]
     checa("Painel leve da Câmara CG = dados completos", not dif, f"diferem: {dif[:3]}")
 
+# ───────────────────────── 12. conferências por base (tipos de teste do ICP) ─────────────────────────
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _conferencias_icp import rodar as conferencias_icp  # noqa: E402
+conferencias_icp(D, checa, igual, soma)
+
 # ───────────────────────── resultado ─────────────────────────
 print(f"✅ {len(oks)} conferências OK · ⚠️ {len(avisos)} avisos · ❌ {len(erros)} erros")
 for e in erros:
