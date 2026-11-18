@@ -119,6 +119,28 @@ for n in (9, 10):
 c = "".join(map(str, d))
 r6 = rx.analisar_log(log(f"⚠️ fornecedor FULANO DE TAL {c} sem CNPJ", f"⚠️ CPF {c[:3]}.{c[3:6]}.{c[6:9]}-{c[9:]} inválido").decode())
 check(all(c not in l and f"{c[:3]}.{c[3:6]}" not in l for l in r6["avisos"]), "CPF numa linha de log é mascarado antes de ir para o registro")
+# atribuição do aviso à base: pelo trecho do log (linha anterior) e pelo passo, não a todas as bases do job
+an = rx.analisar_log(log("##[group]Run python3 scripts/coletar_dados.py", "Coletando deputados federais (Câmara dos Deputados)...",
+                         "Coletando Câmara Municipal de Jardim (Fiorilli SCPI)...", "  Tentativa 1 falhou, tentando novamente...",
+                         "  ⚠️ Diárias indisponível para Jardim: Max retries exceeded", "  ⚠️ Nenhum dado coletado para Jardim — mantendo dados anteriores",
+                         "Coletando senadores...").decode())
+eb = rx.estado_bases("coletar_dados", "parcial", an, {})
+check(eb["camaras-ms"] == "fonte_indisponivel" and eb["deputados"] == "sem_avisos" and eb["senadores"] == "sem_avisos" and eb["prefeitura"] == "sem_avisos",
+      "falha de uma Câmara do interior conta só para Câmaras do interior (não para deputados, senadores, prefeitura)")
+an = rx.analisar_log(log("##[group]Run python3 scripts/coletar_contratos_governo.py", "⚠️ coletar_contratos_governo.py falhou — contratos anteriores mantidos").decode())
+eb = rx.estado_bases("coletar_fontes_auditoria", "parcial", an, {})
+check(eb == {"auditoria": "parcial", "supersalarios": "sem_avisos"}, "falha num passo de coletor de uma base só conta só para essa base")
+an = rx.analisar_log(log("##[group]Run python3 scripts/coletar_governo_ms.py", "  diárias: 61401 trechos", "  ❌ primeiroEscalao: /d0125/x: 401 None").decode())
+check(rx.estado_bases("coletar_governo_ms", "com_erros", an, {}) == {"governo-ms": "com_erros", "obras": "sem_avisos"}, "erro da folha do primeiro escalão conta para o Governo, não para Obras")
+an = rx.analisar_log(log("##[group]Run python3 scripts/x.py", "  ⚠️ algo falhou — dados anteriores mantidos").decode())
+check(set(rx.estado_bases("coletar_governo_ms", "parcial", an, {}).values()) == {"parcial"}, "sem palavra-chave nem trecho: vale para todas as bases do job (não esconde falha)")
+an = rx.analisar_log(log("##[group]Run python3 scripts/coletar_dados.py", "Coletando Câmara Municipal de Jardim...", "##[endgroup]",
+                         "##[group]Run python3 scripts/outro.py", "  ⚠️ falhou — dados anteriores mantidos").decode())
+check(set(rx.estado_bases("coletar_dados", "parcial", an, {}).values()) == {"parcial"}, "o trecho não atravessa passos do job")
+# gerar_icp usa a mesma atribuição gravada no registro (origemLinhas)
+check(gi.linhas_da_base({"jobs": {"coletar_dados": {"bases": rx.JOB_BASES["coletar_dados"], "falhas": ["⚠️ Nenhum dado para Jardim — mantendo dados anteriores"],
+                         "origemLinhas": {"⚠️ Nenhum dado para Jardim — mantendo dados anteriores": ["camaras-ms"]}}}}, "deputados") == [],
+      "pendências do ICP: linha atribuída a Câmaras do interior não aparece em Deputados")
 # fonte sem publicação nova (monitoramento)
 orig = rx.J
 rx.J = lambda n: {"fontes": {"prefeitura": {"classe": "aguardando_fonte"}}} if n == "monitoramento.json" else orig(n)

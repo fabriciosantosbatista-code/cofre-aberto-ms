@@ -54,13 +54,22 @@ JOB_BASES = {
     "coletar_tjms": ["judiciario", "supersalarios"], "coletar_trt24": ["judiciario"], "coletar_tre_ms": ["judiciario"],
     "coletar_fontes_auditoria": ["auditoria", "supersalarios"],
 }
-# a qual base pertence uma linha de aviso (pela palavra-chave); sem palavra-chave, vale para todas as bases do job
+# a qual base pertence uma linha de aviso: (1) pela palavra-chave da própria linha; (2) senão, pelo trecho do log em que ela
+# aparece (a última linha comum com palavra-chave antes dela, no mesmo passo — ex.: "Coletando Câmara Municipal de Jardim…");
+# (3) sem nenhuma das duas, vale para todas as bases do job
 BASE_TXT = [("camara", r"relatórios|Câmara Municipal de Campo Grande|45\.225\.6\.93|gabinete|verba indenizat"),
-            ("camaras-ms", r"Sonora|[Cc]âmara de (?!Campo Grande)|[Cc]âmaras|camaras/|Fiorilli|SAPL"),
+            ("camaras-ms", r"Sonora|[Cc]âmara (Municipal )?de (?!Campo Grande)|[Cc]âmaras|camaras/|Fiorilli|SAPL"),
             ("judiciario", r"TJMS|TRT|TRE"), ("supersalarios", r"teto|supersal|zerados"), ("prefeitura", r"Prefeitura|SIG"),
-            ("governo-ms", r"Estado|sgi\.ms"), ("emendas", r"emendas|CGU"), ("deputados-estaduais", r"ALEMS|Assembleia"),
+            ("governo-ms", r"Estado|sgi\.ms|primeiroEscalao|transpfolha"), ("emendas", r"emendas|CGU"), ("deputados-estaduais", r"ALEMS|Assembleia"),
             ("deputados", r"Câmara dos Deputados|CEAP|camara\.leg"), ("senadores", r"Senado"), ("shows", r"show"),
             ("alugueis", r"alugu|locaç|PNCP"), ("auditoria", r"pagadores|Receita|CEIS|CNEP|sinais")]
+# passo do job → bases (quando o passo roda um coletor de uma base só): define o trecho do log logo no início do passo
+SCRIPT_BASES = {"coletar_contratos_governo": ["auditoria"], "coletar_licitacoes_governo": ["auditoria"], "coletar_aditivos_cg": ["auditoria"],
+                "coletar_cnpj": ["auditoria"], "coletar_alugueis": ["alugueis"], "coletar_shows": ["shows"],
+                "coletar_contratos_cg": ["contratos-cg"], "coletar_verba_camara_cg": ["camara"], "coletar_presidencia": ["presidencia"],
+                "coletar_stf": ["stf"], "coletar_tse": ["eleicoes"], "coletar_votacoes": ["votacoes"],
+                "coletar_producao_legislativa": ["producao"], "coletar_receitas": ["arrecadacao"]}
+PASSO = re.compile(r"##\[group\]Run .*?scripts/(\w+)\.py")
 # linhas que são o eco do comando do script (não a saída dele)
 ECO = re.compile(r"\x1b\[36;1m|\[36;1m|echo \"|\|\| echo|^\s*#|^##\[group\]Run |^shell: ")
 AVISO = re.compile(r"⚠️|##\[warning\]|::warning")
@@ -146,16 +155,26 @@ def analisar_log(texto):
     """Extrai avisos, erros, falhas de coletor e sinais de fonte fora do ar. Formato inesperado = poucas linhas
     reconhecíveis: devolve formatoReconhecido=False para o chamador não tratar como 'sem avisos'."""
     avisos, erros, falhas, fora, plataforma = [], [], [], [], []
+    origem, contexto = {}, None  # linha de aviso/erro → bases do trecho do log em que apareceu
     linhas = texto.splitlines()
     com_ts = sum(1 for l in linhas[:200] if TS.match(l))
     reconhecido = bool(linhas) and (com_ts >= min(5, len(linhas)) * 0.5 or any("##[group]" in l for l in linhas[:400]))
     for bruta in linhas:
+        if "##[group]" in bruta:  # novo passo do job: o trecho anterior não vale mais; coletor de uma base só já define o trecho
+            m = PASSO.search(bruta)
+            contexto = SCRIPT_BASES.get(m.group(1)) if m else None
         if ECO.search(bruta):
             continue
         l = limpa(bruta)
         if not l.strip():
             continue
         e_erro, e_aviso = bool(ERRO.search(l)), bool(AVISO.search(l))
+        if not (e_erro or e_aviso):
+            chave = [b for b, rx in BASE_TXT if re.search(rx, l)]
+            if chave:
+                contexto = chave
+        elif contexto and l not in origem:
+            origem[l] = contexto
         if (e_aviso or e_erro) and PLATAFORMA.search(l):
             if l not in plataforma:
                 plataforma.append(l)
@@ -169,7 +188,8 @@ def analisar_log(texto):
             avisos.append(l)
         if (e_aviso or e_erro) and FONTE_FORA.search(l) and l not in fora:
             fora.append(l)
-    return {"avisos": avisos, "erros": erros, "falhas": falhas, "fonteFora": fora, "plataforma": plataforma, "linhas": len(linhas), "formatoReconhecido": reconhecido}
+    return {"avisos": avisos, "erros": erros, "falhas": falhas, "fonteFora": fora, "plataforma": plataforma, "origem": origem,
+            "linhas": len(linhas), "formatoReconhecido": reconhecido}
 
 
 def etapas(job):
@@ -199,8 +219,10 @@ def classificar(job, leitura, analise):
     return "sem_avisos", "coleta concluída sem avisos"
 
 
-def bases_da_linha(l, bases_job):
+def bases_da_linha(l, bases_job, origem=None):
     alvo = [b for b, rx in BASE_TXT if re.search(rx, l) and b in bases_job]
+    if not alvo and origem:
+        alvo = [b for b in origem.get(l) or [] if b in bases_job]
     return alvo or list(bases_job)
 
 
@@ -212,7 +234,7 @@ def estado_bases(nome, estado, analise, monit):
         if estado in ("falha_execucao", "leitura_indisponivel"):
             out[b] = estado
             continue
-        meus = lambda xs: [l for l in xs if b in bases_da_linha(l, bases)]
+        meus = lambda xs: [l for l in xs if b in bases_da_linha(l, bases, analise.get("origem"))]
         if meus(analise["fonteFora"]) and (meus(analise["falhas"]) or meus(analise["erros"])):
             out[b] = "fonte_indisponivel"
         elif meus(analise["falhas"]):
@@ -300,6 +322,8 @@ def montar_registro(repo, run, get=http_get):
             "nFalhas": len(analise["falhas"]) if conhecido else None,
             "avisos": analise["avisos"][:25], "erros": analise["erros"][:25], "falhas": analise["falhas"][:15], "fonteFora": analise["fonteFora"][:10],
             "avisosPlataforma": analise["plataforma"][:3],
+            "origemLinhas": {l: bs for l, bs in (analise.get("origem") or {}).items()
+                             if l in analise["avisos"][:25] + analise["erros"][:25] + analise["falhas"][:15] + analise["fonteFora"][:10]},
             "etapas": {k: v for k, v in etapas(j).items() if v and k != "concluidas"} | {"nConcluidas": len(etapas(j)["concluidas"])},
         }
         for b, e in estado_bases(nome, estado, analise, monit).items():

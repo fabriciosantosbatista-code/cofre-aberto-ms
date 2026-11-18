@@ -163,7 +163,7 @@ def linhas_da_base(execucao, fid):
             continue
         for chave in ("falhas", "fonteFora", "erros", "avisos"):
             for l in j.get(chave) or []:
-                if fid in bases_da_linha(l, j.get("bases") or []) and l not in out:
+                if fid in bases_da_linha(l, j.get("bases") or [], j.get("origemLinhas")) and l not in out:
                     out.append(l)
         if j.get("erroLeitura"):
             out.append(f"não foi possível ler o log do robô {job}: {j['erroLeitura']}")
