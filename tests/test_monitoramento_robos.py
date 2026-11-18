@@ -146,7 +146,7 @@ def clone():
             shutil.rmtree(r / rel)
         shutil.copytree(ROOT / rel, r / rel, ignore=shutil.ignore_patterns("__pycache__"))
     subprocess.run(["git", "-C", str(r), "add", "-A"], check=True)
-    subprocess.run(["git", "-C", str(r), "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "base válida"], check=True)
+    subprocess.run(["git", "-C", str(r), "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "--allow-empty", "-m", "base válida"], check=True)
     return tmp, r
 
 
