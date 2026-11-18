@@ -63,26 +63,56 @@ def brl(t):
     return float(str(t).replace("R$", "").replace(".", "").replace(",", ".").strip())
 
 
-def resultado(itens, metodo, fonte_url, nota=""):
-    """itens: [(nome, site, fonte)] com fonte None = não obtido."""
+METODOLOGIA = "ICP 2.0"
+RESPONSAVEL = "validar_fontes.py — conferência automática do robô diário (consulta própria à fonte, independente da coleta)"
+
+
+def resultado(itens, metodo, fonte_url, nota="", granularidade="registro", unidade="registro", unidades_base=None,
+              registros_base=None, registros_por_unidade=None, selecao="todas as unidades publicadas"):
+    """itens: [(nome, site, fonte)] com fonte None = não obtido.
+    Cobertura (metodologia ICP 2.0):
+      granularidade  registro (um a um) · unidade (total de cada parlamentar/órgão/mês) · total (um único total da base)
+      unidades_base  quantas unidades a base tem (None = desconhecido → cobertura não calculada)
+      registros_base quantos registros a base tem; registros_por_unidade: {unidade: nº de registros} para saber quantos
+                     registros entram nos totais conferidos"""
     obtidos = [i for i in itens if i[2] is not None]
+    cob = {"granularidade": granularidade, "unidade": unidade, "unidadesBase": unidades_base, "registrosBase": registros_base,
+           "selecao": selecao, "responsavel": RESPONSAVEL, "metodologia": METODOLOGIA}
     if not obtidos:
-        return {"resultado": "indisponivel", "em": AGORA, "metodo": metodo, "fonteUrl": fonte_url, "conferidos": 0, "nota": "a fonte não respondeu"}
+        return {"resultado": "indisponivel", "em": AGORA, "metodo": metodo, "fonteUrl": fonte_url, "conferidos": 0, "nota": "a fonte não respondeu", **cob}
     div = [{"item": n, "site": round(s, 2), "fonte": round(f, 2), "diferenca": round(s - f, 2)} for n, s, f in obtidos if abs(s - f) > 1]
-    comparados = [{"item": n, "site": round(s, 2), "fonte": round(f, 2), "diferenca": round(s - f, 2)} for n, s, f in obtidos][:60]
+    comparados = [{"item": n, "site": round(s, 2), "fonte": round(f, 2), "diferenca": round(s - f, 2)} for n, s, f in obtidos][:120]
+    ids = sorted({str(n) for n, _, _ in obtidos})  # sem repetição: o mesmo item conferido duas vezes conta uma
+    if granularidade == "total":
+        abr = registros_base
+    elif registros_por_unidade is not None:
+        abr = sum(registros_por_unidade.get(i, 0) for i in ids)
+    else:
+        abr = len(ids)
     return {"resultado": "confere" if not div else "diverge", "em": AGORA, "metodo": metodo, "fonteUrl": fonte_url,
-            "conferidos": len(obtidos), "divergentes": div[:20], "comparados": comparados, "naoObtidos": len(itens) - len(obtidos), "nota": nota}
+            "conferidos": len(obtidos), "divergentes": div[:20], "comparados": comparados, "naoObtidos": len(itens) - len(obtidos), "nota": nota,
+            **cob, "unidadesConferidas": len(ids), "idsConferidos": ids[:400], "registrosAbrangidos": abr}
+
+
+def n_por(lista, chave, sub):
+    return {str(p.get(chave)): len(p.get(sub) or []) for p in lista}
 
 
 def v_governo():
     import coletar_governo_ms as g
     s = J("governo_ms.json")
+    orgaos = s.get("orgaos") or []
     try:
         d = g.despesas_periodo("despesapordataorgaos", date(int(s["ano"]), 1, 1), date.fromisoformat(s["ultimaAtualizacao"][:10]), 1000)
-        f = [("pago", s["totais"]["pago"], d["totalPago"]), ("empenhado", s["totais"]["empenhado"], d["totalEmpenhado"])]
-    except Exception as e:
+        fonte = {str(o.get("codigo")): o.get("pago") for o in d.get("despesas") or []}
+        f = [(f"{o.get('codigo')} {o['orgao'][:50]}", o["pago"], fonte.get(str(o.get("codigo")))) for o in orgaos]
+        f += [("TOTAL pago", s["totais"]["pago"], d["totalPago"]), ("TOTAL empenhado", s["totais"]["empenhado"], d["totalEmpenhado"])]
+    except Exception:
         f = [("pago", 0, None)]
-    return resultado(f, "consulta nova ao portal do Estado (mesmo período da coleta): pago e empenhado do ano", "https://www.transparencia.ms.gov.br/")
+    n_cred = len(J("governo_ms_credores.json").get("credores") or []) or None  # todos os credores do ano (governo_ms.json só traz os maiores)
+    return resultado(f, "consulta nova ao portal do Estado (mesmo período da coleta): valor pago de cada órgão e totais do ano", "https://www.transparencia.ms.gov.br/",
+                     granularidade="unidade", unidade="órgão (total pago no ano)", unidades_base=len(orgaos) + 2, registros_base=n_cred,
+                     registros_por_unidade={"TOTAL pago": n_cred}, selecao="todos os órgãos publicados + totais do ano")
 
 
 def v_alems():
@@ -104,7 +134,10 @@ def v_alems():
             cand = [x for x in of if k.split()[-1] in x]
             o = of.get(cand[0]) if len(cand) == 1 else None
         itens.append((v["nome"], v["verbaIndenizatoria"].get(f"gastoPago{de.get('ano')}") or 0, o))
-    return resultado(itens, "portal da ALEMS (/ceap/data): total do ano de cada deputado", "https://transparencia2.al.ms.gov.br/ceap")
+    vs = de.get("vereadores") or []
+    return resultado(itens, "portal da ALEMS (/ceap/data): total do ano de cada deputado", "https://transparencia2.al.ms.gov.br/ceap",
+                     granularidade="unidade", unidade="deputado estadual (total da CEAP no ano)", unidades_base=len(vs),
+                     registros_base=sum(len(v.get("despesas") or []) for v in vs), registros_por_unidade=n_por(vs, "nome", "despesas"))
 
 
 def v_senado():
@@ -114,7 +147,10 @@ def v_senado():
     for p in s.get("senadores") or []:
         f = round(sum(float(x.get("valorReembolsado") or 0) for x in d if str(x.get("codSenador")) == str(p["id"])), 2) if d else None
         itens.append((p["nome"], p.get("cotaGastaAno") or 0, f))
-    return resultado(itens, "dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS", "https://adm.senado.gov.br/adm-dadosabertos/")
+    ps = s.get("senadores") or []
+    return resultado(itens, "dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS", "https://adm.senado.gov.br/adm-dadosabertos/",
+                     granularidade="unidade", unidade="senador (total da CEAPS no ano)", unidades_base=len(ps),
+                     registros_base=sum(len(p.get("notasCeaps") or []) for p in ps), registros_por_unidade=n_por(ps, "nome", "notasCeaps"))
 
 
 def v_camara():
@@ -136,7 +172,10 @@ def v_camara():
         inv = bool(comuns) and sum(1 for x in comuns if float(x.get("valorLiquido") or 0) < 0) > len(comuns) / 2
         tot = sum((float(x.get("valorLiquido") or 0) if PASSAGEM.search(x.get("tipoDespesa") or "") else (-1 if inv else 1) * float(x.get("valorLiquido") or 0)) for x in todos)
         itens.append((p["nome"], p.get("cotaGastaAno") or 0, round(tot, 2) if ok else None))
-    res = resultado(itens, "API da Câmara: soma do valor líquido do ano de cada deputado federal de MS", "https://dadosabertos.camara.leg.br/")
+    ps = d.get("deputados") or []
+    res = resultado(itens, "API da Câmara: soma do valor líquido do ano de cada deputado federal de MS", "https://dadosabertos.camara.leg.br/",
+                    granularidade="unidade", unidade="deputado federal (total da CEAP no ano)", unidades_base=len(ps),
+                    registros_base=sum(len(p.get("despesas") or []) for p in ps), registros_por_unidade=n_por(ps, "nome", "despesas"))
     # diferença pequena (até 1%) costuma ser nota lançada ou estornada depois da coleta
     if res["resultado"] == "diverge" and all(abs(x["diferenca"]) <= max(5, 0.01 * abs(x["fonte"])) for x in res["divergentes"]):
         res["resultado"], res["nota"] = "mudou_na_fonte", "diferenças até 1% — lançamentos/estornos feitos na Câmara depois da coleta"
@@ -165,7 +204,10 @@ def v_siconfi():
             site = (e.get("meses") or {}).get(chave, {}).get("icms")
             if site is not None and col in icms:
                 itens.append((f"ICMS {chave}", site, icms[col]))
-    return resultado(itens or [("ICMS", 0, None)], f"Siconfi RREO Anexo 3 ({ano}, {(mes + 1) // 2}º bimestre): ICMS mês a mês", "https://siconfi.tesouro.gov.br/")
+    nm = len(e.get("meses") or {})
+    return resultado(itens or [("ICMS", 0, None)], f"Siconfi RREO Anexo 3 ({ano}, {(mes + 1) // 2}º bimestre): ICMS mês a mês", "https://siconfi.tesouro.gov.br/",
+                     granularidade="unidade", unidade="mês do ICMS do Estado (o RREO só traz os últimos 12 meses)", unidades_base=nm, registros_base=nm,
+                     selecao="os 12 meses que o RREO do bimestre publica; demais impostos e Campo Grande não conferidos")
 
 
 def v_tjms():
@@ -177,7 +219,11 @@ def v_tjms():
     d = get(f"https://api.dadosjusbr.org/v2/dados/tjms/{int(a)}/{int(m)}")
     s = ((d or {}).get("sumarios") or {}).get("membros_ativos") or {}
     itens = [("magistrados", o["pessoas"], s.get("quantidade")), ("salário-base total", o["totalBase"], (s.get("remuneracao_base") or {}).get("total"))]
-    return resultado(itens, f"DadosJusBr (contracheques do TJMS enviados ao CNJ, {o['mes']}): quantidade e salário-base", "https://dadosjusbr.org/")
+    org = ss.get("orgaos") or []
+    return resultado(itens, f"DadosJusBr (contracheques do TJMS enviados ao CNJ, {o['mes']}): quantidade e salário-base", "https://dadosjusbr.org/",
+                     granularidade="unidade", unidade="órgão no mês publicado (quantidade de pessoas e salário-base)", unidades_base=len(org) * 2,
+                     registros_base=ss.get("totalPessoas"), registros_por_unidade={"magistrados": o.get("pessoas") or 0},
+                     selecao="recorte: só o TJMS (único órgão com contracheques no DadosJusBr nesta base)")
 
 
 def v_pncp(arquivo, chave_lista, rotulo):
@@ -186,7 +232,7 @@ def v_pncp(arquivo, chave_lista, rotulo):
     if lst is None:
         lst = (d.get("pncp") or {}).get("lista") or []
     random.seed(date.today().toordinal())
-    amostra = random.sample(lst, min(8, len(lst)))
+    amostra = random.sample(lst, min(8, len(lst)))  # amostra aleatória simples, sem reposição, semente = data
     itens = []
     for x in amostra:
         try:
@@ -195,8 +241,10 @@ def v_pncp(arquivo, chave_lista, rotulo):
             continue
         c = get(f"https://pncp.gov.br/api/consulta/v1/orgaos/{cnpj}/compras/{ano}/{seq}")
         f = (c.get("valorTotalHomologado") or c.get("valorTotalEstimado")) if c else None
-        itens.append(((x.get("artista") or x.get("objeto") or "")[:60], x["valor"], f))
-    return resultado(itens, f"PNCP: {len(itens)} {rotulo} sorteadas, valor de cada uma na consulta pública", "https://pncp.gov.br/")
+        itens.append((x.get("id") or x["link"].split("/editais/")[1], x["valor"], f))  # identificador PNCP: não repete a mesma contratação
+    return resultado(itens, f"PNCP: {len(itens)} {rotulo} sorteadas, valor de cada uma na consulta pública", "https://pncp.gov.br/",
+                     granularidade="registro", unidade="contratação (nº de controle PNCP)", unidades_base=len(lst), registros_base=len(lst),
+                     selecao="amostra aleatória simples de 8 por dia, sem reposição (semente = data)")
 
 
 def main():
@@ -217,6 +265,8 @@ def main():
             with open(HISTORICO, "a", encoding="utf-8") as h:
                 h.write(json.dumps({"em": AGORA, "base": fonte, "resultado": r["resultado"], "metodo": r.get("metodo"), "fonteUrl": r.get("fonteUrl"),
                                     "conferidos": r.get("conferidos", 0), "comparados": r.get("comparados") or [], "divergentes": r.get("divergentes") or [],
+                                    **{k: r.get(k) for k in ("granularidade", "unidade", "unidadesBase", "unidadesConferidas", "idsConferidos", "registrosBase",
+                                                             "registrosAbrangidos", "selecao", "responsavel", "metodologia")},
                                     "nota": r.get("nota", "")}, ensure_ascii=False) + "\n")
         out[fonte] = r
         print(f"  {fonte:20} {r['resultado']:15} {r.get('conferidos', 0)} itens  {r.get('nota', '')}")

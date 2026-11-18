@@ -736,7 +736,10 @@ jobs:
       - name: ICP — notas, status e histórico conferidos
         id: icp
         continue-on-error: true
-        run: python3 tests/test_icp.py | tee -a relatorio.md; exit ${PIPESTATUS[0]}
+        run: |
+          python3 tests/test_icp.py | tee -a relatorio.md; a=${PIPESTATUS[0]}
+          python3 tests/test_icp_metodologia.py | tee -a relatorio.md; b=${PIPESTATUS[0]}
+          exit $(( a || b ))
 
       - name: Node 20
         uses: actions/setup-node@v4

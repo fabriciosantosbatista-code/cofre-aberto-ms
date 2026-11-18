@@ -32,10 +32,31 @@ const norm = t => (t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase
   await p.click('#icp-cards [data-st="verificado"]');
   ok("cartão do painel filtra a tabela", (await vis()) === icp.indicadores.verificadas);
   await p.click('#icp-filtros [data-f=""]');
+  // metodologia 2.0: tela = dados (nível e cobertura de cada base, resumo de cobertura no topo)
+  const pctBR = v => (v > 0 && v < 1 ? v.toFixed(2) : String(Math.round(v * 10) / 10)).replace(".", ",") + "%";
+  let evidOk = 0;
+  for (const x of bases) {
+    const txt = (await p.textContent(`#tabela-icp tr[data-id="${x.id}"] td[data-label="Evidência"]`)) || "";
+    const c = x.cobertura;
+    const esperado = !c ? "sem conferência" : !c.calculavel ? "não calculada" : pctBR(c.percentual);
+    if (txt.includes(`Nível ${x.nivel}`) && txt.includes(esperado)) evidOk++;
+    else ok(`evidência na tela de ${x.id}`, false, `tela "${txt.trim()}" x esperado nível ${x.nivel} · ${esperado}`);
+  }
+  ok("nível e cobertura na tabela = dados (24 bases)", evidOk === bases.length, `${evidOk}/${bases.length}`);
+  const I = icp.indicadores;
+  ok("topo mostra bases conferidas por inteiro, em parte e sem conferência = dados",
+     (await p.textContent("#icp-abrangente")).trim() == String(I.conferenciaAbrangente) && (await p.textContent("#icp-parcial")).trim() == String(I.conferenciaParcial)
+     && (await p.textContent("#icp-semconf")).trim() == String(I.semVerificacaoOficial) && (await p.textContent("#icp-criticos-n")).trim() == String(I.criticos));
+  const cr = I.coberturaRegistros;
+  ok("cobertura dos registros no topo = dados", (await p.textContent("#icp-cobertura")).trim() === (cr.percentualDoTotal == null ? "não calculada" : String(cr.percentualDoTotal).replace(".", ",") + "%"));
+  ok("resumo explica o que a nota significa", (await p.textContent("#icp-resumo")).includes("conferidas por inteiro"));
+  await p.click('#tabela-icp tr[data-id="shows"]'); await p.waitForTimeout(400);
+  const dsh = await p.textContent("#icp-detalhe");
+  ok("detalhe de base por amostra diz que nem todos os registros foram examinados", dsh.includes("Nem todos os registros foram examinados") && dsh.includes("Evidência que sustenta a nota"));
   await p.click('#tabela-icp tr[data-id="camara"]'); await p.waitForTimeout(400);
   const det = await p.textContent("#icp-detalhe");
   ok("clique abre o detalhe da base", det.includes(icp.bases.camara.nome));
-  for (const s of ["Transparência técnica", "Histórico de verificações", "Histórico de correções", "Limitações conhecidas", "Testes matemáticos", "Pendências"])
+  for (const s of ["Evidência que sustenta a nota", "Nível de evidência", "Transparência técnica", "Histórico de verificações", "Histórico de correções", "Limitações conhecidas", "Testes matemáticos", "Pendências"])
     ok(`detalhe tem '${s}'`, det.includes(s));
   // selo de outra aba abre o detalhe certo
   await p.goto(BASE + "cofre-aberto-ms.html#aba=governo-ms"); await p.waitForTimeout(3000);
@@ -49,6 +70,12 @@ const norm = t => (t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase
   await p.goto(BASE + "cofre-aberto-ms.html#aba=emendas"); await p.waitForTimeout(3000);
   const se = await p.$("#tab-emendas .selo-icp");
   if (se && icp.bases.emendas.statusCor !== "verde") ok("base sem conferência na fonte não fica verde", !(await se.getAttribute("style")).includes("#1f9d6b"));
+  await p.goto(BASE + "cofre-aberto-ms.html#aba=shows"); await p.waitForTimeout(3000);
+  const ss = await p.$("#tab-shows .selo-icp");
+  if (ss) {
+    ok("selo de base conferida por amostra não é verde", !(await ss.getAttribute("style")).includes("#1f9d6b") || icp.bases.shows.nivel >= 3);
+    ok("selo de base por amostra mostra o percentual conferido", icp.bases.shows.nivel !== 2 || (await ss.textContent()).includes("conferido"), await ss.textContent());
+  }
   // link direto e link antigo
   const c = await b.newContext({ ...devices["iPhone 13"] });
   const m = await c.newPage();

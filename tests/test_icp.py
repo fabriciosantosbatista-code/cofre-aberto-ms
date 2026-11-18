@@ -2,9 +2,9 @@
 """
 Cofre Aberto MS — testes do ICP (Índice de Confiabilidade Pública)
 
-  status        todo status é um dos 7 públicos; verde SÓ com conferência na fonte registrada (≤ 30 dias, confere/mudou)
-  notas         recalcula a nota de cada base a partir das dimensões, pesos e tetos; recalcula o ICP geral e as dimensões gerais
-  tetos         simulações: divergência ≤ 40, falha ≤ 50, revisão ≤ 70, sem conferência ≤ 80, < 4 dimensões = não avaliado
+  status        todo status é um dos públicos; verde SÓ com conferência na fonte (≤ 30 dias, confere/mudou) da base INTEIRA (nível ≥ 3)
+  notas         recalcula a nota 2.0 de cada base (e a 1.0 preservada) a partir das dimensões, pesos e tetos; recalcula o ICP geral
+  tetos         simulações da fórmula 1.0 (preservada); as da 2.0 estão em tests/test_icp_metodologia.py
   indicadores   os números do painel batem com a contagem das bases
   alertas       toda base com divergência ou falha de coleta aparece nos problemas críticos
   falhas        simulação: aviso "Connection refused" no log vira falha da base certa; job "failure" marca todas as bases dele
@@ -46,12 +46,17 @@ for fid, b in bases.items():
         idade = (datetime.now() - datetime.fromisoformat(uv["em"][:19])).days if uv.get("em") else 999
         check(uv.get("resultado") in ("confere", "mudou_na_fonte") and idade <= 30,
               f"{fid}: verde só com conferência na fonte recente (resultado {uv.get('resultado')}, {idade} dias)")
+        c = b.get("cobertura") or {}
+        check(b["nivel"] >= 3 and c.get("calculavel") and c.get("unidadesConferidas", 0) >= (c.get("unidadesBase") or 10 ** 9),
+              f"{fid}: verde só com a base inteira conferida (nível {b['nivel']}, {c.get('unidadesConferidas')} de {c.get('unidadesBase')})")
     if b["status"] == "consistente":
         check(b["testes"]["erros"] == 0 and b["testes"]["ok"] > 0, f"{fid}: 'consistência aprovada' exige testes sem erro")
 
 # ── notas ──
 for fid, b in bases.items():
-    check(b["nota"] == g.nota_base(b["dimensoes"], b["classe"]), f"{fid}: nota recalculada = {b['nota']}")
+    check(b["nota"] == g.met.nota(b["dimensoes"], b["classe"], b.get("cobertura"), b.get("nivel")), f"{fid}: nota 2.0 recalculada = {b['nota']}")
+    check(b.get("notaV1") == g.nota_base(b["dimensoesV1"], b["classe"]), f"{fid}: nota 1.0 preservada para comparação = {b.get('notaV1')}")
+    check(b["nota"] is not None, f"{fid}: toda base tem nota 2.0 (nenhuma fica fora da média)")
     for k, v in b["dimensoes"].items():
         check(v is None or 0 <= v <= 100, f"{fid}: dimensão {k} entre 0 e 100")
 aval = [b for b in bases.values() if b["nota"] is not None]
@@ -75,7 +80,11 @@ check(g.nota_base({"P": 0, "A": 100, "I": 100, "T": 100, "R": 100, "F": 100}, "v
 # ── indicadores ──
 I = icp["indicadores"]
 conta = lambda st: sum(1 for b in bases.values() if b["status"] == st)
-for chave, st in (("verificadas", "verificado"), ("aguardando", "aguardando_fonte"), ("divergencias", "divergencia"), ("falhas", "falha_coleta"), ("revisaoManual", "revisao_manual")):
+check(I["verificadas"] == sum(1 for b in bases.values() if b["nivel"] >= 3), "indicador verificadas = bases com conferência abrangente")
+check(I["conferenciaParcial"] == sum(1 for b in bases.values() if b["nivel"] == 2), "indicador conferência parcial")
+check(I["semVerificacaoOficial"] == sum(1 for b in bases.values() if b["nivel"] <= 1), "indicador sem verificação oficial")
+check(I["criticos"] == len(icp["criticos"]), "indicador de problemas críticos")
+for chave, st in (("aguardando", "aguardando_fonte"), ("divergencias", "divergencia"), ("falhas", "falha_coleta"), ("revisaoManual", "revisao_manual")):
     check(I[chave] == conta(st), f"indicador {chave} = {I[chave]}")
 check(I["total"] == len(bases), "indicador total")
 check(I["naoAvaliadas"] == sum(1 for b in bases.values() if b["nota"] is None), "indicador não avaliadas")
@@ -86,8 +95,10 @@ ids_crit = {c["id"] for c in icp["criticos"]}
 for fid, b in bases.items():
     if b["status"] in ("divergencia", "falha_coleta"):
         check(fid in ids_crit, f"{fid}: {b['status']} aparece nos problemas críticos")
-    if b["importancia"] >= 2 and any(v is not None and v <= 40 for v in b["dimensoes"].values()):
-        check(fid in ids_crit, f"{fid}: dimensão ≤ 40 numa base importante aparece nos problemas críticos")
+    if b["importancia"] >= 2 and any(v is not None and v <= 40 for k, v in b["dimensoes"].items() if k != "I"):  # 2.0: testes rasos vão para os avisos da base
+        check(fid in ids_crit, f"{fid}: dimensão ≤ 40 (atualização, precisão, rastreabilidade ou integração) numa base importante aparece nos problemas críticos")
+    if b["dimensoes"].get("I") is not None and len(b.get("categoriasTeste") or []) < 5:
+        check(any("tipos de conferência" in a for a in b.get("avisosMetodologicos") or []), f"{fid}: testes rasos aparecem nos avisos da base")
 
 # ── falhas (simulação) — os estados vêm de registrar_execucao.py; o detalhe está em tests/test_monitoramento_robos.py ──
 import registrar_execucao as rx  # noqa: E402

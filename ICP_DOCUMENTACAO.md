@@ -32,77 +32,147 @@ Tudo roda no passo **"ICP — Índice de Confiabilidade Pública"** do job `comm
 | Arquivo | Papel |
 |---|---|
 | `scripts/gerar_icp.py` | cálculo do ICP e páginas |
+| `scripts/icp_metodologia.py` | metodologia 2.0: cobertura, nível de evidência, limite estatístico (hipergeométrico/binomial), dimensões P e I, nota e tetos |
 | `scripts/gerar_monitoramento.py` | registro das 24 bases (fonte, endpoint, método, período, intervalo, atraso normal, contagem de registros, total, identificador do registro original) e classificação |
 | `scripts/registrar_execucao.py` | lê pela API do GitHub os jobs desta execução e o log de cada um; `JOB_BASES` liga cada robô às bases que ele coleta |
 | `scripts/validar_fontes.py` | conferências independentes na fonte (8 bases hoje) |
 | `scripts/validar_camara_cg.py` | conferência da leitura dos PDFs da Câmara de CG (marca, nunca altera valores) |
 | `tests/_bases.py` | a qual base pertence cada conferência dos testes |
-| `tests/test_icp.py` | 460 checagens do ICP |
+| `tests/test_icp.py` | checagens do ICP publicado (status, notas 2.0 e 1.0, indicadores, histórico, páginas) |
+| `tests/test_icp_metodologia.py` | cenários da metodologia 2.0 e regressão das 24 bases |
 | `tests/icp_pagina.js` | teste no navegador: filtros, busca, clique, selo do painel, celular (42 checagens) |
 
-## 2. Metodologia
+## 2. Metodologia (versão 2.0, em vigor desde 18/11/2026)
 
-Cada base recebe seis notas parciais (dimensões), de 0 a 100. Quando não há dado suficiente para medir uma dimensão, ela fica **não avaliada** (`null`). Uma dimensão sem dado nunca vira 0 nem 100.
+**Princípio:** uma base com poucos registros conferidos não pode transmitir a mesma confiança de uma base integralmente
+verificada. A nota passa a medir também **quanto** da base foi conferido na fonte oficial, e com que qualidade — não só
+se as contas fecham. As seis dimensões e os seus pesos foram mantidos; o que mudou foi como Precisão (P) e Integridade (I)
+são medidas, como as dimensões ausentes entram na conta, e três tetos novos. O cálculo está em `scripts/icp_metodologia.py`
+(funções puras, testadas em `tests/test_icp_metodologia.py`). A metodologia anterior está no **Anexo A**.
 
-### 2.1 Dimensões e fórmulas
+### 2.1 Cobertura da conferência (por base)
 
-| Dim. | Nome | Peso | Fórmula |
+Cada conferência na fonte (`scripts/validar_fontes.py`) grava, no histórico permanente `dados/icp_verificacoes.jsonl`:
+data e hora, base, fonte usada (`fonteUrl`), método, **granularidade**, unidade, total de unidades e de registros da base,
+unidades conferidas (com os identificadores, sem repetição), registros abrangidos, seleção da amostra, resultado,
+divergências, itens comparados (site × fonte × diferença), responsável (o robô) e versão da metodologia.
+
+| Granularidade | O que é comparado | Registros abrangidos | Bases hoje |
 |---|---|---|---|
-| P | Precisão e validação | 30 | Última conferência na fonte (automática ou manual registrada no histórico). `confere` = 100; `mudou_na_fonte` (todas as diferenças ≤ 1%, explicadas por lançamentos posteriores à coleta) = 90; `diverge` = min(40, 100 × (1 − divergentes ÷ conferidos)). Até 8 dias vale inteira; de 8 a 30 dias, × 0,8; mais de 30 dias = não avaliado |
-| A | Atualização | 20 | Falha de coleta = 0. Senão, com *d* = dias desde o dado mais recente e *a* = atraso normal da fonte: *d* ≤ *a* → 100; acima, max(20, 100 − 80 × (*d* − *a*) ÷ *a*) |
-| I | Integridade matemática | 20 | Conferências dos testes atribuídas à base: 100 × ok ÷ (ok + erros) − min(20, 2 × avisos). As linhas de classificação da própria fonte são excluídas, para não contar duas vezes |
-| T | Transparência das fontes | 10 | 20 pontos por critério: fonte oficial nomeada · link oficial · período de referência · método documentado · arquivo de dados público |
-| R | Rastreabilidade | 10 | % dos registros com o identificador do documento original: link do empenho (Prefeitura), `urlPdf` (ALEMS), nota/documento (Câmara, Senado), nº de controle PNCP (shows, aluguéis), hash e página do PDF (Câmara de CG) |
-| F | Funcionamento das integrações | 10 | % das últimas 14 coletas registradas em que o robô da base terminou sem falha atribuída a ela |
+| `registro` | cada registro, um a um | os registros conferidos | Shows e Aluguéis (amostra aleatória de 8 contratações por dia no PNCP) |
+| `unidade` | o total de cada unidade (parlamentar, órgão, mês) | todos os registros das unidades conferidas | ALEMS (25 deputados), Câmara (8), Senado (3), Governo de MS (66 órgãos + 2 totais), Siconfi (12 de 20 meses), Supersalários (TJMS: 2 de 14 itens) |
+| `total` | um único total da base | todos, mas sem localizar erros | nenhuma (o Governo de MS deixou de ser só o total em 18/11) |
 
-### 2.2 Nota da base
+- **Cobertura (%)** = registros abrangidos ÷ registros da base. Se o total da base é desconhecido, a cobertura fica
+  **"não calculada"** — nunca 100%.
+- **Amostras repetidas não inflam a cobertura:** na conferência registro a registro, a cobertura é a união das unidades
+  *distintas* conferidas nos últimos 30 dias (a mesma contratação conferida em dois dias conta uma vez). Nunca passa do
+  total da base.
+- Conferência com mais de 30 dias não vale. Conferência antiga (metodologia 1.0, sem cobertura gravada) vale como
+  "cobertura não calculada".
+
+### 2.2 Níveis de evidência (automáticos)
+
+| Nível | Nome | Regra (calculada, nunca preenchida à mão) |
+|---|---|---|
+| 0 | Sem evidência | sem testes da base e sem conferência na fonte |
+| 1 | Integridade interna | testes da base sem erro, sem conferência válida na fonte |
+| 2 | Conferência parcial | conferência válida (≤ 30 dias, compatível) que **não** cobre todas as unidades — amostra, recorte, ou um único total |
+| 3 | Conferência abrangente | todas as unidades da base conferidas (registro a registro ou pelos totais de cada unidade), com pelo menos 2 unidades e denominador conhecido |
+| 4 | Abrangente reforçada | nível 3 repetido: ≥ 3 conferências abrangentes compatíveis em ≥ 2 dias diferentes nos últimos 30 dias, com itens comparados e endereço da fonte gravados |
+
+Um único total geral fica no nível 2 porque uma só equação não localiza erros que se compensam. Na conferência pelos totais
+de cada unidade (nível 3), os registros individuais entram nos totais mas não são comparados um a um — essa limitação
+aparece na página da base.
+
+### 2.3 Dimensões e fórmulas
+
+| Dim. | Peso | Fórmula 2.0 | O que mudou |
+|---|---|---|---|
+| P · Precisão e validação | 30 | `100 × (1 − LS95) × fr × fi`. **LS95** = limite superior de 95% da proporção de unidades divergentes na base, pela distribuição **hipergeométrica exata** (amostra sem reposição de uma base finita de *N* unidades, *n* conferidas, *d* divergentes); com *N* desconhecido, limite binomial de Clopper–Pearson. **fr** = 1 (confere) ou 0,9 (mudou na fonte depois da coleta). **fi** = 1 até 8 dias, 0,8 até 30 dias. Divergência: no máximo 40. Sem conferência válida: não avaliada | antes, "confere" = 100 com qualquer amostra |
+| A · Atualização | 20 | falha de coleta = 0; dado até o atraso normal da fonte = 100; acima, max(20, 100 − 80 × (*d* − *a*) ÷ *a*) | igual |
+| I · Integridade matemática | 20 | `100 × ok ÷ (ok + erros) × (tipos cobertos ÷ 5) − min(20, 2 × avisos)`. Tipos: estrutura/campos, totais, contagens, duplicidade, faixa de valores. Sem testes: não avaliada | antes, 1 teste aprovado = 100 |
+| T · Transparência | 10 | 20 por critério (fonte, link, período, método, arquivo) | igual |
+| R · Rastreabilidade | 10 | % dos registros com identificador do documento original | igual |
+| F · Integrações | 10 | % das últimas 14 coletas com log legível em que o robô funcionou; sem log legível = não medida | igual (corrigida em 17/11) |
+
+**Exemplos do limite LS95** (sem divergência): 8 de 206 → 30,6% (P = 69); 16 de 206 → 16,0% (P = 84); 12 de 20 → 10% (P = 90);
+2 de 30 → 73% (P = 27); 206 de 206 → 0 (P = 100). Ou seja: conferir 8 contratos sem erro ainda deixa possível, com 95% de
+confiança, que até ~31% dos 206 estejam errados.
+
+### 2.4 Nota da base
 
 ```
-nota = Σ(dimensão × peso) ÷ Σ(pesos das dimensões avaliadas)     (só com ≥ 4 dimensões avaliadas; senão "Não avaliado")
-nota = min(nota, teto)
+nota = 0,30 × P' + 0,20 × I' + 0,50 × M
+  P' = P, ou 0 sem conferência válida      I' = I, ou 0 sem testes        (dimensões de EVIDÊNCIA: ausência vale 0)
+  M  = média ponderada de A (20), T (10), R (10), F (10) entre as medidas  (dimensões de PROPRIEDADE: ausência sai da conta)
+nota = min(nota, tetos)
 ```
 
-Os **tetos** impedem que uma boa média esconda um problema grave:
+**Por que P e I valem 0 quando faltam:** o ICP mede o quanto o dado pode ser comprovado. Sem conferência, não há comprovação
+na fonte — isso não diz que o dado está errado, mas não pode render pontos de comprovação. Antes (1.0), a dimensão ausente saía
+da conta e as outras "subiam" para ocupar o lugar dela; daí o teto *ad hoc* de 80. Agora o máximo sem conferência sai da própria
+fórmula: **70** (todas as outras dimensões cheias). A, T, R e F descrevem propriedades da base que nem sempre o site consegue
+medir (ex.: rastreabilidade de uma série mensal); quando não medidas, saem da conta, como antes.
 
-| Situação | Teto |
-|---|---|
-| Divergência na fonte oficial | 40 |
-| Falha de coleta | 50 |
-| Revisão manual pendente | 70 |
-| Sem conferência na fonte oficial (P não avaliada) | 80 |
+**Tetos** (o que a média não pode esconder):
 
-O último teto deixa claro que **consistência matemática não prova exatidão**: uma base sem conferência na fonte nunca passa de 80, por melhores que sejam as somas.
+| Teto | Valor | Justificativa | Efeito |
+|---|---|---|---|
+| Cobertura (nível 2) | 70 + 30 × fração conferida | 70 é o máximo possível sem nenhuma conferência; os 30 pontos do peso da conferência só são ganhos na proporção da base efetivamente comparada com a fonte (pelos registros quando o total é conhecido, senão pelas unidades, senão 0) | amostra de 0,76% ≤ 70; 60% ≤ 88; base inteira, sem teto. Nível 2 nunca passa de um nível 3 equivalente |
+| Divergência na fonte | 40 | a fonte contradiz o site: o dado não pode parecer confiável | mantido da 1.0 |
+| Falha de coleta | 50 | o dado publicado é o anterior e não foi atualizado | mantido da 1.0 |
+| Integração instável (F < 50) | 50 | mais da metade das coletas recentes falhou: equivalente a uma falha de coleta recorrente | novo — evita nota alta com integração quebrada |
+| Revisão manual pendente | 70 | itens marcados para conferência humana | mantido da 1.0 |
+| ~~Sem conferência na fonte: 80~~ | — | substituído pela fórmula (máximo 70) | removido |
 
-### 2.3 ICP geral
+### 2.5 ICP geral e indicadores
 
 ```
-ICP = Σ(nota × importância) ÷ Σ(importância)     (só bases avaliadas)
+ICP = Σ(nota × importância) ÷ Σ(importância)      (as 24 bases — nenhuma fica de fora)
 ```
 
-A importância é 3 para o gasto principal de governo ou parlamentar, 2 para um recorte relevante e 1 para uma base complementar. As dimensões gerais usam a mesma ponderação.
+Importância: 3 gasto principal de governo ou parlamentar · 2 recorte relevante · 1 complementar. Na 1.0, bases com menos de 4
+dimensões ficavam fora da média (6 bases), o que elevava a nota. Junto da nota, o painel mostra: bases monitoradas, conferidas
+por inteiro (nível ≥ 3), conferidas em parte (nível 2), sem conferência oficial (nível ≤ 1), **cobertura dos registros**
+(registros cobertos por conferências ÷ registros de todas as bases) e problemas críticos.
 
-### 2.4 Problemas críticos (fora da média)
+### 2.6 Problemas críticos (fora da média)
 
-Uma base aparece no quadro **"Problemas que a média não esconde"** quando acontece qualquer um destes casos:
-- o status é *Divergência identificada* ou *Falha na coleta*;
-- a importância é 2 ou mais e alguma dimensão está em 40 ou menos, ou a nota está abaixo de 60;
-- a importância é 3 e há *revisão manual pendente*.
+Uma base aparece em **"Problemas que a média não esconde"** quando: o status é divergência ou falha de coleta; ou a importância é
+≥ 2 e Atualização, Precisão, Rastreabilidade ou Integrações estão em 40 ou menos, ou a nota está abaixo de 50; ou a importância é 3
+e há revisão manual pendente. Testes rasos (I baixa) **não** entram aqui sozinhos — aparecem nos avisos da própria base.
 
 ## 3. Status (selos)
 
 | Status | Cor | Quando |
 |---|---|---|
-| Verificado na fonte oficial | 🟢 verde | o robô consultou a fonte de novo, por caminho independente, há até 8 dias, e o valor confere (ou só mudou por lançamento posterior) |
-| Consistência interna aprovada | ⚪ cinza | os testes da base passam sem erro, mas não houve conferência na fonte |
-| Aguardando atualização | 🟡 amarelo | a coleta funciona, mas o órgão não publicou dado novo dentro do atraso normal. **Não é falha do site** |
-| Pendente de revisão manual | 🟡 amarelo | a leitura automática marcou itens para conferência humana (ex.: PDFs da Câmara de CG) |
+| Conferência abrangente reforçada | 🟢 verde | nível 4 |
+| Conferido na fonte (abrangente) | 🟢 verde | nível 3 |
+| Conferido em parte na fonte | 🟡 amarelo | nível 2 — o selo do painel mostra o percentual conferido |
+| Só testes internos | ⚪ cinza | nível 1 |
+| Sem evidência | ⚪ cinza | nível 0 |
+| Aguardando atualização da fonte | 🟡 amarelo | a coleta funciona, mas a fonte não publicou dado novo (**não é falha do site**) |
+| Pendente de revisão manual | 🟡 amarelo | itens marcados para conferência humana |
 | Divergência identificada | 🔴 vermelho | a conferência na fonte encontrou valor diferente |
-| Falha na coleta | 🔴 vermelho | o robô não atualizou (arquivo velho além do intervalo de coleta, ou as **duas últimas** execuções registraram falha da base no log), **ou** os registros caíram mais de 10% de uma coleta para a outra (coleta incompleta); o dado anterior é mantido |
-| Pendente de verificação | ⚪ cinza | sem conferência na fonte e sem testes específicos da base |
+| Falha na coleta | 🔴 vermelho | o robô não atualizou, as duas últimas coletas legíveis falharam, ou os registros caíram mais de 10% de uma coleta para a outra; o dado anterior é mantido |
 
-**Regra do verde:** o selo verde só aparece com uma conferência registrada (`ultimaVerificacao` com resultado `confere` ou `mudou_na_fonte`). Se a classificação disser "verificado" e não houver o registro, o ICP rebaixa o status para cinza. `tests/test_icp.py` checa isso em toda base.
+**Regra do verde (2.0):** só com a base **inteira** conferida na fonte (nível 3 ou 4). Uma base com nota alta e amostra pequena
+fica amarela. Os quatro status de problema têm prioridade sobre o nível na cor.
 
-**Falta de publicação × falha técnica:** quando o arquivo é recente mas o dado é velho, a base fica em *Aguardando atualização*. Quando o arquivo é velho ou o log do robô mostra erro de conexão ou timeout, ela vai para *Falha na coleta*. Um aviso isolado (uma tentativa) não muda o status: ele baixa a dimensão F e aparece em "Pendências". O status muda depois de duas execuções seguidas com falha.
+**Avisos em linguagem simples** (em cada base): "Os testes internos passaram, mas os dados ainda não foram conferidos na fonte
+oficial." · "A conferência foi feita por amostragem: X de Y registros (Z%). Nem todos os registros foram examinados." · "A fonte
+oficial está indisponível ou a coleta falhou. A última versão válida dos dados foi preservada." · "A coleta funciona, mas a fonte
+oficial não publicou dado novo." · "A quantidade total de registros não permite calcular a cobertura." · "Os testes internos cobrem
+X de 5 tipos de conferência." · "A nota considera apenas as evidências disponíveis até DD/MM/AAAA."
+
+### 3.1 Versões da metodologia e histórico das notas
+
+`dados/icp.json` traz `metodologia.versao` (2.0), a data de início e a nota geral pela metodologia anterior; cada base traz
+`nota` (2.0), `notaV1` (fórmula 1.0 aplicada aos mesmos dados) e `dimensoesV1`, para explicar por que a nota mudou.
+`dados/icp_notas_historico.jsonl` é **permanente** (só acrescenta): a primeira linha é o retrato da metodologia 1.0 como estava
+publicado (nota 83, fórmula e notas das 24 bases); depois, uma linha por coleta do robô com a nota 2.0, a 1.0 recalculada,
+o nível, o status e a cobertura de cada base. Nenhuma nota antiga é sobrescrita.
 
 ## 4. Bases monitoradas (24)
 
@@ -113,7 +183,7 @@ Uma base aparece no quadro **"Problemas que a média não esconde"** quando acon
 | deputados | Deputados federais de MS — CEAP | Câmara dos Deputados | 3 | sim (8, API com regra de sinal) |
 | senadores | Senadores de MS — CEAPS | Senado | 3 | sim |
 | prefeitura | Prefeitura de CG — despesas pagas | Prefeitura de CG | 3 | não |
-| governo-ms | Governo de MS — Poder Executivo | Estado | 3 | sim (pago e empenhado do ano) |
+| governo-ms | Governo de MS — Poder Executivo | Estado | 3 | sim (pago de cada um dos 66 órgãos + totais do ano) |
 | emendas | Emendas parlamentares | CGU | 3 | não (manual, arquivo de 47 MB) |
 | contratos-cg, supersalarios, arrecadacao, shows, alugueis, obras, publicidade, entidades, judiciario | recortes | vários | 2 | supersalários (DadosJusBr), arrecadação (Siconfi), shows e aluguéis (amostra PNCP) |
 | beneficios, producao, votacoes, camaras-ms, presidencia, stf, eleicoes, auditoria | complementares | vários | 1 | não |
@@ -151,13 +221,11 @@ Os avisos de log passam pela máscara de CPF antes de serem gravados. Os registr
 
 | Teste | Onde roda | O que cobre |
 |---|---|---|
-| `tests/test_icp.py` (440) | `testar-site.yml` e job `verificar` | status públicos e cores; verde só com conferência ≤ 30 dias; notas recalculadas por base; ICP e dimensões gerais recalculados; tetos simulados; indicadores = contagem; críticos; falhas simuladas (conexão recusada, job `failure`, aviso informativo); histórico só cresce e é JSON válido; páginas, seções, link oficial, viewport, filtros; redirecionamento; integração painel/robô |
-| `tests/icp_pagina.js` (27) | `testar-site.yml` | /confiabilidade/ abre a aba com o menu lateral; nota = icp.json; filtros de cada status e cartões = dados; busca sem acento; clique abre o detalhe com todas as seções; selo de outra aba abre o detalhe certo; base sem conferência não fica verde; link antigo; aba e 24 páginas de base sem rolagem horizontal no celular (iPhone 13); sem erro JS |
-| `tests/test_integridade_dados.py` (570) | coleta e site | somas e totais (alimenta a dimensão I) |
-| `tests/test_variacoes.py` | coleta e site | variação, formato, versões, PDFs, exposição de dados |
-| `tests/tela_x_dados.js`, `tests/filtros.js`, `tests/smoke.js` | site | tela = dados, filtros do painel, todas as abas |
-
-O teste foi conferido com falhas injetadas: verde sem conferência, nota adulterada e indicador errado deram 5 erros. Os testes também acharam defeitos reais, todos corrigidos: a página da Câmara de CG rolava para o lado no celular; o teste tela × dados lia "R$ 949,4 mil" como milhões; e a coleta de aluguéis do PNCP vinha incompleta no robô (10 em vez de 206 contratações) sem ninguém perceber. A comparação entre coletas passou a ser feita por coleta, não por dia, e uma queda brusca agora vira "Falha na coleta". O caso foi simulado de ponta a ponta: a base fica vermelha, com nota 50, e aparece nos problemas críticos.
+| `tests/test_icp_metodologia.py` | `testar-site.yml` e job `verificar` | 2 em 92 mil não dá nota máxima · 10 de 206 = parcial (4,85%) · base inteira = nível 3, repetida em dias diferentes = 4 · sem conferência ≤ 70 e sem verde · integração quebrada ≤ 50 · sem publicação nova ≠ falha de coleta · denominador desconhecido nunca 100% · amostras repetidas não inflam · divergência reduz P e nota · 1 teste não vale I = 100 · estatística do limite · **regressão das 24 bases** (nota reproduzível, cobertura reconstruída do histórico, nível, verde, tetos, nota geral com as 24) · histórico das notas preservado |
+| `tests/test_icp.py` | `testar-site.yml` e job `verificar` | status e cores; verde só com nível ≥ 3; nota 2.0 e 1.0 recalculadas; indicadores; críticos; histórico só cresce; páginas; integração |
+| `tests/icp_pagina.js` | `testar-site.yml` | filtros, busca, detalhe; **nível e cobertura da tabela = dados nas 24 bases**; resumo de cobertura no topo = dados; selo por amostra não verde e com o percentual; celular |
+| `tests/test_monitoramento_robos.py` | `testar-site.yml` e `verificar` | leitura dos logs, estados, proteção da publicação com falhas intencionais |
+| `tests/test_cpf.py`, `test_integridade_dados.py`, `test_variacoes.py`, `tela_x_dados.js`, `filtros.js`, `smoke.js` | coleta e site | CPF, contas, variações, tela × dados, filtros, todas as abas |
 
 ## 8. Limitações
 
@@ -169,3 +237,75 @@ O teste foi conferido com falhas injetadas: verde sem conferência, nota adulter
 6. **A rastreabilidade da Câmara de CG está em 0** até a próxima coleta com o leitor de PDFs versão 2, que grava hash e página de cada nota.
 7. **Pesos, tetos e importâncias são escolhas editoriais** do projeto. Estão publicados para que qualquer pessoa possa discordar e recalcular.
 8. **Sem conferência humana periódica registrada:** conferências manuais só entram no histórico quando feitas e documentadas, e nenhuma foi inventada para preencher lacunas.
+
+---
+
+## Anexo A — Metodologia 1.0 (17/11/2026 a 18/11/2026), preservada
+
+Texto original da metodologia que produziu a nota 83. A fórmula continua calculada (`nota_base` em `scripts/gerar_icp.py`, campo `notaV1`) para comparação.
+
+### A.1 Metodologia
+
+Cada base recebe seis notas parciais (dimensões), de 0 a 100. Quando não há dado suficiente para medir uma dimensão, ela fica **não avaliada** (`null`). Uma dimensão sem dado nunca vira 0 nem 100.
+
+#### A.1 Dimensões e fórmulas
+
+| Dim. | Nome | Peso | Fórmula |
+|---|---|---|---|
+| P | Precisão e validação | 30 | Última conferência na fonte (automática ou manual registrada no histórico). `confere` = 100; `mudou_na_fonte` (todas as diferenças ≤ 1%, explicadas por lançamentos posteriores à coleta) = 90; `diverge` = min(40, 100 × (1 − divergentes ÷ conferidos)). Até 8 dias vale inteira; de 8 a 30 dias, × 0,8; mais de 30 dias = não avaliado |
+| A | Atualização | 20 | Falha de coleta = 0. Senão, com *d* = dias desde o dado mais recente e *a* = atraso normal da fonte: *d* ≤ *a* → 100; acima, max(20, 100 − 80 × (*d* − *a*) ÷ *a*) |
+| I | Integridade matemática | 20 | Conferências dos testes atribuídas à base: 100 × ok ÷ (ok + erros) − min(20, 2 × avisos). As linhas de classificação da própria fonte são excluídas, para não contar duas vezes |
+| T | Transparência das fontes | 10 | 20 pontos por critério: fonte oficial nomeada · link oficial · período de referência · método documentado · arquivo de dados público |
+| R | Rastreabilidade | 10 | % dos registros com o identificador do documento original: link do empenho (Prefeitura), `urlPdf` (ALEMS), nota/documento (Câmara, Senado), nº de controle PNCP (shows, aluguéis), hash e página do PDF (Câmara de CG) |
+| F | Funcionamento das integrações | 10 | % das últimas 14 coletas registradas em que o robô da base terminou sem falha atribuída a ela |
+
+#### A.2 Nota da base
+
+```
+nota = Σ(dimensão × peso) ÷ Σ(pesos das dimensões avaliadas)     (só com ≥ 4 dimensões avaliadas; senão "Não avaliado")
+nota = min(nota, teto)
+```
+
+Os **tetos** impedem que uma boa média esconda um problema grave:
+
+| Situação | Teto |
+|---|---|
+| Divergência na fonte oficial | 40 |
+| Falha de coleta | 50 |
+| Revisão manual pendente | 70 |
+| Sem conferência na fonte oficial (P não avaliada) | 80 |
+
+O último teto deixa claro que **consistência matemática não prova exatidão**: uma base sem conferência na fonte nunca passa de 80, por melhores que sejam as somas.
+
+#### A.3 ICP geral
+
+```
+ICP = Σ(nota × importância) ÷ Σ(importância)     (só bases avaliadas)
+```
+
+A importância é 3 para o gasto principal de governo ou parlamentar, 2 para um recorte relevante e 1 para uma base complementar. As dimensões gerais usam a mesma ponderação.
+
+#### A.4 Problemas críticos (fora da média)
+
+Uma base aparece no quadro **"Problemas que a média não esconde"** quando acontece qualquer um destes casos:
+- o status é *Divergência identificada* ou *Falha na coleta*;
+- a importância é 2 ou mais e alguma dimensão está em 40 ou menos, ou a nota está abaixo de 60;
+- a importância é 3 e há *revisão manual pendente*.
+
+### A.2 Status (selos)
+
+| Status | Cor | Quando |
+|---|---|---|
+| Verificado na fonte oficial | 🟢 verde | o robô consultou a fonte de novo, por caminho independente, há até 8 dias, e o valor confere (ou só mudou por lançamento posterior) |
+| Consistência interna aprovada | ⚪ cinza | os testes da base passam sem erro, mas não houve conferência na fonte |
+| Aguardando atualização | 🟡 amarelo | a coleta funciona, mas o órgão não publicou dado novo dentro do atraso normal. **Não é falha do site** |
+| Pendente de revisão manual | 🟡 amarelo | a leitura automática marcou itens para conferência humana (ex.: PDFs da Câmara de CG) |
+| Divergência identificada | 🔴 vermelho | a conferência na fonte encontrou valor diferente |
+| Falha na coleta | 🔴 vermelho | o robô não atualizou (arquivo velho além do intervalo de coleta, ou as **duas últimas** execuções registraram falha da base no log), **ou** os registros caíram mais de 10% de uma coleta para a outra (coleta incompleta); o dado anterior é mantido |
+| Pendente de verificação | ⚪ cinza | sem conferência na fonte e sem testes específicos da base |
+
+**Regra do verde:** o selo verde só aparece com uma conferência registrada (`ultimaVerificacao` com resultado `confere` ou `mudou_na_fonte`). Se a classificação disser "verificado" e não houver o registro, o ICP rebaixa o status para cinza. `tests/test_icp.py` checa isso em toda base.
+
+**Falta de publicação × falha técnica:** quando o arquivo é recente mas o dado é velho, a base fica em *Aguardando atualização*. Quando o arquivo é velho ou o log do robô mostra erro de conexão ou timeout, ela vai para *Falha na coleta*. Um aviso isolado (uma tentativa) não muda o status: ele baixa a dimensão F e aparece em "Pendências". O status muda depois de duas execuções seguidas com falha.
+
+

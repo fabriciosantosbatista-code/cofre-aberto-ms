@@ -284,6 +284,7 @@ p{margin:0;}
 .icp-bar i{height:8px;border-radius:6px;background:var(--border);overflow:hidden}.icp-bar i b{display:block;height:100%;background:#1f9d6b}
 .icp-bar em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
 .icp-crit{border:1px solid #d9363e;background:rgba(217,54,62,.08);border-radius:12px;padding:12px 16px}.icp-crit ul{margin:6px 0 0;padding-left:18px;font-size:.86rem}
+.icp-resumo{font-size:.86rem;line-height:1.5;margin:14px 0 4px;max-width:860px;color:var(--ink-soft)}
 .icp-dl{display:grid;grid-template-columns:minmax(140px,230px) minmax(0,1fr);gap:6px 14px;font-size:.86rem;margin:0}.icp-dl dt{color:var(--ink-faint)}.icp-dl dd{margin:0;overflow-wrap:anywhere}
 .icp-det h3{font-size:.95rem;margin:18px 0 6px}.icp-det ul{margin:0;padding-left:18px;font-size:.85rem;overflow-wrap:anywhere}
 @media(max-width:640px){.icp-dl{grid-template-columns:1fr}.icp-dl dt{margin-top:6px}.icp-bar{grid-template-columns:1fr 70px}.icp-bar i{grid-column:1/-1;grid-row:2}}
@@ -2024,12 +2025,16 @@ Atenciosamente,</textarea>
         direto na fonte oficial, se estão atualizados, se as contas fecham, se a origem está documentada e se cada registro aponta para o documento original.
         <b>É uma metodologia independente do próprio site, calculada pelos robôs a cada coleta — não é uma certificação oficial do governo nem de órgão de controle.</b>
         Contas que fecham não são tratadas como prova de exatidão: só fica verde a base que o robô consultou de novo na fonte oficial e encontrou o mesmo valor.</div>
+      <div class="icp-resumo" id="icp-resumo"></div>
       <div class="mini-stats">
         <div><div class="mini-stat-value" id="icp-total">—</div><div class="mini-stat-label">bases monitoradas</div></div>
-        <div><div class="mini-stat-value" id="icp-verif">—</div><div class="mini-stat-label">verificadas na fonte oficial</div></div>
-        <div><div class="mini-stat-value" id="icp-atualizado">—</div><div class="mini-stat-label">última atualização do índice</div></div>
-        <div><div class="mini-stat-value" id="icp-conferencia">—</div><div class="mini-stat-label">última conferência na fonte</div></div>
+        <div><div class="mini-stat-value" id="icp-abrangente">—</div><div class="mini-stat-label">conferidas na fonte por inteiro</div></div>
+        <div><div class="mini-stat-value" id="icp-parcial">—</div><div class="mini-stat-label">conferidas só em parte (amostra ou recorte)</div></div>
+        <div><div class="mini-stat-value" id="icp-semconf">—</div><div class="mini-stat-label">sem conferência na fonte oficial</div></div>
+        <div><div class="mini-stat-value" id="icp-cobertura">—</div><div class="mini-stat-label" id="icp-cobertura-rot">dos registros conferidos na fonte</div></div>
+        <div><div class="mini-stat-value" id="icp-criticos-n">—</div><div class="mini-stat-label">bases com problema crítico</div></div>
       </div>
+      <div class="section-note" style="margin-top:10px;max-width:none" id="icp-datas"></div>
     </div>
     <div class="section" id="icp-criticos"></div>
     <div class="section">
@@ -2053,7 +2058,7 @@ Atenciosamente,</textarea>
       <div class="ob-filtros" id="icp-filtros"></div>
       <input id="busca-icp" class="search-box" type="search" placeholder="buscar base, órgão ou fonte…" aria-label="Buscar base" style="width:100%;margin:10px 0 12px"/>
       <div class="section-note">Clique numa base para ver a origem, os testes, o histórico de conferências e as limitações.</div>
-      <div class="card card-x-scroll"><table class="ranking" id="tabela-icp" data-cartoes><thead><tr><th>Base</th><th>Status</th><th class="num">Nota</th><th>Última coleta</th><th>Conferência oficial</th><th class="num">Registros</th><th class="num">Pendências</th></tr></thead><tbody></tbody></table></div>
+      <div class="card card-x-scroll"><table class="ranking" id="tabela-icp" data-cartoes><thead><tr><th>Base</th><th>Status</th><th class="num">Nota</th><th>Evidência</th><th>Última coleta</th><th>Conferência oficial</th><th class="num">Registros</th><th class="num">Pendências</th></tr></thead><tbody></tbody></table></div>
       <p id="icp-vazio" class="section-note" hidden>Nenhuma base encontrada.</p>
     </div>
     <div class="section" id="icp-detalhe" hidden></div>
@@ -2067,17 +2072,28 @@ Atenciosamente,</textarea>
           <li><b>Status e nota:</b> cada base recebe um status e uma nota de 0 a 100 pelos critérios abaixo.</li>
         </ol>
       </div>
-      <div class="card card-x-scroll" style="margin-top:14px"><table class="ranking" data-cartoes><thead><tr><th>Dimensão</th><th class="num">Peso</th><th>Como é calculada</th></tr></thead><tbody>
-        <tr><td class="cartao-titulo"><b>Precisão e validação</b></td><td class="num" data-label="Peso">30</td><td class="cartao-largo">Última conferência na fonte oficial: confere = 100; mudou na fonte depois da coleta = 90; divergência = no máximo 40. Até 8 dias vale inteira, de 8 a 30 dias vale 80%, mais de 30 dias = não avaliado.</td></tr>
-        <tr><td class="cartao-titulo"><b>Atualização</b></td><td class="num" data-label="Peso">20</td><td class="cartao-largo">Falha de coleta = 0. Dado mais recente dentro do atraso normal da fonte = 100; acima disso cai até 20 no dobro do atraso normal.</td></tr>
-        <tr><td class="cartao-titulo"><b>Integridade matemática</b></td><td class="num" data-label="Peso">20</td><td class="cartao-largo">100 × conferências aprovadas ÷ (aprovadas + erros) − 2 por aviso (desconto máximo de 20).</td></tr>
-        <tr><td class="cartao-titulo"><b>Transparência das fontes</b></td><td class="num" data-label="Peso">10</td><td class="cartao-largo">20 pontos para cada: fonte oficial nomeada, link oficial, período de referência, método documentado, arquivo de dados público.</td></tr>
-        <tr><td class="cartao-titulo"><b>Rastreabilidade</b></td><td class="num" data-label="Peso">10</td><td class="cartao-largo">% dos registros com o identificador do documento original (link do empenho, nº da nota, hash e página do PDF, nº de controle do PNCP).</td></tr>
-        <tr><td class="cartao-titulo"><b>Funcionamento das integrações</b></td><td class="num" data-label="Peso">10</td><td class="cartao-largo">% das últimas 14 coletas em que o robô da base terminou sem falha atribuída a ela.</td></tr>
+      <h3 style="font-size:.95rem;margin:18px 0 6px">Níveis de evidência (calculados automaticamente a partir das conferências registradas)</h3>
+      <div class="card card-x-scroll"><table class="ranking" data-cartoes><thead><tr><th>Nível</th><th>O que significa</th></tr></thead><tbody>
+        <tr><td class="cartao-titulo"><b>0 · Sem evidência</b></td><td class="cartao-largo">Ainda não há testes nem conferência na fonte para a base.</td></tr>
+        <tr><td class="cartao-titulo"><b>1 · Integridade interna</b></td><td class="cartao-largo">Os dados passaram nos testes de estrutura, somas, contagens, duplicidade e valores. Mostra que estão coerentes entre si, <b>não</b> que conferem com a fonte.</td></tr>
+        <tr><td class="cartao-titulo"><b>2 · Conferência parcial</b></td><td class="cartao-largo">Parte dos registros foi comparada com a fonte oficial (amostra ou recorte). Mostramos quantos e qual percentual.</td></tr>
+        <tr><td class="cartao-titulo"><b>3 · Conferência abrangente</b></td><td class="cartao-largo">Todas as unidades da base (cada contrato, ou o total de cada parlamentar, órgão ou mês) foram comparadas com a fonte.</td></tr>
+        <tr><td class="cartao-titulo"><b>4 · Abrangente reforçada</b></td><td class="cartao-largo">A conferência abrangente se repetiu (3 vezes ou mais, em 2 dias ou mais, nos últimos 30 dias), com as evidências gravadas.</td></tr>
       </tbody></table></div>
-      <div class="section-note" style="margin-top:12px;max-width:none">Nota da base = média ponderada das dimensões avaliadas, só quando há ao menos 4; senão, <b>Não avaliado</b>.
-        Tetos que a média não derruba: divergência na fonte, no máximo 40; falha de coleta, 50; revisão manual pendente, 70; sem conferência na fonte, 80.
-        ICP geral = média das bases avaliadas, com peso 3 para os gastos principais de governo e parlamentares, 2 para recortes relevantes e 1 para bases complementares.</div>
+      <h3 style="font-size:.95rem;margin:18px 0 6px">As seis dimensões (pesos mantidos)</h3>
+      <div class="card card-x-scroll"><table class="ranking" data-cartoes><thead><tr><th>Dimensão</th><th class="num">Peso</th><th>Como é calculada (metodologia 2.0)</th></tr></thead><tbody>
+        <tr><td class="cartao-titulo"><b>Precisão e validação</b></td><td class="num" data-label="Peso">30</td><td class="cartao-largo">O que a conferência na fonte permite afirmar sobre a base inteira: 100 × (1 − limite superior de 95% da taxa de divergência). Conferir 8 de 206 contratos sem erro ainda deixa possível que até ~31% estejam errados; conferir todos, não. Sem conferência nos últimos 30 dias: 0.</td></tr>
+        <tr><td class="cartao-titulo"><b>Atualização</b></td><td class="num" data-label="Peso">20</td><td class="cartao-largo">Falha de coleta = 0. Dado dentro do atraso normal da fonte = 100; acima disso cai até 20 no dobro do atraso. Fonte sem publicação nova não é falha do site, mas a nota cai.</td></tr>
+        <tr><td class="cartao-titulo"><b>Integridade matemática</b></td><td class="num" data-label="Peso">20</td><td class="cartao-largo">Aprovação dos testes × tipos de teste cobertos (estrutura, totais, contagens, duplicidade, faixa de valores) ÷ 5, − 2 por aviso. Um único teste aprovado não vale 100. Sem testes: 0.</td></tr>
+        <tr><td class="cartao-titulo"><b>Transparência das fontes</b></td><td class="num" data-label="Peso">10</td><td class="cartao-largo">20 pontos para cada: fonte nomeada, link oficial, período de referência, método documentado, arquivo público.</td></tr>
+        <tr><td class="cartao-titulo"><b>Rastreabilidade</b></td><td class="num" data-label="Peso">10</td><td class="cartao-largo">% dos registros com o identificador do documento original.</td></tr>
+        <tr><td class="cartao-titulo"><b>Funcionamento das integrações</b></td><td class="num" data-label="Peso">10</td><td class="cartao-largo">% das últimas 14 coletas (com registro legível) em que o robô da base funcionou. Sem registro legível: não medido.</td></tr>
+      </tbody></table></div>
+      <div class="section-note" style="margin-top:12px;max-width:none"><b>Nota da base</b> = 0,30 × Precisão + 0,20 × Integridade + 0,50 × (média de Atualização, Transparência, Rastreabilidade e Integrações medidas, com os pesos 20/10/10/10).
+        Precisão e Integridade são <b>evidências</b>: quando faltam, valem 0 — sem conferência na fonte, a nota máxima possível é 70.
+        <b>Tetos:</b> conferência parcial, 70 + 30 × fração da base conferida; divergência na fonte, 40; falha de coleta, 50; mais da metade das coletas recentes com falha, 50; revisão manual pendente, 70.
+        <b>Nota geral</b> = média das 24 bases (nenhuma fica de fora), com peso 3 para os gastos principais, 2 para recortes relevantes e 1 para complementares.
+        <b>Selo verde</b> só com a base inteira conferida na fonte (nível 3 ou 4).</div>
       <div class="section-note" id="icp-legenda" style="max-width:none"></div>
       <div class="section-note" style="max-width:none">Documentação completa: <a href="https://github.com/fabriciosantosbatista-code/cofre-aberto-ms/blob/main/ICP_DOCUMENTACAO.md" target="_blank" rel="noopener">ICP_DOCUMENTACAO.md</a> ·
         dados do índice: <a href="dados/icp.json" target="_blank" rel="noopener">icp.json</a> · histórico permanente das conferências: <a href="dados/icp_verificacoes.jsonl" target="_blank" rel="noopener">icp_verificacoes.jsonl</a> ·
@@ -7616,6 +7632,14 @@ const icpSelo = b => `<span class="icp-selo" style="background:${ICP_COR[b.statu
 const icpNota = n => n == null ? "Não avaliado" : String(n);
 const icpData = iso => iso ? new Date(iso.slice(0, 19)).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" }) : "—";
 const icpDia = iso => iso ? iso.slice(8, 10) + "/" + iso.slice(5, 7) + "/" + iso.slice(0, 4) : "—";
+const icpPct = v => v == null ? null : (v < 1 && v > 0 ? String(v.toFixed(2)) : String(Math.round(v * 10) / 10)).replace(".", ",") + "%";
+// "Nível 2 · 0,76% (8 de 1.053)" — nunca 100% com denominador desconhecido
+function icpEvid(b) {
+  const c = b.cobertura, n = `<b>Nível ${b.nivel}</b>`;
+  if (!c) return `${n} · <span style="color:var(--ink-faint)">sem conferência na fonte</span>`;
+  if (!c.calculavel) return `${n} · cobertura não calculada`;
+  return `${n} · ${icpPct(c.percentual)} <span style="color:var(--ink-faint)">(${Number(c.registrosAbrangidos).toLocaleString("pt-BR")} de ${Number(c.registrosBase).toLocaleString("pt-BR")})</span>`;
+}
 const icpBarras = (dims, nomes) => Object.entries(dims).map(([k, v]) =>
   `<div class="icp-bar"><span>${escHTML(nomes[k])}</span><i><b style="width:${v || 0}%"></b></i><em>${v == null ? "Não avaliado" : v}</em></div>`).join("");
 function renderICP(d) {
@@ -7623,16 +7647,25 @@ function renderICP(d) {
   const I = d.indicadores, bases = Object.values(d.bases).sort((a, b) => b.importancia - a.importancia || a.nome.localeCompare(b.nome));
   document.getElementById("icp-nota").innerHTML = d.nota == null ? "Não avaliado" : `${d.nota}<span style="font-size:.45em;opacity:.7"> / 100</span>`;
   document.getElementById("icp-total").textContent = I.total;
-  document.getElementById("icp-verif").textContent = I.verificadas;
-  document.getElementById("icp-atualizado").textContent = icpData(d.geradoEm);
-  document.getElementById("icp-conferencia").textContent = d.verificacoesRecentes.length ? icpData(d.verificacoesRecentes[0].em) : "—";
+  const CR = I.coberturaRegistros || {}, MET = d.metodologia || {};
+  document.getElementById("icp-abrangente").textContent = I.conferenciaAbrangente ?? "—";
+  document.getElementById("icp-parcial").textContent = I.conferenciaParcial ?? "—";
+  document.getElementById("icp-semconf").textContent = I.semVerificacaoOficial ?? "—";
+  document.getElementById("icp-criticos-n").textContent = I.criticos ?? d.criticos.length;
+  document.getElementById("icp-cobertura").textContent = CR.percentualDoTotal == null ? "não calculada" : String(CR.percentualDoTotal).replace(".", ",") + "%";
+  document.getElementById("icp-cobertura-rot").textContent = CR.percentualDoTotal == null ? "cobertura dos registros" :
+    `dos registros conferidos na fonte (${Number(CR.conferidos).toLocaleString("pt-BR")} de ${Number(CR.registrosTodasAsBases).toLocaleString("pt-BR")})`;
+  document.getElementById("icp-resumo").innerHTML = `<b>O que esta nota significa:</b> ${I.conferenciaAbrangente} de ${I.total} bases foram conferidas por inteiro na fonte oficial,
+    ${I.conferenciaParcial} só em parte, e ${I.semVerificacaoOficial} ainda dependem apenas dos testes internos. ${escHTML(d.aviso || "")}
+    ${MET.anterior && MET.anterior.nota != null ? `<span style="color:var(--ink-faint)">Metodologia ${escHTML(MET.versao)} (desde ${icpDia(MET.desde)}); pela metodologia ${escHTML(MET.anterior.versao)}, a nota seria ${MET.anterior.nota}.</span>` : ""}`;
+  document.getElementById("icp-datas").innerHTML = `Índice atualizado em ${icpData(d.geradoEm)} · última conferência na fonte: ${d.verificacoesRecentes.length ? icpData(d.verificacoesRecentes[0].em) : "—"}`;
   document.getElementById("icp-criticos").innerHTML = d.criticos.length
     ? `<div class="icp-crit"><b>Problemas que a média não esconde</b><ul>${d.criticos.map(c => `<li><a href="#aba=confiabilidade&p=${c.id}" data-icp="${c.id}">${escHTML(c.nome)}</a> — ${escHTML(c.status)}: ${escHTML(c.motivo)}</li>`).join("")}</ul></div>`
     : `<div class="section-note">Nenhuma base com divergência na fonte, falha de coleta ou nota baixa nesta atualização.</div>`;
-  const cards = [["verde", I.verificadas, "verificadas na fonte oficial", "verificado"], ["cinza", I.consistenciaAprovada, "com consistência interna aprovada", ""],
+  const cards = [["verde", I.conferenciaAbrangente, "conferidas na fonte por inteiro", "verificado"], ["amarelo", I.conferenciaParcial, "conferidas só em parte", "parcial"],
+    ["cinza", I.semVerificacaoOficial, "só com testes internos ou sem evidência", "consistente"],
     ["amarelo", I.aguardando, "aguardando atualização da fonte", "aguardando_fonte"], ["amarelo", I.revisaoManual, "com revisão manual pendente", "revisao_manual"],
-    ["vermelho", I.divergencias, "com divergência", "divergencia"], ["vermelho", I.falhas, "com falha de coleta", "falha_coleta"],
-    ["cinza", I.pendentesVerificacao, "pendentes de verificação na fonte", ""]];
+    ["vermelho", I.divergencias, "com divergência", "divergencia"], ["vermelho", I.falhas, "com falha de coleta", "falha_coleta"]];
   document.getElementById("icp-cards").innerHTML = cards.map(([c, n, t, st]) =>
     `<button type="button" class="icp-card" style="--c:${ICP_COR[c]}" ${st ? `data-st="${st}"` : ""}><b>${n}</b><span>${escHTML(t)}</span></button>`).join("");
   document.getElementById("icp-dims").innerHTML = icpBarras(d.dimensoes, d.nomeDimensoes);
@@ -7660,6 +7693,7 @@ function renderICP(d) {
   tb.innerHTML = bases.map(b => `<tr class="clickable" data-id="${b.id}" data-status="${b.status}" data-busca="${escHTML(icpNorm(b.nome + " " + b.orgao + " " + (b.fonteOficial || "")))}">
     <td class="cartao-titulo"><span class="rank-name">${escHTML(b.nome)}</span><div style="font-size:.74rem;color:var(--ink-faint)">${escHTML(b.orgao)}</div></td>
     <td data-label="Status">${icpSelo(b)}</td><td class="num" data-label="Nota" style="white-space:nowrap">${b.nota == null ? '<span style="font-size:.74rem;color:var(--ink-faint)">não avaliado</span>' : `<b>${b.nota}</b>`}</td>
+    <td data-label="Evidência" style="font-size:.78rem">${icpEvid(b)}</td>
     <td data-label="Última coleta" style="white-space:nowrap">${b.ultimaColeta ? icpDia(b.ultimaColeta) + " " + b.ultimaColeta.slice(11, 16) : "—"}</td>
     <td data-label="Conferência oficial" style="white-space:nowrap">${b.ultimaVerificacao ? icpDia(b.ultimaVerificacao.em) : '<span style="color:var(--ink-faint)">sem conferência</span>'}</td>
     <td class="num" data-label="Registros">${b.registros == null ? "—" : Number(b.registros).toLocaleString("pt-BR")}</td>
@@ -7678,6 +7712,23 @@ function renderICP(d) {
   tb.addEventListener("click", ev => { const r = ev.target.closest("tr[data-id]"); if (r) icpDetalhe(r.dataset.id); });
   if (window._icpPendente) { icpDetalhe(window._icpPendente); window._icpPendente = null; }
 }
+function icpEvidDetalhe(b) {
+  const c = b.cobertura, linha = (k, v) => `<dt>${k}</dt><dd>${v}</dd>`, num = v => v == null ? "desconhecido" : Number(v).toLocaleString("pt-BR");
+  let h = linha("Nível de evidência", `<b>${b.nivel} · ${escHTML(b.nivelNome || "")}</b>`) + linha("Total de registros da base", num(b.registros));
+  if (c) {
+    h += linha("Registros cobertos pela conferência", c.calculavel ? `${num(c.registrosAbrangidos)} de ${num(c.registrosBase)} — <b>${icpPct(c.percentual)}</b>` : "cobertura não calculada (total desconhecido)")
+      + linha("Unidades conferidas", `${num(c.unidadesConferidas)} de ${num(c.unidadesBase)} ${escHTML(c.unidade || "")}`)
+      + linha("Tipo de conferência", c.granularidade === "registro" ? "registro a registro (amostragem)" + (c.unidadesConferidas >= c.unidadesBase ? " — todos os registros" : "")
+          : c.granularidade === "unidade" ? "pelos totais de cada unidade (os registros entram nesses totais)" : c.granularidade === "total" ? "só o total geral" : "não informado (conferência da metodologia 1.0)")
+      + linha("Seleção", escHTML(c.selecao || "—")) + linha("Resultado", `${escHTML(c.resultado)}${c.divergentes ? ` · ${c.divergentes} com divergência` : " · nenhuma divergência"}`)
+      + linha("Data da conferência", icpData(c.em)) + linha("Fonte usada", c.fonteUrl ? `<a href="${escHTML(c.fonteUrl)}" target="_blank" rel="noopener">${escHTML(c.fonteUrl)}</a>` : "—")
+      + linha("Método", escHTML(c.metodo || "—")) + linha("Responsável", escHTML(c.responsavel || "—"));
+  } else {
+    h += linha("Conferência na fonte oficial", "nenhuma nos últimos 30 dias");
+  }
+  h += linha("Testes internos", `${b.testes.ok} aprovados · ${b.testes.erros} erros · tipos cobertos: ${escHTML((b.categoriasTeste || []).join(", ") || "nenhum")} (${(b.categoriasTeste || []).length} de 5)`);
+  return `<dl class="icp-dl">${h}</dl>`;
+}
 function icpDetalhe(id) {
   const b = ICP && ICP.bases[id], box = document.getElementById("icp-detalhe");
   if (!b) return;
@@ -7693,6 +7744,10 @@ function icpDetalhe(id) {
       <h2 class="section-title" style="margin:2px 0 6px">${escHTML(b.nome)}</h2>${icpSelo(b)} <b style="font-size:1.3rem;margin-left:8px">${icpNota(b.nota)}</b><span style="color:var(--ink-faint)"> / 100</span></div>
       <button type="button" class="pager-btn" id="icp-fechar">Fechar ✕</button></div>
     <p style="font-size:.88rem;color:var(--ink-soft)">${escHTML(b.motivo)}</p>
+    <h3>Evidência que sustenta a nota</h3>
+    ${icpEvidDetalhe(b)}
+    <ul>${(b.avisosMetodologicos || []).map(a => `<li>${escHTML(a)}</li>`).join("")}</ul>
+    ${b.notaV1 != null || b.nota != null ? `<p style="font-size:.78rem;color:var(--ink-faint)">Pela metodologia anterior (1.0) a nota desta base era ${b.notaV1 == null ? "não avaliada" : b.notaV1}; agora (${escHTML((ICP.metodologia || {}).versao || "2.0")}) é ${b.nota}. A diferença vem da cobertura da conferência e da profundidade dos testes.</p>` : ""}
     <h3>O que foi verificado</h3><p style="font-size:.86rem">${uv ? `Conferida em ${icpData(uv.em)} (${escHTML(uv.metodo || "")}): resultado <b>${escHTML(uv.resultado)}</b>, ${uv.conferidos || 0} itens comparados.`
       : "<b>Esta base ainda não foi conferida diretamente na fonte oficial.</b> As contas internas são testadas a cada coleta, mas isso prova só que os números fecham entre si."}</p>
     ${comp ? `<div class="card-x-scroll"><table class="ranking" data-cartoes><thead><tr><th>Item comparado</th><th class="num">No site</th><th class="num">Na fonte oficial</th><th class="num">Diferença</th></tr></thead><tbody>${comp}</tbody></table></div>` : ""}
@@ -7927,7 +7982,7 @@ function montarBarrasFonte() {
       bar.innerHTML = `
         <div class="fonte-linha">
           ${f ? `<span class="fonte-selo ${ok ? "ok" : "atencao"}" title="${ok ? "Fonte em dia" : "Dado mais antigo que o normal para esta fonte"}">${ok ? "✅ em dia" : "⚠️ atenção"}</span>` : ""}
-          ${monit[aba] ? `<a class="fonte-selo selo-icp" href="#aba=confiabilidade&p=${aba}" data-icp="${aba}" style="background:${COR_ICP[monit[aba].statusCor] || COR_ICP.cinza};border-color:transparent;color:#fff;text-decoration:none" title="${escHTML(monit[aba].motivo)} — clique para ver a verificação">${escHTML(monit[aba].statusRotulo)}${monit[aba].nota != null ? ` · ICP ${monit[aba].nota}` : ""}</a>` : ""}
+          ${monit[aba] ? `<a class="fonte-selo selo-icp" href="#aba=confiabilidade&p=${aba}" data-icp="${aba}" style="background:${COR_ICP[monit[aba].statusCor] || COR_ICP.cinza};border-color:transparent;color:#fff;text-decoration:none" title="${escHTML(((monit[aba].avisosMetodologicos || [])[0]) || monit[aba].motivo)} — clique para ver a evidência">${escHTML(monit[aba].statusRotulo)}${monit[aba].nota != null ? ` · ICP ${monit[aba].nota}` : ""}${monit[aba].cobertura && monit[aba].cobertura.calculavel && monit[aba].nivel === 2 ? ` · ${icpPct(monit[aba].cobertura.percentual)} conferido` : ""}</a>` : ""}
           <span class="fonte-txt"><b>Fonte:</b> ${f ? (f.url ? `<a href="${escHTML(f.url)}" target="_blank" rel="noopener">${escHTML(f.fonte)}</a>` : escHTML(f.fonte)) : "fontes oficiais"}
             ${f && f.dadoMaisRecente ? ` · <b>dado mais recente:</b> ${escHTML(f.dadoMaisRecente)}` : ""}
             ${f && f.coleta ? ` · coletado em ${dataBRcurta(f.coleta)}` : ""}

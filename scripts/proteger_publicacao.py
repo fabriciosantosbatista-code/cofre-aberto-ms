@@ -18,7 +18,7 @@ Se algum teste BLOQUEANTE falhar:
 Não bloqueiam (aparecem no ICP, mas não impedem a publicação): a classificação das fontes (fonte parada ou divergência
 na conferência), porque a versão anterior não é "mais válida" nesses casos — a fonte é a mesma —, e avisos.
 
-Os históricos que só crescem (icp_verificacoes.jsonl, icp_execucoes_historico.jsonl, monitoramento_historico.json)
+Os históricos que só crescem (icp_verificacoes.jsonl, icp_execucoes_historico.jsonl, icp_notas_historico.jsonl, monitoramento_historico.json)
 NUNCA são revertidos.
 
 Se o teste de CPF falhar mesmo na versão mantida, o script sai com código 1: o robô não faz commit nenhum.
@@ -31,7 +31,7 @@ from pathlib import Path
 
 RAIZ = Path(sys.argv[sys.argv.index("--raiz") + 1]).resolve() if "--raiz" in sys.argv else Path(__file__).resolve().parent.parent
 LISTA = RAIZ / ".github" / "publicar.txt"
-NUNCA_REVERTER = {"dados/icp_verificacoes.jsonl", "dados/icp_execucoes_historico.jsonl", "dados/monitoramento_historico.json",
+NUNCA_REVERTER = {"dados/icp_verificacoes.jsonl", "dados/icp_execucoes_historico.jsonl", "dados/monitoramento_historico.json", "dados/icp_notas_historico.jsonl",
                   "dados/icp_execucoes.json", "dados/icp_publicacao.json"}
 BLOQUEIO = RAIZ / "bloqueio"
 
