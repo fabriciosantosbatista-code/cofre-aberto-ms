@@ -49,7 +49,7 @@ jobs:
         run: python3 scripts/gerar_historico.py --se-faltar || echo "⚠️ histórico do ano anterior não gerado — tenta de novo amanhã"
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
-        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+        run: python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py  # LGPD: sem CPF, ou o pacote não é enviado
 
       - name: Upload artifact — dados (portal transparência)
         uses: actions/upload-artifact@v4
@@ -85,7 +85,7 @@ jobs:
         run: python3 scripts/coletar_verba_camara_cg.py
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
-        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+        run: python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py  # LGPD: sem CPF, ou o pacote não é enviado
 
       - name: Upload artifact — verba indenizatória (Câmara CG)
         uses: actions/upload-artifact@v4
@@ -98,12 +98,15 @@ jobs:
             dados/historico_*_camara_cg.json
           retention-days: 1
 
-      - name: Guardar os PDFs originais lidos nesta coleta (90 dias)
+      - name: Deixar só os PDFs da Câmara ainda não guardados (os já guardados saem da pasta temporária)
+        run: python3 scripts/pdfs_novos.py
+
+      - name: Guardar os PDFs NOVOS lidos nesta coleta (30 dias; podem ter CPF impresso — não vão para o site)
         uses: actions/upload-artifact@v4
         with:
           name: pdfs-camara-cg-${{ github.run_id }}
           path: pdfs_camara_cg/
-          retention-days: 90
+          retention-days: 30
           if-no-files-found: ignore
 
   coletar_trt24:
@@ -127,7 +130,7 @@ jobs:
         run: python3 scripts/coletar_trt24.py
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
-        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+        run: python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py  # LGPD: sem CPF, ou o pacote não é enviado
 
       - name: Upload artifact — TRT24
         uses: actions/upload-artifact@v4
@@ -157,7 +160,7 @@ jobs:
         run: python3 scripts/coletar_tre_ms.py
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
-        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+        run: python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py  # LGPD: sem CPF, ou o pacote não é enviado
 
       - name: Upload artifact — TRE-MS
         uses: actions/upload-artifact@v4
@@ -187,7 +190,7 @@ jobs:
         run: python3 scripts/coletar_tjms.py
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
-        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+        run: python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py  # LGPD: sem CPF, ou o pacote não é enviado
 
       - name: Upload artifact — TJMS
         uses: actions/upload-artifact@v4
@@ -217,7 +220,7 @@ jobs:
         run: python3 scripts/coletar_governo_ms.py
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
-        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+        run: python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py  # LGPD: sem CPF, ou o pacote não é enviado
 
       - name: Upload artifact — Governo MS
         uses: actions/upload-artifact@v4
@@ -262,7 +265,7 @@ jobs:
         run: python3 -u scripts/coletar_alugueis.py || echo "⚠️ coletar_alugueis.py falhou — dados anteriores mantidos"
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
-        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+        run: python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py  # LGPD: sem CPF, ou o pacote não é enviado
 
       - name: Upload artifact — contratos CG
         uses: actions/upload-artifact@v4
@@ -305,7 +308,7 @@ jobs:
         run: python3 scripts/coletar_servidores_alems.py || echo "⚠️ servidores da ALEMS não atualizados — arquivo anterior mantido"
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
-        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+        run: python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py  # LGPD: sem CPF, ou o pacote não é enviado
 
       - name: Upload artifact — emendas e ALEMS
         uses: actions/upload-artifact@v4
@@ -364,7 +367,7 @@ jobs:
         run: python3 scripts/coletar_receitas.py || echo "⚠️ coletar_receitas.py falhou — dados anteriores mantidos"
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
-        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+        run: python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py  # LGPD: sem CPF, ou o pacote não é enviado
 
       - name: Upload artifact — fontes federais
         uses: actions/upload-artifact@v4
@@ -425,10 +428,11 @@ jobs:
         run: python3 scripts/coletar_licitacoes_governo.py 800 || echo "⚠️ coletar_licitacoes_governo.py falhou — licitações anteriores mantidas"
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
-        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+        id: lgpd
+        run: python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py  # LGPD: sem CPF, ou o pacote não é enviado
 
       - name: Upload artifact — fontes da auditoria
-        if: always()
+        if: always() && steps.lgpd.outcome == 'success'  # nunca envia se a máscara ou o detector de CPF falharam
         uses: actions/upload-artifact@v4
         with:
           name: dados-auditoria
@@ -532,7 +536,7 @@ jobs:
         run: pip install requests -q && python3 scripts/coletar_supersalarios.py --so-camara || echo "⚠️ Câmara CG fora dos supersalários hoje"
 
       - name: Mascarar CPF completo de pessoa física nos dados (LGPD)
-        run: python3 scripts/mascarar_cpf.py || echo "⚠️ mascarar_cpf.py falhou"
+        run: python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py  # LGPD: sem CPF, ou o pacote não é enviado
 
       - name: Limpar o texto (OCR) das notas da verba dos vereadores de CG
         run: python3 scripts/limpar_notas_camara_cg.py || echo "⚠️ limpar_notas_camara_cg.py falhou"

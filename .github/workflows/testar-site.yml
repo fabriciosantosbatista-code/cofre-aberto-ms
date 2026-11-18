@@ -38,6 +38,9 @@ jobs:
       - name: LGPD — nenhum CPF completo nos arquivos publicados (com e sem pontuação, em qualquer campo)
         run: python3 tests/test_cpf.py
 
+      - name: LGPD — contenção (máscara e detector antes de cada artefato, só PDFs novos, privado/ fora do Git)
+        run: python3 tests/test_contencao.py
+
       - name: ICP metodologia 2.0 — cobertura, nível de evidência, tetos e regressão das 24 bases
         run: python3 tests/test_icp_metodologia.py
 

@@ -2,3 +2,12 @@ __pycache__/
 *.pyc
 pdfs_camara_cg/
 bloqueio/
+# Documentos internos de segurança (diagnósticos, checklists, minutas, mapas de hashes, relatórios de exposição,
+# backups e chaves): nunca entram no Git nem no site. A pasta inteira, inclusive arquivos futuros.
+/privado/
+# Backups e chaves de criptografia, em qualquer lugar do projeto
+*.bundle
+*.bundle.age
+*.age
+age-key*.txt
+chave-backup*.txt
