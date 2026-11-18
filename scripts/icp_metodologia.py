@@ -133,6 +133,15 @@ def _idade(h, agora):
         return None
 
 
+INTERVALO_REFORCO_H = 20  # "dias diferentes" de verdade: datas diferentes e pelo menos 20 h entre a 1ª e a última conferência
+
+
+def _intervalo_horas(hs):
+    from datetime import datetime
+    ts = sorted(datetime.fromisoformat(h["em"][:19]) for h in hs)
+    return (ts[-1] - ts[0]).total_seconds() / 3600
+
+
 def abrangente(cob):
     """Todas as unidades da base conferidas, com pelo menos 2 unidades (um único total geral não localiza erros que se compensam)."""
     return bool(cob and cob["calculavel"] and cob["unidadesBase"] and cob["unidadesConferidas"] >= cob["unidadesBase"]
@@ -141,14 +150,16 @@ def abrangente(cob):
 
 def nivel(cob, integridade_ok, historico, agora):
     """0 sem evidência · 1 integridade interna · 2 conferência parcial (amostra ou recorte) · 3 conferência abrangente ·
-    4 conferência abrangente reforçada (repetida: ≥ 3 conferências abrangentes compatíveis em ≥ 2 dias diferentes nos
-    últimos 30 dias, com as evidências — itens comparados e endereço da fonte — gravadas)."""
+    4 conferência abrangente reforçada (repetida: ≥ 3 conferências abrangentes compatíveis em ≥ 2 dias diferentes, com pelo
+    menos 20 horas entre a primeira e a última, nos últimos 30 dias, com as evidências — itens comparados e endereço da
+    fonte — gravadas). As 20 horas evitam que duas conferências feitas com 1 hora de diferença, gravadas em fusos
+    diferentes ou perto da meia-noite, pareçam "dias diferentes"."""
     if cob and cob["resultado"] in COMPATIVEL:
         if abrangente(cob):
             reforco = [h for h in historico if h.get("resultado") in COMPATIVEL and h.get("granularidade") in ("registro", "unidade")
                        and h.get("unidadesBase") and (h.get("unidadesConferidas") or 0) >= h["unidadesBase"] >= 2
                        and h.get("comparados") and h.get("fonteUrl") and _idade(h, agora) is not None and _idade(h, agora) <= VALIDADE_DIAS]
-            if len(reforco) >= 3 and len({h["em"][:10] for h in reforco}) >= 2:
+            if len(reforco) >= 3 and len({h["em"][:10] for h in reforco}) >= 2 and _intervalo_horas(reforco) >= INTERVALO_REFORCO_H:
                 return 4
             return 3
         return 2

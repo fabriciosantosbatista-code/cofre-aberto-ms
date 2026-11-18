@@ -29,7 +29,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
-AGORA = datetime.now()
+from zoneinfo import ZoneInfo
+FUSO = ZoneInfo("America/Campo_Grande")  # todos os horários do ICP no horário de Campo Grande (o robô e as execuções manuais)
+AGORA = datetime.now(FUSO).replace(tzinfo=None)
 def _tentativa():
     """Início da execução do robô (a API do GitHub dá em UTC, 'Z'); as datas de coleta estão no horário local."""
     t = (os.environ.get("COLETA_INICIO") or "").strip()

@@ -136,7 +136,7 @@ def main():
     motivos = bloqueantes(res)
     head = git("rev-parse", "HEAD").stdout.strip()
     resumo = lambda r: {t: {"codigo": v["codigo"], "erros": sum(1 for x in v.get("itens") or [] if x.get("nivel") == "erro")} for t, v in r.items()}
-    reg = {"em": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"), "runId": os.environ.get("GITHUB_RUN_ID"), "testes": resumo(res)}
+    reg = {"em": datetime.now(__import__("zoneinfo").ZoneInfo("America/Campo_Grande")).strftime("%Y-%m-%dT%H:%M:%S"), "runId": os.environ.get("GITHUB_RUN_ID"), "testes": resumo(res)}
     if not motivos:
         reg.update({"resultado": "publicado", "motivos": []})
         print(f"✅ publicação liberada: CPF, integridade e variações sem erro bloqueante")

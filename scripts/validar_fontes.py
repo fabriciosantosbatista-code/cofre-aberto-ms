@@ -33,7 +33,9 @@ DADOS = Path(__file__).parent.parent / "dados"
 SAIDA = DADOS / "validacao_fontes.json"
 HISTORICO = DADOS / "icp_verificacoes.jsonl"  # histórico PERMANENTE: uma linha por conferência, só acrescenta (nunca reescreve)
 H = {"User-Agent": "Mozilla/5.0 (CofreAbertoMS; +https://cofreabertoms.com.br)", "Accept": "application/json"}
-AGORA = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+from zoneinfo import ZoneInfo
+FUSO = ZoneInfo("America/Campo_Grande")  # todos os horários do ICP no horário de Campo Grande (o robô e as execuções manuais)
+AGORA = datetime.now(FUSO).strftime("%Y-%m-%dT%H:%M:%S")
 
 
 def J(n):

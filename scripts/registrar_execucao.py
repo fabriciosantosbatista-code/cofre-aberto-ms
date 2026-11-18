@@ -273,7 +273,7 @@ def J(nome):
 def montar_registro(repo, run, get=http_get):
     jobs, erro = ler_jobs(repo, run, get)
     monit = (J("monitoramento.json").get("fontes") or {})
-    reg = {"runId": str(run), "workflow": WORKFLOW, "registradoEm": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"), "jobs": {}, "bases": {}}
+    reg = {"runId": str(run), "workflow": WORKFLOW, "registradoEm": datetime.now(__import__("zoneinfo").ZoneInfo("America/Campo_Grande")).strftime("%Y-%m-%dT%H:%M:%S"), "jobs": {}, "bases": {}}
     if jobs is None:
         reg.update({"leitura": "indisponivel", "erroLeitura": erro, "bases": {b: "leitura_indisponivel" for bs in JOB_BASES.values() for b in bs}})
         return reg

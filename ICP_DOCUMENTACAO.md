@@ -79,7 +79,7 @@ divergências, itens comparados (site × fonte × diferença), responsável (o r
 | 1 | Integridade interna | testes da base sem erro, sem conferência válida na fonte |
 | 2 | Conferência parcial | conferência válida (≤ 30 dias, compatível) que **não** cobre todas as unidades — amostra, recorte, ou um único total |
 | 3 | Conferência abrangente | todas as unidades da base conferidas (registro a registro ou pelos totais de cada unidade), com pelo menos 2 unidades e denominador conhecido |
-| 4 | Abrangente reforçada | nível 3 repetido: ≥ 3 conferências abrangentes compatíveis em ≥ 2 dias diferentes nos últimos 30 dias, com itens comparados e endereço da fonte gravados |
+| 4 | Abrangente reforçada | nível 3 repetido: ≥ 3 conferências abrangentes compatíveis em ≥ 2 dias diferentes, com **pelo menos 20 horas** entre a primeira e a última, nos últimos 30 dias, com itens comparados e endereço da fonte gravados |
 
 Um único total geral fica no nível 2 porque uma só equação não localiza erros que se compensam. Na conferência pelos totais
 de cada unidade (nível 3), os registros individuais entram nos totais mas não são comparados um a um — essa limitação

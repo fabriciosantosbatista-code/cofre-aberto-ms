@@ -69,6 +69,8 @@ reforco = [H(0, granularidade="unidade", unidadesBase=25, unidadesConferidas=25,
            H(2, granularidade="unidade", unidadesBase=25, unidadesConferidas=25, idsConferidos=[str(i) for i in range(25)], registrosBase=500, registrosAbrangidos=500)]
 check(avalia(reforco)[1] == 4, "conferência abrangente repetida 3 vezes em 3 dias → nível 4 (reforçada)")
 check(avalia(reforco[:1] * 3)[1] == 3, "3 conferências no MESMO dia não bastam para o nível 4")
+perto = [dict(r, em=e) for r, e in zip(reforco, ("2026-11-17T21:40:00", "2026-11-18T01:02:00", "2026-11-18T01:40:00"))]
+check(avalia(perto)[1] == 3, "conferências com 4 h de diferença, de datas diferentes (fuso/meia-noite), não contam como dias diferentes")
 check(avalia([H(granularidade="total", unidadesBase=1, unidadesConferidas=1, idsConferidos=["total"], registrosBase=1000, registrosAbrangidos=1000)])[1] == 2,
       "um único total geral conferido → nível 2 (não localiza erros que se compensam)")
 
