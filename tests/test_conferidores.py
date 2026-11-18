@@ -64,6 +64,7 @@ D = {"votacoes.json": VOT, "producao_legislativa.json": PROD, "entidades.json": 
 r = rodar(D, fonte_padrao(), v.v_votacoes)
 check(r["resultado"] == "confere" and r["unidadesConferidas"] == 2 and r["unidadesBase"] == 2, "votações: todos os votos iguais → confere, 2 de 2 votações")
 check(r["conferidos"] == 4, "votações: um item por deputado em cada votação (ausente conta como '—')")
+check(r["registrosAbrangidos"] == 2 and r["registrosBase"] == 2, "votações: a cobertura conta votações (registros da base), não votos")
 r = rodar(D, fonte_padrao(votos={**FONTE_VOT, "10-1": [("1", "Não"), ("2", "Não")]}), v.v_votacoes)
 check(r["resultado"] == "diverge" and len(r["divergentes"]) == 1, "votações: um único voto diferente → diverge (não passa pela tolerância)")
 r = rodar(D, fonte_padrao(votos={**FONTE_VOT, "10-2": [("1", "Não"), ("2", "Sim")]}), v.v_votacoes)
@@ -84,6 +85,7 @@ check(r["resultado"] == "indisponivel", "produção: fonte fora do ar → indisp
 # entidades
 r = rodar(D, fonte_padrao(), v.v_entidades)
 check(r["resultado"] == "confere" and r["conferidos"] == 3, "entidades: abertura, município e situação iguais (sem acento/caixa) → confere")
+check(r["unidadesConferidas"] == 1 and r["registrosAbrangidos"] == 1 and r["idsConferidos"] == ["11"], "entidades: a cobertura conta entidades (CNPJ), não campos")
 r = rodar(D, fonte_padrao(ent={"data_inicio_atividade": "2001-01-01", "municipio": "DOURADOS", "descricao_situacao_cadastral": "ATIVA"}), v.v_entidades)
 check(r["resultado"] == "diverge", "entidades: município diferente → diverge")
 r = rodar(D, fonte_padrao(ent={"data_inicio_atividade": "2001-01-01", "municipio": "CAMPO GRANDE", "descricao_situacao_cadastral": "BAIXADA"}), v.v_entidades)

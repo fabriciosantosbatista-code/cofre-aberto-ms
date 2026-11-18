@@ -110,7 +110,8 @@ def cobertura(historico, agora, registros_base_atual=None):
     ids = set(v.get("idsConferidos") or [])
     if gran == "registro":
         for h in validas:
-            if h.get("granularidade") == "registro" and h.get("resultado") in COMPATIVEL:
+            # só conferências da mesma unidade: se a unidade mudou (ex.: de "campo" para "entidade"), os ids não se somam
+            if h.get("granularidade") == "registro" and h.get("resultado") in COMPATIVEL and h.get("unidade") == v.get("unidade"):
                 ids |= set(h.get("idsConferidos") or [])
     n = min(len(ids) or v.get("unidadesConferidas") or 0, N) if N else (len(ids) or v.get("unidadesConferidas") or 0)
     rb = v.get("registrosBase") if v.get("registrosBase") is not None else registros_base_atual

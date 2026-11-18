@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-18T18:33:50",
+ "geradoEm": "2026-11-18T19:31:22",
  "fontes": {
   "governo-ms": {
    "resultado": "confere",
@@ -1125,7 +1125,7 @@
   },
   "votacoes": {
    "resultado": "confere",
-   "em": "2026-11-18T18:33:50",
+   "em": "2026-11-18T19:31:22",
    "metodo": "API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano; item = voto de um deputado de MS (100 = igual ao site, 0 = diferente)",
    "fonteUrl": "https://dadosabertos.camara.leg.br/",
    "conferidos": 1008,
@@ -1857,7 +1857,7 @@
    "granularidade": "unidade",
    "unidade": "votação nominal da Câmara (o voto de cada deputado de MS)",
    "unidadesBase": 126,
-   "registrosBase": 1008,
+   "registrosBase": 126,
    "selecao": "todas as votações nominais da Câmara publicadas no site; todos os deputados de MS em cada uma",
    "responsavel": "validar_fontes.py — conferência automática do robô diário (consulta própria à fonte, independente da coleta)",
    "metodologia": "ICP 2.0",
@@ -1990,7 +1990,7 @@
     "2557414-32",
     "2557414-41"
    ],
-   "registrosAbrangidos": 1008
+   "registrosAbrangidos": 126
   },
   "producao": {
    "resultado": "confere",
@@ -2110,7 +2110,7 @@
   },
   "entidades": {
    "resultado": "confere",
-   "em": "2026-11-18T18:33:50",
+   "em": "2026-11-18T19:31:22",
    "metodo": "cadastro CNPJ (minhareceita.org): 30 entidades sorteadas; item = abertura, município ou situação cadastral (100 = igual ao site, 0 = diferente)",
    "fonteUrl": "https://minhareceita.org/",
    "conferidos": 90,
@@ -2135,19 +2135,19 @@
      "diferenca": 0.0
     },
     {
-     "item": "14341089000164 · abertura",
+     "item": "03323800000131 · abertura",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "14341089000164 · município",
+     "item": "03323800000131 · município",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "14341089000164 · situação",
+     "item": "03323800000131 · situação",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
@@ -2225,19 +2225,19 @@
      "diferenca": 0.0
     },
     {
-     "item": "36476044000130 · abertura",
+     "item": "20868264000179 · abertura",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "36476044000130 · município",
+     "item": "20868264000179 · município",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "36476044000130 · situação",
+     "item": "20868264000179 · situação",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
@@ -2279,37 +2279,37 @@
      "diferenca": 0.0
     },
     {
-     "item": "01105477000102 · abertura",
+     "item": "18304726000183 · abertura",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "01105477000102 · município",
+     "item": "18304726000183 · município",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "01105477000102 · situação",
+     "item": "18304726000183 · situação",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "04464463000165 · abertura",
+     "item": "34246176000140 · abertura",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "04464463000165 · município",
+     "item": "34246176000140 · município",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "04464463000165 · situação",
+     "item": "34246176000140 · situação",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
@@ -2333,19 +2333,19 @@
      "diferenca": 0.0
     },
     {
-     "item": "11335147000159 · abertura",
+     "item": "12885905000175 · abertura",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "11335147000159 · município",
+     "item": "12885905000175 · município",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "11335147000159 · situação",
+     "item": "12885905000175 · situação",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
@@ -2369,19 +2369,19 @@
      "diferenca": 0.0
     },
     {
-     "item": "11335293000184 · abertura",
+     "item": "47687684000105 · abertura",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "11335293000184 · município",
+     "item": "47687684000105 · município",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "11335293000184 · situação",
+     "item": "47687684000105 · situação",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
@@ -2423,19 +2423,19 @@
      "diferenca": 0.0
     },
     {
-     "item": "07562684000164 · abertura",
+     "item": "02520947000159 · abertura",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "07562684000164 · município",
+     "item": "02520947000159 · município",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "07562684000164 · situação",
+     "item": "02520947000159 · situação",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
@@ -2477,19 +2477,19 @@
      "diferenca": 0.0
     },
     {
-     "item": "20668144000128 · abertura",
+     "item": "03098665000178 · abertura",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "20668144000128 · município",
+     "item": "03098665000178 · município",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "20668144000128 · situação",
+     "item": "03098665000178 · situação",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
@@ -2639,19 +2639,19 @@
      "diferenca": 0.0
     },
     {
-     "item": "15554389000194 · abertura",
+     "item": "03772576000246 · abertura",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "15554389000194 · município",
+     "item": "03772576000246 · município",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
     },
     {
-     "item": "15554389000194 · situação",
+     "item": "03772576000246 · situação",
      "site": 100.0,
      "fonte": 100.0,
      "diferenca": 0.0
@@ -2660,106 +2660,46 @@
    "naoObtidos": 0,
    "nota": "",
    "granularidade": "registro",
-   "unidade": "campo cadastral de uma entidade",
-   "unidadesBase": 2817,
-   "registrosBase": 2817,
+   "unidade": "entidade (abertura, município e situação cadastral)",
+   "unidadesBase": 939,
+   "registrosBase": 939,
    "selecao": "amostra aleatória simples de 30 entidades por dia (semente = data + 7)",
    "responsavel": "validar_fontes.py — conferência automática do robô diário (consulta própria à fonte, independente da coleta)",
    "metodologia": "ICP 2.0",
-   "unidadesConferidas": 90,
+   "unidadesConferidas": 30,
    "idsConferidos": [
-    "01105477000102 · abertura",
-    "01105477000102 · município",
-    "01105477000102 · situação",
-    "01534346000132 · abertura",
-    "01534346000132 · município",
-    "01534346000132 · situação",
-    "01970508000185 · abertura",
-    "01970508000185 · município",
-    "01970508000185 · situação",
-    "01989342000149 · abertura",
-    "01989342000149 · município",
-    "01989342000149 · situação",
-    "02168943000153 · abertura",
-    "02168943000153 · município",
-    "02168943000153 · situação",
-    "02427937000173 · abertura",
-    "02427937000173 · município",
-    "02427937000173 · situação",
-    "03561982000189 · abertura",
-    "03561982000189 · município",
-    "03561982000189 · situação",
-    "03733967000170 · abertura",
-    "03733967000170 · município",
-    "03733967000170 · situação",
-    "04152699000166 · abertura",
-    "04152699000166 · município",
-    "04152699000166 · situação",
-    "04253881000103 · abertura",
-    "04253881000103 · município",
-    "04253881000103 · situação",
-    "04464463000165 · abertura",
-    "04464463000165 · município",
-    "04464463000165 · situação",
-    "05876281000164 · abertura",
-    "05876281000164 · município",
-    "05876281000164 · situação",
-    "07562684000164 · abertura",
-    "07562684000164 · município",
-    "07562684000164 · situação",
-    "09366367000106 · abertura",
-    "09366367000106 · município",
-    "09366367000106 · situação",
-    "11335147000159 · abertura",
-    "11335147000159 · município",
-    "11335147000159 · situação",
-    "11335293000184 · abertura",
-    "11335293000184 · município",
-    "11335293000184 · situação",
-    "14341058000103 · abertura",
-    "14341058000103 · município",
-    "14341058000103 · situação",
-    "14341072000107 · abertura",
-    "14341072000107 · município",
-    "14341072000107 · situação",
-    "14341089000164 · abertura",
-    "14341089000164 · município",
-    "14341089000164 · situação",
-    "14626844000157 · abertura",
-    "14626844000157 · município",
-    "14626844000157 · situação",
-    "15554389000194 · abertura",
-    "15554389000194 · município",
-    "15554389000194 · situação",
-    "20668144000128 · abertura",
-    "20668144000128 · município",
-    "20668144000128 · situação",
-    "24605594000122 · abertura",
-    "24605594000122 · município",
-    "24605594000122 · situação",
-    "24823958000221 · abertura",
-    "24823958000221 · município",
-    "24823958000221 · situação",
-    "25028825000145 · abertura",
-    "25028825000145 · município",
-    "25028825000145 · situação",
-    "29184280000117 · abertura",
-    "29184280000117 · município",
-    "29184280000117 · situação",
-    "36476044000130 · abertura",
-    "36476044000130 · município",
-    "36476044000130 · situação",
-    "52306613000155 · abertura",
-    "52306613000155 · município",
-    "52306613000155 · situação",
-    "61600839000155 · abertura",
-    "61600839000155 · município",
-    "61600839000155 · situação",
-    "73558132000107 · abertura",
-    "73558132000107 · município",
-    "73558132000107 · situação"
+    "01534346000132",
+    "01970508000185",
+    "01989342000149",
+    "02168943000153",
+    "02427937000173",
+    "02520947000159",
+    "03098665000178",
+    "03323800000131",
+    "03561982000189",
+    "03733967000170",
+    "03772576000246",
+    "04152699000166",
+    "04253881000103",
+    "05876281000164",
+    "09366367000106",
+    "12885905000175",
+    "14341058000103",
+    "14341072000107",
+    "14626844000157",
+    "18304726000183",
+    "20868264000179",
+    "24605594000122",
+    "24823958000221",
+    "25028825000145",
+    "29184280000117",
+    "34246176000140",
+    "47687684000105",
+    "52306613000155",
+    "61600839000155",
+    "73558132000107"
    ],
-   "registrosAbrangidos": 90
+   "registrosAbrangidos": 30
   }
  }
 }

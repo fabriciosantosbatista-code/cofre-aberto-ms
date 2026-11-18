@@ -278,10 +278,10 @@ def v_votacoes():
     res = resultado(itens, "API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano; item = voto de um deputado de MS "
                     "(100 = igual ao site, 0 = diferente)", "https://dadosabertos.camara.leg.br/",
                     granularidade="unidade", unidade="votação nominal da Câmara (o voto de cada deputado de MS)", unidades_base=len(vots),
-                    registros_base=len(vots) * len(deps), selecao="todas as votações nominais da Câmara publicadas no site; todos os deputados de MS em cada uma")
-    if res["resultado"] in ("confere", "diverge"):  # unidade = votação com todos os votos obtidos
+                    registros_base=len(vots), selecao="todas as votações nominais da Câmara publicadas no site; todos os deputados de MS em cada uma")
+    if res["resultado"] in ("confere", "diverge"):  # unidade e registro = votação (a base conta votações, não votos) com todos os votos obtidos
         ok = [v["id"] for v, r in respostas if r is not None]
-        res.update({"unidadesConferidas": len(ok), "idsConferidos": ok[:400], "registrosAbrangidos": len(ok) * len(deps)})
+        res.update({"unidadesConferidas": len(ok), "idsConferidos": ok[:400], "registrosAbrangidos": len(ok)})
     return res
 
 
@@ -351,8 +351,12 @@ def v_entidades():
             f = None if r is None else (100.0 if nz(str(site or "")) == nz(str(fonte or "")) else 0.0)
             itens.append((f"{e['cnpj']} · {campo}", 100.0, f))
     res = resultado(itens, "cadastro CNPJ (minhareceita.org): 30 entidades sorteadas; item = abertura, município ou situação cadastral "
-                    "(100 = igual ao site, 0 = diferente)", "https://minhareceita.org/", granularidade="registro", unidade="campo cadastral de uma entidade",
-                    unidades_base=len(es) * 3, registros_base=len(es) * 3, selecao="amostra aleatória simples de 30 entidades por dia (semente = data + 7)")
+                    "(100 = igual ao site, 0 = diferente)", "https://minhareceita.org/", granularidade="registro",
+                    unidade="entidade (abertura, município e situação cadastral)", unidades_base=len(es), registros_base=len(es),
+                    selecao="amostra aleatória simples de 30 entidades por dia (semente = data + 7)")
+    if res["resultado"] in ("confere", "diverge", "mudou_na_fonte"):  # a unidade é a entidade (o CNPJ), não cada campo
+        cnpjs = sorted({str(i[0]).split(" · ")[0] for i in itens if i[2] is not None})
+        res.update({"unidadesConferidas": len(cnpjs), "idsConferidos": cnpjs[:400], "registrosAbrangidos": len(cnpjs)})
     # a situação cadastral pode mudar entre a coleta e a conferência (ex.: baixa): só esse campo diferente = mudou na fonte
     if res["resultado"] == "diverge" and all(x["item"].endswith("situação") for x in res["divergentes"]):
         res["resultado"], res["nota"] = "mudou_na_fonte", "situação cadastral alterada na Receita depois da coleta"
