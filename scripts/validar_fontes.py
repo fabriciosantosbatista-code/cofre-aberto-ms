@@ -11,7 +11,8 @@ Só a fonte que passa aqui pode ser chamada de "verificada na fonte". Somas inte
   senadores            Senado (adm-dadosabertos despesas_ceaps): total de cada senador de MS
   deputados            API da Câmara: total de cada deputado federal de MS (valor líquido com o sinal corrigido)
   arrecadacao          Tesouro/Siconfi RREO Anexo 3: ICMS do Estado mês a mês
-  supersalarios        DadosJusBr: TJMS — nº de magistrados e soma do salário-base do mês publicado
+  supersalarios        DadosJusBr (TJMS: nº de magistrados e salário-base) e portal do TCE-MS (servidores: pessoas,
+                       salário-base e outras verbas) — o mês publicado
   shows, alugueis      PNCP: 8 contratações sorteadas, valor homologado/estimado de cada uma
   votacoes             API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano, o voto de cada deputado de MS
   producao             API da Câmara (/proposicoes com filtro de tipo na própria API): nº de projetos de cada deputado de MS
@@ -220,19 +221,52 @@ def v_siconfi():
 
 
 def v_tjms():
+    """Supersalários: TJMS no DadosJusBr (quantidade e salário-base do mês) e TCE-MS (servidores) numa consulta nova ao
+    portal de transparência do TCE (quantidade, salário-base e outras verbas do mês). Unidade = órgão."""
     ss = J("supersalarios.json")
+    org = (ss.get("orgaos") or []) + (ss.get("orgaosGoverno") or [])
+    itens, por = [], {}
     o = next((x for x in ss.get("orgaos") or [] if x.get("orgao", "").startswith("TJMS")), None)
-    if not o:
-        return resultado([("TJMS", 0, None)], "DadosJusBr", "https://dadosjusbr.org/")
-    m, a = o["mes"].split("/")
-    d = get(f"https://api.dadosjusbr.org/v2/dados/tjms/{int(a)}/{int(m)}")
-    s = ((d or {}).get("sumarios") or {}).get("membros_ativos") or {}
-    itens = [("magistrados", o["pessoas"], s.get("quantidade"), 0), ("salário-base total", o["totalBase"], (s.get("remuneracao_base") or {}).get("total"))]
-    org = ss.get("orgaos") or []
-    return resultado(itens, f"DadosJusBr (contracheques do TJMS enviados ao CNJ, {o['mes']}): quantidade e salário-base", "https://dadosjusbr.org/",
-                     granularidade="unidade", unidade="órgão no mês publicado (quantidade de pessoas e salário-base)", unidades_base=len(org) * 2,
-                     registros_base=ss.get("totalPessoas"), registros_por_unidade={"magistrados": o.get("pessoas") or 0},
-                     selecao="recorte: só o TJMS (único órgão com contracheques no DadosJusBr nesta base)")
+    if o:
+        m, a = o["mes"].split("/")
+        d = get(f"https://api.dadosjusbr.org/v2/dados/tjms/{int(a)}/{int(m)}")
+        s = ((d or {}).get("sumarios") or {}).get("membros_ativos") or {}
+        itens += [("TJMS: magistrados", o["pessoas"], s.get("quantidade"), 0),
+                  ("TJMS: salário-base total", o["totalBase"], (s.get("remuneracao_base") or {}).get("total"))]
+        por["TJMS"] = (o.get("pessoas") or 0, s.get("quantidade") is not None)
+    t = next((x for x in ss.get("orgaos") or [] if x.get("orgao") == "TCE-MS — servidores"), None)
+    if t:
+        m, a = t["mes"].split("/")
+        tce = "https://sip-barramento.tce.ms.gov.br/barramento/api/Transparencia/GestaoPessoas"
+
+        def lista(ep):
+            out, pg = [], 0
+            while True:
+                r = get(f"{tce}/{ep}", {"ano": int(a), "mes": int(m), "pageNumber": pg, "pageSize": 500}, timeout=120)
+                if r is None:
+                    return None
+                out += r.get("items") or []
+                pg += 1
+                if pg >= (r.get("totalPages") or 0):
+                    return out
+        rem, op = lista("Remuneracao"), lista("OutroPagamento")
+        mats = {x.get("matricula") for x in rem or []}
+        itens += [("TCE-MS servidores: pessoas", t["pessoas"], None if rem is None else len(rem), 0),
+                  ("TCE-MS servidores: salário-base total", t["totalBase"], None if rem is None else round(sum(x.get("totalVencimentosRemuneracao") or 0 for x in rem), 2)),
+                  ("TCE-MS servidores: outras verbas", t["totalOutras"], None if rem is None or op is None else
+                   round(sum(x.get("totalVencimentoOutrosPagamentos") or 0 for x in op if x.get("matricula") in mats), 2))]
+        por["TCE-MS — servidores"] = (t.get("pessoas") or 0, rem is not None)
+    if not itens:
+        return resultado([("supersalários", 0, None)], "DadosJusBr e portal do TCE-MS", "https://dadosjusbr.org/")
+    res = resultado(itens, "TJMS no DadosJusBr (contracheques enviados ao CNJ) e TCE-MS (servidores) numa consulta nova ao portal do TCE: "
+                    "quantidade de pessoas, salário-base e outras verbas do mês publicado", "https://dadosjusbr.org/",
+                    granularidade="unidade", unidade="órgão no mês publicado (quantidade de pessoas e totais da folha)", unidades_base=len(org),
+                    registros_base=ss.get("totalPessoas"), selecao="recorte: TJMS e TCE-MS (servidores); MPMS não está na base; Governo do Estado, TRT24, "
+                    "TCE-MS membros e Câmara CG não conferidos")
+    if res["resultado"] in ("confere", "diverge", "mudou_na_fonte"):  # unidade = órgão com os números obtidos
+        ok = [k for k, (_, obtido) in por.items() if obtido]
+        res.update({"unidadesConferidas": len(ok), "idsConferidos": ok, "registrosAbrangidos": sum(por[k][0] for k in ok)})
+    return res
 
 
 def v_pncp(arquivo, chave_lista, rotulo):
