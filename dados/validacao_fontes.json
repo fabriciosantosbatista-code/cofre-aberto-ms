@@ -1,9 +1,9 @@
 {
- "geradoEm": "2026-11-17T18:14:37",
+ "geradoEm": "2026-11-17T20:28:26",
  "fontes": {
   "governo-ms": {
    "resultado": "confere",
-   "em": "2026-11-17T18:14:37",
+   "em": "2026-11-17T20:28:26",
    "metodo": "consulta nova ao portal do Estado (mesmo período da coleta): pago e empenhado do ano",
    "fonteUrl": "https://www.transparencia.ms.gov.br/",
    "conferidos": 2,
@@ -27,7 +27,7 @@
   },
   "deputados-estaduais": {
    "resultado": "confere",
-   "em": "2026-11-17T18:14:37",
+   "em": "2026-11-17T20:28:26",
    "metodo": "portal da ALEMS (/ceap/data): total do ano de cada deputado",
    "fonteUrl": "https://transparencia2.al.ms.gov.br/ceap",
    "conferidos": 25,
@@ -189,7 +189,7 @@
   },
   "senadores": {
    "resultado": "confere",
-   "em": "2026-11-17T18:14:37",
+   "em": "2026-11-17T20:28:26",
    "metodo": "dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS",
    "fonteUrl": "https://adm.senado.gov.br/adm-dadosabertos/",
    "conferidos": 3,
@@ -219,7 +219,7 @@
   },
   "deputados": {
    "resultado": "confere",
-   "em": "2026-11-17T18:14:37",
+   "em": "2026-11-17T20:28:26",
    "metodo": "API da Câmara: soma do valor líquido do ano de cada deputado federal de MS",
    "fonteUrl": "https://dadosabertos.camara.leg.br/",
    "conferidos": 8,
@@ -279,7 +279,7 @@
   },
   "arrecadacao": {
    "resultado": "confere",
-   "em": "2026-11-17T18:14:37",
+   "em": "2026-11-17T20:28:26",
    "metodo": "Siconfi RREO Anexo 3 (2026, 4º bimestre): ICMS mês a mês",
    "fonteUrl": "https://siconfi.tesouro.gov.br/",
    "conferidos": 12,
@@ -363,7 +363,7 @@
   },
   "supersalarios": {
    "resultado": "confere",
-   "em": "2026-11-17T18:14:37",
+   "em": "2026-11-17T20:28:26",
    "metodo": "DadosJusBr (contracheques do TJMS enviados ao CNJ, 09/2026): quantidade e salário-base",
    "fonteUrl": "https://dadosjusbr.org/",
    "conferidos": 2,
@@ -387,7 +387,7 @@
   },
   "shows": {
    "resultado": "confere",
-   "em": "2026-11-17T18:14:37",
+   "em": "2026-11-17T20:28:26",
    "metodo": "PNCP: 8 contratações de show sorteadas, valor de cada uma na consulta pública",
    "fonteUrl": "https://pncp.gov.br/",
    "conferidos": 8,
@@ -447,16 +447,16 @@
   },
   "alugueis": {
    "resultado": "confere",
-   "em": "2026-11-17T18:14:37",
+   "em": "2026-11-17T20:28:26",
    "metodo": "PNCP: 8 contratações de aluguel sorteadas, valor de cada uma na consulta pública",
    "fonteUrl": "https://pncp.gov.br/",
    "conferidos": 6,
    "divergentes": [],
    "comparados": [
     {
-     "item": "Locação de imóvel sob regime oneroso, através de cessão de u",
-     "site": 143078.16,
-     "fonte": 143078.16,
+     "item": "LOCAÇÃO DE IMÓVEL LOCALIZADO NO ENDEREÇO AVENIDA NAIR JUNQUE",
+     "site": 120000.0,
+     "fonte": 120000.0,
      "diferenca": 0.0
     },
     {

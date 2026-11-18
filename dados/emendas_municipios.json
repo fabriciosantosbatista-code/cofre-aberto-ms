@@ -1,10 +1,10 @@
 {
  "ano": 2026,
- "ultimaAtualizacao": "2026-11-17T17:55:42",
+ "ultimaAtualizacao": "2026-11-17T20:03:14",
  "fonte": "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares/UNICO",
  "mesMaisRecente": "11/2026",
- "totalMS": 624237391.36,
- "pagamentos": 1052,
+ "totalMS": 628187652.98,
+ "pagamentos": 1056,
  "totalMunicipios": 79,
  "municipios": [
   {
@@ -662,12 +662,12 @@
      "atual": false
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Rodolfo Nogueira",
      "valor": 1500000.0,
      "atual": true
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Camila Jara",
      "valor": 1500000.0,
      "atual": true
     },
@@ -1501,12 +1501,12 @@
      "atual": false
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Tereza Cristina",
      "valor": 500000.0,
      "atual": true
     },
     {
-     "autor": "Tereza Cristina",
+     "autor": "Camila Jara",
      "valor": 500000.0,
      "atual": true
     },
@@ -1810,12 +1810,12 @@
      "atual": true
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Dr. Luiz Ovando",
      "valor": 300000.0,
      "atual": true
     },
     {
-     "autor": "Dr. Luiz Ovando",
+     "autor": "Dagoberto Nogueira",
      "valor": 300000.0,
      "atual": true
     }
@@ -1884,14 +1884,14 @@
      "atual": false
     },
     {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 500000.0,
-     "atual": false
-    },
-    {
      "autor": "Beto Pereira",
      "valor": 500000.0,
      "atual": true
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 500000.0,
+     "atual": false
     },
     {
      "autor": "Com. Esporte",
@@ -2106,6 +2106,81 @@
    ]
   },
   {
+   "municipio": "Bela Vista",
+   "total": 7444107.43,
+   "autores": [
+    {
+     "autor": "Marcos Pollon",
+     "valor": 2202700.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Turismo",
+     "valor": 1299585.0,
+     "atual": false
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 1284290.0,
+     "atual": false
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 1116750.0,
+     "atual": true
+    },
+    {
+     "autor": "Camila Jara",
+     "valor": 576004.0,
+     "atual": true
+    },
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 500000.0,
+     "atual": true
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 464778.43,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Comissão",
+     "valor": 2583875.0
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 2564228.43
+    },
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 2296004.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "MUNICIPIO DE BELA VISTA",
+     "doc": "03217916000196",
+     "natureza": "Município",
+     "valor": 3863813.43
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE BELA VISTA - MS",
+     "doc": "12457020000175",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 2710294.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE BELA VISTA - (FMAS)",
+     "doc": "15316822000153",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 870000.0
+    }
+   ]
+  },
+  {
    "municipio": "Iguatemi",
    "total": 7293163.3,
    "autores": [
@@ -2220,6 +2295,75 @@
      "doc": "11867105000169",
      "natureza": "Fundo Público da Administração Direta Municipal",
      "valor": 2302555.0
+    }
+   ]
+  },
+  {
+   "municipio": "Bodoquena",
+   "total": 7192813.19,
+   "autores": [
+    {
+     "autor": "Com. Turismo",
+     "valor": 2697570.0,
+     "atual": false
+    },
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 1990000.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Desenv Regional e Turismo",
+     "valor": 960019.0,
+     "atual": false
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 654474.19,
+     "atual": true
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 547250.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. de Previ., Assis. Soci, Infan., Adol. e Famil",
+     "valor": 193500.0,
+     "atual": false
+    },
+    {
+     "autor": "Beto Pereira",
+     "valor": 150000.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Comissão",
+     "valor": 3851089.0
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 3191724.19
+    },
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 150000.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "MUNICIPIO DE BODOQUENA",
+     "doc": "15465016000147",
+     "natureza": "Município",
+     "valor": 6849313.19
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+     "doc": "13400564000163",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 343500.0
     }
    ]
   },
@@ -2717,6 +2861,96 @@
    ]
   },
   {
+   "municipio": "Sonora",
+   "total": 6249371.66,
+   "autores": [
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 1000000.0,
+     "atual": false
+    },
+    {
+     "autor": "Camila Jara",
+     "valor": 1000000.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Turismo",
+     "valor": 916881.0,
+     "atual": false
+    },
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 700000.0,
+     "atual": true
+    },
+    {
+     "autor": "Marcos Pollon",
+     "valor": 592500.0,
+     "atual": true
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 529000.0,
+     "atual": true
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 497500.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Esporte",
+     "valor": 457780.0,
+     "atual": false
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 413305.66,
+     "atual": true
+    },
+    {
+     "autor": "Com. da Saude",
+     "valor": 142405.0,
+     "atual": false
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 2737305.66
+    },
+    {
+     "tipo": "Comissão",
+     "valor": 2517066.0
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 995000.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "10381732000122",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 3866405.0
+    },
+    {
+     "nome": "MUNICIPIO DE SONORA",
+     "doc": "24651234000167",
+     "natureza": "Município",
+     "valor": 2369661.0
+    },
+    {
+     "nome": "GADU SEGURANCA LTDA",
+     "doc": "08953397000148",
+     "natureza": "Sociedade Empresária Limitada",
+     "valor": 13305.66
+    }
+   ]
+  },
+  {
    "municipio": "Ladário",
    "total": 6221718.97,
    "autores": [
@@ -2803,76 +3037,6 @@
      "doc": "44007023000101",
      "natureza": "Sociedade Empresária Limitada",
      "valor": 1841.8
-    }
-   ]
-  },
-  {
-   "municipio": "Bela Vista",
-   "total": 6144522.43,
-   "autores": [
-    {
-     "autor": "Marcos Pollon",
-     "valor": 2202700.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 1284290.0,
-     "atual": false
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 1116750.0,
-     "atual": true
-    },
-    {
-     "autor": "Camila Jara",
-     "valor": 576004.0,
-     "atual": true
-    },
-    {
-     "autor": "Dagoberto Nogueira",
-     "valor": 500000.0,
-     "atual": true
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 464778.43,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 2564228.43
-    },
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 2296004.0
-    },
-    {
-     "tipo": "Comissão",
-     "valor": 1284290.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE BELA VISTA - MS",
-     "doc": "12457020000175",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 2710294.0
-    },
-    {
-     "nome": "MUNICIPIO DE BELA VISTA",
-     "doc": "03217916000196",
-     "natureza": "Município",
-     "valor": 2564228.43
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE BELA VISTA - (FMAS)",
-     "doc": "15316822000153",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 870000.0
     }
    ]
   },
@@ -3017,75 +3181,6 @@
      "doc": "03342920000186",
      "natureza": "Município",
      "valor": 995000.0
-    }
-   ]
-  },
-  {
-   "municipio": "Bodoquena",
-   "total": 5794828.19,
-   "autores": [
-    {
-     "autor": "Dagoberto Nogueira",
-     "valor": 1990000.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. Turismo",
-     "valor": 1299585.0,
-     "atual": false
-    },
-    {
-     "autor": "Com. Desenv Regional e Turismo",
-     "valor": 960019.0,
-     "atual": false
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 654474.19,
-     "atual": true
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 547250.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. de Previ., Assis. Soci, Infan., Adol. e Famil",
-     "valor": 193500.0,
-     "atual": false
-    },
-    {
-     "autor": "Beto Pereira",
-     "valor": 150000.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 3191724.19
-    },
-    {
-     "tipo": "Comissão",
-     "valor": 2453104.0
-    },
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 150000.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "MUNICIPIO DE BODOQUENA",
-     "doc": "15465016000147",
-     "natureza": "Município",
-     "valor": 5451328.19
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-     "doc": "13400564000163",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 343500.0
     }
    ]
   },
@@ -3433,91 +3528,6 @@
      "doc": "14779187000188",
      "natureza": "Fundo Público da Administração Direta Municipal",
      "valor": 100000.0
-    }
-   ]
-  },
-  {
-   "municipio": "Sonora",
-   "total": 5332490.66,
-   "autores": [
-    {
-     "autor": "Camila Jara",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 1000000.0,
-     "atual": false
-    },
-    {
-     "autor": "Dagoberto Nogueira",
-     "valor": 700000.0,
-     "atual": true
-    },
-    {
-     "autor": "Marcos Pollon",
-     "valor": 592500.0,
-     "atual": true
-    },
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 529000.0,
-     "atual": true
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 497500.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. Esporte",
-     "valor": 457780.0,
-     "atual": false
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 413305.66,
-     "atual": true
-    },
-    {
-     "autor": "Com. da Saude",
-     "valor": 142405.0,
-     "atual": false
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 2737305.66
-    },
-    {
-     "tipo": "Comissão",
-     "valor": 1600185.0
-    },
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 995000.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "10381732000122",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 3866405.0
-    },
-    {
-     "nome": "MUNICIPIO DE SONORA",
-     "doc": "24651234000167",
-     "natureza": "Município",
-     "valor": 1452780.0
-    },
-    {
-     "nome": "GADU SEGURANCA LTDA",
-     "doc": "08953397000148",
-     "natureza": "Sociedade Empresária Limitada",
-     "valor": 13305.66
     }
    ]
   },
@@ -4314,12 +4324,12 @@
      "atual": true
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Beto Pereira",
      "valor": 500000.0,
      "atual": true
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Rodolfo Nogueira",
      "valor": 500000.0,
      "atual": true
     },
@@ -5567,14 +5577,14 @@
      "atual": true
     },
     {
-     "autor": "Geraldo Resende",
-     "valor": 500000.0,
-     "atual": true
-    },
-    {
      "autor": "Com. Assuntos Sociais",
      "valor": 500000.0,
      "atual": false
+    },
+    {
+     "autor": "Geraldo Resende",
+     "valor": 500000.0,
+     "atual": true
     },
     {
      "autor": "Dr. Luiz Ovando",
@@ -5807,6 +5817,62 @@
    ]
   },
   {
+   "municipio": "Camapuã",
+   "total": 1445810.62,
+   "autores": [
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 510000.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 500000.0,
+     "atual": false
+    },
+    {
+     "autor": "Com. Desenv Regional e Turismo",
+     "valor": 335810.62,
+     "atual": false
+    },
+    {
+     "autor": "Tereza Cristina",
+     "valor": 100000.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Comissão",
+     "valor": 835810.62
+    },
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 610000.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "13846658000160",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 1010000.0
+    },
+    {
+     "nome": "MUNICIPIO DE CAMAPUA",
+     "doc": "03501517000152",
+     "natureza": "Município",
+     "valor": 335810.62
+    },
+    {
+     "nome": "FUNDO DE ASSISTENCIA SOCIAL",
+     "doc": "13846690000146",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 100000.0
+    }
+   ]
+  },
+  {
    "municipio": "Rio Negro",
    "total": 1436916.0,
    "autores": [
@@ -5849,51 +5915,6 @@
      "doc": "13525049000100",
      "natureza": "Fundo Público da Administração Direta Municipal",
      "valor": 50000.0
-    }
-   ]
-  },
-  {
-   "municipio": "Camapuã",
-   "total": 1110000.0,
-   "autores": [
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 510000.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 500000.0,
-     "atual": false
-    },
-    {
-     "autor": "Tereza Cristina",
-     "valor": 100000.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 610000.0
-    },
-    {
-     "tipo": "Comissão",
-     "valor": 500000.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "13846658000160",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 1010000.0
-    },
-    {
-     "nome": "FUNDO DE ASSISTENCIA SOCIAL",
-     "doc": "13846690000146",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 100000.0
     }
    ]
   },
@@ -6199,11 +6220,11 @@
      "valor": 510000.0
     },
     {
-     "municipio": "Selvíria",
+     "municipio": "Camapuã",
      "valor": 510000.0
     },
     {
-     "municipio": "Camapuã",
+     "municipio": "Selvíria",
      "valor": 510000.0
     },
     {
@@ -7004,14 +7025,14 @@
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "13140956000130",
-     "municipio": "Miranda",
+     "doc": "00282872000190",
+     "municipio": "Maracaju",
      "valor": 1000000.0
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "00282872000190",
-     "municipio": "Maracaju",
+     "doc": "13140956000130",
+     "municipio": "Miranda",
      "valor": 1000000.0
     },
     {
@@ -8733,11 +8754,11 @@
      "valor": 576004.0
     },
     {
-     "municipio": "Ladário",
+     "municipio": "Selvíria",
      "valor": 500000.0
     },
     {
-     "municipio": "Selvíria",
+     "municipio": "Ladário",
      "valor": 500000.0
     },
     {
@@ -9300,7 +9321,7 @@
    "partido": "PT",
    "grupo": "federal",
    "totalMS": 26532288.94,
-   "totalBR": 28454580.26,
+   "totalBR": 28462939.44,
    "municipios": [
     {
      "municipio": "Campo Grande",
@@ -9514,7 +9535,7 @@
     },
     {
      "uf": "SP",
-     "valor": 106237.64
+     "valor": 108771.44
     },
     {
      "uf": "AM",
@@ -9522,7 +9543,7 @@
     },
     {
      "uf": "—",
-     "valor": 13902.86
+     "valor": 14010.44
     },
     {
      "uf": "GO",
@@ -9534,7 +9555,11 @@
     },
     {
      "uf": "MG",
-     "valor": 2171.64
+     "valor": 7369.44
+    },
+    {
+     "uf": "MA",
+     "valor": 520.0
     }
    ]
   },
@@ -9632,11 +9657,11 @@
      "valor": 1000000.0
     },
     {
-     "municipio": "Naviraí",
+     "municipio": "Guia Lopes da Laguna",
      "valor": 850000.0
     },
     {
-     "municipio": "Guia Lopes da Laguna",
+     "municipio": "Naviraí",
      "valor": 850000.0
     },
     {
@@ -9938,8 +9963,8 @@
    "cargo": null,
    "partido": null,
    "grupo": null,
-   "totalMS": 29567788.52,
-   "totalBR": 29567788.52,
+   "totalMS": 29903599.14,
+   "totalBR": 29903599.14,
    "municipios": [
     {
      "municipio": "Aquidauana",
@@ -9998,6 +10023,10 @@
      "valor": 351309.76
     },
     {
+     "municipio": "Camapuã",
+     "valor": 335810.62
+    },
+    {
      "municipio": "Ladário",
      "valor": 278947.17
     },
@@ -10009,7 +10038,7 @@
    "tipos": [
     {
      "tipo": "Comissão",
-     "valor": 29567788.52
+     "valor": 29903599.14
     }
    ],
    "favorecidos": [
@@ -10096,6 +10125,12 @@
      "doc": "03568318000161",
      "municipio": "Iguatemi",
      "valor": 351309.76
+    },
+    {
+     "nome": "MUNICIPIO DE CAMAPUA",
+     "doc": "03501517000152",
+     "municipio": "Camapuã",
+     "valor": 335810.62
     },
     {
      "nome": "MUNICIPIO DE LADARIO",
@@ -10475,6 +10510,86 @@
    "foraDeMS": []
   },
   {
+   "autor": "Com. Turismo",
+   "atual": false,
+   "cargo": null,
+   "partido": null,
+   "grupo": null,
+   "totalMS": 5964036.0,
+   "totalBR": 5964036.0,
+   "municipios": [
+    {
+     "municipio": "Bodoquena",
+     "valor": 2697570.0
+    },
+    {
+     "municipio": "Bela Vista",
+     "valor": 1299585.0
+    },
+    {
+     "municipio": "Sonora",
+     "valor": 916881.0
+    },
+    {
+     "municipio": "Paranaíba",
+     "valor": 600000.0
+    },
+    {
+     "municipio": "Aparecida do Taboado",
+     "valor": 250000.0
+    },
+    {
+     "municipio": "Inocência",
+     "valor": 200000.0
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Comissão",
+     "valor": 5964036.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "MUNICIPIO DE BODOQUENA",
+     "doc": "15465016000147",
+     "municipio": "Bodoquena",
+     "valor": 2697570.0
+    },
+    {
+     "nome": "MUNICIPIO DE BELA VISTA",
+     "doc": "03217916000196",
+     "municipio": "Bela Vista",
+     "valor": 1299585.0
+    },
+    {
+     "nome": "MUNICIPIO DE SONORA",
+     "doc": "24651234000167",
+     "municipio": "Sonora",
+     "valor": 916881.0
+    },
+    {
+     "nome": "MUNICIPIO DE PARANAIBA",
+     "doc": "03343118000100",
+     "municipio": "Paranaíba",
+     "valor": 600000.0
+    },
+    {
+     "nome": "MUNICIPIO DE APARECIDA DO TABOADO",
+     "doc": "03563335000106",
+     "municipio": "Aparecida do Taboado",
+     "valor": 250000.0
+    },
+    {
+     "nome": "MUNICIPIO DE INOCENCIA",
+     "doc": "03342938000188",
+     "municipio": "Inocência",
+     "valor": 200000.0
+    }
+   ],
+   "foraDeMS": []
+  },
+  {
    "autor": "Sem Informação",
    "atual": false,
    "cargo": null,
@@ -10784,66 +10899,6 @@
      "doc": "03073673000160",
      "municipio": "Bonito",
      "valor": 578648.48
-    }
-   ],
-   "foraDeMS": []
-  },
-  {
-   "autor": "Com. Turismo",
-   "atual": false,
-   "cargo": null,
-   "partido": null,
-   "grupo": null,
-   "totalMS": 2349585.0,
-   "totalBR": 2349585.0,
-   "municipios": [
-    {
-     "municipio": "Bodoquena",
-     "valor": 1299585.0
-    },
-    {
-     "municipio": "Paranaíba",
-     "valor": 600000.0
-    },
-    {
-     "municipio": "Aparecida do Taboado",
-     "valor": 250000.0
-    },
-    {
-     "municipio": "Inocência",
-     "valor": 200000.0
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Comissão",
-     "valor": 2349585.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "MUNICIPIO DE BODOQUENA",
-     "doc": "15465016000147",
-     "municipio": "Bodoquena",
-     "valor": 1299585.0
-    },
-    {
-     "nome": "MUNICIPIO DE PARANAIBA",
-     "doc": "03343118000100",
-     "municipio": "Paranaíba",
-     "valor": 600000.0
-    },
-    {
-     "nome": "MUNICIPIO DE APARECIDA DO TABOADO",
-     "doc": "03563335000106",
-     "municipio": "Aparecida do Taboado",
-     "valor": 250000.0
-    },
-    {
-     "nome": "MUNICIPIO DE INOCENCIA",
-     "doc": "03342938000188",
-     "municipio": "Inocência",
-     "valor": 200000.0
     }
    ],
    "foraDeMS": []
@@ -13589,11 +13644,11 @@
      "valor": 2155160.0
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Rodolfo Nogueira",
      "valor": 1500000.0
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Camila Jara",
      "valor": 1500000.0
     },
     {
@@ -13613,11 +13668,11 @@
      "valor": 1000000.0
     },
     {
-     "autor": "Dr. Luiz Ovando",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Dr. Luiz Ovando",
      "valor": 500000.0
     }
    ]
@@ -13712,11 +13767,11 @@
      "valor": 5870500.0
     },
     {
-     "autor": "Nelsinho Trad",
+     "autor": "Rodolfo Nogueira",
      "valor": 1990000.0
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Nelsinho Trad",
      "valor": 1990000.0
     },
     {
@@ -13921,11 +13976,11 @@
      "valor": 1000000.0
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Tereza Cristina",
      "valor": 500000.0
     },
     {
-     "autor": "Tereza Cristina",
+     "autor": "Camila Jara",
      "valor": 500000.0
     }
    ]
@@ -14096,6 +14151,35 @@
    ]
   },
   {
+   "nome": "MUNICIPIO DE BODOQUENA",
+   "doc": "15465016000147",
+   "natureza": "Município",
+   "municipio": "Bodoquena",
+   "valor": 6849313.19,
+   "autores": [
+    {
+     "autor": "Com. Turismo",
+     "valor": 2697570.0
+    },
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 1990000.0
+    },
+    {
+     "autor": "Com. Desenv Regional e Turismo",
+     "valor": 960019.0
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 654474.19
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 547250.0
+    }
+   ]
+  },
+  {
    "nome": "FUNDO MUNICIPAL DE SAUDE",
    "doc": "16656280000120",
    "natureza": "Fundo Público da Administração Direta Municipal",
@@ -14216,35 +14300,6 @@
     {
      "autor": "Com. da Saude",
      "valor": 600000.0
-    }
-   ]
-  },
-  {
-   "nome": "MUNICIPIO DE BODOQUENA",
-   "doc": "15465016000147",
-   "natureza": "Município",
-   "municipio": "Bodoquena",
-   "valor": 5451328.19,
-   "autores": [
-    {
-     "autor": "Dagoberto Nogueira",
-     "valor": 1990000.0
-    },
-    {
-     "autor": "Com. Turismo",
-     "valor": 1299585.0
-    },
-    {
-     "autor": "Com. Desenv Regional e Turismo",
-     "valor": 960019.0
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 654474.19
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 547250.0
     }
    ]
   },
@@ -14413,11 +14468,11 @@
      "valor": 521756.0
     },
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Beto Pereira",
      "valor": 500000.0
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Com. Assuntos Sociais",
      "valor": 500000.0
     },
     {
@@ -14450,11 +14505,11 @@
      "valor": 878595.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Geraldo Resende",
      "valor": 500000.0
     },
     {
-     "autor": "Geraldo Resende",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
     },
     {
@@ -14592,11 +14647,11 @@
      "valor": 507192.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Nelsinho Trad",
      "valor": 500000.0
     },
     {
-     "autor": "Nelsinho Trad",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
     },
     {
@@ -14650,11 +14705,11 @@
    "valor": 4087256.4,
    "autores": [
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Vander Loubet",
      "valor": 995000.0
     },
     {
-     "autor": "Vander Loubet",
+     "autor": "Dagoberto Nogueira",
      "valor": 995000.0
     },
     {
@@ -14807,11 +14862,11 @@
    "valor": 3866405.0,
    "autores": [
     {
-     "autor": "Camila Jara",
+     "autor": "Com. Assuntos Sociais",
      "valor": 1000000.0
     },
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Camila Jara",
      "valor": 1000000.0
     },
     {
@@ -14833,6 +14888,31 @@
     {
      "autor": "Marcos Pollon",
      "valor": 95000.0
+    }
+   ]
+  },
+  {
+   "nome": "MUNICIPIO DE BELA VISTA",
+   "doc": "03217916000196",
+   "natureza": "Município",
+   "municipio": "Bela Vista",
+   "valor": 3863813.43,
+   "autores": [
+    {
+     "autor": "Marcos Pollon",
+     "valor": 1452700.0
+    },
+    {
+     "autor": "Com. Turismo",
+     "valor": 1299585.0
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 646750.0
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 464778.43
     }
    ]
   },
@@ -15143,11 +15223,11 @@
      "valor": 700000.0
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Beto Pereira",
      "valor": 500000.0
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Rodolfo Nogueira",
      "valor": 500000.0
     },
     {
@@ -15460,11 +15540,11 @@
      "valor": 500000.0
     },
     {
-     "autor": "Nelsinho Trad",
+     "autor": "Com. Assuntos Sociais",
      "valor": 500000.0
     },
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Nelsinho Trad",
      "valor": 500000.0
     },
     {
@@ -15482,27 +15562,6 @@
     {
      "autor": "Marcos Pollon",
      "valor": 30000.0
-    }
-   ]
-  },
-  {
-   "nome": "MUNICIPIO DE BELA VISTA",
-   "doc": "03217916000196",
-   "natureza": "Município",
-   "municipio": "Bela Vista",
-   "valor": 2564228.43,
-   "autores": [
-    {
-     "autor": "Marcos Pollon",
-     "valor": 1452700.0
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 646750.0
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 464778.43
     }
    ]
   },
@@ -15674,6 +15733,31 @@
     {
      "autor": "Bancada do Mato Grosso do Sul",
      "valor": 2465.0
+    }
+   ]
+  },
+  {
+   "nome": "MUNICIPIO DE SONORA",
+   "doc": "24651234000167",
+   "natureza": "Município",
+   "municipio": "Sonora",
+   "valor": 2369661.0,
+   "autores": [
+    {
+     "autor": "Com. Turismo",
+     "valor": 916881.0
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 497500.0
+    },
+    {
+     "autor": "Marcos Pollon",
+     "valor": 497500.0
+    },
+    {
+     "autor": "Com. Esporte",
+     "valor": 457780.0
     }
    ]
   },
@@ -16213,11 +16297,11 @@
      "valor": 500000.0
     },
     {
-     "autor": "Geraldo Resende",
+     "autor": "Com. Assuntos Sociais",
      "valor": 500000.0
     },
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Geraldo Resende",
      "valor": 500000.0
     },
     {
@@ -16288,11 +16372,11 @@
      "valor": 500000.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Dr. Luiz Ovando",
      "valor": 300000.0
     },
     {
-     "autor": "Dr. Luiz Ovando",
+     "autor": "Dagoberto Nogueira",
      "valor": 300000.0
     }
    ]
@@ -16537,27 +16621,6 @@
     {
      "autor": "Wellington Fagundes",
      "valor": 6173.64
-    }
-   ]
-  },
-  {
-   "nome": "MUNICIPIO DE SONORA",
-   "doc": "24651234000167",
-   "natureza": "Município",
-   "municipio": "Sonora",
-   "valor": 1452780.0,
-   "autores": [
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 497500.0
-    },
-    {
-     "autor": "Marcos Pollon",
-     "valor": 497500.0
-    },
-    {
-     "autor": "Com. Esporte",
-     "valor": 457780.0
     }
    ]
   },
@@ -17607,6 +17670,19 @@
    ]
   },
   {
+   "nome": "MUNICIPIO DE CAMAPUA",
+   "doc": "03501517000152",
+   "natureza": "Município",
+   "municipio": "Camapuã",
+   "valor": 335810.62,
+   "autores": [
+    {
+     "autor": "Com. Desenv Regional e Turismo",
+     "valor": 335810.62
+    }
+   ]
+  },
+  {
    "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE AGUA CLARA - MS",
    "doc": "15452981000185",
    "natureza": "Fundo Público da Administração Direta Municipal",
@@ -17806,6 +17882,19 @@
   },
   {
    "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+   "doc": "01740441000192",
+   "natureza": "Fundo Público da Administração Direta Municipal",
+   "municipio": "Maracaju",
+   "valor": 200000.0,
+   "autores": [
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 200000.0
+    }
+   ]
+  },
+  {
+   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
    "doc": "15615736000141",
    "natureza": "Fundo Público da Administração Direta Municipal",
    "municipio": "Caracol",
@@ -17818,19 +17907,6 @@
     {
      "autor": "Dr. Luiz Ovando",
      "valor": 100000.0
-    }
-   ]
-  },
-  {
-   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-   "doc": "01740441000192",
-   "natureza": "Fundo Público da Administração Direta Municipal",
-   "municipio": "Maracaju",
-   "valor": 200000.0,
-   "autores": [
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 200000.0
     }
    ]
   },
@@ -18272,19 +18348,6 @@
   },
   {
    "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL - FMAS",
-   "doc": "13525049000100",
-   "natureza": "Fundo Público da Administração Direta Municipal",
-   "municipio": "Rio Negro",
-   "valor": 50000.0,
-   "autores": [
-    {
-     "autor": "Marcos Pollon",
-     "valor": 50000.0
-    }
-   ]
-  },
-  {
-   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL - FMAS",
    "doc": "13766791000107",
    "natureza": "Fundo Público da Administração Direta Municipal",
    "municipio": "São Gabriel do Oeste",
@@ -18292,6 +18355,19 @@
    "autores": [
     {
      "autor": "Dr. Luiz Ovando",
+     "valor": 50000.0
+    }
+   ]
+  },
+  {
+   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL - FMAS",
+   "doc": "13525049000100",
+   "natureza": "Fundo Público da Administração Direta Municipal",
+   "municipio": "Rio Negro",
+   "valor": 50000.0,
+   "autores": [
+    {
+     "autor": "Marcos Pollon",
      "valor": 50000.0
     }
    ]
@@ -20714,22 +20790,6 @@
       ]
      },
      {
-      "municipio": "Ponta Porã",
-      "valor": 1101733.0,
-      "autores": [
-       {
-        "autor": "Loester Trutis",
-        "atual": false,
-        "valor": 601733.0
-       },
-       {
-        "autor": "Fabio Trad",
-        "atual": false,
-        "valor": 500000.0
-       }
-      ]
-     },
-     {
       "municipio": "Caarapó",
       "valor": 1101733.0,
       "autores": [
@@ -20741,6 +20801,22 @@
        {
         "autor": "Dagoberto Nogueira",
         "atual": true,
+        "valor": 500000.0
+       }
+      ]
+     },
+     {
+      "municipio": "Ponta Porã",
+      "valor": 1101733.0,
+      "autores": [
+       {
+        "autor": "Loester Trutis",
+        "atual": false,
+        "valor": 601733.0
+       },
+       {
+        "autor": "Fabio Trad",
+        "atual": false,
         "valor": 500000.0
        }
       ]
@@ -26887,17 +26963,6 @@
       ]
      },
      {
-      "municipio": "Brasilândia",
-      "valor": 995000.0,
-      "autores": [
-       {
-        "autor": "Beto Pereira",
-        "atual": true,
-        "valor": 995000.0
-       }
-      ]
-     },
-     {
       "municipio": "Naviraí",
       "valor": 995000.0,
       "autores": [
@@ -26914,6 +26979,17 @@
       "autores": [
        {
         "autor": "Nelsinho Trad",
+        "atual": true,
+        "valor": 995000.0
+       }
+      ]
+     },
+     {
+      "municipio": "Brasilândia",
+      "valor": 995000.0,
+      "autores": [
+       {
+        "autor": "Beto Pereira",
         "atual": true,
         "valor": 995000.0
        }
