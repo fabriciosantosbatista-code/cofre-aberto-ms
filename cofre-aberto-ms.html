@@ -7393,7 +7393,7 @@ function renderICP(d) {
   document.getElementById("icp-criticos").innerHTML = d.criticos.length
     ? `<div class="icp-crit"><b>Problemas que a média não esconde</b><ul>${d.criticos.map(c => `<li><a href="#aba=confiabilidade&p=${c.id}" data-icp="${c.id}">${escHTML(c.nome)}</a> — ${escHTML(c.status)}: ${escHTML(c.motivo)}</li>`).join("")}</ul></div>`
     : `<div class="section-note">Nenhuma base com divergência na fonte, falha de coleta ou nota baixa nesta atualização.</div>`;
-  const cards = [["verde", I.conferenciaAbrangente, "conferidas na fonte por inteiro", "verificado"], ["amarelo", I.conferenciaParcial, "conferidas só em parte", "parcial"],
+  const cards = [["verde", I.conferenciaAbrangente, "conferidas na fonte por inteiro", "verificado|verificado_reforcado"], ["amarelo", I.conferenciaParcial, "conferidas só em parte", "parcial"],
     ["cinza", I.semVerificacaoOficial, "só com testes internos ou sem evidência", "consistente"],
     ["amarelo", I.aguardando, "aguardando atualização da fonte", "aguardando_fonte"], ["amarelo", I.revisaoManual, "com revisão manual pendente", "revisao_manual"],
     ["vermelho", I.divergencias, "com divergência", "divergencia"], ["vermelho", I.falhas, "com falha de coleta", "falha_coleta"]];
@@ -7433,12 +7433,12 @@ function renderICP(d) {
   const aplica = () => {
     const q = icpNorm(document.getElementById("busca-icp").value || "");
     let n = 0;
-    tb.querySelectorAll("tr").forEach(r => { const ok = (!filtro || r.dataset.status === filtro) && (!q || r.dataset.busca.includes(q)); r.hidden = !ok; if (ok) n++; });
+    tb.querySelectorAll("tr").forEach(r => { const ok = (!filtro || filtro.split("|").includes(r.dataset.status)) && (!q || r.dataset.busca.includes(q)); r.hidden = !ok; if (ok) n++; });
     document.getElementById("icp-vazio").hidden = n > 0;
   };
   const filtra = st => { filtro = st; fl.querySelectorAll("button").forEach(x => x.classList.toggle("ativo", x.dataset.f === st)); aplica(); };
   fl.addEventListener("click", ev => { const x = ev.target.closest("button"); if (x) filtra(x.dataset.f); });
-  document.getElementById("icp-cards").addEventListener("click", ev => { const x = ev.target.closest("[data-st]"); if (x && fl.querySelector(`[data-f="${x.dataset.st}"]`)) { filtra(x.dataset.st); document.getElementById("tabela-icp").scrollIntoView({ behavior: "smooth", block: "start" }); } });
+  document.getElementById("icp-cards").addEventListener("click", ev => { const x = ev.target.closest("[data-st]"); if (x && x.dataset.st.split("|").some(k => fl.querySelector(`[data-f="${k}"]`))) { filtra(x.dataset.st); document.getElementById("tabela-icp").scrollIntoView({ behavior: "smooth", block: "start" }); } });
   document.getElementById("busca-icp").addEventListener("input", aplica);
   tb.addEventListener("click", ev => { const r = ev.target.closest("tr[data-id]"); if (r) icpDetalhe(r.dataset.id); });
   if (window._icpPendente) { icpDetalhe(window._icpPendente); window._icpPendente = null; }

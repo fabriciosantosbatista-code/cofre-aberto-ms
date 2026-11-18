@@ -41,6 +41,9 @@ jobs:
       - name: LGPD — contenção (máscara e detector antes de cada artefato, só PDFs novos, privado/ fora do Git)
         run: python3 tests/test_contencao.py
 
+      - name: ICP — conferidores na fonte oficial (fonte simulada, sem rede)
+        run: python3 tests/test_conferidores.py
+
       - name: ICP metodologia 2.0 — cobertura, nível de evidência, tetos e regressão das 24 bases
         run: python3 tests/test_icp_metodologia.py
 

@@ -13,6 +13,11 @@ Só a fonte que passa aqui pode ser chamada de "verificada na fonte". Somas inte
   arrecadacao          Tesouro/Siconfi RREO Anexo 3: ICMS do Estado mês a mês
   supersalarios        DadosJusBr: TJMS — nº de magistrados e soma do salário-base do mês publicado
   shows, alugueis      PNCP: 8 contratações sorteadas, valor homologado/estimado de cada uma
+  votacoes             API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano, o voto de cada deputado de MS
+  producao             API da Câmara (/proposicoes com filtro de tipo na própria API): nº de projetos de cada deputado de MS
+  judiciario           DadosJusBr (contracheques do TJMS enviados ao CNJ): nº de magistrados e soma do subsídio do mês
+  entidades            cadastro CNPJ (minhareceita.org, serviço diferente do usado na coleta): 30 entidades sorteadas por dia —
+                       data de abertura, município e situação cadastral
 
 Tolerância: diferença até R$ 1 por item, ou explicada por atualização da fonte depois da coleta (a fonte mudou entre
 a coleta e a conferência — registrada como "mudou na fonte", não como divergência).
@@ -71,7 +76,8 @@ RESPONSAVEL = "validar_fontes.py — conferência automática do robô diário (
 
 def resultado(itens, metodo, fonte_url, nota="", granularidade="registro", unidade="registro", unidades_base=None,
               registros_base=None, registros_por_unidade=None, selecao="todas as unidades publicadas"):
-    """itens: [(nome, site, fonte)] com fonte None = não obtido.
+    """itens: [(nome, site, fonte)] ou [(nome, site, fonte, tolerância)] com fonte None = não obtido. Tolerância padrão R$ 1
+    (valores em reais); contagens usam tolerância 0 — uma pessoa ou um projeto a mais é diferença.
     Cobertura (metodologia ICP 2.0):
       granularidade  registro (um a um) · unidade (total de cada parlamentar/órgão/mês) · total (um único total da base)
       unidades_base  quantas unidades a base tem (None = desconhecido → cobertura não calculada)
@@ -82,9 +88,10 @@ def resultado(itens, metodo, fonte_url, nota="", granularidade="registro", unida
            "selecao": selecao, "responsavel": RESPONSAVEL, "metodologia": METODOLOGIA}
     if not obtidos:
         return {"resultado": "indisponivel", "em": AGORA, "metodo": metodo, "fonteUrl": fonte_url, "conferidos": 0, "nota": "a fonte não respondeu", **cob}
-    div = [{"item": n, "site": round(s, 2), "fonte": round(f, 2), "diferenca": round(s - f, 2)} for n, s, f in obtidos if abs(s - f) > 1]
-    comparados = [{"item": n, "site": round(s, 2), "fonte": round(f, 2), "diferenca": round(s - f, 2)} for n, s, f in obtidos][:120]
-    ids = sorted({str(n) for n, _, _ in obtidos})  # sem repetição: o mesmo item conferido duas vezes conta uma
+    tol = lambda i: i[3] if len(i) > 3 else 1
+    div = [{"item": i[0], "site": round(i[1], 2), "fonte": round(i[2], 2), "diferenca": round(i[1] - i[2], 2)} for i in obtidos if abs(i[1] - i[2]) > tol(i)]
+    comparados = [{"item": i[0], "site": round(i[1], 2), "fonte": round(i[2], 2), "diferenca": round(i[1] - i[2], 2)} for i in obtidos][:120]
+    ids = sorted({str(i[0]) for i in obtidos})  # sem repetição: o mesmo item conferido duas vezes conta uma
     if granularidade == "total":
         abr = registros_base
     elif registros_por_unidade is not None:
@@ -220,7 +227,7 @@ def v_tjms():
     m, a = o["mes"].split("/")
     d = get(f"https://api.dadosjusbr.org/v2/dados/tjms/{int(a)}/{int(m)}")
     s = ((d or {}).get("sumarios") or {}).get("membros_ativos") or {}
-    itens = [("magistrados", o["pessoas"], s.get("quantidade")), ("salário-base total", o["totalBase"], (s.get("remuneracao_base") or {}).get("total"))]
+    itens = [("magistrados", o["pessoas"], s.get("quantidade"), 0), ("salário-base total", o["totalBase"], (s.get("remuneracao_base") or {}).get("total"))]
     org = ss.get("orgaos") or []
     return resultado(itens, f"DadosJusBr (contracheques do TJMS enviados ao CNJ, {o['mes']}): quantidade e salário-base", "https://dadosjusbr.org/",
                      granularidade="unidade", unidade="órgão no mês publicado (quantidade de pessoas e salário-base)", unidades_base=len(org) * 2,
@@ -249,13 +256,117 @@ def v_pncp(arquivo, chave_lista, rotulo):
                      selecao="amostra aleatória simples de 8 por dia, sem reposição (semente = data)")
 
 
+CAM = "https://dadosabertos.camara.leg.br/api/v2"
+
+
+def v_votacoes():
+    """Voto de cada deputado federal de MS em todas as votações nominais do ano. Cada voto é um item: 100 = igual ao site,
+    0 = diferente (a tolerância da comparação é 1; 100 × 0 nunca passa como igual). A cobertura conta por votação."""
+    d = J("votacoes.json")
+    q = d.get("quadroCamara") or {}
+    deps, vots = q.get("deputados") or {}, [v for v in q.get("votacoes") or [] if v.get("id")]
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(4) as ex:
+        respostas = list(ex.map(lambda v: (v, get(f"{CAM}/votacoes/{v['id']}/votos")), vots))
+    itens = []
+    for v, r in respostas:
+        fonte = None if r is None else {str(x["deputado_"]["id"]): x.get("tipoVoto") for x in r.get("dados") or []}
+        for did, nome in deps.items():
+            site = (v.get("votos") or {}).get(did) or "—"
+            f = None if fonte is None else (fonte.get(did) or "—")
+            itens.append((f"{v['id']} · {nome} ({site})", 100.0, None if f is None else (100.0 if f == site else 0.0)))
+    res = resultado(itens, "API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano; item = voto de um deputado de MS "
+                    "(100 = igual ao site, 0 = diferente)", "https://dadosabertos.camara.leg.br/",
+                    granularidade="unidade", unidade="votação nominal da Câmara (o voto de cada deputado de MS)", unidades_base=len(vots),
+                    registros_base=len(vots) * len(deps), selecao="todas as votações nominais da Câmara publicadas no site; todos os deputados de MS em cada uma")
+    if res["resultado"] in ("confere", "diverge"):  # unidade = votação com todos os votos obtidos
+        ok = [v["id"] for v, r in respostas if r is not None]
+        res.update({"unidadesConferidas": len(ok), "idsConferidos": ok[:400], "registrosAbrangidos": len(ok) * len(deps)})
+    return res
+
+
+def v_producao():
+    """Nº de projetos (PL, PLP, PEC, PDL) de cada deputado federal de MS desde o início da legislatura: a API filtra o tipo
+    (a coleta lista tudo e filtra depois)."""
+    d = J("producao_legislativa.json")
+    ps = [p for p in d.get("parlamentares") or [] if p.get("grupo") == "federal"]
+    itens = []
+    for p in ps:
+        n, pag, ok = 0, 1, True
+        while True:
+            r = get(f"{CAM}/proposicoes", {"idDeputadoAutor": p["id"], "dataApresentacaoInicio": d.get("inicio") or "2023-02-01",
+                                          "siglaTipo": "PL,PLP,PEC,PDL", "itens": 100, "pagina": pag})
+            if r is None:
+                ok = False
+                break
+            n += len(r.get("dados") or [])
+            if not any(l.get("rel") == "next" for l in r.get("links") or []):
+                break
+            pag += 1
+        itens.append((p["nome"], p.get("projetos") or 0, float(n) if ok else None, 0))
+    res = resultado(itens, "API da Câmara (/proposicoes, filtro de tipo PL/PLP/PEC/PDL na própria consulta): nº de projetos de cada deputado de MS "
+                    "desde 01/02/2023", "https://dadosabertos.camara.leg.br/", granularidade="unidade",
+                    unidade="deputado federal (nº de projetos na legislatura)", unidades_base=len(d.get("parlamentares") or []),
+                    registros_base=sum(p.get("projetos") or 0 for p in d.get("parlamentares") or []),
+                    registros_por_unidade={p["nome"]: p.get("projetos") or 0 for p in ps},
+                    selecao="todos os deputados federais de MS; senadores não conferidos")
+    # projeto novo apresentado depois da coleta: a fonte cresce um pouco (nunca diminui)
+    if res["resultado"] == "diverge" and all(0 < -x["diferenca"] <= 3 for x in res["divergentes"]):
+        res["resultado"], res["nota"] = "mudou_na_fonte", "a Câmara registrou projetos novos depois da coleta (até 3 por deputado)"
+    return res
+
+
+def v_judiciario():
+    t = J("tjms_magistrados.json")
+    ms = t.get("magistrados") or []
+    try:
+        m, a = (t.get("mesReferencia") or "").split("/")
+    except ValueError:
+        return resultado([("TJMS", 0, None)], "DadosJusBr", "https://dadosjusbr.org/")
+    d = get(f"https://api.dadosjusbr.org/v2/dados/tjms/{int(a)}/{int(m)}")
+    s = ((d or {}).get("sumarios") or {}).get("membros_ativos") or {}
+    q, base = s.get("quantidade"), (s.get("remuneracao_base") or {}).get("total")
+    itens = [("magistrados ativos", float(sum(1 for x in ms if x.get("situacao") == "ATIVO")), None if q is None else float(q), 0),
+             ("soma do subsídio", round(sum(x.get("subsidio") or 0 for x in ms), 2), None if base is None else round(base, 2))]
+    return resultado(itens, f"DadosJusBr (contracheques do TJMS enviados ao CNJ, {t.get('mesReferencia')}): nº de magistrados ativos e soma do subsídio",
+                     "https://dadosjusbr.org/", granularidade="total", unidade="folha do mês (quantidade e subsídio)", unidades_base=2,
+                     registros_base=len(ms), selecao="o mês publicado no site (TJMS; TRT24 e TRE-MS não conferidos)")
+
+
+def v_entidades():
+    """30 entidades sorteadas no cadastro CNPJ (minhareceita.org — a coleta usa a BrasilAPI primeiro): abertura, município e situação."""
+    import unicodedata as _u
+    nz = lambda t: "".join(c for c in _u.normalize("NFD", (t or "").upper()) if _u.category(c) != "Mn").strip()
+    es = J("entidades.json").get("entidades") or []
+    random.seed(date.today().toordinal() + 7)
+    amostra = random.sample(es, min(30, len(es)))
+    itens = []
+    for e in amostra:
+        r = get(f"https://minhareceita.org/{e['cnpj']}", tent=2, timeout=40)
+        # filial: o site mostra em "abertura" a data da matriz (desde quando a entidade existe) e guarda a da filial à parte
+        ab = e.get("aberturaFilial") if str(e.get("cnpj"))[8:12] != "0001" and e.get("aberturaFilial") else e.get("abertura")
+        for campo, site, fonte in (("abertura", ab, (r or {}).get("data_inicio_atividade")),
+                                   ("município", e.get("municipio"), (r or {}).get("municipio")),
+                                   ("situação", e.get("situacao"), (r or {}).get("descricao_situacao_cadastral"))):
+            f = None if r is None else (100.0 if nz(str(site or "")) == nz(str(fonte or "")) else 0.0)
+            itens.append((f"{e['cnpj']} · {campo}", 100.0, f))
+    res = resultado(itens, "cadastro CNPJ (minhareceita.org): 30 entidades sorteadas; item = abertura, município ou situação cadastral "
+                    "(100 = igual ao site, 0 = diferente)", "https://minhareceita.org/", granularidade="registro", unidade="campo cadastral de uma entidade",
+                    unidades_base=len(es) * 3, registros_base=len(es) * 3, selecao="amostra aleatória simples de 30 entidades por dia (semente = data + 7)")
+    # a situação cadastral pode mudar entre a coleta e a conferência (ex.: baixa): só esse campo diferente = mudou na fonte
+    if res["resultado"] == "diverge" and all(x["item"].endswith("situação") for x in res["divergentes"]):
+        res["resultado"], res["nota"] = "mudou_na_fonte", "situação cadastral alterada na Receita depois da coleta"
+    return res
+
+
 def main():
     ant = J("validacao_fontes.json")
     out = dict(ant.get("fontes") or {})
     for fonte, fn in (("governo-ms", v_governo), ("deputados-estaduais", v_alems), ("senadores", v_senado), ("deputados", v_camara),
                       ("arrecadacao", v_siconfi), ("supersalarios", v_tjms),
                       ("shows", lambda: v_pncp("shows.json", "shows", "contratações de show")),
-                      ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel"))):
+                      ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel")),
+                      ("votacoes", v_votacoes), ("producao", v_producao), ("judiciario", v_judiciario), ("entidades", v_entidades)):
         try:
             r = fn()
         except Exception as e:

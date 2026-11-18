@@ -29,8 +29,8 @@ const norm = t => (t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase
   const nb = await vis(), espb = bases.filter(x => norm(x.nome + " " + x.orgao + " " + (x.fonteOficial || "")).includes("camara")).length;
   ok("busca 'camara' (sem acento)", nb === espb && nb > 0, `tela ${nb} x dados ${espb}`);
   await p.fill("#busca-icp", "");
-  await p.click('#icp-cards [data-st="verificado"]');
-  ok("cartão do painel filtra a tabela", (await vis()) === icp.indicadores.verificadas);
+  await p.click('#icp-cards [data-st^="verificado"]');
+  ok("cartão \"conferidas por inteiro\" filtra a tabela (inclui as reforçadas)", (await vis()) === icp.indicadores.verificadas, `${await vis()} x ${icp.indicadores.verificadas}`);
   await p.click('#icp-filtros [data-f=""]');
   // metodologia 2.0: tela = dados (nível e cobertura de cada base, resumo de cobertura no topo)
   const pctBR = v => (v > 0 && v < 1 ? v.toFixed(2) : String(Math.round(v * 10) / 10)).replace(".", ",") + "%";
