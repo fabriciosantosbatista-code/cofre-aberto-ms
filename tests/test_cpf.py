@@ -196,7 +196,7 @@ def arquivos_locais():
     for ext in ("html", "js", "xml", "txt"):
         for f in sorted(ROOT.glob(f"**/*.{ext}")):
             r = f.relative_to(ROOT).as_posix()
-            if r.startswith(("node_modules/", ".git/", "tests/")) or "/node_modules/" in r:
+            if r.startswith(("node_modules/", ".git/", ".github/", "tests/")) or "/node_modules/" in r:
                 continue
             yield r, "html", lambda f=f: f.read_text(encoding="utf-8", errors="ignore")
 
