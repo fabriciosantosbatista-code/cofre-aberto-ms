@@ -3,6 +3,7 @@ import json, re
 
 # (base, padrão no nome/mensagem da conferência). O primeiro que casar vence.
 REGRAS = [
+    ("camaras-ms", r"^Câmaras do interior|camaras/|Câmaras municipais do interior|camaras-ms"),
     ("camara", r"^CG[ :]|Câmara CG|camara_municipal|Câmara Municipal de Campo Grande|camara_cg|Painel leve da Câmara|^camara\b"),
     ("deputados-estaduais", r"^ALEMS|deputados_estaduais|Assembleia Legislativa|deputados-estaduais"),
     ("deputados", r"deputados_federais_ms|Câmara dos Deputados — CEAP|Evolução .*:|^deputados\b|Dep\. federais"),
@@ -26,7 +27,6 @@ REGRAS = [
     ("stf", r"\bstf\b|STF —"),
     ("eleicoes", r"eleicoes|TSE —"),
     ("auditoria", r"auditoria\.json|Sinais de atenção|^auditoria\b"),
-    ("camaras-ms", r"camaras_interior|Câmaras municipais do interior|camaras-ms"),
 ]
 
 

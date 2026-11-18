@@ -89,23 +89,45 @@ for fid, b in bases.items():
     if b["importancia"] >= 2 and any(v is not None and v <= 40 for v in b["dimensoes"].values()):
         check(fid in ids_crit, f"{fid}: dimensão ≤ 40 numa base importante aparece nos problemas críticos")
 
-# ── falhas (simulação) ──
-sim = {"jobs": {"coletar_verba_camara": {"conclusao": "success", "bases": ["camara"], "avisos": ["⚠️ portal da Câmara: Connection refused"]},
-                "coletar_tjms": {"conclusao": "failure", "bases": ["judiciario", "supersalarios"], "avisos": []},
-                "coletar_governo_ms": {"conclusao": "success", "bases": ["governo-ms"], "avisos": ["ℹ️ 0 linhas novas"]}}}
-fb = g.falhas_por_base(sim)
-check("camara" in fb, "aviso de conexão recusada vira falha da Câmara de CG")
-check("judiciario" in fb and "supersalarios" in fb, "job 'failure' marca todas as bases dele")
-check("governo-ms" not in fb, "aviso informativo (sem falha) não vira falha de coleta")
+# ── falhas (simulação) — os estados vêm de registrar_execucao.py; o detalhe está em tests/test_monitoramento_robos.py ──
+import registrar_execucao as rx  # noqa: E402
+an = rx.analisar_log("\n".join(f"2026-11-17T22:00:0{i}.1Z {l}" for i, l in enumerate([
+    "##[group]Run x", "⚠️ portal da Câmara Municipal de Campo Grande: Connection refused", "⚠️ relatórios: coleta falhou — dados anteriores mantidos",
+    "ℹ️ 0 linhas novas", "##[endgroup]"])))
+eb = rx.estado_bases("coletar_verba_camara", rx.classificar({"conclusion": "success", "status": "completed"}, "ok", an)[0], an, {})
+check(eb.get("camara") == "fonte_indisponivel", "conexão recusada + dado anterior mantido → Câmara de CG 'fonte_indisponivel'")
+check(rx.estado_bases("coletar_tjms", "falha_execucao", an, {}) == {"judiciario": "falha_execucao", "supersalarios": "falha_execucao"}, "job 'failure' marca todas as bases dele")
+an2 = rx.analisar_log("\n".join(f"2026-11-17T22:00:0{i}.1Z {l}" for i, l in enumerate(["##[group]Run x", "ℹ️ 0 linhas novas", "##[endgroup]"])))
+check(rx.classificar({"conclusion": "success", "status": "completed"}, "ok", an2)[0] == "sem_avisos", "mensagem informativa (sem aviso) não vira falha")
+_h = g.jsonl("icp_execucoes_historico.jsonl")
+_ult = {h.get("runId"): i for i, h in enumerate(_h)}
+HIST_EXEC = [h for i, h in enumerate(_h) if _ult.get(h.get("runId")) == i]  # o registro mais recente de cada coleta
+for fid, b in bases.items():
+    ue = b.get("ultimaExecucao") or {}
+    if ue.get("estado") in rx.RUIM:
+        check(any(x.startswith("última coleta:") for x in b["pendencias"]), f"{fid}: falha da última coleta aparece nas pendências")
+    if ue.get("estado") == "leitura_indisponivel":
+        check(any("monitoramento indisponível" in x for x in b["pendencias"]), f"{fid}: log ilegível aparece como monitoramento indisponível")
+    check(b["dimensoes"]["F"] == g.dimensao_F(HIST_EXEC, fid), f"{fid}: F recalculado a partir do histórico de execuções")
+ex = icp.get("execucao") or {}
+check(ex.get("runId") and ex.get("leitura") in ("ok", "parcial", "indisponivel"), "ICP traz o resumo da última execução dos robôs")
+check(all(j.get("nAvisos") is None or isinstance(j.get("nAvisos"), int) for j in ex.get("jobs") or []), "avisos = número ou None (não lido), nunca 0 inventado")
+check(bases["camaras-ms"]["registros"] and all((ROOT / a).exists() for a in bases["camaras-ms"]["arquivos"]),
+      "Câmaras do interior: arquivos de dados existem e a base tem registros")
 
 # ── histórico: só cresce ──
+# Nenhuma linha das versões anteriores (últimos 10 commits que mexeram no arquivo) pode sumir da versão atual.
+# (Comparar só com o HEAD não basta: no robô o HEAD é o próprio commit da coleta.)
 for arq in ("dados/icp_verificacoes.jsonl", "dados/icp_execucoes_historico.jsonl"):
     atual = (ROOT / arq).read_text(encoding="utf-8") if (ROOT / arq).exists() else ""
-    p = subprocess.run(["git", "-C", str(ROOT), "show", f"HEAD:{arq}"], capture_output=True, text=True)
-    if p.returncode == 0:
-        check(atual.startswith(p.stdout), f"{arq}: histórico preservado (a versão anterior é prefixo da atual)")
-    else:
-        oks.append(f"{arq}: ainda não versionado")
+    linhas = set(atual.splitlines())
+    shas = subprocess.run(["git", "-C", str(ROOT), "log", "-10", "--format=%H", "--", arq], capture_output=True, text=True).stdout.split()
+    perdidas = 0
+    for s in shas:
+        p = subprocess.run(["git", "-C", str(ROOT), "show", f"{s}:{arq}"], capture_output=True, text=True)
+        if p.returncode == 0:
+            perdidas += sum(1 for l in p.stdout.splitlines() if l.strip() and l not in linhas)
+    check(perdidas == 0, f"{arq}: nenhuma linha de {len(shas)} versão(ões) anterior(es) foi apagada ({perdidas} perdidas)")
     for n, l in enumerate(atual.splitlines(), 1):
         try:
             json.loads(l)

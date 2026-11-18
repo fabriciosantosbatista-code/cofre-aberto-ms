@@ -61,6 +61,8 @@ def n_notas(arq, chave, campo="despesas"):
 
 # id: (nome, arquivo(s), endpoint/método de coleta, processamento, período de referência, intervalo de coleta (dias),
 #      atraso normal de publicação da fonte (dias), registros(), total(), identificador do registro original)
+# Câmaras do interior: um arquivo por cidade em dados/camaras/ (coletar_dados.py)
+CAMARAS_INTERIOR = sorted(f"camaras/{p.name}" for p in (DADOS / "camaras").glob("*.json"))
 FONTES = {
     "camara": ("Câmara Municipal de Campo Grande — verba indenizatória e pessoal dos gabinetes", ["camara_municipal.json", "camara_cg_pdfs.json", "camara_cg_revisao.json"],
                "PDFs das prestações de contas (Atos 027/028) do portal SCPI Fiorilli; folha em /VersaoJson/Pessoal",
@@ -121,8 +123,12 @@ FONTES = {
                     "ano corrente", 1, 30, lambda: len(J("publicidade.json").get("agencias") or []), lambda: soma([(J("publicidade.json").get("estado") or {}).get("total"), (J("publicidade.json").get("prefeitura") or {}).get("total")]), "CNPJ da agência"),
     "entidades": ("Entidades sem fins lucrativos (Estado, Prefeitura, emendas)", ["entidades.json"], "derivado + cadastro da Receita (natureza jurídica)", "soma por entidade",
                   "ano corrente", 1, 30, lambda: J("entidades.json").get("quantidade"), lambda: J("entidades.json").get("total"), "CNPJ"),
-    "camaras-ms": ("Câmaras municipais do interior", ["camaras_interior.json"], "portais SCPI Fiorilli de cada câmara", "remuneração e despesas por câmara",
-                   "ano corrente", 1, 30, lambda: None, lambda: None, "câmara + matrícula"),
+    "camaras-ms": ("Câmaras municipais do interior — remuneração e diárias dos vereadores", CAMARAS_INTERIOR,
+                   "portais de transparência de cada câmara (Fiorilli SCPI; SAPL/Interlegis em Dourados), coletados por coletar_dados.py",
+                   "diárias e remuneração por vereador; despesas institucionais quando o portal publica", "ano corrente", 1, 30,
+                   lambda: sum(len(v.get("diarias") or []) for a in CAMARAS_INTERIOR for v in J(a).get("vereadores") or []),
+                   lambda: soma(v.get(f"totalDiarias{J(a).get('ano') or datetime.now().year}") or v.get("totalDiarias2026") for a in CAMARAS_INTERIOR for v in J(a).get("vereadores") or []),
+                   "câmara + vereador + diária (data e destino)"),
     "judiciario": ("TJMS, TRT24 e TRE-MS — remuneração", ["tjms_magistrados.json"], "DadosJusBr e portais dos tribunais", "bruto, descontos, líquido; diárias à parte",
                    "último mês publicado", 1, 75, lambda: len(J("tjms_magistrados.json").get("magistrados") or []), lambda: None, "tribunal + mês + nome"),
     "presidencia": ("Presidência da República (CGU) — cartão, viagens, remuneração", ["presidencia.json"], "API do Portal da Transparência (CGU)", "soma por mês",

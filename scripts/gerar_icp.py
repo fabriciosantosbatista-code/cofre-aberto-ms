@@ -44,7 +44,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import gerar_monitoramento as gm  # noqa: E402  (registro das fontes, datas, classificação base)
-from registrar_execucao import JOB_BASES  # noqa: E402
+from registrar_execucao import JOB_BASES, BOM, RUIM, DESCONHECIDO, bases_da_linha  # noqa: E402
 
 ROOT, DADOS = gm.ROOT, gm.DADOS
 AGORA = gm.AGORA
@@ -99,7 +99,12 @@ EXTRA = {
     "obras": ("Governo do Estado de MS", 2, _rast("obras.json", "obras", None, lambda r: bool(r.get("numero"))), ["% executado e datas são os que o Estado publica."]),
     "publicidade": ("Governo de MS e Prefeitura de CG", 2, None, ["Derivada de outras bases; herda o atraso da Prefeitura."]),
     "entidades": ("Governo de MS, Prefeitura de CG e CGU", 2, None, ["Derivada de outras bases e do cadastro da Receita."]),
-    "camaras-ms": ("Câmaras municipais do interior", 1, None, ["Cada câmara tem portal próprio; algumas ficam fora do ar."]),
+    "camaras-ms": ("Câmaras municipais do interior", 1,
+                   lambda: (lambda ds: (sum(1 for d in ds if d.get("data") and isinstance(d.get("valor"), (int, float))), len(ds)) if ds else None)(
+                       [d for a in gm.CAMARAS_INTERIOR for v in gm.J(a).get("vereadores") or [] for d in v.get("diarias") or []]),
+                   ["Cada câmara tem portal próprio; quando um portal sai do ar, o robô mantém o último dado daquela câmara.",
+                    "Valores negativos são estornos (empenho anulado) publicados pela própria câmara e já descontados do total.",
+                    "Dourados (SAPL/Interlegis) não publica dados financeiros no mesmo formato das demais."]),
     "judiciario": ("TJMS, TRT24, TRE-MS", 2, None, []),
     "presidencia": ("Presidência da República (CGU)", 1, None, []),
     "stf": ("Supremo Tribunal Federal", 1, None, []),
@@ -112,11 +117,11 @@ STATUS = {  # rótulo, cor
     "divergencia": ("Divergência identificada", "vermelho"), "falha_coleta": ("Falha na coleta", "vermelho"),
     "pendente": ("Pendente de verificação", "cinza")}
 COR = {"verde": "#1f9d6b", "amarelo": "#c98500", "vermelho": "#d9363e", "cinza": "#7b8494"}
-FALHA_TXT = re.compile(r"falhou|indispon|não respondeu|Connection|timed out|Não foi possível|refused|reset|erro|Error|Traceback", re.I)
-BASE_TXT = [("camara", r"relatórios|Câmara Municipal de Campo Grande|45\.225\.6\.93|gabinete"), ("camaras-ms", r"Sonora|câmara de |Câmaras"),
-            ("judiciario", r"TJMS|TRT|TRE"), ("supersalarios", r"teto|supersal|zerados"), ("prefeitura", r"Prefeitura|SIG"),
-            ("governo-ms", r"Estado|sgi\.ms"), ("emendas", r"emendas|CGU"), ("deputados-estaduais", r"ALEMS|Assembleia"),
-            ("deputados", r"Câmara dos Deputados|CEAP|camara\.leg"), ("senadores", r"Senado"), ("shows", r"show"), ("alugueis", r"alugu|locaç")]
+# estado de cada base em cada coleta (calculado por registrar_execucao.py a partir do log real do robô)
+ROTULO_EXEC = {"sem_avisos": "coleta concluída sem avisos", "com_avisos": "coleta concluída com avisos", "com_erros": "coleta concluída com erros",
+               "parcial": "coleta parcialmente concluída (dado anterior mantido em parte)", "falha_execucao": "falha na execução do robô",
+               "leitura_indisponivel": "falha na leitura dos logs (monitoramento indisponível)", "fonte_indisponivel": "fonte indisponível",
+               "sem_publicacao_nova": "coleta funcionou; fonte sem publicação nova"}
 
 
 def jsonl(nome):
@@ -134,19 +139,32 @@ def jsonl(nome):
     return out
 
 
-def falhas_por_base(execucao):
-    """{base: [linhas de falha]} a partir dos avisos do log de cada robô (atribuídos pela palavra-chave; senão, às bases do robô)."""
-    out = {}
+def estado_exec(h, fid):
+    """Estado da base numa coleta registrada. Registros antigos (sem estado por base, de antes da leitura correta dos
+    logs) valem como desconhecidos — não contam a favor nem contra."""
+    return (h.get("bases") or {}).get(fid) if isinstance(h.get("bases"), dict) else None
+
+
+def dimensao_F(exec_hist, fid):
+    """% das últimas 14 coletas registradas em que a base terminou sem falha; coletas sem log legível não entram;
+    nenhuma coleta com log legível = None (não avaliado — falta de informação não vira nota)."""
+    estados = [e for e in (estado_exec(h, fid) for h in exec_hist) if e is not None][-14:]
+    conhecidos = [e for e in estados if e not in DESCONHECIDO]
+    return round(100 * sum(e in BOM for e in conhecidos) / len(conhecidos), 1) if conhecidos else None
+
+
+def linhas_da_base(execucao, fid):
+    """Linhas do log da última coleta que dizem respeito à base (falhas, fonte fora do ar, erros e avisos)."""
+    out = []
     for job, j in (execucao.get("jobs") or {}).items():
-        for l in j.get("avisos") or []:
-            if not FALHA_TXT.search(l):
-                continue
-            alvo = [b for b, rx in BASE_TXT if re.search(rx, l)] or j.get("bases") or []
-            for b in alvo:
-                out.setdefault(b, []).append(l)
-        if j.get("conclusao") not in (None, "success"):
-            for b in j.get("bases") or []:
-                out.setdefault(b, []).append(f"o robô {job} terminou com '{j.get('conclusao')}'")
+        if fid not in (j.get("bases") or []):
+            continue
+        for chave in ("falhas", "fonteFora", "erros", "avisos"):
+            for l in j.get(chave) or []:
+                if fid in bases_da_linha(l, j.get("bases") or []) and l not in out:
+                    out.append(l)
+        if j.get("erroLeitura"):
+            out.append(f"não foi possível ler o log do robô {job}: {j['erroLeitura']}")
     return out
 
 
@@ -206,15 +224,11 @@ def nota_dimensoes(fid, f, ver, testes, rev, exec_hist, falhas_agora):
         r_ = None
     if r_ and r_[1]:
         dims["R"] = round(100 * r_[0] / r_[1], 1)
-    # F — integrações (últimas 14 coletas)
-    jobs = [job for job, bs in JOB_BASES.items() if fid in bs]
-    hist = [h for h in exec_hist if any(j in (h.get("jobs") or {}) for j in jobs)][-14:]
-    if hist:
-        boas = 0
-        for h in hist:
-            fb = falhas_por_base({"jobs": {k: {**v_, "bases": JOB_BASES.get(k, [])} for k, v_ in (h.get("jobs") or {}).items()}})
-            boas += fid not in fb
-        dims["F"] = round(100 * boas / len(hist), 1)
+    # F — integrações: % das últimas 14 coletas (com log lido) em que o robô da base terminou sem falha atribuída a ela.
+    # Coleta sem log legível não conta a favor; sem nenhuma coleta com log legível, F = não avaliado.
+    f_ = dimensao_F(exec_hist, fid)
+    if f_ is not None:
+        dims["F"] = f_
     return dims, {"ok": ok, "avisos": av, "erros": er, "itens": itens}
 
 
@@ -249,17 +263,21 @@ def main():
     rev = gm.J("camara_cg_revisao.json")
     exec_atual = gm.J("icp_execucoes.json") or {}
     exec_hist = jsonl("icp_execucoes_historico.jsonl")
-    falhas_agora = falhas_por_base(exec_atual)
-    # falha técnica: a última tentativa E a anterior falharam para a base → falha de coleta mesmo com arquivo recente
-    ult2 = exec_hist[-2:]
+    # uma coleta pode ter sido registrada mais de uma vez (ex.: releitura correta dos logs): vale o registro mais recente
+    ultimo = {h.get("runId"): i for i, h in enumerate(exec_hist)}
+    exec_hist = [h for i, h in enumerate(exec_hist) if ultimo.get(h.get("runId")) == i]
+    falhas_agora = {fid: linhas_da_base(exec_atual, fid) for fid in mon["fontes"]}
     cors = correcoes()
     bases = {}
     for fid, f in mon["fontes"].items():
         extra = EXTRA.get(fid, ("—", 1, None, []))
         classe = f["classe"]
-        f2 = [falhas_por_base({"jobs": {k: {**v_, "bases": JOB_BASES.get(k, [])} for k, v_ in (h.get("jobs") or {}).items()}}) for h in ult2]
-        if classe not in ("falha_coleta",) and len(f2) == 2 and all(fid in x for x in f2):
-            classe, f["motivo"] = "falha_coleta", "as duas últimas tentativas de coleta falharam (" + "; ".join(falhas_agora.get(fid, [])[:1]) + ") — o dado anterior foi mantido"
+        # falha técnica: as duas últimas coletas com log legível falharam para a base → falha de coleta mesmo com arquivo recente
+        ult = [e for e in (estado_exec(h, fid) for h in exec_hist) if e is not None and e not in DESCONHECIDO][-2:]
+        if classe != "falha_coleta" and len(ult) == 2 and all(e in RUIM for e in ult):
+            classe, f["motivo"] = "falha_coleta", (f"as duas últimas coletas falharam ({ROTULO_EXEC[ult[-1]]}"
+                                                   + (f": {falhas_agora[fid][0]}" if falhas_agora.get(fid) else "") + ") — o dado anterior foi mantido")
+        estado_atual = estado_exec(exec_atual, fid)
         queda = [x["texto"] for x in testes if x["nivel"] == "erro" and x["texto"].startswith(f"{fid}: registros caíram")]
         if queda and classe != "falha_coleta":  # a fonte "respondeu" mas veio pela metade: é falha técnica, não dado novo
             classe, f["motivo"] = "falha_coleta", queda[0] + " — provável coleta incompleta"
@@ -274,7 +292,12 @@ def main():
         pend = []
         if f["classe"] in ("aguardando_fonte", "revisao_manual", "divergencia", "falha_coleta") or classe != f["classe"]:
             pend.append(f["motivo"])
-        pend += [f"última coleta: {l}" for l in falhas_agora.get(fid, [])[:3]]
+        if estado_atual in RUIM:
+            pend.append(f"última coleta: {ROTULO_EXEC[estado_atual]}" + (f" — {falhas_agora[fid][0]}" if falhas_agora.get(fid) else ""))
+        elif estado_atual == "leitura_indisponivel":
+            pend.append("monitoramento indisponível: não foi possível ler o log do robô nesta coleta — a coleta não é contada como bem-sucedida")
+        elif estado_atual is None:
+            pend.append("execução do robô não registrada para esta base")
         pend += [f"teste: {x['texto']}" for x in tst["itens"] if x["nivel"] == "erro"][:5]
         if "P" not in dims:
             pend.append("sem conferência independente na fonte oficial nos últimos 30 dias")
@@ -285,7 +308,11 @@ def main():
                       "ultimaVerificacao": ({k: ver[fid].get(k) for k in ("em", "resultado", "metodo", "fonteUrl", "conferidos", "comparados", "divergentes", "nota", "tipo")} if fid in ver else None),
                       "historicoVerificacoes": [h for h in hist_ver if h.get("base") == fid][-50:],
                       "divergencias": [h for h in hist_ver if h.get("base") == fid and h.get("resultado") == "diverge"],
-                      "correcoes": [c for c in cors if fid in c["bases"]], "falhasUltimaColeta": falhas_agora.get(fid, []), "pendencias": pend}
+                      "correcoes": [c for c in cors if fid in c["bases"]], "falhasUltimaColeta": falhas_agora.get(fid, [])[:10],
+                      "ultimaExecucao": {"estado": estado_atual, "rotulo": ROTULO_EXEC.get(estado_atual, "não registrada"), "runId": exec_atual.get("runId"),
+                                         "inicio": exec_atual.get("inicio"), "fim": exec_atual.get("fim")},
+                      "historicoExecucoes": [{"runId": h.get("runId"), "inicio": h.get("inicio"), "estado": estado_exec(h, fid)} for h in exec_hist[-14:]],
+                      "pendencias": pend}
     aval = [b for b in bases.values() if b["nota"] is not None]
     peso = sum(b["importancia"] for b in aval)
     geral = round(sum(b["nota"] * b["importancia"] for b in aval) / peso) if peso else None
@@ -316,7 +343,17 @@ def main():
            "nota": geral, "dimensoes": dim_geral, "nomeDimensoes": NOME_DIM, "pesosDimensoes": PESOS_DIM, "tetos": {**TETO, "sem_verificacao": TETO_SEM_VERIFICACAO},
            "indicadores": ind, "criticos": [{"id": b["id"], "nome": b["nome"], "status": b["statusRotulo"], "motivo": b["alerta"], "nota": b["nota"]} for b in criticos],
            "status": {k: {"rotulo": v[0], "cor": v[1]} for k, v in STATUS.items()}, "bases": bases,
-           "verificacoesRecentes": sorted(hist_ver, key=lambda h: h["em"])[-25:][::-1]}
+           "verificacoesRecentes": sorted(hist_ver, key=lambda h: h["em"])[-25:][::-1],
+           "execucao": {"runId": exec_atual.get("runId"), "inicio": exec_atual.get("inicio"), "fim": exec_atual.get("fim"),
+                        "leitura": exec_atual.get("leitura") or "nao_registrada", "erroLeitura": exec_atual.get("erroLeitura"),
+                        "rotulos": ROTULO_EXEC, "testes": exec_atual.get("testes"), "publicacao": exec_atual.get("publicacao"),
+                        "arquivosAtualizados": len(exec_atual.get("arquivosAtualizados") or []) if exec_atual.get("arquivosAtualizados") is not None else None,
+                        "jobs": [{"nome": k, "estado": v.get("estado"), "rotulo": ROTULO_EXEC.get(v.get("estado"), v.get("estado")), "motivo": v.get("motivo"),
+                                  "conclusao": v.get("conclusao"), "inicio": v.get("inicio"), "fim": v.get("fim"), "leitura": v.get("leitura"),
+                                  "nAvisos": v.get("nAvisos"), "nErros": v.get("nErros"), "nFalhas": v.get("nFalhas"), "bases": v.get("bases"),
+                                  "etapasFalharam": (v.get("etapas") or {}).get("falharam") or []}
+                                 for k, v in sorted((exec_atual.get("jobs") or {}).items())],
+                        "historico": len(exec_hist)}}
     (DADOS / "icp.json").write_text(json.dumps(icp, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     paginas(icp)
     print(f"✅ ICP — nota geral {geral if geral is not None else 'não avaliada'} · " + ", ".join(f"{k} {v}" for k, v in ind.items())
@@ -475,6 +512,7 @@ b.addEventListener('input',f);s.addEventListener('change',f);var h=location.hash
 <dt>Identificador do registro original</dt><dd>{e(b['identificadorOriginal'])}</dd>
 <dt>Arquivos de dados</dt><dd>{' · '.join(f"<a href='/{e(a)}'>{e(a)}</a>" for a in b['arquivos'])}</dd>
 <dt>Última verificação oficial</dt><dd>{dt((uv or {}).get('em')) if uv else 'nunca'}</dd></dl>
+{(lambda u: f"<h2>Última execução do robô</h2><p><b>{e(u.get('rotulo') or 'não registrada')}</b>" + (f" — coleta {e(str(u.get('runId')))}, {dt(u.get('inicio'))}" if u.get('runId') else "") + "</p>")(b.get('ultimaExecucao') or {})}
 <h2>Pendências</h2><ul>{pend}</ul>
 <h2>Testes matemáticos executados ({b['testes']['ok']} aprovados · {b['testes']['avisos']} avisos · {b['testes']['erros']} erros)</h2><ul style='font-size:.85rem'>{tst or '<li>Nenhum teste específico desta base.</li>'}</ul>
 <h2>Histórico de verificações na fonte</h2>{f"<div class='tw'><table><thead><tr><th class='n'>Quando</th><th>Resultado</th><th class='n'>Itens</th><th class='n'>Divergentes</th><th>Observação</th></tr></thead><tbody>{hv}</tbody></table></div>" if hv else "<p>Nenhuma conferência registrada.</p>"}

@@ -58,7 +58,7 @@ if len(datas) >= 2:
         a = ant.get(fid) or {}
         r1, r0 = h.get("registros"), a.get("registros")
         if isinstance(r1, (int, float)) and isinstance(r0, (int, float)) and r0 > 20:
-            if r1 < r0 * 0.9:
+            if r1 < r0 * 0.9 and mesmo_ano:
                 erros.append(f"{fid}: registros caíram de {r0} para {r1} ({(r1 / r0 - 1) * 100:.0f}%) entre {datas[-2]} e {datas[-1]}")
             elif r1 > r0 * 1.6:
                 avisos.append(f"{fid}: registros subiram de {r0} para {r1} (+{(r1 / r0 - 1) * 100:.0f}%) — conferir se é dado novo de verdade")
@@ -180,6 +180,12 @@ if achados:
     erros += achados[:20]
 else:
     ok(f"exposição de dados pessoais ({_varridos} arquivos, detector {_n - len(_falhas)}/{_n})")
+
+# ── publicação: a última coleta foi bloqueada pela proteção? ──
+pub = J("icp_publicacao.json") or {}
+if pub.get("resultado") == "bloqueado":
+    avisos.append(f"publicação bloqueada na coleta {pub.get('runId')}: {len(pub.get('motivos') or [])} erro(s) — "
+                  + "; ".join(f"[{m['teste']}] {m['base']}" for m in (pub.get("motivos") or [])[:5]) + f" — mantida a versão {str(pub.get('versaoMantida'))[:9]}")
 
 # ── resultado ──
 cab = f"✅ {len(oks)} checagens OK · ⚠️ {len(avisos)} avisos · ❌ {len(erros)} erros"

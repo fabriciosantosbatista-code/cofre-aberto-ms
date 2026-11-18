@@ -2037,6 +2037,13 @@ Atenciosamente,</textarea>
       <div class="icp-cards" id="icp-cards"></div>
     </div>
     <div class="section">
+      <div class="section-head"><h2 class="section-title">Execução dos robôs na última coleta</h2></div>
+      <div class="section-note">Lido do log real de cada robô no GitHub Actions. Quando o log não pode ser lido, a coleta aparece como
+        <b>monitoramento indisponível</b> e não conta como bem-sucedida. A publicação só acontece se os testes de CPF, integridade e variação passarem;
+        se falharem, o site mantém a última versão válida.</div>
+      <div id="icp-execucao"></div>
+    </div>
+    <div class="section">
       <div class="section-head"><h2 class="section-title">Nota por dimensão</h2></div>
       <div class="section-note">Média das bases avaliadas, com peso pela importância de cada base. "Não avaliado" quando não há dado suficiente para medir.</div>
       <div class="card" style="padding:16px" id="icp-dims"></div>
@@ -7629,6 +7636,20 @@ function renderICP(d) {
   document.getElementById("icp-cards").innerHTML = cards.map(([c, n, t, st]) =>
     `<button type="button" class="icp-card" style="--c:${ICP_COR[c]}" ${st ? `data-st="${st}"` : ""}><b>${n}</b><span>${escHTML(t)}</span></button>`).join("");
   document.getElementById("icp-dims").innerHTML = icpBarras(d.dimensoes, d.nomeDimensoes);
+  const ex = d.execucao || {}, COR_EXEC = { sem_avisos: "verde", sem_publicacao_nova: "verde", com_avisos: "amarelo", com_erros: "vermelho", parcial: "amarelo",
+    falha_execucao: "vermelho", fonte_indisponivel: "vermelho", leitura_indisponivel: "cinza" };
+  const seloExec = e => `<span class="icp-selo" style="background:${ICP_COR[COR_EXEC[e] || "cinza"]}">${escHTML((ex.rotulos || {})[e] || e || "não registrada")}</span>`;
+  const n = v => v == null ? '<span title="log não lido">?</span>' : v;
+  const pub = ex.publicacao || {};
+  document.getElementById("icp-execucao").innerHTML = !ex.runId ? `<div class="section-note">Nenhuma execução registrada ainda.</div>` :
+    `<div class="section-note" style="max-width:none">Coleta <b>${escHTML(ex.runId)}</b> · ${icpData(ex.inicio)} a ${icpData(ex.fim)} ·
+      leitura dos logs: <b>${{ ok: "completa", parcial: "parcial", indisponivel: "indisponível", nao_registrada: "não registrada" }[ex.leitura] || escHTML(ex.leitura)}</b>${ex.erroLeitura ? ` (${escHTML(ex.erroLeitura)})` : ""} ·
+      publicação: <b>${pub.resultado === "bloqueado" ? `⛔ bloqueada — mantida a versão anterior (${escHTML((pub.motivos || []).map(m => m.teste + " em " + m.base).slice(0, 4).join("; "))})` : pub.resultado === "publicado" ? "✅ liberada pelos testes" : "—"}</b>
+      ${ex.arquivosAtualizados != null ? ` · ${ex.arquivosAtualizados} arquivo(s) de dados atualizados` : ""}</div>
+     <div class="card card-x-scroll"><table class="ranking" id="tabela-exec" data-cartoes><thead><tr><th>Robô</th><th>Resultado</th><th class="num">Avisos</th><th class="num">Erros</th><th>Bases</th></tr></thead><tbody>
+     ${(ex.jobs || []).map(j => `<tr><td class="cartao-titulo"><b>${escHTML(j.nome)}</b><div style="font-size:.72rem;color:var(--ink-faint)">${escHTML(j.motivo || "")}${j.etapasFalharam && j.etapasFalharam.length ? " · etapa com falha: " + escHTML(j.etapasFalharam.join(", ")) : ""}</div></td>
+       <td data-label="Resultado">${seloExec(j.estado)}</td><td class="num" data-label="Avisos">${n(j.nAvisos)}</td><td class="num" data-label="Erros">${n(j.nErros)}</td>
+       <td data-label="Bases" style="font-size:.74rem">${(j.bases || []).map(b => d.bases[b] ? `<a href="#aba=confiabilidade&p=${b}" data-icp="${b}">${escHTML(b)}</a>` : escHTML(b)).join(", ")}</td></tr>`).join("")}</tbody></table></div>`;
   document.getElementById("icp-legenda").innerHTML = Object.values(d.status).map(s => `<span class="icp-selo" style="background:${ICP_COR[s.cor]};margin:0 4px 4px 0">${escHTML(s.rotulo)}</span>`).join("") +
     `<br><b>Aguardando atualização</b> = a coleta funciona, mas o órgão não publicou dado novo (não é falha do site). <b>Falha na coleta</b> = o robô não conseguiu atualizar e o dado anterior foi mantido.
      <b>Consistência interna aprovada</b> = as contas fecham, mas o valor ainda não foi conferido na fonte.`;
@@ -7688,6 +7709,9 @@ function icpDetalhe(id) {
       <dt>Identificador do registro original</dt><dd>${escHTML(b.identificadorOriginal || "—")}</dd>
       <dt>Arquivos de dados</dt><dd>${b.arquivos.map(a => `<a href="${escHTML(a)}" target="_blank" rel="noopener">${escHTML(a)}</a>`).join(" · ")}</dd>
       <dt>Última verificação oficial</dt><dd>${uv ? icpData(uv.em) : "nunca"}</dd></dl>
+    <h3>Última execução do robô</h3><p style="font-size:.86rem">${b.ultimaExecucao ? `<b>${escHTML(b.ultimaExecucao.rotulo)}</b>${b.ultimaExecucao.runId ? ` — coleta ${escHTML(b.ultimaExecucao.runId)}, ${icpData(b.ultimaExecucao.inicio)}` : ""}` : "não registrada"}</p>
+    ${(b.falhasUltimaColeta || []).length ? `<ul>${b.falhasUltimaColeta.slice(0, 6).map(l => `<li><code style="font-size:.74rem">${escHTML(l)}</code></li>`).join("")}</ul>` : ""}
+    ${(b.historicoExecucoes || []).length ? `<p style="font-size:.8rem;color:var(--ink-soft)">Últimas coletas: ${b.historicoExecucoes.map(h => escHTML(((ICP.execucao || {}).rotulos || {})[h.estado] || (h.estado ? h.estado : "sem registro por base"))).join(" · ")}</p>` : ""}
     <h3>Pendências</h3><ul>${li(b.pendencias.map(escHTML), "Nenhuma pendência.")}</ul>
     <h3>Testes matemáticos (${b.testes.ok} aprovados · ${b.testes.avisos} avisos · ${b.testes.erros} erros)</h3>
     ${b.testesItens.length ? `<details><summary style="cursor:pointer;font-size:.85rem">ver os ${b.testesItens.length} testes</summary><ul>${b.testesItens.map(x => `<li>${icone(x.nivel)} ${escHTML(x.texto)}</li>`).join("")}</ul></details>` : `<ul><li>Nenhum teste específico desta base.</li></ul>`}

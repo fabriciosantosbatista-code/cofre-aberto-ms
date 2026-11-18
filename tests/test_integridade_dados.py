@@ -286,6 +286,31 @@ for p in (ev.get("grupos") or {}).get("federal") or []:
                 porm[m - 1] += x["valor"] or 0
         checa(f"Evolução {p['nome']}: soma dos meses = CEAP do ano", igual(sum(p["m"]), sum(porm), 1), f"evolução {sum(p['m']):,.2f} x notas {sum(porm):,.2f}")
 
+# ───────────────────────── 10b. Câmaras municipais do interior (dados/camaras/*.json) ─────────────────────────
+cam = sorted(D.glob("camaras/*.json"))
+checa("Câmaras do interior: arquivos por cidade existem", len(cam) >= 10, f"só {len(cam)} arquivo(s) em dados/camaras/")
+for f in cam:
+    c = json.load(open(f, encoding="utf-8"))
+    cid = c.get("cidade") or f.stem
+    checa(f"Câmaras do interior {cid}: tem cidade, data da coleta e vereadores",
+          bool(c.get("cidade")) and bool(c.get("ultimaAtualizacao")) and isinstance(c.get("vereadores"), list) and len(c["vereadores"]) > 0,
+          "arquivo sem cidade, sem data da coleta ou sem vereadores")
+    ano = re.search(r"\d{4}", c.get("ultimaAtualizacao") or "")
+    chave = f"totalDiarias{ano.group(0) if ano else HOJE.year}"
+    for v in c.get("vereadores") or []:
+        if "diarias" not in v:
+            continue
+        vs = [d.get("valor") for d in v["diarias"]]
+        checa(f"Câmaras do interior {cid} — {v.get('nome')}: total de diárias = soma das diárias",
+              igual(v.get(chave) if v.get(chave) is not None else v.get("totalDiarias2026"), soma(vs)), f"total {v.get(chave)} x soma {soma(vs)}")
+        n = v.get(f"numDiarias{chave[-4:]}", v.get("numDiarias2026"))
+        checa(f"Câmaras do interior {cid} — {v.get('nome')}: nº de diárias = registros", n is None or n == len(vs), f"{n} x {len(vs)}")
+        # valor negativo é estorno (empenho anulado), publicado assim pela câmara e já descontado do total
+        checa(f"Câmaras do interior {cid} — {v.get('nome')}: toda diária tem valor numérico", all(isinstance(x, (int, float)) for x in vs),
+              "diária sem valor numérico")
+    dias = (datetime.now() - datetime.fromisoformat(c["ultimaAtualizacao"][:19])).days if c.get("ultimaAtualizacao") else 999
+    checa(f"Câmaras do interior {cid}: coletado nos últimos 7 dias", dias <= 7, f"última coleta há {dias} dias (o portal pode estar fora do ar; dado anterior mantido)", nivel="aviso")
+
 # ───────────────────────── 11. painel leve = dados completos ─────────────────────────
 leve = D / "painel" / "camara_municipal.json"
 if leve.exists() and cm:

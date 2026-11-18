@@ -239,6 +239,15 @@ def main():
     print(f"{'✅' if not achados else '❌'} {origem}: {n} arquivos varridos · {q} CPF(s) completo(s) em {len({a for a, _, _ in achados})} arquivo(s)")
     for a, k, qq in achados[:40]:
         print(f"   ❌ {a} — {k}: {qq}")
+    if "--json" in sys.argv:  # resultado por arquivo, para a proteção da publicação e o ICP
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from _bases import base_de
+        itens = [{"base": base_de(a), "nivel": "erro", "texto": f"CPF completo em {a} ({k}: {q})"} for a, k, q in achados]
+        if falhas:
+            itens.append({"base": "geral", "nivel": "erro", "texto": f"detector de CPF falhou no autoteste ({len(falhas)} de {total} casos)"})
+        itens.append({"base": "geral", "nivel": "ok", "texto": f"CPF: {n} arquivos varridos sem CPF completo"} if not achados else {"base": "geral", "nivel": "aviso", "texto": "CPF encontrado"})
+        json.dump({"teste": "cpf", "ok": int(not achados and not falhas), "avisos": 0, "erros": len(achados) + bool(falhas), "itens": itens},
+                  open(sys.argv[sys.argv.index("--json") + 1], "w", encoding="utf-8"), ensure_ascii=False)
     sys.exit(1 if (achados or falhas) else 0)
 
 

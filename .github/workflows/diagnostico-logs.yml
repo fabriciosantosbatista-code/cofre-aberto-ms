@@ -1,0 +1,31 @@
+name: Diagnóstico da leitura dos logs dos robôs
+
+# Manual: relê uma coleta de "Atualizar dados diariamente" com o mesmo token e as mesmas permissões do robô e compara
+# o que registrar_execucao.py extrai com a contagem manual das linhas ⚠️/❌ do log bruto. Não altera dados nem faz commit.
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'ID da execução de "Atualizar dados diariamente" a conferir'
+        required: true
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Ler os logs e comparar com o log bruto
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN: ${{ inputs.run_id }}
+        run: |
+          pip install -q requests
+          python3 scripts/registrar_execucao.py --run "$RUN" --comparar
