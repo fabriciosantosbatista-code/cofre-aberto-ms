@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-18T12:30:14",
+  "ultimaAtualizacao": "2026-11-18T17:38:37",
   "ano": 2026,
-  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-18T12:30:14",
+  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-18T17:38:37",
   "total": 3,
   "senadores": [
     {
@@ -360,17 +360,6 @@
         },
         {
           "data": "2026-08-03",
-          "mes": 7,
-          "categoria": "Divulgação da atividade parlamentar",
-          "fornecedor": "FACEBOOK SER4VIÇOS ONLINE DO BRASIL LTDA",
-          "cnpjCpf": "13.347.016/0001-17",
-          "doc": "142677032",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": "Referente ao pagamento de impulsionamente de midias sociais.",
-          "valor": 3000.0
-        },
-        {
-          "data": "2026-08-03",
           "mes": 8,
           "categoria": "Divulgação da atividade parlamentar",
           "fornecedor": "GABRIEL SOARES DOS SANTOS",
@@ -390,6 +379,17 @@
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": "Referente ao pagamento de divulgação de atividade parlamentar.",
           "valor": 17000.0
+        },
+        {
+          "data": "2026-08-03",
+          "mes": 7,
+          "categoria": "Divulgação da atividade parlamentar",
+          "fornecedor": "FACEBOOK SER4VIÇOS ONLINE DO BRASIL LTDA",
+          "cnpjCpf": "13.347.016/0001-17",
+          "doc": "142677032",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": "Referente ao pagamento de impulsionamente de midias sociais.",
+          "valor": 3000.0
         },
         {
           "data": "2026-08-02",
@@ -1263,7 +1263,7 @@
       ],
       "totalNotasFiscais": 105,
       "escritorioApoio": "AV. AMÉRICA, 759 – VILA PLANALTO, CAMPO GRANDE/MS – CEP 79009-060",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-18T12:30:14",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-18T17:38:37",
       "nota": ""
     },
     {
@@ -2889,6 +2889,17 @@
         {
           "data": "2026-03-27",
           "mes": 3,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "PLAZA BRASILIA HOTEIS E TURISMO LTDA KUBITSCHEK PLAZA",
+          "cnpjCpf": "37.069.853/0003-51",
+          "doc": "79745",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": null,
+          "valor": 3069.0
+        },
+        {
+          "data": "2026-03-27",
+          "mes": 3,
           "categoria": "Aluguel de imóveis para escritório político",
           "fornecedor": "IMOBILIARIA CONTINENTAL LTDA",
           "cnpjCpf": "01.522.309/0001-04",
@@ -2907,28 +2918,6 @@
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 545.1
-        },
-        {
-          "data": "2026-03-27",
-          "mes": 3,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "PLAZA BRASILIA HOTEIS E TURISMO LTDA KUBITSCHEK PLAZA",
-          "cnpjCpf": "37.069.853/0003-51",
-          "doc": "79745",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": null,
-          "valor": 3069.0
-        },
-        {
-          "data": "2026-03-24",
-          "mes": 3,
-          "categoria": "Aquisição de material de consumo para uso no escritório político",
-          "fornecedor": "SDB COMERCIO DE ALIMENTOS LTDA",
-          "cnpjCpf": "09.477.652/0114-73",
-          "doc": "38837",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": null,
-          "valor": 321.86
         },
         {
           "data": "2026-03-24",
@@ -2953,15 +2942,15 @@
           "valor": 3678.05
         },
         {
-          "data": "2026-03-22",
+          "data": "2026-03-24",
           "mes": 3,
-          "categoria": "Aluguel de imóveis para escritório político",
-          "fornecedor": "CLARO NXT TELECOMUNICAÇÕES S.A",
-          "cnpjCpf": "66.970.229/0129-20",
-          "doc": "5181308",
-          "tipoDocumento": "Boleto",
+          "categoria": "Aquisição de material de consumo para uso no escritório político",
+          "fornecedor": "SDB COMERCIO DE ALIMENTOS LTDA",
+          "cnpjCpf": "09.477.652/0114-73",
+          "doc": "38837",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
-          "valor": 315.14
+          "valor": 321.86
         },
         {
           "data": "2026-03-22",
@@ -2984,6 +2973,17 @@
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 198.0
+        },
+        {
+          "data": "2026-03-22",
+          "mes": 3,
+          "categoria": "Aluguel de imóveis para escritório político",
+          "fornecedor": "CLARO NXT TELECOMUNICAÇÕES S.A",
+          "cnpjCpf": "66.970.229/0129-20",
+          "doc": "5181308",
+          "tipoDocumento": "Boleto",
+          "detalhamento": null,
+          "valor": 315.14
         },
         {
           "data": "2026-03-21",
@@ -3156,6 +3156,17 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HOTEL Bahamas Ltda-Epp",
           "cnpjCpf": "01.512.201/0001-30",
+          "doc": "1088281",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": null,
+          "valor": 3433.9
+        },
+        {
+          "data": "2026-03-08",
+          "mes": 3,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "HOTEL Bahamas Ltda-Epp",
+          "cnpjCpf": "01.512.201/0001-30",
           "doc": "1088283",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
@@ -3182,17 +3193,6 @@
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 2239.6
-        },
-        {
-          "data": "2026-03-08",
-          "mes": 3,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "HOTEL Bahamas Ltda-Epp",
-          "cnpjCpf": "01.512.201/0001-30",
-          "doc": "1088281",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": null,
-          "valor": 3433.9
         },
         {
           "data": "2026-03-06",
@@ -4000,7 +4000,7 @@
       ],
       "totalNotasFiscais": 238,
       "escritorioApoio": "AV. PROF. LUIZ ALEXANDRE DE OLIVEIRA, 879 – TÉRREO, ROYAL PARK, CAMPO GRANDE/MS – CEP 79021-430 | Tel: (67) 3222-8738",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-18T12:30:14",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-18T17:38:37",
       "nota": ""
     },
     {
@@ -5898,7 +5898,7 @@
       ],
       "totalNotasFiscais": 166,
       "escritorioApoio": "",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-18T12:30:14",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-18T17:38:37",
       "nota": ""
     }
   ]
