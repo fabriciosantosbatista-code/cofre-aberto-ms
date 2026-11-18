@@ -683,11 +683,6 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button style="--cor:#c98500" data-tab="votacoes"><span class="dot"></span> Votos e projetos</button>
       <button style="--cor:#c98500" data-tab="eleicoes"><span class="dot"></span> Eleições e patrimônio</button>
       <button style="--cor:#c98500" data-tab="evolucao"><span class="dot"></span> Evolução</button>
-      <div class="nav-group-label" style="--cor:#2bb3a3">Brasil</div>
-      <button style="--cor:#2bb3a3" data-tab="presidencia"><span class="dot"></span> Presidência</button>
-      <button style="--cor:#2bb3a3" data-tab="senado-brasil"><span class="dot"></span> Senado Brasil</button>
-      <button style="--cor:#2bb3a3" data-tab="deputados-brasil"><span class="dot"></span> Dep. Federais Brasil</button>
-      <button style="--cor:#2bb3a3" data-tab="stf"><span class="dot"></span> STF</button>
       <div class="nav-group-label" style="--cor:#e0679f">Publicações</div>
       <button style="--cor:#e0679f" data-tab="pg-boletim"><span class="dot"></span> Boletim semanal</button>
       <button style="--cor:#e0679f" data-tab="pg-empresas"><span class="dot"></span> Empresas</button>
@@ -1552,267 +1547,6 @@ Atenciosamente,</textarea>
     </div>
   </section>
 
-  <!-- ===================== DEPUTADOS FEDERAIS - BRASIL ===================== -->
-  <section class="tabpanel" id="tab-deputados-brasil">
-    <div class="hero">
-      <div class="hero-label">Auditoria nacional · Exercício <span class="ano-ref">2026</span> · Todos os Deputados Federais do Brasil</div>
-      <div class="hero-number" id="depbr-total">R$ —</div>
-      <div class="hero-desc">
-        reembolsados a <b id="depbr-qtd">—</b> deputados federais de todo o país, em
-        <b id="depbr-notas">—</b> notas fiscais.
-      </div>
-      <div class="mini-stats">
-        <div>
-          <div class="mini-stat-value" id="depbr-media">—</div>
-          <div class="mini-stat-label">média nacional/gabinete</div>
-        </div>
-        <div>
-          <div class="mini-stat-value" id="depbr-gabinete">—</div>
-          <div class="mini-stat-label">verba gabinete/mês</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="notice">
-        O ranking com o gasto total de cada deputado é pré-calculado diariamente. Ao clicar em um
-        nome, as notas fiscais individuais são buscadas na hora, direto da API da Câmara.
-      </div>
-      <div class="section-head">
-        <h2 class="section-title">Ranking nacional — gasto da cota CEAP <span class="ano-ref">2026</span></h2>
-      </div>
-      <div class="section-note">Todos os deputados federais do Brasil, ordenados pelo gasto líquido da cota parlamentar no ano. Clique em um nome para ver detalhamento completo.</div>
-      <input class="search-box" id="busca-depbr" type="text" placeholder="buscar por nome, partido ou UF…" />
-      <div class="card">
-        <table class="ranking" id="ranking-depbr">
-          <thead>
-            <tr><th class="num">#</th><th>Parlamentar</th><th>UF</th><th class="num">Líquido</th><th class="num">Notas</th><th class="progress-cell">Em relação ao maior</th></tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <div class="detail-panel" id="detail-depbr"></div>
-    </div>
-
-    <div class="section">
-      <div class="section-head">
-        <h2 class="section-title">Fluxo por categoria — todos os deputados do Brasil</h2>
-      </div>
-      <div class="card card-pad">
-        <div class="bar-list" id="categorias-depbr"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== SENADO - BRASIL ===================== -->
-  <section class="tabpanel" id="tab-senado-brasil">
-    <div class="hero">
-      <div class="hero-label">Senado Federal · Todos os 81 senadores do Brasil</div>
-      <div class="hero-number" id="senbr-qtd">—</div>
-      <div class="hero-desc">senadores em exercício, de todos os estados. Lista obtida via API pública do Senado Federal.</div>
-    </div>
-    <div class="section">
-      <div class="section-head">
-        <h2 class="section-title">Senadores do Brasil</h2>
-      </div>
-      <input class="search-box" id="busca-senbr" type="text" placeholder="buscar por nome, partido ou UF…" />
-      <div class="card">
-        <table class="ranking" id="ranking-senbr">
-          <thead><tr><th class="num">#</th><th>Parlamentar</th><th>UF</th><th>Partido</th><th class="num">Cota CEAPS</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <div class="detail-panel" id="detail-senbr"></div>
-    </div>
-  </section>
-
-  <section class="tabpanel" id="tab-presidencia">
-    <div class="hero">
-      <div class="hero-label">Presidência da República · Gastos e Governo Federal em MS</div>
-      <div class="hero-number" id="pr-cartao-atual">—</div>
-      <div class="hero-desc">no <b>cartão corporativo da Presidência</b> no mandato atual (<span id="pr-periodo">—</span>, último mês publicado pela CGU) — somando a
-        Secretaria de Administração, que paga as despesas do presidente, a ABIN e o GSI —, dos quais
-        <b id="pr-sig-pct">—</b> são gastos classificados como sigilosos. Abaixo, a mesma conta para os presidentes anteriores, desde 2013.</div>
-      <div class="mini-stats">
-        <div><div class="mini-stat-value" id="pr-media">—</div><div class="mini-stat-label">média mensal no cartão (mandato atual)</div></div>
-        <div><div class="mini-stat-value" id="pr-orc">—</div><div class="mini-stat-label" id="pr-orc-label">despesa da Presidência no ano</div></div>
-        <div><div class="mini-stat-value" id="pr-ms">—</div><div class="mini-stat-label" id="pr-ms-label">transferidos pela União a MS no ano</div></div>
-        <div><div class="mini-stat-value" id="pr-data">—</div><div class="mini-stat-label">atualizado em</div></div>
-      </div>
-    </div>
-
-    <div class="section">
-      <p class="section-note cx-aviso">ℹ️ <b>Mesma régua para todos os governos.</b> Os números vêm dos arquivos de dados abertos do Portal da Transparência (CGU),
-        com os mesmos critérios para cada presidente. Os valores são nominais (sem correção pela inflação). Gasto sigiloso é o que a Presidência
-        classifica por segurança do presidente e da família (Lei 12.527/2011, art. 24): o site mostra quanto é, sem supor nada sobre o conteúdo.
-        As viagens do próprio presidente são feitas pela FAB e não aparecem nos arquivos de viagens a serviço.</p>
-      <div class="section-head"><h2 class="section-title">Cartão corporativo por presidente</h2></div>
-      <div class="card card-x-scroll">
-        <table class="notes-table" id="tabela-pr-cartao" data-cartoes>
-          <thead><tr><th>Presidente</th><th>Período</th><th class="num">Total no cartão</th><th class="num">Média mensal</th><th class="num">Sigiloso</th><th class="num">Vice-Presidência</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <p class="section-note" style="margin-top:8px">Período pelo mês do extrato do cartão. Dilma Rousseff foi afastada em 12/05/2016: de maio em diante, os gastos contam para Michel Temer. O CPGF só está nos dados abertos a partir de 2013.</p>
-      <div class="subhead">Por unidade da Presidência</div>
-      <div class="section-note">O cartão "da Presidência" não é só do presidente: inclui a ABIN (operações de inteligência) e o GSI (segurança). A Secretaria de Administração é
-        a que paga as despesas do presidente, das residências oficiais e das viagens.</div>
-      <div class="card card-x-scroll">
-        <table class="notes-table" id="tabela-pr-unidades" data-cartoes>
-          <thead><tr><th>Presidente</th><th class="num">Secretaria de Administração</th><th class="num">ABIN</th><th class="num">GSI</th><th class="num">Total</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <div class="subhead">Ano a ano (Presidência)</div>
-      <div class="bar-list largo" id="pr-cartao-anos"></div>
-      <div class="subhead">Para onde foi a parte não sigilosa</div>
-      <select class="search-box" id="pr-fav-pres" aria-label="Presidente" style="max-width:320px"></select>
-      <div class="card card-x-scroll" style="margin-top:8px">
-        <table class="notes-table" id="tabela-pr-fav" data-cartoes>
-          <thead><tr><th>Favorecido</th><th class="num">Transações</th><th class="num">Valor</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-head"><h2 class="section-title">Viagens a serviço — mandato atual</h2></div>
-      <div class="section-note" id="pr-viag-nota"></div>
-      <select class="search-box" id="pr-viag-ano" aria-label="Ano" style="max-width:160px"></select>
-      <div class="subhead">Ministros (cargos de natureza especial) que mais gastaram com viagens</div>
-      <div class="card card-x-scroll">
-        <table class="notes-table" id="tabela-pr-ministros-viag" data-cartoes>
-          <thead><tr><th>Ministro(a)</th><th class="num">Viagens</th><th class="num">Diárias</th><th class="num">Passagens</th><th class="num">Total</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <button class="pager-btn" id="pr-ministros-viag-mais" style="margin-top:10px;display:none"></button>
-      <div class="subhead">Comitiva e servidores da Presidência e da Vice que mais gastaram</div>
-      <div class="card card-x-scroll">
-        <table class="notes-table" id="tabela-pr-viag" data-cartoes>
-          <thead><tr><th>Nome</th><th>Cargo</th><th class="num">Viagens</th><th class="num">Total</th><th>Destinos mais frequentes</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <button class="pager-btn" id="pr-viag-mais" style="margin-top:10px;display:none"></button>
-    </div>
-
-    <div class="section">
-      <div class="section-head"><h2 class="section-title">Despesas da Presidência — mandato atual</h2></div>
-      <div class="section-note">Orçamento da Presidência da República (inclui Vice-Presidência, EBC e Imprensa Nacional). Realizado = pago no ano.
-        Não entram os empréstimos (inversões financeiras) de fundos que passaram a ser geridos pela Presidência em 2025 — eles aparecem à parte, na última coluna.</div>
-      <div class="card card-x-scroll">
-        <table class="notes-table" id="tabela-pr-orc" data-cartoes>
-          <thead><tr><th>Ano</th><th class="num">Orçamento atualizado</th><th class="num">Empenhado</th><th class="num">Realizado</th><th class="num">Empréstimos (à parte)</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <select class="search-box" id="pr-orc-ano" aria-label="Ano" style="max-width:160px;margin-top:12px"></select>
-      <div class="subhead">Por órgão</div>
-      <div class="bar-list largo" id="pr-orc-orgaos"></div>
-      <div class="subhead">Principais ações</div>
-      <div class="bar-list largo" id="pr-orc-acoes"></div>
-      <div class="subhead">Por tipo de despesa</div>
-      <div class="bar-list largo" id="pr-orc-elem"></div>
-    </div>
-
-    <div class="section">
-      <div class="section-head"><h2 class="section-title">Quanto ganham o presidente, o vice e os ministros</h2></div>
-      <div class="section-note" id="pr-rem-nota"></div>
-      <div class="card card-x-scroll">
-        <table class="notes-table" id="tabela-pr-rem" data-cartoes>
-          <thead><tr><th>Ministro(a)</th><th class="num">Remuneração bruta</th><th class="num">Abate-teto</th><th class="num">Jetons e eventuais¹</th><th class="num">Líquido</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <p class="section-note" style="margin-top:8px">¹ "Outras remunerações eventuais" da folha — sobretudo jetons por participação em conselhos de estatais, que ficam fora do teto.
-        Ministros que são servidores de carreira podem ter bruto acima do subsídio; o abate-teto corta o que passa do teto.</p>
-    </div>
-
-    <div class="section">
-      <div class="section-head"><h2 class="section-title">O Governo Federal em Mato Grosso do Sul</h2></div>
-      <div class="section-note" id="pr-ms-nota"></div>
-      <div class="subhead">Por tipo de transferência</div>
-      <div class="bar-list largo" id="pr-ms-tipos"></div>
-      <div class="subhead">Por ministério</div>
-      <div class="bar-list largo" id="pr-ms-orgaos"></div>
-      <div class="subhead">Por município</div>
-      <input class="search-box" id="busca-pr-mun" type="text" placeholder="buscar município…" />
-      <div class="card card-x-scroll">
-        <table class="notes-table" id="tabela-pr-mun" data-cartoes>
-          <thead><tr><th>Município</th><th class="num">Recebido da União no ano</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <button class="pager-btn" id="pr-mun-mais" style="margin-top:10px;display:none"></button>
-      <p class="section-note" style="margin-top:16px">Fonte: <a href="https://portaldatransparencia.gov.br/download-de-dados" target="_blank" rel="noopener">Portal da Transparência do Governo Federal (CGU)</a>
-        — cartão de pagamento (CPGF), viagens a serviço, orçamento da despesa, servidores (SIAPE) e transferências. Atualização automática.</p>
-    </div>
-  </section>
-
-  <section class="tabpanel" id="tab-stf">
-    <div class="hero">
-      <div class="hero-label">Supremo Tribunal Federal · Remuneração dos ministros e despesa com pessoal</div>
-      <div class="hero-number" id="stf-pessoal">—</div>
-      <div class="hero-desc">de <b>despesa com pessoal</b> do STF nos 12 meses até <span id="stf-periodo">—</span> (ativos, aposentados e pensionistas),
-        segundo o Relatório de Gestão Fiscal. Abaixo, o contracheque de cada ministro mês a mês.</div>
-      <div class="mini-stats">
-        <div><div class="mini-stat-value" id="stf-n">—</div><div class="mini-stat-label">ministros com contracheque no período</div></div>
-        <div><div class="mini-stat-value" id="stf-media">—</div><div class="mini-stat-label">média bruta mensal por ministro</div></div>
-        <div><div class="mini-stat-value" id="stf-maior">—</div><div class="mini-stat-label" id="stf-maior-label">maior bruto num mês</div></div>
-        <div><div class="mini-stat-value" id="stf-data">—</div><div class="mini-stat-label">atualizado em</div></div>
-      </div>
-    </div>
-
-    <div class="section">
-      <p class="section-note cx-aviso">ℹ️ <b>Como ler.</b> O subsídio do ministro do STF (<span id="stf-sub">R$ 46.366,19</span>) é o teto do funcionalismo.
-        O bruto pode passar dele por verbas que a Constituição deixa fora do teto — férias com o terço constitucional, 13º, abono de permanência
-        (de quem já poderia se aposentar), indenizações e pagamentos de exercícios anteriores —, e o "abate-teto" corta o que excede nas demais.
-        Meses de férias e dezembro (13º) ficam naturalmente mais altos. <b>Diárias, passagens e contratos não entram:</b> o portal de transparência
-        do STF recusa acessos de fora do Brasil, e o DadosJusBr não recebe esses dados do tribunal.</p>
-      <div class="section-head"><h2 class="section-title">Quanto cada ministro recebeu</h2></div>
-      <div class="section-note" id="stf-rem-nota"></div>
-      <div class="card card-x-scroll">
-        <table class="notes-table" id="tabela-stf-min" data-cartoes>
-          <thead><tr><th>Ministro(a)</th><th class="num">Meses</th><th class="num">Média bruta/mês</th><th class="num">Bruto no período</th><th class="num">Líquido no período</th><th class="num">Maior mês</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <div class="subhead">O que compõe o contracheque</div>
-      <select class="search-box" id="stf-sel" aria-label="Ministro" style="max-width:360px"></select>
-      <div class="bar-list largo" id="stf-itens" style="margin-top:10px"></div>
-      <div class="subhead">Mês a mês (bruto)</div>
-      <div class="bar-list largo" id="stf-serie"></div>
-    </div>
-
-    <div class="section">
-      <div class="section-head"><h2 class="section-title">Último contracheque publicado</h2></div>
-      <div class="card card-x-scroll">
-        <table class="notes-table" id="tabela-stf-ult" data-cartoes>
-          <thead><tr><th>Ministro(a)</th><th class="num">Subsídio e vantagens</th><th class="num">Outras verbas¹</th><th class="num">Descontos²</th><th class="num">Líquido</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <p class="section-note" style="margin-top:8px">¹ Férias, 13º, auxílios, indenizações, exercícios anteriores. ² Imposto de renda, previdência, abate-teto e outros.</p>
-    </div>
-
-    <div class="section">
-      <div class="section-head"><h2 class="section-title">Despesa com pessoal do STF</h2></div>
-      <div class="section-note">Soma dos 12 meses anteriores ao fim de cada quadrimestre, como manda a Lei de Responsabilidade Fiscal. Inclui servidores,
-        ministros, aposentados e pensionistas. Despesa total com pessoal (DTP) é a que conta para o limite da LRF.</div>
-      <div class="bar-list largo" id="stf-pes-serie"></div>
-      <div class="subhead">Comparação com os outros tribunais superiores (último quadrimestre)</div>
-      <div class="card card-x-scroll">
-        <table class="notes-table" id="tabela-stf-comp" data-cartoes>
-          <thead><tr><th>Tribunal</th><th class="num">Ativos</th><th class="num">Aposentados e pensionistas</th><th class="num">Despesa bruta</th><th class="num">% da receita da União³</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <p class="section-note" style="margin-top:8px">³ Despesa total com pessoal sobre a receita corrente líquida da União.
-        Fontes: <a href="https://dadosjusbr.org/" target="_blank" rel="noopener">DadosJusBr</a> (contracheques publicados pelo STF) e
-        <a href="https://siconfi.tesouro.gov.br/" target="_blank" rel="noopener">Tesouro Nacional — SICONFI</a> (Relatório de Gestão Fiscal). Atualização automática.</p>
-    </div>
-  </section>
 
   <section class="tabpanel" id="tab-conexoes">
     <div class="hero">
@@ -2442,7 +2176,6 @@ Atenciosamente,</textarea>
         <button class="capa-tema" data-ir="emendas"><b>💸 Emendas e Emendas Pix</b><span>Quanto cada município recebeu, de quem, e as transferências especiais (Emendas Pix) do ano.</span></button>
         <button class="capa-tema" data-ir="supersalarios"><b>💰 Supersalários</b><span>Quem recebe acima do teto em MS, com nome e cada penduricalho do contracheque.</span></button>
         <button class="capa-tema" data-ir="auditoria"><b>🔎 Auditoria automática</b><span>Sinais de atenção cruzando notas e contratos com a Receita, o TSE, a folha e as sanções da CGU.</span></button>
-        <button class="capa-tema" data-ir="presidencia"><b>🇧🇷 Brasil</b><span>Presidência (cartão corporativo desde 2013), STF, Senado e Câmara dos Deputados.</span></button>
         <a class="capa-tema" href="/presenca-votacoes-parlamentares-ms/"><b>🗳️ Presença nas votações</b><span>Quantas votações nominais cada deputado federal e senador de MS votou, e como votou.</span></a>
         <a class="capa-tema" href="/termometro-da-transparencia/"><b>🌡️ Termômetro da transparência</b><span>Quem publica os gastos em dia e quem atrasa: Prefeitura, Governo, câmaras, tribunais.</span></a>
         <a class="capa-tema" href="boletim/"><b>📰 Boletim semanal</b><span>O que mudou na semana, com texto pronto para compartilhar.</span></a>
@@ -2513,7 +2246,7 @@ Atenciosamente,</textarea>
   </section>
   </section>
 
-  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li><li><a href="/cofre-aberto-ms.html#aba=beneficios">Benefícios fiscais</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=alugueis">Aluguéis</a></li><li><a href="/cofre-aberto-ms.html#aba=publicidade">Publicidade</a></li><li><a href="/cofre-aberto-ms.html#aba=entidades">ONGs e entidades</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Votos e projetos</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#2bb3a3"><h4>Brasil</h4><ul><li><a href="/cofre-aberto-ms.html#aba=presidencia">Presidência</a></li><li><a href="/cofre-aberto-ms.html#aba=senado-brasil">Senado Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-brasil">Dep. Federais Brasil</a></li><li><a href="/cofre-aberto-ms.html#aba=stf">STF</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/cofre-aberto-ms.html#aba=confiabilidade">Confiabilidade dos Dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/termos/">Termos de uso</a></li><li><a href="/privacidade/">Privacidade e LGPD</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
+  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li><li><a href="/cofre-aberto-ms.html#aba=beneficios">Benefícios fiscais</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=alugueis">Aluguéis</a></li><li><a href="/cofre-aberto-ms.html#aba=publicidade">Publicidade</a></li><li><a href="/cofre-aberto-ms.html#aba=entidades">ONGs e entidades</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Votos e projetos</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/cofre-aberto-ms.html#aba=confiabilidade">Confiabilidade dos Dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/termos/">Termos de uso</a></li><li><a href="/privacidade/">Privacidade e LGPD</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
   <footer class="site-footer">
     <span>Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público. © 2026 Cofre Aberto MS · <a href="metodologia.html#licenca">dados sob CC BY 4.0, código e layout: todos os direitos reservados</a></span>
     <span>
@@ -5172,11 +4905,9 @@ function montarIndiceBusca() {
   for (const d of DADOS_DEPUTADOS_ESTADUAIS.vereadores || [])
     todos.push({ nome: d.nome, partido: d.partido, tab: "deputados-estaduais", label: "Dep. Estadual" });
   for (const s of DADOS_SENADORES_BRASIL.senadores || [])
-    todos.push({ nome: s.nome, partido: s.partido, uf: s.uf, tab: s.uf === "MS" ? "senadores" : "senado-brasil", label: `Senador(a) ${s.uf}` });
+    if (s.uf === "MS") todos.push({ nome: s.nome, partido: s.partido, uf: s.uf, tab: "senadores", label: "Senador(a) MS" });
   for (const d of DADOS_DEPUTADOS_FEDERAIS_MS || [])
     todos.push({ nome: d.nome, partido: d.partido, tab: "deputados", label: "Dep. Federal MS" });
-  for (const d of DADOS_DEPUTADOS_FEDERAIS_BRASIL || [])
-    todos.push({ nome: d.nome, partido: d.partido, uf: d.uf, tab: "deputados-brasil", label: `Dep. Federal ${d.uf || ""}`.trim() });
   for (const m of DADOS_TRT24.magistrados || [])
     if (m.situacao === "ATIVO") todos.push({ nome: m.nome, partido: m.cargo, tab: "judiciario", label: "Magistrado(a) TRT24" });
   for (const m of DADOS_TRE_MS.magistrados || [])

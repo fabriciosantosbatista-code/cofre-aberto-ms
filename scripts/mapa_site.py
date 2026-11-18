@@ -17,8 +17,6 @@ GRUPOS = [
     ("Justiça e salários", "#9085e9", [("Judiciário MS", P + "judiciario"), ("Supersalários", P + "supersalarios")]),
     ("Fiscalização", "#c98500", [("Auditoria", P + "auditoria"), ("Conexões", P + "conexoes"), ("Obras atrasadas", P + "obras"), ("Shows", P + "shows"), ("Aluguéis", P + "alugueis"), ("Publicidade", P + "publicidade"), ("ONGs e entidades", P + "entidades"), ("Votos e projetos", P + "votacoes"),
                                  ("Eleições e patrimônio", P + "eleicoes"), ("Evolução", P + "evolucao"), ("Termômetro", "/termometro-da-transparencia/")]),
-    ("Brasil", "#2bb3a3", [("Presidência", P + "presidencia"), ("Senado Brasil", P + "senado-brasil"), ("Dep. Federais Brasil", P + "deputados-brasil"),
-                           ("STF", P + "stf")]),
     ("Publicações", "#e0679f", [("Boletim semanal", P + "pg-boletim"), ("Empresas", P + "pg-empresas"), ("Órgãos", P + "pg-orgaos"), ("Perguntas frequentes", "/perguntas/")]),
     ("Sobre o projeto", "#7aa2c8", [("Início", "/"), ("Painel", "/cofre-aberto-ms.html"), ("Sobre", P + "sobre"), ("Metodologia e dados", P + "pg-metodologia"), ("Confiabilidade dos Dados", P + "confiabilidade"),
                                     ("Imprensa", "/press.html"), ("Termos de uso", "/termos/"), ("Privacidade e LGPD", "/privacidade/"),

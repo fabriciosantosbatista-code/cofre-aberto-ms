@@ -18,7 +18,7 @@ const { chromium } = require("playwright");
 const BASE = (process.argv[2] || "http://localhost:8000/").replace(/\/?$/, "/");
 const BAD = /\bNaN\b|\bundefined\b|\[object Object\]|\bInfinity\b/g;
 const TODOS = ["deputados", "senadores", "camara", "deputados-estaduais"];      // clica em todos os itens
-const AMOSTRA = ["prefeitura", "judiciario", "deputados-brasil", "senado-brasil", "conexoes", "emendas", "supersalarios"]; // clica em alguns
+const AMOSTRA = ["prefeitura", "judiciario", "conexoes", "emendas", "supersalarios"]; // clica em alguns
 const PAGINAS = ["", "press.html", "metodologia.html", "vereadores-campo-grande.html", "deputados-estaduais-ms.html", "senadores-ms.html",
   "vereador/", "deputado-estadual/", "deputado-federal/", "senador/",
   "vereador/papy/", "deputado-estadual/zeca-do-pt/", "deputado-federal/geraldo-resende/", "senador/tereza-cristina/",
@@ -157,8 +157,7 @@ const falha = (msg) => { problemas.push(msg); console.log("  ❌ " + msg); };
     if (au.ovX > 1) falha(`[${nome}] Auditoria: rolagem horizontal (${au.ovX}px)`);
     console.log(`  ✅ auditoria: ${au.n} sinais na tela · placar com ${au.p} linhas`);
     // abas sem lista clicável: conferem se as tabelas principais têm linhas e se não há NaN/undefined
-    const tabelasPorAba = { presidencia: ["tabela-pr-cartao", "tabela-pr-unidades", "tabela-pr-orc", "tabela-pr-rem", "tabela-pr-mun"],
-      stf: ["tabela-stf-min", "tabela-stf-ult", "tabela-stf-comp"], "governo-ms": ["tabela-gov-contratos", "tabela-gov-lic"] };
+    const tabelasPorAba = { "governo-ms": ["tabela-gov-contratos", "tabela-gov-lic"] };
     for (const [aba, ids] of Object.entries(tabelasPorAba)) {
       onde = aba;
       await page.locator(`button[data-tab="${aba}"]`).evaluate((e) => e.click());

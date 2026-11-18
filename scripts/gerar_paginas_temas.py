@@ -8,8 +8,7 @@ no formato em que as pessoas pesquisam e números atualizados a cada coleta:
 
   temas      /governo-ms/, /prefeitura-campo-grande/, /supersalarios-ms/, /shows-pagos-com-dinheiro-publico-ms/,
              /obras-atrasadas-ms/, /publicidade-governo-ms-prefeitura-campo-grande/, /ongs-entidades-dinheiro-publico-ms/, /impostometro-ms/,
-             /auditoria/, /emendas-parlamentares-ms/, /cartao-corporativo-presidente/,
-             /salario-ministros-stf/
+             /auditoria/, /emendas-parlamentares-ms/
   perguntas  /perguntas/<pergunta>/ (quanto ganha o governador, um vereador de CG,
              um deputado..., o que é a cota parlamentar, Emendas Pix, teto) com
              marcação FAQPage, e o índice /perguntas/
@@ -226,42 +225,6 @@ def tema_emendas():
             f"Emendas parlamentares em MS em {ano}", corpo)
 
 
-def tema_presidencia():
-    pr = carregar("presidencia.json")
-    pp = (pr.get("cartao") or {}).get("porPresidente") or []
-    if not pp:
-        return None
-    at = pp[-1]
-    corpo = kpis([(compacto(at["total"]), f"no cartão corporativo de {at['presidente'].split()[0]} ({at['meses']} meses)"),
-                  (compacto(at["mediaMensal"]), "média por mês"), (f"{at['sigiloso'] / at['total'] * 100:.0f}%".replace(".", ","), "dos gastos são sigilosos")])
-    corpo += "<h2>Cartão corporativo da Presidência por presidente</h2>" + tabela(["Presidente", "Período", "#Total", "#Média mensal", "#Sigiloso"], [
-        f"<tr><td>{e(p['presidente'])}</td><td>{p['de'][5:]}/{p['de'][:4]} a {p['ate'][5:]}/{p['ate'][:4]}</td><td class='num'>{brl(p['total'])}</td>"
-        f"<td class='num'>{brl(p['mediaMensal'])}</td><td class='num'>{brl(p['sigiloso'])}</td></tr>" for p in pp])
-    corpo += "<p>Os valores incluem as despesas da Secretaria de Administração (residências e viagens do presidente), da ABIN e do GSI pagas com o cartão de pagamento do governo federal.</p>"
-    corpo += "<p>" + painel("presidencia", "Cartão, viagens, ministros e orçamento no painel") + "</p>"
-    return ("/cartao-corporativo-presidente/", "Cartão corporativo do presidente: quanto cada um gastou desde 2013 | Cofre Aberto MS",
-            f"Quanto a Presidência gastou no cartão corporativo com cada presidente desde 2013. {at['presidente']}: {compacto(at['total'])} em {at['meses']} meses.",
-            "Cartão corporativo do presidente: quanto cada um gastou", corpo)
-
-
-def tema_stf():
-    st = carregar("stf.json")
-    u = ((st.get("remuneracao") or {}).get("ultimoMes")) or {}
-    if not u.get("ministros"):
-        return None
-    mes = f"{u['mes'][5:]}/{u['mes'][:4]}"
-    corpo = kpis([(brl(st.get("subsidio")), "subsídio de ministro do STF (teto)"), (milhar(len(u["ministros"])), f"ministros no contracheque de {mes}"),
-                  (brl(max(m['base'] + m['outras'] for m in u['ministros'])), f"maior bruto em {mes}")])
-    corpo += f"<h2>Contracheque de cada ministro em {mes}</h2>" + tabela(["Ministro(a)", "#Subsídio e vantagens", "#Outras verbas", "#Líquido"], [
-        f"<tr><td>{e(m['nome'])}</td><td class='num'>{brl(m['base'])}</td><td class='num'>{brl(m['outras'])}</td><td class='num'>{brl(m['liquido'])}</td></tr>"
-        for m in u["ministros"]])
-    corpo += "<p>" + painel("stf", "Série mês a mês e despesa com pessoal no painel") + "</p>"
-    return ("/salario-ministros-stf/", f"Quanto ganham os ministros do STF: contracheque de {mes} | Cofre Aberto MS",
-            f"Salário dos ministros do Supremo: subsídio de {brl(st.get('subsidio'))} e o contracheque de cada um em {mes}, com outras verbas e líquido.",
-            "Quanto ganham os ministros do STF", corpo)
-
-
-# ---------------------------------------------------------------- termômetro da transparência
 def _fim_mes(mm_aaaa):
     """'09/2026' ou '2026-09' → último dia do mês (date)"""
     import calendar
@@ -318,11 +281,6 @@ def termometro():
             continue
         via = "lida via DadosJusBr, que pode ter atraso próprio" if "DadosJusBr" in (o.get("fonte") or "") else ""
         add(o["orgao"].replace(" (60 maiores)", ""), "folha de pagamento", _fim_mes(o.get("mes")), 45, mensal, via)
-    pr = carregar("presidencia.json")
-    ser = (pr.get("cartao") or {}).get("serie") or []
-    if ser:
-        add("Presidência da República (CGU)", "cartão corporativo", _fim_mes(ser[-1]["mes"]), 45, mensal,
-            "a CGU publica o cartão com cerca de um mês de atraso")
     import glob
     for f in sorted(glob.glob(str(DADOS / "camaras" / "*.json"))):
         c = json.load(open(f, encoding="utf-8"))
@@ -754,11 +712,6 @@ def perguntas():
         out.append(("quanto-ganha-um-deputado-federal", "Quanto ganha um deputado federal?", r, corpo, "deputados",
                     f"Salário de deputado federal: {brl(sal)} por mês, mais a cota parlamentar. Quanto os deputados de MS gastaram em {ANO}."))
     if st.get("subsidio"):
-        r = (f"Um ministro do Supremo Tribunal Federal recebe subsídio de {brl(st['subsidio'])} por mês, valor que também é o teto do funcionalismo público. "
-             f"Com outras verbas (férias, abono, atrasados), o contracheque bruto pode passar disso.")
-        corpo = f"<div class='resposta'>{e(r)}</div><p><a href='/salario-ministros-stf/'>Veja o contracheque de cada ministro →</a></p>"
-        out.append(("quanto-ganha-um-ministro-do-stf", "Quanto ganha um ministro do STF?", r, corpo, "stf",
-                    f"Salário de ministro do STF: {brl(st['subsidio'])} por mês (o teto constitucional). Veja o contracheque de cada um."))
         sens = sen.get("senadores") or []
         r = (f"Um senador recebe salário de {brl(st['subsidio'])} por mês, o mesmo valor do teto do funcionalismo. "
              f"Também tem a cota para despesas do mandato (CEAPS): os {len(sens)} senadores de MS já usaram "
@@ -791,7 +744,7 @@ def perguntas():
 
 
 def main():
-    temas = [t for t in (tema_apoie(), tema_termometro(), tema_votacoes(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_presidencia(), tema_stf(), tema_shows(), tema_obras(), tema_publicidade(), tema_entidades(), tema_impostometro()) if t]
+    temas = [t for t in (tema_apoie(), tema_termometro(), tema_votacoes(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_shows(), tema_obras(), tema_publicidade(), tema_entidades(), tema_impostometro()) if t]
     pergs = perguntas()
     # Apoie desligado (chave Pix vazia em apoie-config.js): a página continua existindo, mas sai dos "Veja também"
     apoie_on = bool(re.search(r'chave:\s*"[^"]+"', (ROOT / "apoie-config.js").read_text(encoding="utf-8"))) if (ROOT / "apoie-config.js").exists() else False
@@ -811,7 +764,7 @@ def main():
     idx_corpo = "<p>Respostas curtas, com números atualizados todo dia a partir de fontes oficiais.</p>" + "".join(
         f"<div class='dest'><b><a href='/perguntas/{s}/'>{e(p)}</a></b><small>{e(r[:200])}</small></div>" for s, p, r, *_ in pergs)
     paginas.append(("/perguntas/", pagina("/perguntas/", "Perguntas sobre salários e gastos públicos em MS | Cofre Aberto MS",
-                                          "Quanto ganha o governador de MS, um vereador de Campo Grande, um deputado, um senador, um ministro do STF; o que é a cota parlamentar e as Emendas Pix.",
+                                          "Quanto ganha o governador de MS, um vereador de Campo Grande, um deputado, um senador; o que é a cota parlamentar e as Emendas Pix.",
                                           "Perguntas frequentes sobre o dinheiro público em MS", idx_corpo,
                                           faq_ld("/perguntas/", [(p, r) for _, p, r, *_ in pergs]))))
     mudou = 0
