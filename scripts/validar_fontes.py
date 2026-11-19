@@ -329,6 +329,30 @@ def _amostra_governo(folha, n=100):
     return itens, hashes
 
 
+def _contracheques_conferidos(hoje):
+    """Contracheques conferidos um a um que ainda valem: os de hoje mais os das amostras dos últimos 30 dias cujo hash é
+    igual ao do contracheque na folha atual (folha completa do artefato privado). Sem a folha, só os de hoje."""
+    import gzip
+    validos = set(hoje)
+    arq = Path(__file__).parent.parent / "folha_completa" / "folha_supersalarios.jsonl.gz"
+    if not arq.exists():
+        return validos
+    atual = {}
+    for l in gzip.open(arq, "rt", encoding="utf-8"):
+        p = json.loads(l)
+        if p.get("orgaoId") == "governo" and p.get("matricula"):
+            atual[f"{p['orgaoSigla']}:{p['matricula']}"] = hash_registro({"m": p["matricula"], "b": p["bruto"], "l": p["liquido"]})
+    limite = (datetime.fromisoformat(AGORA) - __import__("datetime").timedelta(days=30)).isoformat()
+    try:
+        for l in open(HISTORICO, encoding="utf-8"):
+            h = json.loads(l)
+            if h.get("base") == "supersalarios" and h.get("em", "") >= limite and h.get("resultado") in ("confere", "mudou_na_fonte"):
+                validos |= {k for k, x in ((h.get("amostraContracheques") or {}).get("hashes") or {}).items() if atual.get(k) == x}
+    except FileNotFoundError:
+        pass
+    return {k for k in validos if k in atual}
+
+
 def v_tjms():
     """Supersalários na fonte, órgão por órgão, no mês publicado:
       TJMS e TRT24  DadosJusBr (contracheques enviados ao CNJ): nº de magistrados e soma do salário-base
@@ -410,12 +434,18 @@ def v_tjms():
         res["nota"] = ((res.get("nota") or "") + f" Não conferidos: {', '.join(sem_filtro)} — a API do Estado não aceita esses órgãos como "
                        "filtro da folha (resposta 404), e somar a folha inteira seria repetir o caminho da coleta.").strip()
         res["semFiltro"] = sem_filtro
-    if res["resultado"] in ("confere", "diverge", "mudou_na_fonte"):  # unidade = órgão com os números obtidos
+    if res["resultado"] in ("confere", "diverge", "mudou_na_fonte"):
+        # unidades = órgãos cujo total foi conferido; registros = SÓ os contracheques comparados um a um (amostras diárias
+        # dos últimos 30 dias cujo contracheque não mudou desde então — mesmo hash). Total que bate não conta registro.
         ok = [k for k, (_, obtido) in por.items() if obtido]
-        res.update({"unidadesConferidas": len(ok), "idsConferidos": ok, "registrosAbrangidos": sum(por[k][0] for k in ok)})
-        if hashes:
-            res["amostraContracheques"] = {"sorteados": sum(1 for i in itens if str(i[0]).startswith("contracheque") and i[0].endswith("bruto")),
-                                           "conferidos": len(hashes), "hashes": hashes}
+        um_a_um = _contracheques_conferidos(hashes)
+        res.update({"unidadesConferidas": len(ok), "idsConferidos": ok, "registrosAbrangidos": len(um_a_um),
+                    "totaisDeOrgaoConferidos": {"orgaos": len(ok), "contrachequesNessesOrgaos": sum(por[k][0] for k in ok)},
+                    "registrosConferidosUmAUm": len(um_a_um)})
+        res["amostraContracheques"] = {"sorteados": sum(1 for i in itens if str(i[0]).startswith("contracheque") and i[0].endswith("bruto")),
+                                       "conferidos": len(hashes), "hashes": hashes}
+    res["independencia"] = ("mesma fonte da coleta (folha do Estado, portal do TCE-MS e DadosJusBr), por outra consulta: confirma a leitura, "
+                            "não é fonte independente")
     return res
 
 
@@ -594,7 +624,9 @@ def registrar(fonte, r, out):
                                                          "registrosAbrangidos", "selecao", "responsavel", "metodologia")},
                                 "nota": r.get("nota", ""), **({"hashes": r["hashes"]} if r.get("hashes") else {}),
                                 **({"lacunas": r["lacunas"]} if r.get("lacunas") else {}),
-                                **({"amostraContracheques": r["amostraContracheques"]} if r.get("amostraContracheques") else {})}, ensure_ascii=False) + "\n")
+                                **({"amostraContracheques": r["amostraContracheques"]} if r.get("amostraContracheques") else {}),
+                                **{k: r[k] for k in ("independencia", "totaisDeOrgaoConferidos", "registrosConferidosUmAUm", "semFiltro") if r.get(k)}},
+                               ensure_ascii=False) + "\n")
     out[fonte] = r
     return r
 

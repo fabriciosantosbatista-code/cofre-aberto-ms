@@ -582,6 +582,13 @@ jobs:
       - name: Gerar planilhas CSV e status das fontes
         run: python3 scripts/gerar_dados_abertos.py || echo "⚠️ gerar_dados_abertos.py falhou — planilhas anteriores mantidas"
 
+      - name: Baixar a folha completa de Supersalários desta coleta (artefato privado; usada só na conferência, fora do Git)
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: folha-supersalarios-${{ github.run_id }}
+          path: folha_completa/
+
       - name: Conferir os dados direto nas fontes oficiais (independente da coleta)
         timeout-minutes: 20
         run: python3 -u scripts/validar_fontes.py || echo "⚠️ validar_fontes.py falhou — conferência anterior mantida"

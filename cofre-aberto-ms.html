@@ -6251,7 +6251,9 @@ function renderSupersalarios(d) {
     if (it) partes.push(`amostra dos que têm <b>bruto acima e líquido abaixo</b> do teto: ${amostra(it)}`);
     if (ck) partes.push(`<b>${ck.orgaos} órgãos</b> com checagem automática de integridade e totais em ${Number(ck.contracheques).toLocaleString("pt-BR")} contracheques ` +
       `(${ck.alertas} alerta(s) para revisão)`);
-    el.innerHTML = `🔎 <b>Como estes números são conferidos:</b> ${partes.join("; ")}. Sorteio estratificado por órgão com semente fixa (reproduzível);
+    el.innerHTML = `🔎 <b>Como estes números são conferidos:</b> ${partes.join("; ")}. A conferência automática na fonte é uma
+      <b>reconsulta na mesma fonte da coleta</b> (folha do Estado, portal do TCE-MS e DadosJusBr): confirma a leitura, não é fonte independente;
+      totais de órgão que batem não contam como contracheques conferidos. Sorteio estratificado por órgão com semente fixa (reproduzível);
       limite pelo método exato de Clopper–Pearson. <a href="https://github.com/${"fabriciosantosbatista-code/cofre-aberto-ms"}/blob/main/dados/verificacao/conferencia_manual.csv" target="_blank" rel="noopener">Lista de conferência</a>.`;
   });
 

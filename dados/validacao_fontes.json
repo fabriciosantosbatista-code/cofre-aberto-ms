@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-18T22:10:15",
+ "geradoEm": "2026-11-18T22:40:38",
  "fontes": {
   "governo-ms": {
    "resultado": "confere",
@@ -986,7 +986,7 @@
   },
   "supersalarios": {
    "resultado": "confere",
-   "em": "2026-11-18T22:10:15",
+   "em": "2026-11-18T22:40:38",
    "metodo": "órgão por órgão no mês publicado: TJMS e TRT24 no DadosJusBr; os 39 órgãos do Governo numa consulta nova à folha do Estado filtrada por órgão (pessoas e total bruto); TCE-MS (servidores) numa consulta nova ao portal do TCE; mais 100 contracheques do Governo sorteados por dia (semente = data), um a um",
    "fonteUrl": "https://www.transparencia.ms.gov.br/",
    "conferidos": 257,
@@ -1763,13 +1763,18 @@
     "Governo MS — FUNDECT",
     "TCE-MS — servidores"
    ],
-   "registrosAbrangidos": 83445,
+   "registrosAbrangidos": 90,
    "semFiltro": [
     "DGPC",
     "PMMS",
     "CBMMS",
     "GOVERNADORIA"
    ],
+   "totaisDeOrgaoConferidos": {
+    "orgaos": 38,
+    "contrachequesNessesOrgaos": 83445
+   },
+   "registrosConferidosUmAUm": 90,
    "amostraContracheques": {
     "sorteados": 100,
     "conferidos": 90,
@@ -1865,7 +1870,8 @@
      "UEMS:91110021": "2afdb7da572a",
      "UEMS:40766024": "8e34d4581bf1"
     }
-   }
+   },
+   "independencia": "mesma fonte da coleta (folha do Estado, portal do TCE-MS e DadosJusBr), por outra consulta: confirma a leitura, não é fonte independente"
   },
   "shows": {
    "resultado": "confere",

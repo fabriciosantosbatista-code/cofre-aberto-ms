@@ -355,10 +355,13 @@ def main():
         pend += [f"teste: {x['texto']}" for x in tst["itens"] if x["nivel"] == "erro"][:5]
         if dims["P"] is None:
             pend.append("sem conferência independente na fonte oficial nos últimos 30 dias")
+        indep = (ver_auto.get(fid) or {}).get("independencia")
         lac = (ver_auto.get(fid) or {}).get("lacunas") or []
         if lac:
             pend.append(f"{len(lac)} registro(s) sem o dado no site para comparar com a fonte (lacuna da coleta) — não contam como conferidos")
         avisos = avisos_metodologicos(nivel, cob, classe, estado_atual, f, dims, cats)
+        if indep:  # a reconsulta usa a mesma fonte da coleta: confirma a leitura, não é fonte independente
+            avisos.insert(0, f"Reconsulta na {indep}.")
         bases[fid] = {**f, "id": fid, "orgao": extra[0], "importancia": extra[1], "limitacoes": extra[3], "classe": classe,
                       "status": status, "statusRotulo": STATUS[status][0], "statusCor": STATUS[status][1],
                       "dimensoes": {k: dims.get(k) for k in PESOS_DIM}, "nota": nota, "testes": {k: tst[k] for k in ("ok", "avisos", "erros")},
