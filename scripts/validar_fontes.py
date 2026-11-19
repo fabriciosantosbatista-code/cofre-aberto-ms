@@ -345,6 +345,20 @@ def v_eleicoes():
     bens declarados. Votos não entram: o site não publica votos."""
     el = J("eleicoes.json").get("eleitos2026") or []
     ano = 2026
+    hd = {"User-Agent": "Mozilla/5.0 (CofreAbertoMS; transparencia publica)", "Accept": "*/*"}  # o DivulgaCand recusa o cabeçalho padrão
+
+    def get(url):
+        for t in range(3):
+            try:
+                r = requests.get(url, headers=hd, timeout=60)
+                if r.status_code == 200:
+                    return r.json()
+                if r.status_code not in (429,) and r.status_code < 500:
+                    return None
+            except (requests.RequestException, ValueError):
+                pass
+            time.sleep(30 + 15 * t)
+        return None
     eleicoes = get(f"{DIVULGA}/eleicao/ordinarias") or []
     e26 = [e for e in eleicoes if isinstance(e, dict) and str(e.get("ano")) == str(ano)]
     fonte = {}
