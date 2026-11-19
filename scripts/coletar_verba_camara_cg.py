@@ -53,8 +53,9 @@ ARQUIVO_CAMARA = DADOS / "camara_municipal.json"
 CACHE_ARQUIVO = DADOS / "verba_cg_cache.json"
 MANIFESTO_PDFS = DADOS / "camara_cg_pdfs.json"   # cada PDF baixado: hash, tamanho, páginas, meses lidos, quando
 PASTA_PDFS = ROOT / "pdfs_camara_cg"             # cópia dos PDFs da coleta (fora do Git; NÃO vira artefato público — pode ter CPF impresso)
-PARSER_VERSAO = 4  # sobe quando a leitura muda: os PDFs já lidos são lidos de novo (v2: página e trecho; v3: dupla extração;
+PARSER_VERSAO = 5  # sobe quando a leitura muda: os PDFs já lidos são lidos de novo (v2: página e trecho; v3: dupla extração;
 #                   v4: OCR em blocos (psm 4) — o psm 6 pulava a tabela das notas: 46 de 84 notas da amostra contra 76)
+#                   v5: combustível — o número depois do nome do combustível é litros, não valor; valor sem vírgula = centavos)
 # O servidor da Câmara é lento: PDFs grandes levam mais de 30 s só pra baixar.
 # Antes havia um orçamento único de 30 s (download + parsing) e 18 dos 58 PDFs
 # davam "timeout após download" todo dia — nunca eram lidos. Agora são prazos
@@ -110,6 +111,7 @@ CNPJ_RE = re.compile(r"\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?[\s']{0,3}\d{2}")
 DATE_RE = re.compile(r'\d{2}[./]\d{2}[./]\d{4}')
 DATE_CURTA_RE = re.compile(r'\b\d{1,2}[./]\d{1,2}\b')
 VALOR_RE = re.compile(r'(?:(?:R\$|RS\$?)[\s/]*)?\d{1,3}(?:\.\d{3})*,\d{2}(?!\d)|(?:R\$|RS\$?)[\s/]*\d+,\d{2}(?!\d)')
+PRODUTO_COMB_RE = re.compile(r'\b(?:[ÁA]LCOOL|ETANOL|GASOLINA|DIESEL|GNV|ARLA)\b', re.I)
 DOC_RE = re.compile(r'(?:NFC?|NFS-?e|NOTA\s+FISCAL|CUPOM\s+FISCAL|RECIBO|NOTA\s*N[ºo°]?)[.:\s]*\d+', re.I)
 # Sem \b no fim: na digitalização o mês aparece colado ao nome ("MARÇOCarlão").
 # Inclui grafias que o OCR produz com frequência (FEVERERO, PUNHO = JUNHO).
@@ -202,9 +204,21 @@ def extrai_itens(texto, tipo, ano_contexto):
         fim_janela = prox_data_m.start() if prox_data_m else len(janela)
         depois = janela[:fim_janela]
 
-        valor_m = VALOR_RE.search(depois)
+        # Combustível: as colunas são "Valor R$ | Tipo e nº | Produto | Litros" — o número com vírgula depois do nome do
+        # combustível é a quantidade de LITROS, não o valor. O valor é procurado só antes do produto; se a camada de
+        # texto perdeu a vírgula ("16417" por "164,17"), o número de 4 a 6 dígitos logo após o CNPJ é lido em centavos
+        # (só vira "confere" se o OCR, independente, ler o mesmo valor).
+        busca_valor = depois
+        sem_virgula = None
+        if tipo == "combustivel":
+            prod = PRODUTO_COMB_RE.search(depois)
+            if prod:
+                busca_valor = depois[:prod.start()]
+            if not VALOR_RE.search(busca_valor):
+                sem_virgula = re.match(r'[\s|:;"“”\'»>—–-]*(?:R\$|RS)?\s*(\d{4,6})(?![\d,.])', busca_valor)
+        valor_m = VALOR_RE.search(busca_valor)
         doc_m = DOC_RE.search(depois)
-        valor = parse_valor(valor_m.group(0)) if valor_m else None
+        valor = parse_valor(valor_m.group(0)) if valor_m else (round(int(sem_virgula.group(1)) / 100, 2) if sem_virgula else None)
         doc = limpa_espacos(doc_m.group(0)) if doc_m else None
         resto = depois[doc_m.end():] if doc_m else (depois[valor_m.end():] if valor_m else depois)
         resto = re.split(r'Fonte:|Total\b|TOTAL\b|Atesto\b', resto)[0]

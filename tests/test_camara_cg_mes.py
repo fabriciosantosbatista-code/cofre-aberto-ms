@@ -29,6 +29,17 @@ for texto, esperado in CASOS:
 (oks if len(c.MESES_NUM) > 12 and c.MESES_NUM.get("janeiro") == "01" else erros).append("MESES_NUM tem os nomes completos")
 (oks if c.MESES_ABREV_NUM.get("jan") == "01" else erros).append("abreviações em dicionário próprio")
 
+# combustível: o número depois do nome do combustível é LITROS, não valor; valor sem vírgula logo após o CNPJ = centavos
+COMB = [("27/02/2026 POSTO POSITIVO 11.037.808/0001-60 16417 | CUPOMFISCAL | ALCOOL 40,14 PRH", 164.17),
+        ("27/02/2026 | POSTO POSITIVO | 11.037.808/0001-60 164,17 | CUPOMFISCAL ALCOOL 4014  PRH", 164.17),
+        ("02/03/2026 POSTO X 11.037.808/0001-60 100,00 CUPOM FISCAL 123 GASOLINA 16,33 ABC", 100.0)]
+for linha, esperado in COMB:
+    it = c.extrai_itens(linha, "combustivel", "2026")
+    v = it[0]["valor"] if it else None
+    (oks if v == esperado else erros).append(f"combustível {linha[:40]!r}… → {v} (esperado {esperado})")
+it = c.extrai_itens("05/03/2026 FORNECEDOR 11.037.808/0001-60 1.500,00 NF 12 SERVIÇO", "notas", "2026")
+(oks if it and it[0]["valor"] == 1500.0 else erros).append("notas: regra do combustível não se aplica")
+
 for e in erros:
     print("❌", e)
 print(f"✅ {len(oks)} checagens OK · ❌ {len(erros)} erros")
