@@ -438,6 +438,7 @@ a.novo-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .fonte-txt b{color:var(--ink);font-weight:600}.fonte-txt a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--border)}
 .fonte-msg{color:var(--amber)}
 .fonte-selo{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:600;border-radius:999px;padding:2px 8px;border:1px solid;white-space:nowrap}
+.fonte-selo.selo-icp{white-space:normal;max-width:100%}
 .fonte-selo.ok{color:var(--positive);border-color:rgba(45,212,160,.35);background:rgba(45,212,160,.08)}
 .fonte-selo.atencao{color:var(--amber);border-color:rgba(245,200,66,.35);background:rgba(245,200,66,.08)}
 .fonte-acoes{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
@@ -1338,8 +1339,10 @@ Atenciosamente,</textarea>
       <div class="hero-label">Supersalários · As maiores remunerações do poder público em MS</div>
       <div class="hero-number" id="ss-liquido">—</div>
       <div class="hero-desc">
-        pessoas receberam no mês um <b>líquido acima do teto constitucional</b> (<span id="ss-teto">R$ 46.366,19</span>), mesmo depois de
-        imposto, previdência e corte do teto. No bruto, <b id="ss-bruto">—</b> passaram do teto, somando <b id="ss-valor">—</b> acima dele.
+        <b>contracheques acima do teto mesmo após descontos</b> (<span id="ss-pct-liquido">—</span> dos contracheques analisados): o <b>líquido</b>
+        passou do teto constitucional (<span id="ss-teto">R$ 46.366,19</span>) depois de imposto, previdência e corte do teto.<br>
+        <span style="opacity:.85"><b id="ss-bruto">—</b> com <b>bruto</b> acima do teto (<span id="ss-pct-bruto">—</span>), somando <b id="ss-valor">—</b> acima dele —
+        pode incluir verbas que a lei deixa fora do teto, como indenizações, 13º e férias.</span>
       </div>
       <div class="mini-stats">
         <div><div class="mini-stat-value" id="ss-pessoas">—</div><div class="mini-stat-label">contracheques analisados</div></div>
@@ -1412,10 +1415,17 @@ Atenciosamente,</textarea>
         <a href="https://www.transparencia.org.br/" target="_blank" rel="noopener">Transparência Brasil</a>, com os contracheques enviados pelos tribunais
         ao CNJ e a classificação de rubricas do projeto; Governo do Estado —
         <a href="https://www.transparencia.ms.gov.br/" target="_blank" rel="noopener">Portal da Transparência de MS</a> (folha de pagamento);
-        TCE-MS — <a href="https://transparencia.tce.ms.gov.br/" target="_blank" rel="noopener">Portal da Transparência do TCE</a>.
-        Não entram: Ministério Público (o portal bloqueia acessos de fora do Brasil e o DadosJusBr não o coleta desde 2023),
-        Defensoria Pública (a consulta de remuneração exige login) e Prefeitura de Campo Grande (não publica a remuneração individual).
+        TCE-MS — <a href="https://transparencia.tce.ms.gov.br/" target="_blank" rel="noopener">Portal da Transparência do TCE</a>;
+        Câmara de Campo Grande — portal da Câmara (folha Fiorilli).
+        Não entram: Defensoria Pública (a consulta de remuneração exige login) e Prefeitura de Campo Grande (não publica a remuneração individual).
         Teto: <span id="ss-teto-fonte"></span>. Atualização automática diária; os tribunais publicam com um a dois meses de atraso.
+      </p>
+      <p class="section-note" id="ss-metodologia">
+        <b>Órgãos na base (43):</b> 39 órgãos do Governo do Estado (Executivo estadual, ativos e aposentados/pensionistas — as duas linhas
+        "Governo do Estado" da tabela são o resumo desses 39, não órgãos a mais), TJMS e TCE-MS (servidores e conselheiros/procuradores) — estaduais;
+        TRT24 — <b>federal</b> (Justiça do Trabalho com sede em MS); Câmara Municipal de Campo Grande — <b>municipal</b> (só os 60 maiores salários).
+        <b>Detalhe de cada contracheque:</b> rubrica por rubrica no Judiciário (TJMS e TRT24, pelo DadosJusBr) e nos conselheiros e procuradores do TCE-MS;
+        só totais (remuneração fixa, eventuais e valor após descontos) no Governo do Estado, nos servidores do TCE-MS e na Câmara de Campo Grande.
       </p>
     </div>
   </section>
@@ -6207,7 +6217,10 @@ function renderSupersalarios(d) {
   const nf = n => (n || 0).toLocaleString("pt-BR");
   document.getElementById("ss-liquido").textContent = nf(d.liquidoAcimaTeto);
   document.getElementById("ss-teto").textContent = formatBRL(T);
-  document.getElementById("ss-bruto").textContent = nf(d.acimaTeto) + " pessoas";
+  document.getElementById("ss-bruto").textContent = nf(d.acimaTeto);
+  const pct = n => d.totalPessoas ? (100 * n / d.totalPessoas).toLocaleString("pt-BR", { maximumFractionDigits: 2 }) + "%" : "—";
+  document.getElementById("ss-pct-liquido").textContent = pct(d.liquidoAcimaTeto);
+  document.getElementById("ss-pct-bruto").textContent = pct(d.acimaTeto);
   document.getElementById("ss-valor").textContent = formatCompact(d.valorAcimaTeto);
   document.getElementById("ss-pessoas").textContent = nf(d.totalPessoas);
   const maior = d.maiorBruto ?? d.ranking?.[0]?.bruto;
@@ -7713,7 +7726,7 @@ function montarBarrasFonte() {
       bar.innerHTML = `
         <div class="fonte-linha">
           ${f ? `<span class="fonte-selo ${ok ? "ok" : "atencao"}" title="${ok ? "Fonte em dia" : "Dado mais antigo que o normal para esta fonte"}">${ok ? "✅ em dia" : "⚠️ atenção"}</span>` : ""}
-          ${monit[aba] ? `<a class="fonte-selo selo-icp" href="#aba=confiabilidade&p=${aba}" data-icp="${aba}" style="background:${COR_ICP[monit[aba].statusCor] || COR_ICP.cinza};border-color:transparent;color:#fff;text-decoration:none" title="${escHTML(((monit[aba].avisosMetodologicos || [])[0]) || monit[aba].motivo)} — clique para ver a evidência">${escHTML(monit[aba].statusRotulo)}${monit[aba].nota != null ? ` · ICP ${monit[aba].nota}` : ""}${monit[aba].cobertura && monit[aba].cobertura.calculavel && monit[aba].nivel === 2 ? ` · ${icpPct(monit[aba].cobertura.percentual)} conferido` : ""}</a>` : ""}
+          ${monit[aba] ? `<a class="fonte-selo selo-icp" href="#aba=confiabilidade&p=${aba}" data-icp="${aba}" style="background:${COR_ICP[monit[aba].statusCor] || COR_ICP.cinza};border-color:transparent;color:#fff;text-decoration:none" title="${escHTML(((monit[aba].avisosMetodologicos || [])[0]) || monit[aba].motivo)} — clique para ver a evidência">${escHTML(monit[aba].statusRotulo)}${monit[aba].nota != null ? ` · ICP ${monit[aba].nota}` : ""}${monit[aba].cobertura && monit[aba].cobertura.calculavel && monit[aba].nivel === 2 ? ` · ${icpPct(monit[aba].cobertura.percentual)} conferido na fonte` : ""}</a>` : ""}
           <span class="fonte-txt"><b>Fonte:</b> ${f ? (f.url ? `<a href="${escHTML(f.url)}" target="_blank" rel="noopener">${escHTML(f.fonte)}</a>` : escHTML(f.fonte)) : "fontes oficiais"}
             ${f && f.dadoMaisRecente ? ` · <b>dado mais recente:</b> ${escHTML(f.dadoMaisRecente)}` : ""}
             ${f && f.coleta ? ` · coletado em ${dataBRcurta(f.coleta)}` : ""}

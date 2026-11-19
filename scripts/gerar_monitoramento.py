@@ -99,7 +99,7 @@ FONTES = {
                 "portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares/UNICO (tabela por favorecido)",
                 "soma do valor recebido em MS no ano, por município, autor e favorecido", "ano corrente, mês do pagamento", 1, 45,
                 lambda: J("emendas_municipios.json").get("pagamentos"), lambda: J("emendas_municipios.json").get("totalMS"), "código da emenda + favorecido"),
-    "supersalarios": ("Folhas de pagamento (Estado, TJMS, MPMS, TCE, Câmara CG e outros)", ["supersalarios.json"], "portais de folha + DadosJusBr",
+    "supersalarios": ("Folhas de pagamento (Governo do Estado, TJMS, TCE-MS, TRT24 e Câmara CG)", ["supersalarios.json"], "portais de folha + DadosJusBr",
                       "remuneração bruta e líquida do mês; diárias fora do bruto (padrão CNJ)", "último mês publicado de cada órgão", 1, 75,
                       lambda: J("supersalarios.json").get("totalPessoas"), lambda: J("supersalarios.json").get("valorAcimaTeto"), "órgão + mês + nome"),
     "arrecadacao": ("Tesouro Nacional (Siconfi) — arrecadação do Estado e de CG", ["receitas.json"], "apidatalake.tesouro.gov.br/ords/siconfi/tt/rreo (RREO Anexo 3)",

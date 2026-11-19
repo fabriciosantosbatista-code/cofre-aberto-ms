@@ -203,7 +203,7 @@ def t_supersalarios(n):
             "rotulo": f"receberam acima do teto de {brl(d['teto'])} em algum mês de {d['ano']}, somando {curto(d['valorAcimaTeto'])} além do teto",
             "lista_titulo": "Os 5 maiores pagamentos brutos de um mês (por cargo)",
             "lista": [(x["cargo"].capitalize(), x.get("orgaoSigla") or x.get("orgao") or "", brl(x["bruto"])) for x in r],
-            "fonte": "Portais da transparência do Estado, do TJMS, do MPMS e de outros órgãos de MS", "aba": "supersalarios",
+            "fonte": "Portais da transparência do Estado, do TCE-MS e da Câmara de CG, e o DadosJusBr (TJMS e TRT24)", "aba": "supersalarios",
             "nota": "Parte das verbas fica fora do teto por lei (férias, indenizações e atrasados). No site está o detalhe de cada pagamento.",
             "legenda": (f"{d['acimaTeto']:,}".replace(",", ".") + f" pessoas do poder público de MS receberam acima do teto de {brl(d['teto'])} em algum mês de {d['ano']}.\n\n"
                         "Grande parte vem de verbas que a lei deixa fora do teto (os chamados penduricalhos). No site estão os valores, cargo e órgão.")}
