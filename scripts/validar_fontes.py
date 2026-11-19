@@ -391,7 +391,11 @@ def v_eleicoes():
         for nome_c, a, b in campos:
             itens.append((f"{k} · {nome_c}", 100.0, None if c is None else (100.0 if a == b else 0.0)))
         if pat is not None:
-            itens.append((f"{k} · bens declarados", round(pat, 2), None if c is None or c.get("totalDeBens") is None else round(float(c["totalDeBens"]), 2)))
+            tb = (c or {}).get("totalDeBens")
+            if c is not None and tb is None and c.get("id") and e26:  # a lista não traz os bens: detalhe da candidatura
+                det = get(f"{DIVULGA}/candidatura/buscar/{ano}/MS/{e26[0]['id']}/candidato/{c['id']}") or {}
+                tb = det.get("totalDeBens")
+            itens.append((f"{k} · bens declarados", round(pat, 2), None if tb is None else round(float(tb), 2)))
     res = resultado(itens, "DivulgaCand do TSE: cada eleito de MS em 2026 — nome completo, partido, cargo, situação e total de bens (100 = igual, 0 = diferente)",
                     "https://divulgacandcontas.tse.jus.br/", granularidade="registro", unidade="eleito (candidatura)", unidades_base=len(el),
                     registros_base=len(el), selecao="todos os eleitos de MS em 2026 (reconsulta total)")
