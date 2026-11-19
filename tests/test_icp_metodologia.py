@@ -29,6 +29,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 import icp_metodologia as m  # noqa: E402
+import validar_fontes as vf  # noqa: E402
 
 oks, erros = [], []
 
@@ -139,7 +140,7 @@ agora = datetime.fromisoformat(icp["geradoEm"])
 check(len(icp["bases"]) == 24, f"{len(icp['bases'])} bases no ICP")
 for fid, b in icp["bases"].items():
     hb = [h for h in hist if h.get("base") == fid]
-    cob = m.cobertura(hb, agora, b.get("registros"))
+    cob = m.cobertura(hb, agora, b.get("registros"), vf.hashes_atuais(fid))  # com os hashes de hoje (janela de 30 dias)
     if b["cobertura"] is not None and cob is not None:
         check((cob["unidadesConferidas"], cob["percentual"]) == (b["cobertura"]["unidadesConferidas"], b["cobertura"]["percentual"]),
               f"{fid}: cobertura reconstruída do histórico permanente = publicada ({cob['unidadesConferidas']} un., {cob['percentual']}%)")
@@ -167,6 +168,28 @@ for c in p.stdout.split():
     perdidas += sum(1 for l in subprocess.run(["git", "-C", str(ROOT), "show", f"{c}:dados/icp_notas_historico.jsonl"], capture_output=True, text=True).stdout.splitlines()
                     if l.strip() and l not in atual)
 check(perdidas == 0, f"histórico das notas: nenhuma linha antiga apagada ({perdidas} perdidas)")
+
+# ── janela móvel de 30 dias com hash do registro (desde 19/11/2026) ──
+def conf(em, ids, hashes=None, res="confere"):
+    h = {"em": em, "resultado": res, "granularidade": "registro", "unidade": "contratação", "unidadesBase": 5, "registrosBase": 5,
+         "idsConferidos": ids, "unidadesConferidas": len(ids), "divergentes": [], "comparados": [{"item": i} for i in ids], "fonteUrl": "x"}
+    if hashes is not None:
+        h["hashes"] = hashes
+    return h
+hist = [conf("2026-11-10T10:00:00", ["a", "b"], {"a": "1", "b": "2"}), conf("2026-11-17T10:00:00", ["c"], {"c": "3"})]
+c = m.cobertura(hist, AGORA, 5, {"a": "1", "b": "2", "c": "3", "d": "4", "e": "5"})
+check(c["unidadesConferidas"] == 3, "janela de 30 dias: a união das amostras soma os registros conferidos que não mudaram (3 de 5)")
+c = m.cobertura(hist, AGORA, 5, {"a": "1", "b": "MUDOU", "c": "3", "d": "4", "e": "5"})
+check(c["unidadesConferidas"] == 2, "registro que mudou depois da conferência volta a 'não conferido'")
+c = m.cobertura(hist, AGORA, 5, {"c": "3", "d": "4", "e": "5"})
+check(c["unidadesConferidas"] == 1, "registro que saiu da base não conta")
+c = m.cobertura([conf("2026-11-17T10:00:00", ["a", "b"])], AGORA, 5, {"a": "1", "b": "2"})
+check(c["unidadesConferidas"] == 0, "conferência sem hash gravado não prova que o registro está igual: não conta")
+c = m.cobertura([conf("2026-10-10T10:00:00", ["a"], {"a": "1"}), conf("2026-11-17T10:00:00", ["b"], {"b": "2"})], AGORA, 5, {"a": "1", "b": "2"})
+check(c["unidadesConferidas"] == 1, "conferência com mais de 30 dias não conta")
+c = m.cobertura(hist, AGORA, 5, None)
+check(c["unidadesConferidas"] == 3, "base sem hashes (granularidade por unidade/total): regra anterior inalterada")
+check(m.teto_cobertura({**c, "percentual": 60.0}, 2) == 70 + 30 * 0.6, "a fórmula 70 + 30 × fração conferida não mudou")
 
 print(f"✅ {len(oks)} checagens OK · ❌ {len(erros)} erros")
 for e in erros:

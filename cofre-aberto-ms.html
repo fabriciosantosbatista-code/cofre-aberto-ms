@@ -1837,7 +1837,11 @@ Atenciosamente,</textarea>
         Precisão e Integridade são <b>evidências</b>: quando faltam, valem 0 — sem conferência na fonte, a nota máxima possível é 70.
         <b>Tetos:</b> conferência parcial, 70 + 30 × fração da base conferida; divergência na fonte, 40; falha de coleta, 50; mais da metade das coletas recentes com falha, 50; revisão manual pendente, 70.
         <b>Nota geral</b> = média das 24 bases (nenhuma fica de fora), com peso 3 para os gastos principais, 2 para recortes relevantes e 1 para complementares.
-        <b>Selo verde</b> só com a base inteira conferida na fonte (nível 3 ou 4).</div>
+        <b>Selo verde</b> só com a base inteira conferida na fonte (nível 3 ou 4).
+        <b>Conferência acumulada em janela móvel de 30 dias</b> (em vigor desde 19/11/2026): nas bases conferidas registro a registro, a fração
+        conferida soma os registros distintos conferidos nos últimos 30 dias (amostra sorteada por dia, semente = data), mas só conta o registro
+        que <b>não mudou desde a conferência</b> (o robô guarda um resumo — hash — dos campos conferidos; se algum mudar, o registro volta a
+        "não conferido"). Registro novo entra como não conferido até ser sorteado. Contas que fecham não contam como conferência.</div>
       <div class="section-note" id="icp-legenda" style="max-width:none"></div>
       <div class="section-note" style="max-width:none">Documentação completa: <a href="https://github.com/fabriciosantosbatista-code/cofre-aberto-ms/blob/main/ICP_DOCUMENTACAO.md" target="_blank" rel="noopener">ICP_DOCUMENTACAO.md</a> ·
         dados do índice: <a href="dados/icp.json" target="_blank" rel="noopener">icp.json</a> · histórico permanente das conferências: <a href="dados/icp_verificacoes.jsonl" target="_blank" rel="noopener">icp_verificacoes.jsonl</a> ·

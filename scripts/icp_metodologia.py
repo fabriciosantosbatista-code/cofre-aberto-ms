@@ -90,10 +90,28 @@ def limite_superior(N, n, d, conf=CONFIANCA):
 COMPATIVEL = ("confere", "mudou_na_fonte")
 
 
-def cobertura(historico, agora, registros_base_atual=None):
+JANELA_DESDE = "2026-11-19"  # conferência acumulada em janela móvel de 30 dias, com hash do registro (vigência)
+
+
+def _ids_validos(h, hashes_atuais):
+    """Ids de uma conferência registro a registro que ainda valem: com hashes atuais da base, só os registros que existem
+    hoje e não mudaram desde a conferência (hash igual). Conferência sem hash gravado não prova que o registro está igual:
+    com hashes atuais disponíveis, não conta."""
+    ids = set(h.get("idsConferidos") or [])
+    if hashes_atuais is None:
+        return ids
+    hs = h.get("hashes")
+    if not hs:
+        return set()
+    return {i for i, x in hs.items() if hashes_atuais.get(i) == x}
+
+
+def cobertura(historico, agora, registros_base_atual=None, hashes_atuais=None):
     """historico: conferências da base (dicts do icp_verificacoes.jsonl), qualquer ordem. Devolve a cobertura da conferência
     vigente (a mais recente dos últimos 30 dias). Unidades repetidas não contam duas vezes: na conferência registro a registro,
-    a cobertura é a UNIÃO das unidades distintas conferidas nos últimos 30 dias (a amostra de cada dia é outra)."""
+    a cobertura é a UNIÃO das unidades distintas conferidas nos últimos 30 dias (a amostra de cada dia é outra).
+    hashes_atuais ({id: hash} do registro hoje): um registro só conta se não mudou desde a conferência (janela móvel de 30
+    dias com hash, desde JANELA_DESDE); registro novo só conta depois de sorteado e conferido."""
     validas = [h for h in historico if h.get("resultado") in COMPATIVEL + ("diverge",) and _idade(h, agora) is not None
                and _idade(h, agora) <= VALIDADE_DIAS]
     if not validas:
@@ -107,13 +125,16 @@ def cobertura(historico, agora, registros_base_atual=None):
                 "registrosBase": registros_base_atual, "registrosAbrangidos": None, "percentual": None, "calculavel": False,
                 "divergentes": len(v.get("divergentes") or []), "resultado": v["resultado"], "em": v["em"], "metodo": v.get("metodo"),
                 "fonteUrl": v.get("fonteUrl"), "selecao": None, "responsavel": None, "idade": _idade(v, agora)}
-    ids = set(v.get("idsConferidos") or [])
+    ids = _ids_validos(v, hashes_atuais) if gran == "registro" else set(v.get("idsConferidos") or [])
     if gran == "registro":
         for h in validas:
             # só conferências da mesma unidade: se a unidade mudou (ex.: de "campo" para "entidade"), os ids não se somam
             if h.get("granularidade") == "registro" and h.get("resultado") in COMPATIVEL and h.get("unidade") == v.get("unidade"):
-                ids |= set(h.get("idsConferidos") or [])
-    n = min(len(ids) or v.get("unidadesConferidas") or 0, N) if N else (len(ids) or v.get("unidadesConferidas") or 0)
+                ids |= _ids_validos(h, hashes_atuais)
+    if gran == "registro" and hashes_atuais is not None:
+        n = min(len(ids), N) if N else len(ids)  # com hash: só o que ainda vale (pode ser 0)
+    else:
+        n = min(len(ids) or v.get("unidadesConferidas") or 0, N) if N else (len(ids) or v.get("unidadesConferidas") or 0)
     rb = v.get("registrosBase") if v.get("registrosBase") is not None else registros_base_atual
     ra = n if gran == "registro" else v.get("registrosAbrangidos")
     if rb is not None and ra is not None:

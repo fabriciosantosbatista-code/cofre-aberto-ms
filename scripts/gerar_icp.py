@@ -44,6 +44,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import gerar_monitoramento as gm  # noqa: E402
+import validar_fontes as vf  # noqa: E402  (hash dos registros para a janela de 30 dias)
 import icp_metodologia as met  # noqa: E402  (registro das fontes, datas, classificação base)
 from registrar_execucao import JOB_BASES, BOM, RUIM, DESCONHECIDO, bases_da_linha  # noqa: E402
 
@@ -235,7 +236,7 @@ def nota_dimensoes(fid, f, ver, testes, rev, exec_hist, falhas_agora):
     hist_b = [h for h in hist_ver_global if h.get("base") == fid]
     if v and v.get("em") and not any(h.get("em") == v.get("em") for h in hist_b):
         hist_b.append(v)
-    cob = met.cobertura(hist_b, AGORA, f.get("registros"))
+    cob = met.cobertura(hist_b, AGORA, f.get("registros"), vf.hashes_atuais(fid))
     dims2 = dict(dims)
     dims2["P"] = met.dim_P(cob)
     dims2["I"], cats = met.dim_I(itens)
@@ -354,6 +355,9 @@ def main():
         pend += [f"teste: {x['texto']}" for x in tst["itens"] if x["nivel"] == "erro"][:5]
         if dims["P"] is None:
             pend.append("sem conferência independente na fonte oficial nos últimos 30 dias")
+        lac = (ver_auto.get(fid) or {}).get("lacunas") or []
+        if lac:
+            pend.append(f"{len(lac)} registro(s) sem o dado no site para comparar com a fonte (lacuna da coleta) — não contam como conferidos")
         avisos = avisos_metodologicos(nivel, cob, classe, estado_atual, f, dims, cats)
         bases[fid] = {**f, "id": fid, "orgao": extra[0], "importancia": extra[1], "limitacoes": extra[3], "classe": classe,
                       "status": status, "statusRotulo": STATUS[status][0], "statusCor": STATUS[status][1],

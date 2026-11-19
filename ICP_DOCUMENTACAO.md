@@ -70,6 +70,13 @@ divergências, itens comparados (site × fonte × diferença), responsável (o r
   total da base.
 - Conferência com mais de 30 dias não vale. Conferência antiga (metodologia 1.0, sem cobertura gravada) vale como
   "cobertura não calculada".
+- **Conferência acumulada em janela móvel de 30 dias, com hash** (em vigor desde **19/11/2026**; os pesos e a fórmula
+  70 + 30 × fração conferida não mudaram): na conferência registro a registro (shows, aluguéis, entidades e as que vierem
+  por amostra), cada conferência grava um hash curto dos campos comparados de cada registro que bateu com a fonte
+  (`hashes` em `icp_verificacoes.jsonl`). Um registro só conta como conferido se a conferência tem ≤ 30 dias **e** o hash
+  de hoje é igual ao gravado: se o registro mudou no site, volta a "não conferido"; registro novo só conta depois de
+  sorteado e conferido; conferência sem hash gravado não conta. A amostra diária usa semente = data (reproduzível).
+  Registro sem o dado no site para comparar (lacuna da coleta) não conta e aparece como pendência da base.
 
 ### 2.2 Níveis de evidência (automáticos)
 
@@ -165,6 +172,12 @@ oficial." · "A conferência foi feita por amostragem: X de Y registros (Z%). Ne
 oficial está indisponível ou a coleta falhou. A última versão válida dos dados foi preservada." · "A coleta funciona, mas a fonte
 oficial não publicou dado novo." · "A quantidade total de registros não permite calcular a cobertura." · "Os testes internos cobrem
 X de 5 tipos de conferência." · "A nota considera apenas as evidências disponíveis até DD/MM/AAAA."
+
+### 3.0 Mudanças de aplicação (sem mudar pesos nem fórmula)
+
+| Desde | Mudança |
+|---|---|
+| 19/11/2026 | Conferência acumulada em janela móvel de 30 dias com hash do registro (seção 2.1). |
 
 ### 3.1 Versões da metodologia e histórico das notas
 
