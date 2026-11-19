@@ -382,12 +382,32 @@ def processa_pdf(caminho, deadline=None, estado=None):
         except Exception:
             textos.append(None)
     meses_pag = [extrai_mes_ano_confiavel(t) if t else (None, None) for t in textos]
+    ocr_cache = {}
+
+    def ocr_de(i):  # OCR da página i (0-based), uma vez só por página; respeita o prazo de leitura do PDF
+        if i not in ocr_cache:
+            if deadline and time.time() > deadline:
+                if estado is not None:
+                    estado["truncado"] = True
+                return None
+            ocr_cache[i] = ocr_pagina(caminho, i + 1)
+        return ocr_cache[i]
+    # mês que a camada de texto não traz (texto embaralhado): procura no OCR da página (resumo, notas, combustível)
+    sem_mes_texto = 0
+    for i, t in enumerate(textos):
+        if t and not meses_pag[i][0] and (eh_pagina_resumo(t) or eh_pagina_notas(t) or eh_pagina_combustivel(t)):
+            o = ocr_de(i)
+            if o:
+                mm = extrai_mes_ano_confiavel(o)
+                if mm[0]:
+                    meses_pag[i] = mm
+                    sem_mes_texto += 1
     if estado is not None:  # diagnóstico: o que a camada de texto rendeu
         estado["diag"] = {"semTexto": sum(1 for t in textos if not t or len(t.strip()) < 30),
                           "resumo": sum(1 for t in textos if t and eh_pagina_resumo(t)),
                           "notas": sum(1 for t in textos if t and eh_pagina_notas(t)),
                           "combustivel": sum(1 for t in textos if t and eh_pagina_combustivel(t)),
-                          "comMes": sum(1 for m in meses_pag if m[0]),
+                          "comMes": sum(1 for m in meses_pag if m[0]), "mesPeloOcr": sem_mes_texto,
                           "amostra": next((t[:160] for t in textos if t and len(t.strip()) >= 30), "")}
 
     for i, texto in enumerate(textos):
@@ -425,7 +445,7 @@ def processa_pdf(caminho, deadline=None, estado=None):
             tp = extrai_total_pagina(texto)
             if not itens and tp:
                 itens = extrai_itens_fallback(texto, "combustivel", ano_ctx)
-            ocr = ocr_pagina(caminho, i + 1)
+            ocr = ocr_de(i)
             if estado is not None:
                 estado["ocrTentado"] = estado.get("ocrTentado", 0) + 1
                 estado["ocrOk"] = estado.get("ocrOk", 0) + (ocr is not None)
@@ -453,7 +473,7 @@ def processa_pdf(caminho, deadline=None, estado=None):
                 soma_fb = round(sum(x["valor"] for x in itens_fb if x["valor"]), 2)
                 if abs(soma_fb - tp) < abs(soma - tp):
                     itens = itens_fb
-            ocr = ocr_pagina(caminho, i + 1)
+            ocr = ocr_de(i)
             if estado is not None:
                 estado["ocrTentado"] = estado.get("ocrTentado", 0) + 1
                 estado["ocrOk"] = estado.get("ocrOk", 0) + (ocr is not None)
