@@ -63,7 +63,13 @@ jobs:
               except Exception:
                   print(f"[{rotulo}] ❌ resposta não é JSON")
                   return False
-              regs = d if isinstance(d, list) else (d.get("dados") or d.get("content") or []) if isinstance(d, dict) else []
+              if isinstance(d, list):
+                  regs = d
+              elif isinstance(d, dict):
+                  regs = d.get("dados") or d.get("content") or ([d] if d else [])
+              else:
+                  regs = []
+              print(f"[{rotulo}] formato: {type(d).__name__}")
               print(f"[{rotulo}] registros: {len(regs)}")
               if regs and isinstance(regs[0], dict):
                   print(f"[{rotulo}] campos do primeiro registro: " + ", ".join(sorted(regs[0].keys())))
