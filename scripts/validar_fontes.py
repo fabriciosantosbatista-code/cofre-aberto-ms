@@ -54,6 +54,7 @@ OBRA_CAMPOS = ("valor", "situacao", "cnpj", "fornecedor", "inicio", "fim", "exec
 CAMPOS_CONFERIDOS = {"shows": ("id", "valor"), "alugueis": ("id", "valor"),
                      "obras": ("numero", "processo") + OBRA_CAMPOS,
                      "emendas": ("emenda", "doc", "mes", "valor"),
+                     "contratos-cg": ("registro", "inicio", "fim", "tipo", "valor", "situacao", "fornecedor", "objeto"),
                      "entidades": ("cnpj", "abertura", "aberturaFilial", "municipio", "situacao")}
 
 
@@ -74,6 +75,8 @@ def registros_por_id(base):
         return {str(x.get("cnpj")): x for x in J("entidades.json").get("entidades") or [] if x.get("cnpj")}
     if base == "obras":
         return {id_obra(x): x for x in J("obras.json").get("obras") or []}
+    if base == "contratos-cg":
+        return {id_contrato_cg(x): x for x in J("prefeitura_contratos.json").get("contratos") or []}
     if base == "emendas":
         return {f"{x['emenda']}|{_dig(x.get('doc')) or norm(x.get('favorecido'))}|{x['mes']}": x for x in J("emendas_municipios.json").get("pagamentosMS") or []}
     return None
@@ -436,6 +439,64 @@ def v_emendas(n_emendas=30):
     res["independencia"] = ("API da CGU: outro serviço do mesmo órgão (a coleta usa o arquivo de download do Portal da Transparência) — "
                             "confirma os pagamentos, não é fonte independente da CGU")
     print(f"  emendas: {len(escolhidas)} emendas, {chamadas} chamadas à API da CGU em {round(time.monotonic() - t0)} s")
+    return res
+
+
+def id_contrato_cg(x):
+    return f"{x.get('registro')}|{x.get('inicio')}|{x.get('fim')}|{x.get('tipo')}"
+
+
+def v_contratos_cg():
+    """Contratos da Prefeitura de CG: reconsulta no SIG-Transparência de TODOS os contratos do ano (uma consulta devolve
+    a lista inteira) e comparação contrato a contrato (registro do fornecedor + início + fim + tipo): valor, situação,
+    fornecedor e objeto. Mesma fonte da coleta. SIG fora do alcance do robô = fonte inacessível (nunca "confere")."""
+    import coletar_contratos_cg as cc
+    d = J("prefeitura_contratos.json")
+    cts = d.get("contratos") or []
+    ano = int(d.get("ano") or date.today().year)
+    fim = date.today() if ano == date.today().year else date(ano, 12, 31)
+    try:
+        brutos = cc.consulta("/contratos/consulta", {"orderColumn": "contratos.data_inicio", "orderDirection": "DESC",
+                                                      "periodo-inicio": f"{ano}-01-01", "periodo-fim": fim.isoformat(), "tipo": "", "orgao": "",
+                                                      "fornecedor": "", "cpf_cnpj": "", "objeto_contrato": "", "registro_cadastral": ""})
+    except Exception as e:
+        r = resultado([(id_contrato_cg(c), 100.0, None) for c in cts], "SIG-Transparência (contratos)", "https://sig-transparencia.campogrande.ms.gov.br/")
+        r["fonteInacessivel"] = ["SIG-Transparência da Prefeitura de Campo Grande"]
+        r["nota"] = f"fonte inacessível a partir do robô ({type(e).__name__})"
+        return r
+    fonte = {}
+    for x in brutos:
+        y = {"tipo": cc.limpa(x.get("descr_tipo")), "objeto": cc.limpa(x.get("objeto"))[:400], "fornecedor": cc.limpa(x.get("fornecedor")),
+             "inicio": cc.iso(x.get("data_inicio")), "fim": cc.iso(x.get("data_fim")), "valor": cc.num(x.get("total_contrato")) or 0,
+             "situacao": cc.limpa(x.get("descr_situacao")), "registro": x.get("registro_cadastral")}
+        fonte.setdefault(id_contrato_cg(y), []).append(y)
+    itens, ruins = [], set()
+    for c in cts:
+        k = id_contrato_cg(c)
+        fs = fonte.get(k) or []
+        f = next((y for y in fs if abs((y["valor"] or 0) - (c["valor"] or 0)) <= 1), fs[0] if fs else None)
+        for campo in ("valor", "situacao", "fornecedor", "objeto"):
+            if f is None:
+                v = None
+            elif campo == "valor":
+                v = 100.0 if abs((f["valor"] or 0) - (c["valor"] or 0)) <= 1 else 0.0
+            else:
+                v = 100.0 if norm(f.get(campo)) == norm(c.get(campo)) else 0.0
+            itens.append((f"{k} · {campo}", 100.0, v))
+            if v == 0.0:
+                ruins.add(k)
+    res = resultado(itens, "SIG-Transparência da Prefeitura (consulta de contratos do ano): contrato a contrato — valor, situação, fornecedor e objeto "
+                    "(100 = igual, 0 = diferente)", "https://sig-transparencia.campogrande.ms.gov.br/contratos/consulta", granularidade="registro",
+                    unidade="contrato", unidades_base=len(cts), registros_base=len(cts), selecao="todos os contratos do ano (reconsulta total: uma consulta)")
+    if res["resultado"] in ("confere", "diverge"):
+        ids = sorted({str(i[0]).split(" · ")[0] for i in itens if i[2] is not None})
+        res.update({"unidadesConferidas": len(ids), "idsConferidos": ids, "registrosAbrangidos": len(ids)})
+        com_hashes(res, "contratos-cg", set(ids) - ruins)
+        res["registrosConferidosUmAUm"], res["registrosPorTotais"] = len(set(ids) - ruins), 0
+    nao = sum(1 for c in cts if id_contrato_cg(c) not in fonte)
+    if nao:
+        res["naoAchadosNaFonte"] = nao
+    res["independencia"] = "reconsulta na mesma fonte (SIG-Transparência da Prefeitura) — confirma a leitura, não é fonte independente"
     return res
 
 
@@ -1388,7 +1449,7 @@ CONFERENCIAS = (("governo-ms", lambda: v_governo()), ("deputados-estaduais", lam
                 ("deputados", lambda: v_camara()), ("arrecadacao", lambda: v_siconfi()), ("supersalarios", lambda: v_tjms()),
                 ("shows", lambda: v_pncp("shows.json", "shows", "contratações de show", "shows", n=150)),  # 1.053 no PNCP não cabem num dia: amostra + janela de 30 dias
                 ("votacoes", lambda: v_votacoes()), ("producao", lambda: v_producao()), ("judiciario", lambda: v_judiciario()),
-                ("entidades", lambda: v_entidades()), ("obras", lambda: v_obras()), ("publicidade", lambda: v_publicidade()), ("eleicoes", lambda: v_eleicoes()), ("emendas", lambda: v_emendas()),
+                ("entidades", lambda: v_entidades()), ("obras", lambda: v_obras()), ("publicidade", lambda: v_publicidade()), ("eleicoes", lambda: v_eleicoes()), ("emendas", lambda: v_emendas()), ("contratos-cg", lambda: v_contratos_cg()),
                 # por último: o PNCP limita as consultas (429) e as esperas podem consumir o prazo do passo
                 ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis", n=50)))  # 208 inteiras levam ~9 min: amostra + janela de 30 dias
 
