@@ -1,0 +1,48 @@
+name: Publicar o site
+
+# Publica cofreabertoms.com.br com actions/deploy-pages, só com o que está em .github/site.txt (lista explícita:
+# nenhum .md da raiz, nem scripts/, tests/, config/ ou docs/). Requer Settings → Pages → Source: "GitHub Actions".
+# Os commits dos robôs são feitos com o GITHUB_TOKEN e não disparam "push"; por isso também roda quando termina
+# cada workflow que grava no main.
+on:
+  push:
+    branches: [main]
+  workflow_run:
+    workflows: ["Atualizar dados diariamente", "Instagram — post automático", "Supersalários — conferência manual", "Aplicar fotos corretas"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# uma publicação por vez; a seguinte espera (não cancela a que está no ar)
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Checkout (main mais recente)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Montar o site (lista explícita) e conferir o sitemap
+        run: python3 scripts/montar_site.py _site
+
+      - name: Enviar o pacote do site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Publicar
+        id: deploy
+        uses: actions/deploy-pages@v4

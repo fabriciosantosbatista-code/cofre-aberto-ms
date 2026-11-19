@@ -56,6 +56,9 @@ jobs:
       - name: Limite adaptativo de consultas ao PNCP (3 → 2 → 1 em 429; sobe após 5 min; Retry-After)
         run: python3 tests/test_pncp_limite.py
 
+      - name: Site publicado = lista explícita (.github/site.txt), sem .md, com todas as URLs do sitemap
+        run: python3 scripts/montar_site.py /tmp/_site
+
       - name: ICP — conferidores na fonte oficial (fonte simulada, sem rede)
         run: python3 tests/test_conferidores.py
 
