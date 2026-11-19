@@ -347,16 +347,21 @@ def v_eleicoes():
     ano = 2026
     hd = {"User-Agent": "Mozilla/5.0 (CofreAbertoMS; transparencia publica)", "Accept": "*/*"}  # o DivulgaCand recusa o cabeçalho padrão
 
-    def get(url):
+    import urllib.request, urllib.error
+    STATUS = []
+
+    def get(url):  # urllib: o DivulgaCand recusa as requisições do requests (o teste de alcance usou urllib e respondeu)
         for t in range(3):
             try:
-                r = requests.get(url, headers=hd, timeout=60)
-                if r.status_code == 200:
-                    return r.json()
-                if r.status_code not in (429,) and r.status_code < 500:
+                with urllib.request.urlopen(urllib.request.Request(url, headers=hd), timeout=60) as r:
+                    STATUS.append(r.status)
+                    return json.loads(r.read())
+            except urllib.error.HTTPError as e:
+                STATUS.append(e.code)
+                if e.code != 429 and e.code < 500:
                     return None
-            except (requests.RequestException, ValueError):
-                pass
+            except (OSError, ValueError) as e:
+                STATUS.append(type(e).__name__)
             time.sleep(30 + 15 * t)
         return None
     eleicoes = get(f"{DIVULGA}/eleicao/ordinarias") or []
@@ -398,7 +403,7 @@ def v_eleicoes():
     nao = sum(1 for e in el if (e.get("chave") or "") not in {str(i[0]).split(" · ")[0] for i in itens if i[2] is not None})
     if nao:
         res["naoAchadosNaFonte"] = nao
-    res["diagnostico"] = {"eleicoes2026": [e.get("id") for e in e26], "candidatosPorCargo": {k: (None if v is None else len(v)) for k, v in fonte.items()},
+    res["diagnostico"] = {"status": STATUS[:10], "eleicoes2026": [e.get("id") for e in e26], "candidatosPorCargo": {k: (None if v is None else len(v)) for k, v in fonte.items()},
                           "exemploNaoCasado": next(({"site": e.get("nomeCompleto"), "cargo": e.get("cargo")} for e in el
                                                     if fonte.get(e.get("cargo")) and not any(norm(c.get("nomeCompleto")) == norm(e.get("nomeCompleto"))
                                                                                              for c in fonte[e.get("cargo")])), None),
