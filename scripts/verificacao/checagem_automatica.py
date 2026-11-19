@@ -10,6 +10,7 @@ e aplica, a cada contracheque e a cada órgão:
   líquido        líquido = bruto − descontos (tolerância R$ 0,05). No Governo do Estado a folha não publica os descontos
                  (são calculados como bruto − líquido): ali a checagem só detecta líquido maior que o bruto
   faixa          valor negativo, ou bruto acima de R$ 500.000 no mês
+  estorno x teto com valor negativo (estorno), refaz bruto e líquido sem ele: alerta se cruzar o teto em qualquer sentido
   variação       quantidade de pessoas e total bruto do órgão variando mais de 15% em relação ao mês anterior registrado
   total externo  total bruto do órgão contra uma fonte independente, tolerância 10% — TJMS e TRT24 no resumo do
                  DadosJusBr. Governo do Estado: não aplicada (a API pública do Estado não expõe a despesa por elemento
@@ -32,6 +33,7 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 SAIDA = ROOT / "dados" / "verificacao"
 TOL, VARIACAO, TETO_ABSURDO, TOL_EXTERNO = 0.05, 0.15, 500_000, 0.10
 FOLHA = ROOT / "folha_completa" / "folha_supersalarios.jsonl.gz"
+TETO = 46366.19  # subsídio de ministro do STF (o mesmo da aba Supersalários)
 
 
 def arg(nome, padrao):
@@ -117,6 +119,13 @@ def main():
             neg = [k for k in ("base", "outras", "bruto", "descontos", "liquido") if (p.get(k) or 0) < 0]
             if neg:
                 alerta("faixa", p, f"valor negativo em {', '.join(neg)}", min(p.get(k) or 0 for k in neg))
+            if neg:  # estorno: refaz bruto e líquido SEM ele e vê se cruza o teto (lista dos 2.450 pelo bruto, dos 421 pelo líquido)
+                aplicadas[org].add("estorno_x_teto")
+                e = -sum(min(0, p.get(k) or 0) for k in ("base", "outras"))
+                for rot, antes in (("bruto", p.get("bruto") or 0), ("líquido", p.get("liquido") or 0)):
+                    if (antes > TETO) != (antes + e > TETO):
+                        alerta("estorno_cruza_teto", p, f"sem o estorno de {e:.2f}, o {rot} ({antes:.2f} → {antes + e:.2f}) "
+                               f"{'passa' if antes + e > TETO else 'deixa de passar'} do teto", round(antes + e, 2))
             if (p.get("bruto") or 0) > TETO_ABSURDO:
                 alerta("faixa", p, f"bruto acima de R$ {TETO_ABSURDO:,.0f} no mês".replace(",", "."), p["bruto"])
 

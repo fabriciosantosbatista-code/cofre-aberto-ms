@@ -56,6 +56,7 @@ with tempfile.TemporaryDirectory() as tmp:
     ps.append(pessoa(7000, "SED", 600000, 400000))                                  # bruto > 500 mil
     ps.append(pessoa(7001, "SED", 3000, 2000, outras=-50.0))                        # valor negativo
     ps.append(pessoa(7002, "SED", 3000, 3500))                                      # líquido maior que o bruto (Governo)
+    ps.append(pessoa(7004, "SED", 45000, 30000, outras=-2000.0))                    # sem o estorno, o bruto passaria do teto
     ps.append({**pessoa(7003, "X", 50000, 30000), "orgao": "TJMS — Tribunal de Justiça", "orgaoId": "tjms", "orgaoSigla": None,
                "matricula": None, "base": 30000, "itens": [{"item": "a", "valor": 10000}], "descontos": 20000})  # rubricas ≠ bruto
     arq = folha(ps, tmp)
@@ -68,6 +69,9 @@ with tempfile.TemporaryDirectory() as tmp:
     check(any(a["tipo"] == "faixa" and "negativo" in a["detalhe"] for a in al), "faixa: valor negativo")
     check(any(a["tipo"] == "liquido" and "maior que o bruto" in a["detalhe"] for a in al), "Governo: líquido maior que o bruto")
     check(any(a["tipo"] == "rubricas" for a in al), "Judiciário: bruto diferente de base + rubricas")
+    check(any(a["tipo"] == "estorno_cruza_teto" and "passa" in a["detalhe"] and "bruto" in a["detalhe"] for a in al),
+          "estorno: sem ele o bruto cruzaria o teto → alerta")
+    check(not any(a["tipo"] == "estorno_cruza_teto" and "7001" in (a["matricula"] or "") for a in al), "estorno pequeno que não cruza o teto: sem alerta")
     res = json.load(open(saida / "checagem_2026-10.json", encoding="utf-8"))
     check("rubricas" in res["porOrgao"]["TJMS — Tribunal de Justiça"]["checagens"] and "rubricas" not in res["porOrgao"]["Governo MS — SED"]["checagens"],
           "o JSON registra quais checagens foram aplicadas em cada órgão (rubricas só onde há)")
