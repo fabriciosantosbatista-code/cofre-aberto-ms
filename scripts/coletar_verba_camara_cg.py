@@ -53,7 +53,8 @@ ARQUIVO_CAMARA = DADOS / "camara_municipal.json"
 CACHE_ARQUIVO = DADOS / "verba_cg_cache.json"
 MANIFESTO_PDFS = DADOS / "camara_cg_pdfs.json"   # cada PDF baixado: hash, tamanho, páginas, meses lidos, quando
 PASTA_PDFS = ROOT / "pdfs_camara_cg"             # cópia dos PDFs da coleta (vai para os artefatos do robô, 90 dias; não entra no Git)
-PARSER_VERSAO = 3  # sobe quando a leitura muda: os PDFs já lidos são lidos de novo (v2: página e trecho; v3: dupla extração)
+PARSER_VERSAO = 4  # sobe quando a leitura muda: os PDFs já lidos são lidos de novo (v2: página e trecho; v3: dupla extração;
+#                   v4: OCR em blocos (psm 4) — o psm 6 pulava a tabela das notas: 46 de 84 notas da amostra contra 76)
 # O servidor da Câmara é lento: PDFs grandes levam mais de 30 s só pra baixar.
 # Antes havia um orçamento único de 30 s (download + parsing) e 18 dos 58 PDFs
 # davam "timeout após download" todo dia — nunca eram lidos. Agora são prazos
@@ -312,7 +313,7 @@ def ocr_pagina(caminho, n_pagina, dpi=200):
     try:
         img = subprocess.run(["pdftoppm", "-f", str(n_pagina), "-l", str(n_pagina), "-r", str(dpi), "-gray", "-png", caminho],
                              capture_output=True, timeout=60, check=True).stdout
-        txt = subprocess.run(["tesseract", "stdin", "stdout", "-l", "por", "--psm", "6"], input=img,
+        txt = subprocess.run(["tesseract", "stdin", "stdout", "-l", "por", "--psm", "4"], input=img,
                              capture_output=True, timeout=90, check=True,
                              env={**os.environ, "OMP_THREAD_LIMIT": "1"}).stdout.decode("utf-8", "ignore")
         return normaliza_texto(txt)

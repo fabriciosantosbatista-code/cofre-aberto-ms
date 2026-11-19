@@ -126,7 +126,10 @@ def main():
         for d in ds:
             ex = d.get("extracao") or {}
             motivos = list(d.pop("_bloqueia", None) or [])
-            if not ex:
+            if not ex and not (d.get("origem") or {}).get("pdf"):
+                # nota antiga, de antes do registro da origem: nenhum PDF publicado hoje a reproduz
+                motivos.append("PDF de origem não disponível")
+            elif not ex:
                 motivos.append("ainda sem dupla extração (PDF não relido desde a mudança)")
             elif ex.get("status") != "confere":
                 motivos.append(ex.get("metodo") or "os dois extratores discordam")
