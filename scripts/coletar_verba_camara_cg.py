@@ -382,6 +382,13 @@ def processa_pdf(caminho, deadline=None, estado=None):
         except Exception:
             textos.append(None)
     meses_pag = [extrai_mes_ano_confiavel(t) if t else (None, None) for t in textos]
+    if estado is not None:  # diagnóstico: o que a camada de texto rendeu
+        estado["diag"] = {"semTexto": sum(1 for t in textos if not t or len(t.strip()) < 30),
+                          "resumo": sum(1 for t in textos if t and eh_pagina_resumo(t)),
+                          "notas": sum(1 for t in textos if t and eh_pagina_notas(t)),
+                          "combustivel": sum(1 for t in textos if t and eh_pagina_combustivel(t)),
+                          "comMes": sum(1 for m in meses_pag if m[0]),
+                          "amostra": next((t[:160] for t in textos if t and len(t.strip()) >= 30), "")}
 
     for i, texto in enumerate(textos):
         if texto is None:
@@ -609,7 +616,8 @@ def processar_alvo(alvo, cache_anterior):
         estado = {"truncado": False}
         meses = processa_pdf(caminho_tmp, deadline=time.time() + TIMEOUT_PARSING, estado=estado)
         alvo["_leitura"] = (f"{estado.get('paginas')} pág., {len(meses)} mês(es) antes do filtro, OCR em {estado.get('ocrOk', 0)} de "
-                            f"{estado.get('ocrTentado', 0)} páginas" + (", truncado pelo prazo" if estado.get("truncado") else ""))
+                            f"{estado.get('ocrTentado', 0)} páginas" + (", truncado pelo prazo" if estado.get("truncado") else "")
+                            + f" · camada de texto: {estado.get('diag')}")
         truncado = estado["truncado"]
         alvo["_paginas"] = estado.get("paginas")
         for d in meses.values():
