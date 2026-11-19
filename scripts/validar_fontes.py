@@ -390,9 +390,6 @@ def v_camara():
                     registros_base=sum(len(p.get("despesas") or []) for p in ps), registros_por_unidade=n_por(ps, "nome", "despesas"))
     if por_notas and res["resultado"] != "indisponivel":
         _um_a_um(res, "deputados", por_notas, ("cnpjCpfFornecedor", "doc", "data", "valor"))
-    # diferença pequena (até 1%) costuma ser nota lançada ou estornada depois da coleta
-    if res["resultado"] == "diverge" and all(abs(x["diferenca"]) <= max(5, 0.01 * abs(x["fonte"])) for x in res["divergentes"]):
-        res["resultado"], res["nota"] = "mudou_na_fonte", "diferenças até 1% — lançamentos/estornos feitos na Câmara depois da coleta"
     return res
 
 
