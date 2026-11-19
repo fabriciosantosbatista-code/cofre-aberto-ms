@@ -419,6 +419,9 @@ def processa_pdf(caminho, deadline=None, estado=None):
             if not itens and tp:
                 itens = extrai_itens_fallback(texto, "combustivel", ano_ctx)
             ocr = ocr_pagina(caminho, i + 1)
+            if estado is not None:
+                estado["ocrTentado"] = estado.get("ocrTentado", 0) + 1
+                estado["ocrOk"] = estado.get("ocrOk", 0) + (ocr is not None)
             itens_ocr = None
             if ocr is not None:
                 itens_ocr = extrai_itens(ocr, "combustivel", ano_ctx) or extrai_itens_fallback(ocr, "combustivel", ano_ctx)
@@ -444,6 +447,9 @@ def processa_pdf(caminho, deadline=None, estado=None):
                 if abs(soma_fb - tp) < abs(soma - tp):
                     itens = itens_fb
             ocr = ocr_pagina(caminho, i + 1)
+            if estado is not None:
+                estado["ocrTentado"] = estado.get("ocrTentado", 0) + 1
+                estado["ocrOk"] = estado.get("ocrOk", 0) + (ocr is not None)
             itens_ocr = None
             if ocr is not None:
                 itens_ocr = extrai_itens(ocr, "notas", ano_ctx)
@@ -593,12 +599,17 @@ def processar_alvo(alvo, cache_anterior):
             pass
         alvo["_sha256"], alvo["_tamanho"] = sha256, len(conteudo)
         if ent.get("sha256") == sha256 and ent.get("parser") == PARSER_VERSAO:
+            alvo["_motivo"] = f"cache: mesmo hash e leitor v{ent.get('parser')}"
             return nome, ato, {}, sha256  # baixado de novo, mas conteúdo idêntico — nada pra reprocessar
+        alvo["_motivo"] = (f"relido: leitor v{ent.get('parser')} → v{PARSER_VERSAO}" if ent.get("sha256") == sha256
+                           else "relido: conteúdo novo" if ent else "relido: sem cache")
 
         with open(caminho_tmp, "wb") as f:
             f.write(conteudo)
         estado = {"truncado": False}
         meses = processa_pdf(caminho_tmp, deadline=time.time() + TIMEOUT_PARSING, estado=estado)
+        alvo["_leitura"] = (f"{estado.get('paginas')} pág., {len(meses)} mês(es) antes do filtro, OCR em {estado.get('ocrOk', 0)} de "
+                            f"{estado.get('ocrTentado', 0)} páginas" + (", truncado pelo prazo" if estado.get("truncado") else ""))
         truncado = estado["truncado"]
         alvo["_paginas"] = estado.get("paginas")
         for d in meses.values():
@@ -666,12 +677,13 @@ def coletar_verba_indenizatoria():
                 log(f" [{concluidos}/{total}] {nome} Ato{ato}: {extra}")
                 continue
 
+            info = f" · {alvo.get('_motivo', '?')}" + (f" · {alvo['_leitura']}" if alvo.get("_leitura") else "")
             if meses:
                 resultado.setdefault(nome, {})[f"ato{ato}"] = meses
-                log(f" [{concluidos}/{total}] {nome} Ato{ato}: {len(meses)} meses")
+                log(f" [{concluidos}/{total}] {nome} Ato{ato}: {len(meses)} meses{info}")
             else:
                 sem_mudanca += 1
-                log(f" [{concluidos}/{total}] {nome} Ato{ato}: sem mudança (hash igual ao anterior)")
+                log(f" [{concluidos}/{total}] {nome} Ato{ato}: nenhum mês novo{info}")
 
             if extra is None:
                 log(f" [{concluidos}/{total}] {nome} Ato{ato}: leitura incompleta — será relido na próxima coleta")
