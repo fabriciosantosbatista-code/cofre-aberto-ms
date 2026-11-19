@@ -318,6 +318,22 @@ check(cd.exercicio_senador(_ex("1º Suplente", "2026-05-06", "2026-11-19", "Reto
 check(cd.exercicio_senador(_ex("Titular", "2023-02-01", "2026-10-01", "Licença"), "2026-11-19")[1] == "titular licenciado desde 01/10/2026 (licença)",
       "Senado: titular licenciado aparece com essa marca")
 
+# Câmara CG: dupla extração (camada de texto x OCR) e desempate pela conta de fechamento
+import coletar_verba_camara_cg as vcg  # noqa: E402
+_A = [{"data": "02/02/2026", "valor": 3000.0, "cnpj": "08.145.090/0001-10"}, {"data": "03/02/2026", "valor": 150.0, "cnpj": "11.111.111/0001-11"}]
+_B = [{"data": "02/02/2026", "valor": 3000.0, "cnpj": "08.145.090/0001-10"}, {"data": "03/02/2026", "valor": 158.0, "cnpj": "11.111.111/0001-11"}]
+_r = vcg.dupla_extracao(copy.deepcopy(_A), copy.deepcopy(_A), 3150.0)
+check(all(x["extracao"]["metodo"] == "resolvido automaticamente (2 extratores)" for x in _r), "Câmara CG: os dois extratores concordam → resolvido automaticamente")
+_r = vcg.dupla_extracao(copy.deepcopy(_A), copy.deepcopy(_B), 3150.0)
+check(_r[1]["extracao"]["status"] == "confere" and "camada de texto fecha" in _r[1]["extracao"]["metodo"], "Câmara CG: discordam e só a camada de texto fecha com o total → vale ela")
+_r = vcg.dupla_extracao(copy.deepcopy(_A), copy.deepcopy(_B), 3158.0)
+check([x["valor"] for x in _r] == [3000.0, 158.0] and _r[0]["_substitui"][0]["valor"] == 150.0,
+      "Câmara CG: só o OCR fecha → vale o OCR, e a leitura antiga sai (com correção datada)")
+_r = vcg.dupla_extracao(copy.deepcopy(_A), copy.deepcopy(_B), None)
+check(_r[1]["extracao"]["status"] == "nao_verificado", "Câmara CG: discordam e não há total para desempatar → não verificado")
+_r = vcg.dupla_extracao(copy.deepcopy(_A), None, 3150.0)
+check(all("uma leitura só" in x["extracao"]["metodo"] for x in _r), "Câmara CG: sem OCR, a nota diz que teve uma leitura só")
+
 # coleta da Câmara: despesas lidas mês a mês, ordenadas, paginando dentro do mês; página que falha → exceção
 sys.path.insert(0, str(ROOT / "scripts"))
 import coletar_dados as cd  # noqa: E402

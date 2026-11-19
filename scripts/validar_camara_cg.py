@@ -90,12 +90,15 @@ def main():
             d.setdefault("revisar", [])
             if motivo not in d["revisar"]:
                 d["revisar"].append(motivo)
+            if gravidade == "revisar":  # só o que impede a nota de ser dada como lida certa (atenção é sinal, não bloqueia)
+                d.setdefault("_bloqueia", []).append(motivo)
             itens.append({"vereador": nome, "tipo": "nota", "gravidade": gravidade, "motivo": motivo, "data": d.get("data"),
                           "fornecedor": d.get("fornecedor"), "valor": d.get("valor"), "ato": d.get("ato"),
                           "origem": d.get("origem")})
 
         for d in ds:
             d.pop("revisar", None)
+            d.pop("statusLeitura", None)
         # ── notas ──
         dup = Counter((d.get("data"), d.get("valor"), dig(d.get("cnpj"))) for d in ds)
         dup_nf = Counter((d.get("valor"), d.get("nf"), dig(d.get("cnpj"))) for d in ds if d.get("nf"))
@@ -118,6 +121,17 @@ def main():
                 marca(d, f"data fora de {ano} ({d.get('data')})")
             if dup[(d.get("data"), d.get("valor"), c)] > 1 or (d.get("nf") and dup_nf[(d.get("valor"), d.get("nf"), c)] > 1):
                 marca(d, "possível nota repetida (mesmo fornecedor e valor, mesma data ou mesmo nº de documento)", "atencao")
+
+        # ── status de cada nota: confere / não verificado (motivo) — sem fila manual ──
+        for d in ds:
+            ex = d.get("extracao") or {}
+            motivos = list(d.pop("_bloqueia", None) or [])
+            if not ex:
+                motivos.append("ainda sem dupla extração (PDF não relido desde a mudança)")
+            elif ex.get("status") != "confere":
+                motivos.append(ex.get("metodo") or "os dois extratores discordam")
+            d["statusLeitura"] = ({"status": "confere", "metodo": ex.get("metodo")} if not motivos
+                                  else {"status": "nao_verificado", "motivos": motivos})
 
         # ── por ato: cobertura e meses ──
         conf = {}
@@ -175,18 +189,25 @@ def main():
     cont = Counter(i["motivo"].split(" (")[0].split(" —")[0] if i["tipo"] == "nota" else i["tipo"] for i in itens)
     (DADOS / "camara_cg_revisao.json").write_text(json.dumps({
         "geradoEm": hoje, "ano": ano,
-        "metodo": "Conferência automática da leitura dos PDFs (camada de OCR). Nenhum valor é alterado: os itens ficam marcados para conferência manual.",
+        "metodo": "Dupla extração de cada página dos PDFs (camada de texto + OCR da página renderizada), com desempate pela conta de fechamento "
+                  "(total impresso da página). O que a automação não resolve com segurança fica \"não verificado\", com o motivo e o link do PDF — "
+                  "não conta como conferido e não vai para fila manual.",
         "pdfsRegistrados": len(man), "resumo": {
             "vereadores": len(resumo_v), "conferidas": sum(1 for r in resumo_v if r["status"] == "conferida"),
             "parciais": sum(1 for r in resumo_v if r["status"] == "parcial"), "aRevisar": sum(1 for r in resumo_v if r["status"] == "revisar"),
             "itensRevisar": sum(1 for i in itens if i["gravidade"] == "revisar"), "itensAtencao": sum(1 for i in itens if i["gravidade"] == "atencao"),
             "notasComOrigem": sum(1 for v in cm["vereadores"] for d in v.get("despesas") or [] if d.get("origem")),
-            "notas": sum(len(v.get("despesas") or []) for v in cm["vereadores"]), "porMotivo": cont.most_common()},
+            "notas": sum(len(v.get("despesas") or []) for v in cm["vereadores"]), "porMotivo": cont.most_common(),
+            "statusNotas": dict(Counter((d.get("statusLeitura") or {}).get("status") for v in cm["vereadores"] for d in v.get("despesas") or [])),
+            "naoVerificadoPorMotivo": Counter(m.split(" (")[0] for v in cm["vereadores"] for d in v.get("despesas") or []
+                                              for m in (d.get("statusLeitura") or {}).get("motivos") or []).most_common(),
+            "metodosConfere": Counter((d.get("statusLeitura") or {}).get("metodo") for v in cm["vereadores"] for d in v.get("despesas") or []
+                                      if (d.get("statusLeitura") or {}).get("status") == "confere").most_common()},
         "vereadores": resumo_v, "itens": itens, "mudancas": mudancas}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     r = resumo_v
     print(f"✅ conferência da leitura (Câmara CG): {sum(1 for x in r if x['status'] == 'conferida')} vereadores conferidos, "
           f"{sum(1 for x in r if x['status'] == 'parcial')} parciais, {sum(1 for x in r if x['status'] == 'revisar')} a revisar · "
-          f"{sum(1 for i in itens if i['gravidade'] == 'revisar')} itens para conferência manual, "
+          f"{sum(1 for i in itens if i['gravidade'] == 'revisar')} itens não verificados, "
           f"{sum(1 for i in itens if i['gravidade'] == 'atencao')} de atenção · {len(mudancas)} mudanças registradas entre coletas")
 
 

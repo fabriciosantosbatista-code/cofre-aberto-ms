@@ -53,7 +53,7 @@ ARQUIVO_CAMARA = DADOS / "camara_municipal.json"
 CACHE_ARQUIVO = DADOS / "verba_cg_cache.json"
 MANIFESTO_PDFS = DADOS / "camara_cg_pdfs.json"   # cada PDF baixado: hash, tamanho, páginas, meses lidos, quando
 PASTA_PDFS = ROOT / "pdfs_camara_cg"             # cópia dos PDFs da coleta (vai para os artefatos do robô, 90 dias; não entra no Git)
-PARSER_VERSAO = 2  # sobe quando a leitura muda: os PDFs já lidos são lidos de novo (v2: página e trecho de cada nota)
+PARSER_VERSAO = 3  # sobe quando a leitura muda: os PDFs já lidos são lidos de novo (v2: página e trecho; v3: dupla extração)
 # O servidor da Câmara é lento: PDFs grandes levam mais de 30 s só pra baixar.
 # Antes havia um orçamento único de 30 s (download + parsing) e 18 dos 58 PDFs
 # davam "timeout após download" todo dia — nunca eram lidos. Agora são prazos
@@ -289,6 +289,78 @@ def total_do_resumo(texto):
     return (round(sum(itens), 2), "soma dos itens do resumo") if itens else (None, None)
 
 
+def ocr_pagina(caminho, n_pagina, dpi=200):
+    """Segundo extrator: renderiza a página (pdftoppm) e lê com o tesseract (português). None se as ferramentas não
+    estiverem instaladas ou falharem — a nota fica com uma leitura só e o status diz isso."""
+    import shutil, subprocess
+    if not (shutil.which("pdftoppm") and shutil.which("tesseract")):
+        return None
+    try:
+        img = subprocess.run(["pdftoppm", "-f", str(n_pagina), "-l", str(n_pagina), "-r", str(dpi), "-gray", "-png", caminho],
+                             capture_output=True, timeout=60, check=True).stdout
+        txt = subprocess.run(["tesseract", "stdin", "stdout", "-l", "por", "--psm", "6"], input=img,
+                             capture_output=True, timeout=90, check=True).stdout.decode("utf-8", "ignore")
+        return normaliza_texto(txt)
+    except Exception:
+        return None
+
+
+def _dig(t):
+    return re.sub(r"\D", "", str(t or ""))
+
+
+def dupla_extracao(itens_a, itens_b, total_pagina):
+    """Compara a leitura da camada de texto do PDF (A) com o OCR da página renderizada (B). Cada nota de A recebe
+    "extracao": {"status", "metodo"}:
+      confere         A e B leram a mesma nota (data, valor e CNPJ)            → "resolvido automaticamente (2 extratores)"
+      confere         discordam, mas só uma das leituras fecha com o total impresso da página → "conta de fechamento"
+      nao_verificado  discordam e a conta não decide, ou só há uma leitura (motivo no campo)
+    Se a leitura B é a que fecha com o total, devolve as notas de B (a página passa a ser lida pelo OCR)."""
+    soma = lambda xs: round(sum(x["valor"] for x in xs if x.get("valor")), 2)
+    fecha = lambda xs: total_pagina is not None and abs(soma(xs) - total_pagina) <= 0.05
+    chave = lambda x: (x.get("data"), round(x.get("valor") or 0, 2), _dig(x.get("cnpj")))
+    if itens_b is None:
+        for x in itens_a:
+            x["extracao"] = ({"status": "confere", "metodo": "conta de fechamento (uma leitura só: OCR indisponível)"} if fecha(itens_a)
+                             else {"status": "nao_verificado", "metodo": "uma leitura só (OCR indisponível) e a conta da página não fecha"})
+        return itens_a
+    kb = {}
+    for x in itens_b:
+        kb[chave(x)] = kb.get(chave(x), 0) + 1
+    discordam = []
+    for x in itens_a:
+        k = chave(x)
+        if kb.get(k):
+            kb[k] -= 1
+            x["extracao"] = {"status": "confere", "metodo": "resolvido automaticamente (2 extratores)"}
+        else:
+            discordam.append(x)
+    if not discordam and not any(kb.values()):
+        return itens_a
+    fa, fb = fecha(itens_a), fecha(itens_b)
+    if fb and not fa:  # só o OCR fecha com o total impresso: vale a leitura do OCR
+        kb2 = {}
+        for x in itens_b:
+            kb2[chave(x)] = kb2.get(chave(x), 0) + 1
+            x["extracao"] = {"status": "confere", "metodo": "conta de fechamento (OCR fecha com o total da página; a camada de texto não)"}
+        subst = []
+        for x in itens_a:  # leituras da camada de texto que o OCR corrigiu: saem do site, com correção datada
+            if kb2.get(chave(x)):
+                kb2[chave(x)] -= 1
+            else:
+                subst.append({k: x.get(k) for k in ("data", "valor", "cnpj", "documento", "fornecedor")})
+        if subst:
+            itens_b[0]["_substitui"] = subst
+        return itens_b
+    for x in discordam:
+        if fa and not fb:
+            x["extracao"] = {"status": "confere", "metodo": "conta de fechamento (a camada de texto fecha com o total da página; o OCR não)"}
+        else:
+            x["extracao"] = {"status": "nao_verificado", "metodo": "os dois extratores discordam e a conta de fechamento não decide"
+                             + ("" if total_pagina is not None else " (página sem total impresso)")}
+    return itens_a
+
+
 def processa_pdf(caminho, deadline=None, estado=None):
     """Lê um PDF de prestação de contas (Ato 027 ou 028) e devolve um dict
     {"MM/AAAA": {totalDeclarado, notas: [...], combustivel: [...], ...}}.
@@ -346,8 +418,16 @@ def processa_pdf(caminho, deadline=None, estado=None):
             tp = extrai_total_pagina(texto)
             if not itens and tp:
                 itens = extrai_itens_fallback(texto, "combustivel", ano_ctx)
+            ocr = ocr_pagina(caminho, i + 1)
+            itens_ocr = None
+            if ocr is not None:
+                itens_ocr = extrai_itens(ocr, "combustivel", ano_ctx) or extrai_itens_fallback(ocr, "combustivel", ano_ctx)
+                tp = tp if tp is not None else extrai_total_pagina(ocr)
+            itens = dupla_extracao(itens, itens_ocr, tp)
             for it in itens:
                 it["pagina"] = i + 1
+                for x in it.pop("_substitui", []):
+                    meses[chave].setdefault("substituidas", []).append({**x, "pagina": i + 1})
             meses[chave]["combustivel"].extend(itens)
             if tp is not None:
                 meses[chave]["totalCombustivel"] = round((meses[chave]["totalCombustivel"] or 0) + tp, 2)
@@ -363,8 +443,21 @@ def processa_pdf(caminho, deadline=None, estado=None):
                 soma_fb = round(sum(x["valor"] for x in itens_fb if x["valor"]), 2)
                 if abs(soma_fb - tp) < abs(soma - tp):
                     itens = itens_fb
+            ocr = ocr_pagina(caminho, i + 1)
+            itens_ocr = None
+            if ocr is not None:
+                itens_ocr = extrai_itens(ocr, "notas", ano_ctx)
+                tp_ocr = extrai_total_pagina(ocr)
+                tp = tp if tp is not None else tp_ocr
+                if tp and abs(round(sum(x["valor"] for x in itens_ocr if x["valor"]), 2) - tp) > 0.05:
+                    fb = extrai_itens_fallback(ocr, "notas", ano_ctx)
+                    if abs(round(sum(x["valor"] for x in fb if x["valor"]), 2) - tp) < abs(round(sum(x["valor"] for x in itens_ocr if x["valor"]), 2) - tp):
+                        itens_ocr = fb
+            itens = dupla_extracao(itens, itens_ocr, tp)
             for it in itens:
                 it["pagina"] = i + 1
+                for x in it.pop("_substitui", []):
+                    meses[chave].setdefault("substituidas", []).append({**x, "pagina": i + 1})
             meses[chave]["notas"].extend(itens)
             if tp is not None:
                 meses[chave]["totalNotas"] = round((meses[chave]["totalNotas"] or 0) + tp, 2)
@@ -759,6 +852,24 @@ def registra_descarte(vi, ato, mes, motivo, pdf, pagina, trecho):
     del lst[:-200]
 
 
+CORRECOES = []  # notas retiradas por correção da leitura nesta coleta (gravadas em dados/camara_cg_correcoes.json)
+ARQ_CORRECOES = DADOS / "camara_cg_correcoes.json"
+
+
+def gravar_correcoes():
+    """Acrescenta as correções desta coleta ao histórico público (só acrescenta; o site mostra como nota de correção)."""
+    if not CORRECOES:
+        return
+    try:
+        hist = json.load(open(ARQ_CORRECOES, encoding="utf-8"))
+    except Exception:
+        hist = {"correcoes": []}
+    hist["correcoes"] += CORRECOES
+    hist["ultimaAtualizacao"] = hoje
+    ARQ_CORRECOES.write_text(json.dumps(hist, ensure_ascii=False, indent=1), encoding="utf-8")
+    log(f"  ✏️ {len(CORRECOES)} nota(s) corrigida(s) pela dupla extração — dados/camara_cg_correcoes.json")
+
+
 def mesclar_dados(resultado_extraido):
     if not resultado_extraido:
         if VERIFICADO_SEM_MUDANCA and ARQUIVO_CAMARA.exists():
@@ -826,9 +937,24 @@ def mesclar_dados(resultado_extraido):
                 else:
                     vi.pop(chave_origem, None)
 
+                # leitura da camada de texto corrigida pelo OCR (conta de fechamento): a nota antiga sai, com correção datada
+                for sb in dados_mes.get("substituidas") or []:
+                    if sb.get("valor") is None or not data_valida(sb.get("data")):
+                        continue
+                    k_sb = chave_dedup(data_para_iso(sb["data"]), sb["valor"], limpa_doc(sb.get("documento")) or "")
+                    for d0 in list(despesas_existentes):
+                        if chave_dedup(d0["data"], d0["valor"], d0.get("nf") or "") == k_sb:
+                            despesas_existentes.remove(d0)
+                            chaves_existentes.discard(k_sb)
+                            CORRECOES.append({"em": hoje[:10], "vereador": v["nome"], "ato": f"ATO {ato_num}", "competencia": mes_chave,
+                                              "pdf": dados_mes.get("pdf"), "pagina": sb.get("pagina"), "antes": {"data": d0["data"], "valor": d0["valor"],
+                                              "fornecedor": d0.get("fornecedor")}, "motivo": "leitura do PDF corrigida pela dupla extração: o OCR da página "
+                                              "fecha com o total impresso e a leitura anterior não"})
+                            break
                 for grupo in ("notas", "combustivel"):
                     for item in dados_mes.get(grupo, []):
                         origem = {"pdf": dados_mes.get("pdf"), "pagina": item.get("pagina"), "trecho": item.get("trecho")}
+                        extracao = item.get("extracao")
                         if item.get("valor") is None or not data_valida(item["data"]):
                             registra_descarte(vi, ato_num, mes_chave, "nota sem valor legível" if item.get("valor") is None else f"data ilegível ({item.get('data')})",
                                               origem["pdf"], origem["pagina"], origem["trecho"])
@@ -838,8 +964,11 @@ def mesclar_dados(resultado_extraido):
                         chave = chave_dedup(data_iso, item["valor"], doc_limpo or "")
                         if chave in chaves_existentes:
                             for d0 in despesas_existentes:  # nota já registrada: completa a origem, sem mexer no valor
-                                if chave_dedup(d0["data"], d0["valor"], d0.get("nf") or "") == chave and not d0.get("origem"):
-                                    d0["origem"], d0["competencia"] = origem, mes_chave
+                                if chave_dedup(d0["data"], d0["valor"], d0.get("nf") or "") == chave:
+                                    if not d0.get("origem") or not (d0["origem"] or {}).get("pagina"):
+                                        d0["origem"], d0["competencia"] = origem, mes_chave
+                                    if extracao:  # status da dupla extração da leitura mais recente
+                                        d0["extracao"] = extracao
                                     break
                             continue
                         despesas_existentes.append({
@@ -852,6 +981,7 @@ def mesclar_dados(resultado_extraido):
                             "nf": doc_limpo,
                             "descricao": item.get("objeto") or item.get("descricao") or "",
                             "ato": f"ATO {ato_num}",
+                            **({"extracao": extracao} if extracao else {}),
                         })
                         chaves_existentes.add(chave)
                         notas_novas_vereador += 1
@@ -1076,6 +1206,7 @@ if __name__ == "__main__":
     virada_do_ano()
     resultado = coletar_verba_indenizatoria()
     mesclar_dados(resultado)
+    gravar_correcoes()
     try:
         coletar_pessoal_gabinetes()
     except Exception as e:

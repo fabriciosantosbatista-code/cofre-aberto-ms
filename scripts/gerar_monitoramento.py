@@ -215,7 +215,7 @@ def main():
             classe, motivo = "falha_coleta", (f"a última coleta bem-sucedida foi há {dias_coleta:.0f} dias (esperado: a cada {intervalo})" if dc else "nunca coletado")
         elif v.get("resultado") == "diverge":
             classe, motivo = "divergencia", f"{len(v.get('divergentes') or [])} item(ns) com valor diferente do da fonte na conferência de {v.get('em', '')[:10]}"
-        elif fid == "camara" and (rev.get("resumo") or {}).get("aRevisar"):
+        elif fid == "camara" and (rev.get("resumo") or {}).get("aRevisar") and not (rev.get("resumo") or {}).get("statusNotas"):
             r = rev["resumo"]
             classe, motivo = "revisao_manual", f"{r['itensRevisar']} itens da leitura dos PDFs para conferência manual ({r['aRevisar']} de {r['vereadores']} vereadores)"
         elif dias_dado is not None and dias_dado > atraso:
@@ -282,12 +282,14 @@ Só recebe "Verificado na fonte oficial" o conjunto que o robô consultou de nov
 não publicou dado novo — não é erro do site. Exemplo: a Prefeitura de Campo Grande não publica empenhos novos desde 02/10/2026; o robô confere todos os dias.</small></p>
 <h2 id='camara-cg'>Câmara de Campo Grande: conferência da leitura dos PDFs</h2>
 <p>Os PDFs de prestação de contas da verba indenizatória são documentos digitalizados. O robô lê o texto, monta as notas e guarda, para cada nota, o hash do PDF,
-a página e o trecho lido. O gasto exibido é o total declarado no resumo de cada mês; a lista de notas é conferida contra esse total. Nenhum valor é alterado
-automaticamente — o que não fecha fica marcado para conferência manual. PDFs registrados com hash: <b>{rev.get('pdfsRegistrados', 0)}</b> ·
+a página e o trecho lido. O gasto exibido é o total declarado no resumo de cada mês. Cada página é lida duas vezes (camada de texto do PDF e OCR da
+página renderizada); quando as leituras discordam, vale a que fecha com o total impresso da página. O que a automação não resolve com segurança fica
+"não verificado", com o motivo — não há fila de conferência manual. PDFs registrados com hash: <b>{rev.get('pdfsRegistrados', 0)}</b> ·
 notas com origem (PDF e página): <b>{r.get('notasComOrigem', 0)}</b> de {r.get('notas', 0)}.</p>
 <p>Vereadores: <b>{r.get('conferidas', 0)}</b> com as notas conferindo com o declarado, <b>{r.get('parciais', 0)}</b> parciais e <b>{r.get('aRevisar', 0)}</b> com itens para conferir ·
-<b>{r.get('itensRevisar', 0)}</b> itens para conferência manual e <b>{r.get('itensAtencao', 0)}</b> de atenção.</p>
-<div class='tw'><table><thead><tr><th>Vereador</th><th>Situação</th><th>Notas ÷ declarado (Ato 027)</th><th>(Ato 028)</th><th>Para conferir</th><th>Atenção</th></tr></thead><tbody>{vlin}</tbody></table></div>
+<b>{r.get('itensRevisar', 0)}</b> itens não verificados e <b>{r.get('itensAtencao', 0)}</b> de atenção · notas:
+<b>{(r.get('statusNotas') or {}).get('confere', 0)}</b> conferem, <b>{(r.get('statusNotas') or {}).get('nao_verificado', 0)}</b> não verificadas.</p>
+<div class='tw'><table><thead><tr><th>Vereador</th><th>Situação</th><th>Notas ÷ declarado (Ato 027)</th><th>(Ato 028)</th><th>Não verificados</th><th>Atenção</th></tr></thead><tbody>{vlin}</tbody></table></div>
 <h3>Mudanças entre coletas</h3><ul>{mud}</ul>
 <h2>Procedência: como cada número é obtido</h2><div class='tw'><table><thead><tr><th>Conjunto</th><th>Origem</th><th>Processamento</th><th>Período</th><th>Identificador do registro</th><th>Última conferência na fonte</th></tr></thead><tbody>{proc}</tbody></table></div>
 <p><small>Os arquivos de dados ficam públicos em <a href='/dados/monitoramento.json'>dados/monitoramento.json</a> e no histórico do repositório. Metodologia completa em <a href='/metodologia.html'>/metodologia.html</a>.</small></p>

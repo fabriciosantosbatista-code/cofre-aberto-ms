@@ -81,6 +81,9 @@ jobs:
       - name: Instalar dependências
         run: pip install requests Pillow pypdf
 
+      - name: OCR para a dupla extração dos PDFs da Câmara CG (tesseract + poppler)
+        run: sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por poppler-utils >/dev/null
+
       - name: Coletar Verba Indenizatória (Câmara CG)
         run: python3 scripts/coletar_verba_camara_cg.py
 
@@ -95,8 +98,10 @@ jobs:
             dados/camara_municipal.json
             dados/verba_cg_cache.json
             dados/camara_cg_pdfs.json
+            dados/camara_cg_correcoes.json
             dados/historico_*_camara_cg.json
           retention-days: 1
+          if-no-files-found: warn
 
       - name: Deixar só os PDFs da Câmara ainda não guardados (os já guardados saem da pasta temporária)
         run: python3 scripts/pdfs_novos.py
