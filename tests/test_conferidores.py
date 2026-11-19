@@ -156,7 +156,7 @@ v.get = g0
 import os
 from datetime import datetime as _dt, timezone as _tz, timedelta as _td
 def janela(env, depois_h):
-    antes = {k: os.environ.get(k) for k in ("GITHUB_RUN_ID", "GITHUB_WORKFLOW", "COLETA_INICIO")}
+    antes = {k: os.environ.get(k) for k in ("GITHUB_RUN_ID", "GITHUB_WORKFLOW", "COLETA_INICIO", "GITHUB_EVENT_NAME")}
     for k in antes:
         os.environ.pop(k, None)
     os.environ.update(env)
@@ -170,6 +170,8 @@ def janela(env, depois_h):
                 os.environ[k] = x
 ROBO = {"GITHUB_RUN_ID": "123", "GITHUB_WORKFLOW": "Atualizar dados diariamente", "COLETA_INICIO": "2026-11-19T07:30:00Z"}
 check(janela(ROBO, 0.7)[0], "dentro do robô, 42 min depois do início da coleta → entra no ICP")
+for ev in ("schedule", "workflow_dispatch"):
+    check(janela({**ROBO, "GITHUB_EVENT_NAME": ev}, 0.7)[0], f"execução completa disparada por {ev} → entra no ICP (vale a mesma coleta, não quem disparou)")
 check(not janela(ROBO, 2.5)[0], "2,5 h depois do início da coleta → só relatório")
 check(not janela({}, 0)[0], "rodada manual (sem ID de coleta) → só relatório")
 check(not janela({**ROBO, "GITHUB_WORKFLOW": "Supersalários — conferência manual"}, 0.1)[0], "outro workflow → só relatório")

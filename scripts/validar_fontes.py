@@ -889,7 +889,8 @@ RELATORIOS = DADOS / "verificacao" / "relatorios"
 
 
 def janela_coleta(agora_utc=None):
-    """(vale, motivo). Vale só dentro do robô diário: mesmo ID de coleta (GITHUB_RUN_ID do workflow "Atualizar dados
+    """(vale, motivo). Vale só dentro do robô (agendado ou disparado pela aba Actions — o que importa é ser a mesma
+    coleta, não quem disparou): mesmo ID de coleta (GITHUB_RUN_ID do workflow "Atualizar dados
     diariamente", o mesmo cujos artefatos trouxeram os dados) e até JANELA_COLETA_H horas depois do início da coleta
     (COLETA_INICIO). Motivo (19/11/2026): uma conferência manual do Governo MS rodou ~11 h depois da coleta, a fonte já
     tinha pagamentos lançados depois, e a divergência entrou no ICP sem indicar erro nos dados."""
