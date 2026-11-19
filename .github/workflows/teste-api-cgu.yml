@@ -1,0 +1,76 @@
+name: Teste API CGU
+
+# Duas chamadas à API do Portal da Transparência (CGU), com a chave do secret CGU_API_KEY, só leitura, para conhecer o
+# formato da resposta antes de montar a conferência de Emendas: (1) a lista de emendas; (2) os documentos de uma emenda
+# do recorte do site (pagamentos de 2026 a favorecidos de MS). O log mostra só o status HTTP, a quantidade de registros e os
+# nomes dos campos do primeiro registro — nunca a chave, os cabeçalhos ou os valores. Falha se a resposta não for 200.
+on:
+  workflow_dispatch:
+    inputs:
+      caminho:
+        description: "Caminho depois de /api-de-dados/ (o coletor do site usa 'emendas')"
+        default: "emendas"
+        required: true
+      codigo_emenda:
+        description: "Código de uma emenda do recorte do site (2ª chamada: documentos da emenda)"
+        default: "202639640007"
+        required: true
+      filtro_ms:
+        description: "Nome de autor de MS para filtrar (o endpoint de emendas não tem filtro por UF)"
+        default: "NELSINHO TRAD"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Duas chamadas à API (sem imprimir chave nem cabeçalhos)
+        env:
+          CHAVE: ${{ secrets.CGU_API_KEY }}
+          CAMINHO: ${{ inputs.caminho }}
+          AUTOR: ${{ inputs.filtro_ms }}
+          CODIGO: ${{ inputs.codigo_emenda }}
+        run: |
+          python3 - <<'EOF'
+          import json, os, sys, time, urllib.error, urllib.parse, urllib.request
+          from datetime import date
+          chave = os.environ.get("CHAVE") or ""
+          if not chave:
+              print("❌ secret CGU_API_KEY vazio")
+              sys.exit(1)
+          def chamar(rotulo, caminho, params):
+              url = f"https://api.portaldatransparencia.gov.br/api-de-dados/{caminho}?" + urllib.parse.urlencode(params)
+              print(f"[{rotulo}] GET /api-de-dados/{caminho} · " + " · ".join(f"{k}={v}" for k, v in params.items() if k != "nomeAutor")
+                    + (" · filtro por autor de MS" if "nomeAutor" in params else ""))
+              req = urllib.request.Request(url, headers={"chave-api-dados": chave, "Accept": "application/json", "User-Agent": "cofre-aberto-ms/teste"})
+              try:
+                  with urllib.request.urlopen(req, timeout=60) as r:
+                      status, corpo = r.status, r.read()
+              except urllib.error.HTTPError as e:
+                  status, corpo = e.code, b""
+              except Exception as e:
+                  print(f"[{rotulo}] ❌ sem resposta: {type(e).__name__}")
+                  return False
+              print(f"[{rotulo}] status HTTP: {status}")
+              if status != 200:
+                  return False
+              try:
+                  d = json.loads(corpo)
+              except Exception:
+                  print(f"[{rotulo}] ❌ resposta não é JSON")
+                  return False
+              regs = d if isinstance(d, list) else (d.get("dados") or d.get("content") or []) if isinstance(d, dict) else []
+              print(f"[{rotulo}] registros: {len(regs)}")
+              if regs and isinstance(regs[0], dict):
+                  print(f"[{rotulo}] campos do primeiro registro: " + ", ".join(sorted(regs[0].keys())))
+              return True
+
+          ok1 = chamar("1 lista", os.environ["CAMINHO"].strip("/"), {"ano": date.today().year, "nomeAutor": os.environ["AUTOR"], "pagina": 1})
+          time.sleep(2)
+          ok2 = chamar("2 documentos", f"emendas/documentos/{os.environ['CODIGO'].strip()}", {"pagina": 1})
+          sys.exit(0 if ok1 and ok2 else 1)
+          EOF
