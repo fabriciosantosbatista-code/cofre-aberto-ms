@@ -41,6 +41,9 @@ jobs:
       - name: LGPD — contenção (máscara e detector antes de cada artefato, só PDFs novos, privado/ fora do Git)
         run: python3 tests/test_contencao.py
 
+      - name: API do Governo de MS — repetição em 401/429/5xx com token novo, sem token no log (API simulada)
+        run: python3 tests/test_api_governo.py
+
       - name: ICP — conferidores na fonte oficial (fonte simulada, sem rede)
         run: python3 tests/test_conferidores.py
 

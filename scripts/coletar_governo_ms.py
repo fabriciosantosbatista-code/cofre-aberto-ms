@@ -55,21 +55,60 @@ def token():
     return r.text.strip().strip('"')
 
 
+REPETIVEIS = {401, 429} | set(range(500, 600))  # 401 passageiro do gateway, limite de taxa e erro do servidor
+REPETICOES = 2  # além da primeira tentativa, sempre com token novo
+
+
+def _validade(tok):
+    """iat/exp do token anônimo (só as datas; o token nunca vai para o log)."""
+    try:
+        pl = tok.split(".")[1]
+        c = json.loads(base64.urlsafe_b64decode(pl + "=" * (-len(pl) % 4)))
+        f = lambda t: datetime.utcfromtimestamp(t).strftime("%H:%M:%S") if t else "?"
+        return f"emitido {f(c.get('iat'))} UTC, vale até {f(c.get('exp'))} UTC"
+    except Exception:
+        return "token ilegível (não é JWT)"
+
+
+def requisitar(url, params=None, timeout=180):
+    """GET autenticado na API do Estado. Em 401, 429 e 5xx repete até 2 vezes, com token novo e espera de 30–60 s
+    (Retry-After quando o servidor manda); os outros 4xx falham na hora. Cada repetição vai para o log com o horário, o
+    status, a validade do token e os cabeçalhos da resposta — nunca o token. Devolve a última resposta."""
+    import random
+    for t in range(REPETICOES + 1):
+        tok = token()
+        r = sess.get(url, params=params, timeout=timeout, headers={"Authorization": "Bearer " + tok})
+        if r.status_code not in REPETIVEIS or t == REPETICOES:
+            return r
+        ra = r.headers.get("Retry-After")
+        espera = int(ra) if (ra or "").isdigit() else random.uniform(30, 60)
+        cab = {k: v for k, v in r.headers.items() if k.lower() not in ("set-cookie", "authorization")}
+        print(f"  ↻ {url.replace(API, '')}: HTTP {r.status_code} às {datetime.utcnow().strftime('%H:%M:%S')} UTC — {_validade(tok)} — "
+              f"cabeçalhos {cab} — nova tentativa {t + 1}/{REPETICOES} em {espera:.0f} s")
+        time.sleep(espera)
+    return r
+
+
 def api(rota, params, timeout=180, tentativas=3):
     erro = None
     for t in range(tentativas):
         try:
-            r = sess.get(API + rota, params=params, timeout=timeout,
-                         headers={"Authorization": "Bearer " + token()})
+            r = requisitar(API + rota, params, timeout)
             j = r.json()
             st = j.get("status")
             cod = st.get("code", r.status_code) if isinstance(st, dict) else (st or r.status_code)
             if cod == 200:
                 return j
             erro = f"{cod} {st.get('message') if isinstance(st, dict) else (j.get('errors') or j.get('title'))}"
-            if 400 <= int(cod) < 500 and cod != 429:
+            if int(cod) in REPETIVEIS:
+                break  # requisitar() já repetiu com token novo: falha normal, registrada no ICP
+            if 400 <= int(cod) < 500:
                 break  # erro de parâmetro: repetir não adianta
-        except Exception as e:  # rede, JSON inválido
+        except ValueError:  # resposta sem JSON (ex.: 401 do gateway sem corpo)
+            erro = f"{r.status_code} sem JSON"
+            if r.status_code in REPETIVEIS or 400 <= r.status_code < 500:
+                break
+        except Exception as e:  # rede
             erro = str(e)
         time.sleep(5 * (t + 1))
     raise RuntimeError(f"{rota}: {erro}")

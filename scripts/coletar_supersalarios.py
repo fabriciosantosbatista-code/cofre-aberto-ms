@@ -46,6 +46,12 @@ TRIBUNAIS = {"tjms": "TJMS — Tribunal de Justiça", "trt24": "TRT24 — Justi�
 RANKING = 600  # pessoas no ranking nominal (todas as fontes)
 
 
+
+def _gov():
+    """Política de repetição da API do Estado (401/429/5xx com token novo) — scripts/coletar_governo_ms.requisitar."""
+    import coletar_governo_ms
+    return coletar_governo_ms
+
 def num(t):
     try:
         return float(str(t).replace(",", "."))
@@ -140,7 +146,7 @@ def tribunal(orgao, rotulo):
 def governo():
     folha = "https://gw.sgi.ms.gov.br/d0125/transpfolhadepagamento/v1"
     tok = lambda: requests.get("https://www.transparencia.ms.gov.br/Auth/Token", headers=UA, timeout=30).text.strip().strip('"')
-    ex = requests.get(folha + "/exercicios", headers={**UA, "Authorization": "Bearer " + tok()}, timeout=60).json()["data"]
+    ex = _gov().requisitar(folha + "/exercicios", None, 60).json()["data"]
     nomes = ["janeiro", "fevereiro", "marco", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
     flags = next((e for e in ex if e["anoCompetencia"] == ANO), None) or {}
     mes = max((i + 1 for i, n in enumerate(nomes) if flags.get(n)), default=None)
@@ -150,7 +156,7 @@ def governo():
     while True:
         for t in range(3):
             try:
-                r = requests.get(folha + "/servidores", timeout=600, headers={**UA, "Authorization": "Bearer " + tok()},
+                r = _gov().requisitar(folha + "/servidores", timeout=600,
                                  params={"anoexercicio": ANO, "mescompetencia": mes, "tipoFolha": 1, "pageno": pagina,
                                          "pagesize": 20000, "exportarcsv": "false"})
                 j = r.json()
@@ -178,8 +184,7 @@ def governo():
                         "liquido": round(x.get("remuneracaoAposDeducoes") or 0, 2), "itens": []})
     siglas = {}
     try:
-        for o in requests.get(folha + "/orgaos", params={"anoexercicio": ANO}, timeout=60,
-                              headers={**UA, "Authorization": "Bearer " + tok()}).json().get("data") or []:
+        for o in _gov().requisitar(folha + "/orgaos", {"anoexercicio": ANO}, 60).json().get("data") or []:
             nome = re.sub(r"\s*\([^)]*\)\s*$", "", (o.get("descricao") or "")).strip()
             if o.get("id") and nome:
                 siglas.setdefault(o["id"].strip(), nome)

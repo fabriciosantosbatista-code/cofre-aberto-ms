@@ -26,6 +26,12 @@ FOLHA = "https://gw.sgi.ms.gov.br/d0125/transpfolhadepagamento/v1"
 ANO = date.today().year
 
 
+
+def _gov():
+    """Política de repetição da API do Estado (401/429/5xx com token novo) — scripts/coletar_governo_ms.requisitar."""
+    import coletar_governo_ms
+    return coletar_governo_ms
+
 def norm(t):
     return re.sub(r"\s+", " ", unicodedata.normalize("NFD", str(t or "")).encode("ascii", "ignore").decode().upper()).strip()
 
@@ -35,7 +41,7 @@ def token():
 
 
 def folha_estado():
-    ex = requests.get(FOLHA + "/exercicios", headers={**UA, "Authorization": "Bearer " + token()}, timeout=60).json()["data"]
+    ex = _gov().requisitar(FOLHA + "/exercicios", None, 60).json()["data"]
     meses = ["janeiro", "fevereiro", "marco", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
     flags = next((e for e in ex if e["anoCompetencia"] == ANO), None) or {}
     mes = max((i + 1 for i, n in enumerate(meses) if flags.get(n)), default=None)
@@ -45,7 +51,7 @@ def folha_estado():
     while True:
         for t in range(3):
             try:
-                j = requests.get(FOLHA + "/servidores", timeout=600, headers={**UA, "Authorization": "Bearer " + token()},
+                j = _gov().requisitar(FOLHA + "/servidores", timeout=600,
                                  params={"anoexercicio": ANO, "mescompetencia": mes, "tipoFolha": 1, "pageno": pagina,
                                          "pagesize": 20000, "exportarcsv": "false"}).json()
                 if (j.get("status") or {}).get("code") == 200:
@@ -112,8 +118,7 @@ def main():
     linhas, mes = folha_estado()
     nomes_org = {}
     try:  # sigla do órgão (como vem na folha) → nome completo, para comparar com o órgão que pagou a empresa
-        for o in requests.get(FOLHA + "/orgaos", params={"anoexercicio": ANO}, timeout=60,
-                              headers={**UA, "Authorization": "Bearer " + token()}).json().get("data") or []:
+        for o in _gov().requisitar(FOLHA + "/orgaos", {"anoexercicio": ANO}, 60).json().get("data") or []:
             if o.get("id") and o.get("descricao"):
                 nomes_org.setdefault(o["id"].strip(), re.sub(r"\s*\([^)]*\)\s*$", "", o["descricao"]).strip())
     except Exception as e:
