@@ -2,7 +2,7 @@
 """
 Cofre Aberto MS — checagem automática da folha de Supersalários (todos os contracheques do mês)
 
-Lê a folha completa gravada pela coleta (folha_completa/folha_supersalarios.jsonl.gz — artefato privado do robô, sem CPF)
+Lê a folha completa gravada pela coleta (folha_completa/folha_supersalarios.jsonl.gz — fora do Git, sem CPF; não vira artefato público)
 e aplica, a cada contracheque e a cada órgão:
 
   duplicidade    a mesma matrícula duas vezes no mesmo órgão e mês (sem matrícula na fonte: nome + cargo + lotação)

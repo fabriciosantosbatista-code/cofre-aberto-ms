@@ -1,0 +1,13 @@
+{
+  "_doc": "Caminhos que NUNCA podem virar artefato do Actions sem criptografia: artefato de repositório público é baixável por qualquer usuário logado no GitHub. tests/test_artefatos.py falha se algum workflow fizer upload-artifact de um destes caminhos (ou de uma pasta que os contenha) sem que o arquivo enviado seja .gpg/.age criptografado no mesmo job. Ver SEGURANCA_ARTEFATOS.md.",
+  "sensiveis": [
+    {"caminho": "pdfs_camara_cg/", "motivo": "PDFs originais da Câmara CG (documentos digitalizados; podem ter CPF impresso)"},
+    {"caminho": "folha_completa/", "motivo": "folha completa de Supersalários (nomes e contracheques de todos os servidores; decidido que é privada)"},
+    {"caminho": "leitura_privada/", "motivo": "imagens de páginas dos PDFs da Câmara CG (podem ter CPF impresso)"},
+    {"caminho": "saida/", "motivo": "saída de teste com imagens de páginas"},
+    {"caminho": "diag_camara_cg.json", "motivo": "texto bruto das páginas dos PDFs (pode ter CPF)"},
+    {"caminho": "privado/", "motivo": "pasta privada do projeto"},
+    {"caminho": "*.png", "motivo": "imagens (páginas de documentos)"},
+    {"caminho": "*.pdf", "motivo": "PDFs originais"}
+  ]
+}

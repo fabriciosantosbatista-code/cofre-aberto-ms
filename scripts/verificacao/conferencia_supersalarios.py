@@ -2,7 +2,8 @@
 """
 Cofre Aberto MS — conferência AUTOMÁTICA de Supersalários (substitui a conferência manual)
 
-Roda no robô diário, depois da coleta (precisa da folha completa: artefato privado folha-supersalarios-*, sem CPF).
+Roda no robô diário, depois da coleta (precisa da folha completa, sem CPF; a guarda dela como artefato está suspensa —
+artefato de repositório público é baixável por qualquer usuário logado no GitHub; ver SEGURANCA_ARTEFATOS.md).
 Grupos (os mesmos da antiga lista manual):
   supersalario   todos os contracheques com líquido acima do teto do mês
   intermediario  100 sorteados (semente 42, estratificado por órgão) entre bruto acima e líquido abaixo do teto

@@ -2,7 +2,7 @@
 """
 Cofre Aberto MS — lista para conferência manual dos supersalários no contracheque original
 
-Lê a folha completa (folha_completa/folha_supersalarios.jsonl.gz, artefato privado do robô, sem CPF) e gera
+Lê a folha completa (folha_completa/folha_supersalarios.jsonl.gz, fora do Git, sem CPF; não vira artefato público) e gera
 dados/verificacao/conferencia_manual.csv com três grupos (coluna "grupo"):
 
   supersalario   todos os contracheques com LÍQUIDO acima do teto, do maior excedente para o menor;

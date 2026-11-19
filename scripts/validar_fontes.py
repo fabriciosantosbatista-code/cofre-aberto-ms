@@ -1070,7 +1070,7 @@ def v_tjms():
                   (f"{pref}: salário-base total", o["totalBase"], (s.get("remuneracao_base") or {}).get("total"))]
         por[o["orgao"]] = (o.get("pessoas") or 0, s.get("quantidade") is not None)
     gov = ss.get("orgaosGoverno") or []
-    # folha completa (artefato privado da coleta): cada matrícula que a fonte devolver é comparada um a um
+    # folha completa da coleta (fora do Git): cada matrícula que a fonte devolver é comparada um a um
     folha = []
     try:
         import gzip
@@ -1155,7 +1155,7 @@ def v_tjms():
                                                         ("outras verbas", p_["outras"], o_.get("totalVencimentoOutrosPagamentos") if op is not None else p_["outras"]),
                                                         ("líquido", p_["liquido"], (x.get("totalCalculadoRemuneracao") or 0) + (o_.get("totalCalculadoOutrosPagamentos") or 0))],
                         f"TCE:{x.get('matricula')}")
-    # amostra diária de contracheques (folha completa do artefato privado da coleta, quando disponível)
+    # amostra diária de contracheques (folha completa da coleta, quando disponível)
     hashes = {}
     try:
         if folha:

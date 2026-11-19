@@ -103,16 +103,8 @@ jobs:
           retention-days: 1
           if-no-files-found: warn
 
-      - name: Deixar só os PDFs da Câmara ainda não guardados (os já guardados saem da pasta temporária)
-        run: python3 scripts/pdfs_novos.py
-
-      - name: Guardar os PDFs NOVOS lidos nesta coleta (30 dias; podem ter CPF impresso — não vão para o site)
-        uses: actions/upload-artifact@v4
-        with:
-          name: pdfs-camara-cg-${{ github.run_id }}
-          path: pdfs_camara_cg/
-          retention-days: 30
-          if-no-files-found: ignore
+      # Os PDFs originais da Câmara CG (podem ter CPF impresso) NÃO viram artefato: artefato de repositório público é
+      # baixável por qualquer usuário logado no GitHub. Suspenso até a guarda criptografada (ver SEGURANCA_ARTEFATOS.md).
 
   coletar_trt24:
     runs-on: ubuntu-latest
@@ -330,14 +322,9 @@ jobs:
             dados/verificacao/
           retention-days: 1
 
-      - name: Guardar a folha completa de Supersalários (artefato PRIVADO, 90 dias, sem CPF — base da conferência manual)
-        if: steps.folha_lgpd.outcome == 'success'
-        uses: actions/upload-artifact@v4
-        with:
-          name: folha-supersalarios-${{ github.run_id }}
-          path: folha_completa/
-          retention-days: 90
-          if-no-files-found: ignore
+      # A folha completa de Supersalários (nomes e contracheques de todos os servidores, sem CPF) NÃO vira artefato:
+      # artefato de repositório público é baixável por qualquer usuário logado no GitHub. Suspenso até a guarda
+      # criptografada (ver SEGURANCA_ARTEFATOS.md); sem ela, a conferência de Supersalários mantém a anterior.
 
   coletar_fontes_federais:
     # TSE, Presidência (CGU), STF (DadosJusBr + SICONFI), sanções (CEIS/CNEP) — em paralelo com os outros
@@ -581,7 +568,7 @@ jobs:
       - name: Gerar planilhas CSV e status das fontes
         run: python3 scripts/gerar_dados_abertos.py || echo "⚠️ gerar_dados_abertos.py falhou — planilhas anteriores mantidas"
 
-      - name: Baixar a folha completa de Supersalários desta coleta (artefato privado; usada só na conferência, fora do Git)
+      - name: Baixar a folha completa de Supersalários desta coleta (suspenso; ver SEGURANCA_ARTEFATOS.md)
         continue-on-error: true
         uses: actions/download-artifact@v4
         with:

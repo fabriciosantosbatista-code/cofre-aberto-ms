@@ -68,6 +68,9 @@ jobs:
       - name: Câmara CG — mês de cada página dos PDFs
         run: python3 tests/test_camara_cg_mes.py
 
+      - name: LGPD — nenhum artefato do Actions com dado pessoal sem criptografia (artefato de repositório público é baixável)
+        run: pip install -q pyyaml && python3 tests/test_artefatos.py
+
       - name: ICP metodologia 2.0 — cobertura, nível de evidência, tetos e regressão das 24 bases
         run: python3 tests/test_icp_metodologia.py
 

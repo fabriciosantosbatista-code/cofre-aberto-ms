@@ -364,7 +364,7 @@ def resumo_orgao(nome, lst, mes, fonte):
             "totalBase": round(sum(p["base"] for p in lst), 2), "totalOutras": round(sum(p["outras"] for p in lst), 2)}
 
 
-FOLHA = ROOT / "folha_completa" / "folha_supersalarios.jsonl.gz"  # fora do Git; vai só para o artefato privado do robô (90 dias)
+FOLHA = ROOT / "folha_completa" / "folha_supersalarios.jsonl.gz"  # fora do Git; não vira artefato público (ver SEGURANCA_ARTEFATOS.md)
 
 
 def gravar_folha(todos):
@@ -378,7 +378,7 @@ def gravar_folha(todos):
             x = {k: v for k, v in p.items() if k.lower() not in ("cpf", "acimateto")}
             f.write(json.dumps(x, ensure_ascii=False) + "\n")
             n += 1
-    print(f"  folha completa: {n:,} contracheques em {FOLHA.relative_to(ROOT)} (artefato privado, sem CPF)")
+    print(f"  folha completa: {n:,} contracheques em {FOLHA.relative_to(ROOT)} (fora do Git, sem CPF)")
 
 
 def main():

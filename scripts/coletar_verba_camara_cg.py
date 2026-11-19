@@ -52,7 +52,7 @@ DADOS = ROOT / "dados"
 ARQUIVO_CAMARA = DADOS / "camara_municipal.json"
 CACHE_ARQUIVO = DADOS / "verba_cg_cache.json"
 MANIFESTO_PDFS = DADOS / "camara_cg_pdfs.json"   # cada PDF baixado: hash, tamanho, páginas, meses lidos, quando
-PASTA_PDFS = ROOT / "pdfs_camara_cg"             # cópia dos PDFs da coleta (vai para os artefatos do robô, 90 dias; não entra no Git)
+PASTA_PDFS = ROOT / "pdfs_camara_cg"             # cópia dos PDFs da coleta (fora do Git; NÃO vira artefato público — pode ter CPF impresso)
 PARSER_VERSAO = 4  # sobe quando a leitura muda: os PDFs já lidos são lidos de novo (v2: página e trecho; v3: dupla extração;
 #                   v4: OCR em blocos (psm 4) — o psm 6 pulava a tabela das notas: 46 de 84 notas da amostra contra 76)
 # O servidor da Câmara é lento: PDFs grandes levam mais de 30 s só pra baixar.
@@ -652,7 +652,7 @@ def processar_alvo(alvo, cache_anterior):
         conteudo = r2.content
         sha256 = hashlib.sha256(conteudo).hexdigest()
 
-        try:  # cópia do PDF original desta coleta (artefato do robô) — falha aqui não interrompe a coleta
+        try:  # cópia local do PDF original desta coleta (fora do Git e de artefato público) — falha aqui não interrompe a coleta
             PASTA_PDFS.mkdir(exist_ok=True)
             (PASTA_PDFS / f"{sha256[:16]}.pdf").write_bytes(conteudo)
         except Exception:
