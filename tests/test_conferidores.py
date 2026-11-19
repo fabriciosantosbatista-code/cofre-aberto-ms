@@ -309,6 +309,15 @@ _dup = [{"codDocumento": "8135017", "valor": 241.58, "doc": "31501", "data": "20
 check(cd.sinalizar_duplicidade_arquivo(_dup) == 2 and len(_dup) == 4 and "códigos 8135017 e 8138520" in _dup[0]["sinalAtencao"]["texto"]
       and "sinalAtencao" not in _dup[2], "arquivo anual com a mesma nota duas vezes: as duas ficam e são sinalizadas; aluguel mensal não")
 
+# Senado: conta só quem está em exercício (no dia da troca a lista traz titular e suplente)
+_ex = lambda papel, ini, fim, causa=None: {"Mandato": {"DescricaoParticipacao": papel, "Exercicios": {"Exercicio": [
+    {"DataInicio": ini, "DataFim": fim, "DescricaoCausaAfastamento": causa}]}}}
+check(cd.exercicio_senador(_ex("Titular", "2026-11-19", None), "2026-11-19") == (True, None), "Senado: titular que voltou hoje = em exercício")
+check(cd.exercicio_senador(_ex("1º Suplente", "2026-05-06", "2026-11-19", "Retorno do titular"), "2026-11-19")
+      == (False, "1º suplente — exercício encerrado em 19/11/2026 (retorno do titular)"), "Senado: suplente cujo exercício terminou hoje = fora de exercício, com a marca")
+check(cd.exercicio_senador(_ex("Titular", "2023-02-01", "2026-10-01", "Licença"), "2026-11-19")[1] == "titular licenciado desde 01/10/2026 (licença)",
+      "Senado: titular licenciado aparece com essa marca")
+
 # coleta da Câmara: despesas lidas mês a mês, ordenadas, paginando dentro do mês; página que falha → exceção
 sys.path.insert(0, str(ROOT / "scripts"))
 import coletar_dados as cd  # noqa: E402

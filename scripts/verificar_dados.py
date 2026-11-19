@@ -180,8 +180,11 @@ def main():
         recente("Senadores MS (CEAPS)", max(datas) if datas else None, 45, o_que="nota fiscal mais recente")
     sbr = carregar("senadores_brasil.json")
     if sbr:
-        n = len(sbr.get("senadores", []))
-        checa(78 <= n <= 81, f"Senado Brasil: {n}", f"**Senado Brasil**: {n} senadores (esperado 81)")
+        # conta só quem está em exercício (no dia da troca a lista traz titular e suplente)
+        n = sum(1 for s in sbr.get("senadores", []) if s.get("emExercicio", True))
+        fora = [s for s in sbr.get("senadores", []) if not s.get("emExercicio", True)]
+        checa(78 <= n <= 81, f"Senado Brasil: {n} em exercício" + (f" (+{len(fora)} fora de exercício na lista)" if fora else ""),
+              f"**Senado Brasil**: {n} senadores em exercício (esperado 81)")
 
     # ---------- Prefeitura ----------
     pref = carregar("prefeitura.json")

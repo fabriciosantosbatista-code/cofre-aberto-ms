@@ -864,6 +864,28 @@ def coletar_dep_estaduais():
 # ============================================================
 # 4. SENADO BRASIL — lista completa 81 senadores
 # ============================================================
+def exercicio_senador(p, hoje_iso=None):
+    """(em exercício?, texto) pelo exercício mais recente do mandato: sem data de fim, ou com fim depois de hoje = em
+    exercício. A lista "atual" da API do Senado traz, no dia da troca, o titular que voltou e o suplente que saiu (e,
+    em licença, o suplente em exercício e o titular licenciado): a contagem usa só quem está em exercício."""
+    hoje_iso = hoje_iso or date.today().isoformat()
+    m = p.get("Mandato") or {}
+    ex = (m.get("Exercicios") or {}).get("Exercicio") or []
+    ex = ex if isinstance(ex, list) else [ex]
+    if not ex:
+        return True, None
+    ult = max(ex, key=lambda e: e.get("DataInicio") or "")
+    fim = ult.get("DataFim")
+    if fim and fim[:10] <= hoje_iso:
+        causa = (ult.get("DescricaoCausaAfastamento") or "").strip()
+        papel = (m.get("DescricaoParticipacao") or "").strip()
+        dia = f"{fim[8:10]}/{fim[5:7]}/{fim[:4]}"
+        if papel.lower() == "titular":
+            return False, f"titular licenciado desde {dia}" + (f" ({causa.lower()})" if causa else "")
+        return False, f"{papel.lower() or 'suplente'} — exercício encerrado em {dia}" + (f" ({causa.lower()})" if causa else "")
+    return True, None
+
+
 def coletar_senado_brasil():
     log("Coletando lista completa do Senado...")
 
@@ -890,8 +912,9 @@ def coletar_senado_brasil():
     for p in parlamentares:
         ident = p.get("IdentificacaoParlamentar", {})
         sid = int(ident.get("CodigoParlamentar", 0))
-        uf = ident.get("UfParlamentar")
+        uf = ident.get("UfParlamentar") or (p.get("Mandato") or {}).get("UfParlamentar")  # suplente: a UF vem no mandato
         ant = sens_ant.get(sid, {})
+        em_exercicio, situacao = exercicio_senador(p)
 
         registro = {
             **ant,
@@ -902,6 +925,8 @@ def coletar_senado_brasil():
             "foto": ant.get("fotoBase64") or ident.get("UrlFotoParlamentar") or
                     f"https://legis.senado.leg.br/senadores/fotos-oficiais/{sid}",
             "urlTransparencia": f"https://www6g.senado.leg.br/transparencia/sen/{sid}/?ano={ANO}",
+            "emExercicio": em_exercicio,
+            "situacaoExercicio": situacao,
         }
 
         # Enriquecer todos os senadores com CEAPS/gastos extras/pessoal/benefícios reais
@@ -927,13 +952,16 @@ def coletar_senado_brasil():
 
         senadores.append(registro)
 
-    log(f"  {len(senadores)} senadores em exercício")
+    n_ex = sum(1 for s in senadores if s.get("emExercicio", True))
+    log(f"  {n_ex} senadores em exercício" + (f" (+{len(senadores) - n_ex} na lista fora de exercício: "
+        + "; ".join(f"{s['nome']} — {s['situacaoExercicio']}" for s in senadores if not s.get("emExercicio", True)) + ")" if n_ex < len(senadores) else ""))
 
     data = {
         **(dados_ant if sens_ant else {}),
         "ultimaAtualizacao": hoje,
         "fonte": f"API do Senado Federal — {hoje}",
-        "totalSenadores": len(senadores),
+        "totalSenadores": n_ex,
+        "totalNaLista": len(senadores),
         "senadores": senadores,
     }
     salvar("senadores_brasil.json", data)

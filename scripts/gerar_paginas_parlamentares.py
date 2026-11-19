@@ -201,7 +201,7 @@ def coleta():
                                   "valor": n.get("valor"), "detalhe": n.get("detalhamento")} for n in notas],
                           totalNotas=len(notas), categorias={k: v for k, v in (s.get("ceaps") or {}).items() if v},
                           extra={}, aba="senadores" if ms else "senado-brasil", ms=ms, id=s["id"],
-                          urlOficial=s.get("urlTransparencia")))
+                          urlOficial=s.get("urlTransparencia"), situacaoExercicio=s.get("situacaoExercicio")))
 
     # slugs únicos por grupo
     usados = {}
@@ -647,7 +647,7 @@ def pagina(p, irmaos):
     corpo = f"""<p class="breadcrumb"><a href="/">Início</a> / <a href="/{g['pasta']}/">{e(g['plural'])}</a> / {e(p['nome'])}</p>
 <article>
 <div class="perfil">{img_html}<div><h1>{e(p['nome'])}</h1>
-<div class="cargo">{e(cargo)} · {e(p['partido'] or 'sem partido')}{f" · {e(p['nomeCompleto'])}" if p.get('nomeCompleto') else ''}</div></div></div>
+<div class="cargo">{e(cargo)} · {e(p['partido'] or 'sem partido')}{f" · {e(p['nomeCompleto'])}" if p.get('nomeCompleto') else ''}</div>{f"<div class='cargo'><b>Fora de exercício: {e(p['situacaoExercicio'])}</b></div>" if p.get('situacaoExercicio') else ''}</div></div>
 <p><strong>{e(p['nome'])}</strong> gastou <strong>{brl(total)}</strong> de {e(g['cota'])} em {ANO}{f", registrados em <strong>{milhar(n)}</strong> notas fiscais" if n else ""}.{var_txt}</p>
 <div class="resumo-grid">{resumo}</div>
 <div class="acoes">
