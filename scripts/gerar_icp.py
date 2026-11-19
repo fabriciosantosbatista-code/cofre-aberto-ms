@@ -376,6 +376,8 @@ def main():
                         + (f", de {uv_['em'][8:10]}/{uv_['em'][5:7]}/{uv_['em'][:4]}" if uv_.get("em") else " (nenhuma)"))
         vencida = bool(uv_.get("em")) and (AGORA - datetime.fromisoformat(uv_["em"][:19])).days > 30
         indep = (ver_auto.get(fid) or {}).get("independencia")
+        for fi in (ver_auto.get(fid) or {}).get("fonteInacessivel") or []:
+            pend.append(f"fonte inacessível a partir do robô: {fi} — essa parte não foi conferida")
         lac = (ver_auto.get(fid) or {}).get("lacunas") or []
         if lac:
             pend.append(f"{len(lac)} registro(s) sem o dado no site para comparar com a fonte (lacuna da coleta) — não contam como conferidos")

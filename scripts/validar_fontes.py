@@ -259,6 +259,82 @@ def v_obras():
     return res
 
 
+def v_publicidade():
+    """Publicidade: (1) Estado — reconsulta de todos os pagamentos do ano por credor (despesapordatacredores, mesmo período
+    da coleta) e comparação agência a agência (pago e empenhado, pela raiz do CNPJ); (2) Prefeitura — reconsulta no
+    SIG-Transparência dos empenhos da categoria de publicidade (valor empenhado de cada um); se o robô não alcançar o SIG,
+    essa parte fica "fonte inacessível" (nunca "confere"). As duas são a mesma fonte da coleta."""
+    import coletar_governo_ms as g
+    pb = J("publicidade.json")
+    ags = [a for a in pb.get("agencias") or [] if a.get("estado")]
+    cred = J("governo_ms_credores.json")
+    ini = date(int(pb.get("ano") or date.today().year), 1, 1)
+    fim = date.fromisoformat((cred.get("ultimaAtualizacao") or (pb.get("estado") or {}).get("coleta") or date.today().isoformat())[:10])
+    itens = []
+    try:
+        d = g.despesas_periodo("despesapordatacredores", ini, fim, 40000)
+        por_raiz = {}
+        for c in d.get("despesas") or []:
+            r_ = _dig(c.get("cpfCnpj"))[:8]
+            x = por_raiz.setdefault(r_, [0.0, 0.0])
+            x[0] += c.get("pago") or 0
+            x[1] += c.get("empenhado") or 0
+        for a in ags:
+            f = por_raiz.get(a["raiz"])
+            itens.append((f"{a['raiz']} {a['nome'][:40]} · pago", a["estado"], round(f[0], 2) if f else None))
+            itens.append((f"{a['raiz']} {a['nome'][:40]} · empenhado", a.get("estadoEmpenhado") or 0, round(f[1], 2) if f else None))
+    except Exception:
+        itens += [(f"{a['raiz']} {a['nome'][:40]} · pago", a["estado"], None) for a in ags]
+    # Prefeitura (SIG): empenho a empenho, valor empenhado
+    pags = pb.get("pagamentosPrefeitura") or []
+    sig, sig_erro = None, None
+    try:
+        sess = requests.Session()
+        sess.headers.update({"User-Agent": "Mozilla/5.0 (CofreAbertoMS; transparencia publica)"})
+        base = "https://sig-transparencia.campogrande.ms.gov.br/despesas/consulta"
+        r = sess.get(base, timeout=40)
+        r.raise_for_status()
+        m = re.search(r'name="_token" value="([^"]+)"', r.text)
+        if not m:
+            raise RuntimeError("token do formulário não encontrado")
+        r = sess.post(base, timeout=240, data={"_token": m.group(1), "page": "1", "orderColumn": "dataempenho", "orderDirection": "DESC", "download": "json",
+                                               "periodo-inicio": ini.isoformat(), "periodo-fim": date.today().isoformat(), "orgao": "", "fornecedor": "",
+                                               "cpf_cnpj": "", "categoria": "88"})
+        r.raise_for_status()
+        linhas = r.json()
+        if not isinstance(linhas, list):
+            raise RuntimeError("resposta não é lista")
+        sig = {f"{str(x.get('ano') or '').strip()}/{str(x.get('uge') or '').strip()}/{str(x.get('num') or '').strip()}": x for x in linhas}
+    except Exception as e:
+        sig_erro = type(e).__name__
+    for p_ in pags:
+        k = (p_.get("urlDetalhe") or "").split("/despesas/detalhe/")[-1]
+        x = (sig or {}).get(k)
+        v = None
+        if x is not None:
+            try:
+                v = round(float(str(x.get("total_empenhado") or 0).replace("R$", "").replace(".", "").replace(",", ".").strip()
+                                if not isinstance(x.get("total_empenhado"), (int, float)) else x["total_empenhado"]), 2)
+            except ValueError:
+                v = None
+        itens.append((f"Prefeitura {k} · empenhado", p_.get("empenhado") or 0, v))
+    res = resultado(itens, "portal do Estado (pagamentos do ano por credor) e SIG-Transparência da Prefeitura (empenhos de publicidade): "
+                    "pago e empenhado de cada agência no Estado; empenhado de cada empenho na Prefeitura", "https://www.transparencia.ms.gov.br/",
+                    granularidade="registro", unidade="agência no Estado / empenho na Prefeitura", unidades_base=len(ags) + len(pags),
+                    registros_base=len(ags) + len(pags), selecao="todas as agências pagas pelo Estado e todos os empenhos de publicidade da Prefeitura")
+    if res["resultado"] in ("confere", "diverge"):
+        ids = sorted({str(i[0]).split(" · ")[0] for i in itens if i[2] is not None})
+        ruins = {str(i[0]).split(" · ")[0] for i in itens if i[2] is not None and abs((i[1] or 0) - (i[2] or 0)) > 1}
+        res.update({"unidadesConferidas": len(ids), "idsConferidos": ids, "registrosAbrangidos": len(ids),
+                    "registrosConferidosUmAUm": len(set(ids) - ruins), "registrosPorTotais": 0})
+    if not sig:  # sem resposta, ou resposta sem nenhum empenho: a parte da Prefeitura não foi conferida
+        res["fonteInacessivel"] = ["SIG-Transparência da Prefeitura de Campo Grande"]
+        res["nota"] = (res.get("nota") or "") + (f" Parte da Prefeitura: fonte inacessível a partir do robô ({sig_erro}) — não conferida." if sig_erro
+                                                 else " Parte da Prefeitura: o SIG não devolveu nenhum empenho de publicidade — não conferida.")
+    res["independencia"] = "reconsulta na mesma fonte (portal do Estado e SIG da Prefeitura) — confirma a leitura, não é fonte independente"
+    return res
+
+
 def v_alems():
     de = J("deputados_estaduais_ms.json")
     rows = []
@@ -1073,7 +1149,8 @@ def registrar(fonte, r, out):
                                 **({"lacunas": r["lacunas"]} if r.get("lacunas") else {}),
                                 **({"amostraContracheques": r["amostraContracheques"]} if r.get("amostraContracheques") else {}),
                                 **{k: r[k] for k in ("independencia", "totaisDeOrgaoConferidos", "registrosConferidosUmAUm", "registrosPorTotais", "semFiltro",
-                                                     "digestsUmAUm", "soNaFonte", "naoAchadosNaFonte", "divergentesRegistros", "fonteIndependente") if r.get(k) is not None}},
+                                                     "digestsUmAUm", "soNaFonte", "naoAchadosNaFonte", "divergentesRegistros", "fonteIndependente",
+                                                     "fonteInacessivel") if r.get(k) is not None}},
                                ensure_ascii=False) + "\n")
     out[fonte] = r
     return r
@@ -1083,7 +1160,7 @@ CONFERENCIAS = (("governo-ms", lambda: v_governo()), ("deputados-estaduais", lam
                 ("deputados", lambda: v_camara()), ("arrecadacao", lambda: v_siconfi()), ("supersalarios", lambda: v_tjms()),
                 ("shows", lambda: v_pncp("shows.json", "shows", "contratações de show", "shows", n=150)),  # 1.053 no PNCP não cabem num dia: amostra + janela de 30 dias
                 ("votacoes", lambda: v_votacoes()), ("producao", lambda: v_producao()), ("judiciario", lambda: v_judiciario()),
-                ("entidades", lambda: v_entidades()), ("obras", lambda: v_obras()),
+                ("entidades", lambda: v_entidades()), ("obras", lambda: v_obras()), ("publicidade", lambda: v_publicidade()),
                 # por último: o PNCP limita as consultas (429) e as esperas podem consumir o prazo do passo
                 ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis", n=None)))
 
