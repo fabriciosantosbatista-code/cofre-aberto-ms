@@ -7480,7 +7480,7 @@ function renderICP(d) {
     <td data-label="Status">${icpSelo(b)}</td><td class="num" data-label="Nota" style="white-space:nowrap">${b.nota == null ? '<span style="font-size:.74rem;color:var(--ink-faint)">não avaliado</span>' : `<b>${b.nota}</b>`}</td>
     <td data-label="Evidência" style="font-size:.78rem">${icpEvid(b)}</td>
     <td data-label="Última coleta" style="white-space:nowrap">${b.ultimaColeta ? icpDia(b.ultimaColeta) + " " + b.ultimaColeta.slice(11, 16) : "—"}</td>
-    <td data-label="Conferência oficial" style="white-space:nowrap">${b.ultimaVerificacao ? icpDia(b.ultimaVerificacao.em) : '<span style="color:var(--ink-faint)">sem conferência</span>'}</td>
+    <td data-label="Conferência oficial" style="white-space:nowrap">${b.ultimaVerificacao ? icpDia(b.ultimaVerificacao.em) + (b.conferenciaVencida ? ' <small style="color:var(--danger,#b00)">vencida</small>' : '') : '<span style="color:var(--ink-faint)">sem conferência</span>'}${b.tentativaConferencia ? `<br><small style="color:var(--ink-faint)">${escHTML(b.tentativaConferencia.rotulo)} em ${icpDia(b.tentativaConferencia.em)}</small>` : ''}</td>
     <td class="num" data-label="Registros">${b.registros == null ? "—" : Number(b.registros).toLocaleString("pt-BR")}</td>
     <td class="num" data-label="Pendências">${b.pendencias.length}</td></tr>`).join("");
   let filtro = "";

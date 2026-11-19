@@ -370,6 +370,14 @@ def main():
         pend += [f"teste: {x['texto']}" for x in tst["itens"] if x["nivel"] == "erro"][:5]
         if dims["P"] is None:
             pend.append("sem conferência independente na fonte oficial nos últimos 30 dias")
+        # tentativa de conferência que não terminou (prazo esgotado): mostrada ao lado da última conferência válida
+        va, uv_ = ver_auto.get(fid) or {}, ver.get(fid) or {}
+        tentativa = None
+        if va.get("ultimaTentativaResultado") and va.get("ultimaTentativa", "") > uv_.get("em", ""):
+            tentativa = {"em": va["ultimaTentativa"], "rotulo": "tempo esgotado" if "tempo esgotado" in va["ultimaTentativaResultado"] else va["ultimaTentativaResultado"]}
+            pend.append(f"conferência de {tentativa['em'][8:10]}/{tentativa['em'][5:7]}: {tentativa['rotulo']} — vale a última conferência válida"
+                        + (f", de {uv_['em'][8:10]}/{uv_['em'][5:7]}/{uv_['em'][:4]}" if uv_.get("em") else " (nenhuma)"))
+        vencida = bool(uv_.get("em")) and (AGORA - datetime.fromisoformat(uv_["em"][:19])).days > 30
         indep = (ver_auto.get(fid) or {}).get("independencia")
         lac = (ver_auto.get(fid) or {}).get("lacunas") or []
         if lac:
@@ -388,6 +396,7 @@ def main():
                       "dimensoes": {k: dims.get(k) for k in PESOS_DIM}, "nota": nota, "testes": {k: tst[k] for k in ("ok", "avisos", "erros")},
                       "testesItens": [{"nivel": x["nivel"], "texto": x["texto"]} for x in tst["itens"]][:200],
                       "ultimaVerificacao": ({k: ver[fid].get(k) for k in ("em", "resultado", "metodo", "fonteUrl", "conferidos", "comparados", "divergentes", "nota", "tipo")} if fid in ver else None),
+                      "tentativaConferencia": tentativa, "conferenciaVencida": vencida,
                       "historicoVerificacoes": [anotar(h) for h in hist_ver if h.get("base") == fid][-50:],
                       "divergencias": [anotar(h) for h in hist_ver if h.get("base") == fid and h.get("resultado") == "diverge"],
                       "correcoes": [c for c in cors if fid in c["bases"]], "falhasUltimaColeta": falhas_agora.get(fid, [])[:10],
@@ -556,7 +565,7 @@ dl{display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);gap:6px 
 <dt>Registros</dt><dd>{num(b['registros'])}{f" · total {brl(b['total'])}" if isinstance(b['total'], (int, float)) and b['total'] > 1000 else ''}</dd>
 <dt>Identificador do registro original</dt><dd>{e(b['identificadorOriginal'])}</dd>
 <dt>Arquivos de dados</dt><dd>{' · '.join(f"<a href='/{e(a)}'>{e(a)}</a>" for a in b['arquivos'])}</dd>
-<dt>Última verificação oficial</dt><dd>{dt((uv or {}).get('em')) if uv else 'nunca'}</dd></dl>
+<dt>Última verificação oficial</dt><dd>{dt((uv or {}).get('em')) if uv else 'nunca'}{' — <b>vencida</b> (mais de 30 dias: a base não conta como conferida)' if b.get('conferenciaVencida') else ''}{f" · última tentativa {dt(b['tentativaConferencia']['em'])}: <b>{e(b['tentativaConferencia']['rotulo'])}</b>" if b.get('tentativaConferencia') else ''}</dd></dl>
 {(lambda u: f"<h2>Última execução do robô</h2><p><b>{e(u.get('rotulo') or 'não registrada')}</b>" + (f" — coleta {e(str(u.get('runId')))}, {dt(u.get('inicio'))}" if u.get('runId') else "") + "</p>")(b.get('ultimaExecucao') or {})}
 <h2>Pendências</h2><ul>{pend}</ul>
 <h2>Testes matemáticos executados ({b['testes']['ok']} aprovados · {b['testes']['avisos']} avisos · {b['testes']['erros']} erros)</h2><ul style='font-size:.85rem'>{tst or '<li>Nenhum teste específico desta base.</li>'}</ul>
