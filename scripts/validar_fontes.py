@@ -1203,7 +1203,7 @@ CONFERENCIAS = (("governo-ms", lambda: v_governo()), ("deputados-estaduais", lam
                 ("votacoes", lambda: v_votacoes()), ("producao", lambda: v_producao()), ("judiciario", lambda: v_judiciario()),
                 ("entidades", lambda: v_entidades()), ("obras", lambda: v_obras()), ("publicidade", lambda: v_publicidade()),
                 # por último: o PNCP limita as consultas (429) e as esperas podem consumir o prazo do passo
-                ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis", n=None)))
+                ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis", n=50)))  # 208 inteiras levam ~9 min: amostra + janela de 30 dias
 
 
 JANELA_COLETA_H = 2  # a conferência só entra no ICP se rodar na mesma coleta e até 2 h depois do início dela
