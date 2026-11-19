@@ -187,22 +187,28 @@ def carregar_ceap_bulk(ano):
                         "doc": (row.get("txtNumero") or "").strip(),
                         "urlNotaFiscal": row.get("urlDocumento") or None,
                         "mes": mes,
+                        "codDocumento": (row.get("ideDocumento") or "").strip() or None,
                     })
     except Exception as e:
         log(f"  ⚠️ CEAP completo indisponível: {e} — usando API por deputado")
         _CEAP_BULK[ano] = None
         return None
 
-    # Em 2026 o arquivo anual deixou de trazer as passagens aéreas emitidas pelo SIGEPA (sistema de passagens da
-    # Câmara), que contam na cota e aparecem na API. Se o arquivo não tiver nenhuma, completa pela API.
-    if not any("SIGEPA" in c for d in por_dep.values() for c in d["cats"]):
-        ordem = sorted(por_dep, key=lambda i: por_dep[i].get("uf") != "MS")  # MS primeiro
-        for dep_id, notas in sigepa_pela_api(ordem, ano).items():
-            d = por_dep[dep_id]
-            for n in notas:
-                d["total"] += n["valor"]
-                d["cats"][n["categoria"]] = d["cats"].get(n["categoria"], 0) + n["valor"]
-                d["despesas"].append(n)
+    # O arquivo anual da Câmara demora a receber os lançamentos recentes, e em 2026 deixou de trazer as passagens
+    # aéreas do SIGEPA. A API tem os dois: completa o que falta no arquivo (o arquivo prevalece quando chegar).
+    sigepa_no_arquivo = any("SIGEPA" in c for d in por_dep.values() for c in d["cats"])
+    ordem = sorted(por_dep, key=lambda i: por_dep[i].get("uf") != "MS")  # MS primeiro
+    n_api = n_dup = 0
+    for dep_id, itens in despesas_api_de(ordem, ano).items():
+        d = por_dep[dep_id]
+        novas, dups = complemento_api(d["despesas"], itens, incluir_sigepa=not sigepa_no_arquivo)
+        for n in novas:
+            d["total"] += n["valor"]
+            d["cats"][n["categoria"]] = d["cats"].get(n["categoria"], 0) + n["valor"]
+            d["despesas"].append(n)
+        n_api += len(novas)
+        n_dup += dups
+    log(f"  CEAP {ano}: {n_api} notas completadas pela API (ainda fora do arquivo anual); {n_dup} possível(is) duplicidade(s) na fonte")
 
     resultado = {}
     for dep_id, d in por_dep.items():
@@ -234,6 +240,78 @@ def _valor_api(item, invertida=False):
     if PASSAGEM.search(item.get("tipoDespesa") or ""):  # SIGEPA, RPA...
         return liq  # passagens: sinal certo (negativo = estorno de bilhete)
     return -liq if invertida else liq
+
+
+ORIGEM_API = "API da Câmara (ainda não está no arquivo anual)"
+
+
+def _nota_api(it, invertida):
+    return {"data": (it.get("dataDocumento") or "")[:10] or None, "categoria": it.get("tipoDespesa"),
+            "fornecedor": (it.get("nomeFornecedor") or "").strip(), "cnpjCpfFornecedor": _formata_cnpj_cpf(it.get("cnpjCpfFornecedor")),
+            "valor": round(_valor_api(it, invertida), 2), "doc": (it.get("numDocumento") or "").strip(),
+            "urlNotaFiscal": it.get("urlDocumento") or None, "mes": it.get("mes"), "codDocumento": str(it.get("codDocumento") or "") or None}
+
+
+def complemento_api(notas_arquivo, itens_api, incluir_sigepa=True):
+    """Notas da API que ainda não estão no arquivo anual: (novas, n_duplicidades).
+    Casa pelo código do documento + valor (a API usa o mesmo código para bilhete e reembolso parcial, então só o
+    código não basta); nota comum cujo código já está no arquivo com outro valor não entra (é diferença de valor). Nota da API igual a uma do arquivo (CNPJ/CPF, nº, valor e data) mas com outro código = possível
+    duplicidade na fonte: não entra no total; a nota do arquivo fica marcada com os dois códigos."""
+    import re as _r
+    dig = lambda t: _r.sub(r"\D", "", str(t or ""))
+    inv = api_invertida(itens_api)
+    no_arquivo = {(str(n.get("codDocumento") or ""), round(n["valor"], 2)) for n in notas_arquivo}
+    cod_arquivo = {str(n["codDocumento"]) for n in notas_arquivo if n.get("codDocumento")}
+    por_conteudo = {}
+    for n in notas_arquivo:
+        por_conteudo.setdefault((dig(n.get("cnpjCpfFornecedor")), n.get("doc"), round(n["valor"], 2), (n.get("data") or "")[:10]), n)
+    novas, dups = [], 0
+    for it in itens_api:
+        sig = PASSAGEM.search(it.get("tipoDespesa") or "")
+        if sig and not incluir_sigepa:
+            continue
+        n = _nota_api(it, inv)
+        if not n["valor"] or (n["codDocumento"] or "", n["valor"]) in no_arquivo:
+            continue
+        if not sig and n["codDocumento"] in cod_arquivo:
+            continue  # a nota está no arquivo com outro valor: é diferença de valor (o conferidor mostra), não nota faltando
+        igual = por_conteudo.get((dig(n["cnpjCpfFornecedor"]), n["doc"], n["valor"], (n["data"] or "")[:10]))
+        if igual is not None and igual.get("codDocumento") and igual.get("codDocumento") != n["codDocumento"]:
+            pd = igual.setdefault("possivelDuplicidade", {"texto": "possível duplicidade na fonte (Câmara): a mesma nota aparece com dois códigos de documento",
+                                                          "codigos": [igual["codDocumento"]]})
+            if n["codDocumento"] not in pd["codigos"]:
+                pd["codigos"].append(n["codDocumento"])
+                dups += 1
+            continue
+        n["origem"] = ORIGEM_API
+        novas.append(n)
+        no_arquivo.add((n["codDocumento"] or "", n["valor"]))
+    return novas, dups
+
+
+def despesas_api_de(dep_ids, ano, limite_seg=9 * 60):
+    """{dep_id: [despesas da API no ano]} lidas mês a mês por deputado (em paralelo, com limite de tempo)."""
+    from concurrent.futures import ThreadPoolExecutor
+    t0 = time.monotonic()
+
+    def um(dep_id):
+        if time.monotonic() - t0 > limite_seg:
+            return dep_id, None
+        try:
+            return dep_id, despesas_api_por_mes(dep_id, ano)
+        except Exception:
+            return dep_id, None
+
+    res, falhas = {}, 0
+    with ThreadPoolExecutor(8) as ex:
+        for dep_id, itens in ex.map(um, dep_ids):
+            if itens is None:
+                falhas += 1
+            else:
+                res[dep_id] = itens
+    log(f"  API da Câmara: despesas de {len(res)} deputados lidas ({sum(len(v) for v in res.values())} lançamentos)"
+        + (f"; {falhas} sem resposta" if falhas else ""))
+    return res
 
 
 def sigepa_pela_api(dep_ids, ano, limite_seg=9 * 60):

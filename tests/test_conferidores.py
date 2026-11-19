@@ -225,6 +225,30 @@ v.PRAZO.update(fim=_time.monotonic() - 1, esgotado=False)
 check(v.get("https://exemplo.invalido/") is None and v.PRAZO["esgotado"], "prazo esgotado: get() não consulta e marca esgotado")
 v.PRAZO.update(fim=None, esgotado=False)
 
+# coleta da Câmara: o arquivo anual é completado pela API (código do documento + valor); o arquivo prevalece
+sys.path.insert(0, str(ROOT / "scripts"))
+import coletar_dados as cd  # noqa: E402
+def _api(cod, valor, doc="1", data="2026-10-06", tipo="COMBUSTÍVEIS", cnpj="04990440000194"):
+    return {"codDocumento": cod, "valorLiquido": -valor, "valorDocumento": valor, "numDocumento": doc, "dataDocumento": data + "T00:00:00",
+            "tipoDespesa": tipo, "cnpjCpfFornecedor": cnpj, "nomeFornecedor": "X", "mes": 10}
+_arq = [{"codDocumento": "100", "valor": 180.0, "doc": "52517", "data": "2026-10-06", "cnpjCpfFornecedor": "04.990.440/0001-94", "categoria": "C"},
+        {"codDocumento": "200", "valor": 50.0, "doc": "9", "data": "2026-09-01", "cnpjCpfFornecedor": "04.990.440/0001-94", "categoria": "C"}]
+_itens = [_api("100", 180, doc="52517"), _api("101", 180, doc="52517"), _api("200", 50.01, doc="9", data="2026-09-01"), _api("300", 9000, doc="323", data="2026-10-22")]
+_novas, _dups = cd.complemento_api(_arq, _itens)
+check([n["codDocumento"] for n in _novas] == ["300"] and _novas[0]["origem"] == cd.ORIGEM_API,
+      "Câmara: só a nota que falta no arquivo entra pela API, marcada com a origem")
+check(_dups == 1 and _arq[0]["possivelDuplicidade"]["codigos"] == ["100", "101"],
+      "Câmara: a mesma nota com dois códigos na API = possível duplicidade na fonte (não soma em dobro, os dois códigos ficam na nota)")
+check(all(n["codDocumento"] != "200" for n in _novas), "Câmara: nota que está no arquivo com outro valor não entra (é diferença de valor, não nota faltando)")
+_sig = [{"codDocumento": "G1", "valorLiquido": 1431.04, "numDocumento": "957", "dataDocumento": "2026-01-21T00:00:00", "tipoDespesa": "PASSAGEM AÉREA - SIGEPA",
+         "cnpjCpfFornecedor": "02012862000160", "nomeFornecedor": "LATAM", "mes": 1},
+        {"codDocumento": "G1", "valorLiquido": -38.39, "numDocumento": "957", "dataDocumento": "2026-01-21T00:00:00", "tipoDespesa": "PASSAGEM AÉREA - SIGEPA",
+         "cnpjCpfFornecedor": "02012862000160", "nomeFornecedor": "LATAM", "mes": 1}]
+_n2, _ = cd.complemento_api([], _sig)
+check(sorted(n["valor"] for n in _n2) == [-38.39, 1431.04], "Câmara: bilhete e reembolso parcial com o mesmo código entram os dois")
+_n3, _ = cd.complemento_api([{**_n2[0], "origem": None}], _sig[:1])
+check(_n3 == [], "Câmara: quando a nota chega no arquivo anual, ela prevalece (a da API não entra de novo)")
+
 # coleta da Câmara: despesas lidas mês a mês, ordenadas, paginando dentro do mês; página que falha → exceção
 sys.path.insert(0, str(ROOT / "scripts"))
 import coletar_dados as cd  # noqa: E402

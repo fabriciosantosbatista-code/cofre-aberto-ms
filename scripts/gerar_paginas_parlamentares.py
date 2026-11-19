@@ -186,7 +186,8 @@ def coleta():
         lista.append(dict(grupo="federal", nome=d["nome"], partido=d.get("partido"), uf=d.get("uf"), foto=d.get("foto"),
                           total=d.get("cotaGastaAno") or 0, cota=None,
                           notas=[{"data": n.get("data"), "fornecedor": n.get("fornecedor"), "categoria": n.get("categoria"),
-                                  "valor": n.get("valor"), "url": n.get("urlNotaFiscal")} for n in notas],
+                                  "valor": n.get("valor"), "url": n.get("urlNotaFiscal"), "origem": n.get("origem"),
+                                  "possivelDuplicidade": n.get("possivelDuplicidade")} for n in notas],
                           totalNotas=d.get("totalNotasFiscais") or len(notas),
                           categorias={c["categoria"]: c["valor"] for c in d.get("ceapCategorias") or []},
                           extra={}, aba="deputados" if ms else "deputados-brasil", ms=ms, id=d["id"],
@@ -599,6 +600,11 @@ def pagina(p, irmaos):
         if x.get("url"):
             forn = f'<a href="{e(x["url"])}" target="_blank" rel="noopener nofollow">{forn}</a>'
         sub = e((x.get("categoria") or x.get("descricao") or "")[:90])
+        if x.get("origem"):
+            sub += f" · <i>{e(x['origem'])}</i>"
+        if x.get("possivelDuplicidade"):
+            pd = x["possivelDuplicidade"]
+            sub += f" · <b>{e(pd.get('texto') or 'possível duplicidade na fonte')}</b> (códigos {e(', '.join(pd.get('codigos') or []))}); somada uma vez"
         return (f"<tr><td style='white-space:nowrap'>{data_br(x['data'])}</td><td class='f'>{forn}<small>{sub}</small></td>"
                 f"<td class='num'>{brl(x.get('valor')) if x.get('valor') else '<small>valor ilegível no PDF</small>'}</td></tr>")
     bloco_notas = (f"<h2>Últimas notas fiscais</h2><div class='tabela-wrap'><table><thead><tr><th>Data</th><th>Fornecedor</th>"
