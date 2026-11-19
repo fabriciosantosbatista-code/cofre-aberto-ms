@@ -465,7 +465,7 @@ jobs:
             coletar_fontes_federais, coletar_fontes_auditoria]
     if: always()
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -590,7 +590,7 @@ jobs:
           path: folha_completa/
 
       - name: Conferir os dados direto nas fontes oficiais (independente da coleta)
-        timeout-minutes: 20
+        timeout-minutes: 35
         run: python3 -u scripts/validar_fontes.py || echo "⚠️ validar_fontes.py falhou — conferência anterior mantida"
 
       - name: Marcar servidores de gabinete da Câmara de CG com outro vínculo público

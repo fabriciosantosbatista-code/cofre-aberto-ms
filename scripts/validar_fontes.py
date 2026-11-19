@@ -26,7 +26,7 @@ a coleta e a conferência — registrada como "mudou na fonte", não como diverg
 Grava dados/validacao_fontes.json. Uma fonte fora do ar fica "indisponível" (nunca "confere").
 """
 
-import json, random, re, sys, time, unicodedata
+import json, os, random, re, sys, time, unicodedata
 from datetime import date, datetime
 from pathlib import Path
 
@@ -853,9 +853,10 @@ def registrar(fonte, r, out):
 CONFERENCIAS = (("governo-ms", lambda: v_governo()), ("deputados-estaduais", lambda: v_alems()), ("senadores", lambda: v_senado()),
                 ("deputados", lambda: v_camara()), ("arrecadacao", lambda: v_siconfi()), ("supersalarios", lambda: v_tjms()),
                 ("shows", lambda: v_pncp("shows.json", "shows", "contratações de show", "shows", n=None)),
-                ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis", n=None)),
                 ("votacoes", lambda: v_votacoes()), ("producao", lambda: v_producao()), ("judiciario", lambda: v_judiciario()),
-                ("entidades", lambda: v_entidades()))
+                ("entidades", lambda: v_entidades()),
+                # por último: o PNCP limita as consultas (429) e as esperas podem consumir o prazo do passo
+                ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis", n=None)))
 
 
 def main():
@@ -863,8 +864,14 @@ def main():
     so = set(sys.argv[1:])
     ant = J("validacao_fontes.json")
     out = dict(ant.get("fontes") or {})
+    t0, prazo = time.monotonic(), int(os.environ.get("CONFERENCIA_PRAZO_MIN", "28")) * 60  # o passo do workflow tem 35 min
     for fonte, fn in CONFERENCIAS:
         if so and fonte not in so:
+            continue
+        if time.monotonic() - t0 > prazo:  # sem tempo: fica a conferência anterior da base, marcada
+            if out.get(fonte):
+                out[fonte] = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"}
+            print(f"  {fonte:20} não conferida nesta coleta (tempo esgotado) — fica a conferência anterior")
             continue
         try:
             r = fn()
