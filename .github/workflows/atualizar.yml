@@ -363,7 +363,7 @@ jobs:
 
       - name: Transferências da União para MS (CGU) — páginas de município
         timeout-minutes: 30
-        run: python3 scripts/coletar_presidencia.py $( [ "$(date +%u)" = "1" ] || echo --rapido ) || echo "⚠️ coletar_presidencia.py falhou — dados anteriores mantidos"
+        run: python3 scripts/coletar_transferencias_uniao_ms.py || echo "⚠️ coletar_transferencias_uniao_ms.py falhou — dados anteriores mantidos"
 
       - name: Votações nominais dos deputados federais e senadores de MS (Câmara e Senado)
         timeout-minutes: 15
@@ -388,8 +388,8 @@ jobs:
             dados/tse_campanhas.json
             dados/eleicoes.json
             dados/sancoes.json
-            dados/presidencia.json
-            dados/presidencia_cache.json
+            dados/transferencias_uniao_ms.json
+            dados/transferencias_uniao_ms_cache.json
             dados/votacoes.json
             dados/votacoes_cache.json
             dados/producao_legislativa.json

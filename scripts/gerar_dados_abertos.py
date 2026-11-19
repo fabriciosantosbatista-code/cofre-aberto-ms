@@ -218,8 +218,7 @@ def gerar_csvs():
         [[o.get("orgao"), o.get("numero"), o.get("processo"), o.get("fornecedor"), o.get("cnpj"), o.get("objeto"), o.get("municipios"),
           o.get("situacao"), o.get("inicio"), o.get("fim"), o.get("prazoInicial"), o.get("diasAditados"), o.get("diasParalisados"),
           o.get("executado"), num(o.get("valor"))] for o in gc.get("obras", [])])
-    pr = carregar("presidencia.json")  # só as transferências da União para MS (páginas de município)
-    ms = pr.get("ms") or {}
+    ms = carregar("transferencias_uniao_ms.json")
     contagem["uniao_transferencias_ms.csv"] = grava_csv("uniao_transferencias_ms.csv", ["recorte", "nome", f"valor_{ms.get('ano')}"],
         [[r, x["nome"], num(x["valor"])] for r in ("tipo", "orgao", "municipio") for x in ms.get(r, [])])
     gl = carregar("governo_ms_licitacoes.json")

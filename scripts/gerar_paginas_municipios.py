@@ -6,7 +6,7 @@ Junta, para cada um dos 79 municípios:
   - emendas parlamentares pagas no ano (dados/emendas_municipios.json): total,
     de quem (com link para a página do parlamentar de MS), por tipo e quem recebeu
   - Emendas Pix (transferências especiais) pagas no ano e quem mandou
-  - transferências da União no ano (dados/presidencia.json → ms.municipio)
+  - transferências da União no ano (dados/transferencias_uniao_ms.json → municipio)
 
 Gera /municipio/<slug>/index.html, o índice /municipio/, dados/municipios_index.json
 e acrescenta ao sitemap.xml. Roda depois de gerar_paginas_orgaos.py.
@@ -73,8 +73,9 @@ def main():
     for a, d in pix.items():
         for m in d.get("municipios", []):
             pix_mun.setdefault(chave(m["municipio"]), {})[a] = m
-    uniao = {chave(m["nome"]): m["valor"] for m in ((carregar("presidencia.json").get("ms") or {}).get("municipio") or [])}
-    uniao_ano = (carregar("presidencia.json").get("ms") or {}).get("ate")
+    tu = carregar("transferencias_uniao_ms.json")
+    uniao = {chave(m["nome"]): m["valor"] for m in (tu.get("municipio") or [])}
+    uniao_ano = tu.get("ate")
     ano_em = em.get("ano", ANO)
 
     def autor_link(a):
