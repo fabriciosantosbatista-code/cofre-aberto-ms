@@ -118,18 +118,20 @@ def pagadores():
         print(f"  ⚠️ agências de publicidade: {e}")
     hashes = {dig(c["cpfCnpj"]): c for c in cred if len(dig(c["cpfCnpj"])) == 14}
     alvo = [c for c in vig if c in hashes and (hashes[c].get("pago") or hashes[c].get("empenhado"))]
-    out = {}
-    antes = carregar("governo_ms_contratos.json").get("pagadores") or {}
-    vazios, erros, t0 = 0, 0, time.monotonic()
-    for n, c in enumerate(alvo):
-        # trava de segurança: o portal às vezes fica lento ou recusa toda consulta. Passou de 12 min, ou as 10 primeiras
-        # deram erro, para aqui e fica o valor anterior das demais (antes o passo travava até estourar o tempo do workflow)
-        if time.monotonic() - t0 > 12 * 60 or (n == 10 and erros >= 10):
-            print(f"  ⚠️ pagadores: interrompido em {n} de {len(alvo)} ({'erro em todas' if erros >= 10 else 'tempo esgotado'}) — mantidos os anteriores")
-            for k in alvo[n:]:
-                if antes.get(k):
-                    out[k] = antes[k]
-            break
+    anterior = carregar("governo_ms_contratos.json")
+    antes, quando = anterior.get("pagadores") or {}, dict(anterior.get("pagadoresEm") or {})
+    # checkpoint: começa pelas empresas atualizadas há mais tempo (ou nunca) — se o tempo acabar, as que ficaram para trás
+    # mantêm o valor anterior e são as primeiras da próxima coleta
+    alvo.sort(key=lambda c: (quando.get(c) or "", c))
+    out, vazios, erros, t0 = {}, 0, 0, time.monotonic()
+    LIMITE_MIN = 20  # minutos para este passo (o passo do workflow tem 30)
+    import threading
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    trava, estado = threading.Lock(), {"seguidos": 0, "feitos": 0, "parar": False}
+
+    def consulta(c):
+        if estado["parar"]:
+            return c, None, "não consultada"
         h = hashes[c]
         for t in range(2):  # a API às vezes devolve a lista vazia: tenta de novo e, se seguir vazia, fica o valor anterior
             try:
@@ -138,22 +140,44 @@ def pagadores():
                 lst = [[re.sub(r"\s+", " ", d.get("orgao") or "").strip(), round(d.get("pago") or 0, 2), round(d.get("empenhado") or 0, 2),
                         d.get("elementoDespesa"), d.get("tipoLicitacao")] for d in j["data"][0].get("despesas") or []]
             except Exception as e:
-                print(f"  ⚠️ pagadores de {c}: {e}")
-                lst = []
-                erros += t == 0
-                break
+                with trava:  # espera crescente a cada erro seguido (2, 4, 8… até 60 s), para não insistir num portal lento
+                    estado["seguidos"] += 1
+                    espera = min(60, 2 ** estado["seguidos"])
+                time.sleep(espera)
+                return c, None, str(e)
+            with trava:
+                estado["seguidos"] = 0
             if lst:
-                break
+                return c, lst, None
             time.sleep(2)
-        if lst:
-            out[c] = lst
-        elif antes.get(c):
-            out[c] = antes[c]
-            vazios += 1
-        time.sleep(0.2)
+        return c, [], None
+
+    # no máximo 4 consultas ao mesmo tempo; 429/Retry-After e 5xx já são tratados em g.api (token novo, espera)
+    with ThreadPoolExecutor(4) as ex:
+        futuros = [ex.submit(consulta, c) for c in alvo]
+        for f in as_completed(futuros):
+            c, lst, erro = f.result()
+            estado["feitos"] += 1
+            if erro and erro != "não consultada":
+                erros += 1
+                print(f"  ⚠️ pagadores de {c}: {erro}")
+            if lst:
+                out[c] = lst
+                quando[c] = date.today().isoformat()
+            elif antes.get(c):
+                out[c] = antes[c]
+                vazios += lst == []
+            # trava de segurança: passou do limite de tempo, ou as 10 primeiras deram erro → para e fica o valor anterior
+            if not estado["parar"] and (time.monotonic() - t0 > LIMITE_MIN * 60 or (estado["feitos"] == 10 and erros >= 10)):
+                estado["parar"] = True
+                print(f"  ⚠️ pagadores: interrompido em {estado['feitos']} de {len(alvo)} ({'erro em todas' if erros >= 10 else 'tempo esgotado'}) — mantidos os anteriores")
+    minutos = (time.monotonic() - t0) / 60
+    feitas = sum(1 for c in alvo if quando.get(c) == date.today().isoformat())
+    print(f"  pagadores: {feitas} consultadas em {minutos:.1f} min ({feitas / minutos if minutos else 0:.0f} por minuto, 4 em paralelo)")
     if vazios:
         print(f"  pagadores: {vazios} respostas vazias — mantido o valor anterior")
     print(f"  pagadores: {len(out)} de {len(alvo)} empresas acompanhadas")
+    pagadores.quando = {c: quando[c] for c in out if c in quando}
     return out
 
 
@@ -175,7 +199,8 @@ def main():
         "totalCelebrado": sum(o.get("valorCelebrado") or 0 for o in orgaos), "orgaos": [
             {"codigo": o["codigo"], "sigla": o["orgao"], "nome": o["nome"], "contratos": o["totalCelebrado"], "valor": o["valorCelebrado"]}
             for o in sorted(orgaos, key=lambda o: -(o.get("valorCelebrado") or 0))],
-        "contratos": sorted(ct, key=lambda c: -c["valor"]), "obras": sorted(ob, key=lambda o: -o["valor"]), "pagadores": pg},
+        "contratos": sorted(ct, key=lambda c: -c["valor"]), "obras": sorted(ob, key=lambda o: -o["valor"]), "pagadores": pg,
+        "pagadoresEm": getattr(pagadores, "quando", None) or anterior.get("pagadoresEm") or {}},
         ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"✅ governo_ms_contratos.json — {len(ct)} contratos, {len(ob)} obras, pagadores de {len(pg)} empresas")
 
