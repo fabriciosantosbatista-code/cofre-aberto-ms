@@ -156,6 +156,21 @@ def dimensao_F(exec_hist, fid):
     return round(100 * sum(e in BOM for e in conhecidos) / len(conhecidos), 1) if conhecidos else None
 
 
+ANOTACOES = {}
+
+
+def anotar(h):
+    """Anotação pública ligada a uma conferência do histórico (dados/icp_anotacoes.json): o registro não é alterado."""
+    if not ANOTACOES:
+        try:
+            for a in json.load(open(ROOT / "dados" / "icp_anotacoes.json", encoding="utf-8")).get("anotacoes") or []:
+                ANOTACOES[(a["base"], a["em"])] = a["nota"]
+        except Exception:
+            ANOTACOES[None] = None
+    n = ANOTACOES.get((h.get("base"), h.get("em")))
+    return {**h, "anotacao": n} if n else h
+
+
 def linhas_da_base(execucao, fid):
     """Linhas do log da última coleta que dizem respeito à base (falhas, fonte fora do ar, erros e avisos)."""
     out = []
@@ -373,8 +388,8 @@ def main():
                       "dimensoes": {k: dims.get(k) for k in PESOS_DIM}, "nota": nota, "testes": {k: tst[k] for k in ("ok", "avisos", "erros")},
                       "testesItens": [{"nivel": x["nivel"], "texto": x["texto"]} for x in tst["itens"]][:200],
                       "ultimaVerificacao": ({k: ver[fid].get(k) for k in ("em", "resultado", "metodo", "fonteUrl", "conferidos", "comparados", "divergentes", "nota", "tipo")} if fid in ver else None),
-                      "historicoVerificacoes": [h for h in hist_ver if h.get("base") == fid][-50:],
-                      "divergencias": [h for h in hist_ver if h.get("base") == fid and h.get("resultado") == "diverge"],
+                      "historicoVerificacoes": [anotar(h) for h in hist_ver if h.get("base") == fid][-50:],
+                      "divergencias": [anotar(h) for h in hist_ver if h.get("base") == fid and h.get("resultado") == "diverge"],
                       "correcoes": [c for c in cors if fid in c["bases"]], "falhasUltimaColeta": falhas_agora.get(fid, [])[:10],
                       "ultimaExecucao": {"estado": estado_atual, "rotulo": ROTULO_EXEC.get(estado_atual, "não registrada"), "runId": exec_atual.get("runId"),
                                          "inicio": exec_atual.get("inicio"), "fim": exec_atual.get("fim")},
@@ -514,9 +529,11 @@ dl{display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);gap:6px 
                        f"<td class='n'>{'0' if abs(c['diferenca']) < 0.005 else brl(c['diferenca'])}</td></tr>" for c in (uv or {}).get("comparados") or [])
         tst = "".join(f"<li class='{x['nivel']}'>{'✅' if x['nivel'] == 'ok' else '⚠️' if x['nivel'] == 'aviso' else '❌'} {e(x['texto'])}</li>" for x in b["testesItens"][:80])
         hv = "".join(f"<tr><td class='n'>{dt(h['em'])}</td><td>{e(h['resultado'])}</td><td class='n'>{h.get('conferidos', 0)}</td><td class='n'>{len(h.get('divergentes') or [])}</td>"
-                     f"<td><small>{e(h.get('nota') or '')}</small></td></tr>" for h in b["historicoVerificacoes"][::-1])
+                     f"<td><small>{e(h.get('nota') or '')}{('<br><b>Anotação:</b> ' + e(h['anotacao'])) if h.get('anotacao') else ''}</small></td></tr>"
+                     for h in b["historicoVerificacoes"][::-1])
         cor = "".join(f"<li><b>{dd(c['data'])}</b> — {e(c['texto'])}</li>" for c in b["correcoes"]) or "<li>Nenhuma correção registrada para esta base.</li>"
-        div = "".join(f"<li>{dt(h['em'])}: {len(h.get('divergentes') or [])} item(ns) — {e(', '.join(str(x['item']) for x in (h.get('divergentes') or [])[:5]))}</li>" for h in b["divergencias"]) or "<li>Nenhuma divergência registrada nas conferências.</li>"
+        div = "".join(f"<li>{dt(h['em'])}: {len(h.get('divergentes') or [])} item(ns) — {e(', '.join(str(x['item']) for x in (h.get('divergentes') or [])[:5]))}"
+                      f"{('<br><b>Anotação:</b> ' + e(h['anotacao'])) if h.get('anotacao') else ''}</li>" for h in b["divergencias"]) or "<li>Nenhuma divergência registrada nas conferências.</li>"
         pend = "".join(f"<li>{e(p)}</li>" for p in b["pendencias"]) or "<li>Nenhuma pendência.</li>"
         lim = "".join(f"<li>{e(x)}</li>" for x in b["limitacoes"]) or "<li>Nenhuma limitação específica registrada além das gerais da metodologia.</li>"
         verificado_txt = (f"Conferida em {dt(uv['em'])} ({e(uv.get('metodo') or '')}): resultado <b>{e(uv['resultado'])}</b>, {uv.get('conferidos', 0)} itens comparados."

@@ -1,49 +1,170 @@
 {
- "geradoEm": "2026-11-18T22:40:38",
+ "geradoEm": "2026-11-18T23:22:27",
  "fontes": {
   "governo-ms": {
-   "resultado": "confere",
-   "em": "2026-11-18T18:33:50",
+   "resultado": "diverge",
+   "em": "2026-11-18T23:22:27",
    "metodo": "consulta nova ao portal do Estado (mesmo período da coleta): valor pago de cada órgão e totais do ano",
    "fonteUrl": "https://www.transparencia.ms.gov.br/",
    "conferidos": 68,
-   "divergentes": [],
-   "comparados": [
+   "divergentes": [
     {
      "item": "770202 AGÊNCIA DE PREVIDÊNCIA SOCIAL DE MATO GROSSO DO SU",
      "site": 4297925343.49,
-     "fonte": 4297925343.49,
-     "diferenca": 0.0
+     "fonte": 4297950481.44,
+     "diferenca": -25137.95
     },
     {
      "item": "290101 SECRETARIA DE ESTADO DE EDUCACAO",
      "site": 3630312000.15,
-     "fonte": 3630312000.15,
-     "diferenca": 0.0
+     "fonte": 3651189183.15,
+     "diferenca": -20877183.0
     },
     {
      "item": "270901 FUNDO ESPECIAL DE SAUDE DE MS",
      "site": 2151314861.15,
-     "fonte": 2151314861.15,
-     "diferenca": 0.0
+     "fonte": 2155846744.88,
+     "diferenca": -4531883.73
     },
     {
      "item": "790201 AGÊNCIA ESTADUAL DE GESTÃO DE EMPREENDIMENTOS",
      "site": 1993445152.84,
-     "fonte": 1993445152.84,
-     "diferenca": 0.0
+     "fonte": 2000500981.41,
+     "diferenca": -7055828.57
     },
     {
      "item": "310101 SECRETARIA DE ESTADO DE JUST.SEGUR.PUBLICA",
      "site": 1800165480.21,
-     "fonte": 1800165480.21,
-     "diferenca": 0.0
+     "fonte": 1800531977.48,
+     "diferenca": -366497.27
     },
     {
      "item": "350101 ENCARGOS GERAIS FINANCEIROS DO ESTADO",
      "site": 1774397923.12,
-     "fonte": 1774397923.12,
-     "diferenca": 0.0
+     "fonte": 1774389048.07,
+     "diferenca": 8875.05
+    },
+    {
+     "item": "110101 SECRETARIA DE ESTADO DE FAZENDA",
+     "site": 801465137.18,
+     "fonte": 802729801.45,
+     "diferenca": -1264664.27
+    },
+    {
+     "item": "310202 AGENCIA ESTADUAL DE ADM.DO SIST.PENITENCIARIO",
+     "site": 478111935.96,
+     "fonte": 488248247.98,
+     "diferenca": -10136312.02
+    },
+    {
+     "item": "290204 FUNDAÇÃO UNIVERSIDADE ESTADUAL DE MATO GROSSO DO S",
+     "site": 376896212.72,
+     "fonte": 377858468.66,
+     "diferenca": -962255.94
+    },
+    {
+     "item": "810101 SECRETARIA DE ESTADO DE DIREITOS HUMANOS E ASSISTÊ",
+     "site": 368666873.66,
+     "fonte": 393183742.93,
+     "diferenca": -24516869.27
+    },
+    {
+     "item": "330101 DEFENSORIA PUBLICA DO ESTADO DE MS",
+     "site": 293917268.5,
+     "fonte": 293917358.66,
+     "diferenca": -90.16
+    },
+    {
+     "item": "310201 DEPARTAMENTO ESTADUAL DE TRANSITO DE MS",
+     "site": 256808082.99,
+     "fonte": 258028006.8,
+     "diferenca": -1219923.81
+    },
+    {
+     "item": "510101 SECRETARIA DE ESTADO DE GOVERNO E GESTAO ESTRATEGI",
+     "site": 238831776.65,
+     "fonte": 239079776.25,
+     "diferenca": -247999.6
+    },
+    {
+     "item": "770101 SECRETARIA DE ESTADO DE ADMINISTRAÇÃO",
+     "site": 167368738.36,
+     "fonte": 167750305.29,
+     "diferenca": -381566.93
+    },
+    {
+     "item": "790203 AGÊNCIA DE HABITAÇÃO POPULAR DE MATO GROSSO DO SUL",
+     "site": 144333999.0,
+     "fonte": 145540998.13,
+     "diferenca": -1206999.13
+    },
+    {
+     "item": "150101 PROCURADORIA-GERAL DO ESTADO",
+     "site": 116163471.45,
+     "fonte": 116486514.93,
+     "diferenca": -323043.48
+    },
+    {
+     "item": "830205 AGÊNCIA ESTADUAL DE DEFESA SANITÁRIA, ANIMAL E VEG",
+     "site": 116017226.7,
+     "fonte": 116136172.67,
+     "diferenca": -118945.97
+    },
+    {
+     "item": "110901 FUNDO ESP DESENV APERF DAS ATIVID FAZENDARIA",
+     "site": 115393571.69,
+     "fonte": 115397166.01,
+     "diferenca": -3594.32
+    },
+    {
+     "item": "830206 AGÊNCIA DE DESENVOLVIMENTO AGRÁRIO E EXTENSÃO RURA",
+     "site": 104116764.17,
+     "fonte": 104058719.78,
+     "diferenca": 58044.39
+    },
+    {
+     "item": "790101 SECRETARIA DE ESTADO DE INFRAESTRUTURA E LOGÍSTICA",
+     "site": 102081560.6,
+     "fonte": 102089758.62,
+     "diferenca": -8198.02
+    }
+   ],
+   "comparados": [
+    {
+     "item": "770202 AGÊNCIA DE PREVIDÊNCIA SOCIAL DE MATO GROSSO DO SU",
+     "site": 4297925343.49,
+     "fonte": 4297950481.44,
+     "diferenca": -25137.95
+    },
+    {
+     "item": "290101 SECRETARIA DE ESTADO DE EDUCACAO",
+     "site": 3630312000.15,
+     "fonte": 3651189183.15,
+     "diferenca": -20877183.0
+    },
+    {
+     "item": "270901 FUNDO ESPECIAL DE SAUDE DE MS",
+     "site": 2151314861.15,
+     "fonte": 2155846744.88,
+     "diferenca": -4531883.73
+    },
+    {
+     "item": "790201 AGÊNCIA ESTADUAL DE GESTÃO DE EMPREENDIMENTOS",
+     "site": 1993445152.84,
+     "fonte": 2000500981.41,
+     "diferenca": -7055828.57
+    },
+    {
+     "item": "310101 SECRETARIA DE ESTADO DE JUST.SEGUR.PUBLICA",
+     "site": 1800165480.21,
+     "fonte": 1800531977.48,
+     "diferenca": -366497.27
+    },
+    {
+     "item": "350101 ENCARGOS GERAIS FINANCEIROS DO ESTADO",
+     "site": 1774397923.12,
+     "fonte": 1774389048.07,
+     "diferenca": 8875.05
     },
     {
      "item": "770902 FUNDO DO SISTEMA DE PROTEÇÃO SOCIAL DOS MILITARES ",
@@ -54,44 +175,44 @@
     {
      "item": "110101 SECRETARIA DE ESTADO DE FAZENDA",
      "site": 801465137.18,
-     "fonte": 801465137.18,
-     "diferenca": 0.0
+     "fonte": 802729801.45,
+     "diferenca": -1264664.27
     },
     {
      "item": "310202 AGENCIA ESTADUAL DE ADM.DO SIST.PENITENCIARIO",
      "site": 478111935.96,
-     "fonte": 478111935.96,
-     "diferenca": 0.0
+     "fonte": 488248247.98,
+     "diferenca": -10136312.02
     },
     {
      "item": "290204 FUNDAÇÃO UNIVERSIDADE ESTADUAL DE MATO GROSSO DO S",
      "site": 376896212.72,
-     "fonte": 376896212.72,
-     "diferenca": 0.0
+     "fonte": 377858468.66,
+     "diferenca": -962255.94
     },
     {
      "item": "810101 SECRETARIA DE ESTADO DE DIREITOS HUMANOS E ASSISTÊ",
      "site": 368666873.66,
-     "fonte": 368666873.66,
-     "diferenca": 0.0
+     "fonte": 393183742.93,
+     "diferenca": -24516869.27
     },
     {
      "item": "330101 DEFENSORIA PUBLICA DO ESTADO DE MS",
      "site": 293917268.5,
-     "fonte": 293917268.5,
-     "diferenca": 0.0
+     "fonte": 293917358.66,
+     "diferenca": -90.16
     },
     {
      "item": "310201 DEPARTAMENTO ESTADUAL DE TRANSITO DE MS",
      "site": 256808082.99,
-     "fonte": 256808082.99,
-     "diferenca": 0.0
+     "fonte": 258028006.8,
+     "diferenca": -1219923.81
     },
     {
      "item": "510101 SECRETARIA DE ESTADO DE GOVERNO E GESTAO ESTRATEGI",
      "site": 238831776.65,
-     "fonte": 238831776.65,
-     "diferenca": 0.0
+     "fonte": 239079776.25,
+     "diferenca": -247999.6
     },
     {
      "item": "350102 ENCARGOS GERAIS DE RH E PATRIMONIO DO ESTADO",
@@ -102,104 +223,104 @@
     {
      "item": "770101 SECRETARIA DE ESTADO DE ADMINISTRAÇÃO",
      "site": 167368738.36,
-     "fonte": 167368738.36,
-     "diferenca": 0.0
+     "fonte": 167750305.29,
+     "diferenca": -381566.93
     },
     {
      "item": "790203 AGÊNCIA DE HABITAÇÃO POPULAR DE MATO GROSSO DO SUL",
      "site": 144333999.0,
-     "fonte": 144333999.0,
-     "diferenca": 0.0
+     "fonte": 145540998.13,
+     "diferenca": -1206999.13
     },
     {
      "item": "150101 PROCURADORIA-GERAL DO ESTADO",
      "site": 116163471.45,
-     "fonte": 116163471.45,
-     "diferenca": 0.0
+     "fonte": 116486514.93,
+     "diferenca": -323043.48
     },
     {
      "item": "830205 AGÊNCIA ESTADUAL DE DEFESA SANITÁRIA, ANIMAL E VEG",
      "site": 116017226.7,
-     "fonte": 116017226.7,
-     "diferenca": 0.0
+     "fonte": 116136172.67,
+     "diferenca": -118945.97
     },
     {
      "item": "110901 FUNDO ESP DESENV APERF DAS ATIVID FAZENDARIA",
      "site": 115393571.69,
-     "fonte": 115393571.69,
-     "diferenca": 0.0
+     "fonte": 115397166.01,
+     "diferenca": -3594.32
     },
     {
      "item": "830206 AGÊNCIA DE DESENVOLVIMENTO AGRÁRIO E EXTENSÃO RURA",
      "site": 104116764.17,
-     "fonte": 104116764.17,
-     "diferenca": 0.0
+     "fonte": 104058719.78,
+     "diferenca": 58044.39
     },
     {
      "item": "790101 SECRETARIA DE ESTADO DE INFRAESTRUTURA E LOGÍSTICA",
      "site": 102081560.6,
-     "fonte": 102081560.6,
-     "diferenca": 0.0
+     "fonte": 102089758.62,
+     "diferenca": -8198.02
     },
     {
      "item": "850201 FUNDAÇÃO DE CULTURA DE MATO GROSSO DO SUL",
      "site": 99376202.81,
-     "fonte": 99376202.81,
-     "diferenca": 0.0
+     "fonte": 99849739.89,
+     "diferenca": -473537.08
     },
     {
      "item": "310901 FUNDO ESPECIAL DE REEQUIPAMENTO DA SSP DE MS",
      "site": 91245076.19,
-     "fonte": 91245076.19,
-     "diferenca": 0.0
+     "fonte": 91247440.93,
+     "diferenca": -2364.74
     },
     {
      "item": "830204 INSTITUTO DE MEIO AMBIENTE DE MATO GROSSO DO SUL",
      "site": 86953880.13,
-     "fonte": 86953880.13,
-     "diferenca": 0.0
+     "fonte": 87013071.68,
+     "diferenca": -59191.55
     },
     {
      "item": "830207 FUNDAÇÃO DE APOIO AO DESENVOLVIMENTO DO ENSINO, CI",
      "site": 56732894.53,
-     "fonte": 56732894.53,
-     "diferenca": 0.0
+     "fonte": 56806469.03,
+     "diferenca": -73574.5
     },
     {
      "item": "270201 FUNDACAO SERVICOS DE SAUDE DE MS",
      "site": 56375041.51,
-     "fonte": 56375041.51,
-     "diferenca": 0.0
+     "fonte": 56389848.83,
+     "diferenca": -14807.32
     },
     {
      "item": "510906 FUNDO ESTADUAL GARANTIDOR DE PARCERIAS",
      "site": 47558573.4,
-     "fonte": 47558573.4,
-     "diferenca": 0.0
+     "fonte": 47957559.91,
+     "diferenca": -398986.51
     },
     {
      "item": "830101 SECRETARIA DE ESTADO DE MEIO AMBIENTE, DESENVOLVIM",
      "site": 47488777.75,
-     "fonte": 47488777.75,
-     "diferenca": 0.0
+     "fonte": 47488683.59,
+     "diferenca": 94.16
     },
     {
      "item": "850903 FUNDO DE INVESTIMENTOS ESPORTIVOS",
      "site": 44305759.66,
-     "fonte": 44305759.66,
-     "diferenca": 0.0
+     "fonte": 44307784.06,
+     "diferenca": -2024.4
     },
     {
      "item": "810902 FUNDO ESTADUAL DE ASSISTÊNCIA SOCIAL",
      "site": 38132364.01,
-     "fonte": 38132364.01,
-     "diferenca": 0.0
+     "fonte": 38134289.01,
+     "diferenca": -1925.0
     },
     {
      "item": "510201 AGENCIA ESTADUAL DE REGULACAO DE SERVICOS PUBLICOS",
      "site": 33706144.81,
-     "fonte": 33706144.81,
-     "diferenca": 0.0
+     "fonte": 33845738.65,
+     "diferenca": -139593.84
     },
     {
      "item": "730101 SECRETARIA DE ESTADO DA CASA CIVIL",
@@ -210,80 +331,80 @@
     {
      "item": "530101 CONTROLADORIA GERAL DO ESTADO",
      "site": 26512677.44,
-     "fonte": 26512677.44,
-     "diferenca": 0.0
+     "fonte": 26549951.96,
+     "diferenca": -37274.52
     },
     {
      "item": "330901 FUNDO ESP P APERF DESENV ATIV DEFENSORIA PUB",
      "site": 26259510.22,
-     "fonte": 26259510.22,
-     "diferenca": 0.0
+     "fonte": 26548231.77,
+     "diferenca": -288721.55
     },
     {
      "item": "510204 FUNDAÇÃO ESTADUAL JORNALISTA LUIZ CHAGAS DE RÁDIO ",
      "site": 25070139.45,
-     "fonte": 25070139.45,
-     "diferenca": 0.0
+     "fonte": 25108335.08,
+     "diferenca": -38195.63
     },
     {
      "item": "310904 FUNDO ESTADUAL DE SEGURANÇA PÚBLICA",
      "site": 22822726.54,
-     "fonte": 22822726.54,
-     "diferenca": 0.0
+     "fonte": 22927706.54,
+     "diferenca": -104980.0
     },
     {
      "item": "830201 AGÊNCIA ESTADUAL DE METROLOGIA",
      "site": 17879792.01,
-     "fonte": 17879792.01,
-     "diferenca": 0.0
+     "fonte": 17898072.77,
+     "diferenca": -18280.76
     },
     {
      "item": "870101 SECRETARIA DE ESTADO DA CIDADANIA",
      "site": 17742298.39,
-     "fonte": 17742298.39,
-     "diferenca": 0.0
+     "fonte": 17752902.95,
+     "diferenca": -10604.56
     },
     {
      "item": "850203 FUNDAÇÃO DE DESPORTO E LAZER DE MS",
      "site": 14721599.0,
-     "fonte": 14721599.0,
-     "diferenca": 0.0
+     "fonte": 14724946.5,
+     "diferenca": -3347.5
     },
     {
      "item": "830208 FUNDAÇÃO DO TRABALHO DE MATO GROSSO DO SUL",
      "site": 14705627.59,
-     "fonte": 14705627.59,
-     "diferenca": 0.0
+     "fonte": 14714481.96,
+     "diferenca": -8854.37
     },
     {
      "item": "850101 SECRETARIA DE ESTADO DE TURISMO, ESPORTE E CULTURA",
      "site": 12173257.21,
-     "fonte": 12173257.21,
-     "diferenca": 0.0
+     "fonte": 12398897.71,
+     "diferenca": -225640.5
     },
     {
      "item": "850202 FUNDAÇÃO DE TURIMO DE MS",
      "site": 11186556.04,
-     "fonte": 11186556.04,
-     "diferenca": 0.0
+     "fonte": 11233607.49,
+     "diferenca": -47051.45
     },
     {
      "item": "850904 FUNDO PARA O DESENVOLVIMENTO DO TURISMO DE MATO GR",
      "site": 9970734.06,
-     "fonte": 9970734.06,
-     "diferenca": 0.0
+     "fonte": 9976884.06,
+     "diferenca": -6150.0
     },
     {
      "item": "830202 JUNTA COMERCIAL DO ESTADO DE MATO GROSSO DO SUL",
      "site": 9931598.02,
-     "fonte": 9931598.02,
-     "diferenca": 0.0
+     "fonte": 9941282.44,
+     "diferenca": -9684.42
     },
     {
      "item": "150901 FUNDO ESP. DA PROCURADORIA GERAL DO ESTADO",
      "site": 9220134.23,
-     "fonte": 9220134.23,
-     "diferenca": 0.0
+     "fonte": 9227109.23,
+     "diferenca": -6975.0
     },
     {
      "item": "830909 FUNDO ESTADUAL PRÓ-DESENVOLVIMENTO ECONÔMICO",
@@ -312,14 +433,14 @@
     {
      "item": "770201 FUNDAÇÃO ESCOLA DE GOVERNO DE MATO GROSSO DO SUL",
      "site": 5143689.16,
-     "fonte": 5143689.16,
-     "diferenca": 0.0
+     "fonte": 5143689.5,
+     "diferenca": -0.34
     },
     {
      "item": "830904 FUNDO PARA DESENVOLVIMENTO DAS CULTURAS DO MILHO E",
      "site": 5027604.29,
-     "fonte": 5027604.29,
-     "diferenca": 0.0
+     "fonte": 5027504.29,
+     "diferenca": 100.0
     },
     {
      "item": "850901 FUNDO DE INVESTIMENTOS CULTURAIS DO ESTADO DE MS",
@@ -336,8 +457,8 @@
     {
      "item": "810903 FUNDO ESTADUAL DE DEFESA DOS DIREITOS DO CONSUMIDO",
      "site": 3329646.73,
-     "fonte": 3329646.73,
-     "diferenca": 0.0
+     "fonte": 3339421.73,
+     "diferenca": -9775.0
     },
     {
      "item": "830903 FUNDO DE REGULARIZAÇÃO DE TERRAS",
@@ -348,8 +469,8 @@
     {
      "item": "290205 FUNDAÇÃO DE APOIO E DESENVOLVIMENTO À EDUCAÇÃO BÁS",
      "site": 2624464.57,
-     "fonte": 2624464.57,
-     "diferenca": 0.0
+     "fonte": 2636300.75,
+     "diferenca": -11836.18
     },
     {
      "item": "830901 FUNDO DE DEFESA E REPARAÇÃO DE INTERESSES DIFUSOS ",
@@ -402,20 +523,20 @@
     {
      "item": "810904 FUNDO ESTADUAL DOS DIREITOS DA PESSOA IDOSA",
      "site": 4400.0,
-     "fonte": 4400.0,
-     "diferenca": 0.0
+     "fonte": 4775.0,
+     "diferenca": -375.0
     },
     {
      "item": "TOTAL pago",
      "site": 21328692464.44,
-     "fonte": 21328692464.44,
-     "diferenca": 0.0
+     "fonte": 21403866096.0,
+     "diferenca": -75173631.56
     },
     {
      "item": "TOTAL empenhado",
      "site": 23274132242.77,
-     "fonte": 23274132242.77,
-     "diferenca": 0.0
+     "fonte": 23391671821.76,
+     "diferenca": -117539578.99
     }
    ],
    "naoObtidos": 0,
@@ -502,7 +623,7 @@
   },
   "deputados-estaduais": {
    "resultado": "confere",
-   "em": "2026-11-18T18:33:50",
+   "em": "2026-11-18T23:22:27",
    "metodo": "portal da ALEMS (/ceap/data): total do ano de cada deputado",
    "fonteUrl": "https://transparencia2.al.ms.gov.br/ceap",
    "conferidos": 25,
@@ -700,8 +821,8 @@
   },
   "senadores": {
    "resultado": "confere",
-   "em": "2026-11-18T18:33:50",
-   "metodo": "dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS",
+   "em": "2026-11-18T23:22:27",
+   "metodo": "dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS e cada reembolso",
    "fonteUrl": "https://adm.senado.gov.br/adm-dadosabertos/",
    "conferidos": 3,
    "divergentes": [],
@@ -740,12 +861,30 @@
     "Soraya Thronicke",
     "Tereza Cristina"
    ],
-   "registrosAbrangidos": 509
+   "registrosAbrangidos": 509,
+   "registrosPorTotais": 509,
+   "registrosConferidosUmAUm": 509,
+   "digestsUmAUm": {
+    "Nelsinho Trad": {
+     "n": 105,
+     "hash": "b771725baa8478da"
+    },
+    "Soraya Thronicke": {
+     "n": 238,
+     "hash": "c672eb22f29312af"
+    },
+    "Tereza Cristina": {
+     "n": 166,
+     "hash": "4ec8bd7453850c19"
+    }
+   },
+   "naoAchadosNaFonte": 0,
+   "casadosHoje": 509
   },
   "deputados": {
    "resultado": "confere",
-   "em": "2026-11-18T18:33:50",
-   "metodo": "API da Câmara: soma do valor líquido do ano de cada deputado federal de MS",
+   "em": "2026-11-18T23:22:27",
+   "metodo": "API da Câmara: soma do valor líquido do ano de cada deputado federal de MS e cada nota",
    "fonteUrl": "https://dadosabertos.camara.leg.br/",
    "conferidos": 8,
    "divergentes": [],
@@ -819,11 +958,25 @@
     "Rodolfo Nogueira",
     "Vander Loubet"
    ],
-   "registrosAbrangidos": 2685
+   "registrosAbrangidos": 2685,
+   "registrosPorTotais": 2685,
+   "registrosConferidosUmAUm": 2586,
+   "digestsUmAUm": {
+    "Beto Pereira": {
+     "n": 205,
+     "hash": "d685257b0e04e8a5"
+    },
+    "Rodolfo Nogueira": {
+     "n": 487,
+     "hash": "d63434b8328a1b4b"
+    }
+   },
+   "naoAchadosNaFonte": 99,
+   "casadosHoje": 2586
   },
   "arrecadacao": {
    "resultado": "confere",
-   "em": "2026-11-18T20:58:52",
+   "em": "2026-11-18T23:22:27",
    "metodo": "Siconfi RREO Anexo 3 (2026/4º bim, 2025/6º bim): ICMS mês a mês",
    "fonteUrl": "https://siconfi.tesouro.gov.br/",
    "conferidos": 20,
@@ -982,14 +1135,16 @@
     "ICMS 2026-07",
     "ICMS 2026-08"
    ],
-   "registrosAbrangidos": 20
+   "registrosAbrangidos": 20,
+   "registrosConferidosUmAUm": 20,
+   "registrosPorTotais": 0
   },
   "supersalarios": {
    "resultado": "confere",
-   "em": "2026-11-18T22:40:38",
+   "em": "2026-11-18T23:22:27",
    "metodo": "órgão por órgão no mês publicado: TJMS e TRT24 no DadosJusBr; os 39 órgãos do Governo numa consulta nova à folha do Estado filtrada por órgão (pessoas e total bruto); TCE-MS (servidores) numa consulta nova ao portal do TCE; mais 100 contracheques do Governo sorteados por dia (semente = data), um a um",
    "fonteUrl": "https://www.transparencia.ms.gov.br/",
-   "conferidos": 257,
+   "conferidos": 279,
    "divergentes": [],
    "comparados": [
     {
@@ -1038,6 +1193,42 @@
      "item": "Governo MS — SEFAZ: total bruto",
      "site": 48995884.85,
      "fonte": 48995884.85,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — DGPC: pessoas",
+     "site": 1789,
+     "fonte": 1789,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — DGPC: total bruto",
+     "site": 33514879.6,
+     "fonte": 33514879.6,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — PMMS: pessoas",
+     "site": 5642,
+     "fonte": 5642,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — PMMS: total bruto",
+     "site": 61379317.76,
+     "fonte": 61379317.76,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — CBMMS: pessoas",
+     "site": 1841,
+     "fonte": 1841,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — CBMMS: total bruto",
+     "site": 21472814.74,
+     "fonte": 21472814.74,
      "diferenca": 0.0
     },
     {
@@ -1137,18 +1328,6 @@
      "diferenca": 0.0
     },
     {
-     "item": "Governo MS — AGEMS: pessoas",
-     "site": 110,
-     "fonte": 110,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — AGEMS: total bruto",
-     "site": 1385218.0,
-     "fonte": 1385218.0,
-     "diferenca": 0.0
-    },
-    {
      "item": "Governo MS — SETESC: pessoas",
      "site": 44,
      "fonte": 44,
@@ -1170,6 +1349,18 @@
      "item": "Governo MS — AGEPEN: total bruto",
      "site": 20310731.43,
      "fonte": 20310731.43,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — GOVERNADORIA: pessoas",
+     "site": 5,
+     "fonte": 5,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — GOVERNADORIA: total bruto",
+     "site": 109748.01,
+     "fonte": 109748.01,
      "diferenca": 0.0
     },
     {
@@ -1338,18 +1529,6 @@
      "item": "Governo MS — FERTEL: total bruto",
      "site": 1016507.97,
      "fonte": 1016507.97,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — AGEHAB: pessoas",
-     "site": 104,
-     "fonte": 104,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — AGEHAB: total bruto",
-     "site": 854176.15,
-     "fonte": 854176.15,
      "diferenca": 0.0
     },
     {
@@ -1687,47 +1866,26 @@
      "site": 11673.03,
      "fonte": 11673.03,
      "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:10197024: líquido",
-     "site": 7442.67,
-     "fonte": 7442.67,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:83607025: bruto",
-     "site": 14003.39,
-     "fonte": 14003.39,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:83607025: líquido",
-     "site": 9995.18,
-     "fonte": 9995.18,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:16178022: bruto",
-     "site": 2688.41,
-     "fonte": 2688.41,
-     "diferenca": 0.0
     }
    ],
-   "naoObtidos": 28,
-   "nota": "Não conferidos: DGPC, PMMS, CBMMS, GOVERNADORIA — a API do Estado não aceita esses órgãos como filtro da folha (resposta 404), e somar a folha inteira seria repetir o caminho da coleta.",
+   "naoObtidos": 6,
+   "nota": "",
    "granularidade": "unidade",
    "unidade": "órgão no mês publicado (pessoas e totais da folha)",
    "unidadesBase": 44,
    "registrosBase": 92796,
-   "selecao": "todos os órgãos da folha, menos TCE-MS conselheiros e procuradores (contracheque só em PDF) e Câmara de CG (60 maiores); amostra diária de 100 contracheques do Governo",
+   "selecao": "todos os órgãos da folha (PMMS, DGPC e CBMMS pelo filtro do órgão-pai SEJUSP; Governadoria pelo SEGOV), menos TCE-MS conselheiros e procuradores (contracheque só em PDF) e Câmara de CG (60 maiores); amostra diária de 100 contracheques do Governo (os 4 órgãos sem filtro próprio buscados pelo nome)",
    "responsavel": "validar_fontes.py — conferência automática do robô diário (consulta própria à fonte, independente da coleta)",
    "metodologia": "ICP 2.0",
-   "unidadesConferidas": 38,
+   "unidadesConferidas": 40,
    "idsConferidos": [
     "TJMS — Tribunal de Justiça",
     "TRT24 — Justiça do Trabalho",
     "Governo MS — AGEPREV",
     "Governo MS — SEFAZ",
+    "Governo MS — DGPC",
+    "Governo MS — PMMS",
+    "Governo MS — CBMMS",
     "Governo MS — FUNSAU",
     "Governo MS — SES",
     "Governo MS — SED",
@@ -1736,9 +1894,9 @@
     "Governo MS — CGE",
     "Governo MS — SEGOV",
     "Governo MS — UEMS",
-    "Governo MS — AGEMS",
     "Governo MS — SETESC",
     "Governo MS — AGEPEN",
+    "Governo MS — GOVERNADORIA",
     "Governo MS — FADEB/MS",
     "Governo MS — SEJUSP",
     "Governo MS — AEM-MS",
@@ -1753,7 +1911,6 @@
     "Governo MS — SAD",
     "Governo MS — AGESUL",
     "Governo MS — FERTEL",
-    "Governo MS — AGEHAB",
     "Governo MS — DETRAN",
     "Governo MS — JUCEMS",
     "Governo MS — FUNTRAB",
@@ -1763,21 +1920,167 @@
     "Governo MS — FUNDECT",
     "TCE-MS — servidores"
    ],
-   "registrosAbrangidos": 90,
-   "semFiltro": [
-    "DGPC",
-    "PMMS",
-    "CBMMS",
-    "GOVERNADORIA"
-   ],
+   "registrosAbrangidos": 92201,
    "totaisDeOrgaoConferidos": {
-    "orgaos": 38,
-    "contrachequesNessesOrgaos": 83445
+    "orgaos": 40,
+    "contrachequesNessesOrgaos": 92508
    },
-   "registrosConferidosUmAUm": 90,
+   "registrosConferidosUmAUm": 92201,
+   "registrosPorTotais": 92508,
+   "digestsUmAUm": {
+    "Governo MS — AGEPREV": {
+     "n": 33837,
+     "hash": "5460776b79788e50"
+    },
+    "Governo MS — SEFAZ": {
+     "n": 850,
+     "hash": "24e7a21e2eab38ce"
+    },
+    "Governo MS — DGPC": {
+     "n": 1789,
+     "hash": "a51f4ea58ad7fd76"
+    },
+    "Governo MS — PMMS": {
+     "n": 5642,
+     "hash": "5f5caa836b761011"
+    },
+    "Governo MS — CBMMS": {
+     "n": 1841,
+     "hash": "a3ed6baff5298a11"
+    },
+    "Governo MS — FUNSAU": {
+     "n": 2154,
+     "hash": "95ec43987b3dbf4a"
+    },
+    "Governo MS — SES": {
+     "n": 1124,
+     "hash": "48d848a22b34f81f"
+    },
+    "Governo MS — SED": {
+     "n": 30883,
+     "hash": "5efcde1f7f0ff9b4"
+    },
+    "Governo MS — CASA CIVIL": {
+     "n": 130,
+     "hash": "8a6b495d0cb19444"
+    },
+    "Governo MS — IAGRO": {
+     "n": 465,
+     "hash": "743eea0a13ba2ac9"
+    },
+    "Governo MS — CGE": {
+     "n": 95,
+     "hash": "6e4b367ad8124f49"
+    },
+    "Governo MS — SEGOV": {
+     "n": 376,
+     "hash": "9a270fe2afd35871"
+    },
+    "Governo MS — UEMS": {
+     "n": 1562,
+     "hash": "e3ed272541505eb6"
+    },
+    "Governo MS — SETESC": {
+     "n": 44,
+     "hash": "aa47a51769540746"
+    },
+    "Governo MS — AGEPEN": {
+     "n": 1845,
+     "hash": "cdf653f99692bf2d"
+    },
+    "Governo MS — GOVERNADORIA": {
+     "n": 5,
+     "hash": "c95709c6fca523de"
+    },
+    "Governo MS — FADEB/MS": {
+     "n": 3,
+     "hash": "188d48cfda3576e7"
+    },
+    "Governo MS — SEJUSP": {
+     "n": 1057,
+     "hash": "045ff6628246e540"
+    },
+    "Governo MS — AEM-MS": {
+     "n": 89,
+     "hash": "100b98081294da76"
+    },
+    "Governo MS — IMASUL": {
+     "n": 356,
+     "hash": "209562d64181a34b"
+    },
+    "Governo MS — SEMADESC": {
+     "n": 117,
+     "hash": "cd06a2dfb88cb3c8"
+    },
+    "Governo MS — SEILOG": {
+     "n": 107,
+     "hash": "644eead69e086fa1"
+    },
+    "Governo MS — AGRAER": {
+     "n": 500,
+     "hash": "a820ac4b6ce40f78"
+    },
+    "Governo MS — FUNDTUR": {
+     "n": 51,
+     "hash": "2d72d69d7d991ad2"
+    },
+    "Governo MS — SEC": {
+     "n": 75,
+     "hash": "9a1291234aa393f4"
+    },
+    "Governo MS — FCMS": {
+     "n": 120,
+     "hash": "2983e3fbaa9cb791"
+    },
+    "Governo MS — ESCOLAGOV": {
+     "n": 24,
+     "hash": "69b56f2da5487259"
+    },
+    "Governo MS — SAD": {
+     "n": 1167,
+     "hash": "12e2d3835b6d2b8a"
+    },
+    "Governo MS — AGESUL": {
+     "n": 421,
+     "hash": "8bde87c3bcbf4d43"
+    },
+    "Governo MS — FERTEL": {
+     "n": 118,
+     "hash": "b415495ada74ba6f"
+    },
+    "Governo MS — DETRAN": {
+     "n": 849,
+     "hash": "d6ee3523ae718090"
+    },
+    "Governo MS — JUCEMS": {
+     "n": 70,
+     "hash": "3feb1f9d0f0d9e55"
+    },
+    "Governo MS — FUNTRAB": {
+     "n": 86,
+     "hash": "950603db4370d7db"
+    },
+    "Governo MS — PGE": {
+     "n": 280,
+     "hash": "7be12bb078001c37"
+    },
+    "Governo MS — SEAD": {
+     "n": 891,
+     "hash": "d11d1a68991814b1"
+    },
+    "Governo MS — FUNDESPORTE": {
+     "n": 396,
+     "hash": "8394f9d51215a120"
+    },
+    "Governo MS — FUNDECT": {
+     "n": 2206,
+     "hash": "c329a623b8fb7ab1"
+    }
+   },
+   "soNaFonte": 0,
    "amostraContracheques": {
     "sorteados": 100,
-    "conferidos": 90,
+    "conferidos": 99,
     "hashes": {
      "AGEPEN:92821022": "5384ddf5d83b",
      "AGEPEN:468324022": "225ef43d2dfb",
@@ -1820,13 +2123,23 @@
      "AGEPREV:372731021": "51ae0851eb46",
      "AGESUL:85219021": "0766e4b02b95",
      "AGRAER:47599021": "71e9247cdb7f",
+     "CBMMS:820659021": "b4544dcc7412",
+     "CBMMS:485530025": "ae423a3f7d40",
      "DETRAN:429345021": "c255e4bd2b79",
+     "DGPC:474595023": "9357d61b48c9",
+     "DGPC:101986023": "6c2850081984",
      "FUNDECT:825319021": "11b219f36148",
      "FUNDECT:825931021": "c6a7a04ca6e7",
      "FUNDESPORTE:828088021": "1b3195d5dc62",
      "FUNSAU:78642026": "d624b637c736",
      "FUNSAU:133779022": "bc319595bb6e",
      "IAGRO:96699021": "17ffea53a7b7",
+     "PMMS:100315021": "224c32dc1851",
+     "PMMS:426548021": "166a56863b10",
+     "PMMS:22554021": "796821f476e4",
+     "PMMS:73676023": "ce06173c5db3",
+     "PMMS:426001021": "8d5e2b27671d",
+     "PMMS:127060021": "33bac9da7bdb",
      "SAD:813404021": "237b211905b3",
      "SEAD:129805021": "0b65738f2cac",
      "SED:511482021": "79867300775c",
@@ -1857,7 +2170,6 @@
      "SED:48972021": "4e66eb4970e5",
      "SED:85624021": "77432143b05e",
      "SED:825424021": "359f09f64d25",
-     "SED:492733023": "62adac40a621",
      "SED:816161021": "1d8a12b28828",
      "SED:2021": "19bc59339d39",
      "SED:814696031": "97f449ab40f7",
@@ -5555,7 +5867,7 @@
   },
   "votacoes": {
    "resultado": "confere",
-   "em": "2026-11-18T19:31:22",
+   "em": "2026-11-18T23:22:27",
    "metodo": "API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano; item = voto de um deputado de MS (100 = igual ao site, 0 = diferente)",
    "fonteUrl": "https://dadosabertos.camara.leg.br/",
    "conferidos": 1008,
@@ -6420,11 +6732,13 @@
     "2557414-32",
     "2557414-41"
    ],
-   "registrosAbrangidos": 126
+   "registrosAbrangidos": 126,
+   "registrosConferidosUmAUm": 126,
+   "registrosPorTotais": 0
   },
   "producao": {
    "resultado": "confere",
-   "em": "2026-11-18T20:58:52",
+   "em": "2026-11-18T23:22:27",
    "metodo": "Câmara (/proposicoes, filtro de tipo na API) e Senado (/processo do autor): nº de projetos de cada parlamentar de MS desde 01/02/2023",
    "fonteUrl": "https://dadosabertos.camara.leg.br/",
    "conferidos": 11,
@@ -6520,11 +6834,61 @@
     "Tereza Cristina",
     "Vander Loubet"
    ],
-   "registrosAbrangidos": 1112
+   "registrosAbrangidos": 1112,
+   "registrosPorTotais": 1112,
+   "registrosConferidosUmAUm": 1112,
+   "digestsUmAUm": {
+    "Beto Pereira": {
+     "n": 41,
+     "hash": "97c0dd8fb0d9b64c"
+    },
+    "Camila Jara": {
+     "n": 141,
+     "hash": "42418fcb74f78891"
+    },
+    "Dagoberto Nogueira": {
+     "n": 49,
+     "hash": "c45253c4ec8f4480"
+    },
+    "Dr. Luiz Ovando": {
+     "n": 64,
+     "hash": "b6003a6efabce884"
+    },
+    "Geraldo Resende": {
+     "n": 70,
+     "hash": "ddd7313d32966e14"
+    },
+    "Marcos Pollon": {
+     "n": 289,
+     "hash": "bfc001cba69a3897"
+    },
+    "Rodolfo Nogueira": {
+     "n": 149,
+     "hash": "a5e07080fbcc7732"
+    },
+    "Vander Loubet": {
+     "n": 56,
+     "hash": "9b45b9aa4c390a9a"
+    },
+    "Nelsinho Trad": {
+     "n": 64,
+     "hash": "d25a6f8741a2b316"
+    },
+    "Soraya Thronicke": {
+     "n": 99,
+     "hash": "02f2bae5c7b49db2"
+    },
+    "Tereza Cristina": {
+     "n": 90,
+     "hash": "db0918179b5e8af7"
+    }
+   },
+   "naoAchadosNaFonte": 0,
+   "casadosHoje": 1112
   },
   "judiciario": {
    "resultado": "confere",
-   "em": "2026-11-18T18:33:50",
+   "em": "2026-11-18T23:22:27",
    "metodo": "DadosJusBr (contracheques do TJMS enviados ao CNJ, 09/2026): nº de magistrados ativos e soma do subsídio",
    "fonteUrl": "https://dadosjusbr.org/",
    "conferidos": 2,
