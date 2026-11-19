@@ -394,14 +394,15 @@ def v_emendas(n_emendas=30):
     escolhidas = random.sample(pendentes, min(n_emendas, len(pendentes)))
     escolhidas += [e for e in sorted(set(emendas) - set(pendentes), key=lambda e: min(valem.get(idp(x), "") for x in pags if x["emenda"] == e))][:max(0, n_emendas - len(escolhidas))]
     ano = str(em.get("ano") or date.today().year)
-    itens, chamadas = [], 0
+    itens, chamadas, motivos = [], 0, {}
     for e in escolhidas:
-        docs, falhou = [], False
+        docs, falhou, motivo_falha = [], False, None
         for pag in range(1, 40):
             j = _cgu(f"emendas/documentos/{e}", {"pagina": pag})
             chamadas += 1
             if j is None:
-                falhou = True
+                falhou, motivo_falha = True, ("prazo da conferência esgotado" if PRAZO["esgotado"] else
+                                              f"a API da CGU não devolveu os documentos da emenda (página {pag})")
                 break
             if not j:
                 break
@@ -414,7 +415,8 @@ def v_emendas(n_emendas=30):
                 det = _cgu(f"despesas/documentos/{d.get('codigoDocumento')}")
                 chamadas += 1
                 if det is None:
-                    falhou = True
+                    falhou, motivo_falha = True, ("prazo da conferência esgotado" if PRAZO["esgotado"] else
+                                                  f"a API da CGU não devolveu o detalhe do documento {d.get('codigoDocumento')}")
                     break
                 data = str(det.get("data") or d.get("data") or "")
                 mes = f"{data[3:5]}/{data[6:10]}" if re.match(r"\d{2}/\d{2}/\d{4}", data) else None
@@ -426,7 +428,13 @@ def v_emendas(n_emendas=30):
                 fonte[k] = round(fonte.get(k, 0) + v, 2)
         for x in [x for x in pags if x["emenda"] == e]:
             k = idp(x)
-            itens.append((k, x["valor"], None if falhou else fonte.get(k, 0.0 if fonte else None)))
+            v = None if falhou else fonte.get(k, 0.0 if fonte else None)
+            itens.append((k, x["valor"], v))
+            if v is None:
+                motivos[k] = motivo_falha or "nenhum pagamento a favorecido de MS no ano entre os documentos da emenda na API"
+            elif abs(v - x["valor"]) > 1:
+                motivos[k] = ("pagamento não encontrado na API (emenda + favorecido + mês)" if v == 0 else
+                              "valor diferente na API — pode ser pagamento lançado em outro mês na API (data do documento × mês de referência do download)")
     res = resultado(itens, "API da CGU (documentos de pagamento de cada emenda, com favorecido, UF, valor e data): pagamento a pagamento "
                     "(emenda + favorecido + mês)", "https://portaldatransparencia.gov.br/emendas", granularidade="registro",
                     unidade="pagamento (emenda + favorecido + mês)", unidades_base=len(pags), registros_base=len(pags),
@@ -435,6 +443,7 @@ def v_emendas(n_emendas=30):
     res["registrosConferidosUmAUm"] = len(res.get("hashes") or {})
     res["registrosPorTotais"] = 0
     res["chamadasApi"], res["duracaoSeg"] = chamadas, round(time.monotonic() - t0)
+    res["motivosRegistros"] = motivos  # divergência ou não obtido, com o motivo (mostrados no ICP)
     res["nota"] = (res.get("nota") or "") + f" {chamadas} chamadas à API da CGU em {round(time.monotonic() - t0)} s. Município do favorecido não conferido (a API não traz)."
     res["independencia"] = ("API da CGU: outro serviço do mesmo órgão (a coleta usa o arquivo de download do Portal da Transparência) — "
                             "confirma os pagamentos, não é fonte independente da CGU")
@@ -1439,7 +1448,7 @@ def registrar(fonte, r, out):
                                 **({"amostraContracheques": r["amostraContracheques"]} if r.get("amostraContracheques") else {}),
                                 **{k: r[k] for k in ("independencia", "totaisDeOrgaoConferidos", "registrosConferidosUmAUm", "registrosPorTotais", "semFiltro",
                                                      "digestsUmAUm", "soNaFonte", "naoAchadosNaFonte", "divergentesRegistros", "fonteIndependente",
-                                                     "fonteInacessivel", "ambiguasNaFonte", "problemasNaFonte") if r.get(k) is not None}},
+                                                     "fonteInacessivel", "ambiguasNaFonte", "problemasNaFonte", "motivosRegistros") if r.get(k) is not None}},
                                ensure_ascii=False) + "\n")
     out[fonte] = r
     return r

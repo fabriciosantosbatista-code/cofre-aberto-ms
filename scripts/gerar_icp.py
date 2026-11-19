@@ -380,6 +380,11 @@ def main():
             vb = f"{pr.get('valor') or 0:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
             pend.append(f"problema na fonte: {pr.get('deputado')}, nota {pr.get('doc')} (R$ {vb}) repetida pela própria fonte com os códigos "
                         f"{', '.join(pr.get('codigos') or [])} — somada uma vez no site, não conta como conferida")
+        mr = (ver_auto.get(fid) or {}).get("motivosRegistros") or {}
+        if mr:  # divergências e não obtidos registro a registro, com o motivo
+            from collections import Counter as _C
+            for m_, n_ in _C(mr.values()).most_common(6):
+                pend.append(f"{n_} registro(s): {m_} (ex.: {next(k for k, v in mr.items() if v == m_)})")
         for fi in (ver_auto.get(fid) or {}).get("fonteInacessivel") or []:
             pend.append(f"fonte inacessível a partir do robô: {fi} — essa parte não foi conferida")
         lac = (ver_auto.get(fid) or {}).get("lacunas") or []
