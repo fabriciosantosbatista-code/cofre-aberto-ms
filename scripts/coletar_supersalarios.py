@@ -92,7 +92,8 @@ def tribunal(orgao, rotulo):
     for c in ler("contracheque.csv"):
         base, outras = num(c["salario"]), num(c["beneficios"])
         pessoas[c["id_contracheque"]] = {
-            "nome": c["nome"].strip().title(), "cargo": c["funcao"].strip().capitalize(), "lotacao": c["local_trabalho"].strip().title(),
+            "nome": c["nome"].strip().title(), "matricula": (c.get("matricula") or "").strip() or None,
+            "cargo": c["funcao"].strip().capitalize(), "lotacao": c["local_trabalho"].strip().title(),
             "orgao": rotulo, "orgaoId": orgao, "poder": "Judiciário", "situacao": "Ativo",
             "mes": f"{m:02d}/{a}", "base": round(base, 2), "outras": round(outras, 2), "bruto": round(base + outras, 2),
             "descontos": round(abs(num(c["descontos"])), 2), "liquido": round(num(c["remuneracao"]), 2), "itens": {}}
@@ -105,6 +106,7 @@ def tribunal(orgao, rotulo):
         v = num(r["valor"])
         if p:
             p["itens"][item] = round(p["itens"].get(item, 0) + v, 2)
+            p.setdefault("_cat", {})[item] = r.get("categoria")  # indenização, direito eventual, direito pessoal… (DadosJusBr)
         if item.lower().startswith(("diária", "diaria")):
             continue
         t = tipos.setdefault(item, {"item": item, "categoria": r["categoria"], "valor": 0.0, "pessoas": 0})
@@ -119,7 +121,8 @@ def tribunal(orgao, rotulo):
             p["outras"] = round(p["outras"] - diar, 2)
             p["bruto"] = round(p["bruto"] - diar, 2)
             p["liquido"] = round(p["liquido"] - diar, 2)
-        p["itens"] = sorted(({"item": k, "valor": v} for k, v in p["itens"].items()
+        cat = p.pop("_cat", {})
+        p["itens"] = sorted(({"item": k, "valor": v, "categoria": cat.get(k)} for k, v in p["itens"].items()
                              if not (k.lower().startswith("diária") or k.lower().startswith("diaria"))), key=lambda x: -x["valor"])
     # resumos mensais (evolução): base x outras, desde janeiro do ano anterior
     serie = []
@@ -175,7 +178,8 @@ def governo():
     pessoas = []
     for x in linhas:
         fixa, ev = x.get("remuneracaoFixa") or 0, x.get("remuneracoesEventuais") or 0
-        pessoas.append({"nome": re.sub(r"\s+", " ", x.get("nome") or "").strip().title(), "cargo": (x.get("cargo") or "").strip().capitalize(),
+        pessoas.append({"nome": re.sub(r"\s+", " ", x.get("nome") or "").strip().title(), "matricula": str(x.get("matricula") or "") or None,
+                        "cargo": (x.get("cargo") or "").strip().capitalize(),
                         "lotacao": (x.get("vinculo") or "").strip().capitalize(), "orgao": f"Governo MS — {(x.get('orgao') or '').strip()}",
                         "orgaoId": "governo", "orgaoSigla": (x.get("orgao") or "").strip(), "poder": "Executivo estadual",
                         "situacao": (x.get("situacao") or "").strip().capitalize(), "mes": f"{mes:02d}/{ANO}",
@@ -244,7 +248,7 @@ def tce_membros(a, m):
         base = vals.get("1001", 0)
         bruto = sum(ganhos.values())
         desc = sum(v for c, v in vals.items() if c[0] == "9")
-        pessoas.append({"nome": cab_p.group(2).title(), "cargo": cargo, "lotacao": cargo_lot[len(cargo):].strip().title(),
+        pessoas.append({"nome": cab_p.group(2).title(), "matricula": cab_p.group(1), "cargo": cargo, "lotacao": cargo_lot[len(cargo):].strip().title(),
                         "orgao": "TCE-MS — Tribunal de Contas (membros)", "orgaoId": "tce", "poder": "Controle externo",
                         "situacao": mt.group(1), "mes": mt.group(2), "base": round(base, 2), "outras": round(bruto - base, 2),
                         "bruto": round(bruto, 2), "descontos": round(desc, 2), "liquido": round(bruto - desc, 2),
@@ -266,7 +270,8 @@ def tce():
     for x in rem:
         o = outros.get(x["matricula"], {})
         base, ev = x.get("totalVencimentosRemuneracao") or 0, o.get("totalVencimentoOutrosPagamentos") or 0
-        pessoas.append({"nome": re.sub(r"\s+", " ", x["nome"]).strip().title(), "cargo": re.sub(r"\s+", " ", x.get("cargoDescr") or "").strip(),
+        pessoas.append({"nome": re.sub(r"\s+", " ", x["nome"]).strip().title(), "matricula": str(x.get("matricula") or "") or None,
+                        "cargo": re.sub(r"\s+", " ", x.get("cargoDescr") or "").strip(),
                         "lotacao": (x.get("lotacaoDescr") or "").strip().title(), "orgao": "TCE-MS — Tribunal de Contas (servidores)",
                         "orgaoId": "tce", "poder": "Controle externo", "situacao": (x.get("vinculo") or "").capitalize(),
                         "mes": f"{m:02d}/{a}", "base": round(base, 2), "outras": round(ev, 2), "bruto": round(base + ev, 2),
@@ -357,6 +362,23 @@ def resumo_orgao(nome, lst, mes, fonte):
             "maiorLiquido": round(max((p["liquido"] for p in lst), default=0), 2),
             "mediaLiquida": round(sum(p["liquido"] for p in lst) / len(lst), 2) if lst else 0,
             "totalBase": round(sum(p["base"] for p in lst), 2), "totalOutras": round(sum(p["outras"] for p in lst), 2)}
+
+
+FOLHA = ROOT / "folha_completa" / "folha_supersalarios.jsonl.gz"  # fora do Git; vai só para o artefato privado do robô (90 dias)
+
+
+def gravar_folha(todos):
+    """Folha completa do mês (todas as pessoas de todos os órgãos), uma linha por contracheque, SEM CPF: base da checagem
+    automática e da conferência manual (scripts/verificacao/). Não vai para o site nem para o Git."""
+    import gzip
+    FOLHA.parent.mkdir(exist_ok=True)
+    n = 0
+    with gzip.open(FOLHA, "wt", encoding="utf-8") as f:
+        for p in todos:
+            x = {k: v for k, v in p.items() if k.lower() not in ("cpf", "acimateto")}
+            f.write(json.dumps(x, ensure_ascii=False) + "\n")
+            n += 1
+    print(f"  folha completa: {n:,} contracheques em {FOLHA.relative_to(ROOT)} (artefato privado, sem CPF)")
 
 
 def main():
@@ -464,6 +486,7 @@ def main():
            "orgaos": orgaos, "orgaosGoverno": orgaos_gov, "siglasGoverno": siglas_gov,
            "penduricalhos": penduricalhos, "evolucao": evolucao, "comparacaoTJs": comp, "ranking": ranking, "falhas": falhas}
     SAIDA.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    gravar_folha(todos)
     print(f"  {len(todos):,} pessoas · {len(acima):,} com bruto acima do teto (R$ {out['valorAcimaTeto']:,.2f} acima no mês)")
     print(f"✅ {SAIDA.relative_to(ROOT)} ({SAIDA.stat().st_size // 1024} KB)")
 

@@ -1,0 +1,66 @@
+name: Supersalários — conferência manual
+
+# Roda à mão (Actions → Run workflow):
+#   gerar   baixa a folha completa mais recente (artefato privado folha-supersalarios-*, 90 dias, sem CPF) e gera
+#           dados/verificacao/conferencia_manual.csv (421 supersalários, 100 intermediários, 100 da amostra; semente 42).
+#           O que já foi marcado na coluna "conferido" é mantido.
+#   resumo  lê o CSV depois de preenchida a coluna "conferido" (S/N) e gera dados/verificacao/resumo_conferencia.json
+on:
+  workflow_dispatch:
+    inputs:
+      acao:
+        description: 'gerar (lista para conferir) ou resumo (depois de preencher a coluna conferido)'
+        required: true
+        default: resumo
+        type: choice
+        options: [gerar, resumo]
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: conferencia-supersalarios
+  cancel-in-progress: false
+
+jobs:
+  conferencia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Baixar a folha completa mais recente (artefato privado do robô diário)
+        if: inputs.acao == 'gerar'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          NOME=$(gh api "repos/${{ github.repository }}/actions/artifacts?per_page=100" \
+            --jq '[.artifacts[] | select(.name | startswith("folha-supersalarios-")) | select(.expired | not)] | sort_by(.created_at) | last | .name // empty')
+          if [ -z "$NOME" ]; then echo "❌ nenhum artefato folha-supersalarios disponível"; exit 1; fi
+          RUN=${NOME#folha-supersalarios-}
+          echo "folha: $NOME (coleta $RUN)"
+          gh run download "$RUN" -n "$NOME" -D folha_completa
+
+      - name: Gerar a lista de conferência manual
+        if: inputs.acao == 'gerar'
+        run: python3 scripts/verificacao/gerar_conferencia.py
+
+      - name: Resumo da conferência (Clopper–Pearson)
+        run: python3 scripts/verificacao/resumo_conferencia.py
+
+      - name: LGPD — nenhum CPF completo nos arquivos gerados
+        run: python3 tests/test_cpf.py
+
+      - name: Publicar
+        run: |
+          git config user.name "Cofre Aberto (robô)"
+          git config user.email "noreply@github.com"
+          git add dados/verificacao/conferencia_manual.csv dados/verificacao/resumo_conferencia.json
+          git diff --cached --quiet && { echo "nada mudou"; exit 0; }
+          git commit -m "🤖 Supersalários: conferência manual (${{ inputs.acao }})"
+          for i in 1 2 3; do git pull --rebase origin main && git push origin main && break; sleep 10; done

@@ -1359,6 +1359,7 @@ Atenciosamente,</textarea>
         compara com o teto. O STF definiu, em 2026, limites para essas verbas
         (<a href="https://noticias.stf.jus.br/?p=159907" target="_blank" rel="noopener">Tema 966</a>). <span id="ss-avisos"></span>
       </p>
+      <div class="section-note" id="ss-conferencia" style="max-width:none"></div>
       <div class="section-head"><h2 class="section-title">Por órgão</h2></div>
       <div class="card card-x-scroll">
         <table class="notes-table" id="tabela-ss-orgaos">
@@ -6234,6 +6235,25 @@ function renderSupersalarios(d) {
   document.getElementById("ss-data").textContent = d.ultimaAtualizacao ? formatDateTime(d.ultimaAtualizacao) : "—";
   document.getElementById("ss-teto-fonte").textContent = `${formatBRL(T)} (${d.tetoFonte})`;
   document.getElementById("ss-avisos").textContent = (d.avisos || []).join(" ");
+  // conferência: manual no contracheque original (resumo_conferencia.json) + checagem automática (checagem_ultima.json)
+  Promise.all([carregarJSON("dados/verificacao/resumo_conferencia.json"), carregarJSON("dados/verificacao/checagem_ultima.json")]).then(([rc, ck]) => {
+    const el = document.getElementById("ss-conferencia");
+    if (!el || (!rc && !ck)) return;
+    const G = (rc && rc.grupos) || {}, s = G.supersalario, am = G.amostra, it = G.intermediario;
+    const pct = x => (100 * x).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "%";
+    const amostra = g => !g ? "" : g.conferidos
+      ? `${g.conferidos} de ${g.total} conferidos, com <b>${g.comErro} erro(s)</b> (taxa de erro estimada abaixo de <b>${pct(g.limiteSuperior95)}</b> com 95% de confiança)`
+      : `${g.total} sorteados, conferência ainda não iniciada`;
+    const partes = [];
+    if (s) partes.push(`<b>${s.conferidos} de ${s.total}</b> supersalários (líquido acima do teto) conferidos manualmente no contracheque original` +
+      (s.comErro ? ` — ${s.comErro} com erro` : ""));
+    if (am) partes.push(`amostra aleatória de contracheques <b>abaixo do teto</b>: ${amostra(am)}`);
+    if (it) partes.push(`amostra dos que têm <b>bruto acima e líquido abaixo</b> do teto: ${amostra(it)}`);
+    if (ck) partes.push(`<b>${ck.orgaos} órgãos</b> com checagem automática de integridade e totais em ${Number(ck.contracheques).toLocaleString("pt-BR")} contracheques ` +
+      `(${ck.alertas} alerta(s) para revisão)`);
+    el.innerHTML = `🔎 <b>Como estes números são conferidos:</b> ${partes.join("; ")}. Sorteio estratificado por órgão com semente fixa (reproduzível);
+      limite pelo método exato de Clopper–Pearson. <a href="https://github.com/${"fabriciosantosbatista-code/cofre-aberto-ms"}/blob/main/dados/verificacao/conferencia_manual.csv" target="_blank" rel="noopener">Lista de conferência</a>.`;
+  });
 
   const PG_ORGAO = o => o.startsWith("TJMS") ? "/orgao/tjms/" : o.startsWith("TRT24") ? "/orgao/trt24/" : o.startsWith("TCE-MS") ? "/orgao/tce-ms/" :
     o.startsWith("Câmara Municipal") ? "/orgao/camara-campo-grande/" : o.startsWith("Governo do Estado") ? "/orgao/" : null;

@@ -35,7 +35,16 @@ for job, j in wf["jobs"].items():
             continue
         nome = s["with"]["name"]
         ret = int(s["with"].get("retention-days", 90))
-        check(ret <= 30, f"{job} · {nome}: retenção {ret} dias (≤ 30)")
+        if nome.startswith("folha-supersalarios"):
+            # decisão do responsável (19/11/2026): folha completa por 90 dias, privada, só se a checagem (que varre CPF) passou
+            check(ret <= 90, f"{job} · {nome}: retenção {ret} dias (≤ 90, decisão registrada)")
+            ids = {x.get("id"): x for x in passos if x.get("id")}
+            cond = str(s.get("if", ""))
+            check(any(f"steps.{k}.outcome == 'success'" in cond and "checagem_automatica.py" in str(v.get("run", "")) for k, v in ids.items()),
+                  f"{job} · {nome}: só sobe se a checagem automática (detector de CPF) passou")
+            check(str(s["with"].get("path", "")).strip().rstrip("/") == "folha_completa", f"{job} · {nome}: só a pasta folha_completa/")
+        else:
+            check(ret <= 30, f"{job} · {nome}: retenção {ret} dias (≤ 30)")
         if nome.startswith("dados-"):
             ant = passos[i - 1]
             run = str(ant.get("run", ""))

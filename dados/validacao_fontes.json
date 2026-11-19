@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-18T21:10:00",
+ "geradoEm": "2026-11-18T22:10:15",
  "fontes": {
   "governo-ms": {
    "resultado": "confere",
@@ -986,40 +986,886 @@
   },
   "supersalarios": {
    "resultado": "confere",
-   "em": "2026-11-18T20:35:58",
-   "metodo": "DadosJusBr (contracheques do TJMS enviados ao CNJ, 09/2026): quantidade e salário-base",
-   "fonteUrl": "https://dadosjusbr.org/",
-   "conferidos": 2,
+   "em": "2026-11-18T22:10:15",
+   "metodo": "órgão por órgão no mês publicado: TJMS e TRT24 no DadosJusBr; os 39 órgãos do Governo numa consulta nova à folha do Estado filtrada por órgão (pessoas e total bruto); TCE-MS (servidores) numa consulta nova ao portal do TCE; mais 100 contracheques do Governo sorteados por dia (semente = data), um a um",
+   "fonteUrl": "https://www.transparencia.ms.gov.br/",
+   "conferidos": 257,
    "divergentes": [],
    "comparados": [
     {
-     "item": "magistrados",
+     "item": "TJMS: magistrados",
      "site": 227,
      "fonte": 227,
      "diferenca": 0
     },
     {
-     "item": "salário-base total",
+     "item": "TJMS: salário-base total",
      "site": 8910028.25,
      "fonte": 8910028.25,
      "diferenca": 0.0
+    },
+    {
+     "item": "TRT24: magistrados",
+     "site": 80,
+     "fonte": 80,
+     "diferenca": 0
+    },
+    {
+     "item": "TRT24: salário-base total",
+     "site": 3137933.68,
+     "fonte": 3137933.68,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — AGEPREV: pessoas",
+     "site": 33837,
+     "fonte": 33837,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — AGEPREV: total bruto",
+     "site": 428179977.89,
+     "fonte": 428179977.89,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — SEFAZ: pessoas",
+     "site": 850,
+     "fonte": 850,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — SEFAZ: total bruto",
+     "site": 48995884.85,
+     "fonte": 48995884.85,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — FUNSAU: pessoas",
+     "site": 2154,
+     "fonte": 2154,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — FUNSAU: total bruto",
+     "site": 25758050.41,
+     "fonte": 25758050.41,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — SES: pessoas",
+     "site": 1124,
+     "fonte": 1124,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — SES: total bruto",
+     "site": 12102970.9,
+     "fonte": 12102970.9,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — SED: pessoas",
+     "site": 30883,
+     "fonte": 30883,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — SED: total bruto",
+     "site": 195315423.8,
+     "fonte": 195315423.8,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — CASA CIVIL: pessoas",
+     "site": 130,
+     "fonte": 130,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — CASA CIVIL: total bruto",
+     "site": 1696720.17,
+     "fonte": 1696720.17,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — IAGRO: pessoas",
+     "site": 465,
+     "fonte": 465,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — IAGRO: total bruto",
+     "site": 5660839.96,
+     "fonte": 5660839.96,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — CGE: pessoas",
+     "site": 95,
+     "fonte": 95,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — CGE: total bruto",
+     "site": 2161189.94,
+     "fonte": 2161189.94,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — SEGOV: pessoas",
+     "site": 376,
+     "fonte": 376,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — SEGOV: total bruto",
+     "site": 5710616.52,
+     "fonte": 5710616.52,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — UEMS: pessoas",
+     "site": 1562,
+     "fonte": 1562,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — UEMS: total bruto",
+     "site": 21049644.84,
+     "fonte": 21049644.84,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — AGEMS: pessoas",
+     "site": 110,
+     "fonte": 110,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — AGEMS: total bruto",
+     "site": 1385218.0,
+     "fonte": 1385218.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — SETESC: pessoas",
+     "site": 44,
+     "fonte": 44,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — SETESC: total bruto",
+     "site": 539627.68,
+     "fonte": 539627.68,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — AGEPEN: pessoas",
+     "site": 1845,
+     "fonte": 1845,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — AGEPEN: total bruto",
+     "site": 20310731.43,
+     "fonte": 20310731.43,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — FADEB/MS: pessoas",
+     "site": 3,
+     "fonte": 3,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — FADEB/MS: total bruto",
+     "site": 53800.77,
+     "fonte": 53800.77,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — SEJUSP: pessoas",
+     "site": 1057,
+     "fonte": 1057,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — SEJUSP: total bruto",
+     "site": 13809413.81,
+     "fonte": 13809413.81,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — AEM-MS: pessoas",
+     "site": 89,
+     "fonte": 89,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — AEM-MS: total bruto",
+     "site": 1033306.11,
+     "fonte": 1033306.11,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — IMASUL: pessoas",
+     "site": 356,
+     "fonte": 356,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — IMASUL: total bruto",
+     "site": 4113654.09,
+     "fonte": 4113654.09,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — SEMADESC: pessoas",
+     "site": 117,
+     "fonte": 117,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — SEMADESC: total bruto",
+     "site": 1349854.55,
+     "fonte": 1349854.55,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — SEILOG: pessoas",
+     "site": 107,
+     "fonte": 107,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — SEILOG: total bruto",
+     "site": 1207083.88,
+     "fonte": 1207083.88,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — AGRAER: pessoas",
+     "site": 500,
+     "fonte": 500,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — AGRAER: total bruto",
+     "site": 5409045.14,
+     "fonte": 5409045.14,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — FUNDTUR: pessoas",
+     "site": 51,
+     "fonte": 51,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — FUNDTUR: total bruto",
+     "site": 549710.17,
+     "fonte": 549710.17,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — SEC: pessoas",
+     "site": 75,
+     "fonte": 75,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — SEC: total bruto",
+     "site": 708395.36,
+     "fonte": 708395.36,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — FCMS: pessoas",
+     "site": 120,
+     "fonte": 120,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — FCMS: total bruto",
+     "site": 1117148.76,
+     "fonte": 1117148.76,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — ESCOLAGOV: pessoas",
+     "site": 24,
+     "fonte": 24,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — ESCOLAGOV: total bruto",
+     "site": 221614.41,
+     "fonte": 221614.41,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — SAD: pessoas",
+     "site": 1167,
+     "fonte": 1167,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — SAD: total bruto",
+     "site": 10312530.83,
+     "fonte": 10312530.83,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — AGESUL: pessoas",
+     "site": 421,
+     "fonte": 421,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — AGESUL: total bruto",
+     "site": 3640537.4,
+     "fonte": 3640537.4,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — FERTEL: pessoas",
+     "site": 118,
+     "fonte": 118,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — FERTEL: total bruto",
+     "site": 1016507.97,
+     "fonte": 1016507.97,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — AGEHAB: pessoas",
+     "site": 104,
+     "fonte": 104,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — AGEHAB: total bruto",
+     "site": 854176.15,
+     "fonte": 854176.15,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — DETRAN: pessoas",
+     "site": 849,
+     "fonte": 849,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — DETRAN: total bruto",
+     "site": 6640382.7,
+     "fonte": 6640382.7,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — JUCEMS: pessoas",
+     "site": 70,
+     "fonte": 70,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — JUCEMS: total bruto",
+     "site": 501141.99,
+     "fonte": 501141.99,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — FUNTRAB: pessoas",
+     "site": 86,
+     "fonte": 86,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — FUNTRAB: total bruto",
+     "site": 607966.84,
+     "fonte": 607966.84,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — PGE: pessoas",
+     "site": 280,
+     "fonte": 280,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — PGE: total bruto",
+     "site": 1970123.91,
+     "fonte": 1970123.91,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — SEAD: pessoas",
+     "site": 891,
+     "fonte": 891,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — SEAD: total bruto",
+     "site": 5060296.05,
+     "fonte": 5060296.05,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — FUNDESPORTE: pessoas",
+     "site": 396,
+     "fonte": 396,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — FUNDESPORTE: total bruto",
+     "site": 789847.31,
+     "fonte": 789847.31,
+     "diferenca": 0.0
+    },
+    {
+     "item": "Governo MS — FUNDECT: pessoas",
+     "site": 2206,
+     "fonte": 2206,
+     "diferenca": 0
+    },
+    {
+     "item": "Governo MS — FUNDECT: total bruto",
+     "site": 2040783.99,
+     "fonte": 2040783.99,
+     "diferenca": 0.0
+    },
+    {
+     "item": "TCE-MS servidores: pessoas",
+     "site": 576,
+     "fonte": 576,
+     "diferenca": 0
+    },
+    {
+     "item": "TCE-MS servidores: salário-base total",
+     "site": 11010774.43,
+     "fonte": 11010774.43,
+     "diferenca": 0.0
+    },
+    {
+     "item": "TCE-MS servidores: outras verbas",
+     "site": 4768570.54,
+     "fonte": 4768570.54,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPEN:92821022: bruto",
+     "site": 10345.61,
+     "fonte": 10345.61,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPEN:92821022: líquido",
+     "site": 7694.19,
+     "fonte": 7694.19,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPEN:468324022: bruto",
+     "site": 9155.07,
+     "fonte": 9155.07,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPEN:468324022: líquido",
+     "site": 6958.64,
+     "fonte": 6958.64,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:40015023: bruto",
+     "site": 12451.62,
+     "fonte": 12451.62,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:40015023: líquido",
+     "site": 8836.84,
+     "fonte": 8836.84,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:437818021: bruto",
+     "site": 8827.17,
+     "fonte": 8827.17,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:437818021: líquido",
+     "site": 6577.0,
+     "fonte": 6577.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:449651021: bruto",
+     "site": 1255.29,
+     "fonte": 1255.29,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:449651021: líquido",
+     "site": 1123.48,
+     "fonte": 1123.48,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:98627021: bruto",
+     "site": 9266.21,
+     "fonte": 9266.21,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:98627021: líquido",
+     "site": 6921.34,
+     "fonte": 6921.34,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:49817021: bruto",
+     "site": 29117.22,
+     "fonte": 29117.22,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:49817021: líquido",
+     "site": 19779.77,
+     "fonte": 19779.77,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:1685024: bruto",
+     "site": 10334.98,
+     "fonte": 10334.98,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:1685024: líquido",
+     "site": 9795.84,
+     "fonte": 9795.84,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:104122025: bruto",
+     "site": 12451.62,
+     "fonte": 12451.62,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:104122025: líquido",
+     "site": 8836.84,
+     "fonte": 8836.84,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:63537022: bruto",
+     "site": 10444.7,
+     "fonte": 10444.7,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:63537022: líquido",
+     "site": 7738.17,
+     "fonte": 7738.17,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:38744022: bruto",
+     "site": 15806.17,
+     "fonte": 15806.17,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:38744022: líquido",
+     "site": 11032.69,
+     "fonte": 11032.69,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:30368022: bruto",
+     "site": 8617.47,
+     "fonte": 8617.47,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:30368022: líquido",
+     "site": 6969.85,
+     "fonte": 6969.85,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:125827022: bruto",
+     "site": 24903.26,
+     "fonte": 24903.26,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:125827022: líquido",
+     "site": 17124.04,
+     "fonte": 17124.04,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:1549022: bruto",
+     "site": 70538.68,
+     "fonte": 70538.68,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:1549022: líquido",
+     "site": 38133.87,
+     "fonte": 38133.87,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:44284022: bruto",
+     "site": 4676.4,
+     "fonte": 4676.4,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:44284022: líquido",
+     "site": 4290.64,
+     "fonte": 4290.64,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:76908023: bruto",
+     "site": 34560.58,
+     "fonte": 34560.58,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:76908023: líquido",
+     "site": 23780.0,
+     "fonte": 23780.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:55041023: bruto",
+     "site": 10202.92,
+     "fonte": 10202.92,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:55041023: líquido",
+     "site": 7958.38,
+     "fonte": 7958.38,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:50631026: bruto",
+     "site": 12122.0,
+     "fonte": 12122.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:50631026: líquido",
+     "site": 8631.33,
+     "fonte": 8631.33,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:120715022: bruto",
+     "site": 13224.73,
+     "fonte": 13224.73,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:120715022: líquido",
+     "site": 9542.06,
+     "fonte": 9542.06,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:10197024: bruto",
+     "site": 11673.03,
+     "fonte": 11673.03,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:10197024: líquido",
+     "site": 7442.67,
+     "fonte": 7442.67,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:83607025: bruto",
+     "site": 14003.39,
+     "fonte": 14003.39,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:83607025: líquido",
+     "site": 9995.18,
+     "fonte": 9995.18,
+     "diferenca": 0.0
+    },
+    {
+     "item": "contracheque AGEPREV:16178022: bruto",
+     "site": 2688.41,
+     "fonte": 2688.41,
+     "diferenca": 0.0
     }
    ],
-   "naoObtidos": 0,
-   "nota": "",
+   "naoObtidos": 28,
+   "nota": "Não conferidos: DGPC, PMMS, CBMMS, GOVERNADORIA — a API do Estado não aceita esses órgãos como filtro da folha (resposta 404), e somar a folha inteira seria repetir o caminho da coleta.",
    "granularidade": "unidade",
-   "unidade": "órgão no mês publicado (quantidade de pessoas e salário-base)",
-   "unidadesBase": 14,
+   "unidade": "órgão no mês publicado (pessoas e totais da folha)",
+   "unidadesBase": 44,
    "registrosBase": 92796,
-   "selecao": "recorte: só o TJMS (único órgão com contracheques no DadosJusBr nesta base)",
+   "selecao": "todos os órgãos da folha, menos TCE-MS conselheiros e procuradores (contracheque só em PDF) e Câmara de CG (60 maiores); amostra diária de 100 contracheques do Governo",
    "responsavel": "validar_fontes.py — conferência automática do robô diário (consulta própria à fonte, independente da coleta)",
    "metodologia": "ICP 2.0",
-   "unidadesConferidas": 2,
+   "unidadesConferidas": 38,
    "idsConferidos": [
-    "magistrados",
-    "salário-base total"
+    "TJMS — Tribunal de Justiça",
+    "TRT24 — Justiça do Trabalho",
+    "Governo MS — AGEPREV",
+    "Governo MS — SEFAZ",
+    "Governo MS — FUNSAU",
+    "Governo MS — SES",
+    "Governo MS — SED",
+    "Governo MS — CASA CIVIL",
+    "Governo MS — IAGRO",
+    "Governo MS — CGE",
+    "Governo MS — SEGOV",
+    "Governo MS — UEMS",
+    "Governo MS — AGEMS",
+    "Governo MS — SETESC",
+    "Governo MS — AGEPEN",
+    "Governo MS — FADEB/MS",
+    "Governo MS — SEJUSP",
+    "Governo MS — AEM-MS",
+    "Governo MS — IMASUL",
+    "Governo MS — SEMADESC",
+    "Governo MS — SEILOG",
+    "Governo MS — AGRAER",
+    "Governo MS — FUNDTUR",
+    "Governo MS — SEC",
+    "Governo MS — FCMS",
+    "Governo MS — ESCOLAGOV",
+    "Governo MS — SAD",
+    "Governo MS — AGESUL",
+    "Governo MS — FERTEL",
+    "Governo MS — AGEHAB",
+    "Governo MS — DETRAN",
+    "Governo MS — JUCEMS",
+    "Governo MS — FUNTRAB",
+    "Governo MS — PGE",
+    "Governo MS — SEAD",
+    "Governo MS — FUNDESPORTE",
+    "Governo MS — FUNDECT",
+    "TCE-MS — servidores"
    ],
-   "registrosAbrangidos": 227
+   "registrosAbrangidos": 83445,
+   "semFiltro": [
+    "DGPC",
+    "PMMS",
+    "CBMMS",
+    "GOVERNADORIA"
+   ],
+   "amostraContracheques": {
+    "sorteados": 100,
+    "conferidos": 90,
+    "hashes": {
+     "AGEPEN:92821022": "5384ddf5d83b",
+     "AGEPEN:468324022": "225ef43d2dfb",
+     "AGEPREV:40015023": "e406a0ff446c",
+     "AGEPREV:437818021": "a013fe37a1bb",
+     "AGEPREV:449651021": "6da2ed831b2f",
+     "AGEPREV:98627021": "69eac85e3a79",
+     "AGEPREV:49817021": "94dbbf42777e",
+     "AGEPREV:1685024": "b0c22cc3f6a7",
+     "AGEPREV:104122025": "4bbb4db0ace8",
+     "AGEPREV:63537022": "45dac1f15c17",
+     "AGEPREV:38744022": "6e2925055268",
+     "AGEPREV:30368022": "49a5c5447683",
+     "AGEPREV:125827022": "e33a718a4b9f",
+     "AGEPREV:1549022": "42bcbe460448",
+     "AGEPREV:44284022": "78616145f2e2",
+     "AGEPREV:76908023": "e3ba06870a29",
+     "AGEPREV:55041023": "71bbbd83811d",
+     "AGEPREV:50631026": "faac12a17bb9",
+     "AGEPREV:120715022": "48c2b519558c",
+     "AGEPREV:10197024": "3e80b33e96ec",
+     "AGEPREV:83607025": "2297a7bce8e0",
+     "AGEPREV:16178022": "f4356b7c63d0",
+     "AGEPREV:22666022": "88ec1f6c41f9",
+     "AGEPREV:91953022": "8e3a5b59c181",
+     "AGEPREV:46702022": "59eda1c74f34",
+     "AGEPREV:110604021": "a29e6dfa126b",
+     "AGEPREV:1691022": "fc565ad265c1",
+     "AGEPREV:49156023": "98a226269dc3",
+     "AGEPREV:106895021": "6d215710327f",
+     "AGEPREV:76492022": "3c179d6bab7c",
+     "AGEPREV:22966022": "88ee7e62f966",
+     "AGEPREV:34706024": "24badc781d4d",
+     "AGEPREV:450139021": "ba7d6ddd9edc",
+     "AGEPREV:14344022": "5ee1cd252240",
+     "AGEPREV:4434021": "c87f7ded7d1b",
+     "AGEPREV:3009022": "1a50a560cf67",
+     "AGEPREV:41915023": "d594823245b1",
+     "AGEPREV:61845021": "e18f93e1179a",
+     "AGEPREV:372731021": "51ae0851eb46",
+     "AGESUL:85219021": "0766e4b02b95",
+     "AGRAER:47599021": "71e9247cdb7f",
+     "DETRAN:429345021": "c255e4bd2b79",
+     "FUNDECT:825319021": "11b219f36148",
+     "FUNDECT:825931021": "c6a7a04ca6e7",
+     "FUNDESPORTE:828088021": "1b3195d5dc62",
+     "FUNSAU:78642026": "d624b637c736",
+     "FUNSAU:133779022": "bc319595bb6e",
+     "IAGRO:96699021": "17ffea53a7b7",
+     "SAD:813404021": "237b211905b3",
+     "SEAD:129805021": "0b65738f2cac",
+     "SED:511482021": "79867300775c",
+     "SED:43787039": "c9cae240728c",
+     "SED:15081021": "89fdb9ea48b3",
+     "SED:484803025": "5e1b9355a827",
+     "SED:509702023": "75c853716034",
+     "SED:98738035": "c5d963ecd33a",
+     "SED:498577021": "751956b8f7b2",
+     "SED:503637024": "095fcdc3a083",
+     "SED:83565021": "6636a1cd0493",
+     "SED:54440033": "d17afb234d4d",
+     "SED:41090023": "147a7eb20c6d",
+     "SED:40746021": "0604e7f97fc5",
+     "SED:468818030": "2740d74482a8",
+     "SED:816805023": "f9a0ae57c046",
+     "SED:510767023": "b722fe2becb1",
+     "SED:829456022": "f964b2ef7d9d",
+     "SED:511544023": "3ca0c84512a7",
+     "SED:126560023": "89c133f29381",
+     "SED:508670021": "c9fbeef53156",
+     "SED:474217031": "95ad057f6401",
+     "SED:818936021": "f2255cfdf55c",
+     "SED:511148021": "41ca32e32283",
+     "SED:4730023": "3cdf908dd486",
+     "SED:98066022": "309f71957f49",
+     "SED:815517021": "6a8a27775eb5",
+     "SED:48972021": "4e66eb4970e5",
+     "SED:85624021": "77432143b05e",
+     "SED:825424021": "359f09f64d25",
+     "SED:492733023": "62adac40a621",
+     "SED:816161021": "1d8a12b28828",
+     "SED:2021": "19bc59339d39",
+     "SED:814696031": "97f449ab40f7",
+     "SED:430530030": "95b491932576",
+     "SED:12610040": "7604990bb216",
+     "SEFAZ:106355021": "120ec91e70ee",
+     "SEGOV:61367022": "d1748ccd2a4d",
+     "SEJUSP:107590022": "36d2e191dfe1",
+     "SES:468290023": "721ef713ab85",
+     "UEMS:91110021": "2afdb7da572a",
+     "UEMS:40766024": "8e34d4581bf1"
+    }
+   }
   },
   "shows": {
    "resultado": "confere",
@@ -3838,16 +4684,226 @@
   },
   "alugueis": {
    "resultado": "confere",
-   "em": "2026-11-18T21:10:00",
-   "metodo": "PNCP: 8 contratações de aluguel sorteadas, valor de cada uma na consulta pública",
+   "em": "2026-11-18T21:39:33",
+   "metodo": "PNCP: todas as 207 contratações de aluguel, valor de cada uma na consulta pública",
    "fonteUrl": "https://pncp.gov.br/",
-   "conferidos": 8,
+   "conferidos": 105,
    "divergentes": [],
    "comparados": [
     {
-     "item": "03741683000126-1-000106/2026",
-     "site": 42000.0,
-     "fonte": 42000.0,
+     "item": "04895130000190-1-000053/2025",
+     "site": 9000000.0,
+     "fonte": 9000000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "02940523000143-1-000090/2025",
+     "site": 1650000.0,
+     "fonte": 1650000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03015475000140-1-000139/2025",
+     "site": 1320000.0,
+     "fonte": 1320000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03517102000177-1-000294/2025",
+     "site": 657600.0,
+     "fonte": 657600.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15389596000130-1-000081/2026",
+     "site": 583560.0,
+     "fonte": 583560.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03155926000144-1-000098/2026",
+     "site": 517888.08,
+     "fonte": 517888.08,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03236066000173-1-000036/2026",
+     "site": 420000.0,
+     "fonte": 420000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03155926000144-1-000152/2026",
+     "site": 330000.0,
+     "fonte": 330000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03155934000190-1-000018/2026",
+     "site": 293902.8,
+     "fonte": 293902.8,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03184041000173-1-000065/2026",
+     "site": 240000.0,
+     "fonte": 240000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03107539000132-1-000049/2026",
+     "site": 212400.0,
+     "fonte": 212400.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "13996218000190-1-000012/2025",
+     "site": 201334.68,
+     "fonte": 201334.68,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03903176000141-1-000128/2026",
+     "site": 181980.0,
+     "fonte": 181980.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03983541000175-1-000170/2026",
+     "site": 180000.0,
+     "fonte": 180000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "14788679000130-1-000002/2026",
+     "site": 176400.0,
+     "fonte": 176400.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "11970135000104-1-000003/2026",
+     "site": 150000.0,
+     "fonte": 150000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "24651200000172-1-000034/2026",
+     "site": 144000.0,
+     "fonte": 144000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "00394452000103-1-001115/2027",
+     "site": 143078.16,
+     "fonte": 143078.16,
+     "diferenca": 0.0
+    },
+    {
+     "item": "24651200000172-1-000133/2026",
+     "site": 141600.0,
+     "fonte": 141600.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "17701982000141-1-000007/2026",
+     "site": 132000.0,
+     "fonte": 132000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03184066000177-1-000002/2026",
+     "site": 120000.0,
+     "fonte": 120000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03155934000190-1-000038/2026",
+     "site": 120000.0,
+     "fonte": 120000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "11095923000190-1-000008/2026",
+     "site": 120000.0,
+     "fonte": 120000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "11095923000190-1-000012/2026",
+     "site": 120000.0,
+     "fonte": 120000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03156999000150-1-000053/2026",
+     "site": 120000.0,
+     "fonte": 120000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03173317000118-1-000088/2026",
+     "site": 114000.0,
+     "fonte": 114000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "09290533000120-1-000010/2026",
+     "site": 108000.0,
+     "fonte": 108000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "02925027000110-1-000026/2026",
+     "site": 108000.0,
+     "fonte": 108000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "37212719000104-1-000024/2026",
+     "site": 102390.48,
+     "fonte": 102390.48,
+     "diferenca": 0.0
+    },
+    {
+     "item": "11095923000190-1-000013/2026",
+     "site": 96000.0,
+     "fonte": 96000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03155934000190-1-000064/2026",
+     "site": 96000.0,
+     "fonte": 96000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03184041000173-1-000080/2026",
+     "site": 96000.0,
+     "fonte": 96000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "11443806000170-1-000015/2026",
+     "site": 96000.0,
+     "fonte": 96000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "13790575000105-1-000006/2026",
+     "site": 94478.76,
+     "fonte": 94478.76,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15453014000138-1-000001/2026",
+     "site": 92400.0,
+     "fonte": 92400.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "14540893000172-1-000001/2026",
+     "site": 84813.6,
+     "fonte": 84813.6,
      "diferenca": 0.0
     },
     {
@@ -3857,9 +4913,33 @@
      "diferenca": 0.0
     },
     {
+     "item": "03156999000150-1-000030/2026",
+     "site": 84000.0,
+     "fonte": 84000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03073673000160-1-000096/2026",
+     "site": 83500.0,
+     "fonte": 83500.0,
+     "diferenca": 0.0
+    },
+    {
      "item": "11443806000170-1-000004/2026",
      "site": 81600.0,
      "fonte": 81600.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03681582000107-1-000035/2026",
+     "site": 80040.0,
+     "fonte": 80040.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03155934000190-1-000023/2026",
+     "site": 79246.2,
+     "fonte": 79246.2,
      "diferenca": 0.0
     },
     {
@@ -3869,9 +4949,39 @@
      "diferenca": 0.0
     },
     {
-     "item": "03980919000187-1-000016/2026",
-     "site": 38400.0,
-     "fonte": 38400.0,
+     "item": "03442597000112-1-000039/2026",
+     "site": 72000.0,
+     "fonte": 72000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "01989813000119-1-000069/2025",
+     "site": 72000.0,
+     "fonte": 72000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "13790575000105-1-000012/2026",
+     "site": 72000.0,
+     "fonte": 72000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "04499327000100-1-000038/2026",
+     "site": 72000.0,
+     "fonte": 72000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03452307000111-1-000091/2026",
+     "site": 70000.0,
+     "fonte": 70000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "37212719000104-1-000044/2026",
+     "site": 68233.92,
+     "fonte": 68233.92,
      "diferenca": 0.0
     },
     {
@@ -3881,48 +4991,560 @@
      "diferenca": 0.0
     },
     {
-     "item": "03184041000173-1-000118/2026",
-     "site": 180000.0,
-     "fonte": 180000.0,
+     "item": "03015475000140-1-000032/2026",
+     "site": 62400.0,
+     "fonte": 62400.0,
      "diferenca": 0.0
     },
     {
-     "item": "02940523000143-1-000090/2025",
-     "site": 1650000.0,
-     "fonte": 1650000.0,
+     "item": "03883929000102-1-000004/2026",
+     "site": 61200.0,
+     "fonte": 61200.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03173317000118-1-000032/2026",
+     "site": 61200.0,
+     "fonte": 61200.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "14795993000140-1-000001/2026",
+     "site": 57600.0,
+     "fonte": 57600.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03505013000100-1-000020/2026",
+     "site": 57600.0,
+     "fonte": 57600.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03501541000191-1-000061/2026",
+     "site": 57600.0,
+     "fonte": 57600.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "33787094000140-1-000100/2026",
+     "site": 56400.0,
+     "fonte": 56400.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03156999000150-1-000016/2026",
+     "site": 55283.04,
+     "fonte": 55283.04,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03434792000109-1-000041/2026",
+     "site": 54000.0,
+     "fonte": 54000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03155934000190-1-000101/2026",
+     "site": 54000.0,
+     "fonte": 54000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "12457020000175-1-000012/2026",
+     "site": 50736.36,
+     "fonte": 50736.36,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03107539000132-1-000163/2026",
+     "site": 48000.0,
+     "fonte": 48000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03681582000107-1-000128/2025",
+     "site": 45000.0,
+     "fonte": 45000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15316822000153-1-000005/2026",
+     "site": 43200.0,
+     "fonte": 43200.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03501574000131-1-000070/2026",
+     "site": 43029.24,
+     "fonte": 43029.24,
+     "diferenca": 0.0
+    },
+    {
+     "item": "14789276000105-1-000001/2026",
+     "site": 42522.6,
+     "fonte": 42522.6,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03741683000126-1-000106/2026",
+     "site": 42000.0,
+     "fonte": 42000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "10836939000144-1-000045/2026",
+     "site": 42000.0,
+     "fonte": 42000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "11084263000142-1-000002/2026",
+     "site": 42000.0,
+     "fonte": 42000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15452783000111-1-000004/2025",
+     "site": 36432.0,
+     "fonte": 36432.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03452299000103-1-000064/2026",
+     "site": 36000.0,
+     "fonte": 36000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03575727000195-1-000005/2026",
+     "site": 36000.0,
+     "fonte": 36000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "13921551000130-1-000002/2026",
+     "site": 36000.0,
+     "fonte": 36000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03505013000100-1-000060/2026",
+     "site": 33000.0,
+     "fonte": 33000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03501574000131-1-000035/2026",
+     "site": 32043.84,
+     "fonte": 32043.84,
+     "diferenca": 0.0
+    },
+    {
+     "item": "04589937000103-1-000002/2026",
+     "site": 30000.0,
+     "fonte": 30000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "37198728000180-1-000002/2026",
+     "site": 30000.0,
+     "fonte": 30000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "10381732000122-1-000008/2026",
+     "site": 30000.0,
+     "fonte": 30000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "05443531000172-1-000032/2026",
+     "site": 29900.0,
+     "fonte": 29900.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "05472304000175-1-000017/2025",
+     "site": 28159.68,
+     "fonte": 28159.68,
+     "diferenca": 0.0
+    },
+    {
+     "item": "13034603000156-1-000024/2026",
+     "site": 28000.0,
+     "fonte": 28000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15389596000130-1-000143/2026",
+     "site": 28000.0,
+     "fonte": 28000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03903176000141-1-000065/2026",
+     "site": 27804.48,
+     "fonte": 27804.48,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03980919000187-1-000017/2026",
+     "site": 27600.0,
+     "fonte": 27600.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "11332999000192-1-000014/2026",
+     "site": 25800.0,
+     "fonte": 25800.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "11443806000170-1-000008/2026",
+     "site": 24600.0,
+     "fonte": 24600.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03452307000111-1-000016/2026",
+     "site": 24000.0,
+     "fonte": 24000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03184066000177-1-000058/2026",
+     "site": 23400.0,
+     "fonte": 23400.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03903176000141-1-000112/2026",
+     "site": 23068.2,
+     "fonte": 23068.2,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03155934000190-1-000054/2026",
+     "site": 21600.0,
+     "fonte": 21600.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "04589955000187-1-000010/2026",
+     "site": 21000.0,
+     "fonte": 21000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03903176000141-1-000111/2026",
+     "site": 20911.68,
+     "fonte": 20911.68,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03981081000146-1-000001/2026",
+     "site": 20400.0,
+     "fonte": 20400.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03352986000157-1-000029/2026",
+     "site": 20400.0,
+     "fonte": 20400.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "37226644000102-1-000078/2026",
+     "site": 20400.0,
+     "fonte": 20400.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03883929000102-1-000013/2026",
+     "site": 20000.0,
+     "fonte": 20000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03903176000141-1-000018/2026",
+     "site": 18092.88,
+     "fonte": 18092.88,
+     "diferenca": 0.0
+    },
+    {
+     "item": "18695666000177-1-000002/2026",
+     "site": 18000.0,
+     "fonte": 18000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "00394452000103-1-011285/2026",
+     "site": 16236.0,
+     "fonte": 16236.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "01989813000119-1-000057/2026",
+     "site": 14455.8,
+     "fonte": 14455.8,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03903176000141-1-000017/2026",
+     "site": 10800.0,
+     "fonte": 10800.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "01989813000119-1-000102/2026",
+     "site": 10200.0,
+     "fonte": 10200.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03107539000132-1-000161/2026",
+     "site": 3397.0,
+     "fonte": 3397.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03342920000186-1-000080/2023",
+     "site": 0,
+     "fonte": 0.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03342920000186-1-000214/2024",
+     "site": 0,
+     "fonte": 0.0,
      "diferenca": 0.0
     }
    ],
-   "naoObtidos": 0,
+   "naoObtidos": 102,
    "nota": "",
    "granularidade": "registro",
    "unidade": "contratação (nº de controle PNCP)",
    "unidadesBase": 207,
    "registrosBase": 207,
-   "selecao": "amostra aleatória simples de 8 por dia, sem reposição (semente = data)",
+   "selecao": "todas as contratações da base (reconsulta total)",
    "responsavel": "validar_fontes.py — conferência automática do robô diário (consulta própria à fonte, independente da coleta)",
    "metodologia": "ICP 2.0",
-   "unidadesConferidas": 8,
+   "unidadesConferidas": 105,
    "idsConferidos": [
+    "00394452000103-1-001115/2027",
+    "00394452000103-1-011285/2026",
+    "01989813000119-1-000057/2026",
+    "01989813000119-1-000069/2025",
+    "01989813000119-1-000102/2026",
+    "02925027000110-1-000026/2026",
     "02940523000143-1-000090/2025",
+    "03015475000140-1-000032/2026",
+    "03015475000140-1-000139/2025",
+    "03073673000160-1-000096/2026",
+    "03107539000132-1-000049/2026",
+    "03107539000132-1-000161/2026",
+    "03107539000132-1-000163/2026",
+    "03155926000144-1-000098/2026",
+    "03155926000144-1-000152/2026",
+    "03155934000190-1-000018/2026",
+    "03155934000190-1-000023/2026",
+    "03155934000190-1-000038/2026",
+    "03155934000190-1-000054/2026",
+    "03155934000190-1-000064/2026",
+    "03155934000190-1-000101/2026",
+    "03156999000150-1-000016/2026",
+    "03156999000150-1-000030/2026",
+    "03156999000150-1-000053/2026",
+    "03173317000118-1-000032/2026",
+    "03173317000118-1-000088/2026",
     "03173317000118-1-000109/2026",
-    "03184041000173-1-000118/2026",
+    "03184041000173-1-000065/2026",
+    "03184041000173-1-000080/2026",
+    "03184066000177-1-000002/2026",
+    "03184066000177-1-000058/2026",
+    "03236066000173-1-000036/2026",
+    "03342920000186-1-000080/2023",
+    "03342920000186-1-000214/2024",
+    "03352986000157-1-000029/2026",
+    "03434792000109-1-000041/2026",
+    "03442597000112-1-000039/2026",
+    "03452299000103-1-000064/2026",
+    "03452307000111-1-000016/2026",
+    "03452307000111-1-000091/2026",
+    "03501541000191-1-000061/2026",
+    "03501574000131-1-000035/2026",
+    "03501574000131-1-000070/2026",
+    "03505013000100-1-000020/2026",
+    "03505013000100-1-000060/2026",
+    "03517102000177-1-000294/2025",
+    "03575727000195-1-000005/2026",
+    "03681582000107-1-000035/2026",
+    "03681582000107-1-000128/2025",
     "03741683000126-1-000106/2026",
-    "03980919000187-1-000016/2026",
+    "03883929000102-1-000004/2026",
+    "03883929000102-1-000013/2026",
+    "03903176000141-1-000017/2026",
+    "03903176000141-1-000018/2026",
+    "03903176000141-1-000065/2026",
+    "03903176000141-1-000111/2026",
+    "03903176000141-1-000112/2026",
+    "03903176000141-1-000128/2026",
+    "03980919000187-1-000017/2026",
+    "03981081000146-1-000001/2026",
+    "03983541000175-1-000170/2026",
+    "04499327000100-1-000038/2026",
+    "04589937000103-1-000002/2026",
+    "04589955000187-1-000010/2026",
+    "04895130000190-1-000053/2025",
+    "05443531000172-1-000032/2026",
+    "05472304000175-1-000017/2025",
+    "09290533000120-1-000010/2026",
+    "10381732000122-1-000008/2026",
     "10474017000134-1-000002/2026",
+    "10836939000144-1-000045/2026",
+    "11084263000142-1-000002/2026",
+    "11095923000190-1-000008/2026",
+    "11095923000190-1-000012/2026",
+    "11095923000190-1-000013/2026",
+    "11332999000192-1-000014/2026",
     "11443806000170-1-000004/2026",
-    "24651200000172-1-000021/2026"
+    "11443806000170-1-000008/2026",
+    "11443806000170-1-000015/2026",
+    "11970135000104-1-000003/2026",
+    "12457020000175-1-000012/2026",
+    "13034603000156-1-000024/2026",
+    "13790575000105-1-000006/2026",
+    "13790575000105-1-000012/2026",
+    "13921551000130-1-000002/2026",
+    "13996218000190-1-000012/2025",
+    "14540893000172-1-000001/2026",
+    "14788679000130-1-000002/2026",
+    "14789276000105-1-000001/2026",
+    "14795993000140-1-000001/2026",
+    "15316822000153-1-000005/2026",
+    "15389596000130-1-000081/2026",
+    "15389596000130-1-000143/2026",
+    "15452783000111-1-000004/2025",
+    "15453014000138-1-000001/2026",
+    "17701982000141-1-000007/2026",
+    "18695666000177-1-000002/2026",
+    "24651200000172-1-000021/2026",
+    "24651200000172-1-000034/2026",
+    "24651200000172-1-000133/2026",
+    "33787094000140-1-000100/2026",
+    "37198728000180-1-000002/2026",
+    "37212719000104-1-000024/2026",
+    "37212719000104-1-000044/2026",
+    "37226644000102-1-000078/2026"
    ],
-   "registrosAbrangidos": 8,
+   "registrosAbrangidos": 105,
    "hashes": {
+    "00394452000103-1-001115/2027": "8af5ebf97db5",
+    "00394452000103-1-011285/2026": "fde631beee02",
+    "01989813000119-1-000057/2026": "42ae4b849483",
+    "01989813000119-1-000069/2025": "89a497d293b5",
+    "01989813000119-1-000102/2026": "7a8daef66420",
+    "02925027000110-1-000026/2026": "ad3b30b16aab",
     "02940523000143-1-000090/2025": "357bc910c15f",
+    "03015475000140-1-000032/2026": "0c675f00c8b2",
+    "03015475000140-1-000139/2025": "e64db00fbffc",
+    "03073673000160-1-000096/2026": "ed99d447d3f7",
+    "03107539000132-1-000049/2026": "8764d6525655",
+    "03107539000132-1-000161/2026": "6b509853a926",
+    "03107539000132-1-000163/2026": "4f10b959f940",
+    "03155926000144-1-000098/2026": "c734a0c50adc",
+    "03155926000144-1-000152/2026": "683ed9b0c8cc",
+    "03155934000190-1-000018/2026": "109b839f5bd5",
+    "03155934000190-1-000023/2026": "90c0d002b56c",
+    "03155934000190-1-000038/2026": "d2512277a696",
+    "03155934000190-1-000054/2026": "2486388f7b5a",
+    "03155934000190-1-000064/2026": "2e70d7bf6ee1",
+    "03155934000190-1-000101/2026": "92128668c1f5",
+    "03156999000150-1-000016/2026": "1b9058a3d4bd",
+    "03156999000150-1-000030/2026": "3c8ff0dcd195",
+    "03156999000150-1-000053/2026": "f1869b07caf6",
+    "03173317000118-1-000032/2026": "f431728d1b2b",
+    "03173317000118-1-000088/2026": "6c2abf0642c1",
     "03173317000118-1-000109/2026": "8413fecb4a46",
-    "03184041000173-1-000118/2026": "dd3b01227868",
+    "03184041000173-1-000065/2026": "93b9600aa1b2",
+    "03184041000173-1-000080/2026": "db9658a6fad0",
+    "03184066000177-1-000002/2026": "502ea4789679",
+    "03184066000177-1-000058/2026": "0009d164d6b2",
+    "03236066000173-1-000036/2026": "7fc5d6796f6c",
+    "03342920000186-1-000080/2023": "1d077bc8e22e",
+    "03342920000186-1-000214/2024": "c07bb208274e",
+    "03352986000157-1-000029/2026": "24f755c5727b",
+    "03434792000109-1-000041/2026": "02918bd24542",
+    "03442597000112-1-000039/2026": "fce94050a6ec",
+    "03452299000103-1-000064/2026": "d8d96829a697",
+    "03452307000111-1-000016/2026": "09f0117218db",
+    "03452307000111-1-000091/2026": "975092c1fe6b",
+    "03501541000191-1-000061/2026": "606cdf920a96",
+    "03501574000131-1-000035/2026": "594aa20841dc",
+    "03501574000131-1-000070/2026": "07bb19b22238",
+    "03505013000100-1-000020/2026": "bad40fcd3bd1",
+    "03505013000100-1-000060/2026": "d3769397de31",
+    "03517102000177-1-000294/2025": "ae981fec2e8d",
+    "03575727000195-1-000005/2026": "3208c83ae9b6",
+    "03681582000107-1-000035/2026": "06a8ec8d97a3",
+    "03681582000107-1-000128/2025": "a9eb47e3d2b1",
     "03741683000126-1-000106/2026": "367e55615611",
-    "03980919000187-1-000016/2026": "6fbb26cf2f6f",
+    "03883929000102-1-000004/2026": "9e24062a4837",
+    "03883929000102-1-000013/2026": "5ffd9c114d98",
+    "03903176000141-1-000017/2026": "cba029aced0b",
+    "03903176000141-1-000018/2026": "22cec768bc01",
+    "03903176000141-1-000065/2026": "971effee21f9",
+    "03903176000141-1-000111/2026": "0949087c3371",
+    "03903176000141-1-000112/2026": "6e5f5781d5ef",
+    "03903176000141-1-000128/2026": "699e450c409f",
+    "03980919000187-1-000017/2026": "48a41e75cc45",
+    "03981081000146-1-000001/2026": "051c35471118",
+    "03983541000175-1-000170/2026": "374052cbae33",
+    "04499327000100-1-000038/2026": "26c9485c440a",
+    "04589937000103-1-000002/2026": "5d4540294a70",
+    "04589955000187-1-000010/2026": "00595c4a2303",
+    "04895130000190-1-000053/2025": "67ca3fea3937",
+    "05443531000172-1-000032/2026": "b4d4644ddd63",
+    "05472304000175-1-000017/2025": "a180ecec8d86",
+    "09290533000120-1-000010/2026": "da59d6834f18",
+    "10381732000122-1-000008/2026": "4fa3599419ff",
     "10474017000134-1-000002/2026": "bd30ed2bcce7",
+    "10836939000144-1-000045/2026": "19038eddc3b4",
+    "11084263000142-1-000002/2026": "cb94f69fd17c",
+    "11095923000190-1-000008/2026": "9e0675cfc108",
+    "11095923000190-1-000012/2026": "3d5063f50217",
+    "11095923000190-1-000013/2026": "28d69331b7b2",
+    "11332999000192-1-000014/2026": "ebf6344a6dee",
     "11443806000170-1-000004/2026": "e06c23d221da",
-    "24651200000172-1-000021/2026": "14740eb1d9a5"
+    "11443806000170-1-000008/2026": "f608fa76ae4a",
+    "11443806000170-1-000015/2026": "ed58af65b40f",
+    "11970135000104-1-000003/2026": "804b7d49acf3",
+    "12457020000175-1-000012/2026": "a7afb7e58eae",
+    "13034603000156-1-000024/2026": "f747ea763010",
+    "13790575000105-1-000006/2026": "0d051c18ded3",
+    "13790575000105-1-000012/2026": "4133b25ea481",
+    "13921551000130-1-000002/2026": "d77a3ed82b6c",
+    "13996218000190-1-000012/2025": "24dc86824385",
+    "14540893000172-1-000001/2026": "2c4ee37ab17a",
+    "14788679000130-1-000002/2026": "2eb541ee30ef",
+    "14789276000105-1-000001/2026": "3bc7edfcfaab",
+    "14795993000140-1-000001/2026": "b9a854fa2e1e",
+    "15316822000153-1-000005/2026": "4b9d3bceaca3",
+    "15389596000130-1-000081/2026": "9abc1050c1f7",
+    "15389596000130-1-000143/2026": "2bc09cdbb728",
+    "15452783000111-1-000004/2025": "bd4b238d38ec",
+    "15453014000138-1-000001/2026": "8aba5072c44d",
+    "17701982000141-1-000007/2026": "e22ece7a8843",
+    "18695666000177-1-000002/2026": "fb2175bd01b1",
+    "24651200000172-1-000021/2026": "14740eb1d9a5",
+    "24651200000172-1-000034/2026": "013dd1c319f0",
+    "24651200000172-1-000133/2026": "9e4466e10e8d",
+    "33787094000140-1-000100/2026": "d4fc01487ba1",
+    "37198728000180-1-000002/2026": "6a01d94beda9",
+    "37212719000104-1-000024/2026": "36d81df1616c",
+    "37212719000104-1-000044/2026": "73476f23d5d0",
+    "37226644000102-1-000078/2026": "1e75f33defb0"
    }
   },
   "votacoes": {

@@ -1,0 +1,314 @@
+{
+ "geradoEm": "2026-11-19T01:48:00",
+ "confianca": 0.95,
+ "metodo": "Clopper–Pearson exato, unilateral",
+ "legenda": {
+  "S": "confere com o contracheque original",
+  "N": "erro (não confere)",
+  "": "não conferido"
+ },
+ "grupos": {
+  "supersalario": {
+   "total": 421,
+   "conferidos": 0,
+   "comErro": 0,
+   "pendentes": 421,
+   "prioritarios": {
+    "total": 46,
+    "conferidos": 0,
+    "comErro": 0,
+    "pendentes": 46
+   },
+   "porOrgao": {
+    "Governo MS — AGEPREV": {
+     "total": 6,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 6
+    },
+    "Governo MS — CASA CIVIL": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — CBMMS": {
+     "total": 5,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 5
+    },
+    "Governo MS — DGPC": {
+     "total": 7,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 7
+    },
+    "Governo MS — FUNSAU": {
+     "total": 2,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 2
+    },
+    "Governo MS — PMMS": {
+     "total": 13,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 13
+    },
+    "Governo MS — SED": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — SEFAZ": {
+     "total": 92,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 92
+    },
+    "Governo MS — SEGOV": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — SES": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "TCE-MS — Tribunal de Contas (membros)": {
+     "total": 14,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 14
+    },
+    "TCE-MS — Tribunal de Contas (servidores)": {
+     "total": 27,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 27
+    },
+    "TJMS — Tribunal de Justiça": {
+     "total": 215,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 215
+    },
+    "TRT24 — Justiça do Trabalho": {
+     "total": 36,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 36
+    }
+   }
+  },
+  "intermediario": {
+   "total": 100,
+   "conferidos": 0,
+   "comErro": 0,
+   "pendentes": 100,
+   "prioritarios": null,
+   "taxaErroObservada": null,
+   "limiteSuperior95": null,
+   "porOrgao": {
+    "Governo MS — AGEPREV": {
+     "total": 60,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 60
+    },
+    "Governo MS — CBMMS": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — DGPC": {
+     "total": 6,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 6
+    },
+    "Governo MS — FUNSAU": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — PMMS": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — SEFAZ": {
+     "total": 25,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 25
+    },
+    "Governo MS — SES": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "TCE-MS — Tribunal de Contas (servidores)": {
+     "total": 2,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 2
+    },
+    "TJMS — Tribunal de Justiça": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "TRT24 — Justiça do Trabalho": {
+     "total": 2,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 2
+    }
+   }
+  },
+  "amostra": {
+   "total": 100,
+   "conferidos": 0,
+   "comErro": 0,
+   "pendentes": 100,
+   "prioritarios": null,
+   "taxaErroObservada": null,
+   "limiteSuperior95": null,
+   "porOrgao": {
+    "Governo MS — AGEPEN": {
+     "total": 2,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 2
+    },
+    "Governo MS — AGEPREV": {
+     "total": 36,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 36
+    },
+    "Governo MS — AGESUL": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — AGRAER": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — CBMMS": {
+     "total": 2,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 2
+    },
+    "Governo MS — DETRAN": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — DGPC": {
+     "total": 2,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 2
+    },
+    "Governo MS — FUNDECT": {
+     "total": 3,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 3
+    },
+    "Governo MS — FUNDESPORTE": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — FUNSAU": {
+     "total": 2,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 2
+    },
+    "Governo MS — IAGRO": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — PMMS": {
+     "total": 6,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 6
+    },
+    "Governo MS — SAD": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — SEAD": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — SED": {
+     "total": 34,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 34
+    },
+    "Governo MS — SEGOV": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — SEJUSP": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — SES": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    },
+    "Governo MS — UEMS": {
+     "total": 2,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 2
+    },
+    "TCE-MS — Tribunal de Contas (servidores)": {
+     "total": 1,
+     "conferidos": 0,
+     "comErro": 0,
+     "pendentes": 1
+    }
+   }
+  }
+ },
+ "mes": "10/2026",
+ "orgaosNaFolha": 25
+}

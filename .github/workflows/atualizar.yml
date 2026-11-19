@@ -307,6 +307,10 @@ jobs:
       - name: Coletar servidores da ALEMS
         run: python3 scripts/coletar_servidores_alems.py || echo "⚠️ servidores da ALEMS não atualizados — arquivo anterior mantido"
 
+      - name: Supersalários — checagem automática da folha completa (todos os contracheques; para se achar CPF)
+        id: folha_lgpd
+        run: python3 scripts/verificacao/checagem_automatica.py
+
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
         run: python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py  # LGPD: sem CPF, ou o pacote não é enviado
 
@@ -318,7 +322,17 @@ jobs:
             dados/emendas_municipios.json
             dados/alems_servidores.json
             dados/supersalarios.json
+            dados/verificacao/
           retention-days: 1
+
+      - name: Guardar a folha completa de Supersalários (artefato PRIVADO, 90 dias, sem CPF — base da conferência manual)
+        if: steps.folha_lgpd.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: folha-supersalarios-${{ github.run_id }}
+          path: folha_completa/
+          retention-days: 90
+          if-no-files-found: ignore
 
   coletar_fontes_federais:
     # TSE, Presidência (CGU), STF (DadosJusBr + SICONFI), sanções (CEIS/CNEP) — em paralelo com os outros

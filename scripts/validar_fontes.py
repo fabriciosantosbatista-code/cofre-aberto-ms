@@ -11,7 +11,8 @@ Só a fonte que passa aqui pode ser chamada de "verificada na fonte". Somas inte
   senadores            Senado (adm-dadosabertos despesas_ceaps): total de cada senador de MS
   deputados            API da Câmara: total de cada deputado federal de MS (valor líquido com o sinal corrigido)
   arrecadacao          Tesouro/Siconfi RREO Anexo 3: ICMS do Estado, todos os meses da série
-  supersalarios        DadosJusBr: TJMS — nº de magistrados e soma do salário-base do mês publicado
+  supersalarios        órgão por órgão: TJMS e TRT24 (DadosJusBr), 39 órgãos do Governo (folha filtrada por órgão), TCE-MS
+                       servidores (portal do TCE); mais 100 contracheques do Governo sorteados por dia
   shows                PNCP: todas as contratações de show, valor homologado/estimado de cada uma
   alugueis             PNCP: todas as contratações de aluguel, valor homologado/estimado de cada uma
   votacoes             API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano, o voto de cada deputado de MS
@@ -262,20 +263,160 @@ def v_siconfi():
                              "demais impostos e Campo Grande não conferidos")
 
 
+FOLHA_GOV = "https://gw.sgi.ms.gov.br/d0125/transpfolhadepagamento/v1/servidores"
+TCE_PESSOAS = "https://sip-barramento.tce.ms.gov.br/barramento/api/Transparencia/GestaoPessoas"
+
+
+def _folha_orgao(sigla, mes):
+    """Consulta nova à folha do Estado filtrada pelo órgão (a coleta lê a folha inteira de uma vez): lista ou None."""
+    import coletar_governo_ms as g
+    mm, aa = mes.split("/")
+    out, pag = [], 1
+    while True:
+        r = g.requisitar(FOLHA_GOV, {"anoexercicio": int(aa), "mescompetencia": int(mm), "tipoFolha": 1, "orgao": sigla,
+                                     "pageno": pag, "pagesize": 20000, "exportarcsv": "false"}, 600)
+        try:
+            j = r.json()
+        except ValueError:
+            return None
+        if (j.get("status") or {}).get("code") == 404 or r.status_code == 404:
+            return "sem_filtro"  # o órgão não está na lista de órgãos que a API aceita como filtro
+        if r.status_code != 200 or (j.get("status") or {}).get("code") != 200:
+            return None
+        lote = [x for x in j.get("data") or [] if (x.get("orgao") or "").strip() == sigla]
+        out += lote
+        if len(j.get("data") or []) < 20000:
+            return out
+        pag += 1
+
+
+def _amostra_governo(folha, n=100):
+    """Amostra estratificada por órgão (semente = data) de contracheques do Governo, cada um consultado de novo pelo nome
+    dentro do órgão: remuneração fixa, eventuais e valor após deduções da mesma matrícula. Devolve (itens, hashes)."""
+    import coletar_governo_ms as g
+    from concurrent.futures import ThreadPoolExecutor
+    gov = [p for p in folha if p.get("orgaoId") == "governo" and p.get("matricula")]
+    if not gov:
+        return [], {}
+    random.seed(date.today().toordinal())
+    por = {}
+    for p in sorted(gov, key=lambda p: (p.get("orgaoSigla") or "", p["matricula"])):
+        por.setdefault(p.get("orgaoSigla"), []).append(p)
+    cota = {o: n * len(v) / len(gov) for o, v in por.items()}
+    alvo = {o: int(c) for o, c in cota.items()}
+    for o in sorted(cota, key=lambda o: -(cota[o] - alvo[o]))[: n - sum(alvo.values())]:
+        alvo[o] += 1
+    escolhidos = [x for o in sorted(por) for x in random.sample(por[o], alvo[o])]
+
+    def consulta(p):
+        mm, aa = p["mes"].split("/")
+        r = g.requisitar(FOLHA_GOV, {"anoexercicio": int(aa), "mescompetencia": int(mm), "tipoFolha": 1, "orgao": p["orgaoSigla"],
+                                     "nome": p["nome"].upper(), "pageno": 1, "pagesize": 50, "exportarcsv": "false"}, 120)
+        try:
+            d = [x for x in r.json().get("data") or [] if str(x.get("matricula")) == str(p["matricula"])]
+        except ValueError:
+            d = None
+        return p, (d[0] if d else None) if d is not None else None
+    itens, hashes = [], {}
+    with ThreadPoolExecutor(4) as ex:  # no máximo 4 consultas ao mesmo tempo no gateway do Estado
+        for p, x in ex.map(consulta, escolhidos):
+            k = f"{p['orgaoSigla']}:{p['matricula']}"
+            fonte = None if x is None else round((x.get("remuneracaoFixa") or 0) + (x.get("remuneracoesEventuais") or 0), 2)
+            itens.append((f"contracheque {k}: bruto", p["bruto"], fonte))
+            itens.append((f"contracheque {k}: líquido", p["liquido"], None if x is None else round(x.get("remuneracaoAposDeducoes") or 0, 2)))
+            if x is not None and abs(fonte - p["bruto"]) <= 1 and abs((x.get("remuneracaoAposDeducoes") or 0) - p["liquido"]) <= 1:
+                hashes[k] = hash_registro({"m": p["matricula"], "b": p["bruto"], "l": p["liquido"]})
+    return itens, hashes
+
+
 def v_tjms():
+    """Supersalários na fonte, órgão por órgão, no mês publicado:
+      TJMS e TRT24  DadosJusBr (contracheques enviados ao CNJ): nº de magistrados e soma do salário-base
+      Governo       39 órgãos — consulta nova à folha do Estado filtrada por órgão: nº de pessoas e total bruto
+      TCE-MS        servidores — consulta nova ao portal do TCE: nº de pessoas, salário-base e outras verbas
+    mais uma amostra estratificada diária de 100 contracheques do Governo (semente = data), um a um.
+    Não conferidos: TCE-MS conselheiros e procuradores (só PDF) e Câmara de CG (60 maiores)."""
+    from concurrent.futures import ThreadPoolExecutor
     ss = J("supersalarios.json")
-    o = next((x for x in ss.get("orgaos") or [] if x.get("orgao", "").startswith("TJMS")), None)
-    if not o:
-        return resultado([("TJMS", 0, None)], "DadosJusBr", "https://dadosjusbr.org/")
-    m, a = o["mes"].split("/")
-    d = get(f"https://api.dadosjusbr.org/v2/dados/tjms/{int(a)}/{int(m)}")
-    s = ((d or {}).get("sumarios") or {}).get("membros_ativos") or {}
-    itens = [("magistrados", o["pessoas"], s.get("quantidade"), 0), ("salário-base total", o["totalBase"], (s.get("remuneracao_base") or {}).get("total"))]
-    org = ss.get("orgaos") or []
-    return resultado(itens, f"DadosJusBr (contracheques do TJMS enviados ao CNJ, {o['mes']}): quantidade e salário-base", "https://dadosjusbr.org/",
-                     granularidade="unidade", unidade="órgão no mês publicado (quantidade de pessoas e salário-base)", unidades_base=len(org) * 2,
-                     registros_base=ss.get("totalPessoas"), registros_por_unidade={"magistrados": o.get("pessoas") or 0},
-                     selecao="recorte: só o TJMS (único órgão com contracheques no DadosJusBr nesta base)")
+    org = (ss.get("orgaos") or []) + (ss.get("orgaosGoverno") or [])
+    unidades = [o for o in org if not o["orgao"].startswith("Governo do Estado")]  # as 2 linhas de resumo não são órgãos
+    itens, por = [], {}
+    for oid, pref in (("tjms", "TJMS"), ("trt24", "TRT24")):
+        o = next((x for x in ss.get("orgaos") or [] if x.get("orgao", "").startswith(pref)), None)
+        if not o:
+            continue
+        m, a = o["mes"].split("/")
+        d = get(f"https://api.dadosjusbr.org/v2/dados/{oid}/{int(a)}/{int(m)}")
+        s = ((d or {}).get("sumarios") or {}).get("membros_ativos") or {}
+        itens += [(f"{pref}: magistrados", o["pessoas"], s.get("quantidade"), 0),
+                  (f"{pref}: salário-base total", o["totalBase"], (s.get("remuneracao_base") or {}).get("total"))]
+        por[o["orgao"]] = (o.get("pessoas") or 0, s.get("quantidade") is not None)
+    gov = ss.get("orgaosGoverno") or []
+
+    def um_orgao(o):
+        return o, _folha_orgao(o["sigla"], o["mes"])
+    with ThreadPoolExecutor(4) as ex:  # no máximo 4 consultas ao mesmo tempo no gateway do Estado
+        sem_filtro = []
+        for o, lst in ex.map(um_orgao, gov):
+            if lst == "sem_filtro":
+                sem_filtro.append(o["sigla"])
+                lst = None
+            fonte_n = None if lst is None else len(lst)
+            fonte_b = None if lst is None else round(sum((x.get("remuneracaoFixa") or 0) + (x.get("remuneracoesEventuais") or 0) for x in lst), 2)
+            itens += [(f"{o['orgao']}: pessoas", o["pessoas"], fonte_n, 0),
+                      (f"{o['orgao']}: total bruto", round((o.get("totalBase") or 0) + (o.get("totalOutras") or 0), 2), fonte_b)]
+            por[o["orgao"]] = (o.get("pessoas") or 0, lst is not None)
+    t = next((x for x in ss.get("orgaos") or [] if x.get("orgao") == "TCE-MS — servidores"), None)
+    if t:
+        m, a = t["mes"].split("/")
+
+        def lista(ep):
+            out, pg = [], 0
+            while True:
+                r = get(f"{TCE_PESSOAS}/{ep}", {"ano": int(a), "mes": int(m), "pageNumber": pg, "pageSize": 500}, timeout=120)
+                if r is None:
+                    return None
+                out += r.get("items") or []
+                pg += 1
+                if pg >= (r.get("totalPages") or 0):
+                    return out
+        rem, op = lista("Remuneracao"), lista("OutroPagamento")
+        mats = {x.get("matricula") for x in rem or []}
+        itens += [("TCE-MS servidores: pessoas", t["pessoas"], None if rem is None else len(rem), 0),
+                  ("TCE-MS servidores: salário-base total", t["totalBase"], None if rem is None else round(sum(x.get("totalVencimentosRemuneracao") or 0 for x in rem), 2)),
+                  ("TCE-MS servidores: outras verbas", t["totalOutras"], None if rem is None or op is None else
+                   round(sum(x.get("totalVencimentoOutrosPagamentos") or 0 for x in op if x.get("matricula") in mats), 2))]
+        por[t["orgao"]] = (t.get("pessoas") or 0, rem is not None)
+    # amostra diária de contracheques (folha completa do artefato privado da coleta, quando disponível)
+    hashes = {}
+    try:
+        import gzip
+        arq = Path(__file__).parent.parent / "folha_completa" / "folha_supersalarios.jsonl.gz"
+        if arq.exists():
+            folha = [json.loads(l) for l in gzip.open(arq, "rt", encoding="utf-8") if l.strip()]
+            am, hashes = _amostra_governo(folha)
+            itens += am
+    except Exception as e:
+        print(f"  ⚠️ amostra de contracheques: {type(e).__name__}: {e}")
+    if not itens:
+        return resultado([("supersalários", 0, None)], "DadosJusBr, folha do Estado e portal do TCE-MS", "https://www.transparencia.ms.gov.br/")
+    res = resultado(itens, "órgão por órgão no mês publicado: TJMS e TRT24 no DadosJusBr; os 39 órgãos do Governo numa consulta nova à folha do "
+                    "Estado filtrada por órgão (pessoas e total bruto); TCE-MS (servidores) numa consulta nova ao portal do TCE; mais 100 "
+                    "contracheques do Governo sorteados por dia (semente = data), um a um", "https://www.transparencia.ms.gov.br/",
+                    granularidade="unidade", unidade="órgão no mês publicado (pessoas e totais da folha)", unidades_base=len(unidades),
+                    registros_base=ss.get("totalPessoas"), selecao="todos os órgãos da folha, menos TCE-MS conselheiros e procuradores "
+                    "(contracheque só em PDF) e Câmara de CG (60 maiores); amostra diária de 100 contracheques do Governo")
+    if sem_filtro:
+        res["nota"] = ((res.get("nota") or "") + f" Não conferidos: {', '.join(sem_filtro)} — a API do Estado não aceita esses órgãos como "
+                       "filtro da folha (resposta 404), e somar a folha inteira seria repetir o caminho da coleta.").strip()
+        res["semFiltro"] = sem_filtro
+    if res["resultado"] in ("confere", "diverge", "mudou_na_fonte"):  # unidade = órgão com os números obtidos
+        ok = [k for k, (_, obtido) in por.items() if obtido]
+        res.update({"unidadesConferidas": len(ok), "idsConferidos": ok, "registrosAbrangidos": sum(por[k][0] for k in ok)})
+        if hashes:
+            res["amostraContracheques"] = {"sorteados": sum(1 for i in itens if str(i[0]).startswith("contracheque") and i[0].endswith("bruto")),
+                                           "conferidos": len(hashes), "hashes": hashes}
+    return res
 
 
 def com_hashes(res, base, ids_ok):
@@ -452,7 +593,8 @@ def registrar(fonte, r, out):
                                 **{k: r.get(k) for k in ("granularidade", "unidade", "unidadesBase", "unidadesConferidas", "idsConferidos", "registrosBase",
                                                          "registrosAbrangidos", "selecao", "responsavel", "metodologia")},
                                 "nota": r.get("nota", ""), **({"hashes": r["hashes"]} if r.get("hashes") else {}),
-                                **({"lacunas": r["lacunas"]} if r.get("lacunas") else {})}, ensure_ascii=False) + "\n")
+                                **({"lacunas": r["lacunas"]} if r.get("lacunas") else {}),
+                                **({"amostraContracheques": r["amostraContracheques"]} if r.get("amostraContracheques") else {})}, ensure_ascii=False) + "\n")
     out[fonte] = r
     return r
 

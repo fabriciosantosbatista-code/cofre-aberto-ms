@@ -1,0 +1,434 @@
+{
+ "geradoEm": "2026-11-19T01:50:37",
+ "contracheques": 92796,
+ "orgaos": 44,
+ "mesesCompetencia": [
+  "2026-08",
+  "2026-09",
+  "2026-10"
+ ],
+ "alertas": 41,
+ "porTipo": {
+  "faixa": 41
+ },
+ "naoAplicadas": {
+  "total_externo do Governo do Estado": "a API pública do Estado não expõe a despesa por elemento 3.1.90.xx por mês",
+  "rubricas fora do Judiciário e dos membros do TCE-MS": "a fonte publica só totais",
+  "líquido = bruto − descontos no Governo do Estado": "a folha não publica os descontos; só se detecta líquido maior que o bruto"
+ },
+ "porOrgao": {
+  "Câmara Municipal de Campo Grande": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — AEM-MS": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — AGEHAB": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — AGEMS": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — AGEPEN": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 1
+  },
+  "Governo MS — AGEPREV": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — AGESUL": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — AGRAER": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — CASA CIVIL": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — CBMMS": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 3
+  },
+  "Governo MS — CGE": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 1
+  },
+  "Governo MS — DETRAN": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 1
+  },
+  "Governo MS — DGPC": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 1
+  },
+  "Governo MS — ESCOLAGOV": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — FADEB/MS": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — FCMS": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — FERTEL": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — FUNDECT": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — FUNDESPORTE": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — FUNDTUR": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — FUNSAU": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — FUNTRAB": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — GOVERNADORIA": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — IAGRO": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — IMASUL": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — JUCEMS": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — PGE": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — PMMS": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 29
+  },
+  "Governo MS — SAD": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — SEAD": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — SEC": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — SED": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 2
+  },
+  "Governo MS — SEFAZ": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — SEGOV": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 1
+  },
+  "Governo MS — SEILOG": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — SEJUSP": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — SEMADESC": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — SES": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — SETESC": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "Governo MS — UEMS": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido_maior_que_bruto",
+    "variacao"
+   ],
+   "alertas": 1
+  },
+  "TCE-MS — Tribunal de Contas (membros)": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido",
+    "rubricas",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "TCE-MS — Tribunal de Contas (servidores)": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido",
+    "variacao"
+   ],
+   "alertas": 0
+  },
+  "TJMS — Tribunal de Justiça": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido",
+    "rubricas",
+    "total_externo",
+    "variacao"
+   ],
+   "alertas": 0,
+   "totalExterno": {
+    "site": 19491258.03,
+    "fonte": 19491258.03,
+    "fonteUrl": "https://dadosjusbr.org/orgao/tjms/2026/9",
+    "resultado": "confere"
+   }
+  },
+  "TRT24 — Justiça do Trabalho": {
+   "checagens": [
+    "duplicidade",
+    "faixa",
+    "liquido",
+    "rubricas",
+    "total_externo",
+    "variacao"
+   ],
+   "alertas": 1,
+   "totalExterno": {
+    "site": 5772655.44,
+    "fonte": 5772655.44,
+    "fonteUrl": "https://dadosjusbr.org/orgao/trt24/2026/8",
+    "resultado": "confere"
+   }
+  }
+ }
+}
