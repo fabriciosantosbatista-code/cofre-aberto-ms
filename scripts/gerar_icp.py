@@ -376,6 +376,10 @@ def main():
                         + (f", de {uv_['em'][8:10]}/{uv_['em'][5:7]}/{uv_['em'][:4]}" if uv_.get("em") else " (nenhuma)"))
         vencida = bool(uv_.get("em")) and (AGORA - datetime.fromisoformat(uv_["em"][:19])).days > 30
         indep = (ver_auto.get(fid) or {}).get("independencia")
+        for pr in (ver_auto.get(fid) or {}).get("problemasNaFonte") or []:
+            vb = f"{pr.get('valor') or 0:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+            pend.append(f"problema na fonte: {pr.get('deputado')}, nota {pr.get('doc')} (R$ {vb}) repetida pela própria fonte com os códigos "
+                        f"{', '.join(pr.get('codigos') or [])} — somada uma vez no site, não conta como conferida")
         for fi in (ver_auto.get(fid) or {}).get("fonteInacessivel") or []:
             pend.append(f"fonte inacessível a partir do robô: {fi} — essa parte não foi conferida")
         lac = (ver_auto.get(fid) or {}).get("lacunas") or []

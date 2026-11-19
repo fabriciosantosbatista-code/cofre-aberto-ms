@@ -187,7 +187,7 @@ def coleta():
                           total=d.get("cotaGastaAno") or 0, cota=None,
                           notas=[{"data": n.get("data"), "fornecedor": n.get("fornecedor"), "categoria": n.get("categoria"),
                                   "valor": n.get("valor"), "url": n.get("urlNotaFiscal"), "origem": n.get("origem"),
-                                  "possivelDuplicidade": n.get("possivelDuplicidade")} for n in notas],
+                                  "possivelDuplicidade": n.get("possivelDuplicidade"), "sinalAtencao": n.get("sinalAtencao")} for n in notas],
                           totalNotas=d.get("totalNotasFiscais") or len(notas),
                           categorias={c["categoria"]: c["valor"] for c in d.get("ceapCategorias") or []},
                           extra={}, aba="deputados" if ms else "deputados-brasil", ms=ms, id=d["id"],
@@ -604,7 +604,9 @@ def pagina(p, irmaos):
             sub += f" · <i>{e(x['origem'])}</i>"
         if x.get("possivelDuplicidade"):
             pd = x["possivelDuplicidade"]
-            sub += f" · <b>{e(pd.get('texto') or 'possível duplicidade na fonte')}</b> (códigos {e(', '.join(pd.get('codigos') or []))}); somada uma vez"
+            sub += f" · <b>{e(pd.get('texto') or 'problema na fonte')}</b> (códigos {e(', '.join(pd.get('codigos') or []))}); somada uma vez"
+        if x.get("sinalAtencao"):
+            sub += f" · <b>{e(x['sinalAtencao'].get('texto') or '')}</b>"
         return (f"<tr><td style='white-space:nowrap'>{data_br(x['data'])}</td><td class='f'>{forn}<small>{sub}</small></td>"
                 f"<td class='num'>{brl(x.get('valor')) if x.get('valor') else '<small>valor ilegível no PDF</small>'}</td></tr>")
     bloco_notas = (f"<h2>Últimas notas fiscais</h2><div class='tabela-wrap'><table><thead><tr><th>Data</th><th>Fornecedor</th>"

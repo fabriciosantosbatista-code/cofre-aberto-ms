@@ -182,6 +182,19 @@ check(not janela({}, 0)[0], "rodada manual (sem ID de coleta) → só relatório
 check(not janela({**ROBO, "GITHUB_WORKFLOW": "Supersalários — conferência manual"}, 0.1)[0], "outro workflow → só relatório")
 check(not janela({**ROBO, "COLETA_INICIO": ""}, 0.1)[0], "sem horário de início da coleta → só relatório")
 
+# problema na fonte: a fonte repete a mesma nota (nº, valor, CNPJ/CPF, data) com outro código
+def _cam(cod, doc, valor, data, tipo="MANUTENÇÃO", cnpj="25024334000126"):
+    return {"codDocumento": cod, "numDocumento": doc, "valorLiquido": valor, "valorDocumento": valor, "dataDocumento": data + "T00:00:00",
+            "tipoDespesa": tipo, "cnpjCpfFornecedor": cnpj}
+_f, _p, _e = v.problemas_na_fonte([_cam("1", "52517", 180, "2026-10-06"), _cam("2", "52517", 180, "2026-10-06"), _cam("3", "9", 50, "2026-10-01")], False)
+check(len(_p) == 1 and _p[0]["codigos"] == ["1", "2"] and _e == 180 and len(_f) == 1, "problema na fonte: mesma nota com dois códigos sai da comparação, cópia extra fora do total")
+_f, _p, _ = v.problemas_na_fonte([_cam("1", "397", 5130, "2026-01-05"), _cam("2", "397", 5130, "2026-02-05")], False)
+check(not _p, "problema na fonte: mesmo nº e valor em meses diferentes (aluguel mensal) não é problema")
+_f, _p, _ = v.problemas_na_fonte([_cam("1", "s/n", 100, "2026-01-05"), _cam("2", "s/n", 100, "2026-01-05")], False)
+check(not _p, "problema na fonte: nota sem número não entra na regra")
+_f, _p, _ = v.problemas_na_fonte([_cam("G", "957", 94, "2026-09-04", tipo="PASSAGEM AÉREA - SIGEPA"), _cam("H", "957", 94, "2026-09-04", tipo="PASSAGEM AÉREA - SIGEPA")], False)
+check(not _p, "problema na fonte: passagens do SIGEPA ficam fora (o mesmo bilhete tem várias linhas)")
+
 # obras do Estado: reconsulta total, obra a obra e campo a campo; obra listada por dois órgãos = uma obra
 import types as _ty
 _ob = {"coleta": "2026-11-19T10:00:00", "obras": [
@@ -287,6 +300,14 @@ _n2, _ = cd.complemento_api([], _sig)
 check(sorted(n["valor"] for n in _n2) == [-38.39, 1431.04], "Câmara: bilhete e reembolso parcial com o mesmo código entram os dois")
 _n3, _ = cd.complemento_api([{**_n2[0], "origem": None}], _sig[:1])
 check(_n3 == [], "Câmara: quando a nota chega no arquivo anual, ela prevalece (a da API não entra de novo)")
+
+# o site segue o arquivo anual: nota repetida no próprio arquivo (outro código) fica nas duas cópias e é sinalizada
+_dup = [{"codDocumento": "8135017", "valor": 241.58, "doc": "31501", "data": "2026-07-12", "cnpjCpfFornecedor": "18.359.457/0001-52", "categoria": "C"},
+        {"codDocumento": "8138520", "valor": 241.58, "doc": "31501", "data": "2026-07-12", "cnpjCpfFornecedor": "18.359.457/0001-52", "categoria": "C"},
+        {"codDocumento": "9", "valor": 5130.0, "doc": "397", "data": "2026-02-05", "cnpjCpfFornecedor": "1", "categoria": "C"},
+        {"codDocumento": "10", "valor": 5130.0, "doc": "397", "data": "2026-03-05", "cnpjCpfFornecedor": "1", "categoria": "C"}]
+check(cd.sinalizar_duplicidade_arquivo(_dup) == 2 and len(_dup) == 4 and "códigos 8135017 e 8138520" in _dup[0]["sinalAtencao"]["texto"]
+      and "sinalAtencao" not in _dup[2], "arquivo anual com a mesma nota duas vezes: as duas ficam e são sinalizadas; aluguel mensal não")
 
 # coleta da Câmara: despesas lidas mês a mês, ordenadas, paginando dentro do mês; página que falha → exceção
 sys.path.insert(0, str(ROOT / "scripts"))

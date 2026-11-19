@@ -2960,7 +2960,7 @@ function renderDetalheDeputado(d, todos, ano, panel) {
       <tr>
         <td>${formatDate(item.data)}</td>
         <td>${item.categoria || "—"}</td>
-        <td>${item.fornecedor || "—"}${item.origem ? `<div style="font-size:.72rem;color:var(--ink-faint)">${escHTML(item.origem)}</div>` : ""}${item.possivelDuplicidade ? `<div style="font-size:.72rem;color:var(--warn,#c98500)"><b>${escHTML(item.possivelDuplicidade.texto)}</b> (códigos ${escHTML((item.possivelDuplicidade.codigos || []).join(", "))}); somada uma vez no total</div>` : ""}</td>
+        <td>${item.fornecedor || "—"}${item.origem ? `<div style="font-size:.72rem;color:var(--ink-faint)">${escHTML(item.origem)}</div>` : ""}${item.possivelDuplicidade ? `<div style="font-size:.72rem;color:var(--warn,#c98500)"><b>${escHTML(item.possivelDuplicidade.texto)}</b> (códigos ${escHTML((item.possivelDuplicidade.codigos || []).join(", "))}); somada uma vez no total</div>` : ""}${item.sinalAtencao ? `<div style="font-size:.72rem;color:var(--warn,#c98500)"><b>${escHTML(item.sinalAtencao.texto)}</b></div>` : ""}</td>
         <td class="num">${formatBRL(item.valor)}</td>
         <td>${escHTML(item.doc || "")}</td>
         <td>${item.urlNotaFiscal ? `<a href="${item.urlNotaFiscal}" target="_blank">ver nota</a>` : "—"}</td>

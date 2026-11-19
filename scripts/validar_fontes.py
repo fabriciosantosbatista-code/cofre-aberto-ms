@@ -523,9 +523,33 @@ ETAPAS_CAMARA = (
 )
 
 
+def problemas_na_fonte(todos, inv):
+    """Notas que a própria fonte repete: mesmo nº, valor, CNPJ/CPF e data (no mesmo deputado), com códigos de documento
+    diferentes — só nas despesas comuns e com nº preenchido. A data entra porque notas legítimas se repetem todo mês com
+    o mesmo nº e valor (ex.: recibo de aluguel do escritório); nas passagens do SIGEPA, o mesmo bilhete tem várias linhas.
+    Devolve (fonte sem essas notas, [{doc, valor, cnpj, codigos}], valor das cópias extras)."""
+    grupos = {}
+    for x in todos:
+        if PASSAGEM.search(x.get("tipoDespesa") or ""):
+            continue
+        v = round((-1 if inv else 1) * float(x.get("valorLiquido") or 0), 2)
+        doc = str(x.get("numDocumento") or "").strip()
+        if not doc or doc.lower() in ("s/n", "sn", "0"):
+            continue
+        grupos.setdefault((_dig(x.get("cnpjCpfFornecedor")), doc, v, str(x.get("dataDocumento") or "")[:10]), []).append(x)
+    probs, fora, extra = [], set(), 0.0
+    for (cnpj, doc, v, dia), xs in grupos.items():
+        cods = sorted({str(x.get("codDocumento")) for x in xs})
+        if len(xs) > 1 and len(cods) == len(xs) and v and dia:
+            probs.append({"doc": doc, "valor": v, "cnpj": cnpj, "data": dia, "codigos": cods})
+            fora |= {id(x) for x in xs}
+            extra += v * (len(xs) - 1)
+    return [x for x in todos if id(x) not in fora], probs, round(extra, 2)
+
+
 def v_camara():
     d = J("deputados_federais_ms.json")
-    itens, por_notas = [], {}
+    itens, por_notas, problemas = [], {}, []
     for p in d.get("deputados") or []:
         # mês a mês, ordenado pela data: no ano inteiro a paginação repete, pula ou perde notas (com ou sem ordenação)
         todos, ok = [], True
@@ -548,10 +572,24 @@ def v_camara():
         comuns = [x for x in todos if not PASSAGEM.search(x.get("tipoDespesa") or "") and float(x.get("valorDocumento") or 0) > 0]
         inv = bool(comuns) and sum(1 for x in comuns if float(x.get("valorLiquido") or 0) < 0) > len(comuns) / 2
         tot = sum((float(x.get("valorLiquido") or 0) if PASSAGEM.search(x.get("tipoDespesa") or "") else (-1 if inv else 1) * float(x.get("valorLiquido") or 0)) for x in todos)
-        itens.append((p["nome"], p.get("cotaGastaAno") or 0, round(tot, 2) if ok else None))
+        # problema na fonte (a mesma nota repetida com outro código): fora da comparação um a um; do total da fonte sai
+        # só a cópia que o site não tem (quando o próprio arquivo da Câmara traz as duas, o site soma as duas, como a fonte)
+        fonte_ok, probs, _extra = problemas_na_fonte(todos, inv) if ok else (todos, [], 0.0)
+        chave_site = lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("doc") or "").strip(), round(x.get("valor") or 0, 2), str(x.get("data") or "")[:10])
+        no_site = {}
+        for x in p.get("despesas") or []:
+            no_site[chave_site(x)] = no_site.get(chave_site(x), 0) + 1
+        extra = 0.0
+        for c in probs:
+            c["copiasNoSite"] = no_site.get((c["cnpj"], c["doc"], c["valor"], c["data"]), 0)
+            extra += c["valor"] * max(0, len(c["codigos"]) - c["copiasNoSite"])
+        itens.append((p["nome"], p.get("cotaGastaAno") or 0, round(tot - extra, 2) if ok else None))
         if ok:  # cada nota, com a lista que já veio
+            chaves_prob = {(c["cnpj"], c["doc"], c["valor"], c["data"]) for c in probs}
+            site_ok = [x for x in p.get("despesas") or [] if chave_site(x) not in chaves_prob]
+            problemas += [{**c, "deputado": p["nome"]} for c in probs]
             n_ok, dv, na, amb = casar_em_etapas(
-                p.get("despesas") or [], todos,
+                site_ok, fonte_ok,
                 lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("doc") or "").strip(), str(x.get("data"))[:10]),
                 lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("numDocumento") or "").strip(), str(x.get("dataDocumento"))[:10]),
                 lambda x: x.get("valor"), lambda x: x.get("valorLiquido"), ETAPAS_CAMARA)
@@ -562,6 +600,9 @@ def v_camara():
                     registros_base=sum(len(p.get("despesas") or []) for p in ps), registros_por_unidade=n_por(ps, "nome", "despesas"))
     if por_notas and res["resultado"] != "indisponivel":
         _um_a_um(res, "deputados", por_notas, ("cnpjCpfFornecedor", "doc", "data", "valor"))
+    if problemas:  # não contam como conferidas e não derrubam a base
+        res["problemasNaFonte"] = problemas
+        res["nota"] = (res.get("nota") or "") + f" {len(problemas)} nota(s) com problema na fonte (a Câmara repete a mesma nota com outro código): não conferidas."
     return res
 
 
@@ -1150,7 +1191,7 @@ def registrar(fonte, r, out):
                                 **({"amostraContracheques": r["amostraContracheques"]} if r.get("amostraContracheques") else {}),
                                 **{k: r[k] for k in ("independencia", "totaisDeOrgaoConferidos", "registrosConferidosUmAUm", "registrosPorTotais", "semFiltro",
                                                      "digestsUmAUm", "soNaFonte", "naoAchadosNaFonte", "divergentesRegistros", "fonteIndependente",
-                                                     "fonteInacessivel") if r.get(k) is not None}},
+                                                     "fonteInacessivel", "ambiguasNaFonte", "problemasNaFonte") if r.get(k) is not None}},
                                ensure_ascii=False) + "\n")
     out[fonte] = r
     return r

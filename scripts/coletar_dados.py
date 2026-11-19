@@ -208,7 +208,9 @@ def carregar_ceap_bulk(ano):
             d["despesas"].append(n)
         n_api += len(novas)
         n_dup += dups
-    log(f"  CEAP {ano}: {n_api} notas completadas pela API (ainda fora do arquivo anual); {n_dup} possível(is) duplicidade(s) na fonte")
+    n_sinal = sum(sinalizar_duplicidade_arquivo(d["despesas"]) for d in por_dep.values())
+    log(f"  CEAP {ano}: {n_api} notas completadas pela API (ainda fora do arquivo anual); {n_dup} problema(s) na fonte (API); "
+        f"{n_sinal} nota(s) do arquivo anual sinalizadas como possível reembolso em duplicidade")
 
     resultado = {}
     for dep_id, d in por_dep.items():
@@ -277,7 +279,7 @@ def complemento_api(notas_arquivo, itens_api, incluir_sigepa=True):
             continue  # a nota está no arquivo com outro valor: é diferença de valor (o conferidor mostra), não nota faltando
         igual = por_conteudo.get((dig(n["cnpjCpfFornecedor"]), n["doc"], n["valor"], (n["data"] or "")[:10]))
         if igual is not None and igual.get("codDocumento") and igual.get("codDocumento") != n["codDocumento"]:
-            pd = igual.setdefault("possivelDuplicidade", {"texto": "possível duplicidade na fonte (Câmara): a mesma nota aparece com dois códigos de documento",
+            pd = igual.setdefault("possivelDuplicidade", {"texto": "problema na fonte (Câmara): a mesma nota aparece com dois códigos de documento",
                                                           "codigos": [igual["codDocumento"]]})
             if n["codDocumento"] not in pd["codigos"]:
                 pd["codigos"].append(n["codDocumento"])
@@ -287,6 +289,30 @@ def complemento_api(notas_arquivo, itens_api, incluir_sigepa=True):
         novas.append(n)
         no_arquivo.add((n["codDocumento"] or "", n["valor"]))
     return novas, dups
+
+
+def sinalizar_duplicidade_arquivo(notas):
+    """O site segue o arquivo anual oficial: quando o próprio arquivo traz a mesma nota duas vezes (mesmo nº, valor,
+    CNPJ/CPF e data, com códigos de documento diferentes), as duas continuam no total e cada uma é sinalizada.
+    Duplicidade da fonte é sinalizada, nunca corrigida pelo site. Devolve quantas notas foram sinalizadas."""
+    import re as _r
+    dig = lambda t: _r.sub(r"\D", "", str(t or ""))
+    grupos = {}
+    for n in notas:
+        doc = str(n.get("doc") or "").strip()
+        if not doc or doc.lower() in ("s/n", "sn", "0") or PASSAGEM.search(n.get("categoria") or "") or n.get("origem"):
+            continue
+        grupos.setdefault((dig(n.get("cnpjCpfFornecedor")), doc, round(n["valor"], 2), (n.get("data") or "")[:10]), []).append(n)
+    total = 0
+    for xs in grupos.values():
+        cods = [str(x.get("codDocumento")) for x in xs if x.get("codDocumento")]
+        if len(xs) > 1 and len(set(cods)) == len(xs):
+            texto = ("sinal de atenção: possível reembolso em duplicidade — a Câmara registrou a mesma nota "
+                     f"{'duas' if len(xs) == 2 else len(xs)} vezes (códigos {' e '.join(cods) if len(cods) == 2 else ', '.join(cods)})")
+            for x in xs:
+                x["sinalAtencao"] = {"texto": texto, "codigos": cods}
+            total += len(xs)
+    return total
 
 
 def despesas_api_de(dep_ids, ano, limite_seg=9 * 60):
