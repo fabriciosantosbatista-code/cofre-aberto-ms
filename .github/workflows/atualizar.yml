@@ -667,6 +667,7 @@ jobs:
             exit 0
           fi
 
+          BASE_COLETA=$(git rev-parse HEAD)   # o main sobre o qual o ICP desta coleta foi calculado
           git commit -m "🤖 Dados atualizados — $(date +'%d/%m/%Y %H:%M') BRT"
 
           ARQUIVOS_MANUAIS="dados/camara_municipal.json dados/verba_cg_cache.json"
@@ -711,6 +712,21 @@ jobs:
           }
 
           sincronizar || (echo "Tentando novamente em 10s..." && sleep 10 && sincronizar) || { echo "❌ Falha ao sincronizar com origin/main"; exit 1; }
+
+          # Se entrou no main, durante a coleta, commit que mexe no que o ICP lê (históricos, conferências, scripts),
+          # o icp.json desta coleta ficou calculado sobre o histórico antigo, enquanto os históricos .jsonl foram unidos
+          # (18/11/2026: F das bases não batia com o histórico e o teste do ICP falhou). Recalcula sobre o main unido.
+          if git diff --name-only "$BASE_COLETA" origin/main -- dados/icp_execucoes_historico.jsonl dados/icp_verificacoes.jsonl \
+               dados/icp_anotacoes.json dados/validacao_fontes.json scripts/ | grep -q .; then
+            echo "ℹ️ O main mudou durante a coleta em arquivos que o ICP lê — recalculando o ICP sobre a versão unida"
+            python3 scripts/gerar_icp.py && python3 scripts/gerar_icp.py --sitemap && python3 scripts/mascarar_cpf.py --paginas && python3 tests/test_cpf.py \
+              || { echo "❌ Recalcular o ICP após sincronizar falhou"; exit 1; }
+            git add $(grep -v "^#" .github/publicar.txt)
+            if ! git diff --staged --quiet; then
+              git commit -m "🤖 ICP recalculado sobre o main unido — $(date +'%d/%m/%Y %H:%M') BRT"
+              sincronizar || { echo "❌ Falha ao sincronizar com origin/main"; exit 1; }
+            fi
+          fi
           git push origin main
 
   # ------------------------------------------------------------------
