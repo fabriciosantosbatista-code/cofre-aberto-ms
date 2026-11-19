@@ -207,6 +207,18 @@ check(casa([nota_s("s/n", 4539, cnpj=M)], [nota_f("s/n", 4539, cnpj=C1), nota_f(
 check(casa([nota_s("s/n", 4539, cnpj=M)], [nota_f("s/n", 4500, cnpj=C1)])[:4] == (0, [], 1, 0), "CPF mascarado e valor diferente: não achada")
 check(casa([nota_s("s/n", 4539, cnpj=M)], [nota_f("s/n", 4539, cnpj="04990440000194")])[:4] == (0, [], 1, 0), "CPF mascarado não casa com CNPJ")
 
+# amostra diária do PNCP: primeiro o que não vale na janela, depois as conferências mais antigas
+_jc, _rp = v.ja_conferidos_na_janela, v.J
+v.ja_conferidos_na_janela = lambda base, dias=30: {"1": "2026-11-01T00:00:00", "2": "2026-11-15T00:00:00", "3": "2026-10-25T00:00:00"}
+_lst = [{"id": str(i), "link": f"https://pncp.gov.br/app/editais/1/2026/{i}", "valor": 10} for i in range(1, 7)]
+v.J = lambda n: {"shows": _lst}
+_pedidos = []
+_g = v.get
+v.get = lambda url, **k: (_pedidos.append(url.rsplit("/", 1)[1]), {"valorTotalHomologado": 10})[1]
+v.v_pncp("shows.json", "shows", "contratações de show", "shows", n=4)
+check(sorted(_pedidos[:3]) == ["4", "5", "6"] and _pedidos[3] == "3", f"PNCP: sorteia primeiro as que faltam na janela, depois a conferência mais antiga ({_pedidos})")
+v.get, v.J, v.ja_conferidos_na_janela = _g, _rp, _jc
+
 # prazo da conferência vale dentro de cada consulta (não deixa o passo do workflow estourar)
 import time as _time
 v.PRAZO.update(fim=_time.monotonic() - 1, esgotado=False)

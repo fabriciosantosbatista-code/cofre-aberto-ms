@@ -750,6 +750,24 @@ def com_hashes(res, base, ids_ok):
     return res
 
 
+def ja_conferidos_na_janela(base, dias=30):
+    """{id: data} dos registros que bateram com a fonte numa conferência dos últimos `dias` e não mudaram desde então
+    (hash igual), com a data da conferência mais recente."""
+    atuais = hashes_atuais(base) or {}
+    limite = (datetime.fromisoformat(AGORA) - __import__("datetime").timedelta(days=dias)).isoformat()
+    valem = {}  # id → data da conferência mais recente que ainda vale
+    try:
+        for l in open(HISTORICO, encoding="utf-8"):
+            h = json.loads(l)
+            if h.get("base") == base and h.get("em", "") >= limite:
+                for i, x in (h.get("hashes") or {}).items():
+                    if atuais.get(i) == x and h["em"] > valem.get(i, ""):
+                        valem[i] = h["em"]
+    except FileNotFoundError:
+        pass
+    return valem
+
+
 def v_pncp(arquivo, chave_lista, rotulo, base, n=8):
     """PNCP: valor homologado (ou estimado) de cada contratação na consulta pública. n = tamanho da amostra sorteada
     (semente = data); n=None = todas as contratações da base."""
@@ -759,7 +777,15 @@ def v_pncp(arquivo, chave_lista, rotulo, base, n=8):
     if lst is None:
         lst = (d.get("pncp") or {}).get("lista") or []
     random.seed(date.today().toordinal())
-    escolhidos = lst if n is None else random.sample(lst, min(n, len(lst)))  # amostra aleatória simples, sem reposição, semente = data
+    if n is None:
+        escolhidos = lst
+    else:  # amostra diária (semente = data): primeiro o que ainda não vale na janela de 30 dias (novo, alterado ou nunca sorteado)
+        valem = ja_conferidos_na_janela(base)
+        faltam = [x for x in lst if str(x.get("id")) not in valem]
+        resto = [x for x in lst if str(x.get("id")) in valem]
+        escolhidos = random.sample(faltam, min(n, len(faltam)))
+        resto.sort(key=lambda x: (valem[str(x.get("id"))], random.random()))  # depois, renova as conferências mais antigas
+        escolhidos += resto[:max(0, n - len(escolhidos))]
 
     def consulta(x):
         try:
@@ -769,12 +795,13 @@ def v_pncp(arquivo, chave_lista, rotulo, base, n=8):
         c = get(f"https://pncp.gov.br/api/consulta/v1/orgaos/{cnpj}/compras/{ano}/{seq}", tent=3, timeout=60)
         f = (c.get("valorTotalHomologado") or c.get("valorTotalEstimado")) if c else None
         return (x.get("id") or x["link"].split("/editais/")[1], x["valor"], f)  # identificador PNCP: não repete a mesma contratação
-    with ThreadPoolExecutor(3) as ex:  # o PNCP responde 429 com mais consultas ao mesmo tempo
+    with ThreadPoolExecutor(2) as ex:  # no máximo 2 consultas ao mesmo tempo no PNCP (responde 429; o Retry-After é respeitado em get())
         itens = [i for i in ex.map(consulta, escolhidos) if i]
     todas = n is None
     res = resultado(itens, f"PNCP: {'todas as ' + str(len(itens)) if todas else str(len(itens))} {rotulo}{'' if todas else ' sorteadas'}, valor de cada uma na consulta pública",
                     "https://pncp.gov.br/", granularidade="registro", unidade="contratação (nº de controle PNCP)", unidades_base=len(lst), registros_base=len(lst),
-                    selecao="todas as contratações da base (reconsulta total)" if todas else f"amostra aleatória simples de {n} por dia, sem reposição (semente = data)")
+                    selecao="todas as contratações da base (reconsulta total)" if todas else
+                    f"amostra de {n} por dia (semente = data), sorteada primeiro entre as que ainda não valem na janela de 30 dias")
     return com_hashes(res, base, {str(i[0]) for i in itens if i[2] is not None and abs(i[1] - i[2]) <= 1})
 
 
