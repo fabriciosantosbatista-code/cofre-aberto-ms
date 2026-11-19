@@ -8,7 +8,7 @@ item difere (um voto, um município, um número de projetos) e "indisponivel" qu
 
 Uso: python3 tests/test_conferidores.py   (código 1 se algum teste falhar)
 """
-import copy, sys
+import copy, json, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -76,20 +76,25 @@ check(r["resultado"] == "indisponivel", "votações: fonte fora do ar → indisp
 r = rodar(D, fonte_padrao(), v.v_producao)
 check(r["resultado"] == "confere" and r["conferidos"] == 1, "produção: mesmo nº de projetos → confere (só deputados federais)")
 r = rodar(D, fonte_padrao(n_proj=5), v.v_producao)
-check(r["resultado"] == "mudou_na_fonte", "produção: fonte com até 3 projetos a mais → mudou na fonte (projeto novo depois da coleta)")
+check(r["resultado"] == "diverge", "produção: fonte com projetos a mais → diverge (sem regra de \"mudou na fonte\")")
 r = rodar(D, fonte_padrao(n_proj=1), v.v_producao)
 check(r["resultado"] == "diverge", "produção: fonte com menos projetos que o site → diverge")
 r = rodar(D, fonte_padrao(fora=True), v.v_producao)
 check(r["resultado"] == "indisponivel", "produção: fonte fora do ar → indisponível")
 
 # entidades
+import tempfile as _tf
+_tmp_rec = Path(_tf.mkdtemp()) / "cnpj_reconsultar.json"
+v.RECONSULTAR = _tmp_rec  # o teste não grava em dados/
 r = rodar(D, fonte_padrao(), v.v_entidades)
+check(not _tmp_rec.exists(), "entidades: tudo igual → nenhum CNPJ marcado para reconsulta")
 check(r["resultado"] == "confere" and r["conferidos"] == 3, "entidades: abertura, município e situação iguais (sem acento/caixa) → confere")
 check(r["unidadesConferidas"] == 1 and r["registrosAbrangidos"] == 1 and r["idsConferidos"] == ["11"], "entidades: a cobertura conta entidades (CNPJ), não campos")
 r = rodar(D, fonte_padrao(ent={"data_inicio_atividade": "2001-01-01", "municipio": "DOURADOS", "descricao_situacao_cadastral": "ATIVA"}), v.v_entidades)
 check(r["resultado"] == "diverge", "entidades: município diferente → diverge")
 r = rodar(D, fonte_padrao(ent={"data_inicio_atividade": "2001-01-01", "municipio": "CAMPO GRANDE", "descricao_situacao_cadastral": "BAIXADA"}), v.v_entidades)
-check(r["resultado"] == "mudou_na_fonte", "entidades: só a situação cadastral diferente → mudou na fonte")
+check(r["resultado"] == "diverge", "entidades: só a situação cadastral diferente → diverge (sem regra de \"mudou na fonte\")")
+check(json.load(open(_tmp_rec))["cnpjs"] == ["11"], "entidades: CNPJ que divergiu fica marcado para a próxima coleta consultar de novo na Receita")
 r = rodar(D, fonte_padrao(fora=True), v.v_entidades)
 check(r["resultado"] == "indisponivel", "entidades: fonte fora do ar → indisponível")
 

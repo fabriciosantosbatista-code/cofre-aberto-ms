@@ -169,7 +169,14 @@ def main():
     velhos = [c for c in alvo if c in cache and ((hoje - date.fromisoformat(cache[c].get("consultadoEm", "2000-01-01"))) > VALIDADE
                                                  or (("cep" not in cache[c] or any("cpf" not in q for q in cache[c].get("socios", [])))
                                                      and not cache[c].get("naoEncontrado")))]
-    pendentes = (novos_ + velhos)[:limite]
+    # divergiram da Receita na última conferência na fonte (validar_fontes.py): consulta de novo antes de tudo
+    try:
+        reconsultar = [c for c in json.load(open(DADOS / "cnpj_reconsultar.json", encoding="utf-8")).get("cnpjs") or [] if c in cache]
+    except Exception:
+        reconsultar = []
+    pendentes = list(dict.fromkeys(reconsultar + novos_ + velhos))[:max(limite, len(reconsultar))]
+    if reconsultar:
+        print(f"🔁 CNPJ: {len(reconsultar)} entidade(s) que divergiram da Receita na conferência — consultando de novo")
     print(f"🔎 CNPJ: {len(alvo)} empresas, {len(pendentes)} para consultar agora (cache com {len(cache)})")
     novos, falhas = 0, 0
     for i, c in enumerate(pendentes):
@@ -184,6 +191,15 @@ def main():
             CACHE.write_text(json.dumps(cache, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         time.sleep(0.35)
     CACHE.write_text(json.dumps(cache, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    if reconsultar:  # sai da lista o que foi consultado agora; o que falhou fica para a próxima
+        feitos = {c for c in reconsultar if (cache.get(c) or {}).get("consultadoEm") == hoje.isoformat()}
+        resto = [c for c in reconsultar if c not in feitos]
+        arq = DADOS / "cnpj_reconsultar.json"
+        if resto:
+            arq.write_text(json.dumps({"motivo": "divergiram do cadastro da Receita na conferência na fonte", "cnpjs": resto},
+                                      ensure_ascii=False, indent=1), encoding="utf-8")
+        else:
+            arq.unlink(missing_ok=True)
     print(f"✅ cnpj_cache.json — {novos} consultados, {falhas} falhas, {len(cache)} no cache "
           f"({CACHE.stat().st_size // 1024} KB) · {datetime.now():%H:%M}")
 

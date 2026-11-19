@@ -21,8 +21,9 @@ Só a fonte que passa aqui pode ser chamada de "verificada na fonte". Somas inte
   entidades            cadastro CNPJ (minhareceita.org, serviço diferente do usado na coleta): todas as entidades —
                        data de abertura, município e situação cadastral
 
-Tolerância: diferença até R$ 1 por item, ou explicada por atualização da fonte depois da coleta (a fonte mudou entre
-a coleta e a conferência — registrada como "mudou na fonte", não como divergência).
+Tolerância: diferença até R$ 1 por item em valores em reais; contagens com tolerância 0. Nenhum conferidor marca
+"mudou na fonte" (regras removidas em 19/11/2026): com a trava de 2 h, diferença é dado faltando ou desatualizado no
+site e aparece como divergência. O valor "mudou_na_fonte" só existe em registros antigos do histórico.
 Grava dados/validacao_fontes.json. Uma fonte fora do ar fica "indisponível" (nunca "confere").
 """
 
@@ -850,9 +851,6 @@ def v_producao():
                     unidade="parlamentar (nº de projetos na legislatura)", unidades_base=len(ps),
                     registros_base=sum(p.get("projetos") or 0 for p in ps), registros_por_unidade={p["nome"]: p.get("projetos") or 0 for p in ps},
                     selecao="todos os deputados federais e senadores de MS")
-    # projeto novo apresentado depois da coleta: a fonte cresce um pouco (nunca diminui)
-    if res["resultado"] == "diverge" and all(0 < -x["diferenca"] <= 3 for x in res["divergentes"]):
-        res["resultado"], res["nota"] = "mudou_na_fonte", "projetos novos registrados depois da coleta (até 3 por parlamentar)"
     if por and res["resultado"] != "indisponivel":
         _um_a_um(res, "producao", por, ("sigla",))
     return res
@@ -873,6 +871,22 @@ def v_judiciario():
     return resultado(itens, f"DadosJusBr (contracheques do TJMS enviados ao CNJ, {t.get('mesReferencia')}): nº de magistrados ativos e soma do subsídio",
                      "https://dadosjusbr.org/", granularidade="total", unidade="folha do mês (quantidade e subsídio)", unidades_base=2,
                      registros_base=len(ms), selecao="o mês publicado no site (TJMS; TRT24 e TRE-MS não conferidos)")
+
+
+RECONSULTAR = DADOS / "cnpj_reconsultar.json"
+
+
+def reconsultar_cnpj(cnpjs):
+    """CNPJs que divergiram da Receita na conferência: a próxima coleta (coletar_cnpj.py) consulta de novo antes de
+    qualquer outro, sem esperar os 90 dias do cache — o site passa a mostrar a situação cadastral atual."""
+    if not cnpjs:
+        return
+    try:
+        atuais = set(json.load(open(RECONSULTAR, encoding="utf-8")).get("cnpjs") or [])
+    except Exception:
+        atuais = set()
+    RECONSULTAR.write_text(json.dumps({"motivo": "divergiram do cadastro da Receita na conferência na fonte", "em": AGORA,
+                                       "cnpjs": sorted(atuais | set(cnpjs))}, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 def v_entidades():
@@ -906,12 +920,10 @@ def v_entidades():
         # vale como conferida só a entidade com os 3 campos iguais à fonte
         ruins = {str(i[0]).split(" · ")[0] for i in itens if i[2] is not None and i[2] != 100.0}
         com_hashes(res, "entidades", set(cnpjs) - ruins)
+        reconsultar_cnpj(ruins)
     if lacunas:  # não conferidas: lacuna do site (a coleta do cadastro não alcança a entidade), mostrada como pendência
         res["lacunas"] = lacunas
         res["nota"] = (res.get("nota") or "") + f" {len(lacunas)} entidade(s) sem dados cadastrais no site (a coleta do cadastro não as alcança): não conferidas."
-    # a situação cadastral pode mudar entre a coleta e a conferência (ex.: baixa): só esse campo diferente = mudou na fonte
-    if res["resultado"] == "diverge" and all(x["item"].endswith("situação") for x in res["divergentes"]):
-        res["resultado"], res["nota"] = "mudou_na_fonte", "situação cadastral alterada na Receita depois da coleta"
     return res
 
 
