@@ -50,7 +50,9 @@ import hashlib as _hl
 
 
 # campos que a conferência compara com a fonte, por base: se algum deles mudar no site, a conferência anterior deixa de valer
+OBRA_CAMPOS = ("valor", "situacao", "cnpj", "fornecedor", "inicio", "fim", "executado", "diasAditados", "diasParalisados")
 CAMPOS_CONFERIDOS = {"shows": ("id", "valor"), "alugueis": ("id", "valor"),
+                     "obras": ("numero", "processo") + OBRA_CAMPOS,
                      "entidades": ("cnpj", "abertura", "aberturaFilial", "municipio", "situacao")}
 
 
@@ -69,7 +71,15 @@ def registros_por_id(base):
         return {str(x.get("id")): x for x in (J("alugueis.json").get("pncp") or {}).get("lista") or [] if x.get("id")}
     if base == "entidades":
         return {str(x.get("cnpj")): x for x in J("entidades.json").get("entidades") or [] if x.get("cnpj")}
+    if base == "obras":
+        return {id_obra(x): x for x in J("obras.json").get("obras") or []}
     return None
+
+
+def id_obra(x):
+    """Identificador da obra do Estado: nº do contrato + processo + CNPJ — o mesmo do site, que junta numa linha a obra
+    listada por dois órgãos (ex.: AGESUL executa e FUNDERSUL financia)."""
+    return "|".join(str(x.get(k) or "") for k in ("numero", "processo", "cnpj"))
 
 
 def hashes_atuais(base):
@@ -178,6 +188,75 @@ def v_governo():
     return resultado(f, "consulta nova ao portal do Estado (mesmo período da coleta): valor pago de cada órgão e totais do ano", "https://www.transparencia.ms.gov.br/",
                      granularidade="unidade", unidade="órgão (total pago no ano)", unidades_base=len(orgaos) + 2, registros_base=n_cred,
                      registros_por_unidade={"TOTAL pago": n_cred}, selecao="todos os órgãos publicados + totais do ano")
+
+
+def v_obras():
+    """Obras do Estado: reconsulta total do endpoint de contratos de obras (ContratosEkronos) e comparação obra a obra,
+    campo a campo (valor, situação, empresa, datas, % executado, dias aditados e paralisados). Mesma fonte da coleta."""
+    import coletar_governo_ms as g
+    ob = J("obras.json")
+    obras = ob.get("obras") or []
+    ano = int((ob.get("coleta") or ob.get("geradoEm") or str(date.today().year))[:4])
+    fonte, falhou = {}, False
+    try:
+        for pag in range(1, 51):
+            j = g.api("/d0371/transpcontrato/v1/ContratosEkronos", {"ano": ano, "pageno": pag, "pagesize": 2000, "exportarcsv": "false"})
+            novos = 0
+            for x in j.get("data") or []:
+                y = {"numero": x.get("numeroContrato"), "processo": x.get("numeroProcesso"), "orgao": x.get("orgao"),
+                     "cnpj": _dig(x.get("cnpjCpf")), "fornecedor": re.sub(r"\s+", " ", x.get("nome") or "").strip(),
+                     "valor": round(x.get("valorAtualContrato") or 0, 2), "situacao": x.get("situacao"),
+                     "inicio": (x.get("inicioObra") or "")[:10] or None, "fim": (x.get("fimObra") or "")[:10] or None,
+                     "executado": x.get("percentualExecutado"), "diasAditados": x.get("diasAditados") or 0, "diasParalisados": x.get("diasParalisados") or 0}
+                k = id_obra(y)
+                if k not in fonte:
+                    fonte[k] = []
+                    novos += 1
+                if y not in fonte[k]:
+                    fonte[k].append(y)
+            if not novos or not (j.get("pagination") or {}).get("has_next"):
+                break
+    except Exception:
+        falhou = True
+    def igual(c, a, b):
+        if c == "valor":
+            return abs((a or 0) - (b or 0)) <= 1
+        if c in ("executado", "diasAditados", "diasParalisados"):
+            try:
+                return abs(float(a or 0) - float(b or 0)) < 0.01
+            except (TypeError, ValueError):
+                return a == b
+        if c in ("inicio", "fim"):
+            return str(a or "")[:10] == str(b or "")[:10]
+        if c == "fornecedor":
+            return norm(a) == norm(b)
+        return (a or None) == (b or None)
+    itens, ruins = [], set()
+    for o in obras:
+        k = id_obra(o)
+        fs = None if falhou else fonte.get(k)
+        for c in OBRA_CAMPOS:
+            # obra listada por mais de um órgão: o site mostra a primeira linha da fonte; confere com ela
+            v = None if (falhou or not fs) else (100.0 if igual(c, o.get(c), fs[0].get(c)) else 0.0)
+            itens.append((f"{k} · {c}", 100.0, v))
+            if v == 0.0:
+                ruins.add(k)
+    nao_achadas = 0 if falhou else sum(1 for o in obras if id_obra(o) not in fonte)
+    res = resultado(itens, "portal do Estado (contratos de obras, ContratosEkronos): reconsulta de todas as obras do site; item = valor, situação, "
+                    "empresa, datas, % executado e dias aditados/paralisados (100 = igual, 0 = diferente)", "https://www.transparencia.ms.gov.br/",
+                    granularidade="registro", unidade="obra (contrato)", unidades_base=len(obras), registros_base=len(obras),
+                    selecao="todas as obras da base (reconsulta total)")
+    if res["resultado"] in ("confere", "diverge"):  # a unidade é a obra, não cada campo
+        ids = sorted({str(i[0]).split(" · ")[0] for i in itens if i[2] is not None})
+        res.update({"unidadesConferidas": len(ids), "idsConferidos": ids, "registrosAbrangidos": len(ids)})
+        com_hashes(res, "obras", set(ids) - ruins)
+        res["registrosConferidosUmAUm"] = len(set(ids) - ruins)
+        res["registrosPorTotais"] = 0
+    if nao_achadas:
+        res["naoAchadosNaFonte"] = nao_achadas
+        res["nota"] = (res.get("nota") or "") + f" {nao_achadas} obra(s) do site não encontrada(s) na reconsulta."
+    res["independencia"] = "reconsulta na mesma fonte (portal do Estado) — confirma a leitura, não é fonte independente"
+    return res
 
 
 def v_alems():
@@ -1004,7 +1083,7 @@ CONFERENCIAS = (("governo-ms", lambda: v_governo()), ("deputados-estaduais", lam
                 ("deputados", lambda: v_camara()), ("arrecadacao", lambda: v_siconfi()), ("supersalarios", lambda: v_tjms()),
                 ("shows", lambda: v_pncp("shows.json", "shows", "contratações de show", "shows", n=150)),  # 1.053 no PNCP não cabem num dia: amostra + janela de 30 dias
                 ("votacoes", lambda: v_votacoes()), ("producao", lambda: v_producao()), ("judiciario", lambda: v_judiciario()),
-                ("entidades", lambda: v_entidades()),
+                ("entidades", lambda: v_entidades()), ("obras", lambda: v_obras()),
                 # por último: o PNCP limita as consultas (429) e as esperas podem consumir o prazo do passo
                 ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis", n=None)))
 

@@ -182,6 +182,45 @@ check(not janela({}, 0)[0], "rodada manual (sem ID de coleta) → só relatório
 check(not janela({**ROBO, "GITHUB_WORKFLOW": "Supersalários — conferência manual"}, 0.1)[0], "outro workflow → só relatório")
 check(not janela({**ROBO, "COLETA_INICIO": ""}, 0.1)[0], "sem horário de início da coleta → só relatório")
 
+# obras do Estado: reconsulta total, obra a obra e campo a campo; obra listada por dois órgãos = uma obra
+import types as _ty
+_ob = {"coleta": "2026-11-19T10:00:00", "obras": [
+    {"numero": "1/2026", "processo": "P1", "cnpj": "111", "orgao": "FUNDERSUL / AGESUL", "fornecedor": "Construtora A", "valor": 100.0, "situacao": "Em Execução",
+     "inicio": "2026-01-01", "fim": "2026-12-31", "executado": 50.0, "diasAditados": 0, "diasParalisados": 0},
+    {"numero": "2/2026", "processo": "P2", "cnpj": "222", "orgao": "AGESUL", "fornecedor": "Construtora B", "valor": 200.0, "situacao": "Em Execução",
+     "inicio": "2026-02-01", "fim": "2026-11-30", "executado": 10.0, "diasAditados": 30, "diasParalisados": 0}]}
+def _linha(o, **mud):
+    x = {"numeroContrato": o["numero"], "numeroProcesso": o["processo"], "cnpjCpf": o["cnpj"], "orgao": o["orgao"].split(" / ")[0], "nome": o["fornecedor"],
+         "valorAtualContrato": o["valor"], "situacao": o["situacao"], "inicioObra": o["inicio"] + "T00:00:00", "fimObra": o["fim"] + "T00:00:00",
+         "percentualExecutado": o["executado"], "diasAditados": o["diasAditados"], "diasParalisados": o["diasParalisados"]}
+    x.update(mud)
+    return x
+def _obras(linhas, falha=False):
+    J0 = v.J
+    v.J = lambda n: _ob if n == "obras.json" else J0(n)
+    def api(*a, **k):
+        if falha:
+            raise RuntimeError("fora do ar")
+        return {"data": linhas, "pagination": {"has_next": ""}}
+    sys.modules["coletar_governo_ms"] = _ty.SimpleNamespace(api=api)
+    try:
+        return v.v_obras()
+    finally:
+        v.J = J0
+        sys.modules.pop("coletar_governo_ms", None)
+_a, _b = _ob["obras"]
+r = _obras([_linha(_a), _linha(_a, orgao="AGESUL"), _linha(_b)])
+check(r["resultado"] == "confere" and r["registrosConferidosUmAUm"] == 2 and r["unidadesConferidas"] == 2,
+      "obras: tudo igual → confere; obra listada por dois órgãos conta uma vez")
+check("mesma fonte" in r["independencia"], "obras: rótulo de reconsulta na mesma fonte")
+r = _obras([_linha(_a), _linha(_b, percentualExecutado=12.5)])
+check(r["resultado"] == "diverge" and r["registrosConferidosUmAUm"] == 1, "obras: % executado diferente → diverge, e a obra não conta como conferida")
+r = _obras([_linha(_a)])
+check(r.get("naoAchadosNaFonte") == 1 and r["registrosConferidosUmAUm"] == 1, "obras: obra do site que não aparece na fonte → não achada (não conta)")
+r = _obras([], falha=True)
+check(r["resultado"] == "indisponivel", "obras: fonte fora do ar → indisponível (nunca confere)")
+sys.modules.pop("coletar_governo_ms", None)
+
 # notas da CEAP: chave completa; sem data na API → nº + valor + CNPJ/CPF; mais de um par possível → ambígua
 CJ = "04.990.440/0001-94"
 def nota_s(doc, valor, data="2026-10-05", cnpj=CJ): return {"cnpjCpfFornecedor": cnpj, "doc": doc, "data": data, "valor": valor}
