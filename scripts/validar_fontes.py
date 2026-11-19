@@ -188,6 +188,81 @@ def v_alems():
                      registros_base=sum(len(v.get("despesas") or []) for v in vs), registros_por_unidade=n_por(vs, "nome", "despesas"))
 
 
+def _dig(t):
+    return re.sub(r"\D", "", str(t or ""))
+
+
+def casar(site, fonte, chave_s, chave_f, valor_s, valor_f):
+    """Compara registro a registro, usando só o que a fonte já devolveu. Agrupa pela chave (documento, CNPJ, data…);
+    numa chave presente nos dois lados, compara o conjunto de valores (ordenado): igual (R$ 1) → todos os registros dela
+    contam como comparados um a um; diferente → divergência. Chave só no site = não achado na fonte (não conta, não diverge).
+    Devolve (n_casados, divergencias[(chave, valores_site, valores_fonte)], n_nao_achados)."""
+    import collections
+    gs, gf = collections.defaultdict(list), collections.defaultdict(list)
+    for x in site:
+        gs[chave_s(x)].append(round(abs(valor_s(x) or 0), 2))
+    for x in fonte:
+        gf[chave_f(x)].append(round(abs(valor_f(x) or 0), 2))
+    ok, div, nao = 0, [], 0
+    for k, vs in gs.items():
+        if k not in gf:
+            nao += len(vs)
+            continue
+        a, b = sorted(vs), sorted(gf[k])
+        if len(a) == len(b) and all(abs(x - y) <= 1 for x, y in zip(a, b)):
+            ok += len(vs)
+        else:
+            div.append((k, a, b))
+    return ok, div, nao
+
+
+def _janela_unidades(base, digests_hoje, digest_atual):
+    """Unidades (parlamentares) cujos registros foram todos comparados um a um num dia dos últimos 30 e não mudaram desde
+    então (hash da unidade igual): {unidade: n}. As de hoje entram direto."""
+    vale = {u: d["n"] for u, d in digests_hoje.items()}
+    limite = (datetime.fromisoformat(AGORA) - __import__("datetime").timedelta(days=30)).isoformat()
+    try:
+        for l in open(HISTORICO, encoding="utf-8"):
+            h = json.loads(l)
+            if h.get("base") == base and h.get("em", "") >= limite and h.get("resultado") in ("confere", "mudou_na_fonte"):
+                for u, d in (h.get("digestsUmAUm") or {}).items():
+                    if u not in vale and d.get("hash") == digest_atual.get(u):
+                        vale[u] = d["n"]
+    except FileNotFoundError:
+        pass
+    return vale
+
+
+def _hash_lista(xs, campos):
+    return _hl.sha1(json.dumps(sorted(json.dumps([x.get(c) for c in campos], ensure_ascii=False) for x in xs)).encode()).hexdigest()[:16]
+
+
+def _um_a_um(res, base, por_unidade, campos):
+    """Grava no resultado os registros comparados um a um (com janela de 30 dias por hash da unidade) e mostra as
+    divergências registro a registro. por_unidade: {unidade: (registros do site, n_casados, divergencias, n_nao_achados)}."""
+    digests, digest_atual, divs, nao = {}, {}, [], 0
+    for u, (regs, n_ok, dv, na) in por_unidade.items():
+        digest_atual[u] = _hash_lista(regs, campos)
+        if regs and n_ok == len(regs):
+            digests[u] = {"n": n_ok, "hash": digest_atual[u]}
+        divs += [{"item": f"{u} · {k}", "site": sum(a), "fonte": sum(b), "diferenca": round(sum(a) - sum(b), 2), "registro": True} for k, a, b in dv]
+        nao += na
+    vale = _janela_unidades(base, digests, digest_atual)
+    casados_hoje = sum(x[1] for x in por_unidade.values())
+    n = sum(vale.values()) + sum(x[1] for u, x in por_unidade.items() if u not in vale)
+    res["registrosPorTotais"] = res.get("registrosAbrangidos")
+    res["registrosConferidosUmAUm"] = min(n, res.get("registrosBase") or n)
+    res["digestsUmAUm"] = digests
+    res["naoAchadosNaFonte"] = nao
+    res["casadosHoje"] = casados_hoje
+    if divs:
+        res["divergentesRegistros"] = divs[:50]
+        if res["resultado"] in ("confere", "mudou_na_fonte"):
+            res["resultado"] = "diverge"
+            res["divergentes"] = (res.get("divergentes") or []) + divs[:20]
+    return res
+
+
 def v_senado():
     s = J("senadores_ms.json")
     d = get(f"https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/despesas_ceaps/{s.get('ano') or date.today().year}", timeout=180)
@@ -196,14 +271,24 @@ def v_senado():
         f = round(sum(float(x.get("valorReembolsado") or 0) for x in d if str(x.get("codSenador")) == str(p["id"])), 2) if d else None
         itens.append((p["nome"], p.get("cotaGastaAno") or 0, f))
     ps = s.get("senadores") or []
-    return resultado(itens, "dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS", "https://adm.senado.gov.br/adm-dadosabertos/",
-                     granularidade="unidade", unidade="senador (total da CEAPS no ano)", unidades_base=len(ps),
-                     registros_base=sum(len(p.get("notasCeaps") or []) for p in ps), registros_por_unidade=n_por(ps, "nome", "notasCeaps"))
+    res = resultado(itens, "dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS e cada reembolso", "https://adm.senado.gov.br/adm-dadosabertos/",
+                    granularidade="unidade", unidade="senador (total da CEAPS no ano)", unidades_base=len(ps),
+                    registros_base=sum(len(p.get("notasCeaps") or []) for p in ps), registros_por_unidade=n_por(ps, "nome", "notasCeaps"))
+    if d and res["resultado"] != "indisponivel":  # cada reembolso, com a lista que já veio
+        por = {}
+        for p in ps:
+            fonte = [x for x in d if str(x.get("codSenador")) == str(p["id"])]
+            ok, dv, na = casar(p.get("notasCeaps") or [], fonte, lambda x: (_dig(x.get("cnpjCpf")), str(x.get("doc") or "").strip(), str(x.get("data"))[:10]),
+                               lambda x: (_dig(x.get("cpfCnpj")), str(x.get("documento") or "").strip(), str(x.get("data"))[:10]),
+                               lambda x: x.get("valor"), lambda x: x.get("valorReembolsado"))
+            por[p["nome"]] = (p.get("notasCeaps") or [], ok, dv, na)
+        _um_a_um(res, "senadores", por, ("cnpjCpf", "doc", "data", "valor"))
+    return res
 
 
 def v_camara():
     d = J("deputados_federais_ms.json")
-    itens = []
+    itens, por_notas = [], {}
     for p in d.get("deputados") or []:
         todos, pag, ok = [], 1, True
         while True:
@@ -220,10 +305,18 @@ def v_camara():
         inv = bool(comuns) and sum(1 for x in comuns if float(x.get("valorLiquido") or 0) < 0) > len(comuns) / 2
         tot = sum((float(x.get("valorLiquido") or 0) if PASSAGEM.search(x.get("tipoDespesa") or "") else (-1 if inv else 1) * float(x.get("valorLiquido") or 0)) for x in todos)
         itens.append((p["nome"], p.get("cotaGastaAno") or 0, round(tot, 2) if ok else None))
+        if ok:  # cada nota, com a lista que já veio
+            n_ok, dv, na = casar(p.get("despesas") or [], todos,
+                                 lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("doc") or "").strip(), str(x.get("data"))[:10]),
+                                 lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("numDocumento") or "").strip(), str(x.get("dataDocumento"))[:10]),
+                                 lambda x: x.get("valor"), lambda x: x.get("valorLiquido"))
+            por_notas[p["nome"]] = (p.get("despesas") or [], n_ok, dv, na)
     ps = d.get("deputados") or []
-    res = resultado(itens, "API da Câmara: soma do valor líquido do ano de cada deputado federal de MS", "https://dadosabertos.camara.leg.br/",
+    res = resultado(itens, "API da Câmara: soma do valor líquido do ano de cada deputado federal de MS e cada nota", "https://dadosabertos.camara.leg.br/",
                     granularidade="unidade", unidade="deputado federal (total da CEAP no ano)", unidades_base=len(ps),
                     registros_base=sum(len(p.get("despesas") or []) for p in ps), registros_por_unidade=n_por(ps, "nome", "despesas"))
+    if por_notas and res["resultado"] != "indisponivel":
+        _um_a_um(res, "deputados", por_notas, ("cnpjCpfFornecedor", "doc", "data", "valor"))
     # diferença pequena (até 1%) costuma ser nota lançada ou estornada depois da coleta
     if res["resultado"] == "diverge" and all(abs(x["diferenca"]) <= max(5, 0.01 * abs(x["fonte"])) for x in res["divergentes"]):
         res["resultado"], res["nota"] = "mudou_na_fonte", "diferenças até 1% — lançamentos/estornos feitos na Câmara depois da coleta"
@@ -257,10 +350,15 @@ def v_siconfi():
                 fonte.setdefault(f"{y}-{m_:02d}", icms[col])  # o RREO mais recente vence (vem primeiro)
     itens = [(f"ICMS {k}", meses[k].get("icms"), fonte.get(k)) for k in sorted(meses) if meses[k].get("icms") is not None]
     nm = len(meses)
-    return resultado(itens or [("ICMS", 0, None)], f"Siconfi RREO Anexo 3 ({', '.join(f'{a}/{b}º bim' for a, b, _ in periodos)}): ICMS mês a mês",
+    res = resultado(itens or [("ICMS", 0, None)], f"Siconfi RREO Anexo 3 ({', '.join(f'{a}/{b}º bim' for a, b, _ in periodos)}): ICMS mês a mês",
                      "https://siconfi.tesouro.gov.br/", granularidade="unidade", unidade="mês do ICMS do Estado", unidades_base=nm, registros_base=nm,
                      selecao="todos os meses da série do site (RREO do bimestre mais recente + 6º bimestre dos anos anteriores); "
                              "demais impostos e Campo Grande não conferidos")
+    if res["resultado"] != "indisponivel":  # cada mês é um registro da base, comparado um a um
+        div = {x["item"] for x in res.get("divergentes") or []}
+        res["registrosConferidosUmAUm"] = sum(1 for i in itens if i[2] is not None and i[0] not in div)
+        res["registrosPorTotais"] = 0
+    return res
 
 
 FOLHA_GOV = "https://gw.sgi.ms.gov.br/d0125/transpfolhadepagamento/v1/servidores"
@@ -279,11 +377,11 @@ def _folha_filtro(filtro, mes):
     mm, aa = mes.split("/")
     out, pag = [], 1
     while True:
-        r = g.requisitar(FOLHA_GOV, {"anoexercicio": int(aa), "mescompetencia": int(mm), "tipoFolha": 1, "orgao": filtro,
-                                     "pageno": pag, "pagesize": 20000, "exportarcsv": "false"}, 600)
-        try:
+        try:  # rede caiu nesta consulta: o órgão fica "não obtido" (nunca derruba a conferência inteira)
+            r = g.requisitar(FOLHA_GOV, {"anoexercicio": int(aa), "mescompetencia": int(mm), "tipoFolha": 1, "orgao": filtro,
+                                         "pageno": pag, "pagesize": 20000, "exportarcsv": "false"}, 600)
             j = r.json()
-        except ValueError:
+        except Exception:
             return None
         if (j.get("status") or {}).get("code") == 404 or r.status_code == 404:
             return "sem_filtro"
@@ -314,6 +412,12 @@ def _amostra_governo(folha, n=100):
     escolhidos = [x for o in sorted(por) for x in random.sample(por[o], alvo[o])]
 
     def consulta(p):
+        try:
+            return _consulta(p)
+        except Exception:  # rede: o contracheque fica "não obtido"
+            return p, None
+
+    def _consulta(p):
         mm, aa = p["mes"].split("/")
         prm = {"anoexercicio": int(aa), "mescompetencia": int(mm), "tipoFolha": 1, "nome": p["nome"].upper(), "pageno": 1, "pagesize": 50,
                "exportarcsv": "false"}
@@ -337,28 +441,32 @@ def _amostra_governo(folha, n=100):
     return itens, hashes
 
 
-def _contracheques_conferidos(hoje):
-    """Contracheques conferidos um a um que ainda valem: os de hoje mais os das amostras dos últimos 30 dias cujo hash é
-    igual ao do contracheque na folha atual (folha completa do artefato privado). Sem a folha, só os de hoje."""
-    import gzip
+def _hash_orgao(f_gov, sigla):
+    """Hash de todos os contracheques do órgão na folha (matrícula, bruto, líquido), em ordem: muda se qualquer um mudar."""
+    linhas = sorted((m, round(p["bruto"], 2), round(p["liquido"], 2)) for (sg, m), p in f_gov.items() if sg == sigla)
+    return _hl.sha1(json.dumps(linhas).encode()).hexdigest()[:16]
+
+
+def _contracheques_conferidos(hoje, f_gov=None, digests_hoje=None):
+    """Contracheques comparados um a um que ainda valem: os de hoje; os das amostras dos últimos 30 dias cujo hash é igual
+    ao do contracheque na folha atual; e os órgãos inteiros comparados nos últimos 30 dias cujo hash de órgão não mudou."""
+    f_gov = f_gov or {}
     validos = set(hoje)
-    arq = Path(__file__).parent.parent / "folha_completa" / "folha_supersalarios.jsonl.gz"
-    if not arq.exists():
-        return validos
-    atual = {}
-    for l in gzip.open(arq, "rt", encoding="utf-8"):
-        p = json.loads(l)
-        if p.get("orgaoId") == "governo" and p.get("matricula"):
-            atual[f"{p['orgaoSigla']}:{p['matricula']}"] = hash_registro({"m": p["matricula"], "b": p["bruto"], "l": p["liquido"]})
+    atual = {f"{sg}:{m}": hash_registro({"m": m, "b": p["bruto"], "l": p["liquido"]}) for (sg, m), p in f_gov.items()}
     limite = (datetime.fromisoformat(AGORA) - __import__("datetime").timedelta(days=30)).isoformat()
     try:
         for l in open(HISTORICO, encoding="utf-8"):
             h = json.loads(l)
-            if h.get("base") == "supersalarios" and h.get("em", "") >= limite and h.get("resultado") in ("confere", "mudou_na_fonte"):
-                validos |= {k for k, x in ((h.get("amostraContracheques") or {}).get("hashes") or {}).items() if atual.get(k) == x}
+            if h.get("base") != "supersalarios" or h.get("em", "") < limite or h.get("resultado") not in ("confere", "mudou_na_fonte"):
+                continue
+            validos |= {k for k, x in ((h.get("amostraContracheques") or {}).get("hashes") or {}).items() if atual.get(k) == x}
+            for org, dg in (h.get("digestsUmAUm") or {}).items():
+                sg = org.replace("Governo MS — ", "")
+                if (digests_hoje or {}).get(org) is None and dg.get("hash") == _hash_orgao(f_gov, sg):
+                    validos |= {f"{s_}:{m}" for (s_, m) in f_gov if s_ == sg}
     except FileNotFoundError:
         pass
-    return {k for k in validos if k in atual}
+    return {k for k in validos if k in atual or k.startswith("TCE:")}
 
 
 def v_tjms():
@@ -384,6 +492,26 @@ def v_tjms():
                   (f"{pref}: salário-base total", o["totalBase"], (s.get("remuneracao_base") or {}).get("total"))]
         por[o["orgao"]] = (o.get("pessoas") or 0, s.get("quantidade") is not None)
     gov = ss.get("orgaosGoverno") or []
+    # folha completa (artefato privado da coleta): cada matrícula que a fonte devolver é comparada um a um
+    folha = []
+    try:
+        import gzip
+        arq = Path(__file__).parent.parent / "folha_completa" / "folha_supersalarios.jsonl.gz"
+        if arq.exists():
+            folha = [json.loads(l) for l in gzip.open(arq, "rt", encoding="utf-8") if l.strip()]
+    except Exception as e:
+        print(f"  ⚠️ folha completa: {type(e).__name__}: {e}")
+    f_gov = {(p.get("orgaoSigla"), str(p.get("matricula"))): p for p in folha if p.get("orgaoId") == "governo" and p.get("matricula")}
+    f_tce = {str(p.get("matricula")): p for p in folha if p.get("orgaoId") == "tce" and "servidores" in (p.get("orgao") or "") and p.get("matricula")}
+    casados, digests, so_na_fonte = set(), {}, 0
+
+    def compara(chave, p, campos, rotulo):
+        """campos: [(nome, valor no site, valor na fonte)]; bate tudo (R$ 1) → comparado um a um; senão vira divergência."""
+        ruins = [(c, a, b) for c, a, b in campos if abs((a or 0) - (b or 0)) > 1]
+        if not ruins:
+            casados.add(chave)
+        for c, a, b in ruins:
+            itens.append((f"contracheque {rotulo}: {c}", round(a or 0, 2), round(b or 0, 2)))
 
     # uma consulta por filtro: o órgão-pai (SEJUSP, SEGOV) traz também os órgãos dele
     filtros = sorted({ORGAO_PAI.get(o["sigla"], o["sigla"]) for o in gov})
@@ -400,6 +528,19 @@ def v_tjms():
                 lst = None
             fonte_n = None if lst is None else len(lst)
             fonte_b = None if lst is None else round(sum((x.get("remuneracaoFixa") or 0) + (x.get("remuneracoesEventuais") or 0) for x in lst), 2)
+            if lst and f_gov:
+                antes = len(casados)
+                for x in lst:
+                    k = (o["sigla"], str(x.get("matricula")))
+                    p_ = f_gov.get(k)
+                    if not p_:
+                        so_na_fonte += 1
+                        continue
+                    compara(f"{k[0]}:{k[1]}", p_, [("bruto", p_["bruto"], (x.get("remuneracaoFixa") or 0) + (x.get("remuneracoesEventuais") or 0)),
+                                                  ("eventuais", p_.get("outras"), x.get("remuneracoesEventuais")),
+                                                  ("líquido", p_["liquido"], x.get("remuneracaoAposDeducoes"))], f"{k[0]}:{k[1]}")
+                if len(casados) - antes == o["pessoas"]:  # órgão inteiro bateu: guarda o resumo (hash) para a janela de 30 dias
+                    digests[o["orgao"]] = {"n": o["pessoas"], "hash": _hash_orgao(f_gov, o["sigla"])}
             itens += [(f"{o['orgao']}: pessoas", o["pessoas"], fonte_n, 0),
                       (f"{o['orgao']}: total bruto", round((o.get("totalBase") or 0) + (o.get("totalOutras") or 0), 2), fonte_b)]
             por[o["orgao"]] = (o.get("pessoas") or 0, lst is not None)
@@ -424,13 +565,22 @@ def v_tjms():
                   ("TCE-MS servidores: outras verbas", t["totalOutras"], None if rem is None or op is None else
                    round(sum(x.get("totalVencimentoOutrosPagamentos") or 0 for x in op if x.get("matricula") in mats), 2))]
         por[t["orgao"]] = (t.get("pessoas") or 0, rem is not None)
+        if rem and f_tce:
+            outros = {x.get("matricula"): x for x in op or []}
+            for x in rem:
+                p_ = f_tce.get(str(x.get("matricula")))
+                if not p_:
+                    so_na_fonte += 1
+                    continue
+                o_ = outros.get(x.get("matricula")) or {}
+                compara(f"TCE:{x.get('matricula')}", p_, [("salário-base", p_["base"], x.get("totalVencimentosRemuneracao")),
+                                                        ("outras verbas", p_["outras"], o_.get("totalVencimentoOutrosPagamentos") if op is not None else p_["outras"]),
+                                                        ("líquido", p_["liquido"], (x.get("totalCalculadoRemuneracao") or 0) + (o_.get("totalCalculadoOutrosPagamentos") or 0))],
+                        f"TCE:{x.get('matricula')}")
     # amostra diária de contracheques (folha completa do artefato privado da coleta, quando disponível)
     hashes = {}
     try:
-        import gzip
-        arq = Path(__file__).parent.parent / "folha_completa" / "folha_supersalarios.jsonl.gz"
-        if arq.exists():
-            folha = [json.loads(l) for l in gzip.open(arq, "rt", encoding="utf-8") if l.strip()]
+        if folha:
             am, hashes = _amostra_governo(folha)
             itens += am
     except Exception as e:
@@ -452,10 +602,11 @@ def v_tjms():
         # unidades = órgãos cujo total foi conferido; registros = SÓ os contracheques comparados um a um (amostras diárias
         # dos últimos 30 dias cujo contracheque não mudou desde então — mesmo hash). Total que bate não conta registro.
         ok = [k for k, (_, obtido) in por.items() if obtido]
-        um_a_um = _contracheques_conferidos(hashes)
+        um_a_um = _contracheques_conferidos(set(hashes) | casados, f_gov, digests)
         res.update({"unidadesConferidas": len(ok), "idsConferidos": ok, "registrosAbrangidos": len(um_a_um),
                     "totaisDeOrgaoConferidos": {"orgaos": len(ok), "contrachequesNessesOrgaos": sum(por[k][0] for k in ok)},
-                    "registrosConferidosUmAUm": len(um_a_um)})
+                    "registrosConferidosUmAUm": len(um_a_um), "registrosPorTotais": sum(por[k][0] for k in ok), "digestsUmAUm": digests,
+                    "soNaFonte": so_na_fonte})
         res["amostraContracheques"] = {"sorteados": sum(1 for i in itens if str(i[0]).startswith("contracheque") and i[0].endswith("bruto")),
                                        "conferidos": len(hashes), "hashes": hashes}
     res["independencia"] = ("mesma fonte da coleta (folha do Estado, portal do TCE-MS e DadosJusBr), por outra consulta: confirma a leitura, "
@@ -523,7 +674,10 @@ def v_votacoes():
                     registros_base=len(vots), selecao="todas as votações nominais da Câmara publicadas no site; todos os deputados de MS em cada uma")
     if res["resultado"] in ("confere", "diverge"):  # unidade e registro = votação (a base conta votações, não votos) com todos os votos obtidos
         ok = [v["id"] for v, r in respostas if r is not None]
-        res.update({"unidadesConferidas": len(ok), "idsConferidos": ok[:400], "registrosAbrangidos": len(ok)})
+        res.update({"unidadesConferidas": len(ok), "idsConferidos": ok[:400], "registrosAbrangidos": len(ok),
+                    # cada votação conta como comparada um a um só se TODOS os votos de MS bateram com a fonte
+                    "registrosConferidosUmAUm": len(ok) - len({str(x["item"]).split(" · ")[0] for x in res.get("divergentes") or []}),
+                    "registrosPorTotais": 0})
     return res
 
 
@@ -533,9 +687,9 @@ def v_producao():
     d = J("producao_legislativa.json")
     ps = d.get("parlamentares") or []
     ini = d.get("inicio") or "2023-02-01"
-    itens = []
+    itens, por = [], {}
     for p in ps:
-        n, ok = 0, True
+        n, ok, lista = 0, True, []
         if p.get("grupo") == "federal":
             pag = 1
             while True:
@@ -545,6 +699,7 @@ def v_producao():
                     ok = False
                     break
                 n += len(r.get("dados") or [])
+                lista += [f"{x.get('siglaTipo')} {x.get('numero')}/{x.get('ano')}" for x in r.get("dados") or []]
                 if not any(l.get("rel") == "next" for l in r.get("links") or []):
                     break
                 pag += 1
@@ -553,10 +708,15 @@ def v_producao():
             if r is None:
                 ok = False
             else:
-                n = sum(1 for x in r if (x.get("identificacao") or "").split()[:1] and x["identificacao"].split()[0] in ("PL", "PLP", "PEC", "PDL"))
+                lista = [x["identificacao"].strip() for x in r if (x.get("identificacao") or "").split()[:1] and x["identificacao"].split()[0] in ("PL", "PLP", "PEC", "PDL")]
+                n = len(lista)
         else:
             continue
         itens.append((p["nome"], p.get("projetos") or 0, float(n) if ok else None, 0))
+        if ok:  # cada projeto (pela sigla), com a lista que já veio
+            n_ok, dv, na = casar(p.get("todos") or [], [{"s": x} for x in lista], lambda x: str(x.get("sigla")).strip(), lambda x: x["s"],
+                                 lambda x: 1, lambda x: 1)
+            por[p["nome"]] = (p.get("todos") or [], n_ok, dv, na)
     res = resultado(itens, "Câmara (/proposicoes, filtro de tipo na API) e Senado (/processo do autor): nº de projetos de cada parlamentar de MS "
                     "desde 01/02/2023", "https://dadosabertos.camara.leg.br/", granularidade="unidade",
                     unidade="parlamentar (nº de projetos na legislatura)", unidades_base=len(ps),
@@ -565,6 +725,8 @@ def v_producao():
     # projeto novo apresentado depois da coleta: a fonte cresce um pouco (nunca diminui)
     if res["resultado"] == "diverge" and all(0 < -x["diferenca"] <= 3 for x in res["divergentes"]):
         res["resultado"], res["nota"] = "mudou_na_fonte", "projetos novos registrados depois da coleta (até 3 por parlamentar)"
+    if por and res["resultado"] != "indisponivel":
+        _um_a_um(res, "producao", por, ("sigla",))
     return res
 
 
@@ -639,7 +801,8 @@ def registrar(fonte, r, out):
                                 "nota": r.get("nota", ""), **({"hashes": r["hashes"]} if r.get("hashes") else {}),
                                 **({"lacunas": r["lacunas"]} if r.get("lacunas") else {}),
                                 **({"amostraContracheques": r["amostraContracheques"]} if r.get("amostraContracheques") else {}),
-                                **{k: r[k] for k in ("independencia", "totaisDeOrgaoConferidos", "registrosConferidosUmAUm", "semFiltro") if r.get(k)}},
+                                **{k: r[k] for k in ("independencia", "totaisDeOrgaoConferidos", "registrosConferidosUmAUm", "registrosPorTotais", "semFiltro",
+                                                     "digestsUmAUm", "soNaFonte", "naoAchadosNaFonte", "divergentesRegistros") if r.get(k) is not None}},
                                ensure_ascii=False) + "\n")
     out[fonte] = r
     return r

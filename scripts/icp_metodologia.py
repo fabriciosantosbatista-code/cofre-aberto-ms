@@ -136,12 +136,20 @@ def cobertura(historico, agora, registros_base_atual=None, hashes_atuais=None):
     else:
         n = min(len(ids) or v.get("unidadesConferidas") or 0, N) if N else (len(ids) or v.get("unidadesConferidas") or 0)
     rb = v.get("registrosBase") if v.get("registrosBase") is not None else registros_base_atual
-    ra = n if gran == "registro" else v.get("registrosAbrangidos")
-    if rb is not None and ra is not None:
+    # desde 19/11/2026: registro só conta como conferido se foi comparado UM A UM com a fonte. Na conferência por unidade
+    # ou por total, o que a unidade (órgão, parlamentar) abrange vira "coberto por totais conferidos", indicador à parte.
+    if gran == "registro":
+        ra, por_totais = n, 0
+    else:
+        ra = v.get("registrosConferidosUmAUm") or 0
+        por_totais = v.get("registrosPorTotais", v.get("registrosAbrangidos"))
+    if rb is not None:
         ra = min(ra, rb)
-    pct = round(100 * ra / rb, 2) if (rb and ra is not None) else None
+        por_totais = min(por_totais, rb) if por_totais is not None else None
+    pct = round(100 * ra / rb, 2) if rb else None
     return {"versaoRegistro": v.get("metodologia") or "2.0", "granularidade": gran, "unidade": v.get("unidade"), "unidadesBase": N,
             "unidadesConferidas": n, "registrosBase": rb, "registrosAbrangidos": ra, "percentual": pct,
+            "registrosPorTotais": por_totais, "percentualPorTotais": round(100 * por_totais / rb, 2) if (rb and por_totais is not None) else None,
             "calculavel": bool(N) and rb is not None and ra is not None,
             "divergentes": len(v.get("divergentes") or []), "resultado": v["resultado"], "em": v["em"], "metodo": v.get("metodo"),
             "fonteUrl": v.get("fonteUrl"), "selecao": v.get("selecao"), "responsavel": v.get("responsavel"), "idade": _idade(v, agora)}

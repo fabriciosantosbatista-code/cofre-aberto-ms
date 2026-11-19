@@ -121,6 +121,21 @@ check(r["resultado"] == "diverge", "supersalários: um magistrado a mais na font
 r = rodar(SS, fonte_padrao(tj=(2, 150.4)), v.v_tjms)
 check(r["resultado"] == "confere", "supersalários: diferença de centavos no salário-base → confere (tolerância R$ 1)")
 
+# registro a registro (casar): usa só a resposta que a fonte já devolveu
+k = lambda x: x["k"]
+ok_, dv, na = v.casar([{"k": "a", "v": 10}, {"k": "b", "v": 5}, {"k": "b", "v": 7}, {"k": "c", "v": 1}],
+                      [{"k": "a", "v": 10.4}, {"k": "b", "v": 7}, {"k": "b", "v": 5}, {"k": "x", "v": 9}], k, k, lambda x: x["v"], lambda x: x["v"])
+check(ok_ == 3 and not dv and na == 1, "casar: chave igual com o mesmo conjunto de valores → comparados um a um; chave só no site → não achado (não diverge)")
+ok_, dv, na = v.casar([{"k": "a", "v": 10}], [{"k": "a", "v": 12}], k, k, lambda x: x["v"], lambda x: x["v"])
+check(ok_ == 0 and len(dv) == 1, "casar: valor diferente na mesma chave → divergência registro a registro")
+res = {"resultado": "confere", "registrosAbrangidos": 3, "registrosBase": 3, "divergentes": []}
+orig = v.HISTORICO
+v.HISTORICO = Path("/nao/existe.jsonl")
+v._um_a_um(res, "teste", {"P1": ([{"x": 1}], 1, [], 0), "P2": ([{"x": 2}, {"x": 3}], 1, [("k", [3], [4])], 0)}, ("x",))
+v.HISTORICO = orig
+check(res["registrosConferidosUmAUm"] == 2 and res["registrosPorTotais"] == 3 and res["resultado"] == "diverge" and res["divergentesRegistros"],
+      "um a um: conta só os registros casados; total vira 'coberto por totais'; divergência de registro aparece e a base diverge")
+
 print(f"✅ {len(oks)} checagens OK · ❌ {len(erros)} erros")
 for e in erros:
     print("❌", e)

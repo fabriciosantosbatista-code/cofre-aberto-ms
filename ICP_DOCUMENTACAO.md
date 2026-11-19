@@ -178,6 +178,7 @@ X de 5 tipos de conferência." · "A nota considera apenas as evidências dispon
 | Desde | Mudança |
 |---|---|
 | 19/11/2026 | Conferência acumulada em janela móvel de 30 dias com hash do registro (seção 2.1). |
+| 19/11/2026 | **Todas as bases:** registro só conta como conferido se foi comparado um a um com a fonte (matrícula, nota, reembolso, projeto…), usando a resposta que a reconsulta já traz. Registros dentro de unidades (órgão, parlamentar, total) cujo total bateu formam um indicador à parte, "registros cobertos por totais conferidos", que não entra na fração conferida. Divergência registro a registro aparece no site. Unidades inteiras comparadas um a um valem por 30 dias enquanto o hash da unidade não mudar. |
 | 19/11/2026 | Supersalários: total de órgão que bate com a fonte conta como "total do órgão conferido", não como registros conferidos; só contam os contracheques comparados um a um (amostra diária, janela de 30 dias com hash). Reconsulta marcada como "mesma fonte da coleta — confirma a leitura, não é fonte independente". |
 
 ### 3.1 Versões da metodologia e histórico das notas

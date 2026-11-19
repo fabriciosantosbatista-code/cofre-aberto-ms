@@ -399,6 +399,7 @@ def main():
     conhecidas = [b for b in bases.values() if b["cobertura"] and b["cobertura"]["calculavel"]]
     reg_base = sum(b["cobertura"]["registrosBase"] or 0 for b in conhecidas)
     reg_conf = sum(b["cobertura"]["registrosAbrangidos"] or 0 for b in conhecidas)
+    reg_tot = sum(b["cobertura"].get("registrosPorTotais") or 0 for b in conhecidas)
     todos_reg = sum(b["registros"] or 0 for b in bases.values() if isinstance(b.get("registros"), (int, float)))
     ind = {"total": len(bases), "verificadas": sum(1 for b in bases.values() if b["nivel"] >= 3),
            "conferenciaAbrangente": sum(1 for b in bases.values() if b["nivel"] >= 3),
@@ -417,7 +418,9 @@ def main():
            # cobertura dos registros: só onde a base informa o total (denominador conhecido); senão, "não calculada"
            "coberturaRegistros": {"conferidos": reg_conf, "base": reg_base, "percentual": round(100 * reg_conf / reg_base, 2) if reg_base else None,
                                   "basesComDenominador": len(conhecidas), "registrosTodasAsBases": todos_reg,
-                                  "percentualDoTotal": round(100 * reg_conf / todos_reg, 2) if todos_reg else None}}
+                                  "percentualDoTotal": round(100 * reg_conf / todos_reg, 2) if todos_reg else None,
+                                  # registros dentro de unidades (órgão, parlamentar) cujo TOTAL bateu com a fonte, sem comparação um a um
+                                  "porTotais": reg_tot, "percentualPorTotais": round(100 * reg_tot / todos_reg, 2) if todos_reg else None}}
     aval1 = [b for b in bases.values() if b["notaV1"] is not None]
     geral_v1 = round(sum(b["notaV1"] * b["importancia"] for b in aval1) / sum(b["importancia"] for b in aval1)) if aval1 else None
     icp = {"nome": "ICP — Índice de Confiabilidade Pública", "geradoEm": AGORA.strftime("%Y-%m-%dT%H:%M:%S"), "ultimaTentativa": mon["ultimaTentativa"],

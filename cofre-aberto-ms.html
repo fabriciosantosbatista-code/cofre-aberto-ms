@@ -1776,7 +1776,8 @@ Atenciosamente,</textarea>
         <div><div class="mini-stat-value" id="icp-abrangente">—</div><div class="mini-stat-label">conferidas na fonte por inteiro</div></div>
         <div><div class="mini-stat-value" id="icp-parcial">—</div><div class="mini-stat-label">conferidas só em parte (amostra ou recorte)</div></div>
         <div><div class="mini-stat-value" id="icp-semconf">—</div><div class="mini-stat-label">sem conferência na fonte oficial</div></div>
-        <div><div class="mini-stat-value" id="icp-cobertura">—</div><div class="mini-stat-label" id="icp-cobertura-rot">dos registros conferidos na fonte</div></div>
+        <div><div class="mini-stat-value" id="icp-cobertura">—</div><div class="mini-stat-label" id="icp-cobertura-rot">registros comparados um a um na fonte</div></div>
+        <div><div class="mini-stat-value" id="icp-cobertura-tot">—</div><div class="mini-stat-label" id="icp-cobertura-tot-rot">registros cobertos por totais conferidos</div></div>
         <div><div class="mini-stat-value" id="icp-criticos-n">—</div><div class="mini-stat-label">bases com problema crítico</div></div>
       </div>
       <div class="section-note" style="margin-top:10px;max-width:none" id="icp-datas"></div>
@@ -1839,6 +1840,8 @@ Atenciosamente,</textarea>
         <b>Tetos:</b> conferência parcial, 70 + 30 × fração da base conferida; divergência na fonte, 40; falha de coleta, 50; mais da metade das coletas recentes com falha, 50; revisão manual pendente, 70.
         <b>Nota geral</b> = média das 24 bases (nenhuma fica de fora), com peso 3 para os gastos principais, 2 para recortes relevantes e 1 para complementares.
         <b>Selo verde</b> só com a base inteira conferida na fonte (nível 3 ou 4).
+        <b>Registro conferido = comparado um a um com a fonte</b> (em vigor desde 19/11/2026): quando só o total de um órgão ou de um parlamentar
+        bate, os registros dele contam à parte, como "cobertos por totais conferidos", e não entram na fração conferida.
         <b>Conferência acumulada em janela móvel de 30 dias</b> (em vigor desde 19/11/2026): nas bases conferidas registro a registro, a fração
         conferida soma os registros distintos conferidos nos últimos 30 dias (amostra sorteada por dia, semente = data), mas só conta o registro
         que <b>não mudou desde a conferência</b> (o robô guarda um resumo — hash — dos campos conferidos; se algum mudar, o registro volta a
@@ -7423,8 +7426,11 @@ function renderICP(d) {
   document.getElementById("icp-semconf").textContent = I.semVerificacaoOficial ?? "—";
   document.getElementById("icp-criticos-n").textContent = I.criticos ?? d.criticos.length;
   document.getElementById("icp-cobertura").textContent = CR.percentualDoTotal == null ? "não calculada" : String(CR.percentualDoTotal).replace(".", ",") + "%";
-  document.getElementById("icp-cobertura-rot").textContent = CR.percentualDoTotal == null ? "cobertura dos registros" :
-    `dos registros conferidos na fonte (${Number(CR.conferidos).toLocaleString("pt-BR")} de ${Number(CR.registrosTodasAsBases).toLocaleString("pt-BR")})`;
+  document.getElementById("icp-cobertura-rot").textContent = CR.percentualDoTotal == null ? "registros comparados um a um na fonte" :
+    `registros comparados um a um na fonte (${Number(CR.conferidos).toLocaleString("pt-BR")} de ${Number(CR.registrosTodasAsBases).toLocaleString("pt-BR")})`;
+  document.getElementById("icp-cobertura-tot").textContent = CR.percentualPorTotais == null ? "—" : String(CR.percentualPorTotais).replace(".", ",") + "%";
+  document.getElementById("icp-cobertura-tot-rot").textContent = CR.percentualPorTotais == null ? "registros cobertos por totais conferidos" :
+    `registros cobertos por totais conferidos — órgão ou parlamentar cujo total bateu, sem comparar registro a registro (${Number(CR.porTotais).toLocaleString("pt-BR")})`;
   document.getElementById("icp-resumo").innerHTML = `<b>O que esta nota significa:</b> ${I.conferenciaAbrangente} de ${I.total} bases foram conferidas por inteiro na fonte oficial,
     ${I.conferenciaParcial} só em parte, e ${I.semVerificacaoOficial} ainda dependem apenas dos testes internos. ${escHTML(d.aviso || "")}
     ${MET.anterior && MET.anterior.nota != null ? `<span style="color:var(--ink-faint)">Metodologia ${escHTML(MET.versao)} (desde ${icpDia(MET.desde)}); pela metodologia ${escHTML(MET.anterior.versao)}, a nota seria ${MET.anterior.nota}.</span>` : ""}`;
