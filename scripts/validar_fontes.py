@@ -469,6 +469,44 @@ def _contracheques_conferidos(hoje, f_gov=None, digests_hoje=None):
     return {k for k in validos if k in atual or k.startswith("TCE:")}
 
 
+def rgf_executivo(ss):
+    """Segundo nível, FONTE INDEPENDENTE (Tesouro Nacional — Siconfi, RGF Anexo 1 do Poder Executivo de MS): a média mensal
+    dos últimos 12 meses do RGF mais recente contra a folha do mês no site, para ativos (vencimentos, vantagens e outras
+    despesas variáveis) e para aposentados e pensionistas (aposentadorias, reserva e reformas + pensões). Agregado,
+    tolerância de 10%, diferença em % visível. Não conta registro conferido. O RGF anual inclui 13º e férias: a média
+    mensal tende a ficar acima de um mês comum."""
+    org = {o["orgao"]: o for o in ss.get("orgaos") or []}
+    at, ina = org.get("Governo do Estado — ativos"), org.get("Governo do Estado — aposentados e pensionistas")
+    if not at or not ina:
+        return None
+    ano = int(at["mes"].split("/")[1])
+    d, per = None, None
+    for a_, q in ((ano, 3), (ano, 2), (ano, 1), (ano - 1, 3)):
+        d = get("https://apidatalake.tesouro.gov.br/ords/siconfi/tt/rgf", {"an_exercicio": a_, "in_periodicidade": "Q", "nr_periodo": q,
+                "co_tipo_demonstrativo": "RGF", "no_anexo": "RGF-Anexo 01", "co_esfera": "E", "co_poder": "E", "id_ente": 50}, timeout=120)
+        if d and d.get("items"):
+            per = f"{q}º quadrimestre de {a_}"
+            break
+    if not per:
+        return {"resultado": "indisponivel", "em": AGORA, "fonte": "Tesouro Nacional — Siconfi, RGF Anexo 1 (Poder Executivo de MS)"}
+    tot = {x["conta"].strip(): x["valor"] for x in d["items"] if x["coluna"].startswith("TOTAL (ÚLTIMOS 12 MESES)")}
+    venc = tot.get("Vencimentos, Vantagens e Outras Despesas Variáveis")
+    inat = (tot.get("Aposentadorias, Reserva e Reformas") or 0) + (tot.get("Pensões") or 0)
+    linhas = []
+    for rot, site, rgf in (("ativos", (at.get("totalBase") or 0) + (at.get("totalOutras") or 0), venc),
+                           ("aposentados e pensionistas", (ina.get("totalBase") or 0) + (ina.get("totalOutras") or 0), inat)):
+        if not rgf:
+            continue
+        media = rgf / 12
+        dif = 100 * (site - media) / media
+        linhas.append({"grupo": rot, "site": round(site, 2), "rgfMediaMensal": round(media, 2), "diferencaPct": round(dif, 1),
+                       "resultado": "confere" if abs(dif) <= 10 else "diverge"})
+    return {"resultado": "confere" if linhas and all(l["resultado"] == "confere" for l in linhas) else "diverge" if linhas else "indisponivel",
+            "em": AGORA, "periodo": per, "mesFolha": at["mes"], "tolerancia": 10, "linhas": linhas, "agregado": True,
+            "fonte": "Tesouro Nacional — Siconfi, RGF Anexo 1 (Poder Executivo de MS)", "fonteUrl": "https://siconfi.tesouro.gov.br/",
+            "nota": "fonte independente, só no agregado do Poder Executivo; não conta contracheque conferido"}
+
+
 def v_tjms():
     """Supersalários na fonte, órgão por órgão, no mês publicado:
       TJMS e TRT24  DadosJusBr (contracheques enviados ao CNJ): nº de magistrados e soma do salário-base
@@ -611,6 +649,10 @@ def v_tjms():
                                        "conferidos": len(hashes), "hashes": hashes}
     res["independencia"] = ("mesma fonte da coleta (folha do Estado, portal do TCE-MS e DadosJusBr), por outra consulta: confirma a leitura, "
                             "não é fonte independente")
+    try:
+        res["fonteIndependente"] = rgf_executivo(ss)
+    except Exception as e:
+        res["fonteIndependente"] = {"resultado": "indisponivel", "em": AGORA, "nota": f"erro: {type(e).__name__}"}
     return res
 
 
@@ -802,7 +844,7 @@ def registrar(fonte, r, out):
                                 **({"lacunas": r["lacunas"]} if r.get("lacunas") else {}),
                                 **({"amostraContracheques": r["amostraContracheques"]} if r.get("amostraContracheques") else {}),
                                 **{k: r[k] for k in ("independencia", "totaisDeOrgaoConferidos", "registrosConferidosUmAUm", "registrosPorTotais", "semFiltro",
-                                                     "digestsUmAUm", "soNaFonte", "naoAchadosNaFonte", "divergentesRegistros") if r.get(k) is not None}},
+                                                     "digestsUmAUm", "soNaFonte", "naoAchadosNaFonte", "divergentesRegistros", "fonteIndependente") if r.get(k) is not None}},
                                ensure_ascii=False) + "\n")
     out[fonte] = r
     return r

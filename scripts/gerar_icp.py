@@ -362,6 +362,12 @@ def main():
         avisos = avisos_metodologicos(nivel, cob, classe, estado_atual, f, dims, cats)
         if indep:  # a reconsulta usa a mesma fonte da coleta: confirma a leitura, não é fonte independente
             avisos.insert(0, f"Reconsulta na {indep}.")
+        fi = (ver_auto.get(fid) or {}).get("fonteIndependente")
+        if fi and fi.get("linhas"):  # selo separado: fonte independente, só agregado (não conta registro conferido)
+            txt = "; ".join(f"{l['grupo']} {l['diferencaPct']:+.1f}%".replace(".", ",") for l in fi["linhas"])
+            avisos.insert(0, f"{'Conferido' if fi['resultado'] == 'confere' else 'Diferença acima da tolerância'} em fonte independente (agregado): "
+                             f"{fi['fonte']}, {fi['periodo']}, média mensal × folha de {fi['mesFolha']} — {txt} (tolerância {fi['tolerancia']}%). "
+                             "Não conta como registro conferido.")
         bases[fid] = {**f, "id": fid, "orgao": extra[0], "importancia": extra[1], "limitacoes": extra[3], "classe": classe,
                       "status": status, "statusRotulo": STATUS[status][0], "statusCor": STATUS[status][1],
                       "dimensoes": {k: dims.get(k) for k in PESOS_DIM}, "nota": nota, "testes": {k: tst[k] for k in ("ok", "avisos", "erros")},

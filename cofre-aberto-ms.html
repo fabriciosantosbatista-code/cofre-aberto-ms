@@ -6239,7 +6239,8 @@ function renderSupersalarios(d) {
   document.getElementById("ss-teto-fonte").textContent = `${formatBRL(T)} (${d.tetoFonte})`;
   document.getElementById("ss-avisos").textContent = (d.avisos || []).join(" ");
   // conferência: manual no contracheque original (resumo_conferencia.json) + checagem automática (checagem_ultima.json)
-  Promise.all([carregarJSON("dados/verificacao/resumo_conferencia.json"), carregarJSON("dados/verificacao/checagem_ultima.json")]).then(([rc, ck]) => {
+  Promise.all([carregarJSON("dados/verificacao/resumo_conferencia.json"), carregarJSON("dados/verificacao/checagem_ultima.json"),
+               carregarJSON("dados/validacao_fontes.json")]).then(([rc, ck, vf]) => {
     const el = document.getElementById("ss-conferencia");
     if (!el || (!rc && !ck)) return;
     const G = (rc && rc.grupos) || {}, s = G.supersalario, am = G.amostra, it = G.intermediario;
@@ -6254,7 +6255,13 @@ function renderSupersalarios(d) {
     if (it) partes.push(`amostra dos que têm <b>bruto acima e líquido abaixo</b> do teto: ${amostra(it)}`);
     if (ck) partes.push(`<b>${ck.orgaos} órgãos</b> com checagem automática de integridade e totais em ${Number(ck.contracheques).toLocaleString("pt-BR")} contracheques ` +
       `(${ck.alertas} alerta(s) para revisão)`);
-    el.innerHTML = `🔎 <b>Como estes números são conferidos:</b> ${partes.join("; ")}. A conferência automática na fonte é uma
+    const fi = (((vf || {}).fontes || {}).supersalarios || {}).fonteIndependente;
+    const selo = fi && fi.linhas && fi.linhas.length ? `<div style="margin-top:6px"><span class="icp-selo" style="background:${fi.resultado === "confere" ? "#2f9e6b" : "#c98500"}">
+      ${fi.resultado === "confere" ? "✓ conferido em fonte independente (agregado)" : "⚠ diferença acima da tolerância na fonte independente (agregado)"}</span>
+      ${escHTML(fi.fonte)}, ${escHTML(fi.periodo)}: média mensal × folha de ${escHTML(fi.mesFolha)} —
+      ${fi.linhas.map(l => `${escHTML(l.grupo)} <b>${(l.diferencaPct > 0 ? "+" : "") + String(l.diferencaPct).replace(".", ",")}%</b>`).join(", ")}
+      (tolerância ${fi.tolerancia}%; o RGF inclui 13º e férias). Não conta como contracheque conferido.</div>` : "";
+    el.innerHTML = selo + `🔎 <b>Como estes números são conferidos:</b> ${partes.join("; ")}. A conferência automática na fonte é uma
       <b>reconsulta na mesma fonte da coleta</b> (folha do Estado, portal do TCE-MS e DadosJusBr): confirma a leitura, não é fonte independente;
       totais de órgão que batem não contam como contracheques conferidos. Sorteio estratificado por órgão com semente fixa (reproduzível);
       limite pelo método exato de Clopper–Pearson. <a href="https://github.com/${"fabriciosantosbatista-code/cofre-aberto-ms"}/blob/main/dados/verificacao/conferencia_manual.csv" target="_blank" rel="noopener">Lista de conferência</a>.`;

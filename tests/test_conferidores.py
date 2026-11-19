@@ -135,6 +135,22 @@ v._um_a_um(res, "teste", {"P1": ([{"x": 1}], 1, [], 0), "P2": ([{"x": 2}, {"x": 
 v.HISTORICO = orig
 check(res["registrosConferidosUmAUm"] == 2 and res["registrosPorTotais"] == 3 and res["resultado"] == "diverge" and res["divergentesRegistros"],
       "um a um: conta só os registros casados; total vira 'coberto por totais'; divergência de registro aparece e a base diverge")
+# fonte independente agregada (RGF): diferença em % e tolerância de 10%
+SSR = {"orgaos": [{"orgao": "Governo do Estado — ativos", "mes": "10/2026", "totalBase": 100.0, "totalOutras": 0.0},
+                  {"orgao": "Governo do Estado — aposentados e pensionistas", "mes": "10/2026", "totalBase": 50.0, "totalOutras": 0.0}]}
+def rgf(venc, apos, pens):
+    return lambda url, params=None, tent=3, timeout=90: {"items": [
+        {"conta": "Vencimentos, Vantagens e Outras Despesas Variáveis", "coluna": "TOTAL (ÚLTIMOS 12 MESES) (a)", "valor": venc},
+        {"conta": "Aposentadorias, Reserva e Reformas", "coluna": "TOTAL (ÚLTIMOS 12 MESES) (a)", "valor": apos},
+        {"conta": "Pensões", "coluna": "TOTAL (ÚLTIMOS 12 MESES) (a)", "valor": pens}]} if "rgf" in url else None
+g0 = v.get
+v.get = rgf(1260, 540, 60)
+r = v.rgf_executivo(SSR)
+check(r["resultado"] == "confere" and [l["diferencaPct"] for l in r["linhas"]] == [-4.8, 0.0], f"RGF: média mensal × folha, diferença em % ({[l['diferencaPct'] for l in r['linhas']]})")
+v.get = rgf(1800, 540, 60)
+r = v.rgf_executivo(SSR)
+check(r["resultado"] == "diverge" and r["linhas"][0]["resultado"] == "diverge", "RGF: diferença acima de 10% → diverge (selo à parte, não muda a contagem)")
+v.get = g0
 
 print(f"✅ {len(oks)} checagens OK · ❌ {len(erros)} erros")
 for e in erros:
