@@ -94,6 +94,16 @@ def encontra_arquivo_mais_recente(sessao):
     return url, f"{mes:02d}/{ano}"
 
 
+def arquivo_do_mes(sessao, mes):
+    """URL da planilha (.ods, Anexo VIII) de um mês "MM/AAAA" na página de transparência; None se não houver."""
+    mm, aa = mes.split("/")
+    r = get_com_retry(PAGINA_REMUNERACAO)
+    for m in re.finditer(r'href="(/documents/[^"]*\.ods)"', r.text):
+        if f"{mm}-{aa}" in m.group(1):
+            return BASE_URL + m.group(1).replace("&amp;", "&")
+    return None
+
+
 def texto_celula(cel):
     return " ".join((p.text or "") for p in cel.findall("text:p", NS))
 

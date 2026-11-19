@@ -43,11 +43,11 @@ SAIDA_CSV = DADOS / "verificacao" / "conferencia_supersalarios.csv"
 SAIDA_JSON = DADOS / "verificacao" / "conferencia_supersalarios.json"
 CONF = ROOT / "config"
 ROTULO = {"governo": "mesma fonte — confirma a leitura", "trt24": "conferido no arquivo original do órgão",
-          "tce": "mesma fonte — confirma a leitura", "tjms": "arquivo original do órgão inacessível"}
+          "tce": "mesma fonte — confirma a leitura", "tjms": "conferido no DadosJusBr (o portal do TJMS bloqueia acesso de fora do Brasil)"}
 GOVERNO_SEM_RUBRICAS = ("a fonte publica só remuneração fixa, eventuais e valor após deduções; "
                         "não é possível separar verbas indenizatórias")
 COLUNAS = ["grupo", "nome", "orgao", "mes", "bruto", "liquido", "teto_mes", "lei_teto", "excedente", "total_remuneratorio",
-           "total_indenizatorio", "total_excluido_do_teto", "status", "motivo", "conferido_em", "rotulo", "link_contracheque_original"]
+           "total_indenizatorio", "total_excluido_do_teto", "abate_teto", "status", "motivo", "conferido_em", "rotulo", "link_contracheque_original"]
 
 
 def arg(nome, padrao):
@@ -183,29 +183,69 @@ def reconsulta_tce(ps, sem_rede=False):
     return out
 
 
-def compara_trt24(ps):
-    """Contracheque do DadosJusBr × folha do portal do TRT24 (Anexo VIII) lida na mesma coleta, pelo nome."""
+ANEXO_REM = ("subsidio", "vantagensPessoais", "vantagensEventuais", "gratificacoes", "remuneracaoParadigma")
+
+
+def anexo_viii(oid, mes):
+    """Linhas do Anexo VIII (Res. CNJ 102/2009) do órgão no mês: TJMS pelo DadosJusBr (dados/tjms_magistrados.json — o
+    portal do TJMS bloqueia acesso de fora do Brasil); TRT24 pela planilha original do portal do próprio tribunal (a do
+    mês lida na coleta ou, se o mês for outro, baixada de novo). Devolve (linhas, rótulo) ou (None, motivo)."""
+    arq = DADOS / ("tjms_magistrados.json" if oid == "tjms" else "trt24_magistrados.json")
     try:
-        t = json.load(open(DADOS / "trt24_magistrados.json", encoding="utf-8"))
+        t = json.load(open(arq, encoding="utf-8"))
     except Exception:
-        return {id(p): ("nao_verificado", "folha original do TRT24 indisponível nesta coleta") for p in ps}
-    mes_t = t.get("mesReferencia")
-    por_nome = defaultdict(list)
-    for x in t.get("magistrados") or []:
-        por_nome[norm(x.get("nome"))].append(x)
-    out = {}
+        t = {}
+    if oid == "tjms":
+        if t.get("mesReferencia") != mes:
+            return None, f"o Anexo VIII do TJMS lido é de {t.get('mesReferencia')}; o contracheque é de {mes}"
+        return t.get("magistrados") or [], "conferido no DadosJusBr (o portal do TJMS bloqueia acesso de fora do Brasil)"
+    if t.get("mesReferencia") == mes:
+        return t.get("magistrados") or [], "conferido no arquivo original do órgão"
+    try:  # outro mês: baixa a planilha do mês no portal do TRT24
+        import requests
+        import coletar_trt24 as tr
+        s = requests.Session()
+        url = tr.arquivo_do_mes(s, mes)
+        if not url:
+            return None, f"o portal do TRT24 não tem a planilha de {mes}"
+        return tr.processa_ods(tr.get_com_retry(url).content), "conferido no arquivo original do órgão"
+    except Exception as e:
+        return None, f"arquivo original do TRT24 de {mes} inacessível ({type(e).__name__})"
+
+
+def compara_anexo(ps, oid, teto_de):
+    """Judiciário: contracheque do site × linha do Anexo VIII do mesmo nome e mês (bruto e líquido). Classifica pelas colunas
+    do Anexo VIII (classificação oficial do órgão): remuneratório = subsídio + vantagens pessoais + vantagens eventuais +
+    gratificações (+ paradigma); indenizatório = indenizações. Confere se a retenção por teto foi aplicada.
+    Devolve {id(p): (status, motivo, classificação)}."""
+    out, cache = {}, {}
     for p in ps:
-        if p.get("mes") != mes_t:
-            out[id(p)] = ("nao_verificado", f"o arquivo original do TRT24 lido é de {mes_t}; o contracheque é de {p.get('mes')}")
+        mes = p.get("mes")
+        if mes not in cache:
+            cache[mes] = anexo_viii(oid, mes)
+        linhas, rot = cache[mes]
+        if linhas is None:
+            out[id(p)] = ("nao_verificado", rot, None)
             continue
-        xs = por_nome.get(norm(p.get("nome")), [])
+        xs = [x for x in linhas if norm(x.get("nome")) == norm(p.get("nome"))]
         if len(xs) != 1:
-            out[id(p)] = ("nao_verificado", "nome não encontrado no arquivo original" if not xs else "nome ambíguo no arquivo original")
+            out[id(p)] = ("nao_verificado", "nome não encontrado no Anexo VIII" if not xs else "nome ambíguo no Anexo VIII", None)
             continue
         x = xs[0]
-        campos = [("bruto", p["bruto"], x.get("remuneracaoBruta") or 0), ("líquido", p["liquido"], x.get("remuneracaoLiquida") or 0)]
-        ruins = [f"{c}: site R$ {a:,.2f} × original R$ {b:,.2f}" for c, a, b in campos if abs((a or 0) - abs(b or 0)) > 1]
-        out[id(p)] = ("diverge", "; ".join(ruins)) if ruins else ("confere", "bruto e líquido iguais ao Anexo VIII do TRT24")
+        rem = round(sum(abs(x.get(k) or 0) for k in ANEXO_REM), 2)
+        ind = round(abs(x.get("indenizacoes") or 0), 2)
+        ret = round(abs(x.get("retencaoTeto") or 0), 2)
+        teto = teto_de(p)
+        # abate do teto: o que passa do teto no subsídio + vantagens pessoais (VPNI, ATS etc. entram no teto); indenizações
+        # ficam fora; gratificações e vantagens eventuais não entram nesta conta (não presumimos a regra de cada uma)
+        sujeito = sum(abs(x.get(k) or 0) for k in ("subsidio", "vantagensPessoais", "remuneracaoParadigma"))
+        devido = max(0.0, round(sujeito - teto, 2))
+        abate = ("não se aplica" if devido <= 1 else "aplicado" if ret + 1 >= devido else
+                 f"retenção de R$ {ret:,.2f} menor que o excedente de R$ {devido:,.2f} do subsídio + vantagens pessoais")
+        cl = {"remuneratorio": rem, "indenizatorio": ind, "retencaoTeto": ret, "abateTeto": abate}
+        campos = [("bruto", p["bruto"], abs(x.get("remuneracaoBruta") or 0)), ("líquido", p["liquido"], abs(x.get("remuneracaoLiquida") or 0))]
+        ruins = [f"{c}: site R$ {a:,.2f} × Anexo VIII R$ {b:,.2f}" for c, a, b in campos if abs((a or 0) - (b or 0)) > 1]
+        out[id(p)] = (("diverge", "; ".join(ruins), cl) if ruins else ("confere", f"bruto e líquido iguais ao Anexo VIII · {rot}", cl))
     return out
 
 
@@ -242,10 +282,11 @@ def main():
     st = {}
     st.update(reconsulta_governo([p for p in sel if p.get("orgaoId") == "governo"], sem_rede))
     st.update(reconsulta_tce([p for p in sel if p.get("orgaoId") == "tce"], sem_rede))
-    st.update(compara_trt24([p for p in sel if p.get("orgaoId") == "trt24"]))
+    classif = {}
+    for oid in ("tjms", "trt24"):
+        for k, (s_, m_, cl) in compara_anexo([p for p in sel if p.get("orgaoId") == oid], oid, lambda p: teto(p)["valor"]).items():
+            st[k], classif[k] = (s_, m_), cl
     for p in sel:
-        if p.get("orgaoId") == "tjms":
-            st[id(p)] = ("nao_verificado", "arquivo original do TJMS inacessível ao robô (o portal bloqueia acessos de fora do Brasil)")
         st.setdefault(id(p), ("nao_verificado", "sem reconsulta automática para este órgão"))
 
     tab = rubricas()
@@ -254,8 +295,14 @@ def main():
     for grupo, p in grupos:
         t = teto(p)
         status, motivo = st[id(p)]
-        rem = ind = exc = ""
-        if p.get("orgaoId") in ("tjms", "trt24", "trems") or (p.get("orgaoId") == "tce" and "membros" in (p.get("orgao") or "")):
+        rem = ind = exc = abate = ""
+        if p.get("orgaoId") in ("tjms", "trt24"):  # classificação pelas colunas do Anexo VIII (oficial do órgão)
+            cl = classif.get(id(p))
+            if cl:
+                rem, ind, abate = f"{cl['remuneratorio']:.2f}", f"{cl['indenizatorio']:.2f}", cl["abateTeto"]
+            elif status == "confere":
+                status, motivo = "nao_verificado", "sem as colunas do Anexo VIII para classificar"
+        elif p.get("orgaoId") == "tce" and "membros" in (p.get("orgao") or ""):  # rubricas fora do Anexo VIII
             tot, sem = classifica(p, tab)
             rem, ind, exc = f"{tot['remuneratorio']:.2f}", f"{tot['indenizatorio']:.2f}", f"{tot['excluida_do_teto']:.2f}"
             if sem:
@@ -268,7 +315,7 @@ def main():
         link, _obs = fonte_original(p)
         linhas.append({"grupo": grupo, "nome": p.get("nome"), "orgao": unidade(p), "mes": p.get("mes"), "bruto": f"{p['bruto']:.2f}",
                        "liquido": f"{p['liquido']:.2f}", "teto_mes": f"{t['valor']:.2f}", "lei_teto": t["lei"], "excedente": f"{max(0, exc_val):.2f}",
-                       "total_remuneratorio": rem, "total_indenizatorio": ind, "total_excluido_do_teto": exc, "status": status,
+                       "total_remuneratorio": rem, "total_indenizatorio": ind, "total_excluido_do_teto": exc, "abate_teto": abate, "status": status,
                        "motivo": motivo, "conferido_em": hoje, "rotulo": ROTULO.get(p.get("orgaoId"), ""), "link_contracheque_original": link})
         if grupo == "amostra" and status == "confere":
             janela[hash_cc(p)] = hoje[:10]
@@ -295,6 +342,7 @@ def main():
               "porOrgao": {o: dict(c) for o, c in sorted(por_orgao.items())},
               "naoVerificadoPorMotivo": motivos.most_common(),
               "rubricasNaoClassificadas": sem_classe.most_common(),
+              "abateTeto": Counter(x["abate_teto"].split(" de R$")[0] if x["abate_teto"] else "" for x in linhas if x["abate_teto"]).most_common(),
               "clopperPearson": {"amostra": cp("amostra"), "intermediario": cp("intermediario")},
               "teto": vs, "amostraJanela": janela,
               "rotulos": {**ROTULO, "governoRubricas": GOVERNO_SEM_RUBRICAS}}
