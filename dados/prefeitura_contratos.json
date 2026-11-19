@@ -1,12 +1,12 @@
 {
  "ano": 2026,
- "ultimaAtualizacao": "2026-11-19T10:31:21",
+ "ultimaAtualizacao": "2026-11-19T12:38:15",
  "fonte": "https://sig-transparencia.campogrande.ms.gov.br/contratos/consulta",
  "fonteLicitacoes": "https://sig-transparencia.campogrande.ms.gov.br/licitacoes/consulta",
  "resumo": {
   "contratos": 352,
   "contratosCompras": 297,
-  "valorCompras": 618236184.17,
+  "valorCompras": 618391073.31,
   "valorNaoCompras": 2614890855.4,
   "porTipo": {
    "DIVIDA": {
@@ -16,7 +16,7 @@
    },
    "OBRAS": {
     "quantidade": 31,
-    "valor": 227532889.48,
+    "valor": 227798733.62,
     "compra": true
    },
    "SERVIÇO": {
@@ -26,7 +26,7 @@
    },
    "AQUISIÇÃO": {
     "quantidade": 147,
-    "valor": 138736617.84,
+    "valor": 138625662.84,
     "compra": true
    },
    "LOCAÇÃO": {
@@ -79,7 +79,7 @@
    "REVOGADO": 2
   },
   "valorEstimadoLicitacoes": 1048125234.79,
-  "comVencedor": 213,
+  "comVencedor": 214,
   "contratosComCnpj": 330
  },
  "fornecedores": [
@@ -248,7 +248,7 @@
    "nome": "PREDIAL CONSTRUÇÕES LTDA",
    "cnpj": "13676569000113",
    "contratos": 2,
-   "valorContratos": 6383983.71,
+   "valorContratos": 6649827.85,
    "licitacoesVencidas": 0
   },
   {
@@ -819,13 +819,6 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "CIDAMAQ MÁQUINAS E IMPLEMENTOS AGRÍCOLAS EIRELI",
-   "cnpj": null,
-   "contratos": 1,
-   "valorContratos": 192455.0,
-   "licitacoesVencidas": 0
-  },
-  {
    "nome": "VENEZA PAES E DOCES RITA VIEIRA LTDA",
    "cnpj": "54023834000141",
    "contratos": 1,
@@ -844,7 +837,7 @@
    "cnpj": "49763487000153",
    "contratos": 3,
    "valorContratos": 163078.89,
-   "licitacoesVencidas": 7
+   "licitacoesVencidas": 8
   },
   {
    "nome": "ASSOCIACAO DE PEQUENOS PRODUTORES RURAIS NOVA ERA",
@@ -893,6 +886,13 @@
    "cnpj": null,
    "contratos": 1,
    "valorContratos": 102200.0,
+   "licitacoesVencidas": 0
+  },
+  {
+   "nome": "CIDAMAQ MÁQUINAS E IMPLEMENTOS AGRÍCOLAS EIRELI",
+   "cnpj": null,
+   "contratos": 1,
+   "valorContratos": 81500.0,
    "licitacoesVencidas": 0
   },
   {
@@ -1253,15 +1253,15 @@
    "licitacoesVencidas": 2
   },
   {
-   "nome": "ASCLEPIOS EQUIPAMENTOS HOSPITALARES LTDA",
-   "cnpj": "33068320000132",
+   "nome": "AGIL PRODUTOS PARA SAUDE LTDA",
+   "cnpj": "24595557000180",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 2
   },
   {
-   "nome": "AGIL PRODUTOS PARA SAUDE LTDA",
-   "cnpj": "24595557000180",
+   "nome": "ASCLEPIOS EQUIPAMENTOS HOSPITALARES LTDA",
+   "cnpj": "33068320000132",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 2
@@ -1302,15 +1302,15 @@
    "licitacoesVencidas": 2
   },
   {
-   "nome": "ALTIPLANO COMÉRCIO E REPRESENTAÇÕES LTDA",
-   "cnpj": "50191645000127",
+   "nome": "COMERCIAL DE ALIMENTOS BETANIA LTDA",
+   "cnpj": "23890972000102",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 2
   },
   {
-   "nome": "COMERCIAL DE ALIMENTOS BETANIA LTDA",
-   "cnpj": "23890972000102",
+   "nome": "ALTIPLANO COMÉRCIO E REPRESENTAÇÕES LTDA",
+   "cnpj": "50191645000127",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 2
@@ -1393,8 +1393,8 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "EREFARMA PRODUTOS PARA SAÚDE LTDA",
-   "cnpj": "15439366000139",
+   "nome": "UNIQUE DISTRIBUIDORA DE MEDICAMENTOS LTDA",
+   "cnpj": "23864942000113",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1407,8 +1407,8 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "UNIQUE DISTRIBUIDORA DE MEDICAMENTOS LTDA",
-   "cnpj": "23864942000113",
+   "nome": "EREFARMA PRODUTOS PARA SAÚDE LTDA",
+   "cnpj": "15439366000139",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1470,13 +1470,6 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "TOTAL SEGURANCA EQUIPAMENTOS DE PROTECAO E SERVICOS ESPECIALIZADOS LTDA",
-   "cnpj": "13851726000180",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
    "nome": "MORENA COMÉRCIO & SERVIÇO LTDA - EPP",
    "cnpj": "08256030000175",
    "contratos": 0,
@@ -1491,6 +1484,13 @@
    "licitacoesVencidas": 1
   },
   {
+   "nome": "TOTAL SEGURANCA EQUIPAMENTOS DE PROTECAO E SERVICOS ESPECIALIZADOS LTDA",
+   "cnpj": "13851726000180",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
    "nome": "TINPAVI INDÚSTRIA E COMÉRCIO DE TINTAS EIRELI",
    "cnpj": "17592525000166",
    "contratos": 0,
@@ -1498,8 +1498,22 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "SOUZA MED COMÉRCIO DE MATERIAIS MÉDICO-HOSPITALAR EIRELI - ME",
-   "cnpj": "28546470000174",
+   "nome": "FANAIA MOVEIS PLANEJADOS LTDA",
+   "cnpj": "45900324000114",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
+   "nome": "JUSTO MOVEIS DE AÇO LTDA",
+   "cnpj": "20252467000136",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
+   "nome": "FOX INDUSTRIA METALURGICA LTDA",
+   "cnpj": "29178797000101",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1519,29 +1533,8 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "FANAIA MOVEIS PLANEJADOS LTDA",
-   "cnpj": "45900324000114",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "FOX INDUSTRIA METALURGICA LTDA",
-   "cnpj": "29178797000101",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "JUSTO MOVEIS DE AÇO LTDA",
-   "cnpj": "20252467000136",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "CIAMED DISTRIBUIDORA DE MEDICAMENTOS LTDA",
-   "cnpj": "05782733000149",
+   "nome": "SOUZA MED COMÉRCIO DE MATERIAIS MÉDICO-HOSPITALAR EIRELI - ME",
+   "cnpj": "28546470000174",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1554,29 +1547,15 @@
    "licitacoesVencidas": 1
   },
   {
+   "nome": "CIAMED DISTRIBUIDORA DE MEDICAMENTOS LTDA",
+   "cnpj": "05782733000149",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
    "nome": "SANTOS DISTRIBUIDORA DE PRODUTOS SECOS E MOLHADOS LTDA",
    "cnpj": "21774414000148",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "NAÇÃO CONCESSIONÁRIA DE VEÍCULOS LTDA",
-   "cnpj": "21496407000121",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "DISCAUTOL DISTRIBUIDORA CAMPOGRANDENSE DE AUTOMOVEIS LTDA",
-   "cnpj": "03244290000107",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "AHO FRANCE LTDA",
-   "cnpj": "35373738000189",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1589,43 +1568,22 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "MULT MED EQUIPAMENTOS HOSPITALARES LTDA",
-   "cnpj": "62334156000166",
+   "nome": "DISCAUTOL DISTRIBUIDORA CAMPOGRANDENSE DE AUTOMOVEIS LTDA",
+   "cnpj": "03244290000107",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
   },
   {
-   "nome": "ALFA MED SISTEMAS MÉDICOS LTDA",
-   "cnpj": "11405384000149",
+   "nome": "NAÇÃO CONCESSIONÁRIA DE VEÍCULOS LTDA",
+   "cnpj": "21496407000121",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
   },
   {
-   "nome": "EQAT SOLUÇÕES HOSPITALARES LTDA",
-   "cnpj": "31614778000114",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "CIRURGICA SAO FELIPE PRODUTOS PARA SAUDE LTDA",
-   "cnpj": "07626776000160",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "LEISTUNG EQUIPAMENTOS LTDA",
-   "cnpj": "04187384000154",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "ESFERA MASTER COMERCIAL LTDA",
-   "cnpj": "26527362000129",
+   "nome": "AHO FRANCE LTDA",
+   "cnpj": "35373738000189",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1645,6 +1603,48 @@
    "licitacoesVencidas": 1
   },
   {
+   "nome": "MULT MED EQUIPAMENTOS HOSPITALARES LTDA",
+   "cnpj": "62334156000166",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
+   "nome": "ALFA MED SISTEMAS MÉDICOS LTDA",
+   "cnpj": "11405384000149",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
+   "nome": "CIRURGICA SAO FELIPE PRODUTOS PARA SAUDE LTDA",
+   "cnpj": "07626776000160",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
+   "nome": "LEISTUNG EQUIPAMENTOS LTDA",
+   "cnpj": "04187384000154",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
+   "nome": "EQAT SOLUÇÕES HOSPITALARES LTDA",
+   "cnpj": "31614778000114",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
+   "nome": "ESFERA MASTER COMERCIAL LTDA",
+   "cnpj": "26527362000129",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
    "nome": "ICQ-ATZERT LTDA",
    "cnpj": "01659386000100",
    "contratos": 0,
@@ -1652,15 +1652,15 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "ASCLE BRASIL LTDA",
-   "cnpj": "28911309000152",
+   "nome": "PROMEDI DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTDA",
+   "cnpj": "27806274000129",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
   },
   {
-   "nome": "PROMEDI DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTDA",
-   "cnpj": "27806274000129",
+   "nome": "ASCLE BRASIL LTDA",
+   "cnpj": "28911309000152",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1680,6 +1680,13 @@
    "licitacoesVencidas": 1
   },
   {
+   "nome": "COMERCIAL NUTRICIONAL E ALIMENTAR LTDA",
+   "cnpj": "08021757000173",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
    "nome": "KPS COMÉRCIO DE ALIMENTOS E SERVIÇOS LTDA",
    "cnpj": "27024068000167",
    "contratos": 0,
@@ -1689,13 +1696,6 @@
   {
    "nome": "SHIGEMOTO COMERCIAL LTDA",
    "cnpj": "28787127000111",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "COMERCIAL NUTRICIONAL E ALIMENTAR LTDA",
-   "cnpj": "08021757000173",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1764,15 +1764,15 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "ANIMALFORCE MEDICAMENTOS LTDA",
-   "cnpj": "48214791000189",
+   "nome": "LICITAPHARMA DISTRIBUIDORA DE PRODUTOS VETERINÁRIOS, HOSPITALARES E MEDICAMENTOS LTDA.",
+   "cnpj": "49542190000168",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
   },
   {
-   "nome": "LICITAPHARMA DISTRIBUIDORA DE PRODUTOS VETERINÁRIOS, HOSPITALARES E MEDICAMENTOS LTDA.",
-   "cnpj": "49542190000168",
+   "nome": "ANIMALFORCE MEDICAMENTOS LTDA",
+   "cnpj": "48214791000189",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1792,6 +1792,13 @@
    "licitacoesVencidas": 1
   },
   {
+   "nome": "JP CIRÚRGICA LTDA",
+   "cnpj": "23688733000166",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
    "nome": "INJEX INDÚSTRIAS CIRÚRGICAS LTDA",
    "cnpj": "59309302000199",
    "contratos": 0,
@@ -1801,13 +1808,6 @@
   {
    "nome": "MS SAÚDE DISTRIBUIDORA DE MATERIAL HOSPITALAR LTDA",
    "cnpj": "24595488000105",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "JP CIRÚRGICA LTDA",
-   "cnpj": "23688733000166",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1827,22 +1827,8 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "INDUSTRIA DE EQUIPAMENTOS DE SEGURANCA MAC EIRELI",
-   "cnpj": "43301274000123",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
    "nome": "R.O.S. CONFECÇÕES LTDA",
    "cnpj": "11785728000192",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "SKD COMERCIO ONLINE DE CALCADOS LTDA",
-   "cnpj": "41682842000158",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1855,8 +1841,22 @@
    "licitacoesVencidas": 1
   },
   {
+   "nome": "SKD COMERCIO ONLINE DE CALCADOS LTDA",
+   "cnpj": "41682842000158",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
    "nome": "AGS CONFECÇÕES LTDA",
    "cnpj": "30699701000121",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
+   "nome": "INDUSTRIA DE EQUIPAMENTOS DE SEGURANCA MAC EIRELI",
+   "cnpj": "43301274000123",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1897,15 +1897,8 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "GRAZIELA VELANI ABUFARES COMERCIO DE MEDICAMENTOS LTDA",
-   "cnpj": "28547190000180",
-   "contratos": 0,
-   "valorContratos": 0.0,
-   "licitacoesVencidas": 1
-  },
-  {
-   "nome": "DIMASTER - COMÉRCIO DE PRODUTOS HOSPITALARES LTDA",
-   "cnpj": "02520829000140",
+   "nome": "CENTERMEDI-COMERCIO DE PRODUTOS HOSPITALARES LTDA",
+   "cnpj": "03652030000170",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1918,8 +1911,15 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "CENTERMEDI-COMERCIO DE PRODUTOS HOSPITALARES LTDA",
-   "cnpj": "03652030000170",
+   "nome": "DROGAFONTE LTDA",
+   "cnpj": "08778201000126",
+   "contratos": 0,
+   "valorContratos": 0.0,
+   "licitacoesVencidas": 1
+  },
+  {
+   "nome": "DIMASTER - COMÉRCIO DE PRODUTOS HOSPITALARES LTDA",
+   "cnpj": "02520829000140",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -1932,15 +1932,15 @@
    "licitacoesVencidas": 1
   },
   {
-   "nome": "DROGAFONTE LTDA",
-   "cnpj": "08778201000126",
+   "nome": "INOVAMED HOSPITALAR LTDA -FILIAL MG",
+   "cnpj": "12889035000293",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
   },
   {
-   "nome": "INOVAMED HOSPITALAR LTDA -FILIAL MG",
-   "cnpj": "12889035000293",
+   "nome": "GRAZIELA VELANI ABUFARES COMERCIO DE MEDICAMENTOS LTDA",
+   "cnpj": "28547190000180",
    "contratos": 0,
    "valorContratos": 0.0,
    "licitacoesVencidas": 1
@@ -2595,6 +2595,18 @@
   {
    "tipo": "OBRAS",
    "compra": true,
+   "objeto": "EXECUÇÃO DE OBRA DE CONCLUSÃO DA ESCOLA VILA NATHÁLIA",
+   "fornecedor": "PREDIAL CONSTRUÇÕES LTDA",
+   "cnpj": "13676569000113",
+   "inicio": "2026-05-12",
+   "fim": "2027-06-12",
+   "valor": 5045827.85,
+   "situacao": "ATIVO",
+   "registro": 210358
+  },
+  {
+   "tipo": "OBRAS",
+   "compra": true,
    "objeto": "PAVIMENTAÇÃO ASFÁLTICA E DRENAGEM DE ÁGUAS PLUVIAIS NO JARDIM ITATIAIA - ETAPA D",
    "fornecedor": "GRADUAL ENGENHARIA E CONSULTORIA EIRELI",
    "cnpj": "11388737000140",
@@ -2627,18 +2639,6 @@
    "valor": 4800000.0,
    "situacao": "ATIVO",
    "registro": 210129
-  },
-  {
-   "tipo": "OBRAS",
-   "compra": true,
-   "objeto": "EXECUÇÃO DE OBRA DE CONCLUSÃO DA ESCOLA VILA NATHÁLIA",
-   "fornecedor": "PREDIAL CONSTRUÇÕES LTDA",
-   "cnpj": "13676569000113",
-   "inicio": "2026-05-12",
-   "fim": "2027-06-12",
-   "valor": 4779983.71,
-   "situacao": "ATIVO",
-   "registro": 210358
   },
   {
    "tipo": "SERVIÇO",
@@ -4429,18 +4429,6 @@
    "registro": 209449
   },
   {
-   "tipo": "AQUISIÇÃO",
-   "compra": true,
-   "objeto": "AQUISIÇÃO DE MÁQUINAS E EQUIPAMENTOS AGRÍCOLAS - PLATAFORMA + BRASIL",
-   "fornecedor": "CIDAMAQ MÁQUINAS E IMPLEMENTOS AGRÍCOLAS EIRELI",
-   "cnpj": null,
-   "inicio": "2026-03-26",
-   "fim": "2027-03-26",
-   "valor": 192455.0,
-   "situacao": "ATIVO",
-   "registro": 207918
-  },
-  {
    "tipo": "DEMANDA JUDICIAL",
    "compra": false,
    "objeto": "PRESTAÇÃO DE SERVIÇO HOME CARE",
@@ -4979,6 +4967,18 @@
    "valor": 82500.0,
    "situacao": "ATIVO",
    "registro": 213756
+  },
+  {
+   "tipo": "AQUISIÇÃO",
+   "compra": true,
+   "objeto": "AQUISIÇÃO DE MÁQUINAS E EQUIPAMENTOS AGRÍCOLAS - PLATAFORMA + BRASIL",
+   "fornecedor": "CIDAMAQ MÁQUINAS E IMPLEMENTOS AGRÍCOLAS EIRELI",
+   "cnpj": null,
+   "inicio": "2026-03-26",
+   "fim": "2027-03-26",
+   "valor": 81500.0,
+   "situacao": "ATIVO",
+   "registro": 207918
   },
   {
    "tipo": "AQUISIÇÃO",
@@ -6874,24 +6874,24 @@
    "processo": "034761/2026-11",
    "vencedores": [
     {
-     "cnpj": "73765877000147",
-     "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
-    },
-    {
-     "cnpj": "49763487000153",
-     "nome": "VERTICE B2G LTDA"
+     "cnpj": "55073244000196",
+     "nome": "KP MATERIAIS ELETRICO E CONSTRUCAO LTDA"
     },
     {
      "cnpj": "40854427000171",
      "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
     },
     {
-     "cnpj": "55073244000196",
-     "nome": "KP MATERIAIS ELETRICO E CONSTRUCAO LTDA"
-    },
-    {
      "cnpj": "34376272000102",
      "nome": "P & G COMERCIO E SERVIÇOS LTDA"
+    },
+    {
+     "cnpj": "73765877000147",
+     "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
+    },
+    {
+     "cnpj": "49763487000153",
+     "nome": "VERTICE B2G LTDA"
     },
     {
      "cnpj": "56004897000186",
@@ -7159,7 +7159,12 @@
    "gestor": "PMCG - GRUPO DE LICITACOES",
    "valorEstimado": 429577.28,
    "processo": "091837/2026-05",
-   "vencedores": []
+   "vencedores": [
+    {
+     "cnpj": "49763487000153",
+     "nome": "VERTICE B2G LTDA"
+    }
+   ]
   },
   {
    "data": "2026-10-08",
@@ -7624,12 +7629,12 @@
    "processo": "052940/2025-41",
    "vencedores": [
     {
-     "cnpj": "34376272000102",
-     "nome": "P & G COMERCIO E SERVIÇOS LTDA"
-    },
-    {
      "cnpj": "42351193000175",
      "nome": "N & N COMÉRCIO DE PRODUTOS LTDA"
+    },
+    {
+     "cnpj": "34376272000102",
+     "nome": "P & G COMERCIO E SERVIÇOS LTDA"
     }
    ]
   },
@@ -7791,12 +7796,12 @@
      "nome": "VERTICE B2G LTDA"
     },
     {
-     "cnpj": "34376272000102",
-     "nome": "P & G COMERCIO E SERVIÇOS LTDA"
-    },
-    {
      "cnpj": "52198515000141",
      "nome": "HODACOM COMÉRCIO E SERVIÇOS LTDA"
+    },
+    {
+     "cnpj": "34376272000102",
+     "nome": "P & G COMERCIO E SERVIÇOS LTDA"
     },
     {
      "cnpj": "47662279000213",
@@ -8002,8 +8007,8 @@
    "processo": "020578/2026-20",
    "vencedores": [
     {
-     "cnpj": "15439366000139",
-     "nome": "EREFARMA PRODUTOS PARA SAÚDE LTDA"
+     "cnpj": "23864942000113",
+     "nome": "UNIQUE DISTRIBUIDORA DE MEDICAMENTOS LTDA"
     },
     {
      "cnpj": "10586940000168",
@@ -8014,8 +8019,8 @@
      "nome": "PROMEFARMA MEDICAMENTOS E PRODUTOS HOSPITALARES LTDA"
     },
     {
-     "cnpj": "23864942000113",
-     "nome": "UNIQUE DISTRIBUIDORA DE MEDICAMENTOS LTDA"
+     "cnpj": "15439366000139",
+     "nome": "EREFARMA PRODUTOS PARA SAÚDE LTDA"
     }
    ]
   },
@@ -8873,8 +8878,8 @@
    "processo": "028150/2026-25",
    "vencedores": [
     {
-     "cnpj": "21681325000157",
-     "nome": "MULTIFARMA COMÉRCIO E REPRESENTAÇÕES LTDA."
+     "cnpj": "02816696000154",
+     "nome": "PONTAMED FARMACEUTICA LTDA"
     },
     {
      "cnpj": "21484336000147",
@@ -8885,16 +8890,16 @@
      "nome": "PROMEFARMA MEDICAMENTOS E PRODUTOS HOSPITALARES LTDA"
     },
     {
-     "cnpj": "17472278000164",
-     "nome": "GOLDENPLUS COMERCIO DE MEDICAMENTOS E PRODUTOS HOSPITALARES LTDA"
-    },
-    {
-     "cnpj": "02816696000154",
-     "nome": "PONTAMED FARMACEUTICA LTDA"
+     "cnpj": "21681325000157",
+     "nome": "MULTIFARMA COMÉRCIO E REPRESENTAÇÕES LTDA."
     },
     {
      "cnpj": "44734671002286",
      "nome": "CRISTÁLIA PRODUTOS QUÍMICOS FARMACÊUTICOS LTDA"
+    },
+    {
+     "cnpj": "17472278000164",
+     "nome": "GOLDENPLUS COMERCIO DE MEDICAMENTOS E PRODUTOS HOSPITALARES LTDA"
     }
    ]
   },
@@ -9069,16 +9074,16 @@
    "processo": "003141/2026-21",
    "vencedores": [
     {
-     "cnpj": "13851726000180",
-     "nome": "TOTAL SEGURANCA EQUIPAMENTOS DE PROTECAO E SERVICOS ESPECIALIZADOS LTDA"
-    },
-    {
      "cnpj": "08256030000175",
      "nome": "MORENA COMÉRCIO & SERVIÇO LTDA - EPP"
     },
     {
      "cnpj": "14984352000133",
      "nome": "EPINET COMERCIO DE EQUIPAMENTOS DE PROTEÇÃO LTDA"
+    },
+    {
+     "cnpj": "13851726000180",
+     "nome": "TOTAL SEGURANCA EQUIPAMENTOS DE PROTECAO E SERVICOS ESPECIALIZADOS LTDA"
     }
    ]
   },
@@ -9132,12 +9137,20 @@
      "nome": "GUARIA COMERCIO E REPRESENTAÇÃO DE PRODUTOS HOSPITALARES EIRELI"
     },
     {
-     "cnpj": "11352270000188",
-     "nome": "RCA SAÚDE COMÉRCIO E REPRESENTAÇÕES LTDA"
+     "cnpj": "45900324000114",
+     "nome": "FANAIA MOVEIS PLANEJADOS LTDA"
     },
     {
-     "cnpj": "28546470000174",
-     "nome": "SOUZA MED COMÉRCIO DE MATERIAIS MÉDICO-HOSPITALAR EIRELI - ME"
+     "cnpj": "20252467000136",
+     "nome": "JUSTO MOVEIS DE AÇO LTDA"
+    },
+    {
+     "cnpj": "29178797000101",
+     "nome": "FOX INDUSTRIA METALURGICA LTDA"
+    },
+    {
+     "cnpj": "11352270000188",
+     "nome": "RCA SAÚDE COMÉRCIO E REPRESENTAÇÕES LTDA"
     },
     {
      "cnpj": "24198128000170",
@@ -9148,16 +9161,8 @@
      "nome": "TML COMERCIO E SERVIÇOS LTDA"
     },
     {
-     "cnpj": "45900324000114",
-     "nome": "FANAIA MOVEIS PLANEJADOS LTDA"
-    },
-    {
-     "cnpj": "29178797000101",
-     "nome": "FOX INDUSTRIA METALURGICA LTDA"
-    },
-    {
-     "cnpj": "20252467000136",
-     "nome": "JUSTO MOVEIS DE AÇO LTDA"
+     "cnpj": "28546470000174",
+     "nome": "SOUZA MED COMÉRCIO DE MATERIAIS MÉDICO-HOSPITALAR EIRELI - ME"
     }
    ]
   },
@@ -9173,16 +9178,16 @@
    "processo": "071577/2025-62",
    "vencedores": [
     {
-     "cnpj": "05782733000149",
-     "nome": "CIAMED DISTRIBUIDORA DE MEDICAMENTOS LTDA"
+     "cnpj": "12499494000260",
+     "nome": "HOSPINOVA DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTDA"
     },
     {
      "cnpj": "81706251000198",
      "nome": "PROMEFARMA MEDICAMENTOS E PRODUTOS HOSPITALARES LTDA"
     },
     {
-     "cnpj": "12499494000260",
-     "nome": "HOSPINOVA DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTDA"
+     "cnpj": "05782733000149",
+     "nome": "CIAMED DISTRIBUIDORA DE MEDICAMENTOS LTDA"
     }
    ]
   },
@@ -9280,12 +9285,12 @@
    "processo": "007721/2026-98",
    "vencedores": [
     {
-     "cnpj": "21774414000148",
-     "nome": "SANTOS DISTRIBUIDORA DE PRODUTOS SECOS E MOLHADOS LTDA"
-    },
-    {
      "cnpj": "34249964000190",
      "nome": "SUPORTECH COMERCIO E SERVICOS LTDA"
+    },
+    {
+     "cnpj": "21774414000148",
+     "nome": "SANTOS DISTRIBUIDORA DE PRODUTOS SECOS E MOLHADOS LTDA"
     }
    ]
   },
@@ -9376,12 +9381,12 @@
    "processo": "031467/2025-68",
    "vencedores": [
     {
-     "cnpj": "21632366000153",
-     "nome": "CAMPOS EVENTOS E COMERCIO LTDA"
-    },
-    {
      "cnpj": "53129760000160",
      "nome": "DOIS AMORES GARDEN LTDA"
+    },
+    {
+     "cnpj": "21632366000153",
+     "nome": "CAMPOS EVENTOS E COMERCIO LTDA"
     }
    ]
   },
@@ -9426,20 +9431,20 @@
    "processo": "011494/2026-03",
    "vencedores": [
     {
-     "cnpj": "21496407000121",
-     "nome": "NAÇÃO CONCESSIONÁRIA DE VEÍCULOS LTDA"
+     "cnpj": "28832656000190",
+     "nome": "GUARA COMÉRCIO DE VEÍCULOS LTDA"
     },
     {
      "cnpj": "03244290000107",
      "nome": "DISCAUTOL DISTRIBUIDORA CAMPOGRANDENSE DE AUTOMOVEIS LTDA"
     },
     {
-     "cnpj": "35373738000189",
-     "nome": "AHO FRANCE LTDA"
+     "cnpj": "21496407000121",
+     "nome": "NAÇÃO CONCESSIONÁRIA DE VEÍCULOS LTDA"
     },
     {
-     "cnpj": "28832656000190",
-     "nome": "GUARA COMÉRCIO DE VEÍCULOS LTDA"
+     "cnpj": "35373738000189",
+     "nome": "AHO FRANCE LTDA"
     }
    ]
   },
@@ -9602,12 +9607,12 @@
    "processo": "005292/2025-33",
    "vencedores": [
     {
-     "cnpj": "14368486000120",
-     "nome": "OPUS MEDICAL E ELETRONICS LTDA"
-    },
-    {
      "cnpj": "63311308000178",
      "nome": "63.311.308 GLESYMARA LACERDA CUBILHA"
+    },
+    {
+     "cnpj": "14368486000120",
+     "nome": "OPUS MEDICAL E ELETRONICS LTDA"
     }
    ]
   },
@@ -9681,16 +9686,16 @@
    "processo": "048349/2025-99",
    "vencedores": [
     {
-     "cnpj": "60947677000163",
-     "nome": "POLARIS COMERCIO DE ALIMENTOS LTDA"
+     "cnpj": "13425923000137",
+     "nome": "JG COMERCIAL LTDA"
     },
     {
      "cnpj": "34249964000190",
      "nome": "SUPORTECH COMERCIO E SERVICOS LTDA"
     },
     {
-     "cnpj": "13425923000137",
-     "nome": "JG COMERCIAL LTDA"
+     "cnpj": "60947677000163",
+     "nome": "POLARIS COMERCIO DE ALIMENTOS LTDA"
     }
    ]
   },
@@ -9937,36 +9942,12 @@
    "processo": "021973/2026-20",
    "vencedores": [
     {
-     "cnpj": "62334156000166",
-     "nome": "MULT MED EQUIPAMENTOS HOSPITALARES LTDA"
-    },
-    {
-     "cnpj": "11405384000149",
-     "nome": "ALFA MED SISTEMAS MÉDICOS LTDA"
-    },
-    {
-     "cnpj": "31614778000114",
-     "nome": "EQAT SOLUÇÕES HOSPITALARES LTDA"
+     "cnpj": "24595557000180",
+     "nome": "AGIL PRODUTOS PARA SAUDE LTDA"
     },
     {
      "cnpj": "11352270000188",
      "nome": "RCA SAÚDE COMÉRCIO E REPRESENTAÇÕES LTDA"
-    },
-    {
-     "cnpj": "07626776000160",
-     "nome": "CIRURGICA SAO FELIPE PRODUTOS PARA SAUDE LTDA"
-    },
-    {
-     "cnpj": "04187384000154",
-     "nome": "LEISTUNG EQUIPAMENTOS LTDA"
-    },
-    {
-     "cnpj": "36957099000161",
-     "nome": "C O M TECNOLOGIA HOSPITALAR E ODONTOLOGICA LTDA"
-    },
-    {
-     "cnpj": "32181809000153",
-     "nome": "GUARIA COMERCIO E REPRESENTAÇÃO DE PRODUTOS HOSPITALARES EIRELI"
     },
     {
      "cnpj": "49763487000153",
@@ -9977,20 +9958,44 @@
      "nome": "ASCLEPIOS EQUIPAMENTOS HOSPITALARES LTDA"
     },
     {
-     "cnpj": "26527362000129",
-     "nome": "ESFERA MASTER COMERCIAL LTDA"
-    },
-    {
-     "cnpj": "24595557000180",
-     "nome": "AGIL PRODUTOS PARA SAUDE LTDA"
-    },
-    {
      "cnpj": "21971041000103",
      "nome": "K.C.R.S. COMÉRCIO DE EQUIPAMENTOS EIRELI EPP"
     },
     {
      "cnpj": "33583026000169",
      "nome": "OLIMPIO EQUIPAMENTOS HOSPITALARES LTDA"
+    },
+    {
+     "cnpj": "62334156000166",
+     "nome": "MULT MED EQUIPAMENTOS HOSPITALARES LTDA"
+    },
+    {
+     "cnpj": "11405384000149",
+     "nome": "ALFA MED SISTEMAS MÉDICOS LTDA"
+    },
+    {
+     "cnpj": "07626776000160",
+     "nome": "CIRURGICA SAO FELIPE PRODUTOS PARA SAUDE LTDA"
+    },
+    {
+     "cnpj": "36957099000161",
+     "nome": "C O M TECNOLOGIA HOSPITALAR E ODONTOLOGICA LTDA"
+    },
+    {
+     "cnpj": "04187384000154",
+     "nome": "LEISTUNG EQUIPAMENTOS LTDA"
+    },
+    {
+     "cnpj": "31614778000114",
+     "nome": "EQAT SOLUÇÕES HOSPITALARES LTDA"
+    },
+    {
+     "cnpj": "26527362000129",
+     "nome": "ESFERA MASTER COMERCIAL LTDA"
+    },
+    {
+     "cnpj": "32181809000153",
+     "nome": "GUARIA COMERCIO E REPRESENTAÇÃO DE PRODUTOS HOSPITALARES EIRELI"
     }
    ]
   },
@@ -10286,16 +10291,16 @@
    "processo": "009741/2026-01",
    "vencedores": [
     {
-     "cnpj": "28911309000152",
-     "nome": "ASCLE BRASIL LTDA"
-    },
-    {
      "cnpj": "27806274000129",
      "nome": "PROMEDI DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTDA"
     },
     {
      "cnpj": "32181809000153",
      "nome": "GUARIA COMERCIO E REPRESENTAÇÃO DE PRODUTOS HOSPITALARES EIRELI"
+    },
+    {
+     "cnpj": "28911309000152",
+     "nome": "ASCLE BRASIL LTDA"
     }
    ]
   },
@@ -10382,44 +10387,44 @@
    "processo": "092954/2026-88",
    "vencedores": [
     {
-     "cnpj": "08946897000152",
-     "nome": "CG3F SERVICOS E CONSTRUTORA LTDA"
+     "cnpj": "03560676000128",
+     "nome": "MACRO ENGENHARIA E CONSTRUÇÕES LTDA"
     },
     {
      "cnpj": "07981809000190",
      "nome": "RR BARROS SERVIÇOS E CONSTRUÇÕES LTDA"
     },
     {
-     "cnpj": "07127846000136",
-     "nome": "DMP CONSTRUÇÕES LTDA"
-    },
-    {
-     "cnpj": "24610826000130",
-     "nome": "SANTA CRUZ CONSTRUCOES E TERRAPLENAGEM LTDA"
-    },
-    {
-     "cnpj": "19431243000102",
-     "nome": "RELEVO ENGENHARIA LTDA"
-    },
-    {
      "cnpj": "11388737000140",
      "nome": "GRADUAL ENGENHARIA E CONSULTORIA EIRELI"
-    },
-    {
-     "cnpj": "03560676000128",
-     "nome": "MACRO ENGENHARIA E CONSTRUÇÕES LTDA"
     },
     {
      "cnpj": "12260240000104",
      "nome": "MOBICON CONSTRUTORA LTDA"
     },
     {
+     "cnpj": "19172557000138",
+     "nome": "TST CONSTRUCOES LTDA"
+    },
+    {
+     "cnpj": "07127846000136",
+     "nome": "DMP CONSTRUÇÕES LTDA"
+    },
+    {
+     "cnpj": "19431243000102",
+     "nome": "RELEVO ENGENHARIA LTDA"
+    },
+    {
+     "cnpj": "24610826000130",
+     "nome": "SANTA CRUZ CONSTRUCOES E TERRAPLENAGEM LTDA"
+    },
+    {
      "cnpj": "13628966000110",
      "nome": "META CONSTRUTORA LTDA"
     },
     {
-     "cnpj": "19172557000138",
-     "nome": "TST CONSTRUCOES LTDA"
+     "cnpj": "08946897000152",
+     "nome": "CG3F SERVICOS E CONSTRUTORA LTDA"
     }
    ]
   },
@@ -10464,6 +10469,10 @@
    "processo": "009624/2026-30",
    "vencedores": [
     {
+     "cnpj": "08021757000173",
+     "nome": "COMERCIAL NUTRICIONAL E ALIMENTAR LTDA"
+    },
+    {
      "cnpj": "27024068000167",
      "nome": "KPS COMÉRCIO DE ALIMENTOS E SERVIÇOS LTDA"
     },
@@ -10474,10 +10483,6 @@
     {
      "cnpj": "11868737000147",
      "nome": "CGA NEGOCIOS E DISTRIBUIÇÃO LTDA"
-    },
-    {
-     "cnpj": "08021757000173",
-     "nome": "COMERCIAL NUTRICIONAL E ALIMENTAR LTDA"
     }
    ]
   },
@@ -10978,12 +10983,12 @@
    "processo": "021438/2026-79",
    "vencedores": [
     {
-     "cnpj": "07981809000190",
-     "nome": "RR BARROS SERVIÇOS E CONSTRUÇÕES LTDA"
-    },
-    {
      "cnpj": "16907526000190",
      "nome": "ZION PRIME OBRAS E PAVIMENTAÇÃO LTDA"
+    },
+    {
+     "cnpj": "07981809000190",
+     "nome": "RR BARROS SERVIÇOS E CONSTRUÇÕES LTDA"
     },
     {
      "cnpj": "08946897000152",
@@ -11099,12 +11104,12 @@
      "nome": "N & N COMÉRCIO DE PRODUTOS LTDA"
     },
     {
-     "cnpj": "45508404000129",
-     "nome": "JAVA MED MATERIAIS HOSPITALARES LTDA"
-    },
-    {
      "cnpj": "73765877000147",
      "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
+    },
+    {
+     "cnpj": "45508404000129",
+     "nome": "JAVA MED MATERIAIS HOSPITALARES LTDA"
     }
    ]
   },
@@ -11185,16 +11190,16 @@
    "processo": "039975/2025-94",
    "vencedores": [
     {
-     "cnpj": "14992591000135",
-     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
+     "cnpj": "40854427000171",
+     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
     },
     {
      "cnpj": "73765877000147",
      "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
     },
     {
-     "cnpj": "40854427000171",
-     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
+     "cnpj": "14992591000135",
+     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
     }
    ]
   },
@@ -11273,12 +11278,12 @@
    "processo": "042652/2025-88",
    "vencedores": [
     {
-     "cnpj": "14992591000135",
-     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
-    },
-    {
      "cnpj": "12264207000152",
      "nome": "IVAN MAURICIO NEMOTO DA SILVA LTDA"
+    },
+    {
+     "cnpj": "14992591000135",
+     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
     }
    ]
   },
@@ -11439,24 +11444,24 @@
    "processo": "048959/2025-92",
    "vencedores": [
     {
-     "cnpj": "14992591000135",
-     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
-    },
-    {
      "cnpj": "55539645000199",
      "nome": "G.A.P. SOLUCOES EM COMERCIO LTDA"
     },
     {
-     "cnpj": "50191645000127",
-     "nome": "ALTIPLANO COMÉRCIO E REPRESENTAÇÕES LTDA"
+     "cnpj": "14992591000135",
+     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
+    },
+    {
+     "cnpj": "23890972000102",
+     "nome": "COMERCIAL DE ALIMENTOS BETANIA LTDA"
     },
     {
      "cnpj": "49763487000153",
      "nome": "VERTICE B2G LTDA"
     },
     {
-     "cnpj": "23890972000102",
-     "nome": "COMERCIAL DE ALIMENTOS BETANIA LTDA"
+     "cnpj": "50191645000127",
+     "nome": "ALTIPLANO COMÉRCIO E REPRESENTAÇÕES LTDA"
     },
     {
      "cnpj": "42351193000175",
@@ -11476,6 +11481,10 @@
    "processo": "086817/2026-12",
    "vencedores": [
     {
+     "cnpj": "07127846000136",
+     "nome": "DMP CONSTRUÇÕES LTDA"
+    },
+    {
      "cnpj": "19431243000102",
      "nome": "RELEVO ENGENHARIA LTDA"
     },
@@ -11486,10 +11495,6 @@
     {
      "cnpj": "03560676000128",
      "nome": "MACRO ENGENHARIA E CONSTRUÇÕES LTDA"
-    },
-    {
-     "cnpj": "07127846000136",
-     "nome": "DMP CONSTRUÇÕES LTDA"
     }
    ]
   },
@@ -12274,20 +12279,20 @@
    "processo": "062005/2025-92",
    "vencedores": [
     {
-     "cnpj": "40854427000171",
-     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
-    },
-    {
-     "cnpj": "73765877000147",
-     "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
-    },
-    {
      "cnpj": "49550435000107",
      "nome": "NSC COMERCIO E SERVIÇOS LTDA"
     },
     {
      "cnpj": "14992591000135",
      "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
+    },
+    {
+     "cnpj": "40854427000171",
+     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
+    },
+    {
+     "cnpj": "73765877000147",
+     "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
     }
    ]
   },
@@ -12320,12 +12325,12 @@
    "processo": "018926/2026-07",
    "vencedores": [
     {
-     "cnpj": "51136111000160",
-     "nome": "CARVALHO COMÉRCIO LTDA"
-    },
-    {
      "cnpj": "50191645000127",
      "nome": "ALTIPLANO COMÉRCIO E REPRESENTAÇÕES LTDA"
+    },
+    {
+     "cnpj": "51136111000160",
+     "nome": "CARVALHO COMÉRCIO LTDA"
     }
    ]
   },
@@ -12642,12 +12647,12 @@
      "nome": "BICHO WEB SAUDE ANIMAL LTDA"
     },
     {
-     "cnpj": "48214791000189",
-     "nome": "ANIMALFORCE MEDICAMENTOS LTDA"
-    },
-    {
      "cnpj": "49542190000168",
      "nome": "LICITAPHARMA DISTRIBUIDORA DE PRODUTOS VETERINÁRIOS, HOSPITALARES E MEDICAMENTOS LTDA."
+    },
+    {
+     "cnpj": "48214791000189",
+     "nome": "ANIMALFORCE MEDICAMENTOS LTDA"
     }
    ]
   },
@@ -12697,24 +12702,24 @@
    "processo": "034619/2025-84",
    "vencedores": [
     {
-     "cnpj": "00271624000143",
-     "nome": "J.C.B. MIRANDA LTDA"
+     "cnpj": "13425923000137",
+     "nome": "JG COMERCIAL LTDA"
     },
     {
      "cnpj": "28183297000197",
      "nome": "A P DA SILVA JUNIOR E CIA DISTRIBUIDORA LTDA"
     },
     {
-     "cnpj": "13425923000137",
-     "nome": "JG COMERCIAL LTDA"
+     "cnpj": "26328458000168",
+     "nome": "HOME NUTRI COMÉRCIO DE ALIMENTOS E NUTRICÃO LTDA"
     },
     {
      "cnpj": "34249964000190",
      "nome": "SUPORTECH COMERCIO E SERVICOS LTDA"
     },
     {
-     "cnpj": "26328458000168",
-     "nome": "HOME NUTRI COMÉRCIO DE ALIMENTOS E NUTRICÃO LTDA"
+     "cnpj": "00271624000143",
+     "nome": "J.C.B. MIRANDA LTDA"
     }
    ]
   },
@@ -12788,32 +12793,16 @@
    "processo": "058794/2025-67",
    "vencedores": [
     {
-     "cnpj": "16708108000173",
-     "nome": "ASSOCIACAO UNIAO DOS ASSENTAMENTOS DO MUNICIPIO DE TERENOS MS"
-    },
-    {
-     "cnpj": "43120541000166",
-     "nome": "COOPERMIG - COOPERATIVA DOS PRODUTORES RURAIS DA AGRICULTURA FAMILIAR DO MATO GROSSO DO SUL"
-    },
-    {
-     "cnpj": "20155984000197",
-     "nome": "COOPERATIVA NACIONAL DO DESENVOLVIMENTO DA AGRICULTURA FAMILIAR"
-    },
-    {
-     "cnpj": "24375232000192",
-     "nome": "COOPERATIVA MISTA FAMILIAR DA AGRICULTURA E PECUARIA COOPFAP"
-    },
-    {
      "cnpj": "04385962000167",
      "nome": "ASSOCIACAO DE PEQUENOS PRODUTORES RURAIS NOVA ERA"
     },
     {
-     "cnpj": "13101612000112",
-     "nome": "COOPERANA - COOPERATIVA DOS PRODUTORES RURAIS DO ASSENTAMENTO NOVA ALIANCA - TERENOS - MS"
+     "cnpj": "20121517000146",
+     "nome": "COOPLAF - COOPERATIVA AGRÍCOLA MISTA DA PECUÁRIA DE CORTE E LEITEIRA E DA AGRICULTURA FAMILIAR"
     },
     {
-     "cnpj": "08953816000141",
-     "nome": "ASSOCIACAO DOS AGRICULTORES FAMILIARES DO ASSENTAMENTO ALAMBARI - AGRILAM-CUT"
+     "cnpj": "07530947000153",
+     "nome": "COOPERATIVA DOS PRODUTORES RURAIS DA REGIAO DO PULADOR DE ANASTACIO MS-COPRAN"
     },
     {
      "cnpj": "03997003000130",
@@ -12824,16 +12813,32 @@
      "nome": "DULCELINA TEODORA BARBOSA"
     },
     {
+     "cnpj": "13101612000112",
+     "nome": "COOPERANA - COOPERATIVA DOS PRODUTORES RURAIS DO ASSENTAMENTO NOVA ALIANCA - TERENOS - MS"
+    },
+    {
+     "cnpj": "43120541000166",
+     "nome": "COOPERMIG - COOPERATIVA DOS PRODUTORES RURAIS DA AGRICULTURA FAMILIAR DO MATO GROSSO DO SUL"
+    },
+    {
+     "cnpj": "24375232000192",
+     "nome": "COOPERATIVA MISTA FAMILIAR DA AGRICULTURA E PECUARIA COOPFAP"
+    },
+    {
+     "cnpj": "16708108000173",
+     "nome": "ASSOCIACAO UNIAO DOS ASSENTAMENTOS DO MUNICIPIO DE TERENOS MS"
+    },
+    {
      "cnpj": "15571482000107",
      "nome": "COOPERATIVA AGRÍCOLA DE CAMPO GRANDE"
     },
     {
-     "cnpj": "07530947000153",
-     "nome": "COOPERATIVA DOS PRODUTORES RURAIS DA REGIAO DO PULADOR DE ANASTACIO MS-COPRAN"
+     "cnpj": "08953816000141",
+     "nome": "ASSOCIACAO DOS AGRICULTORES FAMILIARES DO ASSENTAMENTO ALAMBARI - AGRILAM-CUT"
     },
     {
-     "cnpj": "20121517000146",
-     "nome": "COOPLAF - COOPERATIVA AGRÍCOLA MISTA DA PECUÁRIA DE CORTE E LEITEIRA E DA AGRICULTURA FAMILIAR"
+     "cnpj": "20155984000197",
+     "nome": "COOPERATIVA NACIONAL DO DESENVOLVIMENTO DA AGRICULTURA FAMILIAR"
     }
    ]
   },
@@ -12873,32 +12878,32 @@
    "processo": "053949/2025-79",
    "vencedores": [
     {
-     "cnpj": "26328458000168",
-     "nome": "HOME NUTRI COMÉRCIO DE ALIMENTOS E NUTRICÃO LTDA"
+     "cnpj": "56005692000115",
+     "nome": "PONTUAL DISTRIBUIDORA DE ALIMENTOS LTDA"
     },
     {
      "cnpj": "00271624000143",
      "nome": "J.C.B. MIRANDA LTDA"
     },
     {
-     "cnpj": "56005692000115",
-     "nome": "PONTUAL DISTRIBUIDORA DE ALIMENTOS LTDA"
+     "cnpj": "50562927000193",
+     "nome": "CAMPOS COMERCIO E SERVICOS LTDA"
     },
     {
-     "cnpj": "13425923000137",
-     "nome": "JG COMERCIAL LTDA"
+     "cnpj": "26328458000168",
+     "nome": "HOME NUTRI COMÉRCIO DE ALIMENTOS E NUTRICÃO LTDA"
     },
     {
      "cnpj": "34249964000190",
      "nome": "SUPORTECH COMERCIO E SERVICOS LTDA"
     },
     {
-     "cnpj": "28183297000197",
-     "nome": "A P DA SILVA JUNIOR E CIA DISTRIBUIDORA LTDA"
+     "cnpj": "13425923000137",
+     "nome": "JG COMERCIAL LTDA"
     },
     {
-     "cnpj": "50562927000193",
-     "nome": "CAMPOS COMERCIO E SERVICOS LTDA"
+     "cnpj": "28183297000197",
+     "nome": "A P DA SILVA JUNIOR E CIA DISTRIBUIDORA LTDA"
     }
    ]
   },
@@ -13078,32 +13083,32 @@
    "processo": "018426/2025-86",
    "vencedores": [
     {
-     "cnpj": "47398392000152",
-     "nome": "DIRECTA COMERCIO E PRODUTOS HOSPITALARES LTDA"
-    },
-    {
-     "cnpj": "59309302000199",
-     "nome": "INJEX INDÚSTRIAS CIRÚRGICAS LTDA"
-    },
-    {
-     "cnpj": "45508404000129",
-     "nome": "JAVA MED MATERIAIS HOSPITALARES LTDA"
-    },
-    {
-     "cnpj": "24595488000105",
-     "nome": "MS SAÚDE DISTRIBUIDORA DE MATERIAL HOSPITALAR LTDA"
-    },
-    {
-     "cnpj": "24595557000180",
-     "nome": "AGIL PRODUTOS PARA SAUDE LTDA"
-    },
-    {
      "cnpj": "23688733000166",
      "nome": "JP CIRÚRGICA LTDA"
     },
     {
      "cnpj": "11352270000188",
      "nome": "RCA SAÚDE COMÉRCIO E REPRESENTAÇÕES LTDA"
+    },
+    {
+     "cnpj": "59309302000199",
+     "nome": "INJEX INDÚSTRIAS CIRÚRGICAS LTDA"
+    },
+    {
+     "cnpj": "24595488000105",
+     "nome": "MS SAÚDE DISTRIBUIDORA DE MATERIAL HOSPITALAR LTDA"
+    },
+    {
+     "cnpj": "47398392000152",
+     "nome": "DIRECTA COMERCIO E PRODUTOS HOSPITALARES LTDA"
+    },
+    {
+     "cnpj": "24595557000180",
+     "nome": "AGIL PRODUTOS PARA SAUDE LTDA"
+    },
+    {
+     "cnpj": "45508404000129",
+     "nome": "JAVA MED MATERIAIS HOSPITALARES LTDA"
     }
    ]
   },
@@ -13131,12 +13136,12 @@
    "processo": "027620/2025-52",
    "vencedores": [
     {
-     "cnpj": "02816696000154",
-     "nome": "PONTAMED FARMACEUTICA LTDA"
-    },
-    {
      "cnpj": "44734671002286",
      "nome": "CRISTÁLIA PRODUTOS QUÍMICOS FARMACÊUTICOS LTDA"
+    },
+    {
+     "cnpj": "02816696000154",
+     "nome": "PONTAMED FARMACEUTICA LTDA"
     }
    ]
   },
@@ -13213,12 +13218,12 @@
      "nome": "DISTRIBUIDORA FXO LTDA"
     },
     {
-     "cnpj": "40989882000184",
-     "nome": "SEVEN COMÉRCIO E SERVIÇOS LTDA"
-    },
-    {
      "cnpj": "17405757000168",
      "nome": "FERTELA INDUSTRIA E COMERCIO DE TELAS E FERRAGENS EIRELI"
+    },
+    {
+     "cnpj": "40989882000184",
+     "nome": "SEVEN COMÉRCIO E SERVIÇOS LTDA"
     }
    ]
   },
@@ -13559,12 +13564,12 @@
      "nome": "RCA SAÚDE COMÉRCIO E REPRESENTAÇÕES LTDA"
     },
     {
-     "cnpj": "40854427000171",
-     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
-    },
-    {
      "cnpj": "30149559000149",
      "nome": "DISTRIBUIDORA FXO LTDA"
+    },
+    {
+     "cnpj": "40854427000171",
+     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
     }
    ]
   },
@@ -13580,12 +13585,12 @@
    "processo": "007867/2024-71",
    "vencedores": [
     {
-     "cnpj": "00730538000151",
-     "nome": "ODONTOPAN EQUIPAMENTOS MÉDICOS E ODONTOLÓGICOS LTDA EPP"
-    },
-    {
      "cnpj": "05375249000103",
      "nome": "DENTAL ALTA MOGIANA - COMÉRCIO DE PRODUTOS ODONTOLÓGICOS LTDA"
+    },
+    {
+     "cnpj": "00730538000151",
+     "nome": "ODONTOPAN EQUIPAMENTOS MÉDICOS E ODONTOLÓGICOS LTDA EPP"
     }
    ]
   },
@@ -13613,24 +13618,24 @@
    "processo": "041171/2025-55",
    "vencedores": [
     {
-     "cnpj": "43301274000123",
-     "nome": "INDUSTRIA DE EQUIPAMENTOS DE SEGURANCA MAC EIRELI"
-    },
-    {
      "cnpj": "11785728000192",
      "nome": "R.O.S. CONFECÇÕES LTDA"
-    },
-    {
-     "cnpj": "41682842000158",
-     "nome": "SKD COMERCIO ONLINE DE CALCADOS LTDA"
     },
     {
      "cnpj": "24658825000166",
      "nome": "MANDALA CONFECÇÕES LTDA"
     },
     {
+     "cnpj": "41682842000158",
+     "nome": "SKD COMERCIO ONLINE DE CALCADOS LTDA"
+    },
+    {
      "cnpj": "30699701000121",
      "nome": "AGS CONFECÇÕES LTDA"
+    },
+    {
+     "cnpj": "43301274000123",
+     "nome": "INDUSTRIA DE EQUIPAMENTOS DE SEGURANCA MAC EIRELI"
     }
    ]
   },
@@ -13646,14 +13651,6 @@
    "processo": "010440/2025-31",
    "vencedores": [
     {
-     "cnpj": "40854427000171",
-     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
-    },
-    {
-     "cnpj": "49550435000107",
-     "nome": "NSC COMERCIO E SERVIÇOS LTDA"
-    },
-    {
      "cnpj": "49763487000153",
      "nome": "VERTICE B2G LTDA"
     },
@@ -13666,8 +13663,16 @@
      "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
     },
     {
+     "cnpj": "40854427000171",
+     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
+    },
+    {
      "cnpj": "12264207000152",
      "nome": "IVAN MAURICIO NEMOTO DA SILVA LTDA"
+    },
+    {
+     "cnpj": "49550435000107",
+     "nome": "NSC COMERCIO E SERVIÇOS LTDA"
     }
    ]
   },
@@ -14015,16 +14020,16 @@
    "processo": "009451/2025-79",
    "vencedores": [
     {
-     "cnpj": "73765877000147",
-     "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
-    },
-    {
      "cnpj": "49550435000107",
      "nome": "NSC COMERCIO E SERVIÇOS LTDA"
     },
     {
      "cnpj": "14992591000135",
      "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
+    },
+    {
+     "cnpj": "73765877000147",
+     "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
     }
    ]
   },
@@ -14152,12 +14157,12 @@
      "nome": "REZENDE & DINIZ NETO LTDA"
     },
     {
-     "cnpj": "18486182000118",
-     "nome": "NORTE INDUSTRIA GRAFICA LTDA"
-    },
-    {
      "cnpj": "08726196000108",
      "nome": "RPR CRIAÇÕES GRÁFICAS LTDA"
+    },
+    {
+     "cnpj": "18486182000118",
+     "nome": "NORTE INDUSTRIA GRAFICA LTDA"
     }
    ]
   },
@@ -14173,20 +14178,20 @@
    "processo": "008774/2024-64",
    "vencedores": [
     {
-     "cnpj": "14992591000135",
-     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
+     "cnpj": "49550435000107",
+     "nome": "NSC COMERCIO E SERVIÇOS LTDA"
     },
     {
      "cnpj": "40854427000171",
      "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
     },
     {
-     "cnpj": "49550435000107",
-     "nome": "NSC COMERCIO E SERVIÇOS LTDA"
-    },
-    {
      "cnpj": "73765877000147",
      "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
+    },
+    {
+     "cnpj": "14992591000135",
+     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
     }
    ]
   },
@@ -14214,8 +14219,16 @@
    "processo": "053795/2025-15",
    "vencedores": [
     {
-     "cnpj": "28547190000180",
-     "nome": "GRAZIELA VELANI ABUFARES COMERCIO DE MEDICAMENTOS LTDA"
+     "cnpj": "03652030000170",
+     "nome": "CENTERMEDI-COMERCIO DE PRODUTOS HOSPITALARES LTDA"
+    },
+    {
+     "cnpj": "34223536000198",
+     "nome": "LICITE SAUDE COMERCIO DE PRODUTOS HOSPITALARES LTDA"
+    },
+    {
+     "cnpj": "08778201000126",
+     "nome": "DROGAFONTE LTDA"
     },
     {
      "cnpj": "21681325000157",
@@ -14226,24 +14239,16 @@
      "nome": "DIMASTER - COMÉRCIO DE PRODUTOS HOSPITALARES LTDA"
     },
     {
-     "cnpj": "34223536000198",
-     "nome": "LICITE SAUDE COMERCIO DE PRODUTOS HOSPITALARES LTDA"
-    },
-    {
-     "cnpj": "03652030000170",
-     "nome": "CENTERMEDI-COMERCIO DE PRODUTOS HOSPITALARES LTDA"
-    },
-    {
      "cnpj": "67729178000491",
      "nome": "COMERCIAL CIRÚRGICA RIOCLARENSE LTDA"
     },
     {
-     "cnpj": "08778201000126",
-     "nome": "DROGAFONTE LTDA"
-    },
-    {
      "cnpj": "12889035000293",
      "nome": "INOVAMED HOSPITALAR LTDA -FILIAL MG"
+    },
+    {
+     "cnpj": "28547190000180",
+     "nome": "GRAZIELA VELANI ABUFARES COMERCIO DE MEDICAMENTOS LTDA"
     }
    ]
   },
@@ -14259,12 +14264,12 @@
    "processo": "009448/2025-55",
    "vencedores": [
     {
-     "cnpj": "12072665000190",
-     "nome": "LEDLUZ INDUSTRIA E COMERCIO LTDA"
-    },
-    {
      "cnpj": "73765877000147",
      "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
+    },
+    {
+     "cnpj": "12072665000190",
+     "nome": "LEDLUZ INDUSTRIA E COMERCIO LTDA"
     }
    ]
   },
@@ -14318,16 +14323,16 @@
    "processo": "031562/2025-61",
    "vencedores": [
     {
-     "cnpj": "14992591000135",
-     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
+     "cnpj": "40854427000171",
+     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
     },
     {
      "cnpj": "49550435000107",
      "nome": "NSC COMERCIO E SERVIÇOS LTDA"
     },
     {
-     "cnpj": "40854427000171",
-     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
+     "cnpj": "14992591000135",
+     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
     }
    ]
   },
@@ -14456,24 +14461,24 @@
    "processo": "008612/2024-26",
    "vencedores": [
     {
-     "cnpj": "73765877000147",
-     "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
+     "cnpj": "11352270000188",
+     "nome": "RCA SAÚDE COMÉRCIO E REPRESENTAÇÕES LTDA"
     },
     {
      "cnpj": "23890972000102",
      "nome": "COMERCIAL DE ALIMENTOS BETANIA LTDA"
     },
     {
+     "cnpj": "40854427000171",
+     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
+    },
+    {
      "cnpj": "42351193000175",
      "nome": "N & N COMÉRCIO DE PRODUTOS LTDA"
     },
     {
-     "cnpj": "11352270000188",
-     "nome": "RCA SAÚDE COMÉRCIO E REPRESENTAÇÕES LTDA"
-    },
-    {
-     "cnpj": "40854427000171",
-     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
+     "cnpj": "73765877000147",
+     "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
     }
    ]
   },
@@ -14529,16 +14534,16 @@
      "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
     },
     {
-     "cnpj": "73765877000147",
-     "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
+     "cnpj": "14992591000135",
+     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
     },
     {
      "cnpj": "49550435000107",
      "nome": "NSC COMERCIO E SERVIÇOS LTDA"
     },
     {
-     "cnpj": "14992591000135",
-     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
+     "cnpj": "73765877000147",
+     "nome": "RR NOGUEIRA SOLUÇÕES EM NEGÓCIOS LTDA"
     }
    ]
   },
@@ -14554,20 +14559,20 @@
    "processo": "015490/2025-13",
    "vencedores": [
     {
-     "cnpj": "42351193000175",
-     "nome": "N & N COMÉRCIO DE PRODUTOS LTDA"
+     "cnpj": "63737540000172",
+     "nome": "NOVA VERT SOLUÇÕES LTDA"
     },
     {
      "cnpj": "34249964000190",
      "nome": "SUPORTECH COMERCIO E SERVICOS LTDA"
     },
     {
-     "cnpj": "40854427000171",
-     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
+     "cnpj": "42351193000175",
+     "nome": "N & N COMÉRCIO DE PRODUTOS LTDA"
     },
     {
-     "cnpj": "63737540000172",
-     "nome": "NOVA VERT SOLUÇÕES LTDA"
+     "cnpj": "40854427000171",
+     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
     }
    ]
   },
@@ -14667,6 +14672,10 @@
    "processo": "Processo não informado",
    "vencedores": [
     {
+     "cnpj": "45508404000129",
+     "nome": "JAVA MED MATERIAIS HOSPITALARES LTDA"
+    },
+    {
      "cnpj": "14992591000135",
      "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
     },
@@ -14677,10 +14686,6 @@
     {
      "cnpj": "40854427000171",
      "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
-    },
-    {
-     "cnpj": "45508404000129",
-     "nome": "JAVA MED MATERIAIS HOSPITALARES LTDA"
     }
    ]
   },
@@ -14696,16 +14701,16 @@
    "processo": "030694/2025-76",
    "vencedores": [
     {
-     "cnpj": "03257078000184",
-     "nome": "YOUSSIF AMIM YOUSSIF"
+     "cnpj": "40854427000171",
+     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
     },
     {
      "cnpj": "47944342000123",
      "nome": "CAZ COMERCIO DE ARTIGOS PARA ESCRITORIO LTDA"
     },
     {
-     "cnpj": "40854427000171",
-     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
+     "cnpj": "03257078000184",
+     "nome": "YOUSSIF AMIM YOUSSIF"
     },
     {
      "cnpj": "49550435000107",
@@ -14746,20 +14751,20 @@
    "processo": "029099/2025-98",
    "vencedores": [
     {
-     "cnpj": "14992591000135",
-     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
-    },
-    {
-     "cnpj": "40854427000171",
-     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
-    },
-    {
      "cnpj": "45508404000129",
      "nome": "JAVA MED MATERIAIS HOSPITALARES LTDA"
     },
     {
      "cnpj": "49550435000107",
      "nome": "NSC COMERCIO E SERVIÇOS LTDA"
+    },
+    {
+     "cnpj": "40854427000171",
+     "nome": "SAO JOSE ENGENHARIA E COMERCIO LTDA"
+    },
+    {
+     "cnpj": "14992591000135",
+     "nome": "FENIX COMERCIO E CONSTRUÇÕES LTDA"
     }
    ]
   }
