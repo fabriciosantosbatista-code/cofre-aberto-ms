@@ -6063,6 +6063,8 @@ function renderSupersalarios(d) {
       ${linhaG("amostra", "Amostra abaixo do teto")}</ul>
       ${cp && cp.conferidos ? `Amostra: ${n(cp.comErro)} divergência(s) em ${n(cp.conferidos)} conferidos — taxa de erro abaixo de <b>${pct(cp.limiteSuperior95)}</b> com 95% de confiança (Clopper–Pearson). ` : ""}
       ${orgs ? `<div class="card-x-scroll" style="margin:6px 0"><table class="ranking"><thead><tr><th>Órgão</th><th class="num">Conferem</th><th class="num">Divergem</th><th class="num">Não verificados</th></tr></thead><tbody>${orgs}</tbody></table></div>` : ""}
+      ${((cs || {}).sinaisAbateTeto || []).length ? `<div style="margin:6px 0"><b>⚠ Sinal de atenção — abate-teto aplicado abaixo do excedente</b> (achado na fonte, não erro do site):
+        <ul style="margin:4px 0 4px 18px">${cs.sinaisAbateTeto.map(x => `<li>${escHTML(x.nome)} · ${escHTML(x.orgao)} · ${escHTML(x.mes)}: ${escHTML(x.detalhe)}</li>`).join("")}</ul></div>` : ""}
       ${mot ? `Não verificados, por motivo: ${mot}. ` : ""}${rub ? `${rub} rubrica(s) ainda sem classificação (remuneratória × indenizatória) com base legal. ` : ""}
       Governo MS: <b>reconsulta na mesma fonte</b> — confirma a leitura; ${escHTML(((cs || {}).rotulos || {}).governoRubricas || "")}.
       TRT24: conferido no arquivo original do órgão (Anexo VIII). TJMS: o portal bloqueia acessos de fora do Brasil, sem o arquivo original.

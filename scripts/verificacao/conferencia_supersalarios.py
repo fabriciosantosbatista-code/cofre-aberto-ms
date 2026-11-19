@@ -50,6 +50,10 @@ COLUNAS = ["grupo", "nome", "orgao", "mes", "bruto", "liquido", "teto_mes", "lei
            "total_indenizatorio", "total_excluido_do_teto", "abate_teto", "status", "motivo", "conferido_em", "rotulo", "link_contracheque_original"]
 
 
+def brl(v):
+    return f"{v or 0:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
 def arg(nome, padrao):
     return sys.argv[sys.argv.index(nome) + 1] if nome in sys.argv else padrao
 
@@ -128,7 +132,7 @@ def reconsulta_governo(ps, sem_rede=False):
         campos = [("bruto", p["bruto"], (x.get("remuneracaoFixa") or 0) + (x.get("remuneracoesEventuais") or 0)),
                   ("eventuais", p.get("outras") or 0, x.get("remuneracoesEventuais") or 0),
                   ("líquido", p["liquido"], x.get("remuneracaoAposDeducoes") or 0)]
-        ruins = [f"{c}: site R$ {a:,.2f} × fonte R$ {b:,.2f}" for c, a, b in campos if abs((a or 0) - (b or 0)) > 1]
+        ruins = [f"{c}: site R$ {brl(a)} × fonte R$ {brl(b)}" for c, a, b in campos if abs((a or 0) - (b or 0)) > 1]
         return p, (("diverge", "; ".join(ruins)) if ruins else ("confere", "bruto, eventuais e líquido iguais"))
     with ThreadPoolExecutor(4) as ex:  # no máximo 4 consultas ao mesmo tempo no gateway do Estado
         for p, st in ex.map(um, ps):
@@ -184,7 +188,7 @@ def reconsulta_tce_membros(ps, sem_rede=False):
             if not x:
                 out[id(p)] = ("nao_verificado", "matrícula não encontrada na releitura do PDF")
                 continue
-            ruins = [f"{c}: site R$ {a_:,.2f} × PDF R$ {b:,.2f}" for c, a_, b in (("bruto", p["bruto"], x["bruto"]), ("líquido", p["liquido"], x["liquido"]))
+            ruins = [f"{c}: site R$ {brl(a_)} × PDF R$ {brl(b)}" for c, a_, b in (("bruto", p["bruto"], x["bruto"]), ("líquido", p["liquido"], x["liquido"]))
                      if abs((a_ or 0) - (b or 0)) > 1]
             if ruins:
                 out[id(p)] = ("diverge", "; ".join(ruins))
@@ -241,7 +245,7 @@ def reconsulta_tce(ps, sem_rede=False):
             campos = [("salário-base", p.get("base") or 0, x.get("totalVencimentosRemuneracao") or 0),
                       ("outras verbas", p.get("outras") or 0, o.get("totalVencimentoOutrosPagamentos") or 0),
                       ("líquido", p["liquido"], (x.get("totalCalculadoRemuneracao") or 0) + (o.get("totalCalculadoOutrosPagamentos") or 0))]
-            ruins = [f"{c}: site R$ {a_:,.2f} × fonte R$ {b:,.2f}" for c, a_, b in campos if abs((a_ or 0) - (b or 0)) > 1]
+            ruins = [f"{c}: site R$ {brl(a_)} × fonte R$ {brl(b)}" for c, a_, b in campos if abs((a_ or 0) - (b or 0)) > 1]
             out[id(p)] = ("diverge", "; ".join(ruins)) if ruins else ("confere", "salário-base, outras verbas e líquido iguais")
     return out
 
@@ -304,10 +308,10 @@ def compara_anexo(ps, oid, teto_de):
         sujeito = sum(abs(x.get(k) or 0) for k in ("subsidio", "vantagensPessoais", "remuneracaoParadigma"))
         devido = max(0.0, round(sujeito - teto, 2))
         abate = ("não se aplica" if devido <= 1 else "aplicado" if ret + 1 >= devido else
-                 f"retenção de R$ {ret:,.2f} menor que o excedente de R$ {devido:,.2f} do subsídio + vantagens pessoais")
-        cl = {"remuneratorio": rem, "indenizatorio": ind, "retencaoTeto": ret, "abateTeto": abate}
+                 f"retenção de R$ {brl(ret)} menor que o excedente de R$ {brl(devido)} do subsídio + vantagens pessoais")
+        cl = {"remuneratorio": rem, "indenizatorio": ind, "retencaoTeto": ret, "abateTeto": abate, "excedente": devido}
         campos = [("bruto", p["bruto"], abs(x.get("remuneracaoBruta") or 0)), ("líquido", p["liquido"], abs(x.get("remuneracaoLiquida") or 0))]
-        ruins = [f"{c}: site R$ {a:,.2f} × Anexo VIII R$ {b:,.2f}" for c, a, b in campos if abs((a or 0) - (b or 0)) > 1]
+        ruins = [f"{c}: site R$ {brl(a)} × Anexo VIII R$ {brl(b)}" for c, a, b in campos if abs((a or 0) - (b or 0)) > 1]
         out[id(p)] = (("diverge", "; ".join(ruins), cl) if ruins else ("confere", f"bruto e líquido iguais ao Anexo VIII · {rot}", cl))
     return out
 
@@ -405,6 +409,8 @@ def main():
               "porOrgao": {o: dict(c) for o, c in sorted(por_orgao.items())},
               "naoVerificadoPorMotivo": motivos.most_common(),
               "rubricasNaoClassificadas": sem_classe.most_common(),
+              "sinaisAbateTeto": [{"nome": x["nome"], "orgao": x["orgao"], "mes": x["mes"], "texto": "abate-teto aplicado abaixo do excedente",
+                                   "detalhe": x["abate_teto"]} for x in linhas if x["abate_teto"].startswith("retenção de")],
               "abateTeto": Counter(x["abate_teto"].split(" de R$")[0] if x["abate_teto"] else "" for x in linhas if x["abate_teto"]).most_common(),
               "clopperPearson": {"amostra": cp("amostra"), "intermediario": cp("intermediario")},
               "teto": vs, "amostraJanela": janela,
