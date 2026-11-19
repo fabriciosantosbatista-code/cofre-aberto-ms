@@ -177,6 +177,22 @@ check(not janela({}, 0)[0], "rodada manual (sem ID de coleta) → só relatório
 check(not janela({**ROBO, "GITHUB_WORKFLOW": "Supersalários — conferência manual"}, 0.1)[0], "outro workflow → só relatório")
 check(not janela({**ROBO, "COLETA_INICIO": ""}, 0.1)[0], "sem horário de início da coleta → só relatório")
 
+# notas da CEAP: chave completa; sem data na API → nº + valor + CNPJ/CPF; mais de um par possível → ambígua
+CJ = "04.990.440/0001-94"
+def nota_s(doc, valor, data="2026-10-05", cnpj=CJ): return {"cnpjCpfFornecedor": cnpj, "doc": doc, "data": data, "valor": valor}
+def nota_f(doc, valor, data="2026-10-05T00:00:00", cnpj="04990440000194"): return {"cnpjCpfFornecedor": cnpj, "numDocumento": doc, "dataDocumento": data, "valorLiquido": valor}
+def casa(site, fonte):
+    return v.casar_em_etapas(site, fonte, lambda x: (v._dig(x.get("cnpjCpfFornecedor")), str(x.get("doc") or "").strip(), str(x.get("data"))[:10]),
+                             lambda x: (v._dig(x.get("cnpjCpfFornecedor")), str(x.get("numDocumento") or "").strip(), str(x.get("dataDocumento"))[:10]),
+                             lambda x: x.get("valor"), lambda x: x.get("valorLiquido"), v.ETAPAS_CAMARA)
+check(casa([nota_s("1", 100)], [nota_f("1", 100)])[:4] == (1, [], 0, 0), "nota com data: casa pela chave completa")
+check(casa([nota_s("1", 100)], [nota_f("1", 100, data=None)])[:4] == (1, [], 0, 0), "API sem data: casa por nº + valor + CNPJ")
+check(casa([nota_s("1", 100)], [nota_f("1", 90, data=None)])[:4] == (0, [], 1, 0), "API sem data e valor diferente: não achada (não conta)")
+check(casa([nota_s("1", 100), nota_s("1", 100, data="2026-10-06")], [nota_f("1", 100, data=None), nota_f("1", 100, data=None)])[:4] == (0, [], 0, 2),
+      "API sem data e a chave casa com mais de uma nota → ambígua, não conferida")
+check(casa([nota_s("1", 100)], [nota_f("1", 100), nota_f("1", 100, data=None)])[:4] == (1, [], 0, 0),
+      "registro da fonte usado na chave completa não volta a ser usado na etapa sem data")
+
 # coleta da Câmara: despesas lidas mês a mês, ordenadas, paginando dentro do mês; página que falha → exceção
 sys.path.insert(0, str(ROOT / "scripts"))
 import coletar_dados as cd  # noqa: E402

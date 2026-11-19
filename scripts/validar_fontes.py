@@ -216,6 +216,49 @@ def casar(site, fonte, chave_s, chave_f, valor_s, valor_f):
     return ok, div, nao
 
 
+def casar_em_etapas(site, fonte, chave_s, chave_f, valor_s, valor_f, etapas=()):
+    """Como casar(), e depois tenta de novo, em etapas, o que ficou sem par. Cada etapa = (filtro_site, chave_site,
+    filtro_fonte, chave_fonte), com o valor dentro da chave, e usa só registros da fonte ainda livres. Numa etapa, a
+    chave conta como conferida só se casar exatamente 1 registro do site com 1 da fonte; mais de um par possível →
+    ambígua (não conta, não diverge). Devolve (n_casados, divergencias, n_nao_achados, n_ambiguas)."""
+    import collections
+    gs, gf = collections.defaultdict(list), collections.defaultdict(list)
+    for x in site:
+        gs[chave_s(x)].append(x)
+    for x in fonte:
+        gf[chave_f(x)].append(x)
+    ok, div, pend, amb = 0, [], [], 0
+    for k, xs in gs.items():
+        if k not in gf:
+            pend += xs
+            continue
+        a, b = sorted(round(abs(valor_s(x) or 0), 2) for x in xs), sorted(round(abs(valor_f(x) or 0), 2) for x in gf[k])
+        if len(a) == len(b) and all(abs(x - y) <= 1 for x, y in zip(a, b)):
+            ok += len(xs)
+        else:
+            div.append((k, a, b))
+    livres = [x for k, xs in gf.items() if k not in gs for x in xs]
+    for f_s, k_s, f_f, k_f in etapas:
+        cs, cf = collections.defaultdict(list), collections.defaultdict(list)
+        resto = []
+        for x in pend:
+            (cs[k_s(x)] if f_s(x) else resto).append(x)
+        for i, x in enumerate(livres):
+            if f_f(x):
+                cf[k_f(x)].append(i)
+        usados = set()
+        for k, xs in cs.items():
+            if not cf.get(k):
+                resto += xs
+            elif len(xs) == 1 and len(cf[k]) == 1:
+                ok += 1
+                usados.add(cf[k][0])
+            else:
+                amb += len(xs)
+        pend, livres = resto, [x for i, x in enumerate(livres) if i not in usados]
+    return ok, div, len(pend), amb
+
+
 def _janela_unidades(base, digests_hoje, digest_atual):
     """Unidades (parlamentares) cujos registros foram todos comparados um a um num dia dos últimos 30 e não mudaram desde
     então (hash da unidade igual): {unidade: n}. As de hoje entram direto."""
@@ -239,9 +282,10 @@ def _hash_lista(xs, campos):
 
 def _um_a_um(res, base, por_unidade, campos):
     """Grava no resultado os registros comparados um a um (com janela de 30 dias por hash da unidade) e mostra as
-    divergências registro a registro. por_unidade: {unidade: (registros do site, n_casados, divergencias, n_nao_achados)}."""
-    digests, digest_atual, divs, nao = {}, {}, [], 0
-    for u, (regs, n_ok, dv, na) in por_unidade.items():
+    divergências registro a registro. por_unidade: {unidade: (registros do site, n_casados, divergencias, n_nao_achados[, n_ambiguas])}."""
+    digests, digest_atual, divs, nao, ambiguas = {}, {}, [], 0, 0
+    for u, (regs, n_ok, dv, na, *amb) in por_unidade.items():
+        ambiguas += sum(amb)
         digest_atual[u] = _hash_lista(regs, campos)
         if regs and n_ok == len(regs):
             digests[u] = {"n": n_ok, "hash": digest_atual[u]}
@@ -254,6 +298,8 @@ def _um_a_um(res, base, por_unidade, campos):
     res["registrosConferidosUmAUm"] = min(n, res.get("registrosBase") or n)
     res["digestsUmAUm"] = digests
     res["naoAchadosNaFonte"] = nao
+    if ambiguas:
+        res["ambiguasNaFonte"] = ambiguas  # chave casou com mais de uma nota: não conta como conferida
     res["casadosHoje"] = casados_hoje
     if divs:
         res["divergentesRegistros"] = divs[:50]
@@ -286,6 +332,20 @@ def v_senado():
     return res
 
 
+def _valor_chave(v):
+    return round(abs(float(v or 0)), 2)
+
+
+# notas da CEAP que não casam pela chave completa (CNPJ/CPF + nº + data), dentro do mesmo deputado:
+ETAPAS_CAMARA = (
+    # a API não informa a data da nota → nº da nota + valor + CNPJ/CPF
+    (lambda x: "*" not in str(x.get("cnpjCpfFornecedor") or ""),
+     lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("doc") or "").strip(), _valor_chave(x.get("valor"))),
+     lambda x: not x.get("dataDocumento"),
+     lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("numDocumento") or "").strip(), _valor_chave(x.get("valorLiquido")))),
+)
+
+
 def v_camara():
     d = J("deputados_federais_ms.json")
     itens, por_notas = [], {}
@@ -313,11 +373,12 @@ def v_camara():
         tot = sum((float(x.get("valorLiquido") or 0) if PASSAGEM.search(x.get("tipoDespesa") or "") else (-1 if inv else 1) * float(x.get("valorLiquido") or 0)) for x in todos)
         itens.append((p["nome"], p.get("cotaGastaAno") or 0, round(tot, 2) if ok else None))
         if ok:  # cada nota, com a lista que já veio
-            n_ok, dv, na = casar(p.get("despesas") or [], todos,
-                                 lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("doc") or "").strip(), str(x.get("data"))[:10]),
-                                 lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("numDocumento") or "").strip(), str(x.get("dataDocumento"))[:10]),
-                                 lambda x: x.get("valor"), lambda x: x.get("valorLiquido"))
-            por_notas[p["nome"]] = (p.get("despesas") or [], n_ok, dv, na)
+            n_ok, dv, na, amb = casar_em_etapas(
+                p.get("despesas") or [], todos,
+                lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("doc") or "").strip(), str(x.get("data"))[:10]),
+                lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("numDocumento") or "").strip(), str(x.get("dataDocumento"))[:10]),
+                lambda x: x.get("valor"), lambda x: x.get("valorLiquido"), ETAPAS_CAMARA)
+            por_notas[p["nome"]] = (p.get("despesas") or [], n_ok, dv, na, amb)
     ps = d.get("deputados") or []
     res = resultado(itens, "API da Câmara: soma do valor líquido do ano de cada deputado federal de MS e cada nota", "https://dadosabertos.camara.leg.br/",
                     granularidade="unidade", unidade="deputado federal (total da CEAP no ano)", unidades_base=len(ps),
