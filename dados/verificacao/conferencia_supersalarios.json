@@ -1,0 +1,353 @@
+{
+ "geradoEm": "2026-11-19T18:22:18",
+ "metodo": "Roda no robô diário, depois da coleta (precisa da folha completa: artefato privado folha-supersalarios-*, sem CPF).\nGrupos (os mesmos da antiga lista manual):\n  supersalario   todos os contracheques com líquido acima do teto do mês\n  intermediario  100 sorteados (semente 42, estratificado por órgão) entre bruto acima e líquido abaixo do teto\n  amostra        100 sorteados abaixo do teto (semente = data, estratificado por órgão), com janela de 30 dias + hash\nCada contracheque é reconsultado e recebe status \"confere\", \"diverge\" ou \"não verificado (motivo)\":\n  Governo MS     nova consulta à folha do Estado pelo nome dentro do órgão (mesma matrícula): bruto, eventuais e\n                 líquido. Rótulo: \"mesma fonte — confirma a leitura\". A fonte publica só remuneração fixa, eventuais e\n                 valor após deduções: não é possível separar verbas indenizatórias.\n  TRT24          comparado com a folha lida no portal do próprio TRT24 (Anexo VIII) na mesma coleta\n                 (dados/trt24_magistrados.json): bruto e líquido. Rótulo: \"conferido no arquivo original do órgão\".\n  TJMS           o portal do TJMS bloqueia acessos de fora do Brasil: sem o arquivo original → não verificado.\n  TCE-MS         servidores: nova consulta ao portal do TCE por matrícula (salário-base, outras verbas, líquido).\n                 Membros (contracheque em PDF): não verificado até a dupla extração do PDF do TCE entrar.\nTeto: config/teto.json (valor, data de início e lei), aplicado pelo mês de cada contracheque.\nRubricas (Judiciário e membros do TCE): config/rubricas.json (remuneratório, indenizatório ou excluído do teto, com a\nbase legal). Rubrica fora da tabela → \"não verificado — rubrica não classificada\" (aviso no log). Não adivinha.",
+ "grupos": {
+  "supersalario": {
+   "confere": 373,
+   "diverge": 34,
+   "nao_verificado": 14,
+   "total": 421
+  },
+  "intermediario": {
+   "confere": 98,
+   "diverge": 2,
+   "total": 100
+  },
+  "amostra": {
+   "confere": 100,
+   "total": 100
+  }
+ },
+ "porOrgao": {
+  "Governo MS — AGEPEN": {
+   "confere": 2
+  },
+  "Governo MS — AGEPREV": {
+   "confere": 102
+  },
+  "Governo MS — AGESUL": {
+   "confere": 1
+  },
+  "Governo MS — AGRAER": {
+   "confere": 1
+  },
+  "Governo MS — CASA CIVIL": {
+   "confere": 1
+  },
+  "Governo MS — CBMMS": {
+   "confere": 8
+  },
+  "Governo MS — DETRAN": {
+   "confere": 1
+  },
+  "Governo MS — DGPC": {
+   "confere": 15
+  },
+  "Governo MS — FUNDECT": {
+   "confere": 3
+  },
+  "Governo MS — FUNDESPORTE": {
+   "confere": 1
+  },
+  "Governo MS — FUNSAU": {
+   "confere": 5
+  },
+  "Governo MS — IAGRO": {
+   "confere": 1
+  },
+  "Governo MS — PMMS": {
+   "confere": 20
+  },
+  "Governo MS — SAD": {
+   "confere": 1
+  },
+  "Governo MS — SEAD": {
+   "confere": 1
+  },
+  "Governo MS — SED": {
+   "confere": 35
+  },
+  "Governo MS — SEFAZ": {
+   "confere": 117
+  },
+  "Governo MS — SEGOV": {
+   "confere": 2
+  },
+  "Governo MS — SEJUSP": {
+   "confere": 1
+  },
+  "Governo MS — SES": {
+   "confere": 3
+  },
+  "Governo MS — UEMS": {
+   "confere": 2
+  },
+  "TCE-MS — Tribunal de Contas (membros)": {
+   "nao_verificado": 14
+  },
+  "TCE-MS — Tribunal de Contas (servidores)": {
+   "confere": 30
+  },
+  "TJMS — Tribunal de Justiça": {
+   "confere": 216
+  },
+  "TRT24 — Justiça do Trabalho": {
+   "diverge": 36,
+   "confere": 2
+  }
+ },
+ "naoVerificadoPorMotivo": [
+  [
+   "rubrica não classificada",
+   14
+  ]
+ ],
+ "rubricasNaoClassificadas": [
+  [
+   "Parcela de Valorização por Tempo de Antiguidade na Carreira (PVTAC)",
+   14
+  ],
+  [
+   "Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício (GECJAO)",
+   13
+  ],
+  [
+   "Gratificação por Exercício Cumulativo de Jurisdição (GAJU)",
+   13
+  ],
+  [
+   "Auxílio- Saúde",
+   12
+  ],
+  [
+   "Abono de Permanência",
+   6
+  ],
+  [
+   "Gratificação por Atuação em Concurso Público (em extinção)",
+   3
+  ]
+ ],
+ "sinaisAbateTeto": [
+  {
+   "nome": "Ademar De Souza Freitas",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "texto": "abate-teto aplicado abaixo do excedente",
+   "detalhe": "retenção de R$ 0,00 menor que o excedente de R$ 5.558,95 do subsídio + vantagens pessoais"
+  },
+  {
+   "nome": "João De Deus Gomes De Souza",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "texto": "abate-teto aplicado abaixo do excedente",
+   "detalhe": "retenção de R$ 3.078,20 menor que o excedente de R$ 10.630,87 do subsídio + vantagens pessoais"
+  },
+  {
+   "nome": "Francisco Das Chagas Lima Filho",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "texto": "abate-teto aplicado abaixo do excedente",
+   "detalhe": "retenção de R$ 2.519,65 menor que o excedente de R$ 10.072,32 do subsídio + vantagens pessoais"
+  },
+  {
+   "nome": "Nicanor De Araújo Lima",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "texto": "abate-teto aplicado abaixo do excedente",
+   "detalhe": "retenção de R$ 4.988,21 menor que o excedente de R$ 12.540,88 do subsídio + vantagens pessoais"
+  },
+  {
+   "nome": "Marco Antonio Miranda Mendes",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "texto": "abate-teto aplicado abaixo do excedente",
+   "detalhe": "retenção de R$ 0,00 menor que o excedente de R$ 3.218,12 do subsídio + vantagens pessoais"
+  },
+  {
+   "nome": "Vladimir Abreu Da Silva",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "mes": "09/2026",
+   "texto": "abate-teto aplicado abaixo do excedente",
+   "detalhe": "retenção de R$ 3.848,40 menor que o excedente de R$ 10.339,67 do subsídio + vantagens pessoais"
+  },
+  {
+   "nome": "André Luís Moraes De Oliveira",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "texto": "abate-teto aplicado abaixo do excedente",
+   "detalhe": "retenção de R$ 883,93 menor que o excedente de R$ 45.359,29 do subsídio + vantagens pessoais"
+  },
+  {
+   "nome": "Marcos Jose De Brito Rodrigues",
+   "orgao": "TJMS — Tribunal de Justiça",
+   "mes": "09/2026",
+   "texto": "abate-teto aplicado abaixo do excedente",
+   "detalhe": "retenção de R$ 5.940,67 menor que o excedente de R$ 12.431,94 do subsídio + vantagens pessoais"
+  },
+  {
+   "nome": "Tomás Bawden De Castro Silva",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "texto": "abate-teto aplicado abaixo do excedente",
+   "detalhe": "retenção de R$ 1.210,62 menor que o excedente de R$ 7.722,93 do subsídio + vantagens pessoais"
+  }
+ ],
+ "abateTeto": [
+  [
+   "não se aplica",
+   197
+  ],
+  [
+   "aplicado",
+   48
+  ],
+  [
+   "retenção",
+   9
+  ]
+ ],
+ "clopperPearson": {
+  "amostra": {
+   "conferidos": 100,
+   "comErro": 0,
+   "limiteSuperior95": 0.0295
+  },
+  "intermediario": {
+   "conferidos": 100,
+   "comErro": 2,
+   "limiteSuperior95": 0.0616
+  }
+ },
+ "teto": [
+  {
+   "desde": "2023-01-01",
+   "valor": 39293.32,
+   "lei": "Lei nº 14.520/2023 (1ª parcela)"
+  },
+  {
+   "desde": "2023-04-01",
+   "valor": 41650.92,
+   "lei": "Lei nº 14.520/2023 (2ª parcela)"
+  },
+  {
+   "desde": "2024-02-01",
+   "valor": 44008.52,
+   "lei": "Lei nº 14.520/2023 (3ª parcela)"
+  },
+  {
+   "desde": "2025-02-01",
+   "valor": 46366.19,
+   "lei": "Lei nº 14.520/2023 (4ª parcela)"
+  }
+ ],
+ "amostraJanela": {
+  "cc8ccad75fb0": "2026-11-19",
+  "db24f6960b62": "2026-11-19",
+  "51d28944121e": "2026-11-19",
+  "6ae426815fe9": "2026-11-19",
+  "234efd9b713f": "2026-11-19",
+  "7d8bd49f793c": "2026-11-19",
+  "9d8cd1f2c4d2": "2026-11-19",
+  "22bc68c896bc": "2026-11-19",
+  "4cc634c4b449": "2026-11-19",
+  "2584aff93739": "2026-11-19",
+  "2de7370895db": "2026-11-19",
+  "db9ea0056d32": "2026-11-19",
+  "317d2cffbf34": "2026-11-19",
+  "4be5d914a589": "2026-11-19",
+  "b7bcd479f14b": "2026-11-19",
+  "15e1e05bccbf": "2026-11-19",
+  "734a3df6b50f": "2026-11-19",
+  "6c997a900462": "2026-11-19",
+  "a0102c5cb139": "2026-11-19",
+  "6c9e6df4b80f": "2026-11-19",
+  "f06b3d393b2d": "2026-11-19",
+  "6f588b236a61": "2026-11-19",
+  "32deaaf8da3a": "2026-11-19",
+  "1e45bb016e07": "2026-11-19",
+  "004bb9a1381e": "2026-11-19",
+  "6cb9ed0bcb89": "2026-11-19",
+  "f9a67c69e3b9": "2026-11-19",
+  "526a673cd8d0": "2026-11-19",
+  "13e00a022275": "2026-11-19",
+  "b59acb7de4ae": "2026-11-19",
+  "6b3121e3b8e0": "2026-11-19",
+  "5bbe3462ef04": "2026-11-19",
+  "b7b473f87a77": "2026-11-19",
+  "23d8f4046f3e": "2026-11-19",
+  "ec446c86a1cc": "2026-11-19",
+  "6cc81eedb255": "2026-11-19",
+  "880e89bb72b1": "2026-11-19",
+  "132b435534ad": "2026-11-19",
+  "eeac94375251": "2026-11-19",
+  "7cacf6c0e523": "2026-11-19",
+  "641595ff162e": "2026-11-19",
+  "89760fde3c6b": "2026-11-19",
+  "1a7bae15ee6a": "2026-11-19",
+  "073b290ed510": "2026-11-19",
+  "6ea3ed330c3d": "2026-11-19",
+  "b967b6d51a1a": "2026-11-19",
+  "b8d26a45c693": "2026-11-19",
+  "2ebab6f87273": "2026-11-19",
+  "41cb084a0199": "2026-11-19",
+  "787f770bdba0": "2026-11-19",
+  "63b23734d6f5": "2026-11-19",
+  "53093d6bf296": "2026-11-19",
+  "20e40b7183cd": "2026-11-19",
+  "dc66925db68d": "2026-11-19",
+  "2869d56298dd": "2026-11-19",
+  "b2416da43c2e": "2026-11-19",
+  "e7974e4afa05": "2026-11-19",
+  "02a6787a1336": "2026-11-19",
+  "971b3addc715": "2026-11-19",
+  "3dfa26414165": "2026-11-19",
+  "ba249185667a": "2026-11-19",
+  "658ffccf67a8": "2026-11-19",
+  "1ad9c77b794f": "2026-11-19",
+  "d5095f1ffee9": "2026-11-19",
+  "2da787e34a6e": "2026-11-19",
+  "498e33eefe8b": "2026-11-19",
+  "21c63c5776a2": "2026-11-19",
+  "9199dd166f94": "2026-11-19",
+  "30e602d0c820": "2026-11-19",
+  "8a728a23ea02": "2026-11-19",
+  "9a64aac6b12d": "2026-11-19",
+  "6d74864e9f8a": "2026-11-19",
+  "c4473a2e4238": "2026-11-19",
+  "105eb668f799": "2026-11-19",
+  "70f6768614ec": "2026-11-19",
+  "e82cab68fcbd": "2026-11-19",
+  "35f50814b674": "2026-11-19",
+  "5090460f52f2": "2026-11-19",
+  "de08647f68fe": "2026-11-19",
+  "e27350211b1d": "2026-11-19",
+  "fc7c7077cfb7": "2026-11-19",
+  "efa026d2f417": "2026-11-19",
+  "c9e6f17ceff6": "2026-11-19",
+  "792872fb7fff": "2026-11-19",
+  "1de196620fa3": "2026-11-19",
+  "7263ae50f648": "2026-11-19",
+  "9ada11532753": "2026-11-19",
+  "d07b620cfabd": "2026-11-19",
+  "0d94b0e294a5": "2026-11-19",
+  "d7441879a454": "2026-11-19",
+  "d4acf573aa8a": "2026-11-19",
+  "ba93fd53cad3": "2026-11-19",
+  "62b2aaa2a60c": "2026-11-19",
+  "0e95b99dd36b": "2026-11-19",
+  "ebbf7556dd66": "2026-11-19",
+  "053153bb7fbf": "2026-11-19",
+  "2fd9dd4572ab": "2026-11-19",
+  "f7ff24b97042": "2026-11-19",
+  "94e8b48ea2de": "2026-11-19",
+  "83a84b20985c": "2026-11-19"
+ },
+ "rotulos": {
+  "governo": "mesma fonte — confirma a leitura",
+  "trt24": "conferido no arquivo original do órgão",
+  "tce": "mesma fonte — confirma a leitura",
+  "tjms": "conferido no DadosJusBr (o portal do TJMS bloqueia acesso de fora do Brasil)",
+  "governoRubricas": "a fonte publica só remuneração fixa, eventuais e valor após deduções; não é possível separar verbas indenizatórias"
+ }
+}

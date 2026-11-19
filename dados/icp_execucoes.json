@@ -1,14 +1,14 @@
 {
- "runId": "44568271058",
+ "runId": "44622903893",
  "workflow": "atualizar.yml",
- "registradoEm": "2026-11-19T13:37:35",
+ "registradoEm": "2026-11-19T18:53:09",
  "jobs": {
   "coletar_dados": {
    "estado": "parcial",
    "motivo": "uma etapa ou um coletor falhou e o dado anterior foi mantido",
    "conclusao": "success",
-   "inicio": "2026-11-19T16:37:58Z",
-   "fim": "2026-11-19T17:07:44Z",
+   "inicio": "2026-11-19T21:51:17Z",
+   "fim": "2026-11-19T22:21:16Z",
    "bases": [
     "deputados",
     "deputados-estaduais",
@@ -20,38 +20,34 @@
    ],
    "leitura": "ok",
    "erroLeitura": null,
-   "linhasLog": 456,
-   "nAvisos": 4,
+   "linhasLog": 453,
+   "nAvisos": 3,
    "nErros": 0,
    "nFalhas": 1,
    "avisos": [
-    "[13:02:14]   ⚠️ chave 1 recusada pela API da CGU (HTTP 401) — usando a próxima",
-    "[13:04:00]   ⚠️ Servidores (11/2026) indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
-    "[13:04:11]   ⚠️ Diárias indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
-    "[13:04:11]   ⚠️ Nenhum dado coletado para Sonora — mantendo dados anteriores"
+    "[18:17:01]   ⚠️ Servidores (11/2026) indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+    "[18:17:12]   ⚠️ Diárias indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+    "[18:17:12]   ⚠️ Nenhum dado coletado para Sonora — mantendo dados anteriores"
    ],
    "erros": [],
    "falhas": [
-    "[13:04:11]   ⚠️ Nenhum dado coletado para Sonora — mantendo dados anteriores"
+    "[18:17:12]   ⚠️ Nenhum dado coletado para Sonora — mantendo dados anteriores"
    ],
    "fonteFora": [
-    "[13:04:00]   ⚠️ Servidores (11/2026) indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
-    "[13:04:11]   ⚠️ Diárias indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+    "[18:17:01]   ⚠️ Servidores (11/2026) indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+    "[18:17:12]   ⚠️ Diárias indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
    ],
    "avisosPlataforma": [
     "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
    ],
    "origemLinhas": {
-    "[13:02:14]   ⚠️ chave 1 recusada pela API da CGU (HTTP 401) — usando a próxima": [
-     "emendas"
-    ],
-    "[13:04:00]   ⚠️ Servidores (11/2026) indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))": [
+    "[18:17:01]   ⚠️ Servidores (11/2026) indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))": [
      "camaras-ms"
     ],
-    "[13:04:11]   ⚠️ Diárias indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))": [
+    "[18:17:12]   ⚠️ Diárias indisponível para Sonora: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))": [
      "camaras-ms"
     ],
-    "[13:04:11]   ⚠️ Nenhum dado coletado para Sonora — mantendo dados anteriores": [
+    "[18:17:12]   ⚠️ Nenhum dado coletado para Sonora — mantendo dados anteriores": [
      "camaras-ms"
     ]
    },
@@ -59,12 +55,61 @@
     "nConcluidas": 11
    }
   },
+  "coletar_verba_camara": {
+   "estado": "com_avisos",
+   "motivo": "5 aviso(s) no log",
+   "conclusao": "success",
+   "inicio": "2026-11-19T21:51:16Z",
+   "fim": "2026-11-19T22:08:10Z",
+   "bases": [
+    "camara"
+   ],
+   "leitura": "ok",
+   "erroLeitura": null,
+   "linhasLog": 388,
+   "nAvisos": 5,
+   "nErros": 0,
+   "nFalhas": 0,
+   "avisos": [
+    "[18:07:40]   ⚠️ Professor Riverton Ato 027 jul: total lido R$ 16,973.94 passa do limite mensal — descartado (erro de leitura do PDF)",
+    "[18:07:40]   ⚠️ Junior Coringa Ato 027 mar: total lido R$ 92,200.00 passa do limite mensal — descartado (erro de leitura do PDF)",
+    "[18:07:40]   ⚠️ Clodoilson Pires Ato 027 mai: total lido R$ 13,395.03 passa do limite mensal — descartado (erro de leitura do PDF)",
+    "[18:07:40]   ⚠️ Clodoilson Pires Ato 028 mai: total lido R$ 13,395.03 passa do limite mensal — descartado (erro de leitura do PDF)",
+    "[18:07:40]   ⚠️ Jean Ferreira Ato 027 jan: total lido R$ 20,460.74 passa do limite mensal — descartado (erro de leitura do PDF)"
+   ],
+   "erros": [],
+   "falhas": [],
+   "fonteFora": [],
+   "avisosPlataforma": [
+    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
+   ],
+   "origemLinhas": {
+    "[18:07:40]   ⚠️ Professor Riverton Ato 027 jul: total lido R$ 16,973.94 passa do limite mensal — descartado (erro de leitura do PDF)": [
+     "camara"
+    ],
+    "[18:07:40]   ⚠️ Junior Coringa Ato 027 mar: total lido R$ 92,200.00 passa do limite mensal — descartado (erro de leitura do PDF)": [
+     "camara"
+    ],
+    "[18:07:40]   ⚠️ Clodoilson Pires Ato 027 mai: total lido R$ 13,395.03 passa do limite mensal — descartado (erro de leitura do PDF)": [
+     "camara"
+    ],
+    "[18:07:40]   ⚠️ Clodoilson Pires Ato 028 mai: total lido R$ 13,395.03 passa do limite mensal — descartado (erro de leitura do PDF)": [
+     "camara"
+    ],
+    "[18:07:40]   ⚠️ Jean Ferreira Ato 027 jan: total lido R$ 20,460.74 passa do limite mensal — descartado (erro de leitura do PDF)": [
+     "camara"
+    ]
+   },
+   "etapas": {
+    "nConcluidas": 13
+   }
+  },
   "coletar_contratos_cg": {
    "estado": "sem_avisos",
    "motivo": "coleta concluída sem avisos",
    "conclusao": "success",
-   "inicio": "2026-11-19T16:37:58Z",
-   "fim": "2026-11-19T17:07:47Z",
+   "inicio": "2026-11-19T21:51:17Z",
+   "fim": "2026-11-19T22:15:39Z",
    "bases": [
     "contratos-cg",
     "shows",
@@ -72,210 +117,7 @@
    ],
    "leitura": "ok",
    "erroLeitura": null,
-   "linhasLog": 294,
-   "nAvisos": 0,
-   "nErros": 0,
-   "nFalhas": 0,
-   "avisos": [],
-   "erros": [],
-   "falhas": [],
-   "fonteFora": [],
-   "avisosPlataforma": [
-    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
-   ],
-   "origemLinhas": {},
-   "etapas": {
-    "nConcluidas": 12
-   }
-  },
-  "coletar_tre_ms": {
-   "estado": "sem_avisos",
-   "motivo": "coleta concluída sem avisos",
-   "conclusao": "success",
-   "inicio": "2026-11-19T16:37:58Z",
-   "fim": "2026-11-19T16:38:44Z",
-   "bases": [
-    "judiciario"
-   ],
-   "leitura": "ok",
-   "erroLeitura": null,
-   "linhasLog": 244,
-   "nAvisos": 0,
-   "nErros": 0,
-   "nFalhas": 0,
-   "avisos": [],
-   "erros": [],
-   "falhas": [],
-   "fonteFora": [],
-   "avisosPlataforma": [
-    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
-   ],
-   "origemLinhas": {},
-   "etapas": {
-    "nConcluidas": 10
-   }
-  },
-  "coletar_trt24": {
-   "estado": "sem_avisos",
-   "motivo": "coleta concluída sem avisos",
-   "conclusao": "success",
-   "inicio": "2026-11-19T16:37:58Z",
-   "fim": "2026-11-19T16:38:35Z",
-   "bases": [
-    "judiciario"
-   ],
-   "leitura": "ok",
-   "erroLeitura": null,
-   "linhasLog": 245,
-   "nAvisos": 0,
-   "nErros": 0,
-   "nFalhas": 0,
-   "avisos": [],
-   "erros": [],
-   "falhas": [],
-   "fonteFora": [],
-   "avisosPlataforma": [
-    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
-   ],
-   "origemLinhas": {},
-   "etapas": {
-    "nConcluidas": 10
-   }
-  },
-  "coletar_governo_ms": {
-   "estado": "sem_avisos",
-   "motivo": "coleta concluída sem avisos",
-   "conclusao": "success",
-   "inicio": "2026-11-19T16:37:59Z",
-   "fim": "2026-11-19T16:49:39Z",
-   "bases": [
-    "governo-ms",
-    "obras"
-   ],
-   "leitura": "ok",
-   "erroLeitura": null,
-   "linhasLog": 256,
-   "nAvisos": 0,
-   "nErros": 0,
-   "nFalhas": 0,
-   "avisos": [],
-   "erros": [],
-   "falhas": [],
-   "fonteFora": [],
-   "avisosPlataforma": [
-    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
-   ],
-   "origemLinhas": {},
-   "etapas": {
-    "nConcluidas": 10
-   }
-  },
-  "coletar_fontes_auditoria": {
-   "estado": "sem_avisos",
-   "motivo": "coleta concluída sem avisos",
-   "conclusao": "success",
-   "inicio": "2026-11-19T16:37:58Z",
-   "fim": "2026-11-19T16:49:36Z",
-   "bases": [
-    "auditoria",
-    "supersalarios"
-   ],
-   "leitura": "ok",
-   "erroLeitura": null,
-   "linhasLog": 335,
-   "nAvisos": 0,
-   "nErros": 0,
-   "nFalhas": 0,
-   "avisos": [],
-   "erros": [],
-   "falhas": [],
-   "fonteFora": [],
-   "avisosPlataforma": [
-    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
-   ],
-   "origemLinhas": {},
-   "etapas": {
-    "nConcluidas": 14
-   }
-  },
-  "coletar_fontes_federais": {
-   "estado": "sem_avisos",
-   "motivo": "coleta concluída sem avisos",
-   "conclusao": "success",
-   "inicio": "2026-11-19T16:37:58Z",
-   "fim": "2026-11-19T16:41:41Z",
-   "bases": [
-    "eleicoes",
-    "votacoes",
-    "producao",
-    "arrecadacao"
-   ],
-   "leitura": "ok",
-   "erroLeitura": null,
-   "linhasLog": 341,
-   "nAvisos": 0,
-   "nErros": 0,
-   "nFalhas": 0,
-   "avisos": [],
-   "erros": [],
-   "falhas": [],
-   "fonteFora": [],
-   "avisosPlataforma": [
-    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
-   ],
-   "origemLinhas": {},
-   "etapas": {
-    "nConcluidas": 15
-   }
-  },
-  "coletar_tjms": {
-   "estado": "com_avisos",
-   "motivo": "1 aviso(s) no log",
-   "conclusao": "success",
-   "inicio": "2026-11-19T16:37:58Z",
-   "fim": "2026-11-19T16:43:35Z",
-   "bases": [
-    "judiciario",
-    "supersalarios"
-   ],
-   "leitura": "ok",
-   "erroLeitura": null,
-   "linhasLog": 248,
-   "nAvisos": 1,
-   "nErros": 0,
-   "nFalhas": 0,
-   "avisos": [
-    "[12:42:57]   ⚠️ Portal do TJMS indisponível: HTTPSConnectionPool(host='www5.tjms.jus.br', port=443): Read timed out. (read timeout=90)"
-   ],
-   "erros": [],
-   "falhas": [],
-   "fonteFora": [
-    "[12:42:57]   ⚠️ Portal do TJMS indisponível: HTTPSConnectionPool(host='www5.tjms.jus.br', port=443): Read timed out. (read timeout=90)"
-   ],
-   "avisosPlataforma": [
-    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
-   ],
-   "origemLinhas": {
-    "[12:42:57]   ⚠️ Portal do TJMS indisponível: HTTPSConnectionPool(host='www5.tjms.jus.br', port=443): Read timed out. (read timeout=90)": [
-     "judiciario"
-    ]
-   },
-   "etapas": {
-    "nConcluidas": 10
-   }
-  },
-  "coletar_verba_camara": {
-   "estado": "sem_avisos",
-   "motivo": "coleta concluída sem avisos",
-   "conclusao": "success",
-   "inicio": "2026-11-19T16:37:59Z",
-   "fim": "2026-11-19T16:47:48Z",
-   "bases": [
-    "camara"
-   ],
-   "leitura": "ok",
-   "erroLeitura": null,
-   "linhasLog": 350,
+   "linhasLog": 299,
    "nAvisos": 0,
    "nErros": 0,
    "nFalhas": 0,
@@ -295,8 +137,8 @@
    "estado": "com_avisos",
    "motivo": "1 aviso(s) no log",
    "conclusao": "success",
-   "inicio": "2026-11-19T16:37:58Z",
-   "fim": "2026-11-19T16:42:15Z",
+   "inicio": "2026-11-19T21:51:17Z",
+   "fim": "2026-11-19T21:55:28Z",
    "bases": [
     "emendas"
    ],
@@ -323,66 +165,245 @@
    "etapas": {
     "nConcluidas": 14
    }
+  },
+  "coletar_fontes_auditoria": {
+   "estado": "sem_avisos",
+   "motivo": "coleta concluída sem avisos",
+   "conclusao": "success",
+   "inicio": "2026-11-19T21:51:17Z",
+   "fim": "2026-11-19T21:59:53Z",
+   "bases": [
+    "auditoria",
+    "supersalarios"
+   ],
+   "leitura": "ok",
+   "erroLeitura": null,
+   "linhasLog": 334,
+   "nAvisos": 0,
+   "nErros": 0,
+   "nFalhas": 0,
+   "avisos": [],
+   "erros": [],
+   "falhas": [],
+   "fonteFora": [],
+   "avisosPlataforma": [
+    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
+   ],
+   "origemLinhas": {},
+   "etapas": {
+    "nConcluidas": 14
+   }
+  },
+  "coletar_tjms": {
+   "estado": "com_avisos",
+   "motivo": "1 aviso(s) no log",
+   "conclusao": "success",
+   "inicio": "2026-11-19T21:51:17Z",
+   "fim": "2026-11-19T21:56:26Z",
+   "bases": [
+    "judiciario",
+    "supersalarios"
+   ],
+   "leitura": "ok",
+   "erroLeitura": null,
+   "linhasLog": 248,
+   "nAvisos": 1,
+   "nErros": 0,
+   "nFalhas": 0,
+   "avisos": [
+    "[17:56:05]   ⚠️ Portal do TJMS indisponível: HTTPSConnectionPool(host='www5.tjms.jus.br', port=443): Read timed out. (read timeout=90)"
+   ],
+   "erros": [],
+   "falhas": [],
+   "fonteFora": [
+    "[17:56:05]   ⚠️ Portal do TJMS indisponível: HTTPSConnectionPool(host='www5.tjms.jus.br', port=443): Read timed out. (read timeout=90)"
+   ],
+   "avisosPlataforma": [
+    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
+   ],
+   "origemLinhas": {
+    "[17:56:05]   ⚠️ Portal do TJMS indisponível: HTTPSConnectionPool(host='www5.tjms.jus.br', port=443): Read timed out. (read timeout=90)": [
+     "judiciario"
+    ]
+   },
+   "etapas": {
+    "nConcluidas": 10
+   }
+  },
+  "coletar_trt24": {
+   "estado": "sem_avisos",
+   "motivo": "coleta concluída sem avisos",
+   "conclusao": "success",
+   "inicio": "2026-11-19T21:51:17Z",
+   "fim": "2026-11-19T21:52:02Z",
+   "bases": [
+    "judiciario"
+   ],
+   "leitura": "ok",
+   "erroLeitura": null,
+   "linhasLog": 245,
+   "nAvisos": 0,
+   "nErros": 0,
+   "nFalhas": 0,
+   "avisos": [],
+   "erros": [],
+   "falhas": [],
+   "fonteFora": [],
+   "avisosPlataforma": [
+    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
+   ],
+   "origemLinhas": {},
+   "etapas": {
+    "nConcluidas": 10
+   }
+  },
+  "coletar_fontes_federais": {
+   "estado": "sem_avisos",
+   "motivo": "coleta concluída sem avisos",
+   "conclusao": "success",
+   "inicio": "2026-11-19T21:51:17Z",
+   "fim": "2026-11-19T21:56:21Z",
+   "bases": [
+    "eleicoes",
+    "votacoes",
+    "producao",
+    "arrecadacao"
+   ],
+   "leitura": "ok",
+   "erroLeitura": null,
+   "linhasLog": 356,
+   "nAvisos": 0,
+   "nErros": 0,
+   "nFalhas": 0,
+   "avisos": [],
+   "erros": [],
+   "falhas": [],
+   "fonteFora": [],
+   "avisosPlataforma": [
+    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
+   ],
+   "origemLinhas": {},
+   "etapas": {
+    "nConcluidas": 15
+   }
+  },
+  "coletar_tre_ms": {
+   "estado": "sem_avisos",
+   "motivo": "coleta concluída sem avisos",
+   "conclusao": "success",
+   "inicio": "2026-11-19T21:51:17Z",
+   "fim": "2026-11-19T21:52:10Z",
+   "bases": [
+    "judiciario"
+   ],
+   "leitura": "ok",
+   "erroLeitura": null,
+   "linhasLog": 244,
+   "nAvisos": 0,
+   "nErros": 0,
+   "nFalhas": 0,
+   "avisos": [],
+   "erros": [],
+   "falhas": [],
+   "fonteFora": [],
+   "avisosPlataforma": [
+    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
+   ],
+   "origemLinhas": {},
+   "etapas": {
+    "nConcluidas": 10
+   }
+  },
+  "coletar_governo_ms": {
+   "estado": "sem_avisos",
+   "motivo": "coleta concluída sem avisos",
+   "conclusao": "success",
+   "inicio": "2026-11-19T21:51:17Z",
+   "fim": "2026-11-19T21:58:09Z",
+   "bases": [
+    "governo-ms",
+    "obras"
+   ],
+   "leitura": "ok",
+   "erroLeitura": null,
+   "linhasLog": 255,
+   "nAvisos": 0,
+   "nErros": 0,
+   "nFalhas": 0,
+   "avisos": [],
+   "erros": [],
+   "falhas": [],
+   "fonteFora": [],
+   "avisosPlataforma": [
+    "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-action"
+   ],
+   "origemLinhas": {},
+   "etapas": {
+    "nConcluidas": 10
+   }
   }
  },
  "bases": {
-  "deputados": "com_avisos",
-  "deputados-estaduais": "com_avisos",
-  "senadores": "com_avisos",
+  "deputados": "sem_avisos",
+  "deputados-estaduais": "sem_avisos",
+  "senadores": "sem_avisos",
   "prefeitura": "sem_publicacao_nova",
   "camaras-ms": "fonte_indisponivel",
-  "deputados-brasil": "com_avisos",
-  "senado-brasil": "com_avisos",
+  "deputados-brasil": "sem_avisos",
+  "senado-brasil": "sem_avisos",
+  "camara": "com_avisos",
   "contratos-cg": "sem_avisos",
   "shows": "sem_avisos",
   "alugueis": "sem_avisos",
-  "judiciario": "com_avisos",
-  "governo-ms": "sem_avisos",
-  "obras": "sem_avisos",
+  "emendas": "com_avisos",
   "auditoria": "sem_avisos",
   "supersalarios": "sem_avisos",
+  "judiciario": "com_avisos",
   "eleicoes": "sem_avisos",
   "votacoes": "sem_avisos",
   "producao": "sem_avisos",
   "arrecadacao": "sem_avisos",
-  "camara": "sem_avisos",
-  "emendas": "com_avisos"
+  "governo-ms": "sem_avisos",
+  "obras": "sem_avisos"
  },
- "inicio": "2026-11-19T16:37:58Z",
- "fim": "2026-11-19T17:07:47Z",
+ "inicio": "2026-11-19T21:51:16Z",
+ "fim": "2026-11-19T22:21:16Z",
  "leitura": "ok",
  "registros": {
-  "camara": 2469,
+  "camara": 2476,
   "deputados-estaduais": 5707,
-  "deputados": 2686,
+  "deputados": 2695,
   "senadores": 509,
-  "prefeitura": 12976,
+  "prefeitura": 12999,
   "contratos-cg": 352,
   "governo-ms": 24424,
   "emendas": 1056,
   "supersalarios": 92796,
   "arrecadacao": 20,
   "shows": 1066,
-  "alugueis": 208,
+  "alugueis": 209,
   "producao": 1112,
   "votacoes": 126,
-  "obras": 267,
+  "obras": 266,
   "publicidade": 25,
   "entidades": 946,
   "camaras-ms": 1986,
   "judiciario": 227,
   "eleicoes": 35,
-  "auditoria": 348
+  "auditoria": 346
  },
  "arquivosAtualizados": [
   "dados/alems_servidores.json",
   "dados/alertas_contratos.json",
   "dados/alugueis.json",
+  "dados/alugueis_cache.json",
   "dados/atividade.json",
   "dados/auditoria.json",
   "dados/boletim_estado.json",
+  "dados/camara_cg_correcoes.json",
   "dados/camara_cg_pdfs.json",
   "dados/camara_cg_revisao.json",
+  "dados/camara_cg_snapshot.json",
   "dados/camara_municipal.json",
   "dados/camaras/aquidauana.json",
   "dados/camaras/bonito.json",
@@ -451,25 +472,26 @@
   "dados/ceaps_senado/SE.json",
   "dados/ceaps_senado/SP.json",
   "dados/ceaps_senado/TO.json",
-  "dados/cnpj_cache.json",
   "dados/conexoes_fornecedores.json",
-  "dados/csv/alertas_contratos.csv",
   "dados/csv/auditoria_sinais.csv",
-  "dados/csv/camaras_interior.csv",
   "dados/csv/conexoes_fornecedores.csv",
   "dados/csv/deputados_federais_brasil.csv",
+  "dados/csv/deputados_federais_ms.csv",
+  "dados/csv/deputados_federais_ms_notas.csv",
+  "dados/csv/evolucao_mensal.csv",
   "dados/csv/governo_ms_contratos.csv",
   "dados/csv/governo_ms_diarias.csv",
   "dados/csv/governo_ms_obras.csv",
-  "dados/csv/prefeitura_contratos.csv",
+  "dados/csv/patrimonio_declarado.csv",
   "dados/csv/prefeitura_despesas.csv",
-  "dados/csv/prefeitura_licitacoes.csv",
   "dados/csv/senadores_brasil.csv",
-  "dados/csv/uniao_transferencias_ms.csv",
+  "dados/csv/vereadores_cg.csv",
+  "dados/csv/vereadores_cg_notas.csv",
   "dados/deputados_estaduais_ms.json",
   "dados/deputados_federais_brasil.json",
   "dados/deputados_federais_ms.json",
   "dados/diarias_comparacao.json",
+  "dados/eleicoes.json",
   "dados/emendas_ms.json",
   "dados/emendas_municipios.json",
   "dados/empresas_index.json",
@@ -556,8 +578,8 @@
   "dados/licitacoes_governo_cache.json",
   "dados/monitoramento.json",
   "dados/monitoramento_historico.json",
+  "dados/notas_vistas.json",
   "dados/obras.json",
-  "dados/paginas_index.json",
   "dados/painel/alems_servidores.json",
   "dados/painel/auditoria.json",
   "dados/painel/camara_municipal.json",
@@ -567,6 +589,8 @@
   "dados/painel/governo_ms.json",
   "dados/painel/governo_ms_contratos.json",
   "dados/painel/governo_ms_licitacoes.json",
+  "dados/painel/notas_federais_ms.json",
+  "dados/painel/notas_vereadores.json",
   "dados/painel/prefeitura.json",
   "dados/painel/prefeitura_contratos.json",
   "dados/painel/supersalarios.json",
@@ -592,12 +616,15 @@
   "dados/transferencias_uniao_ms.json",
   "dados/tre_ms_magistrados.json",
   "dados/trt24_magistrados.json",
+  "dados/tse_campanhas.json",
   "dados/validacao_fontes.json",
   "dados/verba_cg_cache.json",
   "dados/verificacao/checagem_2026-08.json",
   "dados/verificacao/checagem_2026-09.json",
   "dados/verificacao/checagem_2026-10.json",
   "dados/verificacao/checagem_ultima.json",
+  "dados/verificacao/conferencia_supersalarios.csv",
+  "dados/verificacao/conferencia_supersalarios.json",
   "dados/votacoes.json"
  ],
  "testes": {
@@ -607,8 +634,8 @@
    "erros": 0
   },
   "variacoes": {
-   "ok": 69,
-   "avisos": 5,
+   "ok": 70,
+   "avisos": 8,
    "erros": 1
   },
   "cpf": {
@@ -618,8 +645,8 @@
   }
  },
  "publicacao": {
-  "em": "2026-11-19T13:37:34",
-  "runId": "44568271058",
+  "em": "2026-11-19T18:53:08",
+  "runId": "44622903893",
   "testes": {
    "cpf": {
     "codigo": 0,
