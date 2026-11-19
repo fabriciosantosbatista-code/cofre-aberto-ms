@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh workflow run:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh run cancel:*)",
+      "Bash(gh run watch:*)"
+    ]
+  }
+}
