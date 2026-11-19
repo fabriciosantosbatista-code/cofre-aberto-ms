@@ -32,7 +32,7 @@ H = {"User-Agent": "Mozilla/5.0 (CofreAbertoMS; +https://cofreabertoms.com.br)"}
 HOJE = date.today()
 ANO = HOJE.year
 T0 = time.monotonic()
-LIMITE = 12 * 60
+LIMITE = 20 * 60  # o job tem 50 min; o PNCP leva ~9 s por página e cada repetição espera 30–60 s
 LOCACAO = re.compile(r"loca[cç][aã]o.{0,60}(im[oó]ve|pr[eé]dio|sala|galp[aã]o|casa|edif[ií]cio|espa[cç]o f[ií]sico|terreno)|aluguel.{0,30}(im[oó]ve|pr[eé]dio|sala|casa|galp)", re.I)
 COMPRA = re.compile(r"aquisi[cç][aã]o|compra d[eo]|desapropria|permuta", re.I)
 NAO = re.compile(r"ve[ií]culo|m[aá]quina|equipamento|software|caminh|[oô]nibus|tenda|palco|banheiro qu[ií]mico|container|cont[eê]iner", re.I)
@@ -118,28 +118,47 @@ def brl(v):
 
 
 # ── PNCP ──
+REPETIVEIS = {429} | set(range(500, 600))  # limite de taxa e erro do servidor (timeout de rede também repete)
+MOTIVOS = {}  # mês (AAAA-MM) → motivo da falha, gravado em alugueis.json
+
+
 def listar(ini, fim, mod):
-    """Todas as páginas do mês. Devolve (contratações, completo): completo=False se alguma página não veio depois das
-    tentativas — aí o mês fica com os dados da coleta anterior, em vez de gravar uma lista pela metade."""
-    out, p = [], 1
+    """Todas as páginas do mês. Devolve (contratações, completo): completo=False se alguma página não veio — aí o mês fica
+    com os dados da coleta anterior, em vez de gravar uma lista pela metade. Cada página: em 429, 5xx ou timeout repete
+    até 2 vezes com espera de 30–60 s (variação aleatória; Retry-After quando vier); outro status falha na hora."""
+    import random
+    out, p, mes = [], 1, ini.strftime("%Y-%m")
     while True:
         prm = {"dataInicial": ini.strftime("%Y%m%d"), "dataFinal": fim.strftime("%Y%m%d"), "codigoModalidadeContratacao": mod, "uf": "MS",
                "pagina": p, "tamanhoPagina": 50}
-        d, ok = None, False
-        for t in range(4):
+        d, motivo = None, None
+        for t in range(3):
+            if time.monotonic() - T0 > LIMITE:
+                motivo = "tempo do passo esgotado"
+                break
             try:
                 r = requests.get(f"{API}/consulta/v1/contratacoes/publicacao", params=prm, headers=H, timeout=60)
                 if r.status_code == 204:  # sem contratação no período: resposta legítima e vazia
                     return out, True
                 if r.status_code == 200:
-                    d, ok = r.json(), True
+                    d = r.json()
                     break
-            except (requests.RequestException, ValueError):
-                pass
-            if time.monotonic() - T0 > LIMITE + 60:
+                motivo = f"HTTP {r.status_code}"
+                if r.status_code not in REPETIVEIS:
+                    break
+                ra = r.headers.get("Retry-After")
+            except requests.Timeout:
+                motivo, ra = "timeout", None
+            except (requests.RequestException, ValueError) as e:
+                motivo = type(e).__name__
                 break
-            time.sleep(3 * (t + 1))
-        if not ok:
+            if t < 2:
+                espera = int(ra) if (ra or "").isdigit() else random.uniform(30, 60)
+                print(f"  ↻ PNCP {mes} modalidade {mod} página {p}: {motivo} — nova tentativa {t + 1}/2 em {espera:.0f} s")
+                time.sleep(espera)
+        if d is None:
+            MOTIVOS[mes] = f"modalidade {mod}, página {p}: {motivo}" + (" (depois de 2 repetições)" if motivo in ("timeout",) or (motivo or "").startswith(("HTTP 5", "HTTP 429")) else "")
+            print(f"  ⚠️ PNCP {mes}: {MOTIVOS[mes]}")
             return out, False
         out += d.get("data") or []
         if p >= (d.get("totalPaginas") or 1):
@@ -279,7 +298,7 @@ def main():
                  "estado": {"total": round(sum(c["valor"] or 0 for c in est), 2), "contratacoes": len(est)},
                  "municipios": {"total": round(sum(c["valor"] or 0 for c in mun), 2), "contratacoes": len(mun)},
                  "porCidade": sorted(({**a, "valor": round(a["valor"], 2)} for a in por_cidade.values()), key=lambda a: -a["valor"]),
-                 "mesesIncompletos": falhos, "lista": contr},
+                 "mesesIncompletos": falhos, "motivosMesesIncompletos": {m: MOTIVOS.get(m) for m in falhos}, "lista": contr},
         "comVinculo": len(com_vinc)}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"✅ alugueis.json — Prefeitura de CG {brl(sum(a['valor'] for a in lista_pref))} a {len(lista_pref)} locadores; "
           f"PNCP {len(contr)} contratações ({brl(sum(c['valor'] or 0 for c in contr))}); {len(com_vinc)} com ligação política ou sinal")

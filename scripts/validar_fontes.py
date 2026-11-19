@@ -13,7 +13,7 @@ Só a fonte que passa aqui pode ser chamada de "verificada na fonte". Somas inte
   arrecadacao          Tesouro/Siconfi RREO Anexo 3: ICMS do Estado, todos os meses da série
   supersalarios        DadosJusBr: TJMS — nº de magistrados e soma do salário-base do mês publicado
   shows                PNCP: todas as contratações de show, valor homologado/estimado de cada uma
-  alugueis             PNCP: 8 contratações sorteadas por dia, valor homologado/estimado de cada uma
+  alugueis             PNCP: todas as contratações de aluguel, valor homologado/estimado de cada uma
   votacoes             API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano, o voto de cada deputado de MS
   producao             Câmara (/proposicoes com filtro de tipo) e Senado (/processo): nº de projetos de cada parlamentar de MS
   judiciario           DadosJusBr (contracheques do TJMS enviados ao CNJ): nº de magistrados e soma do subsídio do mês
@@ -83,14 +83,20 @@ def J(n):
 
 
 def get(url, params=None, tent=3, timeout=90):
+    """JSON da fonte ou None. 429 e 5xx: espera 30–60 s (ou Retry-After) antes de tentar de novo; outro erro: 3, 6… s."""
     for t in range(tent):
+        espera = 3 * (t + 1)
         try:
             r = requests.get(url, params=params, headers=H, timeout=timeout)
             if r.status_code == 200:
                 return r.json()
+            if r.status_code == 429 or r.status_code >= 500:
+                ra = r.headers.get("Retry-After")
+                espera = int(ra) if (ra or "").isdigit() else random.uniform(30, 60)
         except (requests.RequestException, ValueError):
             pass
-        time.sleep(3 * (t + 1))
+        if t < tent - 1:
+            time.sleep(espera)
     return None
 
 
@@ -295,10 +301,10 @@ def v_pncp(arquivo, chave_lista, rotulo, base, n=8):
             cnpj, ano, seq = x["link"].split("/editais/")[1].split("/")[:3]
         except Exception:
             return None
-        c = get(f"https://pncp.gov.br/api/consulta/v1/orgaos/{cnpj}/compras/{ano}/{seq}", tent=2, timeout=60)
+        c = get(f"https://pncp.gov.br/api/consulta/v1/orgaos/{cnpj}/compras/{ano}/{seq}", tent=3, timeout=60)
         f = (c.get("valorTotalHomologado") or c.get("valorTotalEstimado")) if c else None
         return (x.get("id") or x["link"].split("/editais/")[1], x["valor"], f)  # identificador PNCP: não repete a mesma contratação
-    with ThreadPoolExecutor(4) as ex:
+    with ThreadPoolExecutor(3) as ex:  # o PNCP responde 429 com mais consultas ao mesmo tempo
         itens = [i for i in ex.map(consulta, escolhidos) if i]
     todas = n is None
     res = resultado(itens, f"PNCP: {'todas as ' + str(len(itens)) if todas else str(len(itens))} {rotulo}{'' if todas else ' sorteadas'}, valor de cada uma na consulta pública",
@@ -454,7 +460,7 @@ def registrar(fonte, r, out):
 CONFERENCIAS = (("governo-ms", lambda: v_governo()), ("deputados-estaduais", lambda: v_alems()), ("senadores", lambda: v_senado()),
                 ("deputados", lambda: v_camara()), ("arrecadacao", lambda: v_siconfi()), ("supersalarios", lambda: v_tjms()),
                 ("shows", lambda: v_pncp("shows.json", "shows", "contratações de show", "shows", n=None)),
-                ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis")),
+                ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis", n=None)),
                 ("votacoes", lambda: v_votacoes()), ("producao", lambda: v_producao()), ("judiciario", lambda: v_judiciario()),
                 ("entidades", lambda: v_entidades()))
 
