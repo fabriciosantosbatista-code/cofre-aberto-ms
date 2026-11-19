@@ -33,13 +33,13 @@ Tudo roda no passo **"ICP — Índice de Confiabilidade Pública"** do job `comm
 |---|---|
 | `scripts/gerar_icp.py` | cálculo do ICP e páginas |
 | `scripts/icp_metodologia.py` | metodologia 2.0: cobertura, nível de evidência, limite estatístico (hipergeométrico/binomial), dimensões P e I, nota e tetos |
-| `scripts/gerar_monitoramento.py` | registro das 24 bases (fonte, endpoint, método, período, intervalo, atraso normal, contagem de registros, total, identificador do registro original) e classificação |
+| `scripts/gerar_monitoramento.py` | registro das 21 bases (fonte, endpoint, método, período, intervalo, atraso normal, contagem de registros, total, identificador do registro original) e classificação |
 | `scripts/registrar_execucao.py` | lê pela API do GitHub os jobs desta execução e o log de cada um; `JOB_BASES` liga cada robô às bases que ele coleta |
 | `scripts/validar_fontes.py` | conferências independentes na fonte (8 bases hoje) |
 | `scripts/validar_camara_cg.py` | conferência da leitura dos PDFs da Câmara de CG (marca, nunca altera valores) |
 | `tests/_bases.py` | a qual base pertence cada conferência dos testes |
 | `tests/test_icp.py` | checagens do ICP publicado (status, notas 2.0 e 1.0, indicadores, histórico, páginas) |
-| `tests/test_icp_metodologia.py` | cenários da metodologia 2.0 e regressão das 24 bases |
+| `tests/test_icp_metodologia.py` | cenários da metodologia 2.0 e regressão das 21 bases |
 | `tests/icp_pagina.js` | teste no navegador: filtros, busca, clique, selo do painel, celular (42 checagens) |
 
 ## 2. Metodologia (versão 2.0, em vigor desde 18/11/2026)
@@ -136,7 +136,7 @@ medir (ex.: rastreabilidade de uma série mensal); quando não medidas, saem da 
 ### 2.5 ICP geral e indicadores
 
 ```
-ICP = Σ(nota × importância) ÷ Σ(importância)      (as 24 bases — nenhuma fica de fora)
+ICP = Σ(nota × importância) ÷ Σ(importância)      (as 21 bases — nenhuma fica de fora)
 ```
 
 Importância: 3 gasto principal de governo ou parlamentar · 2 recorte relevante · 1 complementar. Na 1.0, bases com menos de 4
@@ -194,7 +194,7 @@ X de 5 tipos de conferência." · "A nota considera apenas as evidências dispon
 `nota` (2.0), `notaV1` (fórmula 1.0 aplicada aos mesmos dados) e `dimensoesV1`, para explicar por que a nota mudou.
 `dados/icp_notas_historico.jsonl` é **permanente** (só acrescenta): a primeira linha é o retrato da metodologia 1.0 como estava
 publicado (nota 83, fórmula e notas das 24 bases); depois, uma linha por coleta do robô com a nota 2.0, a 1.0 recalculada,
-o nível, o status e a cobertura de cada base. Nenhuma nota antiga é sobrescrita.
+o nível, o status e a cobertura de cada base. Nenhuma nota antiga é sobrescrita. Em `dados/icp.json`, `serieHistorica` traz a nota geral de cada geração recalculada só com as bases que o ICP tem hoje (notas por base registradas, pesos atuais).
 
 ## 4. Bases monitoradas (24)
 
@@ -208,7 +208,7 @@ o nível, o status e a cobertura de cada base. Nenhuma nota antiga é sobrescrit
 | governo-ms | Governo de MS — Poder Executivo | Estado | 3 | sim (pago de cada um dos 66 órgãos + totais do ano) |
 | emendas | Emendas parlamentares | CGU | 3 | não (manual, arquivo de 47 MB) |
 | contratos-cg, supersalarios, arrecadacao, shows, alugueis, obras, publicidade, entidades, judiciario | recortes | vários | 2 | supersalários (DadosJusBr), arrecadação (Siconfi), shows e aluguéis (amostra PNCP) |
-| beneficios, producao, votacoes, camaras-ms, presidencia, stf, eleicoes, auditoria | complementares | vários | 1 | não |
+| producao, votacoes, camaras-ms, eleicoes, auditoria | complementares | vários | 1 | não |
 
 O registro completo de cada base (endpoint, método, período, intervalo, atraso, identificador) está em `FONTES` (`scripts/gerar_monitoramento.py`). As limitações conhecidas estão em `EXTRA` (`scripts/gerar_icp.py`) e aparecem na página de cada base.
 
@@ -243,16 +243,16 @@ Os avisos de log passam pela máscara de CPF antes de serem gravados. Os registr
 
 | Teste | Onde roda | O que cobre |
 |---|---|---|
-| `tests/test_icp_metodologia.py` | `testar-site.yml` e job `verificar` | 2 em 92 mil não dá nota máxima · 10 de 206 = parcial (4,85%) · base inteira = nível 3, repetida em dias diferentes = 4 · sem conferência ≤ 70 e sem verde · integração quebrada ≤ 50 · sem publicação nova ≠ falha de coleta · denominador desconhecido nunca 100% · amostras repetidas não inflam · divergência reduz P e nota · 1 teste não vale I = 100 · estatística do limite · **regressão das 24 bases** (nota reproduzível, cobertura reconstruída do histórico, nível, verde, tetos, nota geral com as 24) · histórico das notas preservado |
+| `tests/test_icp_metodologia.py` | `testar-site.yml` e job `verificar` | 2 em 92 mil não dá nota máxima · 10 de 206 = parcial (4,85%) · base inteira = nível 3, repetida em dias diferentes = 4 · sem conferência ≤ 70 e sem verde · integração quebrada ≤ 50 · sem publicação nova ≠ falha de coleta · denominador desconhecido nunca 100% · amostras repetidas não inflam · divergência reduz P e nota · 1 teste não vale I = 100 · estatística do limite · **regressão das 21 bases** (nota reproduzível, cobertura reconstruída do histórico, nível, verde, tetos, nota geral com as 24) · histórico das notas preservado |
 | `tests/test_icp.py` | `testar-site.yml` e job `verificar` | status e cores; verde só com nível ≥ 3; nota 2.0 e 1.0 recalculadas; indicadores; críticos; histórico só cresce; páginas; integração |
-| `tests/icp_pagina.js` | `testar-site.yml` | filtros, busca, detalhe; **nível e cobertura da tabela = dados nas 24 bases**; resumo de cobertura no topo = dados; selo por amostra não verde e com o percentual; celular |
+| `tests/icp_pagina.js` | `testar-site.yml` | filtros, busca, detalhe; **nível e cobertura da tabela = dados nas 21 bases**; resumo de cobertura no topo = dados; selo por amostra não verde e com o percentual; celular |
 | `tests/test_monitoramento_robos.py` | `testar-site.yml` e `verificar` | leitura dos logs, estados, proteção da publicação com falhas intencionais |
 | `tests/test_cpf.py`, `test_integridade_dados.py`, `test_variacoes.py`, `tela_x_dados.js`, `filtros.js`, `smoke.js` | coleta e site | CPF, contas, variações, tela × dados, filtros, todas as abas |
 
 ## 8. Limitações
 
 1. **O ICP mede comprovação, não honestidade do gasto.** Uma base "verificada" significa que o site reproduz fielmente o que o órgão publicou, não que o gasto foi regular.
-2. **A conferência automática cobre 8 de 24 bases.** As outras ficam com o teto de 80 e o selo cinza. Prefeitura, emendas e Câmara de CG são bases importantes ainda sem conferência automática.
+2. **A conferência automática cobre 8 de 21 bases.** As outras ficam com o teto de 80 e o selo cinza. Prefeitura, emendas e Câmara de CG são bases importantes ainda sem conferência automática.
 3. **A conferência é por amostra ou agregado** (ex.: 8 contratos do PNCP, total do ano do Estado). Um erro num registro fora da amostra pode passar.
 4. **A dimensão F depende do histórico de execuções**, que começou em 17/11/2026. Até haver 14 coletas, ela reflete poucas execuções.
 5. **A atribuição de avisos do log a bases** usa palavras-chave (`BASE_TXT`). Um aviso genérico vai para todas as bases do robô.

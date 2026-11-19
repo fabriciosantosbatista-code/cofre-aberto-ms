@@ -42,9 +42,6 @@ const num = t => { // "R$ 21,2 bi" / "R$ 1.234,56" / "2.450" → número (ou int
   const al = J("alugueis.json");
   await confere("alugueis", "#al-total", soma(al.pncp.lista.map(c => c.valor)), "Aluguéis: contratos PNCP");
   await confere("alugueis", "#al-pref", soma(al.prefeitura.lista.map(a => a.valor)), "Aluguéis: Prefeitura CG");
-  const bf = J("beneficios_fiscais.json");
-  await confere("beneficios", "#bf-total", bf.total, "Benefícios: empresas");
-  await confere("beneficios", "#bf-caso", bf.empresas.length, "Benefícios: caso a caso (lista)");
   const em = J("emendas_municipios.json");
   await confere("emendas", "#em-pagamentos", em.pagamentos, "Emendas: pagamentos");
   const ss = J("supersalarios.json");

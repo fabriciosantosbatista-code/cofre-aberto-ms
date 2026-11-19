@@ -42,7 +42,7 @@ const norm = t => (t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase
     if (txt.includes(`Nível ${x.nivel}`) && txt.includes(esperado)) evidOk++;
     else ok(`evidência na tela de ${x.id}`, false, `tela "${txt.trim()}" x esperado nível ${x.nivel} · ${esperado}`);
   }
-  ok("nível e cobertura na tabela = dados (24 bases)", evidOk === bases.length, `${evidOk}/${bases.length}`);
+  ok("nível e cobertura na tabela = dados (21 bases)", evidOk === bases.length, `${evidOk}/${bases.length}`);
   const I = icp.indicadores;
   ok("topo mostra bases conferidas por inteiro, em parte e sem conferência = dados",
      (await p.textContent("#icp-abrangente")).trim() == String(I.conferenciaAbrangente) && (await p.textContent("#icp-parcial")).trim() == String(I.conferenciaParcial)
@@ -50,9 +50,13 @@ const norm = t => (t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase
   const cr = I.coberturaRegistros;
   ok("cobertura dos registros no topo = dados", (await p.textContent("#icp-cobertura")).trim() === (cr.percentualDoTotal == null ? "não calculada" : String(cr.percentualDoTotal).replace(".", ",") + "%"));
   ok("resumo explica o que a nota significa", (await p.textContent("#icp-resumo")).includes("conferidas por inteiro"));
-  await p.click('#tabela-icp tr[data-id="shows"]'); await p.waitForTimeout(400);
-  const dsh = await p.textContent("#icp-detalhe");
-  ok("detalhe de base por amostra diz que nem todos os registros foram examinados", dsh.includes("Nem todos os registros foram examinados") && dsh.includes("Evidência que sustenta a nota"));
+  // base parcial conferida registro a registro (qual é depende dos dados do dia; antes era sempre Shows)
+  const parcial = bases.find(b => b.nivel === 2 && b.cobertura && b.cobertura.granularidade === "registro");
+  if (parcial) {
+    await p.click(`#tabela-icp tr[data-id="${parcial.id}"]`); await p.waitForTimeout(400);
+    const dsh = await p.textContent("#icp-detalhe");
+    ok(`detalhe de base parcial por registro (${parcial.id}) diz que nem todos os registros foram examinados`, dsh.includes("Nem todos os registros foram examinados") && dsh.includes("Evidência que sustenta a nota"));
+  } else ok("detalhe de base parcial: nenhuma base parcial por registro hoje (nada a conferir)", true);
   await p.click('#tabela-icp tr[data-id="camara"]'); await p.waitForTimeout(400);
   const det = await p.textContent("#icp-detalhe");
   ok("clique abre o detalhe da base", det.includes(icp.bases.camara.nome));

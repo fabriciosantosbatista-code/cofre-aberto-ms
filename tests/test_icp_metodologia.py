@@ -13,8 +13,8 @@ Cenários sintéticos (scripts/icp_metodologia.py):
   · amostras repetidas não inflam a cobertura (a mesma contratação conta uma vez)
   · divergência reduz a precisão (≤ 40) e o limite estatístico
   · um único teste aprovado não vale integridade 100
-Regressão com as 24 bases publicadas (dados/icp.json):
-  · nota 2.0 reproduzida a partir das dimensões, cobertura e nível; nota geral com as 24 bases
+Regressão com as 21 bases publicadas (dados/icp.json):
+  · nota 2.0 reproduzida a partir das dimensões, cobertura e nível; nota geral com as 21 bases
   · cobertura reconstruída de forma independente a partir do histórico permanente das conferências
   · nível de evidência recalculado; verde só com nível ≥ 3; nenhuma base sem conferência acima de 70
   · histórico das notas: o retrato da metodologia 1.0 está preservado e nenhuma linha antiga foi apagada
@@ -133,11 +133,11 @@ check(abs(m.limite_superior(206, 8, 0) - 0.3058) < 0.001, "limite hipergeométri
 check(m.limite_superior(206, 206, 0) == 0 and m.limite_superior(25, 25, 1) == 0.04, "base inteira conferida: limite = proporção observada")
 check(m.limite_superior(None, 2, 0) > 0.7, "2 itens de base de tamanho desconhecido: limite > 70% (quase nada se pode afirmar)")
 
-# ── regressão com as 24 bases publicadas ──
+# ── regressão com as 21 bases publicadas ──
 icp = json.load(open(ROOT / "dados/icp.json", encoding="utf-8"))
 hist = [json.loads(l) for l in open(ROOT / "dados/icp_verificacoes.jsonl", encoding="utf-8") if l.strip()]
 agora = datetime.fromisoformat(icp["geradoEm"])
-check(len(icp["bases"]) == 24, f"{len(icp['bases'])} bases no ICP")
+check(len(icp["bases"]) == 21, f"{len(icp['bases'])} bases no ICP")
 for fid, b in icp["bases"].items():
     hb = [h for h in hist if h.get("base") == fid]
     cob = m.cobertura(hb, agora, b.get("registros"), vf.hashes_atuais(fid))  # com os hashes de hoje (janela de 30 dias)
@@ -154,7 +154,7 @@ for fid, b in icp["bases"].items():
     if b["cobertura"] and not b["cobertura"]["calculavel"]:
         check(b["cobertura"]["percentual"] is None, f"{fid}: sem denominador, sem percentual")
 geral = round(sum(b["nota"] * b["importancia"] for b in icp["bases"].values()) / sum(b["importancia"] for b in icp["bases"].values()))
-check(icp["nota"] == geral, f"nota geral = média das 24 bases com os pesos de importância ({geral})")
+check(icp["nota"] == geral, f"nota geral = média das 21 bases com os pesos de importância ({geral})")
 check(icp["metodologia"]["versao"] == m.VERSAO and icp["metodologia"]["anterior"]["versao"] == "1.0", "icp.json identifica a metodologia (2.0) e a anterior (1.0)")
 
 # ── histórico das notas ──

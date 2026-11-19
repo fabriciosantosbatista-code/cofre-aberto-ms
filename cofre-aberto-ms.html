@@ -664,7 +664,6 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <button style="--cor:#199e70" data-tab="prefeitura"><span class="dot"></span> Prefeitura CG</button>
       <button style="--cor:#199e70" data-tab="contratos-cg"><span class="dot"></span> Contratos CG</button>
       <button style="--cor:#199e70" data-tab="arrecadacao"><span class="dot"></span> Arrecadação</button>
-      <button style="--cor:#199e70" data-tab="beneficios"><span class="dot"></span> Benefícios fiscais</button>
       <div class="nav-sub-label" style="--cor:#d95926">Emendas</div>
       <button style="--cor:#d95926" data-tab="emendas"><span class="dot"></span> Emendas Parlamentares</button>
       <button style="--cor:#d95926" data-tab="pg-municipios"><span class="dot"></span> Emendas Municípios</button>
@@ -1855,46 +1854,6 @@ Atenciosamente,</textarea>
     </div>
   </section>
 
-  <section class="tabpanel" id="tab-beneficios">
-    <div class="hero">
-      <div class="hero-label">Benefícios fiscais de ICMS do Governo de MS · <span id="bf-ano">—</span></div>
-      <div class="hero-number" id="bf-total">—</div>
-      <div class="hero-desc">empresas tiveram algum benefício fiscal de ICMS do Estado no ano, segundo a lista que a própria Secretaria de Fazenda publica.
-        A maioria usa benefícios automáticos (que valem para todo o setor) ou o REFIS. Aqui o destaque é para quem recebeu benefício <b>caso a caso</b>:
-        termo de acordo, regime especial ou programa de desenvolvimento. A SEFAZ não publica quanto cada empresa deixou de pagar.</div>
-      <div class="mini-stats">
-        <div><div class="mini-stat-value" id="bf-caso">—</div><div class="mini-stat-label">com benefício caso a caso</div></div>
-        <div><div class="mini-stat-value" id="bf-termo">—</div><div class="mini-stat-label">termos de acordo (incentivo negociado)</div></div>
-        <div><div class="mini-stat-value" id="bf-doador">—</div><div class="mini-stat-label">com sócio que doou para campanha</div></div>
-        <div><div class="mini-stat-value" id="bf-estado">—</div><div class="mini-stat-label">que também recebem dinheiro do Estado</div></div>
-      </div>
-    </div>
-    <div class="section">
-      <div class="section-head"><h2 class="section-title">Benefício caso a caso e sócio que doou para campanha</h2></div>
-      <div class="section-note">Empresas com termo de acordo, regime especial ou programa de desenvolvimento cujo sócio ou dirigente doou para a campanha de político de MS (pelo nome e pelos dígitos do CPF publicados pela Receita e pelo TSE).
-        Doar é legal e ter incentivo também; o ponto de atenção é o mesmo grupo estar dos dois lados.</div>
-      <div id="bf-doadores"></div>
-    </div>
-    <div class="section">
-      <div class="section-head"><h2 class="section-title">Todas as empresas com benefício caso a caso</h2></div>
-      <div class="ob-filtros" id="bf-filtros">
-        <button type="button" class="ativo" data-f="">Todas</button><button type="button" data-f="3">Termo de acordo</button><button type="button" data-f="2">Regime especial</button>
-        <button type="button" data-f="4">Programa de desenvolvimento</button><button type="button" data-f="estado">Recebem do Estado</button><button type="button" data-f="doador">Sócio doador</button>
-      </div>
-      <input id="busca-bf" class="search-box" type="search" placeholder="buscar empresa, CNPJ ou setor…" aria-label="Buscar empresa" style="width:100%;margin:10px 0 12px"/>
-      <div class="section-note">"Recebeu do Estado" = pagamentos do Governo de MS à empresa neste ano (compras, obras, serviços). Contrapartida é quando o benefício exige algo em troca (investimento, empregos), como nos termos de acordo.</div>
-      <div class="card card-x-scroll"><table class="ranking" id="tabela-bf" data-cartoes><thead><tr><th>Empresa</th><th>Setor</th><th>Benefício</th><th>Vigência</th><th class="num">Recebeu do Estado</th></tr></thead><tbody></tbody></table></div>
-      <button class="pager-btn" id="bf-mais" style="margin-top:10px;display:none">Mostrar mais</button>
-    </div>
-    <div class="section">
-      <div class="section-head"><h2 class="section-title">Os tipos de benefício e os setores</h2></div>
-      <div class="card card-x-scroll"><table class="ranking" id="tabela-bf-esp" data-cartoes><thead><tr><th>Tipo de benefício</th><th class="num">Empresas</th></tr></thead><tbody></tbody></table></div>
-      <div class="section-note" style="margin-top:14px">Benefício caso a caso, por setor:</div>
-      <div class="card card-x-scroll"><table class="ranking" id="tabela-bf-setor" data-cartoes><thead><tr><th>Setor</th><th class="num">Empresas</th></tr></thead><tbody></tbody></table></div>
-    </div>
-    <div class="section"><div class="section-note" id="bf-fonte"></div></div>
-  </section>
-
   <section class="tabpanel" id="tab-shows">
     <div class="hero">
       <div class="hero-label">Shows pagos com dinheiro público em MS · <span id="sh-ano">—</span></div>
@@ -2266,7 +2225,7 @@ Atenciosamente,</textarea>
   </section>
   </section>
 
-  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li><li><a href="/cofre-aberto-ms.html#aba=beneficios">Benefícios fiscais</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=alugueis">Aluguéis</a></li><li><a href="/cofre-aberto-ms.html#aba=publicidade">Publicidade</a></li><li><a href="/cofre-aberto-ms.html#aba=entidades">ONGs e entidades</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Votos e projetos</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/cofre-aberto-ms.html#aba=confiabilidade">Confiabilidade dos Dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/termos/">Termos de uso</a></li><li><a href="/privacidade/">Privacidade e LGPD</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
+  <!--MAPA--><style>.mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}.mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}.mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}.mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}.mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}.mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}.mapa-contato summary::after{content:" ▾";font-size:.8em}.mapa-contato[open] summary::after{content:" ▴"}.mapa-contato summary:hover{color:var(--cor)}.mapa-contato a{display:block;margin-top:3px;color:#25D366!important;overflow-wrap:anywhere}</style><nav class="mapa-site" aria-label="Mapa do site"><div style="--cor:#3987e5"><h4>Parlamentares</h4><ul><li><a href="/cofre-aberto-ms.html#aba=senadores">Senado MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados">Dep. Federais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=deputados-estaduais">Dep. Estaduais MS</a></li><li><a href="/cofre-aberto-ms.html#aba=camara">Câmara CG</a></li><li><a href="/cofre-aberto-ms.html#aba=camaras-ms">Câmaras MS</a></li></ul></div><div style="--cor:#199e70"><h4>Executivo</h4><ul><li><a href="/cofre-aberto-ms.html#aba=governo-ms">Governo MS</a></li><li><a href="/cofre-aberto-ms.html#aba=prefeitura">Prefeitura CG</a></li><li><a href="/cofre-aberto-ms.html#aba=contratos-cg">Contratos CG</a></li><li><a href="/cofre-aberto-ms.html#aba=arrecadacao">Arrecadação</a></li></ul></div><div style="--cor:#d95926"><h4>Emendas</h4><ul><li><a href="/cofre-aberto-ms.html#aba=emendas">Emendas Parlamentares</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-municipios">Emendas Municípios</a></li></ul></div><div style="--cor:#9085e9"><h4>Justiça e salários</h4><ul><li><a href="/cofre-aberto-ms.html#aba=judiciario">Judiciário MS</a></li><li><a href="/cofre-aberto-ms.html#aba=supersalarios">Supersalários</a></li></ul></div><div style="--cor:#c98500"><h4>Fiscalização</h4><ul><li><a href="/cofre-aberto-ms.html#aba=auditoria">Auditoria</a></li><li><a href="/cofre-aberto-ms.html#aba=conexoes">Conexões</a></li><li><a href="/cofre-aberto-ms.html#aba=obras">Obras atrasadas</a></li><li><a href="/cofre-aberto-ms.html#aba=shows">Shows</a></li><li><a href="/cofre-aberto-ms.html#aba=alugueis">Aluguéis</a></li><li><a href="/cofre-aberto-ms.html#aba=publicidade">Publicidade</a></li><li><a href="/cofre-aberto-ms.html#aba=entidades">ONGs e entidades</a></li><li><a href="/cofre-aberto-ms.html#aba=votacoes">Votos e projetos</a></li><li><a href="/cofre-aberto-ms.html#aba=eleicoes">Eleições e patrimônio</a></li><li><a href="/cofre-aberto-ms.html#aba=evolucao">Evolução</a></li><li><a href="/termometro-da-transparencia/">Termômetro</a></li></ul></div><div style="--cor:#e0679f"><h4>Publicações</h4><ul><li><a href="/cofre-aberto-ms.html#aba=pg-boletim">Boletim semanal</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-empresas">Empresas</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-orgaos">Órgãos</a></li><li><a href="/perguntas/">Perguntas frequentes</a></li></ul></div><div style="--cor:#7aa2c8"><h4>Sobre o projeto</h4><ul><li><a href="/">Início</a></li><li><a href="/cofre-aberto-ms.html">Painel</a></li><li><a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a></li><li><a href="/cofre-aberto-ms.html#aba=pg-metodologia">Metodologia e dados</a></li><li><a href="/cofre-aberto-ms.html#aba=confiabilidade">Confiabilidade dos Dados</a></li><li><a href="/press.html">Imprensa</a></li><li><a href="/termos/">Termos de uso</a></li><li><a href="/privacidade/">Privacidade e LGPD</a></li><li><details class="mapa-contato"><summary>Contato</summary><a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Vim%20pelo%20Cofre%20Aberto%20MS%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">💬 WhatsApp: (67) 98209-5384</a></details></li></ul></div></nav><!--/MAPA-->
   <footer class="site-footer">
     <span>Projeto independente de transparência cidadã, sem vínculo oficial com nenhum órgão público. © 2026 Cofre Aberto MS · <a href="metodologia.html#licenca">dados sob CC BY 4.0, código e layout: todos os direitos reservados</a></span>
     <span>
@@ -5271,54 +5230,6 @@ function renderContratosGoverno(g) {
     `<tr><td colspan="6" style="padding:14px;color:var(--ink-soft)">Nenhuma obra com aditivo de prazo.</td></tr>`, 20);
 }
 
-// ===================== STF =====================
-function renderSTF(d) {
-  const fmt = v => formatBRL(v || 0), mesBR = k => k ? `${k.slice(5, 7)}/${k.slice(0, 4)}` : "—";
-  const barras = (el, lst, val, rot, cls = "") => {
-    const max = Math.max(...lst.map(val), 1);
-    document.getElementById(el).innerHTML = lst.map(x => `
-      <div class="bar-list-row"><div class="bar-list-label" title="${escHTML(rot(x))}">${escHTML(rot(x))}</div>
-        <div class="bar-list-track"><div class="bar-list-fill ${cls}" style="width:${(val(x) / max * 100).toFixed(1)}%"></div></div>
-        <div class="bar-list-value">${formatCompact(val(x))}</div></div>`).join("") || `<p class="section-note">Sem dados.</p>`;
-  };
-  const r = d.remuneracao || {}, pes = d.pessoal || {};
-  const ms = r.ministros || [];
-  const qLabel = p => p ? `${["abr.", "ago.", "dez."][p.quadrimestre - 1]}/${p.ano}` : "—";
-  const ultP = (pes.serie || []).slice(-1)[0];
-  if (ultP) { document.getElementById("stf-pessoal").textContent = formatCompact(ultP.bruta); document.getElementById("stf-periodo").textContent = qLabel(ultP); }
-  document.getElementById("stf-sub").textContent = fmt(d.subsidio);
-  document.getElementById("stf-n").textContent = ms.length;
-  const brutoMes = m => (m.base + m.outras) / (m.meses || 1);
-  const atuais = ms.filter(m => m.serie.some(s => s.mes === r.ate));
-  document.getElementById("stf-media").textContent = formatCompact(atuais.reduce((t, m) => t + brutoMes(m), 0) / (atuais.length || 1));
-  const top = ms.slice().sort((a, b) => b.maiorBruto - a.maiorBruto)[0];
-  if (top) { document.getElementById("stf-maior").textContent = formatCompact(top.maiorBruto); document.getElementById("stf-maior-label").textContent = `maior bruto num mês (${top.nome.split(" ")[0]}, ${mesBR(top.maiorMes)})`; }
-  document.getElementById("stf-data").textContent = d.ultimaAtualizacao ? formatDate(d.ultimaAtualizacao.slice(0, 10)) : "—";
-  document.getElementById("stf-rem-nota").textContent = `Contracheques de ${mesBR(r.de)} a ${mesBR(r.ate)}. Bruto = subsídio e vantagens + outras verbas (antes dos descontos). Ministros que saíram ou entraram no período têm menos meses.`;
-  document.querySelector("#tabela-stf-min tbody").innerHTML = ms.map(m => `
-    <tr><td data-label="Ministro(a)"><b>${escHTML(m.nome)}</b></td><td data-label="Meses" class="num">${m.meses}</td>
-      <td data-label="Média bruta/mês" class="num">${fmt(brutoMes(m))}</td><td data-label="Bruto no período" class="num">${fmt(m.base + m.outras)}</td>
-      <td data-label="Líquido no período" class="num">${fmt(m.liquido)}</td><td data-label="Maior mês" class="num">${fmt(m.maiorBruto)} <span style="opacity:.6">(${mesBR(m.maiorMes)})</span></td></tr>`).join("");
-  const sel = document.getElementById("stf-sel");
-  sel.innerHTML = ms.map((m, i) => `<option value="${i}">${escHTML(m.nome)}</option>`).join("");
-  const des = () => {
-    const m = ms[+sel.value]; if (!m) return;
-    barras("stf-itens", m.itens.slice(0, 12), x => x.valor, x => x.item, "amber");
-    barras("stf-serie", m.serie, x => x.bruto, x => mesBR(x.mes));
-  };
-  sel.addEventListener("change", des); des();
-  const u = r.ultimoMes || {};
-  document.querySelector("#tabela-stf-ult tbody").innerHTML = (u.ministros || []).map(m => `
-    <tr><td data-label="Ministro(a)"><b>${escHTML(m.nome)}</b> <span style="opacity:.6">${mesBR(u.mes)}</span></td>
-      <td data-label="Subsídio e vantagens" class="num">${fmt(m.base)}</td><td data-label="Outras verbas" class="num">${fmt(m.outras)}</td>
-      <td data-label="Descontos" class="num">${fmt(m.descontos)}</td><td data-label="Líquido" class="num">${fmt(m.liquido)}</td></tr>`).join("");
-  barras("stf-pes-serie", pes.serie || [], x => x.bruta, x => `12 meses até ${qLabel(x)}`, "positive");
-  const pct = v => v != null ? (v.toFixed(3).replace(".", ",") + "%") : "—";
-  document.querySelector("#tabela-stf-comp tbody").innerHTML = (pes.comparacao || []).map(t => `
-    <tr><td data-label="Tribunal"><b>${escHTML(t.tribunal)}</b></td><td data-label="Ativos" class="num">${fmt(t.ativos)}</td>
-      <td data-label="Aposentados e pensionistas" class="num">${fmt(t.inativos)}</td><td data-label="Despesa bruta" class="num">${fmt(t.bruta)}</td>
-      <td data-label="% da receita" class="num">${pct(t.pctRCL)}</td></tr>`).join("");
-}
 
 // ===================== CONTRACAPA (aba Sobre) =====================
 // Rosca (donut) em SVG: fatias com 2px de folga da cor do fundo, legenda com valor e %, dica ao passar o mouse.
@@ -5827,121 +5738,6 @@ function renderAtividade(a) {
 carregarJSON("dados/atividade.json").then(a => { if (a) renderAtividade(a); });
 
 
-// ===================== PRESIDÊNCIA =====================
-function renderPresidencia(d) {
-  const fmt = v => formatBRL(v || 0), pct = (a, b) => b ? (a / b * 100).toFixed(1).replace(".", ",") + "%" : "—";
-  const mesBR = m => m ? `${m.slice(5, 7)}/${m.slice(0, 4)}` : "—";
-  const barras = (el, lst, val, rot, cls = "") => {
-    const max = Math.max(...lst.map(val), 1);
-    document.getElementById(el).innerHTML = lst.map(x => `
-      <div class="bar-list-row"><div class="bar-list-label" title="${escHTML(rot(x))}">${escHTML(rot(x))}</div>
-        <div class="bar-list-track"><div class="bar-list-fill ${cls}" style="width:${(val(x) / max * 100).toFixed(1)}%"></div></div>
-        <div class="bar-list-value">${formatCompact(val(x))}</div></div>`).join("") || `<p class="section-note">Sem dados.</p>`;
-  };
-  const c = d.cartao || {}, pp = c.porPresidente || [];
-  const atual = pp[pp.length - 1];
-  if (atual) {
-    document.getElementById("pr-cartao-atual").textContent = formatCompact(atual.total);
-    document.getElementById("pr-periodo").textContent = `${mesBR(atual.de)} a ${mesBR(atual.ate)}`;
-    document.getElementById("pr-sig-pct").textContent = pct(atual.sigiloso, atual.total);
-    document.getElementById("pr-media").textContent = formatCompact(atual.mediaMensal);
-  }
-  document.getElementById("pr-data").textContent = d.ultimaAtualizacao ? formatDate(d.ultimaAtualizacao.slice(0, 10)) : "—";
-  document.querySelector("#tabela-pr-cartao tbody").innerHTML = pp.map(p => `
-    <tr><td data-label="Presidente"><b>${escHTML(p.presidente)}</b></td><td data-label="Período">${mesBR(p.de)} a ${mesBR(p.ate)} <span style="opacity:.6">(${p.meses} meses)</span></td>
-      <td data-label="Total no cartão" class="num">${fmt(p.total)}</td><td data-label="Média mensal" class="num">${fmt(p.mediaMensal)}</td>
-      <td data-label="Sigiloso" class="num">${fmt(p.sigiloso)} <span style="opacity:.6">(${pct(p.sigiloso, p.total)})</span></td>
-      <td data-label="Vice-Presidência" class="num">${fmt(p.vice)}</td></tr>`).join("");
-  const un = (p, chave) => ((p.unidades || []).find(u => u.unidade.startsWith(chave)) || {}).valor || 0;
-  document.querySelector("#tabela-pr-unidades tbody").innerHTML = pp.map(p => `
-    <tr><td data-label="Presidente"><b>${escHTML(p.presidente)}</b></td>
-      <td data-label="Secretaria de Administração" class="num">${fmt(un(p, "Secretaria"))}</td><td data-label="ABIN" class="num">${fmt(un(p, "ABIN"))}</td>
-      <td data-label="GSI" class="num">${fmt(un(p, "GSI"))}</td><td data-label="Total" class="num">${fmt(p.total)}</td></tr>`).join("");
-  const anos = {};
-  (c.serie || []).forEach(s => { const a = s.mes.slice(0, 4); anos[a] = anos[a] || { ano: a, v: 0, sig: 0, pres: new Set() }; anos[a].v += s.pr; anos[a].sig += s.prSig; anos[a].pres.add(s.presidente.split(" ")[0]); });
-  barras("pr-cartao-anos", Object.values(anos), x => x.v, x => `${x.ano} · ${[...x.pres].join(" / ")}${x.ano === String(new Date().getFullYear()) ? " (parcial)" : ""}`);
-  const sel = document.getElementById("pr-fav-pres");
-  sel.innerHTML = pp.map((p, i) => `<option value="${i}">${escHTML(p.presidente)}</option>`).reverse().join("");
-  const desFav = () => {
-    const p = pp[+sel.value];
-    document.querySelector("#tabela-pr-fav tbody").innerHTML = (p?.favorecidos || []).map(f => `
-      <tr><td data-label="Favorecido" class="quebra">${escHTML(f.nome)}${f.doc && f.doc.replace(/\D/g, "").length === 14 ? `<div class="rank-meta">${linksCNPJ(f.doc)}</div>` : ""}</td>
-        <td data-label="Transações" class="num">${f.transacoes.toLocaleString("pt-BR")}</td><td data-label="Valor" class="num">${fmt(f.valor)}</td></tr>`).join("")
-      || `<tr><td colspan="3">Sem gastos abertos identificados.</td></tr>`;
-  };
-  sel.addEventListener("change", desFav); desFav();
-
-  // Viagens
-  const vg = d.viagens || {}, anosV = Object.keys(vg).sort().reverse();
-  const sv = document.getElementById("pr-viag-ano");
-  sv.innerHTML = anosV.map(a => `<option>${a}</option>`).join("");
-  const desV = () => {
-    const v = vg[sv.value]; if (!v) return;
-    const t = v.presidencia || {};
-    document.getElementById("pr-viag-nota").textContent =
-      `Em ${sv.value}, servidores da Presidência e da Vice-Presidência fizeram ${(t.viagens || 0).toLocaleString("pt-BR")} viagens a serviço (${(v.pessoasPresidencia || 0).toLocaleString("pt-BR")} pessoas), ` +
-      `com ${formatCompact(t.diarias)} em diárias e ${formatCompact(t.passagens)} em passagens. Os ministros aparecem pela função "cargo de natureza especial" (CNE), a dos ministros de Estado e de poucos postos equivalentes.`;
-    paginarTabela(document.querySelector("#tabela-pr-ministros-viag tbody"), document.getElementById("pr-ministros-viag-mais"), v.ministros || [], m => `
-      <tr><td data-label="Ministro(a)" class="quebra"><b>${escHTML(m.nome)}</b><div class="rank-meta">${escHTML(m.orgao)}${m.destinos.length ? " · " + escHTML(m.destinos.join(", ")) : ""}</div></td>
-        <td data-label="Viagens" class="num">${m.viagens}</td><td data-label="Diárias" class="num">${fmt(m.diarias)}</td>
-        <td data-label="Passagens" class="num">${fmt(m.passagens)}</td><td data-label="Total" class="num">${fmt(m.total)}</td></tr>`,
-      `<tr><td colspan="5">Sem viagens de ministros no ano.</td></tr>`, 20);
-    paginarTabela(document.querySelector("#tabela-pr-viag tbody"), document.getElementById("pr-viag-mais"), v.viajantesPresidencia || [], m => `
-      <tr><td data-label="Nome">${escHTML(m.nome)}</td><td data-label="Cargo" class="quebra-curta">${escHTML(m.cargo || "—")}</td>
-        <td data-label="Viagens" class="num">${m.viagens}</td><td data-label="Total" class="num">${fmt(m.total)}</td>
-        <td data-label="Destinos" class="quebra">${escHTML(m.destinos.join(", "))}</td></tr>`,
-      `<tr><td colspan="5">Sem viagens no ano.</td></tr>`, 15);
-  };
-  sv.addEventListener("change", desV); desV();
-
-  // Orçamento
-  const orc = d.orcamento || [];
-  document.querySelector("#tabela-pr-orc tbody").innerHTML = orc.map(o => `
-    <tr><td data-label="Ano"><b>${o.ano}</b>${o.ano === new Date().getFullYear() ? " (parcial)" : ""}</td><td data-label="Orçamento atualizado" class="num">${fmt(o.atualizado)}</td>
-      <td data-label="Empenhado" class="num">${fmt(o.empenhado)}</td><td data-label="Realizado" class="num">${fmt(o.realizado)}</td>
-      <td data-label="Empréstimos (à parte)" class="num" title="${escHTML(((o.financeiro || {}).acoes || []).map(a => a.nome).join("; "))}">${(o.financeiro || {}).realizado ? fmt(o.financeiro.realizado) : "—"}</td></tr>`).join("");
-  const so = document.getElementById("pr-orc-ano");
-  so.innerHTML = orc.map(o => `<option>${o.ano}</option>`).reverse().join("");
-  const desO = () => {
-    const o = orc.find(x => String(x.ano) === so.value); if (!o) return;
-    barras("pr-orc-orgaos", o.orgaos, x => x.realizado, x => x.nome);
-    barras("pr-orc-acoes", o.acoes.slice(0, 15), x => x.realizado, x => x.nome, "alt");
-    barras("pr-orc-elem", o.elementos.slice(0, 12), x => x.realizado, x => x.nome, "positive");
-  };
-  so.addEventListener("change", desO); desO();
-  const oa = orc[orc.length - 1];
-  if (oa) { document.getElementById("pr-orc").textContent = formatCompact(oa.realizado); document.getElementById("pr-orc-label").textContent = `pagos pela Presidência em ${oa.ano} (até agora)`; }
-
-  // Remuneração
-  const sub = (d.subsidio || []).slice(-1)[0];
-  const r = d.remuneracao || {};
-  document.getElementById("pr-rem-nota").innerHTML = sub ?
-    `O presidente, o vice-presidente e os ministros recebem o mesmo subsídio, fixado pelo Congresso (Decreto Legislativo 172/2022): <b>${fmt(sub.valor)}</b> por mês desde ${formatDate(sub.desde)} — igual ao teto do funcionalismo. ` +
-    `O presidente e o vice não estão na folha SIAPE; abaixo, os ministros na folha de ${escHTML(r.mes || "—")}.` : "";
-  document.querySelector("#tabela-pr-rem tbody").innerHTML = (r.ministros || []).map(m => `
-    <tr><td data-label="Ministro(a)" class="quebra"><b>${escHTML(m.nome)}</b><div class="rank-meta">${escHTML(m.orgao)}</div></td>
-      <td data-label="Remuneração bruta" class="num">${fmt(m.bruto)}</td><td data-label="Abate-teto" class="num">${m.abateTeto ? fmt(m.abateTeto) : "—"}</td>
-      <td data-label="Jetons e eventuais" class="num">${m.eventuais ? fmt(m.eventuais) : "—"}</td><td data-label="Líquido" class="num">${fmt(m.liquido)}</td></tr>`).join("")
-    || `<tr><td colspan="5">Folha ainda não carregada.</td></tr>`;
-
-  // MS
-  const ms = d.ms || {};
-  document.getElementById("pr-ms").textContent = formatCompact(ms.total);
-  document.getElementById("pr-ms-label").textContent = `transferidos pela União a MS em ${ms.ano || ""}${ms.ate ? " (até " + ms.ate + ")" : ""}`;
-  document.getElementById("pr-ms-nota").textContent = `${formatBRL(ms.total || 0)} transferidos pela União ao Governo do Estado, aos municípios e a entidades de MS em ${ms.ano}` +
-    `${ms.ate ? ", até " + ms.ate : ""}: transferências constitucionais (FPE, FPM), legais (SUS, educação) e voluntárias (convênios e emendas).`;
-  barras("pr-ms-tipos", ms.tipo || [], x => x.valor, x => x.nome, "positive");
-  barras("pr-ms-orgaos", (ms.orgao || []).slice(0, 15), x => x.valor, x => x.nome);
-  const bm = document.getElementById("busca-pr-mun");
-  const desM = () => {
-    const f = bm.value.trim().toLowerCase();
-    paginarTabela(document.querySelector("#tabela-pr-mun tbody"), document.getElementById("pr-mun-mais"),
-      (ms.municipio || []).filter(m => !f || m.nome.toLowerCase().includes(f)), m => `
-      <tr><td data-label="Município">${escHTML(m.nome)}</td><td data-label="Recebido" class="num">${fmt(m.valor)}</td></tr>`,
-      `<tr><td colspan="2">Nenhum município encontrado.</td></tr>`, 25);
-  };
-  bm.addEventListener("input", desM); desM();
-}
 
 // ===================== ELEIÇÕES 2026 E PATRIMÔNIO =====================
 function renderEleicoes(d) {
@@ -7200,54 +6996,6 @@ function renderAlugueis(d) {
     `Entram no PNCP as contratações com fundamento no art. 74, V da Lei 14.133 (imóvel cuja localização e instalações tornam necessária a escolha) e as dispensas e inexigibilidades cujo objeto é aluguel ou compra de imóvel. Atualizado em ${formatDateTime(d.ultimaAtualizacao)}.`;
 }
 
-// ===================== BENEFÍCIOS FISCAIS =====================
-function renderBeneficios(d) {
-  const E = d.empresas || [], ESP = d.especies || {};
-  const curtoEsp = { 2: "Regime especial", 3: "Termo de acordo", 4: "Programa de desenvolvimento", 1: "Automático", 5: "REFIS" };
-  const nomeEmp = e => e.pagina ? `<a href="${e.pagina}">${escHTML(e.nome)}</a>` : escHTML(e.nome);
-  const fmtVig = v => /^\d{4}-\d{2}-\d{2}/.test(v) ? "até " + formatDate(v.slice(0, 10)) : v;
-  document.getElementById("bf-ano").textContent = d.anoReferencia;
-  document.getElementById("bf-total").textContent = (d.total || 0).toLocaleString("pt-BR");
-  document.getElementById("bf-caso").textContent = (d.casoACaso || 0).toLocaleString("pt-BR");
-  document.getElementById("bf-termo").textContent = ((d.porEspecie || {})["3"] || 0).toLocaleString("pt-BR");
-  document.getElementById("bf-doador").textContent = d.comSocioDoador || 0;
-  document.getElementById("bf-estado").textContent = d.comDinheiroDoEstado || 0;
-  const ds = E.filter(e => e.sociosDoadores.length);
-  document.getElementById("bf-doadores").innerHTML = ds.length ? ds.map(e => `<div class="card" style="padding:14px 16px;margin-bottom:10px">
-      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><b>${nomeEmp(e)}</b><span class="section-note">${e.especies.filter(x => x !== 1 && x !== 5).map(x => curtoEsp[x]).join(" · ")} · ${escHTML(e.setor)}</span></div>
-      ${e.pagoEstado ? `<div class="section-note" style="margin:4px 0">Recebeu ${formatBRL(e.pagoEstado)} do Governo de MS neste ano.</div>` : ""}
-      <ul style="margin:6px 0 0 18px;font-size:.86rem">${e.sociosDoadores.map(x => `<li>${escHTML(x)}</li>`).join("")}</ul></div>`).join("")
-    : `<p class="section-note">Nenhuma encontrada nos dados atuais.</p>`;
-  let f = "", busca = "", lim = 30;
-  const norm = t => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-  const tb = document.querySelector("#tabela-bf tbody");
-  const desenha = () => {
-    const b = norm(busca);
-    let lst = E.filter(e => !f || (f === "estado" ? e.pagoEstado || e.contratosEstado : f === "doador" ? e.sociosDoadores.length : e.especies.includes(+f)));
-    if (b) lst = lst.filter(e => norm(e.nome + " " + e.cnpj + " " + e.setor).includes(b));
-    tb.innerHTML = lst.slice(0, lim).map(e => `<tr><td class="cartao-titulo" style="font-size:.84rem"><b>${nomeEmp(e)}</b>` +
-      `${e.sociosDoadores.length ? ` <span class="ob-tag" style="background:#c98500;color:#14120a">sócio doador</span>` : ""}${e.sinais.length ? ` <span class="ob-tag" style="background:#e5484d;color:#fff" title="${escHTML(e.sinais.join(" · "))}">sinal na auditoria</span>` : ""}</td>` +
-      `<td data-label="Setor" style="font-size:.8rem">${escHTML(e.setor)}</td>` +
-      `<td data-label="Benefício" style="font-size:.8rem">${e.especies.filter(x => x !== 1 && x !== 5).map(x => curtoEsp[x]).join(", ")}${e.contrapartida ? `<div class="section-note" style="margin:0">com contrapartida</div>` : ""}</td>` +
-      `<td data-label="Vigência" style="font-size:.8rem">${e.vigencia.map(fmtVig).map(escHTML).join("<br>") || "—"}</td>` +
-      `<td class="num cartao-valor" data-label="Recebeu do Estado">${e.pagoEstado ? formatBRL(e.pagoEstado) : "—"}</td></tr>`).join("") || `<tr><td colspan="5">Nenhuma empresa encontrada.</td></tr>`;
-    document.getElementById("bf-mais").style.display = lst.length > lim ? "" : "none";
-  };
-  document.getElementById("bf-filtros").onclick = ev => {
-    const bt = ev.target.closest("[data-f]"); if (!bt) return;
-    f = bt.dataset.f; lim = 30;
-    document.querySelectorAll("#bf-filtros button").forEach(x => x.classList.toggle("ativo", x === bt));
-    desenha();
-  };
-  document.getElementById("busca-bf").addEventListener("input", ev => { busca = ev.target.value; lim = 30; desenha(); });
-  document.getElementById("bf-mais").onclick = () => { lim += 60; desenha(); };
-  desenha();
-  document.querySelector("#tabela-bf-esp tbody").innerHTML = Object.entries(ESP).map(([k, v]) => `<tr><td class="cartao-titulo">${escHTML(v)}${["2", "3", "4"].includes(k) ? ` <span class="section-note">(caso a caso)</span>` : ""}</td><td class="num cartao-valor" data-label="Empresas">${((d.porEspecie || {})[k] || 0).toLocaleString("pt-BR")}</td></tr>`).join("");
-  document.querySelector("#tabela-bf-setor tbody").innerHTML = (d.porSetor || []).map(([s_, n]) => `<tr><td class="cartao-titulo">${escHTML(s_)}</td><td class="num cartao-valor" data-label="Empresas">${n}</td></tr>`).join("");
-  document.getElementById("bf-fonte").innerHTML = `Fonte: <a href="${d.fonteUrl}" target="_blank" rel="noopener">${escHTML(d.fonte)}</a> (<a href="${d.planilha}" target="_blank" rel="noopener">planilha</a>); pagamentos do Estado: Portal da Transparência de MS; doações: TSE; sócios: Receita Federal. ` +
-    `Uma empresa pode ter mais de um tipo de benefício. Não entram as imunidades da Constituição, que não são benefício concedido pelo Estado. Atualizado em ${formatDateTime(d.ultimaAtualizacao)}.`;
-}
-
 // ===================== ARRECADAÇÃO (Impostômetro) =====================
 const AR_COLS = {
   estado: [["icms", "ICMS"], ["ipva", "IPVA"], ["itcd", "ITCD"], ["irrf", "IRRF"], ["impostos", "Total de impostos"], ["fpe", "FPE (União)"], ["correntes", "Receitas correntes"]],
@@ -7590,6 +7338,8 @@ function abrirDoHash() {
     const achado = (typeof montarIndiceBusca === "function" ? montarIndiceBusca() : []).find(p => p.nome === nome);
     aba = achado && achado.tab;
   }
+  // links antigos de bases que saíram do site: vão para a página inicial do ICP
+  if (aba === "beneficios" || (aba === "confiabilidade" && ["beneficios", "presidencia", "stf"].includes(nome))) { aba = "confiabilidade"; nome = null; }
   const btn = aba && document.querySelector(`.sidebar nav button[data-tab="${aba}"]`);
   if (!btn) return;
   btn.click();
@@ -7722,8 +7472,6 @@ const FONTE_ABA = {
   "camaras-ms": { titulo: "Câmaras municipais do interior de MS", csv: [["Vereadores", "camaras_interior.csv"]], json: null },
   "judiciario": { titulo: "Remuneração dos magistrados de MS", csv: [["Magistrados", "judiciario_magistrados.csv"]], json: "tjms_magistrados.json" },
   "deputados-brasil": { titulo: "CEAP dos deputados federais do Brasil", csv: [["Resumo", "deputados_federais_brasil.csv"]], json: "deputados_federais_brasil.json" },
-  "stf": { titulo: "Supremo Tribunal Federal: remuneração dos ministros e despesa com pessoal", csv: [["Contracheques dos ministros", "stf_contracheques.csv"], ["Despesa com pessoal", "stf_despesa_pessoal.csv"]], json: "stf.json" },
-  "presidencia": { titulo: "Presidência da República: cartão corporativo, viagens, despesas, remuneração e Governo Federal em MS", csv: [["Cartão por mês", "presidencia_cartao.csv"], ["Viagens de ministros", "presidencia_viagens_ministros.csv"], ["Remuneração dos ministros", "presidencia_ministros.csv"], ["Transferências a MS", "uniao_transferencias_ms.csv"]], json: "presidencia.json" },
   "senado-brasil": { titulo: "CEAPS dos senadores do Brasil", csv: [["Resumo", "senadores_brasil.csv"]], json: "senadores_brasil.json" },
   "conexoes": { titulo: "Conexões entre fornecedores de políticos de MS", csv: [["Conexões", "conexoes_fornecedores.csv"]], json: "conexoes_fornecedores.json" },
   "arrecadacao": { titulo: "Arrecadação do Governo de MS e da Prefeitura de Campo Grande", csv: [], json: "receitas.json" },
@@ -7731,7 +7479,6 @@ const FONTE_ABA = {
   "publicidade": { titulo: "Publicidade do Governo de MS e da Prefeitura de CG", csv: [], json: "publicidade.json" },
   "entidades": { titulo: "Dinheiro público para ONGs e entidades sem fins lucrativos", csv: [], json: "entidades.json" },
   "precos": { titulo: "Preço unitário pago pelos órgãos de MS pelo mesmo item (PNCP)", csv: [], json: "precos.json" },
-  "beneficios": { titulo: "Empresas com benefício fiscal de ICMS do Governo de MS", csv: [], json: "beneficios_fiscais.json" },
   "alugueis": { titulo: "Aluguel de imóveis com dinheiro público em MS", csv: [], json: "alugueis.json" },
   "shows": { titulo: "Shows pagos com dinheiro público em MS (PNCP)", csv: [], json: "shows.json" },
   "votacoes": { titulo: "Presença e votação dos deputados federais e senadores de MS", csv: [], json: "votacoes.json" },
@@ -7921,14 +7668,6 @@ async function init() {
         window._ssLoaded = true;
         carregarLeve("supersalarios.json").then(d => { if (d) renderSupersalarios(d); });
       }
-      if (btn.dataset.tab === "stf" && !window._stfLoaded) {
-        window._stfLoaded = true;
-        carregarJSON("dados/stf.json").then(d => { if (d) renderSTF(d); });
-      }
-      if (btn.dataset.tab === "presidencia" && !window._prLoaded) {
-        window._prLoaded = true;
-        carregarJSON("dados/presidencia.json").then(d => { if (d) renderPresidencia(d); });
-      }
       if (btn.dataset.tab === "arrecadacao" && !window._arLoaded) {
         window._arLoaded = true;
         carregarJSON("dados/receitas.json").then(d => { if (d) renderArrecadacao(d); });
@@ -7952,10 +7691,6 @@ async function init() {
       if (btn.dataset.tab === "confiabilidade" && !window._icpLoaded) {
         window._icpLoaded = true;
         carregarJSON("dados/icp.json").then(d => { if (d) renderICP(d); });
-      }
-      if (btn.dataset.tab === "beneficios" && !window._bfLoaded) {
-        window._bfLoaded = true;
-        carregarJSON("dados/beneficios_fiscais.json").then(d => { if (d) renderBeneficios(d); });
       }
       if (btn.dataset.tab === "alugueis" && !window._alLoaded) {
         window._alLoaded = true;

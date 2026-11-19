@@ -232,7 +232,7 @@ if al:
     pfv = [x for x in F["lista"] if x.get("tipo") == "PF" and x.get("doc")] + [c["locador"] for c in P["lista"] if c.get("locador") and c["locador"].get("tipo") == "PF" and c["locador"].get("doc")]
     checa("Aluguéis: CPF de pessoa física não publicado", not pfv, f"{len(pfv)} com documento")
 
-# ───────────────────────── 9. Supersalários, produção, votações, benefícios ─────────────────────────
+# ───────────────────────── 9. Supersalários, produção, votações ─────────────────────────
 ss = J("supersalarios.json")
 if ss:
     R = ss["ranking"]
@@ -256,12 +256,6 @@ vt = J("votacoes.json")
 for x in vt.get("parlamentares") or []:
     if x.get("nominais"):
         checa(f"Votações {x['nome']}: participação", abs(x["participacao"] - x["votou"] / x["nominais"] * 100) < 0.11, f"{x['participacao']} x {x['votou'] / x['nominais'] * 100:.2f}")
-bf = J("beneficios_fiscais.json")
-if bf:
-    E = bf["empresas"]
-    checa("Benefícios: caso a caso = lista", bf["casoACaso"] == len(E), f"{bf['casoACaso']} x {len(E)}")
-    checa("Benefícios: sócio doador", bf["comSocioDoador"] == sum(1 for e in E if e["sociosDoadores"]), "contagem")
-    checa("Benefícios: setores somam", sum(n for _, n in bf["porSetor"]) == len(E), "setores não fecham")
 
 # ───────────────────────── 10. Receitas (Impostômetro) e evolução ─────────────────────────
 rc = J("receitas.json")

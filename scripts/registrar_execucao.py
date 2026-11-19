@@ -49,7 +49,7 @@ JOB_BASES = {
     "coletar_verba_camara": ["camara"],
     "coletar_contratos_cg": ["contratos-cg", "shows", "alugueis"],
     "coletar_governo_ms": ["governo-ms", "obras"],
-    "coletar_fontes_federais": ["eleicoes", "presidencia", "stf", "votacoes", "producao", "arrecadacao"],
+    "coletar_fontes_federais": ["eleicoes", "votacoes", "producao", "arrecadacao"],
     "coletar_emendas_alems": ["emendas"],
     "coletar_tjms": ["judiciario", "supersalarios"], "coletar_trt24": ["judiciario"], "coletar_tre_ms": ["judiciario"],
     "coletar_fontes_auditoria": ["auditoria", "supersalarios"],
@@ -66,8 +66,8 @@ BASE_TXT = [("camara", r"relatórios|Câmara Municipal de Campo Grande|45\.225\.
 # passo do job → bases (quando o passo roda um coletor de uma base só): define o trecho do log logo no início do passo
 SCRIPT_BASES = {"coletar_contratos_governo": ["auditoria"], "coletar_licitacoes_governo": ["auditoria"], "coletar_aditivos_cg": ["auditoria"],
                 "coletar_cnpj": ["auditoria"], "coletar_alugueis": ["alugueis"], "coletar_shows": ["shows"],
-                "coletar_contratos_cg": ["contratos-cg"], "coletar_verba_camara_cg": ["camara"], "coletar_presidencia": ["presidencia"],
-                "coletar_stf": ["stf"], "coletar_tse": ["eleicoes"], "coletar_votacoes": ["votacoes"],
+                "coletar_contratos_cg": ["contratos-cg"], "coletar_verba_camara_cg": ["camara"],
+                "coletar_tse": ["eleicoes"], "coletar_votacoes": ["votacoes"],
                 "coletar_producao_legislativa": ["producao"], "coletar_receitas": ["arrecadacao"]}
 PASSO = re.compile(r"##\[group\]Run .*?scripts/(\w+)\.py")
 # linhas que são o eco do comando do script (não a saída dele)

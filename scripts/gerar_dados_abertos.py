@@ -218,18 +218,7 @@ def gerar_csvs():
         [[o.get("orgao"), o.get("numero"), o.get("processo"), o.get("fornecedor"), o.get("cnpj"), o.get("objeto"), o.get("municipios"),
           o.get("situacao"), o.get("inicio"), o.get("fim"), o.get("prazoInicial"), o.get("diasAditados"), o.get("diasParalisados"),
           o.get("executado"), num(o.get("valor"))] for o in gc.get("obras", [])])
-    pr = carregar("presidencia.json")
-    contagem["presidencia_cartao.csv"] = grava_csv("presidencia_cartao.csv",
-        ["mes", "presidente", "presidencia_total", "presidencia_sigiloso", "vice_total", "vice_sigiloso"],
-        [[x["mes"], x["presidente"], num(x["pr"]), num(x["prSig"]), num(x["vice"]), num(x["viceSig"])] for x in (pr.get("cartao") or {}).get("serie", [])])
-    contagem["presidencia_viagens_ministros.csv"] = grava_csv("presidencia_viagens_ministros.csv",
-        ["ano", "ministro", "orgao", "viagens", "diarias", "passagens", "outros", "total", "destinos_mais_frequentes"],
-        [[a, m["nome"], m["orgao"], m["viagens"], num(m["diarias"]), num(m["passagens"]), num(m["outros"]), num(m["total"]), " | ".join(m["destinos"])]
-         for a, v in sorted((pr.get("viagens") or {}).items()) for m in v.get("ministros", [])])
-    contagem["presidencia_ministros.csv"] = grava_csv("presidencia_ministros.csv",
-        ["mes", "ministro", "orgao", "remuneracao_bruta", "abate_teto", "eventuais_jetons", "ferias", "gratificacao_natalina", "liquido", "indenizatorias"],
-        [[(pr.get("remuneracao") or {}).get("mes"), m["nome"], m["orgao"], num(m["bruto"]), num(m["abateTeto"]), num(m["eventuais"]),
-          num(m["ferias"]), num(m["natalina"]), num(m["liquido"]), num(m["indenizatorias"])] for m in (pr.get("remuneracao") or {}).get("ministros", [])])
+    pr = carregar("presidencia.json")  # só as transferências da União para MS (páginas de município)
     ms = pr.get("ms") or {}
     contagem["uniao_transferencias_ms.csv"] = grava_csv("uniao_transferencias_ms.csv", ["recorte", "nome", f"valor_{ms.get('ano')}"],
         [[r, x["nome"], num(x["valor"])] for r in ("tipo", "orgao", "municipio") for x in ms.get(r, [])])
@@ -239,13 +228,6 @@ def gerar_csvs():
         [[c.get("id"), c.get("orgao"), c.get("unidade"), c.get("modalidade"), c.get("numero"), c.get("processo"), c.get("data"), c.get("objeto"),
           c.get("situacao"), num(c.get("estimado")), num(c.get("homologado")),
           " | ".join(f"{v['nome']} ({v['cnpj']}): {num(v['valor'])}" for v in c.get("vencedores") or []), c.get("link")] for c in gl.get("compras", [])])
-    stf = carregar("stf.json")
-    contagem["stf_contracheques.csv"] = grava_csv("stf_contracheques.csv",
-        ["ministro", "mes", "bruto", "liquido"],
-        [[m["nome"], s_["mes"], num(s_["bruto"]), num(s_["liquido"])] for m in (stf.get("remuneracao") or {}).get("ministros", []) for s_ in m["serie"]])
-    contagem["stf_despesa_pessoal.csv"] = grava_csv("stf_despesa_pessoal.csv",
-        ["periodo", "despesa_bruta_12_meses", "ativos", "inativos_e_pensionistas", "despesa_total_com_pessoal", "pct_rcl"],
-        [[x["periodo"], num(x.get("bruta")), num(x.get("ativos")), num(x.get("inativos")), num(x.get("dtp")), x.get("pctRCL")] for x in (stf.get("pessoal") or {}).get("serie", [])])
     el = carregar("eleicoes.json")
     contagem["eleicoes_2026_eleitos.csv"] = grava_csv("eleicoes_2026_eleitos.csv",
         ["cargo", "nome_urna", "nome_completo", "partido", "situacao", "patrimonio_2026", "arrecadou", "gastou"],
@@ -408,17 +390,6 @@ def status_fontes():
         f"{au.get('empresasConsultadas', 0)} empresas checadas na Receita" if au else None,
         au.get("ano") == ANO and em_dia(au.get("ultimaAtualizacao"), 3))
 
-    pr = carregar("presidencia.json")
-    ult_cartao = ((pr.get("cartao") or {}).get("serie") or [{}])[-1].get("mes")
-    add("presidencia", "Portal da Transparência do Governo Federal (CGU) — cartão de pagamento, viagens, orçamento, servidores e transferências",
-        "https://portaldatransparencia.gov.br/download-de-dados", pr.get("ultimaAtualizacao"),
-        f"cartão até {ult_cartao[5:]}/{ult_cartao[:4]}" if ult_cartao else None, bool(pr) and em_dia(pr.get("ultimaAtualizacao"), 8))
-
-    stf = carregar("stf.json")
-    add("stf", "DadosJusBr (contracheques publicados pelo STF) e Tesouro Nacional — SICONFI (Relatório de Gestão Fiscal)",
-        "https://dadosjusbr.org/", stf.get("ultimaAtualizacao"),
-        f"contracheques até {(stf.get('remuneracao') or {}).get('ate', '')[5:]}/{(stf.get('remuneracao') or {}).get('ate', '')[:4]}" if stf else None,
-        bool(stf) and em_dia(stf.get("ultimaAtualizacao"), 8))
 
     el = carregar("eleicoes.json")
     add("eleicoes", "TSE — Portal de Dados Abertos (candidaturas, bens declarados e prestação de contas)", "https://dadosabertos.tse.jus.br/",
@@ -452,11 +423,6 @@ def status_fontes():
         "https://pncp.gov.br/", pr.get("ultimaAtualizacao"),
         f"{sum(p.get('compras') or 0 for p in pr.get('produtos') or [])} preços comparados" if pr else None,
         bool(pr) and em_dia(pr.get("ultimaAtualizacao"), 3))
-    bfi = carregar("beneficios_fiscais.json")
-    add("beneficios", "SEFAZ-MS — lista anual de contemplados por benefícios fiscais",
-        bfi.get("fonteUrl") or "https://www.sefaz.ms.gov.br/", bfi.get("ultimaAtualizacao"),
-        f"lista de {bfi.get('anoReferencia')} ({bfi.get('total')} empresas)" if bfi else None,
-        bool(bfi) and em_dia(bfi.get("ultimaAtualizacao"), 400))
     alg = carregar("alugueis.json")
     add("alugueis", "PNCP (aluguel de imóvel sem licitação em MS) e SIG-Transparência da Prefeitura de CG (locação de imóveis)",
         "https://pncp.gov.br/", alg.get("ultimaAtualizacao"),

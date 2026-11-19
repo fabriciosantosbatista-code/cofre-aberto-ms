@@ -148,7 +148,8 @@ for arq in ("dados/icp_verificacoes.jsonl", "dados/icp_execucoes_historico.jsonl
 
 # ── páginas ──
 painel = (ROOT / "cofre-aberto-ms.html").read_text(encoding="utf-8")
-aba = painel[painel.index('id="tab-confiabilidade"'):painel.index('id="tab-beneficios"')]
+_ini = painel.index('id="tab-confiabilidade"')
+aba = painel[_ini:painel.index('<section class="tabpanel"', _ini + 10)]
 check("não é uma certificação oficial" in aba, "aba do ICP diz que não é certificação oficial")
 check('id="busca-icp"' in aba and 'id="icp-filtros"' in aba and "data-cartoes" in aba, "aba do ICP tem busca, filtro de status e tabela em cartões no celular")
 check('data-tab="confiabilidade"' in painel, "menu lateral do painel tem a aba 'Confiabilidade dos Dados'")

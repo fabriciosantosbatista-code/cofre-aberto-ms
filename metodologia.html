@@ -130,16 +130,12 @@ como citar e como baixar os dados.</p>
 <td>Anexo VIII da Resolução CNJ 102/2009, publicado por cada tribunal: TRT24 e TRE-MS direto dos portais. O TJMS bloqueia acessos de fora do Brasil, então a folha vem do <a href="https://dadosjusbr.org/" target="_blank" rel="noopener">DadosJusBr</a>, que coleta o mesmo Anexo VIII.</td><td>1 a 2 meses</td></tr>
 <tr><td><b>Conexões</b></td><td>Empresas pagas por mais de um político de MS, ou por um político e também pela Prefeitura ou pelo Governo do Estado</td>
 <td>Cruzamento, feito pelo site, das notas fiscais de todas as fontes acima pelo CNPJ.</td><td>—</td></tr>
-<tr><td><b>Presidência</b></td><td>Cartão corporativo por presidente desde 2013, viagens de ministros e da Presidência, despesas da Presidência, remuneração dos ministros e transferências da União para MS</td>
-<td>Portal da Transparência do Governo Federal (CGU), dados abertos. <a href="#presidencia">Detalhes</a>.</td><td>1 a 2 meses</td></tr>
 <tr><td><b>Licitações do Estado</b></td><td>Compras dos órgãos estaduais de MS com vencedores e preços item a item (aba Governo MS)</td>
 <td><a href="https://pncp.gov.br/" target="_blank" rel="noopener">Portal Nacional de Contratações Públicas (PNCP)</a>, API pública de consulta.</td><td>dias</td></tr>
 <tr><td><b>Páginas de municípios</b></td><td>Uma página por município de MS (/municipio/): emendas pagas no ano, de quem, por tipo, quem recebeu, Emendas Pix do ano e transferências da União</td>
 <td>Portal da Transparência (CGU): emendas "por favorecido" e transferências. Geradas a cada coleta.</td><td>dias</td></tr>
 <tr><td><b>Emendas Pix</b></td><td>Transferências especiais pagas a MS no ano corrente, por autor e município (aba Emendas Parlamentares e páginas dos municípios)</td>
 <td>Portal da Transparência (CGU), emendas "por favorecido", tipo "Transferências Especiais". O plano de ação do município (Transferegov) não está disponível para consulta de fora do Brasil.</td><td>dias</td></tr>
-<tr><td><b>STF</b></td><td>Contracheque de cada ministro mês a mês e despesa com pessoal do tribunal, comparada aos outros tribunais superiores</td>
-<td>DadosJusBr e Tesouro Nacional (SICONFI). <a href="#stf">Detalhes</a>.</td><td>1 a 2 meses</td></tr>
 <tr><td><b>Eleições e patrimônio</b></td><td>Eleitos em MS em 2026 (governador, senadores, deputados), com patrimônio declarado, arrecadação, doadores e fornecedores das campanhas; evolução do patrimônio declarado de cada parlamentar desde 2018</td>
 <td><a href="https://dadosabertos.tse.jus.br/" target="_blank" rel="noopener">Portal de Dados Abertos do TSE</a>: candidaturas, bens declarados e prestação de contas. A pessoa é a mesma entre eleições pelo nome civil e pelo CPF parcial (em 2024 o TSE não publica o CPF: vale o nome civil, se for único em MS). Patrimônio é o declarado pelo candidato, em geral pelo valor de compra, em valores nominais.</td><td>semanal</td></tr>
 <tr><td><b>Auditoria</b></td><td>Sinais de atenção: padrões atípicos nas notas, despesas e contratos</td>
@@ -159,23 +155,6 @@ como citar e como baixar os dados.</p>
   <li><strong>Alguns meses de verba de 5 vereadores de CG</strong> (Papy, Professor Juari, Wilson Lands, Landmark e Veterinário Francisco): em PDFs ilegíveis de uma carga anterior, parte dos valores foi estimada. O detalhe de cada um no painel e na planilha (<code>observacao_coleta</code>) diz isso. A coleta automática substitui o valor sempre que o PDF traz o total legível.</li>
 </ul>
 </div>
-
-<h2 id="presidencia">Presidência da República</h2>
-<p>A aba <a href="cofre-aberto-ms.html#aba=presidencia">Presidência</a> usa só os arquivos de dados abertos do <a href="https://portaldatransparencia.gov.br/download-de-dados" target="_blank" rel="noopener">Portal da Transparência da CGU</a>, com os mesmos critérios para todos os governos:</p>
-<ul>
-  <li><strong>Cartão corporativo (CPGF):</strong> gastos dos órgãos "Presidência da República" e "Gabinete da Vice-Presidência", mês a mês desde janeiro de 2013 (o primeiro mês publicado). Gasto sigiloso é o que vem marcado como "informações protegidas por sigilo". Cada mês do extrato é atribuído a quem presidia: de maio de 2016 em diante, a Michel Temer (Dilma Rousseff foi afastada em 12/05/2016). EBC e Imprensa Nacional, que também são da Presidência, ficam fora. Valores nominais, sem correção pela inflação.</li>
-  <li><strong>Viagens a serviço:</strong> diárias e passagens dos servidores da Presidência e da Vice e dos ministros de Estado (pela função "cargo de natureza especial", CNE-0001, que inclui poucos postos equivalentes), de 2023 em diante. As viagens do próprio presidente, feitas pela FAB, não estão nesses arquivos. O ano corrente é atualizado uma vez por semana.</li>
-  <li><strong>Despesas da Presidência:</strong> orçamento da despesa do órgão superior Presidência da República (inclui Vice, EBC e Imprensa Nacional) no mandato atual; "realizado" é o valor pago.</li>
-  <li><strong>Remuneração:</strong> presidente, vice e ministros recebem o subsídio fixado pelo Decreto Legislativo 172/2022. Os ministros vêm da folha SIAPE (bruto, abate-teto, "outras remunerações eventuais", em geral jetons de conselhos de estatais, e líquido). O presidente e o vice não estão na folha SIAPE.</li>
-  <li><strong>Governo Federal em MS:</strong> transferências da União com UF = MS no ano, por tipo, órgão e município.</li>
-</ul>
-
-<h2 id="stf">Supremo Tribunal Federal</h2>
-<ul>
-  <li><strong>Contracheques dos ministros:</strong> do <a href="https://dadosjusbr.org/" target="_blank" rel="noopener">DadosJusBr</a> (Transparência Brasil), que coleta o que o próprio STF publica, mês a mês desde janeiro de 2025. "Bruto" = subsídio e vantagens + outras verbas (férias, 13º, auxílios, indenizações, exercícios anteriores), antes dos descontos (imposto, previdência, abate-teto).</li>
-  <li><strong>Despesa com pessoal:</strong> do Relatório de Gestão Fiscal (Anexo 1) do STF e dos outros tribunais superiores, na API do <a href="https://siconfi.tesouro.gov.br/" target="_blank" rel="noopener">SICONFI</a> (Tesouro Nacional): soma dos 12 meses até o fim de cada quadrimestre.</li>
-  <li><strong>O que não entra:</strong> diárias, passagens e contratos do STF. O portal de transparência do tribunal recusa acessos de fora do Brasil (onde o robô do site roda), o DadosJusBr não recebe esses dados e os arquivos da CGU só cobrem o Poder Executivo.</li>
-</ul>
 
 <h2 id="auditoria">Auditoria: como funcionam os sinais de atenção</h2>
 <p>A aba <a href="cofre-aberto-ms.html#aba=auditoria">Auditoria</a> roda todos os dias testes automáticos sobre as notas dos parlamentares, as despesas, contratos e licitações da Prefeitura de Campo Grande, os credores do Governo do Estado que receberam R$ 50 mil ou mais, a prestação de contas de campanha (TSE), a folha do Estado e o cadastro de CNPJ das empresas na Receita Federal (consultado na <a href="https://brasilapi.com.br/" target="_blank" rel="noopener">BrasilAPI</a>, com a <a href="https://minhareceita.org/" target="_blank" rel="noopener">Minha Receita</a> como reserva; cada CNPJ é reconsultado a cada 90 dias). <strong>Um sinal de atenção não é acusação nem prova de irregularidade:</strong> é um padrão atípico, definido por uma regra objetiva, que merece um olhar humano. Muitos têm explicação legal. Quem é citado pode enviar sua explicação (veja <a href="#correcoes">direito de resposta</a>).</p>

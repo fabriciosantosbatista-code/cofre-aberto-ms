@@ -25,17 +25,6 @@ const norm = t => (t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase
   const nD = al.filter(c => norm([c.orgao, c.cidade, c.objeto, c.locador && c.locador.nome].join(" ")).includes("dourados")).length;
   ok("Aluguéis: busca 'dourados'", n === Math.min(nD, 30), `tela ${n} x dados ${nD}`);
 
-  // Benefícios: filtro Termo de acordo (conta tudo clicando em "mostrar mais")
-  const bf = J("beneficios_fiscais.json").empresas;
-  await abre("beneficios");
-  await p.click('#bf-filtros [data-f="3"]'); await p.waitForTimeout(300);
-  for (let i = 0; i < 20 && await p.isVisible("#bf-mais"); i++) { await p.click("#bf-mais"); await p.waitForTimeout(100); }
-  n = await p.$$eval("#tabela-bf tbody tr", r => r.length);
-  ok("Benefícios: filtro Termo de acordo (lista completa)", n === bf.filter(e => e.especies.includes(3)).length, `tela ${n} x dados ${bf.filter(e => e.especies.includes(3)).length}`);
-  await p.click('#bf-filtros [data-f="doador"]'); await p.waitForTimeout(300);
-  n = await p.$$eval("#tabela-bf tbody tr", r => r.length);
-  ok("Benefícios: filtro sócio doador", n === bf.filter(e => e.sociosDoadores.length).length, `tela ${n}`);
-
   // Shows: clicar na 1ª cidade mostra os shows dela com o total certo
   const sh = J("shows.json");
   await abre("shows");

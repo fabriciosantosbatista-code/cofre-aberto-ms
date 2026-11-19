@@ -148,17 +148,6 @@ def rodar(D: Path, checa, igual, soma):
         neg = [x.get("nome") for x in pf if (x.get("valor") or 0) < 0]
         checa("alugueis: nenhum valor pago a locador negativo", not neg, f"{len(neg)} negativos")
 
-    # ── Benefícios fiscais ──
-    bf = J("beneficios_fiscais.json")
-    if bf:
-        es = bf.get("empresas") or []
-        r = repetidos([x.get("cnpj") for x in es])
-        checa("beneficios: nenhuma empresa repetida (CNPJ único)", not r, f"{len(r)} repetidos")
-        neg = [x.get("cnpj") for x in es if (x.get("pagoEstado") or 0) < 0]
-        checa("beneficios: nenhum valor pago pelo Estado negativo", not neg, f"{len(neg)} negativos")
-        checa("beneficios: soma por espécie ≥ total de contemplados (uma empresa pode ter mais de uma espécie)",
-              sum((bf.get("porEspecie") or {}).values()) >= (bf.get("total") or 0), "soma por espécie menor que o total")
-
     # ── Produção legislativa ──
     pl = J("producao_legislativa.json")
     if pl:
@@ -273,36 +262,3 @@ def rodar(D: Path, checa, igual, soma):
         desc = set(cont) - set(au.get("regras") or {})
         checa("auditoria: toda regra usada está na lista de regras", not desc, f"desconhecidas: {sorted(desc)[:3]}")
 
-    # ── Presidência (cartão corporativo) ──
-    pr = J("presidencia.json")
-    if pr:
-        se_, pp = (pr.get("cartao") or {}).get("serie") or [], (pr.get("cartao") or {}).get("porPresidente") or []
-        sem = campos(se_, ("mes", "presidente", "pr"))
-        checa("presidencia: campos obrigatórios em todo mês do cartão (mês, presidente, valor)", not sem, f"{len(sem)} meses sem campo")
-        r = repetidos([x.get("mes") for x in se_])
-        checa("presidencia: nenhum mês do cartão repetido", not r, f"repetidos: {r[:3]}")
-        for p in pp:
-            meus = [x for x in se_ if x.get("presidente") == p.get("presidente")]
-            checa(f"presidencia {p.get('presidente')}: total do cartão = soma dos meses", igual(soma(x.get("pr") for x in meus), p.get("total")), f"{soma(x.get('pr') for x in meus)} x {p.get('total')}")
-            checa(f"presidencia {p.get('presidente')}: nº de meses = meses da série", p.get("meses") == len(meus), f"{p.get('meses')} x {len(meus)}")
-            checa(f"presidencia {p.get('presidente')}: gasto sigiloso ≤ total (parte não passa do todo)", (p.get("sigiloso") or 0) <= (p.get("total") or 0) + 0.01, "sigiloso maior que o total")
-        neg = [x.get("mes") for x in se_ if any(num(x.get(k)) and x[k] < 0 for k in ("pr", "prSig", "vice", "viceSig"))]
-        checa("presidencia: nenhum valor mensal negativo", not neg, f"meses: {neg[:3]}")
-
-    # ── STF ──
-    st = J("stf.json")
-    if st:
-        ms = (st.get("remuneracao") or {}).get("ministros") or []
-        sem = campos(ms, ("nome", "base", "liquido"))
-        checa("stf: campos obrigatórios em todo ministro (nome, base, líquido)", not sem, f"{len(sem)} sem campo")
-        r = repetidos([m.get("nome") for m in ms])
-        checa("stf: nenhum ministro repetido", not r, f"repetidos: {r[:3]}")
-        dif = [m["nome"] for m in ms if not igual((m.get("base") or 0) + (m.get("outras") or 0) - (m.get("descontos") or 0), m.get("liquido"), 0.05)]
-        checa("stf: líquido = base + outras verbas − descontos (total por ministro)", not dif, f"diferem: {dif[:3]}")
-        dif = [m["nome"] for m in ms if len(m.get("serie") or []) != m.get("meses")]
-        checa("stf: nº de meses = meses da série de cada ministro", not dif, f"diferem: {dif[:3]}")
-        neg = [m["nome"] for m in ms if any((x.get("bruto") or 0) < 0 for x in m.get("serie") or [])]
-        checa("stf: nenhum contracheque bruto negativo", not neg, f"negativos: {neg[:3]}")
-        ps = (st.get("pessoal") or {}).get("serie") or []
-        dif = [x.get("periodo") for x in ps if not igual((x.get("ativos") or 0) + (x.get("inativos") or 0), x.get("bruta"), 1)]
-        checa("stf: despesa com pessoal bruta = ativos + inativos", not dif, f"períodos: {dif[:3]}")

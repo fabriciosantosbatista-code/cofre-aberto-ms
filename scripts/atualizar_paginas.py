@@ -342,10 +342,6 @@ def main():
     au = carregar("auditoria.json")
     if au.get("regras"):
         html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">Auditoria<)', rf"\g<1>{len(au['regras'])} testes\2", html)
-    stf = carregar("stf.json")
-    n_stf = len((((stf.get("remuneracao") or {}).get("ultimoMes")) or {}).get("ministros") or [])
-    if n_stf:
-        html = re.sub(r'(<div class="aba-num">)[^<]+(</div>\s*<div class="aba-title">STF<)', rf"\g<1>{n_stf} ministros\2", html)
     if status.get("ultimaAtualizacao"):
         a, m, d = status["ultimaAtualizacao"][:10].split("-")
         html = re.sub(r'(<time id="data-atualizacao">)[^<]*(</time>)', rf"\g<1>{d}/{m}/{a}\2", html)

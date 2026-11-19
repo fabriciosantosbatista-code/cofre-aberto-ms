@@ -95,7 +95,6 @@ EXTRA = {
     "shows": ("Órgãos de MS (PNCP)", 2, _rast("shows.json", "shows", None, lambda r: bool(r.get("link"))), ["Artista e evento são lidos do texto publicado pelo órgão."]),
     "alugueis": ("Órgãos de MS (PNCP) e Prefeitura de CG", 2, lambda: _rast_alugueis(),
                  ["Ligação política só pelo que TSE e Receita publicam (nome + dígitos do CPF)."]),
-    "beneficios": ("SEFAZ-MS", 1, None, ["A SEFAZ não publica o valor do benefício por empresa.", "O site da SEFAZ só responde aos servidores do GitHub."]),
     "producao": ("Câmara e Senado", 1, _rast("producao_legislativa.json", "parlamentares", "todos", lambda r: bool(r.get("link"))), []),
     "votacoes": ("Câmara e Senado", 1, None, []),
     "obras": ("Governo do Estado de MS", 2, _rast("obras.json", "obras", None, lambda r: bool(r.get("numero"))), ["% executado e datas são os que o Estado publica."]),
@@ -108,8 +107,6 @@ EXTRA = {
                     "Valores negativos são estornos (empenho anulado) publicados pela própria câmara e já descontados do total.",
                     "Dourados (SAPL/Interlegis) não publica dados financeiros no mesmo formato das demais."]),
     "judiciario": ("TJMS, TRT24, TRE-MS", 2, None, []),
-    "presidencia": ("Presidência da República (CGU)", 1, None, []),
-    "stf": ("Supremo Tribunal Federal", 1, None, []),
     "eleicoes": ("TSE", 1, None, []),
     "auditoria": ("Cofre Aberto MS (cruzamentos)", 1, None, ["Sinais de atenção calculados pelo site; não são dados oficiais."]),
 }
@@ -459,6 +456,7 @@ def main():
                            "niveis": met.NOME_NIVEL, "confianca": met.CONFIANCA, "categoriasTeste": list(met.CATEGORIAS_TESTE),
                            "anterior": {"versao": "1.0", "nota": geral_v1, "formula": "média das dimensões avaliadas (mín. 4); tetos: divergência 40, falha 50, revisão 70, sem conferência 80; bases com menos de 4 dimensões fora da média"}},
            "aviso": f"A nota considera apenas as evidências disponíveis até {AGORA:%d/%m/%Y}.",
+           "serieHistorica": serie_historica(),
            "indicadores": ind, "criticos": [{"id": b["id"], "nome": b["nome"], "status": b["statusRotulo"], "motivo": b["alerta"], "nota": b["nota"]} for b in criticos],
            "status": {k: {"rotulo": v[0], "cor": v[1]} for k, v in STATUS.items()}, "bases": bases,
            "verificacoesRecentes": sorted(hist_ver, key=lambda h: h["em"])[-25:][::-1],
@@ -483,6 +481,17 @@ def main():
     paginas(icp)
     print(f"✅ ICP — nota geral {geral if geral is not None else 'não avaliada'} · " + ", ".join(f"{k} {v}" for k, v in ind.items())
           + (f" · CRÍTICOS: {', '.join(b['nome'] for b in criticos)}" if criticos else ""))
+
+
+def serie_historica():
+    """Nota geral de cada geração registrada em icp_notas_historico.jsonl, recalculada só com as bases que o ICP tem hoje
+    (as notas por base são as registradas; os pesos de importância, os atuais). O arquivo bruto não muda (só acrescenta)."""
+    out = []
+    for h in jsonl("icp_notas_historico.jsonl"):
+        xs = [(b["nota"], EXTRA[k][1]) for k, b in (h.get("bases") or {}).items() if k in EXTRA and b.get("nota") is not None]
+        out.append({"em": h.get("em"), "metodologia": h.get("metodologia"),
+                    "nota": round(sum(n * w for n, w in xs) / sum(w for _, w in xs)) if xs else None, "bases": len(xs)})
+    return out
 
 
 def gm_classificar():

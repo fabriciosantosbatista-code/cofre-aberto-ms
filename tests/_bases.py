@@ -20,11 +20,8 @@ REGRAS = [
     ("supersalarios", r"^Supersalários|supersalarios\.json|Folhas de pagamento|^supersalarios\b"),
     ("producao", r"^Produção|producao_legislativa|produção legislativa|^producao\b"),
     ("votacoes", r"^Votações|votacoes\.json|votações nominais|^votacoes\b"),
-    ("beneficios", r"^Benefícios|beneficios_fiscais|benefício fiscal|^beneficios\b"),
     ("arrecadacao", r"^Receitas|receitas\.json|Siconfi|versões receitas|^arrecadacao\b"),
     ("judiciario", r"tjms_magistrados|TJMS, TRT24|^judiciario\b"),
-    ("presidencia", r"presidencia|Presidência"),
-    ("stf", r"\bstf\b|STF —"),
     ("eleicoes", r"eleicoes|TSE —"),
     ("auditoria", r"auditoria\.json|Sinais de atenção|^auditoria\b"),
 ]
