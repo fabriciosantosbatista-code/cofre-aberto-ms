@@ -343,6 +343,11 @@ ETAPAS_CAMARA = (
      lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("doc") or "").strip(), _valor_chave(x.get("valor"))),
      lambda x: not x.get("dataDocumento"),
      lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("numDocumento") or "").strip(), _valor_chave(x.get("valorLiquido")))),
+    # CPF mascarado no site (***.123.456-**) → 6 dígitos visíveis + nº da nota + valor (com ou sem data na API)
+    (lambda x: "*" in str(x.get("cnpjCpfFornecedor") or "") and len(_dig(x.get("cnpjCpfFornecedor"))) == 6,
+     lambda x: (_dig(x.get("cnpjCpfFornecedor")), str(x.get("doc") or "").strip(), _valor_chave(x.get("valor"))),
+     lambda x: len(_dig(x.get("cnpjCpfFornecedor"))) == 11,
+     lambda x: (_dig(x.get("cnpjCpfFornecedor"))[3:9], str(x.get("numDocumento") or "").strip(), _valor_chave(x.get("valorLiquido")))),
 )
 
 

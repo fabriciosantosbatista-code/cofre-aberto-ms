@@ -193,6 +193,15 @@ check(casa([nota_s("1", 100), nota_s("1", 100, data="2026-10-06")], [nota_f("1",
 check(casa([nota_s("1", 100)], [nota_f("1", 100), nota_f("1", 100, data=None)])[:4] == (1, [], 0, 0),
       "registro da fonte usado na chave completa não volta a ser usado na etapa sem data")
 
+# CPF mascarado no site: 6 dígitos visíveis + nº + valor; mais de um par possível → ambígua (CPFs fictícios)
+M, C1, C2 = "***.747.401-**", "11174740100", "22274740199"
+check(casa([nota_s("s/n", 4539, cnpj=M)], [nota_f("s/n", 4539, cnpj=C1)])[:4] == (1, [], 0, 0), "CPF mascarado: casa pelos 6 dígitos + nº + valor")
+check(casa([nota_s("s/n", 4539, cnpj=M)], [nota_f("s/n", 4539, cnpj=C1, data=None)])[:4] == (1, [], 0, 0), "CPF mascarado e API sem data: casa igual")
+check(casa([nota_s("s/n", 4539, cnpj=M)], [nota_f("s/n", 4539, cnpj=C1), nota_f("s/n", 4539, cnpj=C2)])[:4] == (0, [], 0, 1),
+      "CPF mascarado: dois CPFs da fonte com os mesmos 6 dígitos, nº e valor → ambígua, não conferida")
+check(casa([nota_s("s/n", 4539, cnpj=M)], [nota_f("s/n", 4500, cnpj=C1)])[:4] == (0, [], 1, 0), "CPF mascarado e valor diferente: não achada")
+check(casa([nota_s("s/n", 4539, cnpj=M)], [nota_f("s/n", 4539, cnpj="04990440000194")])[:4] == (0, [], 1, 0), "CPF mascarado não casa com CNPJ")
+
 # coleta da Câmara: despesas lidas mês a mês, ordenadas, paginando dentro do mês; página que falha → exceção
 sys.path.insert(0, str(ROOT / "scripts"))
 import coletar_dados as cd  # noqa: E402
