@@ -65,6 +65,10 @@ TIMEOUT_PARSING = int(os.environ.get("CAMARA_TIMEOUT_PARSING") or 1200)
 # é relido numa coleta seguinte (os relidos ficam no cache com o leitor novo, então cada coleta avança).
 ORCAMENTO_RELEITURA = int(os.environ.get("CAMARA_ORCAMENTO_RELEITURA_MIN") or 55) * 60
 INICIO_COLETA = time.time()
+# CAMARA_OCR=0 (coleta diária): só a camada de texto, rápido — o OCR (segundo extrator) fica fora do caminho da
+# publicação, no workflow "Câmara CG — releitura com OCR", que roda depois da coleta. O cache guarda "dupla": se o PDF
+# já passou pelos dois extratores; a coleta diária não relê o que só falta OCR, e a releitura não relê o que já tem.
+OCR_ATIVO = os.environ.get("CAMARA_OCR", "1") != "0"
 TIMEOUT_POR_PDF = TIMEOUT_DOWNLOAD  # compatibilidade
 MAX_WORKERS = 4
 sys.path.insert(0, str(Path(__file__).parent))
@@ -298,7 +302,7 @@ def ocr_pagina(caminho, n_pagina, dpi=200):
     """Segundo extrator: renderiza a página (pdftoppm) e lê com o tesseract (português). None se as ferramentas não
     estiverem instaladas ou falharem — a nota fica com uma leitura só e o status diz isso."""
     import shutil, subprocess
-    if not (shutil.which("pdftoppm") and shutil.which("tesseract")):
+    if not OCR_ATIVO or not (shutil.which("pdftoppm") and shutil.which("tesseract")):
         return None
     try:
         img = subprocess.run(["pdftoppm", "-f", str(n_pagina), "-l", str(n_pagina), "-r", str(dpi), "-gray", "-png", caminho],
@@ -604,6 +608,11 @@ def processar_alvo(alvo, cache_anterior):
     nome, ato = alvo["nome"], alvo["ato"]
     caminho_tmp = f"/tmp/_verba_cg_tmp_{threading.get_ident()}.pdf"
     try:
+        ent = cache_anterior.get(chave_cache(alvo), {})
+        if OCR_ATIVO and ent and time.time() - INICIO_COLETA > ORCAMENTO_RELEITURA:
+            # passou do orçamento: nem baixa — mantém a leitura anterior e fica para a próxima releitura
+            alvo["_motivo"] = f"releitura adiada (orçamento de tempo): mantém a leitura do leitor v{ent.get('parser')}"
+            return nome, ato, {}, None
         sessao = sessao_da_thread()
         restante = TIMEOUT_POR_PDF - (time.time() - inicio)
         if restante <= 0:
@@ -624,21 +633,19 @@ def processar_alvo(alvo, cache_anterior):
         conteudo = r2.content
         sha256 = hashlib.sha256(conteudo).hexdigest()
 
-        ent = cache_anterior.get(chave_cache(alvo), {})
         try:  # cópia do PDF original desta coleta (artefato do robô) — falha aqui não interrompe a coleta
             PASTA_PDFS.mkdir(exist_ok=True)
             (PASTA_PDFS / f"{sha256[:16]}.pdf").write_bytes(conteudo)
         except Exception:
             pass
         alvo["_sha256"], alvo["_tamanho"] = sha256, len(conteudo)
-        if ent.get("sha256") == sha256 and ent.get("parser") == PARSER_VERSAO:
-            alvo["_motivo"] = f"cache: mesmo hash e leitor v{ent.get('parser')}"
+        if ent.get("sha256") == sha256 and ent.get("parser") == PARSER_VERSAO and (ent.get("dupla") or not OCR_ATIVO):
+            alvo["_motivo"] = f"cache: mesmo hash e leitor v{ent.get('parser')}" + ("" if ent.get("dupla") else " (falta o OCR: fica para a releitura)")
+            alvo["_dupla"] = bool(ent.get("dupla"))
             return nome, ato, {}, sha256  # baixado de novo, mas conteúdo idêntico — nada pra reprocessar
-        alvo["_motivo"] = (f"relido: leitor v{ent.get('parser')} → v{PARSER_VERSAO}" if ent.get("sha256") == sha256
-                           else "relido: conteúdo novo" if ent else "relido: sem cache")
-        if ent.get("sha256") == sha256 and time.time() - INICIO_COLETA > ORCAMENTO_RELEITURA:
-            alvo["_motivo"] = f"releitura adiada (orçamento de tempo da coleta): mantém a leitura do leitor v{ent.get('parser')}"
-            return nome, ato, {}, None  # sem hash novo no cache: relido numa próxima coleta
+        alvo["_motivo"] = (("relido com OCR" if ent.get("parser") == PARSER_VERSAO else f"relido: leitor v{ent.get('parser')} → v{PARSER_VERSAO}")
+                           if ent.get("sha256") == sha256 else "relido: conteúdo novo" if ent else "relido: sem cache")
+        alvo["_motivo"] += "" if OCR_ATIVO else " (só camada de texto; OCR na releitura)"
 
         with open(caminho_tmp, "wb") as f:
             f.write(conteudo)
@@ -648,6 +655,7 @@ def processar_alvo(alvo, cache_anterior):
                             f"{estado.get('ocrTentado', 0)} páginas" + (", truncado pelo prazo" if estado.get("truncado") else "")
                             + f" · camada de texto: {estado.get('diag')}")
         truncado = estado["truncado"]
+        alvo["_dupla"] = OCR_ATIVO and not truncado
         alvo["_paginas"] = estado.get("paginas")
         for d in meses.values():
             d["pdf"] = sha256[:16]
@@ -726,7 +734,7 @@ def coletar_verba_indenizatoria():
                 log(f" [{concluidos}/{total}] {nome} Ato{ato}: leitura incompleta — será relido na próxima coleta")
                 continue
             cache[chave_cache(alvo)] = {
-                "nome": nome, "ato": ato, "sha256": extra, "parser": PARSER_VERSAO,
+                "nome": nome, "ato": ato, "sha256": extra, "parser": PARSER_VERSAO, "dupla": bool(alvo.get("_dupla")),
                 "processadoEm": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
             }
             cache_mudou = True

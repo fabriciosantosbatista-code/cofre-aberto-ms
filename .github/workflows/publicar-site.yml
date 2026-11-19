@@ -8,7 +8,7 @@ on:
   push:
     branches: [main]
   workflow_run:
-    workflows: ["Atualizar dados diariamente", "Instagram — post automático", "Supersalários — conferência manual", "Aplicar fotos corretas"]
+    workflows: ["Atualizar dados diariamente", "Instagram — post automático", "Aplicar fotos corretas", "Câmara CG — releitura com OCR"]
     types: [completed]
   workflow_dispatch:
 

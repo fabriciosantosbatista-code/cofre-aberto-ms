@@ -1,0 +1,78 @@
+name: Câmara CG — releitura com OCR
+
+# A leitura com OCR (segundo extrator da dupla extração) dos PDFs da Câmara Municipal de CG leva até ~1 h e fica FORA
+# do caminho da publicação: a coleta diária lê só a camada de texto (CAMARA_OCR=0) e publica as outras bases
+# normalmente; este workflow roda depois que a coleta termina, relê com OCR os PDFs que ainda não passaram pelos dois
+# extratores (orçamento de 55 min; o que não couber fica para a próxima), grava o resultado e, ao terminar, dispara a
+# publicação (o "Publicar o site" escuta este workflow).
+# Se falhar ou estourar o tempo, nada é gravado: a Câmara CG mantém a leitura anterior e as outras bases não são afetadas.
+# Se o main mudou os dados da Câmara durante a releitura (outra coleta), também não grava — relê na próxima vez.
+on:
+  workflow_run:
+    workflows: ["Atualizar dados diariamente"]
+    types: [completed]
+  workflow_dispatch:
+
+env:
+  TZ: America/Campo_Grande
+
+permissions:
+  contents: write
+
+concurrency:
+  group: releitura-camara-cg
+  cancel-in-progress: false
+
+jobs:
+  releitura:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90   # acima do orçamento de releitura (55 min) + o último PDF em leitura (até 20 min)
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependências (Python, OCR)
+        run: |
+          pip install -q requests Pillow pypdf
+          sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por poppler-utils >/dev/null
+
+      - name: Releitura com OCR (dupla extração + conta de fechamento)
+        env:
+          CAMARA_OCR: "1"
+          CAMARA_ORCAMENTO_RELEITURA_MIN: "55"
+        run: |
+          git rev-parse HEAD > /tmp/base_releitura
+          python3 -u scripts/coletar_verba_camara_cg.py
+
+      - name: Processar a Câmara CG (CPF mascarado, limpeza, conferência da leitura, painel e páginas)
+        run: |
+          python3 scripts/mascarar_cpf.py && python3 tests/test_cpf.py
+          python3 scripts/limpar_notas_camara_cg.py
+          python3 scripts/validar_camara_cg.py
+          python3 scripts/gerar_painel_leve.py || echo "⚠️ gerar_painel_leve.py falhou — o painel usa os arquivos completos"
+          python3 scripts/gerar_paginas_parlamentares.py || echo "⚠️ gerar_paginas_parlamentares.py falhou — páginas anteriores mantidas"
+          python3 scripts/mascarar_cpf.py --paginas && python3 tests/test_cpf.py   # LGPD: sem CPF, ou nada é gravado
+
+      - name: Gravar (só se os dados da Câmara no main não mudaram durante a releitura)
+        run: |
+          git config user.name "Cofre Aberto Bot"
+          git config user.email "bot@cofreabertoms.com.br"
+          git add $(grep -v "^#" .github/publicar.txt)
+          if git diff --staged --quiet; then echo "Sem mudanças"; exit 0; fi
+          git commit -q -m "🤖 Câmara CG: releitura com OCR (dupla extração) — $(date +'%d/%m/%Y %H:%M') BRT"
+          for t in 1 2 3; do
+            git fetch -q origin main
+            if git diff --name-only "$(cat /tmp/base_releitura)" origin/main -- dados/camara_municipal.json dados/verba_cg_cache.json | grep -q .; then
+              echo "ℹ️ Os dados da Câmara CG mudaram no main durante a releitura (outra coleta): nada gravado; relê na próxima vez"
+              exit 0
+            fi
+            # o resto do main pode ter mudado (outras bases): fica a versão do main em tudo que não é desta releitura
+            if git rebase -q -X ours origin/main && git push -q origin HEAD:main; then echo "✅ gravado"; exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            sleep 20
+          done
+          echo "❌ não foi possível gravar (main mudando); a Câmara CG mantém a leitura anterior"; exit 1

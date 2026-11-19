@@ -66,7 +66,7 @@ jobs:
 
   coletar_verba_camara:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 45   # só camada de texto; o OCR fica no workflow de releitura
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -81,10 +81,10 @@ jobs:
       - name: Instalar dependências
         run: pip install requests Pillow pypdf
 
-      - name: OCR para a dupla extração dos PDFs da Câmara CG (tesseract + poppler)
-        run: sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por poppler-utils >/dev/null
-
-      - name: Coletar Verba Indenizatória (Câmara CG)
+      - name: Coletar Verba Indenizatória (Câmara CG) — só a camada de texto
+        # O OCR (segundo extrator) roda depois, fora do caminho da publicação: workflow "Câmara CG — releitura com OCR"
+        env:
+          CAMARA_OCR: "0"
         run: python3 scripts/coletar_verba_camara_cg.py
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
