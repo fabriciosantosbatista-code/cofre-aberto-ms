@@ -1,0 +1,84 @@
+name: Teste de alcance das fontes
+
+# Verifica, a partir do runner do GitHub, se uma fonte responde — antes de montar a conferência dela. Só leitura:
+# não grava nada no repositório nem no ICP. O log mostra status HTTP, tempo de resposta e nomes de campos.
+#   sig          SIG-Transparência da Prefeitura de CG (formulário de contratos: página e consulta JSON)
+#   divulgacand  DivulgaCand do TSE (eleições ordinárias e a lista de candidatos a governador de MS em 2026)
+on:
+  workflow_dispatch:
+    inputs:
+      fonte:
+        description: "sig ou divulgacand"
+        default: "sig"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Testar a fonte (sem gravar nada)
+        env:
+          FONTE: ${{ inputs.fonte }}
+        run: |
+          python3 - <<'EOF'
+          import json, os, re, sys, time, urllib.request, urllib.parse, http.cookiejar
+          UA = {"User-Agent": "Mozilla/5.0 (CofreAbertoMS; transparencia publica)", "Accept": "*/*"}
+          cj = http.cookiejar.CookieJar()
+          op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
+          def pedir(rotulo, url, dados=None, timeout=120):
+              t = time.monotonic()
+              try:
+                  req = urllib.request.Request(url, data=urllib.parse.urlencode(dados).encode() if dados else None, headers=UA)
+                  with op.open(req, timeout=timeout) as r:
+                      corpo, st = r.read(), r.status
+              except urllib.error.HTTPError as e:
+                  corpo, st = b"", e.code
+              except Exception as e:
+                  print(f"[{rotulo}] ❌ sem resposta em {time.monotonic() - t:.1f} s: {type(e).__name__}")
+                  return None
+              print(f"[{rotulo}] status HTTP {st} em {time.monotonic() - t:.1f} s ({len(corpo)} bytes)")
+              return corpo if st == 200 else None
+          def campos(rotulo, lst):
+              print(f"[{rotulo}] registros: {len(lst)}")
+              if lst and isinstance(lst[0], dict):
+                  print(f"[{rotulo}] campos do primeiro registro: " + ", ".join(sorted(lst[0].keys())))
+          ok = False
+          if os.environ["FONTE"] == "sig":
+              base = "https://sig-transparencia.campogrande.ms.gov.br"
+              pag = pedir("1 página de contratos", base + "/contratos/consulta")
+              m = re.search(rb'name="_token" value="([^"]+)"', pag or b"")
+              print(f"[1 página de contratos] token do formulário: {'encontrado' if m else 'não encontrado'}")
+              if m:
+                  j = pedir("2 consulta JSON (contratos de 2026)", base + "/contratos/consulta", {"_token": m.group(1).decode(), "page": "1", "download": "json",
+                            "orderColumn": "contratos.data_inicio", "orderDirection": "DESC", "periodo-inicio": "2026-01-01", "periodo-fim": "2026-12-31",
+                            "tipo": "", "orgao": "", "fornecedor": "", "cpf_cnpj": "", "objeto_contrato": "", "registro_cadastral": ""}, timeout=300)
+                  try:
+                      lst = json.loads(j or b"null")
+                      if isinstance(lst, list):
+                          campos("2 consulta JSON (contratos de 2026)", lst)
+                          ok = True
+                  except ValueError:
+                      print("[2 consulta JSON] ❌ resposta não é JSON")
+          else:
+              base = "https://divulgacandcontas.tse.jus.br/divulga/rest/v1"
+              j = pedir("1 eleições ordinárias", base + "/eleicao/ordinarias")
+              try:
+                  el = json.loads(j or b"null") or []
+              except ValueError:
+                  el = []
+              e26 = [e for e in el if isinstance(e, dict) and str(e.get("ano")) == "2026"]
+              print("[1 eleições ordinárias] de 2026: " + "; ".join(f"id {e.get('id')} · {e.get('nomeEleicao') or e.get('descricaoEleicao')} · turno {e.get('turno')}" for e in e26))
+              if e26:
+                  j = pedir("2 candidatos a governador de MS", f"{base}/candidatura/listar/2026/MS/{e26[0]['id']}/3/candidatos")
+                  try:
+                      c = (json.loads(j or b"null") or {}).get("candidatos") or []
+                      campos("2 candidatos a governador de MS", c)
+                      ok = bool(c)
+                  except (ValueError, AttributeError):
+                      print("[2 candidatos] ❌ resposta inesperada")
+          sys.exit(0 if ok else 1)
+          EOF
