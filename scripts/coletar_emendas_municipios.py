@@ -89,6 +89,7 @@ def main():
     atuais = parlamentares_atuais()
 
     municipios, autores, favorecidos = {}, {}, {}
+    pagamentos_ms = {}  # (emenda, favorecido, ano/mês) → pagamento do ano a favorecido de MS
     pix = {}  # ano → autor → município → valor (Emendas Pix pagas a MS desde 2020)
     total_ms, linhas, ultimo_mes, pag_ms = 0.0, 0, "", 0
     with z.open(nome) as f:
@@ -138,6 +139,11 @@ def main():
                 a["foraDeMS"][uf or "—"] = a["foraDeMS"].get(uf or "—", 0) + v
                 continue
             total_ms += v
+            # pagamento individual (emenda + favorecido + mês): a conferência na fonte compara um a um
+            kp = (row[ix["Código da Emenda"]].strip(), doc or fav, anomes)
+            pg = pagamentos_ms.setdefault(kp, {"emenda": kp[0], "favorecido": fav, "doc": doc, "municipio": mun, "mes": f"{anomes[4:]}/{anomes[:4]}",
+                                               "autor": a["autor"], "valor": 0.0})
+            pg["valor"] += v
             a["totalMS"] += v
             a["municipios"][mun] = a["municipios"].get(mun, 0) + v
             a["tipos"][tipo_emenda] = a["tipos"].get(tipo_emenda, 0) + v
@@ -195,7 +201,9 @@ def main():
     out = {"ano": ANO, "ultimaAtualizacao": datetime.now().isoformat(timespec="seconds"), "fonte": URL,
            "mesMaisRecente": f"{ultimo_mes[4:]}/{ultimo_mes[:4]}" if ultimo_mes else None,
            "totalMS": round(total_ms, 2), "pagamentos": pag_ms, "totalMunicipios": len(lista_m),
-           "municipios": lista_m, "autores": lista_a, "favorecidos": fav}
+           "municipios": lista_m, "autores": lista_a, "favorecidos": fav,
+           "pagamentosMS": sorted(({**x, "valor": round(x["valor"], 2)} for x in pagamentos_ms.values() if round(x["valor"], 2)),
+                                  key=lambda x: (x["emenda"], x["doc"] or x["favorecido"], x["mes"]))}
     # Emendas Pix: por ano, quem mandou e para qual município (o arquivo não diz em que a prefeitura gastou)
     out["pix"] = {"anos": {a: round(sum(v for m in au.values() for v in m.values()), 2) for a, au in sorted(pix.items())}, "porAno": {}}
     for a, au in sorted(pix.items()):

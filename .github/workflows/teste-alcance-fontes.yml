@@ -34,8 +34,10 @@ jobs:
         if: startsWith(inputs.fonte, 'conferidor:')
         env:
           FONTE: ${{ inputs.fonte }}
+          PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
         run: |
           pip install -q requests pypdf
+          if [ "$FONTE" = "conferidor:emendas" ]; then python3 scripts/coletar_emendas_municipios.py | tail -2; fi  # pagamentos individuais (coleta nova)
           python3 - <<'EOF'
           import json, os, sys
           sys.path.insert(0, "scripts")

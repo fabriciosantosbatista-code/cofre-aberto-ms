@@ -53,6 +53,7 @@ import hashlib as _hl
 OBRA_CAMPOS = ("valor", "situacao", "cnpj", "fornecedor", "inicio", "fim", "executado", "diasAditados", "diasParalisados")
 CAMPOS_CONFERIDOS = {"shows": ("id", "valor"), "alugueis": ("id", "valor"),
                      "obras": ("numero", "processo") + OBRA_CAMPOS,
+                     "emendas": ("emenda", "doc", "mes", "valor"),
                      "entidades": ("cnpj", "abertura", "aberturaFilial", "municipio", "situacao")}
 
 
@@ -73,6 +74,8 @@ def registros_por_id(base):
         return {str(x.get("cnpj")): x for x in J("entidades.json").get("entidades") or [] if x.get("cnpj")}
     if base == "obras":
         return {id_obra(x): x for x in J("obras.json").get("obras") or []}
+    if base == "emendas":
+        return {f"{x['emenda']}|{_dig(x.get('doc')) or norm(x.get('favorecido'))}|{x['mes']}": x for x in J("emendas_municipios.json").get("pagamentosMS") or []}
     return None
 
 
@@ -332,6 +335,107 @@ def v_publicidade():
         res["nota"] = (res.get("nota") or "") + (f" Parte da Prefeitura: fonte inacessível a partir do robô ({sig_erro}) — não conferida." if sig_erro
                                                  else " Parte da Prefeitura: o SIG não devolveu nenhum empenho de publicidade — não conferida.")
     res["independencia"] = "reconsulta na mesma fonte (portal do Estado e SIG da Prefeitura) — confirma a leitura, não é fonte independente"
+    return res
+
+
+CGU_API = "https://api.portaldatransparencia.gov.br/api-de-dados"
+
+
+def _cgu(caminho, params=None):
+    """API da CGU com a chave (PORTAL_TRANSPARENCIA_API_KEY), no máximo 300 req/min (limite_cgu) e 429 com espera."""
+    import limite_cgu
+    chave = limite_cgu.chave()
+    if not chave:
+        return None
+    for t in range(3):
+        resta = _resta()
+        if resta is not None and resta <= 0:
+            PRAZO["esgotado"] = True
+            return None
+        limite_cgu.esperar_vez()
+        try:
+            r = requests.get(f"{CGU_API}/{caminho}", params=params, headers={**H, "chave-api-dados": chave}, timeout=60)
+            if r.status_code == 200:
+                return r.json()
+            if r.status_code == 429:
+                time.sleep(limite_cgu.espera_429(r.headers.get("Retry-After")))
+                continue
+            if r.status_code < 500:
+                return None
+        except (requests.RequestException, ValueError):
+            pass
+        time.sleep(5 * (t + 1))
+    return None
+
+
+def v_emendas(n_emendas=30):
+    """Emendas pagas a favorecidos de MS no ano (recorte do site): amostra diária de emendas (semente = data; primeiro
+    as que não valem na janela de 30 dias), e, de cada uma, todos os documentos de PAGAMENTO na API da CGU com o detalhe
+    (favorecido, UF, valor, data). Compara pagamento a pagamento: emenda + favorecido (CNPJ/CPF) + mês → valor.
+    O município do favorecido não vem na API: não é conferido. Máximo de 300 req/min."""
+    em = J("emendas_municipios.json")
+    pags = em.get("pagamentosMS") or []
+    if not pags:
+        return resultado([("pagamentos", 0, None)], "API da CGU (documentos das emendas)", "https://portaldatransparencia.gov.br/")
+    import limite_cgu
+    if not limite_cgu.chave():
+        r = resultado([("pagamentos", 0, None)], "API da CGU (documentos das emendas)", "https://portaldatransparencia.gov.br/")
+        r["nota"] = "sem a chave da API da CGU — não conferido"
+        return r
+    t0 = time.monotonic()
+    idp = lambda x: f"{x['emenda']}|{_dig(x.get('doc')) or norm(x.get('favorecido'))}|{x['mes']}"
+    valem = ja_conferidos_na_janela("emendas")
+    emendas = sorted({x["emenda"] for x in pags})
+    random.seed(date.today().toordinal())
+    pendentes = [e for e in emendas if not all(idp(x) in valem for x in pags if x["emenda"] == e)]
+    escolhidas = random.sample(pendentes, min(n_emendas, len(pendentes)))
+    escolhidas += [e for e in sorted(set(emendas) - set(pendentes), key=lambda e: min(valem.get(idp(x), "") for x in pags if x["emenda"] == e))][:max(0, n_emendas - len(escolhidas))]
+    ano = str(em.get("ano") or date.today().year)
+    itens, chamadas = [], 0
+    for e in escolhidas:
+        docs, falhou = [], False
+        for pag in range(1, 40):
+            j = _cgu(f"emendas/documentos/{e}", {"pagina": pag})
+            chamadas += 1
+            if j is None:
+                falhou = True
+                break
+            if not j:
+                break
+            docs += j
+        fonte = {}
+        if not falhou:
+            for d in docs:
+                if "pagamento" not in str(d.get("fase") or "").lower():
+                    continue
+                det = _cgu(f"despesas/documentos/{d.get('codigoDocumento')}")
+                chamadas += 1
+                if det is None:
+                    falhou = True
+                    break
+                data = str(det.get("data") or d.get("data") or "")
+                mes = f"{data[3:5]}/{data[6:10]}" if re.match(r"\d{2}/\d{2}/\d{4}", data) else None
+                if (det.get("ufFavorecido") or "").upper() != "MS" or not mes or not mes.endswith(ano):
+                    continue
+                v = det.get("valor")
+                v = float(str(v).replace(".", "").replace(",", ".")) if isinstance(v, str) else float(v or 0)
+                k = f"{e}|{_dig(det.get('codigoFavorecido')) or norm(det.get('nomeFavorecido'))}|{mes}"
+                fonte[k] = round(fonte.get(k, 0) + v, 2)
+        for x in [x for x in pags if x["emenda"] == e]:
+            k = idp(x)
+            itens.append((k, x["valor"], None if falhou else fonte.get(k, 0.0 if fonte else None)))
+    res = resultado(itens, "API da CGU (documentos de pagamento de cada emenda, com favorecido, UF, valor e data): pagamento a pagamento "
+                    "(emenda + favorecido + mês)", "https://portaldatransparencia.gov.br/emendas", granularidade="registro",
+                    unidade="pagamento (emenda + favorecido + mês)", unidades_base=len(pags), registros_base=len(pags),
+                    selecao=f"amostra diária de {n_emendas} emendas (semente = data), primeiro as que não valem na janela de 30 dias")
+    res = com_hashes(res, "emendas", {str(i[0]) for i in itens if i[2] is not None and abs(i[1] - i[2]) <= 1})
+    res["registrosConferidosUmAUm"] = len(res.get("hashes") or {})
+    res["registrosPorTotais"] = 0
+    res["chamadasApi"], res["duracaoSeg"] = chamadas, round(time.monotonic() - t0)
+    res["nota"] = (res.get("nota") or "") + f" {chamadas} chamadas à API da CGU em {round(time.monotonic() - t0)} s. Município do favorecido não conferido (a API não traz)."
+    res["independencia"] = ("API da CGU: outro serviço do mesmo órgão (a coleta usa o arquivo de download do Portal da Transparência) — "
+                            "confirma os pagamentos, não é fonte independente da CGU")
+    print(f"  emendas: {len(escolhidas)} emendas, {chamadas} chamadas à API da CGU em {round(time.monotonic() - t0)} s")
     return res
 
 
@@ -1284,7 +1388,7 @@ CONFERENCIAS = (("governo-ms", lambda: v_governo()), ("deputados-estaduais", lam
                 ("deputados", lambda: v_camara()), ("arrecadacao", lambda: v_siconfi()), ("supersalarios", lambda: v_tjms()),
                 ("shows", lambda: v_pncp("shows.json", "shows", "contratações de show", "shows", n=150)),  # 1.053 no PNCP não cabem num dia: amostra + janela de 30 dias
                 ("votacoes", lambda: v_votacoes()), ("producao", lambda: v_producao()), ("judiciario", lambda: v_judiciario()),
-                ("entidades", lambda: v_entidades()), ("obras", lambda: v_obras()), ("publicidade", lambda: v_publicidade()), ("eleicoes", lambda: v_eleicoes()),
+                ("entidades", lambda: v_entidades()), ("obras", lambda: v_obras()), ("publicidade", lambda: v_publicidade()), ("eleicoes", lambda: v_eleicoes()), ("emendas", lambda: v_emendas()),
                 # por último: o PNCP limita as consultas (429) e as esperas podem consumir o prazo do passo
                 ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis", n=50)))  # 208 inteiras levam ~9 min: amostra + janela de 30 dias
 
