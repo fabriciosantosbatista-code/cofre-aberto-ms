@@ -1,0 +1,76 @@
+name: Câmara CG — páginas para leitura (repositório privado)
+
+# Relê os PDFs da Câmara CG com a dupla extração (sem gravar nada no repositório público) e entrega ao repositório
+# PRIVADO cofre-aberto-leitura (secret LEITURA_REPO_TOKEN, só Contents desse repositório) as imagens das páginas em que
+# a automação não resolveu as notas, com as duas leituras de cada página (diagnóstico). As imagens são de documentos
+# digitalizados e podem ter CPF impresso: nada disso entra no repositório público, em branch ou em artefato.
+#   modo=amostra   ~N páginas com discordância, de PDFs e vereadores diferentes (para achar o padrão)
+#   modo=restantes todas as páginas com notas ainda não resolvidas
+#   modo=apagar    apaga os arquivos do repositório privado (fim da leitura)
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "amostra, restantes ou apagar"
+        default: "amostra"
+        required: true
+      n:
+        description: "páginas na amostra"
+        default: "30"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  leitura:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        if: inputs.modo != 'apagar'
+      - uses: actions/setup-python@v5
+        if: inputs.modo != 'apagar'
+        with:
+          python-version: '3.11'
+      - name: Dependências (Python, OCR)
+        if: inputs.modo != 'apagar'
+        run: |
+          pip install -q requests Pillow pypdf
+          sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por poppler-utils >/dev/null
+      - name: Dupla extração com diagnóstico (nada é gravado no repositório público)
+        if: inputs.modo != 'apagar'
+        env:
+          CAMARA_OCR: "1"
+          CAMARA_DIAG: "1"
+          CAMARA_ORCAMENTO_RELEITURA_MIN: "85"
+        run: |
+          rm -f dados/verba_cg_cache.json   # relê todos os PDFs (o diagnóstico precisa das duas leituras de cada página)
+          python3 -u scripts/coletar_verba_camara_cg.py | grep -vE "^\s*$" | tail -5
+          python3 scripts/validar_camara_cg.py | tail -3
+      - name: Escolher e renderizar as páginas
+        if: inputs.modo != 'apagar'
+        env:
+          MODO: ${{ inputs.modo }}
+          N: ${{ inputs.n }}
+          RUN: ${{ github.run_id }}
+        run: python3 scripts/leitura_camara_cg.py
+      - name: Entregar ao repositório privado
+        env:
+          TOKEN: ${{ secrets.LEITURA_REPO_TOKEN }}
+          MODO: ${{ inputs.modo }}
+          RUN: ${{ github.run_id }}
+        run: |
+          set -e
+          [ -n "$TOKEN" ] || { echo "❌ secret LEITURA_REPO_TOKEN vazio"; exit 1; }
+          git clone -q "https://x-access-token:${TOKEN}@github.com/${{ github.repository_owner }}/cofre-aberto-leitura.git" priv 2>/dev/null \
+            || { echo "❌ não consegui acessar o repositório privado"; exit 1; }
+          cd priv
+          git config user.name "Cofre Aberto Bot"; git config user.email "bot@cofreabertoms.com.br"
+          git checkout -q -B main
+          if [ "$MODO" = "apagar" ]; then
+            git rm -rq --ignore-unmatch . ; echo "Arquivos da leitura apagados (fim da leitura)." > LEIAME.md; git add LEIAME.md
+          else
+            mkdir -p "rodada-$RUN"; cp -r ../leitura_privada/* "rodada-$RUN"/; git add -A
+          fi
+          git commit -qm "$MODO — run $RUN" && git push -q origin main 2>/dev/null && echo "✅ entregue ($MODO, run $RUN)"

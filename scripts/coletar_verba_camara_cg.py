@@ -69,6 +69,11 @@ INICIO_COLETA = time.time()
 # publicação, no workflow "Câmara CG — releitura com OCR", que roda depois da coleta. O cache guarda "dupla": se o PDF
 # já passou pelos dois extratores; a coleta diária não relê o que só falta OCR, e a releitura não relê o que já tem.
 OCR_ATIVO = os.environ.get("CAMARA_OCR", "1") != "0"
+# CAMARA_DIAG=1 (só no workflow de leitura, que entrega ao repositório PRIVADO): guarda as duas leituras de cada página
+# em que os extratores discordam, para achar o padrão. Nunca vai para os dados públicos (pode ter CPF impresso).
+DIAG_ATIVO = os.environ.get("CAMARA_DIAG") == "1"
+DIAG_DISCORDANCIAS = []
+ARQ_DIAG = ROOT / "diag_camara_cg.json"
 TIMEOUT_POR_PDF = TIMEOUT_DOWNLOAD  # compatibilidade
 MAX_WORKERS = 4
 sys.path.insert(0, str(Path(__file__).parent))
@@ -319,7 +324,16 @@ def _dig(t):
     return re.sub(r"\D", "", str(t or ""))
 
 
-def dupla_extracao(itens_a, itens_b, total_pagina):
+def _diag(ctx, itens_a, itens_b, total_pagina, resultado, textos=None):
+    if not (DIAG_ATIVO and ctx):
+        return
+    lt = lambda xs: [{k: x.get(k) for k in ("data", "valor", "cnpj", "documento", "fornecedor")} for x in xs or []]
+    DIAG_DISCORDANCIAS.append({**ctx, "totalPagina": total_pagina, "resultado": resultado,
+                               "camadaTexto": lt(itens_a), "ocr": lt(itens_b),
+                               "textoCamada": (textos or {}).get("a", "")[:6000], "textoOcr": (textos or {}).get("b", "")[:6000]})
+
+
+def dupla_extracao(itens_a, itens_b, total_pagina, ctx=None, textos=None):
     """Compara a leitura da camada de texto do PDF (A) com o OCR da página renderizada (B). Cada nota de A recebe
     "extracao": {"status", "metodo"}:
       confere         A e B leram a mesma nota (data, valor e CNPJ)            → "resolvido automaticamente (2 extratores)"
@@ -368,6 +382,8 @@ def dupla_extracao(itens_a, itens_b, total_pagina):
         else:
             x["extracao"] = {"status": "nao_verificado", "metodo": "os dois extratores discordam e a conta de fechamento não decide"
                              + ("" if total_pagina is not None else " (página sem total impresso)")}
+    if not (fa and not fb):
+        _diag(ctx, itens_a, itens_b, total_pagina, "discordam", textos)
     return itens_a
 
 
@@ -463,7 +479,8 @@ def processa_pdf(caminho, deadline=None, estado=None):
             if ocr is not None:
                 itens_ocr = extrai_itens(ocr, "combustivel", ano_ctx) or extrai_itens_fallback(ocr, "combustivel", ano_ctx)
                 tp = tp if tp is not None else extrai_total_pagina(ocr)
-            itens = dupla_extracao(itens, itens_ocr, tp)
+            itens = dupla_extracao(itens, itens_ocr, tp, ctx=estado and {"pdf": estado.get("pdf"), "vereador": estado.get("vereador"),
+                                   "pagina": i + 1, "mes": chave, "tipo": "combustivel"}, textos={"a": texto, "b": ocr or ""})
             for it in itens:
                 it["pagina"] = i + 1
                 for x in it.pop("_substitui", []):
@@ -496,7 +513,8 @@ def processa_pdf(caminho, deadline=None, estado=None):
                     fb = extrai_itens_fallback(ocr, "notas", ano_ctx)
                     if abs(round(sum(x["valor"] for x in fb if x["valor"]), 2) - tp) < abs(round(sum(x["valor"] for x in itens_ocr if x["valor"]), 2) - tp):
                         itens_ocr = fb
-            itens = dupla_extracao(itens, itens_ocr, tp)
+            itens = dupla_extracao(itens, itens_ocr, tp, ctx=estado and {"pdf": estado.get("pdf"), "vereador": estado.get("vereador"),
+                                   "pagina": i + 1, "mes": chave, "tipo": "notas"}, textos={"a": texto, "b": ocr or ""})
             for it in itens:
                 it["pagina"] = i + 1
                 for x in it.pop("_substitui", []):
@@ -649,7 +667,7 @@ def processar_alvo(alvo, cache_anterior):
 
         with open(caminho_tmp, "wb") as f:
             f.write(conteudo)
-        estado = {"truncado": False}
+        estado = {"truncado": False, "pdf": sha256[:16], "vereador": nome}
         meses = processa_pdf(caminho_tmp, deadline=time.time() + TIMEOUT_PARSING, estado=estado)
         alvo["_leitura"] = (f"{estado.get('paginas')} pág., {len(meses)} mês(es) antes do filtro, OCR em {estado.get('ocrOk', 0)} de "
                             f"{estado.get('ocrTentado', 0)} páginas" + (", truncado pelo prazo" if estado.get("truncado") else "")
@@ -759,6 +777,9 @@ def coletar_verba_indenizatoria():
     except Exception as e:
         log(f" ⚠️ manifesto dos PDFs não gravado: {e}")
 
+    if DIAG_ATIVO:  # só no workflow de leitura (entrega ao repositório privado)
+        json.dump(DIAG_DISCORDANCIAS, open(ARQ_DIAG, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        log(f" 🔎 diagnóstico: {len(DIAG_DISCORDANCIAS)} páginas com discordância entre os extratores")
     global VERIFICADO_SEM_MUDANCA
     VERIFICADO_SEM_MUDANCA = bool(sem_mudanca)  # o portal respondeu: os PDFs foram baixados e conferidos
     if sem_mudanca:
