@@ -32,15 +32,10 @@ for hora, lim in ((14, 300), (2, 300)):
 check(L.espera_429("12") == 12 and L.espera_429("9999") == 300, "429: respeita o Retry-After (até 5 min)")
 check(all(30 <= L.espera_429(None) <= 60 for _ in range(50)), "429 sem Retry-After: espera 30–60 s")
 import os
-for k in ("CGU_API_KEY", "PORTAL_TRANSPARENCIA_API_KEY"):
-    os.environ.pop(k, None)
+os.environ.pop("PORTAL_TRANSPARENCIA_API_KEY", None)
 check(L.chave() is None, "sem chave no ambiente → None")
-os.environ["PORTAL_TRANSPARENCIA_API_KEY"] = "b"
-os.environ["CGU_API_KEY"] = "a"
-check(L.chave() == "a", "CGU_API_KEY tem preferência")
-check(L.chaves() == ["a", "b"], "as duas chaves, na ordem, para trocar se a primeira for recusada")
-os.environ["CGU_API_KEY"] = "b"
-check(L.chaves() == ["b"], "chave repetida não entra duas vezes")
+os.environ["PORTAL_TRANSPARENCIA_API_KEY"] = " b \n"
+check(L.chave() == "b", "lê PORTAL_TRANSPARENCIA_API_KEY (sem espaços nem quebra de linha)")
 
 print(f"✅ {len(oks)} checagens OK · ❌ {len(erros)} erros")
 for e in erros:

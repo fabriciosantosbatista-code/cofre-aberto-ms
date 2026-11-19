@@ -6,7 +6,7 @@ A CGU aceita 400 requisições por minuto durante o dia e 700 entre 0h e 6h (hor
 suspende o token. Todo acesso do robô à api.portaldatransparencia.gov.br passa por esperar_vez(), que mantém uma
 janela deslizante de 60 s e nunca passa de 300 por minuto (folga sobre os 400 do dia; à noite também fica em 300).
 
-  chave()        CGU_API_KEY (secret do GitHub) ou, se faltar, PORTAL_TRANSPARENCIA_API_KEY; None sem chave
+  chave()        PORTAL_TRANSPARENCIA_API_KEY (secret do GitHub); None sem chave
   esperar_vez()  dorme o necessário antes de cada requisição
 """
 import collections, os, random, threading, time
@@ -19,17 +19,7 @@ _trava = threading.Lock()
 
 
 def chave():
-    return (chaves() or [None])[0]
-
-
-def chaves():
-    """Chaves configuradas, na ordem de preferência (CGU_API_KEY, depois PORTAL_TRANSPARENCIA_API_KEY), sem repetir."""
-    out = []
-    for k in ("CGU_API_KEY", "PORTAL_TRANSPARENCIA_API_KEY"):
-        v = (os.environ.get(k) or "").strip()
-        if v and v not in out:
-            out.append(v)
-    return out
+    return (os.environ.get("PORTAL_TRANSPARENCIA_API_KEY") or "").strip() or None
 
 
 def limite_por_minuto(agora=None):

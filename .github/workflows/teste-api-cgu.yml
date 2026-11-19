@@ -1,6 +1,6 @@
 name: Teste API CGU
 
-# Duas chamadas à API do Portal da Transparência (CGU), com a chave do secret CGU_API_KEY, só leitura, para conhecer o
+# Duas chamadas à API do Portal da Transparência (CGU), com a chave do secret PORTAL_TRANSPARENCIA_API_KEY, só leitura, para conhecer o
 # formato da resposta antes de montar a conferência de Emendas: (1) a lista de emendas; (2) os documentos de uma emenda
 # do recorte do site (pagamentos de 2026 a favorecidos de MS). O log mostra só o status HTTP, a quantidade de registros e os
 # nomes dos campos do primeiro registro — nunca a chave, os cabeçalhos ou os valores. Falha se a resposta não for 200.
@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Duas chamadas à API (sem imprimir chave nem cabeçalhos)
         env:
-          CHAVE: ${{ secrets.CGU_API_KEY }}
+          CHAVE: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
           CAMINHO: ${{ inputs.caminho }}
           AUTOR: ${{ inputs.filtro_ms }}
           CODIGO: ${{ inputs.codigo_emenda }}
@@ -40,7 +40,7 @@ jobs:
           from datetime import date
           chave = os.environ.get("CHAVE") or ""
           if not chave:
-              print("❌ secret CGU_API_KEY vazio")
+              print("❌ secret PORTAL_TRANSPARENCIA_API_KEY vazio")
               sys.exit(1)
           def chamar(rotulo, caminho, params):
               url = f"https://api.portaldatransparencia.gov.br/api-de-dados/{caminho}?" + urllib.parse.urlencode(params)
