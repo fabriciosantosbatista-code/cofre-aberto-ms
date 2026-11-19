@@ -50,6 +50,9 @@ jobs:
       - name: Exceção temporária ao alerta da Prefeitura (pedido de LAI) — volta a ser erro sozinha
         run: python3 tests/test_excecoes_alertas.py
 
+      - name: Limite de requisições da API da CGU (400/min de dia, 700/min de madrugada; relógio simulado)
+        run: python3 tests/test_limite_cgu.py
+
       - name: ICP — conferidores na fonte oficial (fonte simulada, sem rede)
         run: python3 tests/test_conferidores.py
 

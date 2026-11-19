@@ -46,6 +46,7 @@ ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
 sys.path.insert(0, str(Path(__file__).parent))
 from ano_ref import ano_referencia
+import limite_cgu
 # Ano de referência: vira em 1º de fevereiro (ver scripts/ano_ref.py) — em janeiro
 # ainda chegam as notas de dezembro, então o ano anterior fecha completo.
 ANO = ano_referencia()
@@ -72,12 +73,20 @@ def get_com_retry(url, tentativas=3, **kwargs):
     headers = {**HEADERS, **kwargs.pop("headers", {})}
     for i in range(tentativas):
         try:
+            if "api.portaldatransparencia.gov.br" in url:
+                limite_cgu.esperar_vez()  # cada tentativa conta: 400/min de dia, 700/min de madrugada — passar suspende o token
             r = requests.get(url, headers=headers, timeout=60, **kwargs)
             r.raise_for_status()
             return r
         except Exception as e:
             if i == tentativas - 1:
                 raise
+            st = getattr(getattr(e, "response", None), "status_code", None)
+            if st == 429:  # limite da API: espera o que ela pedir (Retry-After) ou 30–60 s, até 2 repetições
+                espera = limite_cgu.espera_429(e.response.headers.get("Retry-After"))
+                log(f"  429 (limite de requisições) — esperando {espera:.0f} s antes da repetição {i + 1} de {tentativas - 1}")
+                time.sleep(espera)
+                continue
             log(f"  Tentativa {i+1} falhou, tentando novamente...")
             time.sleep(5)
 
@@ -1201,9 +1210,9 @@ def _emendas_buscar_autor(nome_autor, api_key):
 def coletar_emendas_ms():
     log("Coletando emendas parlamentares de MS...")
 
-    api_key = os.environ.get("PORTAL_TRANSPARENCIA_API_KEY")
+    api_key = limite_cgu.chave()
     if not api_key:
-        log("  \u26a0\ufe0f PORTAL_TRANSPARENCIA_API_KEY n\u00e3o configurada \u2014 pulando emendas")
+        log("  ⚠️ CGU_API_KEY não configurada — pulando emendas pela API (o arquivo de download continua)")
         return None
 
     try:

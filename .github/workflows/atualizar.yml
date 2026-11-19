@@ -42,6 +42,7 @@ jobs:
 
       - name: Coletar dados
         env:
+          CGU_API_KEY: ${{ secrets.CGU_API_KEY }}
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
         run: python3 scripts/coletar_dados.py
 
