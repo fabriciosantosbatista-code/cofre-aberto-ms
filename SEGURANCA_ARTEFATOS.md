@@ -13,8 +13,8 @@ criptografado no mesmo job.
 
 | Artefato | Workflow / job | Validade | Conteúdo | Dado pessoal? | Situação |
 |---|---|---|---|---|---|
-| `pdfs-camara-cg-<run>` | atualizar · coletar_verba_camara | 30 dias | PDFs originais da Câmara CG | **sim: CPF impresso** | envio **suspenso**; nenhum existia |
-| `folha-supersalarios-<run>` | atualizar · coletar_emendas_alems | 90 dias | folha completa de Supersalários (nomes e contracheques; sem CPF) | **sim: nome + remuneração; decidido que é privada** | envio **suspenso**; 4 apagados |
+| `pdfs-camara-cg-<run>` | atualizar · coletar_verba_camara | 30 dias | PDFs originais NOVOS da Câmara CG, num `pdfs-camara-cg.tar.gpg` | **sim: CPF impresso** | só **cifrado** (AES-256); nenhum existia sem cifra quando a regra mudou |
+| `folha-supersalarios-<run>` | atualizar · coletar_emendas_alems | 90 dias | folha completa de Supersalários (nomes e contracheques; sem CPF), num `folha-supersalarios.tar.gpg` | **sim: nome + remuneração; decidido que é privada** | só **cifrado** (AES-256); os 4 sem cifra foram apagados |
 | `camara-cg-dupla-extracao-<run>` | teste-camara-cg | 1 dia | imagens de páginas + notas não resolvidas | **sim: CPF impresso nas imagens** | envio removido; 5 apagados |
 | `coleta-bloqueada-<run>` | atualizar · commit_e_push | 30 dias | relatório dos testes e cópia dos dados rejeitados (só quando o teste de CPF passou) | não (mesmo tipo de dado já publicado no Git, com CPF mascarado) | continua |
 | `dados-portal`, `dados-verba-camara`, `dados-trt24`, `dados-tre-ms`, `dados-tjms`, `dados-governo-ms`, `dados-contratos-cg`, `dados-emendas-alems`, `dados-federais`, `dados-auditoria` | atualizar · coletar_* | 1 dia | JSON de `dados/` passados de um job para o outro, depois de `mascarar_cpf.py && tests/test_cpf.py` | não (os mesmos arquivos são publicados no Git; contracheques de magistrados são públicos pela Res. CNJ 102/2009) | continuam |
@@ -23,13 +23,43 @@ criptografado no mesmo job.
 Workflows sem artefato: `releitura-camara-cg.yml`, `leitura-camara-cg.yml` (entrega só ao repositório privado
 `cofre-aberto-leitura`), `teste-alcance-fontes.yml`, `teste-api-cgu.yml`, `testar-site.yml`.
 
-Enquanto a guarda criptografada não existe:
-- os PDFs originais da Câmara CG ficam só no runner durante a coleta (o hash de cada um continua no manifesto
-  `dados/camara_cg_pdfs.json`, e o PDF pode ser baixado de novo do portal da Câmara);
-- a folha completa de Supersalários não é passada ao job de conferência, e a conferência automática de Supersalários
-  mantém a última publicada.
+## Como funciona (decidido em 19/11/2026: GPG simétrico, AES-256)
 
-## Proposta (a decidir)
+- A senha fica só no secret `ARTEFATO_CHAVE` (cadastrada pelo dono; nunca passa por chat, log ou repositório).
+- `scripts/cifrar_artefato.sh <pasta> <saída.gpg>`, no mesmo job e logo antes do upload: empacota a pasta (tar) e cifra
+  com `gpg --symmetric --cipher-algo AES256`. A senha entra no gpg pelo descritor 3 (`--passphrase-fd 3`), lida da
+  variável de ambiente — nunca na linha de comando (que apareceria em `ps` e no log) e nunca num arquivo.
+- Depois de cifrar, o script confere: a pasta de saída só tem o `.gpg`; o `.gpg` é um pacote OpenPGP simétrico; e não
+  há conteúdo legível dentro dele (`%PDF`, campos da folha). Se qualquer conferência falhar — ou se o secret estiver
+  vazio — ele apaga a saída e **o job falha**: nada é enviado. Os dados de `dados/` desse job já foram entregues antes
+  (com CPF mascarado), então a coleta e a publicação das outras bases seguem.
+- O upload envia só o arquivo `.gpg` (`artefato_cifrado/…tar.gpg`), nunca a pasta original.
+- A conferência de Supersalários (job `commit_e_push`) baixa o `.gpg` e decifra com `scripts/decifrar_artefato.sh`,
+  com o mesmo secret.
+- `tests/test_artefatos.py` e `tests/test_contencao.py` falham se algum upload de caminho sensível não for o `.gpg`
+  feito por `cifrar_artefato.sh` no passo anterior, ou se o script passar a ler a senha de outro jeito.
+
+## Como decifrar no seu computador
+
+1. Baixe o artefato na página da execução (Actions → a execução → *Artifacts*) ou pelo terminal:
+   ```bash
+   gh run download <id da execução> -R fabriciosantosbatista-code/cofre-aberto-ms -n folha-supersalarios-<id da execução>
+   ```
+   (para os PDFs: `-n pdfs-camara-cg-<id da execução>`). Vem o arquivo `folha-supersalarios.tar.gpg`
+   (ou `pdfs-camara-cg.tar.gpg`).
+2. Decifre e desempacote:
+   ```bash
+   gpg -d folha-supersalarios.tar.gpg | tar -xf -
+   ```
+   O gpg pede a senha numa janela própria (a mesma do secret `ARTEFATO_CHAVE`). Não digite a senha na linha de
+   comando (`--passphrase …`): ela ficaria no histórico do terminal.
+3. Sai `folha_supersalarios.jsonl.gz` (ou os PDFs `<hash>.pdf`). Se a senha estiver errada, o gpg diz
+   "decryption failed: Bad session key" e nada é gravado.
+
+Trocar a senha: gere uma nova, atualize o secret. Os artefatos antigos continuam com a senha antiga até expirarem.
+
+## Proposta original (registro)
+
 
 **Criptografia simétrica com GnuPG (AES-256), chave num secret.** Recomendado para a folha de Supersalários e para os
 PDFs originais.

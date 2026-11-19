@@ -103,8 +103,25 @@ jobs:
           retention-days: 1
           if-no-files-found: warn
 
-      # Os PDFs originais da Câmara CG (podem ter CPF impresso) NÃO viram artefato: artefato de repositório público é
-      # baixável por qualquer usuário logado no GitHub. Suspenso até a guarda criptografada (ver SEGURANCA_ARTEFATOS.md).
+      # Os PDFs originais da Câmara CG (podem ter CPF impresso) só viram artefato CIFRADOS (AES-256, senha no secret
+      # ARTEFATO_CHAVE): artefato de repositório público é baixável por qualquer usuário logado no GitHub. Se a
+      # cifragem ou a conferência dela falhar, o job falha e nada é enviado (os dados acima já foram entregues).
+      - name: Deixar só os PDFs da Câmara ainda não guardados (os já guardados saem da pasta temporária)
+        run: python3 scripts/pdfs_novos.py
+
+      - name: Cifrar os PDFs NOVOS desta coleta (só o .gpg vira artefato)
+        env:
+          ARTEFATO_CHAVE: ${{ secrets.ARTEFATO_CHAVE }}
+        run: scripts/cifrar_artefato.sh pdfs_camara_cg artefato_cifrado/pdfs-camara-cg.tar.gpg
+
+      - name: Guardar os PDFs NOVOS CIFRADOS (30 dias)
+        if: hashFiles('artefato_cifrado/pdfs-camara-cg.tar.gpg') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdfs-camara-cg-${{ github.run_id }}
+          path: artefato_cifrado/pdfs-camara-cg.tar.gpg
+          retention-days: 30
+          if-no-files-found: error
 
   coletar_trt24:
     runs-on: ubuntu-latest
@@ -322,9 +339,24 @@ jobs:
             dados/verificacao/
           retention-days: 1
 
-      # A folha completa de Supersalários (nomes e contracheques de todos os servidores, sem CPF) NÃO vira artefato:
-      # artefato de repositório público é baixável por qualquer usuário logado no GitHub. Suspenso até a guarda
-      # criptografada (ver SEGURANCA_ARTEFATOS.md); sem ela, a conferência de Supersalários mantém a anterior.
+      # A folha completa de Supersalários (nomes e contracheques de todos os servidores, sem CPF) só vira artefato
+      # CIFRADA (AES-256, senha no secret ARTEFATO_CHAVE): artefato de repositório público é baixável por qualquer
+      # usuário logado no GitHub. Se a cifragem ou a conferência dela falhar, o job falha e nada é enviado
+      # (os dados acima já foram entregues). Ver SEGURANCA_ARTEFATOS.md.
+      - name: Cifrar a folha completa de Supersalários (só o .gpg vira artefato)
+        if: steps.folha_lgpd.outcome == 'success'
+        env:
+          ARTEFATO_CHAVE: ${{ secrets.ARTEFATO_CHAVE }}
+        run: scripts/cifrar_artefato.sh folha_completa artefato_cifrado/folha-supersalarios.tar.gpg
+
+      - name: Guardar a folha completa CIFRADA (90 dias)
+        if: steps.folha_lgpd.outcome == 'success' && hashFiles('artefato_cifrado/folha-supersalarios.tar.gpg') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: folha-supersalarios-${{ github.run_id }}
+          path: artefato_cifrado/folha-supersalarios.tar.gpg
+          retention-days: 90
+          if-no-files-found: error
 
   coletar_fontes_federais:
     # TSE, Presidência (CGU), STF (DadosJusBr + SICONFI), sanções (CEIS/CNEP) — em paralelo com os outros
@@ -469,7 +501,8 @@ jobs:
           path: dados/
 
       - name: Baixar artifact — verba indenizatória (Câmara CG)
-        if: needs.coletar_verba_camara.result == 'success'
+        if: needs.coletar_verba_camara.result != 'skipped'   # os dados são entregues antes da cifragem; se só ela falhar, eles valem
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           name: dados-verba-camara
@@ -511,7 +544,8 @@ jobs:
           path: dados/
 
       - name: Baixar artifact — emendas e ALEMS
-        if: needs.coletar_emendas_alems.result == 'success'
+        if: needs.coletar_emendas_alems.result != 'skipped'   # os dados são entregues antes da cifragem; se só ela falhar, eles valem
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           name: dados-emendas-alems
@@ -568,12 +602,20 @@ jobs:
       - name: Gerar planilhas CSV e status das fontes
         run: python3 scripts/gerar_dados_abertos.py || echo "⚠️ gerar_dados_abertos.py falhou — planilhas anteriores mantidas"
 
-      - name: Baixar a folha completa de Supersalários desta coleta (suspenso; ver SEGURANCA_ARTEFATOS.md)
+      - name: Baixar a folha completa CIFRADA de Supersalários desta coleta (usada só na conferência, fora do Git)
+        id: folha_baixada
         continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           name: folha-supersalarios-${{ github.run_id }}
-          path: folha_completa/
+          path: artefato_cifrado/
+
+      - name: Decifrar a folha completa (senha no secret ARTEFATO_CHAVE; nunca no log)
+        if: steps.folha_baixada.outcome == 'success'
+        continue-on-error: true
+        env:
+          ARTEFATO_CHAVE: ${{ secrets.ARTEFATO_CHAVE }}
+        run: scripts/decifrar_artefato.sh artefato_cifrado/folha-supersalarios.tar.gpg folha_completa && rm -rf artefato_cifrado
 
       - name: Supersalários — conferência automática de cada contracheque (acima do teto, intermediários e amostra; sem fila manual)
         timeout-minutes: 15

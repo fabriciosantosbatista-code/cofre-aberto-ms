@@ -19,7 +19,7 @@ SENS = json.load(open(ROOT / "config/artefatos_sensiveis.json", encoding="utf-8"
 oks, erros = [], []
 import subprocess
 RASTREADOS = subprocess.run(["git", "ls-files"], cwd=ROOT, capture_output=True, text=True).stdout.splitlines()
-CRIPTO = re.compile(r"\bgpg\b[^\n]*--symmetric|\bgpg\b[^\n]*(-c|--encrypt)\b|\bage\b[^\n]*(-r|-R|--recipient|-p|--passphrase)\b")
+CRIPTO = re.compile(r"scripts/cifrar_artefato\.sh|\bgpg\b[^\n]*--symmetric|\bgpg\b[^\n]*(-c|--encrypt)\b|\bage\b[^\n]*(-r|-R|--recipient|-p|--passphrase)\b")
 
 
 def caminhos(st):
@@ -68,11 +68,20 @@ for f in sorted(glob.glob(str(ROOT / ".github/workflows/*.yml"))):
                 else:
                     erros.append(rot + " — sem criptografia: " + "; ".join(s["motivo"] for s in ruins))
 
+# a cifragem usada pelo robô: senha só pelo descritor 3 (nunca na linha de comando) e conferência do arquivo cifrado
+cif = open(ROOT / "scripts/cifrar_artefato.sh", encoding="utf-8").read()
+for cond, rot in [("--passphrase-fd 3" in cif and "--passphrase " not in cif, "cifrar_artefato.sh: senha pelo descritor 3, nunca em --passphrase"),
+                  ("--cipher-algo AES256" in cif, "cifrar_artefato.sh: AES-256"),
+                  ("PGP symmetric key encrypted" in cif and "! -name '*.gpg'" in cif, "cifrar_artefato.sh: falha se sobrar arquivo não cifrado ou se a saída não for OpenPGP cifrado"),
+                  (not re.search(r"(echo|printf)[^\n]*\$\{?ARTEFATO_CHAVE[^\n]*$", "\n".join(l for l in cif.splitlines() if "3<" not in l), re.M),
+                   "cifrar_artefato.sh: a senha só é lida pelo descritor 3 do gpg (nenhum echo/printf a imprime)")]:
+    (oks if cond else erros).append(rot)
+
 # o próprio teste precisa reconhecer os casos que deve barrar
 for c, s, esperado in [("pdfs_camara_cg/", "pdfs_camara_cg/", True), ("folha_completa/", "folha_completa/", True),
                        (".", "folha_completa/", True), ("dados/governo_ms.json", "folha_completa/", False),
                        ("saida/paginas/", "saida/", True), ("paginas/p1.png", "*.png", True), ("dados/camara_municipal.json", "*.png", False),
-                       ("pdfs/*.pdf", "*.pdf", True), ("dados/historico_*_camara_cg.json", "*.pdf", False), ("folha_completa/folha.jsonl.gz.gpg", "folha_completa/", True)]:
+                       ("pdfs/*.pdf", "*.pdf", True), ("artefato_cifrado/", "artefato_cifrado/", True), ("dados/historico_*_camara_cg.json", "*.pdf", False), ("folha_completa/folha.jsonl.gz.gpg", "folha_completa/", True)]:
     (oks if toca(c, s) == esperado else erros).append(f"regra: {c} × {s} → {'sensível' if esperado else 'livre'}")
 
 for e in erros:

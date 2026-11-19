@@ -36,13 +36,16 @@ for job, j in wf["jobs"].items():
         nome = s["with"]["name"]
         ret = int(s["with"].get("retention-days", 90))
         if nome.startswith("folha-supersalarios"):
-            # decisão do responsável (19/11/2026): folha completa por 90 dias, privada, só se a checagem (que varre CPF) passou
+            # decisão do responsável (19/11/2026): folha completa por 90 dias, só cifrada (artefato de repositório público é
+            # baixável por qualquer usuário logado), e só se a checagem (que varre CPF) passou
             check(ret <= 90, f"{job} · {nome}: retenção {ret} dias (≤ 90, decisão registrada)")
             ids = {x.get("id"): x for x in passos if x.get("id")}
             cond = str(s.get("if", ""))
             check(any(f"steps.{k}.outcome == 'success'" in cond and "checagem_automatica.py" in str(v.get("run", "")) for k, v in ids.items()),
                   f"{job} · {nome}: só sobe se a checagem automática (detector de CPF) passou")
-            check(str(s["with"].get("path", "")).strip().rstrip("/") == "folha_completa", f"{job} · {nome}: só a pasta folha_completa/")
+            check(str(s["with"].get("path", "")).strip() == "artefato_cifrado/folha-supersalarios.tar.gpg"
+                  and "cifrar_artefato.sh folha_completa" in str(passos[i - 1].get("run", "")),
+                  f"{job} · {nome}: só a folha_completa/ CIFRADA (.gpg feito por cifrar_artefato.sh no passo anterior)")
         else:
             check(ret <= 30, f"{job} · {nome}: retenção {ret} dias (≤ 30)")
         if nome.startswith("dados-"):
@@ -54,7 +57,9 @@ for job, j in wf["jobs"].items():
                 check(ant.get("id") and f"steps.{ant['id']}.outcome == 'success'" in str(s["if"]),
                       f"{job} · {nome}: envio com always() exige o passo de máscara/detector bem-sucedido")
         if nome.startswith("pdfs-camara-cg"):
-            check("pdfs_novos.py" in str(passos[i - 1].get("run", "")), f"{job} · {nome}: só PDFs novos (pdfs_novos.py antes do envio)")
+            check("pdfs_novos.py" in str(passos[i - 2].get("run", "")) and "cifrar_artefato.sh pdfs_camara_cg" in str(passos[i - 1].get("run", ""))
+                  and str(s["with"].get("path", "")).strip().endswith(".gpg"),
+                  f"{job} · {nome}: só PDFs novos (pdfs_novos.py) e CIFRADOS (cifrar_artefato.sh) antes do envio")
         if nome.startswith("coleta-bloqueada"):
             check("bloqueio/" in str(s["with"].get("path", "")), f"{job} · {nome}: evidências só da pasta bloqueio/")
 
