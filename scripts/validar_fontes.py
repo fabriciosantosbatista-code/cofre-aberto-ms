@@ -10,13 +10,14 @@ Só a fonte que passa aqui pode ser chamada de "verificada na fonte". Somas inte
   deputados-estaduais  portal da ALEMS (/ceap/data): total de cada um dos 25 deputados
   senadores            Senado (adm-dadosabertos despesas_ceaps): total de cada senador de MS
   deputados            API da Câmara: total de cada deputado federal de MS (valor líquido com o sinal corrigido)
-  arrecadacao          Tesouro/Siconfi RREO Anexo 3: ICMS do Estado mês a mês
+  arrecadacao          Tesouro/Siconfi RREO Anexo 3: ICMS do Estado, todos os meses da série
   supersalarios        DadosJusBr: TJMS — nº de magistrados e soma do salário-base do mês publicado
-  shows, alugueis      PNCP: 8 contratações sorteadas, valor homologado/estimado de cada uma
+  shows                PNCP: todas as contratações de show, valor homologado/estimado de cada uma
+  alugueis             PNCP: 8 contratações sorteadas por dia, valor homologado/estimado de cada uma
   votacoes             API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano, o voto de cada deputado de MS
-  producao             API da Câmara (/proposicoes com filtro de tipo na própria API): nº de projetos de cada deputado de MS
+  producao             Câmara (/proposicoes com filtro de tipo) e Senado (/processo): nº de projetos de cada parlamentar de MS
   judiciario           DadosJusBr (contracheques do TJMS enviados ao CNJ): nº de magistrados e soma do subsídio do mês
-  entidades            cadastro CNPJ (minhareceita.org, serviço diferente do usado na coleta): 30 entidades sorteadas por dia —
+  entidades            cadastro CNPJ (minhareceita.org, serviço diferente do usado na coleta): todas as entidades —
                        data de abertura, município e situação cadastral
 
 Tolerância: diferença até R$ 1 por item, ou explicada por atualização da fonte depois da coleta (a fonte mudou entre
@@ -41,6 +42,37 @@ H = {"User-Agent": "Mozilla/5.0 (CofreAbertoMS; +https://cofreabertoms.com.br)",
 from zoneinfo import ZoneInfo
 FUSO = ZoneInfo("America/Campo_Grande")  # todos os horários do ICP no horário de Campo Grande (o robô e as execuções manuais)
 AGORA = datetime.now(FUSO).strftime("%Y-%m-%dT%H:%M:%S")
+
+
+import hashlib as _hl
+
+
+# campos que a conferência compara com a fonte, por base: se algum deles mudar no site, a conferência anterior deixa de valer
+CAMPOS_CONFERIDOS = {"shows": ("id", "valor"), "alugueis": ("id", "valor"),
+                     "entidades": ("cnpj", "abertura", "aberturaFilial", "municipio", "situacao")}
+
+
+def hash_registro(x, base=None):
+    """Hash curto dos campos conferidos do registro (todos, se a base não tiver lista)."""
+    campos = CAMPOS_CONFERIDOS.get(base)
+    y = {k: x.get(k) for k in campos} if campos else x
+    return _hl.sha1(json.dumps(y, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()[:12]
+
+
+def registros_por_id(base):
+    """{id: registro} das bases conferidas registro a registro (o id é o mesmo usado na conferência)."""
+    if base == "shows":
+        return {str(x.get("id")): x for x in J("shows.json").get("shows") or [] if x.get("id")}
+    if base == "alugueis":
+        return {str(x.get("id")): x for x in (J("alugueis.json").get("pncp") or {}).get("lista") or [] if x.get("id")}
+    if base == "entidades":
+        return {str(x.get("cnpj")): x for x in J("entidades.json").get("entidades") or [] if x.get("cnpj")}
+    return None
+
+
+def hashes_atuais(base):
+    regs = registros_por_id(base)
+    return None if regs is None else {i: hash_registro(x, base) for i, x in regs.items()}
 
 
 def J(n):
@@ -100,7 +132,7 @@ def resultado(itens, metodo, fonte_url, nota="", granularidade="registro", unida
         abr = len(ids)
     return {"resultado": "confere" if not div else "diverge", "em": AGORA, "metodo": metodo, "fonteUrl": fonte_url,
             "conferidos": len(obtidos), "divergentes": div[:20], "comparados": comparados, "naoObtidos": len(itens) - len(obtidos), "nota": nota,
-            **cob, "unidadesConferidas": len(ids), "idsConferidos": ids[:400], "registrosAbrangidos": abr}
+            **cob, "unidadesConferidas": len(ids), "idsConferidos": ids if granularidade == "registro" else ids[:400], "registrosAbrangidos": abr}
 
 
 def n_por(lista, chave, sub):
@@ -192,31 +224,36 @@ def v_camara():
 
 
 def v_siconfi():
+    """ICMS do Estado mês a mês no Siconfi (RREO Anexo 3). Cada RREO traz os 12 meses até o bimestre; para cobrir a série
+    inteira do site, consulta o bimestre mais recente e o 6º bimestre de cada ano anterior que a série tem."""
     r = J("receitas.json")
     e = (r.get("entes") or {}).get("estado") or {}
-    ult = e.get("ultimoMes")
+    ult, meses = e.get("ultimoMes"), e.get("meses") or {}
     if not ult:
         return resultado([("ICMS", 0, None)], "Siconfi RREO Anexo 3", "https://siconfi.tesouro.gov.br/")
     ano, mes = int(ult[:4]), int(ult[5:7])
-    d = get("https://apidatalake.tesouro.gov.br/ords/siconfi/tt/rreo", {"an_exercicio": ano, "nr_periodo": (mes + 1) // 2, "co_tipo_demonstrativo": "RREO",
-                                                                         "no_anexo": "RREO-Anexo 03", "id_ente": 50}, timeout=180)
-    itens = []
-    if d:
+    periodos = [(ano, (mes + 1) // 2, mes)] + [(a, 6, 12) for a in sorted({int(k[:4]) for k in meses}) if a < ano]
+    fonte = {}
+    for a, bim, mfim in periodos:
+        d = get("https://apidatalake.tesouro.gov.br/ords/siconfi/tt/rreo", {"an_exercicio": a, "nr_periodo": bim, "co_tipo_demonstrativo": "RREO",
+                                                                             "no_anexo": "RREO-Anexo 03", "id_ente": 50}, timeout=180)
+        if not d:
+            continue
         icms = {x["coluna"]: x["valor"] for x in d.get("items") or [] if x["conta"].strip().upper() == "ICMS"}
         for k in range(12):
             col = "<MR>" if k == 0 else f"<MR-{k}>"
-            y, m = ano, mes - k
-            while m <= 0:
-                m += 12
+            y, m_ = a, mfim - k
+            while m_ <= 0:
+                m_ += 12
                 y -= 1
-            chave = f"{y}-{m:02d}"
-            site = (e.get("meses") or {}).get(chave, {}).get("icms")
-            if site is not None and col in icms:
-                itens.append((f"ICMS {chave}", site, icms[col]))
-    nm = len(e.get("meses") or {})
-    return resultado(itens or [("ICMS", 0, None)], f"Siconfi RREO Anexo 3 ({ano}, {(mes + 1) // 2}º bimestre): ICMS mês a mês", "https://siconfi.tesouro.gov.br/",
-                     granularidade="unidade", unidade="mês do ICMS do Estado (o RREO só traz os últimos 12 meses)", unidades_base=nm, registros_base=nm,
-                     selecao="os 12 meses que o RREO do bimestre publica; demais impostos e Campo Grande não conferidos")
+            if col in icms:
+                fonte.setdefault(f"{y}-{m_:02d}", icms[col])  # o RREO mais recente vence (vem primeiro)
+    itens = [(f"ICMS {k}", meses[k].get("icms"), fonte.get(k)) for k in sorted(meses) if meses[k].get("icms") is not None]
+    nm = len(meses)
+    return resultado(itens or [("ICMS", 0, None)], f"Siconfi RREO Anexo 3 ({', '.join(f'{a}/{b}º bim' for a, b, _ in periodos)}): ICMS mês a mês",
+                     "https://siconfi.tesouro.gov.br/", granularidade="unidade", unidade="mês do ICMS do Estado", unidades_base=nm, registros_base=nm,
+                     selecao="todos os meses da série do site (RREO do bimestre mais recente + 6º bimestre dos anos anteriores); "
+                             "demais impostos e Campo Grande não conferidos")
 
 
 def v_tjms():
@@ -235,25 +272,39 @@ def v_tjms():
                      selecao="recorte: só o TJMS (único órgão com contracheques no DadosJusBr nesta base)")
 
 
-def v_pncp(arquivo, chave_lista, rotulo):
+def com_hashes(res, base, ids_ok):
+    """Grava o hash, no momento da conferência, de cada registro que bateu com a fonte (janela de 30 dias com hash)."""
+    regs = registros_por_id(base) or {}
+    res["hashes"] = {i: hash_registro(regs[i], base) for i in sorted(ids_ok) if i in regs}
+    return res
+
+
+def v_pncp(arquivo, chave_lista, rotulo, base, n=8):
+    """PNCP: valor homologado (ou estimado) de cada contratação na consulta pública. n = tamanho da amostra sorteada
+    (semente = data); n=None = todas as contratações da base."""
+    from concurrent.futures import ThreadPoolExecutor
     d = J(arquivo)
     lst = d.get(chave_lista) if chave_lista else None
     if lst is None:
         lst = (d.get("pncp") or {}).get("lista") or []
     random.seed(date.today().toordinal())
-    amostra = random.sample(lst, min(8, len(lst)))  # amostra aleatória simples, sem reposição, semente = data
-    itens = []
-    for x in amostra:
+    escolhidos = lst if n is None else random.sample(lst, min(n, len(lst)))  # amostra aleatória simples, sem reposição, semente = data
+
+    def consulta(x):
         try:
             cnpj, ano, seq = x["link"].split("/editais/")[1].split("/")[:3]
         except Exception:
-            continue
-        c = get(f"https://pncp.gov.br/api/consulta/v1/orgaos/{cnpj}/compras/{ano}/{seq}")
+            return None
+        c = get(f"https://pncp.gov.br/api/consulta/v1/orgaos/{cnpj}/compras/{ano}/{seq}", tent=2, timeout=60)
         f = (c.get("valorTotalHomologado") or c.get("valorTotalEstimado")) if c else None
-        itens.append((x.get("id") or x["link"].split("/editais/")[1], x["valor"], f))  # identificador PNCP: não repete a mesma contratação
-    return resultado(itens, f"PNCP: {len(itens)} {rotulo} sorteadas, valor de cada uma na consulta pública", "https://pncp.gov.br/",
-                     granularidade="registro", unidade="contratação (nº de controle PNCP)", unidades_base=len(lst), registros_base=len(lst),
-                     selecao="amostra aleatória simples de 8 por dia, sem reposição (semente = data)")
+        return (x.get("id") or x["link"].split("/editais/")[1], x["valor"], f)  # identificador PNCP: não repete a mesma contratação
+    with ThreadPoolExecutor(4) as ex:
+        itens = [i for i in ex.map(consulta, escolhidos) if i]
+    todas = n is None
+    res = resultado(itens, f"PNCP: {'todas as ' + str(len(itens)) if todas else str(len(itens))} {rotulo}{'' if todas else ' sorteadas'}, valor de cada uma na consulta pública",
+                    "https://pncp.gov.br/", granularidade="registro", unidade="contratação (nº de controle PNCP)", unidades_base=len(lst), registros_base=len(lst),
+                    selecao="todas as contratações da base (reconsulta total)" if todas else f"amostra aleatória simples de {n} por dia, sem reposição (semente = data)")
+    return com_hashes(res, base, {str(i[0]) for i in itens if i[2] is not None and abs(i[1] - i[2]) <= 1})
 
 
 CAM = "https://dadosabertos.camara.leg.br/api/v2"
@@ -286,33 +337,43 @@ def v_votacoes():
 
 
 def v_producao():
-    """Nº de projetos (PL, PLP, PEC, PDL) de cada deputado federal de MS desde o início da legislatura: a API filtra o tipo
-    (a coleta lista tudo e filtra depois)."""
+    """Nº de projetos (PL, PLP, PEC, PDL) de cada parlamentar de MS desde o início da legislatura. Deputados: a API da Câmara
+    filtra o tipo (a coleta lista tudo e filtra depois). Senadores: processos do autor no Senado, contados só os projetos."""
     d = J("producao_legislativa.json")
-    ps = [p for p in d.get("parlamentares") or [] if p.get("grupo") == "federal"]
+    ps = d.get("parlamentares") or []
+    ini = d.get("inicio") or "2023-02-01"
     itens = []
     for p in ps:
-        n, pag, ok = 0, 1, True
-        while True:
-            r = get(f"{CAM}/proposicoes", {"idDeputadoAutor": p["id"], "dataApresentacaoInicio": d.get("inicio") or "2023-02-01",
-                                          "siglaTipo": "PL,PLP,PEC,PDL", "itens": 100, "pagina": pag})
+        n, ok = 0, True
+        if p.get("grupo") == "federal":
+            pag = 1
+            while True:
+                r = get(f"{CAM}/proposicoes", {"idDeputadoAutor": p["id"], "dataApresentacaoInicio": ini,
+                                              "siglaTipo": "PL,PLP,PEC,PDL", "itens": 100, "pagina": pag})
+                if r is None:
+                    ok = False
+                    break
+                n += len(r.get("dados") or [])
+                if not any(l.get("rel") == "next" for l in r.get("links") or []):
+                    break
+                pag += 1
+        elif p.get("grupo") == "senador":
+            r = get("https://legis.senado.leg.br/dadosabertos/processo", {"codigoParlamentarAutor": p["id"], "dataInicioApresentacao": ini}, timeout=120)
             if r is None:
                 ok = False
-                break
-            n += len(r.get("dados") or [])
-            if not any(l.get("rel") == "next" for l in r.get("links") or []):
-                break
-            pag += 1
+            else:
+                n = sum(1 for x in r if (x.get("identificacao") or "").split()[:1] and x["identificacao"].split()[0] in ("PL", "PLP", "PEC", "PDL"))
+        else:
+            continue
         itens.append((p["nome"], p.get("projetos") or 0, float(n) if ok else None, 0))
-    res = resultado(itens, "API da Câmara (/proposicoes, filtro de tipo PL/PLP/PEC/PDL na própria consulta): nº de projetos de cada deputado de MS "
+    res = resultado(itens, "Câmara (/proposicoes, filtro de tipo na API) e Senado (/processo do autor): nº de projetos de cada parlamentar de MS "
                     "desde 01/02/2023", "https://dadosabertos.camara.leg.br/", granularidade="unidade",
-                    unidade="deputado federal (nº de projetos na legislatura)", unidades_base=len(d.get("parlamentares") or []),
-                    registros_base=sum(p.get("projetos") or 0 for p in d.get("parlamentares") or []),
-                    registros_por_unidade={p["nome"]: p.get("projetos") or 0 for p in ps},
-                    selecao="todos os deputados federais de MS; senadores não conferidos")
+                    unidade="parlamentar (nº de projetos na legislatura)", unidades_base=len(ps),
+                    registros_base=sum(p.get("projetos") or 0 for p in ps), registros_por_unidade={p["nome"]: p.get("projetos") or 0 for p in ps},
+                    selecao="todos os deputados federais e senadores de MS")
     # projeto novo apresentado depois da coleta: a fonte cresce um pouco (nunca diminui)
     if res["resultado"] == "diverge" and all(0 < -x["diferenca"] <= 3 for x in res["divergentes"]):
-        res["resultado"], res["nota"] = "mudou_na_fonte", "a Câmara registrou projetos novos depois da coleta (até 3 por deputado)"
+        res["resultado"], res["nota"] = "mudou_na_fonte", "projetos novos registrados depois da coleta (até 3 por parlamentar)"
     return res
 
 
@@ -334,15 +395,19 @@ def v_judiciario():
 
 
 def v_entidades():
-    """30 entidades sorteadas no cadastro CNPJ (minhareceita.org — a coleta usa a BrasilAPI primeiro): abertura, município e situação."""
+    """Todas as entidades no cadastro CNPJ (minhareceita.org — a coleta usa a BrasilAPI primeiro): abertura, município e situação."""
+    from concurrent.futures import ThreadPoolExecutor
     import unicodedata as _u
     nz = lambda t: "".join(c for c in _u.normalize("NFD", (t or "").upper()) if _u.category(c) != "Mn").strip()
     es = J("entidades.json").get("entidades") or []
-    random.seed(date.today().toordinal() + 7)
-    amostra = random.sample(es, min(30, len(es)))
-    itens = []
-    for e in amostra:
-        r = get(f"https://minhareceita.org/{e['cnpj']}", tent=2, timeout=40)
+    with ThreadPoolExecutor(3) as ex:
+        respostas = list(ex.map(lambda e: (e, get(f"https://minhareceita.org/{e['cnpj']}", tent=2, timeout=40)), es))
+    itens, lacunas = [], []
+    for e, r in respostas:
+        if not e.get("abertura") and not e.get("situacao"):  # o site não tem o cadastro da entidade: não há o que comparar
+            lacunas.append(e["cnpj"])
+            itens.append((f"{e['cnpj']} · cadastro", 100.0, None))
+            continue
         # filial: o site mostra em "abertura" a data da matriz (desde quando a entidade existe) e guarda a da filial à parte
         ab = e.get("aberturaFilial") if str(e.get("cnpj"))[8:12] != "0001" and e.get("aberturaFilial") else e.get("abertura")
         for campo, site, fonte in (("abertura", ab, (r or {}).get("data_inicio_atividade")),
@@ -350,42 +415,63 @@ def v_entidades():
                                    ("situação", e.get("situacao"), (r or {}).get("descricao_situacao_cadastral"))):
             f = None if r is None else (100.0 if nz(str(site or "")) == nz(str(fonte or "")) else 0.0)
             itens.append((f"{e['cnpj']} · {campo}", 100.0, f))
-    res = resultado(itens, "cadastro CNPJ (minhareceita.org): 30 entidades sorteadas; item = abertura, município ou situação cadastral "
+    res = resultado(itens, "cadastro CNPJ (minhareceita.org): todas as entidades; item = abertura, município ou situação cadastral "
                     "(100 = igual ao site, 0 = diferente)", "https://minhareceita.org/", granularidade="registro",
                     unidade="entidade (abertura, município e situação cadastral)", unidades_base=len(es), registros_base=len(es),
-                    selecao="amostra aleatória simples de 30 entidades por dia (semente = data + 7)")
+                    selecao="todas as entidades da base (reconsulta total)")
     if res["resultado"] in ("confere", "diverge", "mudou_na_fonte"):  # a unidade é a entidade (o CNPJ), não cada campo
         cnpjs = sorted({str(i[0]).split(" · ")[0] for i in itens if i[2] is not None})
-        res.update({"unidadesConferidas": len(cnpjs), "idsConferidos": cnpjs[:400], "registrosAbrangidos": len(cnpjs)})
+        res.update({"unidadesConferidas": len(cnpjs), "idsConferidos": cnpjs, "registrosAbrangidos": len(cnpjs)})
+        # vale como conferida só a entidade com os 3 campos iguais à fonte
+        ruins = {str(i[0]).split(" · ")[0] for i in itens if i[2] is not None and i[2] != 100.0}
+        com_hashes(res, "entidades", set(cnpjs) - ruins)
+    if lacunas:  # não conferidas: lacuna do site (a coleta do cadastro não alcança a entidade), mostrada como pendência
+        res["lacunas"] = lacunas
+        res["nota"] = (res.get("nota") or "") + f" {len(lacunas)} entidade(s) sem dados cadastrais no site (a coleta do cadastro não as alcança): não conferidas."
     # a situação cadastral pode mudar entre a coleta e a conferência (ex.: baixa): só esse campo diferente = mudou na fonte
     if res["resultado"] == "diverge" and all(x["item"].endswith("situação") for x in res["divergentes"]):
         res["resultado"], res["nota"] = "mudou_na_fonte", "situação cadastral alterada na Receita depois da coleta"
     return res
 
 
+def registrar(fonte, r, out):
+    """Grava a conferência: mantém a última bem-sucedida quando a fonte não responde hoje; conferência feita agora vai para
+    o histórico permanente (só acrescenta), com os hashes dos registros conferidos quando houver."""
+    if r["resultado"] == "indisponivel" and (out.get(fonte) or {}).get("resultado") in ("confere", "mudou_na_fonte", "diverge"):
+        r = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": "indisponivel"}
+    if r.get("em") == AGORA:
+        with open(HISTORICO, "a", encoding="utf-8") as h:
+            h.write(json.dumps({"em": AGORA, "base": fonte, "resultado": r["resultado"], "metodo": r.get("metodo"), "fonteUrl": r.get("fonteUrl"),
+                                "conferidos": r.get("conferidos", 0), "comparados": r.get("comparados") or [], "divergentes": r.get("divergentes") or [],
+                                **{k: r.get(k) for k in ("granularidade", "unidade", "unidadesBase", "unidadesConferidas", "idsConferidos", "registrosBase",
+                                                         "registrosAbrangidos", "selecao", "responsavel", "metodologia")},
+                                "nota": r.get("nota", ""), **({"hashes": r["hashes"]} if r.get("hashes") else {}),
+                                **({"lacunas": r["lacunas"]} if r.get("lacunas") else {})}, ensure_ascii=False) + "\n")
+    out[fonte] = r
+    return r
+
+
+CONFERENCIAS = (("governo-ms", lambda: v_governo()), ("deputados-estaduais", lambda: v_alems()), ("senadores", lambda: v_senado()),
+                ("deputados", lambda: v_camara()), ("arrecadacao", lambda: v_siconfi()), ("supersalarios", lambda: v_tjms()),
+                ("shows", lambda: v_pncp("shows.json", "shows", "contratações de show", "shows", n=None)),
+                ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis")),
+                ("votacoes", lambda: v_votacoes()), ("producao", lambda: v_producao()), ("judiciario", lambda: v_judiciario()),
+                ("entidades", lambda: v_entidades()))
+
+
 def main():
+    """Uso: python3 scripts/validar_fontes.py [base ...]   (sem argumento: todas)"""
+    so = set(sys.argv[1:])
     ant = J("validacao_fontes.json")
     out = dict(ant.get("fontes") or {})
-    for fonte, fn in (("governo-ms", v_governo), ("deputados-estaduais", v_alems), ("senadores", v_senado), ("deputados", v_camara),
-                      ("arrecadacao", v_siconfi), ("supersalarios", v_tjms),
-                      ("shows", lambda: v_pncp("shows.json", "shows", "contratações de show")),
-                      ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel")),
-                      ("votacoes", v_votacoes), ("producao", v_producao), ("judiciario", v_judiciario), ("entidades", v_entidades)):
+    for fonte, fn in CONFERENCIAS:
+        if so and fonte not in so:
+            continue
         try:
             r = fn()
         except Exception as e:
             r = {"resultado": "indisponivel", "em": AGORA, "nota": f"erro na conferência: {type(e).__name__}"}
-        # mantém a última conferência bem-sucedida quando a fonte não responde hoje
-        if r["resultado"] == "indisponivel" and (out.get(fonte) or {}).get("resultado") in ("confere", "mudou_na_fonte", "diverge"):
-            r = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": "indisponivel"}
-        if r.get("em") == AGORA:  # conferência feita agora (não a anterior mantida) — vai para o histórico permanente
-            with open(HISTORICO, "a", encoding="utf-8") as h:
-                h.write(json.dumps({"em": AGORA, "base": fonte, "resultado": r["resultado"], "metodo": r.get("metodo"), "fonteUrl": r.get("fonteUrl"),
-                                    "conferidos": r.get("conferidos", 0), "comparados": r.get("comparados") or [], "divergentes": r.get("divergentes") or [],
-                                    **{k: r.get(k) for k in ("granularidade", "unidade", "unidadesBase", "unidadesConferidas", "idsConferidos", "registrosBase",
-                                                             "registrosAbrangidos", "selecao", "responsavel", "metodologia")},
-                                    "nota": r.get("nota", "")}, ensure_ascii=False) + "\n")
-        out[fonte] = r
+        r = registrar(fonte, r, out)
         print(f"  {fonte:20} {r['resultado']:15} {r.get('conferidos', 0)} itens  {r.get('nota', '')}")
     SAIDA.write_text(json.dumps({"geradoEm": AGORA, "fontes": out}, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"✅ validacao_fontes.json — {sum(1 for r in out.values() if r['resultado'] in ('confere', 'mudou_na_fonte'))} fontes conferidas, "

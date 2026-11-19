@@ -98,6 +98,12 @@ r = rodar({**D, "entidades.json": {"entidades": [{"cnpj": "11000000000211", "abe
           fonte_padrao(ent={"data_inicio_atividade": "2016-07-04", "municipio": "CAMPO GRANDE", "descricao_situacao_cadastral": "ATIVA"}), v.v_entidades)
 check(r["resultado"] == "confere", "entidades: filial — compara a abertura da filial (o site mostra a da matriz em 'abertura')")
 
+r = rodar({**D, "entidades.json": {"entidades": [ENT["entidades"][0], {"cnpj": "22", "abertura": None, "situacao": None, "municipio": "CAMPO GRANDE"}]}},
+          fonte_padrao(), v.v_entidades)
+check(r["resultado"] == "confere" and r["unidadesConferidas"] == 1 and r.get("lacunas") == ["22"],
+      "entidades: sem o cadastro no site → não conferida, registrada como lacuna (nem confere nem diverge)")
+check(list((r.get("hashes") or {}).keys()) == ["11"], "entidades: hash gravado só para a entidade que bateu com a fonte")
+
 # judiciário
 r = rodar(D, fonte_padrao(), v.v_judiciario)
 check(r["resultado"] == "confere", "judiciário: nº de magistrados e soma do subsídio iguais → confere")
