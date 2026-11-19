@@ -1210,10 +1210,11 @@ def _emendas_buscar_autor(nome_autor, api_key):
 def coletar_emendas_ms():
     log("Coletando emendas parlamentares de MS...")
 
-    api_key = limite_cgu.chave()
-    if not api_key:
+    chaves = limite_cgu.chaves()
+    if not chaves:
         log("  ⚠️ CGU_API_KEY não configurada — pulando emendas pela API (o arquivo de download continua)")
         return None
+    api_key = chaves[0]
 
     try:
         deps = json.load(open(DADOS / "deputados_federais_ms.json", encoding="utf-8")).get("deputados", [])
@@ -1231,7 +1232,16 @@ def coletar_emendas_ms():
     total_geral_pago = 0.0
     for p in parlamentares:
         try:
-            brutas = _emendas_buscar_autor(p["nome"].upper(), api_key)
+            try:
+                brutas = _emendas_buscar_autor(p["nome"].upper(), api_key)
+            except requests.HTTPError as e:
+                # chave recusada (401/403): passa para a próxima chave configurada, sem imprimir nenhuma delas
+                if getattr(e.response, "status_code", None) in (401, 403) and api_key in chaves and chaves.index(api_key) + 1 < len(chaves):
+                    log(f"  ⚠️ chave {chaves.index(api_key) + 1} recusada pela API da CGU (HTTP {e.response.status_code}) — usando a próxima")
+                    api_key = chaves[chaves.index(api_key) + 1]
+                    brutas = _emendas_buscar_autor(p["nome"].upper(), api_key)
+                else:
+                    raise
         except Exception as e:
             log(f"  \u26a0\ufe0f {p['nome']}: {e} \u2014 pulando")
             continue

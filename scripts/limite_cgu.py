@@ -19,7 +19,17 @@ _trava = threading.Lock()
 
 
 def chave():
-    return os.environ.get("CGU_API_KEY") or os.environ.get("PORTAL_TRANSPARENCIA_API_KEY") or None
+    return (chaves() or [None])[0]
+
+
+def chaves():
+    """Chaves configuradas, na ordem de preferência (CGU_API_KEY, depois PORTAL_TRANSPARENCIA_API_KEY), sem repetir."""
+    out = []
+    for k in ("CGU_API_KEY", "PORTAL_TRANSPARENCIA_API_KEY"):
+        v = (os.environ.get(k) or "").strip()
+        if v and v not in out:
+            out.append(v)
+    return out
 
 
 def limite_por_minuto(agora=None):

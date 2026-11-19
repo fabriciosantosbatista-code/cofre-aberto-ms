@@ -38,6 +38,9 @@ check(L.chave() is None, "sem chave no ambiente → None")
 os.environ["PORTAL_TRANSPARENCIA_API_KEY"] = "b"
 os.environ["CGU_API_KEY"] = "a"
 check(L.chave() == "a", "CGU_API_KEY tem preferência")
+check(L.chaves() == ["a", "b"], "as duas chaves, na ordem, para trocar se a primeira for recusada")
+os.environ["CGU_API_KEY"] = "b"
+check(L.chaves() == ["b"], "chave repetida não entra duas vezes")
 
 print(f"✅ {len(oks)} checagens OK · ❌ {len(erros)} erros")
 for e in erros:
