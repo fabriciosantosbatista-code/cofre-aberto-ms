@@ -4,11 +4,12 @@ name: Teste de alcance das fontes
 # não grava nada no repositório nem no ICP. O log mostra status HTTP, tempo de resposta e nomes de campos.
 #   sig          SIG-Transparência da Prefeitura de CG (formulário de contratos: página e consulta JSON)
 #   divulgacand  DivulgaCand do TSE (eleições ordinárias e a lista de candidatos a governador de MS em 2026)
+#   conferidor:<base>  roda o conferidor da base (ex.: conferidor:eleicoes) e imprime o resultado — não grava nada
 on:
   workflow_dispatch:
     inputs:
       fonte:
-        description: "sig ou divulgacand"
+        description: "sig, divulgacand ou conferidor:<base> (ex.: conferidor:eleicoes)"
         default: "sig"
         required: true
 
@@ -20,7 +21,35 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - uses: actions/checkout@v4
+        if: startsWith(inputs.fonte, 'conferidor:')
+
+      - name: Python (só para conferidor:<base>)
+        if: startsWith(inputs.fonte, 'conferidor:')
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Rodar o conferidor (sem gravar nada)
+        if: startsWith(inputs.fonte, 'conferidor:')
+        env:
+          FONTE: ${{ inputs.fonte }}
+        run: |
+          pip install -q requests pypdf
+          python3 - <<'EOF'
+          import json, os, sys
+          sys.path.insert(0, "scripts")
+          import validar_fontes as v
+          base = os.environ["FONTE"].split(":", 1)[1].replace("-", "_")
+          r = getattr(v, f"v_{base}")()
+          print(json.dumps({k: r.get(k) for k in ("resultado", "conferidos", "naoObtidos", "registrosBase", "unidadesConferidas",
+                            "registrosConferidosUmAUm", "naoAchadosNaFonte", "nota", "independencia")}, ensure_ascii=False, indent=1))
+          for d in (r.get("divergentes") or [])[:30]:
+              print("diverge:", d)
+          EOF
+
       - name: Testar a fonte (sem gravar nada)
+        if: ${{ !startsWith(inputs.fonte, 'conferidor:') }}
         env:
           FONTE: ${{ inputs.fonte }}
         run: |

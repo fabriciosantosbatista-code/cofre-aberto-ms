@@ -335,6 +335,60 @@ def v_publicidade():
     return res
 
 
+DIVULGA = "https://divulgacandcontas.tse.jus.br/divulga/rest/v1"
+CARGO_TSE = {"Governador": 3, "Senador": 5, "Deputado Federal": 6, "Deputado Estadual": 7}
+
+
+def v_eleicoes():
+    """Eleitos de MS em 2026 no DivulgaCand do TSE (sistema de divulgação de candidaturas — serviço diferente dos arquivos
+    de dados abertos que a coleta usa), eleito a eleito, campo a campo: nome completo, partido, cargo, situação e total de
+    bens declarados. Votos não entram: o site não publica votos."""
+    el = J("eleicoes.json").get("eleitos2026") or []
+    ano = 2026
+    eleicoes = get(f"{DIVULGA}/eleicao/ordinarias") or []
+    e26 = [e for e in eleicoes if isinstance(e, dict) and str(e.get("ano")) == str(ano)]
+    fonte = {}
+    if e26:
+        for cargo, cod in CARGO_TSE.items():
+            j = get(f"{DIVULGA}/candidatura/listar/{ano}/MS/{e26[0]['id']}/{cod}/candidatos")
+            if j is None:
+                fonte[cargo] = None
+                continue
+            fonte[cargo] = j.get("candidatos") or []
+    sig = lambda x: (x.get("sigla") or x.get("siglaPartido")) if isinstance(x, dict) else x
+    nomec = lambda x: (x.get("nome") if isinstance(x, dict) else x)
+    itens = []
+    for e in el:
+        lst = fonte.get(e.get("cargo"))
+        cands = [] if lst is None else [c for c in lst if norm(c.get("nomeCompleto")) == norm(e.get("nomeCompleto"))
+                                         or norm(c.get("nomeUrna")) == norm(e.get("nome"))]
+        c = cands[0] if len(cands) == 1 else None
+        k = e.get("chave") or f"{e.get('cargo')}|{e.get('nome')}"
+        pat = next((p_.get("patrimonio") for p_ in e.get("patrimonio") or [] if p_.get("ano") == ano), None)
+        campos = (("nome completo", norm(e.get("nomeCompleto")), norm((c or {}).get("nomeCompleto"))),
+                  ("partido", str(e.get("partido") or "").upper(), str(sig((c or {}).get("partido")) or "").upper()),
+                  ("cargo", norm(e.get("cargo")), norm(nomec((c or {}).get("cargo")))),
+                  ("situação", norm(e.get("situacao")), norm((c or {}).get("descricaoTotalizacao"))))
+        for nome_c, a, b in campos:
+            itens.append((f"{k} · {nome_c}", 100.0, None if c is None else (100.0 if a == b else 0.0)))
+        if pat is not None:
+            itens.append((f"{k} · bens declarados", round(pat, 2), None if c is None or c.get("totalDeBens") is None else round(float(c["totalDeBens"]), 2)))
+    res = resultado(itens, "DivulgaCand do TSE: cada eleito de MS em 2026 — nome completo, partido, cargo, situação e total de bens (100 = igual, 0 = diferente)",
+                    "https://divulgacandcontas.tse.jus.br/", granularidade="registro", unidade="eleito (candidatura)", unidades_base=len(el),
+                    registros_base=len(el), selecao="todos os eleitos de MS em 2026 (reconsulta total)")
+    if res["resultado"] in ("confere", "diverge"):
+        ids = sorted({str(i[0]).split(" · ")[0] for i in itens if i[2] is not None})
+        ruins = {str(i[0]).split(" · ")[0] for i in itens if i[2] is not None and abs((i[1] or 0) - (i[2] or 0)) > 1}
+        res.update({"unidadesConferidas": len(ids), "idsConferidos": ids, "registrosAbrangidos": len(ids),
+                    "registrosConferidosUmAUm": len(set(ids) - ruins), "registrosPorTotais": 0})
+    nao = sum(1 for e in el if (e.get("chave") or "") not in {str(i[0]).split(" · ")[0] for i in itens if i[2] is not None})
+    if nao:
+        res["naoAchadosNaFonte"] = nao
+    res["independencia"] = ("DivulgaCand do TSE: outro serviço do mesmo órgão (a coleta usa os arquivos de dados abertos do TSE) — "
+                            "confirma os dados da candidatura, não é fonte independente do TSE")
+    return res
+
+
 def v_alems():
     de = J("deputados_estaduais_ms.json")
     rows = []
@@ -1201,7 +1255,7 @@ CONFERENCIAS = (("governo-ms", lambda: v_governo()), ("deputados-estaduais", lam
                 ("deputados", lambda: v_camara()), ("arrecadacao", lambda: v_siconfi()), ("supersalarios", lambda: v_tjms()),
                 ("shows", lambda: v_pncp("shows.json", "shows", "contratações de show", "shows", n=150)),  # 1.053 no PNCP não cabem num dia: amostra + janela de 30 dias
                 ("votacoes", lambda: v_votacoes()), ("producao", lambda: v_producao()), ("judiciario", lambda: v_judiciario()),
-                ("entidades", lambda: v_entidades()), ("obras", lambda: v_obras()), ("publicidade", lambda: v_publicidade()),
+                ("entidades", lambda: v_entidades()), ("obras", lambda: v_obras()), ("publicidade", lambda: v_publicidade()), ("eleicoes", lambda: v_eleicoes()),
                 # por último: o PNCP limita as consultas (429) e as esperas podem consumir o prazo do passo
                 ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis", n=50)))  # 208 inteiras levam ~9 min: amostra + janela de 30 dias
 
