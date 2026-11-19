@@ -267,24 +267,29 @@ FOLHA_GOV = "https://gw.sgi.ms.gov.br/d0125/transpfolhadepagamento/v1/servidores
 TCE_PESSOAS = "https://sip-barramento.tce.ms.gov.br/barramento/api/Transparencia/GestaoPessoas"
 
 
-def _folha_orgao(sigla, mes):
-    """Consulta nova à folha do Estado filtrada pelo órgão (a coleta lê a folha inteira de uma vez): lista ou None."""
+# órgãos que a API não aceita como filtro (404), mas que vêm dentro do filtro do órgão-pai (verificado em 19/11/2026:
+# as quantidades batem com a folha completa)
+ORGAO_PAI = {"PMMS": "SEJUSP", "DGPC": "SEJUSP", "CBMMS": "SEJUSP", "GOVERNADORIA": "SEGOV"}
+
+
+def _folha_filtro(filtro, mes):
+    """Consulta nova à folha do Estado com o filtro de órgão (a coleta lê a folha inteira de uma vez): todos os registros
+    devolvidos (o filtro do órgão-pai traz também os órgãos dele), "sem_filtro" (404) ou None."""
     import coletar_governo_ms as g
     mm, aa = mes.split("/")
     out, pag = [], 1
     while True:
-        r = g.requisitar(FOLHA_GOV, {"anoexercicio": int(aa), "mescompetencia": int(mm), "tipoFolha": 1, "orgao": sigla,
+        r = g.requisitar(FOLHA_GOV, {"anoexercicio": int(aa), "mescompetencia": int(mm), "tipoFolha": 1, "orgao": filtro,
                                      "pageno": pag, "pagesize": 20000, "exportarcsv": "false"}, 600)
         try:
             j = r.json()
         except ValueError:
             return None
         if (j.get("status") or {}).get("code") == 404 or r.status_code == 404:
-            return "sem_filtro"  # o órgão não está na lista de órgãos que a API aceita como filtro
+            return "sem_filtro"
         if r.status_code != 200 or (j.get("status") or {}).get("code") != 200:
             return None
-        lote = [x for x in j.get("data") or [] if (x.get("orgao") or "").strip() == sigla]
-        out += lote
+        out += j.get("data") or []
         if len(j.get("data") or []) < 20000:
             return out
         pag += 1
@@ -310,8 +315,11 @@ def _amostra_governo(folha, n=100):
 
     def consulta(p):
         mm, aa = p["mes"].split("/")
-        r = g.requisitar(FOLHA_GOV, {"anoexercicio": int(aa), "mescompetencia": int(mm), "tipoFolha": 1, "orgao": p["orgaoSigla"],
-                                     "nome": p["nome"].upper(), "pageno": 1, "pagesize": 50, "exportarcsv": "false"}, 120)
+        prm = {"anoexercicio": int(aa), "mescompetencia": int(mm), "tipoFolha": 1, "nome": p["nome"].upper(), "pageno": 1, "pagesize": 50,
+               "exportarcsv": "false"}
+        if p["orgaoSigla"] not in ORGAO_PAI:  # PMMS, DGPC, CBMMS e Governadoria: a API não aceita o órgão como filtro → só o nome
+            prm["orgao"] = p["orgaoSigla"]
+        r = g.requisitar(FOLHA_GOV, prm, 120)
         try:
             d = [x for x in r.json().get("data") or [] if str(x.get("matricula")) == str(p["matricula"])]
         except ValueError:
@@ -377,11 +385,16 @@ def v_tjms():
         por[o["orgao"]] = (o.get("pessoas") or 0, s.get("quantidade") is not None)
     gov = ss.get("orgaosGoverno") or []
 
-    def um_orgao(o):
-        return o, _folha_orgao(o["sigla"], o["mes"])
+    # uma consulta por filtro: o órgão-pai (SEJUSP, SEGOV) traz também os órgãos dele
+    filtros = sorted({ORGAO_PAI.get(o["sigla"], o["sigla"]) for o in gov})
+    mes_gov = gov[0]["mes"] if gov else None
     with ThreadPoolExecutor(4) as ex:  # no máximo 4 consultas ao mesmo tempo no gateway do Estado
+        respostas = dict(zip(filtros, ex.map(lambda f: _folha_filtro(f, mes_gov), filtros)))
+    if True:
         sem_filtro = []
-        for o, lst in ex.map(um_orgao, gov):
+        for o in gov:
+            r_ = respostas.get(ORGAO_PAI.get(o["sigla"], o["sigla"]))
+            lst = r_ if not isinstance(r_, list) else [x for x in r_ if (x.get("orgao") or "").strip() == o["sigla"]]
             if lst == "sem_filtro":
                 sem_filtro.append(o["sigla"])
                 lst = None
@@ -428,8 +441,9 @@ def v_tjms():
                     "Estado filtrada por órgão (pessoas e total bruto); TCE-MS (servidores) numa consulta nova ao portal do TCE; mais 100 "
                     "contracheques do Governo sorteados por dia (semente = data), um a um", "https://www.transparencia.ms.gov.br/",
                     granularidade="unidade", unidade="órgão no mês publicado (pessoas e totais da folha)", unidades_base=len(unidades),
-                    registros_base=ss.get("totalPessoas"), selecao="todos os órgãos da folha, menos TCE-MS conselheiros e procuradores "
-                    "(contracheque só em PDF) e Câmara de CG (60 maiores); amostra diária de 100 contracheques do Governo")
+                    registros_base=ss.get("totalPessoas"), selecao="todos os órgãos da folha (PMMS, DGPC e CBMMS pelo filtro do órgão-pai SEJUSP; "
+                    "Governadoria pelo SEGOV), menos TCE-MS conselheiros e procuradores (contracheque só em PDF) e Câmara de CG (60 maiores); "
+                    "amostra diária de 100 contracheques do Governo (os 4 órgãos sem filtro próprio buscados pelo nome)")
     if sem_filtro:
         res["nota"] = ((res.get("nota") or "") + f" Não conferidos: {', '.join(sem_filtro)} — a API do Estado não aceita esses órgãos como "
                        "filtro da folha (resposta 404), e somar a folha inteira seria repetir o caminho da coleta.").strip()
