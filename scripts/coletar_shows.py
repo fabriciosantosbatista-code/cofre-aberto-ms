@@ -25,6 +25,8 @@ from pathlib import Path
 
 import requests
 
+import pncp_limite as pl  # noqa: E402  (limite adaptativo de consultas simultâneas ao PNCP)
+
 DADOS = Path(__file__).parent.parent / "dados"
 SAIDA, CACHE = DADOS / "shows.json", DADOS / "shows_cache.json"
 API = "https://pncp.gov.br/api"
@@ -42,18 +44,23 @@ NAO_SHOW = re.compile(r"estatueta|escultura|quadros?\b|obra de arte|pintura|pare
 
 
 def get(url, params=None, tent=4):
+    """JSON do PNCP ou None. Passa pelo limite adaptativo (pncp_limite); 429 espera o Retry-After (ou 30–60 s)."""
     for t in range(tent):
         if time.monotonic() - T0 > LIMITE + 120:
             return None
+        espera = 2 * (t + 1)
         try:
-            r = requests.get(url, params=params, headers=H, timeout=60)
+            r = pl.requisitar(url, params=params, headers=H, timeout=60)
             if r.status_code == 200:
                 return r.json()
             if r.status_code in (204, 404):
                 return None
+            if r.status_code == 429:
+                espera = pl.espera_429(r)
         except (requests.RequestException, ValueError):
             pass
-        time.sleep(2 * (t + 1))
+        if t < tent - 1:
+            pl.esperar(espera)
     return None
 
 
@@ -314,6 +321,7 @@ def main():
         "ranking": ranking, "artistasEmVariosOrgaos": repetidos, "shows": shows,
         "outrasContratacoes": [x for x in itens if x["tipo"] != "show"][:300],
         "_populacoes": pops}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    print("  " + pl.resumo())
     print(f"✅ shows.json — {len(shows)} shows (R$ {sum(x['valor'] for x in shows):,.0f}), {len(ranking)} órgãos/cidades, "
           f"{sum(1 for x in shows if x['artista'])} com artista identificado, {len(repetidos)} artistas em mais de um órgão")
 

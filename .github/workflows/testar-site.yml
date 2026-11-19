@@ -53,6 +53,9 @@ jobs:
       - name: Limite de requisições da API da CGU (400/min de dia, 700/min de madrugada; relógio simulado)
         run: python3 tests/test_limite_cgu.py
 
+      - name: Limite adaptativo de consultas ao PNCP (3 → 2 → 1 em 429; sobe após 5 min; Retry-After)
+        run: python3 tests/test_pncp_limite.py
+
       - name: ICP — conferidores na fonte oficial (fonte simulada, sem rede)
         run: python3 tests/test_conferidores.py
 

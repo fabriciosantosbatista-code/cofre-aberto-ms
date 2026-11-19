@@ -25,6 +25,8 @@ from pathlib import Path
 
 import requests
 
+import pncp_limite as pl  # noqa: E402  (limite adaptativo de consultas simultâneas ao PNCP)
+
 DADOS = Path(__file__).parent.parent / "dados"
 SAIDA, CACHE = DADOS / "alugueis.json", DADOS / "alugueis_cache.json"
 API = "https://pncp.gov.br/api"
@@ -54,18 +56,23 @@ def carregar(nome):
 
 
 def get(url, params=None, tent=4):
+    """JSON do PNCP ou None. Passa pelo limite adaptativo (pncp_limite); 429 espera o Retry-After (ou 30–60 s)."""
     for t in range(tent):
         if time.monotonic() - T0 > LIMITE + 60:
             return None
+        espera = 2 * (t + 1)
         try:
-            r = requests.get(url, params=params, headers=H, timeout=60)
+            r = pl.requisitar(url, params=params, headers=H, timeout=60)
             if r.status_code == 200:
                 return r.json()
             if r.status_code in (204, 404):
                 return None
+            if r.status_code == 429:
+                espera = pl.espera_429(r)
         except (requests.RequestException, ValueError):
             pass
-        time.sleep(2 * (t + 1))
+        if t < tent - 1:
+            pl.esperar(espera)
     return None
 
 
@@ -137,7 +144,7 @@ def listar(ini, fim, mod):
                 motivo = "tempo do passo esgotado"
                 break
             try:
-                r = requests.get(f"{API}/consulta/v1/contratacoes/publicacao", params=prm, headers=H, timeout=60)
+                r = pl.requisitar(f"{API}/consulta/v1/contratacoes/publicacao", params=prm, headers=H, timeout=60)
                 if r.status_code == 204:  # sem contratação no período: resposta legítima e vazia
                     return out, True
                 if r.status_code == 200:
@@ -153,9 +160,9 @@ def listar(ini, fim, mod):
                 motivo = type(e).__name__
                 break
             if t < 2:
-                espera = int(ra) if (ra or "").isdigit() else random.uniform(30, 60)
+                espera = min(300, int(ra)) if (ra or "").isdigit() else random.uniform(30, 60)
                 print(f"  ↻ PNCP {mes} modalidade {mod} página {p}: {motivo} — nova tentativa {t + 1}/2 em {espera:.0f} s")
-                time.sleep(espera)
+                pl.esperar(espera)
         if d is None:
             MOTIVOS[mes] = f"modalidade {mod}, página {p}: {motivo}" + (" (depois de 2 repetições)" if motivo in ("timeout",) or (motivo or "").startswith(("HTTP 5", "HTTP 429")) else "")
             print(f"  ⚠️ PNCP {mes}: {MOTIVOS[mes]}")
@@ -300,6 +307,7 @@ def main():
                  "porCidade": sorted(({**a, "valor": round(a["valor"], 2)} for a in por_cidade.values()), key=lambda a: -a["valor"]),
                  "mesesIncompletos": falhos, "motivosMesesIncompletos": {m: MOTIVOS.get(m) for m in falhos}, "lista": contr},
         "comVinculo": len(com_vinc)}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    print("  " + pl.resumo())
     print(f"✅ alugueis.json — Prefeitura de CG {brl(sum(a['valor'] for a in lista_pref))} a {len(lista_pref)} locadores; "
           f"PNCP {len(contr)} contratações ({brl(sum(c['valor'] or 0 for c in contr))}); {len(com_vinc)} com ligação política ou sinal")
 
