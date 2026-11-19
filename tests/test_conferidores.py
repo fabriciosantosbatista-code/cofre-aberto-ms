@@ -152,6 +152,29 @@ r = v.rgf_executivo(SSR)
 check(r["resultado"] == "diverge" and r["linhas"][0]["resultado"] == "diverge", "RGF: diferença acima de 10% → diverge (selo à parte, não muda a contagem)")
 v.get = g0
 
+# trava de procedimento: só entra no ICP dentro da coleta (mesmo ID) e até 2 h depois do início dela
+import os
+from datetime import datetime as _dt, timezone as _tz, timedelta as _td
+def janela(env, depois_h):
+    antes = {k: os.environ.get(k) for k in ("GITHUB_RUN_ID", "GITHUB_WORKFLOW", "COLETA_INICIO")}
+    for k in antes:
+        os.environ.pop(k, None)
+    os.environ.update(env)
+    try:
+        ini = _dt.fromisoformat(env["COLETA_INICIO"].replace("Z", "+00:00")) if env.get("COLETA_INICIO") else _dt.now(_tz.utc)
+        return v.janela_coleta(ini + _td(hours=depois_h))
+    finally:
+        for k, x in antes.items():
+            os.environ.pop(k, None)
+            if x is not None:
+                os.environ[k] = x
+ROBO = {"GITHUB_RUN_ID": "123", "GITHUB_WORKFLOW": "Atualizar dados diariamente", "COLETA_INICIO": "2026-11-19T07:30:00Z"}
+check(janela(ROBO, 0.7)[0], "dentro do robô, 42 min depois do início da coleta → entra no ICP")
+check(not janela(ROBO, 2.5)[0], "2,5 h depois do início da coleta → só relatório")
+check(not janela({}, 0)[0], "rodada manual (sem ID de coleta) → só relatório")
+check(not janela({**ROBO, "GITHUB_WORKFLOW": "Supersalários — conferência manual"}, 0.1)[0], "outro workflow → só relatório")
+check(not janela({**ROBO, "COLETA_INICIO": ""}, 0.1)[0], "sem horário de início da coleta → só relatório")
+
 print(f"✅ {len(oks)} checagens OK · ❌ {len(erros)} erros")
 for e in erros:
     print("❌", e)

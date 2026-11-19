@@ -829,18 +829,43 @@ def v_entidades():
     return res
 
 
+def relatorio_fora_da_janela(so, motivo):
+    """Conferência fora da janela da coleta: roda, mas grava só um relatório (não toca o histórico, o validacao_fontes.json
+    nem a nota)."""
+    RELATORIOS.mkdir(parents=True, exist_ok=True)
+    print(f"ℹ️ fora da janela da coleta ({motivo}): só relatório, sem entrar no histórico nem na nota do ICP")
+    rel = {"em": AGORA, "motivo": motivo, "aviso": "relatório de conferência fora da janela da coleta — não entra no ICP", "bases": {}}
+    t0, prazo = time.monotonic(), int(os.environ.get("CONFERENCIA_PRAZO_MIN", "28")) * 60
+    for fonte, fn in CONFERENCIAS:
+        if (so and fonte not in so) or time.monotonic() - t0 > prazo:
+            continue
+        try:
+            r = fn()
+        except Exception as e:
+            r = {"resultado": "indisponivel", "em": AGORA, "nota": f"erro na conferência: {type(e).__name__}"}
+        r.pop("hashes", None)
+        rel["bases"][fonte] = {k: r.get(k) for k in ("resultado", "metodo", "fonteUrl", "conferidos", "divergentes", "unidadesConferidas", "unidadesBase",
+                                                     "registrosConferidosUmAUm", "registrosPorTotais", "registrosBase", "nota", "fonteIndependente")}
+        print(f"  {fonte:20} {r['resultado']:15} {r.get('conferidos', 0)} itens (relatório)")
+    arq = RELATORIOS / f"conferencia_{AGORA.replace(':', '')}.json"
+    arq.write_text(json.dumps(rel, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"✅ relatório {arq.relative_to(DADOS.parent)} (não entra no ICP)")
+    return 0
+
+
 def registrar(fonte, r, out):
     """Grava a conferência: mantém a última bem-sucedida quando a fonte não responde hoje; conferência feita agora vai para
     o histórico permanente (só acrescenta), com os hashes dos registros conferidos quando houver."""
     if r["resultado"] == "indisponivel" and (out.get(fonte) or {}).get("resultado") in ("confere", "mudou_na_fonte", "diverge"):
         r = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": "indisponivel"}
     if r.get("em") == AGORA:
+        r["coletaRunId"] = os.environ.get("GITHUB_RUN_ID")
         with open(HISTORICO, "a", encoding="utf-8") as h:
             h.write(json.dumps({"em": AGORA, "base": fonte, "resultado": r["resultado"], "metodo": r.get("metodo"), "fonteUrl": r.get("fonteUrl"),
                                 "conferidos": r.get("conferidos", 0), "comparados": r.get("comparados") or [], "divergentes": r.get("divergentes") or [],
                                 **{k: r.get(k) for k in ("granularidade", "unidade", "unidadesBase", "unidadesConferidas", "idsConferidos", "registrosBase",
                                                          "registrosAbrangidos", "selecao", "responsavel", "metodologia")},
-                                "nota": r.get("nota", ""), **({"hashes": r["hashes"]} if r.get("hashes") else {}),
+                                "nota": r.get("nota", ""), "coletaRunId": r.get("coletaRunId"), **({"hashes": r["hashes"]} if r.get("hashes") else {}),
                                 **({"lacunas": r["lacunas"]} if r.get("lacunas") else {}),
                                 **({"amostraContracheques": r["amostraContracheques"]} if r.get("amostraContracheques") else {}),
                                 **{k: r[k] for k in ("independencia", "totaisDeOrgaoConferidos", "registrosConferidosUmAUm", "registrosPorTotais", "semFiltro",
@@ -859,9 +884,42 @@ CONFERENCIAS = (("governo-ms", lambda: v_governo()), ("deputados-estaduais", lam
                 ("alugueis", lambda: v_pncp("alugueis.json", None, "contratações de aluguel", "alugueis", n=None)))
 
 
+JANELA_COLETA_H = 2  # a conferência só entra no ICP se rodar na mesma coleta e até 2 h depois do início dela
+RELATORIOS = DADOS / "verificacao" / "relatorios"
+
+
+def janela_coleta(agora_utc=None):
+    """(vale, motivo). Vale só dentro do robô diário: mesmo ID de coleta (GITHUB_RUN_ID do workflow "Atualizar dados
+    diariamente", o mesmo cujos artefatos trouxeram os dados) e até JANELA_COLETA_H horas depois do início da coleta
+    (COLETA_INICIO). Motivo (19/11/2026): uma conferência manual do Governo MS rodou ~11 h depois da coleta, a fonte já
+    tinha pagamentos lançados depois, e a divergência entrou no ICP sem indicar erro nos dados."""
+    from datetime import timezone
+    run, wf, ini = os.environ.get("GITHUB_RUN_ID"), os.environ.get("GITHUB_WORKFLOW") or "", os.environ.get("COLETA_INICIO")
+    if not run:
+        return False, "fora do robô diário (sem ID de coleta)"
+    if "Atualizar dados" not in wf:
+        return False, f"workflow \"{wf}\" não é o da coleta"
+    if not ini:
+        return False, f"coleta {run} sem horário de início registrado"
+    try:
+        t_ini = datetime.fromisoformat(ini.replace("Z", "+00:00"))
+    except ValueError:
+        return False, f"horário de início ilegível ({ini})"
+    agora_utc = agora_utc or datetime.now(timezone.utc)
+    h = (agora_utc - t_ini).total_seconds() / 3600
+    if h > JANELA_COLETA_H or h < 0:
+        return False, f"{h:.1f} h depois do início da coleta {run} (limite {JANELA_COLETA_H} h)"
+    return True, f"coleta {run}, {h:.1f} h depois do início"
+
+
 def main():
-    """Uso: python3 scripts/validar_fontes.py [base ...]   (sem argumento: todas)"""
+    """Uso: python3 scripts/validar_fontes.py [base ...]   (sem argumento: todas)
+    Fora da janela da coleta (rodada manual, por exemplo), só gera um relatório em dados/verificacao/relatorios/ — não
+    entra no histórico nem na nota."""
     so = set(sys.argv[1:])
+    vale, motivo = janela_coleta()
+    if not vale:
+        return relatorio_fora_da_janela(so, motivo)
     ant = J("validacao_fontes.json")
     out = dict(ant.get("fontes") or {})
     t0, prazo = time.monotonic(), int(os.environ.get("CONFERENCIA_PRAZO_MIN", "28")) * 60  # o passo do workflow tem 35 min
@@ -885,4 +943,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main() or 0)

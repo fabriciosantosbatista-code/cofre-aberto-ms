@@ -589,9 +589,13 @@ jobs:
           name: folha-supersalarios-${{ github.run_id }}
           path: folha_completa/
 
-      - name: Conferir os dados direto nas fontes oficiais (independente da coleta)
+      - name: Conferir os dados direto nas fontes oficiais (independente da coleta; só entra no ICP até 2 h depois do início da coleta)
         timeout-minutes: 35
-        run: python3 -u scripts/validar_fontes.py || echo "⚠️ validar_fontes.py falhou — conferência anterior mantida"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export COLETA_INICIO=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }} --jq .run_started_at 2>/dev/null || true)
+          python3 -u scripts/validar_fontes.py || echo "⚠️ validar_fontes.py falhou — conferência anterior mantida"
 
       - name: Marcar servidores de gabinete da Câmara de CG com outro vínculo público
         run: python3 scripts/gerar_acumulos_gabinetes.py || echo "⚠️ gerar_acumulos_gabinetes.py falhou — marcações anteriores mantidas"
