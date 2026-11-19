@@ -47,6 +47,9 @@ jobs:
       - name: Supersalários — checagem automática, lista de conferência manual e Clopper–Pearson (folha sintética)
         run: python3 tests/test_verificacao.py
 
+      - name: Exceção temporária ao alerta da Prefeitura (pedido de LAI) — volta a ser erro sozinha
+        run: python3 tests/test_excecoes_alertas.py
+
       - name: ICP — conferidores na fonte oficial (fonte simulada, sem rede)
         run: python3 tests/test_conferidores.py
 

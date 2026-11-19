@@ -18,7 +18,7 @@ Uso:  python3 scripts/verificar_dados.py [--relatorio arquivo.md]
 Saída: código 1 se houver algum ERRO, 0 caso contrário.
 """
 
-import json, subprocess, sys
+import json, re, subprocess, sys
 from datetime import date, datetime
 from pathlib import Path
 
@@ -186,8 +186,9 @@ def main():
     # ---------- Prefeitura ----------
     pref = carregar("prefeitura.json")
     if pref:
-        recente("Prefeitura CG", pref.get("ultimoEmpenho") or max((x.get("data") or "" for x in pref.get("despesas", [])), default=None),
-                45, o_que="empenho mais recente")
+        global ULTIMO_EMPENHO
+        ULTIMO_EMPENHO = pref.get("ultimoEmpenho") or max((x.get("data") or "" for x in pref.get("despesas", [])), default=None)
+        recente("Prefeitura CG", ULTIMO_EMPENHO, 45, o_que="empenho mais recente")
         ant = versao_anterior("prefeitura.json")
         if ant and (ant.get("totalDespesas") or 0) > (pref.get("totalDespesas") or 0) * 1.02:
             erros.append(f"**Prefeitura CG**: total pago caiu de R$ {ant['totalDespesas']:,.2f} para "
@@ -339,6 +340,43 @@ def main():
         checa(len(arqs) >= 26, f"{nome}: {len(arqs)} estados", f"**{nome}**: só {len(arqs)} arquivos de estado", "aviso")
 
 
+ULTIMO_EMPENHO = None
+EXCECOES = ROOT / "config" / "excecoes_alertas.json"
+ALERTA_PREFEITURA = ("prefeitura", "contratos cg", "licitações cg", "contratos/licitações cg", "aditivos da prefeitura")
+
+
+def aplicar_excecoes(hoje=None):
+    """Exceção temporária (config/excecoes_alertas.json) ao erro de "Prefeitura CG sem empenho novo": vira aviso, com o
+    texto do pedido de LAI, só enquanto (1) hoje <= validoAte, (2) o empenho mais recente continua o de fonteParadaDesde
+    (se a Prefeitura voltar a publicar e parar de novo, é outra parada: erro) e (3) não há nenhum outro alerta da
+    Prefeitura. Fora disso, continua erro. Não mexe no ICP (que não lê este relatório)."""
+    hoje = hoje or HOJE
+    try:
+        ex = json.load(open(EXCECOES, encoding="utf-8")).get("prefeitura_empenhos")
+    except Exception:
+        return
+    if not ex:
+        return
+    alvo = [e for e in erros if e.startswith("**Prefeitura CG**: empenho mais recente")]
+    if not alvo:
+        return
+    nome = lambda t: t.split("**")[1].lower() if t.count("**") >= 2 else t.lower()
+    outros = [t for t in erros + avisos if t not in alvo and any(nome(t).startswith(p) for p in ALERTA_PREFEITURA)]
+    try:
+        vale_ate = date.fromisoformat(ex["validoAte"])
+        parada = ex["fonteParadaDesde"]
+        dt = date.fromisoformat(parada).strftime("%d/%m/%Y")
+    except Exception:
+        return
+    if hoje > vale_ate or str(ULTIMO_EMPENHO or "")[:10] != parada or outros:
+        return
+    erros.remove(alvo[0])
+    em, num = str(ex.get("laiProtocoladoEm") or "").strip(), str(ex.get("laiNumero") or "").strip()
+    preenchido = bool(re.fullmatch(r"\d{2}/\d{2}/\d{4}", em)) and bool(num) and not re.search(r"X{2,}|AAAA|DD|MM", num + em)
+    pedido = f"pedido de LAI protocolado em {em} (nº {num})" if preenchido else "pedido de acesso à informação em preparação"
+    avisos.insert(0, f"**Prefeitura CG**: fonte parada desde {dt}; {pedido} — exceção até {vale_ate.strftime('%d/%m/%Y')}, depois volta a ser erro")
+
+
 def relatorio():
     linhas = [f"# Saúde dos dados — {HOJE.strftime('%d/%m/%Y')}", ""]
     if erros:
@@ -352,6 +390,7 @@ def relatorio():
 
 if __name__ == "__main__":
     main()
+    aplicar_excecoes()
     texto = relatorio()
     if "--relatorio" in sys.argv:
         Path(sys.argv[sys.argv.index("--relatorio") + 1]).write_text(texto, encoding="utf-8")
