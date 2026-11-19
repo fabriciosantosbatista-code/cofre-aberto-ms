@@ -177,6 +177,29 @@ check(not janela({}, 0)[0], "rodada manual (sem ID de coleta) → só relatório
 check(not janela({**ROBO, "GITHUB_WORKFLOW": "Supersalários — conferência manual"}, 0.1)[0], "outro workflow → só relatório")
 check(not janela({**ROBO, "COLETA_INICIO": ""}, 0.1)[0], "sem horário de início da coleta → só relatório")
 
+# coleta da Câmara: despesas lidas mês a mês, ordenadas, paginando dentro do mês; página que falha → exceção
+sys.path.insert(0, str(ROOT / "scripts"))
+import coletar_dados as cd  # noqa: E402
+class _R:
+    def __init__(self, j, st=200): self.j, self.st = j, st
+    def raise_for_status(self):
+        if self.st != 200: raise RuntimeError(self.st)
+    def json(self): return self.j
+pedidos = []
+def _get_api(params):
+    pedidos.append(params)
+    if params["mes"] == 2 and params["pagina"] == 1:
+        return _R({"dados": [{"codDocumento": "a"}], "links": [{"rel": "next"}]})
+    return _R({"dados": [{"codDocumento": f"{params['mes']}-{params['pagina']}"}], "links": []})
+lido = cd.despesas_api_por_mes(1, 2025, get=_get_api)
+check(len(pedidos) == 13 and len(lido) == 13 and all(p["ordenarPor"] == "dataDocumento" and "mes" in p for p in pedidos),
+      "Câmara: lê os 12 meses, ordenados pela data, e pagina dentro do mês")
+try:
+    cd.despesas_api_por_mes(1, 2025, get=lambda p: _R({}, 504))
+    check(False, "Câmara: página que não vem → exceção (leitura parcial não serve)")
+except RuntimeError:
+    check(True, "Câmara: página que não vem → exceção (leitura parcial não serve)")
+
 print(f"✅ {len(oks)} checagens OK · ❌ {len(erros)} erros")
 for e in erros:
     print("❌", e)

@@ -15,6 +15,32 @@ from pathlib import Path
 
 import re as _re
 PASSAGEM = _re.compile(r"SIGEPA|PASSAGE[MN]S? A[EÉ]REA - RPA", _re.I)  # na API da Câmara só estas não vêm com o sinal invertido (o reembolso de passagem vem)
+# Paginação da API da Câmara (/deputados/{id}/despesas): sem ordenação, repete e pula despesas entre as páginas (a
+# mesma deputada veio com 472 e com 360 linhas, 61 repetidas, em duas leituras seguidas); ordenada pela data no ano
+# inteiro, também perde linhas (um deputado veio com 351 de 490). Lida mês a mês (cada mês cabe numa página de 100),
+# ordenada pela data, a leitura é completa e igual entre rodadas.
+ORDEM_API = {"ordenarPor": "dataDocumento", "ordem": "ASC"}
+
+
+def despesas_api_por_mes(dep_id, ano, timeout=30, get=None):
+    """Todas as despesas do deputado no ano pela API, mês a mês (ordenadas pela data dentro do mês). Levanta exceção
+    se alguma página não vier — leitura parcial não serve."""
+    get = get or (lambda params: requests.get(f"https://dadosabertos.camara.leg.br/api/v2/deputados/{dep_id}/despesas",
+                                              params=params, headers=HEADERS, timeout=timeout))
+    hoje = date.today()
+    ult = 12 if int(ano) < hoje.year else hoje.month
+    out = []
+    for mes in range(1, ult + 1):
+        pagina = 1
+        while True:
+            r = get({"ano": ano, "mes": mes, "itens": 100, "pagina": pagina, **ORDEM_API})
+            r.raise_for_status()
+            j = r.json()
+            out += j.get("dados") or []
+            if not any(l.get("rel") == "next" for l in j.get("links") or []):
+                break
+            pagina += 1
+    return out
 
 ROOT = Path(__file__).parent.parent
 DADOS = ROOT / "dados"
@@ -209,25 +235,19 @@ def sigepa_pela_api(dep_ids, ano, limite_seg=9 * 60):
     def um(dep_id):
         if time.monotonic() - t0 > limite_seg:
             return dep_id, None
-        out, pagina = [], 1
-        while True:
-            try:
-                r = requests.get(f"https://dadosabertos.camara.leg.br/api/v2/deputados/{dep_id}/despesas",
-                                 params={"ano": ano, "itens": 100, "pagina": pagina}, headers=HEADERS, timeout=30)
-                r.raise_for_status()
-                itens = r.json().get("dados", [])
-            except Exception:
-                return dep_id, None
-            for it in itens:
-                if "SIGEPA" in (it.get("tipoDespesa") or ""):
-                    v = round(_valor_api(it), 2)
-                    out.append({"data": (it.get("dataDocumento") or "")[:10] or None, "categoria": it.get("tipoDespesa"),
-                                "fornecedor": (it.get("nomeFornecedor") or "").strip(), "cnpjCpfFornecedor": _formata_cnpj_cpf(it.get("cnpjCpfFornecedor")),
-                                "valor": v, "doc": (it.get("numDocumento") or "").strip(), "urlNotaFiscal": it.get("urlDocumento") or None,
-                                "mes": it.get("mes")})
-            if len(itens) < 100:
-                return dep_id, out
-            pagina += 1
+        try:
+            itens = despesas_api_por_mes(dep_id, ano)
+        except Exception:
+            return dep_id, None
+        out = []
+        for it in itens:
+            if "SIGEPA" in (it.get("tipoDespesa") or ""):
+                v = round(_valor_api(it), 2)
+                out.append({"data": (it.get("dataDocumento") or "")[:10] or None, "categoria": it.get("tipoDespesa"),
+                            "fornecedor": (it.get("nomeFornecedor") or "").strip(), "cnpjCpfFornecedor": _formata_cnpj_cpf(it.get("cnpjCpfFornecedor")),
+                            "valor": v, "doc": (it.get("numDocumento") or "").strip(), "urlNotaFiscal": it.get("urlDocumento") or None,
+                            "mes": it.get("mes")})
+        return dep_id, out
 
     res, falhas = {}, 0
     with ThreadPoolExecutor(8) as ex:
@@ -826,22 +846,7 @@ def _preservar_ceap_se_vazio(ceap, ceap_anterior, nome=None):
 def buscar_ceap_deputado_agregado(dep_id, ano):
     """Soma a CEAP de um deputado no ano pela API (reserva, quando o arquivo anual não baixa), paginando.
     A inversão de sinal da API é detectada sobre todas as despesas do deputado, não página a página."""
-    itens_todos, pagina = [], 1
-    while True:
-        r = requests.get(
-            f"https://dadosabertos.camara.leg.br/api/v2/deputados/{dep_id}/despesas"
-            f"?ano={ano}&itens=100&pagina={pagina}",
-            headers=HEADERS, timeout=20
-        )
-        r.raise_for_status()
-        itens = r.json().get("dados", [])
-        if not itens:
-            break
-        itens_todos += itens
-        if len(itens) < 100:
-            break
-        pagina += 1
-        time.sleep(0.2)
+    itens_todos = despesas_api_por_mes(dep_id, ano, timeout=20)
     inv = api_invertida(itens_todos)
     total, categorias = 0.0, {}
     for item in itens_todos:

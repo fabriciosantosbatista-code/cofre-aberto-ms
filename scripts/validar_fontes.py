@@ -290,16 +290,23 @@ def v_camara():
     d = J("deputados_federais_ms.json")
     itens, por_notas = [], {}
     for p in d.get("deputados") or []:
-        todos, pag, ok = [], 1, True
-        while True:
-            r = get(f"https://dadosabertos.camara.leg.br/api/v2/deputados/{p['id']}/despesas", {"ano": d.get("ano"), "itens": 100, "pagina": pag})
-            if r is None:
-                ok = False
+        # mês a mês, ordenado pela data: no ano inteiro a paginação repete, pula ou perde notas (com ou sem ordenação)
+        todos, ok = [], True
+        ult = 12 if int(d.get("ano") or 0) < date.today().year else date.today().month
+        for mes in range(1, ult + 1):
+            pag = 1
+            while ok:
+                r = get(f"https://dadosabertos.camara.leg.br/api/v2/deputados/{p['id']}/despesas",
+                        {"ano": d.get("ano"), "mes": mes, "itens": 100, "pagina": pag, "ordenarPor": "dataDocumento", "ordem": "ASC"})
+                if r is None:
+                    ok = False
+                    break
+                todos += r.get("dados") or []
+                if not any(l.get("rel") == "next" for l in r.get("links") or []):
+                    break
+                pag += 1
+            if not ok:
                 break
-            todos += r.get("dados") or []
-            if not any(l.get("rel") == "next" for l in r.get("links") or []):
-                break
-            pag += 1
         # a inversão do sinal é detectada sobre todas as despesas do deputado (uma página só de passagens engana)
         comuns = [x for x in todos if not PASSAGEM.search(x.get("tipoDespesa") or "") and float(x.get("valorDocumento") or 0) > 0]
         inv = bool(comuns) and sum(1 for x in comuns if float(x.get("valorLiquido") or 0) < 0) > len(comuns) / 2
