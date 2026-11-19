@@ -590,7 +590,9 @@ jobs:
 
       - name: Supersalários — conferência automática de cada contracheque (acima do teto, intermediários e amostra; sem fila manual)
         timeout-minutes: 15
-        run: python3 scripts/verificacao/conferencia_supersalarios.py || echo "⚠️ conferência de Supersalários falhou — a anterior fica"
+        run: |
+          sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por poppler-utils >/dev/null || echo "⚠️ OCR indisponível — o PDF dos membros do TCE terá uma leitura só"
+          python3 scripts/verificacao/conferencia_supersalarios.py || echo "⚠️ conferência de Supersalários falhou — a anterior fica"
 
       - name: Conferir os dados direto nas fontes oficiais (independente da coleta; só entra no ICP até 2 h depois do início da coleta)
         timeout-minutes: 35

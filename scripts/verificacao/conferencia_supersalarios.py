@@ -136,12 +136,75 @@ def reconsulta_governo(ps, sem_rede=False):
     return out
 
 
-def reconsulta_tce(ps, sem_rede=False):
+def ocr_tce_membros(pdf_bytes):
+    """Segundo extrator do PDF dos membros do TCE: OCR (tesseract) da página renderizada. A página só mostra as
+    colunas até a VPNI — as demais rubricas ficam fora da área visível (só na camada de texto). Devolve
+    {matrícula: (subsídio, vpni)} ou None se o OCR não estiver disponível."""
+    import shutil, subprocess, tempfile
+    if not (shutil.which("pdftoppm") and shutil.which("tesseract")):
+        return None
+    num = lambda t: float(t.replace(".", "").replace(",", "."))
     out = {}
+    with tempfile.TemporaryDirectory() as d:
+        f = Path(d) / "m.pdf"
+        f.write_bytes(pdf_bytes)
+        subprocess.run(["pdftoppm", "-r", "400", "-gray", "-png", str(f), str(Path(d) / "p")], check=True, timeout=120)
+        for img in sorted(Path(d).glob("p*.png")):
+            txt = subprocess.run(["tesseract", str(img), "stdout", "-l", "por", "--psm", "6"], capture_output=True, timeout=120).stdout.decode("utf-8", "ignore")
+            for l in txt.splitlines():
+                m = re.match(r"\s*(\d{5})\s.*?(\d{2}/\d{4})\s+(\d[\d.]*,\d{2})(?:\s+(\d[\d.]*(?:,\d{2})?))?", l)
+                if m:
+                    out[m.group(1)] = (num(m.group(3)), num(m.group(4)) if m.group(4) and "," in m.group(4) else float(m.group(4) or 0))
+    return out
+
+
+def reconsulta_tce_membros(ps, sem_rede=False):
+    """Membros do TCE (contracheque em PDF): (1) releitura da camada de texto do PDF do mesmo mês — difere do site =
+    diverge; (2) OCR da página — confere subsídio e VPNI de cada matrícula. Mesmo com os dois de acordo, o contracheque
+    fica "não verificado": a página do PDF só mostra 2 das colunas; as demais rubricas estão só na camada de texto."""
+    out = {}
+    if sem_rede or not ps:
+        return {id(p): ("nao_verificado", "reconsulta não feita (sem rede)") for p in ps}
+    import requests
+    import coletar_supersalarios as cs_
+    for mes in sorted({p["mes"] for p in ps}):
+        m, a = mes.split("/")
+        lst = [p for p in ps if p["mes"] == mes]
+        try:
+            r = requests.get(f"{cs_.TCE}/Servidores/Exportar", params={"ano": int(a), "mes": int(m), "tipo": 2, "vinculo": 2, "tipoConteudo": 1},
+                             headers=cs_.UA, timeout=120)
+            r.raise_for_status()
+            texto = {x["matricula"]: x for x in cs_.tce_membros(int(a), int(m))}
+            ocr = ocr_tce_membros(r.content)
+        except Exception as e:
+            out.update({id(p): ("nao_verificado", f"PDF dos membros do TCE inacessível ({type(e).__name__})") for p in lst})
+            continue
+        for p in lst:
+            x = texto.get(str(p.get("matricula")))
+            if not x:
+                out[id(p)] = ("nao_verificado", "matrícula não encontrada na releitura do PDF")
+                continue
+            ruins = [f"{c}: site R$ {a_:,.2f} × PDF R$ {b:,.2f}" for c, a_, b in (("bruto", p["bruto"], x["bruto"]), ("líquido", p["liquido"], x["liquido"]))
+                     if abs((a_ or 0) - (b or 0)) > 1]
+            if ruins:
+                out[id(p)] = ("diverge", "; ".join(ruins))
+                continue
+            if ocr is None:
+                out[id(p)] = ("nao_verificado", "uma leitura só do PDF (OCR indisponível)")
+                continue
+            o = ocr.get(str(p.get("matricula")))
+            vpni = next((i["valor"] for i in x.get("itens") or [] if "VPNI" in i["item"] or "Vantagem Pessoal" in i["item"]), 0.0)
+            if not o or abs(o[0] - (x.get("base") or 0)) > 0.01 or abs(o[1] - vpni) > 0.01:
+                out[id(p)] = ("nao_verificado", "o OCR da página e a camada de texto discordam no subsídio ou na VPNI")
+                continue
+            out[id(p)] = ("nao_verificado", "subsídio e VPNI conferem nos 2 extratores; as demais rubricas estão fora da área visível da página "
+                                            "do PDF (só na camada de texto) — não há segunda leitura delas")
+    return out
+
+
+def reconsulta_tce(ps, sem_rede=False):
+    out = reconsulta_tce_membros([p for p in ps if "membros" in (p.get("orgao") or "")], sem_rede)
     serv = [p for p in ps if "membros" not in (p.get("orgao") or "")]
-    for p in ps:
-        if "membros" in (p.get("orgao") or ""):
-            out[id(p)] = ("nao_verificado", "contracheque em PDF: a dupla extração do PDF dos membros do TCE ainda não entrou")
     if not serv:
         return out
     if sem_rede:
