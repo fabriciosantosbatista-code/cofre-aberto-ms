@@ -83,12 +83,24 @@ def J(n):
         return {}
 
 
+PRAZO = {"fim": None, "esgotado": False}  # prazo da conferência inteira (main); vale dentro de cada consulta
+
+
+def _resta():
+    return None if PRAZO["fim"] is None else PRAZO["fim"] - time.monotonic()
+
+
 def get(url, params=None, tent=3, timeout=90):
-    """JSON da fonte ou None. 429 e 5xx: espera 30–60 s (ou Retry-After) antes de tentar de novo; outro erro: 3, 6… s."""
+    """JSON da fonte ou None. 429 e 5xx: espera 30–60 s (ou Retry-After) antes de tentar de novo; outro erro: 3, 6… s.
+    Com o prazo da conferência esgotado, não consulta mais nada (devolve None e marca PRAZO["esgotado"])."""
     for t in range(tent):
         espera = 3 * (t + 1)
+        resta = _resta()
+        if resta is not None and resta <= 0:
+            PRAZO["esgotado"] = True
+            return None
         try:
-            r = requests.get(url, params=params, headers=H, timeout=timeout)
+            r = requests.get(url, params=params, headers=H, timeout=timeout if resta is None else max(5, min(timeout, resta)))
             if r.status_code == 200:
                 return r.json()
             if r.status_code == 429 or r.status_code >= 500:
@@ -97,6 +109,10 @@ def get(url, params=None, tent=3, timeout=90):
         except (requests.RequestException, ValueError):
             pass
         if t < tent - 1:
+            resta = _resta()
+            if resta is not None and resta <= espera:
+                PRAZO["esgotado"] = True
+                return None
             time.sleep(espera)
     return None
 
@@ -947,7 +963,7 @@ def registrar(fonte, r, out):
 
 CONFERENCIAS = (("governo-ms", lambda: v_governo()), ("deputados-estaduais", lambda: v_alems()), ("senadores", lambda: v_senado()),
                 ("deputados", lambda: v_camara()), ("arrecadacao", lambda: v_siconfi()), ("supersalarios", lambda: v_tjms()),
-                ("shows", lambda: v_pncp("shows.json", "shows", "contratações de show", "shows", n=None)),
+                ("shows", lambda: v_pncp("shows.json", "shows", "contratações de show", "shows", n=150)),  # 1.053 no PNCP não cabem num dia: amostra + janela de 30 dias
                 ("votacoes", lambda: v_votacoes()), ("producao", lambda: v_producao()), ("judiciario", lambda: v_judiciario()),
                 ("entidades", lambda: v_entidades()),
                 # por último: o PNCP limita as consultas (429) e as esperas podem consumir o prazo do passo
@@ -994,6 +1010,7 @@ def main():
     ant = J("validacao_fontes.json")
     out = dict(ant.get("fontes") or {})
     t0, prazo = time.monotonic(), int(os.environ.get("CONFERENCIA_PRAZO_MIN", "28")) * 60  # o passo do workflow tem 35 min
+    PRAZO["fim"] = t0 + prazo  # vale também dentro de cada base (19/11/2026: Shows ficou 31 min esperando o PNCP)
     for fonte, fn in CONFERENCIAS:
         if so and fonte not in so:
             continue
@@ -1002,10 +1019,16 @@ def main():
                 out[fonte] = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"}
             print(f"  {fonte:20} não conferida nesta coleta (tempo esgotado) — fica a conferência anterior")
             continue
+        PRAZO["esgotado"] = False
         try:
             r = fn()
         except Exception as e:
             r = {"resultado": "indisponivel", "em": AGORA, "nota": f"erro na conferência: {type(e).__name__}"}
+        if PRAZO["esgotado"]:  # a base não foi conferida por inteiro no prazo: não grava resultado parcial
+            if out.get(fonte):
+                out[fonte] = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"}
+            print(f"  {fonte:20} não conferida nesta coleta (tempo esgotado no meio da conferência) — fica a conferência anterior")
+            continue
         r = registrar(fonte, r, out)
         print(f"  {fonte:20} {r['resultado']:15} {r.get('conferidos', 0)} itens  {r.get('nota', '')}")
     SAIDA.write_text(json.dumps({"geradoEm": AGORA, "fontes": out}, ensure_ascii=False, indent=1), encoding="utf-8")

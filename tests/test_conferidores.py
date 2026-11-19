@@ -202,6 +202,12 @@ check(casa([nota_s("s/n", 4539, cnpj=M)], [nota_f("s/n", 4539, cnpj=C1), nota_f(
 check(casa([nota_s("s/n", 4539, cnpj=M)], [nota_f("s/n", 4500, cnpj=C1)])[:4] == (0, [], 1, 0), "CPF mascarado e valor diferente: não achada")
 check(casa([nota_s("s/n", 4539, cnpj=M)], [nota_f("s/n", 4539, cnpj="04990440000194")])[:4] == (0, [], 1, 0), "CPF mascarado não casa com CNPJ")
 
+# prazo da conferência vale dentro de cada consulta (não deixa o passo do workflow estourar)
+import time as _time
+v.PRAZO.update(fim=_time.monotonic() - 1, esgotado=False)
+check(v.get("https://exemplo.invalido/") is None and v.PRAZO["esgotado"], "prazo esgotado: get() não consulta e marca esgotado")
+v.PRAZO.update(fim=None, esgotado=False)
+
 # coleta da Câmara: despesas lidas mês a mês, ordenadas, paginando dentro do mês; página que falha → exceção
 sys.path.insert(0, str(ROOT / "scripts"))
 import coletar_dados as cd  # noqa: E402

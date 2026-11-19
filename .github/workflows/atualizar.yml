@@ -261,7 +261,7 @@ jobs:
       #   run: python3 -u scripts/coletar_precos.py || echo "⚠️ coletar_precos.py falhou — dados anteriores mantidos"
 
       - name: Aluguel de imóveis (Prefeitura de CG e PNCP) e ligação política dos donos
-        timeout-minutes: 15
+        timeout-minutes: 25   # o coletor para sozinho aos 20 min (LIMITE) e grava o que obteve
         run: python3 -u scripts/coletar_alugueis.py || echo "⚠️ coletar_alugueis.py falhou — dados anteriores mantidos"
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
