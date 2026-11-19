@@ -24,6 +24,8 @@ jobs:
           pip install -q requests Pillow pypdf
           sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por poppler-utils >/dev/null
       - name: Coleta da Câmara CG com a dupla extração (todos os PDFs relidos)
+        env:
+          CAMARA_ORCAMENTO_RELEITURA_MIN: "80"  # o teste tem 120 min; a coleta diária usa 55
         run: python3 -u scripts/coletar_verba_camara_cg.py
       - name: Conferência da leitura (status de cada nota)
         run: python3 scripts/validar_camara_cg.py

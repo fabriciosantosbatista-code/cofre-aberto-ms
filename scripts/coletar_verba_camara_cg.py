@@ -59,7 +59,12 @@ PARSER_VERSAO = 3  # sobe quando a leitura muda: os PDFs já lidos são lidos de
 # davam "timeout após download" todo dia — nunca eram lidos. Agora são prazos
 # separados para baixar e para ler.
 TIMEOUT_DOWNLOAD = 120  # segundos para selecionar + baixar o PDF
-TIMEOUT_PARSING = 300   # segundos de leitura por PDF
+# Leitura por PDF (camada de texto + OCR de cada página de notas): o OCR leva segundos por página.
+TIMEOUT_PARSING = int(os.environ.get("CAMARA_TIMEOUT_PARSING") or 1200)
+# Orçamento da coleta para RELER PDFs já lidos por um leitor antigo: passado o prazo, o PDF mantém a leitura anterior e
+# é relido numa coleta seguinte (os relidos ficam no cache com o leitor novo, então cada coleta avança).
+ORCAMENTO_RELEITURA = int(os.environ.get("CAMARA_ORCAMENTO_RELEITURA_MIN") or 55) * 60
+INICIO_COLETA = time.time()
 TIMEOUT_POR_PDF = TIMEOUT_DOWNLOAD  # compatibilidade
 MAX_WORKERS = 4
 sys.path.insert(0, str(Path(__file__).parent))
@@ -299,7 +304,8 @@ def ocr_pagina(caminho, n_pagina, dpi=200):
         img = subprocess.run(["pdftoppm", "-f", str(n_pagina), "-l", str(n_pagina), "-r", str(dpi), "-gray", "-png", caminho],
                              capture_output=True, timeout=60, check=True).stdout
         txt = subprocess.run(["tesseract", "stdin", "stdout", "-l", "por", "--psm", "6"], input=img,
-                             capture_output=True, timeout=90, check=True).stdout.decode("utf-8", "ignore")
+                             capture_output=True, timeout=90, check=True,
+                             env={**os.environ, "OMP_THREAD_LIMIT": "1"}).stdout.decode("utf-8", "ignore")
         return normaliza_texto(txt)
     except Exception:
         return None
@@ -630,6 +636,9 @@ def processar_alvo(alvo, cache_anterior):
             return nome, ato, {}, sha256  # baixado de novo, mas conteúdo idêntico — nada pra reprocessar
         alvo["_motivo"] = (f"relido: leitor v{ent.get('parser')} → v{PARSER_VERSAO}" if ent.get("sha256") == sha256
                            else "relido: conteúdo novo" if ent else "relido: sem cache")
+        if ent.get("sha256") == sha256 and time.time() - INICIO_COLETA > ORCAMENTO_RELEITURA:
+            alvo["_motivo"] = f"releitura adiada (orçamento de tempo da coleta): mantém a leitura do leitor v{ent.get('parser')}"
+            return nome, ato, {}, None  # sem hash novo no cache: relido numa próxima coleta
 
         with open(caminho_tmp, "wb") as f:
             f.write(conteudo)
@@ -799,7 +808,7 @@ def total_mes_confiavel(dados_mes):
 # Cada ato (027 e 028) tem cota de R$ 150 mil/ano = R$ 12.500/mês. Um total mensal acima disso
 # (com folga de 2%) é erro de leitura do PDF (dígito trocado, total de outro ato ou do ano).
 LIMITE_MES_ATO = 12500 * 1.02
-MESES_NUM = {"jan": "01", "fev": "02", "mar": "03", "abr": "04", "mai": "05", "jun": "06",
+MESES_ABREV_NUM = {"jan": "01", "fev": "02", "mar": "03", "abr": "04", "mai": "05", "jun": "06",
              "jul": "07", "ago": "08", "set": "09", "out": "10", "nov": "11", "dez": "12"}
 
 
@@ -814,7 +823,7 @@ def sanear_meses(v):
             if total <= LIMITE_MES_ATO:
                 continue
             itens = round(sum(float(d.get("valor") or 0) for d in v.get("despesas") or []
-                              if d.get("ato") == f"ATO {ato}" and (d.get("data") or "")[5:7] == MESES_NUM.get(m)), 2)
+                              if d.get("ato") == f"ATO {ato}" and (d.get("data") or "")[5:7] == MESES_ABREV_NUM.get(m)), 2)
             if 0 < itens <= LIMITE_MES_ATO:
                 meses[m] = itens
                 orig = set(vi.get(f"mesesTotalPelosItens{ato}") or []) | {m}
