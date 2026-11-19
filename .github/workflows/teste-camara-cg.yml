@@ -1,0 +1,67 @@
+name: Câmara CG — dupla extração (teste, sem publicar)
+
+# Roda a coleta da verba indenizatória da Câmara de CG com a dupla extração (camada de texto + OCR) e a conferência da
+# leitura, SEM gravar nada no repositório. Entrega num artefato privado (1 dia): o resumo da conferência e as imagens
+# das páginas das notas que a automação não resolveu (para a leitura única dessas páginas). As imagens são de documentos
+# digitalizados e podem ter CPF impresso: ficam só no artefato privado, nunca no Git nem no site.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependências (Python, OCR)
+        run: |
+          pip install -q requests Pillow pypdf
+          sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por poppler-utils >/dev/null
+      - name: Coleta da Câmara CG com a dupla extração (todos os PDFs relidos)
+        run: python3 -u scripts/coletar_verba_camara_cg.py
+      - name: Conferência da leitura (status de cada nota)
+        run: python3 scripts/validar_camara_cg.py
+      - name: Resumo e páginas das notas não resolvidas
+        run: |
+          python3 - <<'EOF'
+          import json, subprocess, collections
+          from pathlib import Path
+          cm = json.load(open("dados/camara_municipal.json", encoding="utf-8"))
+          rev = json.load(open("dados/camara_cg_revisao.json", encoding="utf-8"))
+          out = Path("saida"); (out / "paginas").mkdir(parents=True, exist_ok=True)
+          r = rev["resumo"]
+          print("status das notas:", r.get("statusNotas"))
+          print("não verificado por motivo:", r.get("naoVerificadoPorMotivo"))
+          print("métodos que resolveram:", r.get("metodosConfere"))
+          pend, paginas = [], collections.defaultdict(list)
+          for v in cm["vereadores"]:
+              for d in v.get("despesas") or []:
+                  st = d.get("statusLeitura") or {}
+                  if st.get("status") != "confere":
+                      o = d.get("origem") or {}
+                      pend.append({"vereador": v["nome"], "data": d.get("data"), "valor": d.get("valor"), "fornecedor": d.get("fornecedor"),
+                                   "cnpj": d.get("cnpj"), "ato": d.get("ato"), "pdf": o.get("pdf"), "pagina": o.get("pagina"), "motivos": st.get("motivos")})
+                      if o.get("pdf") and o.get("pagina"):
+                          paginas[(o["pdf"], o["pagina"])].append(len(pend) - 1)
+          for (pdf, pg) in sorted(paginas):
+              f = Path("pdfs_camara_cg") / f"{pdf}.pdf"
+              if f.exists():
+                  subprocess.run(["pdftoppm", "-f", str(pg), "-l", str(pg), "-r", "110", "-gray", "-png", "-singlefile", str(f),
+                                  str(out / "paginas" / f"{pdf}_p{pg}")], check=False)
+          json.dump({"resumo": r, "naoResolvidas": pend, "metodo": rev.get("metodo"),
+                     "correcoes": json.load(open("dados/camara_cg_correcoes.json", encoding="utf-8")) if Path("dados/camara_cg_correcoes.json").exists() else None},
+                    open(out / "resumo.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+          print(f"notas não resolvidas: {len(pend)} · páginas renderizadas: {len(list((out / 'paginas').glob('*.png')))}")
+          EOF
+      - name: Entregar (artefato privado, 1 dia)
+        uses: actions/upload-artifact@v4
+        with:
+          name: camara-cg-dupla-extracao-${{ github.run_id }}
+          path: saida/
+          retention-days: 1
