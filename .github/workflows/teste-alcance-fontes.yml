@@ -43,7 +43,7 @@ jobs:
           base = os.environ["FONTE"].split(":", 1)[1].replace("-", "_")
           r = getattr(v, f"v_{base}")()
           print(json.dumps({k: r.get(k) for k in ("resultado", "conferidos", "naoObtidos", "registrosBase", "unidadesConferidas",
-                            "registrosConferidosUmAUm", "naoAchadosNaFonte", "nota", "independencia")}, ensure_ascii=False, indent=1))
+                            "registrosConferidosUmAUm", "naoAchadosNaFonte", "nota", "independencia", "diagnostico")}, ensure_ascii=False, indent=1))
           for d in (r.get("divergentes") or [])[:30]:
               print("diverge:", d)
           EOF

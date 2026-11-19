@@ -398,6 +398,12 @@ def v_eleicoes():
     nao = sum(1 for e in el if (e.get("chave") or "") not in {str(i[0]).split(" · ")[0] for i in itens if i[2] is not None})
     if nao:
         res["naoAchadosNaFonte"] = nao
+    res["diagnostico"] = {"eleicoes2026": [e.get("id") for e in e26], "candidatosPorCargo": {k: (None if v is None else len(v)) for k, v in fonte.items()},
+                          "exemploNaoCasado": next(({"site": e.get("nomeCompleto"), "cargo": e.get("cargo")} for e in el
+                                                    if fonte.get(e.get("cargo")) and not any(norm(c.get("nomeCompleto")) == norm(e.get("nomeCompleto"))
+                                                                                             for c in fonte[e.get("cargo")])), None),
+                          "exemploFonte": ({k: v for k, v in (next(iter(fonte.get("Governador") or []), {}) or {}).items()
+                                            if k in ("nomeCompleto", "nomeUrna", "partido", "cargo", "descricaoTotalizacao", "totalDeBens")})}
     res["independencia"] = ("DivulgaCand do TSE: outro serviço do mesmo órgão (a coleta usa os arquivos de dados abertos do TSE) — "
                             "confirma os dados da candidatura, não é fonte independente do TSE")
     return res
