@@ -1,0 +1,9 @@
+{
+ "_leia": "Teto remuneratório constitucional (subsídio de ministro do STF, CF art. 37, XI), versionado. Cada contracheque usa o valor em vigor no mês dele. tests/test_teto.py falha se algum mês da folha não tiver teto definido.",
+ "versoes": [
+  {"desde": "2023-01-01", "valor": 39293.32, "lei": "Lei nº 14.520/2023 (1ª parcela)"},
+  {"desde": "2023-04-01", "valor": 41650.92, "lei": "Lei nº 14.520/2023 (2ª parcela)"},
+  {"desde": "2024-02-01", "valor": 44008.52, "lei": "Lei nº 14.520/2023 (3ª parcela)"},
+  {"desde": "2025-02-01", "valor": 46366.19, "lei": "Lei nº 14.520/2023 (4ª parcela)"}
+ ]
+}

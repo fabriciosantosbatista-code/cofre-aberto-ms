@@ -1,0 +1,53 @@
+{
+ "_leia": "Rubrica do contracheque (Judiciário e membros do TCE-MS) → remuneratório, indenizatório ou excluído do teto (verba que a Resolução CNJ 13/2006 tira do teto sem ser indenizatória), com a base legal. Só entram rubricas cuja natureza é certa; rubrica fora desta tabela deixa o contracheque \"não verificado — rubrica não classificada\" (aviso no log). Não adivinhar: para incluir uma rubrica, informe a categoria e a base legal.",
+ "rubricas": {
+  "Subsídio": {
+   "categoria": "remuneratorio",
+   "baseLegal": "Constituição Federal, art. 39, §4º, e art. 93, V"
+  },
+  "Gratificação natalina": {
+   "categoria": "remuneratorio",
+   "baseLegal": "Constituição Federal, art. 7º, VIII, c/c art. 39, §3º"
+  },
+  "Antecipação de gratificação natalina": {
+   "categoria": "remuneratorio",
+   "baseLegal": "Constituição Federal, art. 7º, VIII, c/c art. 39, §3º"
+  },
+  "Abono constitucional de 1/3 de férias": {
+   "categoria": "remuneratorio",
+   "baseLegal": "Constituição Federal, art. 7º, XVII, c/c art. 39, §3º"
+  },
+  "Ajuda de Custo": {
+   "categoria": "indenizatorio",
+   "baseLegal": "Resolução CNJ nº 13/2006, art. 8º (verba excluída do teto), I, a"
+  },
+  "Auxílio-alimentação": {
+   "categoria": "indenizatorio",
+   "baseLegal": "Resolução CNJ nº 13/2006, art. 8º (verba excluída do teto), I, b"
+  },
+  "Auxílio Moradia": {
+   "categoria": "indenizatorio",
+   "baseLegal": "Resolução CNJ nº 13/2006, art. 8º (verba excluída do teto), I, c"
+  },
+  "Diárias": {
+   "categoria": "indenizatorio",
+   "baseLegal": "Resolução CNJ nº 13/2006, art. 8º (verba excluída do teto), I, d"
+  },
+  "Indenização de férias": {
+   "categoria": "indenizatorio",
+   "baseLegal": "Resolução CNJ nº 13/2006, art. 8º (verba excluída do teto), I, f (férias não gozadas)"
+  },
+  "Auxílio Pré-escolar": {
+   "categoria": "excluida_do_teto",
+   "baseLegal": "Resolução CNJ nº 13/2006, art. 8º, III, a (excluído do teto)"
+  },
+  "Auxílio Saúde": {
+   "categoria": "excluida_do_teto",
+   "baseLegal": "Resolução CNJ nº 13/2006, art. 8º, III, b (assistência médico-social; excluída do teto)"
+  },
+  "Abono de permanência": {
+   "categoria": "excluida_do_teto",
+   "baseLegal": "Resolução CNJ nº 13/2006, art. 8º, III, g (excluída do teto; não é indenizatória)"
+  }
+ }
+}

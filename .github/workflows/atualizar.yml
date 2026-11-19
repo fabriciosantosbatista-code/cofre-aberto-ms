@@ -588,6 +588,10 @@ jobs:
           name: folha-supersalarios-${{ github.run_id }}
           path: folha_completa/
 
+      - name: Supersalários — conferência automática de cada contracheque (acima do teto, intermediários e amostra; sem fila manual)
+        timeout-minutes: 15
+        run: python3 scripts/verificacao/conferencia_supersalarios.py || echo "⚠️ conferência de Supersalários falhou — a anterior fica"
+
       - name: Conferir os dados direto nas fontes oficiais (independente da coleta; só entra no ICP até 2 h depois do início da coleta)
         timeout-minutes: 35
         env:

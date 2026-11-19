@@ -47,6 +47,9 @@ jobs:
       - name: Supersalários — checagem automática, lista de conferência manual e Clopper–Pearson (folha sintética)
         run: python3 tests/test_verificacao.py
 
+      - name: Teto definido para todo mês de contracheque (config/teto.json)
+        run: python3 tests/test_teto.py
+
       - name: Exceção temporária ao alerta da Prefeitura (pedido de LAI) — volta a ser erro sozinha
         run: python3 tests/test_excecoes_alertas.py
 
