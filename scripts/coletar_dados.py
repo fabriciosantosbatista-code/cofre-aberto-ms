@@ -974,6 +974,20 @@ def coletar_senado_brasil():
     log(f"  {n_ex} senadores em exercício" + (f" (+{len(senadores) - n_ex} na lista fora de exercício: "
         + "; ".join(f"{s['nome']} — {s['situacaoExercicio']}" for s in senadores if not s.get("emExercicio", True)) + ")" if n_ex < len(senadores) else ""))
 
+    # Senadores de MS: mesmo total do site em toda parte (soma das notas publicadas, com o aviso "aguardando a fonte"
+    # quando a API de totais do Senado está à frente da lista de notas). senadores_ms.json é coletado antes, nesta execução.
+    try:
+        ms = {x["id"]: x for x in json.load(open(DADOS / "senadores_ms.json", encoding="utf-8")).get("senadores", [])}
+        for r_ in senadores:
+            m_ = ms.get(r_["id"])
+            if m_ and m_.get("cotaGastaAno") is not None and m_.get("anoReferencia") == r_.get("anoReferencia"):
+                r_["cotaGastaAno"], r_["aguardandoFonte"] = m_["cotaGastaAno"], m_.get("aguardandoFonte")
+                if m_.get("aguardandoFonte"):
+                    r_["ceaps"] = {c["categoria"]: c["valor"] for c in m_.get("ceapsCategorias") or []}
+                    r_["ceapsCategorias"] = m_.get("ceapsCategorias")
+    except Exception as e:
+        log(f"  ⚠️ senadores de MS no arquivo nacional sem o total das notas: {e}")
+
     data = {
         **(dados_ant if sens_ant else {}),
         "ultimaAtualizacao": hoje,
