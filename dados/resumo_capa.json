@@ -1,44 +1,44 @@
 {
  "ano": 2026,
- "atualizado": "2026-11-19",
+ "atualizado": "2026-11-20",
  "dinheiro": [
   {
    "nome": "Governo do Estado de MS",
-   "valor": 21403866096.0,
+   "valor": 21450474999.27,
    "aba": "governo-ms"
   },
   {
    "nome": "Prefeitura de Campo Grande",
-   "valor": 4759501791.69,
+   "valor": 4786226887.0,
    "aba": "prefeitura"
   },
   {
    "nome": "Emendas parlamentares pagas em MS",
-   "valor": 628187652.98,
+   "valor": 628696212.98,
    "aba": "emendas"
   },
   {
    "nome": "Cotas e verbas dos parlamentares de MS",
-   "valor": 23570165.62,
+   "valor": 23571461.86,
    "aba": "deputados"
   }
  ],
  "governoCredores": [
   {
    "nome": "Repasses a municípios, órgãos e previdência",
-   "valor": 10755379556.98
+   "valor": 10778833744.77
   },
   {
    "nome": "Fornecedores e prestadores de serviço",
-   "valor": 5955229839.69
+   "valor": 5977959643.39
   },
   {
    "nome": "Folha, aposentadorias e pensões",
-   "valor": 3386733072.95
+   "valor": 3387145833.1
   },
   {
    "nome": "Bancos e dívida",
-   "valor": 1306523626.38
+   "valor": 1306535778.01
   }
  ],
  "emendasTipos": [
@@ -56,7 +56,7 @@
   },
   {
    "nome": "Bancada",
-   "valor": 55046915.01
+   "valor": 55555475.01
   },
   {
    "nome": "Emenda de Relator",
@@ -65,8 +65,8 @@
  ],
  "kpis": {
   "parlamentares": 65,
-  "notas": 11387,
-  "empresas": 1431,
+  "notas": 11411,
+  "empresas": 1432,
   "sinais": 346,
   "sinaisFortes": 26,
   "acimaTeto": 421,
@@ -81,11 +81,11 @@
     "aba": "camara",
     "pessoas": 29,
     "categorias": {
-     "Divulgação": 1428117.54,
-     "Veículos e combustível": 1067892.82,
-     "Consultorias e assessorias": 2993762.45,
-     "Escritório, aluguel e apoio": 130734.06,
-     "Outros": 175761.98
+     "Divulgação": 1432057.9,
+     "Veículos e combustível": 1067547.96,
+     "Consultorias e assessorias": 2993606.37,
+     "Escritório, aluguel e apoio": 130710.4,
+     "Outros": 172346.23
     }
    },
    {
@@ -103,14 +103,14 @@
    },
    {
     "nome": "Deputados federais",
-    "valor": 3424109.99,
+    "valor": 3425406.23,
     "aba": "deputados",
     "pessoas": 8,
     "categorias": {
      "Divulgação": 1270348.5,
-     "Veículos e combustível": 1101862.03,
-     "Viagens, passagens e hospedagem": 552226.9,
-     "Escritório, aluguel e apoio": 526342.56
+     "Veículos e combustível": 1101962.03,
+     "Viagens, passagens e hospedagem": 552776.9,
+     "Escritório, aluguel e apoio": 526988.8
     }
    },
    {
@@ -120,36 +120,37 @@
     "pessoas": 3,
     "categorias": {
      "Divulgação": 389152.64,
-     "Escritório, aluguel e apoio": 295714.03,
+     "Escritório, aluguel e apoio": 253304.23,
      "Viagens, passagens e hospedagem": 277962.82,
-     "Veículos e combustível": 310960.86
+     "Veículos e combustível": 310960.86,
+     "Consultorias e assessorias": 42409.8
     }
    }
   ],
   "categorias": [
    {
     "nome": "Consultorias e assessorias",
-    "valor": 8835181.9
+    "valor": 8877435.62
    },
    {
     "nome": "Divulgação",
-    "valor": 5575105.77
+    "valor": 5579046.13
    },
    {
     "nome": "Veículos e combustível",
-    "valor": 4578737.77
+    "valor": 4578492.91
    },
    {
     "nome": "Viagens, passagens e hospedagem",
-    "valor": 2676029.17
+    "valor": 2676579.17
    },
    {
     "nome": "Escritório, aluguel e apoio",
-    "valor": 1756019.03
+    "valor": 1714231.81
    },
    {
     "nome": "Outros",
-    "valor": 175761.98
+    "valor": 172346.23
    }
   ],
   "fornecedores": [

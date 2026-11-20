@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-19T18:23:59",
+ "geradoEm": "2026-11-20T12:29:40",
  "fontes": {
   "governo-ms": {
    "resultado": "confere",
@@ -499,11 +499,13 @@
     "TOTAL pago"
    ],
    "registrosAbrangidos": 24424,
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44622903893",
+   "ultimaTentativa": "2026-11-20T12:29:40",
+   "ultimaTentativaResultado": "indisponivel"
   },
   "deputados-estaduais": {
    "resultado": "confere",
-   "em": "2026-11-19T18:23:59",
+   "em": "2026-11-20T12:29:40",
    "metodo": "portal da ALEMS (/ceap/data): total do ano de cada deputado",
    "fonteUrl": "https://transparencia2.al.ms.gov.br/ceap",
    "conferidos": 25,
@@ -698,11 +700,11 @@
     "Zé Teixeira"
    ],
    "registrosAbrangidos": 5707,
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44765380344"
   },
   "senadores": {
    "resultado": "confere",
-   "em": "2026-11-19T18:23:59",
+   "em": "2026-11-20T12:29:40",
    "metodo": "dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS e cada reembolso",
    "fonteUrl": "https://adm.senado.gov.br/adm-dadosabertos/",
    "conferidos": 3,
@@ -761,11 +763,27 @@
    },
    "naoAchadosNaFonte": 0,
    "casadosHoje": 509,
-   "coletaRunId": "44622903893"
+   "aguardandoFonte": [
+    {
+     "item": "Soraya Thronicke",
+     "totalSenado": 490170.34,
+     "somaNotas": 486647.31,
+     "diferenca": 3523.03,
+     "texto": "o Senado já informa R$ 490.170,34 no total de 2026; R$ 3.523,03 ainda sem nota individual publicada"
+    },
+    {
+     "item": "Tereza Cristina",
+     "totalSenado": 293394.8,
+     "somaNotas": 287414.8,
+     "diferenca": 5980.0,
+     "texto": "o Senado já informa R$ 293.394,80 no total de 2026; R$ 5.980,00 ainda sem nota individual publicada"
+    }
+   ],
+   "coletaRunId": "44765380344"
   },
   "deputados": {
    "resultado": "confere",
-   "em": "2026-11-19T18:23:59",
+   "em": "2026-11-20T12:29:40",
    "metodo": "API da Câmara: soma do valor líquido do ano de cada deputado federal de MS e cada nota",
    "fonteUrl": "https://dadosabertos.camara.leg.br/",
    "conferidos": 8,
@@ -779,8 +797,8 @@
     },
     {
      "item": "Camila Jara",
-     "site": 526668.68,
-     "fonte": 526668.66,
+     "site": 526768.68,
+     "fonte": 526768.66,
      "diferenca": 0.02
     },
     {
@@ -791,8 +809,8 @@
     },
     {
      "item": "Dr. Luiz Ovando",
-     "site": 275310.89,
-     "fonte": 275310.89,
+     "site": 276274.01,
+     "fonte": 276274.01,
      "diferenca": 0.0
     },
     {
@@ -815,8 +833,8 @@
     },
     {
      "item": "Vander Loubet",
-     "site": 401263.03,
-     "fonte": 401263.03,
+     "site": 401496.15,
+     "fonte": 401496.15,
      "diferenca": 0.0
     }
    ],
@@ -825,7 +843,7 @@
    "granularidade": "unidade",
    "unidade": "deputado federal (total da CEAP no ano)",
    "unidadesBase": 8,
-   "registrosBase": 2695,
+   "registrosBase": 2701,
    "selecao": "todas as unidades publicadas",
    "responsavel": "validar_fontes.py — conferência automática do robô diário (consulta própria à fonte, independente da coleta)",
    "metodologia": "ICP 2.0",
@@ -840,9 +858,9 @@
     "Rodolfo Nogueira",
     "Vander Loubet"
    ],
-   "registrosAbrangidos": 2695,
-   "registrosPorTotais": 2695,
-   "registrosConferidosUmAUm": 2651,
+   "registrosAbrangidos": 2701,
+   "registrosPorTotais": 2701,
+   "registrosConferidosUmAUm": 2656,
    "digestsUmAUm": {
     "Beto Pereira": {
      "n": 205,
@@ -853,13 +871,13 @@
      "hash": "9593a9f3890b3375"
     },
     "Vander Loubet": {
-     "n": 363,
-     "hash": "f9cdd408b638100c"
+     "n": 364,
+     "hash": "206ec53cc9ef01aa"
     }
    },
    "naoAchadosNaFonte": 0,
    "ambiguasNaFonte": 29,
-   "casadosHoje": 2651,
+   "casadosHoje": 2656,
    "problemasNaFonte": [
     {
      "doc": "31501",
@@ -954,15 +972,15 @@
       "8166989",
       "8169763"
      ],
-     "copiasNoSite": 1,
+     "copiasNoSite": 2,
      "deputado": "Dr. Luiz Ovando"
     }
    ],
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44765380344"
   },
   "arrecadacao": {
    "resultado": "confere",
-   "em": "2026-11-19T18:23:59",
+   "em": "2026-11-20T12:29:40",
    "metodo": "Siconfi RREO Anexo 3 (2026/4º bim, 2025/6º bim): ICMS mês a mês",
    "fonteUrl": "https://siconfi.tesouro.gov.br/",
    "conferidos": 20,
@@ -1124,14 +1142,14 @@
    "registrosAbrangidos": 20,
    "registrosConferidosUmAUm": 20,
    "registrosPorTotais": 0,
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44765380344"
   },
   "supersalarios": {
    "resultado": "confere",
-   "em": "2026-11-19T18:23:59",
+   "em": "2026-11-20T12:29:40",
    "metodo": "órgão por órgão no mês publicado: TJMS e TRT24 no DadosJusBr; os 39 órgãos do Governo numa consulta nova à folha do Estado filtrada por órgão (pessoas e total bruto); TCE-MS (servidores) numa consulta nova ao portal do TCE; mais 100 contracheques do Governo sorteados por dia (semente = data), um a um",
    "fonteUrl": "https://www.transparencia.ms.gov.br/",
-   "conferidos": 285,
+   "conferidos": 7,
    "divergentes": [],
    "comparados": [
     {
@@ -1159,474 +1177,6 @@
      "diferenca": 0.0
     },
     {
-     "item": "Governo MS — AGEPREV: pessoas",
-     "site": 33837,
-     "fonte": 33837,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — AGEPREV: total bruto",
-     "site": 428179977.89,
-     "fonte": 428179977.89,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — SEFAZ: pessoas",
-     "site": 850,
-     "fonte": 850,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — SEFAZ: total bruto",
-     "site": 48995884.85,
-     "fonte": 48995884.85,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — DGPC: pessoas",
-     "site": 1789,
-     "fonte": 1789,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — DGPC: total bruto",
-     "site": 33514879.6,
-     "fonte": 33514879.6,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — PMMS: pessoas",
-     "site": 5642,
-     "fonte": 5642,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — PMMS: total bruto",
-     "site": 61379317.76,
-     "fonte": 61379317.76,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — CBMMS: pessoas",
-     "site": 1841,
-     "fonte": 1841,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — CBMMS: total bruto",
-     "site": 21472814.74,
-     "fonte": 21472814.74,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — FUNSAU: pessoas",
-     "site": 2154,
-     "fonte": 2154,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — FUNSAU: total bruto",
-     "site": 25758050.41,
-     "fonte": 25758050.41,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — SES: pessoas",
-     "site": 1124,
-     "fonte": 1124,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — SES: total bruto",
-     "site": 12102970.9,
-     "fonte": 12102970.9,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — SED: pessoas",
-     "site": 30883,
-     "fonte": 30883,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — SED: total bruto",
-     "site": 195315423.8,
-     "fonte": 195315423.8,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — CASA CIVIL: pessoas",
-     "site": 130,
-     "fonte": 130,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — CASA CIVIL: total bruto",
-     "site": 1696720.17,
-     "fonte": 1696720.17,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — IAGRO: pessoas",
-     "site": 465,
-     "fonte": 465,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — IAGRO: total bruto",
-     "site": 5660839.96,
-     "fonte": 5660839.96,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — CGE: pessoas",
-     "site": 95,
-     "fonte": 95,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — CGE: total bruto",
-     "site": 2161189.94,
-     "fonte": 2161189.94,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — SEGOV: pessoas",
-     "site": 376,
-     "fonte": 376,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — SEGOV: total bruto",
-     "site": 5710616.52,
-     "fonte": 5710616.52,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — UEMS: pessoas",
-     "site": 1562,
-     "fonte": 1562,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — UEMS: total bruto",
-     "site": 21049644.84,
-     "fonte": 21049644.84,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — AGEMS: pessoas",
-     "site": 110,
-     "fonte": 110,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — AGEMS: total bruto",
-     "site": 1385218.0,
-     "fonte": 1385218.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — SETESC: pessoas",
-     "site": 44,
-     "fonte": 44,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — SETESC: total bruto",
-     "site": 539627.68,
-     "fonte": 539627.68,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — AGEPEN: pessoas",
-     "site": 1845,
-     "fonte": 1845,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — AGEPEN: total bruto",
-     "site": 20310731.43,
-     "fonte": 20310731.43,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — GOVERNADORIA: pessoas",
-     "site": 5,
-     "fonte": 5,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — GOVERNADORIA: total bruto",
-     "site": 109748.01,
-     "fonte": 109748.01,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — FADEB/MS: pessoas",
-     "site": 3,
-     "fonte": 3,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — FADEB/MS: total bruto",
-     "site": 53800.77,
-     "fonte": 53800.77,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — SEJUSP: pessoas",
-     "site": 1057,
-     "fonte": 1057,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — SEJUSP: total bruto",
-     "site": 13809413.81,
-     "fonte": 13809413.81,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — AEM-MS: pessoas",
-     "site": 89,
-     "fonte": 89,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — AEM-MS: total bruto",
-     "site": 1033306.11,
-     "fonte": 1033306.11,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — IMASUL: pessoas",
-     "site": 356,
-     "fonte": 356,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — IMASUL: total bruto",
-     "site": 4113654.09,
-     "fonte": 4113654.09,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — SEMADESC: pessoas",
-     "site": 117,
-     "fonte": 117,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — SEMADESC: total bruto",
-     "site": 1349854.55,
-     "fonte": 1349854.55,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — SEILOG: pessoas",
-     "site": 107,
-     "fonte": 107,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — SEILOG: total bruto",
-     "site": 1207083.88,
-     "fonte": 1207083.88,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — AGRAER: pessoas",
-     "site": 500,
-     "fonte": 500,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — AGRAER: total bruto",
-     "site": 5409045.14,
-     "fonte": 5409045.14,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — FUNDTUR: pessoas",
-     "site": 51,
-     "fonte": 51,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — FUNDTUR: total bruto",
-     "site": 549710.17,
-     "fonte": 549710.17,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — SEC: pessoas",
-     "site": 75,
-     "fonte": 75,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — SEC: total bruto",
-     "site": 708395.36,
-     "fonte": 708395.36,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — FCMS: pessoas",
-     "site": 120,
-     "fonte": 120,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — FCMS: total bruto",
-     "site": 1117148.76,
-     "fonte": 1117148.76,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — ESCOLAGOV: pessoas",
-     "site": 24,
-     "fonte": 24,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — ESCOLAGOV: total bruto",
-     "site": 221614.41,
-     "fonte": 221614.41,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — SAD: pessoas",
-     "site": 1167,
-     "fonte": 1167,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — SAD: total bruto",
-     "site": 10312530.83,
-     "fonte": 10312530.83,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — AGESUL: pessoas",
-     "site": 421,
-     "fonte": 421,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — AGESUL: total bruto",
-     "site": 3640537.4,
-     "fonte": 3640537.4,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — FERTEL: pessoas",
-     "site": 118,
-     "fonte": 118,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — FERTEL: total bruto",
-     "site": 1016507.97,
-     "fonte": 1016507.97,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — AGEHAB: pessoas",
-     "site": 104,
-     "fonte": 104,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — AGEHAB: total bruto",
-     "site": 854176.15,
-     "fonte": 854176.15,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — DETRAN: pessoas",
-     "site": 849,
-     "fonte": 849,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — DETRAN: total bruto",
-     "site": 6640382.7,
-     "fonte": 6640382.7,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — JUCEMS: pessoas",
-     "site": 70,
-     "fonte": 70,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — JUCEMS: total bruto",
-     "site": 501141.99,
-     "fonte": 501141.99,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — FUNTRAB: pessoas",
-     "site": 86,
-     "fonte": 86,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — FUNTRAB: total bruto",
-     "site": 607966.84,
-     "fonte": 607966.84,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — PGE: pessoas",
-     "site": 280,
-     "fonte": 280,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — PGE: total bruto",
-     "site": 1970123.91,
-     "fonte": 1970123.91,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — SEAD: pessoas",
-     "site": 891,
-     "fonte": 891,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — SEAD: total bruto",
-     "site": 5060296.05,
-     "fonte": 5060296.05,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — FUNDESPORTE: pessoas",
-     "site": 396,
-     "fonte": 396,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — FUNDESPORTE: total bruto",
-     "site": 789847.31,
-     "fonte": 789847.31,
-     "diferenca": 0.0
-    },
-    {
-     "item": "Governo MS — FUNDECT: pessoas",
-     "site": 2206,
-     "fonte": 2206,
-     "diferenca": 0
-    },
-    {
-     "item": "Governo MS — FUNDECT: total bruto",
-     "site": 2040783.99,
-     "fonte": 2040783.99,
-     "diferenca": 0.0
-    },
-    {
      "item": "TCE-MS servidores: pessoas",
      "site": 576,
      "fonte": 576,
@@ -1643,219 +1193,9 @@
      "site": 4768570.54,
      "fonte": 4768570.54,
      "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPEN:92821022: bruto",
-     "site": 10345.61,
-     "fonte": 10345.61,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPEN:92821022: líquido",
-     "site": 7694.19,
-     "fonte": 7694.19,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPEN:468324022: bruto",
-     "site": 9155.07,
-     "fonte": 9155.07,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPEN:468324022: líquido",
-     "site": 6958.64,
-     "fonte": 6958.64,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:40015023: bruto",
-     "site": 12451.62,
-     "fonte": 12451.62,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:40015023: líquido",
-     "site": 8836.84,
-     "fonte": 8836.84,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:437818021: bruto",
-     "site": 8827.17,
-     "fonte": 8827.17,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:437818021: líquido",
-     "site": 6577.0,
-     "fonte": 6577.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:449651021: bruto",
-     "site": 1255.29,
-     "fonte": 1255.29,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:449651021: líquido",
-     "site": 1123.48,
-     "fonte": 1123.48,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:98627021: bruto",
-     "site": 9266.21,
-     "fonte": 9266.21,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:98627021: líquido",
-     "site": 6921.34,
-     "fonte": 6921.34,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:49817021: bruto",
-     "site": 29117.22,
-     "fonte": 29117.22,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:49817021: líquido",
-     "site": 19779.77,
-     "fonte": 19779.77,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:1685024: bruto",
-     "site": 10334.98,
-     "fonte": 10334.98,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:1685024: líquido",
-     "site": 9795.84,
-     "fonte": 9795.84,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:104122025: bruto",
-     "site": 12451.62,
-     "fonte": 12451.62,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:104122025: líquido",
-     "site": 8836.84,
-     "fonte": 8836.84,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:63537022: bruto",
-     "site": 10444.7,
-     "fonte": 10444.7,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:63537022: líquido",
-     "site": 7738.17,
-     "fonte": 7738.17,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:38744022: bruto",
-     "site": 15806.17,
-     "fonte": 15806.17,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:38744022: líquido",
-     "site": 11032.69,
-     "fonte": 11032.69,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:30368022: bruto",
-     "site": 8617.47,
-     "fonte": 8617.47,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:30368022: líquido",
-     "site": 6969.85,
-     "fonte": 6969.85,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:125827022: bruto",
-     "site": 24903.26,
-     "fonte": 24903.26,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:125827022: líquido",
-     "site": 17124.04,
-     "fonte": 17124.04,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:1549022: bruto",
-     "site": 70538.68,
-     "fonte": 70538.68,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:1549022: líquido",
-     "site": 38133.87,
-     "fonte": 38133.87,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:44284022: bruto",
-     "site": 4676.4,
-     "fonte": 4676.4,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:44284022: líquido",
-     "site": 4290.64,
-     "fonte": 4290.64,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:76908023: bruto",
-     "site": 34560.58,
-     "fonte": 34560.58,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:76908023: líquido",
-     "site": 23780.0,
-     "fonte": 23780.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:55041023: bruto",
-     "site": 10202.92,
-     "fonte": 10202.92,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:55041023: líquido",
-     "site": 7958.38,
-     "fonte": 7958.38,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:50631026: bruto",
-     "site": 12122.0,
-     "fonte": 12122.0,
-     "diferenca": 0.0
     }
    ],
-   "naoObtidos": 0,
+   "naoObtidos": 278,
    "nota": "",
    "granularidade": "unidade",
    "unidade": "órgão no mês publicado (pessoas e totais da folha)",
@@ -1864,327 +1204,30 @@
    "selecao": "todos os órgãos da folha (PMMS, DGPC e CBMMS pelo filtro do órgão-pai SEJUSP; Governadoria pelo SEGOV), menos TCE-MS conselheiros e procuradores (contracheque só em PDF) e Câmara de CG (60 maiores); amostra diária de 100 contracheques do Governo (os 4 órgãos sem filtro próprio buscados pelo nome)",
    "responsavel": "validar_fontes.py — conferência automática do robô diário (consulta própria à fonte, independente da coleta)",
    "metodologia": "ICP 2.0",
-   "unidadesConferidas": 42,
+   "unidadesConferidas": 3,
    "idsConferidos": [
     "TJMS — Tribunal de Justiça",
     "TRT24 — Justiça do Trabalho",
-    "Governo MS — AGEPREV",
-    "Governo MS — SEFAZ",
-    "Governo MS — DGPC",
-    "Governo MS — PMMS",
-    "Governo MS — CBMMS",
-    "Governo MS — FUNSAU",
-    "Governo MS — SES",
-    "Governo MS — SED",
-    "Governo MS — CASA CIVIL",
-    "Governo MS — IAGRO",
-    "Governo MS — CGE",
-    "Governo MS — SEGOV",
-    "Governo MS — UEMS",
-    "Governo MS — AGEMS",
-    "Governo MS — SETESC",
-    "Governo MS — AGEPEN",
-    "Governo MS — GOVERNADORIA",
-    "Governo MS — FADEB/MS",
-    "Governo MS — SEJUSP",
-    "Governo MS — AEM-MS",
-    "Governo MS — IMASUL",
-    "Governo MS — SEMADESC",
-    "Governo MS — SEILOG",
-    "Governo MS — AGRAER",
-    "Governo MS — FUNDTUR",
-    "Governo MS — SEC",
-    "Governo MS — FCMS",
-    "Governo MS — ESCOLAGOV",
-    "Governo MS — SAD",
-    "Governo MS — AGESUL",
-    "Governo MS — FERTEL",
-    "Governo MS — AGEHAB",
-    "Governo MS — DETRAN",
-    "Governo MS — JUCEMS",
-    "Governo MS — FUNTRAB",
-    "Governo MS — PGE",
-    "Governo MS — SEAD",
-    "Governo MS — FUNDESPORTE",
-    "Governo MS — FUNDECT",
     "TCE-MS — servidores"
    ],
    "registrosAbrangidos": 92415,
    "totaisDeOrgaoConferidos": {
-    "orgaos": 42,
-    "contrachequesNessesOrgaos": 92722
+    "orgaos": 3,
+    "contrachequesNessesOrgaos": 883
    },
    "registrosConferidosUmAUm": 92415,
-   "registrosPorTotais": 92722,
-   "digestsUmAUm": {
-    "Governo MS — AGEPREV": {
-     "n": 33837,
-     "hash": "5460776b79788e50"
-    },
-    "Governo MS — SEFAZ": {
-     "n": 850,
-     "hash": "24e7a21e2eab38ce"
-    },
-    "Governo MS — DGPC": {
-     "n": 1789,
-     "hash": "a51f4ea58ad7fd76"
-    },
-    "Governo MS — PMMS": {
-     "n": 5642,
-     "hash": "5f5caa836b761011"
-    },
-    "Governo MS — CBMMS": {
-     "n": 1841,
-     "hash": "a3ed6baff5298a11"
-    },
-    "Governo MS — FUNSAU": {
-     "n": 2154,
-     "hash": "95ec43987b3dbf4a"
-    },
-    "Governo MS — SES": {
-     "n": 1124,
-     "hash": "48d848a22b34f81f"
-    },
-    "Governo MS — SED": {
-     "n": 30883,
-     "hash": "5efcde1f7f0ff9b4"
-    },
-    "Governo MS — CASA CIVIL": {
-     "n": 130,
-     "hash": "8a6b495d0cb19444"
-    },
-    "Governo MS — IAGRO": {
-     "n": 465,
-     "hash": "743eea0a13ba2ac9"
-    },
-    "Governo MS — CGE": {
-     "n": 95,
-     "hash": "6e4b367ad8124f49"
-    },
-    "Governo MS — SEGOV": {
-     "n": 376,
-     "hash": "9a270fe2afd35871"
-    },
-    "Governo MS — UEMS": {
-     "n": 1562,
-     "hash": "e3ed272541505eb6"
-    },
-    "Governo MS — AGEMS": {
-     "n": 110,
-     "hash": "c6e6bbe91e24e2bf"
-    },
-    "Governo MS — SETESC": {
-     "n": 44,
-     "hash": "aa47a51769540746"
-    },
-    "Governo MS — AGEPEN": {
-     "n": 1845,
-     "hash": "cdf653f99692bf2d"
-    },
-    "Governo MS — GOVERNADORIA": {
-     "n": 5,
-     "hash": "c95709c6fca523de"
-    },
-    "Governo MS — FADEB/MS": {
-     "n": 3,
-     "hash": "188d48cfda3576e7"
-    },
-    "Governo MS — SEJUSP": {
-     "n": 1057,
-     "hash": "045ff6628246e540"
-    },
-    "Governo MS — AEM-MS": {
-     "n": 89,
-     "hash": "100b98081294da76"
-    },
-    "Governo MS — IMASUL": {
-     "n": 356,
-     "hash": "209562d64181a34b"
-    },
-    "Governo MS — SEMADESC": {
-     "n": 117,
-     "hash": "cd06a2dfb88cb3c8"
-    },
-    "Governo MS — SEILOG": {
-     "n": 107,
-     "hash": "644eead69e086fa1"
-    },
-    "Governo MS — AGRAER": {
-     "n": 500,
-     "hash": "a820ac4b6ce40f78"
-    },
-    "Governo MS — FUNDTUR": {
-     "n": 51,
-     "hash": "2d72d69d7d991ad2"
-    },
-    "Governo MS — SEC": {
-     "n": 75,
-     "hash": "9a1291234aa393f4"
-    },
-    "Governo MS — FCMS": {
-     "n": 120,
-     "hash": "2983e3fbaa9cb791"
-    },
-    "Governo MS — ESCOLAGOV": {
-     "n": 24,
-     "hash": "69b56f2da5487259"
-    },
-    "Governo MS — SAD": {
-     "n": 1167,
-     "hash": "12e2d3835b6d2b8a"
-    },
-    "Governo MS — AGESUL": {
-     "n": 421,
-     "hash": "8bde87c3bcbf4d43"
-    },
-    "Governo MS — FERTEL": {
-     "n": 118,
-     "hash": "b415495ada74ba6f"
-    },
-    "Governo MS — AGEHAB": {
-     "n": 104,
-     "hash": "91d6dda3cdfb43ac"
-    },
-    "Governo MS — DETRAN": {
-     "n": 849,
-     "hash": "d6ee3523ae718090"
-    },
-    "Governo MS — JUCEMS": {
-     "n": 70,
-     "hash": "3feb1f9d0f0d9e55"
-    },
-    "Governo MS — FUNTRAB": {
-     "n": 86,
-     "hash": "950603db4370d7db"
-    },
-    "Governo MS — PGE": {
-     "n": 280,
-     "hash": "7be12bb078001c37"
-    },
-    "Governo MS — SEAD": {
-     "n": 891,
-     "hash": "d11d1a68991814b1"
-    },
-    "Governo MS — FUNDESPORTE": {
-     "n": 396,
-     "hash": "8394f9d51215a120"
-    },
-    "Governo MS — FUNDECT": {
-     "n": 2206,
-     "hash": "c329a623b8fb7ab1"
-    }
-   },
+   "registrosPorTotais": 883,
+   "digestsUmAUm": {},
    "soNaFonte": 0,
    "amostraContracheques": {
     "sorteados": 100,
-    "conferidos": 100,
-    "hashes": {
-     "AGEPEN:92821022": "5384ddf5d83b",
-     "AGEPEN:468324022": "225ef43d2dfb",
-     "AGEPREV:40015023": "e406a0ff446c",
-     "AGEPREV:437818021": "a013fe37a1bb",
-     "AGEPREV:449651021": "6da2ed831b2f",
-     "AGEPREV:98627021": "69eac85e3a79",
-     "AGEPREV:49817021": "94dbbf42777e",
-     "AGEPREV:1685024": "b0c22cc3f6a7",
-     "AGEPREV:104122025": "4bbb4db0ace8",
-     "AGEPREV:63537022": "45dac1f15c17",
-     "AGEPREV:38744022": "6e2925055268",
-     "AGEPREV:30368022": "49a5c5447683",
-     "AGEPREV:125827022": "e33a718a4b9f",
-     "AGEPREV:1549022": "42bcbe460448",
-     "AGEPREV:44284022": "78616145f2e2",
-     "AGEPREV:76908023": "e3ba06870a29",
-     "AGEPREV:55041023": "71bbbd83811d",
-     "AGEPREV:50631026": "faac12a17bb9",
-     "AGEPREV:120715022": "48c2b519558c",
-     "AGEPREV:10197024": "3e80b33e96ec",
-     "AGEPREV:83607025": "2297a7bce8e0",
-     "AGEPREV:16178022": "f4356b7c63d0",
-     "AGEPREV:22666022": "88ec1f6c41f9",
-     "AGEPREV:91953022": "8e3a5b59c181",
-     "AGEPREV:46702022": "59eda1c74f34",
-     "AGEPREV:110604021": "a29e6dfa126b",
-     "AGEPREV:1691022": "fc565ad265c1",
-     "AGEPREV:49156023": "98a226269dc3",
-     "AGEPREV:106895021": "6d215710327f",
-     "AGEPREV:76492022": "3c179d6bab7c",
-     "AGEPREV:22966022": "88ee7e62f966",
-     "AGEPREV:34706024": "24badc781d4d",
-     "AGEPREV:450139021": "ba7d6ddd9edc",
-     "AGEPREV:14344022": "5ee1cd252240",
-     "AGEPREV:4434021": "c87f7ded7d1b",
-     "AGEPREV:3009022": "1a50a560cf67",
-     "AGEPREV:41915023": "d594823245b1",
-     "AGEPREV:61845021": "e18f93e1179a",
-     "AGEPREV:372731021": "51ae0851eb46",
-     "AGESUL:85219021": "0766e4b02b95",
-     "AGRAER:47599021": "71e9247cdb7f",
-     "CBMMS:820659021": "b4544dcc7412",
-     "CBMMS:485530025": "ae423a3f7d40",
-     "DETRAN:429345021": "c255e4bd2b79",
-     "DGPC:474595023": "9357d61b48c9",
-     "DGPC:101986023": "6c2850081984",
-     "FUNDECT:825319021": "11b219f36148",
-     "FUNDECT:825931021": "c6a7a04ca6e7",
-     "FUNDESPORTE:828088021": "1b3195d5dc62",
-     "FUNSAU:78642026": "d624b637c736",
-     "FUNSAU:133779022": "bc319595bb6e",
-     "IAGRO:96699021": "17ffea53a7b7",
-     "PMMS:100315021": "224c32dc1851",
-     "PMMS:426548021": "166a56863b10",
-     "PMMS:22554021": "796821f476e4",
-     "PMMS:73676023": "ce06173c5db3",
-     "PMMS:426001021": "8d5e2b27671d",
-     "PMMS:127060021": "33bac9da7bdb",
-     "SAD:813404021": "237b211905b3",
-     "SEAD:129805021": "0b65738f2cac",
-     "SED:511482021": "79867300775c",
-     "SED:43787039": "c9cae240728c",
-     "SED:15081021": "89fdb9ea48b3",
-     "SED:484803025": "5e1b9355a827",
-     "SED:509702023": "75c853716034",
-     "SED:98738035": "c5d963ecd33a",
-     "SED:498577021": "751956b8f7b2",
-     "SED:503637024": "095fcdc3a083",
-     "SED:83565021": "6636a1cd0493",
-     "SED:54440033": "d17afb234d4d",
-     "SED:41090023": "147a7eb20c6d",
-     "SED:40746021": "0604e7f97fc5",
-     "SED:468818030": "2740d74482a8",
-     "SED:816805023": "f9a0ae57c046",
-     "SED:510767023": "b722fe2becb1",
-     "SED:829456022": "f964b2ef7d9d",
-     "SED:511544023": "3ca0c84512a7",
-     "SED:126560023": "89c133f29381",
-     "SED:508670021": "c9fbeef53156",
-     "SED:474217031": "95ad057f6401",
-     "SED:818936021": "f2255cfdf55c",
-     "SED:511148021": "41ca32e32283",
-     "SED:4730023": "3cdf908dd486",
-     "SED:98066022": "309f71957f49",
-     "SED:815517021": "6a8a27775eb5",
-     "SED:48972021": "4e66eb4970e5",
-     "SED:85624021": "77432143b05e",
-     "SED:825424021": "359f09f64d25",
-     "SED:492733023": "62adac40a621",
-     "SED:816161021": "1d8a12b28828",
-     "SED:2021": "19bc59339d39",
-     "SED:814696031": "97f449ab40f7",
-     "SED:430530030": "95b491932576",
-     "SED:12610040": "7604990bb216",
-     "SEFAZ:106355021": "120ec91e70ee",
-     "SEGOV:61367022": "d1748ccd2a4d",
-     "SEJUSP:107590022": "36d2e191dfe1",
-     "SES:468290023": "721ef713ab85",
-     "UEMS:91110021": "2afdb7da572a",
-     "UEMS:40766024": "8e34d4581bf1"
-    }
+    "conferidos": 0,
+    "hashes": {}
    },
    "independencia": "mesma fonte da coleta (folha do Estado, portal do TCE-MS e DadosJusBr), por outra consulta: confirma a leitura, não é fonte independente",
    "fonteIndependente": {
     "resultado": "confere",
-    "em": "2026-11-19T18:23:59",
+    "em": "2026-11-20T12:29:40",
     "periodo": "2º quadrimestre de 2026",
     "mesFolha": "10/2026",
     "tolerancia": 10,
@@ -2209,7 +1252,7 @@
     "fonteUrl": "https://siconfi.tesouro.gov.br/",
     "nota": "fonte independente, só no agregado do Poder Executivo; não conta contracheque conferido"
    },
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44765380344"
   },
   "shows": {
    "resultado": "confere",
@@ -3243,7 +2286,9 @@
     "28371044000147-1-000006/2026": "a270f8448ba6",
     "43669583000150-1-000006/2026": "e6f3cc9e0baa"
    },
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44622903893",
+   "ultimaTentativa": "2026-11-20T12:29:40",
+   "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"
   },
   "alugueis": {
    "resultado": "confere",
@@ -4109,7 +3154,7 @@
     "37212719000104-1-000044/2026": "73476f23d5d0",
     "37226644000102-1-000078/2026": "1e75f33defb0"
    },
-   "ultimaTentativa": "2026-11-19T18:23:59",
+   "ultimaTentativa": "2026-11-20T12:29:40",
    "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"
   },
   "votacoes": {
@@ -4982,7 +4027,9 @@
    "registrosAbrangidos": 126,
    "registrosConferidosUmAUm": 126,
    "registrosPorTotais": 0,
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44622903893",
+   "ultimaTentativa": "2026-11-20T12:29:40",
+   "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"
   },
   "producao": {
    "resultado": "confere",
@@ -5133,7 +4180,9 @@
    },
    "naoAchadosNaFonte": 0,
    "casadosHoje": 1112,
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44622903893",
+   "ultimaTentativa": "2026-11-20T12:29:40",
+   "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"
   },
   "judiciario": {
    "resultado": "confere",
@@ -5171,7 +4220,9 @@
     "soma do subsídio"
    ],
    "registrosAbrangidos": 227,
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44622903893",
+   "ultimaTentativa": "2026-11-20T12:29:40",
+   "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"
   },
   "entidades": {
    "resultado": "confere",
@@ -7804,7 +6855,9 @@
     "44056192000123",
     "70366828000143"
    ],
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44622903893",
+   "ultimaTentativa": "2026-11-20T12:29:40",
+   "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"
   },
   "obras": {
    "resultado": "confere",
@@ -9085,7 +8138,9 @@
    "registrosConferidosUmAUm": 266,
    "registrosPorTotais": 0,
    "independencia": "reconsulta na mesma fonte (portal do Estado) — confirma a leitura, não é fonte independente",
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44622903893",
+   "ultimaTentativa": "2026-11-20T12:29:40",
+   "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"
   },
   "publicidade": {
    "resultado": "confere",
@@ -9375,7 +8430,9 @@
     "SIG-Transparência da Prefeitura de Campo Grande"
    ],
    "independencia": "reconsulta na mesma fonte (portal do Estado e SIG da Prefeitura) — confirma a leitura, não é fonte independente",
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44622903893",
+   "ultimaTentativa": "2026-11-20T12:29:40",
+   "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"
   },
   "eleicoes": {
    "resultado": "confere",
@@ -10201,7 +9258,9 @@
     }
    },
    "independencia": "DivulgaCand do TSE: outro serviço do mesmo órgão (a coleta usa os arquivos de dados abertos do TSE) — confirma os dados da candidatura, não é fonte independente do TSE",
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44622903893",
+   "ultimaTentativa": "2026-11-20T12:29:40",
+   "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"
   },
   "emendas": {
    "resultado": "diverge",
@@ -11042,7 +10101,9 @@
     "202081001493|03501509000106|03/2026": "nenhum pagamento a favorecido de MS no ano entre os documentos da emenda na API"
    },
    "independencia": "API da CGU: outro serviço do mesmo órgão (a coleta usa o arquivo de download do Portal da Transparência) — confirma os pagamentos, não é fonte independente da CGU",
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44622903893",
+   "ultimaTentativa": "2026-11-20T12:29:40",
+   "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"
   },
   "contratos-cg": {
    "resultado": "confere",
@@ -12495,7 +11556,9 @@
    "registrosConferidosUmAUm": 352,
    "registrosPorTotais": 0,
    "independencia": "reconsulta na mesma fonte (SIG-Transparência da Prefeitura) — confirma a leitura, não é fonte independente",
-   "coletaRunId": "44622903893"
+   "coletaRunId": "44622903893",
+   "ultimaTentativa": "2026-11-20T12:29:40",
+   "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"
   }
  }
 }

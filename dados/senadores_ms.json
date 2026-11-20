@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-19T17:51:31",
+  "ultimaAtualizacao": "2026-11-20T11:39:21",
   "ano": 2026,
-  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-19T17:51:31",
+  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-20T11:39:21",
   "total": 3,
   "senadores": [
     {
@@ -26,7 +26,7 @@
         "Viagens Oficiais - Diárias": 58150.2,
         "Viagens Oficiais - Ressarcimento de Passagens": 0.0,
         "Consumo de Material - Outros materiais": 8280.09,
-        "Correios": 43750.27,
+        "Correios": 43816.0,
         "Cotas para Impulsionamento em Mídias Sociais": 31258.68,
         "Aquisição de passagens aéreas (ATC 2/2023)": 134850.72
       },
@@ -41,7 +41,7 @@
         "imovelFuncional": "Utilizou"
       },
       "cotaGastaAno": 499728.24,
-      "totalGasto": 776018.2,
+      "totalGasto": 776083.93,
       "ceapsCategorias": [
         {
           "categoria": "Divulgação da atividade parlamentar",
@@ -60,6 +60,7 @@
           "valor": 21317.19
         }
       ],
+      "aguardandoFonte": null,
       "despesas": [
         {
           "categoria": "Divulgação da atividade parlamentar (2025)",
@@ -1263,7 +1264,7 @@
       ],
       "totalNotasFiscais": 105,
       "escritorioApoio": "AV. AMÉRICA, 759 – VILA PLANALTO, CAMPO GRANDE/MS – CEP 79009-060",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-19T17:51:31",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-20T11:39:21",
       "nota": ""
     },
     {
@@ -1281,7 +1282,7 @@
         "Locomoção, hospedagem, alimentação e combustíveis": 250764.4,
         "Contratação de serviços de apoio ao parlamentar": 792.0,
         "Divulgação da atividade parlamentar": 29060.55,
-        "Passagens aéreas, aquáticas e terrestres nacionais": 104331.41,
+        "Passagens aéreas, aquáticas e terrestres nacionais": 107854.44,
         "Serviços de Segurança Privada": 0.0
       },
       "gastosExtras": {
@@ -1295,8 +1296,8 @@
       "pessoal": {
         "gabinete": 20,
         "gabineteComissionados": 17,
-        "escritorio": 20,
-        "escritorioComissionados": 20
+        "escritorio": 18,
+        "escritorioComissionados": 18
       },
       "beneficios": {
         "auxilioMoradia": "Não utilizou",
@@ -1306,7 +1307,7 @@
       "totalGasto": 688590.38,
       "ceapsCategorias": [
         {
-          "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "valor": 250764.4
         },
         {
@@ -1322,14 +1323,20 @@
           "valor": 29060.55
         },
         {
-          "categoria": "Aquisição de material de consumo",
+          "categoria": "Aquisição de material de consumo para uso no escritório político",
           "valor": 4008.06
         },
         {
-          "categoria": "Contratação de serviços de apoio ao parlamentar",
+          "categoria": "Contratação de consultorias, assessorias, pesquisas, trabalhos técnicos e outros serviços de apoio ao exercício do mandato parlamentar",
           "valor": 792.0
         }
       ],
+      "aguardandoFonte": {
+        "totalSenado": 490170.34,
+        "somaNotas": 486647.31,
+        "diferenca": 3523.03,
+        "texto": "o Senado já informa R$ 490.170,34 no total de 2026; R$ 3.523,03 ainda sem nota individual publicada"
+      },
       "despesas": [
         {
           "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
@@ -4000,7 +4007,7 @@
       ],
       "totalNotasFiscais": 238,
       "escritorioApoio": "AV. PROF. LUIZ ALEXANDRE DE OLIVEIRA, 879 – TÉRREO, ROYAL PARK, CAMPO GRANDE/MS – CEP 79021-430 | Tel: (67) 3222-8738",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-19T17:51:31",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-20T11:39:21",
       "nota": ""
     },
     {
@@ -4015,7 +4022,7 @@
       "ceaps": {
         "Aluguel de imóveis para escritório político": 11731.55,
         "Aquisição de material de consumo": 4054.77,
-        "Locomoção, hospedagem, alimentação e combustíveis": 60196.46,
+        "Locomoção, hospedagem, alimentação e combustíveis": 66176.46,
         "Contratação de serviços de apoio ao parlamentar": 41617.8,
         "Divulgação da atividade parlamentar": 17500.0,
         "Passagens aéreas, aquáticas e terrestres nacionais": 152314.22,
@@ -4027,7 +4034,7 @@
         "Consumo de Material - Outros materiais": 7403.86,
         "Correios": 27511.96,
         "Cotas para Impulsionamento em Mídias Sociais": 17761.19,
-        "Aquisição de passagens aéreas (ATC 2/2023)": 93704.48
+        "Aquisição de passagens aéreas (ATC 2/2023)": 100386.05
       },
       "pessoal": {
         "gabinete": 15,
@@ -4040,18 +4047,18 @@
         "imovelFuncional": "Utilizou"
       },
       "cotaGastaAno": 287414.8,
-      "totalGasto": 433796.29,
+      "totalGasto": 440477.86,
       "ceapsCategorias": [
         {
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
           "valor": 152314.22
         },
         {
-          "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "valor": 60196.46
         },
         {
-          "categoria": "Contratação de serviços de apoio ao parlamentar",
+          "categoria": "Contratação de consultorias, assessorias, pesquisas, trabalhos técnicos e outros serviços de apoio ao exercício do mandato parlamentar",
           "valor": 41617.8
         },
         {
@@ -4063,10 +4070,16 @@
           "valor": 11731.55
         },
         {
-          "categoria": "Aquisição de material de consumo",
+          "categoria": "Aquisição de material de consumo para uso no escritório político",
           "valor": 4054.77
         }
       ],
+      "aguardandoFonte": {
+        "totalSenado": 293394.8,
+        "somaNotas": 287414.8,
+        "diferenca": 5980.0,
+        "texto": "o Senado já informa R$ 293.394,80 no total de 2026; R$ 5.980,00 ainda sem nota individual publicada"
+      },
       "despesas": [],
       "notasCeaps": [
         {
@@ -5898,7 +5911,7 @@
       ],
       "totalNotasFiscais": 166,
       "escritorioApoio": "",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-19T17:51:31",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-20T11:39:21",
       "nota": ""
     }
   ]

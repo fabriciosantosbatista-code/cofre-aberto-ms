@@ -1,86 +1,88 @@
 {
- "geradoEm": "2026-11-19T18:22:18",
- "metodo": "Roda no robô diário, depois da coleta (precisa da folha completa: artefato privado folha-supersalarios-*, sem CPF).\nGrupos (os mesmos da antiga lista manual):\n  supersalario   todos os contracheques com líquido acima do teto do mês\n  intermediario  100 sorteados (semente 42, estratificado por órgão) entre bruto acima e líquido abaixo do teto\n  amostra        100 sorteados abaixo do teto (semente = data, estratificado por órgão), com janela de 30 dias + hash\nCada contracheque é reconsultado e recebe status \"confere\", \"diverge\" ou \"não verificado (motivo)\":\n  Governo MS     nova consulta à folha do Estado pelo nome dentro do órgão (mesma matrícula): bruto, eventuais e\n                 líquido. Rótulo: \"mesma fonte — confirma a leitura\". A fonte publica só remuneração fixa, eventuais e\n                 valor após deduções: não é possível separar verbas indenizatórias.\n  TRT24          comparado com a folha lida no portal do próprio TRT24 (Anexo VIII) na mesma coleta\n                 (dados/trt24_magistrados.json): bruto e líquido. Rótulo: \"conferido no arquivo original do órgão\".\n  TJMS           o portal do TJMS bloqueia acessos de fora do Brasil: sem o arquivo original → não verificado.\n  TCE-MS         servidores: nova consulta ao portal do TCE por matrícula (salário-base, outras verbas, líquido).\n                 Membros (contracheque em PDF): não verificado até a dupla extração do PDF do TCE entrar.\nTeto: config/teto.json (valor, data de início e lei), aplicado pelo mês de cada contracheque.\nRubricas (Judiciário e membros do TCE): config/rubricas.json (remuneratório, indenizatório ou excluído do teto, com a\nbase legal). Rubrica fora da tabela → \"não verificado — rubrica não classificada\" (aviso no log). Não adivinha.",
+ "geradoEm": "2026-11-20T12:15:31",
+ "metodo": "Roda no robô diário, depois da coleta (precisa da folha completa, sem CPF: artefato folha-supersalarios-* CIFRADO — artefato de repositório público\né baixável por qualquer usuário logado no GitHub; ver SEGURANCA_ARTEFATOS.md).\nGrupos (os mesmos da antiga lista manual):\n  supersalario   todos os contracheques com líquido acima do teto do mês\n  intermediario  100 sorteados (semente 42, estratificado por órgão) entre bruto acima e líquido abaixo do teto\n  amostra        100 sorteados abaixo do teto (semente = data, estratificado por órgão), com janela de 30 dias + hash\nCada contracheque é reconsultado e recebe status \"confere\", \"diverge\" ou \"não verificado (motivo)\":\n  Governo MS     nova consulta à folha do Estado pelo nome dentro do órgão (mesma matrícula): bruto, eventuais e\n                 líquido. Rótulo: \"mesma fonte — confirma a leitura\". A fonte publica só remuneração fixa, eventuais e\n                 valor após deduções: não é possível separar verbas indenizatórias.\n  TRT24          comparado com a folha lida no portal do próprio TRT24 (Anexo VIII) na mesma coleta\n                 (dados/trt24_magistrados.json): bruto e líquido. Rótulo: \"conferido no arquivo original do órgão\".\n  TJMS           o portal do TJMS bloqueia acessos de fora do Brasil: sem o arquivo original → não verificado.\n  TCE-MS         servidores: nova consulta ao portal do TCE por matrícula (salário-base, outras verbas, líquido).\n                 Membros (contracheque em PDF): não verificado até a dupla extração do PDF do TCE entrar.\nTeto: config/teto.json (valor, data de início e lei), aplicado pelo mês de cada contracheque.\nRubricas (Judiciário e membros do TCE): config/rubricas.json (remuneratório, indenizatório ou excluído do teto, com a\nbase legal). Rubrica fora da tabela → \"não verificado — rubrica não classificada\" (aviso no log). Não adivinha.",
  "grupos": {
   "supersalario": {
-   "confere": 373,
+   "nao_verificado": 143,
    "diverge": 34,
-   "nao_verificado": 14,
+   "confere": 244,
    "total": 421
   },
   "intermediario": {
-   "confere": 98,
+   "nao_verificado": 95,
+   "confere": 3,
    "diverge": 2,
    "total": 100
   },
   "amostra": {
-   "confere": 100,
+   "nao_verificado": 99,
+   "confere": 1,
    "total": 100
   }
  },
  "porOrgao": {
   "Governo MS — AGEPEN": {
-   "confere": 2
+   "nao_verificado": 2
   },
   "Governo MS — AGEPREV": {
-   "confere": 102
+   "nao_verificado": 102
   },
   "Governo MS — AGESUL": {
-   "confere": 1
+   "nao_verificado": 1
   },
   "Governo MS — AGRAER": {
-   "confere": 1
+   "nao_verificado": 1
   },
   "Governo MS — CASA CIVIL": {
-   "confere": 1
+   "nao_verificado": 1
   },
   "Governo MS — CBMMS": {
-   "confere": 8
+   "nao_verificado": 8
   },
   "Governo MS — DETRAN": {
-   "confere": 1
+   "nao_verificado": 1
   },
   "Governo MS — DGPC": {
-   "confere": 15
+   "nao_verificado": 15
   },
   "Governo MS — FUNDECT": {
-   "confere": 3
+   "nao_verificado": 3
   },
   "Governo MS — FUNDESPORTE": {
-   "confere": 1
+   "nao_verificado": 1
   },
   "Governo MS — FUNSAU": {
-   "confere": 5
+   "nao_verificado": 5
   },
   "Governo MS — IAGRO": {
-   "confere": 1
+   "nao_verificado": 1
   },
   "Governo MS — PMMS": {
-   "confere": 20
+   "nao_verificado": 20
   },
   "Governo MS — SAD": {
-   "confere": 1
+   "nao_verificado": 1
   },
   "Governo MS — SEAD": {
-   "confere": 1
+   "nao_verificado": 1
   },
   "Governo MS — SED": {
-   "confere": 35
+   "nao_verificado": 35
   },
   "Governo MS — SEFAZ": {
-   "confere": 117
+   "nao_verificado": 117
   },
   "Governo MS — SEGOV": {
-   "confere": 2
+   "nao_verificado": 2
   },
   "Governo MS — SEJUSP": {
-   "confere": 1
+   "nao_verificado": 1
   },
   "Governo MS — SES": {
-   "confere": 3
+   "nao_verificado": 3
   },
   "Governo MS — UEMS": {
-   "confere": 2
+   "nao_verificado": 2
   },
   "TCE-MS — Tribunal de Contas (membros)": {
    "nao_verificado": 14
@@ -97,6 +99,10 @@
   }
  },
  "naoVerificadoPorMotivo": [
+  [
+   "fonte inacessível (ConnectTimeout)",
+   323
+  ],
   [
    "rubrica não classificada",
    14
@@ -209,14 +215,14 @@
  ],
  "clopperPearson": {
   "amostra": {
-   "conferidos": 100,
+   "conferidos": 1,
    "comErro": 0,
-   "limiteSuperior95": 0.0295
+   "limiteSuperior95": 0.95
   },
   "intermediario": {
-   "conferidos": 100,
+   "conferidos": 5,
    "comErro": 2,
-   "limiteSuperior95": 0.0616
+   "limiteSuperior95": 0.8107
   }
  },
  "teto": [
@@ -341,7 +347,8 @@
   "2fd9dd4572ab": "2026-11-19",
   "f7ff24b97042": "2026-11-19",
   "94e8b48ea2de": "2026-11-19",
-  "83a84b20985c": "2026-11-19"
+  "83a84b20985c": "2026-11-19",
+  "c3abd1ad51db": "2026-11-20"
  },
  "rotulos": {
   "governo": "mesma fonte — confirma a leitura",

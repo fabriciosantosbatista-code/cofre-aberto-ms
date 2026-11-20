@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-19T17:51:31",
+  "ultimaAtualizacao": "2026-11-20T11:39:21",
   "ano": 2026,
-  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-19T17:51:31",
+  "fonte": "API da Câmara dos Deputados (dadosabertos.camara.leg.br) — 2026-11-20T11:39:21",
   "total": 8,
   "deputados": [
     {
@@ -2433,7 +2433,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/220548",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/220548/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 526668.68,
+      "cotaGastaAno": 526768.68,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -2453,7 +2453,7 @@
         },
         {
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
-          "valor": 47941.73
+          "valor": 48041.73
         },
         {
           "categoria": "PASSAGEM AÉREA - REEMBOLSO",
@@ -2464,8 +2464,19 @@
           "valor": 5837.33
         }
       ],
-      "totalNotasFiscais": 472,
+      "totalNotasFiscais": 473,
       "despesas": [
+        {
+          "data": "2026-11-18",
+          "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
+          "fornecedor": "POSTO ITAMARATY LTDA",
+          "cnpjCpfFornecedor": "00.314.831/0001-38",
+          "valor": 100.0,
+          "doc": "165698",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8179369",
+          "mes": 11,
+          "codDocumento": "8179369"
+        },
         {
           "data": "2026-11-16",
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
@@ -10477,7 +10488,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/204351",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/204351/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 275310.89,
+      "cotaGastaAno": 276274.01,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -10485,7 +10496,7 @@
         },
         {
           "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "valor": 76858.37
+          "valor": 77038.37
         },
         {
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
@@ -10501,11 +10512,11 @@
         },
         {
           "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-          "valor": 4857.5
+          "valor": 5407.5
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 4145.4
+          "valor": 4378.52
         },
         {
           "categoria": "FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR",
@@ -10520,7 +10531,7 @@
           "valor": -26670.0
         }
       ],
-      "totalNotasFiscais": 391,
+      "totalNotasFiscais": 395,
       "despesas": [
         {
           "data": "2026-11-16",
@@ -10529,10 +10540,9 @@
           "cnpjCpfFornecedor": "14.967.901/0001-61",
           "valor": 150.0,
           "doc": "19838",
-          "urlNotaFiscal": "http://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8178914",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8178914",
           "mes": 11,
-          "codDocumento": "8178914",
-          "origem": "API da Câmara (ainda não está no arquivo anual)"
+          "codDocumento": "8178914"
         },
         {
           "data": "2026-11-15",
@@ -10541,10 +10551,9 @@
           "cnpjCpfFornecedor": "02.394.473/0001-46",
           "valor": 160.0,
           "doc": "244628",
-          "urlNotaFiscal": "http://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8178889",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8178889",
           "mes": 11,
-          "codDocumento": "8178889",
-          "origem": "API da Câmara (ainda não está no arquivo anual)"
+          "codDocumento": "8178889"
         },
         {
           "data": "2026-11-12",
@@ -10553,10 +10562,9 @@
           "cnpjCpfFornecedor": "14.967.901/0001-61",
           "valor": 234.63,
           "doc": "19735",
-          "urlNotaFiscal": "http://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8178901",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8178901",
           "mes": 11,
-          "codDocumento": "8178901",
-          "origem": "API da Câmara (ainda não está no arquivo anual)"
+          "codDocumento": "8178901"
         },
         {
           "data": "2026-11-11",
@@ -10565,10 +10573,9 @@
           "cnpjCpfFornecedor": "03.024.296/0001-79",
           "valor": 150.0,
           "doc": "394979",
-          "urlNotaFiscal": "http://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8178884",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8178884",
           "mes": 11,
-          "codDocumento": "8178884",
-          "origem": "API da Câmara (ainda não está no arquivo anual)"
+          "codDocumento": "8178884"
         },
         {
           "data": "2026-11-10",
@@ -10654,10 +10661,9 @@
           "cnpjCpfFornecedor": "03.024.296/0001-79",
           "valor": 150.0,
           "doc": "371825",
-          "urlNotaFiscal": "http://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8178886",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8178886",
           "mes": 10,
-          "codDocumento": "8178886",
-          "origem": "API da Câmara (ainda não está no arquivo anual)"
+          "codDocumento": "8178886"
         },
         {
           "data": "2026-10-17",
@@ -10727,6 +10733,17 @@
         },
         {
           "data": "2026-10-08",
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENERGIA S.A.",
+          "cnpjCpfFornecedor": "15.413.826/0001-50",
+          "valor": 851.25,
+          "doc": "19230974",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3393/2026/8169815.pdf",
+          "mes": 10,
+          "codDocumento": "8169815"
+        },
+        {
+          "data": "2026-10-08",
           "categoria": "COMBUSTÍVEIS E LUBRIFICANTES.",
           "fornecedor": "POSTO LIBERDADE LOCATELLI LTDA.",
           "cnpjCpfFornecedor": "02.394.473/0001-46",
@@ -10746,18 +10763,6 @@
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3393/2026/8166953.pdf",
           "mes": 10,
           "codDocumento": "8166953"
-        },
-        {
-          "data": "2026-10-08",
-          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-          "fornecedor": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENERGIA S.A.",
-          "cnpjCpfFornecedor": "15.413.826/0001-50",
-          "valor": 851.25,
-          "doc": "19230974",
-          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3393/2026/8169815.pdf",
-          "mes": 10,
-          "codDocumento": "8169815",
-          "origem": "API da Câmara (ainda não está no arquivo anual)"
         },
         {
           "data": "2026-10-07",
@@ -10791,8 +10796,26 @@
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3393/2026/8166989.pdf",
           "mes": 9,
           "codDocumento": "8166989",
-          "possivelDuplicidade": {
-            "texto": "problema na fonte (Câmara): a mesma nota aparece com dois códigos de documento",
+          "sinalAtencao": {
+            "texto": "sinal de atenção: possível reembolso em duplicidade — a Câmara registrou a mesma nota duas vezes (códigos 8166989 e 8169763)",
+            "codigos": [
+              "8166989",
+              "8169763"
+            ]
+          }
+        },
+        {
+          "data": "2026-10-06",
+          "categoria": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
+          "fornecedor": "PRINT & COPY COMERCIO LTDA",
+          "cnpjCpfFornecedor": "25.024.334/0001-26",
+          "valor": 180.0,
+          "doc": "52517",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3393/2026/8169763.pdf",
+          "mes": 10,
+          "codDocumento": "8169763",
+          "sinalAtencao": {
+            "texto": "sinal de atenção: possível reembolso em duplicidade — a Câmara registrou a mesma nota duas vezes (códigos 8166989 e 8169763)",
             "codigos": [
               "8166989",
               "8169763"
@@ -10974,6 +10997,28 @@
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8174109",
           "mes": 9,
           "codDocumento": "8174109"
+        },
+        {
+          "data": "2026-09-03",
+          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
+          "fornecedor": "S L ZANDONADI & CIA LTDA",
+          "cnpjCpfFornecedor": "07.570.090/0001-03",
+          "valor": 190.0,
+          "doc": "596",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3393/2026/8174112.pdf",
+          "mes": 9,
+          "codDocumento": "8174112"
+        },
+        {
+          "data": "2026-09-03",
+          "categoria": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
+          "fornecedor": "S L ZANDONADI & CIA LTDA",
+          "cnpjCpfFornecedor": "07.570.090/0001-03",
+          "valor": 360.0,
+          "doc": "599",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3393/2026/8174115.pdf",
+          "mes": 9,
+          "codDocumento": "8174115"
         },
         {
           "data": "2026-09-01",
@@ -11677,6 +11722,17 @@
           "cnpjCpfFornecedor": "00.000.000/0000-01",
           "valor": 349.68,
           "doc": "8156377",
+          "urlNotaFiscal": null,
+          "mes": 7,
+          "codDocumento": "0"
+        },
+        {
+          "data": "2026-07-01",
+          "categoria": "TELEFONIA",
+          "fornecedor": "CELULAR FUNCIONAL",
+          "cnpjCpfFornecedor": "00.000.000/0000-01",
+          "valor": 233.12,
+          "doc": "8179619",
           "urlNotaFiscal": null,
           "mes": 7,
           "codDocumento": "0"
@@ -21294,24 +21350,22 @@
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
           "fornecedor": "CONCESSIONARIA DE RODOVIA SUL - MATOGROSSENSE S.A",
           "cnpjCpfFornecedor": "19.642.306/0001-70",
-          "valor": 12.7,
-          "doc": "P956H1VJ82PW",
-          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8177629.pdf",
+          "valor": 14.1,
+          "doc": "K1EE95VJ84AU",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8177630.pdf",
           "mes": 11,
-          "codDocumento": "8177629",
-          "origem": "API da Câmara (ainda não está no arquivo anual)"
+          "codDocumento": "8177630"
         },
         {
           "data": "2026-11-16",
           "categoria": "SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO",
           "fornecedor": "CONCESSIONARIA DE RODOVIA SUL - MATOGROSSENSE S.A",
           "cnpjCpfFornecedor": "19.642.306/0001-70",
-          "valor": 14.1,
-          "doc": "K1EE95VJ84AU",
-          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8177630.pdf",
+          "valor": 12.7,
+          "doc": "P956H1VJ82PW",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3673/2026/8177629.pdf",
           "mes": 11,
-          "codDocumento": "8177630",
-          "origem": "API da Câmara (ainda não está no arquivo anual)"
+          "codDocumento": "8177629"
         },
         {
           "data": "2026-11-11",
@@ -26842,7 +26896,7 @@
       "urlPerfil": "https://www.camara.leg.br/deputados/74376",
       "urlCeap": "https://dadosabertos.camara.leg.br/api/v2/deputados/74376/despesas?ano=2026",
       "salarioBase": 41650.92,
-      "cotaGastaAno": 401263.03,
+      "cotaGastaAno": 401496.15,
       "ceapCategorias": [
         {
           "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
@@ -26870,7 +26924,7 @@
         },
         {
           "categoria": "TELEFONIA",
-          "valor": 5048.62
+          "valor": 5281.74
         },
         {
           "categoria": "PASSAGEM AÉREA - RPA",
@@ -26881,7 +26935,7 @@
           "valor": 31.46
         }
       ],
-      "totalNotasFiscais": 363,
+      "totalNotasFiscais": 364,
       "despesas": [
         {
           "data": "2026-10-31",
@@ -26907,6 +26961,17 @@
         },
         {
           "data": "2026-10-22",
+          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+          "fornecedor": "EDER FLORENCIO YANAGUITA LTDA",
+          "cnpjCpfFornecedor": "24.523.677/0001-72",
+          "valor": 9000.0,
+          "doc": "323",
+          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1697/2026/8168747.pdf",
+          "mes": 10,
+          "codDocumento": "8168747"
+        },
+        {
+          "data": "2026-10-22",
           "categoria": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
           "fornecedor": "HVA CASTRO",
           "cnpjCpfFornecedor": "23.788.744/0001-18",
@@ -26915,18 +26980,6 @@
           "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1697/2026/8174935.pdf",
           "mes": 10,
           "codDocumento": "8174935"
-        },
-        {
-          "data": "2026-10-22",
-          "categoria": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
-          "fornecedor": "EDER FLORENCIO YANAGUITA LTDA",
-          "cnpjCpfFornecedor": "24.523.677/0001-72",
-          "valor": 9000.0,
-          "doc": "323",
-          "urlNotaFiscal": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/1697/2026/8168747.pdf",
-          "mes": 10,
-          "codDocumento": "8168747",
-          "origem": "API da Câmara (ainda não está no arquivo anual)"
         },
         {
           "data": "2026-10-10",
@@ -27634,6 +27687,17 @@
           "cnpjCpfFornecedor": "00.000.000/0000-01",
           "valor": 466.24,
           "doc": "8156377",
+          "urlNotaFiscal": null,
+          "mes": 7,
+          "codDocumento": "0"
+        },
+        {
+          "data": "2026-07-01",
+          "categoria": "TELEFONIA",
+          "fornecedor": "CELULAR FUNCIONAL",
+          "cnpjCpfFornecedor": "00.000.000/0000-01",
+          "valor": 233.12,
+          "doc": "8179619",
           "urlNotaFiscal": null,
           "mes": 7,
           "codDocumento": "0"

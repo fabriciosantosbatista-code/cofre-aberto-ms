@@ -1,10 +1,10 @@
 {
  "ano": 2026,
- "ultimaAtualizacao": "2026-11-19T17:51:26",
+ "ultimaAtualizacao": "2026-11-20T11:39:21",
  "fonte": "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares/UNICO",
  "mesMaisRecente": "11/2026",
- "totalMS": 628187652.98,
- "pagamentos": 1056,
+ "totalMS": 628696212.98,
+ "pagamentos": 1057,
  "totalMunicipios": 79,
  "municipios": [
   {
@@ -399,7 +399,7 @@
   },
   {
    "municipio": "Dourados",
-   "total": 48613474.73,
+   "total": 49122034.73,
    "autores": [
     {
      "autor": "Rodolfo Nogueira",
@@ -449,6 +449,11 @@
     {
      "autor": "Com. da Saude",
      "valor": 666666.0,
+     "atual": false
+    },
+    {
+     "autor": "Bancada da Bahia",
+     "valor": 508560.0,
      "atual": false
     },
     {
@@ -536,7 +541,7 @@
     },
     {
      "tipo": "Bancada",
-     "valor": 1539421.62
+     "valor": 2047981.62
     }
    ],
    "favorecidos": [
@@ -569,6 +574,12 @@
      "doc": "03916902000160",
      "natureza": "Fundo Público da Administração Direta Municipal",
      "valor": 1000000.0
+    },
+    {
+     "nome": "ENZO CAMINHOES LTDA",
+     "doc": "09137236000149",
+     "natureza": "Sociedade Empresária Limitada",
+     "valor": 508560.0
     },
     {
      "nome": "JP ENGENHARIA LTDA",
@@ -623,12 +634,6 @@
      "doc": "035741",
      "natureza": "Sem informação",
      "valor": 755.23
-    },
-    {
-     "nome": "B. K. TATEISHI LTDA",
-     "doc": "58776870000137",
-     "natureza": "Sociedade Empresária Limitada",
-     "valor": 700.0
     }
    ]
   },
@@ -662,12 +667,12 @@
      "atual": false
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Camila Jara",
      "valor": 1500000.0,
      "atual": true
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Rodolfo Nogueira",
      "valor": 1500000.0,
      "atual": true
     },
@@ -1501,12 +1506,12 @@
      "atual": false
     },
     {
-     "autor": "Tereza Cristina",
+     "autor": "Camila Jara",
      "valor": 500000.0,
      "atual": true
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Tereza Cristina",
      "valor": 500000.0,
      "atual": true
     },
@@ -1810,12 +1815,12 @@
      "atual": true
     },
     {
-     "autor": "Dr. Luiz Ovando",
+     "autor": "Dagoberto Nogueira",
      "valor": 300000.0,
      "atual": true
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Dr. Luiz Ovando",
      "valor": 300000.0,
      "atual": true
     }
@@ -1884,14 +1889,14 @@
      "atual": false
     },
     {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 500000.0,
-     "atual": false
-    },
-    {
      "autor": "Beto Pereira",
      "valor": 500000.0,
      "atual": true
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 500000.0,
+     "atual": false
     },
     {
      "autor": "Com. Esporte",
@@ -3050,9 +3055,9 @@
      "atual": true
     },
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Camila Jara",
      "valor": 1000000.0,
-     "atual": false
+     "atual": true
     },
     {
      "autor": "Nelsinho Trad",
@@ -3060,9 +3065,9 @@
      "atual": true
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Com. Assuntos Sociais",
      "valor": 1000000.0,
-     "atual": true
+     "atual": false
     },
     {
      "autor": "Dr. Luiz Ovando",
@@ -4324,12 +4329,12 @@
      "atual": true
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Beto Pereira",
      "valor": 500000.0,
      "atual": true
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Rodolfo Nogueira",
      "valor": 500000.0,
      "atual": true
     },
@@ -4516,14 +4521,14 @@
      "atual": true
     },
     {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 500000.0,
-     "atual": false
-    },
-    {
      "autor": "Geraldo Resende",
      "valor": 500000.0,
      "atual": true
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 500000.0,
+     "atual": false
     },
     {
      "autor": "Com. da Saude",
@@ -5572,9 +5577,9 @@
    "total": 1962000.0,
    "autores": [
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Nelsinho Trad",
      "valor": 500000.0,
-     "atual": false
+     "atual": true
     },
     {
      "autor": "Geraldo Resende",
@@ -5582,9 +5587,9 @@
      "atual": true
     },
     {
-     "autor": "Nelsinho Trad",
+     "autor": "Com. Assuntos Sociais",
      "valor": 500000.0,
-     "atual": true
+     "atual": false
     },
     {
      "autor": "Dr. Luiz Ovando",
@@ -7025,14 +7030,14 @@
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "13140956000130",
-     "municipio": "Miranda",
+     "doc": "00282872000190",
+     "municipio": "Maracaju",
      "valor": 1000000.0
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "00282872000190",
-     "municipio": "Maracaju",
+     "doc": "13140956000130",
+     "municipio": "Miranda",
      "valor": 1000000.0
     },
     {
@@ -7410,11 +7415,11 @@
      "valor": 500000.0
     },
     {
-     "municipio": "Rio Verde de Mato Grosso",
+     "municipio": "Angélica",
      "valor": 500000.0
     },
     {
-     "municipio": "Angélica",
+     "municipio": "Rio Verde de Mato Grosso",
      "valor": 500000.0
     },
     {
@@ -7599,14 +7604,14 @@
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "16656280000120",
-     "municipio": "Rio Verde de Mato Grosso",
+     "doc": "11343940000108",
+     "municipio": "Angélica",
      "valor": 500000.0
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11343940000108",
-     "municipio": "Angélica",
+     "doc": "16656280000120",
+     "municipio": "Rio Verde de Mato Grosso",
      "valor": 500000.0
     }
    ],
@@ -8473,11 +8478,11 @@
      "valor": 300000.0
     },
     {
-     "municipio": "Brasilândia",
+     "municipio": "Angélica",
      "valor": 250000.0
     },
     {
-     "municipio": "Angélica",
+     "municipio": "Brasilândia",
      "valor": 250000.0
     },
     {
@@ -8718,11 +8723,11 @@
      "valor": 1000000.0
     },
     {
-     "municipio": "Naviraí",
+     "municipio": "Bonito",
      "valor": 1000000.0
     },
     {
-     "municipio": "Bonito",
+     "municipio": "Naviraí",
      "valor": 1000000.0
     },
     {
@@ -8754,11 +8759,11 @@
      "valor": 576004.0
     },
     {
-     "municipio": "Ladário",
+     "municipio": "Selvíria",
      "valor": 500000.0
     },
     {
-     "municipio": "Selvíria",
+     "municipio": "Ladário",
      "valor": 500000.0
     },
     {
@@ -8851,14 +8856,14 @@
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11221619000142",
-     "municipio": "Naviraí",
+     "doc": "11803371000128",
+     "municipio": "Bonito",
      "valor": 1000000.0
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11803371000128",
-     "municipio": "Bonito",
+     "doc": "11221619000142",
+     "municipio": "Naviraí",
      "valor": 1000000.0
     },
     {
@@ -10974,6 +10979,52 @@
    "foraDeMS": []
   },
   {
+   "autor": "Bancada da Bahia",
+   "atual": false,
+   "cargo": null,
+   "partido": null,
+   "grupo": null,
+   "totalMS": 1700348.38,
+   "totalBR": 1700348.38,
+   "municipios": [
+    {
+     "municipio": "Campo Grande",
+     "valor": 1191788.38
+    },
+    {
+     "municipio": "Dourados",
+     "valor": 508560.0
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Bancada",
+     "valor": 1700348.38
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FIBRACAMPO PRODUTOS DE FIBRA LTDA EM RECUPERACAO JUDICIAL",
+     "doc": "07407743000120",
+     "municipio": "Campo Grande",
+     "valor": 820148.38
+    },
+    {
+     "nome": "ENZO CAMINHOES LTDA",
+     "doc": "09137236000149",
+     "municipio": "Dourados",
+     "valor": 508560.0
+    },
+    {
+     "nome": "KCINCO CAMINHOES E ONIBUS LTDA",
+     "doc": "08440584000128",
+     "municipio": "Campo Grande",
+     "valor": 371640.0
+    }
+   ],
+   "foraDeMS": []
+  },
+  {
    "autor": "Com. de Previ., Assis. Soci, Infan., Adol. e Famil",
    "atual": false,
    "cargo": null,
@@ -11039,42 +11090,6 @@
      "doc": "13706085000170",
      "municipio": "Anaurilândia",
      "valor": 184254.0
-    }
-   ],
-   "foraDeMS": []
-  },
-  {
-   "autor": "Bancada da Bahia",
-   "atual": false,
-   "cargo": null,
-   "partido": null,
-   "grupo": null,
-   "totalMS": 1191788.38,
-   "totalBR": 1191788.38,
-   "municipios": [
-    {
-     "municipio": "Campo Grande",
-     "valor": 1191788.38
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Bancada",
-     "valor": 1191788.38
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FIBRACAMPO PRODUTOS DE FIBRA LTDA EM RECUPERACAO JUDICIAL",
-     "doc": "07407743000120",
-     "municipio": "Campo Grande",
-     "valor": 820148.38
-    },
-    {
-     "nome": "KCINCO CAMINHOES E ONIBUS LTDA",
-     "doc": "08440584000128",
-     "municipio": "Campo Grande",
-     "valor": 371640.0
     }
    ],
    "foraDeMS": []
@@ -13648,11 +13663,11 @@
      "valor": 2155160.0
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Camila Jara",
      "valor": 1500000.0
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Rodolfo Nogueira",
      "valor": 1500000.0
     },
     {
@@ -13672,11 +13687,11 @@
      "valor": 1000000.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Dr. Luiz Ovando",
      "valor": 500000.0
     },
     {
-     "autor": "Dr. Luiz Ovando",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
     }
    ]
@@ -13771,11 +13786,11 @@
      "valor": 5870500.0
     },
     {
-     "autor": "Nelsinho Trad",
+     "autor": "Rodolfo Nogueira",
      "valor": 1990000.0
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Nelsinho Trad",
      "valor": 1990000.0
     },
     {
@@ -13980,11 +13995,11 @@
      "valor": 1000000.0
     },
     {
-     "autor": "Tereza Cristina",
+     "autor": "Camila Jara",
      "valor": 500000.0
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Tereza Cristina",
      "valor": 500000.0
     }
    ]
@@ -14472,11 +14487,11 @@
      "valor": 521756.0
     },
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Beto Pereira",
      "valor": 500000.0
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Com. Assuntos Sociais",
      "valor": 500000.0
     },
     {
@@ -14709,11 +14724,11 @@
    "valor": 4087256.4,
    "autores": [
     {
-     "autor": "Vander Loubet",
+     "autor": "Dagoberto Nogueira",
      "valor": 995000.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Vander Loubet",
      "valor": 995000.0
     },
     {
@@ -14936,11 +14951,11 @@
      "valor": 607745.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Camila Jara",
      "valor": 500000.0
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
     },
     {
@@ -15127,7 +15142,7 @@
    "valor": 3600000.0,
    "autores": [
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Camila Jara",
      "valor": 1000000.0
     },
     {
@@ -15135,7 +15150,7 @@
      "valor": 1000000.0
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Com. Assuntos Sociais",
      "valor": 1000000.0
     },
     {
@@ -15227,11 +15242,11 @@
      "valor": 700000.0
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Beto Pereira",
      "valor": 500000.0
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Rodolfo Nogueira",
      "valor": 500000.0
     },
     {
@@ -15540,15 +15555,15 @@
    "valor": 2580000.0,
    "autores": [
     {
+     "autor": "Geraldo Resende",
+     "valor": 500000.0
+    },
+    {
      "autor": "Nelsinho Trad",
      "valor": 500000.0
     },
     {
      "autor": "Com. Assuntos Sociais",
-     "valor": 500000.0
-    },
-    {
-     "autor": "Geraldo Resende",
      "valor": 500000.0
     },
     {
@@ -15627,11 +15642,11 @@
      "valor": 1489988.0
     },
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Com. Assuntos Sociais",
      "valor": 500000.0
     }
    ]
@@ -16297,7 +16312,7 @@
    "valor": 1762000.0,
    "autores": [
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Nelsinho Trad",
      "valor": 500000.0
     },
     {
@@ -16305,7 +16320,7 @@
      "valor": 500000.0
     },
     {
-     "autor": "Nelsinho Trad",
+     "autor": "Com. Assuntos Sociais",
      "valor": 500000.0
     },
     {
@@ -16376,11 +16391,11 @@
      "valor": 500000.0
     },
     {
-     "autor": "Dr. Luiz Ovando",
+     "autor": "Dagoberto Nogueira",
      "valor": 300000.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Dr. Luiz Ovando",
      "valor": 300000.0
     }
    ]
@@ -17328,6 +17343,19 @@
    ]
   },
   {
+   "nome": "ENZO CAMINHOES LTDA",
+   "doc": "09137236000149",
+   "natureza": "Sociedade Empresária Limitada",
+   "municipio": "Dourados",
+   "valor": 508560.0,
+   "autores": [
+    {
+     "autor": "Bancada da Bahia",
+     "valor": 508560.0
+    }
+   ]
+  },
+  {
    "nome": "INSTITUTO PLANETA PANTANAL",
    "doc": "09444280000100",
    "natureza": "Associação Privada",
@@ -17615,6 +17643,19 @@
   },
   {
    "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+   "doc": "14788679000130",
+   "natureza": "Fundo Público da Administração Direta Municipal",
+   "municipio": "Ponta Porã",
+   "valor": 350000.0,
+   "autores": [
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 350000.0
+    }
+   ]
+  },
+  {
+   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
    "doc": "15536539000137",
    "natureza": "Fundo Público da Administração Direta Municipal",
    "municipio": "Rio Brilhante",
@@ -17627,19 +17668,6 @@
     {
      "autor": "Dr. Luiz Ovando",
      "valor": 50000.0
-    }
-   ]
-  },
-  {
-   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-   "doc": "14788679000130",
-   "natureza": "Fundo Público da Administração Direta Municipal",
-   "municipio": "Ponta Porã",
-   "valor": 350000.0,
-   "autores": [
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 350000.0
     }
    ]
   },
@@ -22480,6 +22508,15 @@
    "mes": "09/2026",
    "autor": "Bancada da Bahia",
    "valor": 371640.0
+  },
+  {
+   "emenda": "202571060001",
+   "favorecido": "ENZO CAMINHOES LTDA",
+   "doc": "09137236000149",
+   "municipio": "Dourados",
+   "mes": "11/2026",
+   "autor": "Bancada da Bahia",
+   "valor": 508560.0
   },
   {
    "emenda": "202571070006",
@@ -32025,12 +32062,12 @@
         "valor": 1700000.0
        },
        {
-        "autor": "Soraya Thronicke",
+        "autor": "Dr. Luiz Ovando",
         "atual": true,
         "valor": 100000.0
        },
        {
-        "autor": "Dr. Luiz Ovando",
+        "autor": "Soraya Thronicke",
         "atual": true,
         "valor": 100000.0
        }
@@ -32367,6 +32404,17 @@
       ]
      },
      {
+      "municipio": "Deodápolis",
+      "valor": 800000.0,
+      "autores": [
+       {
+        "autor": "Dr. Luiz Ovando",
+        "atual": true,
+        "valor": 800000.0
+       }
+      ]
+     },
+     {
       "municipio": "Aquidauana",
       "valor": 800000.0,
       "autores": [
@@ -32379,17 +32427,6 @@
         "autor": "Soraya Thronicke",
         "atual": true,
         "valor": 300000.0
-       }
-      ]
-     },
-     {
-      "municipio": "Deodápolis",
-      "valor": 800000.0,
-      "autores": [
-       {
-        "autor": "Dr. Luiz Ovando",
-        "atual": true,
-        "valor": 800000.0
        }
       ]
      },
@@ -33545,22 +33582,22 @@
       ]
      },
      {
-      "municipio": "Juti",
+      "municipio": "Sete Quedas",
       "valor": 500000.0,
       "autores": [
        {
-        "autor": "Vander Loubet",
+        "autor": "Nelsinho Trad",
         "atual": true,
         "valor": 500000.0
        }
       ]
      },
      {
-      "municipio": "Sete Quedas",
+      "municipio": "Juti",
       "valor": 500000.0,
       "autores": [
        {
-        "autor": "Nelsinho Trad",
+        "autor": "Vander Loubet",
         "atual": true,
         "valor": 500000.0
        }
@@ -35975,12 +36012,12 @@
         "valor": 5870500.0
        },
        {
-        "autor": "Rodolfo Nogueira",
+        "autor": "Nelsinho Trad",
         "atual": true,
         "valor": 1990000.0
        },
        {
-        "autor": "Nelsinho Trad",
+        "autor": "Rodolfo Nogueira",
         "atual": true,
         "valor": 1990000.0
        },
