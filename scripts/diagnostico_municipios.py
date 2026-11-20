@@ -203,5 +203,89 @@ def main():
     print(f"FIM em {round(time.monotonic() - t0)} s", flush=True)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__" and __import__("os").environ.get("DIAG") != "2":
     main()
+
+
+# ---------------------------------------------------------------- 2ª passada (DIAG=2): Fiorilli, Siconfi, PNCP
+def fiorilli_empresas(base):
+    """Códigos de entidade (Empresa) do portal Fiorilli: lidos do seletor da página inicial."""
+    r, t, err = get(base + "/")
+    if r is None or r.status_code >= 400:
+        return [], (err or (r.status_code if r is not None else None)), t
+    ops = re.findall(r'<option[^>]*value=["\']?(\d{1,3})["\']?[^>]*>([^<]{2,80})</option>', r.text, re.I)
+    return list(dict.fromkeys(ops))[:12], r.status_code, t
+
+
+def fiorilli_json(base, empresa, ano=2026):
+    out = {}
+    for nome, q in (("despesas", f"Despesas/?Listagem=DespesasGerais&DiaInicioPeriodo=01&MesInicialPeriodo=01&DiaFinalPeriodo=31&MesFinalPeriodo=01&Ano={ano}&Exercicio={ano}&Empresa={empresa}"),
+                    ("servidores", f"Pessoal/?Listagem=Servidores&Empresa={empresa}&Ano={ano}&Exercicio={ano}&MesInicialPeriodo=10&MesFinalPeriodo=10")):
+        r, t, err = get(f"{base}/VersaoJson/{q}")
+        if r is None:
+            out[nome] = err
+            continue
+        try:
+            j = r.json()
+            n = len(j) if isinstance(j, list) else len(next((v for v in j.values() if isinstance(v, list)), [])) if isinstance(j, dict) else 0
+            out[nome] = {"json": True, "registros": n, "tempo": t}
+        except Exception:
+            out[nome] = {"json": False, "status": r.status_code, "tempo": t}
+    return out
+
+
+def siconfi2(ibge):
+    base = "https://apidatalake.tesouro.gov.br/ords/siconfi/tt"
+    out = {}
+    for nome, url in (("rreo2026_b3", f"{base}/rreo?an_exercicio=2026&nr_periodo=3&co_tipo_demonstrativo=RREO&id_ente={ibge}"),
+                      ("rreo2026_b4", f"{base}/rreo?an_exercicio=2026&nr_periodo=4&co_tipo_demonstrativo=RREO&id_ente={ibge}"),
+                      ("rgf2026_s1", f"{base}/rgf?an_exercicio=2026&in_periodicidade=S&nr_periodo=1&co_tipo_demonstrativo=RGF&co_poder=E&id_ente={ibge}"),
+                      ("rgf2026_q2", f"{base}/rgf?an_exercicio=2026&in_periodicidade=Q&nr_periodo=2&co_tipo_demonstrativo=RGF&co_poder=E&id_ente={ibge}"),
+                      ("rgf2026_s1_leg", f"{base}/rgf?an_exercicio=2026&in_periodicidade=S&nr_periodo=1&co_tipo_demonstrativo=RGF&co_poder=L&id_ente={ibge}"),
+                      ("rgf2026_q2_leg", f"{base}/rgf?an_exercicio=2026&in_periodicidade=Q&nr_periodo=2&co_tipo_demonstrativo=RGF&co_poder=L&id_ente={ibge}")):
+        r, t, err = get(url)
+        try:
+            out[nome] = len(r.json().get("items") or []) if r is not None and r.status_code == 200 else (err or r.status_code)
+        except Exception:
+            out[nome] = "resposta inválida"
+    return out
+
+
+def pncp2(cnpj):
+    t0 = time.monotonic()
+    for tent in range(2):
+        try:
+            r = S.get("https://pncp.gov.br/api/consulta/v1/contratos", params={"dataInicial": "20260101", "dataFinal": "20261119",
+                      "cnpjOrgao": cnpj, "pagina": 1, "tamanhoPagina": 10}, timeout=(10, 60))
+            if r.status_code == 204:
+                return {"contratos2026": 0, "tempo": round(time.monotonic() - t0, 1)}
+            return {"contratos2026": r.json().get("totalRegistros") if r.status_code == 200 else r.status_code, "tempo": round(time.monotonic() - t0, 1)}
+        except Exception as e:
+            err = type(e).__name__
+            time.sleep(5)
+    return {"contratos2026": err, "tempo": round(time.monotonic() - t0, 1)}
+
+
+def segunda_passada():
+    cfg = json.load(open("config/municipios_diag.json", encoding="utf-8"))
+    t0 = time.monotonic()
+
+    def fio(b):
+        emps, st, t = fiorilli_empresas(b["base"])
+        testes = {}
+        for cod, nome in emps[:4]:
+            testes[cod] = {"nome": nome.strip()[:60], **fiorilli_json(b["base"], cod)}
+        return {**b, "statusPagina": st, "tempoPagina": t, "empresas": len(emps), "testes": testes}
+    with cf.ThreadPoolExecutor(max_workers=6) as ex:
+        for res in ex.map(fio, cfg["fiorilli"]):
+            print("FIO|" + json.dumps(res, ensure_ascii=False), flush=True)
+    with cf.ThreadPoolExecutor(max_workers=4) as ex:
+        for e, res in zip(cfg["entes"], ex.map(lambda e: siconfi2(e["ibge"]), cfg["entes"])):
+            print("SIC|" + json.dumps({"municipio": e["municipio"], "populacao": e["populacao"], **res}, ensure_ascii=False), flush=True)
+    for e in cfg["entes"]:  # PNCP: um de cada vez (é lento)
+        print("PNCP|" + json.dumps({"municipio": e["municipio"], **pncp2(e["cnpj"])}, ensure_ascii=False), flush=True)
+    print(f"FIM2 em {round(time.monotonic() - t0)} s", flush=True)
+
+
+if __name__ == "__main__" and __import__("os").environ.get("DIAG") == "2":
+    segunda_passada()

@@ -1,0 +1,769 @@
+{
+ "_doc": "Gerado pelo diagnóstico de 20/11/2026 (1ª passada): bases dos portais Fiorilli SCPI encontrados. Endereços públicos.",
+ "fiorilli": [
+  {
+   "municipio": "Alcinópolis",
+   "ibge": "5000252",
+   "orgao": "prefeitura",
+   "base": "http://pmalcinopolis.rcmsuporte.com.br:8079/transparencia"
+  },
+  {
+   "municipio": "Aparecida do Taboado",
+   "ibge": "5001003",
+   "orgao": "prefeitura",
+   "base": "http://143.0.127.202:8079/transparencia"
+  },
+  {
+   "municipio": "Aquidauana",
+   "ibge": "5001102",
+   "orgao": "prefeitura",
+   "base": "http://pmaquidauana.rcmsuporte.com.br:8079/transparencia"
+  },
+  {
+   "municipio": "Aquidauana",
+   "ibge": "5001102",
+   "orgao": "camara",
+   "base": "http://pmaquidauana.rcmsuporte.com.br:8079/transparenciacm"
+  },
+  {
+   "municipio": "Aral Moreira",
+   "ibge": "5001243",
+   "orgao": "prefeitura",
+   "base": "http://177.73.104.13:8079/transparencia"
+  },
+  {
+   "municipio": "Bataguassu",
+   "ibge": "5001904",
+   "orgao": "prefeitura",
+   "base": "http://bataguassums.biosnet.com.br:8079/transparencia"
+  },
+  {
+   "municipio": "Bataguassu",
+   "ibge": "5001904",
+   "orgao": "camara",
+   "base": "http://45.182.157.6:8079/Transparenciacm"
+  },
+  {
+   "municipio": "Bonito",
+   "ibge": "5002209",
+   "orgao": "prefeitura",
+   "base": "http://45.188.183.153:8079/transparencia"
+  },
+  {
+   "municipio": "Bonito",
+   "ibge": "5002209",
+   "orgao": "camara",
+   "base": "http://45.188.183.155:8079/TransparenciaCM"
+  },
+  {
+   "municipio": "Brasilândia",
+   "ibge": "5002308",
+   "orgao": "prefeitura",
+   "base": "http://187.17.197.14:8079/transparencia"
+  },
+  {
+   "municipio": "Cassilândia",
+   "ibge": "5002902",
+   "orgao": "camara",
+   "base": "http://45.189.53.3:8076/transparenciacm"
+  },
+  {
+   "municipio": "Chapadão do Sul",
+   "ibge": "5002951",
+   "orgao": "prefeitura",
+   "base": "https://pmchapadao.rcmsuporte.com.br/transparencia"
+  },
+  {
+   "municipio": "Chapadão do Sul",
+   "ibge": "5002951",
+   "orgao": "camara",
+   "base": "https://pmchapadao.rcmsuporte.com.br/transparenciaCM"
+  },
+  {
+   "municipio": "Coronel Sapucaia",
+   "ibge": "5003157",
+   "orgao": "prefeitura",
+   "base": "https://coronelsapucaia.rcmsuporte.com.br:8079/transparencia"
+  },
+  {
+   "municipio": "Corumbá",
+   "ibge": "5003207",
+   "orgao": "prefeitura",
+   "base": "http://swb.corumba.ms.gov.br:8079/transparencia"
+  },
+  {
+   "municipio": "Corumbá",
+   "ibge": "5003207",
+   "orgao": "camara",
+   "base": "http://swb.corumba.ms.gov.br:8079/transparencia"
+  },
+  {
+   "municipio": "Costa Rica",
+   "ibge": "5003256",
+   "orgao": "prefeitura",
+   "base": "http://pmcostarica.rcmsuporte.com.br:8079/transparencia"
+  },
+  {
+   "municipio": "Coxim",
+   "ibge": "5003306",
+   "orgao": "prefeitura",
+   "base": "http://pmcoxim.rcmsuporte.com.br:8079/transparencia"
+  },
+  {
+   "municipio": "Coxim",
+   "ibge": "5003306",
+   "orgao": "camara",
+   "base": "http://pmcoxim.rcmsuporte.com.br:8079/transparenciacm"
+  },
+  {
+   "municipio": "Dois Irmãos do Buriti",
+   "ibge": "5003488",
+   "orgao": "prefeitura",
+   "base": "http://transparencia.doisirmaosdoburiti.ms.gov.br:8079/transparencia"
+  },
+  {
+   "municipio": "Eldorado",
+   "ibge": "5003751",
+   "orgao": "prefeitura",
+   "base": "https://scpi.eldorado.rcmsuporte.com.br/transparencia"
+  },
+  {
+   "municipio": "Eldorado",
+   "ibge": "5003751",
+   "orgao": "camara",
+   "base": "http://pmeldorado.rcmsuporte.com.br:8079/transparenciacm"
+  },
+  {
+   "municipio": "Glória de Dourados",
+   "ibge": "5004007",
+   "orgao": "camara",
+   "base": "http://177.73.106.211:5656/transparenciaCM"
+  },
+  {
+   "municipio": "Guia Lopes da Laguna",
+   "ibge": "5004106",
+   "orgao": "prefeitura",
+   "base": "https://45.171.204.95:8079/transparencia"
+  },
+  {
+   "municipio": "Guia Lopes da Laguna",
+   "ibge": "5004106",
+   "orgao": "camara",
+   "base": "http://45.171.204.95:8079/transparenciacm"
+  },
+  {
+   "municipio": "Iguatemi",
+   "ibge": "5004304",
+   "orgao": "camara",
+   "base": "http://181.191.195.90:5656/transparenciacm"
+  },
+  {
+   "municipio": "Inocência",
+   "ibge": "5004403",
+   "orgao": "prefeitura",
+   "base": "http://45.228.170.230:8079/transparencia"
+  },
+  {
+   "municipio": "Inocência",
+   "ibge": "5004403",
+   "orgao": "camara",
+   "base": "http://179.125.63.161:8079/transparenciacm"
+  },
+  {
+   "municipio": "Itaporã",
+   "ibge": "5004502",
+   "orgao": "camara",
+   "base": "https://transparencia.itapora.ms.gov.br/Transparenciacm"
+  },
+  {
+   "municipio": "Ivinhema",
+   "ibge": "5004700",
+   "orgao": "prefeitura",
+   "base": "http://transparencia.ivinhema.ms.gov.br:8079/transparencia"
+  },
+  {
+   "municipio": "Ivinhema",
+   "ibge": "5004700",
+   "orgao": "camara",
+   "base": "https://transparencia.ivinhema.ms.gov.br/transparenciacm"
+  },
+  {
+   "municipio": "Jaraguari",
+   "ibge": "5004908",
+   "orgao": "prefeitura",
+   "base": "http://pmjaraguari.rcmsuporte.com.br:8079/transparencia"
+  },
+  {
+   "municipio": "Jaraguari",
+   "ibge": "5004908",
+   "orgao": "camara",
+   "base": "https://pmjaraguari.rcmsuporte.com.br:8079/transparenciacm"
+  },
+  {
+   "municipio": "Jardim",
+   "ibge": "5005004",
+   "orgao": "camara",
+   "base": "http://200.209.160.171:8079/transparenciacm"
+  },
+  {
+   "municipio": "Juti",
+   "ibge": "5005152",
+   "orgao": "camara",
+   "base": "http://177.73.104.96:5656/transparenciacm"
+  },
+  {
+   "municipio": "Paranaíba",
+   "ibge": "5006309",
+   "orgao": "camara",
+   "base": "http://45.184.83.32:8079/transparenciacm"
+  },
+  {
+   "municipio": "Paranhos",
+   "ibge": "5006358",
+   "orgao": "prefeitura",
+   "base": "http://45.179.174.190:8079/transparencia"
+  },
+  {
+   "municipio": "Paranhos",
+   "ibge": "5006358",
+   "orgao": "camara",
+   "base": "http://45.179.174.190:8079/transparenciacm"
+  },
+  {
+   "municipio": "Paraíso das Águas",
+   "ibge": "5006275",
+   "orgao": "prefeitura",
+   "base": "http://170.81.37.45:8079/transparencia"
+  },
+  {
+   "municipio": "Pedro Gomes",
+   "ibge": "5006408",
+   "orgao": "camara",
+   "base": "http://45.6.108.122:5656/transparenciaCM"
+  },
+  {
+   "municipio": "Ponta Porã",
+   "ibge": "5006606",
+   "orgao": "camara",
+   "base": "https://contabilidade.pontapora.ms.gov.br/transparenciacm"
+  },
+  {
+   "municipio": "Ribas do Rio Pardo",
+   "ibge": "5007109",
+   "orgao": "camara",
+   "base": "http://45.174.220.245:8079/transparenciacm"
+  },
+  {
+   "municipio": "Selvíria",
+   "ibge": "5007802",
+   "orgao": "camara",
+   "base": "http://45.186.221.158:5656/transparenciacm"
+  },
+  {
+   "municipio": "Sete Quedas",
+   "ibge": "5007703",
+   "orgao": "prefeitura",
+   "base": "https://pmsetequedas.rcmsuporte.com.br:8079/transparencia"
+  },
+  {
+   "municipio": "Sonora",
+   "ibge": "5007935",
+   "orgao": "prefeitura",
+   "base": "http://177.174.64.40:8079/transparencia"
+  },
+  {
+   "municipio": "Sonora",
+   "ibge": "5007935",
+   "orgao": "camara",
+   "base": "https://pmsonora.rcmsuporte.com.br:8079/transparenciacm"
+  },
+  {
+   "municipio": "Três Lagoas",
+   "ibge": "5008305",
+   "orgao": "prefeitura",
+   "base": "http://pmtreslagoas.rcmsuporte.com.br:8079/transparencia"
+  },
+  {
+   "municipio": "Três Lagoas",
+   "ibge": "5008305",
+   "orgao": "camara",
+   "base": "http://pmtreslagoas.rcmsuporte.com.br:8079/transparenciacm"
+  }
+ ],
+ "entes": [
+  {
+   "municipio": "Alcinópolis",
+   "ibge": "5000252",
+   "cnpj": "37226651000104",
+   "populacao": 4649
+  },
+  {
+   "municipio": "Amambai",
+   "ibge": "5000609",
+   "cnpj": "03568433000136",
+   "populacao": 41751
+  },
+  {
+   "municipio": "Anastácio",
+   "ibge": "5000708",
+   "cnpj": "03452307000111",
+   "populacao": 24781
+  },
+  {
+   "municipio": "Anaurilândia",
+   "ibge": "5000807",
+   "cnpj": "03575727000195",
+   "populacao": 7688
+  },
+  {
+   "municipio": "Angélica",
+   "ibge": "5000856",
+   "cnpj": "03747649000169",
+   "populacao": 11308
+  },
+  {
+   "municipio": "Antônio João",
+   "ibge": "5000906",
+   "cnpj": "03567930000110",
+   "populacao": 9717
+  },
+  {
+   "municipio": "Aparecida do Taboado",
+   "ibge": "5001003",
+   "cnpj": "03563335000106",
+   "populacao": 29826
+  },
+  {
+   "municipio": "Aquidauana",
+   "ibge": "5001102",
+   "cnpj": "03452299000103",
+   "populacao": 48689
+  },
+  {
+   "municipio": "Aral Moreira",
+   "ibge": "5001243",
+   "cnpj": "03759271000113",
+   "populacao": 11125
+  },
+  {
+   "municipio": "Bandeirantes",
+   "ibge": "5001508",
+   "cnpj": "03501491000142",
+   "populacao": 8342
+  },
+  {
+   "municipio": "Bataguassu",
+   "ibge": "5001904",
+   "cnpj": "03576220000156",
+   "populacao": 24222
+  },
+  {
+   "municipio": "Batayporã",
+   "ibge": "5002001",
+   "cnpj": "03505013000100",
+   "populacao": 10947
+  },
+  {
+   "municipio": "Bela Vista",
+   "ibge": "5002100",
+   "cnpj": "03217916000196",
+   "populacao": 21881
+  },
+  {
+   "municipio": "Bodoquena",
+   "ibge": "5002159",
+   "cnpj": "15465016000147",
+   "populacao": 8887
+  },
+  {
+   "municipio": "Bonito",
+   "ibge": "5002209",
+   "cnpj": "03073673000160",
+   "populacao": 25034
+  },
+  {
+   "municipio": "Brasilândia",
+   "ibge": "5002308",
+   "cnpj": "03184058000120",
+   "populacao": 11833
+  },
+  {
+   "municipio": "Caarapó",
+   "ibge": "5002407",
+   "cnpj": "03155900000104",
+   "populacao": 32748
+  },
+  {
+   "municipio": "Camapuã",
+   "ibge": "5002605",
+   "cnpj": "03501517000152",
+   "populacao": 13928
+  },
+  {
+   "municipio": "Campo Grande",
+   "ibge": "5002704",
+   "cnpj": "03501509000106",
+   "populacao": 962883
+  },
+  {
+   "municipio": "Caracol",
+   "ibge": "5002803",
+   "cnpj": "03217924000132",
+   "populacao": 5096
+  },
+  {
+   "municipio": "Cassilândia",
+   "ibge": "5002902",
+   "cnpj": "03342920000186",
+   "populacao": 21565
+  },
+  {
+   "municipio": "Chapadão do Sul",
+   "ibge": "5002951",
+   "cnpj": "24651200000172",
+   "populacao": 34606
+  },
+  {
+   "municipio": "Corguinho",
+   "ibge": "5003108",
+   "cnpj": "03501525000107",
+   "populacao": 4892
+  },
+  {
+   "municipio": "Coronel Sapucaia",
+   "ibge": "5003157",
+   "cnpj": "01988914000175",
+   "populacao": 14685
+  },
+  {
+   "municipio": "Corumbá",
+   "ibge": "5003207",
+   "cnpj": "03330461000110",
+   "populacao": 98751
+  },
+  {
+   "municipio": "Costa Rica",
+   "ibge": "5003256",
+   "cnpj": "15389596000130",
+   "populacao": 28740
+  },
+  {
+   "municipio": "Coxim",
+   "ibge": "5003306",
+   "cnpj": "03510211000162",
+   "populacao": 33440
+  },
+  {
+   "municipio": "Deodápolis",
+   "ibge": "5003454",
+   "cnpj": "03903176000141",
+   "populacao": 14317
+  },
+  {
+   "municipio": "Dois Irmãos do Buriti",
+   "ibge": "5003488",
+   "cnpj": "24616187000110",
+   "populacao": 11521
+  },
+  {
+   "municipio": "Douradina",
+   "ibge": "5003504",
+   "cnpj": "15479751000100",
+   "populacao": 5768
+  },
+  {
+   "municipio": "Dourados",
+   "ibge": "5003702",
+   "cnpj": "03155926000144",
+   "populacao": 264017
+  },
+  {
+   "municipio": "Eldorado",
+   "ibge": "5003751",
+   "cnpj": "03741675000180",
+   "populacao": 11622
+  },
+  {
+   "municipio": "Figueirão",
+   "ibge": "5003900",
+   "cnpj": "07158578000110",
+   "populacao": 3751
+  },
+  {
+   "municipio": "Fátima do Sul",
+   "ibge": "5003801",
+   "cnpj": "03155751000175",
+   "populacao": 21504
+  },
+  {
+   "municipio": "Glória de Dourados",
+   "ibge": "5004007",
+   "cnpj": "03155942000137",
+   "populacao": 10817
+  },
+  {
+   "municipio": "Guia Lopes da Laguna",
+   "ibge": "5004106",
+   "cnpj": "03403896000148",
+   "populacao": 10116
+  },
+  {
+   "municipio": "Iguatemi",
+   "ibge": "5004304",
+   "cnpj": "03568318000161",
+   "populacao": 13960
+  },
+  {
+   "municipio": "Inocência",
+   "ibge": "5004403",
+   "cnpj": "03342938000188",
+   "populacao": 8764
+  },
+  {
+   "municipio": "Itaporã",
+   "ibge": "5004502",
+   "cnpj": "03156999000150",
+   "populacao": 25263
+  },
+  {
+   "municipio": "Itaquiraí",
+   "ibge": "5004601",
+   "cnpj": "15403041000104",
+   "populacao": 20060
+  },
+  {
+   "municipio": "Ivinhema",
+   "ibge": "5004700",
+   "cnpj": "03575875000100",
+   "populacao": 30001
+  },
+  {
+   "municipio": "Japorã",
+   "ibge": "5004809",
+   "cnpj": "15905342000128",
+   "populacao": 8441
+  },
+  {
+   "municipio": "Jaraguari",
+   "ibge": "5004908",
+   "cnpj": "03501533000145",
+   "populacao": 7480
+  },
+  {
+   "municipio": "Jardim",
+   "ibge": "5005004",
+   "cnpj": "03162047000140",
+   "populacao": 24504
+  },
+  {
+   "municipio": "Jateí",
+   "ibge": "5005103",
+   "cnpj": "03783859000102",
+   "populacao": 3596
+  },
+  {
+   "municipio": "Juti",
+   "ibge": "5005152",
+   "cnpj": "24644296000141",
+   "populacao": 7067
+  },
+  {
+   "municipio": "Ladário",
+   "ibge": "5005202",
+   "cnpj": "03330453000174",
+   "populacao": 22425
+  },
+  {
+   "municipio": "Laguna Carapã",
+   "ibge": "5005251",
+   "cnpj": "01989813000119",
+   "populacao": 7037
+  },
+  {
+   "municipio": "Maracaju",
+   "ibge": "5005400",
+   "cnpj": "03442597000112",
+   "populacao": 48073
+  },
+  {
+   "municipio": "Miranda",
+   "ibge": "5005608",
+   "cnpj": "03452315000168",
+   "populacao": 26512
+  },
+  {
+   "municipio": "Mundo Novo",
+   "ibge": "5005681",
+   "cnpj": "03741683000126",
+   "populacao": 20087
+  },
+  {
+   "municipio": "Naviraí",
+   "ibge": "5005707",
+   "cnpj": "03155934000190",
+   "populacao": 53014
+  },
+  {
+   "municipio": "Nioaque",
+   "ibge": "5005806",
+   "cnpj": "03073699000108",
+   "populacao": 13354
+  },
+  {
+   "municipio": "Nova Alvorada do Sul",
+   "ibge": "5006002",
+   "cnpj": "37212719000104",
+   "populacao": 23409
+  },
+  {
+   "municipio": "Nova Andradina",
+   "ibge": "5006200",
+   "cnpj": "03173317000118",
+   "populacao": 50848
+  },
+  {
+   "municipio": "Novo Horizonte do Sul",
+   "ibge": "5006259",
+   "cnpj": "37226644000102",
+   "populacao": 4801
+  },
+  {
+   "municipio": "Paranaíba",
+   "ibge": "5006309",
+   "cnpj": "03343118000100",
+   "populacao": 42638
+  },
+  {
+   "municipio": "Paranhos",
+   "ibge": "5006358",
+   "cnpj": "01998335000103",
+   "populacao": 13368
+  },
+  {
+   "municipio": "Paraíso das Águas",
+   "ibge": "5006275",
+   "cnpj": "17361639000103",
+   "populacao": 5842
+  },
+  {
+   "municipio": "Pedro Gomes",
+   "ibge": "5006408",
+   "cnpj": "03352986000157",
+   "populacao": 6910
+  },
+  {
+   "municipio": "Ponta Porã",
+   "ibge": "5006606",
+   "cnpj": "03434792000109",
+   "populacao": 98598
+  },
+  {
+   "municipio": "Porto Murtinho",
+   "ibge": "5006903",
+   "cnpj": "03107539000132",
+   "populacao": 12721
+  },
+  {
+   "municipio": "Ribas do Rio Pardo",
+   "ibge": "5007109",
+   "cnpj": "03501541000191",
+   "populacao": 24152
+  },
+  {
+   "municipio": "Rio Brilhante",
+   "ibge": "5007208",
+   "cnpj": "03681582000107",
+   "populacao": 40419
+  },
+  {
+   "municipio": "Rio Negro",
+   "ibge": "5007307",
+   "cnpj": "03501558000149",
+   "populacao": 4921
+  },
+  {
+   "municipio": "Rio Verde de Mato Grosso",
+   "ibge": "5007406",
+   "cnpj": "03354560000132",
+   "populacao": 20454
+  },
+  {
+   "municipio": "Rochedo",
+   "ibge": "5007505",
+   "cnpj": "03501566000195",
+   "populacao": 5451
+  },
+  {
+   "municipio": "Santa Rita do Pardo",
+   "ibge": "5007554",
+   "cnpj": "01561372000150",
+   "populacao": 7165
+  },
+  {
+   "municipio": "Selvíria",
+   "ibge": "5007802",
+   "cnpj": "15410665000140",
+   "populacao": 8716
+  },
+  {
+   "municipio": "Sete Quedas",
+   "ibge": "5007703",
+   "cnpj": "03889011000162",
+   "populacao": 11322
+  },
+  {
+   "municipio": "Sidrolândia",
+   "ibge": "5007901",
+   "cnpj": "03501574000131",
+   "populacao": 49735
+  },
+  {
+   "municipio": "Sonora",
+   "ibge": "5007935",
+   "cnpj": "24651234000167",
+   "populacao": 14813
+  },
+  {
+   "municipio": "São Gabriel do Oeste",
+   "ibge": "5007695",
+   "cnpj": "15389588000194",
+   "populacao": 32207
+  },
+  {
+   "municipio": "Tacuru",
+   "ibge": "5007950",
+   "cnpj": "03888989000100",
+   "populacao": 11205
+  },
+  {
+   "municipio": "Taquarussu",
+   "ibge": "5007976",
+   "cnpj": "03923703000180",
+   "populacao": 3740
+  },
+  {
+   "municipio": "Terenos",
+   "ibge": "5008008",
+   "cnpj": "03501582000188",
+   "populacao": 18182
+  },
+  {
+   "municipio": "Três Lagoas",
+   "ibge": "5008305",
+   "cnpj": "03184041000173",
+   "populacao": 143523
+  },
+  {
+   "municipio": "Vicentina",
+   "ibge": "5008404",
+   "cnpj": "24644502000113",
+   "populacao": 6505
+  },
+  {
+   "municipio": "Água Clara",
+   "ibge": "5000203",
+   "cnpj": "03184066000177",
+   "populacao": 17901
+  }
+ ]
+}

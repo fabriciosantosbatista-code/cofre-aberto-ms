@@ -5,6 +5,11 @@ name: Diagnóstico dos municípios (só leitura)
 # só no log (uma linha "MUN|{json}" por município). Ver scripts/diagnostico_municipios.py.
 on:
   workflow_dispatch:
+    inputs:
+      passada:
+        description: "1 = descoberta dos portais; 2 = Fiorilli (JSON por entidade), Siconfi e PNCP"
+        default: "1"
+        required: true
 
 permissions:
   contents: read
@@ -20,4 +25,6 @@ jobs:
           python-version: '3.11'
       - run: pip install -q requests
       - name: Diagnóstico (só leitura)
+        env:
+          DIAG: ${{ inputs.passada }}
         run: python3 -u scripts/diagnostico_municipios.py
