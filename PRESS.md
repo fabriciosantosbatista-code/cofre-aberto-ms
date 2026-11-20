@@ -16,7 +16,7 @@ O **Cofre Aberto MS** ([cofreabertoms.com.br](https://cofreabertoms.com.br)) é 
 - 286 magistrados ativos do TJMS e do TRT24 (os juízes eleitorais do TRE-MS são juízes do TJMS)
 - Supersalários: as maiores remunerações do poder público em MS, com nome e penduricalhos
 - Auditoria automática: 28 testes que cruzam notas e contratos com a Receita Federal, o TSE, a folha do Estado e as sanções da CGU
-- Brasil: Presidência da República (cartão corporativo desde 2013, viagens, despesas, salários), STF (contracheques dos ministros), 513 deputados federais e 81 senadores
+- Brasil: 513 deputados federais e 81 senadores (cotas parlamentares) e as transferências da União para Mato Grosso do Sul
 - Câmaras municipais de 14 cidades do interior de MS.
 
 Todos os dados vêm diretamente de fontes oficiais — Portal da Transparência da Câmara de Campo Grande, da ALEMS, da Câmara dos Deputados e do Senado Federal — e são **coletados e publicados automaticamente todos os dias**, sem edição manual. Cada nota fiscal é individualizada: fornecedor, CNPJ, valor e, quando disponível, link para o documento original.
@@ -44,6 +44,46 @@ O projeto nasceu da constatação de que, embora esses dados sejam legalmente p�
 | **100%** | Dos dados vêm de fontes oficiais — estimativas são sempre marcadas (ver Metodologia) |
 
 Todos os números são recalculados automaticamente pela coleta diária e podem variar ligeiramente a cada consulta — os valores acima refletem o estado do painel na data desta atualização.
+
+## Como o Cofre Aberto MS confere os próprios dados
+
+O Cofre Aberto MS publica um Índice de Confiabilidade Pública (ICP) para cada base de dados do site. O índice mostra o quanto cada número pode ser comprovado, e é recalculado pelo robô a cada coleta diária.
+
+**Hoje:** a nota geral, o número de bases e a cobertura da conferência (registros comparados um a um com a fonte oficial e registros cobertos por totais conferidos) aparecem atualizados no [kit de imprensa do site](https://cofreabertoms.com.br/press.html#como-conferimos), lidos do arquivo dados/icp.json da última coleta.
+
+### O que conta como "conferido"
+
+- Um registro só conta como conferido se o robô consultou de novo a fonte oficial e encontrou o mesmo valor. Contas que fecham não bastam.
+- Total que bate conta como "total conferido", não como conferência de cada registro.
+- A conferência só vale se for feita na mesma execução da coleta, até 2 horas depois dela.
+- Cada conferência vale por 30 dias. Se o registro mudar, ela perde a validade.
+- Diferença entre o site e a fonte aparece no site como divergência. Não existe tolerância do tipo "a fonte mudou".
+
+### Selos
+
+- **Conferido na fonte:** valor comparado com a fonte oficial.
+- **Mesma fonte da coleta:** confirma a leitura, mas não é uma fonte independente.
+- **Fonte independente (agregado):** totais comparados com o Tesouro Nacional (RGF/Siconfi).
+- **Não verificado:** o robô não conseguiu confirmar o dado, e o motivo aparece ao lado.
+- **Problema na fonte:** erro no próprio dado oficial, como uma nota lançada em duplicidade.
+
+### Sinais de atenção
+
+Quando a conferência encontra algo incomum no próprio dado oficial, o site sinaliza o caso sem tirar conclusões. Exemplos de sinais já encontrados:
+
+- notas da cota parlamentar registradas em duplicidade no arquivo oficial da Câmara;
+- desconto do teto constitucional aplicado abaixo do valor excedente;
+- órgão que parou de publicar despesas no portal de transparência.
+
+Quando cabe, o Cofre Aberto MS pede esclarecimento ao órgão pela Lei de Acesso à Informação e publica a resposta.
+
+### Proteção de dados
+
+CPFs de pessoas físicas aparecem mascarados. Documentos originais com dados pessoais são guardados apenas de forma cifrada.
+
+### Como citar
+
+"Cofre Aberto MS (cofreabertoms.com.br), dados de [data da coleta]." Cada página de base mostra a data da coleta e a situação da conferência.
 
 ## Sugestões de pauta
 

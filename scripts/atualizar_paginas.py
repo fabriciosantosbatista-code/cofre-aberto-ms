@@ -135,7 +135,7 @@ def atualizar_kit_imprensa(cg, est, fed, sen, pref, emendas, mags, status, cx, c
       <li>{ativos} magistrados ativos do TJMS e do TRT24 (os juízes eleitorais do TRE-MS são juízes do TJMS)</li>
       <li>Supersalários: as maiores remunerações do poder público em MS, com nome e penduricalhos</li>
       <li>Auditoria automática: {len(au.get("regras") or {})} testes que cruzam notas e contratos com a Receita Federal, o TSE, a folha do Estado e as sanções da CGU</li>
-      <li>Brasil: Presidência da República (cartão corporativo desde 2013, viagens, despesas, salários), STF (contracheques dos ministros), 513 deputados federais e 81 senadores</li>
+      <li>Brasil: 513 deputados federais e 81 senadores (cotas parlamentares) e as transferências da União para Mato Grosso do Sul</li>
       <li>Câmaras municipais de {camaras_n} cidades do interior de MS.</li>
     </ul>""")
     linhas = [
@@ -194,6 +194,10 @@ def press_md(html):
     if not art:
         return None
     t = re.sub(r"<!--.*?-->", "", art.group(1), flags=re.S)
+    t = re.sub(r"<script.*?</script>", "", t, flags=re.S)  # código da página não vai para o Markdown
+    # trechos preenchidos no navegador (ex.: números do ICP lidos de dados/icp.json): no Markdown entra o texto alternativo
+    t = re.sub(r'<(p|span)\b[^>]*\bdata-md-texto="([^"]*)"[^>]*>.*?</\1>',
+               lambda m: (f"<p>{_h.unescape(m.group(2))}</p>" if m.group(1) == "p" else _h.unescape(m.group(2))), t, flags=re.S)
 
     def inline(x):
         x = re.sub(r"<(strong|b)>(.*?)</\1>", r"**\2**", x, flags=re.S)
