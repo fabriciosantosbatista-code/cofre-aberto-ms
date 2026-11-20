@@ -1,7 +1,42 @@
 {
- "em": "2026-11-19T18:53:08",
- "runId": "44622903893",
+ "em": "2026-11-20T09:35:29",
+ "runId": "44736702072",
  "testes": {
+  "cpf": {
+   "codigo": 0,
+   "erros": 0
+  },
+  "integridade": {
+   "codigo": 1,
+   "erros": 2
+  },
+  "variacoes": {
+   "codigo": 1,
+   "erros": 2
+  }
+ },
+ "resultado": "bloqueado",
+ "motivos": [
+  {
+   "teste": "integridade",
+   "base": "senadores",
+   "texto": "senadores_ms.json Soraya Thronicke: notas somam o total: notas 486647.31 x total 490170.34"
+  },
+  {
+   "teste": "integridade",
+   "base": "senadores",
+   "texto": "senadores_ms.json Tereza Cristina: notas somam o total: notas 287414.8 x total 293394.8"
+  }
+ ],
+ "basesAfetadas": [
+  "senadores"
+ ],
+ "versaoMantida": "133eaf797064324df06b8cb16452d1e821edd93f",
+ "arquivosRevertidos": 2475,
+ "arquivosNovosRetidos": 1,
+ "evidencias": "artefato coleta-bloqueada-44736702072 (30 dias)",
+ "versaoMantidaTambemFalha": [],
+ "testesDepoisDeReverter": {
   "cpf": {
    "codigo": 0,
    "erros": 0
@@ -14,7 +49,5 @@
    "codigo": 1,
    "erros": 1
   }
- },
- "resultado": "publicado",
- "motivos": []
+ }
 }
