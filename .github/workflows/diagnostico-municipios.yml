@@ -1,0 +1,23 @@
+name: Diagnóstico dos municípios (só leitura)
+
+# Descobre e testa, a partir do runner, os portais de transparência das prefeituras e câmaras dos 79 municípios de MS
+# e as fontes nacionais (Siconfi, PNCP) de cada um. Não grava nada no repositório nem gera artefato: o resultado sai
+# só no log (uma linha "MUN|{json}" por município). Ver scripts/diagnostico_municipios.py.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnosticar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -q requests
+      - name: Diagnóstico (só leitura)
+        run: python3 -u scripts/diagnostico_municipios.py
