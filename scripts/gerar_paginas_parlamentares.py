@@ -192,8 +192,11 @@ def coleta():
                           categorias={c["categoria"]: c["valor"] for c in d.get("ceapCategorias") or []},
                           extra={}, aba="deputados" if ms else "deputados-brasil", ms=ms, id=d["id"],
                           urlOficial=d.get("urlPerfil")))
+    sen_ms = {x["id"]: x for x in carregar("senadores_ms.json").get("senadores", [])}  # MS: total = soma das notas publicadas
     for s in carregar("senadores_brasil.json").get("senadores", []):
         ms = s.get("uf") == "MS"
+        if ms and s["id"] in sen_ms and sen_ms[s["id"]].get("cotaGastaAno") is not None:
+            s = {**s, "cotaGastaAno": sen_ms[s["id"]]["cotaGastaAno"], "aguardandoFonte": sen_ms[s["id"]].get("aguardandoFonte")}
         notas = notas_estado("ceaps_senado", s.get("uf"), s["id"])
         lista.append(dict(grupo="senador", nome=s["nome"], partido=s.get("partido"), uf=s.get("uf"), foto=s.get("foto"),
                           total=s.get("cotaGastaAno") or 0, cota=None,
@@ -201,7 +204,8 @@ def coleta():
                                   "valor": n.get("valor"), "detalhe": n.get("detalhamento")} for n in notas],
                           totalNotas=len(notas), categorias={k: v for k, v in (s.get("ceaps") or {}).items() if v},
                           extra={}, aba="senadores" if ms else "senado-brasil", ms=ms, id=s["id"],
-                          urlOficial=s.get("urlTransparencia"), situacaoExercicio=s.get("situacaoExercicio")))
+                          urlOficial=s.get("urlTransparencia"), situacaoExercicio=s.get("situacaoExercicio"),
+                          aguardandoFonte=(s.get("aguardandoFonte") or {}).get("texto")))
 
     # slugs únicos por grupo
     usados = {}
@@ -647,7 +651,7 @@ def pagina(p, irmaos):
     corpo = f"""<p class="breadcrumb"><a href="/">Início</a> / <a href="/{g['pasta']}/">{e(g['plural'])}</a> / {e(p['nome'])}</p>
 <article>
 <div class="perfil">{img_html}<div><h1>{e(p['nome'])}</h1>
-<div class="cargo">{e(cargo)} · {e(p['partido'] or 'sem partido')}{f" · {e(p['nomeCompleto'])}" if p.get('nomeCompleto') else ''}</div>{f"<div class='cargo'><b>Fora de exercício: {e(p['situacaoExercicio'])}</b></div>" if p.get('situacaoExercicio') else ''}</div></div>
+<div class="cargo">{e(cargo)} · {e(p['partido'] or 'sem partido')}{f" · {e(p['nomeCompleto'])}" if p.get('nomeCompleto') else ''}</div>{f"<div class='cargo'><b>Fora de exercício: {e(p['situacaoExercicio'])}</b></div>" if p.get('situacaoExercicio') else ''}{f"<div class='cargo'>⏳ Aguardando a fonte: {e(p['aguardandoFonte'])}. O total é a soma das notas publicadas.</div>" if p.get('aguardandoFonte') else ''}</div></div>
 <p><strong>{e(p['nome'])}</strong> gastou <strong>{brl(total)}</strong> de {e(g['cota'])} em {ANO}{f", registrados em <strong>{milhar(n)}</strong> notas fiscais" if n else ""}.{var_txt}</p>
 <div class="resumo-grid">{resumo}</div>
 <div class="acoes">

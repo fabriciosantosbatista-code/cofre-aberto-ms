@@ -758,6 +758,9 @@ def v_senado():
                                lambda x: x.get("valor"), lambda x: x.get("valorReembolsado"))
             por[p["nome"]] = (p.get("notasCeaps") or [], ok, dv, na)
         _um_a_um(res, "senadores", por, ("cnpjCpf", "doc", "data", "valor"))
+    ag = [{"item": p["nome"], **p["aguardandoFonte"]} for p in ps if p.get("aguardandoFonte")]
+    if ag:  # valor que o Senado já soma no total mas ainda sem nota na lista: não conta como conferido, não derruba a base
+        res["aguardandoFonte"] = ag
     return res
 
 
@@ -1448,7 +1451,7 @@ def registrar(fonte, r, out):
                                 **({"amostraContracheques": r["amostraContracheques"]} if r.get("amostraContracheques") else {}),
                                 **{k: r[k] for k in ("independencia", "totaisDeOrgaoConferidos", "registrosConferidosUmAUm", "registrosPorTotais", "semFiltro",
                                                      "digestsUmAUm", "soNaFonte", "naoAchadosNaFonte", "divergentesRegistros", "fonteIndependente",
-                                                     "fonteInacessivel", "ambiguasNaFonte", "problemasNaFonte", "motivosRegistros") if r.get(k) is not None}},
+                                                     "fonteInacessivel", "ambiguasNaFonte", "problemasNaFonte", "motivosRegistros", "aguardandoFonte") if r.get(k) is not None}},
                                ensure_ascii=False) + "\n")
     out[fonte] = r
     return r

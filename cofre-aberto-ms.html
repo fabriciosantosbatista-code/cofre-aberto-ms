@@ -2665,6 +2665,7 @@ async function buscarSenadoresAoVivo(siglaUf) {
       totalNotasFiscais: s.totalNotasFiscais ?? (s.notasCeaps || []).length,  // as notas CEAPS; "despesas" é o resumo antigo
       nota: s.nota || "",
       fonteCeaps: s.fonteCeaps || "",
+      aguardandoFonte: s.aguardandoFonte || null,
       escritorioApoio: s.escritorioApoio || "",
       gabinete: { verbaGabineteMensal: null, equipeEstimada: null, equipeEstimadaNota: "Consulte o Portal de Transparência do Senado para dados individuais." },
       custoEstimadoAnual: {
@@ -2716,6 +2717,7 @@ async function buscarSenadoresAoVivo(siglaUf) {
       totalNotasFiscais: local?.totalNotasFiscais ?? (local?.notasCeaps || []).length,
       nota: ceapsTotal ? "" : (local?.nota || ant?.nota || ""),
       fonteCeaps: local?.fonteCeaps || ant?.fonteCeaps || "",
+      aguardandoFonte: local?.aguardandoFonte || null,
       escritorioApoio: local?.escritorioApoio || ant?.escritorioApoio || "",
       gabinete: { verbaGabineteMensal: null, equipeEstimada: null, equipeEstimadaNota: "Consulte o Portal de Transparência do Senado para dados individuais." },
       custoEstimadoAnual: {
@@ -3248,7 +3250,7 @@ function renderSenadores(data) {
                 <td>Total CEAPS</td>
                 <td class="num">${totalCeaps != null ? formatBRL(totalCeaps) : "—"}</td>
                 <td></td>
-              </tr>`
+              </tr>` + (s.aguardandoFonte ? `<tr><td colspan="3" class="section-note" style="font-size:.78rem">⏳ Aguardando a fonte: ${escHTML(s.aguardandoFonte.texto)}. O total acima é a soma das notas publicadas.</td></tr>` : "")
               : `<tr><td colspan="3" style="opacity:.6">${s.nota || "Dados não disponíveis"}</td></tr>`
             }
           </tbody>
@@ -4608,7 +4610,7 @@ function renderSenadoBrasil(senadores) {
                   <td>Total CEAPS</td>
                   <td class="num">${totalCeaps != null ? formatBRL(totalCeaps) : "—"}</td>
                   <td></td>
-                </tr>`
+                </tr>` + (s.aguardandoFonte ? `<tr><td colspan="3" class="section-note" style="font-size:.78rem">⏳ Aguardando a fonte: ${escHTML(s.aguardandoFonte.texto)}. O total acima é a soma das notas publicadas.</td></tr>` : "")
                 : `<tr><td colspan="3" style="opacity:.6">${s.nota || "Dados não disponíveis"}</td></tr>`
               }
             </tbody>

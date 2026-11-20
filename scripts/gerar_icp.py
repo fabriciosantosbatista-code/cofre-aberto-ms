@@ -380,6 +380,8 @@ def main():
             vb = f"{pr.get('valor') or 0:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
             pend.append(f"problema na fonte: {pr.get('deputado')}, nota {pr.get('doc')} (R$ {vb}) repetida pela própria fonte com os códigos "
                         f"{', '.join(pr.get('codigos') or [])} — somada uma vez no site, não conta como conferida")
+        for ag in (ver_auto.get(fid) or {}).get("aguardandoFonte") or []:
+            pend.append(f"aguardando a fonte — {ag.get('item')}: {ag.get('texto')}")
         mr = (ver_auto.get(fid) or {}).get("motivosRegistros") or {}
         if mr:  # divergências e não obtidos registro a registro, com o motivo
             from collections import Counter as _C

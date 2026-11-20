@@ -633,6 +633,23 @@ def coletar_senadores_ms():
         ant_s = dados_ant.get(sen_id, {})
         total_ceaps = recursos["totalCeaps"] or 0
         total_extras = recursos["totalExtras"] or 0
+        # Como em Deputados: o total do site é a soma das notas publicadas. A API de totais do Senado ("recursos") às vezes
+        # atualiza antes da lista de notas (despesas_ceaps): a diferença fica "aguardando a fonte", com aviso, e some
+        # sozinha quando a lista de notas sincronizar.
+        aguardando = None
+        cats_ceaps = recursos["ceaps"]
+        soma_notas = round(sum(n.get("valor") or 0 for n in notas), 2) if notas else 0
+        if notas and total_ceaps and abs(total_ceaps - soma_notas) > 1 and ano_dados == ANO:
+            dif = round(total_ceaps - soma_notas, 2)
+            br = lambda v: f"R$ {v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+            aguardando = {"totalSenado": round(total_ceaps, 2), "somaNotas": soma_notas, "diferenca": dif,
+                          "texto": (f"o Senado já informa {br(total_ceaps)} no total de {ANO}; {br(dif)} ainda sem nota individual publicada" if dif > 0 else
+                                    f"a lista de notas do Senado soma {br(-dif)} a mais que o total de {br(total_ceaps)} informado para {ANO}")}
+            total_ceaps = soma_notas
+            cats_ceaps = {}
+            for n in notas:
+                cats_ceaps[n.get("categoria") or "Outros"] = cats_ceaps.get(n.get("categoria") or "Outros", 0) + (n.get("valor") or 0)
+            log(f"    ⏳ {ident.get('NomeParlamentar')}: {aguardando['texto']}")
 
         resultado.append({
             "id": sen_id,
@@ -651,7 +668,8 @@ def coletar_senadores_ms():
             "cotaGastaAno": round(total_ceaps, 2) if total_ceaps else (ant_s.get("cotaGastaAno") if ant_s.get("anoReferencia") == ano_dados else None),
             "totalGasto": round(total_ceaps + total_extras, 2) if total_ceaps else None,
             "ceapsCategorias": [{"categoria": k, "valor": round(v, 2)}
-                                for k, v in sorted(recursos["ceaps"].items(), key=lambda x: -x[1]) if v > 0],
+                                for k, v in sorted(cats_ceaps.items(), key=lambda x: -x[1]) if v > 0],
+            "aguardandoFonte": aguardando,
             "despesas": ant_s.get("despesas", []),
             "notasCeaps": notas,
             "totalNotasFiscais": len(notas),
