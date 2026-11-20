@@ -193,7 +193,15 @@ def coleta():
                           extra={}, aba="deputados" if ms else "deputados-brasil", ms=ms, id=d["id"],
                           urlOficial=d.get("urlPerfil")))
     sen_ms = {x["id"]: x for x in carregar("senadores_ms.json").get("senadores", [])}  # MS: total = soma das notas publicadas
-    for s in carregar("senadores_brasil.json").get("senadores", []):
+    _nac = carregar("senadores_brasil.json").get("senadores", [])
+    _ids_nac = {x["id"] for x in _nac}
+    # MS: quem saiu de exercício no ano (troca com o suplente) e não está na lista nacional também tem página, com os
+    # gastos do período em que exerceu
+    _fora = [{"id": x["id"], "nome": x["nome"], "partido": x.get("partido"), "uf": "MS", "foto": x.get("foto"), "cotaGastaAno": x.get("cotaGastaAno"),
+              "ceaps": {c["categoria"]: c["valor"] for c in x.get("ceapsCategorias") or []}, "urlTransparencia": x.get("urlTransparencia"),
+              "situacaoExercicio": x.get("situacaoExercicio") or "saiu de exercício no ano", "aguardandoFonte": x.get("aguardandoFonte")}
+             for x in sen_ms.values() if x["id"] not in _ids_nac and x.get("emExercicio") is False]
+    for s in _nac + _fora:
         ms = s.get("uf") == "MS"
         if ms and s["id"] in sen_ms and sen_ms[s["id"]].get("cotaGastaAno") is not None:
             s = {**s, "cotaGastaAno": sen_ms[s["id"]]["cotaGastaAno"], "aguardandoFonte": sen_ms[s["id"]].get("aguardandoFonte")}

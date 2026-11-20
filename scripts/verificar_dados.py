@@ -175,7 +175,8 @@ def main():
     sen = carregar("senadores_ms.json")
     if sen:
         s = sen.get("senadores", [])
-        checa(len(s) == 3, "Senadores MS: 3", f"**Senadores MS**: {len(s)} (esperado 3)")
+        ex_ = [x for x in s if x.get("emExercicio", True)]  # quem saiu de exercício no ano continua no arquivo, com as notas do período
+        checa(len(ex_) == 3, "Senadores MS: 3 em exercício", f"**Senadores MS**: {len(ex_)} em exercício (esperado 3)")
         datas = [n.get("data") for x in s for n in (x.get("notasCeaps") or []) if n.get("data")]
         recente("Senadores MS (CEAPS)", max(datas) if datas else None, 45, o_que="nota fiscal mais recente")
     sbr = carregar("senadores_brasil.json")

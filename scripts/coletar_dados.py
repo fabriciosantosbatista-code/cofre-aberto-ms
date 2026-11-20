@@ -608,8 +608,27 @@ def coletar_senadores_ms():
     except: pass
     notas_ceaps = carregar_notas_ceaps_senado(ANO)
 
+    # Troca titular ↔ suplente: quem exerceu o mandato no ano e saiu de exercício continua no site, com as notas do
+    # período em que exerceu (cada um na sua página). Vem do arquivo anterior do mesmo ano; só se tiver notas no ano.
+    atuais = {int(p["IdentificacaoParlamentar"]["CodigoParlamentar"]) for p in senadores_ms}
+    saidos = []
+    try:
+        _ant_ms = json.load(open(DADOS / "senadores_ms.json", encoding="utf-8"))
+        if mesmo_ano(_ant_ms):
+            for s_ in _ant_ms.get("senadores", []):
+                sid_ = int(s_["id"])
+                if sid_ not in atuais and (s_.get("notasCeaps") or (notas_ceaps or {}).get(sid_)):
+                    saidos.append({"IdentificacaoParlamentar": {"CodigoParlamentar": str(sid_), "NomeParlamentar": s_.get("nome"),
+                                                                "NomeParlamentarFormatado": s_.get("nome"), "SiglaPartidoParlamentar": s_.get("partido"),
+                                                                "UrlFotoParlamentar": s_.get("foto")}, "_foraDeExercicio": True})
+    except Exception:
+        pass
+    if saidos:
+        log(f"  {len(saidos)} senador(es) de MS fora de exercício com gastos em {ANO}: "
+            + ", ".join(x["IdentificacaoParlamentar"]["NomeParlamentar"] for x in saidos))
+
     resultado = []
-    for p in senadores_ms:
+    for p in senadores_ms + saidos:
         ident = p["IdentificacaoParlamentar"]
         sen_id = int(ident["CodigoParlamentar"])
         time.sleep(0.5)
@@ -676,7 +695,14 @@ def coletar_senadores_ms():
             "escritorioApoio": ant_s.get("escritorioApoio", ""),
             "fonteCeaps": f"adm.senado.gov.br — dados de {hoje}",
             "nota": "" if total_ceaps else f"Dados de {ANO} ainda não publicados. Exibindo {ano_dados}.",
+            "emExercicio": not p.get("_foraDeExercicio"),
         })
+        if p.get("_foraDeExercicio"):  # saiu de exercício: a página mostra os gastos do período em que exerceu
+            datas = sorted(str(n.get("data"))[:10] for n in notas if n.get("data"))
+            br = lambda d: f"{d[8:10]}/{d[5:7]}/{d[:4]}"
+            resultado[-1]["periodoNotas"] = {"de": datas[0], "ate": datas[-1]} if datas else None
+            resultado[-1]["situacaoExercicio"] = (f"gastos do período em que exerceu o mandato em {ANO}"
+                                                  + (f" (notas de {br(datas[0])} a {br(datas[-1])})" if datas else ""))
         log(f"  ✓ {ident.get('NomeParlamentar')} — CEAPS {ano_dados}: R$ {total_ceaps:,.2f} — {len(notas)} notas")
 
     data = {
@@ -999,7 +1025,13 @@ def coletar_senado_brasil():
     salvar("senadores_brasil.json", data)
     notas = carregar_notas_ceaps_senado(ANO)
     if notas is not None:
-        salvar_notas_por_uf("ceaps_senado", ((s["id"], s.get("uf")) for s in senadores), notas,
+        ids_nac = {s["id"] for s in senadores}
+        try:  # senadores de MS fora de exercício que gastaram no ano também têm as notas no arquivo de MS
+            fora_ms = [(x["id"], "MS") for x in json.load(open(DADOS / "senadores_ms.json", encoding="utf-8")).get("senadores", [])
+                       if x["id"] not in ids_nac]
+        except Exception:
+            fora_ms = []
+        salvar_notas_por_uf("ceaps_senado", [(s["id"], s.get("uf")) for s in senadores] + fora_ms, notas,
                             "CEAPS — API de dados abertos do Senado (adm.senado.gov.br)")
     return senadores
 
