@@ -487,7 +487,8 @@ def main():
                                  for k, v in sorted((exec_atual.get("jobs") or {}).items())],
                         "historico": len(exec_hist)}}
     (DADOS / "icp.json").write_text(json.dumps(icp, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    if os.environ.get("GITHUB_RUN_ID") or "--registrar-historico" in sys.argv:  # só as gerações do robô entram no histórico
+    if (os.environ.get("GITHUB_RUN_ID") or "--registrar-historico" in sys.argv) and not os.environ.get("ICP_SEM_HISTORICO"):
+      # só as gerações do robô entram no histórico; o recálculo depois da conferência de Supersalários (mesma execução) não
       with open(DADOS / "icp_notas_historico.jsonl", "a", encoding="utf-8") as h:  # histórico PERMANENTE das notas (só acrescenta)
         h.write(json.dumps({"em": icp["geradoEm"], "metodologia": met.VERSAO, "nota": geral, "notaMetodologia1": geral_v1,
                             "runId": exec_atual.get("runId"), "indicadores": {k: ind[k] for k in ("conferenciaAbrangente", "conferenciaParcial", "semVerificacaoOficial", "criticos")},

@@ -496,6 +496,9 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    permissions:
+      contents: write
+      actions: write   # ler o log dos robôs (ICP) e disparar a publicação do site logo depois do push
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -629,12 +632,8 @@ jobs:
           ARTEFATO_CHAVE: ${{ secrets.ARTEFATO_CHAVE }}
         run: scripts/decifrar_artefato.sh artefato_cifrado/folha-supersalarios.tar.gpg folha_completa && rm -rf artefato_cifrado
 
-      - name: Supersalários — conferência automática de cada contracheque (acima do teto, intermediários e amostra; sem fila manual)
-        timeout-minutes: 15
-        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
-        run: |
-          sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por poppler-utils >/dev/null || echo "⚠️ OCR indisponível — o PDF dos membros do TCE terá uma leitura só"
-          python3 scripts/verificacao/conferencia_supersalarios.py || echo "⚠️ conferência de Supersalários falhou — a anterior fica"
+      # A conferência automática de Supersalários roda no job próprio "conferir_supersalarios" (fora do caminho da
+      # publicação): ver o fim deste arquivo.
 
       - name: Conferir os dados direto nas fontes oficiais (independente da coleta; só entra no ICP até 2 h depois do início da coleta)
         timeout-minutes: 35
@@ -784,6 +783,12 @@ jobs:
   # este job olha o conteúdo, abre/atualiza a issue "alerta-dados" e falha
   # o run (e-mail do GitHub) se houver erro.
   # ------------------------------------------------------------------
+      - name: Publicar o site agora (sem esperar a conferência de Supersalários, que roda em job próprio)
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run publicar-site.yml --ref main -R ${{ github.repository }} && echo "🚀 publicação do site disparada"
+
       - name: Avisar buscadores das páginas que mudaram (IndexNow — Bing, DuckDuckGo, Yahoo)
         continue-on-error: true
         run: python3 scripts/avisar_buscadores.py || echo "⚠️ aviso aos buscadores falhou — sem impacto no site"
@@ -900,3 +905,104 @@ jobs:
           echo "Dados: ${{ steps.dados.outcome }} — Painel: ${{ steps.site.outcome }}"
           cat relatorio.md >> "$GITHUB_STEP_SUMMARY"
           [ "${{ steps.dados.outcome }}" = "success" ] && [ "${{ steps.site.outcome }}" = "success" ]
+
+  # ------------------------------------------------------------------
+  # Conferência automática de Supersalários, FORA do caminho da publicação: começa assim que a folha cifrada fica
+  # pronta, roda em paralelo com o resto da coleta e tem 45 min (prazo interno de 40: o que não couber fica "não
+  # verificado — tempo esgotado" para a próxima coleta). Mesma execução (mesmo ID) que a coleta: a trava do ICP vale.
+  # Se falhar ou estourar, fica a conferência anterior e o erro aparece no log e no ICP; nada mais é afetado.
+  # ------------------------------------------------------------------
+  conferir_supersalarios:
+    needs: [coletar_emendas_alems, coletar_tjms, coletar_trt24]
+    if: always() && needs.coletar_emendas_alems.result != 'skipped'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependências (Python, OCR do PDF dos membros do TCE)
+        run: |
+          pip install -q requests pypdf
+          sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por poppler-utils >/dev/null || echo "⚠️ OCR indisponível — o PDF dos membros do TCE terá uma leitura só"
+      - name: Baixar a folha completa CIFRADA desta coleta
+        uses: actions/download-artifact@v4
+        with:
+          name: folha-supersalarios-${{ github.run_id }}
+          path: artefato_cifrado/
+      - name: Decifrar a folha (senha no secret ARTEFATO_CHAVE; nunca no log)
+        env:
+          ARTEFATO_CHAVE: ${{ secrets.ARTEFATO_CHAVE }}
+        run: scripts/decifrar_artefato.sh artefato_cifrado/folha-supersalarios.tar.gpg folha_completa && rm -rf artefato_cifrado
+      - name: Anexo VIII de hoje (TJMS e TRT24), quando a coleta deles deu certo
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: dados-t*
+          path: dados/
+          merge-multiple: true
+      - name: Conferência automática de cada contracheque (acima do teto, intermediários e amostra; sem fila manual)
+        env:
+          CONF_SS_PRAZO_MIN: "40"
+        run: |
+          inicio=$(date +%s)
+          python3 -u scripts/verificacao/conferencia_supersalarios.py
+          echo "⏱ conferência de Supersalários: $(( ($(date +%s) - inicio) / 60 )) min"
+      - name: Entregar o resultado ao job que grava
+        uses: actions/upload-artifact@v4
+        with:
+          name: conferencia-supersalarios
+          path: |
+            dados/verificacao/conferencia_supersalarios.json
+            dados/verificacao/conferencia_supersalarios.csv
+          retention-days: 1
+
+  # Grava a conferência de Supersalários depois da publicação principal: pega o main mais recente, põe o resultado,
+  # recalcula o ICP (mesma execução; sem nova linha no histórico das notas) e faz o push. Se o main mudar no meio,
+  # refaz sobre a versão nova (até 3 tentativas). Ao terminar, o "Publicar o site" roda de novo (workflow_run).
+  gravar_conferencia_supersalarios:
+    needs: [commit_e_push, conferir_supersalarios]
+    if: always() && needs.conferir_supersalarios.result == 'success' && needs.commit_e_push.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout (main mais recente)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -q requests Pillow
+      - name: Baixar o resultado da conferência
+        uses: actions/download-artifact@v4
+        with:
+          name: conferencia-supersalarios
+          path: /tmp/conferencia/
+      - name: Gravar, recalcular o ICP e enviar
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ICP_SEM_HISTORICO: "1"
+        run: |
+          git config user.name "Cofre Aberto Bot"
+          git config user.email "bot@cofreabertoms.com.br"
+          for t in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp /tmp/conferencia/conferencia_supersalarios.json /tmp/conferencia/conferencia_supersalarios.csv dados/verificacao/
+            python3 scripts/gerar_icp.py || echo "⚠️ gerar_icp.py falhou — índice anterior mantido"
+            python3 scripts/mascarar_cpf.py --paginas && python3 tests/test_cpf.py || { echo "❌ CPF nas páginas — nada é gravado"; exit 1; }
+            git add $(grep -v "^#" .github/publicar.txt)
+            if git diff --staged --quiet; then echo "Sem mudanças"; exit 0; fi
+            git commit -q -m "🤖 Supersalários: conferência automática — $(date +'%d/%m/%Y %H:%M') BRT"
+            if git push -q origin HEAD:main; then echo "✅ conferência de Supersalários gravada"; exit 0; fi
+            sleep 15
+          done
+          echo "❌ não foi possível gravar a conferência (main mudando); fica a anterior"; exit 1
+

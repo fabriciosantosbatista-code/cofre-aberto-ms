@@ -26,7 +26,7 @@ Saídas: dados/verificacao/conferencia_supersalarios.csv (sem colunas manuais) e
 
 Uso: python3 scripts/verificacao/conferencia_supersalarios.py [--folha ARQ] [--sem-rede]
 """
-import csv, gzip, hashlib, json, random, re, sys, unicodedata
+import csv, gzip, hashlib, json, os, random, re, sys, time, unicodedata
 from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -49,6 +49,17 @@ GOVERNO_SEM_RUBRICAS = ("a fonte publica só remuneração fixa, eventuais e val
                         "não é possível separar verbas indenizatórias")
 COLUNAS = ["grupo", "nome", "orgao", "mes", "bruto", "liquido", "teto_mes", "lei_teto", "excedente", "total_remuneratorio",
            "total_indenizatorio", "total_excluido_do_teto", "abate_teto", "status", "motivo", "conferido_em", "rotulo", "link_contracheque_original"]
+
+
+# Prazo interno (job próprio "conferir_supersalarios", limite de 45 min): passado o prazo, o que falta reconsultar fica
+# "não verificado — tempo esgotado" e o resultado é gravado com o que já foi conferido.
+PRAZO_MIN = float(os.environ.get("CONF_SS_PRAZO_MIN") or 40)
+FIM = time.monotonic() + PRAZO_MIN * 60
+ESGOTADO = ("nao_verificado", f"tempo esgotado na conferência (prazo de {PRAZO_MIN:.0f} min)")
+
+
+def esgotado():
+    return time.monotonic() > FIM
 
 
 def brl(v):
@@ -117,6 +128,8 @@ def reconsulta_governo(ps, sem_rede=False):
     from concurrent.futures import ThreadPoolExecutor
 
     def um(p):
+        if esgotado():
+            return p, ESGOTADO
         try:
             mm, aa = p["mes"].split("/")
             prm = {"anoexercicio": int(aa), "mescompetencia": int(mm), "tipoFolha": 1, "nome": p["nome"].upper(), "pageno": 1,
@@ -175,6 +188,9 @@ def reconsulta_tce_membros(ps, sem_rede=False):
     for mes in sorted({p["mes"] for p in ps}):
         m, a = mes.split("/")
         lst = [p for p in ps if p["mes"] == mes]
+        if esgotado():
+            out.update({id(p): ESGOTADO for p in lst})
+            continue
         try:
             r = requests.get(f"{cs_.TCE}/Servidores/Exportar", params={"ano": int(a), "mes": int(m), "tipo": 2, "vinculo": 2, "tipoConteudo": 1},
                              headers=cs_.UA, timeout=120)
@@ -220,6 +236,9 @@ def reconsulta_tce(ps, sem_rede=False):
         por_mes[p["mes"]].append(p)
     for mes, lst in por_mes.items():
         m, a = mes.split("/")
+        if esgotado():
+            out.update({id(p): ESGOTADO for p in lst})
+            continue
 
         def lista(ep):
             res, pg = [], 0
@@ -289,6 +308,9 @@ def compara_anexo(ps, oid, teto_de):
     out, cache = {}, {}
     for p in ps:
         mes = p.get("mes")
+        if mes not in cache and esgotado():
+            out[id(p)] = (*ESGOTADO, None)
+            continue
         if mes not in cache:
             cache[mes] = anexo_viii(oid, mes)
         linhas, rot = cache[mes]
@@ -348,12 +370,15 @@ def main():
 
     sel = [p for _, p in grupos]
     st = {}
-    st.update(reconsulta_governo([p for p in sel if p.get("orgaoId") == "governo"], sem_rede))
-    st.update(reconsulta_tce([p for p in sel if p.get("orgaoId") == "tce"], sem_rede))
     classif = {}
-    for oid in ("tjms", "trt24"):
+    for oid in ("tjms", "trt24"):  # ordem: as reconsultas rápidas primeiro; o Governo (o gargalo) por último
         for k, (s_, m_, cl) in compara_anexo([p for p in sel if p.get("orgaoId") == oid], oid, lambda p: teto(p)["valor"]).items():
             st[k], classif[k] = (s_, m_), cl
+    st.update(reconsulta_tce([p for p in sel if p.get("orgaoId") == "tce"], sem_rede))
+    st.update(reconsulta_governo([p for p in sel if p.get("orgaoId") == "governo"], sem_rede))
+    n_esg = sum(1 for v in st.values() if v == ESGOTADO)
+    if n_esg:
+        print(f"  ⏱ prazo interno de {PRAZO_MIN:.0f} min: {n_esg} contracheque(s) ficaram para a próxima coleta (não verificado — tempo esgotado)")
     for p in sel:
         st.setdefault(id(p), ("nao_verificado", "sem reconsulta automática para este órgão"))
 
