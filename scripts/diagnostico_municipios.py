@@ -203,7 +203,7 @@ def main():
     print(f"FIM em {round(time.monotonic() - t0)} s", flush=True)
 
 
-if __name__ == "__main__" and __import__("os").environ.get("DIAG") not in ("2", "3"):
+if __name__ == "__main__" and __import__("os").environ.get("DIAG") not in ("2", "3", "4"):
     main()
 
 
@@ -335,3 +335,39 @@ def terceira_passada():
 
 if __name__ == "__main__" and __import__("os").environ.get("DIAG") == "3":
     terceira_passada()
+
+
+# ---------------------------------------------------------------- 4ª passada (DIAG=4): chamadas de API dos portais do TCE-MS
+def trechos_js(pagina, rx=r"barramento|/api/|api/|municip|sala-do-prefeito|emenda|iegm|remess|entreg|pessoal|folha|despes|empenh|licita|contrat|receit|prestac|jurisdicionad"):
+    r, t, err = get(pagina)
+    if r is None:
+        return {"pagina": pagina, "erro": err}
+    srcs = [urllib.parse.urljoin(r.url, s) for s in re.findall(r'<script[^>]+src=["\']([^"\']+)["\']', r.text, re.I)]
+    out = {"pagina": pagina, "scripts": srcs[:8], "trechos": []}
+    vistos = set()
+    for s in srcs[:8]:
+        rj, tj, ej = get(s)
+        if rj is None or len(rj.text) < 500:
+            continue
+        for m in re.finditer(r'["\'`]([^"\'`\n]{0,140}?(?:' + rx + r')[^"\'`\n]{0,140}?)["\'`]', rj.text, re.I):
+            v = m.group(1)
+            if v in vistos or len(v) < 6 or re.search(r"\s{3,}|function|=>|\{", v):
+                continue
+            vistos.add(v)
+            out["trechos"].append(v[:200])
+            if len(out["trechos"]) >= 250:
+                break
+    return out
+
+
+def quarta_passada():
+    for p in ("https://portaljurisdicionado.tce.ms.gov.br/sala-do-prefeito", "https://esfinge-portal.tce.ms.gov.br/",
+              "https://contasirregulares.tce.ms.gov.br/home"):
+        print("JS|" + json.dumps(trechos_js(p), ensure_ascii=False), flush=True)
+    for u in ("https://sip-barramento.tce.ms.gov.br/barramento/api", "https://sip-barramento.tce.ms.gov.br/barramento/api/",
+              "https://contasirregulares.tce.ms.gov.br/", "https://jurisprudencia.tce.ms.gov.br/dashboard"):
+        print("TCE|" + json.dumps(sonda(u, bundles=False), ensure_ascii=False), flush=True)
+
+
+if __name__ == "__main__" and __import__("os").environ.get("DIAG") == "4":
+    quarta_passada()

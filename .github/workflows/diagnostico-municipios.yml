@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       passada:
-        description: "1 = descoberta dos portais; 2 = Fiorilli (JSON por entidade), Siconfi e PNCP; 3 = TCE-MS (portais e endpoints)"
+        description: "1 = descoberta dos portais; 2 = Fiorilli (JSON por entidade), Siconfi e PNCP; 3 = TCE-MS (portais e endpoints); 4 = TCE-MS (chamadas de API nos JS)"
         default: "1"
         required: true
 
