@@ -203,7 +203,7 @@ def main():
     print(f"FIM em {round(time.monotonic() - t0)} s", flush=True)
 
 
-if __name__ == "__main__" and __import__("os").environ.get("DIAG") != "2":
+if __name__ == "__main__" and __import__("os").environ.get("DIAG") not in ("2", "3"):
     main()
 
 
@@ -289,3 +289,49 @@ def segunda_passada():
 
 if __name__ == "__main__" and __import__("os").environ.get("DIAG") == "2":
     segunda_passada()
+
+
+# ---------------------------------------------------------------- 3ª passada (DIAG=3): TCE-MS como fonte única
+TCE_URLS = [
+    "https://www.tce.ms.gov.br/mapa-dos-jurisdicionados", "https://transparencia.tce.ms.gov.br/",
+    "https://esfinge-portal.tce.ms.gov.br/", "https://portaljurisdicionado.tce.ms.gov.br/", "https://portaljurisdicionado.tce.ms.gov.br/ver-indice",
+    "https://portal-services.tce.ms.gov.br/portal-services/", "https://portal-services.tce.ms.gov.br/portal-services/v3/api-docs",
+    "https://portal-services.tce.ms.gov.br/portal-services/v2/api-docs", "https://portal-services.tce.ms.gov.br/portal-services/swagger-ui.html",
+    "https://portal-services.tce.ms.gov.br/portal-services/swagger-ui/index.html", "https://esfinge-portal.tce.ms.gov.br/api",
+    "https://esfinge-portal.tce.ms.gov.br/v3/api-docs", "https://esic.tce.ms.gov.br/",
+]
+
+
+def sonda(url, bundles=True):
+    r, t, err = get(url)
+    res = {"url": url, "status": r.status_code if r is not None else err, "tempo": t}
+    if r is None:
+        return res
+    ct = r.headers.get("content-type", "")
+    res.update(final=r.url, tipo=ct.split(";")[0], tamanho=len(r.content),
+               titulo=(re.search(r"<title>([^<]*)", r.text or "", re.I).group(1).strip()[:80] if "html" in ct and re.search(r"<title>", r.text or "", re.I) else None))
+    if "json" in ct:
+        res["amostraChaves"] = list(r.json().keys())[:25] if isinstance(r.json(), dict) else f"lista de {len(r.json())}"
+    if bundles and "html" in ct:
+        achados = set()
+        srcs = [urllib.parse.urljoin(r.url, s) for s in re.findall(r'<script[^>]+src=["\']([^"\']+)["\']', r.text, re.I)]
+        srcs = [s for s in srcs if urllib.parse.urlparse(s).netloc.endswith("tce.ms.gov.br")][:6]
+        for s in srcs:
+            rj, tj, ej = get(s)
+            if rj is None:
+                continue
+            for m in re.findall(r'["\'`](https?://[a-z0-9.-]*tce\.ms\.gov\.br[^"\'`\s]{0,120}|/(?:api|portal-services|esfinge|services?)/[^"\'`\s]{2,120})["\'`]', rj.text):
+                achados.add(m)
+        res["scripts"] = len(srcs)
+        res["endpointsNoJs"] = sorted(achados)[:60]
+        res["linksNaPagina"] = sorted(set(re.findall(r'href=["\'](https?://[^"\']*tce\.ms\.gov\.br[^"\']*)["\']', r.text)))[:30]
+    return res
+
+
+def terceira_passada():
+    for u in TCE_URLS:
+        print("TCE|" + json.dumps(sonda(u), ensure_ascii=False), flush=True)
+
+
+if __name__ == "__main__" and __import__("os").environ.get("DIAG") == "3":
+    terceira_passada()
