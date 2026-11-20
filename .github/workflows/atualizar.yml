@@ -2,14 +2,13 @@ name: Atualizar dados diariamente
 
 on:
   schedule:
-    # 07:23 UTC = 04:23 de Brasília. Minuto "quebrado" e madrugada: os horários
-    # redondos (ex.: 12:00) são os mais disputados no GitHub e o run chegava a
-    # começar 5–10 h atrasado. Assim os dados ficam prontos antes do expediente.
-    - cron: '23 7 * * *'
-    # Reserva: o GitHub às vezes atrasa muito ou pula execuções agendadas
-    # (em 11/11/2026 a das 07:23 UTC não tinha rodado até as 13h). Se as duas
-    # rodarem, não há problema: a coleta é idempotente.
-    - cron: '47 13 * * *'
+    # 05:37 UTC = 01:37 de Campo Grande. Minuto quebrado e madrugada UTC: as horas cheias e o horário comercial dos
+    # EUA (cerca de 13h–22h UTC) são os mais disputados no GitHub, que atrasa ou pula execuções agendadas nesses
+    # horários (a das 07:23 UTC de 20/11/2026 não rodou; a das 13:47 atrasava horas). Dados prontos antes do expediente.
+    - cron: '37 5 * * *'
+    # Reserva, também fora do pico. Se as duas rodarem, não há problema: a coleta é idempotente. Se nenhuma rodar, o
+    # workflow "Vigia da coleta" dispara uma (ver vigia-coleta.yml).
+    - cron: '13 9 * * *'
   workflow_dispatch:
 
 # Horários gravados nos JSONs ("ultimaAtualizacao") no fuso de MS — sem isso o
