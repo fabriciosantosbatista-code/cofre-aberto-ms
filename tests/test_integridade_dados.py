@@ -257,7 +257,7 @@ for x in vt.get("parlamentares") or []:
     if x.get("nominais"):
         checa(f"Votações {x['nome']}: participação", abs(x["participacao"] - x["votou"] / x["nominais"] * 100) < 0.11, f"{x['participacao']} x {x['votou'] / x['nominais'] * 100:.2f}")
 
-# ───────────────────────── 10. Receitas (Impostômetro) e evolução ─────────────────────────
+# ───────────────────────── 10. Receitas (Contador da arrecadação) e evolução ─────────────────────────
 rc = J("receitas.json")
 for ente, d in (rc.get("entes") or {}).items():
     for ano, v in (d.get("anos") or {}).items() if isinstance(d, dict) else []:

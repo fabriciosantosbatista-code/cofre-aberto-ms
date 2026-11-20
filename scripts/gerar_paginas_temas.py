@@ -7,7 +7,7 @@ abas quase não aparece nas buscas. Este script gera páginas próprias, com tí
 no formato em que as pessoas pesquisam e números atualizados a cada coleta:
 
   temas      /governo-ms/, /prefeitura-campo-grande/, /supersalarios-ms/, /shows-pagos-com-dinheiro-publico-ms/,
-             /obras-atrasadas-ms/, /publicidade-governo-ms-prefeitura-campo-grande/, /ongs-entidades-dinheiro-publico-ms/, /impostometro-ms/,
+             /obras-atrasadas-ms/, /publicidade-governo-ms-prefeitura-campo-grande/, /ongs-entidades-dinheiro-publico-ms/, /contador-da-arrecadacao-ms/,
              /auditoria/, /emendas-parlamentares-ms/
   perguntas  /perguntas/<pergunta>/ (quanto ganha o governador, um vereador de CG,
              um deputado..., o que é a cota parlamentar, Emendas Pix, teto) com
@@ -546,7 +546,7 @@ def tema_entidades():
             f"ONGs e entidades que recebem dinheiro público em MS em {ano}", corpo)
 
 
-def tema_impostometro():
+def tema_arrecadacao():
     d = carregar("receitas.json")
     ents = d.get("entes") or {}
     if not ents:
@@ -564,7 +564,7 @@ def tema_impostometro():
     corpo = kpis([(compacto(tot), f"em impostos até {rot}"), (compacto(ytd(es, "impostos")) if es else "—", "Governo de MS (ICMS, IPVA, ITCD…)"),
                   (compacto(ytd(cg, "impostos")) if cg else "—", "Prefeitura de CG (IPTU, ISS, ITBI…)"), (compacto(ytd(es, "icms")) if es else "—", "só de ICMS")])
     corpo += (f"<div class='resposta'>Até {rot}, o Governo de Mato Grosso do Sul e a Prefeitura de Campo Grande arrecadaram <strong>{brl(tot)}</strong> em impostos "
-              f"em {ano}, segundo os relatórios oficiais enviados ao Tesouro Nacional. No painel, o Impostômetro MS mostra uma estimativa ao vivo do total no ano.</div>")
+              f"em {ano}, segundo os relatórios oficiais enviados ao Tesouro Nacional. No painel, o Contador da arrecadação MS mostra uma estimativa ao vivo do total no ano.</div>")
     if es:
         corpo += "<h2>Governo de MS: imposto por imposto</h2>" + tabela(["Imposto", f"#{ano} (até {rot})"], [
             f"<tr><td>{n}</td><td class='num'>{brl(ytd(es, k))}</td></tr>" for k, n in (("icms", "ICMS"), ("ipva", "IPVA"), ("itcd", "ITCD"), ("irrf", "IRRF"),
@@ -575,11 +575,28 @@ def tema_impostometro():
                                                                                        ("impostos", "Total de impostos"), ("icms", "Cota do ICMS (do Estado)"), ("fpm", "FPM (repasse da União)"))])
     if es:
         corpo += "<h2>ICMS mês a mês</h2>" + barras([(f"{MESES_[int(m[5:]) - 1][:3]}/{m[2:4]}", v.get("icms") or 0) for m, v in sorted(es["meses"].items())[-12:]])
-    corpo += "<p>" + painel("arrecadacao", "Impostômetro MS ao vivo e tabelas mês a mês") + "</p>"
+    corpo += "<p>" + painel("arrecadacao", "Contador da arrecadação MS ao vivo e tabelas mês a mês") + "</p>"
     corpo += f"<p class='aviso'>Fonte: {e(d['fonte'])}. O Estado e a Prefeitura publicam esse relatório a cada dois meses, até 30 dias após o fim do bimestre.</p>"
-    return ("/impostometro-ms/", f"Impostômetro MS: quanto MS e Campo Grande arrecadaram em impostos em {ano} | Cofre Aberto MS",
+    return ("/contador-da-arrecadacao-ms/", f"Contador da arrecadação MS: quanto MS e Campo Grande arrecadaram em impostos em {ano} | Cofre Aberto MS",
             f"{compacto(tot)} em impostos até {rot}: ICMS, IPVA e ITCD do Governo de MS e IPTU, ISS e ITBI de Campo Grande, mês a mês. Fonte: Tesouro Nacional.",
-            f"Impostômetro MS: impostos arrecadados em {ano}", corpo)
+            f"Contador da arrecadação MS: impostos arrecadados em {ano}", corpo)
+
+
+# Endereços antigos que mudaram: a página antiga continua existindo e manda o visitante para a nova (links antigos não
+# quebram). Saem do sitemap e do índice dos buscadores (noindex + canonical para a nova).
+REDIRECIONA = {"/impostometro-ms/": ("/contador-da-arrecadacao-ms/", "Contador da arrecadação MS")}
+
+
+def pagina_redireciona(novo, nome):
+    return f"""<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página movida para {e(nome)} | Cofre Aberto MS</title>
+<meta name="robots" content="noindex, follow"><link rel="canonical" href="{SITE}{novo}">
+<meta http-equiv="refresh" content="0; url={novo}">
+<script>location.replace({json.dumps(novo)} + location.search + location.hash);</script>
+<style>body{{font-family:system-ui,sans-serif;background:#0d0f14;color:#e8e6df;display:grid;place-items:center;min-height:100vh;margin:0;padding:16px}}a{{color:#f5c842}}</style>
+</head><body><p>Esta página mudou de endereço: <a href="{novo}">{e(nome)}</a>.</p></body></html>
+"""
 
 
 # ---------------------------------------------------------------- páginas institucionais (termos de uso, privacidade)
@@ -596,7 +613,7 @@ possível, o link para conferir o dado na origem. A lista completa de fontes e a
 <a href="/metodologia.html">Metodologia</a>.</p>
 <h2>2. Natureza dos dados</h2>
 <ul><li>Os dados são reproduzidos <b>como os órgãos publicam</b>. Erros, atrasos ou omissões da fonte oficial podem aparecer aqui; quando sabemos, avisamos.</li>
-<li>Totais, rankings, estimativas (como o Impostômetro) e cruzamentos são <b>cálculos do site</b> a partir desses dados, com o método explicado na Metodologia.</li>
+<li>Totais, rankings, estimativas (como o Contador da arrecadação) e cruzamentos são <b>cálculos do site</b> a partir desses dados, com o método explicado na Metodologia.</li>
 <li>O site <b>não substitui</b> os documentos oficiais. Para uso jurídico, administrativo ou jornalístico, confira o documento na fonte.</li></ul>
 <h2>3. Sinais de atenção não são acusação</h2>
 <p>A Auditoria e as abas de fiscalização apontam <b>padrões atípicos</b> definidos por regras objetivas e públicas. Um sinal de atenção
@@ -744,7 +761,7 @@ def perguntas():
 
 
 def main():
-    temas = [t for t in (tema_apoie(), tema_termometro(), tema_votacoes(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_shows(), tema_obras(), tema_publicidade(), tema_entidades(), tema_impostometro()) if t]
+    temas = [t for t in (tema_apoie(), tema_termometro(), tema_votacoes(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_shows(), tema_obras(), tema_publicidade(), tema_entidades(), tema_arrecadacao()) if t]
     pergs = perguntas()
     # Apoie desligado (chave Pix vazia em apoie-config.js): a página continua existindo, mas sai dos "Veja também"
     apoie_on = bool(re.search(r'chave:\s*"[^"]+"', (ROOT / "apoie-config.js").read_text(encoding="utf-8"))) if (ROOT / "apoie-config.js").exists() else False
@@ -771,11 +788,16 @@ def main():
     for url, html in paginas:
         html = html.replace("{RELACIONADAS}", links_relacionados(url))
         mudou += escreve_se_mudou(ROOT / url.strip("/") / "index.html", html) or 0
+    for velho, (novo, nome) in REDIRECIONA.items():
+        escreve_se_mudou(ROOT / velho.strip("/") / "index.html", pagina_redireciona(novo, nome))
+        velho_cartao = ROOT / "cartoes" / f"tema-{velho.strip('/').replace('/', '-')}.jpg"  # cartão antigo tem o nome velho escrito
+        if velho_cartao.exists():
+            velho_cartao.unlink()
     sm = ROOT / "sitemap.xml"
     if sm.exists():
         urls = [u for u, _ in paginas]
         txt = sm.read_text(encoding="utf-8")
-        for u in urls:
+        for u in urls + list(REDIRECIONA):
             txt = re.sub(rf"  <url><loc>{re.escape(SITE + u)}</loc>.*?</url>\n", "", txt)
         novos = [f"  <url><loc>{SITE}{u}</loc><lastmod>{HOJE.isoformat()}</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>" for u in urls]
         escreve_se_mudou(sm, txt.replace("</urlset>", "\n".join(novos) + "\n</urlset>"))
