@@ -383,6 +383,10 @@ def main():
         _pub = (json.load(open(DADOS / "icp_publicacao.json", encoding="utf-8")) if (DADOS / "icp_publicacao.json").exists() else {}) or {}
         if fid in (_pub.get("basesMantidas") or {}):  # a coleta de hoje não passou no teste: ficou a versão anterior
             pend.append("publicação: " + _pub["basesMantidas"][fid].get("texto", "dados da coleta anterior mantidos"))
+        if fid == "contratos-cg" and (DADOS / "prefeitura_aditivos.json").exists():  # aditivos que não couberam no prazo da coleta
+            _ad = json.load(open(DADOS / "prefeitura_aditivos.json", encoding="utf-8"))
+            if _ad.get("pendentes"):
+                pend.append(f"aditivos: {_ad['pendentes']} contrato(s) não atualizado(s) nesta coleta — {_ad.get('motivoPendentes') or 'pendentes'}")
         for ag in (ver_auto.get(fid) or {}).get("aguardandoFonte") or []:
             pend.append(f"aguardando a fonte — {ag.get('item')}: {ag.get('texto')}")
         mr = (ver_auto.get(fid) or {}).get("motivosRegistros") or {}
