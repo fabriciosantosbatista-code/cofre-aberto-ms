@@ -307,12 +307,12 @@ p{margin:0;}
 .lai-box{margin:0 24px;padding:14px 16px;border:1px solid #c98500;border-left:4px solid #c98500;border-radius:10px;background:rgba(201,133,0,.08);font-size:.86rem;line-height:1.55;color:var(--ink-soft)}
 .lai-box b{color:var(--ink)}.lai-box summary{cursor:pointer;margin-top:8px;font-weight:700;color:#e8a020}
 .lai-box textarea{width:100%;box-sizing:border-box;margin:8px 0;background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:10px;font:12.5px/1.5 var(--font-body)}
-.fluxo-card{position:relative;overflow:hidden;max-width:960px;margin:0 auto;background:radial-gradient(120% 90% at 30% 40%,rgba(245,200,66,.07),transparent 60%),var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px 14px}
+.fluxo-card{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 40%,rgba(245,200,66,.07),transparent 60%),var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px}
 .fluxo-card::before{content:"";position:absolute;inset:-44px 0 0 0;pointer-events:none;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;animation:fluxoGrade 3.2s linear infinite;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%);mask-image:linear-gradient(to bottom,transparent,#000 70%)}
 @keyframes fluxoGrade{to{background-position:0 44px}}
 .fluxo-eyebrow{position:relative;font:600 .68rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
 .fluxo-total{position:relative;font:800 clamp(1.6rem,4vw,2.2rem) var(--font-display);letter-spacing:-.03em;color:#f5c842;text-shadow:0 0 28px rgba(245,200,66,.35);line-height:1.1;margin:2px 0 6px;font-variant-numeric:tabular-nums}
-.fluxo-grid{position:relative;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:16px;align-items:center}
+.fluxo-grid{position:relative;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:16px;align-items:center;max-width:920px;margin:0 auto}
 .fluxo-svg{width:100%;height:auto;display:block;overflow:visible;margin:0 auto}
 .fluxo-svg .fita{fill:none;stroke-linecap:round;transition:opacity .2s}
 .fluxo-svg .trilha{font-family:var(--font-display);font-weight:800;fill:#fff3c4;stroke:#14120a;stroke-width:.6px;paint-order:stroke;pointer-events:none;filter:drop-shadow(0 0 3px rgba(245,200,66,.8))}
@@ -339,7 +339,7 @@ p{margin:0;}
 .fluxo-leg{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:5px}.fluxo-leg li{display:grid;grid-template-columns:10px 1fr auto;gap:8px;align-items:baseline;font-size:.8rem;color:var(--ink-soft)}.fluxo-leg i{width:9px;height:9px;border-radius:50%}.fluxo-leg b{color:var(--ink);font:600 .8rem var(--font-mono);white-space:nowrap}.fluxo-leg small{color:var(--ink-soft)}
 .fluxo-nota{position:relative;font-size:.76rem;line-height:1.45;color:var(--ink-soft);margin-top:10px}
 @media(max-width:900px){.fluxo-grid{grid-template-columns:1fr}.fluxo-forn{border-left:0;border-top:1px solid var(--border);padding:14px 0 0;display:grid;grid-template-columns:1fr 1fr}.fluxo-forn h3{grid-column:1/-1}}
-@media(max-width:640px){.fluxo-card{padding:14px 12px;max-width:none}.fluxo-forn{grid-template-columns:1fr;gap:2px}.fluxo-forn-nome{white-space:normal}.fluxo-forn li{font-size:.8125rem;line-height:1.1}.fluxo-forn li small{font-size:.72rem;line-height:1.15}.fluxo-nota{font-size:.72rem;line-height:1.35;margin-top:6px}.fluxo-total{font-size:clamp(1.5rem,3.6vw,1.9rem)}}
+@media(max-width:640px){.fluxo-card{padding:16px 12px}.fluxo-forn{grid-template-columns:1fr;gap:2px}.fluxo-forn-nome{white-space:normal}.fluxo-forn li{font-size:.8125rem;line-height:1.1}.fluxo-forn li small{font-size:.72rem;line-height:1.15}.fluxo-nota{font-size:.72rem;line-height:1.35;margin-top:6px}.fluxo-total{font-size:clamp(1.5rem,3.6vw,1.9rem)}}
 .fv{display:flex;flex-direction:column;gap:6px}
 .fv-casas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .fv-casa{display:grid;grid-template-columns:38px minmax(0,1fr);grid-template-rows:auto auto;column-gap:8px;align-items:center;padding:6px 8px;border:1px solid var(--border);border-radius:10px;background:rgba(245,200,66,.04);cursor:pointer}
