@@ -266,6 +266,7 @@ jobs:
 
       - name: Shows pagos pelo Estado e pelas prefeituras de MS (PNCP)
         timeout-minutes: 15
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 -u scripts/coletar_shows.py || echo "⚠️ coletar_shows.py falhou — dados anteriores mantidos"
 
       # Preços pagos desligado a pedido — para voltar, descomente:
@@ -275,6 +276,7 @@ jobs:
 
       - name: Aluguel de imóveis (Prefeitura de CG e PNCP) e ligação política dos donos
         timeout-minutes: 25   # o coletor para sozinho aos 20 min (LIMITE) e grava o que obteve
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 -u scripts/coletar_alugueis.py || echo "⚠️ coletar_alugueis.py falhou — dados anteriores mantidos"
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
@@ -377,26 +379,32 @@ jobs:
 
       - name: Campanhas dos parlamentares e do Executivo no TSE (1 vez por semana)
         timeout-minutes: 15
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 scripts/coletar_tse.py --se-velho || echo "⚠️ coletar_tse.py falhou — campanhas anteriores mantidas"
 
       - name: Sanções da CGU (CEIS e CNEP) das empresas pagas em MS
         timeout-minutes: 10
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 scripts/coletar_sancoes.py || echo "⚠️ coletar_sancoes.py falhou — sanções anteriores mantidas"
 
       - name: Transferências da União para MS (CGU) — páginas de município
         timeout-minutes: 30
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 scripts/coletar_transferencias_uniao_ms.py || echo "⚠️ coletar_transferencias_uniao_ms.py falhou — dados anteriores mantidos"
 
       - name: Votações nominais dos deputados federais e senadores de MS (Câmara e Senado)
         timeout-minutes: 15
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 -u scripts/coletar_votacoes.py || echo "⚠️ coletar_votacoes.py falhou — dados anteriores mantidos"
 
       - name: Produção legislativa dos deputados federais e senadores de MS (Câmara e Senado)
         timeout-minutes: 15
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 -u scripts/coletar_producao_legislativa.py || echo "⚠️ coletar_producao_legislativa.py falhou — dados anteriores mantidos"
 
       - name: Arrecadação do Governo de MS e da Prefeitura de CG (Tesouro Nacional — Siconfi)
         timeout-minutes: 10
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 scripts/coletar_receitas.py || echo "⚠️ coletar_receitas.py falhou — dados anteriores mantidos"
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
@@ -440,22 +448,27 @@ jobs:
 
       - name: Cadastro na Receita das empresas novas (CNPJ, incremental)
         timeout-minutes: 15
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 scripts/coletar_cnpj.py 400 || echo "⚠️ coletar_cnpj.py falhou — cadastro anterior mantido"
 
       - name: Servidores do Estado que são sócios de empresas pagas (folha × Receita)
         timeout-minutes: 15
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 scripts/coletar_servidores_socios.py || echo "⚠️ coletar_servidores_socios.py falhou — cruzamento anterior mantido"
 
       - name: Contratos e obras do Governo do Estado (+ órgão que paga as empresas acompanhadas)
         timeout-minutes: 30
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 -u scripts/coletar_contratos_governo.py || echo "⚠️ coletar_contratos_governo.py falhou — contratos anteriores mantidos"
 
       - name: Aditivos dos contratos da Prefeitura de CG (incremental, 7 dias)
         timeout-minutes: 15
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 scripts/coletar_aditivos_cg.py || echo "⚠️ coletar_aditivos_cg.py falhou — aditivos anteriores mantidos"
 
       - name: Licitações dos órgãos estaduais no PNCP (vencedores e preços, incremental)
         timeout-minutes: 30
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: python3 scripts/coletar_licitacoes_governo.py 800 || echo "⚠️ coletar_licitacoes_governo.py falhou — licitações anteriores mantidas"
 
       - name: Mascarar CPF antes de entregar os dados deste robô (LGPD — o artefato é baixável)
@@ -618,12 +631,14 @@ jobs:
 
       - name: Supersalários — conferência automática de cada contracheque (acima do teto, intermediários e amostra; sem fila manual)
         timeout-minutes: 15
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         run: |
           sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por poppler-utils >/dev/null || echo "⚠️ OCR indisponível — o PDF dos membros do TCE terá uma leitura só"
           python3 scripts/verificacao/conferencia_supersalarios.py || echo "⚠️ conferência de Supersalários falhou — a anterior fica"
 
       - name: Conferir os dados direto nas fontes oficiais (independente da coleta; só entra no ICP até 2 h depois do início da coleta)
         timeout-minutes: 35
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
