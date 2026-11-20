@@ -376,7 +376,9 @@ def aplicar_excecoes(hoje=None):
     erros.remove(alvo[0])
     em, num = str(ex.get("laiProtocoladoEm") or "").strip(), str(ex.get("laiNumero") or "").strip()
     preenchido = bool(re.fullmatch(r"\d{2}/\d{2}/\d{4}", em)) and bool(num) and not re.search(r"X{2,}|AAAA|DD|MM", num + em)
-    pedido = f"pedido de LAI protocolado em {em} (nº {num})" if preenchido else "pedido de acesso à informação em preparação"
+    prazo = str(ex.get("laiPrazoResposta") or "").strip()
+    prazo = f"; prazo de resposta {prazo}" if re.fullmatch(r"\d{2}/\d{2}/\d{4}", prazo) else ""
+    pedido = f"pedido de LAI protocolado em {em} (nº {num}{prazo})" if preenchido else "pedido de acesso à informação em preparação"
     avisos.insert(0, f"**Prefeitura CG**: fonte parada desde {dt}; {pedido} — exceção até {vale_ate.strftime('%d/%m/%Y')}, depois volta a ser erro")
 
 

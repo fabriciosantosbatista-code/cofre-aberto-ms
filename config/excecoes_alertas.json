@@ -1,9 +1,10 @@
 {
- "_leia": "Exceções temporárias aos alertas de scripts/verificar_dados.py. Cada exceção rebaixa UM erro para aviso, com texto próprio, e volta a ser erro sozinha: depois de 'validoAte', se a fonte voltar a publicar (o dado mais recente passa de 'fonteParadaDesde') ou se aparecer qualquer outro alerta da mesma fonte. Não muda o ICP. Quando o pedido de LAI for protocolado, preencha laiProtocoladoEm (dia/mês/ano) e laiNumero; enquanto um dos dois estiver vazio, o aviso diz 'pedido de acesso à informação em preparação'.",
+ "_leia": "Exceções temporárias aos alertas de scripts/verificar_dados.py. Cada exceção rebaixa UM erro para aviso, com texto próprio, e volta a ser erro sozinha: depois de 'validoAte', se a fonte voltar a publicar (o dado mais recente passa de 'fonteParadaDesde') ou se aparecer qualquer outro alerta da mesma fonte. Não muda o ICP. Quando o pedido de LAI for protocolado, preencha laiProtocoladoEm (dia/mês/ano), laiNumero e, se houver, laiPrazoResposta (dia/mês/ano); enquanto um dos dois estiver vazio, o aviso diz 'pedido de acesso à informação em preparação'.",
  "prefeitura_empenhos": {
   "fonteParadaDesde": "2026-10-02",
-  "laiProtocoladoEm": null,
-  "laiNumero": null,
+  "laiProtocoladoEm": "19/11/2026",
+  "laiNumero": "SIC2026318",
+  "laiPrazoResposta": "09/12/2026",
   "criadoEm": "2026-11-19",
   "validoAte": "2026-12-19"
  }
