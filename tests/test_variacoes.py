@@ -187,6 +187,9 @@ if pub.get("resultado") == "bloqueado":
     avisos.append(f"publicação bloqueada na coleta {pub.get('runId')}: {len(pub.get('motivos') or [])} erro(s) — "
                   + "; ".join(f"[{m['teste']}] {m['base']}" for m in (pub.get("motivos") or [])[:5]) + f" — mantida a versão {str(pub.get('versaoMantida'))[:9]}")
 
+if pub.get("resultado") == "publicado_parcial":
+    avisos.append(f"publicação parcial na coleta {pub.get('runId')}: " + "; ".join(f"{b} ({v.get('texto')})" for b, v in (pub.get("basesMantidas") or {}).items()))
+
 # ── resultado ──
 cab = f"✅ {len(oks)} checagens OK · ⚠️ {len(avisos)} avisos · ❌ {len(erros)} erros"
 print(cab)

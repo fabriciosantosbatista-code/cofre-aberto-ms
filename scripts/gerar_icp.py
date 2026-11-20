@@ -380,6 +380,9 @@ def main():
             vb = f"{pr.get('valor') or 0:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
             pend.append(f"problema na fonte: {pr.get('deputado')}, nota {pr.get('doc')} (R$ {vb}) repetida pela própria fonte com os códigos "
                         f"{', '.join(pr.get('codigos') or [])} — somada uma vez no site, não conta como conferida")
+        _pub = (json.load(open(DADOS / "icp_publicacao.json", encoding="utf-8")) if (DADOS / "icp_publicacao.json").exists() else {}) or {}
+        if fid in (_pub.get("basesMantidas") or {}):  # a coleta de hoje não passou no teste: ficou a versão anterior
+            pend.append("publicação: " + _pub["basesMantidas"][fid].get("texto", "dados da coleta anterior mantidos"))
         for ag in (ver_auto.get(fid) or {}).get("aguardandoFonte") or []:
             pend.append(f"aguardando a fonte — {ag.get('item')}: {ag.get('texto')}")
         mr = (ver_auto.get(fid) or {}).get("motivosRegistros") or {}

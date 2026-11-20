@@ -348,7 +348,7 @@ def main():
     reg["arquivosAtualizados"] = arquivos_atualizados()
     reg["testes"] = resultado_testes()
     reg["publicacao"] = J("icp_publicacao.json") or None
-    if (reg["publicacao"] or {}).get("resultado") == "bloqueado":  # a base falhou nos testes e a coleta não foi publicada
+    if (reg["publicacao"] or {}).get("resultado") in ("bloqueado", "publicado_parcial"):  # a base falhou nos testes e não foi publicada
         ordem = ["leitura_indisponivel", "sem_avisos", "sem_publicacao_nova", "com_avisos", "com_erros", "parcial", "fonte_indisponivel", "falha_execucao"]
         for b in reg["publicacao"].get("basesAfetadas") or []:
             if b in reg["bases"] and ordem.index(reg["bases"][b]) < ordem.index("com_erros"):

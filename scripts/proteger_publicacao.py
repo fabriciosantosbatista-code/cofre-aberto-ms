@@ -7,7 +7,15 @@ Roda no robô depois de todos os geradores e ANTES do commit. Executa, sobre os 
   2. tests/test_integridade_dados  as contas fecham (somas, totais, contagens, painel leve = dados completos)
   3. gerar_monitoramento + tests/test_variacoes   formato das fontes, queda brusca de registros ou do total, exposição
 
-Se algum teste BLOQUEANTE falhar:
+POR BASE (desde 20/11/2026): se os erros bloqueantes forem todos de bases identificadas (integridade ou variações de uma
+base com arquivos conhecidos), só ESSAS bases voltam à versão publicada (HEAD); os derivados (painel leve, planilhas,
+páginas de parlamentares, números da capa) são regerados e a bateria roda de novo. Passou: as outras bases publicam
+normalmente ("publicado_parcial"), a base mantida mostra no site "dados de DD/MM: a coleta de hoje não passou no teste
+de integridade" e a falha fica no ICP e no log. Ainda falhou: bloqueio do site inteiro, como abaixo.
+BLOQUEIA TUDO: CPF exposto (detector), JSON corrompido em dados/, teste de contenção (tests/test_contencao.py), teste
+que não produziu resultado, erro sem base identificada ("geral") ou de base sem arquivos conhecidos.
+
+Se algum teste BLOQUEANTE falhar (e não der para segurar só a base):
   - a última versão publicada (o commit atual, HEAD) é mantida: os caminhos publicáveis voltam ao HEAD;
   - arquivos novos desta coleta (ainda não publicados) são retidos em bloqueio/novos/ — não vão para o site;
   - as evidências ficam em bloqueio/ (relatório dos testes, lista de arquivos, cópia dos dados rejeitados quando o
@@ -56,9 +64,40 @@ def J(rel):
         return {}
 
 
+# arquivos de cada base (os mesmos do ICP); só com eles dá para manter uma base na versão anterior sem mexer nas outras
+ARQUIVOS_BASE_PADRAO = {"senadores": ["dados/senadores_ms.json"], "deputados": ["dados/deputados_federais_ms.json"],
+                        "deputados-estaduais": ["dados/deputados_estaduais_ms.json"]}
+# derivados regerados depois de manter uma base (para continuarem iguais aos dados publicados)
+DERIVADOS = [["scripts/gerar_dados_abertos.py"], ["scripts/gerar_paginas_parlamentares.py"], ["scripts/gerar_painel_leve.py"],
+             ["scripts/atualizar_paginas.py"], ["scripts/mascarar_cpf.py", "--paginas"]]
+
+
+def arquivos_das_bases():
+    m = dict(ARQUIVOS_BASE_PADRAO)
+    for b, v in (J("dados/icp.json").get("bases") or {}).items():
+        if v.get("arquivos"):
+            m[b] = list(v["arquivos"])
+    return m
+
+
+def json_corrompidos():
+    ruins = []
+    for f in sorted((RAIZ / "dados").rglob("*.json")):
+        try:
+            json.load(open(f, encoding="utf-8"))
+        except Exception as e:
+            ruins.append({"nivel": "erro", "base": "geral", "texto": f"JSON corrompido: {f.relative_to(RAIZ)} ({type(e).__name__})"})
+    return ruins
+
+
 def rodar_testes():
     """Executa a bateria e devolve {teste: {"codigo", "saida", "itens"}}."""
     out = {}
+    ruins = json_corrompidos()
+    out["json"] = {"codigo": 1 if ruins else 0, "saida": "\n".join(x["texto"] for x in ruins), "itens": ruins}
+    if (RAIZ / "tests/test_contencao.py").exists():
+        c, s = roda([sys.executable, "tests/test_contencao.py"])
+        out["contencao"] = {"codigo": c, "saida": s, "itens": [] if c == 0 else None}
     c, s = roda([sys.executable, "tests/test_cpf.py", "--json", "dados/icp_testes_cpf.json"])
     out["cpf"] = {"codigo": c, "saida": s}
     c, s = roda([sys.executable, "tests/test_integridade_dados.py", "--json", "dados/icp_testes_integridade.json"])
@@ -71,16 +110,71 @@ def rodar_testes():
     return out
 
 
+TESTES_GLOBAIS = ("cpf", "json", "contencao")  # falha nesses bloqueia o site inteiro
+
+
+def separa(motivos, mapa):
+    """(globais, {base: [motivos]}): o que bloqueia tudo e o que dá para segurar só na base."""
+    globais, por_base = [], {}
+    for m in motivos:
+        if m["teste"] in TESTES_GLOBAIS or m["base"] in ("geral", "", None) or m["base"] not in mapa:
+            globais.append(m)
+        else:
+            por_base.setdefault(m["base"], []).append(m)
+    return globais, por_base
+
+
+def data_publicada(arqs):
+    """Data da versão mantida (a do HEAD) de uma base, em DD/MM, a partir do campo de atualização do arquivo."""
+    for a in arqs:
+        d = J(a)
+        v = d.get("ultimaAtualizacao") or d.get("geradoEm") or d.get("atualizadoEm") if isinstance(d, dict) else None
+        if v:
+            return f"{str(v)[8:10]}/{str(v)[5:7]}"
+    return None
+
+
+def manter_bases(por_base, mapa):
+    """Volta SÓ os arquivos dessas bases ao HEAD (guarda a cópia rejeitada nas evidências) e regera os derivados."""
+    if BLOQUEIO.exists():
+        shutil.rmtree(BLOQUEIO)
+    BLOQUEIO.mkdir(parents=True)
+    mantidas = {}
+    for b, ms in por_base.items():
+        arqs = [a for a in mapa[b] if (RAIZ / a).exists() or git("ls-files", a).stdout.strip()]
+        for a in arqs:
+            if (RAIZ / a).is_file():
+                dst = BLOQUEIO / "rejeitados" / a
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(RAIZ / a, dst)
+        rastreados = [a for a in arqs if git("ls-files", a).stdout.strip()]
+        if rastreados:
+            git("checkout", "HEAD", "--", *rastreados)
+        quando = data_publicada(rastreados)
+        mantidas[b] = {"dadosDe": quando, "arquivos": rastreados, "motivos": ms[:10],
+                       "texto": f"dados de {quando or 'a coleta anterior'}: a coleta de hoje não passou no teste de integridade"}
+    for cmd in DERIVADOS:
+        if (RAIZ / cmd[0]).exists():
+            roda([sys.executable, *cmd])
+    with open(BLOQUEIO / "relatorio.md", "w", encoding="utf-8") as f:
+        f.write(f"# Bases mantidas na versão anterior — {datetime.now():%d/%m/%Y %H:%M}\n\nRun: {os.environ.get('GITHUB_RUN_ID', 'local')}\n\n")
+        for b, v in mantidas.items():
+            f.write(f"## {b} — {v['texto']}\n\n" + "\n".join(f"- **{m['teste']}** · {m['texto']}" for m in v["motivos"]) + "\n\n")
+    return mantidas
+
+
 def bloqueantes(res):
     """Lista de {teste, base, texto} que impedem a publicação."""
     mon = J("dados/monitoramento.json").get("fontes") or {}
     classificacao = tuple(f"{f.get('nome')}: {f.get('classeRotulo')}" for f in mon.values())
     out = []
-    for teste in ("cpf", "integridade", "variacoes"):
+    for teste in ("json", "contencao", "cpf", "integridade", "variacoes"):
+        if teste not in res:
+            continue
         r = res[teste]
         itens = r.get("itens")
         if itens is None:  # o teste não produziu resultado (quebrou): bloqueia — ausência de resultado não é aprovação
-            if r["codigo"] != 0 or teste == "cpf":
+            if r["codigo"] != 0 or teste in ("cpf", "json"):
                 out.append({"teste": teste, "base": "geral", "texto": f"o teste {teste} não produziu resultado (código {r['codigo']}): {r['saida'][-300:]}"})
             continue
         for x in itens:
@@ -137,10 +231,31 @@ def main():
     head = git("rev-parse", "HEAD").stdout.strip()
     resumo = lambda r: {t: {"codigo": v["codigo"], "erros": sum(1 for x in v.get("itens") or [] if x.get("nivel") == "erro")} for t, v in r.items()}
     reg = {"em": datetime.now(__import__("zoneinfo").ZoneInfo("America/Campo_Grande")).strftime("%Y-%m-%dT%H:%M:%S"), "runId": os.environ.get("GITHUB_RUN_ID"), "testes": resumo(res)}
-    if not motivos:
+    mantidas = {}
+    if motivos:
+        mapa = arquivos_das_bases()
+        globais, por_base = separa(motivos, mapa)
+        if not globais and por_base:  # só bases identificadas: segura essas e publica o resto
+            mantidas = manter_bases(por_base, mapa)
+            res_p = rodar_testes()
+            resto = bloqueantes(res_p)
+            if not resto:
+                reg.update({"resultado": "publicado_parcial", "motivos": motivos[:50], "basesAfetadas": sorted(mantidas),
+                            "basesMantidas": mantidas, "versaoMantida": head, "testes": resumo(res_p),
+                            "evidencias": f"artefato coleta-bloqueada-{os.environ.get('GITHUB_RUN_ID', 'local')} (30 dias)"})
+                print(f"⚠️ publicação PARCIAL: {len(mantidas)} base(s) mantida(s) na versão anterior ({', '.join(sorted(mantidas))}); as outras publicam")
+                for b, v in mantidas.items():
+                    print(f"   ⏸ {b}: {v['texto']}")
+                    for m in v["motivos"][:5]:
+                        print(f"      ❌ [{m['teste']}] {m['texto'][:200]}")
+                motivos = []
+            else:
+                print(f"⚠️ manter só as bases não bastou ({len(resto)} erro(s) depois): bloqueio do site inteiro")
+                motivos = motivos + [m for m in resto if m not in motivos]
+    if not motivos and not mantidas:
         reg.update({"resultado": "publicado", "motivos": []})
         print(f"✅ publicação liberada: CPF, integridade e variações sem erro bloqueante")
-    else:
+    elif motivos:
         mudados, novos = reverter(motivos, res)
         res2 = rodar_testes()  # o ICP precisa descrever a versão que fica publicada
         resto = bloqueantes(res2)

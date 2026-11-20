@@ -185,19 +185,37 @@ if "--rapido" not in sys.argv:
         d = json.loads(valido)
         d["resumo"][f"totalVerbaIndenizatoriaPaga{d['ano']}"] = (d["resumo"].get(f"totalVerbaIndenizatoriaPaga{d['ano']}") or 0) + 12345.67  # total que não fecha
         alvo.write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
+        outro = r / "dados/emendas_ms.json"  # mudança válida noutra base: tem de ser publicada
+        o = json.loads(outro.read_text(encoding="utf-8"))
+        o["ultimaAtualizacao"] = "2099-01-01T00:00:00"
+        outro.write_text(json.dumps(o, ensure_ascii=False), encoding="utf-8")
         (r / "dados/novo_desta_coleta.json").write_text('{"x": 1}', encoding="utf-8")
         hist = r / "dados/icp_verificacoes.jsonl"
         hist.write_text(hist.read_text(encoding="utf-8") + '{"em":"2026-11-17T23:59:59","base":"teste","resultado":"confere"}\n', encoding="utf-8")
         c, saida, pub = protege(r)
-        check(pub["resultado"] == "bloqueado" and any(m["teste"] == "integridade" for m in pub["motivos"]), "falha intencional de integridade → publicação bloqueada, teste identificado")
-        check("deputados-estaduais" in pub["basesAfetadas"], f"base afetada identificada (deputados-estaduais) — {pub.get('basesAfetadas')}")
-        check(alvo.read_bytes() == valido, "dado inválido revertido: a última versão válida (HEAD) foi mantida")
-        check(not (r / "dados/novo_desta_coleta.json").exists() and (r / "bloqueio/novos/dados/novo_desta_coleta.json").exists(),
-              "arquivo novo da coleta bloqueada retido em bloqueio/novos (não publicado, não apagado)")
-        check("2026-11-17T23:59:59" in hist.read_text(encoding="utf-8"), "histórico permanente (icp_verificacoes.jsonl) preservado no bloqueio")
+        # POR BASE: só a base que falhou volta à versão publicada; as outras publicam
+        check(pub["resultado"] == "publicado_parcial" and any(m["teste"] == "integridade" for m in pub["motivos"]),
+              f"falha de integridade numa base → publicação parcial, teste identificado ({pub['resultado']})")
+        check("deputados-estaduais" in (pub.get("basesMantidas") or {}), f"base afetada mantida (deputados-estaduais) — {list(pub.get('basesMantidas') or {})}")
+        check(alvo.read_bytes() == valido, "dado inválido revertido: a base afetada ficou na última versão válida (HEAD)")
+        check('"2099-01-01T00:00:00"' in outro.read_text(encoding="utf-8"), "mudança válida de outra base (emendas) publicada normalmente")
+        check((r / "dados/novo_desta_coleta.json").exists(), "arquivo novo de outra base publicado normalmente")
+        check("não passou no teste de integridade" in (pub["basesMantidas"]["deputados-estaduais"].get("texto") or "")
+              and pub["basesMantidas"]["deputados-estaduais"]["texto"].startswith("dados de "), "aviso \"dados de DD/MM: a coleta de hoje não passou no teste de integridade\"")
+        check("2026-11-17T23:59:59" in hist.read_text(encoding="utf-8"), "histórico permanente (icp_verificacoes.jsonl) preservado")
         check((r / "bloqueio/relatorio.md").exists() and (r / "bloqueio/rejeitados/dados/deputados_estaduais_ms.json").exists(),
-              "evidências gravadas (relatório + cópia dos dados rejeitados)")
-        check(c == 0 and not pub["versaoMantidaTambemFalha"], "versão mantida passa nos testes; o robô segue para registrar a falha")
+              "evidências gravadas (relatório + cópia dos dados rejeitados da base)")
+        check(c == 0, "o robô segue para publicar e registrar a falha")
+        subprocess.run(["git", "-C", str(r), "add", "-A"], check=True)
+        subprocess.run(["git", "-C", str(r), "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "-m", "parcial"], check=True)
+        # BLOQUEIA TUDO: JSON corrompido
+        shutil.rmtree(r / "bloqueio", ignore_errors=True)
+        (r / "dados/novo_corrompido.json").write_text('{"x": ', encoding="utf-8")
+        c, saida, pub = protege(r)
+        check(pub["resultado"] == "bloqueado" and any(m["teste"] == "json" for m in pub["motivos"]), f"JSON corrompido → bloqueio do site inteiro ({pub['resultado']})")
+        check(not (r / "dados/novo_corrompido.json").exists() and (r / "bloqueio/novos/dados/novo_corrompido.json").exists(),
+              "arquivo da coleta bloqueada retido em bloqueio/novos (não publicado, não apagado)")
+        shutil.rmtree(r / "bloqueio", ignore_errors=True)
         # CPF exposto intencionalmente
         rng = random.Random(11)
         d = [rng.randint(0, 9) for _ in range(9)]

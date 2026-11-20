@@ -7542,8 +7542,9 @@ function textoCitacao(aba, f) {
 }
 
 function montarBarrasFonte() {
-  Promise.all([carregarJSON("dados/status_fontes.json"), carregarJSON("dados/icp.json")]).then(([st, icp]) => {
+  Promise.all([carregarJSON("dados/status_fontes.json"), carregarJSON("dados/icp.json"), carregarJSON("dados/icp_publicacao.json")]).then(([st, icp, pub]) => {
     const fontes = (st && st.fontes) || {};
+    const mantidas = (pub && pub.resultado === "publicado_parcial" && pub.basesMantidas) || {};  // base que não passou no teste de hoje
     const monit = (icp && icp.bases) || {};
     // selo do ICP: verde só quando a base foi conferida de novo na fonte oficial
     const COR_ICP = { verde: "#1f9d6b", amarelo: "#c98500", vermelho: "#d9363e", cinza: "#7b8494" };
@@ -7557,6 +7558,7 @@ function montarBarrasFonte() {
       bar.innerHTML = `
         <div class="fonte-linha">
           ${f ? `<span class="fonte-selo ${ok ? "ok" : "atencao"}" title="${ok ? "Fonte em dia" : "Dado mais antigo que o normal para esta fonte"}">${ok ? "✅ em dia" : "⚠️ atenção"}</span>` : ""}
+          ${mantidas[aba] ? `<span class="fonte-selo atencao" title="A coleta de hoje desta base não passou no teste de integridade; ficou publicada a versão anterior">⚠️ ${escHTML(mantidas[aba].texto)}</span>` : ""}
           ${monit[aba] ? `<a class="fonte-selo selo-icp" href="#aba=confiabilidade&p=${aba}" data-icp="${aba}" style="background:${COR_ICP[monit[aba].statusCor] || COR_ICP.cinza};border-color:transparent;color:#fff;text-decoration:none" title="${escHTML(((monit[aba].avisosMetodologicos || [])[0]) || monit[aba].motivo)} — clique para ver a evidência">${escHTML(monit[aba].statusRotulo)}${monit[aba].nota != null ? ` · ICP ${monit[aba].nota}` : ""}${monit[aba].cobertura && monit[aba].cobertura.calculavel && monit[aba].nivel === 2 ? ` · ${icpPct(monit[aba].cobertura.percentual)} conferido na fonte` : ""}</a>` : ""}
           <span class="fonte-txt"><b>Fonte:</b> ${f ? (f.url ? `<a href="${escHTML(f.url)}" target="_blank" rel="noopener">${escHTML(f.fonte)}</a>` : escHTML(f.fonte)) : "fontes oficiais"}
             ${f && f.dadoMaisRecente ? ` · <b>dado mais recente:</b> ${escHTML(f.dadoMaisRecente)}` : ""}
