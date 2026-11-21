@@ -64,6 +64,8 @@ jobs:
 
       - name: ICP — conferidores na fonte oficial (fonte simulada, sem rede)
         run: python3 tests/test_conferidores.py
+      - name: Conferência de Supersalários — campo não informado e divergência com o Anexo VIII
+        run: python3 tests/test_conferencia_campos.py
 
       - name: Câmara CG — mês de cada página dos PDFs
         run: python3 tests/test_camara_cg_mes.py

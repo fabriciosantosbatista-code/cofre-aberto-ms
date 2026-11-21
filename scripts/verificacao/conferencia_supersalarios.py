@@ -17,6 +17,13 @@ Cada contracheque é reconsultado e recebe status "confere", "diverge" ou "não 
   TJMS           o portal do TJMS bloqueia acessos de fora do Brasil: sem o arquivo original → não verificado.
   TCE-MS         servidores: nova consulta ao portal do TCE por matrícula (salário-base, outras verbas, líquido).
                  Membros (contracheque em PDF): não verificado até a dupla extração do PDF do TCE entrar.
+Campo que a fonte não informa (regra de 21/11/2026): o campo fica "não verificado — <fonte> não informa <campo>",
+nunca é completado com o nosso próprio número. Ex.: o Anexo VIII do TRT24 não informa os "descontos diversos"
+(consignados, pensão): quando o painel do CNJ tem descontos que o Anexo VIII não lista, o líquido não é comparado.
+O contracheque só fica "confere" se todos os campos comparados batem; com algum campo não verificado e nenhum
+divergente, fica "não verificado" (o motivo diz o que conferiu). Coluna "campos": o status de cada campo.
+Divergência com o Anexo VIII (Judiciário): vai para "divergenciasFonte" no JSON, com os dois valores lado a lado e
+uma frase neutra sobre a fonte — o site mostra um selo na linha da pessoa (o número publicado continua o do CNJ).
 Teto: config/teto.json (valor, data de início e lei), aplicado pelo mês de cada contracheque.
 Rubricas (Judiciário e membros do TCE): config/rubricas.json (remuneratório, indenizatório ou excluído do teto, com a
 base legal). Rubrica fora da tabela → "não verificado — rubrica não classificada" (aviso no log). Não adivinha.
@@ -48,7 +55,7 @@ ROTULO = {"governo": "mesma fonte — confirma a leitura", "trt24": "conferido n
 GOVERNO_SEM_RUBRICAS = ("a fonte publica só remuneração fixa, eventuais e valor após deduções; "
                         "não é possível separar verbas indenizatórias")
 COLUNAS = ["grupo", "nome", "orgao", "mes", "bruto", "liquido", "teto_mes", "lei_teto", "excedente", "total_remuneratorio",
-           "total_indenizatorio", "total_excluido_do_teto", "abate_teto", "status", "motivo", "conferido_em", "rotulo", "link_contracheque_original"]
+           "total_indenizatorio", "total_excluido_do_teto", "abate_teto", "status", "motivo", "conferido_em", "rotulo", "link_contracheque_original", "campos"]
 
 
 # Prazo interno (job próprio "conferir_supersalarios", limite de 45 min): passado o prazo, o que falta reconsultar fica
@@ -143,11 +150,12 @@ def reconsulta_governo(ps, sem_rede=False):
         if not d:
             return p, ("nao_verificado", "matrícula não encontrada na nova consulta (nome/órgão)")
         x = d[0]
-        campos = [("bruto", p["bruto"], (x.get("remuneracaoFixa") or 0) + (x.get("remuneracoesEventuais") or 0)),
-                  ("eventuais", p.get("outras") or 0, x.get("remuneracoesEventuais") or 0),
-                  ("líquido", p["liquido"], x.get("remuneracaoAposDeducoes") or 0)]
-        ruins = [f"{c}: site R$ {brl(a)} × fonte R$ {brl(b)}" for c, a, b in campos if abs((a or 0) - (b or 0)) > 1]
-        return p, (("diverge", "; ".join(ruins)) if ruins else ("confere", "bruto, eventuais e líquido iguais"))
+        fixa, ev = x.get("remuneracaoFixa"), x.get("remuneracoesEventuais")
+        campos = [("bruto", p["bruto"], None if fixa is None and ev is None else (fixa or 0) + (ev or 0), None),
+                  ("eventuais", p.get("outras") or 0, ev, None),
+                  ("líquido", p["liquido"], x.get("remuneracaoAposDeducoes"), None)]
+        s_, m_, stc = compara(campos, "fonte")
+        return p, (s_, m_ or "bruto, eventuais e líquido iguais", campos_txt(stc))
     with ThreadPoolExecutor(4) as ex:  # no máximo 4 consultas ao mesmo tempo no gateway do Estado
         for p, st in ex.map(um, ps):
             out[id(p)] = st
@@ -262,15 +270,61 @@ def reconsulta_tce(ps, sem_rede=False):
                 out[id(p)] = ("nao_verificado", "matrícula não encontrada na nova consulta")
                 continue
             o = om.get(str(p.get("matricula"))) or {}
-            campos = [("salário-base", p.get("base") or 0, x.get("totalVencimentosRemuneracao") or 0),
-                      ("outras verbas", p.get("outras") or 0, o.get("totalVencimentoOutrosPagamentos") or 0),
-                      ("líquido", p["liquido"], (x.get("totalCalculadoRemuneracao") or 0) + (o.get("totalCalculadoOutrosPagamentos") or 0))]
-            ruins = [f"{c}: site R$ {brl(a_)} × fonte R$ {brl(b)}" for c, a_, b in campos if abs((a_ or 0) - (b or 0)) > 1]
-            out[id(p)] = ("diverge", "; ".join(ruins)) if ruins else ("confere", "salário-base, outras verbas e líquido iguais")
+            lr, lo = x.get("totalCalculadoRemuneracao"), o.get("totalCalculadoOutrosPagamentos")
+            campos = [("salário-base", p.get("base") or 0, x.get("totalVencimentosRemuneracao"), None),
+                      ("outras verbas", p.get("outras") or 0, o.get("totalVencimentoOutrosPagamentos") if o else 0, None),
+                      ("líquido", p["liquido"], None if lr is None and lo is None else (lr or 0) + (lo or 0), None)]
+            s_, m_, stc = compara(campos, "fonte")
+            out[id(p)] = (s_, m_ or "salário-base, outras verbas e líquido iguais", campos_txt(stc))
     return out
 
 
 ANEXO_REM = ("subsidio", "vantagensPessoais", "vantagensEventuais", "gratificacoes", "remuneracaoParadigma")
+
+
+def compara(campos, fonte):
+    """campos: [(campo, valor no site, valor na fonte ou None se a fonte não informa, motivo da ausência)].
+    Devolve (status, motivo, {campo: status}). Campo sem valor na fonte → "não verificado", nunca completado com o nosso
+    número. "confere" só se todos os campos comparados batem."""
+    ruins, sem, ok, st = [], [], [], {}
+    for c, a, b, aus in campos:
+        if b is None:
+            sem.append(f"{c} não verificado — {aus or f'{fonte} não informa o campo'}")
+            st[c] = "nao_verificado"
+        elif abs((a or 0) - (b or 0)) > 1:
+            ruins.append(f"{c}: site R$ {brl(a)} × {fonte} R$ {brl(b)}")
+            st[c] = "diverge"
+        else:
+            ok.append(c)
+            st[c] = "confere"
+    if ruins:
+        return "diverge", "; ".join(ruins + sem), st
+    if sem:
+        return "nao_verificado", "; ".join(([(" e ".join(ok)) + " confere" + ("m" if len(ok) > 1 else "")] if ok else []) + sem), st
+    return "confere", None, st
+
+
+def campos_txt(st):
+    return "; ".join(f"{c}={v}" for c, v in st.items())
+
+
+def esclarecimentos():
+    """config/esclarecimentos_fonte.json: pedidos de esclarecimento enviados à fonte, por órgão e mês."""
+    try:
+        return json.load(open(CONF / "esclarecimentos_fonte.json", encoding="utf-8")).get("pedidos") or []
+    except Exception:
+        return []
+
+
+def frase_divergencia(oid, mes, causa):
+    """Frase neutra sobre a FONTE (nunca sobre a pessoa)."""
+    org = {"trt24": "TRT24", "tjms": "TJMS"}.get(oid, oid.upper())
+    f = {"verba_a_mais": f"o {org} publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ",
+         "composicao": f"o {org} publica, no próprio Anexo VIII, uma composição deste contracheque diferente da que consta no painel do CNJ",
+         }.get(causa, f"o valor publicado pelo {org} no próprio Anexo VIII difere do painel do CNJ")
+    if any(e.get("orgaoId") == oid and e.get("mes") == mes for e in esclarecimentos()):
+        f += "; pedido de esclarecimento enviado"
+    return f
 
 
 def anexo_viii(oid, mes):
@@ -333,9 +387,27 @@ def compara_anexo(ps, oid, teto_de):
         abate = ("não se aplica" if devido <= 1 else "aplicado" if ret + 1 >= devido else
                  f"retenção de R$ {brl(ret)} menor que o excedente de R$ {brl(devido)} do subsídio + vantagens pessoais")
         cl = {"remuneratorio": rem, "indenizatorio": ind, "retencaoTeto": ret, "abateTeto": abate, "excedente": devido}
-        campos = [("bruto", p["bruto"], abs(x.get("remuneracaoBruta") or 0)), ("líquido", p["liquido"], abs(x.get("remuneracaoLiquida") or 0))]
-        ruins = [f"{c}: site R$ {brl(a)} × Anexo VIII R$ {brl(b)}" for c, a, b in campos if abs((a or 0) - (b or 0)) > 1]
-        out[id(p)] = (("diverge", "; ".join(ruins), cl) if ruins else ("confere", f"bruto e líquido iguais ao Anexo VIII · {rot}", cl))
+        # líquido: o Anexo VIII pode não informar os "descontos diversos" (consignados, pensão). Se o nosso contracheque tem
+        # descontos que o Anexo VIII não lista e a coluna dele está zerada, o líquido dele não é comparável — não verificado
+        # (não completamos a fonte com o nosso número)
+        liq = abs(x.get("remuneracaoLiquida") or 0)
+        nao_inf = (not abs(x.get("descontosDiversos") or 0) and p.get("descontos") is not None
+                   and abs(p["descontos"]) > abs(x.get("totalDescontos") or 0) + 1)
+        campos = [("bruto", p["bruto"], abs(x.get("remuneracaoBruta") or 0), None),
+                  ("líquido", p["liquido"], None if nao_inf else liq, "o Anexo VIII não informa os descontos diversos")]
+        status, motivo, stc = compara(campos, "Anexo VIII")
+        cl["campos"] = stc
+        if status == "diverge":
+            ind_site = sum(i.get("valor") or 0 for i in (p.get("itens") or []) if isinstance(i, dict) and str(i.get("categoria") or "").startswith("indeniza"))
+            d_b = abs(x.get("remuneracaoBruta") or 0) - p["bruto"]
+            d_i = ind - ind_site
+            causa = ("verba_a_mais" if stc.get("bruto") == "diverge" and d_b > 1 and abs(d_i - d_b) <= 1 else
+                     "composicao" if stc.get("bruto") == "diverge" else "liquido")
+            cl["divergencia"] = {"causa": causa, "frase": frase_divergencia(oid, mes, causa),
+                                 "valores": [{"campo": c, "cnj": round(a, 2), "anexo": round(b, 2)} for c, a, b, _ in
+                                             (("bruto", p["bruto"], abs(x.get("remuneracaoBruta") or 0), 0), ("líquido", p["liquido"], liq, 0))
+                                             if stc.get(c) == "diverge"]}
+        out[id(p)] = (status, motivo if motivo else f"bruto e líquido iguais ao Anexo VIII · {rot}", cl)
     return out
 
 
@@ -374,8 +446,12 @@ def main():
     for oid in ("tjms", "trt24"):  # ordem: as reconsultas rápidas primeiro; o Governo (o gargalo) por último
         for k, (s_, m_, cl) in compara_anexo([p for p in sel if p.get("orgaoId") == oid], oid, lambda p: teto(p)["valor"]).items():
             st[k], classif[k] = (s_, m_), cl
-    st.update(reconsulta_tce([p for p in sel if p.get("orgaoId") == "tce"], sem_rede))
-    st.update(reconsulta_governo([p for p in sel if p.get("orgaoId") == "governo"], sem_rede))
+    camp = {}
+    for k, v in {**reconsulta_tce([p for p in sel if p.get("orgaoId") == "tce"], sem_rede),
+                 **reconsulta_governo([p for p in sel if p.get("orgaoId") == "governo"], sem_rede)}.items():
+        st[k] = tuple(v[:2])
+        if len(v) > 2:
+            camp[k] = v[2]
     n_esg = sum(1 for v in st.values() if v == ESGOTADO)
     if n_esg:
         print(f"  ⏱ prazo interno de {PRAZO_MIN:.0f} min: {n_esg} contracheque(s) ficaram para a próxima coleta (não verificado — tempo esgotado)")
@@ -384,13 +460,19 @@ def main():
 
     tab = rubricas()
     sem_classe = Counter()
-    linhas = []
+    linhas, div_fonte = [], []
     for grupo, p in grupos:
         t = teto(p)
         status, motivo = st[id(p)]
         rem = ind = exc = abate = ""
+        campos = camp.get(id(p), "")
         if p.get("orgaoId") in ("tjms", "trt24"):  # classificação pelas colunas do Anexo VIII (oficial do órgão)
             cl = classif.get(id(p))
+            if cl and cl.get("campos"):
+                campos = campos_txt(cl["campos"])
+            if cl and cl.get("divergencia"):
+                div_fonte.append({"nome": p.get("nome"), "orgaoId": p.get("orgaoId"), "orgao": unidade(p), "mes": p.get("mes"),
+                                  "grupo": grupo, **cl["divergencia"]})
             if cl:
                 rem, ind, abate = f"{cl['remuneratorio']:.2f}", f"{cl['indenizatorio']:.2f}", cl["abateTeto"]
             elif status == "confere":
@@ -409,7 +491,7 @@ def main():
         linhas.append({"grupo": grupo, "nome": p.get("nome"), "orgao": unidade(p), "mes": p.get("mes"), "bruto": f"{p['bruto']:.2f}",
                        "liquido": f"{p['liquido']:.2f}", "teto_mes": f"{t['valor']:.2f}", "lei_teto": t["lei"], "excedente": f"{max(0, exc_val):.2f}",
                        "total_remuneratorio": rem, "total_indenizatorio": ind, "total_excluido_do_teto": exc, "abate_teto": abate, "status": status,
-                       "motivo": motivo, "conferido_em": hoje, "rotulo": ROTULO.get(p.get("orgaoId"), ""), "link_contracheque_original": link})
+                       "motivo": motivo, "conferido_em": hoje, "rotulo": ROTULO.get(p.get("orgaoId"), ""), "link_contracheque_original": link, "campos": campos})
         if grupo == "amostra" and status == "confere":
             janela[hash_cc(p)] = hoje[:10]
     for r, n in sem_classe.most_common():
@@ -438,6 +520,7 @@ def main():
               "sinaisAbateTeto": [{"nome": x["nome"], "orgao": x["orgao"], "mes": x["mes"], "texto": "abate-teto aplicado abaixo do excedente",
                                    "detalhe": x["abate_teto"]} for x in linhas if x["abate_teto"].startswith("retenção de")],
               "abateTeto": Counter(x["abate_teto"].split(" de R$")[0] if x["abate_teto"] else "" for x in linhas if x["abate_teto"]).most_common(),
+              "divergenciasFonte": div_fonte,
               "clopperPearson": {"amostra": cp("amostra"), "intermediario": cp("intermediario")},
               "teto": vs, "amostraJanela": janela,
               "rotulos": {**ROTULO, "governoRubricas": GOVERNO_SEM_RUBRICAS}}

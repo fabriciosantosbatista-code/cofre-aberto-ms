@@ -6056,6 +6056,12 @@ function renderEmendasMunicipios(d) {
 // ===================== SUPERSALÁRIOS =====================
 function renderSupersalarios(d) {
   const T = d.teto;
+  // divergências com a fonte original (Anexo VIII): selo na linha de cada pessoa, com os dois valores lado a lado
+  const pConfSS = carregarJSON("dados/verificacao/conferencia_supersalarios.json");
+  const chaveSS = (nome, oid, mes) => [String(nome || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().replace(/\s+/g, " ").trim(), oid, mes].join("|");
+  const anexoDe = oid => `Anexo VIII do ${oid === "trt24" ? "TRT24" : oid === "tjms" ? "TJMS" : String(oid || "").toUpperCase()}`;
+  const fraseSS = dv => { const f = String(dv.frase || ""); return f ? f.charAt(0).toUpperCase() + f.slice(1) + "." : ""; };
+  const valoresSS = dv => (dv.valores || []).map(v => `${escHTML(v.campo)} <b>${formatBRL(v.cnj)}</b> no painel do CNJ × <b>${formatBRL(v.anexo)}</b> no ${anexoDe(dv.orgaoId)}`).join("; ");
   const nf = n => (n || 0).toLocaleString("pt-BR");
   document.getElementById("ss-liquido").textContent = nf(d.liquidoAcimaTeto);
   document.getElementById("ss-teto").textContent = formatBRL(T);
@@ -6073,7 +6079,7 @@ function renderSupersalarios(d) {
   document.getElementById("ss-teto-fonte").textContent = `${formatBRL(T)} (${d.tetoFonte})`;
   document.getElementById("ss-avisos").textContent = (d.avisos || []).join(" ");
   // conferência AUTOMÁTICA de cada contracheque (conferencia_supersalarios.json) + checagem de integridade (checagem_ultima.json)
-  Promise.all([carregarJSON("dados/verificacao/conferencia_supersalarios.json"), carregarJSON("dados/verificacao/checagem_ultima.json"),
+  Promise.all([pConfSS, carregarJSON("dados/verificacao/checagem_ultima.json"),
                carregarJSON("dados/validacao_fontes.json")]).then(([cs, ck, vf]) => {
     const el = document.getElementById("ss-conferencia");
     if (!el || (!cs && !ck)) return;
@@ -6098,6 +6104,10 @@ function renderSupersalarios(d) {
       <ul style="margin:6px 0 6px 18px">${linhaG("supersalario", "Líquido acima do teto")}${linhaG("intermediario", "Bruto acima e líquido abaixo do teto")}
       ${linhaG("amostra", "Amostra abaixo do teto")}</ul>
       ${cp && cp.conferidos ? `Amostra: ${n(cp.comErro)} divergência(s) em ${n(cp.conferidos)} conferidos — taxa de erro abaixo de <b>${pct(cp.limiteSuperior95)}</b> com 95% de confiança (Clopper–Pearson). ` : ""}
+      ${((cs || {}).divergenciasFonte || []).length ? `<details style="margin:6px 0"><summary style="cursor:pointer"><b>Diverge da fonte original</b> — ${n(cs.divergenciasFonte.length)} contracheque(s) em que o painel do CNJ (fonte do site) e o Anexo VIII publicado pelo próprio órgão trazem valores diferentes. O número publicado continua o do painel do CNJ.</summary>
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:6px"><table class="notes-table"><thead><tr><th>Pessoa</th><th>Mês</th><th>Valores nas duas fontes</th><th>Sobre a fonte</th></tr></thead><tbody>
+        ${cs.divergenciasFonte.map(dv => `<tr><td>${escHTML(dv.nome)}<br><span class="rank-meta">${escHTML(dv.orgao)}</span></td><td>${escHTML(dv.mes)}</td><td style="white-space:normal;min-width:220px">${valoresSS(dv)}</td><td style="white-space:normal;min-width:220px">${escHTML(fraseSS(dv))}</td></tr>`).join("")}
+        </tbody></table></div></details>` : ""}
       ${orgs ? `<div class="card-x-scroll" style="margin:6px 0;overflow-x:auto;-webkit-overflow-scrolling:touch"><table class="ranking"><thead><tr><th>Órgão</th><th class="num">Conferem</th><th class="num">Divergem</th><th class="num">Não verificados</th></tr></thead><tbody>${orgs}</tbody></table></div>` : ""}
       ${((cs || {}).sinaisAbateTeto || []).length ? `<div style="margin:6px 0"><b>⚠ Sinal de atenção — abate-teto aplicado abaixo do excedente</b> (achado na fonte, não erro do site):
         <ul style="margin:4px 0 4px 18px">${cs.sinaisAbateTeto.map(x => `<li>${escHTML(x.nome)} · ${escHTML(x.orgao)} · ${escHTML(x.mes)}: ${escHTML(x.detalhe)}</li>`).join("")}</ul></div>` : ""}
@@ -6189,11 +6199,13 @@ function renderSupersalarios(d) {
     const fo = document.getElementById("ss-filtro-orgao"), bs = document.getElementById("busca-ss"), sl = document.getElementById("ss-so-liquido");
     [...new Set(rk.map(p => p.orgao.startsWith("Governo MS") ? "Governo do Estado" : p.orgao))].forEach(o => fo.insertAdjacentHTML("beforeend", `<option>${escHTML(o)}</option>`));
     const painel = document.getElementById("detail-ss"), tb = document.querySelector("#ranking-ss tbody");
-    let filtrados = rk, limite = 50;
+    let filtrados = rk, limite = 50, divSS = {};
+    const divDe = p => divSS[chaveSS(p.nome, p.orgaoId, p.mes)];
     const linha = (p, i) => `
       <tr class="clickable" data-idx="${i}"><td class="rank-pos">${String(p.pos).padStart(2, "0")}</td>
         <td><div class="rank-name">${escHTML(p.nome)}</div><div class="rank-meta">${escHTML(p.cargo)} · ${escHTML(p.orgao)}${p.situacao && p.situacao !== "Ativo" ? ` · ${escHTML(p.situacao)}` : ""} · ${escHTML(p.mes)}</div>
-          ${eventual(p) ? `<span class="cx-tag" style="border-color:var(--amber);color:var(--amber)" title="Sem remuneração base no mês: o valor é todo de pagamentos eventuais">pagamento eventual no mês</span>` : ""}</td>
+          ${eventual(p) ? `<span class="cx-tag" style="border-color:var(--amber);color:var(--amber)" title="Sem remuneração base no mês: o valor é todo de pagamentos eventuais">pagamento eventual no mês</span>` : ""}
+          ${divDe(p) ? `<span class="cx-tag" style="border-color:var(--amber);color:var(--amber)" title="${escHTML(fraseSS(divDe(p)))}">diverge da fonte original</span>` : ""}</td>
         <td class="num">${formatBRL(p.bruto)}</td><td class="num">${formatBRL(p.liquido)}</td>
         <td class="num">${p.acimaTeto ? formatBRL(p.acimaTeto) : "—"}</td></tr>`;
     const desenhar = () => {
@@ -6223,6 +6235,7 @@ function renderSupersalarios(d) {
         </div>
         ${itens.length ? `<div class="subhead">Itens além da remuneração base</div><div style="overflow-x:auto"><table class="notes-table"><thead><tr><th>Item do contracheque</th><th class="num">Valor</th></tr></thead><tbody>${itens.map(i => `<tr><td>${escHTML(i.item)}</td><td class="num">${formatBRL(i.valor)}</td></tr>`).join("")}</tbody></table></div>` :
           `<p class="section-note">${p.orgaoId === "governo" ? "A folha do Estado publica só o total fixo e o total eventual, sem o detalhe de cada item. Valores muito altos num único mês costumam ser pagamentos retroativos." : p.orgaoId === "tce" ? "Para os servidores, o TCE-MS publica a remuneração e os outros pagamentos (indenizações, auxílios) em totais, sem cada item." : ""}</p>`}
+        ${divDe(p) ? `<p class="aviso" style="margin-top:8px;font-size:.8rem"><b>Diverge da fonte original:</b> ${valoresSS(divDe(p))}. ${escHTML(fraseSS(divDe(p)))} O valor mostrado nesta página é o do painel do CNJ.</p>` : ""}
         ${eventual(p) ? `<p class="aviso" style="margin-top:8px;font-size:.8rem">⚠️ Não houve remuneração base neste mês: todo o valor veio de pagamentos eventuais. Isso costuma ser um pagamento único — atrasados (retroativos), rescisão, férias ou licença-prêmio indenizadas — e não um salário mensal.</p>` : ""}
         <p class="section-note" style="margin-top:8px">Fonte: ${FONTE_SS[p.orgaoId] || FONTE_SS.governo}</p>`;
       painel.classList.add("active");
@@ -6231,6 +6244,10 @@ function renderSupersalarios(d) {
     bs.addEventListener("input", filtrar); fo.addEventListener("change", filtrar); sl.addEventListener("change", filtrar);
     document.getElementById("ss-mais").onclick = () => { limite += 100; desenhar(); };
     desenhar();
+    pConfSS.then(cs => {
+      ((cs || {}).divergenciasFonte || []).forEach(dv => { divSS[chaveSS(dv.nome, dv.orgaoId, dv.mes)] = dv; });
+      if (Object.keys(divSS).length) desenhar();
+    }).catch(() => {});
   };
   if (d.ranking) rankingSS(d.ranking);
   else carregarAoVer("ss-rank-carregar", () => carregarLeve("supersalarios_ranking.json").then(r => { if (r && r.ranking) { rankingSS(r.ranking); return true; } }));
