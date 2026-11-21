@@ -422,3 +422,56 @@ def quinta_passada():
 
 if __name__ == "__main__" and __import__("os").environ.get("DIAG") == "5":
     quinta_passada()
+
+
+# ---------------------------------------------------------------- 6ª passada (DIAG=6): Emendas — 3 divergências de 19/11
+def sexta_passada():
+    """Para as 3 emendas que divergiram na conferência de 19/11/2026: as linhas do arquivo de download da CGU (fonte do
+    site) e os documentos de pagamento da API da CGU (fonte da conferência), com data, fase, favorecido e valor.
+    Só leitura; no máximo algumas dezenas de chamadas à API (limite_cgu: 300/min). Qualquer número com cara de CPF
+    (11 dígitos) sai mascarado."""
+    import csv as _csv, io as _io, re as _re, sys as _s
+    _s.path.insert(0, "scripts")
+    import coletar_emendas_municipios as ce
+    import validar_fontes as vf
+    alvo = {("202544830021", "11319557000378"), ("202614450007", "15513690000150"), ("202528620007", "03624856000126")}
+    emendas = sorted({a for a, _ in alvo})
+    mascara = lambda t: _re.sub(r"(?<!\d)(\d{3})\.?(\d{3})\.?(\d{3})-?(\d{2})(?!\d)", r"***.\2.\3-**", str(t))
+    dig = lambda t: _re.sub(r"\D", "", str(t or ""))
+    # 1) arquivo de download (o mesmo que a coleta usa)
+    z = ce.baixar(None)
+    nome = next(n for n in z.namelist() if n.endswith("_PorFavorecido.csv"))
+    print(f"EMD arquivo {nome}", flush=True)
+    with z.open(nome) as f:
+        r = _csv.reader(_io.TextIOWrapper(f, encoding="latin-1", newline=""), delimiter=";")
+        cab = next(r)
+        ix = {c: i for i, c in enumerate(cab)}
+        for row in r:
+            if row[ix["Código da Emenda"]].strip() in emendas:
+                cod = dig(row[ix["Código do Favorecido"]])
+                reg = {c: (row[i] if (row[ix["Código da Emenda"]].strip(), cod) in alvo or c not in ("Favorecido", "Código do Favorecido") else "(outro favorecido)")
+                       for c, i in ix.items()}
+                print("CSV|" + mascara(json.dumps(reg, ensure_ascii=False)), flush=True)
+    # 2) API da CGU: documentos da emenda e detalhe dos de pagamento
+    import limite_cgu
+    print(f"EMD chave da API da CGU: {'presente' if limite_cgu.chave() else 'AUSENTE'}", flush=True)
+    for e in emendas:
+        for pag in range(1, 20):
+            j = vf._cgu(f"emendas/documentos/{e}", {"pagina": pag})
+            if j is None:
+                print(f"EMD {e}: API não respondeu (página {pag}) — chave ausente ou fonte inacessível", flush=True)
+                break
+            if not j:
+                break
+            for d in j:
+                print("DOC|" + mascara(json.dumps({"emenda": e, **d}, ensure_ascii=False)), flush=True)
+                if "pagamento" not in str(d.get("fase") or "").lower():
+                    continue
+                det = vf._cgu(f"despesas/documentos/{d.get('codigoDocumento')}") or {}
+                campos = {k: det.get(k) for k in ("data", "documento", "documentoResumido", "fase", "especie", "valor", "ufFavorecido",
+                                                  "codigoFavorecido", "nomeFavorecido", "observacao", "orgao", "ugSigla") if k in det}
+                print("DET|" + mascara(json.dumps({"emenda": e, "codigoDocumento": d.get("codigoDocumento"), **campos}, ensure_ascii=False)), flush=True)
+
+
+if __name__ == "__main__" and __import__("os").environ.get("DIAG") == "6":
+    sexta_passada()

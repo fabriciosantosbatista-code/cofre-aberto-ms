@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       passada:
-        description: "1 = descoberta dos portais; 2 = Fiorilli (JSON por entidade), Siconfi e PNCP; 3 = TCE-MS (portais e endpoints); 4 = TCE-MS (chamadas de API nos JS); 5 = Anexo VIII do TRT24 de 08/2026"
+        description: "1 = descoberta dos portais; 2 = Fiorilli (JSON por entidade), Siconfi e PNCP; 3 = TCE-MS (portais e endpoints); 4 = TCE-MS (chamadas de API nos JS); 5 = Anexo VIII do TRT24 de 08/2026; 6 = Emendas: 3 divergências de 19/11 (arquivo da CGU × API)"
         default: "1"
         required: true
 
@@ -27,4 +27,6 @@ jobs:
       - name: Diagnóstico (só leitura)
         env:
           DIAG: ${{ inputs.passada }}
+          # só a 6ª passada usa a API da CGU (leitura; a chave não aparece no log)
+          PORTAL_TRANSPARENCIA_API_KEY: ${{ inputs.passada == '6' && secrets.PORTAL_TRANSPARENCIA_API_KEY || '' }}
         run: python3 -u scripts/diagnostico_municipios.py
