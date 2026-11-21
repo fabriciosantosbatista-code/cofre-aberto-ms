@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-21T08:06:29",
+  "ultimaAtualizacao": "2026-11-21T09:40:07",
   "ano": 2026,
-  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-21T08:06:29",
+  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-21T09:40:07",
   "total": 3,
   "senadores": [
     {
@@ -1264,7 +1264,7 @@
       ],
       "totalNotasFiscais": 105,
       "escritorioApoio": "AV. AMÉRICA, 759 – VILA PLANALTO, CAMPO GRANDE/MS – CEP 79009-060",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-21T08:06:29",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-21T09:40:07",
       "nota": "",
       "emExercicio": true
     },
@@ -4014,7 +4014,7 @@
       ],
       "totalNotasFiscais": 239,
       "escritorioApoio": "AV. PROF. LUIZ ALEXANDRE DE OLIVEIRA, 879 – TÉRREO, ROYAL PARK, CAMPO GRANDE/MS – CEP 79021-430 | Tel: (67) 3222-8738",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-21T08:06:29",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-21T09:40:07",
       "nota": "",
       "emExercicio": true
     },
@@ -5066,6 +5066,17 @@
         },
         {
           "data": "2026-05-04",
+          "mes": 5,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Denis Alexandre Bruno",
+          "cnpjCpf": "171.***.***-66",
+          "doc": "",
+          "tipoDocumento": "Recibo",
+          "detalhamento": "Utilização de táxi no estado de São Paulo pela Senadora Tereza Cristina - 04-05-2026.",
+          "valor": 1000.0
+        },
+        {
+          "data": "2026-05-04",
           "mes": 4,
           "categoria": "Aluguel de imóveis para escritório político",
           "fornecedor": "Águas Guariroba S.A.",
@@ -5098,17 +5109,6 @@
           "valor": 4500.0
         },
         {
-          "data": "2026-05-04",
-          "mes": 5,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Denis Alexandre Bruno",
-          "cnpjCpf": "171.***.***-66",
-          "doc": "",
-          "tipoDocumento": "Recibo",
-          "detalhamento": "Utilização de táxi no estado de São Paulo pela Senadora Tereza Cristina - 04-05-2026.",
-          "valor": 1000.0
-        },
-        {
           "data": "2026-05-03",
           "mes": 5,
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
@@ -5133,17 +5133,6 @@
         {
           "data": "2026-04-30",
           "mes": 4,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Denis Alexandre Bruno",
-          "cnpjCpf": "171.***.***-66",
-          "doc": "",
-          "tipoDocumento": "Recibo",
-          "detalhamento": "Utilização de táxi no estado de São Paulo - 30-04-2026.",
-          "valor": 700.0
-        },
-        {
-          "data": "2026-04-30",
-          "mes": 4,
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
           "fornecedor": "Aerotur Serviços",
           "cnpjCpf": "05.120.923/0001-09",
@@ -5162,6 +5151,17 @@
           "tipoDocumento": "Fatura",
           "detalhamento": null,
           "valor": 2727.18
+        },
+        {
+          "data": "2026-04-30",
+          "mes": 4,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Denis Alexandre Bruno",
+          "cnpjCpf": "171.***.***-66",
+          "doc": "",
+          "tipoDocumento": "Recibo",
+          "detalhamento": "Utilização de táxi no estado de São Paulo - 30-04-2026.",
+          "valor": 700.0
         },
         {
           "data": "2026-04-27",
@@ -5330,50 +5330,6 @@
         },
         {
           "data": "2026-04-01",
-          "mes": 3,
-          "categoria": "Aquisição de material de consumo para uso no escritório político",
-          "fornecedor": "J. Monteiro da Silva - ME - Tech3 Brasil",
-          "cnpjCpf": "21.626.690/0001-69",
-          "doc": "19376",
-          "tipoDocumento": "Boleto",
-          "detalhamento": "Referente à locação de impressora para uso em escritório parlamentar no estado de Mato Grosso do Sul - 03-2026.",
-          "valor": 175.0
-        },
-        {
-          "data": "2026-04-01",
-          "mes": 3,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Ancelmo e Paulino LTDA",
-          "cnpjCpf": "04.990.440/0001-94",
-          "doc": "42239",
-          "tipoDocumento": "Boleto",
-          "detalhamento": "Referente ao uso de combustível para uso no estado de Mato Grosso do Sul - atividades parlamentares - 03-2026.",
-          "valor": 874.51
-        },
-        {
-          "data": "2026-04-01",
-          "mes": 3,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Daleth Veículos LTDA EPP Village Rent a Car",
-          "cnpjCpf": "04.515.963/0001-89",
-          "doc": "910",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": "Referente à locação de veículo modelo GM tracker LT, placa PAL8G29, no período de 01-03-2026 a 31-03-2026.",
-          "valor": 4500.0
-        },
-        {
-          "data": "2026-04-01",
-          "mes": 4,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Grand Park Eventos e Hospedagem LTDA",
-          "cnpjCpf": "41.009.596/0001-78",
-          "doc": "2262",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": "Referente hospedagem do servidor Luiz Fernando dos Santos em Campo Grande - 04-2026.",
-          "valor": 415.0
-        },
-        {
-          "data": "2026-04-01",
           "mes": 4,
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
           "fornecedor": "Aerotur Serviços",
@@ -5459,6 +5415,50 @@
           "tipoDocumento": "Fatura",
           "detalhamento": null,
           "valor": 2262.19
+        },
+        {
+          "data": "2026-04-01",
+          "mes": 3,
+          "categoria": "Aquisição de material de consumo para uso no escritório político",
+          "fornecedor": "J. Monteiro da Silva - ME - Tech3 Brasil",
+          "cnpjCpf": "21.626.690/0001-69",
+          "doc": "19376",
+          "tipoDocumento": "Boleto",
+          "detalhamento": "Referente à locação de impressora para uso em escritório parlamentar no estado de Mato Grosso do Sul - 03-2026.",
+          "valor": 175.0
+        },
+        {
+          "data": "2026-04-01",
+          "mes": 3,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Ancelmo e Paulino LTDA",
+          "cnpjCpf": "04.990.440/0001-94",
+          "doc": "42239",
+          "tipoDocumento": "Boleto",
+          "detalhamento": "Referente ao uso de combustível para uso no estado de Mato Grosso do Sul - atividades parlamentares - 03-2026.",
+          "valor": 874.51
+        },
+        {
+          "data": "2026-04-01",
+          "mes": 3,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Daleth Veículos LTDA EPP Village Rent a Car",
+          "cnpjCpf": "04.515.963/0001-89",
+          "doc": "910",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": "Referente à locação de veículo modelo GM tracker LT, placa PAL8G29, no período de 01-03-2026 a 31-03-2026.",
+          "valor": 4500.0
+        },
+        {
+          "data": "2026-04-01",
+          "mes": 4,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Grand Park Eventos e Hospedagem LTDA",
+          "cnpjCpf": "41.009.596/0001-78",
+          "doc": "2262",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": "Referente hospedagem do servidor Luiz Fernando dos Santos em Campo Grande - 04-2026.",
+          "valor": 415.0
         },
         {
           "data": "2026-03-31",
@@ -5925,7 +5925,7 @@
       ],
       "totalNotasFiscais": 167,
       "escritorioApoio": "",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-21T08:06:29",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-21T09:40:07",
       "nota": "",
       "emExercicio": true
     }
