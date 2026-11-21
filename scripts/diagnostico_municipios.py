@@ -203,7 +203,7 @@ def main():
     print(f"FIM em {round(time.monotonic() - t0)} s", flush=True)
 
 
-if __name__ == "__main__" and __import__("os").environ.get("DIAG") not in ("2", "3", "4"):
+if __name__ == "__main__" and __import__("os").environ.get("DIAG") not in ("2", "3", "4", "5"):
     main()
 
 
@@ -371,3 +371,25 @@ def quarta_passada():
 
 if __name__ == "__main__" and __import__("os").environ.get("DIAG") == "4":
     quarta_passada()
+
+
+# ---------------------------------------------------------------- 5ª passada (DIAG=5): Anexo VIII do TRT24 de um mês
+def quinta_passada():
+    """Colunas do Anexo VIII do TRT24 (dado público, Res. CNJ 102/2009) do mês DIAG_MES, para investigar divergências
+    da conferência de Supersalários. Só leitura; uma linha "TRT|{json}" por magistrado."""
+    import os, sys as _s
+    _s.path.insert(0, "scripts")
+    import coletar_trt24 as t
+    mes = os.environ.get("DIAG_MES") or "08/2026"
+    s_ = requests.Session(); s_.headers.update(t.HEADERS)
+    r = t.arquivo_do_mes(s_, mes)
+    linhas = r if isinstance(r, list) else (t.processa_ods(r) if r else None)
+    if isinstance(linhas, tuple):
+        linhas = linhas[0]
+    print(f"TRT24 {mes}: {len(linhas or [])} linhas", flush=True)
+    for x in linhas or []:
+        print("TRT|" + json.dumps(x, ensure_ascii=False), flush=True)
+
+
+if __name__ == "__main__" and __import__("os").environ.get("DIAG") == "5":
+    quinta_passada()
