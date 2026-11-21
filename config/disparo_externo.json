@@ -1,5 +1,5 @@
 {
  "_leia": "Disparo externo da coleta diária (Cloudflare Worker, cron 37 4 * * * = 00h37 de Campo Grande; código em infra/cloudflare-worker/disparo-coleta.js). Preencha tokenVenceEm (AAAA-MM-DD) com a validade do token fine-grained GH_TOKEN ao criá-lo ou renová-lo. A vistoria da manhã roda scripts/checar_disparo_externo.py: avisa a partir de 30 dias antes do vencimento e se o disparo externo não rodou nas últimas 26 h.",
- "tokenVenceEm": null,
+ "tokenVenceEm": "2027-11-21",
  "avisarDiasAntes": 30
 }
