@@ -382,8 +382,9 @@ def quinta_passada():
     import coletar_trt24 as t
     mes = os.environ.get("DIAG_MES") or "08/2026"
     s_ = requests.Session(); s_.headers.update(t.HEADERS)
-    r = t.arquivo_do_mes(s_, mes)
-    linhas = r if isinstance(r, list) else (t.processa_ods(r) if r else None)
+    url = t.arquivo_do_mes(s_, mes)  # endereço da planilha .ods do mês
+    print(f"TRT24 {mes}: planilha {url}", flush=True)
+    linhas = t.processa_ods(t.get_com_retry(url).content) if url else None
     if isinstance(linhas, tuple):
         linhas = linhas[0]
     print(f"TRT24 {mes}: {len(linhas or [])} linhas", flush=True)
