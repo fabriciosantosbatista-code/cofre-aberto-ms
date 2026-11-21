@@ -384,6 +384,15 @@ def quinta_passada():
     s_ = requests.Session(); s_.headers.update(t.HEADERS)
     url = t.arquivo_do_mes(s_, mes)  # endereço da planilha .ods do mês
     print(f"TRT24 {mes}: planilha {url}", flush=True)
+    mm, aa = mes.split("/")
+    pag = t.get_com_retry(t.PAGINA_REMUNERACAO)
+    import re as _re
+    for h in sorted(set(_re.findall(r'href="([^"]*/documents/[^"]*)"', pag.text))):
+        if f"{mm}-{aa}" in h or f"{mm}_{aa}" in h or f"{mm}/{aa}" in h or ("suplementar" in h.lower() and aa in h):
+            print(f"TRT24 {mes}: documento {h}", flush=True)
+    if url:
+        cab = requests.head(url, headers=t.HEADERS, timeout=60, allow_redirects=True).headers
+        print(f"TRT24 {mes}: cabeçalhos Last-Modified={cab.get('Last-Modified')} ETag={cab.get('ETag')}", flush=True)
     linhas = t.processa_ods(t.get_com_retry(url).content) if url else None
     if isinstance(linhas, tuple):
         linhas = linhas[0]
