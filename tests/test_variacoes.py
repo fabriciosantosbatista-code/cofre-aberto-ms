@@ -2,8 +2,11 @@
 """
 Cofre Aberto MS — testes de variação, formato e exposição (rodam na coleta automática e a cada mudança no código)
 
-  fontes         classificação do monitoramento: falha de coleta e divergência na fonte = ERRO; aguardando a fonte e
-                 revisão manual = AVISO
+  fontes         classificação do monitoramento: falha de coleta = ERRO; aguardando a fonte e revisão manual = AVISO.
+                 Divergência na fonte REGISTRADA (conferência com os itens divergentes, a mesma no histórico permanente
+                 dados/icp_verificacoes.jsonl — aparece no site e no ICP) = AVISO; divergência sem esse registro = ERRO.
+                 (21/11/2026: divergência de dado não deixa o teste vermelho para sempre; o teste falha por erro de
+                 código, dado corrompido, CPF ou divergência sem registro.)
   variação       compara com o retrato anterior (dados/monitoramento_historico.json): queda de registros > 10% ou do total
                  acumulado do ano > 2% = ERRO (no mesmo ano, o acumulado não cai); aumento > 60% de um dia para o outro = AVISO
   formato        cada conjunto tem os campos de que o site depende; se a fonte mudar o formato e um campo sumir = ERRO
@@ -37,10 +40,23 @@ def ok(nome):
 
 # ── fontes ──
 mon = J("monitoramento.json") or {}
+hist_icp = []
+try:
+    hist_icp = [json.loads(l) for l in open(D / "icp_verificacoes.jsonl", encoding="utf-8") if l.strip()]
+except Exception:
+    pass
+
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _bases import divergencia_registrada  # noqa: E402
+
+
 for fid, f in (mon.get("fontes") or {}).items():
     c = f.get("classe")
-    if c in ("falha_coleta", "divergencia"):
-        erros.append(f"{f['nome']}: {f['classeRotulo']} — {f['motivo']}")
+    if c == "divergencia" and divergencia_registrada(fid, f, hist_icp):
+        avisos.append(f"{f['nome']}: {f['classeRotulo']} registrada — {f['motivo']} (no site e no ICP; não é erro de código)")
+    elif c in ("falha_coleta", "divergencia"):
+        erros.append(f"{f['nome']}: {f['classeRotulo']} — {f['motivo']}" + (" — SEM REGISTRO no histórico do ICP" if c == "divergencia" else ""))
     elif c in ("aguardando_fonte", "revisao_manual"):
         avisos.append(f"{f['nome']}: {f['classeRotulo']} — {f['motivo']}")
     else:

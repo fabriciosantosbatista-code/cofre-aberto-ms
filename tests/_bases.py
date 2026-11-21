@@ -47,3 +47,15 @@ def grava_json(caminho, teste, oks, avisos, erros):
             [{"base": base_de(x), "nivel": "erro", "texto": x} for x in erros]
     with open(caminho, "w", encoding="utf-8") as f:
         json.dump({"teste": teste, "ok": len(oks), "avisos": len(avisos), "erros": len(erros), "itens": itens}, f, ensure_ascii=False)
+
+
+def divergencia_registrada(fid, f, hist_icp):
+    """Divergência na fonte REGISTRADA (21/11/2026): a conferência tem os itens divergentes (site × fonte) e a mesma
+    conferência (base, data e resultado) está no histórico permanente do ICP (dados/icp_verificacoes.jsonl), que alimenta
+    a nota e a página da base. Registrada = aviso no teste; sem registro = erro."""
+    v = f.get("validacao") or {}
+    if v.get("resultado") != "diverge" or not v.get("em") or not v.get("divergentes"):
+        return False
+    if not all(isinstance(x, dict) and "site" in x and "fonte" in x for x in v["divergentes"]):
+        return False
+    return any(h.get("base") == fid and h.get("em") == v["em"] and h.get("resultado") == "diverge" for h in hist_icp)
