@@ -390,6 +390,25 @@ def quinta_passada():
     print(f"TRT24 {mes}: {len(linhas or [])} linhas", flush=True)
     for x in linhas or []:
         print("TRT|" + json.dumps(x, ensure_ascii=False), flush=True)
+    # abas de detalhamento (ex.: indenizações e vantagens eventuais por rubrica): cabeçalho e linhas dos magistrados
+    import zipfile, io, xml.etree.ElementTree as ET
+    bruto_ods = t.get_com_retry(url).content if url else None
+    if not bruto_ods:
+        return
+    nomes = {(x.get("nome") or "").strip().upper() for x in linhas or []}
+    root = ET.fromstring(zipfile.ZipFile(io.BytesIO(bruto_ods)).read("content.xml"))
+    for aba in root.findall(".//table:table", t.NS):
+        nome_aba = aba.get(f"{{{t.T_NS}}}name")
+        n_linhas = 0
+        for i, linha in enumerate(aba.findall("table:table-row", t.NS)):
+            cel = [t.texto_celula(c) for c in linha.findall("table:table-cell", t.NS)
+                   if int(c.get(f"{{{t.T_NS}}}number-columns-repeated", "1")) <= 5]
+            if not any(x.strip() for x in cel):
+                continue
+            n_linhas += 1
+            if nome_aba != "ANEXO_VIII" and (i < 12 or (cel[0].strip().upper() in nomes)):
+                print("ABA|" + json.dumps({"aba": nome_aba, "i": i, "cel": cel}, ensure_ascii=False), flush=True)
+        print(f"TRT24 {mes}: aba {nome_aba!r} com {n_linhas} linhas não vazias", flush=True)
 
 
 if __name__ == "__main__" and __import__("os").environ.get("DIAG") == "5":
