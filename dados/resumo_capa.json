@@ -1,15 +1,15 @@
 {
  "ano": 2026,
- "atualizado": "2026-11-20",
+ "atualizado": "2026-11-21",
  "dinheiro": [
   {
    "nome": "Governo do Estado de MS",
-   "valor": 21450474999.27,
+   "valor": 21450084862.7,
    "aba": "governo-ms"
   },
   {
    "nome": "Prefeitura de Campo Grande",
-   "valor": 4786226887.0,
+   "valor": 4791487533.49,
    "aba": "prefeitura"
   },
   {
@@ -19,18 +19,18 @@
   },
   {
    "nome": "Cotas e verbas dos parlamentares de MS",
-   "valor": 23571461.86,
+   "valor": 23580964.89,
    "aba": "deputados"
   }
  ],
  "governoCredores": [
   {
    "nome": "Repasses a municípios, órgãos e previdência",
-   "valor": 10778833744.77
+   "valor": 10778826457.52
   },
   {
    "nome": "Fornecedores e prestadores de serviço",
-   "valor": 5977959643.39
+   "valor": 5977576794.07
   },
   {
    "nome": "Folha, aposentadorias e pensões",
@@ -65,7 +65,7 @@
  ],
  "kpis": {
   "parlamentares": 65,
-  "notas": 11411,
+  "notas": 11413,
   "empresas": 1432,
   "sinais": 346,
   "sinaisFortes": 26,
@@ -115,22 +115,21 @@
    },
    {
     "nome": "Senadores",
-    "valor": 1273790.35,
+    "valor": 1283293.38,
     "aba": "senadores",
     "pessoas": 3,
     "categorias": {
      "Divulgação": 389152.64,
-     "Escritório, aluguel e apoio": 253304.23,
-     "Viagens, passagens e hospedagem": 277962.82,
-     "Veículos e combustível": 310960.86,
-     "Consultorias e assessorias": 42409.8
+     "Escritório, aluguel e apoio": 295714.03,
+     "Viagens, passagens e hospedagem": 281485.85,
+     "Veículos e combustível": 316940.86
     }
    }
   ],
   "categorias": [
    {
     "nome": "Consultorias e assessorias",
-    "valor": 8877435.62
+    "valor": 8835025.82
    },
    {
     "nome": "Divulgação",
@@ -138,15 +137,15 @@
    },
    {
     "nome": "Veículos e combustível",
-    "valor": 4578492.91
+    "valor": 4584472.91
    },
    {
     "nome": "Viagens, passagens e hospedagem",
-    "valor": 2676579.17
+    "valor": 2680102.2
    },
    {
     "nome": "Escritório, aluguel e apoio",
-    "valor": 1714231.81
+    "valor": 1756641.61
    },
    {
     "nome": "Outros",

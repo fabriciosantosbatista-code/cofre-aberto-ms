@@ -2,11 +2,11 @@
  "ano": 2026,
  "fonte": "https://www.transparencia.ms.gov.br",
  "fonteApi": "https://gw.sgi.ms.gov.br",
- "ultimaAtualizacao": "2026-11-20T11:39:15",
+ "ultimaAtualizacao": "2026-11-21T08:06:27",
  "totais": {
   "empenhado": 23489595381.61,
-  "liquidado": 22079900127.75,
-  "pago": 21450474999.27
+  "liquidado": 22080081465.62,
+  "pago": 21450084862.7
  },
  "orgaos": [
   {
@@ -28,7 +28,7 @@
    "orgao": "FUNDO ESPECIAL DE SAUDE DE MS",
    "empenhado": 2535819201.31,
    "liquidado": 2298245501.8,
-   "pago": 2158456152.02
+   "pago": 2158455144.52
   },
   {
    "codigo": 790201,
@@ -42,7 +42,7 @@
    "orgao": "SECRETARIA DE ESTADO DE JUST.SEGUR.PUBLICA",
    "empenhado": 1901563051.38,
    "liquidado": 1860695476.78,
-   "pago": 1801233090.49
+   "pago": 1801232790.49
   },
   {
    "codigo": 350101,
@@ -126,7 +126,7 @@
    "orgao": "AGÊNCIA DE HABITAÇÃO POPULAR DE MATO GROSSO DO SUL",
    "empenhado": 235102285.64,
    "liquidado": 154133152.38,
-   "pago": 148364548.95
+   "pago": 148266864.74
   },
   {
    "codigo": 150101,
@@ -161,14 +161,14 @@
    "orgao": "SECRETARIA DE ESTADO DE INFRAESTRUTURA E LOGÍSTICA",
    "empenhado": 119504953.11,
    "liquidado": 103423812.48,
-   "pago": 102266443.78
+   "pago": 102110758.62
   },
   {
    "codigo": 850201,
    "orgao": "FUNDAÇÃO DE CULTURA DE MATO GROSSO DO SUL",
    "empenhado": 125887261.87,
    "liquidado": 110447407.51,
-   "pago": 100880712.18
+   "pago": 100750712.18
   },
   {
    "codigo": 310901,
@@ -230,8 +230,8 @@
    "codigo": 510201,
    "orgao": "AGENCIA ESTADUAL DE REGULACAO DE SERVICOS PUBLICOS",
    "empenhado": 40931959.13,
-   "liquidado": 34162345.3,
-   "pago": 33845853.31
+   "liquidado": 34327107.8,
+   "pago": 33848924.87
   },
   {
    "codigo": 730101,
@@ -293,8 +293,8 @@
    "codigo": 830208,
    "orgao": "FUNDAÇÃO DO TRABALHO DE MATO GROSSO DO SUL",
    "empenhado": 15369841.65,
-   "liquidado": 15203113.46,
-   "pago": 14715329.9
+   "liquidado": 15219688.83,
+   "pago": 14706798.64
   },
   {
    "codigo": 850101,
@@ -749,8 +749,8 @@
    "cnpj": "15.413.826/0001-50",
    "credor": "ENERGISA MS - DISTRIBUIDORA DE ENERGIA S.A.",
    "empenhado": 93846579.9,
-   "liquidado": 81750380.27,
-   "pago": 79515019.86,
+   "liquidado": 81766955.64,
+   "pago": 79515342.97,
    "tipo": "fornecedor"
   },
   {
@@ -910,7 +910,7 @@
    "credor": "PREFEITURA MUNICIPAL DE CAMPO GRANDE MS",
    "empenhado": 25112357.75,
    "liquidado": 17517093.67,
-   "pago": 46477101.0,
+   "pago": 46469813.75,
    "tipo": "publico"
   },
   {
@@ -2757,8 +2757,8 @@
    "cnpj": "01.962.760/0001-42",
    "credor": "MV COMUNICACAO E PLANEJAMENTO LTDA",
    "empenhado": 10336784.45,
-   "liquidado": 4843286.18,
-   "pago": 4668369.38,
+   "liquidado": 5008048.68,
+   "pago": 4669873.82,
    "tipo": "fornecedor"
   },
   {
@@ -9300,20 +9300,20 @@
    1563854818.97,
    2157838869.31,
    2440597328.61,
-   736172315.13
+   735782178.56
   ]
  },
  "totalCredores": 24646,
  "credoresPorTipo": {
-  "fornecedor": 5977959643.39,
+  "fornecedor": 5977576794.07,
   "folha": 3387145833.1,
-  "publico": 10778833744.77,
+  "publico": 10778826457.52,
   "financeiro": 1306535778.01
  },
  "totalFornecedores": 24130,
  "diarias": {
-  "total": 39627980.79,
-  "trechos": 62016,
+  "total": 39791335.79,
+  "trechos": 62321,
   "meses": [
    {
     "valor": 1407059.5,
@@ -9352,23 +9352,23 @@
     "trechos": 6806
    },
    {
-    "valor": 2870382.5,
-    "trechos": 4396
+    "valor": 2902287.5,
+    "trechos": 4462
    },
    {
-    "valor": 1631416.75,
-    "trechos": 1738
+    "valor": 1762366.75,
+    "trechos": 1976
    }
   ],
   "consultas": 11,
   "consultasPrevistas": 11,
   "trechosForaDoAno": 0,
-  "beneficiarios": 8533,
+  "beneficiarios": 8551,
   "porOrgao": [
    {
     "orgao": "SEJUSP",
-    "valor": 10477880.2,
-    "trechos": 14614
+    "valor": 10541955.2,
+    "trechos": 14697
    },
    {
     "orgao": "DETRAN",
@@ -9382,13 +9382,13 @@
    },
    {
     "orgao": "FUNFAZ",
-    "valor": 3447205.0,
-    "trechos": 3199
+    "valor": 3486060.0,
+    "trechos": 3236
    },
    {
     "orgao": "FESA",
-    "valor": 2131645.4,
-    "trechos": 4104
+    "valor": 2154945.4,
+    "trechos": 4141
    },
    {
     "orgao": "AGESUL",
@@ -9402,13 +9402,13 @@
    },
    {
     "orgao": "SEGOV",
-    "valor": 882051.0,
-    "trechos": 1525
+    "valor": 885426.0,
+    "trechos": 1530
    },
    {
     "orgao": "SED",
-    "valor": 788902.5,
-    "trechos": 1782
+    "valor": 793852.5,
+    "trechos": 1784
    },
    {
     "orgao": "AGRAER",
@@ -9417,8 +9417,8 @@
    },
    {
     "orgao": "AGEPEN",
-    "valor": 656100.0,
-    "trechos": 3008
+    "valor": 676875.0,
+    "trechos": 3127
    },
    {
     "orgao": "FCMS",
@@ -9427,13 +9427,13 @@
    },
    {
     "orgao": "SEAD",
-    "valor": 447975.0,
-    "trechos": 1454
+    "valor": 448175.0,
+    "trechos": 1456
    },
    {
     "orgao": "FUNTUR",
-    "valor": 408710.55,
-    "trechos": 297
+    "valor": 410635.55,
+    "trechos": 298
    },
    {
     "orgao": "FUNRESPMS",
@@ -9447,8 +9447,8 @@
    },
    {
     "orgao": "SEC",
-    "valor": 266245.0,
-    "trechos": 697
+    "valor": 269745.0,
+    "trechos": 707
    },
    {
     "orgao": "FUNDESPORTE",
@@ -9477,8 +9477,8 @@
    },
    {
     "orgao": "FADEB/MS",
-    "valor": 139987.5,
-    "trechos": 367
+    "valor": 142387.5,
+    "trechos": 376
    },
    {
     "orgao": "FEAS",
@@ -10404,6 +10404,22 @@
     ]
    },
    {
+    "nome": "BRENO FURUSHO DE AMORIM",
+    "cpf": "***.093.108-**",
+    "orgao": "FUNTUR",
+    "cargo": "DIR.GER.SUP.ESP.E ASSESSORAMENTO-CCA -05",
+    "tipo": "SERVIDOR",
+    "valor": 93383.9,
+    "trechos": 24,
+    "destinos": [
+     "São Paulo",
+     "BUENOS AIRES",
+     "Rio de Janeiro",
+     "Campinas",
+     "LIMA"
+    ]
+   },
+   {
     "nome": "EDINEIA BARBOSA DE ALMEIDA",
     "cpf": "***.603.801-**",
     "orgao": "DETRAN",
@@ -10417,22 +10433,6 @@
      "Caarapó",
      "Vicentina",
      "Maracaju"
-    ]
-   },
-   {
-    "nome": "BRENO FURUSHO DE AMORIM",
-    "cpf": "***.093.108-**",
-    "orgao": "FUNTUR",
-    "cargo": "DIR.GER.SUP.ESP.E ASSESSORAMENTO-CCA -05",
-    "tipo": "SERVIDOR",
-    "valor": 91458.9,
-    "trechos": 23,
-    "destinos": [
-     "São Paulo",
-     "BUENOS AIRES",
-     "Rio de Janeiro",
-     "Campinas",
-     "LIMA"
     ]
    },
    {
@@ -11042,6 +11042,22 @@
     ]
    },
    {
+    "nome": "MARYUZA RAMIREZ DA COSTA DORBACAO SA",
+    "cpf": "***.432.671-**",
+    "orgao": "FUNFAZ",
+    "cargo": "TÉCNICO FAZENDÁRIO",
+    "tipo": "SERVIDOR",
+    "valor": 41575.0,
+    "trechos": 18,
+    "destinos": [
+     "Brasília",
+     "São Paulo",
+     "São Luís",
+     "Curitiba",
+     "Maceió"
+    ]
+   },
+   {
     "nome": "EDSON MORONI VICENTE CARDOSO MARQUES",
     "cpf": "***.748.811-**",
     "orgao": "FUNTUR",
@@ -11183,19 +11199,15 @@
     ]
    },
    {
-    "nome": "MARYUZA RAMIREZ DA COSTA DORBACAO SA",
-    "cpf": "***.432.671-**",
-    "orgao": "FUNFAZ",
-    "cargo": "TÉCNICO FAZENDÁRIO",
+    "nome": "GABRIEL LOBO DE OLIVEIRA",
+    "cpf": "***.732.721-**",
+    "orgao": "SEJUSP",
+    "cargo": "CABOS E SOLDADOS",
     "tipo": "SERVIDOR",
-    "valor": 37175.0,
-    "trechos": 16,
+    "valor": 37200.0,
+    "trechos": 8,
     "destinos": [
-     "Brasília",
-     "São Paulo",
-     "São Luís",
-     "Curitiba",
-     "Maceió"
+     "Corumbá"
     ]
    },
    {
@@ -11456,18 +11468,6 @@
      "Maracaju",
      "Três Lagoas",
      "Cuiabá"
-    ]
-   },
-   {
-    "nome": "GABRIEL LOBO DE OLIVEIRA",
-    "cpf": "***.732.721-**",
-    "orgao": "SEJUSP",
-    "cargo": "CABOS E SOLDADOS",
-    "tipo": "SERVIDOR",
-    "valor": 32550.0,
-    "trechos": 7,
-    "destinos": [
-     "Corumbá"
     ]
    },
    {
@@ -12367,6 +12367,22 @@
     ]
    },
    {
+    "nome": "MANUELA NICODEMOS BAILOSA",
+    "cpf": "***.836.101-**",
+    "orgao": "SEC",
+    "cargo": "DIR.GER.SUP. E ASSESSORAMENTO - CCA - 07",
+    "tipo": "SERVIDOR",
+    "valor": 24926.2,
+    "trechos": 29,
+    "destinos": [
+     "Brasília",
+     "Fátima do Sul",
+     "Maracaju",
+     "Ribas do Rio Pardo",
+     "Dourados"
+    ]
+   },
+   {
     "nome": "MAURO LOPES",
     "cpf": "***.862.861-**",
     "orgao": "FESA",
@@ -12483,22 +12499,6 @@
      "Paranaíba",
      "Campo Grande",
      "Chapadão do Sul"
-    ]
-   },
-   {
-    "nome": "MANUELA NICODEMOS BAILOSA",
-    "cpf": "***.836.101-**",
-    "orgao": "SEC",
-    "cargo": "DIR.GER.SUP. E ASSESSORAMENTO - CCA - 07",
-    "tipo": "SERVIDOR",
-    "valor": 24301.2,
-    "trechos": 28,
-    "destinos": [
-     "Brasília",
-     "Fátima do Sul",
-     "Maracaju",
-     "Ribas do Rio Pardo",
-     "Amambaí"
     ]
    },
    {

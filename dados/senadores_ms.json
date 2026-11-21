@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-20T11:39:21",
+  "ultimaAtualizacao": "2026-11-21T08:06:29",
   "ano": 2026,
-  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-20T11:39:21",
+  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-21T08:06:29",
   "total": 3,
   "senadores": [
     {
@@ -1264,8 +1264,9 @@
       ],
       "totalNotasFiscais": 105,
       "escritorioApoio": "AV. AMÉRICA, 759 – VILA PLANALTO, CAMPO GRANDE/MS – CEP 79009-060",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-20T11:39:21",
-      "nota": ""
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-21T08:06:29",
+      "nota": "",
+      "emExercicio": true
     },
     {
       "id": 5988,
@@ -1303,16 +1304,16 @@
         "auxilioMoradia": "Não utilizou",
         "imovelFuncional": "Utilizou"
       },
-      "cotaGastaAno": 486647.31,
-      "totalGasto": 688590.38,
+      "cotaGastaAno": 490170.34,
+      "totalGasto": 692113.41,
       "ceapsCategorias": [
         {
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
           "valor": 250764.4
         },
         {
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
-          "valor": 104331.41
+          "valor": 107854.44
         },
         {
           "categoria": "Aluguel de imóveis para escritório político",
@@ -1323,20 +1324,15 @@
           "valor": 29060.55
         },
         {
-          "categoria": "Aquisição de material de consumo para uso no escritório político",
+          "categoria": "Aquisição de material de consumo",
           "valor": 4008.06
         },
         {
-          "categoria": "Contratação de consultorias, assessorias, pesquisas, trabalhos técnicos e outros serviços de apoio ao exercício do mandato parlamentar",
+          "categoria": "Contratação de serviços de apoio ao parlamentar",
           "valor": 792.0
         }
       ],
-      "aguardandoFonte": {
-        "totalSenado": 490170.34,
-        "somaNotas": 486647.31,
-        "diferenca": 3523.03,
-        "texto": "o Senado já informa R$ 490.170,34 no total de 2026; R$ 3.523,03 ainda sem nota individual publicada"
-      },
+      "aguardandoFonte": null,
       "despesas": [
         {
           "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
@@ -1386,6 +1382,17 @@
         }
       ],
       "notasCeaps": [
+        {
+          "data": "2026-11-03",
+          "mes": 11,
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "fornecedor": "LM Turismo Ltda",
+          "cnpjCpf": "26.480.780/0001-08",
+          "doc": "QDJYGT",
+          "tipoDocumento": "Passagem / Bilhete / Código Localizador",
+          "detalhamento": "Companhia Aérea: LATAM, Localizador: QDJYGT. Passageiros: SORAYA VIEIRA THRONICKE (Matrícula 341578, PARLAMENTAR), Voo: 3023 - BSB -CGH - 04/11/26; ",
+          "valor": 3523.03
+        },
         {
           "data": "2026-10-28",
           "mes": 10,
@@ -3229,6 +3236,17 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "Hoteis Martins Ltda",
           "cnpjCpf": "01.511.724/0001-62",
+          "doc": "73299",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": null,
+          "valor": 735.0
+        },
+        {
+          "data": "2026-03-06",
+          "mes": 2,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Hoteis Martins Ltda",
+          "cnpjCpf": "01.511.724/0001-62",
           "doc": "73301",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
@@ -3241,17 +3259,6 @@
           "fornecedor": "Hoteis Martins Ltda",
           "cnpjCpf": "01.511.724/0001-62",
           "doc": "73300",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": null,
-          "valor": 735.0
-        },
-        {
-          "data": "2026-03-06",
-          "mes": 2,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Hoteis Martins Ltda",
-          "cnpjCpf": "01.511.724/0001-62",
-          "doc": "73299",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 735.0
@@ -4005,10 +4012,11 @@
           "valor": 10000.0
         }
       ],
-      "totalNotasFiscais": 238,
+      "totalNotasFiscais": 239,
       "escritorioApoio": "AV. PROF. LUIZ ALEXANDRE DE OLIVEIRA, 879 – TÉRREO, ROYAL PARK, CAMPO GRANDE/MS – CEP 79021-430 | Tel: (67) 3222-8738",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-20T11:39:21",
-      "nota": ""
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-21T08:06:29",
+      "nota": "",
+      "emExercicio": true
     },
     {
       "id": 5736,
@@ -4046,19 +4054,19 @@
         "auxilioMoradia": "Não utilizou",
         "imovelFuncional": "Utilizou"
       },
-      "cotaGastaAno": 287414.8,
-      "totalGasto": 440477.86,
+      "cotaGastaAno": 293394.8,
+      "totalGasto": 446457.86,
       "ceapsCategorias": [
         {
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
           "valor": 152314.22
         },
         {
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "valor": 60196.46
+          "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
+          "valor": 66176.46
         },
         {
-          "categoria": "Contratação de consultorias, assessorias, pesquisas, trabalhos técnicos e outros serviços de apoio ao exercício do mandato parlamentar",
+          "categoria": "Contratação de serviços de apoio ao parlamentar",
           "valor": 41617.8
         },
         {
@@ -4070,18 +4078,24 @@
           "valor": 11731.55
         },
         {
-          "categoria": "Aquisição de material de consumo para uso no escritório político",
+          "categoria": "Aquisição de material de consumo",
           "valor": 4054.77
         }
       ],
-      "aguardandoFonte": {
-        "totalSenado": 293394.8,
-        "somaNotas": 287414.8,
-        "diferenca": 5980.0,
-        "texto": "o Senado já informa R$ 293.394,80 no total de 2026; R$ 5.980,00 ainda sem nota individual publicada"
-      },
+      "aguardandoFonte": null,
       "despesas": [],
       "notasCeaps": [
+        {
+          "data": "2026-11-04",
+          "mes": 10,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Daleth Veículos LTDA EPP Village Rent a Car",
+          "cnpjCpf": "04.515.963/0001-89",
+          "doc": "1110",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": "Referente à locação de veículo modelo Jeep Compass Long, período de 07-10 a 31-10-2026.",
+          "valor": 5980.0
+        },
         {
           "data": "2026-10-14",
           "mes": 9,
@@ -5909,10 +5923,11 @@
           "valor": 4500.0
         }
       ],
-      "totalNotasFiscais": 166,
+      "totalNotasFiscais": 167,
       "escritorioApoio": "",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-20T11:39:21",
-      "nota": ""
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-21T08:06:29",
+      "nota": "",
+      "emExercicio": true
     }
   ]
 }
