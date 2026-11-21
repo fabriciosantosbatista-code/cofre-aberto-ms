@@ -1,88 +1,86 @@
 {
- "geradoEm": "2026-11-20T12:15:31",
+ "geradoEm": "2026-11-21T08:12:15",
  "metodo": "Roda no robô diário, depois da coleta (precisa da folha completa, sem CPF: artefato folha-supersalarios-* CIFRADO — artefato de repositório público\né baixável por qualquer usuário logado no GitHub; ver SEGURANCA_ARTEFATOS.md).\nGrupos (os mesmos da antiga lista manual):\n  supersalario   todos os contracheques com líquido acima do teto do mês\n  intermediario  100 sorteados (semente 42, estratificado por órgão) entre bruto acima e líquido abaixo do teto\n  amostra        100 sorteados abaixo do teto (semente = data, estratificado por órgão), com janela de 30 dias + hash\nCada contracheque é reconsultado e recebe status \"confere\", \"diverge\" ou \"não verificado (motivo)\":\n  Governo MS     nova consulta à folha do Estado pelo nome dentro do órgão (mesma matrícula): bruto, eventuais e\n                 líquido. Rótulo: \"mesma fonte — confirma a leitura\". A fonte publica só remuneração fixa, eventuais e\n                 valor após deduções: não é possível separar verbas indenizatórias.\n  TRT24          comparado com a folha lida no portal do próprio TRT24 (Anexo VIII) na mesma coleta\n                 (dados/trt24_magistrados.json): bruto e líquido. Rótulo: \"conferido no arquivo original do órgão\".\n  TJMS           o portal do TJMS bloqueia acessos de fora do Brasil: sem o arquivo original → não verificado.\n  TCE-MS         servidores: nova consulta ao portal do TCE por matrícula (salário-base, outras verbas, líquido).\n                 Membros (contracheque em PDF): não verificado até a dupla extração do PDF do TCE entrar.\nTeto: config/teto.json (valor, data de início e lei), aplicado pelo mês de cada contracheque.\nRubricas (Judiciário e membros do TCE): config/rubricas.json (remuneratório, indenizatório ou excluído do teto, com a\nbase legal). Rubrica fora da tabela → \"não verificado — rubrica não classificada\" (aviso no log). Não adivinha.",
  "grupos": {
   "supersalario": {
-   "nao_verificado": 143,
+   "confere": 373,
    "diverge": 34,
-   "confere": 244,
+   "nao_verificado": 14,
    "total": 421
   },
   "intermediario": {
-   "nao_verificado": 95,
-   "confere": 3,
+   "confere": 98,
    "diverge": 2,
    "total": 100
   },
   "amostra": {
-   "nao_verificado": 99,
-   "confere": 1,
+   "confere": 100,
    "total": 100
   }
  },
  "porOrgao": {
   "Governo MS — AGEPEN": {
-   "nao_verificado": 2
+   "confere": 2
   },
   "Governo MS — AGEPREV": {
-   "nao_verificado": 102
+   "confere": 102
   },
   "Governo MS — AGESUL": {
-   "nao_verificado": 1
+   "confere": 1
   },
   "Governo MS — AGRAER": {
-   "nao_verificado": 1
+   "confere": 1
   },
   "Governo MS — CASA CIVIL": {
-   "nao_verificado": 1
+   "confere": 1
   },
   "Governo MS — CBMMS": {
-   "nao_verificado": 8
+   "confere": 8
   },
   "Governo MS — DETRAN": {
-   "nao_verificado": 1
+   "confere": 1
   },
   "Governo MS — DGPC": {
-   "nao_verificado": 15
+   "confere": 15
   },
   "Governo MS — FUNDECT": {
-   "nao_verificado": 3
+   "confere": 3
   },
   "Governo MS — FUNDESPORTE": {
-   "nao_verificado": 1
+   "confere": 1
   },
   "Governo MS — FUNSAU": {
-   "nao_verificado": 5
+   "confere": 5
   },
   "Governo MS — IAGRO": {
-   "nao_verificado": 1
+   "confere": 1
   },
   "Governo MS — PMMS": {
-   "nao_verificado": 20
+   "confere": 20
   },
   "Governo MS — SAD": {
-   "nao_verificado": 1
+   "confere": 1
   },
   "Governo MS — SEAD": {
-   "nao_verificado": 1
+   "confere": 1
   },
   "Governo MS — SED": {
-   "nao_verificado": 35
+   "confere": 35
   },
   "Governo MS — SEFAZ": {
-   "nao_verificado": 117
+   "confere": 117
   },
   "Governo MS — SEGOV": {
-   "nao_verificado": 2
+   "confere": 2
   },
   "Governo MS — SEJUSP": {
-   "nao_verificado": 1
+   "confere": 1
   },
   "Governo MS — SES": {
-   "nao_verificado": 3
+   "confere": 3
   },
   "Governo MS — UEMS": {
-   "nao_verificado": 2
+   "confere": 2
   },
   "TCE-MS — Tribunal de Contas (membros)": {
    "nao_verificado": 14
@@ -99,10 +97,6 @@
   }
  },
  "naoVerificadoPorMotivo": [
-  [
-   "fonte inacessível (ConnectTimeout)",
-   323
-  ],
   [
    "rubrica não classificada",
    14
@@ -215,14 +209,14 @@
  ],
  "clopperPearson": {
   "amostra": {
-   "conferidos": 1,
+   "conferidos": 100,
    "comErro": 0,
-   "limiteSuperior95": 0.95
+   "limiteSuperior95": 0.0295
   },
   "intermediario": {
-   "conferidos": 5,
+   "conferidos": 100,
    "comErro": 2,
-   "limiteSuperior95": 0.8107
+   "limiteSuperior95": 0.0616
   }
  },
  "teto": [
@@ -348,7 +342,107 @@
   "f7ff24b97042": "2026-11-19",
   "94e8b48ea2de": "2026-11-19",
   "83a84b20985c": "2026-11-19",
-  "c3abd1ad51db": "2026-11-20"
+  "c3abd1ad51db": "2026-11-20",
+  "cbe36f36e571": "2026-11-21",
+  "58c9ae9303be": "2026-11-21",
+  "4907b221bfce": "2026-11-21",
+  "f8cbf3f02c07": "2026-11-21",
+  "b32fd90dde1d": "2026-11-21",
+  "1aa7028d7968": "2026-11-21",
+  "0857ccfa0ac6": "2026-11-21",
+  "062bd18406d4": "2026-11-21",
+  "5d4763e230eb": "2026-11-21",
+  "479b89c29a08": "2026-11-21",
+  "290f9294c2f2": "2026-11-21",
+  "da475c5576ca": "2026-11-21",
+  "9941fb0fcedb": "2026-11-21",
+  "3ec727c65d7d": "2026-11-21",
+  "caa4cee2974a": "2026-11-21",
+  "f208f29534cf": "2026-11-21",
+  "6bcd03aed73b": "2026-11-21",
+  "a986c0836473": "2026-11-21",
+  "168af6b3cee4": "2026-11-21",
+  "33e8f3e8a0a7": "2026-11-21",
+  "9d1485cb8429": "2026-11-21",
+  "65a1fab7f670": "2026-11-21",
+  "f6a5c9ddb20c": "2026-11-21",
+  "7da43bdc9c9e": "2026-11-21",
+  "e50ff04d39d0": "2026-11-21",
+  "207fd54a4cca": "2026-11-21",
+  "dee7533e1d00": "2026-11-21",
+  "c9223da0caab": "2026-11-21",
+  "4000b862485f": "2026-11-21",
+  "10cd65c0d1be": "2026-11-21",
+  "d41777ebc98c": "2026-11-21",
+  "6c5acc0a6fb6": "2026-11-21",
+  "50b79a37db2f": "2026-11-21",
+  "bd11e1894da7": "2026-11-21",
+  "86fdf3428ab1": "2026-11-21",
+  "25901a4799c0": "2026-11-21",
+  "cf0a3d3831d8": "2026-11-21",
+  "88dc2e997957": "2026-11-21",
+  "bfbc47105a63": "2026-11-21",
+  "bbd89558c17f": "2026-11-21",
+  "38dcdc9397de": "2026-11-21",
+  "33ae14eaab1b": "2026-11-21",
+  "278495645fc8": "2026-11-21",
+  "5898d4246200": "2026-11-21",
+  "d3f3039988a3": "2026-11-21",
+  "ab044e764f6d": "2026-11-21",
+  "4c301c07c856": "2026-11-21",
+  "c5c50e0b9c9c": "2026-11-21",
+  "b825028635a8": "2026-11-21",
+  "74f14f5db12e": "2026-11-21",
+  "d054b9e323b3": "2026-11-21",
+  "5a77b7f09270": "2026-11-21",
+  "eb6ea931cc01": "2026-11-21",
+  "11e26fb9b1fe": "2026-11-21",
+  "dd5ac88ae4f2": "2026-11-21",
+  "26a8a709166f": "2026-11-21",
+  "f70046edd60f": "2026-11-21",
+  "fcaf9c5bcddc": "2026-11-21",
+  "2694bb556ca6": "2026-11-21",
+  "746f7449150e": "2026-11-21",
+  "8c29c7cede2f": "2026-11-21",
+  "d4f546cca66c": "2026-11-21",
+  "25cf8ecb708c": "2026-11-21",
+  "77358fc17a9a": "2026-11-21",
+  "c9f438b2fa81": "2026-11-21",
+  "4e699d369982": "2026-11-21",
+  "80823e666f38": "2026-11-21",
+  "ae9bdcd65a2a": "2026-11-21",
+  "a77473bcb1b3": "2026-11-21",
+  "6cb8d103c760": "2026-11-21",
+  "80c396d1d5f2": "2026-11-21",
+  "ddf71103e18a": "2026-11-21",
+  "3a61dfe02d5e": "2026-11-21",
+  "0b654b127d3b": "2026-11-21",
+  "b1efaf47840d": "2026-11-21",
+  "d2b301a532bb": "2026-11-21",
+  "a0a246c2be39": "2026-11-21",
+  "1e64d5e72d3c": "2026-11-21",
+  "3fa1bcc924f7": "2026-11-21",
+  "c41cc5b9990d": "2026-11-21",
+  "bbccb57b2c53": "2026-11-21",
+  "9485f7d04852": "2026-11-21",
+  "24efeeab5e31": "2026-11-21",
+  "dfdeff742e07": "2026-11-21",
+  "6d388e05ccc3": "2026-11-21",
+  "4057ccf40a57": "2026-11-21",
+  "4445ff440947": "2026-11-21",
+  "8c3963ed4628": "2026-11-21",
+  "dc9e465e59c2": "2026-11-21",
+  "90ec738e89eb": "2026-11-21",
+  "499cac5bdec6": "2026-11-21",
+  "f222a4fbb05f": "2026-11-21",
+  "f4fe06907201": "2026-11-21",
+  "cbf53cd53575": "2026-11-21",
+  "8b439f2e0825": "2026-11-21",
+  "d42455aad0a0": "2026-11-21",
+  "f1c7202a687f": "2026-11-21",
+  "d7030309f0fe": "2026-11-21",
+  "176305a0194f": "2026-11-21",
+  "f78544f2d699": "2026-11-21"
  },
  "rotulos": {
   "governo": "mesma fonte — confirma a leitura",
