@@ -1,4 +1,7 @@
 name: Atualizar dados diariamente
+# origem no nome da execução: "externo" (Cloudflare Worker, a coleta principal do dia), "vigia", "manual", ou
+# "agendada" (reserva do GitHub). O vigia conta no limite de 2 coletas manuais por dia todas menos as "externo".
+run-name: "Atualizar dados diariamente — ${{ github.event_name == 'schedule' && 'agendada (reserva do GitHub)' || inputs.origem || 'manual' }}"
 
 on:
   schedule:
@@ -9,7 +12,21 @@ on:
     # Reserva, também fora do pico. Se as duas rodarem, não há problema: a coleta é idempotente. Se nenhuma rodar, o
     # workflow "Vigia da coleta" dispara uma (ver vigia-coleta.yml).
     - cron: '13 9 * * *'
+  # Coleta principal do dia: disparada de fora do GitHub (Cloudflare Worker, cron 37 4 * * * = 00h37 de Campo Grande),
+  # porque o agendador do GitHub pula ou atrasa horas (21/11/2026: 05:37 e 09:13 não rodaram; a de 09:13 começou às
+  # 13:39). Os agendamentos acima ficam como reserva e encerram sozinhos se já houve coleta com sucesso em 12 h.
   workflow_dispatch:
+    inputs:
+      origem:
+        description: "Quem disparou: manual, externo (Cloudflare Worker) ou vigia"
+        type: choice
+        options: [manual, externo, vigia]
+        default: manual
+
+# Fila única: nunca rodam duas coletas ao mesmo tempo; a que chega espera a que roda (não cancela).
+concurrency:
+  group: coleta-diaria
+  cancel-in-progress: false
 
 # Horários gravados nos JSONs ("ultimaAtualizacao") no fuso de MS — sem isso o
 # runner usa UTC e uma coleta às 22h de Brasília apareceria com a data do dia seguinte.
@@ -22,7 +39,39 @@ permissions:
   actions: read   # o ICP lê o log dos robôs desta execução para saber qual coleta falhou
 
 jobs:
+  # Reserva do GitHub: se já houve coleta concluída com sucesso nas últimas 12 h, a execução agendada se encerra aqui
+  # (cancelada, sem coletar nem publicar). Disparos manuais, externos e do vigia sempre seguem.
+  decidir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - name: Reserva do GitHub — coletar ou encerrar
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN: ${{ github.run_id }}
+        run: |
+          python3 - <<'EOF'
+          import json, os, subprocess, sys
+          from datetime import datetime, timedelta, timezone
+          runs = json.loads(subprocess.run(["gh", "api", f"repos/{os.environ['REPO']}/actions/workflows/atualizar.yml/runs?status=success&per_page=10"],
+                                           capture_output=True, text=True, check=True).stdout)["workflow_runs"]
+          agora = datetime.now(timezone.utc)
+          ok = [r for r in runs if str(r["id"]) != os.environ["RUN"]
+                and agora - datetime.fromisoformat(r["updated_at"].replace("Z", "+00:00")) < timedelta(hours=12)]
+          if not ok:
+              print("▶️ nenhuma coleta com sucesso nas últimas 12 h — a reserva do GitHub coleta agora"); sys.exit(0)
+          print(f"⏭ já houve coleta com sucesso há menos de 12 h ({ok[0]['id']}, {ok[0]['display_title']}) — reserva encerrada sem coletar")
+          subprocess.run(["gh", "run", "cancel", os.environ["RUN"], "-R", os.environ["REPO"]], check=True)
+          EOF
+          sleep 60   # o cancelamento chega antes de os coletores começarem
+
   coletar_dados:
+    needs: [decidir]
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -64,6 +113,7 @@ jobs:
           retention-days: 1
 
   coletar_verba_camara:
+    needs: [decidir]
     runs-on: ubuntu-latest
     timeout-minutes: 45   # só camada de texto; o OCR fica no workflow de releitura
     steps:
@@ -123,6 +173,7 @@ jobs:
           if-no-files-found: error
 
   coletar_trt24:
+    needs: [decidir]
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -153,6 +204,7 @@ jobs:
           retention-days: 1
 
   coletar_tre_ms:
+    needs: [decidir]
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -183,6 +235,7 @@ jobs:
           retention-days: 1
 
   coletar_tjms:
+    needs: [decidir]
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -213,6 +266,7 @@ jobs:
           retention-days: 1
 
   coletar_governo_ms:
+    needs: [decidir]
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
@@ -245,6 +299,7 @@ jobs:
           retention-days: 1
 
   coletar_contratos_cg:
+    needs: [decidir]
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -297,6 +352,7 @@ jobs:
           retention-days: 1
 
   coletar_emendas_alems:
+    needs: [decidir]
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -360,6 +416,7 @@ jobs:
           if-no-files-found: error
 
   coletar_fontes_federais:
+    needs: [decidir]
     # TSE, Presidência (CGU), STF (DadosJusBr + SICONFI), sanções (CEIS/CNEP) — em paralelo com os outros
     runs-on: ubuntu-latest
     timeout-minutes: 60
@@ -429,6 +486,7 @@ jobs:
           retention-days: 1
 
   coletar_fontes_auditoria:
+    needs: [decidir]
     # Receita (CNPJ), folha × sócios, contratos/obras/pagadores do Estado, aditivos da Prefeitura e licitações (PNCP)
     runs-on: ubuntu-latest
     timeout-minutes: 110
@@ -493,7 +551,7 @@ jobs:
   commit_e_push:
     needs: [coletar_dados, coletar_verba_camara, coletar_trt24, coletar_tre_ms, coletar_tjms, coletar_governo_ms, coletar_contratos_cg, coletar_emendas_alems,
             coletar_fontes_federais, coletar_fontes_auditoria]
-    if: always()
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
     permissions:
@@ -795,7 +853,7 @@ jobs:
 
   verificar:
     needs: [commit_e_push]
-    if: always()
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
@@ -914,7 +972,7 @@ jobs:
   # ------------------------------------------------------------------
   conferir_supersalarios:
     needs: [coletar_emendas_alems, coletar_tjms, coletar_trt24]
-    if: always() && needs.coletar_emendas_alems.result != 'skipped'
+    if: ${{ !cancelled() && needs.coletar_emendas_alems.result != 'skipped' }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -967,7 +1025,7 @@ jobs:
   # refaz sobre a versão nova (até 3 tentativas). Ao terminar, o "Publicar o site" roda de novo (workflow_run).
   gravar_conferencia_supersalarios:
     needs: [commit_e_push, conferir_supersalarios]
-    if: always() && needs.conferir_supersalarios.result == 'success' && needs.commit_e_push.result == 'success'
+    if: ${{ !cancelled() && needs.conferir_supersalarios.result == 'success' && needs.commit_e_push.result == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
