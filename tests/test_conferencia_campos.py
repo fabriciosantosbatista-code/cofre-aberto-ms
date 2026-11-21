@@ -61,8 +61,8 @@ check(st == "diverge" and cl["campos"]["bruto"] == "diverge" and cl["campos"]["l
       f"verba a mais: bruto diverge e o líquido continua não verificado ({cl['campos']})")
 dv = cl.get("divergencia") or {}
 check(dv.get("causa") == "verba_a_mais", f"causa = verba a mais (Δ indenizações = Δ bruto): {dv.get('causa')}")
-check(dv.get("frase") == "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento enviado",
-      f"frase neutra combinada: {dv.get('frase')}")
+check(dv.get("frase") == "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+      f"sem protocolo: 'em preparação', nunca 'enviado' ({dv.get('frase')})")
 check(dv.get("valores") == [{"campo": "bruto", "cnj": 140054.15, "anexo": 153967.77}], f"os dois valores lado a lado: {dv.get('valores')}")
 
 st, mot, cl = r["Desemb Z"]
@@ -83,6 +83,13 @@ check(s_ == "nao_verificado" and c_ == {"bruto": "confere", "líquido": "nao_ver
 s_, m_, c_ = cs.compara([("bruto", 100.0, 150.0, None), ("líquido", 80.0, None, None)], "fonte")
 check(s_ == "diverge", "divergência continua divergência mesmo com outro campo não verificado")
 
+cs.esclarecimentos = lambda: [{"orgaoId": "trt24", "mes": "08/2026", "protocolo": "  "}]
+check(cs.frase_divergencia("trt24", "08/2026", "verba_a_mais").endswith("pedido de esclarecimento em preparação"), "protocolo em branco = em preparação")
+cs.esclarecimentos = lambda: [{"orgaoId": "trt24", "mes": "08/2026", "protocolo": "12345/2026"}]
+check(cs.frase_divergencia("trt24", "08/2026", "verba_a_mais").endswith("pedido de esclarecimento enviado (protocolo nº 12345/2026)"), "com protocolo: enviado (protocolo nº X)")
+cs.esclarecimentos = lambda: []
+check(cs.frase_divergencia("trt24", "08/2026", "verba_a_mais").endswith("painel do CNJ"), "sem pedido registrado: nada sobre pedido")
+cs.esclarecimentos = lambda: [{"orgaoId": "trt24", "mes": "08/2026"}]
 # frases: sobre a fonte, nunca sobre a pessoa
 fr = [cs.frase_divergencia("trt24", "08/2026", c) for c in ("verba_a_mais", "composicao", "liquido")]
 check(not any(re.search(r"irregular|fraude|ilegal|indevid|suspeit", f, re.I) for f in fr), "nenhuma frase sugere irregularidade da pessoa")
@@ -90,6 +97,11 @@ check(all(f.startswith("o TRT24 publica") or f.startswith("o valor publicado pel
 
 cfg = json.load(open(ROOT / "config" / "esclarecimentos_fonte.json", encoding="utf-8"))
 check(any(e["orgaoId"] == "trt24" and e["mes"] == "08/2026" for e in cfg["pedidos"]), "pedido de esclarecimento do TRT24 (08/2026) registrado")
+cs.esclarecimentos = lambda: cfg["pedidos"]  # o arquivo real: sem protocolo → nunca "enviado"
+for e in cfg["pedidos"]:
+    f_ = cs.frase_divergencia(e["orgaoId"], e["mes"], "verba_a_mais")
+    check(("enviado (protocolo nº" in f_) if str(e.get("protocolo") or "").strip() else ("em preparação" in f_ and "enviado" not in f_),
+          f"config real ({e['orgaoId']} {e['mes']}): {f_.split('; ')[-1]}")
 
 for e in erros:
     print("❌", e)

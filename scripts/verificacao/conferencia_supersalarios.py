@@ -309,7 +309,7 @@ def campos_txt(st):
 
 
 def esclarecimentos():
-    """config/esclarecimentos_fonte.json: pedidos de esclarecimento enviados à fonte, por órgão e mês."""
+    """config/esclarecimentos_fonte.json: pedidos de esclarecimento à fonte, por órgão e mês (protocolo vazio = em preparação)."""
     try:
         return json.load(open(CONF / "esclarecimentos_fonte.json", encoding="utf-8")).get("pedidos") or []
     except Exception:
@@ -322,8 +322,10 @@ def frase_divergencia(oid, mes, causa):
     f = {"verba_a_mais": f"o {org} publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ",
          "composicao": f"o {org} publica, no próprio Anexo VIII, uma composição deste contracheque diferente da que consta no painel do CNJ",
          }.get(causa, f"o valor publicado pelo {org} no próprio Anexo VIII difere do painel do CNJ")
-    if any(e.get("orgaoId") == oid and e.get("mes") == mes for e in esclarecimentos()):
-        f += "; pedido de esclarecimento enviado"
+    ped = next((e for e in esclarecimentos() if e.get("orgaoId") == oid and e.get("mes") == mes), None)
+    if ped:  # "enviado" só com o número de protocolo registrado; sem ele, "em preparação"
+        prot = str(ped.get("protocolo") or "").strip()
+        f += f"; pedido de esclarecimento enviado (protocolo nº {prot})" if prot else "; pedido de esclarecimento em preparação"
     return f
 
 
