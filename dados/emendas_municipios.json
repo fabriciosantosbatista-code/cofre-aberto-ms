@@ -1,6 +1,6 @@
 {
  "ano": 2026,
- "ultimaAtualizacao": "2026-11-21T09:40:11",
+ "ultimaAtualizacao": "2026-11-22T05:55:29",
  "fonte": "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares/UNICO",
  "mesMaisRecente": "11/2026",
  "totalMS": 628696212.98,
@@ -3362,7 +3362,10 @@
      "nome": "DENTECK LTDA",
      "doc": "11319557000378",
      "natureza": "Sociedade Empresária Limitada",
-     "valor": 2080563.57
+     "valor": 2080563.57,
+     "notasFonte": [
+      "Emenda 202544830021 (Tarcisio Motta): o arquivo de download da CGU traz R$ 10.827,18 em 04/2026, exatamente o dobro do documento de pagamento na API da CGU (R$ 5.413,59)."
+     ]
     },
     {
      "nome": "MUNICIPIO DE MUNDO NOVO",
@@ -11729,7 +11732,10 @@
      "nome": "DENTECK LTDA",
      "doc": "11319557000378",
      "municipio": "Mundo Novo",
-     "valor": 183630.09
+     "valor": 183630.09,
+     "notasFonte": [
+      "Emenda 202544830021 (Tarcisio Motta): o arquivo de download da CGU traz R$ 10.827,18 em 04/2026, exatamente o dobro do documento de pagamento na API da CGU (R$ 5.413,59)."
+     ]
     }
    ],
    "foraDeMS": []
@@ -16046,6 +16052,9 @@
      "autor": "Hugo Leal",
      "valor": 282.56
     }
+   ],
+   "notasFonte": [
+    "Emenda 202544830021 (Tarcisio Motta): o arquivo de download da CGU traz R$ 10.827,18 em 04/2026, exatamente o dobro do documento de pagamento na API da CGU (R$ 5.413,59)."
    ]
   },
   {
@@ -22210,7 +22219,8 @@
    "municipio": "Mundo Novo",
    "mes": "04/2026",
    "autor": "Tarcisio Motta",
-   "valor": 10827.18
+   "valor": 10827.18,
+   "notaFonte": "Emenda 202544830021 (Tarcisio Motta): o arquivo de download da CGU traz R$ 10.827,18 em 04/2026, exatamente o dobro do documento de pagamento na API da CGU (R$ 5.413,59)."
   },
   {
    "emenda": "202550060001",

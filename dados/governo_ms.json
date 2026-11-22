@@ -2,11 +2,11 @@
  "ano": 2026,
  "fonte": "https://www.transparencia.ms.gov.br",
  "fonteApi": "https://gw.sgi.ms.gov.br",
- "ultimaAtualizacao": "2026-11-21T09:40:09",
+ "ultimaAtualizacao": "2026-11-22T05:55:35",
  "totais": {
   "empenhado": 23489595381.61,
-  "liquidado": 22080081465.62,
-  "pago": 21450084862.7
+  "liquidado": 22080115765.66,
+  "pago": 21450085374.26
  },
  "orgaos": [
   {
@@ -230,8 +230,8 @@
    "codigo": 510201,
    "orgao": "AGENCIA ESTADUAL DE REGULACAO DE SERVICOS PUBLICOS",
    "empenhado": 40931959.13,
-   "liquidado": 34327107.8,
-   "pago": 33848924.87
+   "liquidado": 34361407.84,
+   "pago": 33849436.43
   },
   {
    "codigo": 730101,
@@ -910,7 +910,7 @@
    "credor": "PREFEITURA MUNICIPAL DE CAMPO GRANDE MS",
    "empenhado": 25112357.75,
    "liquidado": 17517093.67,
-   "pago": 46469813.75,
+   "pago": 46470074.75,
    "tipo": "publico"
   },
   {
@@ -2757,8 +2757,8 @@
    "cnpj": "01.962.760/0001-42",
    "credor": "MV COMUNICACAO E PLANEJAMENTO LTDA",
    "empenhado": 10336784.45,
-   "liquidado": 5008048.68,
-   "pago": 4669873.82,
+   "liquidado": 5042348.72,
+   "pago": 4670124.38,
    "tipo": "fornecedor"
   },
   {
@@ -9300,20 +9300,20 @@
    1563854818.97,
    2157838869.31,
    2440597328.61,
-   735782178.56
+   735782690.12
   ]
  },
  "totalCredores": 24646,
  "credoresPorTipo": {
-  "fornecedor": 5977576794.07,
+  "fornecedor": 5977577044.63,
   "folha": 3387145833.1,
-  "publico": 10778826457.52,
+  "publico": 10778826718.52,
   "financeiro": 1306535778.01
  },
  "totalFornecedores": 24130,
  "diarias": {
-  "total": 39791335.79,
-  "trechos": 62321,
+  "total": 40019982.79,
+  "trechos": 62668,
   "meses": [
    {
     "valor": 1407059.5,
@@ -9340,45 +9340,45 @@
     "trechos": 6644
    },
    {
-    "valor": 4039786.2,
-    "trechos": 6527
+    "valor": 4040386.2,
+    "trechos": 6528
    },
    {
     "valor": 5178648.25,
     "trechos": 7315
    },
    {
-    "valor": 4549366.75,
-    "trechos": 6806
+    "valor": 4569524.25,
+    "trechos": 6808
    },
    {
-    "valor": 2902287.5,
-    "trechos": 4462
+    "valor": 2911462.5,
+    "trechos": 4481
    },
    {
-    "valor": 1762366.75,
-    "trechos": 1976
+    "valor": 1961081.25,
+    "trechos": 2301
    }
   ],
   "consultas": 11,
   "consultasPrevistas": 11,
   "trechosForaDoAno": 0,
-  "beneficiarios": 8551,
+  "beneficiarios": 8567,
   "porOrgao": [
    {
     "orgao": "SEJUSP",
-    "valor": 10541955.2,
-    "trechos": 14697
+    "valor": 10580342.2,
+    "trechos": 14765
    },
    {
     "orgao": "DETRAN",
-    "valor": 8307540.0,
-    "trechos": 5719
+    "valor": 8367020.0,
+    "trechos": 5761
    },
    {
     "orgao": "IAGRO",
-    "valor": 3778420.1,
-    "trechos": 9740
+    "valor": 3790295.1,
+    "trechos": 9747
    },
    {
     "orgao": "FUNFAZ",
@@ -9387,18 +9387,18 @@
    },
    {
     "orgao": "FESA",
-    "valor": 2154945.4,
-    "trechos": 4141
+    "valor": 2173295.4,
+    "trechos": 4175
    },
    {
     "orgao": "AGESUL",
-    "valor": 2051860.0,
-    "trechos": 3614
+    "valor": 2070917.5,
+    "trechos": 3615
    },
    {
     "orgao": "IMASUL",
-    "valor": 1742080.44,
-    "trechos": 4051
+    "valor": 1770355.44,
+    "trechos": 4121
    },
    {
     "orgao": "SEGOV",
@@ -9407,23 +9407,23 @@
    },
    {
     "orgao": "SED",
-    "valor": 793852.5,
-    "trechos": 1784
+    "valor": 795052.5,
+    "trechos": 1786
    },
    {
     "orgao": "AGRAER",
-    "valor": 741745.0,
-    "trechos": 2948
+    "valor": 745020.0,
+    "trechos": 2956
    },
    {
     "orgao": "AGEPEN",
-    "valor": 676875.0,
-    "trechos": 3127
+    "valor": 689000.0,
+    "trechos": 3195
    },
    {
     "orgao": "FCMS",
-    "valor": 611950.0,
-    "trechos": 605
+    "valor": 614425.0,
+    "trechos": 606
    },
    {
     "orgao": "SEAD",
@@ -9432,8 +9432,8 @@
    },
    {
     "orgao": "FUNTUR",
-    "valor": 410635.55,
-    "trechos": 298
+    "valor": 416785.55,
+    "trechos": 303
    },
    {
     "orgao": "FUNRESPMS",
@@ -9442,13 +9442,13 @@
    },
    {
     "orgao": "AGEMS",
-    "valor": 352200.0,
-    "trechos": 554
+    "valor": 360072.5,
+    "trechos": 567
    },
    {
     "orgao": "SEC",
-    "valor": 269745.0,
-    "trechos": 707
+    "valor": 272745.0,
+    "trechos": 711
    },
    {
     "orgao": "FUNDESPORTE",
@@ -9492,13 +9492,13 @@
    },
    {
     "orgao": "FEDDC",
-    "valor": 105975.0,
-    "trechos": 224
+    "valor": 115750.0,
+    "trechos": 239
    },
    {
     "orgao": "FUNDE-PGE",
-    "valor": 93600.0,
-    "trechos": 95
+    "valor": 100575.0,
+    "trechos": 103
    },
    {
     "orgao": "Casa Civil",
@@ -9572,8 +9572,8 @@
    },
    {
     "orgao": "FEDPI",
-    "valor": 4400.0,
-    "trechos": 17
+    "valor": 4775.0,
+    "trechos": 18
    },
    {
     "orgao": "FUNTER",
@@ -9625,8 +9625,8 @@
     "orgao": "DETRAN",
     "cargo": "AGENTE CONDUTOR DE VEÍCULOS",
     "tipo": "SERVIDOR",
-    "valor": 169680.0,
-    "trechos": 92,
+    "valor": 171580.0,
+    "trechos": 93,
     "destinos": [
      "Alcinópolis",
      "Coxim",
@@ -9796,6 +9796,22 @@
     ]
    },
    {
+    "nome": "CLEBERSON CAMPOS SIQUEIRA",
+    "cpf": "***.890.291-**",
+    "orgao": "DETRAN",
+    "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
+    "tipo": "SERVIDOR",
+    "valor": 144540.0,
+    "trechos": 77,
+    "destinos": [
+     "ANASTÁCIO",
+     "Aquidauana",
+     "Miranda",
+     "Terenos",
+     "Dois Irmãos do Buriti"
+    ]
+   },
+   {
     "nome": "FERNANDO TADAHIKO OSHIRO",
     "cpf": "***.443.901-**",
     "orgao": "DETRAN",
@@ -9844,19 +9860,19 @@
     ]
    },
    {
-    "nome": "CLEBERSON CAMPOS SIQUEIRA",
-    "cpf": "***.890.291-**",
+    "nome": "PAULO ROBERTO BRANDAO COELHO",
+    "cpf": "***.593.791-**",
     "orgao": "DETRAN",
     "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
     "tipo": "SERVIDOR",
-    "valor": 140540.0,
-    "trechos": 75,
+    "valor": 140500.0,
+    "trechos": 72,
     "destinos": [
-     "ANASTÁCIO",
-     "Aquidauana",
-     "Miranda",
-     "Terenos",
-     "Dois Irmãos do Buriti"
+     "Três Lagoas",
+     "Chapadão do Sul",
+     "Costa Rica",
+     "PARAÍSO DAS ÁGUAS",
+     "Bela Vista"
     ]
    },
    {
@@ -9972,19 +9988,19 @@
     ]
    },
    {
-    "nome": "PAULO ROBERTO BRANDAO COELHO",
-    "cpf": "***.593.791-**",
+    "nome": "GISLAINE FERNANDES DE ARAUJO",
+    "cpf": "***.297.061-**",
     "orgao": "DETRAN",
     "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
     "tipo": "SERVIDOR",
-    "valor": 134500.0,
-    "trechos": 69,
+    "valor": 131240.0,
+    "trechos": 72,
     "destinos": [
-     "Três Lagoas",
-     "Chapadão do Sul",
-     "Costa Rica",
-     "PARAÍSO DAS ÁGUAS",
-     "Bela Vista"
+     "ANASTÁCIO",
+     "Aquidauana",
+     "Miranda",
+     "Terenos",
+     "Dois Irmãos do Buriti"
     ]
    },
    {
@@ -10001,22 +10017,6 @@
      "Antônio João",
      "Aral Moreira",
      "Coronel Sapucaia"
-    ]
-   },
-   {
-    "nome": "GISLAINE FERNANDES DE ARAUJO",
-    "cpf": "***.297.061-**",
-    "orgao": "DETRAN",
-    "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
-    "tipo": "SERVIDOR",
-    "valor": 129340.0,
-    "trechos": 71,
-    "destinos": [
-     "ANASTÁCIO",
-     "Aquidauana",
-     "Miranda",
-     "Terenos",
-     "Dois Irmãos do Buriti"
     ]
    },
    {
@@ -10068,6 +10068,22 @@
     ]
    },
    {
+    "nome": "MARIA APARECIDA VIEIRA PEIXOTO",
+    "cpf": "***.919.981-**",
+    "orgao": "DETRAN",
+    "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
+    "tipo": "SERVIDOR",
+    "valor": 124300.0,
+    "trechos": 64,
+    "destinos": [
+     "Chapadão do Sul",
+     "Costa Rica",
+     "PARAÍSO DAS ÁGUAS",
+     "Três Lagoas",
+     "Anaurilândia"
+    ]
+   },
+   {
     "nome": "ROSELI CRISTINA DE MATOS LOBO SILVEIRA",
     "cpf": "***.555.801-**",
     "orgao": "DETRAN",
@@ -10116,22 +10132,6 @@
     ]
    },
    {
-    "nome": "MARIA APARECIDA VIEIRA PEIXOTO",
-    "cpf": "***.919.981-**",
-    "orgao": "DETRAN",
-    "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
-    "tipo": "SERVIDOR",
-    "valor": 118300.0,
-    "trechos": 61,
-    "destinos": [
-     "Chapadão do Sul",
-     "Costa Rica",
-     "PARAÍSO DAS ÁGUAS",
-     "Três Lagoas",
-     "Anaurilândia"
-    ]
-   },
-   {
     "nome": "DAVI RAMOS DE OLIVEIRA",
     "cpf": "***.706.701-**",
     "orgao": "DETRAN",
@@ -10145,6 +10145,22 @@
      "Bataguassu",
      "Santa Rita do Pardo",
      "Brasilândia"
+    ]
+   },
+   {
+    "nome": "MARIA CONSTANCIA PEREIRA NUNES",
+    "cpf": "***.384.511-**",
+    "orgao": "DETRAN",
+    "cargo": "AGENTE DE ATIVIDADES DE TRÂNSITO",
+    "tipo": "SERVIDOR",
+    "valor": 118040.0,
+    "trechos": 63,
+    "destinos": [
+     "Três Lagoas",
+     "Aparecida do Taboado",
+     "Paranaíba",
+     "Selvíria",
+     "Cassilândia"
     ]
    },
    {
@@ -10164,6 +10180,22 @@
     ]
    },
    {
+    "nome": "AUDEMIR DE OLIVEIRA",
+    "cpf": "***.168.988-**",
+    "orgao": "DETRAN",
+    "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
+    "tipo": "SERVIDOR",
+    "valor": 114075.0,
+    "trechos": 64,
+    "destinos": [
+     "Anaurilândia",
+     "Batayporã",
+     "Nova Alvorada do Sul",
+     "Nova Andradina",
+     "Campo Grande"
+    ]
+   },
+   {
     "nome": "BRUNO GIONGO FARIA RASSLAN",
     "cpf": "***.336.271-**",
     "orgao": "DETRAN",
@@ -10180,35 +10212,19 @@
     ]
    },
    {
-    "nome": "AUDEMIR DE OLIVEIRA",
-    "cpf": "***.168.988-**",
-    "orgao": "DETRAN",
-    "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
-    "tipo": "SERVIDOR",
-    "valor": 112175.0,
-    "trechos": 63,
-    "destinos": [
-     "Anaurilândia",
-     "Batayporã",
-     "Nova Alvorada do Sul",
-     "Nova Andradina",
-     "Campo Grande"
-    ]
-   },
-   {
-    "nome": "MARIA CONSTANCIA PEREIRA NUNES",
-    "cpf": "***.384.511-**",
+    "nome": "ANA BERNADETE ALMEIDA DA SILVA",
+    "cpf": "***.445.071-**",
     "orgao": "DETRAN",
     "cargo": "AGENTE DE ATIVIDADES DE TRÂNSITO",
     "tipo": "SERVIDOR",
-    "valor": 112040.0,
-    "trechos": 60,
+    "valor": 112440.0,
+    "trechos": 59,
     "destinos": [
+     "Chapadão do Sul",
+     "Costa Rica",
+     "PARAÍSO DAS ÁGUAS",
      "Três Lagoas",
-     "Aparecida do Taboado",
-     "Paranaíba",
-     "Selvíria",
-     "Dois Irmãos do Buriti"
+     "Água Clara"
     ]
    },
    {
@@ -10276,19 +10292,35 @@
     ]
    },
    {
-    "nome": "ANA BERNADETE ALMEIDA DA SILVA",
-    "cpf": "***.445.071-**",
+    "nome": "RODRIGO BRANDAO CARVALHO",
+    "cpf": "***.970.321-**",
     "orgao": "DETRAN",
-    "cargo": "AGENTE DE ATIVIDADES DE TRÂNSITO",
+    "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
     "tipo": "SERVIDOR",
-    "valor": 108440.0,
-    "trechos": 57,
+    "valor": 108600.0,
+    "trechos": 65,
     "destinos": [
-     "Chapadão do Sul",
-     "Costa Rica",
-     "PARAÍSO DAS ÁGUAS",
+     "Ponta Porã",
+     "Vicentina",
+     "Douradina",
+     "Maracaju",
+     "Rio Brilhante"
+    ]
+   },
+   {
+    "nome": "WILSON JOSE DA SILVA",
+    "cpf": "***.577.921-**",
+    "orgao": "DETRAN",
+    "cargo": "AGENTE CONDUTOR DE VEÍCULOS",
+    "tipo": "SERVIDOR",
+    "valor": 107500.0,
+    "trechos": 56,
+    "destinos": [
+     "Cassilândia",
+     "Inocência",
+     "Ribas do Rio Pardo",
      "Três Lagoas",
-     "Água Clara"
+     "Corumbá"
     ]
    },
    {
@@ -10324,38 +10356,6 @@
     ]
    },
    {
-    "nome": "RODRIGO BRANDAO CARVALHO",
-    "cpf": "***.970.321-**",
-    "orgao": "DETRAN",
-    "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
-    "tipo": "SERVIDOR",
-    "valor": 102520.0,
-    "trechos": 61,
-    "destinos": [
-     "Ponta Porã",
-     "Vicentina",
-     "Douradina",
-     "Maracaju",
-     "Rio Brilhante"
-    ]
-   },
-   {
-    "nome": "WILSON JOSE DA SILVA",
-    "cpf": "***.577.921-**",
-    "orgao": "DETRAN",
-    "cargo": "AGENTE CONDUTOR DE VEÍCULOS",
-    "tipo": "SERVIDOR",
-    "valor": 101500.0,
-    "trechos": 53,
-    "destinos": [
-     "Três Lagoas",
-     "Cassilândia",
-     "Inocência",
-     "Ribas do Rio Pardo",
-     "Corumbá"
-    ]
-   },
-   {
     "nome": "ALONCIO ALVES MIRANDA",
     "cpf": "***.916.841-**",
     "orgao": "DETRAN",
@@ -10369,6 +10369,38 @@
      "NAVIRAI",
      "Ponta Porã",
      "Fátima do Sul"
+    ]
+   },
+   {
+    "nome": "ADENILSON DA SILVA SANTOS",
+    "cpf": "***.199.181-**",
+    "orgao": "DETRAN",
+    "cargo": "AGENTE DE ATIVIDADES DE TRÂNSITO",
+    "tipo": "SERVIDOR",
+    "valor": 94820.0,
+    "trechos": 69,
+    "destinos": [
+     "Três Lagoas",
+     "Campo Grande",
+     "Brasilândia",
+     "São Gabriel do Oeste",
+     "Água Clara"
+    ]
+   },
+   {
+    "nome": "BRENO FURUSHO DE AMORIM",
+    "cpf": "***.093.108-**",
+    "orgao": "FUNTUR",
+    "cargo": "DIR.GER.SUP.ESP.E ASSESSORAMENTO-CCA -05",
+    "tipo": "SERVIDOR",
+    "valor": 94433.9,
+    "trechos": 25,
+    "destinos": [
+     "São Paulo",
+     "Rio de Janeiro",
+     "BUENOS AIRES",
+     "Salvador",
+     "Belo Horizonte"
     ]
    },
    {
@@ -10404,22 +10436,6 @@
     ]
    },
    {
-    "nome": "BRENO FURUSHO DE AMORIM",
-    "cpf": "***.093.108-**",
-    "orgao": "FUNTUR",
-    "cargo": "DIR.GER.SUP.ESP.E ASSESSORAMENTO-CCA -05",
-    "tipo": "SERVIDOR",
-    "valor": 93383.9,
-    "trechos": 24,
-    "destinos": [
-     "São Paulo",
-     "Rio de Janeiro",
-     "BUENOS AIRES",
-     "Salvador",
-     "Belo Horizonte"
-    ]
-   },
-   {
     "nome": "EDINEIA BARBOSA DE ALMEIDA",
     "cpf": "***.603.801-**",
     "orgao": "DETRAN",
@@ -10436,19 +10452,19 @@
     ]
    },
    {
-    "nome": "ADENILSON DA SILVA SANTOS",
-    "cpf": "***.199.181-**",
+    "nome": "DANILO GARCÊS BRESSAN",
+    "cpf": "***.931.391-**",
     "orgao": "DETRAN",
-    "cargo": "AGENTE DE ATIVIDADES DE TRÂNSITO",
+    "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
     "tipo": "SERVIDOR",
-    "valor": 91120.0,
-    "trechos": 66,
+    "valor": 88350.0,
+    "trechos": 59,
     "destinos": [
-     "Três Lagoas",
      "Campo Grande",
-     "Brasilândia",
-     "São Gabriel do Oeste",
-     "Água Clara"
+     "Chapadão do Sul",
+     "Costa Rica",
+     "PARAÍSO DAS ÁGUAS",
+     "Dois Irmãos do Buriti"
     ]
    },
    {
@@ -10516,22 +10532,6 @@
     ]
    },
    {
-    "nome": "DANILO GARCÊS BRESSAN",
-    "cpf": "***.931.391-**",
-    "orgao": "DETRAN",
-    "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
-    "tipo": "SERVIDOR",
-    "valor": 81150.0,
-    "trechos": 54,
-    "destinos": [
-     "Campo Grande",
-     "Chapadão do Sul",
-     "Costa Rica",
-     "PARAÍSO DAS ÁGUAS",
-     "Três Lagoas"
-    ]
-   },
-   {
     "nome": "PATRICK RODRIGUES CABRIOTTI",
     "cpf": "***.969.101-**",
     "orgao": "DETRAN",
@@ -10596,6 +10596,22 @@
     ]
    },
    {
+    "nome": "GILVAN FABRICIO DA SILVA",
+    "cpf": "***.802.561-**",
+    "orgao": "DETRAN",
+    "cargo": "AGENTE DE ATIVIDADES DE TRÂNSITO",
+    "tipo": "SERVIDOR",
+    "valor": 70425.0,
+    "trechos": 59,
+    "destinos": [
+     "Água Clara",
+     "Ribas do Rio Pardo",
+     "Três Lagoas",
+     "Selvíria",
+     "Aparecida do Taboado"
+    ]
+   },
+   {
     "nome": "ALEXANDRE DELFINO PEREIRA CALDAS",
     "cpf": "***.825.861-**",
     "orgao": "DETRAN",
@@ -10609,22 +10625,6 @@
      "BONITO",
      "Sidrolândia",
      "Bandeirantes"
-    ]
-   },
-   {
-    "nome": "GILVAN FABRICIO DA SILVA",
-    "cpf": "***.802.561-**",
-    "orgao": "DETRAN",
-    "cargo": "AGENTE DE ATIVIDADES DE TRÂNSITO",
-    "tipo": "SERVIDOR",
-    "valor": 70000.0,
-    "trechos": 57,
-    "destinos": [
-     "Água Clara",
-     "Ribas do Rio Pardo",
-     "Selvíria",
-     "Três Lagoas",
-     "Aparecida do Taboado"
     ]
    },
    {
@@ -10768,7 +10768,7 @@
      "Três Lagoas",
      "Brasilândia",
      "Nova Alvorada do Sul",
-     "Selvíria"
+     "Coxim"
     ]
    },
    {
@@ -10916,6 +10916,22 @@
     ]
    },
    {
+    "nome": "GIULIANO RODRIGO CASEIRO OLIVEIRA",
+    "cpf": "***.360.708-**",
+    "orgao": "IAGRO",
+    "cargo": "FISCAL ESTADUAL AGROPECUÁRIO",
+    "tipo": "SERVIDOR",
+    "valor": 47536.25,
+    "trechos": 46,
+    "destinos": [
+     "Inocência",
+     "Campo Grande",
+     "Chapadão do Sul",
+     "Três Lagoas",
+     "Paraíso"
+    ]
+   },
+   {
     "nome": "THAIS MARCIELE GOLFETTO OLIVEIRA",
     "cpf": "***.922.731-**",
     "orgao": "DETRAN",
@@ -10945,22 +10961,6 @@
      "Sonora",
      "São Gabriel do Oeste",
      "Ponta Porã"
-    ]
-   },
-   {
-    "nome": "GIULIANO RODRIGO CASEIRO OLIVEIRA",
-    "cpf": "***.360.708-**",
-    "orgao": "IAGRO",
-    "cargo": "FISCAL ESTADUAL AGROPECUÁRIO",
-    "tipo": "SERVIDOR",
-    "valor": 45411.25,
-    "trechos": 45,
-    "destinos": [
-     "Inocência",
-     "Campo Grande",
-     "Chapadão do Sul",
-     "Três Lagoas",
-     "Paraíso"
     ]
    },
    {
@@ -11053,8 +11053,8 @@
      "Brasília",
      "São Paulo",
      "Goiânia",
-     "Curitiba",
-     "Maceió"
+     "Maceió",
+     "Foz do Iguaçu"
     ]
    },
    {
@@ -11101,8 +11101,8 @@
      "Corumbá",
      "São Paulo",
      "Ponta Porã",
-     "Cuiabá",
-     "BONITO"
+     "BONITO",
+     "Cuiabá"
     ]
    },
    {
@@ -11211,6 +11211,22 @@
     ]
    },
    {
+    "nome": "ADAUTO RODRIGUES DE SOUZA",
+    "cpf": "***.875.011-**",
+    "orgao": "IMASUL",
+    "cargo": "ASSISTENTE DE SERVIÇOS OPERACIONAIS",
+    "tipo": "SERVIDOR",
+    "valor": 37100.0,
+    "trechos": 57,
+    "destinos": [
+     "BONITO",
+     "Bandeirantes",
+     "Dourados",
+     "Terenos",
+     "Corumbá"
+    ]
+   },
+   {
     "nome": "CLADOMIR MIGUEL CECCATTO JUNIOR",
     "cpf": "***.511.581-**",
     "orgao": "AGESUL",
@@ -11280,23 +11296,7 @@
      "Dourados",
      "Corumbá",
      "NAVIRAI",
-     "Coxim"
-    ]
-   },
-   {
-    "nome": "ADAUTO RODRIGUES DE SOUZA",
-    "cpf": "***.875.011-**",
-    "orgao": "IMASUL",
-    "cargo": "ASSISTENTE DE SERVIÇOS OPERACIONAIS",
-    "tipo": "SERVIDOR",
-    "valor": 35750.0,
-    "trechos": 56,
-    "destinos": [
-     "BONITO",
-     "Bandeirantes",
-     "Dourados",
-     "Terenos",
-     "Ribas do Rio Pardo"
+     "Florianópolis"
     ]
    },
    {
@@ -11388,11 +11388,11 @@
     "valor": 33970.0,
     "trechos": 18,
     "destinos": [
-     "Corumbá",
-     "Dois Irmãos do Buriti",
-     "Ladário",
-     "Chapadão do Sul",
-     "Costa Rica"
+     "Cassilândia",
+     "Inocência",
+     "Ribas do Rio Pardo",
+     "Anaurilândia",
+     "Batayporã"
     ]
    },
    {
@@ -11425,6 +11425,38 @@
      "Brasília",
      "Aquidauana",
      "BONITO"
+    ]
+   },
+   {
+    "nome": "FRANCISCO ELIAS FERREIRA NETO",
+    "cpf": "***.659.311-**",
+    "orgao": "IAGRO",
+    "cargo": "AGENTE FISCAL AGROPECUÁRIO",
+    "tipo": "SERVIDOR",
+    "valor": 33025.0,
+    "trechos": 37,
+    "destinos": [
+     "Figueirão",
+     "PARAÍSO DAS ÁGUAS",
+     "Inocência",
+     "Chapadão do Sul",
+     "Alcinópolis"
+    ]
+   },
+   {
+    "nome": "ADANILTO FAUSTINO DE SOUZA JUNIOR",
+    "cpf": "***.811.021-**",
+    "orgao": "AGESUL",
+    "cargo": "DIR.GER.SUP. E ASSESSORAMENTO - CCA - 06",
+    "tipo": "SERVIDOR",
+    "valor": 32957.5,
+    "trechos": 34,
+    "destinos": [
+     "Dourados",
+     "Corumbá",
+     "Miranda",
+     "Camapuã",
+     "Ponta Porã"
     ]
    },
    {
@@ -11499,6 +11531,22 @@
     ]
    },
    {
+    "nome": "JOÃO PAULO MARTINEZ",
+    "cpf": "***.633.061-**",
+    "orgao": "IMASUL",
+    "cargo": "TÉCNICO AMBIENTAL",
+    "tipo": "SERVIDOR",
+    "valor": 31495.0,
+    "trechos": 89,
+    "destinos": [
+     "Corumbá",
+     "BONITO",
+     "Sonora",
+     "Dourados",
+     "Camapuã"
+    ]
+   },
+   {
     "nome": "FABIO SOUSA NANTES",
     "cpf": "***.487.101-**",
     "orgao": "IAGRO",
@@ -11528,22 +11576,6 @@
     ]
    },
    {
-    "nome": "FRANCISCO ELIAS FERREIRA NETO",
-    "cpf": "***.659.311-**",
-    "orgao": "IAGRO",
-    "cargo": "AGENTE FISCAL AGROPECUÁRIO",
-    "tipo": "SERVIDOR",
-    "valor": 30900.0,
-    "trechos": 36,
-    "destinos": [
-     "Figueirão",
-     "PARAÍSO DAS ÁGUAS",
-     "Inocência",
-     "Chapadão do Sul",
-     "Alcinópolis"
-    ]
-   },
-   {
     "nome": "CLODOALDO GOMES DA SILVA",
     "cpf": "***.125.511-**",
     "orgao": "SEJUSP",
@@ -11557,29 +11589,13 @@
     ]
    },
    {
-    "nome": "JOÃO PAULO MARTINEZ",
-    "cpf": "***.633.061-**",
-    "orgao": "IMASUL",
-    "cargo": "TÉCNICO AMBIENTAL",
-    "tipo": "SERVIDOR",
-    "valor": 30745.0,
-    "trechos": 88,
-    "destinos": [
-     "Corumbá",
-     "BONITO",
-     "Sonora",
-     "Dourados",
-     "Camapuã"
-    ]
-   },
-   {
     "nome": "ADOALDO CHATOBRIAND LOPES",
     "cpf": "***.321.481-**",
     "orgao": "SEJUSP",
     "cargo": "OFICIAIS SUBALTERNOS",
     "tipo": "SERVIDOR",
-    "valor": 30450.0,
-    "trechos": 23,
+    "valor": 30825.0,
+    "trechos": 24,
     "destinos": [
      "Corumbá",
      "Dourados",
@@ -11843,7 +11859,7 @@
      "Corumbá",
      "São Paulo",
      "Maracaju",
-     "Dourados"
+     "Sonora"
     ]
    },
    {
@@ -11924,6 +11940,19 @@
     ]
    },
    {
+    "nome": "MARCOS OLIVEIRA DA SILVA",
+    "cpf": "***.865.401-**",
+    "orgao": "DETRAN",
+    "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
+    "tipo": "SERVIDOR",
+    "valor": 27400.0,
+    "trechos": 34,
+    "destinos": [
+     "Sidrolândia",
+     "Selvíria"
+    ]
+   },
+   {
     "nome": "DOUGLAS LAERTES DE FREITAS",
     "cpf": "***.275.431-**",
     "orgao": "SEJUSP",
@@ -11935,8 +11964,8 @@
      "Corumbá",
      "São Paulo",
      "Caxias do Sul",
-     "Santa Cruz do Sul",
-     "Dourados"
+     "Dourados",
+     "Santa Cruz do Sul"
     ]
    },
    {
@@ -12061,6 +12090,22 @@
      "Quadrante MS 867A/BRASILANDIA",
      "Quadrante MS 866/BRASILANDIA",
      "Selvíria"
+    ]
+   },
+   {
+    "nome": "GABRIEL FERREIRA LOPES",
+    "cpf": "***.826.801-**",
+    "orgao": "SEJUSP",
+    "cargo": "OFICIAIS INTERMEDIÁRIOS",
+    "tipo": "SERVIDOR",
+    "valor": 26500.0,
+    "trechos": 14,
+    "destinos": [
+     "Campo Grande",
+     "Londrina",
+     "NAVIRAI",
+     "Costa Rica",
+     "Corumbá"
     ]
    },
    {
@@ -12189,6 +12234,22 @@
     ]
    },
    {
+    "nome": "MAURO LOPES",
+    "cpf": "***.862.861-**",
+    "orgao": "FESA",
+    "cargo": "AUXILIAR DE SERVIÇOS DE SAÚDE",
+    "tipo": "SERVIDOR",
+    "valor": 25646.15,
+    "trechos": 35,
+    "destinos": [
+     "Dourados",
+     "Três Lagoas",
+     "Coxim",
+     "Angélica",
+     "Itaporã"
+    ]
+   },
+   {
     "nome": "EMANUEL FARIAS CAMARGO",
     "cpf": "***.593.031-**",
     "orgao": "SEJUSP",
@@ -12271,19 +12332,6 @@
     "trechos": 6,
     "destinos": [
      "Corumbá"
-    ]
-   },
-   {
-    "nome": "MARCOS OLIVEIRA DA SILVA",
-    "cpf": "***.865.401-**",
-    "orgao": "DETRAN",
-    "cargo": "ASSISTENTE DE ATIVIDADES DE TRÂNSITO",
-    "tipo": "SERVIDOR",
-    "valor": 25100.0,
-    "trechos": 31,
-    "destinos": [
-     "Sidrolândia",
-     "Selvíria"
     ]
    },
    {
@@ -12383,22 +12431,6 @@
     ]
    },
    {
-    "nome": "MAURO LOPES",
-    "cpf": "***.862.861-**",
-    "orgao": "FESA",
-    "cargo": "AUXILIAR DE SERVIÇOS DE SAÚDE",
-    "tipo": "SERVIDOR",
-    "valor": 24896.15,
-    "trechos": 33,
-    "destinos": [
-     "Dourados",
-     "Três Lagoas",
-     "Coxim",
-     "Angélica",
-     "Itaporã"
-    ]
-   },
-   {
     "nome": "JOSIAS SANTANA DE MELO",
     "cpf": "***.947.761-**",
     "orgao": "SEJUSP",
@@ -12466,8 +12498,8 @@
     "trechos": 7,
     "destinos": [
      "Corumbá",
-     "Santa Cruz do Sul",
-     "Dourados"
+     "Dourados",
+     "Santa Cruz do Sul"
     ]
    },
    {
@@ -12481,8 +12513,8 @@
     "destinos": [
      "Itaquiraí",
      "Corumbá",
-     "Campo Grande",
-     "NAVIRAI"
+     "NAVIRAI",
+     "Campo Grande"
     ]
    },
    {
@@ -12547,22 +12579,6 @@
      "Caarapó",
      "Corumbá",
      "Dourados"
-    ]
-   },
-   {
-    "nome": "GABRIEL FERREIRA LOPES",
-    "cpf": "***.826.801-**",
-    "orgao": "SEJUSP",
-    "cargo": "OFICIAIS INTERMEDIÁRIOS",
-    "tipo": "SERVIDOR",
-    "valor": 23875.0,
-    "trechos": 13,
-    "destinos": [
-     "Campo Grande",
-     "Londrina",
-     "Rio do Sul",
-     "Costa Rica",
-     "Corumbá"
     ]
    },
    {
@@ -12679,22 +12695,6 @@
     "destinos": [
      "Corumbá",
      "BONITO"
-    ]
-   },
-   {
-    "nome": "CLAUDIO QUINTINO HILDEBRANDO",
-    "cpf": "***.845.811-**",
-    "orgao": "IAGRO",
-    "cargo": "AUXILIAR DE SERVIÇOS AGROPECUÁRIOS",
-    "tipo": "SERVIDOR",
-    "valor": 23150.0,
-    "trechos": 53,
-    "destinos": [
-     "Selvíria",
-     "Água Clara",
-     "Bataguassu",
-     "Quadrante MS 622/TRÊS LAGOAS",
-     "Santa Rita do Pardo"
     ]
    }
   ]
