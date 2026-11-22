@@ -5985,7 +5985,7 @@ function renderEmendasMunicipios(d) {
   document.getElementById("em-data").textContent = d.ultimaAtualizacao ? formatDateTime(d.ultimaAtualizacao) : "—";
 
   const favTabela = lst => `<div style="overflow-x:auto"><table class="notes-table"><thead><tr><th>Quem recebeu</th><th>Município</th><th class="num">Valor</th></tr></thead><tbody>` +
-    lst.map(f => `<tr><td class="quebra">${escHTML(f.nome)}<br><span class="rank-meta">${linksCNPJ(f.doc)}${f.natureza ? ` · ${escHTML(f.natureza)}` : ""}</span></td><td style="font-size:.78rem">${escHTML(f.municipio || "")}</td><td class="num">${formatBRL(f.valor)}</td></tr>`).join("") +
+    lst.map(f => `<tr><td class="quebra">${escHTML(f.nome)}<br><span class="rank-meta">${linksCNPJ(f.doc)}${f.natureza ? ` · ${escHTML(f.natureza)}` : ""}</span>${(f.notasFonte || []).map(t => `<br><span class="rank-meta" style="color:var(--amber)">ⓘ Nota sobre a fonte: ${escHTML(t)} O valor mostrado é o do arquivo da CGU.</span>`).join("")}</td><td style="font-size:.78rem">${escHTML(f.municipio || "")}</td><td class="num">${formatBRL(f.valor)}</td></tr>`).join("") +
     `</tbody></table></div>`;
 
   // autores: atuais primeiro, depois comissões/bancada/ex-parlamentares

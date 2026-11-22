@@ -78,6 +78,34 @@ def baixar(caminho=None):
     return zipfile.ZipFile(io.BytesIO(r.content))
 
 
+def anexar_notas_fonte(out, arq=None):
+    """Notas neutras sobre a fonte (config/notas_fonte_emendas.json): anexadas ao pagamento e ao favorecido (listas do
+    município, do autor e geral) só enquanto o arquivo da CGU ainda trouxer o mesmo valor (valorDownload)."""
+    try:
+        notas = json.load(open(arq or (Path(__file__).resolve().parent.parent / "config" / "notas_fonte_emendas.json"), encoding="utf-8"))["notas"]
+    except Exception:
+        return 0
+    pags = {(p["emenda"], p["doc"], p["mes"]): p for p in out.get("pagamentosMS") or []}
+    n = 0
+    for nt in notas:
+        p = pags.get((nt["emenda"], nt["doc"], nt["mes"]))
+        if not p or abs(p["valor"] - nt["valorDownload"]) > 0.01:
+            continue  # a CGU corrigiu (ou o pagamento sumiu): a nota não vale mais
+        texto = f"Emenda {nt['emenda']} ({p.get('autor')}): {nt['nota']}."
+        p["notaFonte"] = texto
+        # só onde o pagamento entra: lista geral, o município do pagamento e o autor da emenda (o mesmo favorecido
+        # recebe de outros autores, e a nota não vale para esses)
+        listas = [out.get("favorecidos") or []] + \
+                 [m.get("favorecidos") or [] for m in out.get("municipios") or [] if m.get("municipio") == p.get("municipio")] + \
+                 [a.get("favorecidos") or [] for a in out.get("autores") or [] if a.get("autor") == p.get("autor")]
+        for lst in listas:
+            for f in lst:
+                if f.get("doc") == nt["doc"] and texto not in (f.get("notasFonte") or []):
+                    f.setdefault("notasFonte", []).append(texto)
+        n += 1
+    return n
+
+
 def main():
     print(f"🏛️  Emendas parlamentares por município — MS {ANO}")
     try:
@@ -204,6 +232,7 @@ def main():
            "municipios": lista_m, "autores": lista_a, "favorecidos": fav,
            "pagamentosMS": sorted(({**x, "valor": round(x["valor"], 2)} for x in pagamentos_ms.values() if round(x["valor"], 2)),
                                   key=lambda x: (x["emenda"], x["doc"] or x["favorecido"], x["mes"]))}
+    anexar_notas_fonte(out)
     # Emendas Pix: por ano, quem mandou e para qual município (o arquivo não diz em que a prefeitura gastou)
     out["pix"] = {"anos": {a: round(sum(v for m in au.values() for v in m.values()), 2) for a, au in sorted(pix.items())}, "porAno": {}}
     for a, au in sorted(pix.items()):

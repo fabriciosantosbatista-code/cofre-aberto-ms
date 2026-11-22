@@ -371,6 +371,27 @@ def _cgu(caminho, params=None):
     return None
 
 
+COMPARTILHADO = "o documento de pagamento é compartilhado entre emendas e a API não informa a parte de cada uma"
+
+
+def parte_da_emenda(obs, emenda):
+    """Documento de pagamento que paga mais de uma emenda (21/11/2026): a API traz o valor TOTAL do documento.
+    Devolve ("exclusivo", None) se o texto (observação) não cita outra emenda; ("parte", valor) se o texto informa a parte
+    desta emenda ("R$ 5.000,00 EMENDA 202528620007"); ("compartilhado", None) se cita outra emenda sem dar a parte desta."""
+    t = re.sub(r"\s+", " ", str(obs or "")).upper()
+    codigos = set(re.findall(r"(?<!\d)20\d{10}(?!\d)", t))
+    outras = codigos - {str(emenda)}
+    if not outras and t.count("EMENDA") < 2:
+        return "exclusivo", None
+    num = r"R\$\s*([\d.]+,\d{2})"
+    e = re.escape(str(emenda))
+    m = (re.search(num + r"\s*\)?\s*(?:DA\s+|DE\s+)?EMENDA\s+(?:N[º°O]?\.?\s*)?" + e + r"(?!\d)", t)
+         or re.search(r"EMENDA\s+(?:N[º°O]?\.?\s*)?" + e + r"(?!\d)[^()$]{0,40}?" + num, t))
+    if m:
+        return "parte", float(m.group(1).replace(".", "").replace(",", "."))
+    return "compartilhado", None
+
+
 def v_emendas(n_emendas=30):
     """Emendas pagas a favorecidos de MS no ano (recorte do site): amostra diária de emendas (semente = data; primeiro
     as que não valem na janela de 30 dias), e, de cada uma, todos os documentos de PAGAMENTO na API da CGU com o detalhe
@@ -394,7 +415,7 @@ def v_emendas(n_emendas=30):
     escolhidas = random.sample(pendentes, min(n_emendas, len(pendentes)))
     escolhidas += [e for e in sorted(set(emendas) - set(pendentes), key=lambda e: min(valem.get(idp(x), "") for x in pags if x["emenda"] == e))][:max(0, n_emendas - len(escolhidas))]
     ano = str(em.get("ano") or date.today().year)
-    itens, chamadas, motivos = [], 0, {}
+    itens, chamadas, motivos, dobro = [], 0, {}, []
     for e in escolhidas:
         docs, falhou, motivo_falha = [], False, None
         for pag in range(1, 40):
@@ -407,7 +428,7 @@ def v_emendas(n_emendas=30):
             if not j:
                 break
             docs += j
-        fonte = {}
+        fonte, sem_parte = {}, set()
         if not falhou:
             for d in docs:
                 if "pagamento" not in str(d.get("fase") or "").lower():
@@ -425,13 +446,22 @@ def v_emendas(n_emendas=30):
                 v = det.get("valor")
                 v = float(str(v).replace(".", "").replace(",", ".")) if isinstance(v, str) else float(v or 0)
                 k = f"{e}|{_dig(det.get('codigoFavorecido')) or norm(det.get('nomeFavorecido'))}|{mes}"
+                tipo, parte = parte_da_emenda(det.get("observacao"), e)
+                if tipo == "parte":
+                    v = parte  # o texto do próprio documento informa a parte desta emenda
+                elif tipo == "compartilhado":
+                    sem_parte.add(k)  # a API não informa a parte desta emenda: o pagamento do mês não é comparável
                 fonte[k] = round(fonte.get(k, 0) + v, 2)
         for x in [x for x in pags if x["emenda"] == e]:
             k = idp(x)
-            v = None if falhou else fonte.get(k, 0.0 if fonte else None)
+            v = None if falhou or k in sem_parte else fonte.get(k, 0.0 if fonte else None)
             itens.append((k, x["valor"], v))
             if v is None:
-                motivos[k] = motivo_falha or "nenhum pagamento a favorecido de MS no ano entre os documentos da emenda na API"
+                motivos[k] = (COMPARTILHADO if k in sem_parte else
+                              motivo_falha or "nenhum pagamento a favorecido de MS no ano entre os documentos da emenda na API")
+            elif v > 0 and abs(x["valor"] - 2 * v) <= 1:
+                dobro.append({"item": k, "download": round(x["valor"], 2), "api": round(v, 2)})
+                motivos[k] = "o arquivo de download da CGU traz exatamente o dobro do documento de pagamento na API da CGU"
             elif abs(v - x["valor"]) > 1:
                 motivos[k] = ("pagamento não encontrado na API (emenda + favorecido + mês)" if v == 0 else
                               "valor diferente na API — pode ser pagamento lançado em outro mês na API (data do documento × mês de referência do download)")
@@ -444,6 +474,15 @@ def v_emendas(n_emendas=30):
     res["registrosPorTotais"] = 0
     res["chamadasApi"], res["duracaoSeg"] = chamadas, round(time.monotonic() - t0)
     res["motivosRegistros"] = motivos  # divergência ou não obtido, com o motivo (mostrados no ICP)
+    # valor do download = 2× o da API: o dono decide se faz pedido à CGU (as já anotadas ficam em config/notas_fonte_emendas.json)
+    try:
+        conhecidas = {f"{n['emenda']}|{n['doc']}|{n['mes']}" for n in json.load(open(DADOS.parent / "config" / "notas_fonte_emendas.json", encoding="utf-8"))["notas"]}
+    except Exception:
+        conhecidas = set()
+    res["dobroDownload"] = [{**d, "jaAnotada": d["item"] in conhecidas} for d in dobro]
+    for d in dobro:
+        if d["item"] not in conhecidas:
+            print(f"  ⚠️ emendas: {d['item']}: download R$ {d['download']:.2f} = 2× o documento na API (R$ {d['api']:.2f}) — avisar o dono (pedido à CGU)")
     res["nota"] = (res.get("nota") or "") + f" {chamadas} chamadas à API da CGU em {round(time.monotonic() - t0)} s. Município do favorecido não conferido (a API não traz)."
     res["independencia"] = ("API da CGU: outro serviço do mesmo órgão (a coleta usa o arquivo de download do Portal da Transparência) — "
                             "confirma os pagamentos, não é fonte independente da CGU")

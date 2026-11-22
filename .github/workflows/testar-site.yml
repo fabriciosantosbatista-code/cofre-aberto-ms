@@ -36,6 +36,8 @@ jobs:
         run: python3 tests/test_variacoes.py
       - name: Divergência registrada na conferência = aviso; sem registro = erro
         run: python3 tests/test_divergencia_registrada.py
+      - name: Emendas — documento compartilhado entre emendas e nota sobre a fonte
+        run: pip install -q requests && python3 tests/test_emendas_compartilhado.py
 
       - name: LGPD — nenhum CPF completo nos arquivos publicados (com e sem pontuação, em qualquer campo)
         run: python3 tests/test_cpf.py
