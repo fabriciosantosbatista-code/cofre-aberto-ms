@@ -1,16 +1,17 @@
 {
- "geradoEm": "2026-11-21T09:45:35",
- "metodo": "Roda no robô diário, depois da coleta (precisa da folha completa, sem CPF: artefato folha-supersalarios-* CIFRADO — artefato de repositório público\né baixável por qualquer usuário logado no GitHub; ver SEGURANCA_ARTEFATOS.md).\nGrupos (os mesmos da antiga lista manual):\n  supersalario   todos os contracheques com líquido acima do teto do mês\n  intermediario  100 sorteados (semente 42, estratificado por órgão) entre bruto acima e líquido abaixo do teto\n  amostra        100 sorteados abaixo do teto (semente = data, estratificado por órgão), com janela de 30 dias + hash\nCada contracheque é reconsultado e recebe status \"confere\", \"diverge\" ou \"não verificado (motivo)\":\n  Governo MS     nova consulta à folha do Estado pelo nome dentro do órgão (mesma matrícula): bruto, eventuais e\n                 líquido. Rótulo: \"mesma fonte — confirma a leitura\". A fonte publica só remuneração fixa, eventuais e\n                 valor após deduções: não é possível separar verbas indenizatórias.\n  TRT24          comparado com a folha lida no portal do próprio TRT24 (Anexo VIII) na mesma coleta\n                 (dados/trt24_magistrados.json): bruto e líquido. Rótulo: \"conferido no arquivo original do órgão\".\n  TJMS           o portal do TJMS bloqueia acessos de fora do Brasil: sem o arquivo original → não verificado.\n  TCE-MS         servidores: nova consulta ao portal do TCE por matrícula (salário-base, outras verbas, líquido).\n                 Membros (contracheque em PDF): não verificado até a dupla extração do PDF do TCE entrar.\nTeto: config/teto.json (valor, data de início e lei), aplicado pelo mês de cada contracheque.\nRubricas (Judiciário e membros do TCE): config/rubricas.json (remuneratório, indenizatório ou excluído do teto, com a\nbase legal). Rubrica fora da tabela → \"não verificado — rubrica não classificada\" (aviso no log). Não adivinha.",
+ "geradoEm": "2026-11-22T06:01:12",
+ "metodo": "Roda no robô diário, depois da coleta (precisa da folha completa, sem CPF: artefato folha-supersalarios-* CIFRADO — artefato de repositório público\né baixável por qualquer usuário logado no GitHub; ver SEGURANCA_ARTEFATOS.md).\nGrupos (os mesmos da antiga lista manual):\n  supersalario   todos os contracheques com líquido acima do teto do mês\n  intermediario  100 sorteados (semente 42, estratificado por órgão) entre bruto acima e líquido abaixo do teto\n  amostra        100 sorteados abaixo do teto (semente = data, estratificado por órgão), com janela de 30 dias + hash\nCada contracheque é reconsultado e recebe status \"confere\", \"diverge\" ou \"não verificado (motivo)\":\n  Governo MS     nova consulta à folha do Estado pelo nome dentro do órgão (mesma matrícula): bruto, eventuais e\n                 líquido. Rótulo: \"mesma fonte — confirma a leitura\". A fonte publica só remuneração fixa, eventuais e\n                 valor após deduções: não é possível separar verbas indenizatórias.\n  TRT24          comparado com a folha lida no portal do próprio TRT24 (Anexo VIII) na mesma coleta\n                 (dados/trt24_magistrados.json): bruto e líquido. Rótulo: \"conferido no arquivo original do órgão\".\n  TJMS           o portal do TJMS bloqueia acessos de fora do Brasil: sem o arquivo original → não verificado.\n  TCE-MS         servidores: nova consulta ao portal do TCE por matrícula (salário-base, outras verbas, líquido).\n                 Membros (contracheque em PDF): não verificado até a dupla extração do PDF do TCE entrar.\nCampo que a fonte não informa (regra de 21/11/2026): o campo fica \"não verificado — <fonte> não informa <campo>\",\nnunca é completado com o nosso próprio número. Ex.: o Anexo VIII do TRT24 não informa os \"descontos diversos\"\n(consignados, pensão): quando o painel do CNJ tem descontos que o Anexo VIII não lista, o líquido não é comparado.\nO contracheque só fica \"confere\" se todos os campos comparados batem; com algum campo não verificado e nenhum\ndivergente, fica \"não verificado\" (o motivo diz o que conferiu). Coluna \"campos\": o status de cada campo.\nDivergência com o Anexo VIII (Judiciário): vai para \"divergenciasFonte\" no JSON, com os dois valores lado a lado e\numa frase neutra sobre a fonte — o site mostra um selo na linha da pessoa (o número publicado continua o do CNJ).\nTeto: config/teto.json (valor, data de início e lei), aplicado pelo mês de cada contracheque.\nRubricas (Judiciário e membros do TCE): config/rubricas.json (remuneratório, indenizatório ou excluído do teto, com a\nbase legal). Rubrica fora da tabela → \"não verificado — rubrica não classificada\" (aviso no log). Não adivinha.",
  "grupos": {
   "supersalario": {
    "confere": 373,
-   "diverge": 34,
-   "nao_verificado": 14,
+   "diverge": 30,
+   "nao_verificado": 18,
    "total": 421
   },
   "intermediario": {
    "confere": 98,
-   "diverge": 2,
+   "nao_verificado": 1,
+   "diverge": 1,
    "total": 100
   },
   "amostra": {
@@ -92,14 +93,19 @@
    "confere": 216
   },
   "TRT24 — Justiça do Trabalho": {
-   "diverge": 36,
-   "confere": 2
+   "diverge": 31,
+   "confere": 2,
+   "nao_verificado": 5
   }
  },
  "naoVerificadoPorMotivo": [
   [
    "rubrica não classificada",
    14
+  ],
+  [
+   "bruto confere; líquido não verificado — o Anexo VIII não informa os descontos diversos",
+   5
   ]
  ],
  "rubricasNaoClassificadas": [
@@ -207,6 +213,519 @@
    9
   ]
  ],
+ "divergenciasFonte": [
+  {
+   "nome": "Ademar De Souza Freitas",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 140054.15,
+     "anexo": 153967.77
+    }
+   ]
+  },
+  {
+   "nome": "Marcelino Gonçalves",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 124371.68,
+     "anexo": 138285.3
+    }
+   ]
+  },
+  {
+   "nome": "João Marcelo Balsanelli",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 119303.75,
+     "anexo": 133949.67
+    }
+   ]
+  },
+  {
+   "nome": "Keethlen Fontes Maranhão Montagna",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 116361.7,
+     "anexo": 130275.32
+    }
+   ]
+  },
+  {
+   "nome": "Marcio Kurihara Inada",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 122494.17,
+     "anexo": 136407.79
+    }
+   ]
+  },
+  {
+   "nome": "Denilson Lima De Souza",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 113941.3,
+     "anexo": 127854.92
+    }
+   ]
+  },
+  {
+   "nome": "Bóris Luiz Cardozo De Souza",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 111953.64,
+     "anexo": 125867.26
+    }
+   ]
+  },
+  {
+   "nome": "João De Deus Gomes De Souza",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 121124.59,
+     "anexo": 135770.51
+    }
+   ]
+  },
+  {
+   "nome": "Carlos Roberto Cunha",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 113211.15,
+     "anexo": 127124.77
+    }
+   ]
+  },
+  {
+   "nome": "Francisco Das Chagas Lima Filho",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 120390.77,
+     "anexo": 135036.69
+    }
+   ]
+  },
+  {
+   "nome": "Laís Pahins Duarte",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 108425.66,
+     "anexo": 122339.28
+    }
+   ]
+  },
+  {
+   "nome": "Daniela Rocha Rodrigues Peruca",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 104241.75,
+     "anexo": 118155.36
+    }
+   ]
+  },
+  {
+   "nome": "Renato Luiz Miyasato De Faria",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 109647.25,
+     "anexo": 123560.87
+    }
+   ]
+  },
+  {
+   "nome": "Anna Paula Da Silva Santos",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 107112.81,
+     "anexo": 121026.43
+    }
+   ]
+  },
+  {
+   "nome": "Ana Paola Emanuelli Balsanelli",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 101800.12,
+     "anexo": 115713.74
+    }
+   ]
+  },
+  {
+   "nome": "Júlio César Bebber",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 98087.97,
+     "anexo": 112001.59
+    }
+   ]
+  },
+  {
+   "nome": "Alexandre Marques Borba",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 96362.91,
+     "anexo": 109850.15
+    }
+   ]
+  },
+  {
+   "nome": "Herbert Gomes Oliva",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 100549.82,
+     "anexo": 114126.81
+    }
+   ]
+  },
+  {
+   "nome": "Nicanor De Araújo Lima",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 109615.59,
+     "anexo": 124261.51
+    },
+    {
+     "campo": "líquido",
+     "cnj": 82058.21,
+     "anexo": 96704.13
+    }
+   ]
+  },
+  {
+   "nome": "Flávio Da Costa Higa",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 90498.38,
+     "anexo": 104412.0
+    },
+    {
+     "campo": "líquido",
+     "cnj": 80043.58,
+     "anexo": 93957.2
+    }
+   ]
+  },
+  {
+   "nome": "Fabiane Ferreira",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 82699.81,
+     "anexo": 96366.58
+    }
+   ]
+  },
+  {
+   "nome": "Marco Antonio Miranda Mendes",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 96727.49,
+     "anexo": 110641.11
+    }
+   ]
+  },
+  {
+   "nome": "Izidoro Oliveira Paniago",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 84891.98,
+     "anexo": 98805.6
+    }
+   ]
+  },
+  {
+   "nome": "Beatriz Maki Shinzato Capucho",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 82849.16,
+     "anexo": 96762.78
+    }
+   ]
+  },
+  {
+   "nome": "Leonardo Ely",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 90498.38,
+     "anexo": 104412.0
+    }
+   ]
+  },
+  {
+   "nome": "Nadia Pelissari",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 83040.04,
+     "anexo": 96953.66
+    }
+   ]
+  },
+  {
+   "nome": "Hélio Duques Dos Santos",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 79064.72,
+     "anexo": 92978.34
+    }
+   ]
+  },
+  {
+   "nome": "Izabella Ramos Pinto",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 76587.2,
+     "anexo": 90500.82
+    }
+   ]
+  },
+  {
+   "nome": "André Luís Moraes De Oliveira",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "composicao",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma composição deste contracheque diferente da que consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 76223.63,
+     "anexo": 70141.09
+    },
+    {
+     "campo": "líquido",
+     "cnj": 54217.19,
+     "anexo": 43655.63
+    }
+   ]
+  },
+  {
+   "nome": "Tomás Bawden De Castro Silva",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "supersalario",
+   "causa": "composicao",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma composição deste contracheque diferente da que consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 72211.29,
+     "anexo": 90367.68
+    }
+   ]
+  },
+  {
+   "nome": "Renato De Moraes Anderson",
+   "orgaoId": "trt24",
+   "orgao": "TRT24 — Justiça do Trabalho",
+   "mes": "08/2026",
+   "grupo": "intermediario",
+   "causa": "verba_a_mais",
+   "frase": "o TRT24 publica, no próprio Anexo VIII, uma verba a mais que não consta no painel do CNJ; pedido de esclarecimento em preparação",
+   "valores": [
+    {
+     "campo": "bruto",
+     "cnj": 50012.11,
+     "anexo": 63476.91
+    }
+   ]
+  }
+ ],
  "clopperPearson": {
   "amostra": {
    "conferidos": 100,
@@ -214,9 +733,9 @@
    "limiteSuperior95": 0.0295
   },
   "intermediario": {
-   "conferidos": 100,
-   "comErro": 2,
-   "limiteSuperior95": 0.0616
+   "conferidos": 99,
+   "comErro": 1,
+   "limiteSuperior95": 0.047
   }
  },
  "teto": [
@@ -542,7 +1061,107 @@
   "950e224274c2": "2026-11-21",
   "f3fef5aef4c8": "2026-11-21",
   "8c256929ab6a": "2026-11-21",
-  "a368fc35f4d3": "2026-11-21"
+  "a368fc35f4d3": "2026-11-21",
+  "75bdf8a60bc6": "2026-11-22",
+  "7b7450e4363b": "2026-11-22",
+  "feab0876fec9": "2026-11-22",
+  "ab787cf40cbf": "2026-11-22",
+  "fbb32eb1f48c": "2026-11-22",
+  "de54b3e3e61d": "2026-11-22",
+  "36ee505e658b": "2026-11-22",
+  "c3d0e73a9a45": "2026-11-22",
+  "8c4ce92f36ad": "2026-11-22",
+  "33bb0180fd7d": "2026-11-22",
+  "34cc834bad1e": "2026-11-22",
+  "da1aa99bb85b": "2026-11-22",
+  "6f81c4aed892": "2026-11-22",
+  "57ae372bbfd2": "2026-11-22",
+  "717d0a9f5d7a": "2026-11-22",
+  "70c892bf6b4d": "2026-11-22",
+  "c5a484d996e7": "2026-11-22",
+  "b8bc3cc2326f": "2026-11-22",
+  "52a3d718beec": "2026-11-22",
+  "d572b0ae81bf": "2026-11-22",
+  "dce2a252d633": "2026-11-22",
+  "9513b7d02edd": "2026-11-22",
+  "08fcc6255815": "2026-11-22",
+  "f60d50320b14": "2026-11-22",
+  "96df4ffebc5d": "2026-11-22",
+  "4e61a55ee725": "2026-11-22",
+  "f01317b1e9e9": "2026-11-22",
+  "a86766fc3db5": "2026-11-22",
+  "49d35b02e99a": "2026-11-22",
+  "d4408cde46e1": "2026-11-22",
+  "59ef6193a20e": "2026-11-22",
+  "392c7ef8892c": "2026-11-22",
+  "09de3d5f8734": "2026-11-22",
+  "994ca72a3eb6": "2026-11-22",
+  "12cc9ea83386": "2026-11-22",
+  "385b04fc3f8d": "2026-11-22",
+  "53a702c97ab1": "2026-11-22",
+  "28067ce65624": "2026-11-22",
+  "161a00e8f0d7": "2026-11-22",
+  "21f1c9a535d2": "2026-11-22",
+  "f2ec27dc19df": "2026-11-22",
+  "eeb329cefbf5": "2026-11-22",
+  "c753afc6bf89": "2026-11-22",
+  "0235ad308e59": "2026-11-22",
+  "c70080d1854c": "2026-11-22",
+  "d2f805e91471": "2026-11-22",
+  "333101581ebd": "2026-11-22",
+  "1deb1d733dfe": "2026-11-22",
+  "dfac3bbd5357": "2026-11-22",
+  "23c43993c775": "2026-11-22",
+  "0288417c60f3": "2026-11-22",
+  "ddf62e83754e": "2026-11-22",
+  "0aa35d4c3849": "2026-11-22",
+  "0cc5fd4a12ca": "2026-11-22",
+  "3b2645947803": "2026-11-22",
+  "da9dbc189a25": "2026-11-22",
+  "c87d22c4962b": "2026-11-22",
+  "46e848fbea59": "2026-11-22",
+  "8c8f443494f8": "2026-11-22",
+  "db162836b944": "2026-11-22",
+  "07d1d1d84b18": "2026-11-22",
+  "d7c5f03c3d94": "2026-11-22",
+  "bf306ab677fd": "2026-11-22",
+  "106df5440449": "2026-11-22",
+  "8983a963e18f": "2026-11-22",
+  "894d5c253455": "2026-11-22",
+  "057e24702bc7": "2026-11-22",
+  "cfbcaf6f799c": "2026-11-22",
+  "28b2b2589d99": "2026-11-22",
+  "cb3ae7f200eb": "2026-11-22",
+  "01a61cbbb595": "2026-11-22",
+  "699f74f9ccbd": "2026-11-22",
+  "7c68bcf90a5d": "2026-11-22",
+  "e84b88032534": "2026-11-22",
+  "a95a69b37111": "2026-11-22",
+  "11147d72fd62": "2026-11-22",
+  "ed758b2de82d": "2026-11-22",
+  "cd24feff4684": "2026-11-22",
+  "1c5cb48d7da8": "2026-11-22",
+  "325adc2557cd": "2026-11-22",
+  "700900a522dc": "2026-11-22",
+  "05dd854107fe": "2026-11-22",
+  "046ac599b4f2": "2026-11-22",
+  "de019a158d26": "2026-11-22",
+  "0404ff40f714": "2026-11-22",
+  "b0b2b0d48bfb": "2026-11-22",
+  "686a2489aad7": "2026-11-22",
+  "74c0c0bcd8a4": "2026-11-22",
+  "e57ce6d9ea1c": "2026-11-22",
+  "463374c4eb98": "2026-11-22",
+  "b17199c73e39": "2026-11-22",
+  "3535a58fcaa4": "2026-11-22",
+  "6b90c6dc9b9c": "2026-11-22",
+  "851aaf9f9a57": "2026-11-22",
+  "d6e3e0d7911d": "2026-11-22",
+  "0d4772cfa149": "2026-11-22",
+  "afc3423f240e": "2026-11-22",
+  "192e024e5441": "2026-11-22",
+  "aa78fca7e05e": "2026-11-22",
+  "8309558147f6": "2026-11-22"
  },
  "rotulos": {
   "governo": "mesma fonte — confirma a leitura",
