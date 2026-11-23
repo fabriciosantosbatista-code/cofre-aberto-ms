@@ -1,6 +1,6 @@
 {
- "em": "2026-11-23T04:52:58",
- "runId": "45133623403",
+ "em": "2026-11-23T18:17:49",
+ "runId": "45267804392",
  "testes": {
   "json": {
    "codigo": 0,
@@ -19,91 +19,10 @@
    "erros": 0
   },
   "variacoes": {
-   "codigo": 1,
-   "erros": 2
+   "codigo": 0,
+   "erros": 0
   }
  },
- "resultado": "bloqueado",
- "motivos": [
-  {
-   "teste": "variacoes",
-   "base": "deputados",
-   "texto": "deputados: registros caíram de 2701 para 1967 (-27%) entre 2026-11-22T06:57 e 2026-11-23T03:47"
-  },
-  {
-   "teste": "variacoes",
-   "base": "deputados",
-   "texto": "deputados: total acumulado caiu de 3,425,406.23 para 2,981,356.01 (-13.0%) — no mesmo ano o acumulado não deveria cair"
-  },
-  {
-   "teste": "integridade",
-   "base": "deputados",
-   "texto": "Evolução Beto Pereira: soma dos meses = CEAP do ano: evolução 355,237.97 x notas 403,274.83"
-  },
-  {
-   "teste": "integridade",
-   "base": "deputados",
-   "texto": "Evolução Camila Jara: soma dos meses = CEAP do ano: evolução 428,808.25 x notas 526,768.68"
-  },
-  {
-   "teste": "integridade",
-   "base": "deputados",
-   "texto": "Evolução Dagoberto Nogueira: soma dos meses = CEAP do ano: evolução 444,193.81 x notas 480,507.40"
-  },
-  {
-   "teste": "integridade",
-   "base": "deputados",
-   "texto": "Evolução Dr. Luiz Ovando: soma dos meses = CEAP do ano: evolução 244,973.06 x notas 276,274.01"
-  },
-  {
-   "teste": "integridade",
-   "base": "deputados",
-   "texto": "Evolução Geraldo Resende: soma dos meses = CEAP do ano: evolução 510,922.82 x notas 533,267.12"
-  },
-  {
-   "teste": "integridade",
-   "base": "deputados",
-   "texto": "Evolução Marcos Pollon: soma dos meses = CEAP do ano: evolução 223,347.92 x notas 334,110.85"
-  },
-  {
-   "teste": "integridade",
-   "base": "deputados",
-   "texto": "Evolução Rodolfo Nogueira: soma dos meses = CEAP do ano: evolução 455,039.89 x notas 469,707.19"
-  },
-  {
-   "teste": "integridade",
-   "base": "deputados",
-   "texto": "Evolução Vander Loubet: soma dos meses = CEAP do ano: evolução 318,832.29 x notas 401,496.15"
-  }
- ],
- "basesAfetadas": [
-  "deputados"
- ],
- "versaoMantida": "d88428dd66cd9f71dfc6b1a3aac72fcb7740e327",
- "arquivosRevertidos": 2453,
- "arquivosNovosRetidos": 2,
- "evidencias": "artefato coleta-bloqueada-45133623403 (30 dias)",
- "versaoMantidaTambemFalha": [],
- "testesDepoisDeReverter": {
-  "json": {
-   "codigo": 0,
-   "erros": 0
-  },
-  "contencao": {
-   "codigo": 0,
-   "erros": 0
-  },
-  "cpf": {
-   "codigo": 0,
-   "erros": 0
-  },
-  "integridade": {
-   "codigo": 0,
-   "erros": 0
-  },
-  "variacoes": {
-   "codigo": 0,
-   "erros": 0
-  }
- }
+ "resultado": "publicado",
+ "motivos": []
 }
