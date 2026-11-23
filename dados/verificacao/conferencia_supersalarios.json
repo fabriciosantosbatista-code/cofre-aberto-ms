@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-22T06:01:12",
+ "geradoEm": "2026-11-23T03:53:05",
  "metodo": "Roda no robô diário, depois da coleta (precisa da folha completa, sem CPF: artefato folha-supersalarios-* CIFRADO — artefato de repositório público\né baixável por qualquer usuário logado no GitHub; ver SEGURANCA_ARTEFATOS.md).\nGrupos (os mesmos da antiga lista manual):\n  supersalario   todos os contracheques com líquido acima do teto do mês\n  intermediario  100 sorteados (semente 42, estratificado por órgão) entre bruto acima e líquido abaixo do teto\n  amostra        100 sorteados abaixo do teto (semente = data, estratificado por órgão), com janela de 30 dias + hash\nCada contracheque é reconsultado e recebe status \"confere\", \"diverge\" ou \"não verificado (motivo)\":\n  Governo MS     nova consulta à folha do Estado pelo nome dentro do órgão (mesma matrícula): bruto, eventuais e\n                 líquido. Rótulo: \"mesma fonte — confirma a leitura\". A fonte publica só remuneração fixa, eventuais e\n                 valor após deduções: não é possível separar verbas indenizatórias.\n  TRT24          comparado com a folha lida no portal do próprio TRT24 (Anexo VIII) na mesma coleta\n                 (dados/trt24_magistrados.json): bruto e líquido. Rótulo: \"conferido no arquivo original do órgão\".\n  TJMS           o portal do TJMS bloqueia acessos de fora do Brasil: sem o arquivo original → não verificado.\n  TCE-MS         servidores: nova consulta ao portal do TCE por matrícula (salário-base, outras verbas, líquido).\n                 Membros (contracheque em PDF): não verificado até a dupla extração do PDF do TCE entrar.\nCampo que a fonte não informa (regra de 21/11/2026): o campo fica \"não verificado — <fonte> não informa <campo>\",\nnunca é completado com o nosso próprio número. Ex.: o Anexo VIII do TRT24 não informa os \"descontos diversos\"\n(consignados, pensão): quando o painel do CNJ tem descontos que o Anexo VIII não lista, o líquido não é comparado.\nO contracheque só fica \"confere\" se todos os campos comparados batem; com algum campo não verificado e nenhum\ndivergente, fica \"não verificado\" (o motivo diz o que conferiu). Coluna \"campos\": o status de cada campo.\nDivergência com o Anexo VIII (Judiciário): vai para \"divergenciasFonte\" no JSON, com os dois valores lado a lado e\numa frase neutra sobre a fonte — o site mostra um selo na linha da pessoa (o número publicado continua o do CNJ).\nTeto: config/teto.json (valor, data de início e lei), aplicado pelo mês de cada contracheque.\nRubricas (Judiciário e membros do TCE): config/rubricas.json (remuneratório, indenizatório ou excluído do teto, com a\nbase legal). Rubrica fora da tabela → \"não verificado — rubrica não classificada\" (aviso no log). Não adivinha.",
  "grupos": {
   "supersalario": {
@@ -15,7 +15,8 @@
    "total": 100
   },
   "amostra": {
-   "confere": 100,
+   "confere": 99,
+   "nao_verificado": 1,
    "total": 100
   }
  },
@@ -24,7 +25,8 @@
    "confere": 2
   },
   "Governo MS — AGEPREV": {
-   "confere": 102
+   "confere": 101,
+   "nao_verificado": 1
   },
   "Governo MS — AGESUL": {
    "confere": 1
@@ -106,6 +108,10 @@
   [
    "bruto confere; líquido não verificado — o Anexo VIII não informa os descontos diversos",
    5
+  ],
+  [
+   "matrícula não encontrada na nova consulta (nome/órgão)",
+   1
   ]
  ],
  "rubricasNaoClassificadas": [
@@ -728,9 +734,9 @@
  ],
  "clopperPearson": {
   "amostra": {
-   "conferidos": 100,
+   "conferidos": 99,
    "comErro": 0,
-   "limiteSuperior95": 0.0295
+   "limiteSuperior95": 0.0298
   },
   "intermediario": {
    "conferidos": 99,
@@ -1161,7 +1167,106 @@
   "afc3423f240e": "2026-11-22",
   "192e024e5441": "2026-11-22",
   "aa78fca7e05e": "2026-11-22",
-  "8309558147f6": "2026-11-22"
+  "8309558147f6": "2026-11-22",
+  "85db68d9e9bf": "2026-11-23",
+  "f8aa9a521b23": "2026-11-23",
+  "a86edf41bd59": "2026-11-23",
+  "7f6f74996dfa": "2026-11-23",
+  "d01e1b143d44": "2026-11-23",
+  "7ed337457281": "2026-11-23",
+  "ac463e3b8512": "2026-11-23",
+  "d43c5544fda7": "2026-11-23",
+  "8dcbd810e0b3": "2026-11-23",
+  "a4ab3bc6cf6d": "2026-11-23",
+  "4c49da5bf19d": "2026-11-23",
+  "6d4cd1287b2b": "2026-11-23",
+  "5ef587473489": "2026-11-23",
+  "c399dfe88b40": "2026-11-23",
+  "86d1261af8fc": "2026-11-23",
+  "738f09f29ddf": "2026-11-23",
+  "ec905d9b6e4a": "2026-11-23",
+  "b8065bcab4d9": "2026-11-23",
+  "09c5e2355527": "2026-11-23",
+  "bdbaeea7bb4a": "2026-11-23",
+  "ba0492bf4639": "2026-11-23",
+  "3f8adadc09e9": "2026-11-23",
+  "c15da40a8343": "2026-11-23",
+  "d940bd805dbd": "2026-11-23",
+  "842db174af84": "2026-11-23",
+  "224bb8e62f46": "2026-11-23",
+  "cfee039a0c5a": "2026-11-23",
+  "a79696039bef": "2026-11-23",
+  "945c95c52b79": "2026-11-23",
+  "cc818cd6b08b": "2026-11-23",
+  "6f76391761c5": "2026-11-23",
+  "bb67ea730beb": "2026-11-23",
+  "d4b120258e97": "2026-11-23",
+  "824dbebaa7b7": "2026-11-23",
+  "b4836fabe1b7": "2026-11-23",
+  "002f40360318": "2026-11-23",
+  "3779c4a6d33b": "2026-11-23",
+  "b7f92361bb99": "2026-11-23",
+  "0c31492a885e": "2026-11-23",
+  "cf70cfa89a17": "2026-11-23",
+  "0da7f56dc3bf": "2026-11-23",
+  "459afa9a09c8": "2026-11-23",
+  "1bb9a761d739": "2026-11-23",
+  "ed4a1936e438": "2026-11-23",
+  "37d15ad906a1": "2026-11-23",
+  "2a5eea19d21c": "2026-11-23",
+  "88dd84d56924": "2026-11-23",
+  "7b07ef5a7da6": "2026-11-23",
+  "2b6d9248f4aa": "2026-11-23",
+  "c08ac4532d3f": "2026-11-23",
+  "fbdf1e778dbd": "2026-11-23",
+  "0e6cff39ac4f": "2026-11-23",
+  "785f9d439e8f": "2026-11-23",
+  "cb008123b40c": "2026-11-23",
+  "df71c4f063e3": "2026-11-23",
+  "198b66f33ad5": "2026-11-23",
+  "f46499842c7b": "2026-11-23",
+  "a6d9382a0011": "2026-11-23",
+  "f93d6ed1dfff": "2026-11-23",
+  "5dd0cca06caa": "2026-11-23",
+  "8912b6819589": "2026-11-23",
+  "994bd9877dc2": "2026-11-23",
+  "4d7f4a19dc8b": "2026-11-23",
+  "2b3c17dbf297": "2026-11-23",
+  "48a0fe4b02b7": "2026-11-23",
+  "f7a97748fa0d": "2026-11-23",
+  "d02c568b816d": "2026-11-23",
+  "7d0fff600428": "2026-11-23",
+  "de3fe927acc0": "2026-11-23",
+  "3fe6be1c4af6": "2026-11-23",
+  "e8e73ac06c53": "2026-11-23",
+  "385ee6f0e976": "2026-11-23",
+  "e642f3da1aa2": "2026-11-23",
+  "a65d89ec6fe1": "2026-11-23",
+  "ece5a08b05dd": "2026-11-23",
+  "261ed92346fb": "2026-11-23",
+  "0d29961e99f1": "2026-11-23",
+  "ce0b8f4c63f0": "2026-11-23",
+  "47c6c53c0a78": "2026-11-23",
+  "81b47297133d": "2026-11-23",
+  "b84c24bc7c26": "2026-11-23",
+  "a8f02e6c7b97": "2026-11-23",
+  "71debd617c53": "2026-11-23",
+  "0665055beed1": "2026-11-23",
+  "680b1541e5ce": "2026-11-23",
+  "385d276d80be": "2026-11-23",
+  "afb7005667ba": "2026-11-23",
+  "f7829d7af4ca": "2026-11-23",
+  "4b1caf87f5c9": "2026-11-23",
+  "7c18d872401e": "2026-11-23",
+  "2ef5f0606aee": "2026-11-23",
+  "2c173d2480cc": "2026-11-23",
+  "643ec2f32346": "2026-11-23",
+  "7535fb83a716": "2026-11-23",
+  "3c99208b3db2": "2026-11-23",
+  "e2682c4ffebd": "2026-11-23",
+  "aa136e361c2c": "2026-11-23",
+  "d9cf4887672a": "2026-11-23",
+  "e97f86539a11": "2026-11-23"
  },
  "rotulos": {
   "governo": "mesma fonte — confirma a leitura",
