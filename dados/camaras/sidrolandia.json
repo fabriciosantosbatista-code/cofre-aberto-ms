@@ -1,7 +1,7 @@
 {
   "cidade": "Sidrolândia",
-  "ultimaAtualizacao": "2026-11-23T17:16:55",
-  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-11-23T17:16:55",
+  "ultimaAtualizacao": "2026-11-24T12:14:50",
+  "fonte": "Portal Transparência Fiorilli (transparencia.camarasidrolandia.ms.gov.br) — Dados Abertos — 2026-11-24T12:14:50",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camarasidrolandia.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -83,6 +83,11 @@
       "referenciaFolha": "Folha Mensal - Outubro",
       "diarias": [
         {
+          "data": "2026-11-24",
+          "valor": 11000.0,
+          "descricao": "REFERENTE A DIARIAS PARA CAPACITAÇÃO VEREADORES AO CURSO DE REGRAS PARA EMENDAS IMPOSITIVAS NAS CAMARAS MUNICIPAIS , GESTÃO MUNICIPAL TRANSPARENTE E DIGITAL DOS DIAS 24 A 27/11/2026 NA CIDADE DE FOZ DO IGUAÇU/PR"
+        },
+        {
           "data": "2026-04-06",
           "valor": 11000.0,
           "descricao": "REFERENTE A DIARIAS PARA O CURSO DE RESPONSABILIDADES JURIDICAS NO PROCESSO LEGISLATIVO MUNICIPAL NOS DIAS 07 A 10/04/2026 NA CIDADE DE MARINGA/PR"
@@ -103,8 +108,8 @@
           "descricao": "REFERENTE A DIARIAS DO VEREADOR PARA O CURSO COM O TEMA : REPASSE DE RECURSOS PUBLICOS AO TERCEIRO SETOR . REALIZADO DOA DIAS 03 A 06/02/2026 NA CIDADE DE MARINGA/PR."
         }
       ],
-      "totalDiarias2026": 41250.0,
-      "numDiarias2026": 4
+      "totalDiarias2026": 52250.0,
+      "numDiarias2026": 5
     },
     {
       "nome": "EDILAINE CRISTINA TAVARES",
@@ -438,12 +443,12 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 16393325.78,
-    "totalNotas": 712,
+    "totalGeral": 16414993.28,
+    "totalNotas": 715,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 9624818.61,
       "Obrigações Patronais": 1678711.72,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 1379069.05,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 1408236.55,
       "Diárias — Civil": 1039750.0,
       "Elemento 04": 1006515.06,
       "Serviços de Consultoria": 673313.13,
@@ -451,7 +456,7 @@
       "Serviços de Tecnologia da Informação": 272623.45,
       "Material de Consumo": 211856.59,
       "Passagens e Despesas com Locomoção": 153971.25,
-      "Equipamentos e Material Permanente": 42139.0
+      "Equipamentos e Material Permanente": 34639.0
     },
     "despesas": [
       {
@@ -1405,6 +1410,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 29167.5,
         "descricao": "REFERENTE A CAMPANHA DIAS DOS POVOS INDIGENAS CONFORME NF 21904"
+      },
+      {
+        "data": "2026-05-05",
+        "fornecedor": "A & T PUBLICIDADE E ASSESSORIA LTDA",
+        "cnpj": "15.427.958/0001-30",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 29167.5,
+        "descricao": "REFERENTE A CAMPANHA DIA DOS POVOS INDIGENAS CONFORME NF 22192"
       },
       {
         "data": "2026-10-30",
@@ -2925,14 +2938,6 @@
         "categoria": "Indenizações e Restituições",
         "valor": 7596.0,
         "descricao": "REFERENTE A VERBA INDENIZATORIA DO MES 09/2026"
-      },
-      {
-        "data": "2026-05-04",
-        "fornecedor": "PEDRO LUIZ RIBEIRO RUANO",
-        "cnpj": "37.544.111/0002-50",
-        "categoria": "Equipamentos e Material Permanente",
-        "valor": 7500.0,
-        "descricao": "REFERENTE COMPRA DE BANCO E PERGOLADO CONFORME NF 3518"
       },
       {
         "data": "2026-10-26",
@@ -5615,6 +5620,14 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação de Registro de Preços: 000002/26 - Ano Mod.: 2026 - Modalidade: PREGÃO ELETRÔNICO - Nº Mod.: 2 - Mod. Formatada: 2 - Aquisição de materiais de limpeza"
       },
       {
+        "data": "2026-05-04",
+        "fornecedor": "PEDRO LUIZ RIBEIRO RUANO",
+        "cnpj": "37.544.111/0002-50",
+        "categoria": "Equipamentos e Material Permanente",
+        "valor": 0.0,
+        "descricao": "REFERENTE COMPRA DE BANCO E PERGOLADO CONFORME NF 3518"
+      },
+      {
         "data": "2026-05-05",
         "fornecedor": "AGRO SHOPPING LTDA",
         "cnpj": "09.425.423/0001-28",
@@ -6149,6 +6162,22 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 0.0,
         "descricao": "REFERENTE AO SALARIO DOS SERVIDORES DE GABINETES MAIS FERIAS E RECISÕES DE 10/2026"
+      },
+      {
+        "data": "2026-05-05",
+        "fornecedor": "A & T PUBLICIDADE E ASSESSORIA LTDA",
+        "cnpj": "15.427.958/0001-30",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "REFERENTE A CAMPANHA DIA DOS POVOS INDIGENAS  CONFORME NF 22192"
+      },
+      {
+        "data": "2026-05-05",
+        "fornecedor": "A & T PUBLICIDADE E ASSESSORIA LTDA",
+        "cnpj": "15.427.958/0001-30",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 0.0,
+        "descricao": "REFERENTE A CAMPANHA DIA DOS POVOS INDIGENAS  CONFORME NF 22192"
       }
     ]
   }
