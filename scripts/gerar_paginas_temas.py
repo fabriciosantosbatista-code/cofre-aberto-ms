@@ -26,6 +26,9 @@ from gerar_paginas_municipios import CSS_EXTRA, barras, tabela  # noqa: E402
 from cartoes import cartao  # noqa: E402
 
 CSS_TEMA = CSS_EXTRA + """
+.dest{border:1px solid var(--border);border-radius:12px;padding:14px 16px;background:var(--surface);margin:10px 0}
+.dest b{display:block;color:var(--ink);font-size:1rem;line-height:1.4}.dest small{display:block;color:var(--ink-soft);font-size:.86rem;line-height:1.55;margin-top:6px}
+.dest .mais{display:inline-block;margin-top:6px;font-size:.8rem}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:14px 0 18px}
 .kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
 .kpi b{display:block;font-family:"Sora",sans-serif;font-size:1.25rem;color:var(--ink)}.kpi span{font-size:.76rem;color:var(--ink-soft)}
@@ -91,6 +94,15 @@ def pagina(url, titulo, descricao, h1, corpo, jsonld=None, migalha=None):
 {{RELACIONADAS}}
 </article>""" + RODAPE
     return html
+
+
+def resumo(t, n=200):
+    """Corta no fim de uma palavra, com "…" (antes cortava no meio: "e um gabinete que cu")."""
+    t = " ".join(str(t or "").split())
+    if len(t) <= n:
+        return t
+    corte = t[:n].rsplit(" ", 1)[0].rstrip(",;:—- ")
+    return corte + "…"
 
 
 def faq_ld(url, perguntas):
@@ -200,7 +212,7 @@ def tema_auditoria():
               "e aponta padrões atípicos. <strong>Sinal de atenção não é acusação</strong> — muitos têm explicação legal.</p>")
     corpo += "<h2>Sinais por teste</h2>" + barras_n([(regras.get(k, k), v) for k, v in sorted(res.items(), key=lambda kv: -kv[1]) if v])
     corpo += "<h2>Sinais de nível forte</h2>" + "".join(
-        f"<div class='dest'><b>{link_empresa(s['titulo'], s.get('paginaEmpresa'))}</b><small>{e(s.get('rotulo') or '')} · {e((s.get('descricao') or '')[:220])}</small></div>"
+        f"<div class='dest'><b>{link_empresa(s['titulo'], s.get('paginaEmpresa'))}</b><small>{e(s.get('rotulo') or '')} · {e(resumo(s.get('descricao') or '', 220))}</small></div>"
         for s in fortes)
     corpo += "<p>" + painel("auditoria", "Todos os sinais, com evidências, no painel") + " <a href='/metodologia.html'>Como os testes funcionam</a></p>"
     return ("/auditoria/", "Auditoria automática dos gastos públicos de MS: sinais de atenção | Cofre Aberto MS",
@@ -627,9 +639,13 @@ possível, o link para conferir o dado na origem. A lista completa de fontes e a
 <p>Se você encontrou um erro, ou é citado e quer contestar ou explicar um dado, escreva pelo <a href="{ZAP}" target="_blank" rel="noopener">WhatsApp (67) 98209-5384</a>,
 de preferência com o documento ou link da fonte oficial. Respondemos em até <b>7 dias</b>. Todo erro confirmado é corrigido e registrado na
 <a href="/metodologia.html#correcoes">lista de correções</a>; explicações de quem é citado podem ser publicadas junto do dado.</p>
-<h2>5. Uso do conteúdo</h2>
-<p>Os <b>dados</b> podem ser reutilizados sob a licença Creative Commons Atribuição 4.0 (CC BY 4.0), citando "Cofre Aberto MS (cofreabertoms.com.br)"
-e a fonte oficial. O <b>código, o layout, o logotipo e os textos</b> são de uso reservado — veja a <a href="/termos/#licenca">licença</a>.</p>
+<h2 id="licenca">5. Uso do conteúdo e licença</h2>
+<p><b>Dados:</b> as planilhas e arquivos de dados do Cofre Aberto MS estão sob a licença <a href="https://creativecommons.org/licenses/by/4.0/deed.pt-br" target="_blank" rel="noopener">Creative Commons Atribuição 4.0 (CC BY 4.0)</a>:
+qualquer pessoa pode usar, copiar e adaptar, inclusive em reportagens, pesquisas e trabalhos comerciais, <b>desde que cite "Cofre Aberto MS (cofreabertoms.com.br)"</b>
+e a fonte oficial. Os dados de origem são públicos e pertencem aos órgãos que os publicam; a licença vale para a compilação, a organização e as análises feitas aqui.
+O formato de citação está no <a href="/press.html#citar">Kit de imprensa</a>.</p>
+<p><b>Código, layout, logotipo e textos:</b> © 2026 Cofre Aberto MS, <b>todos os direitos reservados</b> (Leis 9.610/1998 e 9.609/1998). Não é permitido copiar
+ou reproduzir o site ou o código, no todo ou em parte, para montar outro site sem autorização por escrito. Pedidos pelo WhatsApp (67) 98209-5384.</p>
 <h2>6. Links para outros sites</h2>
 <p>O site aponta para portais oficiais e outros sites. Não respondemos pelo conteúdo, pela disponibilidade nem pelas políticas desses sites.</p>
 <h2>7. Responsabilidade</h2>
@@ -784,7 +800,8 @@ def main():
         paginas.append((url, pagina(url, f"{p} ({ANO}) | Cofre Aberto MS", desc, p, corpo, faq_ld(url, [(p, r)]),
                                     migalha="<a href='/perguntas/'>Perguntas</a>")))
     idx_corpo = "<p>Respostas curtas, com números atualizados todo dia a partir de fontes oficiais.</p>" + "".join(
-        f"<div class='dest'><b><a href='/perguntas/{s}/'>{e(p)}</a></b><small>{e(r[:200])}</small></div>" for s, p, r, *_ in pergs)
+        f"<div class='dest'><b><a href='/perguntas/{s}/'>{e(p)}</a></b><small>{e(resumo(r))}</small>"
+        f"<a class='mais' href='/perguntas/{s}/'>Ver a resposta completa →</a></div>" for s, p, r, *_ in pergs)
     paginas.append(("/perguntas/", pagina("/perguntas/", "Perguntas sobre salários e gastos públicos em MS | Cofre Aberto MS",
                                           "Quanto ganha o governador de MS, um vereador de Campo Grande, um deputado, um senador; o que é a cota parlamentar e as Emendas Pix.",
                                           "Perguntas frequentes sobre o dinheiro público em MS", idx_corpo,

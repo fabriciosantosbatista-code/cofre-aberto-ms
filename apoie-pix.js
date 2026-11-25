@@ -3,7 +3,15 @@
   var cfg = window.APOIE || {};
   var caixa = document.getElementById("pix");
   if (!caixa) return;
-  if (!cfg.chave) { caixa.innerHTML = "<p class='aviso'>As doações por Pix abrem em breve.</p>"; return; }
+  if (!cfg.chave) {  // sem chave Pix (apoie-config.js): esconde "Faça um Pix" e "Para onde vai o dinheiro" até abrir (25/11/2026)
+    var esconder = function (el) { if (el) el.style.display = "none"; };
+    esconder(caixa);
+    for (var e = caixa.previousElementSibling; e; e = e.previousElementSibling) { if (e.tagName === "H2") { esconder(e); break; } }
+    for (var d = caixa.nextElementSibling; d; d = d.nextElementSibling) {
+      if (d.tagName === "H2" && /para onde vai o dinheiro/i.test(d.textContent)) { esconder(d); if (d.nextElementSibling && d.nextElementSibling.tagName === "UL") esconder(d.nextElementSibling); break; }
+    }
+    return;
+  }
   var limpa = function (t, n) { return (t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^A-Za-z0-9 .\-@+]/g, "").toUpperCase().slice(0, n); };
   var campo = function (id, v) { return id + String(v.length).padStart(2, "0") + v; };
   var crc16 = function (s) {

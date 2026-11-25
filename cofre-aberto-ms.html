@@ -163,6 +163,8 @@ p{margin:0;}
 .ranking tr.clickable:hover td{background:var(--surface-2);}
 .ranking tr.clickable:hover .rank-name{color:var(--accent);}
 .rank-pos{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-family:var(--font-mono);font-size:.68rem;font-weight:700;background:var(--surface-3);color:var(--ink-faint);}
+/* coluna "#" do ranking com a largura do número (no celular ficava com 121px e espremia os nomes) */
+.ranking:has(td.rank-pos) thead th:first-child{width:44px;min-width:0!important;white-space:nowrap;padding-left:12px;padding-right:4px}.ranking:has(td.rank-pos) thead th:nth-child(2){width:100%}.ranking td.rank-pos{margin:0 4px 0 12px}
 .ranking tbody tr:nth-child(1) .rank-pos{background:var(--amber-soft);color:var(--amber);}
 .ranking tbody tr:nth-child(2) .rank-pos{background:var(--surface-3);color:var(--ink-soft);}
 .ranking tbody tr:nth-child(3) .rank-pos{background:#2a1a12;color:#e89c72;}
@@ -304,7 +306,7 @@ p{margin:0;}
 .equipe-lista em{font-style:normal;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:.86rem}
 .equipe-gab>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1.5px solid #f5c842;color:#f5c842;font-weight:700;font-size:.9rem;background:rgba(245,200,66,.08)}
 .equipe-gab>summary::-webkit-details-marker{display:none}.equipe-gab[open]>summary{background:#f5c842;color:#14120a}
-.lai-box{margin:0 24px;padding:14px 16px;border:1px solid #c98500;border-left:4px solid #c98500;border-radius:10px;background:rgba(201,133,0,.08);font-size:.86rem;line-height:1.55;color:var(--ink-soft)}
+.lai-box{margin:0 0 18px;padding:14px 16px;border:1px solid #c98500;border-left:4px solid #c98500;border-radius:10px;background:rgba(201,133,0,.08);font-size:.86rem;line-height:1.55;color:var(--ink-soft)}
 .lai-box b{color:var(--ink)}.lai-box summary{cursor:pointer;margin-top:8px;font-weight:700;color:#e8a020}
 .lai-box textarea{width:100%;box-sizing:border-box;margin:8px 0;background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:10px;font:12.5px/1.5 var(--font-body)}
 .fluxo-card{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 40%,rgba(245,200,66,.07),transparent 60%),var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px}
@@ -447,7 +449,7 @@ a.novo-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .ev-tabela td:first-child,.ev-tabela th:first-child{text-align:left}
 .ev-var-up{color:var(--ink)} .ev-var-down{color:var(--ink-soft)}
 /* Fonte / status / download / citação por aba */
-.fonte-barra{margin:0 0 18px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-size:.78rem;color:var(--ink-soft)}
+.fonte-barra{margin:18px 0 18px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-size:.78rem;color:var(--ink-soft)}
 .fonte-linha{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap}
 .fonte-txt b{color:var(--ink);font-weight:600}.fonte-txt a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--border)}
 .fonte-msg{color:var(--amber)}

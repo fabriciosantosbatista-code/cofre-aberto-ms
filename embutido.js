@@ -5,7 +5,7 @@
   if (window.top === window.self) return;
   document.documentElement.classList.add("embutido");
   var st = document.createElement("style");
-  st.textContent = ".embutido .page>nav,.embutido body>nav,.embutido footer,.embutido .mapa-site{display:none!important}" +
+  st.textContent = ".embutido .page>nav,.embutido body>nav,.embutido footer,.embutido .mapa-site,.embutido .breadcrumb{display:none!important}" +
     ".embutido .page{padding-top:4px}";
   document.head.appendChild(st);
   document.addEventListener("click", function (ev) {
