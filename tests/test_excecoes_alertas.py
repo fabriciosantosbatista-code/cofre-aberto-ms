@@ -62,8 +62,10 @@ for em, num in ((None, None), ("DD/MM/AAAA", "XXXX"), ("20/11/2026", ""), ("", "
 vd.EXCECOES = Path(tempfile.mkdtemp()) / "nao_existe.json"
 e, a = roda(date(2026, 11, 19))
 check(ERRO in e, "sem arquivo de configuração → erro")
-real = json.load(open(ROOT / "config" / "excecoes_alertas.json", encoding="utf-8"))["prefeitura_empenhos"]
-check(real["validoAte"] == "2026-12-19" and real["fonteParadaDesde"] == "2026-10-02", "configuração: 30 dias a partir de 19/11/2026, parada desde 02/10")
+real = json.load(open(ROOT / "config" / "excecoes_alertas.json", encoding="utf-8"))
+check("prefeitura_empenhos" not in real, "configuração: exceção da Prefeitura encerrada em 25/11/2026 (a fonte voltou a publicar)")
+check(any(h.get("alerta") == "prefeitura_empenhos" and h.get("encerradaEm") == "2026-11-25" for h in real.get("historico") or []),
+      "configuração: o encerramento fica registrado no histórico")
 
 print(f"✅ {len(oks)} checagens OK · ❌ {len(falhas)} erros")
 for f in falhas:
