@@ -1462,7 +1462,7 @@ def relatorio_fora_da_janela(so, motivo):
         try:
             r = fn()
         except Exception as e:
-            r = {"resultado": "indisponivel", "em": AGORA, "nota": f"erro na conferência: {type(e).__name__}"}
+            r = {"resultado": "indisponivel", "em": AGORA, "nota": erro_conferencia(e)}
         r.pop("hashes", None)
         rel["bases"][fonte] = {k: r.get(k) for k in ("resultado", "metodo", "fonteUrl", "conferidos", "divergentes", "unidadesConferidas", "unidadesBase",
                                                      "registrosConferidosUmAUm", "registrosPorTotais", "registrosBase", "nota", "fonteIndependente")}
@@ -1473,11 +1473,21 @@ def relatorio_fora_da_janela(so, motivo):
     return 0
 
 
+def erro_conferencia(e):
+    """Motivo legível de uma exceção na conferência: tipo, mensagem e onde (arquivo:linha)."""
+    import traceback
+    tb = traceback.extract_tb(e.__traceback__)
+    onde = f" ({Path(tb[-1].filename).name}:{tb[-1].lineno})" if tb else ""
+    return f"erro na conferência: {type(e).__name__}: {str(e)[:160]}{onde}"
+
+
 def registrar(fonte, r, out):
     """Grava a conferência: mantém a última bem-sucedida quando a fonte não responde hoje; conferência feita agora vai para
     o histórico permanente (só acrescenta), com os hashes dos registros conferidos quando houver."""
     if r["resultado"] == "indisponivel" and (out.get(fonte) or {}).get("resultado") in ("confere", "mudou_na_fonte", "diverge"):
-        r = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": "indisponivel"}
+        # o motivo da tentativa fica gravado (antes sumia: Emendas ficou "indisponível" de 21 a 24/11 sem dizer por quê)
+        r = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": "indisponivel",
+             "ultimaTentativaMotivo": (r.get("nota") or "").strip() or None}
     if r.get("em") == AGORA:
         r["coletaRunId"] = os.environ.get("GITHUB_RUN_ID")
         with open(HISTORICO, "a", encoding="utf-8") as h:
@@ -1558,14 +1568,17 @@ def main():
         try:
             r = fn()
         except Exception as e:
-            r = {"resultado": "indisponivel", "em": AGORA, "nota": f"erro na conferência: {type(e).__name__}"}
+            r = {"resultado": "indisponivel", "em": AGORA, "nota": erro_conferencia(e)}
         if PRAZO["esgotado"]:  # a base não foi conferida por inteiro no prazo: não grava resultado parcial
             if out.get(fonte):
                 out[fonte] = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"}
             print(f"  {fonte:20} não conferida nesta coleta (tempo esgotado no meio da conferência) — fica a conferência anterior")
             continue
         r = registrar(fonte, r, out)
-        print(f"  {fonte:20} {r['resultado']:15} {r.get('conferidos', 0)} itens  {r.get('nota', '')}")
+        if r.get("ultimaTentativa") == AGORA and r.get("ultimaTentativaResultado") == "indisponivel":
+            print(f"  {fonte:20} indisponível nesta coleta — {r.get('ultimaTentativaMotivo') or 'sem motivo'}; fica a conferência de {str(r.get('em'))[:16]}")
+        else:
+            print(f"  {fonte:20} {r['resultado']:15} {r.get('conferidos', 0)} itens  {r.get('nota', '')}")
     SAIDA.write_text(json.dumps({"geradoEm": AGORA, "fontes": out}, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"✅ validacao_fontes.json — {sum(1 for r in out.values() if r['resultado'] in ('confere', 'mudou_na_fonte'))} fontes conferidas, "
           f"{sum(1 for r in out.values() if r['resultado'] == 'diverge')} com divergência, {sum(1 for r in out.values() if r['resultado'] == 'indisponivel')} indisponíveis")
