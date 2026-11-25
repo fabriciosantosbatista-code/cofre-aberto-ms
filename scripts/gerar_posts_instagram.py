@@ -348,6 +348,50 @@ def final(p):
     return img
 
 
+SW, SH = 1080, 1920  # story (vertical)
+
+
+def frase_story(p):
+    """Frase curta do story: o rótulo do número, cortado na primeira vírgula/ponto se for longo."""
+    r = str(p.get("rotulo") or "")
+    if len(r) > 110:
+        for sep in (", ", ". ", " — "):
+            if sep in r[:110]:
+                return r[:r.index(sep, 0, 110)]
+        return r[:107].rsplit(" ", 1)[0] + "…"
+    return r
+
+
+def story(p):
+    """Story 1080×1920 na identidade do site: marca, tema, o número principal do post do dia, uma frase curta e
+    "veja no perfil / link na bio". Texto importante fora das faixas de cima e de baixo (ícones do Instagram)."""
+    img = Image.new("RGB", (SW, SH), FUNDO)
+    d = ImageDraw.Draw(img)
+    for i in range(SH):
+        c = int(10 * i / SH)
+        d.line([(0, i), (SW, i)], fill=(FUNDO[0] + c, FUNDO[1] + c, FUNDO[2] + c + 6))
+    d.rectangle([0, 0, SW, 14], fill=OURO)
+    cadeado(d, 80, 300, 44)
+    d.text((158, 286), "COFRE", font=fonte("x", 46), fill=OURO)
+    d.text((158 + d.textlength("COFRE ", font=fonte("x", 46)), 286), "ABERTO MS", font=fonte("x", 46), fill=TINTA)
+    y = 470
+    d.rounded_rectangle([80, y, 80 + d.textlength(p["kicker"], font=fonte("x", 34)) + 44, y + 62], radius=14, fill=OURO)
+    d.text((102, y + 11), p["kicker"], font=fonte("x", 34), fill=FUNDO)
+    y = texto(d, (80, y + 120), p["titulo"], fonte("x", 70), TINTA, SW - 160, 4, 84) + 60
+    tam = 150
+    while d.textlength(p["numero"], font=fonte("x", tam)) > SW - 160 and tam > 70:
+        tam -= 4
+    d.text((80, y), p["numero"], font=fonte("x", tam), fill=OURO)
+    y = texto(d, (80, y + tam + 34), frase_story(p), fonte("s", 44), TINTA, SW - 160, 4, 60)
+    caixa = SH - 470
+    d.rounded_rectangle([80, caixa, SW - 80, caixa + 130], radius=28, fill=OURO)
+    t = "Veja no perfil · link na bio"
+    d.text(((SW - d.textlength(t, font=fonte("x", 50))) / 2, caixa + 34), t, font=fonte("x", 50), fill=FUNDO)
+    t = "@cofre_abertoms · cofreabertoms.com.br"
+    d.text(((SW - d.textlength(t, font=fonte("s", 36))) / 2, caixa + 170), t, font=fonte("s", 36), fill=CINZA)
+    return img
+
+
 def main():
     PASTA.mkdir(exist_ok=True)
     try:
@@ -383,7 +427,7 @@ def main():
         print("⚠️ nenhum tema com dados")
         return
     # apaga o rascunho anterior não publicado
-    publicadas = {img for x in hist["publicados"] for img in x.get("imagens") or []}
+    publicadas = {img for x in hist["publicados"] for img in (x.get("imagens") or []) + ([x["story"]] if x.get("story") else [])}
     for f in PASTA.glob("*.jpg"):
         if f.name not in publicadas:
             f.unlink()
@@ -394,11 +438,16 @@ def main():
         nome = f"{HOJE.isoformat()}-{p['tema']}-{i}.jpg"
         (PASTA / nome).write_bytes(buf.getvalue())
         nomes.append(nome)
+    buf = io.BytesIO()
+    story(p).save(buf, "JPEG", quality=88, optimize=True, progressive=False)
+    nome_story = f"{HOJE.isoformat()}-{p['tema']}-story.jpg"
+    (PASTA / nome_story).write_bytes(buf.getvalue())
     legenda = (p["legenda"] + f"\n\n🔗 Veja tudo no site: cofreabertoms.com.br (link na bio)\nFonte: {p['fonte']}.\n\n{TAGS}")
     (PASTA / "proximo.json").write_text(json.dumps({"tema": p["tema"], "data": HOJE.isoformat(), "imagens": nomes,
                                                     "urls": [f"{SITE}/instagram/{x}" for x in nomes], "legenda": legenda,
                                                     "link": f"{SITE}/cofre-aberto-ms.html#aba={p['aba']}",
-                                                    "regras": "; ".join(regras)}, ensure_ascii=False, indent=2), encoding="utf-8")
+                                                    "regras": "; ".join(regras), "story": nome_story,
+                                                    "storyUrl": f"{SITE}/instagram/{nome_story}"}, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"✅ post do Instagram: {p['tema']} — {', '.join(nomes)} (post nº {n + 1})")
 
 

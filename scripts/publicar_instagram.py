@@ -169,6 +169,42 @@ def main():
                                "id": mid, "link": link, "conta": eu.get("username")})
     hist_f.write_text(json.dumps(hist, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"✅ publicado no Instagram (@{eu.get('username')}): {link}")
+    publicar_story(post, uid, token, eu, hist, hist_f, ap)
+
+
+def publicar_story(post, uid, token, eu, hist, hist_f, ap, espera=time.sleep):
+    """Story do dia, logo depois do post do feed (mesmo tema, mesmas regras). Interruptor separado em
+    instagram/config.json → "stories". Falha no story não desfaz o post do feed: só fica o aviso no log."""
+    if ap.cfg().get("stories", True) is False:
+        print("⏸ story desligado (instagram/config.json → stories: false)")
+        return None
+    url = post.get("storyUrl")
+    if not url:
+        print("ℹ️ este post não tem story (gerado antes de 25/11/2026)")
+        return None
+    try:
+        for _ in range(40):
+            try:
+                if requests.head(url, timeout=20).status_code == 200:
+                    break
+            except requests.RequestException:
+                pass
+            espera(15)
+        else:
+            raise RuntimeError(f"a imagem do story não apareceu no site: {url}")
+        cont = chamar("POST", f"{uid}/media", token, image_url=url, media_type="STORIES")["id"]
+        for _ in range(30):
+            if chamar("GET", cont, token, fields="status_code").get("status_code") == "FINISHED":
+                break
+            espera(10)
+        sid = chamar("POST", f"{uid}/media_publish", token, creation_id=cont)["id"]
+    except Exception as e:
+        print(f"⚠️ story não publicado: {e}")
+        return None
+    hist["publicados"][-1].update({"story": post.get("story"), "storyId": sid, "storyEm": datetime.now().strftime("%Y-%m-%dT%H:%M:%S")})
+    hist_f.write_text(json.dumps(hist, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"✅ story publicado no Instagram (@{eu.get('username')}): id {sid}")
+    return sid
 
 
 if __name__ == "__main__":

@@ -111,6 +111,47 @@ check(gp.brl(1500000) == "R$ 1.500.000" and gp.brl(10.29, True) == "R$ 10,29", "
 src = (ROOT / "scripts/gerar_posts_instagram.py").read_text(encoding="utf-8")
 check("{d['totalShows']}" not in src and "{mil(d['totalShows'])}" in src, "a legenda de Shows usa o separador (1.074 shows)")
 
+# story diário (25/11/2026)
+p = {"kicker": "SHOWS COM DINHEIRO PÚBLICO", "titulo": "Os maiores cachês pagos em MS em 2026", "numero": "R$ 78,2 milhões",
+     "rotulo": "em 1.074 shows contratados sem licitação pelo Estado, prefeituras e câmaras"}
+check(gp.story(p).size == (1080, 1920), "story vertical 1080×1920")
+check(len(gp.frase_story({"rotulo": "a" * 50 + ", " + "b" * 100})) <= 110, "frase curta no story")
+cfg_st = json.load(open(ROOT / "instagram" / "config.json", encoding="utf-8"))
+check(cfg_st.get("stories") is True and cfg_st.get("publicar") is True, "config: publicar e stories ligados")
+chamadas = []
+def cham(metodo, caminho, token, api=None, **params):
+    chamadas.append((metodo, caminho, params.get("media_type")))
+    if caminho.endswith("/media"):
+        return {"id": "C1"}
+    if caminho == "C1":
+        return {"status_code": "FINISHED"}
+    if caminho.endswith("/media_publish"):
+        return {"id": "S1"}
+    return {}
+pi.chamar = cham
+pi.requests.head = lambda u, timeout=None: type("R", (), {"status_code": 200})()
+tmp2 = Path(tempfile.mkdtemp()); hf = tmp2 / "h.json"
+hist = {"publicados": [{"tema": "shows", "imagens": ["a.jpg"]}]}
+class AP:
+    def __init__(self, c): self.c = c
+    def cfg(self): return self.c
+post = {"story": "x-story.jpg", "storyUrl": "https://cofreabertoms.com.br/instagram/x-story.jpg"}
+with redirect_stdout(io.StringIO()):
+    sid = pi.publicar_story(post, "17841400153468200", "t", {"username": "cofre_abertoms"}, hist, hf, AP({"stories": True}), espera=lambda s: None)
+check(sid == "S1" and ("POST", "17841400153468200/media", "STORIES") in chamadas and hist["publicados"][-1].get("storyId") == "S1",
+      "story publicado logo depois do feed (media_type=STORIES) e registrado no histórico")
+buf = io.StringIO()
+with redirect_stdout(buf):
+    sid = pi.publicar_story(post, "1", "t", {}, {"publicados": [{}]}, hf, AP({"stories": False}))
+check(sid is None and "story desligado" in buf.getvalue(), "stories: false desliga só o story")
+def falha(*a, **k):
+    raise RuntimeError("(#10) Application does not have permission for this action")
+pi.chamar = falha
+buf = io.StringIO()
+with redirect_stdout(buf):
+    sid = pi.publicar_story(post, "1", "t", {}, {"publicados": [{}]}, hf, AP({"stories": True}), espera=lambda s: None)
+check(sid is None and "⚠️ story não publicado" in buf.getvalue(), "falha no story: só aviso no log (o post do feed fica)")
+
 wf = (ROOT / ".github/workflows/instagram.yml").read_text(encoding="utf-8")
 check("publicar_instagram.py --conferir" in wf, "workflow confere a chave todo dia, antes do resto")
 check("types: [labeled]" in wf and "instagram_aprovacao.py abrir" in wf and "IG_APROVADO" in wf, "workflow: issue de rascunho, rótulo dispara a publicação")

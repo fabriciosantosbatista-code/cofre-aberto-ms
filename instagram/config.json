@@ -1,5 +1,6 @@
 {
- "_leia": "Interruptor do Instagram. publicar: true = o robô publica direto todo dia às 11h47 (com as regras de conteúdo: só temas com a base \"confere\" no ICP, nomes bloqueados, no máximo 1 post por dia); false = pausa (não gera nem publica; a checagem diária da chave continua). aprovacaoAte: data até a qual cada post precisa de aprovação por issue (null = desligado; desligado em 25/11/2026 a pedido do dono).",
+ "_leia": "Interruptor do Instagram. publicar: true = o robô publica direto todo dia às 11h47 (com as regras de conteúdo: só temas com a base \"confere\" no ICP, nomes bloqueados, no máximo 1 post por dia); false = pausa (não gera nem publica; a checagem diária da chave continua). stories: true = publica também um story (1080×1920) logo depois do post do feed; false = só o feed. aprovacaoAte: data até a qual cada post precisa de aprovação por issue (null = desligado; desligado em 25/11/2026 a pedido do dono).",
  "publicar": true,
+ "stories": true,
  "aprovacaoAte": null
 }
