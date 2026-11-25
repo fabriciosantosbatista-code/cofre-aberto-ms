@@ -110,7 +110,8 @@ check(eb.get("camara") == "fonte_indisponivel", "conexão recusada + dado anteri
 check(rx.estado_bases("coletar_tjms", "falha_execucao", an, {}) == {"judiciario": "falha_execucao", "supersalarios": "falha_execucao"}, "job 'failure' marca todas as bases dele")
 an2 = rx.analisar_log("\n".join(f"2026-11-17T22:00:0{i}.1Z {l}" for i, l in enumerate(["##[group]Run x", "ℹ️ 0 linhas novas", "##[endgroup]"])))
 check(rx.classificar({"conclusion": "success", "status": "completed"}, "ok", an2)[0] == "sem_avisos", "mensagem informativa (sem aviso) não vira falha")
-_h = g.jsonl("icp_execucoes_historico.jsonl")
+_inv = g.execucoes_invalidas()  # mesma regra do ICP: execuções inválidas ficam fora do cálculo (25/11/2026)
+_h = [h for h in g.jsonl("icp_execucoes_historico.jsonl") if str(h.get("runId")) not in _inv]
 _ult = {h.get("runId"): i for i, h in enumerate(_h)}
 HIST_EXEC = [h for i, h in enumerate(_h) if _ult.get(h.get("runId")) == i]  # o registro mais recente de cada coleta
 for fid, b in bases.items():

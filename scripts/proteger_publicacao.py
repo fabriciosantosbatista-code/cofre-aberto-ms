@@ -68,7 +68,9 @@ def J(rel):
 ARQUIVOS_BASE_PADRAO = {"senadores": ["dados/senadores_ms.json"], "deputados": ["dados/deputados_federais_ms.json"],
                         "deputados-estaduais": ["dados/deputados_estaduais_ms.json"]}
 # derivados regerados depois de manter uma base (para continuarem iguais aos dados publicados)
-DERIVADOS = [["scripts/gerar_dados_abertos.py"], ["scripts/gerar_paginas_parlamentares.py"], ["scripts/gerar_painel_leve.py"],
+# 25/11/2026: gerar_analises.py (evolução mensal, conexões, RSS) entra primeiro — sem ele, manter Deputados deixava a
+# evolução mensal da coleta rejeitada e o teste de integridade bloqueava o site inteiro.
+DERIVADOS = [["scripts/gerar_analises.py"], ["scripts/gerar_dados_abertos.py"], ["scripts/gerar_paginas_parlamentares.py"], ["scripts/gerar_painel_leve.py"],
              ["scripts/atualizar_paginas.py"], ["scripts/mascarar_cpf.py", "--paginas"]]
 
 

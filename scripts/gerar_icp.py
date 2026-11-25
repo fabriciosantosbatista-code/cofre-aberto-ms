@@ -156,6 +156,17 @@ def dimensao_F(exec_hist, fid):
 ANOTACOES = {}
 
 
+def execucoes_invalidas():
+    """Execuções cujas conferências não valem (dados/icp_anotacoes.json → "execucoesInvalidas"): conferência feita sobre
+    dados que não foram publicados (publicação bloqueada) ou execução que não coletou nada. As linhas continuam no histórico
+    permanente (não é reescrito), com o motivo público, mas não entram no status, na nota nem na cobertura."""
+    try:
+        return {str(x["runId"]): x.get("motivo") for x in
+                (json.load(open(ROOT / "dados" / "icp_anotacoes.json", encoding="utf-8")).get("execucoesInvalidas") or [])}
+    except Exception:
+        return {}
+
+
 def anotar(h):
     """Anotação pública ligada a uma conferência do histórico (dados/icp_anotacoes.json): o registro não é alterado."""
     if not ANOTACOES:
@@ -313,13 +324,16 @@ def main():
     gm_main_out = gm_classificar()
     mon = gm_main_out
     ver_auto = (gm.J("validacao_fontes.json").get("fontes") or {})
-    hist_ver = jsonl("icp_verificacoes.jsonl")
+    invalidas = execucoes_invalidas()
+    hist_ver = [h for h in jsonl("icp_verificacoes.jsonl") if str(h.get("coletaRunId")) not in invalidas]
     hist_ver_global[:] = hist_ver
     ver = {}
     for h in hist_ver:  # a conferência mais recente de cada base (automática ou manual)
         if h.get("resultado") in ("confere", "mudou_na_fonte", "diverge") and (h["base"] not in ver or h["em"] > ver[h["base"]]["em"]):
             ver[h["base"]] = h
     for b, v in ver_auto.items():
+        if str(v.get("coletaRunId")) in invalidas:
+            continue
         if v.get("resultado") in ("confere", "mudou_na_fonte", "diverge") and (b not in ver or v["em"] > ver[b]["em"]):
             ver[b] = {**v, "base": b}
     testes = []
@@ -327,7 +341,7 @@ def main():
         testes += (gm.J(t) or {}).get("itens") or []
     rev = gm.J("camara_cg_revisao.json")
     exec_atual = gm.J("icp_execucoes.json") or {}
-    exec_hist = jsonl("icp_execucoes_historico.jsonl")
+    exec_hist = [h for h in jsonl("icp_execucoes_historico.jsonl") if str(h.get("runId")) not in invalidas]
     # uma coleta pode ter sido registrada mais de uma vez (ex.: releitura correta dos logs): vale o registro mais recente
     ultimo = {h.get("runId"): i for i, h in enumerate(exec_hist)}
     exec_hist = [h for i, h in enumerate(exec_hist) if ultimo.get(h.get("runId")) == i]

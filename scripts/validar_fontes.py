@@ -1553,6 +1553,23 @@ TETO_PADRAO_SEG = 60
 AVISO_SEM_CONFERENCIA = 3  # coletas seguidas sem conferência de uma base → aviso na vistoria
 
 
+# Conferências que comparam dados DESTA coleta guardados fora do site (a folha cifrada de Supersalários): se a base foi
+# mantida na versão anterior ou a publicação inteira foi bloqueada, não há como comparar a versão que está no site.
+CONFERE_DADOS_DA_COLETA = {"supersalarios"}
+NAO_APLICADA = "versão: conferência não aplicada (a base foi mantida na versão anterior e esta conferência compara os dados da coleta)"
+
+
+def bases_mantidas_nesta_coleta():
+    """Bases que NÃO vão ao ar com os dados desta coleta (dados/icp_publicacao.json da mesma execução): {base} ou
+    {"*"} se a publicação inteira foi bloqueada."""
+    p = J("icp_publicacao.json") or {}
+    if not os.environ.get("GITHUB_RUN_ID") or str(p.get("runId")) != os.environ["GITHUB_RUN_ID"]:
+        return set()
+    if p.get("resultado") == "bloqueado":
+        return {"*"}
+    return set((p.get("basesMantidas") or {}).keys()) | (set(p.get("basesAfetadas") or []) if p.get("resultado") == "publicado_parcial" else set())
+
+
 def ordem_conferencia(conferencias, ant):
     """Ordem desta coleta: primeiro a base conferida há mais tempo (a que nunca foi conferida vem antes de todas),
     para que nenhuma fique sempre por último quando o tempo acaba. Empate: a ordem da lista."""
@@ -1581,8 +1598,16 @@ def main():
     fim_total = t0 + prazo
     ordem = ordem_conferencia(CONFERENCIAS, out)
     print("  ordem desta coleta (a conferida há mais tempo primeiro): " + ", ".join(f for f, _ in ordem))
+    mantidas = bases_mantidas_nesta_coleta()
+    if mantidas:
+        print(f"  bases que não vão ao ar com os dados desta coleta: {', '.join(sorted(mantidas))} — a conferência compara a versão mantida")
     for fonte, fn in ordem:
         if so and fonte not in so:
+            continue
+        if fonte in CONFERE_DADOS_DA_COLETA and (fonte in mantidas or "*" in mantidas):
+            if out.get(fonte):
+                out[fonte] = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": NAO_APLICADA}
+            print(f"  {fonte:20} {NAO_APLICADA} — nenhum resultado gravado")
             continue
         teto = TETO_BASE_SEG.get(fonte, TETO_PADRAO_SEG)
         agora = time.monotonic()

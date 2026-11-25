@@ -135,7 +135,9 @@ check(m.limite_superior(None, 2, 0) > 0.7, "2 itens de base de tamanho desconhec
 
 # ── regressão com as 21 bases publicadas ──
 icp = json.load(open(ROOT / "dados/icp.json", encoding="utf-8"))
-hist = [json.loads(l) for l in open(ROOT / "dados/icp_verificacoes.jsonl", encoding="utf-8") if l.strip()]
+_inv = {str(x.get("runId")) for x in (json.load(open(ROOT / "dados/icp_anotacoes.json", encoding="utf-8")).get("execucoesInvalidas") or [])}
+hist = [h for h in (json.loads(l) for l in open(ROOT / "dados/icp_verificacoes.jsonl", encoding="utf-8") if l.strip())
+        if str(h.get("coletaRunId")) not in _inv]  # mesma regra do ICP: execuções inválidas ficam fora (25/11/2026)
 agora = datetime.fromisoformat(icp["geradoEm"])
 check(len(icp["bases"]) == 21, f"{len(icp['bases'])} bases no ICP")
 for fid, b in icp["bases"].items():

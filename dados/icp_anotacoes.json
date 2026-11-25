@@ -1,7 +1,29 @@
 {
  "sobre": "Anotações públicas sobre conferências do histórico (icp_verificacoes.jsonl). O histórico não é alterado: a anotação é ligada à conferência pela base e pela data/hora (em). Não muda resultado nem nota.",
  "anotacoes": [
-  {"base": "governo-ms", "em": "2026-11-18T23:22:27", "registradaEm": "2026-11-19",
-   "nota": "Conferência manual executada ~11 h após a coleta; a fonte já incluía pagamentos lançados depois. Não indica erro nos dados publicados."}
+  {
+   "base": "governo-ms",
+   "em": "2026-11-18T23:22:27",
+   "registradaEm": "2026-11-19",
+   "nota": "Conferência manual executada ~11 h após a coleta; a fonte já incluía pagamentos lançados depois. Não indica erro nos dados publicados."
+  }
+ ],
+ "sobreExecucoesInvalidas": "Execuções do robô cujas conferências não valem: a conferência comparou dados que não foram publicados (a publicação foi bloqueada pela proteção) ou a execução não coletou nada. As linhas continuam no histórico permanente (icp_verificacoes.jsonl e icp_execucoes_historico.jsonl), que não é reescrito, mas não entram no status, na nota nem na cobertura do ICP. Regra de 25/11/2026.",
+ "execucoesInvalidas": [
+  {
+   "runId": "45624667052",
+   "registradaEm": "2026-11-25",
+   "motivo": "publicação bloqueada (arquivo anual da Câmara incompleto e evolução mensal não regerada): as conferências desta coleta compararam dados rejeitados, não os publicados"
+  },
+  {
+   "runId": "45639387411",
+   "registradaEm": "2026-11-25",
+   "motivo": "publicação bloqueada pelo mesmo motivo: as conferências desta coleta compararam dados rejeitados, não os publicados"
+  },
+  {
+   "runId": "45649872489",
+   "registradaEm": "2026-11-25",
+   "motivo": "reserva do GitHub que não coletou nada (o cancelamento falhou por erro 500 da API do GitHub) e mesmo assim rodou a etapa de publicação: não é uma coleta"
+  }
  ]
 }

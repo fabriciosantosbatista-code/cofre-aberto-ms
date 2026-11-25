@@ -693,16 +693,6 @@ jobs:
       # A conferência automática de Supersalários roda no job próprio "conferir_supersalarios" (fora do caminho da
       # publicação): ver o fim deste arquivo.
 
-      - name: Conferir os dados direto nas fontes oficiais (independente da coleta; só entra no ICP até 2 h depois do início da coleta)
-        timeout-minutes: 35
-        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
-        run: |
-          export COLETA_INICIO=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }} --jq .run_started_at 2>/dev/null || true)
-          python3 -u scripts/validar_fontes.py || echo "⚠️ validar_fontes.py falhou — conferência anterior mantida"
-
       - name: Marcar servidores de gabinete da Câmara de CG com outro vínculo público
         run: python3 scripts/gerar_acumulos_gabinetes.py || echo "⚠️ gerar_acumulos_gabinetes.py falhou — marcações anteriores mantidas"
 
@@ -742,6 +732,19 @@ jobs:
         run: |
           export COLETA_INICIO=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }} --jq .run_started_at 2>/dev/null || true)
           python3 scripts/proteger_publicacao.py
+
+      # Depois da proteção da publicação (25/11/2026): a conferência compara a versão que vai ao ar — se uma base foi mantida
+      # na versão anterior (ou a publicação inteira bloqueada), compara a versão mantida; Supersalários, que compara a folha
+      # cifrada desta coleta, fica "versão: conferência não aplicada" quando a base é mantida.
+      - name: Conferir os dados direto nas fontes oficiais (a versão que vai ao ar; só entra no ICP até 2 h depois do início da coleta)
+        timeout-minutes: 35
+        continue-on-error: true   # opcional: estourar o tempo não derruba o job (o erro fica no log e no ICP)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
+        run: |
+          export COLETA_INICIO=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }} --jq .run_started_at 2>/dev/null || true)
+          python3 -u scripts/validar_fontes.py || echo "⚠️ validar_fontes.py falhou — conferência anterior mantida"
 
       - name: ICP — registro da execução dos robôs (logs reais), notas e páginas /confiabilidade/
         env:

@@ -420,6 +420,15 @@ def main():
     if not arq.exists():
         print(f"⚠️ folha completa não encontrada ({arq}) — conferência de Supersalários não feita nesta coleta")
         return 0
+    try:  # base mantida na versão anterior (ou publicação bloqueada) nesta coleta: a folha desta coleta não é a do site
+        pub = json.load(open(DADOS / "icp_publicacao.json", encoding="utf-8"))
+    except Exception:
+        pub = {}
+    if os.environ.get("GITHUB_RUN_ID") and str(pub.get("runId")) == os.environ["GITHUB_RUN_ID"] and (
+            pub.get("resultado") == "bloqueado" or "supersalarios" in (pub.get("basesMantidas") or {})):
+        print("ℹ️ versão: conferência não aplicada — Supersalários foi mantido na versão anterior nesta coleta e a folha "
+              "cifrada é a desta coleta; nenhum resultado gravado")
+        return 0
     folha = [json.loads(l) for l in gzip.open(arq, "rt", encoding="utf-8") if l.strip()]
     vs = tetos()
     sem_teto = sorted({p.get("mes") for p in folha if teto_do_mes(p.get("mes") or "01/1900", vs) is None})

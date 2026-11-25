@@ -186,9 +186,34 @@ def consistencia():
         return {"resultado": "indisponivel", "resumo": str(e)}
 
 
+def execucoes_invalidas():
+    """Execuções cujas conferências não valem (dados/icp_anotacoes.json → execucoesInvalidas; regra de 25/11/2026)."""
+    return {str(x.get("runId")): x.get("motivo") for x in (J("icp_anotacoes.json").get("execucoesInvalidas") or [])}
+
+
+def conferencias_validas(val, invalidas):
+    """validacao_fontes.json sem as conferências de execuções inválidas: no lugar, a mais recente válida do histórico
+    permanente da base (ou nenhuma)."""
+    if not invalidas or not any(str(v.get("coletaRunId")) in invalidas for v in val.values()):
+        return val
+    hist = []
+    try:
+        hist = [json.loads(l) for l in open(DADOS / "icp_verificacoes.jsonl", encoding="utf-8") if l.strip()]
+    except Exception:
+        pass
+    out = dict(val)
+    for b, v in val.items():
+        if str(v.get("coletaRunId")) not in invalidas:
+            continue
+        ok = [h for h in hist if h.get("base") == b and str(h.get("coletaRunId")) not in invalidas
+              and h.get("resultado") in ("confere", "mudou_na_fonte", "diverge")]
+        out[b] = max(ok, key=lambda h: h.get("em") or "") if ok else {"resultado": "indisponivel", "nota": "sem conferência válida"}
+    return out
+
+
 def main():
     st = (J("status_fontes.json").get("fontes") or {})
-    val = (J("validacao_fontes.json").get("fontes") or {})
+    val = conferencias_validas(J("validacao_fontes.json").get("fontes") or {}, execucoes_invalidas())
     rev = J("camara_cg_revisao.json")
     tentativa = datetime.fromisoformat(TENTATIVA[:19])
     out = {}
