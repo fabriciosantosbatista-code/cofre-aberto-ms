@@ -54,7 +54,12 @@ jobs:
           except Exception as e:
               print(f"⚠️ status.json ilegível ({type(e).__name__}): uso só o histórico de execuções"); idade = None
           rodando = [r for r in runs if r["status"] in ("queued", "in_progress", "waiting", "requested", "pending")]
-          concluidas = [r for r in runs if r["status"] == "completed" and r["conclusion"] not in ("cancelled", "skipped")]
+          def nao_coletou(r):  # reserva que não conseguiu se cancelar e pulou as coletas (25/11/2026): não é coleta
+              if r["conclusion"] != "failure" or "reserva" not in (r.get("display_title") or ""):
+                  return False
+              jobs = gh(f"repos/{REPO}/actions/runs/{r['id']}/jobs?per_page=30").get("jobs") or []
+              return any(j["name"] == "coletar_dados" and j.get("conclusion") == "skipped" for j in jobs)
+          concluidas = [r for r in runs if r["status"] == "completed" and r["conclusion"] not in ("cancelled", "skipped") and not nao_coletou(r)]
           sucesso = [r for r in concluidas if r["conclusion"] == "success"]
           ult_ok = max((datetime.fromisoformat(r["updated_at"].replace("Z", "+00:00")) for r in sucesso), default=None)
           hoje = agora.astimezone(CG).date()
