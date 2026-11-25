@@ -22,7 +22,9 @@ d = J["decidir"]
 check("coletar" in (d.get("outputs") or {}), "decidir publica a saída 'coletar'")
 passo = next(p for p in d["steps"] if p.get("id") == "reserva")
 run = passo["run"]
-check("for t in range(5)" in run and "gh\", \"run\", \"cancel\"" in run and "check=True" not in run, "cancelamento com 5 tentativas, sem derrubar o job na 1ª falha")
+cancel = [l for l in run.splitlines() if '"cancel"' in l]
+check("for t in range(5)" in run and len(cancel) == 1 and "check=True" not in cancel[0] and ".returncode == 0" in cancel[0],
+      "cancelamento com 5 tentativas, sem derrubar o job na 1ª falha")
 check("coletar=false" in run and "sys.exit(1)" in run, "sem cancelar: coletar=false e a execução termina em falha")
 coletores = [n for n, j in J.items() if n.startswith("coletar_")]
 check(len(coletores) == 10 and all("needs.decidir.outputs.coletar != 'false'" in str(J[n].get("if")) for n in coletores),
