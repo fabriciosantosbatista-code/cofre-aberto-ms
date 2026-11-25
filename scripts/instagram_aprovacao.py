@@ -8,7 +8,9 @@ Enquanto hoje <= "aprovacaoAte" (instagram/config.json):
     com o rótulo "instagram-rascunho"; não publica;
   - aprovar = pôr o rótulo "aprovado" na issue (o workflow roda na hora e publica); recusar = fechar a issue sem o rótulo
     (o tema recusado fica registrado e o próximo rascunho é de outro tema);
-  - um rascunho por vez: com issue aberta esperando, não gera outro.
+  - um rascunho por vez: com issue aberta esperando, não gera outro;
+  - rascunho sem resposta por 3 dias: o robô fecha a issue sozinho ("expirado"), registra como recusado e gera outro
+    (decidido em 25/11/2026); a vistoria do fim do dia avisa.
 Depois de "aprovacaoAte": gera e publica direto, com as mesmas regras de conteúdo (gerar_posts_instagram.py) e no máximo
 1 post por dia (publicar_instagram.py).
 
@@ -19,7 +21,7 @@ Uso (no workflow, com GH_TOKEN e GITHUB_REPOSITORY):
   python3 scripts/instagram_aprovacao.py fechar N      → comenta o link do post publicado e fecha a issue N
 """
 import json, os, subprocess, sys
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
@@ -55,6 +57,42 @@ def issues(estado="open"):
 
 def rotulos(i):
     return {l["name"] for l in i.get("labels") or []}
+
+
+DIAS_EXPIRA = 3
+
+
+def expirados(abertas, agora=None):
+    """Rascunhos abertos há DIAS_EXPIRA dias ou mais sem o rótulo "aprovado"."""
+    agora = agora or datetime.now(timezone.utc)
+    out = []
+    for i in abertas:
+        if ROTULO_APROVADO in rotulos(i):
+            continue
+        try:
+            criado = datetime.fromisoformat(str(i.get("createdAt")).replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        if (agora - criado).total_seconds() >= DIAS_EXPIRA * 86400:
+            out.append(i)
+    return out
+
+
+def expirar(i):
+    """Fecha o rascunho expirado e registra no histórico (recusado, motivo "expirado")."""
+    repo = os.environ["GITHUB_REPOSITORY"]
+    gh("issue", "close", str(i["number"]), "--repo", repo, "--comment",
+       f"⏰ Fechado sem aprovação depois de {DIAS_EXPIRA} dias (regra de 25/11/2026). O próximo rascunho vem de outro tema.")
+    hf = PASTA / "historico.json"
+    try:
+        hist = json.load(open(hf, encoding="utf-8"))
+    except Exception:
+        hist = {"publicados": []}
+    tema = next((l.split(":", 1)[1].strip() for l in (i.get("body") or "").splitlines() if l.startswith("tema:")), None)
+    hist.setdefault("recusados", []).append({"issue": i["number"], "tema": tema, "data": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+                                             "motivo": f"expirado ({DIAS_EXPIRA} dias sem aprovação)"})
+    hf.write_text(json.dumps(hist, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"⏰ rascunho expirado: issue #{i['number']} ({tema}) fechada sem aprovação depois de {DIAS_EXPIRA} dias")
 
 
 def decidir(abertas, hoje=None, aprovacao=None):
@@ -109,7 +147,11 @@ def main():
             rec = registrar_recusados()
             for r in rec:
                 print(f"  rascunho recusado: issue #{r['issue']} ({r['tema']})")
-        acao, num = decidir(issues() if em_aprovacao() else [])
+        abertas = issues() if em_aprovacao() else []
+        for i in expirados(abertas):
+            expirar(i)
+            abertas = [x for x in abertas if x["number"] != i["number"]]
+        acao, num = decidir(abertas)
         print(f"Instagram: {acao}" + (f" (issue #{num})" if num else ""))
         with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as f:
             f.write(f"acao={acao}\nissue={num or ''}\n")

@@ -69,7 +69,37 @@ with redirect_stdout(buf):
     pi.main()
 check("modo aprovação" in buf.getvalue(), "modo aprovação sem IG_APROVADO=1: não publica")
 
+# rascunho sem resposta por 3 dias: expira
+from datetime import timezone, timedelta  # noqa: E402
+agora = datetime(2026, 11, 29, 16, 0, tzinfo=timezone.utc)
+ab = [{"number": 1, "labels": rot("instagram-rascunho"), "createdAt": "2026-11-26T15:50:00Z"},
+      {"number": 2, "labels": rot("instagram-rascunho"), "createdAt": "2026-11-27T15:50:00Z"},
+      {"number": 3, "labels": rot("instagram-rascunho", "aprovado"), "createdAt": "2026-11-20T15:50:00Z"}]
+check([i["number"] for i in ap.expirados(ab, agora)] == [1], "rascunho há 3 dias sem aprovação expira; o de 2 dias e o aprovado não")
+
+# checagem diária da chave (só leitura)
+os.environ["IG_TOKEN"] = "x"
+pi.conta = lambda t: (pi.API_FB, "17841400153468200", "cofre_abertoms", "facebook")
+buf = io.StringIO()
+with redirect_stdout(buf):
+    r = pi.conferir()
+check(r == 0 and "✅ chave do Instagram válida: @cofre_abertoms" in buf.getvalue(), "chave válida: ✅ com a conta")
+def recusa(t):
+    raise RuntimeError("Error validating access token: Session has expired")
+pi.conta = recusa
+buf = io.StringIO()
+with redirect_stdout(buf):
+    r = pi.conferir()
+check(r == 1 and "❌ chave do Instagram recusada pela Meta" in buf.getvalue(), "Meta recusou: ❌ e o job falha (GitHub avisa)")
+
+# formatação brasileira
+check(gp.mil(1074) == "1.074" and gp.mil(2701) == "2.701" and gp.mil(12) == "12", "contagens com separador de milhar (1.074)")
+check(gp.brl(1500000) == "R$ 1.500.000" and gp.brl(10.29, True) == "R$ 10,29", "R$ no padrão brasileiro")
+src = (ROOT / "scripts/gerar_posts_instagram.py").read_text(encoding="utf-8")
+check("{d['totalShows']}" not in src and "{mil(d['totalShows'])}" in src, "a legenda de Shows usa o separador (1.074 shows)")
+
 wf = (ROOT / ".github/workflows/instagram.yml").read_text(encoding="utf-8")
+check("publicar_instagram.py --conferir" in wf, "workflow confere a chave todo dia, antes do resto")
 check("types: [labeled]" in wf and "instagram_aprovacao.py abrir" in wf and "IG_APROVADO" in wf, "workflow: issue de rascunho, rótulo dispara a publicação")
 for e in erros:
     print("❌", e)

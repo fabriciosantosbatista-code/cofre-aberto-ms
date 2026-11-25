@@ -88,7 +88,25 @@ def renovar(token):
     return novo
 
 
+def conferir():
+    """Checagem diária da chave (só leitura: consulta a conta). Falha = a Meta recusou a chave → o job falha e o GitHub
+    avisa o dono na hora; a vistoria do fim do dia repete o aviso. (25/11/2026)"""
+    token = os.environ.get("IG_TOKEN", "").strip()
+    if not token:
+        print("❌ chave do Instagram: o Secret IG_TOKEN está vazio")
+        return 1
+    try:
+        _api, uid, usuario, tipo = conta(token)
+    except Exception as e:
+        print(f"❌ chave do Instagram recusada pela Meta: {e}")
+        return 1
+    print(f"✅ chave do Instagram válida: @{usuario} (conta {uid}, chave {'do usuário do sistema' if tipo == 'facebook' else 'do login do Instagram'})")
+    return 0
+
+
 def main():
+    if "--conferir" in sys.argv:
+        sys.exit(conferir())
     token = os.environ.get("IG_TOKEN", "").strip()
     if not token:
         print("ℹ️ sem o Secret IG_TOKEN — post gerado, mas não publicado")

@@ -41,6 +41,12 @@ jobs:
 
       - run: pip install requests Pillow
 
+      - name: Conferir a chave do Instagram (só leitura; se a Meta recusar, o job falha e o GitHub avisa)
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: "17841400153468200"
+        run: python3 -u scripts/publicar_instagram.py --conferir
+
       - name: Modo aprovação — o que fazer hoje
         id: estado
         run: python3 scripts/instagram_aprovacao.py estado

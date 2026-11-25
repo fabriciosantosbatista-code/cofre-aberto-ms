@@ -99,6 +99,14 @@ def brl(v, centavos=False):
     return "R$ " + s.replace(",", "X").replace(".", ",").replace("X", ".")
 
 
+def mil(n):
+    """Contagem no padrão brasileiro: 1.074 (não 1074)."""
+    try:
+        return f"{int(round(float(n))):,}".replace(",", ".")
+    except (TypeError, ValueError):
+        return str(n)
+
+
 def curto(v):
     for lim, nome in ((1e9, "bilhão" if v < 2e9 else "bilhões"), (1e6, "milhão" if v < 2e6 else "milhões"), (1e3, "mil")):
         if v >= lim:
@@ -139,8 +147,8 @@ def t_precos(n):
             "fonte": "Portal Nacional de Contratações Públicas (PNCP), compras de órgãos de MS em " + str(d.get("ano")),
             "aba": "precos",
             "nota": "Frete, prazo, quantidade e cidade influem no preço. Pagar acima da mediana é um ponto para perguntar, não prova de irregularidade.",
-            "legenda": (f"Quanto os órgãos públicos de MS pagam pelo mesmo produto? Comparamos {p['compras']} compras de {item} feitas em {d.get('ano')} "
-                        f"por {p['orgaos']} órgãos (prefeituras, câmaras, Governo do Estado).\n\n"
+            "legenda": (f"Quanto os órgãos públicos de MS pagam pelo mesmo produto? Comparamos {mil(p['compras'])} compras de {item} feitas em {d.get('ano')} "
+                        f"por {mil(p['orgaos'])} órgãos (prefeituras, câmaras, Governo do Estado).\n\n"
                         f"O preço do meio (mediana) foi {brl(p['mediana'], True)} por {un}. O mais alto: {brl(top[0]['precoUnidade'], True)}, "
                         f"pago por {titulo_nome(top[0]['orgao'])}.\n\nFrete, quantidade e cidade pesam no preço — diferença grande é um bom motivo para perguntar.")}
 
@@ -151,12 +159,12 @@ def t_shows(n):
     if not s:
         return None
     return {"tema": "shows", "kicker": "SHOWS COM DINHEIRO PÚBLICO", "titulo": f"Os maiores cachês pagos em MS em {d['ano']}",
-            "numero": curto(d["valorShows"]), "rotulo": f"em {d['totalShows']} shows contratados sem licitação pelo Estado, prefeituras e câmaras",
+            "numero": curto(d["valorShows"]), "rotulo": f"em {mil(d['totalShows'])} shows contratados sem licitação pelo Estado, prefeituras e câmaras",
             "lista_titulo": "Os 5 maiores cachês",
             "lista": [(titulo_nome(x["artista"]), f"{x.get('cidade') or ''} · {titulo_nome(x.get('evento') or '')}".strip(" ·"), brl(x["valor"])) for x in s],
             "fonte": "Portal Nacional de Contratações Públicas (PNCP), contratações por inexigibilidade", "aba": "shows",
             "nota": "Contratar artista sem licitação é permitido por lei (inexigibilidade). O que mostramos é quanto foi pago, a quem e para qual evento.",
-            "legenda": (f"Em {d['ano']}, órgãos públicos de MS já contrataram {d['totalShows']} shows, somando {curto(d['valorShows'])} em cachês.\n\n"
+            "legenda": (f"Em {d['ano']}, órgãos públicos de MS já contrataram {mil(d['totalShows'])} shows, somando {curto(d['valorShows'])} em cachês.\n\n"
                         f"O maior: {titulo_nome(s[0]['artista'])}, {brl(s[0]['valor'])}, em {s[0].get('cidade') or 'MS'}.\n\n"
                         "No site dá para ver todos os shows de cada cidade e quanto cada uma pagou pelo mesmo artista.")}
 
@@ -173,12 +181,12 @@ def t_obras(n):
         m = "prazo vencido" if "vencida" in o["marcas"] else "teve paralisação"
         return f"{(o.get('municipios') or '').split(',')[0].replace('/MS', '')} · {m} · {o.get('executado') or 0:.0f}% feita".strip(" ·")
     return {"tema": "obras", "kicker": "OBRAS ATRASADAS", "titulo": "Obras do Governo de MS paradas ou com prazo vencido",
-            "numero": curto(soma), "rotulo": f"em {len(ob)} obras que tiveram paralisação ou passaram do prazo sem terminar",
+            "numero": curto(soma), "rotulo": f"em {mil(len(ob))} obras que tiveram paralisação ou passaram do prazo sem terminar",
             "lista_titulo": "As 5 maiores",
             "lista": [(o["objeto"].capitalize(), sub(o), curto(o.get("valor") or 0)) for o in ob[:5]],
             "fonte": "Portal da Transparência do Estado de MS, contratos de obras (prazo, aditivos e % executado)", "aba": "obras",
             "nota": "Usamos o % executado e as datas que o próprio Estado publica. Atraso pode ter motivo técnico; vale cobrar a explicação.",
-            "legenda": (f"{len(ob)} obras do Governo de MS tiveram paralisação ou passaram do prazo sem terminar — {curto(soma)} em contratos.\n\n"
+            "legenda": (f"{mil(len(ob))} obras do Governo de MS tiveram paralisação ou passaram do prazo sem terminar — {curto(soma)} em contratos.\n\n"
                         "No site estão todas, com empresa, cidade, prazo e quanto já foi executado. Tem obra parada na sua cidade?")}
 
 
@@ -191,7 +199,7 @@ def t_vereadores(n):
         return None
     soma = sum(v[2] for v in vs)
     return {"tema": "vereadores", "kicker": "CÂMARA DE CAMPO GRANDE", "titulo": f"Quem mais gastou verba indenizatória em {ano}",
-            "numero": curto(soma), "rotulo": f"gastos pelos {len(vs)} vereadores de Campo Grande, além do salário",
+            "numero": curto(soma), "rotulo": f"gastos pelos {mil(len(vs))} vereadores de Campo Grande, além do salário",
             "lista_titulo": "Os 5 que mais gastaram", "lista": [(v[0], v[1], brl(v[2])) for v in vs[:5]],
             "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (Atos da Mesa 27 e 28/2017)", "aba": "camara",
             "nota": "A verba indenizatória é permitida e reembolsa despesas do mandato. No site estão as notas fiscais e os fornecedores de cada vereador.",
@@ -239,7 +247,7 @@ def t_emendas(n):
     return {"tema": "emendas", "kicker": "EMENDAS PARLAMENTARES", "titulo": f"As cidades de MS que mais receberam emendas em {d['ano']}",
             "numero": curto(d["totalMS"]), "rotulo": "em emendas de deputados federais e senadores pagas para MS",
             "lista_titulo": "As 5 cidades que mais receberam",
-            "lista": [(x["municipio"], f"{len(x.get('autores') or [])} parlamentares autores", curto(x["total"])) for x in m],
+            "lista": [(x["municipio"], f"{mil(len(x.get('autores') or []))} parlamentares autores", curto(x["total"])) for x in m],
             "fonte": "Portal da Transparência do Governo Federal (CGU), emendas parlamentares pagas", "aba": "emendas",
             "nota": "No site está quem mandou cada emenda, para qual cidade e quem recebeu o dinheiro.",
             "legenda": (f"Deputados federais e senadores já mandaram {curto(d['totalMS'])} em emendas pagas para MS em {d['ano']}.\n\n"
@@ -253,13 +261,13 @@ def t_supersalarios(n):
     if not r:
         return None
     return {"tema": "supersalarios", "kicker": "SUPERSALÁRIOS", "titulo": "Quantos ganham acima do teto em MS",
-            "numero": f"{d['acimaTeto']:,}".replace(",", ".") + " pessoas",
+            "numero": mil(d['acimaTeto']) + " pessoas",
             "rotulo": f"receberam acima do teto de {brl(d['teto'])} em algum mês de {d['ano']}, somando {curto(d['valorAcimaTeto'])} além do teto",
             "lista_titulo": "Os 5 maiores pagamentos brutos de um mês (por cargo)",
             "lista": [(x["cargo"].capitalize(), x.get("orgaoSigla") or x.get("orgao") or "", brl(x["bruto"])) for x in r],
             "fonte": "Portais da transparência do Estado, do TCE-MS e da Câmara de CG, e o DadosJusBr (TJMS e TRT24)", "aba": "supersalarios",
             "nota": "Parte das verbas fica fora do teto por lei (férias, indenizações e atrasados). No site está o detalhe de cada pagamento.",
-            "legenda": (f"{d['acimaTeto']:,}".replace(",", ".") + f" pessoas do poder público de MS receberam acima do teto de {brl(d['teto'])} em algum mês de {d['ano']}.\n\n"
+            "legenda": (mil(d['acimaTeto']) + f" pessoas do poder público de MS receberam acima do teto de {brl(d['teto'])} em algum mês de {d['ano']}.\n\n"
                         "Grande parte vem de verbas que a lei deixa fora do teto (os chamados penduricalhos). No site estão os valores, cargo e órgão.")}
 
 
