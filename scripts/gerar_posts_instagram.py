@@ -7,6 +7,12 @@ Os temas se revezam (o próximo é o seguinte ao último publicado, em instagram
 Cada post: capa (número principal), lista dos 5 maiores e uma imagem final com a fonte e o link. Linguagem de "sinal de
 atenção", nunca acusação; servidores não são citados pelo nome (só cargo e órgão).
 
+Regras de conteúdo (25/11/2026):
+  - só temas cuja base está "confere" no ICP (última conferência válida = confere e status sem divergência/falha);
+  - nenhum nome de pessoa que esteja em "sinal de atenção" na Auditoria, nem pagamento/contracheque com divergência da
+    fonte sem resposta ao pedido de esclarecimento: o item sai da lista; se for o citado na legenda, o tema é pulado;
+  - no máximo 1 post por dia (publicar_instagram.py).
+
 Grava instagram/<data>-<tema>-1.jpg, -2.jpg, -3.jpg (1080×1350, JPEG — o Instagram só aceita JPEG) e instagram/proximo.json
 com as imagens e a legenda. Quem publica é scripts/publicar_instagram.py.
 
@@ -32,6 +38,53 @@ VERMELHO, LINHA = (229, 72, 77), (40, 45, 60)
 TEMAS = ["shows",  # "precos" desligado a pedido; para voltar, ponha de novo no começo da lista
          "obras", "vereadores", "publicidade", "entidades", "emendas", "supersalarios"]
 TAGS = "#MatoGrossoDoSul #CampoGrande #MS #transparencia #dinheiropublico #fiscalizacao #CofreAbertoMS"
+
+
+BASE_ICP = {"precos": None, "shows": "shows", "obras": "obras", "vereadores": "camara", "publicidade": "publicidade",
+            "entidades": "entidades", "emendas": "emendas", "supersalarios": "supersalarios"}
+ICP_LIBERADO = ("verificado", "verificado_reforcado", "parcial")
+
+
+def _n(t):
+    import unicodedata
+    return " ".join(unicodedata.normalize("NFKD", str(t or "")).encode("ascii", "ignore").decode().upper().split())
+
+
+def tema_liberado(tema):
+    """(liberado, motivo): a base do tema precisa estar "confere" no ICP."""
+    b = BASE_ICP.get(tema)
+    if not b:
+        return False, "tema sem base no ICP"
+    x = ((carregar("icp.json") or {}).get("bases") or {}).get(b) or {}
+    u = x.get("ultimaVerificacao") or {}
+    if x.get("status") not in ICP_LIBERADO or u.get("resultado") != "confere":
+        return False, f"ICP de {b}: {x.get('status') or 'sem status'} (última conferência: {u.get('resultado') or 'nenhuma'})"
+    return True, f"ICP de {b}: {x['status']}, última conferência confere em {str(u.get('em'))[:10]}"
+
+
+def nomes_bloqueados():
+    """Nomes que não entram em post: pessoas em sinal de atenção (Auditoria) e contracheques com divergência da fonte
+    sem resposta ao pedido de esclarecimento (Supersalários)."""
+    out = set()
+    for x in (carregar("auditoria.json") or {}).get("sinais") or []:
+        for k in ("quem",):
+            if x.get(k):
+                out.add(_n(x[k]))
+    esc = {(e.get("orgaoId"), e.get("mes")): e for e in (carregar("../config/esclarecimentos_fonte.json") or {}).get("pedidos") or []}
+    for d in (carregar("verificacao/conferencia_supersalarios.json") or {}).get("divergenciasFonte") or []:
+        if not (esc.get((d.get("orgaoId"), d.get("mes"))) or {}).get("resposta"):
+            out.add(_n(d.get("nome")))
+    return out
+
+
+def aplicar_regras(p):
+    """Tira da lista os nomes bloqueados; se o primeiro (o citado na legenda) sair, o tema é pulado (None)."""
+    bloq = nomes_bloqueados()
+    fora = [i for i, (nome, _s, _v) in enumerate(p["lista"]) if _n(nome) in bloq]
+    if 0 in fora:
+        return None, f"o primeiro da lista ({p['lista'][0][0]}) está em sinal de atenção ou divergência sem resposta"
+    p["lista"] = [x for i, x in enumerate(p["lista"]) if i not in fora]
+    return p, (f"{len(fora)} item(ns) retirado(s) da lista (sinal de atenção ou divergência sem resposta)" if fora else "nenhum nome bloqueado")
 
 
 def carregar(nome):
@@ -195,7 +248,8 @@ def t_emendas(n):
 
 def t_supersalarios(n):
     d = carregar("supersalarios.json")
-    r = [x for x in d.get("ranking") or [] if (x.get("base") or 0) >= 1][:5]  # fora pagamento eventual (rescisão, indenização acumulada)
+    bloq = nomes_bloqueados()  # fora: contracheque com divergência da fonte sem resposta ao pedido de esclarecimento
+    r = [x for x in d.get("ranking") or [] if (x.get("base") or 0) >= 1 and _n(x.get("nome")) not in bloq][:5]  # e pagamento eventual
     if not r:
         return None
     return {"tema": "supersalarios", "kicker": "SUPERSALÁRIOS", "titulo": "Quantos ganham acima do teto em MS",
@@ -299,11 +353,24 @@ def main():
         ult = hist["publicados"][-1]["tema"] if hist["publicados"] else None
         i = (TEMAS.index(ult) + 1) % len(TEMAS) if ult in TEMAS else 0
         ordem = TEMAS[i:] + TEMAS[:i]
-    p = None
+    p, regras = None, []
+    recusados = [r.get("tema") for r in hist.get("recusados") or []]
+    if len(sys.argv) <= 1 and recusados:  # tema recusado no modo aprovação: o próximo rascunho é de outro tema
+        ordem = [t for t in ordem if t != recusados[-1]] + [recusados[-1]]
     for tema in ordem:
+        ok, motivo = tema_liberado(tema)
+        if not ok:
+            print(f"  ⏭ {tema}: {motivo}")
+            continue
         p = FUNCOES[tema](sum(1 for x in hist["publicados"] if x["tema"] == tema))
-        if p:
-            break
+        if not p:
+            continue
+        p, motivo2 = aplicar_regras(p)
+        if not p:
+            print(f"  ⏭ {tema}: {motivo2}")
+            continue
+        regras = [motivo, motivo2]
+        break
     if not p:
         print("⚠️ nenhum tema com dados")
         return
@@ -322,7 +389,8 @@ def main():
     legenda = (p["legenda"] + f"\n\n🔗 Veja tudo no site: cofreabertoms.com.br (link na bio)\nFonte: {p['fonte']}.\n\n{TAGS}")
     (PASTA / "proximo.json").write_text(json.dumps({"tema": p["tema"], "data": HOJE.isoformat(), "imagens": nomes,
                                                     "urls": [f"{SITE}/instagram/{x}" for x in nomes], "legenda": legenda,
-                                                    "link": f"{SITE}/cofre-aberto-ms.html#aba={p['aba']}"}, ensure_ascii=False, indent=2), encoding="utf-8")
+                                                    "link": f"{SITE}/cofre-aberto-ms.html#aba={p['aba']}",
+                                                    "regras": "; ".join(regras)}, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"✅ post do Instagram: {p['tema']} — {', '.join(nomes)} (post nº {n + 1})")
 
 

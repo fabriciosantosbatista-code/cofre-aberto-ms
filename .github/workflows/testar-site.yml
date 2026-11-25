@@ -48,6 +48,8 @@ jobs:
         run: pip install -q pyyaml && python3 tests/test_reserva_coleta.py
       - name: Instagram — publicador com chave do login do Instagram ou do usuário do sistema da Meta
         run: pip install -q requests && python3 tests/test_instagram_chave.py
+      - name: Instagram — modo aprovação e regras de conteúdo
+        run: pip install -q requests Pillow && python3 tests/test_instagram_aprovacao.py
 
       - name: LGPD — nenhum CPF completo nos arquivos publicados (com e sem pontuação, em qualquer campo)
         run: python3 tests/test_cpf.py

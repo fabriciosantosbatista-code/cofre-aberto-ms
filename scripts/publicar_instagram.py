@@ -106,6 +106,15 @@ def main():
     if any(x.get("imagens") == post["imagens"] for x in hist["publicados"]):
         print("ℹ️ este post já foi publicado")
         return
+    hoje = datetime.now().strftime("%Y-%m-%d")
+    if any(str(x.get("data") or "")[:10] == hoje for x in hist["publicados"]):  # regra: no máximo 1 post por dia
+        print("ℹ️ já houve post hoje — no máximo 1 por dia; fica para amanhã")
+        return
+    sys.path.insert(0, str(Path(__file__).parent))
+    import instagram_aprovacao as ap
+    if ap.em_aprovacao() and os.environ.get("IG_APROVADO") != "1":  # modo aprovação: só com o rótulo "aprovado" na issue
+        print(f"ℹ️ modo aprovação até {ap.cfg().get('aprovacaoAte')}: não publico sem aprovação (rótulo \"aprovado\" na issue do rascunho)")
+        return
     global API
     API, uid, usuario, tipo = conta(token)
     eu = {"username": usuario}

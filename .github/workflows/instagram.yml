@@ -1,9 +1,14 @@
 name: Instagram — post automático
 
 # Todo dia às 11h47 de Campo Grande (15h47 UTC). Também dá para rodar à mão em Actions → Run workflow.
+# Modo aprovação até instagram/config.json → aprovacaoAte (25/11/2026: primeiras 4 semanas): o robô abre uma issue com o
+# rascunho e só publica quando o dono põe o rótulo "aprovado" na issue (este workflow roda na hora). Ver
+# scripts/instagram_aprovacao.py. Regras de conteúdo em scripts/gerar_posts_instagram.py; no máximo 1 post por dia.
 on:
   schedule:
     - cron: '47 15 * * *'
+  issues:
+    types: [labeled]
   workflow_dispatch:
     inputs:
       tema:
@@ -13,6 +18,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: instagram
@@ -20,8 +26,12 @@ concurrency:
 
 jobs:
   post:
+    # pelo rótulo: só quando o rótulo posto é "aprovado" numa issue de rascunho do Instagram
+    if: github.event_name != 'issues' || (github.event.label.name == 'aprovado' && contains(github.event.issue.labels.*.name, 'instagram-rascunho'))
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
@@ -31,7 +41,12 @@ jobs:
 
       - run: pip install requests Pillow
 
+      - name: Modo aprovação — o que fazer hoje
+        id: estado
+        run: python3 scripts/instagram_aprovacao.py estado
+
       - name: Gerar o post da vez (imagens + legenda)
+        if: steps.estado.outputs.acao == 'gerar_rascunho' || steps.estado.outputs.acao == 'publicar_direto'
         run: python3 scripts/gerar_posts_instagram.py ${{ github.event.inputs.tema }}
 
       - name: Publicar as imagens no site
@@ -42,8 +57,14 @@ jobs:
           git diff --cached --quiet || git commit -m "Instagram: imagens do post de $(date +%d/%m)"
           for i in 1 2 3 4; do git pull -q --rebase origin main && git push -q origin main && break; sleep $((i*10)); done
 
+      - name: Abrir a issue do rascunho para aprovação (não publica)
+        if: steps.estado.outputs.acao == 'gerar_rascunho'
+        run: python3 scripts/instagram_aprovacao.py abrir
+
       - name: Publicar no Instagram
+        if: steps.estado.outputs.acao == 'publicar_aprovado' || steps.estado.outputs.acao == 'publicar_direto'
         env:
+          IG_APROVADO: ${{ steps.estado.outputs.acao == 'publicar_aprovado' && '1' || '0' }}
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
           IG_USER_ID: "17841400153468200"   # @cofre_abertoms (ID público da conta; não é segredo)
@@ -55,3 +76,12 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "Instagram: post publicado"
           for i in 1 2 3 4; do git pull -q --rebase origin main && git push -q origin main && break; sleep $((i*10)); done
+
+      - name: Fechar a issue do rascunho aprovado
+        if: steps.estado.outputs.acao == 'publicar_aprovado'
+        run: |
+          if python3 -c "import json,sys;h=json.load(open('instagram/historico.json'));p=json.load(open('instagram/proximo.json'));sys.exit(0 if any(x.get('imagens')==p['imagens'] for x in h['publicados']) else 1)"; then
+            python3 scripts/instagram_aprovacao.py fechar ${{ steps.estado.outputs.issue }}
+          else
+            echo "⚠️ o post aprovado não foi publicado (veja o passo anterior) — a issue fica aberta"
+          fi
