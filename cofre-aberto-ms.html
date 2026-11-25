@@ -2178,6 +2178,7 @@ Atenciosamente,</textarea>
   <section class="tabpanel" id="tab-sobre">
     <!-- usado por renderCamaraMunicipal (fonte da Câmara CG) -->
     <div class="notice" id="notice-camara" hidden></div>
+    <p class="sobre-origem" style="font-size:0.95rem;line-height:1.7;color:var(--ink);margin:0 0 18px">O projeto nasceu da constatação de que, embora esses dados sejam legalmente públicos, eles estão espalhados em dezenas de sistemas diferentes — muitos em PDFs individuais, sem busca, sem padronização — o que na prática dificulta o acesso do cidadão comum. O Cofre Aberto MS consolida tudo isso em um único lugar, gratuito e sem cadastro.</p>
     <div class="hero">
       <div class="hero-label">Sobre o projeto</div>
       <div class="hero-desc" style="font-size:0.92rem;">
@@ -2213,18 +2214,10 @@ Atenciosamente,</textarea>
       </div>
     </div>
     <div class="section">
-      <div class="section-head"><h2 class="section-title">Situação de cada fonte</h2></div>
-      <div class="card">
-        <table class="ranking" id="sobre-status">
-          <thead><tr><th>Aba</th><th>Dado mais recente</th><th>Situação</th></tr></thead>
-          <tbody><tr><td colspan="3" style="padding:14px;color:var(--ink-soft)">Carregando…</td></tr></tbody>
-        </table>
-      </div>
-    </div>
-    <div class="section">
       <div class="section-head"><h2 class="section-title">Metodologia, dados abertos e correções</h2></div>
       <div class="card card-pad">
         <ul style="font-size:0.88rem; color:var(--ink-soft); line-height:1.9; margin:0; padding-left:20px;">
+          <li><a href="metodologia.html#status">Situação de cada fonte agora</a>: dado mais recente, última coleta e se a fonte está em dia.</li>
           <li><a href="metodologia.html#fontes">De onde vem cada número</a>: fonte oficial de cada aba, como é coletada e o atraso típico.</li>
           <li><a href="metodologia.html#oficial-estimativa">O que é dado oficial e o que é estimativa</a>: as poucas estimativas (equipe e custo anual dos deputados federais) são sempre marcadas.</li>
           <li><a href="metodologia.html#limitacoes">Limitações conhecidas</a> de cada fonte, como os PDFs escaneados da Câmara de CG e os portais do interior fora do ar.</li>
@@ -7609,7 +7602,7 @@ function montarBarrasFonte() {
         });
       });
     });
-    // tabela de status na aba Sobre
+    // tabela de status (a da aba Sobre foi para a Metodologia em 25/11/2026: metodologia.html#status)
     const tb = document.querySelector("#sobre-status tbody");
     if (tb) tb.innerHTML = Object.keys(FONTE_ABA).map(aba => {
       const f = fontes[aba]; if (!f) return "";
