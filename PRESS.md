@@ -128,5 +128,3 @@ Capturas de tela do site podem ser usadas livremente pela imprensa, com crédito
 ## Sobre o projeto
 
 Cofre Aberto MS é um projeto independente de transparência cidadã, sem fins lucrativos e sem vínculo oficial com qualquer partido, candidato, governo ou órgão público. Todos os dados exibidos são públicos por lei (Lei de Acesso à Informação, nº 12.527/2011) e foram coletados diretamente dos portais de transparência oficiais citados ao longo deste documento.
-
-      📄 Prefere o formato Markdown? Veja a versão fonte deste kit em PRESS.md no GitHub.

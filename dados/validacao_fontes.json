@@ -1,13 +1,134 @@
 {
- "geradoEm": "2026-11-24T12:46:28",
+ "geradoEm": "2026-11-25T12:07:12",
  "fontes": {
   "governo-ms": {
-   "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "resultado": "diverge",
+   "em": "2026-11-25T12:07:12",
    "metodo": "consulta nova ao portal do Estado (mesmo período da coleta): valor pago de cada órgão e totais do ano",
    "fonteUrl": "https://www.transparencia.ms.gov.br/",
    "conferidos": 68,
-   "divergentes": [],
+   "divergentes": [
+    {
+     "item": "290101 SECRETARIA DE ESTADO DE EDUCACAO",
+     "site": 3655673494.59,
+     "fonte": 3668949344.99,
+     "diferenca": -13275850.4
+    },
+    {
+     "item": "270901 FUNDO ESPECIAL DE SAUDE DE MS",
+     "site": 2171482270.29,
+     "fonte": 2184223878.77,
+     "diferenca": -12741608.48
+    },
+    {
+     "item": "790201 AGÊNCIA ESTADUAL DE GESTÃO DE EMPREENDIMENTOS",
+     "site": 2019408093.95,
+     "fonte": 2023699088.86,
+     "diferenca": -4290994.91
+    },
+    {
+     "item": "350101 ENCARGOS GERAIS FINANCEIROS DO ESTADO",
+     "site": 1812933570.7,
+     "fonte": 1812963045.64,
+     "diferenca": -29474.94
+    },
+    {
+     "item": "310101 SECRETARIA DE ESTADO DE JUST.SEGUR.PUBLICA",
+     "site": 1805486705.8,
+     "fonte": 1806401556.98,
+     "diferenca": -914851.18
+    },
+    {
+     "item": "110101 SECRETARIA DE ESTADO DE FAZENDA",
+     "site": 806115539.69,
+     "fonte": 806116000.35,
+     "diferenca": -460.66
+    },
+    {
+     "item": "310202 AGENCIA ESTADUAL DE ADM.DO SIST.PENITENCIARIO",
+     "site": 487963548.29,
+     "fonte": 487957218.81,
+     "diferenca": 6329.48
+    },
+    {
+     "item": "810101 SECRETARIA DE ESTADO DE DIREITOS HUMANOS E ASSISTÊ",
+     "site": 393219288.48,
+     "fonte": 393357448.87,
+     "diferenca": -138160.39
+    },
+    {
+     "item": "290204 FUNDAÇÃO UNIVERSIDADE ESTADUAL DE MATO GROSSO DO S",
+     "site": 378016091.29,
+     "fonte": 378202074.19,
+     "diferenca": -185982.9
+    },
+    {
+     "item": "330101 DEFENSORIA PUBLICA DO ESTADO DE MS",
+     "site": 293944355.8,
+     "fonte": 298840642.05,
+     "diferenca": -4896286.25
+    },
+    {
+     "item": "310201 DEPARTAMENTO ESTADUAL DE TRANSITO DE MS",
+     "site": 258541787.2,
+     "fonte": 261432228.2,
+     "diferenca": -2890441.0
+    },
+    {
+     "item": "510101 SECRETARIA DE ESTADO DE GOVERNO E GESTAO ESTRATEGI",
+     "site": 239997240.65,
+     "fonte": 240022618.89,
+     "diferenca": -25378.24
+    },
+    {
+     "item": "770101 SECRETARIA DE ESTADO DE ADMINISTRAÇÃO",
+     "site": 167840658.47,
+     "fonte": 168252119.54,
+     "diferenca": -411461.07
+    },
+    {
+     "item": "790203 AGÊNCIA DE HABITAÇÃO POPULAR DE MATO GROSSO DO SUL",
+     "site": 148578120.24,
+     "fonte": 150699367.34,
+     "diferenca": -2121247.1
+    },
+    {
+     "item": "830205 AGÊNCIA ESTADUAL DE DEFESA SANITÁRIA, ANIMAL E VEG",
+     "site": 116949155.47,
+     "fonte": 116992572.49,
+     "diferenca": -43417.02
+    },
+    {
+     "item": "150101 PROCURADORIA-GERAL DO ESTADO",
+     "site": 116525535.2,
+     "fonte": 116547943.79,
+     "diferenca": -22408.59
+    },
+    {
+     "item": "110901 FUNDO ESP DESENV APERF DAS ATIVID FAZENDARIA",
+     "site": 115505746.1,
+     "fonte": 115778096.1,
+     "diferenca": -272350.0
+    },
+    {
+     "item": "830206 AGÊNCIA DE DESENVOLVIMENTO AGRÁRIO E EXTENSÃO RURA",
+     "site": 104076106.63,
+     "fonte": 104077224.85,
+     "diferenca": -1118.22
+    },
+    {
+     "item": "790101 SECRETARIA DE ESTADO DE INFRAESTRUTURA E LOGÍSTICA",
+     "site": 102299472.66,
+     "fonte": 103262526.67,
+     "diferenca": -963054.01
+    },
+    {
+     "item": "850201 FUNDAÇÃO DE CULTURA DE MATO GROSSO DO SUL",
+     "site": 100750740.29,
+     "fonte": 100750744.3,
+     "diferenca": -4.01
+    }
+   ],
    "comparados": [
     {
      "item": "770202 AGÊNCIA DE PREVIDÊNCIA SOCIAL DE MATO GROSSO DO SU",
@@ -18,32 +139,32 @@
     {
      "item": "290101 SECRETARIA DE ESTADO DE EDUCACAO",
      "site": 3655673494.59,
-     "fonte": 3655673494.59,
-     "diferenca": 0.0
+     "fonte": 3668949344.99,
+     "diferenca": -13275850.4
     },
     {
      "item": "270901 FUNDO ESPECIAL DE SAUDE DE MS",
      "site": 2171482270.29,
-     "fonte": 2171482270.29,
-     "diferenca": 0.0
+     "fonte": 2184223878.77,
+     "diferenca": -12741608.48
     },
     {
      "item": "790201 AGÊNCIA ESTADUAL DE GESTÃO DE EMPREENDIMENTOS",
      "site": 2019408093.95,
-     "fonte": 2019408093.95,
-     "diferenca": 0.0
+     "fonte": 2023699088.86,
+     "diferenca": -4290994.91
     },
     {
      "item": "350101 ENCARGOS GERAIS FINANCEIROS DO ESTADO",
      "site": 1812933570.7,
-     "fonte": 1812933570.7,
-     "diferenca": 0.0
+     "fonte": 1812963045.64,
+     "diferenca": -29474.94
     },
     {
      "item": "310101 SECRETARIA DE ESTADO DE JUST.SEGUR.PUBLICA",
      "site": 1805486705.8,
-     "fonte": 1805486705.8,
-     "diferenca": 0.0
+     "fonte": 1806401556.98,
+     "diferenca": -914851.18
     },
     {
      "item": "770902 FUNDO DO SISTEMA DE PROTEÇÃO SOCIAL DOS MILITARES ",
@@ -54,44 +175,44 @@
     {
      "item": "110101 SECRETARIA DE ESTADO DE FAZENDA",
      "site": 806115539.69,
-     "fonte": 806115539.69,
-     "diferenca": 0.0
+     "fonte": 806116000.35,
+     "diferenca": -460.66
     },
     {
      "item": "310202 AGENCIA ESTADUAL DE ADM.DO SIST.PENITENCIARIO",
      "site": 487963548.29,
-     "fonte": 487963548.29,
-     "diferenca": 0.0
+     "fonte": 487957218.81,
+     "diferenca": 6329.48
     },
     {
      "item": "810101 SECRETARIA DE ESTADO DE DIREITOS HUMANOS E ASSISTÊ",
      "site": 393219288.48,
-     "fonte": 393219288.48,
-     "diferenca": 0.0
+     "fonte": 393357448.87,
+     "diferenca": -138160.39
     },
     {
      "item": "290204 FUNDAÇÃO UNIVERSIDADE ESTADUAL DE MATO GROSSO DO S",
      "site": 378016091.29,
-     "fonte": 378016091.29,
-     "diferenca": 0.0
+     "fonte": 378202074.19,
+     "diferenca": -185982.9
     },
     {
      "item": "330101 DEFENSORIA PUBLICA DO ESTADO DE MS",
      "site": 293944355.8,
-     "fonte": 293944355.8,
-     "diferenca": 0.0
+     "fonte": 298840642.05,
+     "diferenca": -4896286.25
     },
     {
      "item": "310201 DEPARTAMENTO ESTADUAL DE TRANSITO DE MS",
      "site": 258541787.2,
-     "fonte": 258541787.2,
-     "diferenca": 0.0
+     "fonte": 261432228.2,
+     "diferenca": -2890441.0
     },
     {
      "item": "510101 SECRETARIA DE ESTADO DE GOVERNO E GESTAO ESTRATEGI",
      "site": 239997240.65,
-     "fonte": 239997240.65,
-     "diferenca": 0.0
+     "fonte": 240022618.89,
+     "diferenca": -25378.24
     },
     {
      "item": "350102 ENCARGOS GERAIS DE RH E PATRIMONIO DO ESTADO",
@@ -102,86 +223,86 @@
     {
      "item": "770101 SECRETARIA DE ESTADO DE ADMINISTRAÇÃO",
      "site": 167840658.47,
-     "fonte": 167840658.47,
-     "diferenca": 0.0
+     "fonte": 168252119.54,
+     "diferenca": -411461.07
     },
     {
      "item": "790203 AGÊNCIA DE HABITAÇÃO POPULAR DE MATO GROSSO DO SUL",
      "site": 148578120.24,
-     "fonte": 148578120.24,
-     "diferenca": 0.0
+     "fonte": 150699367.34,
+     "diferenca": -2121247.1
     },
     {
      "item": "830205 AGÊNCIA ESTADUAL DE DEFESA SANITÁRIA, ANIMAL E VEG",
      "site": 116949155.47,
-     "fonte": 116949155.47,
-     "diferenca": 0.0
+     "fonte": 116992572.49,
+     "diferenca": -43417.02
     },
     {
      "item": "150101 PROCURADORIA-GERAL DO ESTADO",
      "site": 116525535.2,
-     "fonte": 116525535.2,
-     "diferenca": 0.0
+     "fonte": 116547943.79,
+     "diferenca": -22408.59
     },
     {
      "item": "110901 FUNDO ESP DESENV APERF DAS ATIVID FAZENDARIA",
      "site": 115505746.1,
-     "fonte": 115505746.1,
-     "diferenca": 0.0
+     "fonte": 115778096.1,
+     "diferenca": -272350.0
     },
     {
      "item": "830206 AGÊNCIA DE DESENVOLVIMENTO AGRÁRIO E EXTENSÃO RURA",
      "site": 104076106.63,
-     "fonte": 104076106.63,
-     "diferenca": 0.0
+     "fonte": 104077224.85,
+     "diferenca": -1118.22
     },
     {
      "item": "790101 SECRETARIA DE ESTADO DE INFRAESTRUTURA E LOGÍSTICA",
      "site": 102299472.66,
-     "fonte": 102299472.66,
-     "diferenca": 0.0
+     "fonte": 103262526.67,
+     "diferenca": -963054.01
     },
     {
      "item": "850201 FUNDAÇÃO DE CULTURA DE MATO GROSSO DO SUL",
      "site": 100750740.29,
-     "fonte": 100750740.29,
-     "diferenca": 0.0
+     "fonte": 100750744.3,
+     "diferenca": -4.01
     },
     {
      "item": "310901 FUNDO ESPECIAL DE REEQUIPAMENTO DA SSP DE MS",
      "site": 91262518.48,
-     "fonte": 91262518.48,
-     "diferenca": 0.0
+     "fonte": 91262991.69,
+     "diferenca": -473.21
     },
     {
      "item": "830204 INSTITUTO DE MEIO AMBIENTE DE MATO GROSSO DO SUL",
      "site": 88024622.98,
-     "fonte": 88024622.98,
-     "diferenca": 0.0
+     "fonte": 88032192.2,
+     "diferenca": -7569.22
     },
     {
      "item": "830207 FUNDAÇÃO DE APOIO AO DESENVOLVIMENTO DO ENSINO, CI",
      "site": 56918524.29,
-     "fonte": 56918524.29,
-     "diferenca": 0.0
+     "fonte": 56926225.52,
+     "diferenca": -7701.23
     },
     {
      "item": "270201 FUNDACAO SERVICOS DE SAUDE DE MS",
      "site": 56863192.78,
-     "fonte": 56863192.78,
-     "diferenca": 0.0
+     "fonte": 59732443.66,
+     "diferenca": -2869250.88
     },
     {
      "item": "510906 FUNDO ESTADUAL GARANTIDOR DE PARCERIAS",
      "site": 47957559.91,
-     "fonte": 47957559.91,
-     "diferenca": 0.0
+     "fonte": 49080910.94,
+     "diferenca": -1123351.03
     },
     {
      "item": "830101 SECRETARIA DE ESTADO DE MEIO AMBIENTE, DESENVOLVIM",
      "site": 47532826.86,
-     "fonte": 47532826.86,
-     "diferenca": 0.0
+     "fonte": 47541279.25,
+     "diferenca": -8452.39
     },
     {
      "item": "850903 FUNDO DE INVESTIMENTOS ESPORTIVOS",
@@ -204,26 +325,26 @@
     {
      "item": "730101 SECRETARIA DE ESTADO DA CASA CIVIL",
      "site": 27691992.88,
-     "fonte": 27691992.88,
-     "diferenca": 0.0
+     "fonte": 27728344.72,
+     "diferenca": -36351.84
     },
     {
      "item": "330901 FUNDO ESP P APERF DESENV ATIV DEFENSORIA PUB",
      "site": 26785104.27,
-     "fonte": 26785104.27,
-     "diferenca": 0.0
+     "fonte": 27146150.02,
+     "diferenca": -361045.75
     },
     {
      "item": "530101 CONTROLADORIA GERAL DO ESTADO",
      "site": 26512282.58,
-     "fonte": 26512282.58,
-     "diferenca": 0.0
+     "fonte": 26510691.63,
+     "diferenca": 1590.95
     },
     {
      "item": "510204 FUNDAÇÃO ESTADUAL JORNALISTA LUIZ CHAGAS DE RÁDIO ",
      "site": 25114095.02,
-     "fonte": 25114095.02,
-     "diferenca": 0.0
+     "fonte": 25117965.99,
+     "diferenca": -3870.97
     },
     {
      "item": "310904 FUNDO ESTADUAL DE SEGURANÇA PÚBLICA",
@@ -234,20 +355,20 @@
     {
      "item": "830201 AGÊNCIA ESTADUAL DE METROLOGIA",
      "site": 18121964.74,
-     "fonte": 18121964.74,
-     "diferenca": 0.0
+     "fonte": 18114371.26,
+     "diferenca": 7593.48
     },
     {
      "item": "870101 SECRETARIA DE ESTADO DA CIDADANIA",
      "site": 17938255.9,
-     "fonte": 17938255.9,
-     "diferenca": 0.0
+     "fonte": 17940162.5,
+     "diferenca": -1906.6
     },
     {
      "item": "850203 FUNDAÇÃO DE DESPORTO E LAZER DE MS",
      "site": 14755366.92,
-     "fonte": 14755366.92,
-     "diferenca": 0.0
+     "fonte": 14755373.64,
+     "diferenca": -6.72
     },
     {
      "item": "830208 FUNDAÇÃO DO TRABALHO DE MATO GROSSO DO SUL",
@@ -258,8 +379,8 @@
     {
      "item": "850101 SECRETARIA DE ESTADO DE TURISMO, ESPORTE E CULTURA",
      "site": 12403344.48,
-     "fonte": 12403344.48,
-     "diferenca": 0.0
+     "fonte": 12409915.91,
+     "diferenca": -6571.43
     },
     {
      "item": "850202 FUNDAÇÃO DE TURIMO DE MS",
@@ -270,26 +391,26 @@
     {
      "item": "850904 FUNDO PARA O DESENVOLVIMENTO DO TURISMO DE MATO GR",
      "site": 10023105.15,
-     "fonte": 10023105.15,
-     "diferenca": 0.0
+     "fonte": 10024230.15,
+     "diferenca": -1125.0
     },
     {
      "item": "830202 JUNTA COMERCIAL DO ESTADO DE MATO GROSSO DO SUL",
      "site": 10012300.61,
-     "fonte": 10012300.61,
-     "diferenca": 0.0
+     "fonte": 10012304.17,
+     "diferenca": -3.56
     },
     {
      "item": "150901 FUNDO ESP. DA PROCURADORIA GERAL DO ESTADO",
      "site": 9229069.29,
-     "fonte": 9229069.29,
-     "diferenca": 0.0
+     "fonte": 9259099.53,
+     "diferenca": -30030.24
     },
     {
      "item": "830909 FUNDO ESTADUAL PRÓ-DESENVOLVIMENTO ECONÔMICO",
      "site": 8731184.9,
-     "fonte": 8731184.9,
-     "diferenca": 0.0
+     "fonte": 8734484.9,
+     "diferenca": -3300.0
     },
     {
      "item": "830910 FUNDO ESTADUAL DE DESENVOLVIMENTO SUSTENTAVEL DO B",
@@ -360,8 +481,8 @@
     {
      "item": "810901 FUNDO ESTADUAL PARA A INFÂNCIA E A ADOLESCÊNCIA",
      "site": 1786775.0,
-     "fonte": 1786775.0,
-     "diferenca": 0.0
+     "fonte": 1787375.0,
+     "diferenca": -600.0
     },
     {
      "item": "830906 FUNDO ESTADUAL DO TRABALHO DE MATO GROSSO DO SUL",
@@ -408,14 +529,14 @@
     {
      "item": "TOTAL pago",
      "site": 21499666267.52,
-     "fonte": 21499666267.52,
-     "diferenca": 0.0
+     "fonte": 21547336913.05,
+     "diferenca": -47670645.53
     },
     {
      "item": "TOTAL empenhado",
      "site": 23535774406.87,
-     "fonte": 23535774406.87,
-     "diferenca": 0.0
+     "fonte": 23556186763.0,
+     "diferenca": -20412356.13
     }
    ],
    "naoObtidos": 0,
@@ -499,11 +620,11 @@
     "TOTAL pago"
    ],
    "registrosAbrangidos": 24542,
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "deputados-estaduais": {
    "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "em": "2026-11-25T12:07:12",
    "metodo": "portal da ALEMS (/ceap/data): total do ano de cada deputado",
    "fonteUrl": "https://transparencia2.al.ms.gov.br/ceap",
    "conferidos": 25,
@@ -698,11 +819,11 @@
     "Zé Teixeira"
    ],
    "registrosAbrangidos": 5707,
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "senadores": {
    "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "em": "2026-11-25T12:07:12",
    "metodo": "dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS e cada reembolso",
    "fonteUrl": "https://adm.senado.gov.br/adm-dadosabertos/",
    "conferidos": 3,
@@ -761,63 +882,112 @@
    },
    "naoAchadosNaFonte": 0,
    "casadosHoje": 511,
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "deputados": {
-   "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "resultado": "diverge",
+   "em": "2026-11-25T12:07:12",
    "metodo": "API da Câmara: soma do valor líquido do ano de cada deputado federal de MS e cada nota",
    "fonteUrl": "https://dadosabertos.camara.leg.br/",
    "conferidos": 8,
-   "divergentes": [],
-   "comparados": [
+   "divergentes": [
     {
      "item": "Beto Pereira",
      "site": 403274.83,
-     "fonte": 403274.83,
-     "diferenca": 0.0
+     "fonte": 409520.79,
+     "diferenca": -6245.96
     },
     {
      "item": "Camila Jara",
      "site": 526768.68,
-     "fonte": 526768.66,
-     "diferenca": 0.02
+     "fonte": 540895.9,
+     "diferenca": -14127.22
     },
     {
      "item": "Dagoberto Nogueira",
      "site": 480507.4,
-     "fonte": 480507.4,
-     "diferenca": 0.0
+     "fonte": 480836.3,
+     "diferenca": -328.9
     },
     {
      "item": "Dr. Luiz Ovando",
      "site": 276274.01,
-     "fonte": 276274.01,
-     "diferenca": 0.0
+     "fonte": 276657.13,
+     "diferenca": -383.12
     },
     {
      "item": "Geraldo Resende",
      "site": 533267.12,
-     "fonte": 533267.12,
-     "diferenca": 0.0
+     "fonte": 536572.71,
+     "diferenca": -3305.59
     },
     {
      "item": "Marcos Pollon",
      "site": 334110.85,
-     "fonte": 334110.85,
-     "diferenca": 0.0
+     "fonte": 337608.46,
+     "diferenca": -3497.61
     },
     {
      "item": "Rodolfo Nogueira",
      "site": 469707.19,
-     "fonte": 469707.18,
-     "diferenca": 0.01
+     "fonte": 472163.93,
+     "diferenca": -2456.74
     },
     {
      "item": "Vander Loubet",
      "site": 401496.15,
-     "fonte": 401496.15,
-     "diferenca": 0.0
+     "fonte": 402168.27,
+     "diferenca": -672.12
+    }
+   ],
+   "comparados": [
+    {
+     "item": "Beto Pereira",
+     "site": 403274.83,
+     "fonte": 409520.79,
+     "diferenca": -6245.96
+    },
+    {
+     "item": "Camila Jara",
+     "site": 526768.68,
+     "fonte": 540895.9,
+     "diferenca": -14127.22
+    },
+    {
+     "item": "Dagoberto Nogueira",
+     "site": 480507.4,
+     "fonte": 480836.3,
+     "diferenca": -328.9
+    },
+    {
+     "item": "Dr. Luiz Ovando",
+     "site": 276274.01,
+     "fonte": 276657.13,
+     "diferenca": -383.12
+    },
+    {
+     "item": "Geraldo Resende",
+     "site": 533267.12,
+     "fonte": 536572.71,
+     "diferenca": -3305.59
+    },
+    {
+     "item": "Marcos Pollon",
+     "site": 334110.85,
+     "fonte": 337608.46,
+     "diferenca": -3497.61
+    },
+    {
+     "item": "Rodolfo Nogueira",
+     "site": 469707.19,
+     "fonte": 472163.93,
+     "diferenca": -2456.74
+    },
+    {
+     "item": "Vander Loubet",
+     "site": 401496.15,
+     "fonte": 402168.27,
+     "diferenca": -672.12
     }
    ],
    "naoObtidos": 0,
@@ -842,16 +1012,8 @@
    ],
    "registrosAbrangidos": 2701,
    "registrosPorTotais": 2701,
-   "registrosConferidosUmAUm": 2656,
+   "registrosConferidosUmAUm": 2648,
    "digestsUmAUm": {
-    "Beto Pereira": {
-     "n": 205,
-     "hash": "d685257b0e04e8a5"
-    },
-    "Rodolfo Nogueira": {
-     "n": 490,
-     "hash": "9593a9f3890b3375"
-    },
     "Vander Loubet": {
      "n": 364,
      "hash": "206ec53cc9ef01aa"
@@ -859,7 +1021,72 @@
    },
    "naoAchadosNaFonte": 0,
    "ambiguasNaFonte": 29,
-   "casadosHoje": 2656,
+   "casadosHoje": 2637,
+   "divergentesRegistros": [
+    {
+     "item": "Beto Pereira · ('02012862000160', '9572201670989', '2026-08-18')",
+     "site": 3274.24,
+     "fonte": 6150.48,
+     "diferenca": -2876.24,
+     "registro": true
+    },
+    {
+     "item": "Beto Pereira · ('02012862000160', '9572201666577', '2026-08-18')",
+     "site": 3531.72,
+     "fonte": 6719.44,
+     "diferenca": -3187.72,
+     "registro": true
+    },
+    {
+     "item": "Camila Jara · ('39763306000135', '00000112', '2026-10-28')",
+     "site": 2607.0,
+     "fonte": 2607.0,
+     "diferenca": 0.0,
+     "registro": true
+    },
+    {
+     "item": "Camila Jara · ('02012862000160', '9572204697084', '2026-09-04')",
+     "site": 188.0,
+     "fonte": 4585.88,
+     "diferenca": -4397.88,
+     "registro": true
+    },
+    {
+     "item": "Camila Jara · ('02012862000160', '9572202272583', '2026-08-21')",
+     "site": 67.0,
+     "fonte": 1423.34,
+     "diferenca": -1356.34,
+     "registro": true
+    },
+    {
+     "item": "Camila Jara · ('02012862000160', '9572201743217', '2026-08-18')",
+     "site": 116.0,
+     "fonte": 2212.27,
+     "diferenca": -2096.27,
+     "registro": true
+    },
+    {
+     "item": "Camila Jara · ('02012862000160', '9572200814877', '2026-08-12')",
+     "site": 67.0,
+     "fonte": 1926.32,
+     "diferenca": -1859.32,
+     "registro": true
+    },
+    {
+     "item": "Geraldo Resende · ('02012862000160', '9572200902649', '2026-08-12')",
+     "site": 126.87,
+     "fonte": 1948.3,
+     "diferenca": -1821.43,
+     "registro": true
+    },
+    {
+     "item": "Rodolfo Nogueira · ('02012862000160', '9572200635141', '2026-08-11')",
+     "site": 2456.75,
+     "fonte": 4913.5,
+     "diferenca": -2456.75,
+     "registro": true
+    }
+   ],
    "problemasNaFonte": [
     {
      "doc": "31501",
@@ -958,11 +1185,11 @@
      "deputado": "Dr. Luiz Ovando"
     }
    ],
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "arrecadacao": {
    "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "em": "2026-11-25T12:07:12",
    "metodo": "Siconfi RREO Anexo 3 (2026/4º bim, 2025/6º bim): ICMS mês a mês",
    "fonteUrl": "https://siconfi.tesouro.gov.br/",
    "conferidos": 20,
@@ -1124,14 +1351,14 @@
    "registrosAbrangidos": 20,
    "registrosConferidosUmAUm": 20,
    "registrosPorTotais": 0,
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "supersalarios": {
    "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "em": "2026-11-25T12:07:12",
    "metodo": "órgão por órgão no mês publicado: TJMS e TRT24 no DadosJusBr; os 39 órgãos do Governo numa consulta nova à folha do Estado filtrada por órgão (pessoas e total bruto); TCE-MS (servidores) numa consulta nova ao portal do TCE; mais 100 contracheques do Governo sorteados por dia (semente = data), um a um",
    "fonteUrl": "https://www.transparencia.ms.gov.br/",
-   "conferidos": 285,
+   "conferidos": 85,
    "divergentes": [],
    "comparados": [
     {
@@ -1643,216 +1870,6 @@
      "site": 4768570.54,
      "fonte": 4768570.54,
      "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPEN:477891022: bruto",
-     "site": 9428.13,
-     "fonte": 9428.13,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPEN:477891022: líquido",
-     "site": 7270.35,
-     "fonte": 7270.35,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPEN:11405022: bruto",
-     "site": 16012.02,
-     "fonte": 16012.02,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPEN:11405022: líquido",
-     "site": 11549.1,
-     "fonte": 11549.1,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:40256022: bruto",
-     "site": 24888.87,
-     "fonte": 24888.87,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:40256022: líquido",
-     "site": 16591.47,
-     "fonte": 16591.47,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:368463021: bruto",
-     "site": 2887.58,
-     "fonte": 2887.58,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:368463021: líquido",
-     "site": 2752.26,
-     "fonte": 2752.26,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:10945022: bruto",
-     "site": 4800.89,
-     "fonte": 4800.89,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:10945022: líquido",
-     "site": 4397.71,
-     "fonte": 4397.71,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:42043021: bruto",
-     "site": 19955.31,
-     "fonte": 19955.31,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:42043021: líquido",
-     "site": 14380.82,
-     "fonte": 14380.82,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:29951024: bruto",
-     "site": 11522.62,
-     "fonte": 11522.62,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:29951024: líquido",
-     "site": 7348.88,
-     "fonte": 7348.88,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:49469021: bruto",
-     "site": 53184.54,
-     "fonte": 53184.54,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:49469021: líquido",
-     "site": 29153.45,
-     "fonte": 29153.45,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:19592025: bruto",
-     "site": 42942.74,
-     "fonte": 42942.74,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:19592025: líquido",
-     "site": 27687.52,
-     "fonte": 27687.52,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:92463022: bruto",
-     "site": 9601.8,
-     "fonte": 9601.8,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:92463022: líquido",
-     "site": 6151.26,
-     "fonte": 6151.26,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:33386022: bruto",
-     "site": 10802.12,
-     "fonte": 10802.12,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:33386022: líquido",
-     "site": 8331.98,
-     "fonte": 8331.98,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:61971022: bruto",
-     "site": 3780.58,
-     "fonte": 3780.58,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:61971022: líquido",
-     "site": 3520.24,
-     "fonte": 3520.24,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:50552026: bruto",
-     "site": 4216.66,
-     "fonte": 4216.66,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:50552026: líquido",
-     "site": 2906.57,
-     "fonte": 2906.57,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:36620021: bruto",
-     "site": 102092.94,
-     "fonte": 102092.94,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:36620021: líquido",
-     "site": 38884.69,
-     "fonte": 38884.69,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:48881023: bruto",
-     "site": 13416.65,
-     "fonte": 13416.65,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:48881023: líquido",
-     "site": 9438.54,
-     "fonte": 9438.54,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:37522021: bruto",
-     "site": 5022.67,
-     "fonte": 5022.67,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:37522021: líquido",
-     "site": 4588.44,
-     "fonte": 4588.44,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:59179022: bruto",
-     "site": 4338.12,
-     "fonte": 4338.12,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:59179022: líquido",
-     "site": 4036.31,
-     "fonte": 4036.31,
-     "diferenca": 0.0
-    },
-    {
-     "item": "contracheque AGEPREV:103285022: bruto",
-     "site": 7476.72,
-     "fonte": 7476.72,
-     "diferenca": 0.0
     }
    ],
    "naoObtidos": 0,
@@ -1909,282 +1926,24 @@
     "Governo MS — FUNDECT",
     "TCE-MS — servidores"
    ],
-   "registrosAbrangidos": 92415,
+   "registrosAbrangidos": 0,
    "totaisDeOrgaoConferidos": {
     "orgaos": 42,
     "contrachequesNessesOrgaos": 92722
    },
-   "registrosConferidosUmAUm": 92415,
+   "registrosConferidosUmAUm": 0,
    "registrosPorTotais": 92722,
-   "digestsUmAUm": {
-    "Governo MS — AGEPREV": {
-     "n": 33837,
-     "hash": "5460776b79788e50"
-    },
-    "Governo MS — SEFAZ": {
-     "n": 850,
-     "hash": "24e7a21e2eab38ce"
-    },
-    "Governo MS — DGPC": {
-     "n": 1789,
-     "hash": "a51f4ea58ad7fd76"
-    },
-    "Governo MS — PMMS": {
-     "n": 5642,
-     "hash": "5f5caa836b761011"
-    },
-    "Governo MS — CBMMS": {
-     "n": 1841,
-     "hash": "a3ed6baff5298a11"
-    },
-    "Governo MS — FUNSAU": {
-     "n": 2154,
-     "hash": "95ec43987b3dbf4a"
-    },
-    "Governo MS — SES": {
-     "n": 1124,
-     "hash": "48d848a22b34f81f"
-    },
-    "Governo MS — SED": {
-     "n": 30883,
-     "hash": "5efcde1f7f0ff9b4"
-    },
-    "Governo MS — CASA CIVIL": {
-     "n": 130,
-     "hash": "8a6b495d0cb19444"
-    },
-    "Governo MS — IAGRO": {
-     "n": 465,
-     "hash": "743eea0a13ba2ac9"
-    },
-    "Governo MS — CGE": {
-     "n": 95,
-     "hash": "6e4b367ad8124f49"
-    },
-    "Governo MS — SEGOV": {
-     "n": 376,
-     "hash": "9a270fe2afd35871"
-    },
-    "Governo MS — UEMS": {
-     "n": 1562,
-     "hash": "e3ed272541505eb6"
-    },
-    "Governo MS — AGEMS": {
-     "n": 110,
-     "hash": "c6e6bbe91e24e2bf"
-    },
-    "Governo MS — SETESC": {
-     "n": 44,
-     "hash": "aa47a51769540746"
-    },
-    "Governo MS — AGEPEN": {
-     "n": 1845,
-     "hash": "cdf653f99692bf2d"
-    },
-    "Governo MS — GOVERNADORIA": {
-     "n": 5,
-     "hash": "c95709c6fca523de"
-    },
-    "Governo MS — FADEB/MS": {
-     "n": 3,
-     "hash": "188d48cfda3576e7"
-    },
-    "Governo MS — SEJUSP": {
-     "n": 1057,
-     "hash": "045ff6628246e540"
-    },
-    "Governo MS — AEM-MS": {
-     "n": 89,
-     "hash": "100b98081294da76"
-    },
-    "Governo MS — IMASUL": {
-     "n": 356,
-     "hash": "209562d64181a34b"
-    },
-    "Governo MS — SEMADESC": {
-     "n": 117,
-     "hash": "cd06a2dfb88cb3c8"
-    },
-    "Governo MS — SEILOG": {
-     "n": 107,
-     "hash": "644eead69e086fa1"
-    },
-    "Governo MS — AGRAER": {
-     "n": 500,
-     "hash": "a820ac4b6ce40f78"
-    },
-    "Governo MS — FUNDTUR": {
-     "n": 51,
-     "hash": "2d72d69d7d991ad2"
-    },
-    "Governo MS — SEC": {
-     "n": 75,
-     "hash": "9a1291234aa393f4"
-    },
-    "Governo MS — FCMS": {
-     "n": 120,
-     "hash": "2983e3fbaa9cb791"
-    },
-    "Governo MS — ESCOLAGOV": {
-     "n": 24,
-     "hash": "69b56f2da5487259"
-    },
-    "Governo MS — SAD": {
-     "n": 1167,
-     "hash": "12e2d3835b6d2b8a"
-    },
-    "Governo MS — AGESUL": {
-     "n": 421,
-     "hash": "8bde87c3bcbf4d43"
-    },
-    "Governo MS — FERTEL": {
-     "n": 118,
-     "hash": "b415495ada74ba6f"
-    },
-    "Governo MS — AGEHAB": {
-     "n": 104,
-     "hash": "91d6dda3cdfb43ac"
-    },
-    "Governo MS — DETRAN": {
-     "n": 849,
-     "hash": "d6ee3523ae718090"
-    },
-    "Governo MS — JUCEMS": {
-     "n": 70,
-     "hash": "3feb1f9d0f0d9e55"
-    },
-    "Governo MS — FUNTRAB": {
-     "n": 86,
-     "hash": "950603db4370d7db"
-    },
-    "Governo MS — PGE": {
-     "n": 280,
-     "hash": "7be12bb078001c37"
-    },
-    "Governo MS — SEAD": {
-     "n": 891,
-     "hash": "d11d1a68991814b1"
-    },
-    "Governo MS — FUNDESPORTE": {
-     "n": 396,
-     "hash": "8394f9d51215a120"
-    },
-    "Governo MS — FUNDECT": {
-     "n": 2206,
-     "hash": "c329a623b8fb7ab1"
-    }
-   },
+   "digestsUmAUm": {},
    "soNaFonte": 0,
    "amostraContracheques": {
-    "sorteados": 100,
-    "conferidos": 100,
-    "hashes": {
-     "AGEPEN:477891022": "6dde0ccdcc92",
-     "AGEPEN:11405022": "197d5723e276",
-     "AGEPREV:40256022": "31614f527fe7",
-     "AGEPREV:368463021": "3c7836de9339",
-     "AGEPREV:10945022": "fac78dcd2805",
-     "AGEPREV:42043021": "9e80ca92df81",
-     "AGEPREV:29951024": "1239b218f1bf",
-     "AGEPREV:49469021": "e529cc848c0e",
-     "AGEPREV:19592025": "c7758e645929",
-     "AGEPREV:92463022": "2daa8513fb96",
-     "AGEPREV:33386022": "177ff8a9da3c",
-     "AGEPREV:61971022": "76fcb3a3d07f",
-     "AGEPREV:50552026": "f53bd668eaa5",
-     "AGEPREV:36620021": "c293905e696d",
-     "AGEPREV:48881023": "a68308152795",
-     "AGEPREV:37522021": "93f8a06cbf07",
-     "AGEPREV:59179022": "30ce1e5f6c2a",
-     "AGEPREV:103285022": "19495b3754b9",
-     "AGEPREV:133381022": "8b77eae4bdc5",
-     "AGEPREV:384748021": "5dafc1b1e791",
-     "AGEPREV:12401024": "8dc15eaac3bb",
-     "AGEPREV:44462022": "407f1d640fc0",
-     "AGEPREV:103550021": "2d9264386e46",
-     "AGEPREV:102493024": "594ee50d6e05",
-     "AGEPREV:888021": "919a7bd2106d",
-     "AGEPREV:103871021": "786c195735db",
-     "AGEPREV:56251022": "35c4c097f10e",
-     "AGEPREV:130786025": "63f546cb7644",
-     "AGEPREV:66052022": "c5269c5bed01",
-     "AGEPREV:94690021": "c62409ee2e9a",
-     "AGEPREV:86591023": "65341ba6ab05",
-     "AGEPREV:73101021": "cc47d22ddd55",
-     "AGEPREV:54396022": "38656ef3b712",
-     "AGEPREV:18142022": "4ce29ab83af7",
-     "AGEPREV:22791024": "b751da96c722",
-     "AGEPREV:3371021": "ee781856a4de",
-     "AGEPREV:39322025": "27d9aa683c44",
-     "AGEPREV:439738021": "556cefbcee40",
-     "AGEPREV:4979025": "ee04c21af70c",
-     "AGESUL:14791021": "08606bc41f62",
-     "AGRAER:480340023": "cb8d93e2ece6",
-     "CBMMS:124855022": "0895613bd049",
-     "CBMMS:508962021": "8139565f5ff0",
-     "DETRAN:503405021": "156b801550ba",
-     "DGPC:123746024": "64f8f87008dc",
-     "DGPC:115252025": "3e8d3bd3d718",
-     "FUNDECT:821903022": "6ad994783f93",
-     "FUNDECT:821433021": "5abebd74ebad",
-     "FUNDESPORTE:828197021": "ff19fc39f9bd",
-     "FUNSAU:93736023": "40371c012265",
-     "FUNSAU:25534021": "33ff47015ab7",
-     "IAGRO:83548021": "f9d707b6c08a",
-     "PMMS:76969024": "c33bee86f9d6",
-     "PMMS:14607021": "40bd05dcee30",
-     "PMMS:426866021": "6c6f2f85d5ad",
-     "PMMS:81087021": "f3dcc6eda6cd",
-     "PMMS:509165021": "edadf1a1e099",
-     "PMMS:814556021": "4ad48eca15df",
-     "SAD:128295024": "79f93a17ca6e",
-     "SEAD:35451023": "67088e8fbf3c",
-     "SED:480852027": "6c9c4a268b10",
-     "SED:56762027": "35a2cbc75b0e",
-     "SED:503708024": "f62f5f2f6164",
-     "SED:511327021": "5cb648fea0ee",
-     "SED:471382033": "80b0e188598e",
-     "SED:506127021": "be544b84c93c",
-     "SED:61167022": "1c454bf2ba96",
-     "SED:104825021": "2e93c1d4eb78",
-     "SED:511689021": "4517291f76dc",
-     "SED:52664021": "2ee16d5f1103",
-     "SED:58698035": "9e6b17f6b532",
-     "SED:430858021": "5822a48224f1",
-     "SED:66078032": "08071d2099e5",
-     "SED:819874029": "e496402788b8",
-     "SED:508216033": "9ba16f69d602",
-     "SED:4055036": "212e283a2d7b",
-     "SED:121478037": "cb6298b7b53d",
-     "SED:116472059": "33cce40ff5e8",
-     "SED:118891039": "d51ce406437d",
-     "SED:484893022": "7f49ecbbaa71",
-     "SED:112327021": "e9c9ca67bfe3",
-     "SED:825182021": "de78cc1cc6f9",
-     "SED:433099033": "c304560146cd",
-     "SED:83679023": "6e7775f7e80f",
-     "SED:82037021": "d387622c0cb7",
-     "SED:824898021": "40e40765d368",
-     "SED:127962021": "693bdf8da168",
-     "SED:131025021": "d28194330ac1",
-     "SED:59246021": "0b078ff75b79",
-     "SED:87222033": "ef4a2df04730",
-     "SED:126170021": "5003cbc5e093",
-     "SED:109085021": "b1f05f2b9fa1",
-     "SED:816208022": "47b3ab065465",
-     "SED:128300024": "b74e3cf474d7",
-     "SEFAZ:467351021": "edf522177922",
-     "SEGOV:494734023": "41385ed5b637",
-     "SEJUSP:508525022": "65e5a6861e4e",
-     "SES:42265026": "68306956c525",
-     "UEMS:486822021": "2ea4c875c03c",
-     "UEMS:818647022": "37eed40726cc"
-    }
+    "sorteados": 0,
+    "conferidos": 0,
+    "hashes": {}
    },
    "independencia": "mesma fonte da coleta (folha do Estado, portal do TCE-MS e DadosJusBr), por outra consulta: confirma a leitura, não é fonte independente",
    "fonteIndependente": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T12:07:12",
     "periodo": "2º quadrimestre de 2026",
     "mesFolha": "10/2026",
     "tolerancia": 10,
@@ -2209,734 +1968,734 @@
     "fonteUrl": "https://siconfi.tesouro.gov.br/",
     "nota": "fonte independente, só no agregado do Poder Executivo; não conta contracheque conferido"
    },
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "shows": {
    "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "em": "2026-11-25T12:07:12",
    "metodo": "PNCP: 150 contratações de show sorteadas, valor de cada uma na consulta pública",
    "fonteUrl": "https://pncp.gov.br/",
    "conferidos": 150,
    "divergentes": [],
    "comparados": [
     {
-     "item": "15579196000198-1-000873/2026",
-     "site": 12500.0,
-     "fonte": 12500.0,
+     "item": "15389588000194-1-000096/2026",
+     "site": 340000.0,
+     "fonte": 340000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000435/2026",
-     "site": 25000.0,
-     "fonte": 25000.0,
+     "item": "15579196000198-1-000656/2026",
+     "site": 2900.0,
+     "fonte": 2900.0,
      "diferenca": 0.0
     },
     {
-     "item": "15389588000194-1-000003/2026",
-     "site": 290000.0,
-     "fonte": 290000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03073673000160-1-000039/2026",
-     "site": 39000.0,
-     "fonte": 39000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15479751000100-1-000044/2026",
-     "site": 60000.0,
-     "fonte": 60000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000784/2026",
-     "site": 15000.0,
-     "fonte": 15000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000364/2026",
-     "site": 45000.0,
-     "fonte": 45000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000493/2026",
-     "site": 7000.0,
-     "fonte": 7000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000668/2026",
-     "site": 15000.0,
-     "fonte": 15000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15487793000192-1-000011/2026",
-     "site": 50000.0,
-     "fonte": 50000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000634/2026",
-     "site": 5000.0,
-     "fonte": 5000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000070/2026",
-     "site": 16000.0,
-     "fonte": 16000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03563335000106-1-000009/2026",
-     "site": 60000.0,
-     "fonte": 60000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000418/2026",
-     "site": 7000.0,
-     "fonte": 7000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03342920000186-1-000027/2026",
-     "site": 378000.0,
-     "fonte": 378000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000825/2026",
+     "item": "03173317000118-1-000008/2026",
      "site": 80000.0,
      "fonte": 80000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000913/2026",
-     "site": 50000.0,
-     "fonte": 50000.0,
+     "item": "15579196000198-1-000238/2026",
+     "site": 10000.0,
+     "fonte": 10000.0,
      "diferenca": 0.0
     },
     {
-     "item": "03342938000188-1-000188/2026",
+     "item": "15579196000198-1-000414/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000549/2026",
+     "site": 3500.0,
+     "fonte": 3500.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000764/2026",
+     "site": 10000.0,
+     "fonte": 10000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03107539000132-1-000197/2026",
+     "site": 147000.0,
+     "fonte": 147000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000626/2026",
+     "site": 45000.0,
+     "fonte": 45000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000425/2026",
      "site": 60000.0,
      "fonte": 60000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000906/2026",
-     "site": 16000.0,
-     "fonte": 16000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000420/2026",
-     "site": 10000.0,
-     "fonte": 10000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000954/2026",
-     "site": 85000.0,
-     "fonte": 85000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000951/2026",
-     "site": 16000.0,
-     "fonte": 16000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15609665000174-1-000001/2026",
-     "site": 315000.0,
-     "fonte": 315000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000411/2026",
-     "site": 25000.0,
-     "fonte": 25000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000547/2026",
-     "site": 18000.0,
-     "fonte": 18000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03576220000156-1-000128/2026",
-     "site": 40000.0,
-     "fonte": 40000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000014/2026",
-     "site": 8000.0,
-     "fonte": 8000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000636/2026",
-     "site": 30000.0,
-     "fonte": 30000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000126/2026",
-     "site": 140000.0,
-     "fonte": 140000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03576220000156-1-000158/2026",
-     "site": 40735.0,
-     "fonte": 40735.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000018/2026",
-     "site": 25000.0,
-     "fonte": 25000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000652/2026",
-     "site": 10000.0,
-     "fonte": 10000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03576220000156-1-000150/2026",
-     "site": 115000.0,
-     "fonte": 115000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000453/2026",
-     "site": 7000.0,
-     "fonte": 7000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03184041000173-1-000046/2026",
-     "site": 1500000.0,
-     "fonte": 1500000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000135/2026",
-     "site": 12500.0,
-     "fonte": 12500.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000596/2026",
-     "site": 30000.0,
-     "fonte": 30000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000031/2026",
-     "site": 8000.0,
-     "fonte": 8000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000608/2026",
-     "site": 20000.0,
-     "fonte": 20000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000721/2026",
-     "site": 50000.0,
-     "fonte": 50000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000854/2026",
-     "site": 10000.0,
-     "fonte": 10000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "01989813000119-1-000106/2026",
-     "site": 236759.0,
-     "fonte": 236759.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000499/2026",
-     "site": 10000.0,
-     "fonte": 10000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000872/2026",
-     "site": 12000.0,
-     "fonte": 12000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03501533000145-1-000026/2026",
-     "site": 150000.0,
-     "fonte": 150000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000623/2026",
-     "site": 25000.0,
-     "fonte": 25000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000337/2026",
-     "site": 10000.0,
-     "fonte": 10000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000007/2026",
-     "site": 140000.0,
-     "fonte": 140000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15389596000130-1-000127/2026",
-     "site": 265000.0,
-     "fonte": 265000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000848/2026",
-     "site": 20000.0,
-     "fonte": 20000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000073/2026",
-     "site": 8000.0,
-     "fonte": 8000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000315/2026",
-     "site": 5000.0,
-     "fonte": 5000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000085/2026",
-     "site": 10000.0,
-     "fonte": 10000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000061/2026",
-     "site": 100000.0,
-     "fonte": 100000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000334/2026",
-     "site": 3500.0,
-     "fonte": 3500.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000577/2026",
-     "site": 25000.0,
-     "fonte": 25000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000827/2026",
-     "site": 85000.0,
-     "fonte": 85000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000944/2026",
-     "site": 12500.0,
-     "fonte": 12500.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000458/2026",
-     "site": 20000.0,
-     "fonte": 20000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03501541000191-1-000025/2026",
-     "site": 100000.0,
-     "fonte": 100000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000865/2026",
-     "site": 130000.0,
-     "fonte": 130000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000884/2026",
-     "site": 95000.0,
-     "fonte": 95000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000714/2026",
-     "site": 15000.0,
-     "fonte": 15000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000481/2026",
-     "site": 30000.0,
-     "fonte": 30000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "04808290000155-1-000050/2026",
-     "site": 20000.0,
-     "fonte": 20000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000195/2026",
-     "site": 120000.0,
-     "fonte": 120000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000861/2026",
-     "site": 180000.0,
-     "fonte": 180000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03563335000106-1-000007/2026",
-     "site": 32000.0,
-     "fonte": 32000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000780/2026",
-     "site": 10000.0,
-     "fonte": 10000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000798/2026",
-     "site": 3500.0,
-     "fonte": 3500.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000121/2026",
-     "site": 25000.0,
-     "fonte": 25000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000580/2026",
-     "site": 200000.0,
-     "fonte": 200000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03155934000190-1-000067/2026",
-     "site": 15000.0,
-     "fonte": 15000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15609665000174-1-000021/2026",
-     "site": 30000.0,
-     "fonte": 30000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000001/2026",
-     "site": 3500.0,
-     "fonte": 3500.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000267/2026",
-     "site": 1000.0,
-     "fonte": 1000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03575727000195-1-000009/2026",
-     "site": 9000.0,
-     "fonte": 9000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "02925027000110-1-000024/2026",
-     "site": 250000.0,
-     "fonte": 250000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000360/2026",
-     "site": 12000.0,
-     "fonte": 12000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000182/2026",
-     "site": 200000.0,
-     "fonte": 200000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000084/2026",
-     "site": 30000.0,
-     "fonte": 30000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000566/2026",
-     "site": 12000.0,
-     "fonte": 12000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000373/2026",
-     "site": 5000.0,
-     "fonte": 5000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15609665000174-1-000009/2026",
-     "site": 35000.0,
-     "fonte": 35000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000403/2026",
-     "site": 24000.0,
-     "fonte": 24000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000225/2026",
-     "site": 18000.0,
-     "fonte": 18000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000510/2026",
-     "site": 15000.0,
-     "fonte": 15000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000616/2026",
-     "site": 3500.0,
-     "fonte": 3500.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000077/2026",
-     "site": 25000.0,
-     "fonte": 25000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000240/2026",
-     "site": 4000.0,
-     "fonte": 4000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03107539000132-1-000093/2026",
-     "site": 25000.0,
-     "fonte": 25000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000397/2026",
-     "site": 10000.0,
-     "fonte": 10000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000096/2026",
-     "site": 7500.0,
-     "fonte": 7500.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000590/2026",
-     "site": 100000.0,
-     "fonte": 100000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000739/2026",
-     "site": 12500.0,
-     "fonte": 12500.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000588/2026",
-     "site": 35000.0,
-     "fonte": 35000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000226/2026",
-     "site": 8000.0,
-     "fonte": 8000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000326/2026",
-     "site": 24000.0,
-     "fonte": 24000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "43669583000150-1-000006/2026",
-     "site": 278000.0,
-     "fonte": 278000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000186/2026",
-     "site": 60000.0,
-     "fonte": 60000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000819/2026",
-     "site": 100000.0,
-     "fonte": 100000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000807/2026",
-     "site": 7000.0,
-     "fonte": 7000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000802/2026",
+     "item": "15579196000198-1-000006/2026",
      "site": 55000.0,
      "fonte": 55000.0,
      "diferenca": 0.0
     },
     {
-     "item": "03342920000186-1-000022/2026",
-     "site": 500000.0,
-     "fonte": 500000.0,
+     "item": "21761104000199-1-000006/2026",
+     "site": 13596.0,
+     "fonte": 13596.0,
      "diferenca": 0.0
     },
     {
-     "item": "03903176000141-1-000010/2026",
-     "site": 260000.0,
-     "fonte": 260000.0,
+     "item": "15579196000198-1-000747/2026",
+     "site": 12000.0,
+     "fonte": 12000.0,
      "diferenca": 0.0
     },
     {
-     "item": "03741683000126-1-000025/2026",
-     "site": 572000.0,
-     "fonte": 572000.0,
+     "item": "03155934000190-1-000105/2026",
+     "site": 3800.0,
+     "fonte": 3800.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000759/2026",
-     "site": 100000.0,
-     "fonte": 100000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15579196000198-1-000387/2026",
-     "site": 60000.0,
-     "fonte": 60000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03217916000196-1-000002/2026",
-     "site": 155000.0,
-     "fonte": 155000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03501533000145-1-000016/2026",
+     "item": "15579196000198-1-000340/2026",
      "site": 10000.0,
      "fonte": 10000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000570/2026",
+     "item": "15579196000198-1-000330/2026",
+     "site": 45000.0,
+     "fonte": 45000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000683/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15609665000174-1-000005/2026",
+     "site": 13000.0,
+     "fonte": 13000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000843/2026",
      "site": 15000.0,
      "fonte": 15000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000513/2026",
+     "item": "15579196000198-1-000062/2026",
+     "site": 4000.0,
+     "fonte": 4000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000100/2026",
      "site": 10000.0,
      "fonte": 10000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000907/2026",
-     "site": 8000.0,
-     "fonte": 8000.0,
+     "item": "15579196000198-1-000505/2026",
+     "site": 12000.0,
+     "fonte": 12000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000475/2026",
-     "site": 10000.0,
-     "fonte": 10000.0,
+     "item": "15579196000198-1-000244/2026",
+     "site": 15000.0,
+     "fonte": 15000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000034/2026",
-     "site": 10000.0,
-     "fonte": 10000.0,
+     "item": "15579196000198-1-000628/2026",
+     "site": 35000.0,
+     "fonte": 35000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000691/2026",
-     "site": 24000.0,
-     "fonte": 24000.0,
+     "item": "15579196000198-1-000456/2026",
+     "site": 12000.0,
+     "fonte": 12000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000065/2026",
+     "item": "15579196000198-1-000058/2026",
+     "site": 150000.0,
+     "fonte": 150000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000141/2026",
+     "site": 3500.0,
+     "fonte": 3500.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000887/2026",
      "site": 40000.0,
      "fonte": 40000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000457/2026",
-     "site": 15000.0,
-     "fonte": 15000.0,
+     "item": "15579196000198-1-000516/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000738/2026",
+     "item": "15487793000192-1-000004/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000847/2026",
+     "site": 12000.0,
+     "fonte": 12000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000086/2026",
      "site": 7000.0,
      "fonte": 7000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15579196000198-1-000915/2026",
+     "item": "15579196000198-1-000772/2026",
+     "site": 85000.0,
+     "fonte": 85000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000502/2026",
+     "site": 15000.0,
+     "fonte": 15000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03184058000120-1-000118/2026",
+     "site": 120000.0,
+     "fonte": 120000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000573/2026",
      "site": 12000.0,
      "fonte": 12000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03783859000102-1-000026/2026",
+     "site": 300000.0,
+     "fonte": 300000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000574/2026",
+     "site": 3500.0,
+     "fonte": 3500.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03343118000100-1-000010/2026",
+     "site": 450000.0,
+     "fonte": 450000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000108/2026",
+     "site": 6666.0,
+     "fonte": 6666.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000685/2026",
+     "site": 15000.0,
+     "fonte": 15000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000863/2026",
+     "site": 10000.0,
+     "fonte": 10000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000725/2026",
+     "site": 500000.0,
+     "fonte": 500000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000610/2026",
+     "site": 120000.0,
+     "fonte": 120000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03155934000190-1-000141/2026",
+     "site": 45000.0,
+     "fonte": 45000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000728/2026",
+     "site": 254000.0,
+     "fonte": 254000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000413/2026",
+     "site": 120000.0,
+     "fonte": 120000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000959/2026",
+     "site": 10000.0,
+     "fonte": 10000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000809/2026",
+     "site": 20000.0,
+     "fonte": 20000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000501/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000118/2026",
+     "site": 9000.0,
+     "fonte": 9000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000727/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03217916000196-1-000044/2026",
+     "site": 300000.0,
+     "fonte": 300000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000932/2026",
+     "site": 12000.0,
+     "fonte": 12000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03783859000102-1-000020/2026",
+     "site": 250000.0,
+     "fonte": 250000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15609665000174-1-000010/2026",
+     "site": 30000.0,
+     "fonte": 30000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15609665000174-1-000011/2026",
+     "site": 18000.0,
+     "fonte": 18000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000896/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03184041000173-1-000037/2026",
+     "site": 550000.0,
+     "fonte": 550000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03681582000107-1-000073/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000463/2026",
+     "site": 90000.0,
+     "fonte": 90000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000299/2026",
+     "site": 200000.0,
+     "fonte": 200000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000138/2026",
+     "site": 10000.0,
+     "fonte": 10000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000941/2026",
+     "site": 120000.0,
+     "fonte": 120000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000519/2026",
+     "site": 12000.0,
+     "fonte": 12000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000756/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000333/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03184066000177-1-000012/2026",
+     "site": 210000.0,
+     "fonte": 210000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000935/2026",
+     "site": 15000.0,
+     "fonte": 15000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "37226644000102-1-000035/2026",
+     "site": 150000.0,
+     "fonte": 150000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000557/2026",
+     "site": 8000.0,
+     "fonte": 8000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000958/2026",
+     "site": 12500.0,
+     "fonte": 12500.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000004/2026",
+     "site": 4500.0,
+     "fonte": 4500.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000442/2026",
+     "site": 60000.0,
+     "fonte": 60000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000956/2026",
+     "site": 10000.0,
+     "fonte": 10000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000527/2026",
+     "site": 55000.0,
+     "fonte": 55000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15487793000192-1-000001/2026",
+     "site": 180000.0,
+     "fonte": 180000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000707/2026",
+     "site": 80000.0,
+     "fonte": 80000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000052/2026",
+     "site": 10000.0,
+     "fonte": 10000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000960/2026",
+     "site": 10000.0,
+     "fonte": 10000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03343118000100-1-000099/2026",
+     "site": 140000.0,
+     "fonte": 140000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000957/2026",
+     "site": 15000.0,
+     "fonte": 15000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000506/2026",
+     "site": 200000.0,
+     "fonte": 200000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000904/2026",
+     "site": 15000.0,
+     "fonte": 15000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000107/2026",
+     "site": 10000.0,
+     "fonte": 10000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000690/2026",
+     "site": 7000.0,
+     "fonte": 7000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000824/2026",
+     "site": 55000.0,
+     "fonte": 55000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03575727000195-1-000014/2026",
+     "site": 96000.0,
+     "fonte": 96000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000797/2026",
+     "site": 18000.0,
+     "fonte": 18000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000005/2026",
+     "site": 12000.0,
+     "fonte": 12000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15452981000185-1-000005/2026",
+     "site": 10800.0,
+     "fonte": 10800.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000801/2026",
+     "site": 140000.0,
+     "fonte": 140000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000313/2026",
+     "site": 35000.0,
+     "fonte": 35000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000916/2026",
+     "site": 120000.0,
+     "fonte": 120000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03184041000173-1-000044/2026",
+     "site": 203000.0,
+     "fonte": 203000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03184041000173-1-000094/2026",
+     "site": 215000.0,
+     "fonte": 215000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03505013000100-1-000051/2026",
+     "site": 553000.0,
+     "fonte": 553000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000666/2026",
+     "site": 12000.0,
+     "fonte": 12000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000783/2026",
+     "site": 3500.0,
+     "fonte": 3500.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15487793000192-1-000003/2026",
+     "site": 20000.0,
+     "fonte": 20000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03505013000100-1-000058/2026",
+     "site": 36000.0,
+     "fonte": 36000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000495/2026",
+     "site": 15000.0,
+     "fonte": 15000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03184058000120-1-000038/2026",
+     "site": 230000.0,
+     "fonte": 230000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03162047000140-1-000003/2026",
+     "site": 140000.0,
+     "fonte": 140000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000335/2026",
+     "site": 45000.0,
+     "fonte": 45000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000380/2026",
+     "site": 143000.0,
+     "fonte": 143000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000389/2026",
+     "site": 15000.0,
+     "fonte": 15000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03576220000156-1-000096/2026",
+     "site": 40000.0,
+     "fonte": 40000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000559/2026",
+     "site": 35000.0,
+     "fonte": 35000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000341/2026",
+     "site": 15000.0,
+     "fonte": 15000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000587/2026",
+     "site": 7000.0,
+     "fonte": 7000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000319/2026",
+     "site": 10000.0,
+     "fonte": 10000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000822/2026",
+     "site": 140000.0,
+     "fonte": 140000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000512/2026",
+     "site": 8000.0,
+     "fonte": 8000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000890/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000629/2026",
+     "site": 10000.0,
+     "fonte": 10000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000346/2026",
+     "site": 10000.0,
+     "fonte": 10000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03217916000196-1-000029/2026",
+     "site": 340000.0,
+     "fonte": 340000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000071/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15579196000198-1-000515/2026",
+     "site": 155000.0,
+     "fonte": 155000.0,
      "diferenca": 0.0
     }
    ],
@@ -2951,618 +2710,618 @@
    "metodologia": "ICP 2.0",
    "unidadesConferidas": 150,
    "idsConferidos": [
-    "01989813000119-1-000106/2026",
-    "02925027000110-1-000024/2026",
-    "03073673000160-1-000039/2026",
-    "03107539000132-1-000093/2026",
-    "03107539000132-1-000101/2026",
-    "03155934000190-1-000067/2026",
-    "03184041000173-1-000046/2026",
-    "03184041000173-1-000083/2026",
-    "03184041000173-1-000085/2026",
-    "03184066000177-1-000043/2026",
-    "03217916000196-1-000002/2026",
-    "03342920000186-1-000022/2026",
-    "03342920000186-1-000026/2026",
-    "03342920000186-1-000027/2026",
-    "03342938000188-1-000188/2026",
-    "03501533000145-1-000016/2026",
-    "03501533000145-1-000026/2026",
-    "03501541000191-1-000025/2026",
-    "03563335000106-1-000007/2026",
-    "03563335000106-1-000009/2026",
-    "03575727000195-1-000009/2026",
-    "03576220000156-1-000089/2026",
-    "03576220000156-1-000128/2026",
-    "03576220000156-1-000150/2026",
-    "03576220000156-1-000158/2026",
-    "03741683000126-1-000025/2026",
-    "03903176000141-1-000010/2026",
-    "04808290000155-1-000050/2026",
-    "15389588000194-1-000003/2026",
-    "15389596000130-1-000127/2026",
-    "15479751000100-1-000044/2026",
-    "15487793000192-1-000011/2026",
-    "15579196000198-1-000001/2026",
-    "15579196000198-1-000007/2026",
-    "15579196000198-1-000012/2026",
-    "15579196000198-1-000014/2026",
-    "15579196000198-1-000018/2026",
-    "15579196000198-1-000031/2026",
-    "15579196000198-1-000034/2026",
-    "15579196000198-1-000061/2026",
-    "15579196000198-1-000063/2026",
-    "15579196000198-1-000065/2026",
-    "15579196000198-1-000070/2026",
-    "15579196000198-1-000073/2026",
-    "15579196000198-1-000077/2026",
-    "15579196000198-1-000084/2026",
-    "15579196000198-1-000085/2026",
-    "15579196000198-1-000096/2026",
-    "15579196000198-1-000111/2026",
-    "15579196000198-1-000121/2026",
-    "15579196000198-1-000124/2026",
-    "15579196000198-1-000126/2026",
-    "15579196000198-1-000129/2026",
-    "15579196000198-1-000135/2026",
-    "15579196000198-1-000144/2026",
-    "15579196000198-1-000182/2026",
-    "15579196000198-1-000186/2026",
-    "15579196000198-1-000195/2026",
-    "15579196000198-1-000225/2026",
-    "15579196000198-1-000226/2026",
-    "15579196000198-1-000240/2026",
-    "15579196000198-1-000267/2026",
-    "15579196000198-1-000268/2026",
-    "15579196000198-1-000315/2026",
-    "15579196000198-1-000326/2026",
-    "15579196000198-1-000334/2026",
-    "15579196000198-1-000337/2026",
-    "15579196000198-1-000360/2026",
-    "15579196000198-1-000364/2026",
-    "15579196000198-1-000373/2026",
-    "15579196000198-1-000378/2026",
-    "15579196000198-1-000387/2026",
-    "15579196000198-1-000397/2026",
-    "15579196000198-1-000398/2026",
-    "15579196000198-1-000403/2026",
-    "15579196000198-1-000411/2026",
-    "15579196000198-1-000418/2026",
-    "15579196000198-1-000420/2026",
-    "15579196000198-1-000435/2026",
-    "15579196000198-1-000453/2026",
-    "15579196000198-1-000457/2026",
-    "15579196000198-1-000458/2026",
-    "15579196000198-1-000475/2026",
-    "15579196000198-1-000481/2026",
-    "15579196000198-1-000493/2026",
-    "15579196000198-1-000499/2026",
-    "15579196000198-1-000510/2026",
-    "15579196000198-1-000513/2026",
-    "15579196000198-1-000531/2026",
-    "15579196000198-1-000544/2026",
-    "15579196000198-1-000547/2026",
-    "15579196000198-1-000561/2026",
-    "15579196000198-1-000566/2026",
-    "15579196000198-1-000570/2026",
-    "15579196000198-1-000577/2026",
-    "15579196000198-1-000580/2026",
-    "15579196000198-1-000585/2026",
-    "15579196000198-1-000588/2026",
-    "15579196000198-1-000590/2026",
-    "15579196000198-1-000596/2026",
-    "15579196000198-1-000608/2026",
-    "15579196000198-1-000616/2026",
-    "15579196000198-1-000623/2026",
-    "15579196000198-1-000634/2026",
-    "15579196000198-1-000636/2026",
-    "15579196000198-1-000645/2026",
-    "15579196000198-1-000652/2026",
-    "15579196000198-1-000653/2026",
-    "15579196000198-1-000668/2026",
-    "15579196000198-1-000691/2026",
-    "15579196000198-1-000702/2026",
-    "15579196000198-1-000714/2026",
-    "15579196000198-1-000719/2026",
-    "15579196000198-1-000721/2026",
-    "15579196000198-1-000738/2026",
-    "15579196000198-1-000739/2026",
-    "15579196000198-1-000759/2026",
-    "15579196000198-1-000778/2026",
-    "15579196000198-1-000780/2026",
-    "15579196000198-1-000784/2026",
-    "15579196000198-1-000794/2026",
-    "15579196000198-1-000798/2026",
-    "15579196000198-1-000802/2026",
-    "15579196000198-1-000807/2026",
-    "15579196000198-1-000819/2026",
-    "15579196000198-1-000825/2026",
-    "15579196000198-1-000827/2026",
-    "15579196000198-1-000840/2026",
-    "15579196000198-1-000848/2026",
-    "15579196000198-1-000854/2026",
-    "15579196000198-1-000861/2026",
-    "15579196000198-1-000865/2026",
-    "15579196000198-1-000872/2026",
-    "15579196000198-1-000873/2026",
-    "15579196000198-1-000884/2026",
-    "15579196000198-1-000888/2026",
-    "15579196000198-1-000906/2026",
-    "15579196000198-1-000907/2026",
-    "15579196000198-1-000908/2026",
-    "15579196000198-1-000913/2026",
-    "15579196000198-1-000915/2026",
-    "15579196000198-1-000944/2026",
-    "15579196000198-1-000951/2026",
-    "15579196000198-1-000954/2026",
-    "15609665000174-1-000001/2026",
-    "15609665000174-1-000009/2026",
-    "15609665000174-1-000018/2026",
-    "15609665000174-1-000021/2026",
-    "28371044000147-1-000006/2026",
-    "43669583000150-1-000006/2026"
+    "03107539000132-1-000061/2026",
+    "03107539000132-1-000106/2026",
+    "03107539000132-1-000197/2026",
+    "03155934000190-1-000011/2026",
+    "03155934000190-1-000105/2026",
+    "03155934000190-1-000141/2026",
+    "03156999000150-1-000028/2026",
+    "03162047000140-1-000003/2026",
+    "03173317000118-1-000008/2026",
+    "03184041000173-1-000037/2026",
+    "03184041000173-1-000044/2026",
+    "03184041000173-1-000094/2026",
+    "03184058000120-1-000038/2026",
+    "03184058000120-1-000118/2026",
+    "03184066000177-1-000011/2026",
+    "03184066000177-1-000012/2026",
+    "03217916000196-1-000029/2026",
+    "03217916000196-1-000044/2026",
+    "03343118000100-1-000010/2026",
+    "03343118000100-1-000099/2026",
+    "03505013000100-1-000051/2026",
+    "03505013000100-1-000058/2026",
+    "03563335000106-1-000026/2026",
+    "03575727000195-1-000014/2026",
+    "03576220000156-1-000096/2026",
+    "03681582000107-1-000073/2026",
+    "03783859000102-1-000020/2026",
+    "03783859000102-1-000026/2026",
+    "03903176000141-1-000009/2026",
+    "15389588000194-1-000096/2026",
+    "15452981000185-1-000005/2026",
+    "15487793000192-1-000001/2026",
+    "15487793000192-1-000003/2026",
+    "15487793000192-1-000004/2026",
+    "15579196000198-1-000004/2026",
+    "15579196000198-1-000005/2026",
+    "15579196000198-1-000006/2026",
+    "15579196000198-1-000023/2026",
+    "15579196000198-1-000032/2026",
+    "15579196000198-1-000052/2026",
+    "15579196000198-1-000057/2026",
+    "15579196000198-1-000058/2026",
+    "15579196000198-1-000062/2026",
+    "15579196000198-1-000071/2026",
+    "15579196000198-1-000086/2026",
+    "15579196000198-1-000100/2026",
+    "15579196000198-1-000107/2026",
+    "15579196000198-1-000108/2026",
+    "15579196000198-1-000118/2026",
+    "15579196000198-1-000138/2026",
+    "15579196000198-1-000141/2026",
+    "15579196000198-1-000183/2026",
+    "15579196000198-1-000196/2026",
+    "15579196000198-1-000238/2026",
+    "15579196000198-1-000244/2026",
+    "15579196000198-1-000289/2026",
+    "15579196000198-1-000293/2026",
+    "15579196000198-1-000299/2026",
+    "15579196000198-1-000309/2026",
+    "15579196000198-1-000313/2026",
+    "15579196000198-1-000319/2026",
+    "15579196000198-1-000330/2026",
+    "15579196000198-1-000333/2026",
+    "15579196000198-1-000335/2026",
+    "15579196000198-1-000340/2026",
+    "15579196000198-1-000341/2026",
+    "15579196000198-1-000346/2026",
+    "15579196000198-1-000349/2026",
+    "15579196000198-1-000356/2026",
+    "15579196000198-1-000372/2026",
+    "15579196000198-1-000380/2026",
+    "15579196000198-1-000389/2026",
+    "15579196000198-1-000413/2026",
+    "15579196000198-1-000414/2026",
+    "15579196000198-1-000425/2026",
+    "15579196000198-1-000442/2026",
+    "15579196000198-1-000456/2026",
+    "15579196000198-1-000463/2026",
+    "15579196000198-1-000495/2026",
+    "15579196000198-1-000501/2026",
+    "15579196000198-1-000502/2026",
+    "15579196000198-1-000505/2026",
+    "15579196000198-1-000506/2026",
+    "15579196000198-1-000512/2026",
+    "15579196000198-1-000515/2026",
+    "15579196000198-1-000516/2026",
+    "15579196000198-1-000519/2026",
+    "15579196000198-1-000527/2026",
+    "15579196000198-1-000549/2026",
+    "15579196000198-1-000550/2026",
+    "15579196000198-1-000557/2026",
+    "15579196000198-1-000559/2026",
+    "15579196000198-1-000565/2026",
+    "15579196000198-1-000573/2026",
+    "15579196000198-1-000574/2026",
+    "15579196000198-1-000587/2026",
+    "15579196000198-1-000606/2026",
+    "15579196000198-1-000610/2026",
+    "15579196000198-1-000612/2026",
+    "15579196000198-1-000626/2026",
+    "15579196000198-1-000628/2026",
+    "15579196000198-1-000629/2026",
+    "15579196000198-1-000654/2026",
+    "15579196000198-1-000656/2026",
+    "15579196000198-1-000662/2026",
+    "15579196000198-1-000666/2026",
+    "15579196000198-1-000683/2026",
+    "15579196000198-1-000685/2026",
+    "15579196000198-1-000688/2026",
+    "15579196000198-1-000690/2026",
+    "15579196000198-1-000707/2026",
+    "15579196000198-1-000725/2026",
+    "15579196000198-1-000727/2026",
+    "15579196000198-1-000728/2026",
+    "15579196000198-1-000732/2026",
+    "15579196000198-1-000747/2026",
+    "15579196000198-1-000756/2026",
+    "15579196000198-1-000764/2026",
+    "15579196000198-1-000772/2026",
+    "15579196000198-1-000783/2026",
+    "15579196000198-1-000797/2026",
+    "15579196000198-1-000801/2026",
+    "15579196000198-1-000809/2026",
+    "15579196000198-1-000810/2026",
+    "15579196000198-1-000822/2026",
+    "15579196000198-1-000824/2026",
+    "15579196000198-1-000843/2026",
+    "15579196000198-1-000847/2026",
+    "15579196000198-1-000863/2026",
+    "15579196000198-1-000886/2026",
+    "15579196000198-1-000887/2026",
+    "15579196000198-1-000890/2026",
+    "15579196000198-1-000896/2026",
+    "15579196000198-1-000904/2026",
+    "15579196000198-1-000916/2026",
+    "15579196000198-1-000932/2026",
+    "15579196000198-1-000935/2026",
+    "15579196000198-1-000941/2026",
+    "15579196000198-1-000945/2026",
+    "15579196000198-1-000956/2026",
+    "15579196000198-1-000957/2026",
+    "15579196000198-1-000958/2026",
+    "15579196000198-1-000959/2026",
+    "15579196000198-1-000960/2026",
+    "15609665000174-1-000005/2026",
+    "15609665000174-1-000010/2026",
+    "15609665000174-1-000011/2026",
+    "21761104000199-1-000006/2026",
+    "37226644000102-1-000035/2026",
+    "37226644000102-1-000056/2026"
    ],
    "registrosAbrangidos": 150,
    "hashes": {
-    "01989813000119-1-000106/2026": "52ad2d0c9bcd",
-    "02925027000110-1-000024/2026": "580eaa45d02f",
-    "03073673000160-1-000039/2026": "daa706a242c6",
-    "03107539000132-1-000093/2026": "d59321325e7d",
-    "03107539000132-1-000101/2026": "74df9b6e086d",
-    "03155934000190-1-000067/2026": "5663162580b4",
-    "03184041000173-1-000046/2026": "b1727834578e",
-    "03184041000173-1-000083/2026": "bfbef5603585",
-    "03184041000173-1-000085/2026": "fdc1ab0aaa78",
-    "03184066000177-1-000043/2026": "d8ebceff3f0a",
-    "03217916000196-1-000002/2026": "eac7da9a265d",
-    "03342920000186-1-000022/2026": "1e5b1396a3f8",
-    "03342920000186-1-000026/2026": "f66ceacfd704",
-    "03342920000186-1-000027/2026": "6cb36f1c98c9",
-    "03342938000188-1-000188/2026": "40f9f0ee7ada",
-    "03501533000145-1-000016/2026": "935212475349",
-    "03501533000145-1-000026/2026": "298d1f695827",
-    "03501541000191-1-000025/2026": "7a6b91625cb5",
-    "03563335000106-1-000007/2026": "5a52ce736f70",
-    "03563335000106-1-000009/2026": "80d78d298b47",
-    "03575727000195-1-000009/2026": "dc7240268c01",
-    "03576220000156-1-000089/2026": "a221090ec404",
-    "03576220000156-1-000128/2026": "88d1d86b8484",
-    "03576220000156-1-000150/2026": "6285b4b8d864",
-    "03576220000156-1-000158/2026": "709cc1f1b9e1",
-    "03741683000126-1-000025/2026": "235afa873881",
-    "03903176000141-1-000010/2026": "ae1b32443129",
-    "04808290000155-1-000050/2026": "1d36d5aea73e",
-    "15389588000194-1-000003/2026": "9d24f2fb45a6",
-    "15389596000130-1-000127/2026": "59ab0df010b6",
-    "15479751000100-1-000044/2026": "f4ff4323c373",
-    "15487793000192-1-000011/2026": "5259149ca3b1",
-    "15579196000198-1-000001/2026": "a336c90cbcda",
-    "15579196000198-1-000007/2026": "ed73ea73f895",
-    "15579196000198-1-000012/2026": "842b776fa941",
-    "15579196000198-1-000014/2026": "47da0c3be768",
-    "15579196000198-1-000018/2026": "8fdb1999315e",
-    "15579196000198-1-000031/2026": "03f11095da3b",
-    "15579196000198-1-000034/2026": "5ceee963abb0",
-    "15579196000198-1-000061/2026": "06f146023c73",
-    "15579196000198-1-000063/2026": "d8bb7b6388e8",
-    "15579196000198-1-000065/2026": "953ec0a9fdb2",
-    "15579196000198-1-000070/2026": "c02df47de51c",
-    "15579196000198-1-000073/2026": "10729eea7f85",
-    "15579196000198-1-000077/2026": "c99ac13aec44",
-    "15579196000198-1-000084/2026": "7096e446c7b5",
-    "15579196000198-1-000085/2026": "9bbf1425dcf3",
-    "15579196000198-1-000096/2026": "7265c3991c0d",
-    "15579196000198-1-000111/2026": "a0515839c556",
-    "15579196000198-1-000121/2026": "96a730bf8133",
-    "15579196000198-1-000124/2026": "fe29eb722f94",
-    "15579196000198-1-000126/2026": "07aa8aa58ebe",
-    "15579196000198-1-000129/2026": "a95f8604329d",
-    "15579196000198-1-000135/2026": "b65815b01cfb",
-    "15579196000198-1-000144/2026": "68c4526c5ec0",
-    "15579196000198-1-000182/2026": "33d4c1dfe15b",
-    "15579196000198-1-000186/2026": "e17d6a47faa5",
-    "15579196000198-1-000195/2026": "a0bf2fbfca72",
-    "15579196000198-1-000225/2026": "e02fcde4f7dd",
-    "15579196000198-1-000226/2026": "9a16575f7853",
-    "15579196000198-1-000240/2026": "0a63472240b4",
-    "15579196000198-1-000267/2026": "edb7566f83c5",
-    "15579196000198-1-000268/2026": "dbdb2c277bb9",
-    "15579196000198-1-000315/2026": "169dd73544d2",
-    "15579196000198-1-000326/2026": "7d8e7efe5f0e",
-    "15579196000198-1-000334/2026": "1f340788bd47",
-    "15579196000198-1-000337/2026": "6c0eee0c4438",
-    "15579196000198-1-000360/2026": "9436b1a2fb69",
-    "15579196000198-1-000364/2026": "4b9e68056f9e",
-    "15579196000198-1-000373/2026": "bb2380c688a3",
-    "15579196000198-1-000378/2026": "2100464475fc",
-    "15579196000198-1-000387/2026": "c940bde0a8e3",
-    "15579196000198-1-000397/2026": "d3261625427f",
-    "15579196000198-1-000398/2026": "619182a68585",
-    "15579196000198-1-000403/2026": "aa5365647db9",
-    "15579196000198-1-000411/2026": "110a76f971c8",
-    "15579196000198-1-000418/2026": "32ba454cec36",
-    "15579196000198-1-000420/2026": "246cfe1d4541",
-    "15579196000198-1-000435/2026": "fd439be0f8cb",
-    "15579196000198-1-000453/2026": "8494b2ffaf12",
-    "15579196000198-1-000457/2026": "7b45c15017f9",
-    "15579196000198-1-000458/2026": "0f7bd4b26091",
-    "15579196000198-1-000475/2026": "42c8013e113d",
-    "15579196000198-1-000481/2026": "78d9705d167f",
-    "15579196000198-1-000493/2026": "41ea17cb85e2",
-    "15579196000198-1-000499/2026": "d98d5961ee51",
-    "15579196000198-1-000510/2026": "b42d8b05837c",
-    "15579196000198-1-000513/2026": "ad9781344cd0",
-    "15579196000198-1-000531/2026": "d88ff5a1bbde",
-    "15579196000198-1-000544/2026": "33eb9a9d486b",
-    "15579196000198-1-000547/2026": "ab24f95f0d25",
-    "15579196000198-1-000561/2026": "c1a661cbe095",
-    "15579196000198-1-000566/2026": "f6786c9e796e",
-    "15579196000198-1-000570/2026": "9b6ad33e86aa",
-    "15579196000198-1-000577/2026": "b226f377899e",
-    "15579196000198-1-000580/2026": "152fc753ff41",
-    "15579196000198-1-000585/2026": "27b60b78c0c6",
-    "15579196000198-1-000588/2026": "44a62c2145c0",
-    "15579196000198-1-000590/2026": "e756ba8c505d",
-    "15579196000198-1-000596/2026": "fc4a4df99c73",
-    "15579196000198-1-000608/2026": "d2cf7a92b33d",
-    "15579196000198-1-000616/2026": "c76bd4ecca79",
-    "15579196000198-1-000623/2026": "6feb44d5d7fd",
-    "15579196000198-1-000634/2026": "79ddb56f8f4a",
-    "15579196000198-1-000636/2026": "a9b1916e5bca",
-    "15579196000198-1-000645/2026": "7bd8d49e0719",
-    "15579196000198-1-000652/2026": "5f314f032477",
-    "15579196000198-1-000653/2026": "8de0067b9818",
-    "15579196000198-1-000668/2026": "b03b24c67154",
-    "15579196000198-1-000691/2026": "0886dbceba2b",
-    "15579196000198-1-000702/2026": "35aecc8fd08e",
-    "15579196000198-1-000714/2026": "f731fb56849f",
-    "15579196000198-1-000719/2026": "e7feb8ee1723",
-    "15579196000198-1-000721/2026": "1ee8b80e14a6",
-    "15579196000198-1-000738/2026": "bcd91f634870",
-    "15579196000198-1-000739/2026": "1aafd29ae3bc",
-    "15579196000198-1-000759/2026": "663109beb26d",
-    "15579196000198-1-000778/2026": "9d224f4c44b3",
-    "15579196000198-1-000780/2026": "1b62a269256a",
-    "15579196000198-1-000784/2026": "0254f8634e4d",
-    "15579196000198-1-000794/2026": "d5f18592be1a",
-    "15579196000198-1-000798/2026": "859f7cef80d2",
-    "15579196000198-1-000802/2026": "8abb92bea6b5",
-    "15579196000198-1-000807/2026": "89909b6bda27",
-    "15579196000198-1-000819/2026": "26ac3fd4bed4",
-    "15579196000198-1-000825/2026": "13b8f3f54f00",
-    "15579196000198-1-000827/2026": "adcf10a844df",
-    "15579196000198-1-000840/2026": "44787f7defbe",
-    "15579196000198-1-000848/2026": "c56237a74336",
-    "15579196000198-1-000854/2026": "d6681cfc2690",
-    "15579196000198-1-000861/2026": "8155495abea4",
-    "15579196000198-1-000865/2026": "bdba0229ea05",
-    "15579196000198-1-000872/2026": "ab3cfd9791fb",
-    "15579196000198-1-000873/2026": "116d15e396d9",
-    "15579196000198-1-000884/2026": "d79a3764ad8a",
-    "15579196000198-1-000888/2026": "83aa88774766",
-    "15579196000198-1-000906/2026": "d76657724cfd",
-    "15579196000198-1-000907/2026": "8832735705a1",
-    "15579196000198-1-000908/2026": "5d4ce61762fa",
-    "15579196000198-1-000913/2026": "591bf41fef41",
-    "15579196000198-1-000915/2026": "a0f25a27f278",
-    "15579196000198-1-000944/2026": "fee11a4cef3f",
-    "15579196000198-1-000951/2026": "6323c2e9c197",
-    "15579196000198-1-000954/2026": "98bfc706fa06",
-    "15609665000174-1-000001/2026": "d230d29d4a85",
-    "15609665000174-1-000009/2026": "140282767f90",
-    "15609665000174-1-000018/2026": "9938a7c3ad38",
-    "15609665000174-1-000021/2026": "c589663bebf2",
-    "28371044000147-1-000006/2026": "a270f8448ba6",
-    "43669583000150-1-000006/2026": "e6f3cc9e0baa"
+    "03107539000132-1-000061/2026": "010580cf28cd",
+    "03107539000132-1-000106/2026": "945d2d3a7f49",
+    "03107539000132-1-000197/2026": "83a1cc0c7532",
+    "03155934000190-1-000011/2026": "54b1de52f6fd",
+    "03155934000190-1-000105/2026": "7287db6d8de2",
+    "03155934000190-1-000141/2026": "fea808fae79d",
+    "03156999000150-1-000028/2026": "dfbcee0ce9d6",
+    "03162047000140-1-000003/2026": "b81d06f36049",
+    "03173317000118-1-000008/2026": "14eb1918eb66",
+    "03184041000173-1-000037/2026": "fb8f605e966e",
+    "03184041000173-1-000044/2026": "007ead0423ad",
+    "03184041000173-1-000094/2026": "858954e3958e",
+    "03184058000120-1-000038/2026": "cea7a4764912",
+    "03184058000120-1-000118/2026": "9a694bf77f04",
+    "03184066000177-1-000011/2026": "ce04b7eed231",
+    "03184066000177-1-000012/2026": "43e7477bd145",
+    "03217916000196-1-000029/2026": "8ee3fe72e92d",
+    "03217916000196-1-000044/2026": "353ff4882a3e",
+    "03343118000100-1-000010/2026": "b64ba7e00a07",
+    "03343118000100-1-000099/2026": "d24c6962fe04",
+    "03505013000100-1-000051/2026": "3d431832994b",
+    "03505013000100-1-000058/2026": "0f4b7ba05e58",
+    "03563335000106-1-000026/2026": "f0a60aaf3d2f",
+    "03575727000195-1-000014/2026": "ac990f840385",
+    "03576220000156-1-000096/2026": "2216cb874018",
+    "03681582000107-1-000073/2026": "fb6afa0f7c0c",
+    "03783859000102-1-000020/2026": "3e962e84984b",
+    "03783859000102-1-000026/2026": "3826a1369b99",
+    "03903176000141-1-000009/2026": "c7bfd05303ca",
+    "15389588000194-1-000096/2026": "156ab789dcfd",
+    "15452981000185-1-000005/2026": "4ef306cdec6d",
+    "15487793000192-1-000001/2026": "0ec0c9caeca6",
+    "15487793000192-1-000003/2026": "64b2a7011cda",
+    "15487793000192-1-000004/2026": "a561c17b0418",
+    "15579196000198-1-000004/2026": "2297c2fbc0ac",
+    "15579196000198-1-000005/2026": "fd6800b24106",
+    "15579196000198-1-000006/2026": "6c530286aec0",
+    "15579196000198-1-000023/2026": "0e09be56b998",
+    "15579196000198-1-000032/2026": "a28d71fded63",
+    "15579196000198-1-000052/2026": "eebdf7173f0f",
+    "15579196000198-1-000057/2026": "d1ae72f2315c",
+    "15579196000198-1-000058/2026": "49f8dd2604c8",
+    "15579196000198-1-000062/2026": "b38da032df18",
+    "15579196000198-1-000071/2026": "9dc618b3ac1b",
+    "15579196000198-1-000086/2026": "0e6ce70d850b",
+    "15579196000198-1-000100/2026": "344eaa62a825",
+    "15579196000198-1-000107/2026": "cf50dc6282af",
+    "15579196000198-1-000108/2026": "ec0a76e3b2ef",
+    "15579196000198-1-000118/2026": "347373ee7482",
+    "15579196000198-1-000138/2026": "4ab278842002",
+    "15579196000198-1-000141/2026": "139d4d054669",
+    "15579196000198-1-000183/2026": "8b63bd4f373b",
+    "15579196000198-1-000196/2026": "d76e89a89272",
+    "15579196000198-1-000238/2026": "4cd3eb2ca38b",
+    "15579196000198-1-000244/2026": "d38c93034b4e",
+    "15579196000198-1-000289/2026": "1ca6181e8a09",
+    "15579196000198-1-000293/2026": "59938d1e2cd3",
+    "15579196000198-1-000299/2026": "de4413d38d5b",
+    "15579196000198-1-000309/2026": "7e08b601ac66",
+    "15579196000198-1-000313/2026": "97796c0e7d6c",
+    "15579196000198-1-000319/2026": "600b902b2cf7",
+    "15579196000198-1-000330/2026": "d298a699f1e2",
+    "15579196000198-1-000333/2026": "8d988096c738",
+    "15579196000198-1-000335/2026": "e84bec5afff2",
+    "15579196000198-1-000340/2026": "7cc90f001adc",
+    "15579196000198-1-000341/2026": "2fe3ebb452f7",
+    "15579196000198-1-000346/2026": "9f46192ba97b",
+    "15579196000198-1-000349/2026": "f38a7dacb816",
+    "15579196000198-1-000356/2026": "afb12dd6e05d",
+    "15579196000198-1-000372/2026": "f73542b3f82f",
+    "15579196000198-1-000380/2026": "0f51404025c2",
+    "15579196000198-1-000389/2026": "bfd1c05910b7",
+    "15579196000198-1-000413/2026": "cdb883d8c2db",
+    "15579196000198-1-000414/2026": "d921d51f191c",
+    "15579196000198-1-000425/2026": "6f9c84a24910",
+    "15579196000198-1-000442/2026": "54169f10003c",
+    "15579196000198-1-000456/2026": "d911b429b3d3",
+    "15579196000198-1-000463/2026": "f4b33c3bd9d6",
+    "15579196000198-1-000495/2026": "17bf81bf8288",
+    "15579196000198-1-000501/2026": "3e4627728ea6",
+    "15579196000198-1-000502/2026": "1413c84bcd47",
+    "15579196000198-1-000505/2026": "ee4a65113c79",
+    "15579196000198-1-000506/2026": "ff4e8bfdbc39",
+    "15579196000198-1-000512/2026": "69913d667042",
+    "15579196000198-1-000515/2026": "8224bf158e8d",
+    "15579196000198-1-000516/2026": "48fd0f424b82",
+    "15579196000198-1-000519/2026": "8774d1266b8b",
+    "15579196000198-1-000527/2026": "12e8f795cc93",
+    "15579196000198-1-000549/2026": "d63c0d9d6ff3",
+    "15579196000198-1-000550/2026": "8b26e0244c9f",
+    "15579196000198-1-000557/2026": "21a8ffe7f661",
+    "15579196000198-1-000559/2026": "f2e91666a951",
+    "15579196000198-1-000565/2026": "521c254397af",
+    "15579196000198-1-000573/2026": "4622cf1d2c93",
+    "15579196000198-1-000574/2026": "801926e013a4",
+    "15579196000198-1-000587/2026": "2f5640fc80de",
+    "15579196000198-1-000606/2026": "47ee3d44a9ea",
+    "15579196000198-1-000610/2026": "183cd2091589",
+    "15579196000198-1-000612/2026": "81b08968074e",
+    "15579196000198-1-000626/2026": "b335e3782a4f",
+    "15579196000198-1-000628/2026": "0254243ce153",
+    "15579196000198-1-000629/2026": "60ad8b9605b5",
+    "15579196000198-1-000654/2026": "dd2e0aacaac2",
+    "15579196000198-1-000656/2026": "b982db941050",
+    "15579196000198-1-000662/2026": "bf65570fc89f",
+    "15579196000198-1-000666/2026": "41133af7a950",
+    "15579196000198-1-000683/2026": "8e22becfbf6f",
+    "15579196000198-1-000685/2026": "b19e5b01e603",
+    "15579196000198-1-000688/2026": "3d4af34bc7c1",
+    "15579196000198-1-000690/2026": "a66533727c82",
+    "15579196000198-1-000707/2026": "3ec2fe9fa8cf",
+    "15579196000198-1-000725/2026": "eded62eaecbf",
+    "15579196000198-1-000727/2026": "48138cfd4fac",
+    "15579196000198-1-000728/2026": "99f80de5b8cd",
+    "15579196000198-1-000732/2026": "c538c361f289",
+    "15579196000198-1-000747/2026": "f22f2284004d",
+    "15579196000198-1-000756/2026": "0394440c0efe",
+    "15579196000198-1-000764/2026": "40b6042f9d10",
+    "15579196000198-1-000772/2026": "a80e0911cdce",
+    "15579196000198-1-000783/2026": "9bbeace0bfd7",
+    "15579196000198-1-000797/2026": "5b65fe0e4f0c",
+    "15579196000198-1-000801/2026": "1f5412172996",
+    "15579196000198-1-000809/2026": "bba78f9992f2",
+    "15579196000198-1-000810/2026": "a59ebb5a45c7",
+    "15579196000198-1-000822/2026": "ee04bbcd7f31",
+    "15579196000198-1-000824/2026": "ecb9ac88fc08",
+    "15579196000198-1-000843/2026": "b8f770ef8e67",
+    "15579196000198-1-000847/2026": "8fbb8d3d25bc",
+    "15579196000198-1-000863/2026": "dec9d011dcc4",
+    "15579196000198-1-000886/2026": "aa20d4cab6f2",
+    "15579196000198-1-000887/2026": "8ffe507e5904",
+    "15579196000198-1-000890/2026": "083c45ab8586",
+    "15579196000198-1-000896/2026": "0524427a35a6",
+    "15579196000198-1-000904/2026": "ad59b063a928",
+    "15579196000198-1-000916/2026": "1626923d57d3",
+    "15579196000198-1-000932/2026": "df77fdf4a523",
+    "15579196000198-1-000935/2026": "580c30b52c05",
+    "15579196000198-1-000941/2026": "f561706e1b66",
+    "15579196000198-1-000945/2026": "32a46a34daf4",
+    "15579196000198-1-000956/2026": "cc06cff918a0",
+    "15579196000198-1-000957/2026": "2337a579d774",
+    "15579196000198-1-000958/2026": "73d8d2dcdda7",
+    "15579196000198-1-000959/2026": "aa25e093f735",
+    "15579196000198-1-000960/2026": "996b726bdf06",
+    "15609665000174-1-000005/2026": "fbd41bbff3bd",
+    "15609665000174-1-000010/2026": "e7bbd983e1ee",
+    "15609665000174-1-000011/2026": "0782e6fe5f64",
+    "21761104000199-1-000006/2026": "552c216a3e7b",
+    "37226644000102-1-000035/2026": "679ceac85ff4",
+    "37226644000102-1-000056/2026": "e20cee03f3dd"
    },
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "alugueis": {
    "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "em": "2026-11-25T12:07:12",
    "metodo": "PNCP: 50 contratações de aluguel sorteadas, valor de cada uma na consulta pública",
    "fonteUrl": "https://pncp.gov.br/",
    "conferidos": 50,
    "divergentes": [],
    "comparados": [
     {
-     "item": "03903176000141-1-000065/2026",
-     "site": 27804.48,
-     "fonte": 27804.48,
+     "item": "03155934000190-1-000018/2026",
+     "site": 293902.8,
+     "fonte": 293902.8,
      "diferenca": 0.0
     },
     {
-     "item": "04589937000103-1-000002/2026",
+     "item": "13921551000130-1-000002/2026",
+     "site": 36000.0,
+     "fonte": 36000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03452299000103-1-000064/2026",
+     "site": 36000.0,
+     "fonte": 36000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "14795993000140-1-000001/2026",
+     "site": 57600.0,
+     "fonte": 57600.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03980919000187-1-000017/2026",
+     "site": 27600.0,
+     "fonte": 27600.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03575727000195-1-000005/2026",
+     "site": 36000.0,
+     "fonte": 36000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03452307000111-1-000016/2026",
+     "site": 24000.0,
+     "fonte": 24000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03681582000107-1-000128/2025",
+     "site": 45000.0,
+     "fonte": 45000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "14788679000130-1-000002/2026",
+     "site": 176400.0,
+     "fonte": 176400.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "37198728000180-1-000002/2026",
      "site": 30000.0,
      "fonte": 30000.0,
      "diferenca": 0.0
     },
     {
-     "item": "15452783000111-1-000004/2025",
-     "site": 36432.0,
-     "fonte": 36432.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03184066000177-1-000002/2026",
-     "site": 120000.0,
-     "fonte": 120000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "24651200000172-1-000133/2026",
-     "site": 141600.0,
-     "fonte": 141600.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03156999000150-1-000030/2026",
-     "site": 84000.0,
-     "fonte": 84000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03681582000107-1-000035/2026",
-     "site": 80040.0,
-     "fonte": 80040.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "15316822000153-1-000005/2026",
-     "site": 43200.0,
-     "fonte": 43200.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03155934000190-1-000038/2026",
-     "site": 120000.0,
-     "fonte": 120000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "11443806000170-1-000008/2026",
-     "site": 24600.0,
-     "fonte": 24600.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03236066000173-1-000036/2026",
-     "site": 420000.0,
-     "fonte": 420000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03903176000141-1-000018/2026",
-     "site": 18092.88,
-     "fonte": 18092.88,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03434792000109-1-000041/2026",
-     "site": 54000.0,
-     "fonte": 54000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "04589955000187-1-000010/2026",
-     "site": 21000.0,
-     "fonte": 21000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "00394452000103-1-001115/2027",
-     "site": 143078.16,
-     "fonte": 143078.16,
-     "diferenca": 0.0
-    },
-    {
-     "item": "11332999000192-1-000014/2026",
-     "site": 25800.0,
-     "fonte": 25800.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "09290533000120-1-000010/2026",
-     "site": 108000.0,
-     "fonte": 108000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03155934000190-1-000064/2026",
-     "site": 96000.0,
-     "fonte": 96000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03184066000177-1-000058/2026",
-     "site": 23400.0,
-     "fonte": 23400.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "11084263000142-1-000002/2026",
-     "site": 42000.0,
-     "fonte": 42000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "11443806000170-1-000004/2026",
-     "site": 81600.0,
-     "fonte": 81600.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "33787094000140-1-000100/2026",
-     "site": 56400.0,
-     "fonte": 56400.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "02925027000110-1-000026/2026",
-     "site": 108000.0,
-     "fonte": 108000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03903176000141-1-000128/2026",
-     "site": 181980.0,
-     "fonte": 181980.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "13790575000105-1-000012/2026",
-     "site": 72000.0,
-     "fonte": 72000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03155926000144-1-000098/2026",
-     "site": 517888.08,
-     "fonte": 517888.08,
-     "diferenca": 0.0
-    },
-    {
-     "item": "13996218000190-1-000012/2025",
-     "site": 201334.68,
-     "fonte": 201334.68,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03505013000100-1-000060/2026",
-     "site": 33000.0,
-     "fonte": 33000.0,
-     "diferenca": 0.0
-    },
-    {
-     "item": "03342920000186-1-000080/2023",
+     "item": "03342920000186-1-000214/2024",
      "site": 0,
      "fonte": 0.0,
      "diferenca": 0.0
     },
     {
-     "item": "17701982000141-1-000007/2026",
-     "site": 132000.0,
-     "fonte": 132000.0,
+     "item": "15389596000130-1-000081/2026",
+     "site": 583560.0,
+     "fonte": 583560.0,
      "diferenca": 0.0
     },
     {
-     "item": "13034603000156-1-000024/2026",
-     "site": 28000.0,
-     "fonte": 28000.0,
+     "item": "11970135000104-1-000003/2026",
+     "site": 150000.0,
+     "fonte": 150000.0,
      "diferenca": 0.0
     },
     {
-     "item": "04895130000190-1-000053/2025",
-     "site": 9000000.0,
-     "fonte": 9000000.0,
+     "item": "03015475000140-1-000139/2025",
+     "site": 1320000.0,
+     "fonte": 1320000.0,
      "diferenca": 0.0
     },
     {
-     "item": "11095923000190-1-000008/2026",
-     "site": 120000.0,
-     "fonte": 120000.0,
+     "item": "03501574000131-1-000006/2026",
+     "site": 38400.0,
+     "fonte": 38400.0,
      "diferenca": 0.0
     },
     {
-     "item": "03501574000131-1-000035/2026",
-     "site": 32043.84,
-     "fonte": 32043.84,
+     "item": "03501509000106-1-000133/2026",
+     "site": 1548000.0,
+     "fonte": 1548000.0,
      "diferenca": 0.0
     },
     {
-     "item": "03107539000132-1-000049/2026",
-     "site": 212400.0,
-     "fonte": 212400.0,
+     "item": "13790575000105-1-000007/2026",
+     "site": 54485.28,
+     "fonte": 54485.28,
      "diferenca": 0.0
     },
     {
-     "item": "03883929000102-1-000013/2026",
-     "site": 20000.0,
-     "fonte": 20000.0,
+     "item": "03173317000118-1-000061/2026",
+     "site": 36000.0,
+     "fonte": 36000.0,
      "diferenca": 0.0
     },
     {
-     "item": "11443806000170-1-000015/2026",
-     "site": 96000.0,
-     "fonte": 96000.0,
+     "item": "03155900000104-1-000128/2026",
+     "site": 30000.0,
+     "fonte": 30000.0,
      "diferenca": 0.0
     },
     {
-     "item": "03155934000190-1-000023/2026",
-     "site": 79246.2,
-     "fonte": 79246.2,
+     "item": "03921822000101-1-000003/2026",
+     "site": 7620.0,
+     "fonte": 7620.0,
      "diferenca": 0.0
     },
     {
-     "item": "03903176000141-1-000017/2026",
-     "site": 10800.0,
-     "fonte": 10800.0,
+     "item": "03434792000109-1-000173/2025",
+     "site": 390000.0,
+     "fonte": 390000.0,
      "diferenca": 0.0
     },
     {
-     "item": "03015475000140-1-000032/2026",
-     "site": 62400.0,
-     "fonte": 62400.0,
+     "item": "03501574000131-1-000030/2026",
+     "site": 44820.0,
+     "fonte": 44820.0,
      "diferenca": 0.0
     },
     {
-     "item": "04499327000100-1-000038/2026",
-     "site": 72000.0,
-     "fonte": 72000.0,
+     "item": "13823697000142-1-000024/2026",
+     "site": 69000.0,
+     "fonte": 69000.0,
      "diferenca": 0.0
     },
     {
-     "item": "05443531000172-1-000032/2026",
-     "site": 29900.0,
-     "fonte": 29900.0,
+     "item": "03155934000190-1-000197/2025",
+     "site": 38400.0,
+     "fonte": 38400.0,
      "diferenca": 0.0
     },
     {
-     "item": "03107539000132-1-000161/2026",
-     "site": 3397.0,
-     "fonte": 3397.0,
+     "item": "11095923000190-1-000016/2026",
+     "site": 150600.0,
+     "fonte": 150600.0,
      "diferenca": 0.0
     },
     {
-     "item": "00394452000103-1-011285/2026",
-     "site": 16236.0,
-     "fonte": 16236.0,
+     "item": "03452307000111-1-000022/2026",
+     "site": 26400.0,
+     "fonte": 26400.0,
      "diferenca": 0.0
     },
     {
-     "item": "14789276000105-1-000001/2026",
-     "site": 42522.6,
-     "fonte": 42522.6,
-     "diferenca": 0.0
-    },
-    {
-     "item": "18695666000177-1-000002/2026",
+     "item": "15361282000120-1-000001/2025",
      "site": 18000.0,
      "fonte": 18000.0,
      "diferenca": 0.0
     },
     {
-     "item": "03452307000111-1-000091/2026",
-     "site": 70000.0,
-     "fonte": 70000.0,
+     "item": "11095923000190-1-000017/2026",
+     "site": 96000.0,
+     "fonte": 96000.0,
      "diferenca": 0.0
     },
     {
-     "item": "11095923000190-1-000012/2026",
-     "site": 120000.0,
-     "fonte": 120000.0,
+     "item": "03156999000150-1-000015/2026",
+     "site": 55283.04,
+     "fonte": 55283.04,
      "diferenca": 0.0
     },
     {
-     "item": "03173317000118-1-000088/2026",
-     "site": 114000.0,
-     "fonte": 114000.0,
+     "item": "04193294000176-1-000006/2026",
+     "site": 416.65,
+     "fonte": 416.65,
      "diferenca": 0.0
     },
     {
-     "item": "24651200000172-1-000034/2026",
-     "site": 144000.0,
-     "fonte": 144000.0,
+     "item": "03501574000131-1-000008/2026",
+     "site": 48000.0,
+     "fonte": 48000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03184041000173-1-000101/2026",
+     "site": 384000.0,
+     "fonte": 384000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03216036000103-1-000012/2025",
+     "site": 427080.0,
+     "fonte": 427080.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03184066000177-1-000111/2026",
+     "site": 60000.0,
+     "fonte": 60000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03073673000160-1-000043/2026",
+     "site": 51055.44,
+     "fonte": 51055.44,
+     "diferenca": 0.0
+    },
+    {
+     "item": "24651200000172-1-000139/2026",
+     "site": 7000.0,
+     "fonte": 7000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03155934000190-1-000088/2026",
+     "site": 50400.0,
+     "fonte": 50400.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03575875000100-1-000043/2026",
+     "site": 47685.48,
+     "fonte": 47685.48,
+     "diferenca": 0.0
+    },
+    {
+     "item": "14540893000172-1-000001/2024",
+     "site": 36800.0,
+     "fonte": 36800.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "37226644000102-1-000126/2026",
+     "site": 25000.0,
+     "fonte": 25000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "10411736000106-1-000001/2026",
+     "site": 36000.0,
+     "fonte": 36000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03343118000100-1-000054/2026",
+     "site": 16800.0,
+     "fonte": 16800.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "10474017000134-1-000003/2026",
+     "site": 18000.0,
+     "fonte": 18000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03155934000190-1-000117/2026",
+     "site": 18000.0,
+     "fonte": 18000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "43014809000185-1-000004/2026",
+     "site": 4800.0,
+     "fonte": 4800.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "13034603000156-1-000035/2026",
+     "site": 111179.28,
+     "fonte": 111179.28,
+     "diferenca": 0.0
+    },
+    {
+     "item": "03107539000132-1-000127/2026",
+     "site": 38400.0,
+     "fonte": 38400.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "14788679000130-1-000001/2026",
+     "site": 48000.0,
+     "fonte": 48000.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "15389588000194-1-000040/2026",
+     "site": 81600.0,
+     "fonte": 81600.0,
+     "diferenca": 0.0
+    },
+    {
+     "item": "37226644000102-1-000010/2026",
+     "site": 72000.0,
+     "fonte": 72000.0,
      "diferenca": 0.0
     }
    ],
@@ -3577,115 +3336,115 @@
    "metodologia": "ICP 2.0",
    "unidadesConferidas": 50,
    "idsConferidos": [
-    "00394452000103-1-001115/2027",
-    "00394452000103-1-011285/2026",
-    "02925027000110-1-000026/2026",
-    "03015475000140-1-000032/2026",
-    "03107539000132-1-000049/2026",
-    "03107539000132-1-000161/2026",
-    "03155926000144-1-000098/2026",
-    "03155934000190-1-000023/2026",
-    "03155934000190-1-000038/2026",
-    "03155934000190-1-000064/2026",
-    "03156999000150-1-000030/2026",
-    "03173317000118-1-000088/2026",
-    "03184066000177-1-000002/2026",
-    "03184066000177-1-000058/2026",
-    "03236066000173-1-000036/2026",
-    "03342920000186-1-000080/2023",
-    "03434792000109-1-000041/2026",
-    "03452307000111-1-000091/2026",
-    "03501574000131-1-000035/2026",
-    "03505013000100-1-000060/2026",
-    "03681582000107-1-000035/2026",
-    "03883929000102-1-000013/2026",
-    "03903176000141-1-000017/2026",
-    "03903176000141-1-000018/2026",
-    "03903176000141-1-000065/2026",
-    "03903176000141-1-000128/2026",
-    "04499327000100-1-000038/2026",
-    "04589937000103-1-000002/2026",
-    "04589955000187-1-000010/2026",
-    "04895130000190-1-000053/2025",
-    "05443531000172-1-000032/2026",
-    "09290533000120-1-000010/2026",
-    "11084263000142-1-000002/2026",
-    "11095923000190-1-000008/2026",
-    "11095923000190-1-000012/2026",
-    "11332999000192-1-000014/2026",
-    "11443806000170-1-000004/2026",
-    "11443806000170-1-000008/2026",
-    "11443806000170-1-000015/2026",
-    "13034603000156-1-000024/2026",
-    "13790575000105-1-000012/2026",
-    "13996218000190-1-000012/2025",
-    "14789276000105-1-000001/2026",
-    "15316822000153-1-000005/2026",
-    "15452783000111-1-000004/2025",
-    "17701982000141-1-000007/2026",
-    "18695666000177-1-000002/2026",
-    "24651200000172-1-000034/2026",
-    "24651200000172-1-000133/2026",
-    "33787094000140-1-000100/2026"
+    "03015475000140-1-000139/2025",
+    "03073673000160-1-000043/2026",
+    "03107539000132-1-000127/2026",
+    "03155900000104-1-000128/2026",
+    "03155934000190-1-000018/2026",
+    "03155934000190-1-000088/2026",
+    "03155934000190-1-000117/2026",
+    "03155934000190-1-000197/2025",
+    "03156999000150-1-000015/2026",
+    "03173317000118-1-000061/2026",
+    "03184041000173-1-000101/2026",
+    "03184066000177-1-000111/2026",
+    "03216036000103-1-000012/2025",
+    "03342920000186-1-000214/2024",
+    "03343118000100-1-000054/2026",
+    "03434792000109-1-000173/2025",
+    "03452299000103-1-000064/2026",
+    "03452307000111-1-000016/2026",
+    "03452307000111-1-000022/2026",
+    "03501509000106-1-000133/2026",
+    "03501574000131-1-000006/2026",
+    "03501574000131-1-000008/2026",
+    "03501574000131-1-000030/2026",
+    "03575727000195-1-000005/2026",
+    "03575875000100-1-000043/2026",
+    "03681582000107-1-000128/2025",
+    "03921822000101-1-000003/2026",
+    "03980919000187-1-000017/2026",
+    "04193294000176-1-000006/2026",
+    "10411736000106-1-000001/2026",
+    "10474017000134-1-000003/2026",
+    "11095923000190-1-000016/2026",
+    "11095923000190-1-000017/2026",
+    "11970135000104-1-000003/2026",
+    "13034603000156-1-000035/2026",
+    "13790575000105-1-000007/2026",
+    "13823697000142-1-000024/2026",
+    "13921551000130-1-000002/2026",
+    "14540893000172-1-000001/2024",
+    "14788679000130-1-000001/2026",
+    "14788679000130-1-000002/2026",
+    "14795993000140-1-000001/2026",
+    "15361282000120-1-000001/2025",
+    "15389588000194-1-000040/2026",
+    "15389596000130-1-000081/2026",
+    "24651200000172-1-000139/2026",
+    "37198728000180-1-000002/2026",
+    "37226644000102-1-000010/2026",
+    "37226644000102-1-000126/2026",
+    "43014809000185-1-000004/2026"
    ],
    "registrosAbrangidos": 50,
    "hashes": {
-    "00394452000103-1-001115/2027": "8af5ebf97db5",
-    "00394452000103-1-011285/2026": "fde631beee02",
-    "02925027000110-1-000026/2026": "ad3b30b16aab",
-    "03015475000140-1-000032/2026": "0c675f00c8b2",
-    "03107539000132-1-000049/2026": "8764d6525655",
-    "03107539000132-1-000161/2026": "6b509853a926",
-    "03155926000144-1-000098/2026": "c734a0c50adc",
-    "03155934000190-1-000023/2026": "90c0d002b56c",
-    "03155934000190-1-000038/2026": "d2512277a696",
-    "03155934000190-1-000064/2026": "2e70d7bf6ee1",
-    "03156999000150-1-000030/2026": "3c8ff0dcd195",
-    "03173317000118-1-000088/2026": "6c2abf0642c1",
-    "03184066000177-1-000002/2026": "502ea4789679",
-    "03184066000177-1-000058/2026": "0009d164d6b2",
-    "03236066000173-1-000036/2026": "7fc5d6796f6c",
-    "03342920000186-1-000080/2023": "1d077bc8e22e",
-    "03434792000109-1-000041/2026": "02918bd24542",
-    "03452307000111-1-000091/2026": "975092c1fe6b",
-    "03501574000131-1-000035/2026": "594aa20841dc",
-    "03505013000100-1-000060/2026": "d3769397de31",
-    "03681582000107-1-000035/2026": "06a8ec8d97a3",
-    "03883929000102-1-000013/2026": "5ffd9c114d98",
-    "03903176000141-1-000017/2026": "cba029aced0b",
-    "03903176000141-1-000018/2026": "22cec768bc01",
-    "03903176000141-1-000065/2026": "971effee21f9",
-    "03903176000141-1-000128/2026": "699e450c409f",
-    "04499327000100-1-000038/2026": "26c9485c440a",
-    "04589937000103-1-000002/2026": "5d4540294a70",
-    "04589955000187-1-000010/2026": "00595c4a2303",
-    "04895130000190-1-000053/2025": "67ca3fea3937",
-    "05443531000172-1-000032/2026": "b4d4644ddd63",
-    "09290533000120-1-000010/2026": "da59d6834f18",
-    "11084263000142-1-000002/2026": "cb94f69fd17c",
-    "11095923000190-1-000008/2026": "9e0675cfc108",
-    "11095923000190-1-000012/2026": "3d5063f50217",
-    "11332999000192-1-000014/2026": "ebf6344a6dee",
-    "11443806000170-1-000004/2026": "e06c23d221da",
-    "11443806000170-1-000008/2026": "f608fa76ae4a",
-    "11443806000170-1-000015/2026": "ed58af65b40f",
-    "13034603000156-1-000024/2026": "f747ea763010",
-    "13790575000105-1-000012/2026": "4133b25ea481",
-    "13996218000190-1-000012/2025": "24dc86824385",
-    "14789276000105-1-000001/2026": "3bc7edfcfaab",
-    "15316822000153-1-000005/2026": "4b9d3bceaca3",
-    "15452783000111-1-000004/2025": "bd4b238d38ec",
-    "17701982000141-1-000007/2026": "e22ece7a8843",
-    "18695666000177-1-000002/2026": "fb2175bd01b1",
-    "24651200000172-1-000034/2026": "013dd1c319f0",
-    "24651200000172-1-000133/2026": "9e4466e10e8d",
-    "33787094000140-1-000100/2026": "d4fc01487ba1"
+    "03015475000140-1-000139/2025": "e64db00fbffc",
+    "03073673000160-1-000043/2026": "222358fc5853",
+    "03107539000132-1-000127/2026": "e911a980c01f",
+    "03155900000104-1-000128/2026": "cc133fc276b8",
+    "03155934000190-1-000018/2026": "109b839f5bd5",
+    "03155934000190-1-000088/2026": "eafb465d2422",
+    "03155934000190-1-000117/2026": "ffb0a9ea5d21",
+    "03155934000190-1-000197/2025": "40d5d54a8597",
+    "03156999000150-1-000015/2026": "ddb842f80458",
+    "03173317000118-1-000061/2026": "b7a0f9dd8b45",
+    "03184041000173-1-000101/2026": "50887bc8a54a",
+    "03184066000177-1-000111/2026": "773763cc8790",
+    "03216036000103-1-000012/2025": "284028461e38",
+    "03342920000186-1-000214/2024": "c07bb208274e",
+    "03343118000100-1-000054/2026": "a1aa30574cc1",
+    "03434792000109-1-000173/2025": "ad92d8a59d06",
+    "03452299000103-1-000064/2026": "d8d96829a697",
+    "03452307000111-1-000016/2026": "09f0117218db",
+    "03452307000111-1-000022/2026": "c1747ba8f4a9",
+    "03501509000106-1-000133/2026": "42d3d2e4fe5b",
+    "03501574000131-1-000006/2026": "bb19756e18d5",
+    "03501574000131-1-000008/2026": "26020e00758e",
+    "03501574000131-1-000030/2026": "459c487def1d",
+    "03575727000195-1-000005/2026": "3208c83ae9b6",
+    "03575875000100-1-000043/2026": "32818f25914d",
+    "03681582000107-1-000128/2025": "a9eb47e3d2b1",
+    "03921822000101-1-000003/2026": "0f2ee3f4610f",
+    "03980919000187-1-000017/2026": "48a41e75cc45",
+    "04193294000176-1-000006/2026": "4d833a809af7",
+    "10411736000106-1-000001/2026": "9e588eecd152",
+    "10474017000134-1-000003/2026": "c032356bb341",
+    "11095923000190-1-000016/2026": "dab310b0de8c",
+    "11095923000190-1-000017/2026": "23a2486dfbf9",
+    "11970135000104-1-000003/2026": "804b7d49acf3",
+    "13034603000156-1-000035/2026": "d24ed1659683",
+    "13790575000105-1-000007/2026": "5b818360407e",
+    "13823697000142-1-000024/2026": "d338ab7135ef",
+    "13921551000130-1-000002/2026": "d77a3ed82b6c",
+    "14540893000172-1-000001/2024": "b870b05df5bb",
+    "14788679000130-1-000001/2026": "695b79f3dcb1",
+    "14788679000130-1-000002/2026": "2eb541ee30ef",
+    "14795993000140-1-000001/2026": "b9a854fa2e1e",
+    "15361282000120-1-000001/2025": "1e129601baf0",
+    "15389588000194-1-000040/2026": "d86f1e6beb93",
+    "15389596000130-1-000081/2026": "9abc1050c1f7",
+    "24651200000172-1-000139/2026": "f0f02780f485",
+    "37198728000180-1-000002/2026": "6a01d94beda9",
+    "37226644000102-1-000010/2026": "7a31f2739200",
+    "37226644000102-1-000126/2026": "6bc5d2052df0",
+    "43014809000185-1-000004/2026": "cca56b22fb94"
    },
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "votacoes": {
    "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "em": "2026-11-25T12:07:12",
    "metodo": "API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano; item = voto de um deputado de MS (100 = igual ao site, 0 = diferente)",
    "fonteUrl": "https://dadosabertos.camara.leg.br/",
    "conferidos": 1088,
@@ -4563,15 +4322,22 @@
    "registrosAbrangidos": 136,
    "registrosConferidosUmAUm": 136,
    "registrosPorTotais": 0,
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "producao": {
-   "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "resultado": "diverge",
+   "em": "2026-11-25T12:07:12",
    "metodo": "Câmara (/proposicoes, filtro de tipo na API) e Senado (/processo do autor): nº de projetos de cada parlamentar de MS desde 01/02/2023",
    "fonteUrl": "https://dadosabertos.camara.leg.br/",
    "conferidos": 11,
-   "divergentes": [],
+   "divergentes": [
+    {
+     "item": "Rodolfo Nogueira",
+     "site": 149,
+     "fonte": 150.0,
+     "diferenca": -1.0
+    }
+   ],
    "comparados": [
     {
      "item": "Beto Pereira",
@@ -4612,8 +4378,8 @@
     {
      "item": "Rodolfo Nogueira",
      "site": 149,
-     "fonte": 149.0,
-     "diferenca": 0.0
+     "fonte": 150.0,
+     "diferenca": -1.0
     },
     {
      "item": "Vander Loubet",
@@ -4714,11 +4480,11 @@
    },
    "naoAchadosNaFonte": 0,
    "casadosHoje": 1112,
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "judiciario": {
    "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "em": "2026-11-25T12:07:12",
    "metodo": "DadosJusBr (contracheques do TJMS enviados ao CNJ, 09/2026): nº de magistrados ativos e soma do subsídio",
    "fonteUrl": "https://dadosjusbr.org/",
    "conferidos": 2,
@@ -4752,11 +4518,11 @@
     "soma do subsídio"
    ],
    "registrosAbrangidos": 227,
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "entidades": {
    "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "em": "2026-11-25T12:07:12",
    "metodo": "cadastro CNPJ (minhareceita.org): todas as entidades; item = abertura, município ou situação cadastral (100 = igual ao site, 0 = diferente)",
    "fonteUrl": "https://minhareceita.org/",
    "conferidos": 2823,
@@ -7389,15 +7155,21 @@
     "44056192000123",
     "70366828000143"
    ],
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "obras": {
    "resultado": "diverge",
-   "em": "2026-11-24T12:46:28",
+   "em": "2026-11-25T12:07:12",
    "metodo": "portal do Estado (contratos de obras, ContratosEkronos): reconsulta de todas as obras do site; item = valor, situação, empresa, datas, % executado e dias aditados/paralisados (100 = igual, 0 = diferente)",
    "fonteUrl": "https://www.transparencia.ms.gov.br/",
    "conferidos": 2394,
    "divergentes": [
+    {
+     "item": "126/2023|57/100.460/2020|17634508000144 · executado",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
     {
      "item": "059/2021|57/101.543/2020|37488100000119 · situacao",
      "site": 100.0,
@@ -7405,7 +7177,25 @@
      "diferenca": 100.0
     },
     {
+     "item": "037/2023/AGEPEN|31/082.943/2022|03492162000182 · executado",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
+    {
      "item": "044/2025|11/006.616/2024|24641425000148 · executado",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
+    {
+     "item": "040/2023|27/008.690/2022|01326359000116 · situacao",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
+    {
+     "item": "040/2023|27/008.690/2022|01326359000116 · executado",
      "site": 100.0,
      "fonte": 0.0,
      "diferenca": 100.0
@@ -7429,13 +7219,67 @@
      "diferenca": 100.0
     },
     {
-     "item": "130/2026|79/004.586/2026|19431243000102 · executado",
+     "item": "099/2025|27/003.913/2025|03492162000182 · valor",
      "site": 100.0,
      "fonte": 0.0,
      "diferenca": 100.0
     },
     {
-     "item": "036/2026|79/011.666/2025|05575960000101 · executado",
+     "item": "099/2025|27/003.913/2025|03492162000182 · situacao",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
+    {
+     "item": "099/2025|27/003.913/2025|03492162000182 · fim",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
+    {
+     "item": "099/2025|27/003.913/2025|03492162000182 · executado",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
+    {
+     "item": "099/2025|27/003.913/2025|03492162000182 · diasAditados",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
+    {
+     "item": "027/2026|79/012.324/2025|14042710000199 · valor",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
+    {
+     "item": "027/2026|79/012.324/2025|14042710000199 · executado",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
+    {
+     "item": "023/2024|79/011.267/2023|12058497000188 · executado",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
+    {
+     "item": "058/2026|79/011.828/2025|02011044000142 · executado",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
+    {
+     "item": "083/2026|87/000.066/2025|01326359000116 · executado",
+     "site": 100.0,
+     "fonte": 0.0,
+     "diferenca": 100.0
+    },
+    {
+     "item": "021/2025|79/013.880/2024|42133195000198 · executado",
      "site": 100.0,
      "fonte": 0.0,
      "diferenca": 100.0
@@ -8464,7 +8308,6 @@
     "005/2026|79/008.964/2025|14635256000180": "a93fae9e7991",
     "006/2021|57/101.262/2020|19758842000135": "1e02faccc53b",
     "006/2026/SEILOG|79/018.153/2024|04769095000163": "6ac32fe65456",
-    "006/2026|79/008.994/2025|54843644000170": "ded6bcc57bfb",
     "007/2025/SEILOG|79/017.901/2024|57632705000149": "8930b09b7ced",
     "007/2025|79/012.077/2024|82595174000109": "845ea822ebb9",
     "007/2026/SEILOG|79/004.125/2025|05679838000177": "f740e62db87f",
@@ -8491,12 +8334,10 @@
     "019/2025|79/015.101/2024|50344902000113": "5327a5933ea5",
     "020/2026|79/003.422/2025|24011741000136": "bff916af0108",
     "021/2021|57/100.515/2020|00635391000110": "2a2dd07c30e6",
-    "021/2025|79/013.880/2024|42133195000198": "5b39aa2734b4",
     "021/2026|79/017.991/2024|06319689000106": "2ed06ce618db",
     "022/2021|57/101.152/2020|11388737000140": "5de3c5b5a529",
     "022/2026|79/011.584/2025|03796810000194": "3e29d87bb2cd",
     "023/2021|57/101.261/2020|05864917000158": "e8574e72bcd7",
-    "023/2024|79/011.267/2023|12058497000188": "18606b411a4f",
     "023/2025|31/045.453/2024|02947216000194": "c580c9b96e2b",
     "023/2026|79/010.136/2025|46603862000100": "e8133df169ee",
     "023/2026|79/013.949/2024|49249373000190": "73d4faaa319f",
@@ -8505,7 +8346,6 @@
     "025/2025|79/014.873/2024|82595174000109": "ad891dc420de",
     "025/2026|79/007.574/2025|18422308000190": "f2117b2f7afa",
     "026/2026|79/012.851/2025|10749710000172": "e8decb8e4885",
-    "027/2026|79/012.324/2025|14042710000199": "0294d0d2d674",
     "028/2022|57/006.666/2021|05323630000110": "ba1d23e02ab7",
     "028/2024|79/012.168/2023|03225646000165": "0abd5587d901",
     "028/2026|79/007.818/2025|30891106000193": "f4af25515497",
@@ -8515,18 +8355,14 @@
     "030/2026|79/013.508/2025|07725339000102": "cd51c0c2435e",
     "031/2024|29/027.692/2023|26855791000125": "2f23fb67d78e",
     "031/2025|79/015.195/2024|59598029000160": "b43398c35095",
-    "031/2026|79/012.719/2025|11388737000140": "e17f8d279de6",
     "032/2021|57/100.759/2020|46486650000190": "f8984207dc22",
     "032/2026|79/003.069/2025|36084831000136": "b7045bddd10a",
     "033/2026|79/006.336/2025|05269841000112": "dda344e4799e",
-    "034/2026|79/014.344/2024|01397004000118": "ebfcd2a58bf1",
     "037/2021|57/101.086/2020|05864917000158": "abfb4a70a27a",
-    "037/2023/AGEPEN|31/082.943/2022|03492162000182": "b35d66584643",
     "037/2024|29/027.622/2023|14416381000107": "07d1592f1139",
     "037/2026|79/011.343/2025|27630273000176": "7abd1bcc64fc",
     "038/2026|79/009.827/2025|13628966000110": "f3fdf9ffb61b",
     "039/2026|79/003.061/2025|44300928000167": "11d7e4cb34e6",
-    "040/2023|27/008.690/2022|01326359000116": "46bae3e1f356",
     "041/2023|27/005.942/2022|01326359000116": "36f50c01e637",
     "041/2026|79/004.675/2025|04439711000118": "4a6d4f56e876",
     "042/2022|57/008.444/2021|02011044000142": "c49a18257afb",
@@ -8548,10 +8384,8 @@
     "054/2025|79/011.334/2023|12058497000188": "18e047677613",
     "054/2026|79/007.274/2025|00237518000143": "e8e3abdbd77f",
     "055/2025|79/016.495/2024|03688640000124": "66efbfc18913",
-    "055/2026|79/014.077/2025|07127846000136": "e8668273a4fd",
     "057/2025|79/018.064/2024|03618386000198": "7d6ef34472b9",
     "057/2026|79/009.499/2025|03688640000124": "8bab53724af3",
-    "058/2026|79/011.828/2025|02011044000142": "b07c0307a36d",
     "059/2025|79/003.138/2025|17634508000144": "797c9f655551",
     "059/2026|85/013.504/2024|10490160000110": "5ae7218ecbfa",
     "060/2025|79/001.833/2025|16907526000190": "dfd04cebe6d9",
@@ -8579,7 +8413,6 @@
     "075/2025|79/002.583/2025|54843644000170": "2ebcb3d4e3c5",
     "075/2026|85/013.503/2024|04349790000176": "481202c7642b",
     "076/2025|79/000.476/2025|05919414000132": "042034395c4c",
-    "076/2026|79/001.672/2026|23864908000149": "785e8316f08e",
     "077/2021|57/002.000/2021|01105661000144": "c6c160273a4c",
     "077/2026|79/014.144/2025|31998187000198": "d9761fe01c0a",
     "078/2021|57/002.085/2021|12023805000130": "f9216d3c6b30",
@@ -8591,13 +8424,10 @@
     "079/2026|85/013.500/2024|07725339000102": "6416f42b8bea",
     "080/2025|79/017.660/2024|28831863000120": "c9a857ad9f99",
     "080/2026|79/008.522/2025|04769095000163": "495b975bdc08",
-    "081/2025|79/008.328/2025|11388737000140": "fd6452ce2636",
     "081/2026|79/010.849/2025|04769095000163": "9ea0043fdb43",
     "082/2025|79/017.669/2024|11001307000123": "e9f986eb329d",
-    "082/2026|79/000.061/2026|12058497000188": "7b7de50892b1",
     "083/2023|57/101.785/2020|00779059000120": "89bf994f3b4f",
     "083/2025|79/015.260/2024|01557107000106": "bf8925dbed17",
-    "083/2026|87/000.066/2025|01326359000116": "5566e89ac946",
     "085/2025|79/015.137/2024|15463342000115": "f504a7e2a517",
     "085/2026|27/011.850/2026|00948820000100": "d7f17ac1720e",
     "086/2025|79/003.135/2025|03006548000137": "2f3de43ec67d",
@@ -8617,7 +8447,6 @@
     "096/2025|79/017.670/2024|05575960000101": "01bc2ce35a11",
     "097/2023|65/016.904/2022|03492162000182": "cbb149e2c057",
     "098/2025|27/004.360/2023|74019472000122": "2de871d334f9",
-    "099/2025|27/003.913/2025|03492162000182": "1a8e5164611d",
     "099/2026|79/000.592/2026|27630273000176": "e18cf5411821",
     "100/2026|79/002.524/2026|07981809000190": "ac3a21382f13",
     "101/2021|57/001.722/2021|97485593000165": "72d348a333d6",
@@ -8631,7 +8460,6 @@
     "106/2021|57/003.885/2021|04955783000118": "c96a1be02487",
     "106/2026|79/009.102/2025|02035392000150": "2667ef60f4d8",
     "107/2025|79/010.156/2025|07725339000102": "cb53972b72e2",
-    "108/2025|79/008.454/2025|19585092000147": "e58e6e9bf32d",
     "108/2026|79/003.571/2026|01156039000165": "300ac1bf5ee0",
     "109/2026|79/006.170/2026|36798718000112": "fb1babbce30b",
     "110/2025|79/007.616/2025|03966620000178": "a93781eb2328",
@@ -8649,11 +8477,9 @@
     "116/2021|57/003.886/2021|04955783000118": "e7496e3c7529",
     "116/2025|79/003.902/2025|01557107000106": "4e7c49d72f4e",
     "117/2025|11/015.385/2024|74019472000122": "04e6430a7553",
-    "117/2026|79/005.013/2026|51531120000156": "f93e65e628dd",
     "118/2025|79/007.460/2025|01618204000153": "e018bec57a43",
     "118/2026|79/003.052/2026|14992612000112": "fffdc2e59e4a",
     "119/2025|79/007.461/2025|50404987000188": "7cd40131eb75",
-    "119/2026|79/005.566/2026|01618204000153": "da2c04a67a1a",
     "120/2026|79/002.249/2026|01551589000189": "995074fbf38c",
     "122/2023|31/006.336/2023|03492162000182": "9d1344d687c0",
     "122/2026|79/002.211/2026|07725339000102": "a0d7cb19d943",
@@ -8661,7 +8487,6 @@
     "123/2026|79/012.356/2025|12260240000104": "64624733d59a",
     "124/2026|79/003.522/2026|19585092000147": "76052af054f8",
     "126/2021|57/003.032/2021|07725339000102": "15b3dcc12efc",
-    "126/2023|57/100.460/2020|17634508000144": "e76c7e32f0e3",
     "126/2026|79/005.016/2026|04983553000162": "681788cee2bd",
     "127/2021|57/004.000/2021|01117559000169": "219f08c4cd55",
     "127/2026|79/005.095/2026|28660716000134": "833d91eb7d67",
@@ -8669,9 +8494,7 @@
     "129/2026|79/004.372/2026|12058497000188": "cc4ca627652f",
     "130/2021|57/002.594/2021|05442641000110": "a7b9555708ff",
     "130/2022|57/010.145/2021|03618386000198": "30d717e9e3b1",
-    "132/2026|79/006.895/2026|23864908000149": "4496d123b2fd",
     "133/2023|27/003.966/2023|03492162000182": "38dc7eee0ff6",
-    "133/2026|79/005.259/2026|12058497000188": "2348a9e51a1b",
     "135/2026|79/013.291/2025|69073387000102": "6acf5ca57030",
     "136/2026|79/001.497/2026|32475769000152": "4577dcee3d28",
     "137/2026|79/010.324/2026|44371690000160": "a776a9446ce4",
@@ -8705,24 +8528,61 @@
     "CONCESSÃO SES 001/2026|27/009.945/2025|65330274000194": "5263e4e03845",
     "EX 007/2023 - SEILOG|79/002.650/2023|05684254000190": "f554f96b18b2"
    },
-   "registrosConferidosUmAUm": 261,
+   "registrosConferidosUmAUm": 240,
    "registrosPorTotais": 0,
    "independencia": "reconsulta na mesma fonte (portal do Estado) — confirma a leitura, não é fonte independente",
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "publicidade": {
-   "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "resultado": "diverge",
+   "em": "2026-11-25T12:07:12",
    "metodo": "portal do Estado (pagamentos do ano por credor) e SIG-Transparência da Prefeitura (empenhos de publicidade): pago e empenhado de cada agência no Estado; empenhado de cada empenho na Prefeitura",
    "fonteUrl": "https://www.transparencia.ms.gov.br/",
    "conferidos": 40,
-   "divergentes": [],
+   "divergentes": [
+    {
+     "item": "00974843 AGILITA PROPAGANDA E MARKETING LTDA · pago",
+     "site": 20810529.33,
+     "fonte": 20811963.33,
+     "diferenca": -1434.0
+    },
+    {
+     "item": "08935828 OITENTA VINTE MARKETING LTDA · pago",
+     "site": 12471576.09,
+     "fonte": 12478387.41,
+     "diferenca": -6811.32
+    },
+    {
+     "item": "08935828 OITENTA VINTE MARKETING LTDA · empenhado",
+     "site": 14021806.06,
+     "fonte": 14076529.05,
+     "diferenca": -54722.99
+    },
+    {
+     "item": "37204476 B & W TRES PROPAGANDA LTDA - EPP · pago",
+     "site": 6099734.08,
+     "fonte": 6099869.08,
+     "diferenca": -135.0
+    },
+    {
+     "item": "01962760 MV COMUNICACAO E PLANEJAMENTO LTDA · pago",
+     "site": 5018400.47,
+     "fonte": 5018999.39,
+     "diferenca": -598.92
+    },
+    {
+     "item": "09146700 ALTERNATIVA COMERCIO E COMUNICACAO LTDA- · pago",
+     "site": 6788.77,
+     "fonte": 6819.01,
+     "diferenca": -30.24
+    }
+   ],
    "comparados": [
     {
      "item": "00974843 AGILITA PROPAGANDA E MARKETING LTDA · pago",
      "site": 20810529.33,
-     "fonte": 20810529.33,
-     "diferenca": 0.0
+     "fonte": 20811963.33,
+     "diferenca": -1434.0
     },
     {
      "item": "00974843 AGILITA PROPAGANDA E MARKETING LTDA · empenhado",
@@ -8745,14 +8605,14 @@
     {
      "item": "08935828 OITENTA VINTE MARKETING LTDA · pago",
      "site": 12471576.09,
-     "fonte": 12471576.09,
-     "diferenca": 0.0
+     "fonte": 12478387.41,
+     "diferenca": -6811.32
     },
     {
      "item": "08935828 OITENTA VINTE MARKETING LTDA · empenhado",
      "site": 14021806.06,
-     "fonte": 14021806.06,
-     "diferenca": 0.0
+     "fonte": 14076529.05,
+     "diferenca": -54722.99
     },
     {
      "item": "02033066 RAMAL PROPAGANDA LTDA · pago",
@@ -8793,8 +8653,8 @@
     {
      "item": "37204476 B & W TRES PROPAGANDA LTDA - EPP · pago",
      "site": 6099734.08,
-     "fonte": 6099734.08,
-     "diferenca": 0.0
+     "fonte": 6099869.08,
+     "diferenca": -135.0
     },
     {
      "item": "37204476 B & W TRES PROPAGANDA LTDA - EPP · empenhado",
@@ -8805,8 +8665,8 @@
     {
      "item": "01962760 MV COMUNICACAO E PLANEJAMENTO LTDA · pago",
      "site": 5018400.47,
-     "fonte": 5018400.47,
-     "diferenca": 0.0
+     "fonte": 5018999.39,
+     "diferenca": -598.92
     },
     {
      "item": "01962760 MV COMUNICACAO E PLANEJAMENTO LTDA · empenhado",
@@ -8949,8 +8809,8 @@
     {
      "item": "09146700 ALTERNATIVA COMERCIO E COMUNICACAO LTDA- · pago",
      "site": 6788.77,
-     "fonte": 6788.77,
-     "diferenca": 0.0
+     "fonte": 6819.01,
+     "diferenca": -30.24
     },
     {
      "item": "09146700 ALTERNATIVA COMERCIO E COMUNICACAO LTDA- · empenhado",
@@ -8992,17 +8852,17 @@
     "59087182 WALKER COMUNICACAO ESTRATEGICA LTDA"
    ],
    "registrosAbrangidos": 20,
-   "registrosConferidosUmAUm": 20,
+   "registrosConferidosUmAUm": 15,
    "registrosPorTotais": 0,
    "fonteInacessivel": [
     "SIG-Transparência da Prefeitura de Campo Grande"
    ],
    "independencia": "reconsulta na mesma fonte (portal do Estado e SIG da Prefeitura) — confirma a leitura, não é fonte independente",
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "eleicoes": {
    "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "em": "2026-11-25T12:07:12",
    "metodo": "DivulgaCand do TSE: cada eleito de MS em 2026 — nome completo, partido, cargo, situação e total de bens (100 = igual, 0 = diferente)",
    "fonteUrl": "https://divulgacandcontas.tse.jus.br/",
    "conferidos": 175,
@@ -9824,7 +9684,7 @@
     }
    },
    "independencia": "DivulgaCand do TSE: outro serviço do mesmo órgão (a coleta usa os arquivos de dados abertos do TSE) — confirma os dados da candidatura, não é fonte independente do TSE",
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   },
   "emendas": {
    "resultado": "diverge",
@@ -10666,12 +10526,13 @@
    },
    "independencia": "API da CGU: outro serviço do mesmo órgão (a coleta usa o arquivo de download do Portal da Transparência) — confirma os pagamentos, não é fonte independente da CGU",
    "coletaRunId": "44622903893",
-   "ultimaTentativa": "2026-11-24T12:46:28",
-   "ultimaTentativaResultado": "indisponivel"
+   "ultimaTentativa": "2026-11-25T12:07:12",
+   "ultimaTentativaResultado": "indisponivel",
+   "ultimaTentativaMotivo": "erro na conferência: ValueError: could not convert string to float: '- 476.00' (validar_fontes.py:447)"
   },
   "contratos-cg": {
    "resultado": "confere",
-   "em": "2026-11-24T12:46:28",
+   "em": "2026-11-25T12:07:12",
    "metodo": "SIG-Transparência da Prefeitura (consulta de contratos do ano): contrato a contrato — valor, situação, fornecedor e objeto (100 = igual, 0 = diferente)",
    "fonteUrl": "https://sig-transparencia.campogrande.ms.gov.br/contratos/consulta",
    "conferidos": 1408,
@@ -12120,7 +11981,7 @@
    "registrosConferidosUmAUm": 352,
    "registrosPorTotais": 0,
    "independencia": "reconsulta na mesma fonte (SIG-Transparência da Prefeitura) — confirma a leitura, não é fonte independente",
-   "coletaRunId": "45434572371"
+   "coletaRunId": "45649872489"
   }
  }
 }
