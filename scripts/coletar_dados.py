@@ -1250,11 +1250,125 @@ def _pref_atualizar_pagos(linhas, limite_seg=12 * 60, hilos=6):
     with ThreadPoolExecutor(hilos) as ex:
         for k, v in ex.map(ler, [k for _, _, k in cand]):
             if v:
-                cache[k] = v
+                cache[k] = {**(cache.get(k) or {}), **v}  # mescla: não apaga o órgão confirmado da SEMADI (0505F)
                 n += 1
     PREF_PAGOS_CACHE.write_text(json.dumps(cache, separators=(",", ":")), encoding="utf-8")
     log(f"  detalhes de empenho: {n} lidos agora ({len(cand)} com saldo a pagar; {len(cache)} no cache)")
     return cache
+
+
+# UGE 0505F (SEMADI) empenha a folha e despesas de várias secretarias, mas a exportação do SIG lança tudo como
+# "Secretaria Municipal de Gestão". O órgão de verdade está na página de cada empenho (unidade gestora e dotação).
+# Decidido em 25/11/2026: o site usa a unidade gestora da página; erro na página = fatia própria, nunca Gestão.
+PREF_UGE_CENTRAL = "0505F"
+PREF_NAO_CONFIRMADO = "Órgão não confirmado (SEMADI)"
+PREF_A_CONFIRMAR = "SEMADI — órgão em confirmação"
+PREF_NOTA_CENTRAL = ("a exportação do SIG classifica como Secretaria Municipal de Gestão os empenhos da unidade 0505F (SEMADI), "
+                     "que empenha folha e despesas de várias secretarias; o Cofre Aberto MS usa o órgão indicado na página de cada empenho")
+PREF_ORGAO_MAX_PAGINAS = 450   # por coleta (a 1ª carga, ~1.350 empenhos, se divide em ~3 coletas, com checkpoint no cache)
+PREF_ORGAO_LIMITE_SEG = 9 * 60
+PREF_ORGAO_HILOS = 3           # no máximo 3 páginas do SIG ao mesmo tempo
+PREF_ORGAO_REPETE_DIAS = 7     # página que deu erro: nova tentativa depois de 7 dias, no máximo 3 vezes
+
+
+def _pref_detalhe_central(s, k):
+    """Lê a página do empenho: unidade gestora e órgão (e os valores empenhado/liquidado/pago, aproveitando a leitura).
+    Devolve (dados, erro)."""
+    import html as _html, re as _re, time as _time
+    erro = None
+    for t in range(3):
+        try:
+            r = s.get(f"https://sig-transparencia.campogrande.ms.gov.br/despesas/detalhe/{k}", timeout=60)
+            if r.status_code != 200:
+                erro = f"HTTP {r.status_code}"
+                _time.sleep(2 * (t + 1))
+                continue
+            txt = _re.sub(r"\s+", " ", _html.unescape(_re.sub(r"<[^>]+>", " ", _re.sub(r"<script.*?</script>", "", r.text, flags=_re.S))))
+            ug = _re.search(r"Unidade Gestora (.*?) Dotação Orçamentária", txt)
+            og = _re.search(r"Órgão (.*?) Unidade Gestora", txt)
+            if not ug or not ug.group(1).strip():
+                return None, "página sem unidade gestora"
+            out = {"o": ug.group(1).strip(), "og": (og.group(1).strip() if og else None)}
+            m = _re.search(r"Saldo a Pagar \*\* ((?:R\$ [\d.,]+ ){9})", txt)
+            if m:
+                v = [_pref_num(z) for z in _re.findall(r"R\$ [\d.,]+", m.group(1))]
+                out.update({"e": round(v[4], 2), "l": round(v[5], 2), "p": round(v[6], 2), "d": date.today().isoformat()})
+            return out, None
+        except Exception as e:
+            erro = type(e).__name__
+            _time.sleep(3)
+    return None, erro
+
+
+def _pref_orgao_central(linhas, cache, max_paginas=PREF_ORGAO_MAX_PAGINAS, limite_seg=PREF_ORGAO_LIMITE_SEG, hilos=PREF_ORGAO_HILOS,
+                        ler=None):
+    """Confirma pela página do empenho o órgão dos empenhos da UGE 0505F ainda sem órgão no cache (os de maior valor
+    primeiro). Uma leitura por empenho; o cache (prefeitura_pagos_cache.json) é o checkpoint entre coletas."""
+    import time as _time
+    from concurrent.futures import ThreadPoolExecutor
+    hoje = date.today()
+    cand = []
+    for x in linhas:
+        if str(x.get("uge") or "").strip() != PREF_UGE_CENTRAL:
+            continue
+        k = f"{x.get('ano')}/{x.get('uge')}/{x.get('num')}"
+        c = cache.get(k) or {}
+        if c.get("o"):
+            continue
+        if c.get("oErro"):
+            try:
+                ult = date.fromisoformat(c.get("oTent") or "1900-01-01")
+            except ValueError:
+                ult = date(1900, 1, 1)
+            if c.get("oTentativas", 0) >= 3 or (hoje - ult).days < PREF_ORGAO_REPETE_DIAS:
+                continue
+        cand.append((-_pref_num(x.get("total_empenhado")), k))
+    cand = [k for _, k in sorted(cand)][:max_paginas]
+    if not cand:
+        return 0
+    if ler is None:
+        s = requests.Session()
+        s.headers.update({"User-Agent": "Mozilla/5.0 (CofreAbertoMS; transparencia publica)"})
+        ler = lambda k: _pref_detalhe_central(s, k)
+    t0 = _time.monotonic()
+
+    def um(k):
+        if _time.monotonic() - t0 > limite_seg:
+            return k, None, "tempo"
+        return (k, *ler(k))
+
+    ok = err = 0
+    with ThreadPoolExecutor(hilos) as ex:
+        for k, dados, erro in ex.map(um, cand):
+            if erro == "tempo":
+                continue
+            c = dict(cache.get(k) or {})
+            if dados:
+                c.update(dados)
+                for z in ("oErro", "oTent", "oTentativas"):
+                    c.pop(z, None)
+                ok += 1
+            else:
+                c.update({"oErro": erro, "oTent": hoje.isoformat(), "oTentativas": c.get("oTentativas", 0) + 1})
+                err += 1
+            cache[k] = c
+    PREF_PAGOS_CACHE.write_text(json.dumps(cache, separators=(",", ":")), encoding="utf-8")
+    log(f"  órgão dos empenhos da SEMADI (0505F): {ok} confirmados agora, {err} com erro na página ({len(cand)} na fila desta coleta)")
+    return ok
+
+
+def _pref_orgao_da_linha(row, cache, contagem):
+    """Unidade gestora usada no site. 0505F: a da página do empenho; erro na página: fatia própria; ainda não lida:
+    "em confirmação" (nunca volta para Gestão)."""
+    ug = (row.get("nomeunidadegestora") or row.get("orgao") or "Outros").strip()
+    if str(row.get("uge") or "").strip() != PREF_UGE_CENTRAL:
+        return ug
+    c = cache.get(f"{row.get('ano')}/{row.get('uge')}/{row.get('num')}") or {}
+    v = _pref_num(row.get("total_empenhado"))
+    chave = "confirmados" if c.get("o") else "naoConfirmados" if c.get("oErro") else "emConfirmacao"
+    contagem[chave] = contagem.get(chave, 0) + 1
+    contagem[chave + "Valor"] = contagem.get(chave + "Valor", 0) + v
+    return c["o"] if c.get("o") else PREF_NAO_CONFIRMADO if c.get("oErro") else PREF_A_CONFIRMAR
 
 
 def _pref_baixar_csv_dados_abertos(ano):
@@ -1267,6 +1381,17 @@ def _pref_baixar_csv_dados_abertos(ano):
         raise RuntimeError(f"link do CSV {ano} não encontrado na página de dados abertos")
     r = get_com_retry(links[0])
     return list(csv.DictReader(io.StringIO(r.content.decode("utf-8-sig", errors="replace")), delimiter=";"))
+
+
+def _pref_resumo_central(c):
+    n = c.get("confirmados", 0) + c.get("naoConfirmados", 0) + c.get("emConfirmacao", 0)
+    if not n:
+        return None
+    return {"uge": PREF_UGE_CENTRAL, "empenhos": n, "confirmados": c.get("confirmados", 0), "naoConfirmados": c.get("naoConfirmados", 0),
+            "emConfirmacao": c.get("emConfirmacao", 0), "pctConfirmados": round(100 * c.get("confirmados", 0) / n, 1),
+            "valorEmpenhado": round(sum(c.get(z + "Valor", 0) for z in ("confirmados", "naoConfirmados", "emConfirmacao")), 2),
+            "valorNaoConfirmado": round(c.get("naoConfirmadosValor", 0), 2), "valorEmConfirmacao": round(c.get("emConfirmacaoValor", 0), 2),
+            "nota": PREF_NOTA_CENTRAL, "rotuloNaoConfirmado": PREF_NAO_CONFIRMADO, "rotuloEmConfirmacao": PREF_A_CONFIRMAR}
 
 
 def coletar_prefeitura():
@@ -1303,6 +1428,17 @@ def coletar_prefeitura():
     except Exception as e:
         log(f"  ⚠️ detalhes de empenho: {e}")
         pagos = {}
+    if not pagos:
+        try:
+            pagos = json.load(open(PREF_PAGOS_CACHE, encoding="utf-8"))
+        except Exception:
+            pagos = {}
+    try:
+        if fonte and fonte.startswith("SIG"):
+            _pref_orgao_central(linhas, pagos)
+    except Exception as e:
+        log(f"  ⚠️ órgão dos empenhos da SEMADI: {e}")
+    central = {}
     por_secretaria = {}
     total_geral = total_empenhado = total_liquidado = 0.0
     despesas = []
@@ -1311,7 +1447,7 @@ def coletar_prefeitura():
             # A exportação do SIG traz em "orgao" nomes antigos/trocados (ex.: "FUNDO MUNICIPAL
             # DO IDOSO" em empenhos da FUNDAC, "GABINETE DO PREFEITO" na Casa Civil); a
             # unidade gestora é a que de fato fez a despesa — e é a que aparece no detalhe.
-            secretaria = (row.get("nomeunidadegestora") or row.get("orgao") or "Outros").strip()
+            secretaria = _pref_orgao_da_linha(row, pagos, central)
             valor = parse_valor(row.get("total_pago"))
             empenhado = parse_valor(row.get("total_empenhado"))
             liquidado = parse_valor(row.get("total_liquidado"))
@@ -1361,6 +1497,7 @@ def coletar_prefeitura():
         "ultimoEmpenho": max((str(r.get("dataempenho") or "") for r in linhas), default=None),
         "fonte": f"{fonte} — {hoje}",
         "porSecretaria": {k: round(v, 2) for k, v in sorted(por_secretaria.items(), key=lambda x: -x[1])[:20]},
+        "orgaoCentral": _pref_resumo_central(central),
         "totalLinhas": len(linhas),
         "totalNotasFiscais": len(despesas),
         "despesas": despesas,

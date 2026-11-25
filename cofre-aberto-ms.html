@@ -981,6 +981,7 @@ Atenciosamente,</textarea>
     </div>
     <div class="section-body" style="padding:24px">
       <div class="subhead">Despesas por órgão (Top 20)</div>
+      <p class="section-note" id="pref-central-nota" hidden style="margin-top:8px"></p>
       <div class="bar-list" id="pref-secretarias" style="margin-top:12px"></div>
     </div>
 
@@ -4297,6 +4298,15 @@ function renderPrefeitura(data) {
   document.getElementById("pref-extra").textContent = extra.length ? ` · ${extra.join(" · ")}` : "";
   const lista = document.getElementById("pref-secretarias");
   if (!lista) return;
+  // UGE 0505F (SEMADI): órgão pela página de cada empenho (decisão de 25/11/2026)
+  const oc = data.orgaoCentral, ocNota = document.getElementById("pref-central-nota");
+  if (ocNota && oc) {
+    const nota = String(oc.nota || ""); const pend = (oc.emConfirmacao || 0) > 0;
+    ocNota.innerHTML = `ⓘ ${escHTML(nota.charAt(0).toUpperCase() + nota.slice(1))}.`
+      + (pend ? ` <b>Classificação por órgão em atualização (${String(oc.pctConfirmados).replace(".", ",")}% dos empenhos da SEMADI confirmados)</b>: o que ainda não foi confirmado aparece em "${escHTML(oc.rotuloEmConfirmacao)}".` : "")
+      + (oc.naoConfirmados ? ` ${oc.naoConfirmados.toLocaleString("pt-BR")} empenho(s) cuja página não abriu no SIG ficam em "${escHTML(oc.rotuloNaoConfirmado)}".` : "");
+    ocNota.hidden = false;
+  }
   lista.innerHTML = Object.entries(por).map(([sec, val]) =>
     `<div class="bar-list-row">
       <div class="bar-list-label" title="${sec}">${sec}</div>

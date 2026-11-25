@@ -146,6 +146,11 @@ def tema_prefeitura():
     corpo += (f"<p>A Prefeitura de Campo Grande pagou <strong>{brl(p['totalDespesas'])}</strong> em {ano}, segundo o SIG-Transparência do município."
               + (f" O empenho mais recente publicado é de <strong>{data_br(ult)}</strong> — a Prefeitura publica com atraso." if ult else "") + "</p>")
     corpo += "<h2>Secretarias que mais gastaram</h2>" + barras([(n, v) for n, v in secs])
+    oc = p.get("orgaoCentral") or {}
+    if oc.get("nota"):  # UGE 0505F (SEMADI): órgão pela página de cada empenho
+        corpo += (f"<p><small>{e(oc['nota'][0].upper() + oc['nota'][1:])}."
+                  + (f" Classificação por órgão em atualização ({str(oc.get('pctConfirmados')).replace('.', ',')}% dos empenhos da SEMADI confirmados)."
+                     if oc.get("emConfirmacao") else "") + "</small></p>")
     if pc.get("fornecedores"):
         corpo += "<h2>Empresas com mais contratos</h2>" + tabela(["Empresa", "#Contratos", "#Valor dos contratos"], [
             f"<tr><td>{e(f['nome'])}</td><td class='num'>{f.get('contratos')}</td><td class='num'>{brl(f.get('valorContratos'))}</td></tr>"
