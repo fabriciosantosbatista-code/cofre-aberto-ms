@@ -2,7 +2,11 @@
 """
 Cofre Aberto MS — publica no Instagram o post preparado por gerar_posts_instagram.py (instagram/proximo.json)
 
-API oficial do Instagram com login do Instagram (graph.instagram.com), sem página do Facebook:
+Dois tipos de chave (o publicador descobre sozinho qual é):
+  - login do Instagram (graph.instagram.com): vale 60 dias e é renovada aqui a cada execução;
+  - login unificado / usuário do sistema do portfólio da Meta (graph.facebook.com, 25/11/2026): não expira; o ID da
+    conta vem de IG_USER_ID (variável do workflow) ou das páginas ligadas ao token. Não há renovação.
+Passos:
   1. cria um contêiner para cada imagem do carrossel (a imagem precisa estar num endereço público: o site)
   2. cria o contêiner do carrossel com a legenda e espera ficar pronto
   3. publica
@@ -23,11 +27,14 @@ import requests
 
 ROOT = Path(__file__).parent.parent
 PASTA = ROOT / "instagram"
-API = "https://graph.instagram.com/" + os.environ.get("IG_API_VERSAO", "v23.0")
+VERSAO = os.environ.get("IG_API_VERSAO", "v23.0")
+API_IG = "https://graph.instagram.com/" + VERSAO
+API_FB = "https://graph.facebook.com/" + VERSAO
+API = API_IG
 
 
-def chamar(metodo, caminho, token, **params):
-    r = requests.request(metodo, f"{API}/{caminho}", params={**params, "access_token": token}, timeout=60)
+def chamar(metodo, caminho, token, api=None, **params):
+    r = requests.request(metodo, f"{api or API}/{caminho}", params={**params, "access_token": token}, timeout=60)
     try:
         j = r.json()
     except ValueError:
@@ -35,6 +42,26 @@ def chamar(metodo, caminho, token, **params):
     if r.status_code != 200 or "error" in j:
         raise RuntimeError(f"{caminho}: {(j.get('error') or {}).get('message') or r.text[:300]}")
     return j
+
+
+def conta(token):
+    """(api, id da conta do Instagram, nome de usuário, tipo da chave). Tenta a chave do login do Instagram; se a API do
+    Instagram recusar, usa a do Facebook (usuário do sistema), com IG_USER_ID ou a conta ligada às páginas do token."""
+    try:
+        eu = chamar("GET", "me", token, api=API_IG, fields="user_id,username")
+        return API_IG, eu["user_id"], eu.get("username"), "instagram"
+    except RuntimeError as e:
+        erro_ig = str(e)
+    uid = (os.environ.get("IG_USER_ID") or "").strip()
+    if not uid:
+        pags = chamar("GET", "me/accounts", token, api=API_FB, fields="instagram_business_account{id,username}").get("data") or []
+        contas = [p["instagram_business_account"] for p in pags if p.get("instagram_business_account")]
+        if not contas:
+            raise RuntimeError(f"a chave não é do login do Instagram ({erro_ig}) e nenhuma página ligada a ela tem conta do "
+                               "Instagram — defina IG_USER_ID no workflow ou ligue a conta a uma página do Facebook")
+        uid = contas[0]["id"]
+    info = chamar("GET", uid, token, api=API_FB, fields="username")
+    return API_FB, uid, info.get("username"), "facebook"
 
 
 def renovar(token):
@@ -79,9 +106,13 @@ def main():
     if any(x.get("imagens") == post["imagens"] for x in hist["publicados"]):
         print("ℹ️ este post já foi publicado")
         return
-    token = renovar(token)
-    eu = chamar("GET", "me", token, fields="user_id,username")
-    uid = eu["user_id"]
+    global API
+    API, uid, usuario, tipo = conta(token)
+    eu = {"username": usuario}
+    if tipo == "instagram":
+        token = renovar(token)
+    else:
+        print("  chave do usuário do sistema da Meta (graph.facebook.com): não expira, sem renovação")
     # as imagens precisam já estar no site (GitHub Pages leva ~1 min depois do push)
     for u in post["urls"]:
         for _ in range(40):

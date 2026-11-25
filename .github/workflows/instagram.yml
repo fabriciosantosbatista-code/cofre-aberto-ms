@@ -46,6 +46,7 @@ jobs:
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
+          IG_USER_ID: "17841400153468200"   # @cofre_abertoms (ID público da conta; não é segredo)
         run: python3 -u scripts/publicar_instagram.py
 
       - name: Guardar o histórico
