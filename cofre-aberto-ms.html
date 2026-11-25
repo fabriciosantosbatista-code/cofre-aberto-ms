@@ -450,6 +450,8 @@ a.novo-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .fonte-txt b{color:var(--ink);font-weight:600}.fonte-txt a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--border)}
 .fonte-msg{color:var(--amber)}
 .fonte-selo{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:600;border-radius:999px;padding:2px 8px;border:1px solid;white-space:nowrap}
+/* selo com frase longa (ex.: "dados de DD/MM: a coleta de hoje não passou no teste de integridade") quebra a linha no celular */
+.fonte-selo{max-width:100%;}@media(max-width:600px){.fonte-selo{white-space:normal;border-radius:10px;line-height:1.3}}
 .fonte-selo.selo-icp{white-space:normal;max-width:100%}
 .fonte-selo.ok{color:var(--positive);border-color:rgba(45,212,160,.35);background:rgba(45,212,160,.08)}
 .fonte-selo.atencao{color:var(--amber);border-color:rgba(245,200,66,.35);background:rgba(245,200,66,.08)}
