@@ -1544,6 +1544,28 @@ def janela_coleta(agora_utc=None):
     return True, f"coleta {run}, {h:.1f} h depois do início"
 
 
+# Teto de tempo de cada base dentro da conferência (25/11/2026): ao estourar, a base para e fica "tempo esgotado",
+# sem tirar tempo das outras. Os tetos vêm do tempo típico de cada base (coletas de 24 e 25/11) com folga; o que uma
+# base não usa fica para as seguintes, mas nenhuma passa do próprio teto. Bases fora da lista: TETO_PADRAO_SEG.
+TETO_BASE_SEG = {"shows": 840, "alugueis": 300, "emendas": 300, "supersalarios": 180, "entidades": 150, "deputados": 150,
+                 "votacoes": 90, "obras": 90}
+TETO_PADRAO_SEG = 60
+AVISO_SEM_CONFERENCIA = 3  # coletas seguidas sem conferência de uma base → aviso na vistoria
+
+
+def ordem_conferencia(conferencias, ant):
+    """Ordem desta coleta: primeiro a base conferida há mais tempo (a que nunca foi conferida vem antes de todas),
+    para que nenhuma fique sempre por último quando o tempo acaba. Empate: a ordem da lista."""
+    pos = {f: i for i, (f, _) in enumerate(conferencias)}
+    return sorted(conferencias, key=lambda c: (str((ant.get(c[0]) or {}).get("em") or ""), pos[c[0]]))
+
+
+def marcar_sem_conferencia(r, motivo):
+    """Conferência não feita nesta coleta: fica a anterior, com o motivo e a contagem de coletas seguidas sem conferência."""
+    n = int(r.get("coletasSemConferencia") or 0) + 1
+    return {**r, "ultimaTentativa": AGORA, "ultimaTentativaResultado": motivo, "coletasSemConferencia": n}
+
+
 def main():
     """Uso: python3 scripts/validar_fontes.py [base ...]   (sem argumento: todas)
     Fora da janela da coleta (rodada manual, por exemplo), só gera um relatório em dados/verificacao/relatorios/ — não
@@ -1556,29 +1578,45 @@ def main():
     out = dict(ant.get("fontes") or {})
     t0, prazo = time.monotonic(), int(os.environ.get("CONFERENCIA_PRAZO_MIN", "28")) * 60  # o passo do workflow tem 35 min
     PRAZO["fim"] = t0 + prazo  # vale também dentro de cada base (19/11/2026: Shows ficou 31 min esperando o PNCP)
-    for fonte, fn in CONFERENCIAS:
+    fim_total = t0 + prazo
+    ordem = ordem_conferencia(CONFERENCIAS, out)
+    print("  ordem desta coleta (a conferida há mais tempo primeiro): " + ", ".join(f for f, _ in ordem))
+    for fonte, fn in ordem:
         if so and fonte not in so:
             continue
-        if time.monotonic() - t0 > prazo:  # sem tempo: fica a conferência anterior da base, marcada
+        teto = TETO_BASE_SEG.get(fonte, TETO_PADRAO_SEG)
+        agora = time.monotonic()
+        if fim_total - agora < min(teto, TETO_PADRAO_SEG) / 2:  # sem tempo nem para começar: fica a conferência anterior
             if out.get(fonte):
-                out[fonte] = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"}
-            print(f"  {fonte:20} não conferida nesta coleta (tempo esgotado) — fica a conferência anterior")
+                out[fonte] = marcar_sem_conferencia(out[fonte], "não conferida nesta coleta (tempo esgotado)")
+            print(f"  {fonte:20} não conferida nesta coleta (tempo da conferência esgotado) — fica a conferência anterior")
             continue
+        PRAZO["fim"] = min(fim_total, agora + teto)  # teto próprio da base: não tira tempo das outras
         PRAZO["esgotado"] = False
         try:
             r = fn()
         except Exception as e:
             r = {"resultado": "indisponivel", "em": AGORA, "nota": erro_conferencia(e)}
+        gasto = round(time.monotonic() - agora)
         if PRAZO["esgotado"]:  # a base não foi conferida por inteiro no prazo: não grava resultado parcial
             if out.get(fonte):
-                out[fonte] = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": "não conferida nesta coleta (tempo esgotado)"}
-            print(f"  {fonte:20} não conferida nesta coleta (tempo esgotado no meio da conferência) — fica a conferência anterior")
+                out[fonte] = {**marcar_sem_conferencia(out[fonte], f"não conferida nesta coleta (tempo esgotado: teto da base, {teto} s)"),
+                              "duracaoUltimaTentativaSeg": gasto}
+            print(f"  {fonte:20} não conferida nesta coleta (tempo esgotado no teto da base, {teto} s) — fica a conferência anterior")
             continue
         r = registrar(fonte, r, out)
+        r["duracaoSeg"] = r.get("duracaoSeg") or gasto
+        if r.get("ultimaTentativa") == AGORA and r.get("ultimaTentativaResultado") == "indisponivel":
+            out[fonte] = r = {**r, "coletasSemConferencia": int(r.get("coletasSemConferencia") or 0) + 1}
+        else:
+            r.pop("coletasSemConferencia", None)
         if r.get("ultimaTentativa") == AGORA and r.get("ultimaTentativaResultado") == "indisponivel":
             print(f"  {fonte:20} indisponível nesta coleta — {r.get('ultimaTentativaMotivo') or 'sem motivo'}; fica a conferência de {str(r.get('em'))[:16]}")
         else:
             print(f"  {fonte:20} {r['resultado']:15} {r.get('conferidos', 0)} itens  {r.get('nota', '')}")
+    for f, r in out.items():
+        if int(r.get("coletasSemConferencia") or 0) >= AVISO_SEM_CONFERENCIA:
+            print(f"  ⚠️ {f}: {r['coletasSemConferencia']} coletas seguidas sem conferência (última conferência em {str(r.get('em'))[:16]})")
     SAIDA.write_text(json.dumps({"geradoEm": AGORA, "fontes": out}, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"✅ validacao_fontes.json — {sum(1 for r in out.values() if r['resultado'] in ('confere', 'mudou_na_fonte'))} fontes conferidas, "
           f"{sum(1 for r in out.values() if r['resultado'] == 'diverge')} com divergência, {sum(1 for r in out.values() if r['resultado'] == 'indisponivel')} indisponíveis")

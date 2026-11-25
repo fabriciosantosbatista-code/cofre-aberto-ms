@@ -40,6 +40,8 @@ jobs:
         run: pip install -q requests && python3 tests/test_emendas_compartilhado.py
       - name: Prefeitura — órgão dos empenhos da UGE 0505F pela página do empenho
         run: pip install -q requests && python3 tests/test_prefeitura_semadi.py
+      - name: Conferência na fonte — teto de tempo por base, ordem rotativa e aviso de 3 coletas sem conferência
+        run: pip install -q requests && python3 tests/test_conferencia_orcamento.py
 
       - name: LGPD — nenhum CPF completo nos arquivos publicados (com e sem pontuação, em qualquer campo)
         run: python3 tests/test_cpf.py

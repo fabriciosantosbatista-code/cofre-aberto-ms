@@ -320,6 +320,15 @@ def main():
     csvs = list((DADOS / "csv").glob("*.csv"))
     checa(len(csvs) >= 25, f"Planilhas CSV: {len(csvs)}", f"**Planilhas CSV**: só {len(csvs)} (esperado 25)", "aviso")
 
+    # ---------- conferência na fonte: base sem conferência há 3 coletas seguidas (validar_fontes.py) ----------
+    vf = (carregar("validacao_fontes.json") or {}).get("fontes") or {}
+    paradas = [(f, r) for f, r in vf.items() if int(r.get("coletasSemConferencia") or 0) >= 3]
+    for f, r in paradas:
+        avisos.append(f"**Conferência na fonte — {f}**: {r['coletasSemConferencia']} coletas seguidas sem conferência "
+                      f"({r.get('ultimaTentativaResultado') or 'sem motivo'}; última conferência em {str(r.get('em'))[:10]})")
+    if vf and not paradas:
+        ok.append("Conferência na fonte: nenhuma base 3 coletas seguidas sem conferência")
+
     # ---------- versões leves do painel (gerar_painel_leve.py) ----------
     for nome in ("camara_municipal.json", "deputados_estaduais_ms.json", "deputados_federais_ms.json", "prefeitura.json"):
         leve, completo = DADOS / "painel" / nome, DADOS / nome
