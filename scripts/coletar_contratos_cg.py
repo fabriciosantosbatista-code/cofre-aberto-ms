@@ -101,6 +101,19 @@ def cnpj_por_nome():
     return mapa
 
 
+def numero_licitacao(x):
+    """(número, número como veio da fonte). 26/11/2026: o portal manda "numero" com o número repetido no lugar do ano
+    ("102/102", "4/004") e "anoedital" vazio em parte das licitações; o número certo sai dos campos da própria fonte
+    (numeroedital + ano da consulta): "102/2026". Outros formatos ficam como vieram."""
+    bruto = limpa(x.get("numero"))
+    m = re.fullmatch(r"(\d+)/(\d{1,3})", bruto)
+    ano = x.get("anoedital") or x.get("ano")
+    if m and int(m.group(1)) == int(m.group(2)) and ano:
+        n = x.get("numeroedital") or int(m.group(1))
+        return f"{int(n)}/{ano}", bruto
+    return bruto, bruto
+
+
 def main():
     print(f"📑 Contratos e licitações — Prefeitura de Campo Grande {ANO}")
     fim = HOJE if ANO == HOJE.year else date(ANO, 12, 31)
@@ -135,10 +148,12 @@ def main():
         l = licit.get(k)
         if not l:
             l = licit[k] = {"data": iso(x.get("data")), "modalidade": limpa(x.get("modalidade")).title(),
-                            "numero": limpa(x.get("numero")), "edital": x.get("numeroedital"),
+                            "numero": numero_licitacao(x)[0], "edital": x.get("numeroedital"),
                             "status": limpa(x.get("status")), "objeto": limpa(x.get("descricao"))[:400],
                             "gestor": limpa(x.get("gestorcompras")), "valorEstimado": num(x.get("valorestimado")),
                             "processo": limpa(x.get("processo_origem")), "vencedores": []}
+            if numero_licitacao(x)[1] != l["numero"]:
+                l["numeroFonte"] = numero_licitacao(x)[1]  # como veio do portal (para conferir na fonte)
         cnpj, nome = so_digitos(x.get("cnpjfornecedor")), limpa(x.get("nomefornecedor"))
         if nome and all(v["nome"] != nome for v in l["vencedores"]):
             l["vencedores"].append({"cnpj": cnpj, "nome": nome})

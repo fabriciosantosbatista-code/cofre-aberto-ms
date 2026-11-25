@@ -595,7 +595,7 @@ def main():
         elif outras:
             x, p, v = max(outras, key=lambda t: t[2])
             if sum(pg.values()) >= 10000:
-                add("sancionada_outro_ente", (c,), f"{nome}: punida por {x['orgao'][:60]} e pagada em MS",
+                add("sancionada_outro_ente", (c,), f"{nome}: punida por {x['orgao'][:60]} e paga em MS",
                     f"A empresa está no {x['cadastro']} (CGU): {resumo(x)}. Essa sanção vale só para o ente ou órgão que a aplicou, então não "
                     f"impede a contratação em MS — mas é um histórico que quem contrata deveria conhecer. Em MS, a empresa recebeu: "
                     + ", ".join(f"{k} ({brl(w)})" for k, w in sorted(pg.items(), key=lambda kv: -kv[1])[:3]) + ".",
@@ -761,7 +761,8 @@ def main():
                 sb = {(norm(s["nome"]), s.get("cpf")) for s in (cad.get(b) or {}).get("socios", []) if s.get("nome")}
                 comum = {x[0] for x in sa & sb}
                 if comum:
-                    add("socios_licitacao", (l["processo"], l["numero"], a, b), f"{l['modalidade']} nº {l['numero']}: vencedoras com sócio em comum",
+                    # chave com o número como veio da fonte: o id do sinal (e o "vistoEm") não muda com a correção do número
+                    add("socios_licitacao", (l["processo"], l.get("numeroFonte") or l["numero"], a, b), f"{l['modalidade']} nº {l['numero']}: vencedoras com sócio em comum",
                         f"{venc[i]['nome']} e {venc[j]['nome']} venceram a mesma licitação ({l['objeto'][:160]}) e têm em comum o(s) sócio(s) "
                         f"{', '.join(sorted(comum))}. Empresas do mesmo dono numa disputa podem simular concorrência.",
                         l.get("valorEstimado") or 0, [f"Processo {l['processo']}", f"Data: {data_br(l['data'])}", f"Situação: {l['status']}"],
