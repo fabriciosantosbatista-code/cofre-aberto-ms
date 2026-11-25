@@ -22,16 +22,6 @@
    "obs": "o portal não publica dados financeiros em formato aberto"
   },
   {
-   "orgao": "Prefeitura de Campo Grande",
-   "dado": "despesas (empenhos)",
-   "ultimo": "2026-10-02",
-   "dias": 54,
-   "prazo": 3,
-   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
-   "nivel": "ruim",
-   "obs": ""
-  },
-  {
    "orgao": "Câmara Municipal de Campo Grande",
    "dado": "verba indenizatória dos vereadores",
    "ultimo": "2026-09-30",
@@ -144,16 +134,16 @@
   {
    "orgao": "Câmara dos Deputados",
    "dado": "notas da cota parlamentar (CEAP)",
-   "ultimo": "2026-11-18",
-   "dias": 7,
+   "ultimo": "2026-11-23",
+   "dias": 2,
    "prazo": 45,
    "base": "a Câmara aceita notas até 90 dias depois da despesa",
    "nivel": "ok",
    "obs": "o atraso aqui é dos deputados, que apresentam as notas depois"
   },
   {
-   "orgao": "Governo do Estado de MS",
-   "dado": "despesas",
+   "orgao": "Prefeitura de Campo Grande",
+   "dado": "despesas (empenhos)",
    "ultimo": "2026-11-24",
    "dias": 1,
    "prazo": 3,
@@ -162,9 +152,19 @@
    "obs": ""
   },
   {
+   "orgao": "Governo do Estado de MS",
+   "dado": "despesas",
+   "ultimo": "2026-11-25",
+   "dias": 0,
+   "prazo": 3,
+   "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": ""
+  },
+  {
    "orgao": "Câmara Municipal de Aquidauana",
    "dado": "despesas e diárias",
-   "ultimo": "2026-11-24",
+   "ultimo": "2026-11-25",
    "dias": 0,
    "prazo": 3,
    "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
@@ -174,7 +174,7 @@
   {
    "orgao": "Câmara Municipal de Bonito",
    "dado": "despesas e diárias",
-   "ultimo": "2026-11-24",
+   "ultimo": "2026-11-25",
    "dias": 0,
    "prazo": 3,
    "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
@@ -184,7 +184,7 @@
   {
    "orgao": "Câmara Municipal de Chapadão do Sul",
    "dado": "despesas e diárias",
-   "ultimo": "2026-11-24",
+   "ultimo": "2026-11-25",
    "dias": 0,
    "prazo": 3,
    "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
@@ -204,7 +204,7 @@
   {
    "orgao": "Câmara Municipal de Coxim",
    "dado": "despesas e diárias",
-   "ultimo": "2026-11-24",
+   "ultimo": "2026-11-25",
    "dias": 0,
    "prazo": 3,
    "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
@@ -214,7 +214,7 @@
   {
    "orgao": "Câmara Municipal de Itaporã",
    "dado": "despesas e diárias",
-   "ultimo": "2026-11-24",
+   "ultimo": "2026-11-25",
    "dias": 0,
    "prazo": 3,
    "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
@@ -224,7 +224,7 @@
   {
    "orgao": "Câmara Municipal de Jardim",
    "dado": "despesas e diárias",
-   "ultimo": "2026-11-24",
+   "ultimo": "2026-11-25",
    "dias": 0,
    "prazo": 3,
    "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
@@ -244,7 +244,7 @@
   {
    "orgao": "Câmara Municipal de Ponta Porã",
    "dado": "despesas e diárias",
-   "ultimo": "2026-11-24",
+   "ultimo": "2026-11-25",
    "dias": 0,
    "prazo": 3,
    "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
@@ -254,7 +254,7 @@
   {
    "orgao": "Câmara Municipal de Ribas do Rio Pardo",
    "dado": "despesas e diárias",
-   "ultimo": "2026-11-24",
+   "ultimo": "2026-11-25",
    "dias": 0,
    "prazo": 3,
    "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
@@ -264,7 +264,7 @@
   {
    "orgao": "Câmara Municipal de Sidrolândia",
    "dado": "despesas e diárias",
-   "ultimo": "2026-11-24",
+   "ultimo": "2026-11-25",
    "dias": 0,
    "prazo": 3,
    "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
@@ -274,7 +274,7 @@
   {
    "orgao": "Câmara Municipal de Três Lagoas",
    "dado": "despesas e diárias",
-   "ultimo": "2026-11-24",
+   "ultimo": "2026-11-25",
    "dias": 0,
    "prazo": 3,
    "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",

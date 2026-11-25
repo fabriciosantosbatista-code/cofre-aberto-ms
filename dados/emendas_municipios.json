@@ -1,15 +1,15 @@
 {
  "ano": 2026,
- "ultimaAtualizacao": "2026-11-24T12:14:49",
+ "ultimaAtualizacao": "2026-11-25T13:18:40",
  "fonte": "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares/UNICO",
  "mesMaisRecente": "11/2026",
- "totalMS": 628696212.98,
- "pagamentos": 1057,
+ "totalMS": 630301843.1,
+ "pagamentos": 1063,
  "totalMunicipios": 79,
  "municipios": [
   {
    "municipio": "Campo Grande",
-   "total": 147671236.98,
+   "total": 147875576.32,
    "autores": [
     {
      "autor": "Bancada do Mato Grosso do Sul",
@@ -18,7 +18,7 @@
     },
     {
      "autor": "Vander Loubet",
-     "valor": 17460672.71,
+     "valor": 17460840.21,
      "atual": true
     },
     {
@@ -162,6 +162,11 @@
      "atual": false
     },
     {
+     "autor": "Prof. Reginaldo Veras",
+     "valor": 150000.0,
+     "atual": false
+    },
+    {
      "autor": "Wellington Fagundes",
      "valor": 75597.98,
      "atual": false
@@ -179,6 +184,11 @@
     {
      "autor": "Jose Rocha",
      "valor": 55640.0,
+     "atual": false
+    },
+    {
+     "autor": "Glauber Braga",
+     "valor": 54171.84,
      "atual": false
     },
     {
@@ -285,7 +295,7 @@
    "tipos": [
     {
      "tipo": "Individual (finalidade definida)",
-     "valor": 67797030.05
+     "valor": 68001369.39
     },
     {
      "tipo": "Bancada",
@@ -381,7 +391,7 @@
      "nome": "ASSOCIACAO AMIGOS DO CINEMA E DA CULTURA",
      "doc": "08902167000150",
      "natureza": "Associação Privada",
-     "valor": 1000000.0
+     "valor": 1150000.0
     },
     {
      "nome": "ASSOCIACAO DA FEIRA CENTRAL, CULTURAL E TURISTICA DE CAMPO GRANDE-MS",
@@ -667,12 +677,12 @@
      "atual": false
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Rodolfo Nogueira",
      "valor": 1500000.0,
      "atual": true
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Camila Jara",
      "valor": 1500000.0,
      "atual": true
     },
@@ -1361,12 +1371,12 @@
      "atual": true
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Dr. Luiz Ovando",
      "valor": 500000.0,
      "atual": true
     },
     {
-     "autor": "Dr. Luiz Ovando",
+     "autor": "Beto Pereira",
      "valor": 500000.0,
      "atual": true
     },
@@ -1715,6 +1725,85 @@
    ]
   },
   {
+   "municipio": "Itaporã",
+   "total": 8494147.34,
+   "autores": [
+    {
+     "autor": "Geraldo Resende",
+     "valor": 1990000.0,
+     "atual": true
+    },
+    {
+     "autor": "Rodolfo Nogueira",
+     "valor": 1990000.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Desenv. Urbano",
+     "valor": 1152697.0,
+     "atual": false
+    },
+    {
+     "autor": "Com. de Integracao Nacional e Des. Regional",
+     "valor": 811450.34,
+     "atual": false
+    },
+    {
+     "autor": "Com. Relacoes Ext e Defesa Nacional",
+     "valor": 800000.0,
+     "atual": false
+    },
+    {
+     "autor": "Marcos Pollon",
+     "valor": 650000.0,
+     "atual": true
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 500000.0,
+     "atual": true
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 300000.0,
+     "atual": true
+    },
+    {
+     "autor": "Dagoberto Nogueira",
+     "valor": 300000.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 3980000.0
+    },
+    {
+     "tipo": "Comissão",
+     "valor": 2764147.34
+    },
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 1750000.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "MUNICIPIO DE ITAPORA",
+     "doc": "03156999000150",
+     "natureza": "Município",
+     "valor": 6744147.34
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE DE ITAPORA",
+     "doc": "11749846000145",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 1750000.0
+    }
+   ]
+  },
+  {
    "municipio": "Chapadão do Sul",
    "total": 8193575.0,
    "autores": [
@@ -1777,80 +1866,6 @@
      "doc": "13600190000120",
      "natureza": "Fundo Público da Administração Direta Municipal",
      "valor": 200000.0
-    }
-   ]
-  },
-  {
-   "municipio": "Itaporã",
-   "total": 7694147.34,
-   "autores": [
-    {
-     "autor": "Geraldo Resende",
-     "valor": 1990000.0,
-     "atual": true
-    },
-    {
-     "autor": "Rodolfo Nogueira",
-     "valor": 1990000.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. Desenv. Urbano",
-     "valor": 1152697.0,
-     "atual": false
-    },
-    {
-     "autor": "Com. de Integracao Nacional e Des. Regional",
-     "valor": 811450.34,
-     "atual": false
-    },
-    {
-     "autor": "Marcos Pollon",
-     "valor": 650000.0,
-     "atual": true
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 500000.0,
-     "atual": true
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 300000.0,
-     "atual": true
-    },
-    {
-     "autor": "Dagoberto Nogueira",
-     "valor": 300000.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 3980000.0
-    },
-    {
-     "tipo": "Comissão",
-     "valor": 1964147.34
-    },
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 1750000.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "MUNICIPIO DE ITAPORA",
-     "doc": "03156999000150",
-     "natureza": "Município",
-     "valor": 5944147.34
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE DE ITAPORA",
-     "doc": "11749846000145",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 1750000.0
     }
    ]
   },
@@ -1941,6 +1956,94 @@
      "doc": "13971788000125",
      "natureza": "Fundo Público da Administração Direta Municipal",
      "valor": 150000.0
+    }
+   ]
+  },
+  {
+   "municipio": "Naviraí",
+   "total": 7544881.2,
+   "autores": [
+    {
+     "autor": "Com. Desenv Regional e Turismo",
+     "valor": 1720785.0,
+     "atual": false
+    },
+    {
+     "autor": "Camila Jara",
+     "valor": 1000000.0,
+     "atual": true
+    },
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 1000000.0,
+     "atual": true
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 995000.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 850000.0,
+     "atual": false
+    },
+    {
+     "autor": "Geraldo Resende",
+     "valor": 646625.0,
+     "atual": true
+    },
+    {
+     "autor": "Com. Relacoes Ext e Defesa Nacional",
+     "valor": 600000.0,
+     "atual": false
+    },
+    {
+     "autor": "Relator Geral",
+     "valor": 382471.2,
+     "atual": false
+    },
+    {
+     "autor": "Dr. Luiz Ovando",
+     "valor": 300000.0,
+     "atual": true
+    },
+    {
+     "autor": "Marcos Pollon",
+     "valor": 50000.0,
+     "atual": true
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Comissão",
+     "valor": 3170785.0
+    },
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 2996625.0
+    },
+    {
+     "tipo": "Emenda Pix (transferência especial)",
+     "valor": 995000.0
+    },
+    {
+     "tipo": "Emenda de Relator",
+     "valor": 382471.2
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "11221619000142",
+     "natureza": "Fundo Público da Administração Direta Municipal",
+     "valor": 3846625.0
+    },
+    {
+     "nome": "MUNICIPIO DE NAVIRAI",
+     "doc": "03155934000190",
+     "natureza": "Município",
+     "valor": 3698256.2
     }
    ]
   },
@@ -2447,91 +2550,8 @@
    ]
   },
   {
-   "municipio": "Naviraí",
-   "total": 6944881.2,
-   "autores": [
-    {
-     "autor": "Com. Desenv Regional e Turismo",
-     "valor": 1720785.0,
-     "atual": false
-    },
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
-     "autor": "Camila Jara",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 995000.0,
-     "atual": true
-    },
-    {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 850000.0,
-     "atual": false
-    },
-    {
-     "autor": "Geraldo Resende",
-     "valor": 646625.0,
-     "atual": true
-    },
-    {
-     "autor": "Relator Geral",
-     "valor": 382471.2,
-     "atual": false
-    },
-    {
-     "autor": "Dr. Luiz Ovando",
-     "valor": 300000.0,
-     "atual": true
-    },
-    {
-     "autor": "Marcos Pollon",
-     "valor": 50000.0,
-     "atual": true
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 2996625.0
-    },
-    {
-     "tipo": "Comissão",
-     "valor": 2570785.0
-    },
-    {
-     "tipo": "Emenda Pix (transferência especial)",
-     "valor": 995000.0
-    },
-    {
-     "tipo": "Emenda de Relator",
-     "valor": 382471.2
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11221619000142",
-     "natureza": "Fundo Público da Administração Direta Municipal",
-     "valor": 3846625.0
-    },
-    {
-     "nome": "MUNICIPIO DE NAVIRAI",
-     "doc": "03155934000190",
-     "natureza": "Município",
-     "valor": 3098256.2
-    }
-   ]
-  },
-  {
    "municipio": "Três Lagoas",
-   "total": 6941559.0,
+   "total": 6942849.78,
    "autores": [
     {
      "autor": "Tereza Cristina",
@@ -2567,12 +2587,17 @@
      "autor": "Chico Rodrigues",
      "valor": 30000.0,
      "atual": false
+    },
+    {
+     "autor": "Rubens Otoni",
+     "valor": 1290.78,
+     "atual": false
     }
    ],
    "tipos": [
     {
      "tipo": "Individual (finalidade definida)",
-     "valor": 4025286.0
+     "valor": 4026576.78
     },
     {
      "tipo": "Comissão",
@@ -2611,8 +2636,14 @@
     {
      "nome": "OPTIMA 3S LTDA",
      "doc": "61925686000116",
-     "natureza": "Empresário (Individual)",
+     "natureza": "Sociedade Empresária Limitada",
      "valor": 30000.0
+    },
+    {
+     "nome": "LUANA FERNANDA LUIZ",
+     "doc": "336798",
+     "natureza": "Sem informação",
+     "valor": 1290.78
     }
    ]
   },
@@ -2870,14 +2901,14 @@
    "total": 6249371.66,
    "autores": [
     {
-     "autor": "Camila Jara",
-     "valor": 1000000.0,
-     "atual": true
-    },
-    {
      "autor": "Com. Assuntos Sociais",
      "valor": 1000000.0,
      "atual": false
+    },
+    {
+     "autor": "Camila Jara",
+     "valor": 1000000.0,
+     "atual": true
     },
     {
      "autor": "Com. Turismo",
@@ -3055,6 +3086,11 @@
      "atual": true
     },
     {
+     "autor": "Camila Jara",
+     "valor": 1000000.0,
+     "atual": true
+    },
+    {
      "autor": "Nelsinho Trad",
      "valor": 1000000.0,
      "atual": true
@@ -3063,11 +3099,6 @@
      "autor": "Com. Assuntos Sociais",
      "valor": 1000000.0,
      "atual": false
-    },
-    {
-     "autor": "Camila Jara",
-     "valor": 1000000.0,
-     "atual": true
     },
     {
      "autor": "Dr. Luiz Ovando",
@@ -4332,12 +4363,12 @@
      "atual": true
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Rodolfo Nogueira",
      "valor": 500000.0,
      "atual": true
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Beto Pereira",
      "valor": 500000.0,
      "atual": true
     },
@@ -4524,14 +4555,14 @@
      "atual": true
     },
     {
-     "autor": "Com. Assuntos Sociais",
-     "valor": 500000.0,
-     "atual": false
-    },
-    {
      "autor": "Geraldo Resende",
      "valor": 500000.0,
      "atual": true
+    },
+    {
+     "autor": "Com. Assuntos Sociais",
+     "valor": 500000.0,
+     "atual": false
     },
     {
      "autor": "Com. da Saude",
@@ -5580,11 +5611,6 @@
    "total": 1962000.0,
    "autores": [
     {
-     "autor": "Geraldo Resende",
-     "valor": 500000.0,
-     "atual": true
-    },
-    {
      "autor": "Nelsinho Trad",
      "valor": 500000.0,
      "atual": true
@@ -5593,6 +5619,11 @@
      "autor": "Com. Assuntos Sociais",
      "valor": 500000.0,
      "atual": false
+    },
+    {
+     "autor": "Geraldo Resende",
+     "valor": 500000.0,
+     "atual": true
     },
     {
      "autor": "Dr. Luiz Ovando",
@@ -6228,11 +6259,11 @@
      "valor": 510000.0
     },
     {
-     "municipio": "Selvíria",
+     "municipio": "Camapuã",
      "valor": 510000.0
     },
     {
-     "municipio": "Camapuã",
+     "municipio": "Selvíria",
      "valor": 510000.0
     },
     {
@@ -7414,15 +7445,15 @@
      "valor": 500000.0
     },
     {
+     "municipio": "Rio Verde de Mato Grosso",
+     "valor": 500000.0
+    },
+    {
      "municipio": "Jardim",
      "valor": 500000.0
     },
     {
      "municipio": "Angélica",
-     "valor": 500000.0
-    },
-    {
-     "municipio": "Rio Verde de Mato Grosso",
      "valor": 500000.0
     },
     {
@@ -7601,6 +7632,12 @@
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
+     "doc": "16656280000120",
+     "municipio": "Rio Verde de Mato Grosso",
+     "valor": 500000.0
+    },
+    {
+     "nome": "FUNDO MUNICIPAL DE SAUDE",
      "doc": "11891451000182",
      "municipio": "Jardim",
      "valor": 500000.0
@@ -7609,12 +7646,6 @@
      "nome": "FUNDO MUNICIPAL DE SAUDE",
      "doc": "11343940000108",
      "municipio": "Angélica",
-     "valor": 500000.0
-    },
-    {
-     "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "16656280000120",
-     "municipio": "Rio Verde de Mato Grosso",
      "valor": 500000.0
     }
    ],
@@ -8481,11 +8512,11 @@
      "valor": 300000.0
     },
     {
-     "municipio": "Angélica",
+     "municipio": "Brasilândia",
      "valor": 250000.0
     },
     {
-     "municipio": "Brasilândia",
+     "municipio": "Angélica",
      "valor": 250000.0
     },
     {
@@ -8574,14 +8605,14 @@
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11803371000128",
-     "municipio": "Bonito",
+     "doc": "11417787000108",
+     "municipio": "Guia Lopes da Laguna",
      "valor": 600000.0
     },
     {
      "nome": "FUNDO MUNICIPAL DE SAUDE",
-     "doc": "11417787000108",
-     "municipio": "Guia Lopes da Laguna",
+     "doc": "11803371000128",
+     "municipio": "Bonito",
      "valor": 600000.0
     },
     {
@@ -8976,7 +9007,7 @@
    "partido": "PL",
    "grupo": "federal",
    "totalMS": 26951631.48,
-   "totalBR": 29343714.35,
+   "totalBR": 29349777.78,
    "municipios": [
     {
      "municipio": "Caarapó",
@@ -9095,11 +9126,11 @@
      "valor": 50000.0
     },
     {
-     "municipio": "Naviraí",
+     "municipio": "Rochedo",
      "valor": 50000.0
     },
     {
-     "municipio": "Rochedo",
+     "municipio": "Naviraí",
      "valor": 50000.0
     },
     {
@@ -9306,7 +9337,7 @@
     },
     {
      "uf": "—",
-     "valor": 41722.32
+     "valor": 47785.75
     },
     {
      "uf": "BA",
@@ -9328,12 +9359,12 @@
    "cargo": "Deputado(a) federal",
    "partido": "PT",
    "grupo": "federal",
-   "totalMS": 26532288.94,
-   "totalBR": 28465949.42,
+   "totalMS": 26532456.44,
+   "totalBR": 28466116.92,
    "municipios": [
     {
      "municipio": "Campo Grande",
-     "valor": 17460672.71
+     "valor": 17460840.21
     },
     {
      "municipio": "Eldorado",
@@ -9399,7 +9430,7 @@
    "tipos": [
     {
      "tipo": "Individual (finalidade definida)",
-     "valor": 20063991.94
+     "valor": 20064159.44
     },
     {
      "tipo": "Emenda Pix (transferência especial)",
@@ -9669,11 +9700,11 @@
      "valor": 1000000.0
     },
     {
-     "municipio": "Naviraí",
+     "municipio": "Guia Lopes da Laguna",
      "valor": 850000.0
     },
     {
-     "municipio": "Guia Lopes da Laguna",
+     "municipio": "Naviraí",
      "valor": 850000.0
     },
     {
@@ -10916,6 +10947,56 @@
    "foraDeMS": []
   },
   {
+   "autor": "Com. Relacoes Ext e Defesa Nacional",
+   "atual": false,
+   "cargo": null,
+   "partido": null,
+   "grupo": null,
+   "totalMS": 1900000.0,
+   "totalBR": 1900000.0,
+   "municipios": [
+    {
+     "municipio": "Itaporã",
+     "valor": 800000.0
+    },
+    {
+     "municipio": "Naviraí",
+     "valor": 600000.0
+    },
+    {
+     "municipio": "Mundo Novo",
+     "valor": 500000.0
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Comissão",
+     "valor": 1900000.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "MUNICIPIO DE ITAPORA",
+     "doc": "03156999000150",
+     "municipio": "Itaporã",
+     "valor": 800000.0
+    },
+    {
+     "nome": "MUNICIPIO DE NAVIRAI",
+     "doc": "03155934000190",
+     "municipio": "Naviraí",
+     "valor": 600000.0
+    },
+    {
+     "nome": "MUNICIPIO DE MUNDO NOVO",
+     "doc": "03741683000126",
+     "municipio": "Mundo Novo",
+     "valor": 500000.0
+    }
+   ],
+   "foraDeMS": []
+  },
+  {
    "autor": "Fabio Trad",
    "atual": false,
    "cargo": null,
@@ -11272,36 +11353,6 @@
      "nome": "FUNDACAO DE APOIO A PESQUISA AO ENSINO E A CULTURA",
      "doc": "15513690000150",
      "municipio": "Campo Grande",
-     "valor": 500000.0
-    }
-   ],
-   "foraDeMS": []
-  },
-  {
-   "autor": "Com. Relacoes Ext e Defesa Nacional",
-   "atual": false,
-   "cargo": null,
-   "partido": null,
-   "grupo": null,
-   "totalMS": 500000.0,
-   "totalBR": 500000.0,
-   "municipios": [
-    {
-     "municipio": "Mundo Novo",
-     "valor": 500000.0
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Comissão",
-     "valor": 500000.0
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "MUNICIPIO DE MUNDO NOVO",
-     "doc": "03741683000126",
-     "municipio": "Mundo Novo",
      "valor": 500000.0
     }
    ],
@@ -11771,6 +11822,36 @@
    "foraDeMS": []
   },
   {
+   "autor": "Prof. Reginaldo Veras",
+   "atual": false,
+   "cargo": null,
+   "partido": null,
+   "grupo": null,
+   "totalMS": 150000.0,
+   "totalBR": 150000.0,
+   "municipios": [
+    {
+     "municipio": "Campo Grande",
+     "valor": 150000.0
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 150000.0
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "ASSOCIACAO AMIGOS DO CINEMA E DA CULTURA",
+     "doc": "08902167000150",
+     "municipio": "Campo Grande",
+     "valor": 150000.0
+    }
+   ],
+   "foraDeMS": []
+  },
+  {
    "autor": "Nelsinho Trad Filho",
    "atual": false,
    "cargo": null,
@@ -11796,6 +11877,46 @@
      "doc": "03330453000174",
      "municipio": "Ladário",
      "valor": 140000.0
+    }
+   ],
+   "foraDeMS": []
+  },
+  {
+   "autor": "Glauber Braga",
+   "atual": false,
+   "cargo": null,
+   "partido": null,
+   "grupo": null,
+   "totalMS": 111848.13,
+   "totalBR": 111848.13,
+   "municipios": [
+    {
+     "municipio": "Mundo Novo",
+     "valor": 57676.29
+    },
+    {
+     "municipio": "Campo Grande",
+     "valor": 54171.84
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 111848.13
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "DENTECK LTDA",
+     "doc": "11319557000378",
+     "municipio": "Mundo Novo",
+     "valor": 57676.29
+    },
+    {
+     "nome": "F C BRITO NERES ENGENHARIA & SERVICOS LTDA",
+     "doc": "38660268000122",
+     "municipio": "Campo Grande",
+     "valor": 54171.84
     }
    ],
    "foraDeMS": []
@@ -12198,36 +12319,6 @@
      "doc": "01088055000168",
      "municipio": "Campo Grande",
      "valor": 74.5
-    }
-   ],
-   "foraDeMS": []
-  },
-  {
-   "autor": "Glauber Braga",
-   "atual": false,
-   "cargo": null,
-   "partido": null,
-   "grupo": null,
-   "totalMS": 57676.29,
-   "totalBR": 57676.29,
-   "municipios": [
-    {
-     "municipio": "Mundo Novo",
-     "valor": 57676.29
-    }
-   ],
-   "tipos": [
-    {
-     "tipo": "Individual (finalidade definida)",
-     "valor": 57676.29
-    }
-   ],
-   "favorecidos": [
-    {
-     "nome": "DENTECK LTDA",
-     "doc": "11319557000378",
-     "municipio": "Mundo Novo",
-     "valor": 57676.29
     }
    ],
    "foraDeMS": []
@@ -13135,6 +13226,36 @@
    "foraDeMS": []
   },
   {
+   "autor": "Rubens Otoni",
+   "atual": false,
+   "cargo": null,
+   "partido": null,
+   "grupo": null,
+   "totalMS": 1290.78,
+   "totalBR": 1290.78,
+   "municipios": [
+    {
+     "municipio": "Três Lagoas",
+     "valor": 1290.78
+    }
+   ],
+   "tipos": [
+    {
+     "tipo": "Individual (finalidade definida)",
+     "valor": 1290.78
+    }
+   ],
+   "favorecidos": [
+    {
+     "nome": "LUANA FERNANDA LUIZ",
+     "doc": "336798",
+     "municipio": "Três Lagoas",
+     "valor": 1290.78
+    }
+   ],
+   "foraDeMS": []
+  },
+  {
    "autor": "Rubens Pereira Junior",
    "atual": false,
    "cargo": null,
@@ -13669,11 +13790,11 @@
      "valor": 2155160.0
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Rodolfo Nogueira",
      "valor": 1500000.0
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Camila Jara",
      "valor": 1500000.0
     },
     {
@@ -13792,11 +13913,11 @@
      "valor": 5870500.0
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Nelsinho Trad",
      "valor": 1990000.0
     },
     {
-     "autor": "Nelsinho Trad",
+     "autor": "Rodolfo Nogueira",
      "valor": 1990000.0
     },
     {
@@ -14205,6 +14326,35 @@
    ]
   },
   {
+   "nome": "MUNICIPIO DE ITAPORA",
+   "doc": "03156999000150",
+   "natureza": "Município",
+   "municipio": "Itaporã",
+   "valor": 6744147.34,
+   "autores": [
+    {
+     "autor": "Geraldo Resende",
+     "valor": 1990000.0
+    },
+    {
+     "autor": "Rodolfo Nogueira",
+     "valor": 1990000.0
+    },
+    {
+     "autor": "Com. Desenv. Urbano",
+     "valor": 1152697.0
+    },
+    {
+     "autor": "Com. de Integracao Nacional e Des. Regional",
+     "valor": 811450.34
+    },
+    {
+     "autor": "Com. Relacoes Ext e Defesa Nacional",
+     "valor": 800000.0
+    }
+   ]
+  },
+  {
    "nome": "FUNDO MUNICIPAL DE SAUDE",
    "doc": "16656280000120",
    "natureza": "Fundo Público da Administração Direta Municipal",
@@ -14246,31 +14396,6 @@
    ]
   },
   {
-   "nome": "MUNICIPIO DE ITAPORA",
-   "doc": "03156999000150",
-   "natureza": "Município",
-   "municipio": "Itaporã",
-   "valor": 5944147.34,
-   "autores": [
-    {
-     "autor": "Geraldo Resende",
-     "valor": 1990000.0
-    },
-    {
-     "autor": "Rodolfo Nogueira",
-     "valor": 1990000.0
-    },
-    {
-     "autor": "Com. Desenv. Urbano",
-     "valor": 1152697.0
-    },
-    {
-     "autor": "Com. de Integracao Nacional e Des. Regional",
-     "valor": 811450.34
-    }
-   ]
-  },
-  {
    "nome": "FUNDO MUNICIPAL DE SAUDE DE DEODAPOLIS-MS",
    "doc": "12270817000169",
    "natureza": "Fundo Público da Administração Direta Municipal",
@@ -14294,11 +14419,11 @@
      "valor": 800000.0
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Dr. Luiz Ovando",
      "valor": 500000.0
     },
     {
-     "autor": "Dr. Luiz Ovando",
+     "autor": "Beto Pereira",
      "valor": 500000.0
     },
     {
@@ -14530,11 +14655,11 @@
      "valor": 878595.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Geraldo Resende",
      "valor": 500000.0
     },
     {
-     "autor": "Geraldo Resende",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
     },
     {
@@ -14672,11 +14797,11 @@
      "valor": 507192.0
     },
     {
-     "autor": "Nelsinho Trad",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Nelsinho Trad",
      "valor": 500000.0
     },
     {
@@ -14730,11 +14855,11 @@
    "valor": 4087256.4,
    "autores": [
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Vander Loubet",
      "valor": 995000.0
     },
     {
-     "autor": "Vander Loubet",
+     "autor": "Dagoberto Nogueira",
      "valor": 995000.0
     },
     {
@@ -14887,11 +15012,11 @@
    "valor": 3866405.0,
    "autores": [
     {
-     "autor": "Camila Jara",
+     "autor": "Com. Assuntos Sociais",
      "valor": 1000000.0
     },
     {
-     "autor": "Com. Assuntos Sociais",
+     "autor": "Camila Jara",
      "valor": 1000000.0
     },
     {
@@ -14957,11 +15082,11 @@
      "valor": 607745.0
     },
     {
-     "autor": "Dagoberto Nogueira",
+     "autor": "Camila Jara",
      "valor": 500000.0
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Dagoberto Nogueira",
      "valor": 500000.0
     },
     {
@@ -14986,11 +15111,11 @@
    "valor": 3846625.0,
    "autores": [
     {
-     "autor": "Soraya Thronicke",
+     "autor": "Camila Jara",
      "valor": 1000000.0
     },
     {
-     "autor": "Camila Jara",
+     "autor": "Soraya Thronicke",
      "valor": 1000000.0
     },
     {
@@ -15079,6 +15204,31 @@
    ]
   },
   {
+   "nome": "MUNICIPIO DE NAVIRAI",
+   "doc": "03155934000190",
+   "natureza": "Município",
+   "municipio": "Naviraí",
+   "valor": 3698256.2,
+   "autores": [
+    {
+     "autor": "Com. Desenv Regional e Turismo",
+     "valor": 1720785.0
+    },
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 995000.0
+    },
+    {
+     "autor": "Com. Relacoes Ext e Defesa Nacional",
+     "valor": 600000.0
+    },
+    {
+     "autor": "Relator Geral",
+     "valor": 382471.2
+    }
+   ]
+  },
+  {
    "nome": "FUNDO MUNICIPAL DE SAUDE DE PARANAIBA",
    "doc": "11353020000162",
    "natureza": "Fundo Público da Administração Direta Municipal",
@@ -15148,15 +15298,15 @@
    "valor": 3600000.0,
    "autores": [
     {
+     "autor": "Camila Jara",
+     "valor": 1000000.0
+    },
+    {
      "autor": "Nelsinho Trad",
      "valor": 1000000.0
     },
     {
      "autor": "Com. Assuntos Sociais",
-     "valor": 1000000.0
-    },
-    {
-     "autor": "Camila Jara",
      "valor": 1000000.0
     },
     {
@@ -15187,27 +15337,6 @@
     {
      "autor": "Tereza Cristina",
      "valor": 400000.0
-    }
-   ]
-  },
-  {
-   "nome": "MUNICIPIO DE NAVIRAI",
-   "doc": "03155934000190",
-   "natureza": "Município",
-   "municipio": "Naviraí",
-   "valor": 3098256.2,
-   "autores": [
-    {
-     "autor": "Com. Desenv Regional e Turismo",
-     "valor": 1720785.0
-    },
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 995000.0
-    },
-    {
-     "autor": "Relator Geral",
-     "valor": 382471.2
     }
    ]
   },
@@ -15248,11 +15377,11 @@
      "valor": 700000.0
     },
     {
-     "autor": "Beto Pereira",
+     "autor": "Rodolfo Nogueira",
      "valor": 500000.0
     },
     {
-     "autor": "Rodolfo Nogueira",
+     "autor": "Beto Pereira",
      "valor": 500000.0
     },
     {
@@ -15561,15 +15690,15 @@
    "valor": 2580000.0,
    "autores": [
     {
+     "autor": "Geraldo Resende",
+     "valor": 500000.0
+    },
+    {
      "autor": "Nelsinho Trad",
      "valor": 500000.0
     },
     {
      "autor": "Com. Assuntos Sociais",
-     "valor": 500000.0
-    },
-    {
-     "autor": "Geraldo Resende",
      "valor": 500000.0
     },
     {
@@ -16321,15 +16450,15 @@
    "valor": 1762000.0,
    "autores": [
     {
-     "autor": "Geraldo Resende",
-     "valor": 500000.0
-    },
-    {
      "autor": "Nelsinho Trad",
      "valor": 500000.0
     },
     {
      "autor": "Com. Assuntos Sociais",
+     "valor": 500000.0
+    },
+    {
+     "autor": "Geraldo Resende",
      "valor": 500000.0
     },
     {
@@ -16784,6 +16913,27 @@
    ]
   },
   {
+   "nome": "ASSOCIACAO AMIGOS DO CINEMA E DA CULTURA",
+   "doc": "08902167000150",
+   "natureza": "Associação Privada",
+   "municipio": "Campo Grande",
+   "valor": 1150000.0,
+   "autores": [
+    {
+     "autor": "Vander Loubet",
+     "valor": 800000.0
+    },
+    {
+     "autor": "Erika Kokay",
+     "valor": 200000.0
+    },
+    {
+     "autor": "Prof. Reginaldo Veras",
+     "valor": 150000.0
+    }
+   ]
+  },
+  {
    "nome": "FUNDO MUNICIPAL DE SAUDE DE BANDEIRANTES MS",
    "doc": "18229151000181",
    "natureza": "Fundo Público da Administração Direta Municipal",
@@ -16911,23 +17061,6 @@
     {
      "autor": "Com. Assuntos Sociais",
      "valor": 500000.0
-    }
-   ]
-  },
-  {
-   "nome": "ASSOCIACAO AMIGOS DO CINEMA E DA CULTURA",
-   "doc": "08902167000150",
-   "natureza": "Associação Privada",
-   "municipio": "Campo Grande",
-   "valor": 1000000.0,
-   "autores": [
-    {
-     "autor": "Vander Loubet",
-     "valor": 800000.0
-    },
-    {
-     "autor": "Erika Kokay",
-     "valor": 200000.0
     }
    ]
   },
@@ -17652,19 +17785,6 @@
   },
   {
    "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-   "doc": "14788679000130",
-   "natureza": "Fundo Público da Administração Direta Municipal",
-   "municipio": "Ponta Porã",
-   "valor": 350000.0,
-   "autores": [
-    {
-     "autor": "Nelsinho Trad",
-     "valor": 350000.0
-    }
-   ]
-  },
-  {
-   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
    "doc": "15536539000137",
    "natureza": "Fundo Público da Administração Direta Municipal",
    "municipio": "Rio Brilhante",
@@ -17677,6 +17797,19 @@
     {
      "autor": "Dr. Luiz Ovando",
      "valor": 50000.0
+    }
+   ]
+  },
+  {
+   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+   "doc": "14788679000130",
+   "natureza": "Fundo Público da Administração Direta Municipal",
+   "municipio": "Ponta Porã",
+   "valor": 350000.0,
+   "autores": [
+    {
+     "autor": "Nelsinho Trad",
+     "valor": 350000.0
     }
    ]
   },
@@ -17923,19 +18056,6 @@
   },
   {
    "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
-   "doc": "01740441000192",
-   "natureza": "Fundo Público da Administração Direta Municipal",
-   "municipio": "Maracaju",
-   "valor": 200000.0,
-   "autores": [
-    {
-     "autor": "Soraya Thronicke",
-     "valor": 200000.0
-    }
-   ]
-  },
-  {
-   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
    "doc": "15615736000141",
    "natureza": "Fundo Público da Administração Direta Municipal",
    "municipio": "Caracol",
@@ -17948,6 +18068,19 @@
     {
      "autor": "Dr. Luiz Ovando",
      "valor": 100000.0
+    }
+   ]
+  },
+  {
+   "nome": "FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL",
+   "doc": "01740441000192",
+   "natureza": "Fundo Público da Administração Direta Municipal",
+   "municipio": "Maracaju",
+   "valor": 200000.0,
+   "autores": [
+    {
+     "autor": "Soraya Thronicke",
+     "valor": 200000.0
     }
    ]
   },
@@ -18362,6 +18495,19 @@
    ]
   },
   {
+   "nome": "F C BRITO NERES ENGENHARIA & SERVICOS LTDA",
+   "doc": "38660268000122",
+   "natureza": "Sociedade Empresária Limitada",
+   "municipio": "Campo Grande",
+   "valor": 54171.84,
+   "autores": [
+    {
+     "autor": "Glauber Braga",
+     "valor": 54171.84
+    }
+   ]
+  },
+  {
    "nome": "AMERICA MIX COMERCIO DE MATERIAIS DE CONSTRUCAO E SERVICOS DE MANUTENCAO PREDIAL LTDA",
    "doc": "35604126000150",
    "natureza": "Sociedade Empresária Limitada",
@@ -18540,7 +18686,7 @@
   {
    "nome": "OPTIMA 3S LTDA",
    "doc": "61925686000116",
-   "natureza": "Empresário (Individual)",
+   "natureza": "Sociedade Empresária Limitada",
    "municipio": "Três Lagoas",
    "valor": 30000.0,
    "autores": [
@@ -19034,6 +19180,19 @@
    ]
   },
   {
+   "nome": "LUANA FERNANDA LUIZ",
+   "doc": "336798",
+   "natureza": "Sem informação",
+   "municipio": "Três Lagoas",
+   "valor": 1290.78,
+   "autores": [
+    {
+     "autor": "Rubens Otoni",
+     "valor": 1290.78
+    }
+   ]
+  },
+  {
    "nome": "ENERGISA MATO GROSSO DO SUL - DISTRIBUIDORA DE ENERGIA S.A.",
    "doc": "15413826000150",
    "natureza": "Sociedade Anônima Aberta",
@@ -19428,6 +19587,19 @@
     {
      "autor": "Soraya Thronicke",
      "valor": 192.0
+    }
+   ]
+  },
+  {
+   "nome": "ROSANA APARECIDA FERREIRA DOS SANTOS",
+   "doc": "031091",
+   "natureza": "Sem informação",
+   "municipio": "Campo Grande",
+   "valor": 167.5,
+   "autores": [
+    {
+     "autor": "Vander Loubet",
+     "valor": 167.5
     }
    ]
   },
@@ -20009,6 +20181,24 @@
   },
   {
    "emenda": "202360020005",
+   "favorecido": "MUNICIPIO DE NAVIRAI",
+   "doc": "03155934000190",
+   "municipio": "Naviraí",
+   "mes": "11/2026",
+   "autor": "Com. Relacoes Ext e Defesa Nacional",
+   "valor": 600000.0
+  },
+  {
+   "emenda": "202360020005",
+   "favorecido": "MUNICIPIO DE ITAPORA",
+   "doc": "03156999000150",
+   "municipio": "Itaporã",
+   "mes": "11/2026",
+   "autor": "Com. Relacoes Ext e Defesa Nacional",
+   "valor": 800000.0
+  },
+  {
+   "emenda": "202360020005",
    "favorecido": "MUNICIPIO DE MUNDO NOVO",
    "doc": "03741683000126",
    "municipio": "Mundo Novo",
@@ -20321,6 +20511,15 @@
    "mes": "02/2026",
    "autor": "Bancada do Mato Grosso do Sul",
    "valor": 310434.0
+  },
+  {
+   "emenda": "202426160012",
+   "favorecido": "F C BRITO NERES ENGENHARIA & SERVICOS LTDA",
+   "doc": "38660268000122",
+   "municipio": "Campo Grande",
+   "mes": "11/2026",
+   "autor": "Glauber Braga",
+   "valor": 54171.84
   },
   {
    "emenda": "202431660003",
@@ -23214,6 +23413,15 @@
   },
   {
    "emenda": "202614510010",
+   "favorecido": "ROSANA APARECIDA FERREIRA DOS SANTOS",
+   "doc": "031091",
+   "municipio": "Campo Grande",
+   "mes": "11/2026",
+   "autor": "Vander Loubet",
+   "valor": 167.5
+  },
+  {
+   "emenda": "202614510010",
    "favorecido": "CASSIA BARBOSA REIS",
    "doc": "035741",
    "municipio": "Dourados",
@@ -23535,6 +23743,15 @@
    "mes": "07/2026",
    "autor": "Jandira Feghali",
    "valor": 68211.67
+  },
+  {
+   "emenda": "202619600016",
+   "favorecido": "LUANA FERNANDA LUIZ",
+   "doc": "336798",
+   "municipio": "Três Lagoas",
+   "mes": "11/2026",
+   "autor": "Rubens Otoni",
+   "valor": 1290.78
   },
   {
    "emenda": "202620980004",
@@ -27902,6 +28119,15 @@
    "valor": 1500000.0
   },
   {
+   "emenda": "202644490010",
+   "favorecido": "ASSOCIACAO AMIGOS DO CINEMA E DA CULTURA",
+   "doc": "08902167000150",
+   "municipio": "Campo Grande",
+   "mes": "11/2026",
+   "autor": "Prof. Reginaldo Veras",
+   "valor": 150000.0
+  },
+  {
    "emenda": "202644510009",
    "favorecido": "SOBRAL-CHAVES E CARIMBOS LTDA",
    "doc": "01088055000168",
@@ -30347,22 +30573,6 @@
       ]
      },
      {
-      "municipio": "Ponta Porã",
-      "valor": 1101733.0,
-      "autores": [
-       {
-        "autor": "Loester Trutis",
-        "atual": false,
-        "valor": 601733.0
-       },
-       {
-        "autor": "Fabio Trad",
-        "atual": false,
-        "valor": 500000.0
-       }
-      ]
-     },
-     {
       "municipio": "Caarapó",
       "valor": 1101733.0,
       "autores": [
@@ -30374,6 +30584,22 @@
        {
         "autor": "Dagoberto Nogueira",
         "atual": true,
+        "valor": 500000.0
+       }
+      ]
+     },
+     {
+      "municipio": "Ponta Porã",
+      "valor": 1101733.0,
+      "autores": [
+       {
+        "autor": "Loester Trutis",
+        "atual": false,
+        "valor": 601733.0
+       },
+       {
+        "autor": "Fabio Trad",
+        "atual": false,
         "valor": 500000.0
        }
       ]
@@ -32072,12 +32298,12 @@
         "valor": 1700000.0
        },
        {
-        "autor": "Soraya Thronicke",
+        "autor": "Dr. Luiz Ovando",
         "atual": true,
         "valor": 100000.0
        },
        {
-        "autor": "Dr. Luiz Ovando",
+        "autor": "Soraya Thronicke",
         "atual": true,
         "valor": 100000.0
        }
@@ -33592,22 +33818,22 @@
       ]
      },
      {
-      "municipio": "Juti",
+      "municipio": "Sete Quedas",
       "valor": 500000.0,
       "autores": [
        {
-        "autor": "Vander Loubet",
+        "autor": "Nelsinho Trad",
         "atual": true,
         "valor": 500000.0
        }
       ]
      },
      {
-      "municipio": "Sete Quedas",
+      "municipio": "Juti",
       "valor": 500000.0,
       "autores": [
        {
-        "autor": "Nelsinho Trad",
+        "autor": "Vander Loubet",
         "atual": true,
         "valor": 500000.0
        }
@@ -34778,22 +35004,6 @@
       ]
      },
      {
-      "municipio": "Corumbá",
-      "valor": 1881000.0,
-      "autores": [
-       {
-        "autor": "Camila Jara",
-        "atual": true,
-        "valor": 1683000.0
-       },
-       {
-        "autor": "Rodolfo Nogueira",
-        "atual": true,
-        "valor": 198000.0
-       }
-      ]
-     },
-     {
       "municipio": "Eldorado",
       "valor": 1881000.0,
       "autores": [
@@ -34806,6 +35016,22 @@
         "autor": "Dr. Luiz Ovando",
         "atual": true,
         "valor": 891000.0
+       }
+      ]
+     },
+     {
+      "municipio": "Corumbá",
+      "valor": 1881000.0,
+      "autores": [
+       {
+        "autor": "Camila Jara",
+        "atual": true,
+        "valor": 1683000.0
+       },
+       {
+        "autor": "Rodolfo Nogueira",
+        "atual": true,
+        "valor": 198000.0
        }
       ]
      },
@@ -35021,12 +35247,12 @@
       "valor": 990000.0,
       "autores": [
        {
-        "autor": "Rodolfo Nogueira",
+        "autor": "Dr. Luiz Ovando",
         "atual": true,
         "valor": 495000.0
        },
        {
-        "autor": "Dr. Luiz Ovando",
+        "autor": "Rodolfo Nogueira",
         "atual": true,
         "valor": 495000.0
        }
@@ -35387,22 +35613,22 @@
       ]
      },
      {
-      "municipio": "Juti",
+      "municipio": "Cassilândia",
       "valor": 297000.0,
       "autores": [
        {
-        "autor": "Rodolfo Nogueira",
+        "autor": "Dr. Luiz Ovando",
         "atual": true,
         "valor": 297000.0
        }
       ]
      },
      {
-      "municipio": "Cassilândia",
+      "municipio": "Juti",
       "valor": 297000.0,
       "autores": [
        {
-        "autor": "Dr. Luiz Ovando",
+        "autor": "Rodolfo Nogueira",
         "atual": true,
         "valor": 297000.0
        }

@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-24T12:14:50",
+  "ultimaAtualizacao": "2026-11-25T13:18:32",
   "ano": 2026,
-  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-24T12:14:50",
+  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-25T13:18:32",
   "total": 3,
   "senadores": [
     {
@@ -31,10 +31,10 @@
         "Aquisição de passagens aéreas (ATC 2/2023)": 134850.72
       },
       "pessoal": {
-        "gabinete": 54,
-        "gabineteComissionados": 52,
-        "escritorio": 20,
-        "escritorioComissionados": 20
+        "gabinete": 56,
+        "gabineteComissionados": 54,
+        "escritorio": 18,
+        "escritorioComissionados": 18
       },
       "beneficios": {
         "auxilioMoradia": "Não utilizou",
@@ -670,17 +670,6 @@
         {
           "data": "2026-05-25",
           "mes": 5,
-          "categoria": "Contratação de consultorias, assessorias, pesquisas, trabalhos técnicos e outros serviços de apoio ao exercício do mandato parlamentar",
-          "fornecedor": "BROADBRASIL LTDA",
-          "cnpjCpf": "48.949.641/0001-13",
-          "doc": "1642",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": "Referente ao pagamento de assessorias e serviços de apoio ao exercício do mandato parlamentar.",
-          "valor": 1499.0
-        },
-        {
-          "data": "2026-05-25",
-          "mes": 5,
           "categoria": "Aluguel de imóveis para escritório político",
           "fornecedor": "Prefeitura Municipal de Campo Grande-MS.",
           "cnpjCpf": "03.501.509/0001-06",
@@ -688,6 +677,17 @@
           "tipoDocumento": "Recibo",
           "detalhamento": "Referente ao pagamento do IPTU.",
           "valor": 398.59
+        },
+        {
+          "data": "2026-05-25",
+          "mes": 5,
+          "categoria": "Contratação de consultorias, assessorias, pesquisas, trabalhos técnicos e outros serviços de apoio ao exercício do mandato parlamentar",
+          "fornecedor": "BROADBRASIL LTDA",
+          "cnpjCpf": "48.949.641/0001-13",
+          "doc": "1642",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": "Referente ao pagamento de assessorias e serviços de apoio ao exercício do mandato parlamentar.",
+          "valor": 1499.0
         },
         {
           "data": "2026-05-19",
@@ -1264,7 +1264,7 @@
       ],
       "totalNotasFiscais": 105,
       "escritorioApoio": "AV. AMÉRICA, 759 – VILA PLANALTO, CAMPO GRANDE/MS – CEP 79009-060",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-24T12:14:50",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-25T13:18:32",
       "nota": "",
       "emExercicio": true
     },
@@ -1297,8 +1297,8 @@
       "pessoal": {
         "gabinete": 20,
         "gabineteComissionados": 17,
-        "escritorio": 18,
-        "escritorioComissionados": 18
+        "escritorio": 17,
+        "escritorioComissionados": 17
       },
       "beneficios": {
         "auxilioMoradia": "Não utilizou",
@@ -2840,7 +2840,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HRV ADMINISTRAÇÃO DE NEGOCIOS LTDA",
           "cnpjCpf": "58.815.791/0001-98",
-          "doc": "2196",
+          "doc": "2195",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 393.01
@@ -2851,7 +2851,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HRV ADMINISTRAÇÃO DE NEGOCIOS LTDA",
           "cnpjCpf": "58.815.791/0001-98",
-          "doc": "2195",
+          "doc": "2196",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 393.01
@@ -3236,6 +3236,17 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "Hoteis Martins Ltda",
           "cnpjCpf": "01.511.724/0001-62",
+          "doc": "73300",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": null,
+          "valor": 735.0
+        },
+        {
+          "data": "2026-03-06",
+          "mes": 2,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Hoteis Martins Ltda",
+          "cnpjCpf": "01.511.724/0001-62",
           "doc": "73299",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
@@ -3248,17 +3259,6 @@
           "fornecedor": "Hoteis Martins Ltda",
           "cnpjCpf": "01.511.724/0001-62",
           "doc": "73301",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": null,
-          "valor": 735.0
-        },
-        {
-          "data": "2026-03-06",
-          "mes": 2,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Hoteis Martins Ltda",
-          "cnpjCpf": "01.511.724/0001-62",
-          "doc": "73300",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 735.0
@@ -3896,7 +3896,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HOTEL Bahamas Ltda-Epp",
           "cnpjCpf": "01.512.201/0001-30",
-          "doc": "1087503",
+          "doc": "1087502",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 465.0
@@ -3907,7 +3907,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HOTEL Bahamas Ltda-Epp",
           "cnpjCpf": "01.512.201/0001-30",
-          "doc": "1087502",
+          "doc": "1087503",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 465.0
@@ -4014,7 +4014,7 @@
       ],
       "totalNotasFiscais": 239,
       "escritorioApoio": "AV. PROF. LUIZ ALEXANDRE DE OLIVEIRA, 879 – TÉRREO, ROYAL PARK, CAMPO GRANDE/MS – CEP 79021-430 | Tel: (67) 3222-8738",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-24T12:14:50",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-25T13:18:32",
       "nota": "",
       "emExercicio": true
     },
@@ -5925,7 +5925,7 @@
       ],
       "totalNotasFiscais": 167,
       "escritorioApoio": "",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-24T12:14:50",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-25T13:18:32",
       "nota": "",
       "emExercicio": true
     }

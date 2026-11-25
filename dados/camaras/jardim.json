@@ -1,7 +1,7 @@
 {
   "cidade": "Jardim",
-  "ultimaAtualizacao": "2026-11-24T12:14:50",
-  "fonte": "Portal Transparência Fiorilli (200.209.160.171:8079) — Dados Abertos — 2026-11-24T12:14:50",
+  "ultimaAtualizacao": "2026-11-25T13:18:32",
+  "fonte": "Portal Transparência Fiorilli (200.209.160.171:8079) — Dados Abertos — 2026-11-25T13:18:32",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://camaramunicipaldejardim.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -1908,18 +1908,18 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 5898983.18,
-    "totalNotas": 505,
+    "totalGeral": 5929285.78,
+    "totalNotas": 506,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 2953308.8,
       "Diárias — Civil": 1023700.0,
       "Serviços de Consultoria": 599338.6,
       "Obrigações Patronais": 549694.72,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 456942.24,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 457015.24,
       "Serviços de Tecnologia da Informação": 225706.45,
       "Material de Consumo": 86492.37,
-      "Equipamentos e Material Permanente": 3800.0,
-      "Contribuições": 0.0
+      "Contribuições": 30229.6,
+      "Equipamentos e Material Permanente": 3800.0
     },
     "despesas": [
       {
@@ -2081,6 +2081,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 40000.0,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM LOCAÇÃO DE SOFTWARE VIA WEB E APLICATIVO PARA CELULAR E TABLET PARA CONSOLIDAÇÃO DA LEGISLAÇÃO MUNICIPAL COM MÃO OBRA PARA INSE"
+      },
+      {
+        "data": "2026-11-23",
+        "fornecedor": "UNIAO DAS CAMARAS DE VEREADORES DO ESTADO DE MATO",
+        "cnpj": "01.941.195/0001-37",
+        "categoria": "Contribuições",
+        "valor": 30229.6,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A CONTRIBUIÇÃO DA UNIÃO DAS CÂMARAS REFERENTE AOS MESES DE MARÇO, ABRIL, MAIO, JUNHO, JULHO, AGOSTO, SETEMBRO E OUTUBRO DE 2026"
       },
       {
         "data": "2026-05-29",
@@ -5339,6 +5347,14 @@
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A AQUISIÇÃO DE MATERIAL PARA A  REVISÃO PERIÓDICA DO VEÍCULO OFICIAL VOLKSWAGEN T-CROSS 200 TSI AT PLACA RWF0F42 COM QUILOMETRAGEM DE 106.353"
       },
       {
+        "data": "2026-01-05",
+        "fornecedor": "CAIXA ECONOMICA FEDERAL-AGENCIA JARDIM",
+        "cnpj": "00.360.305/1144-60",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 1260.08,
+        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA COM SERVIÇOS DE TARIFAS BANCÁRIAS - CAIXA ECONOMICA FEDERAL, BANCO : 104, AGÊNCIA 1144, C/C: 133-9, NO ANO DE 2026."
+      },
+      {
         "data": "2026-07-30",
         "fornecedor": "DISCAUTOL -DIST.CAMP. AUT.LTDA.",
         "cnpj": "03.244.290/0001-07",
@@ -5529,14 +5545,6 @@
         "categoria": "Diárias — Civil",
         "valor": 1200.0,
         "descricao": "DIARIAS PARA COBRIR DESPESAS DE VIAGEM NOS DIAS 17/11/26 À 19/11/2026, LEVAR VEREADORAS PARA PARTICIPAR DE CURSO NA CIDADE DE CAMPO GRANDE/MS"
-      },
-      {
-        "data": "2026-01-05",
-        "fornecedor": "CAIXA ECONOMICA FEDERAL-AGENCIA JARDIM",
-        "cnpj": "00.360.305/1144-60",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 1187.08,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA COM SERVIÇOS DE TARIFAS BANCÁRIAS - CAIXA ECONOMICA FEDERAL, BANCO : 104, AGÊNCIA 1144, C/C: 133-9, NO ANO DE 2026."
       },
       {
         "data": "2026-01-05",
@@ -5956,11 +5964,11 @@
       },
       {
         "data": "2026-11-23",
-        "fornecedor": "UNIAO DAS CAMARAS DE VEREADORES DO ESTADO DE MATO",
-        "cnpj": "01.941.195/0001-37",
-        "categoria": "Contribuições",
+        "fornecedor": "CHRISTIAN YANEZ BRITES",
+        "cnpj": "002.XXX.XXX-67",
+        "categoria": "Material de Consumo",
         "valor": 0.0,
-        "descricao": "VALOR QUE SE EMPENHA REFERENTE A CONTRIBUIÇÃO DA UNIÃO DAS CÂMARAS REFERENTE AOS MESES DE MARÇO, ABRIL, MAIO, JUNHO, JULHO, AGOSTO, SETEMBRO E OUTUBRO DE 2026"
+        "descricao": "Valor que se empenha referente ao acréscimo de valor na contratação de empresa especializada no fornecimento de material de consumo (gêneros alimentícios e materiais de limpeza) para atender a demanda"
       }
     ]
   },

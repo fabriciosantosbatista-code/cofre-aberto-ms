@@ -1,6 +1,6 @@
 {
- "geradoEm": "2026-11-25T12:58:50",
- "ultimaTentativa": "2026-11-25T12:58:50",
+ "geradoEm": "2026-11-25T14:25:10",
+ "ultimaTentativa": "2026-11-25T13:18:08",
  "classes": {
   "falha_coleta": "Falha de coleta",
   "divergencia": "Divergência na fonte",
@@ -11,14 +11,13 @@
  },
  "consistenciaInterna": {
   "resultado": "ok",
-  "resumo": "✅ 1126 conferências OK · ⚠️ 3 avisos · ❌ 0 erros",
-  "ok": 1126,
-  "avisos": 3,
+  "resumo": "✅ 1131 conferências OK · ⚠️ 2 avisos · ❌ 0 erros",
+  "ok": 1131,
+  "avisos": 2,
   "erros": 0,
   "detalhes": [
    "⚠️ deputados_federais_ms.json Camila Jara: notas repetidas: 7 grupos iguais (data, fornecedor, valor, nº doc), ex. [('2026-09-04', 'LATAM Airlines Brasil', 94.0, '9572204697084')]",
-   "⚠️ Prefeitura: empenho recente: último empenho publicado há 54 dias (2026-10-02)",
-   "⚠️ Câmaras do interior Sonora: coletado nos últimos 7 dias: última coleta há 29 dias (o portal pode estar fora do ar; dado anterior mantido)"
+   "⚠️ Câmaras do interior Sonora: coletado nos últimos 7 dias: última coleta há 28 dias (o portal pode estar fora do ar; dado anterior mantido)"
   ]
  },
  "fontes": {
@@ -35,9 +34,9 @@
    "metodo": "texto da camada de OCR dos PDFs digitalizados; o gasto exibido é o TOTAL DECLARADO no resumo de cada mês; notas montadas por CNPJ; conferência automática da leitura (validar_camara_cg.py)",
    "periodoReferencia": "ano corrente, por mês de prestação de contas",
    "identificadorOriginal": "hash do PDF + página (campo origem de cada nota)",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-25T10:55:09",
-   "diasDesdeColeta": 0.1,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:25:32",
+   "diasDesdeColeta": -0.0,
    "dadoMaisRecente": "verba indenizatória até set/2026",
    "dataDadoMaisRecente": "2026-09-30",
    "diasDesdeDado": 56,
@@ -63,9 +62,9 @@
    "metodo": "soma das notas por deputado",
    "periodoReferencia": "ano corrente",
    "identificadorOriginal": "PDF de cada nota (urlPdf)",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:14:50",
-   "diasDesdeColeta": 1.0,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:18:32",
+   "diasDesdeColeta": -0.0,
    "dadoMaisRecente": "nota fiscal de 06/11/2026",
    "dataDadoMaisRecente": "2026-11-06",
    "diasDesdeDado": 19,
@@ -77,7 +76,7 @@
    "mensagemFonte": null,
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "portal da ALEMS (/ceap/data): total do ano de cada deputado",
     "conferidos": 25,
     "divergentes": [],
@@ -85,7 +84,7 @@
    },
    "classe": "verificado",
    "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: portal da ALEMS (/ceap/data): total do ano de cada deputado"
+   "motivo": "conferido direto na fonte em 2026-11-25: portal da ALEMS (/ceap/data): total do ano de cada deputado"
   },
   "deputados": {
    "nome": "Câmara dos Deputados — CEAP dos deputados federais de MS",
@@ -98,7 +97,7 @@
    "metodo": "valor líquido do arquivo anual + passagens SIGEPA da API (o arquivo anual de 2026 não as traz)",
    "periodoReferencia": "ano corrente",
    "identificadorOriginal": "urlDocumento / nº do documento de cada nota",
-   "ultimaTentativa": "2026-11-25T12:58:50",
+   "ultimaTentativa": "2026-11-25T13:18:08",
    "ultimaColeta": "2026-11-24T12:14:50",
    "diasDesdeColeta": 1.0,
    "dadoMaisRecente": "nota fiscal de 18/11/2026",
@@ -111,16 +110,65 @@
    "erros": [],
    "mensagemFonte": null,
    "validacao": {
-    "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "resultado": "diverge",
+    "em": "2026-11-25T13:57:07",
     "metodo": "API da Câmara: soma do valor líquido do ano de cada deputado federal de MS e cada nota",
     "conferidos": 8,
-    "divergentes": [],
+    "divergentes": [
+     {
+      "item": "Beto Pereira",
+      "site": 403274.83,
+      "fonte": 409520.79,
+      "diferenca": -6245.96
+     },
+     {
+      "item": "Camila Jara",
+      "site": 526768.68,
+      "fonte": 540895.9,
+      "diferenca": -14127.22
+     },
+     {
+      "item": "Dagoberto Nogueira",
+      "site": 480507.4,
+      "fonte": 480836.3,
+      "diferenca": -328.9
+     },
+     {
+      "item": "Dr. Luiz Ovando",
+      "site": 276274.01,
+      "fonte": 276657.13,
+      "diferenca": -383.12
+     },
+     {
+      "item": "Geraldo Resende",
+      "site": 533267.12,
+      "fonte": 536572.71,
+      "diferenca": -3305.59
+     },
+     {
+      "item": "Marcos Pollon",
+      "site": 334110.85,
+      "fonte": 337608.46,
+      "diferenca": -3497.61
+     },
+     {
+      "item": "Rodolfo Nogueira",
+      "site": 469707.19,
+      "fonte": 472163.93,
+      "diferenca": -2456.74
+     },
+     {
+      "item": "Vander Loubet",
+      "site": 401496.15,
+      "fonte": 402168.27,
+      "diferenca": -672.12
+     }
+    ],
     "nota": " 8 nota(s) com problema na fonte (a Câmara repete a mesma nota com outro código): não conferidas."
    },
-   "classe": "verificado",
-   "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: API da Câmara: soma do valor líquido do ano de cada deputado federal de MS e cada nota —  8 nota(s) com problema na fonte (a Câmara repete a mesma nota com outro código): não conferidas."
+   "classe": "divergencia",
+   "classeRotulo": "Divergência na fonte",
+   "motivo": "8 item(ns) com valor diferente do da fonte na conferência de 2026-11-25"
   },
   "senadores": {
    "nome": "Senado Federal — CEAPS dos senadores de MS",
@@ -133,9 +181,9 @@
    "metodo": "soma do valor reembolsado por senador",
    "periodoReferencia": "ano corrente",
    "identificadorOriginal": "id de cada despesa (notasCeaps)",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:14:50",
-   "diasDesdeColeta": 1.0,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:18:32",
+   "diasDesdeColeta": -0.0,
    "dadoMaisRecente": "nota fiscal de 04/11/2026",
    "dataDadoMaisRecente": "2026-11-04",
    "diasDesdeDado": 21,
@@ -147,7 +195,7 @@
    "mensagemFonte": null,
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS e cada reembolso",
     "conferidos": 3,
     "divergentes": [],
@@ -155,7 +203,7 @@
    },
    "classe": "verificado",
    "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS e cada reembolso"
+   "motivo": "conferido direto na fonte em 2026-11-25: dados abertos do Senado (despesas_ceaps): soma do ano de cada senador de MS e cada reembolso"
   },
   "prefeitura": {
    "nome": "Prefeitura de Campo Grande — despesas pagas",
@@ -168,22 +216,22 @@
    "metodo": "valor pago de cada empenho do ano (lido na página do empenho quando a exportação está parada)",
    "periodoReferencia": "ano corrente",
    "identificadorOriginal": "link do empenho (urlDetalhe)",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:14:50",
-   "diasDesdeColeta": 1.0,
-   "dadoMaisRecente": "empenho de 02/10/2026",
-   "dataDadoMaisRecente": "2026-10-02",
-   "diasDesdeDado": 54,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:18:32",
+   "diasDesdeColeta": -0.0,
+   "dadoMaisRecente": "empenho de 24/11/2026",
+   "dataDadoMaisRecente": "2026-11-24",
+   "diasDesdeDado": 1,
    "intervaloColetaDias": 1,
    "atrasoNormalDias": 15,
-   "registros": 13035,
-   "total": 4797370204.23,
+   "registros": 14676,
+   "total": 4966568370.71,
    "erros": [],
-   "mensagemFonte": "o SIG-Transparência da Prefeitura não publica empenhos novos desde 02/10/2026 — a coleta diária confere todo dia",
+   "mensagemFonte": null,
    "validacao": null,
-   "classe": "aguardando_fonte",
-   "classeRotulo": "Aguardando atualização da fonte",
-   "motivo": "a coleta funciona (última em 2026-11-24), mas o dado mais recente publicado pela fonte é de 02/10/2026 (54 dias; o normal é até 15)"
+   "classe": "importado",
+   "classeRotulo": "Importado, não conferido na fonte",
+   "motivo": "importado da fonte oficial e consistente nas contas internas, mas sem conferência independente na fonte"
   },
   "contratos-cg": {
    "nome": "Prefeitura de Campo Grande — contratos e licitações",
@@ -196,10 +244,10 @@
    "metodo": "lista de contratos do ano",
    "periodoReferencia": "ano corrente",
    "identificadorOriginal": "nº do registro do contrato",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:14:51",
-   "diasDesdeColeta": 1.0,
-   "dadoMaisRecente": "contrato de 13/11/2026, licitação de 24/11/2026",
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:18:35",
+   "diasDesdeColeta": -0.0,
+   "dadoMaisRecente": "contrato de 13/11/2026, licitação de 25/11/2026",
    "dataDadoMaisRecente": "2026-11-13",
    "diasDesdeDado": 12,
    "intervaloColetaDias": 1,
@@ -210,7 +258,7 @@
    "mensagemFonte": null,
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "SIG-Transparência da Prefeitura (consulta de contratos do ano): contrato a contrato — valor, situação, fornecedor e objeto (100 = igual, 0 = diferente)",
     "conferidos": 1408,
     "divergentes": [],
@@ -218,7 +266,7 @@
    },
    "classe": "verificado",
    "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: SIG-Transparência da Prefeitura (consulta de contratos do ano): contrato a contrato — valor, situação, fornecedor e objeto (100 = igual, 0 = diferente)"
+   "motivo": "conferido direto na fonte em 2026-11-25: SIG-Transparência da Prefeitura (consulta de contratos do ano): contrato a contrato — valor, situação, fornecedor e objeto (100 = igual, 0 = diferente)"
   },
   "governo-ms": {
    "nome": "Governo de MS (Poder Executivo) — despesas",
@@ -233,21 +281,21 @@
    "metodo": "totais do portal por órgão; credores; contratos",
    "periodoReferencia": "ano corrente até a data da coleta",
    "identificadorOriginal": "código do órgão / CPF-CNPJ do credor",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:14:48",
-   "diasDesdeColeta": 1.0,
-   "dadoMaisRecente": "despesas até 24/11/2026, folha de 10/2026, 62.676 trechos de diárias",
-   "dataDadoMaisRecente": "2026-11-24",
-   "diasDesdeDado": 1,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:18:45",
+   "diasDesdeColeta": -0.0,
+   "dadoMaisRecente": "despesas até 25/11/2026, folha de 10/2026, 62.674 trechos de diárias",
+   "dataDadoMaisRecente": "2026-11-25",
+   "diasDesdeDado": 0,
    "intervaloColetaDias": 1,
    "atrasoNormalDias": 7,
-   "registros": 24542,
-   "total": 21499666267.52,
+   "registros": 24612,
+   "total": 21547336913.05,
    "erros": [],
    "mensagemFonte": null,
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "consulta nova ao portal do Estado (mesmo período da coleta): valor pago de cada órgão e totais do ano",
     "conferidos": 68,
     "divergentes": [],
@@ -255,7 +303,7 @@
    },
    "classe": "verificado",
    "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: consulta nova ao portal do Estado (mesmo período da coleta): valor pago de cada órgão e totais do ano"
+   "motivo": "conferido direto na fonte em 2026-11-25: consulta nova ao portal do Estado (mesmo período da coleta): valor pago de cada órgão e totais do ano"
   },
   "emendas": {
    "nome": "Portal da Transparência (CGU) — emendas parlamentares pagas em MS",
@@ -268,16 +316,16 @@
    "metodo": "soma do valor recebido em MS no ano, por município, autor e favorecido",
    "periodoReferencia": "ano corrente, mês do pagamento",
    "identificadorOriginal": "código da emenda + favorecido",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:14:49",
-   "diasDesdeColeta": 1.0,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:18:40",
+   "diasDesdeColeta": -0.0,
    "dadoMaisRecente": "pagamentos até 11/2026",
    "dataDadoMaisRecente": "2026-11-25",
    "diasDesdeDado": 0,
    "intervaloColetaDias": 1,
    "atrasoNormalDias": 45,
-   "registros": 1057,
-   "total": 628696212.98,
+   "registros": 1063,
+   "total": 630301843.1,
    "erros": [],
    "mensagemFonte": null,
    "validacao": {
@@ -322,9 +370,9 @@
    "metodo": "remuneração bruta e líquida do mês; diárias fora do bruto (padrão CNJ)",
    "periodoReferencia": "último mês publicado de cada órgão",
    "identificadorOriginal": "órgão + mês + nome",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:18:10",
-   "diasDesdeColeta": 1.0,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:23:28",
+   "diasDesdeColeta": -0.0,
    "dadoMaisRecente": "contracheques de 08/2026, 09/2026, 10/2026",
    "dataDadoMaisRecente": "2026-10-31",
    "diasDesdeDado": 25,
@@ -336,15 +384,15 @@
    "mensagemFonte": null,
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "órgão por órgão no mês publicado: TJMS e TRT24 no DadosJusBr; os 39 órgãos do Governo numa consulta nova à folha do Estado filtrada por órgão (pessoas e total bruto); TCE-MS (servidores) numa consulta nova ao portal do TCE; mais 100 contracheques do Governo sorteados por dia (semente = data), um a um",
-    "conferidos": 285,
+    "conferidos": 283,
     "divergentes": [],
     "nota": ""
    },
    "classe": "verificado",
    "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: órgão por órgão no mês publicado: TJMS e TRT24 no DadosJusBr; os 39 órgãos do Governo numa consulta nova à folha do Estado filtrada por órgão (pessoas e total bruto); TCE-MS (servidores) numa consulta nova ao portal do TCE; mais 100 contracheques do Governo sorteados por dia (semente = data), um a um"
+   "motivo": "conferido direto na fonte em 2026-11-25: órgão por órgão no mês publicado: TJMS e TRT24 no DadosJusBr; os 39 órgãos do Governo numa consulta nova à folha do Estado filtrada por órgão (pessoas e total bruto); TCE-MS (servidores) numa consulta nova ao portal do TCE; mais 100 contracheques do Governo sorteados por dia (semente = data), um a um"
   },
   "arrecadacao": {
    "nome": "Tesouro Nacional (Siconfi) — arrecadação do Estado e de CG",
@@ -357,9 +405,9 @@
    "metodo": "receita mês a mês; o contador ao vivo é ESTIMATIVA (ritmo dos últimos 12 meses)",
    "periodoReferencia": "até o último bimestre publicado (o RREO sai até 30 dias depois do bimestre)",
    "identificadorOriginal": "ente + mês + conta do RREO",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:18:18",
-   "diasDesdeColeta": 1.0,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:22:39",
+   "diasDesdeColeta": -0.0,
    "dadoMaisRecente": "mês 08/2026",
    "dataDadoMaisRecente": "2026-08-31",
    "diasDesdeDado": 86,
@@ -371,7 +419,7 @@
    "mensagemFonte": "O Estado e a Prefeitura publicam esse relatório a cada dois meses, até 30 dias após o fim do bimestre.",
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "Siconfi RREO Anexo 3 (2026/4º bim, 2025/6º bim): ICMS mês a mês",
     "conferidos": 20,
     "divergentes": [],
@@ -379,7 +427,7 @@
    },
    "classe": "verificado",
    "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: Siconfi RREO Anexo 3 (2026/4º bim, 2025/6º bim): ICMS mês a mês"
+   "motivo": "conferido direto na fonte em 2026-11-25: Siconfi RREO Anexo 3 (2026/4º bim, 2025/6º bim): ICMS mês a mês"
   },
   "shows": {
    "nome": "PNCP — shows contratados por órgãos de MS",
@@ -392,9 +440,9 @@
    "metodo": "valor homologado (ou estimado) de cada contratação",
    "periodoReferencia": "ano corrente",
    "identificadorOriginal": "nº de controle PNCP (link)",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:26:41",
-   "diasDesdeColeta": 1.0,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:30:49",
+   "diasDesdeColeta": -0.0,
    "dadoMaisRecente": "publicação de 23/11/2026",
    "dataDadoMaisRecente": "2026-11-23",
    "diasDesdeDado": 2,
@@ -406,7 +454,7 @@
    "mensagemFonte": null,
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "PNCP: 150 contratações de show sorteadas, valor de cada uma na consulta pública",
     "conferidos": 150,
     "divergentes": [],
@@ -414,7 +462,7 @@
    },
    "classe": "verificado",
    "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: PNCP: 150 contratações de show sorteadas, valor de cada uma na consulta pública"
+   "motivo": "conferido direto na fonte em 2026-11-25: PNCP: 150 contratações de show sorteadas, valor de cada uma na consulta pública"
   },
   "alugueis": {
    "nome": "PNCP e Prefeitura de CG — aluguel de imóveis",
@@ -427,9 +475,9 @@
    "metodo": "valor do contrato (PNCP) e pagamentos do ano (Prefeitura); compras de imóvel excluídas",
    "periodoReferencia": "ano corrente",
    "identificadorOriginal": "nº de controle PNCP / link do empenho",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:43:18",
-   "diasDesdeColeta": 1.0,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:48:07",
+   "diasDesdeColeta": -0.0,
    "dadoMaisRecente": "209 contratos e 81 locadores da Prefeitura",
    "dataDadoMaisRecente": null,
    "diasDesdeDado": null,
@@ -462,21 +510,21 @@
    "metodo": "projetos por autoria (principal/coautor) e situação",
    "periodoReferencia": "legislatura atual (desde 02/2023)",
    "identificadorOriginal": "id da proposição (link)",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:18:12",
-   "diasDesdeColeta": 1.0,
-   "dadoMaisRecente": "528 projetos de 11 parlamentares",
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:22:39",
+   "diasDesdeColeta": -0.0,
+   "dadoMaisRecente": "529 projetos de 11 parlamentares",
    "dataDadoMaisRecente": null,
    "diasDesdeDado": null,
    "intervaloColetaDias": 1,
    "atrasoNormalDias": 30,
-   "registros": 1112,
+   "registros": 1113,
    "total": null,
    "erros": [],
    "mensagemFonte": null,
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "Câmara (/proposicoes, filtro de tipo na API) e Senado (/processo do autor): nº de projetos de cada parlamentar de MS desde 01/02/2023",
     "conferidos": 11,
     "divergentes": [],
@@ -484,7 +532,7 @@
    },
    "classe": "verificado",
    "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: Câmara (/proposicoes, filtro de tipo na API) e Senado (/processo do autor): nº de projetos de cada parlamentar de MS desde 01/02/2023"
+   "motivo": "conferido direto na fonte em 2026-11-25: Câmara (/proposicoes, filtro de tipo na API) e Senado (/processo do autor): nº de projetos de cada parlamentar de MS desde 01/02/2023"
   },
   "votacoes": {
    "nome": "Câmara e Senado — votações nominais",
@@ -497,29 +545,29 @@
    "metodo": "participação = votou ÷ votações nominais",
    "periodoReferencia": "ano corrente",
    "identificadorOriginal": "id da votação",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:15:25",
-   "diasDesdeColeta": 1.0,
-   "dadoMaisRecente": "votação de 23/11/2026",
-   "dataDadoMaisRecente": "2026-11-23",
-   "diasDesdeDado": 2,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:19:14",
+   "diasDesdeColeta": -0.0,
+   "dadoMaisRecente": "votação de 24/11/2026",
+   "dataDadoMaisRecente": "2026-11-24",
+   "diasDesdeDado": 1,
    "intervaloColetaDias": 1,
    "atrasoNormalDias": 30,
-   "registros": 136,
+   "registros": 137,
    "total": null,
    "erros": [],
    "mensagemFonte": null,
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano; item = voto de um deputado de MS (100 = igual ao site, 0 = diferente)",
-    "conferidos": 1088,
+    "conferidos": 1096,
     "divergentes": [],
     "nota": ""
    },
    "classe": "verificado",
    "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano; item = voto de um deputado de MS (100 = igual ao site, 0 = diferente)"
+   "motivo": "conferido direto na fonte em 2026-11-25: API da Câmara (/votacoes/{id}/votos): todas as votações nominais do ano; item = voto de um deputado de MS (100 = igual ao site, 0 = diferente)"
   },
   "obras": {
    "nome": "Governo de MS — obras (contratos)",
@@ -532,7 +580,7 @@
    "metodo": "% executado e datas publicados pelo Estado",
    "periodoReferencia": "contratos em andamento",
    "identificadorOriginal": "nº do contrato",
-   "ultimaTentativa": "2026-11-25T12:58:50",
+   "ultimaTentativa": "2026-11-25T13:18:08",
    "ultimaColeta": "2026-11-23T17:24:49",
    "diasDesdeColeta": 1.8,
    "dadoMaisRecente": "266 obras em andamento",
@@ -546,10 +594,16 @@
    "mensagemFonte": null,
    "validacao": {
     "resultado": "diverge",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "portal do Estado (contratos de obras, ContratosEkronos): reconsulta de todas as obras do site; item = valor, situação, empresa, datas, % executado e dias aditados/paralisados (100 = igual, 0 = diferente)",
     "conferidos": 2394,
     "divergentes": [
+     {
+      "item": "126/2023|57/100.460/2020|17634508000144 · executado",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
      {
       "item": "059/2021|57/101.543/2020|37488100000119 · situacao",
       "site": 100.0,
@@ -557,7 +611,25 @@
       "diferenca": 100.0
      },
      {
+      "item": "037/2023/AGEPEN|31/082.943/2022|03492162000182 · executado",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
+     {
       "item": "044/2025|11/006.616/2024|24641425000148 · executado",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
+     {
+      "item": "040/2023|27/008.690/2022|01326359000116 · situacao",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
+     {
+      "item": "040/2023|27/008.690/2022|01326359000116 · executado",
       "site": 100.0,
       "fonte": 0.0,
       "diferenca": 100.0
@@ -581,13 +653,67 @@
       "diferenca": 100.0
      },
      {
-      "item": "130/2026|79/004.586/2026|19431243000102 · executado",
+      "item": "099/2025|27/003.913/2025|03492162000182 · valor",
       "site": 100.0,
       "fonte": 0.0,
       "diferenca": 100.0
      },
      {
-      "item": "036/2026|79/011.666/2025|05575960000101 · executado",
+      "item": "099/2025|27/003.913/2025|03492162000182 · situacao",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
+     {
+      "item": "099/2025|27/003.913/2025|03492162000182 · fim",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
+     {
+      "item": "099/2025|27/003.913/2025|03492162000182 · executado",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
+     {
+      "item": "099/2025|27/003.913/2025|03492162000182 · diasAditados",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
+     {
+      "item": "027/2026|79/012.324/2025|14042710000199 · valor",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
+     {
+      "item": "027/2026|79/012.324/2025|14042710000199 · executado",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
+     {
+      "item": "023/2024|79/011.267/2023|12058497000188 · executado",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
+     {
+      "item": "058/2026|79/011.828/2025|02011044000142 · executado",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
+     {
+      "item": "083/2026|87/000.066/2025|01326359000116 · executado",
+      "site": 100.0,
+      "fonte": 0.0,
+      "diferenca": 100.0
+     },
+     {
+      "item": "021/2025|79/013.880/2024|42133195000198 · executado",
       "site": 100.0,
       "fonte": 0.0,
       "diferenca": 100.0
@@ -597,7 +723,7 @@
    },
    "classe": "divergencia",
    "classeRotulo": "Divergência na fonte",
-   "motivo": "7 item(ns) com valor diferente do da fonte na conferência de 2026-11-24"
+   "motivo": "20 item(ns) com valor diferente do da fonte na conferência de 2026-11-25"
   },
   "publicidade": {
    "nome": "Publicidade (Estado e Prefeitura)",
@@ -610,29 +736,29 @@
    "metodo": "soma por agência",
    "periodoReferencia": "ano corrente",
    "identificadorOriginal": "CNPJ da agência",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-25T12:07:08",
-   "diasDesdeColeta": 0.0,
-   "dadoMaisRecente": "pagamento da Prefeitura de 02/10/2026",
-   "dataDadoMaisRecente": "2026-10-02",
-   "diasDesdeDado": 54,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:55:31",
+   "diasDesdeColeta": -0.0,
+   "dadoMaisRecente": "pagamento da Prefeitura de 24/11/2026",
+   "dataDadoMaisRecente": "2026-11-24",
+   "diasDesdeDado": 1,
    "intervaloColetaDias": 1,
    "atrasoNormalDias": 30,
    "registros": 25,
-   "total": 102431657.21,
+   "total": 102458387.12,
    "erros": [],
    "mensagemFonte": null,
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "portal do Estado (pagamentos do ano por credor) e SIG-Transparência da Prefeitura (empenhos de publicidade): pago e empenhado de cada agência no Estado; empenhado de cada empenho na Prefeitura",
     "conferidos": 40,
     "divergentes": [],
     "nota": " Parte da Prefeitura: o SIG não devolveu nenhum empenho de publicidade — não conferida."
    },
-   "classe": "aguardando_fonte",
-   "classeRotulo": "Aguardando atualização da fonte",
-   "motivo": "a coleta funciona (última em 2026-11-25), mas o dado mais recente publicado pela fonte é de 02/10/2026 (54 dias; o normal é até 30)"
+   "classe": "verificado",
+   "classeRotulo": "Verificado na fonte oficial",
+   "motivo": "conferido direto na fonte em 2026-11-25: portal do Estado (pagamentos do ano por credor) e SIG-Transparência da Prefeitura (empenhos de publicidade): pago e empenhado de cada agência no Estado; empenhado de cada empenho na Prefeitura —  Parte da Prefeitura: o SIG não devolveu nenhum empenho de publicidade — não conferida."
   },
   "entidades": {
    "nome": "Entidades sem fins lucrativos (Estado, Prefeitura, emendas)",
@@ -645,29 +771,29 @@
    "metodo": "soma por entidade",
    "periodoReferencia": "ano corrente",
    "identificadorOriginal": "CNPJ",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-25T12:07:08",
-   "diasDesdeColeta": 0.0,
-   "dadoMaisRecente": "948 entidades",
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:55:31",
+   "diasDesdeColeta": -0.0,
+   "dadoMaisRecente": "949 entidades",
    "dataDadoMaisRecente": null,
    "diasDesdeDado": null,
    "intervaloColetaDias": 1,
    "atrasoNormalDias": 30,
-   "registros": 948,
-   "total": 1493506061.34,
+   "registros": 949,
+   "total": 1512823529.33,
    "erros": [],
    "mensagemFonte": null,
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "cadastro CNPJ (minhareceita.org): todas as entidades; item = abertura, município ou situação cadastral (100 = igual ao site, 0 = diferente)",
-    "conferidos": 2823,
+    "conferidos": 2826,
     "divergentes": [],
     "nota": " 7 entidade(s) sem dados cadastrais no site (a coleta do cadastro não as alcança): não conferidas."
    },
    "classe": "verificado",
    "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: cadastro CNPJ (minhareceita.org): todas as entidades; item = abertura, município ou situação cadastral (100 = igual ao site, 0 = diferente) —  7 entidade(s) sem dados cadastrais no site (a coleta do cadastro não as alcança): não conferidas."
+   "motivo": "conferido direto na fonte em 2026-11-25: cadastro CNPJ (minhareceita.org): todas as entidades; item = abertura, município ou situação cadastral (100 = igual ao site, 0 = diferente) —  7 entidade(s) sem dados cadastrais no site (a coleta do cadastro não as alcança): não conferidas."
   },
   "camaras-ms": {
    "nome": "Câmaras municipais do interior — remuneração e diárias dos vereadores",
@@ -693,16 +819,16 @@
    "metodo": "diárias e remuneração por vereador; despesas institucionais quando o portal publica",
    "periodoReferencia": "ano corrente",
    "identificadorOriginal": "câmara + vereador + diária (data e destino)",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:14:50",
-   "diasDesdeColeta": 1.0,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:18:32",
+   "diasDesdeColeta": -0.0,
    "dadoMaisRecente": "13 de 14 câmaras atualizadas",
    "dataDadoMaisRecente": null,
    "diasDesdeDado": null,
    "intervaloColetaDias": 1,
    "atrasoNormalDias": 30,
-   "registros": 2014,
-   "total": 7354432.76,
+   "registros": 2017,
+   "total": 7358241.29,
    "erros": [],
    "mensagemFonte": "sem resposta do portal: Sonora (27/10/2026)",
    "validacao": null,
@@ -721,9 +847,9 @@
    "metodo": "bruto, descontos, líquido; diárias à parte",
    "periodoReferencia": "último mês publicado",
    "identificadorOriginal": "tribunal + mês + nome",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-24T12:14:49",
-   "diasDesdeColeta": 1.0,
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:18:37",
+   "diasDesdeColeta": -0.0,
    "dadoMaisRecente": "folha de TRT24 10/2026, TRE-MS 10/2026, TJMS 09/2026",
    "dataDadoMaisRecente": "2026-10-31",
    "diasDesdeDado": 25,
@@ -735,7 +861,7 @@
    "mensagemFonte": null,
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "DadosJusBr (contracheques do TJMS enviados ao CNJ, 09/2026): nº de magistrados ativos e soma do subsídio",
     "conferidos": 2,
     "divergentes": [],
@@ -743,7 +869,7 @@
    },
    "classe": "verificado",
    "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: DadosJusBr (contracheques do TJMS enviados ao CNJ, 09/2026): nº de magistrados ativos e soma do subsídio"
+   "motivo": "conferido direto na fonte em 2026-11-25: DadosJusBr (contracheques do TJMS enviados ao CNJ, 09/2026): nº de magistrados ativos e soma do subsídio"
   },
   "eleicoes": {
    "nome": "TSE — eleitos 2026 e patrimônio declarado",
@@ -756,7 +882,7 @@
    "metodo": "bens declarados por eleição",
    "periodoReferencia": "eleições",
    "identificadorOriginal": "sequencial do candidato no TSE",
-   "ultimaTentativa": "2026-11-25T12:58:50",
+   "ultimaTentativa": "2026-11-25T13:18:08",
    "ultimaColeta": "2026-11-19T17:52:14",
    "diasDesdeColeta": 5.8,
    "dadoMaisRecente": "35 eleitos em 2026",
@@ -770,7 +896,7 @@
    "mensagemFonte": null,
    "validacao": {
     "resultado": "confere",
-    "em": "2026-11-24T12:46:28",
+    "em": "2026-11-25T13:57:07",
     "metodo": "DivulgaCand do TSE: cada eleito de MS em 2026 — nome completo, partido, cargo, situação e total de bens (100 = igual, 0 = diferente)",
     "conferidos": 175,
     "divergentes": [],
@@ -778,7 +904,7 @@
    },
    "classe": "verificado",
    "classeRotulo": "Verificado na fonte oficial",
-   "motivo": "conferido direto na fonte em 2026-11-24: DivulgaCand do TSE: cada eleito de MS em 2026 — nome completo, partido, cargo, situação e total de bens (100 = igual, 0 = diferente)"
+   "motivo": "conferido direto na fonte em 2026-11-25: DivulgaCand do TSE: cada eleito de MS em 2026 — nome completo, partido, cargo, situação e total de bens (100 = igual, 0 = diferente)"
   },
   "auditoria": {
    "nome": "Sinais de atenção (gerados pelo site)",
@@ -791,15 +917,15 @@
    "metodo": "~30 testes automáticos",
    "periodoReferencia": "dados mais recentes de cada fonte",
    "identificadorOriginal": "id do sinal",
-   "ultimaTentativa": "2026-11-25T12:58:50",
-   "ultimaColeta": "2026-11-25T12:07:11",
-   "diasDesdeColeta": 0.0,
-   "dadoMaisRecente": "4953 empresas checadas na Receita",
+   "ultimaTentativa": "2026-11-25T13:18:08",
+   "ultimaColeta": "2026-11-25T13:55:34",
+   "diasDesdeColeta": -0.0,
+   "dadoMaisRecente": "4957 empresas checadas na Receita",
    "dataDadoMaisRecente": null,
    "diasDesdeDado": null,
    "intervaloColetaDias": 1,
    "atrasoNormalDias": 3,
-   "registros": 349,
+   "registros": 352,
    "total": null,
    "erros": [],
    "mensagemFonte": null,
@@ -811,10 +937,10 @@
  },
  "resumo": {
   "falha_coleta": 0,
-  "divergencia": 2,
+  "divergencia": 3,
   "revisao_manual": 0,
-  "aguardando_fonte": 2,
+  "aguardando_fonte": 0,
   "verificado": 14,
-  "importado": 3
+  "importado": 4
  }
 }
