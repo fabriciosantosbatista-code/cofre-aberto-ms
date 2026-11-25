@@ -23,12 +23,19 @@ GRUPOS = [
                                     ("Contato", "CONTATO")]),
 ]
 
-CSS = (".mapa-site{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));align-items:start;gap:12px 14px;border-top:1px solid var(--border,#2a2a2a);"
-       "padding:16px 0 4px;margin-top:24px;font-size:.7rem;line-height:1.45}"
-       ".mapa-site h4{margin:0 0 4px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}"
-       ".mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:1px 0}"
+# Rodapé: a troca de layout segue a largura do próprio rodapé (container query), não a da tela — nas páginas
+# estáticas o conteúdo tem ~850 px mesmo em tela larga. Até 960 px de rodapé: colunas de jornal (3; 2 até 520 px),
+# sem buracos entre grupos de alturas diferentes; acima: 7 colunas iguais, uma por grupo (GRUPOS).
+CSS = (".mapa-wrap{container-type:inline-size;width:100%;margin-top:24px}"
+       ".mapa-site{display:block;width:100%;box-sizing:border-box;columns:3;column-gap:20px;border-top:1px solid var(--border,#2a2a2a);"
+       "padding:18px 0 6px;font-size:.74rem;line-height:1.5}"
+       ".mapa-site>div{break-inside:avoid;margin-bottom:14px}"
+       "@container (max-width:520px){.mapa-site{columns:2;column-gap:16px}.mapa-site li{margin:3px 0}}"
+       "@container (min-width:960px){.mapa-site{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px 18px;align-items:start}"
+       ".mapa-site>div{margin-bottom:0}}"
+       ".mapa-site h4{margin:0 0 6px;font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor);font-weight:700}"
+       ".mapa-site ul{list-style:none;margin:0;padding:0}.mapa-site li{margin:2px 0}"
        ".mapa-site a{color:var(--ink-caption,#888);text-decoration:none}.mapa-site a:hover{color:var(--cor);text-decoration:underline}"
-       "@media(max-width:520px){.mapa-site{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:.66rem}}"
        ".mapa-site details,.mapa-site summary{font:inherit;margin:0;padding:0;border:0;background:none}"
        ".mapa-contato summary{cursor:pointer;color:var(--ink-caption,#888);list-style:none}.mapa-contato summary::-webkit-details-marker{display:none}"
        ".mapa-contato summary::after{content:\" ▾\";font-size:.8em}.mapa-contato[open] summary::after{content:\" ▴\"}.mapa-contato summary:hover{color:var(--cor)}"
@@ -41,10 +48,10 @@ def item(n, u):
     return f'<li><a href="{u}">{n}</a></li>'
 
 
-MAPA_HTML = (f'<style>{CSS}</style><nav class="mapa-site" aria-label="Mapa do site">'
+MAPA_HTML = (f'<style>{CSS}</style><div class="mapa-wrap"><nav class="mapa-site" aria-label="Mapa do site">'
              + "".join(f'<div style="--cor:{cor}"><h4>{g}</h4><ul>' + "".join(item(n, u) for n, u in itens) + "</ul></div>"
                        for g, cor, itens in GRUPOS)
-             + "</nav>")
+             + "</nav></div>")
 
 
 def injetar(caminho):
