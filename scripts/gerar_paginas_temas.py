@@ -629,7 +629,7 @@ de preferência com o documento ou link da fonte oficial. Respondemos em até <b
 <a href="/metodologia.html#correcoes">lista de correções</a>; explicações de quem é citado podem ser publicadas junto do dado.</p>
 <h2>5. Uso do conteúdo</h2>
 <p>Os <b>dados</b> podem ser reutilizados sob a licença Creative Commons Atribuição 4.0 (CC BY 4.0), citando "Cofre Aberto MS (cofreabertoms.com.br)"
-e a fonte oficial. O <b>código, o layout, o logotipo e os textos</b> são de uso reservado — veja a <a href="/metodologia.html#licenca">licença</a>.</p>
+e a fonte oficial. O <b>código, o layout, o logotipo e os textos</b> são de uso reservado — veja a <a href="/termos/#licenca">licença</a>.</p>
 <h2>6. Links para outros sites</h2>
 <p>O site aponta para portais oficiais e outros sites. Não respondemos pelo conteúdo, pela disponibilidade nem pelas políticas desses sites.</p>
 <h2>7. Responsabilidade</h2>

@@ -110,6 +110,8 @@ article h3{font-family:"Sora",sans-serif;font-size:1.05rem;font-weight:700;margi
   table.numeros td{padding:12px;font-size:.85rem;}
   footer{flex-direction:column;align-items:flex-start;}
 }
+.citar{font-family:ui-monospace,Menlo,monospace;font-size:.8rem;color:var(--ink);background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;line-height:1.6;overflow-wrap:anywhere}
+.btn{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:.8rem;color:var(--ink);background:var(--surface);cursor:pointer;font-family:inherit;margin-top:8px}
 </style>
 <script defer src="/analytics.js?v=3"></script>
 <script src="/apoie-config.js?v=3"></script>
@@ -181,38 +183,7 @@ article h3{font-family:"Sora",sans-serif;font-size:1.05rem;font-weight:700;margi
     <p class="icp-hoje" id="icp-hoje" hidden data-md-texto="**Hoje:** a nota geral, o número de bases e a cobertura da conferência (registros comparados um a um com a fonte oficial e registros cobertos por totais conferidos) aparecem atualizados no [kit de imprensa do site](https://cofreabertoms.com.br/press.html#como-conferimos), lidos do arquivo dados/icp.json da última coleta."><strong>Hoje:</strong> <span id="icp-f1" hidden>nota <b data-icp="nota_geral"></b>/100 em <b data-icp="n_bases"></b> bases.</span>
       <span id="icp-f2" hidden><b data-icp="pct_um_a_um"></b>% dos registros foram comparados um a um com a fonte oficial e <b data-icp="pct_totais"></b>% estão cobertos por totais conferidos.</span></p>
 
-    <h3>O que conta como "conferido"</h3>
-    <ul>
-      <li>Um registro só conta como conferido se o robô consultou de novo a fonte oficial e encontrou o mesmo valor. Contas que fecham não bastam.</li>
-      <li>Total que bate conta como "total conferido", não como conferência de cada registro.</li>
-      <li>A conferência só vale se for feita na mesma execução da coleta, até 2 horas depois dela.</li>
-      <li>Cada conferência vale por 30 dias. Se o registro mudar, ela perde a validade.</li>
-      <li>Diferença entre o site e a fonte aparece no site como divergência. Não existe tolerância do tipo "a fonte mudou".</li>
-    </ul>
-
-    <h3>Selos</h3>
-    <ul>
-      <li><strong>Conferido na fonte:</strong> valor comparado com a fonte oficial.</li>
-      <li><strong>Mesma fonte da coleta:</strong> confirma a leitura, mas não é uma fonte independente.</li>
-      <li><strong>Fonte independente (agregado):</strong> totais comparados com o Tesouro Nacional (RGF/Siconfi).</li>
-      <li><strong>Não verificado:</strong> o robô não conseguiu confirmar o dado, e o motivo aparece ao lado.</li>
-      <li><strong>Problema na fonte:</strong> erro no próprio dado oficial, como uma nota lançada em duplicidade.</li>
-    </ul>
-
-    <h3>Sinais de atenção</h3>
-    <p>Quando a conferência encontra algo incomum no próprio dado oficial, o site sinaliza o caso sem tirar conclusões. Exemplos de sinais já encontrados:</p>
-    <ul>
-      <li>notas da cota parlamentar registradas em duplicidade no arquivo oficial da Câmara;</li>
-      <li>desconto do teto constitucional aplicado abaixo do valor excedente;</li>
-      <li>órgão que parou de publicar despesas no portal de transparência.</li>
-    </ul>
-    <p>Quando cabe, o Cofre Aberto MS pede esclarecimento ao órgão pela Lei de Acesso à Informação e publica a resposta.</p>
-
-    <h3>Proteção de dados</h3>
-    <p>CPFs de pessoas físicas aparecem mascarados. Documentos originais com dados pessoais são guardados apenas de forma cifrada.</p>
-
-    <h3>Como citar</h3>
-    <p><span id="icp-citar" hidden data-md-texto="&quot;Cofre Aberto MS (cofreabertoms.com.br), dados de [data da coleta].&quot; ">"Cofre Aberto MS (cofreabertoms.com.br), dados de <b data-icp="data_ultima_coleta"></b>." </span>Cada página de base mostra a data da coleta e a situação da conferência.</p>
+    <p>Como cada base é conferida — o que conta como "conferido", os selos, os sinais de atenção e a proteção de dados — está explicado na página de <a href="/cofre-aberto-ms.html#aba=confiabilidade">Confiabilidade dos dados</a>, com a nota e o histórico de cada base, e na <a href="/metodologia.html">Metodologia</a>.</p>
     </section>
     <script>
     // Números do ICP lidos de dados/icp.json (nunca escritos à mão). Se faltar algum, a frase dele fica escondida.
@@ -269,6 +240,24 @@ article h3{font-family:"Sora",sans-serif;font-size:1.05rem;font-weight:700;margi
     </ol>
     <p class="nota">Capturas de tela do site podem ser usadas livremente pela imprensa, com crédito a "Cofre Aberto MS".</p>
 
+    <h2 id="citar">Como citar</h2>
+    <p>Ao usar os dados numa reportagem, pesquisa ou trabalho, cite o Cofre Aberto MS <strong>e a fonte oficial</strong>, com a data de acesso. Cada aba do painel e cada página de parlamentar tem um botão "Como citar" com o texto pronto. Formato sugerido (ABNT):</p>
+    <div class="citar" id="cit-exemplo">COFRE ABERTO MS. <i>Gastos dos vereadores de Campo Grande</i>. Fonte dos dados: Portal da Transparência da Câmara Municipal de Campo Grande. Coletados em 10/11/2026. Disponível em: https://cofreabertoms.com.br/cofre-aberto-ms.html#aba=camara. Acesso em: 10 nov. 2026.</div>
+    <button type="button" class="btn" id="cit-copiar">📋 Copiar</button>
+    <p style="margin-top:14px">Em matérias jornalísticas, basta: <em>"segundo dados do Portal da Transparência da Câmara Municipal de Campo Grande, compilados pelo Cofre Aberto MS"</em>. Para conferir um valor específico, cada nota fiscal tem o link do documento na fonte oficial, quando o órgão publica.</p>
+    <p><span id="icp-citar" hidden data-md-texto="Forma curta: &quot;Cofre Aberto MS (cofreabertoms.com.br), dados de [data da coleta].&quot; ">Forma curta: "Cofre Aberto MS (cofreabertoms.com.br), dados de <b data-icp="data_ultima_coleta"></b>." </span>Cada página de base mostra a data da coleta e a situação da conferência.</p>
+    <p><strong>Reuso:</strong> os dados estão sob a licença Creative Commons Atribuição 4.0 (CC BY 4.0) — podem ser usados, inclusive comercialmente, citando o Cofre Aberto MS e a fonte oficial. Código, layout, logotipo e textos têm todos os direitos reservados. Detalhes nos <a href="/termos/#licenca">Termos de uso</a>.</p>
+    <script>
+    (function () {
+      var hoje = new Date(), mes = ["jan.", "fev.", "mar.", "abr.", "maio", "jun.", "jul.", "ago.", "set.", "out.", "nov.", "dez."][hoje.getMonth()];
+      var el = document.getElementById("cit-exemplo");
+      el.textContent = el.textContent.replace(/Acesso em: .*$/, "Acesso em: " + hoje.getDate() + " " + mes + " " + hoje.getFullYear() + ".");
+      document.getElementById("cit-copiar").addEventListener("click", function (e) {
+        if (navigator.clipboard) navigator.clipboard.writeText(el.textContent).then(function () { e.target.textContent = "✅ Copiado!"; setTimeout(function () { e.target.textContent = "📋 Copiar"; }, 2000); });
+      });
+    })();
+    </script>
+
     <h2>Contato</h2>
     <div class="contato-box">
       <dl>
@@ -282,7 +271,7 @@ article h3{font-family:"Sora",sans-serif;font-size:1.05rem;font-weight:700;margi
     </div>
 
     <h2>Sobre o projeto</h2>
-    <p>Cofre Aberto MS é um projeto independente de transparência cidadã, sem fins lucrativos e sem vínculo oficial com qualquer partido, candidato, governo ou órgão público. Todos os dados exibidos são públicos por lei (Lei de Acesso à Informação, nº 12.527/2011) e foram coletados diretamente dos portais de transparência oficiais citados ao longo deste documento.</p>
+    <p>Cofre Aberto MS é um projeto independente de transparência cidadã, sem fins lucrativos e sem vínculo com partido, candidato, governo ou órgão público. Todos os dados são públicos por lei (Lei de Acesso à Informação, nº 12.527/2011). Missão, visão e valores estão na página <a href="/cofre-aberto-ms.html#aba=sobre">Sobre</a>.</p>
   </article>
 
   <footer>

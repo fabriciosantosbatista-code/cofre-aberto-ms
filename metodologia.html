@@ -235,15 +235,9 @@ como citar e como baixar os dados.</p>
 <p>A <strong>comparação de diárias</strong> (aba Governo MS) junta o que cada órgão publica. A ALEMS declara zero diárias em todos os meses desde 2023 (as viagens dos deputados entram na cota) e o portal da Câmara de Campo Grande não traz nenhuma diária no ano.</p>
 <p>Notas novas de cada parlamentar de MS também saem em <strong>RSS</strong>, no botão "🔔 Seguir notas novas" de cada página ou no <a href="/dados/feeds/todas.xml">feed geral</a>.</p>
 
-<h2 id="citar">Como citar</h2>
-<p>Ao usar os dados numa reportagem, pesquisa ou trabalho, cite o Cofre Aberto MS <strong>e a fonte oficial</strong>, com a data de acesso. Cada aba do painel e cada página de parlamentar tem um botão "Como citar" com o texto pronto. Formato sugerido (ABNT):</p>
-<div class="citar" id="cit-exemplo">COFRE ABERTO MS. <i>Gastos dos vereadores de Campo Grande</i>. Fonte dos dados: Portal da Transparência da Câmara Municipal de Campo Grande. Coletados em 10/11/2026. Disponível em: https://cofreabertoms.com.br/cofre-aberto-ms.html#aba=camara. Acesso em: 10 nov. 2026.</div>
-<button type="button" class="btn" id="cit-copiar">📋 Copiar</button>
-<p style="margin-top:14px">Em matérias jornalísticas, basta: <em>"segundo dados do Portal da Transparência da Câmara Municipal de Campo Grande, compilados pelo Cofre Aberto MS"</em>. Para conferir um valor específico, cada nota fiscal tem o link do documento na fonte oficial, quando o órgão publica.</p>
-
-<h2 id="licenca">Licença e reuso</h2>
-<p><strong>Dados:</strong> as planilhas e arquivos de dados do Cofre Aberto MS estão sob a licença <a href="https://creativecommons.org/licenses/by/4.0/deed.pt-br" target="_blank" rel="noopener">Creative Commons Atribuição 4.0 (CC BY 4.0)</a>: qualquer pessoa pode usar, copiar e adaptar, inclusive em reportagens, pesquisas e trabalhos comerciais, <strong>desde que cite "Cofre Aberto MS (cofreabertoms.com.br)"</strong> e a fonte oficial. Os dados de origem são públicos e pertencem aos órgãos que os publicam; a licença vale para a compilação, a organização e as análises feitas aqui.</p>
-<p><strong>Código, layout, logotipo e textos:</strong> © 2026 Cofre Aberto MS, <strong>todos os direitos reservados</strong> (Leis 9.610/1998 e 9.609/1998). Não é permitido copiar ou reproduzir o site ou o código, no todo ou em parte, para montar outro site sem autorização por escrito. Pedidos pelo WhatsApp (67) 98209-5384.</p>
+<h2 id="citar">Como citar e reusar os dados</h2>
+<p>O formato de citação (ABNT e para matérias jornalísticas), com o botão de copiar, está no <a href="/press.html#citar">Kit de imprensa</a>.</p>
+<p id="licenca"><strong>Licença:</strong> os dados estão sob <a href="https://creativecommons.org/licenses/by/4.0/deed.pt-br" target="_blank" rel="noopener">CC BY 4.0</a> — podem ser reusados citando o Cofre Aberto MS e a fonte oficial; código, layout, logotipo e textos têm todos os direitos reservados. O texto completo está nos <a href="/termos/#licenca">Termos de uso</a>.</p>
 
 <h2 id="correcoes">Correções e direito de resposta</h2>
 <p>Se você encontrou um erro, ou é citado no site e quer contestar um dado, envie a correção com o documento ou link da fonte oficial pelo <a href="https://wa.me/5567982095384?text=Ol%C3%A1!%20Quero%20enviar%20uma%20corre%C3%A7%C3%A3o%20sobre%20um%20dado%20do%20Cofre%20Aberto%20MS." target="_blank" rel="noopener">WhatsApp (67) 98209-5384</a>. Respondemos em até 7 dias, e todo erro confirmado é corrigido e registrado abaixo. Se o erro estiver na própria fonte oficial, isso é informado.</p>
@@ -268,11 +262,8 @@ como citar e como baixar os dados.</p>
 <tr><td style="white-space:nowrap">10/11/2026</td><td><b>Judiciário:</b> a folha do TJMS estava parada em junho/2026, porque o portal do tribunal bloqueia acessos de fora do Brasil. Ela passou a vir do DadosJusBr (setembro/2026).</td></tr>
 <tr><td style="white-space:nowrap">10/11/2026</td><td><b>Deputados estaduais:</b> o detalhe de 22 deputados mostrava notas de uma carga de junho/2026, em vez das notas atuais. Foto e partido de 3 deputados, perdidos numa coleta de julho, foram restaurados.</td></tr>
 </tbody></table></div>
-<h2 id="privacidade">Privacidade e cookies</h2>
-<p>O site não pede cadastro nem guarda dados pessoais de quem visita. Para saber quantas pessoas usam o site e quais páginas são mais úteis,
-usamos o Google Analytics <strong>só se você aceitar</strong> no aviso de cookies; o endereço IP é anonimizado e nenhum dado é vendido ou usado para publicidade.
-Se você recusar, nenhum cookie de análise é gravado. Para mudar a escolha, apague os dados deste site no seu navegador.</p>
-<p>A política completa, com os dados de pessoas que aparecem no site e os seus direitos pela LGPD, está em <a href="/privacidade/">Privacidade e LGPD</a>. Veja também os <a href="/termos/">Termos de uso</a>.</p>
+<h2 id="privacidade">Privacidade</h2>
+<p>Como o site trata os dados de quem visita (cookies de análise só com o seu aceite) e das pessoas que aparecem nos dados está em <a href="/privacidade/">Privacidade e LGPD</a>. Veja também os <a href="/termos/">Termos de uso</a>.</p>
 </article>
 
 <footer><span>© 2026 Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
@@ -294,12 +285,6 @@ Se você recusar, nenhum cookie de análise é gravado. Para mudar a escolha, ap
         <td><span class="selo ${f.nivel}">${f.nivel === "ok" ? "✅ em dia" : "⚠️ atenção"}</span>${f.mensagem ? `<div style="font-size:.74rem;margin-top:4px">${esc(f.mensagem)}</div>` : ""}</td></tr>`;
     }).join("");
   }).catch(() => { document.querySelector("#tab-status tbody").innerHTML = '<tr><td colspan="5">Status indisponível no momento.</td></tr>'; });
-  const hoje = new Date(), mes = ["jan.", "fev.", "mar.", "abr.", "maio", "jun.", "jul.", "ago.", "set.", "out.", "nov.", "dez."][hoje.getMonth()];
-  const el = document.getElementById("cit-exemplo");
-  el.textContent = el.textContent.replace(/Acesso em: .*$/, `Acesso em: ${hoje.getDate()} ${mes} ${hoje.getFullYear()}.`);
-  document.getElementById("cit-copiar").addEventListener("click", e => {
-    navigator.clipboard?.writeText(el.textContent).then(() => { e.target.textContent = "✅ Copiado!"; setTimeout(() => (e.target.textContent = "📋 Copiar"), 2000); });
-  });
 })();
 </script>
 </body>

@@ -354,7 +354,7 @@ from mapa_site import MAPA_HTML  # noqa: E402
 from cartoes import cartao  # noqa: E402
 
 RODAPE = MAPA_HTML + f"""<footer><span>© {ANO} Cofre Aberto MS — dados públicos de fontes oficiais, coletados automaticamente.</span>
-<span><a href="/metodologia.html#licenca">Dados sob CC BY 4.0 (cite a fonte) · código e layout: todos os direitos reservados</a> · <a href="/termos/">Termos de uso</a> · <a href="/privacidade/">Privacidade e LGPD</a></span></footer>
+<span><a href="/termos/#licenca">Dados sob CC BY 4.0 (cite a fonte) · código e layout: todos os direitos reservados</a> · <a href="/termos/">Termos de uso</a> · <a href="/privacidade/">Privacidade e LGPD</a></span></footer>
 </div>
 <script>
 // celular: tabelas com 3+ colunas viram cartões (cada linha um bloco, com o nome da coluna ao lado do valor)
