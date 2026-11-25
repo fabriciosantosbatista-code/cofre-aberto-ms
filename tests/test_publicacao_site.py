@@ -4,6 +4,8 @@ Cofre Aberto MS — publicação do site com 2ª tentativa (estrutura do workflo
 
 25/11/2026: o GitHub às vezes não encontra o pacote do site recém-enviado ("No artifacts named github-pages");
 4 publicações seguidas falharam e as mudanças não entraram no ar. A publicação tenta de novo depois de 1 minuto.
+26/11/2026: causa encontrada — envio e publicação no mesmo job; o deploy consultava a API 0,4 s depois do envio, antes de
+o pacote aparecer. Agora: job "montar" envia, job "publicar" (needs: montar) espera o pacote aparecer na API e publica.
 Uso: python3 tests/test_publicacao_site.py   (código 1 se algum teste falhar)
 """
 import sys
@@ -24,6 +26,13 @@ espera = next((p for p in j["steps"] if "sleep 60" in str(p.get("run"))), None)
 check(espera is not None and espera.get("if") == "steps.deploy.outcome == 'failure'", "espera de 1 minuto antes da 2ª tentativa")
 check("deploy2.outputs.page_url" in j["environment"]["url"], "endereço do site vem da tentativa que deu certo")
 check("continue-on-error" not in d2, "se a 2ª também falhar, o job falha (o GitHub avisa)")
+m = w["jobs"].get("montar") or {}
+check(any("upload-pages-artifact" in str(p.get("uses")) for p in m.get("steps", [])), "o pacote é enviado no job montar")
+check(not any("upload-pages-artifact" in str(p.get("uses")) for p in j["steps"]), "o job publicar não envia o pacote (jobs separados)")
+check(j.get("needs") == "montar", "publicar espera o job montar terminar")
+esp = j["steps"][0]
+check("artifacts?name=github-pages" in str(esp.get("run")) and "total_count" in str(esp.get("run")), "antes de publicar, espera o pacote aparecer na API")
+check(w["permissions"].get("actions") == "read", "permissão para consultar os pacotes da execução")
 for e in erros:
     print("❌", e)
 print(f"✅ {len(oks)} checagens OK · ❌ {len(erros)} erros")

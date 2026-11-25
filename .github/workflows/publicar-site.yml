@@ -16,19 +16,22 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read   # conferir que o pacote já aparece na API antes de publicar
 
 # uma publicação por vez; a seguinte espera (não cancela a que está no ar)
 concurrency:
   group: pages
   cancel-in-progress: false
 
+# 26/11/2026 — causa do "No artifacts named github-pages" na 1ª tentativa: o envio do pacote e a publicação rodavam no
+# mesmo job; o deploy-pages consultava a lista de pacotes da execução ~0,4 s depois do envio terminar, e a API ainda não
+# mostrava o pacote (ela leva alguns segundos para refletir um envio novo). Agora segue o modelo oficial do GitHub:
+# um job monta e envia, outro publica; antes de publicar, espera o pacote aparecer na API (até 2 min).
+# A 2ª tentativa fica só como segurança.
 jobs:
-  publicar:
+  montar:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url || steps.deploy2.outputs.page_url }}
+    timeout-minutes: 15
     steps:
       - name: Checkout (main mais recente)
         uses: actions/checkout@v4
@@ -43,8 +46,25 @@ jobs:
         with:
           path: _site
 
-      # 25/11/2026: o GitHub às vezes não encontra o pacote recém-enviado ("No artifacts named github-pages") —
-      # falha intermitente do serviço; 4 publicações seguidas falharam assim. Agora há uma 2ª tentativa depois de 1 min.
+  publicar:
+    needs: montar
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy2.outputs.page_url }}
+    steps:
+      - name: Esperar o pacote aparecer na API
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 24); do
+            n=$(gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts?name=github-pages" -q '.total_count' 2>/dev/null || echo 0)
+            if [ "${n:-0}" -ge 1 ]; then echo "✅ pacote github-pages visível na API (após $(( (i-1)*5 )) s)"; exit 0; fi
+            sleep 5
+          done
+          echo "⚠️ o pacote não apareceu na API em 2 min — tentando publicar assim mesmo"
+
       - name: Publicar
         id: deploy
         continue-on-error: true
