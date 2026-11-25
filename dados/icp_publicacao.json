@@ -1,6 +1,6 @@
 {
- "em": "2026-11-25T10:36:10",
- "runId": "45624667052",
+ "em": "2026-11-25T11:56:48",
+ "runId": "45639387411",
  "testes": {
   "json": {
    "codigo": 0,
@@ -28,7 +28,7 @@
   {
    "teste": "variacoes",
    "base": "deputados",
-   "texto": "deputados: registros caíram de 2701 para 1981 (-27%) entre 2026-11-24T13:13 e 2026-11-25T09:32"
+   "texto": "deputados: registros caíram de 2701 para 1981 (-27%) entre 2026-11-25T10:39 e 2026-11-25T10:55"
   },
   {
    "teste": "variacoes",
@@ -79,10 +79,10 @@
  "basesAfetadas": [
   "deputados"
  ],
- "versaoMantida": "8732b1a221c6589d0d5e3590518a2f50e6f31de9",
- "arquivosRevertidos": 2486,
- "arquivosNovosRetidos": 3,
- "evidencias": "artefato coleta-bloqueada-45624667052 (30 dias)",
+ "versaoMantida": "f84d42e3aba4ce561a538509d8cae8de36db27e7",
+ "arquivosRevertidos": 2495,
+ "arquivosNovosRetidos": 5,
+ "evidencias": "artefato coleta-bloqueada-45639387411 (30 dias)",
  "versaoMantidaTambemFalha": [],
  "testesDepoisDeReverter": {
   "json": {
