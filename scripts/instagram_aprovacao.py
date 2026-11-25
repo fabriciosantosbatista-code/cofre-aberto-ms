@@ -37,6 +37,11 @@ def cfg():
         return {}
 
 
+def publicar_ligado():
+    """Interruptor em instagram/config.json → "publicar" (false = pausa)."""
+    return cfg().get("publicar", True) is not False
+
+
 def em_aprovacao(hoje=None):
     ate = cfg().get("aprovacaoAte")
     return bool(ate) and (hoje or date.today()) <= date.fromisoformat(ate)
@@ -143,6 +148,16 @@ def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "estado"
     repo = os.environ.get("GITHUB_REPOSITORY", "fabriciosantosbatista-code/cofre-aberto-ms")
     if cmd == "estado":
+        if not publicar_ligado():
+            print("⏸ Instagram pausado (instagram/config.json → publicar: false): não gera nem publica")
+            with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as f:
+                f.write("acao=pausado\nissue=\n")
+            return
+        if not em_aprovacao():  # modo aprovação desligado: rascunho que tenha ficado aberto é fechado
+            for i in issues():
+                gh("issue", "close", str(i["number"]), "--repo", repo, "--comment",
+                   "Modo aprovação desligado (instagram/config.json): o robô publica direto. Rascunho fechado sem publicar.")
+                print(f"  rascunho #{i['number']} fechado (modo aprovação desligado)")
         if em_aprovacao():
             rec = registrar_recusados()
             for r in rec:

@@ -130,6 +130,9 @@ def main():
         return
     sys.path.insert(0, str(Path(__file__).parent))
     import instagram_aprovacao as ap
+    if not ap.publicar_ligado():
+        print("⏸ Instagram pausado (instagram/config.json → publicar: false): não publico")
+        return
     if ap.em_aprovacao() and os.environ.get("IG_APROVADO") != "1":  # modo aprovação: só com o rótulo "aprovado" na issue
         print(f"ℹ️ modo aprovação até {ap.cfg().get('aprovacaoAte')}: não publico sem aprovação (rótulo \"aprovado\" na issue do rascunho)")
         return

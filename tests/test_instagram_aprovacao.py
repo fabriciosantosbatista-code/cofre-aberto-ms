@@ -27,7 +27,14 @@ check(ap.decidir([{"number": 7, "labels": rot("instagram-rascunho")}], aprovacao
 check(ap.decidir([{"number": 7, "labels": rot("instagram-rascunho", "aprovado")}], aprovacao=True) == ("publicar_aprovado", 7), "com o rótulo 'aprovado': publica")
 check(ap.decidir([], aprovacao=False) == ("publicar_direto", None), "depois das 4 semanas: publica direto")
 cfg = json.load(open(ROOT / "instagram" / "config.json", encoding="utf-8"))
-check(cfg["aprovacaoAte"] == "2026-12-23" and ap.em_aprovacao(date(2026, 11, 26)) and not ap.em_aprovacao(date(2026, 12, 24)), "aprovação até 23/12/2026 (4 semanas)")
+check(cfg["aprovacaoAte"] is None and not ap.em_aprovacao(date(2026, 11, 26)), "modo aprovação desligado (25/11/2026): publica direto")
+check(cfg["publicar"] is True and ap.publicar_ligado(), "interruptor 'publicar' ligado")
+_cfg = ap.cfg
+ap.cfg = lambda: {"publicar": False}
+check(not ap.publicar_ligado(), "publicar: false pausa o robô")
+ap.cfg = lambda: {"aprovacaoAte": "2026-12-23"}
+check(ap.em_aprovacao(date(2026, 11, 26)) and not ap.em_aprovacao(date(2026, 12, 24)), "o modo aprovação ainda funciona se voltar a ter data")
+ap.cfg = _cfg
 
 # regras de conteúdo
 icp = {"bases": {"shows": {"status": "verificado", "ultimaVerificacao": {"resultado": "confere", "em": "2026-11-25T10:00"}},
@@ -62,6 +69,12 @@ with redirect_stdout(buf):
     pi.main()
 check("no máximo 1 por dia" in buf.getvalue(), "já houve post hoje: não publica outro")
 (tmp / "historico.json").write_text(json.dumps({"publicados": []}))
+buf = io.StringIO()
+ap.publicar_ligado = lambda: False
+with redirect_stdout(buf):
+    pi.main()
+check("pausado" in buf.getvalue(), "publicar: false: o publicador não publica")
+ap.publicar_ligado = lambda: True
 ap.em_aprovacao = lambda hoje=None: True
 os.environ.pop("IG_APROVADO", None)
 buf = io.StringIO()

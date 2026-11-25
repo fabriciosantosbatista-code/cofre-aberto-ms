@@ -1,9 +1,9 @@
 name: Instagram — post automático
 
 # Todo dia às 11h47 de Campo Grande (15h47 UTC). Também dá para rodar à mão em Actions → Run workflow.
-# Modo aprovação até instagram/config.json → aprovacaoAte (25/11/2026: primeiras 4 semanas): o robô abre uma issue com o
-# rascunho e só publica quando o dono põe o rótulo "aprovado" na issue (este workflow roda na hora). Ver
-# scripts/instagram_aprovacao.py. Regras de conteúdo em scripts/gerar_posts_instagram.py; no máximo 1 post por dia.
+# instagram/config.json: "publicar" (true = publica direto; false = pausa, só confere a chave) e "aprovacaoAte" (null =
+# sem aprovação; com data, cada post vira uma issue e só sai com o rótulo "aprovado" — desligado em 25/11/2026).
+# Regras de conteúdo em scripts/gerar_posts_instagram.py; no máximo 1 post por dia; a chave é conferida todo dia.
 on:
   schedule:
     - cron: '47 15 * * *'
