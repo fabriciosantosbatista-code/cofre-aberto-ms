@@ -44,6 +44,10 @@ jobs:
         run: pip install -q requests && python3 tests/test_conferencia_orcamento.py
       - name: Conferência na fonte compara a versão que vai ao ar; execuções inválidas fora do ICP
         run: pip install -q requests pyyaml && python3 tests/test_protecao_conferencia.py
+      - name: Reserva do GitHub nunca publica sem coleta
+        run: pip install -q pyyaml && python3 tests/test_reserva_coleta.py
+      - name: Instagram — publicador com chave do login do Instagram ou do usuário do sistema da Meta
+        run: pip install -q requests && python3 tests/test_instagram_chave.py
 
       - name: LGPD — nenhum CPF completo nos arquivos publicados (com e sem pontuação, em qualquer campo)
         run: python3 tests/test_cpf.py
