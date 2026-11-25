@@ -100,7 +100,14 @@ def conferir():
     except Exception as e:
         print(f"❌ chave do Instagram recusada pela Meta: {e}")
         return 1
-    print(f"✅ chave do Instagram válida: @{usuario} (conta {uid}, chave {'do usuário do sistema' if tipo == 'facebook' else 'do login do Instagram'})")
+    dono = ""
+    if tipo == "facebook":  # a quem a chave pertence (o usuário do sistema do portfólio, ex.: cofre-robo)
+        try:
+            me = chamar("GET", "me", token, api=API_FB, fields="id,name")
+            dono = f"; usuário do sistema: {me.get('name')} ({me.get('id')})"
+        except Exception as e:
+            dono = f"; dono da chave não consultado ({str(e)[:120]})"
+    print(f"✅ chave do Instagram válida: @{usuario} (conta {uid}, chave {'do usuário do sistema' if tipo == 'facebook' else 'do login do Instagram'}{dono})")
     return 0
 
 

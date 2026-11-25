@@ -15,6 +15,11 @@ on:
         description: 'Tema (vazio = o próximo da fila): precos, shows, obras, vereadores, publicidade, entidades, emendas, supersalarios'
         required: false
         default: ''
+      so_conferir:
+        description: 'Só conferir a chave do Instagram (consulta só de leitura; não gera nem publica nada)'
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: write
@@ -49,6 +54,7 @@ jobs:
 
       - name: Modo aprovação — o que fazer hoje
         id: estado
+        if: github.event.inputs.so_conferir != 'true'
         run: python3 scripts/instagram_aprovacao.py estado
 
       - name: Gerar o post da vez (imagens + legenda)
@@ -56,6 +62,7 @@ jobs:
         run: python3 scripts/gerar_posts_instagram.py ${{ github.event.inputs.tema }}
 
       - name: Publicar as imagens no site
+        if: github.event.inputs.so_conferir != 'true'
         run: |
           git config user.name "Cofre Aberto (robô)"
           git config user.email "noreply@github.com"
@@ -77,6 +84,7 @@ jobs:
         run: python3 -u scripts/publicar_instagram.py
 
       - name: Guardar o histórico
+        if: github.event.inputs.so_conferir != 'true'
         run: |
           git add -A instagram/
           git diff --cached --quiet && exit 0
