@@ -20,8 +20,9 @@ Sem IG_TOKEN, não publica nada (só avisa). Grava o resultado em instagram/hist
 """
 
 import json, os, subprocess, sys, time
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import requests
 
@@ -31,6 +32,63 @@ VERSAO = os.environ.get("IG_API_VERSAO", "v23.0")
 API_IG = "https://graph.instagram.com/" + VERSAO
 API_FB = "https://graph.facebook.com/" + VERSAO
 API = API_IG
+FUSO = ZoneInfo("America/Campo_Grande")
+
+
+def dia_cg(data):
+    """Dia (Campo Grande) de um registro do histórico. As datas são gravadas no relógio do runner (UTC, sem fuso)."""
+    try:
+        d = datetime.fromisoformat(str(data))
+    except ValueError:
+        return str(data or "")[:10]
+    if d.tzinfo is None:
+        d = d.replace(tzinfo=timezone.utc)
+    return d.astimezone(FUSO).strftime("%Y-%m-%d")
+
+
+def hoje_cg(agora=None):
+    return (agora or datetime.now(timezone.utc)).astimezone(FUSO).strftime("%Y-%m-%d")
+
+
+def post_de_hoje(hist, agora=None):
+    """O post já publicado hoje (Campo Grande), ou None."""
+    h = hoje_cg(agora)
+    return next((x for x in reversed(hist.get("publicados") or []) if dia_cg(x.get("data")) == h), None)
+
+
+def decidir_dia(evento, hist, pub=None, run_coleta=None, agora=None):
+    """(seguir, motivo) — 26/11/2026: o post sai logo depois que a coleta do dia publica com sucesso (workflow_run);
+    o horário agendado é só reserva e se encerra se o post do dia já saiu; manual segue as regras de sempre."""
+    feito = post_de_hoje(hist, agora)
+    if evento == "workflow_run":
+        if feito:
+            return False, f"o post de hoje já saiu ({feito.get('tema')}: {feito.get('link')})"
+        pub = pub or {}
+        if str(pub.get("runId")) != str(run_coleta) or pub.get("resultado") not in ("publicado", "publicado_parcial"):
+            return False, (f"a coleta {run_coleta} não publicou (icp_publicacao.json: execução {pub.get('runId')}, "
+                           f"{pub.get('resultado')}) — fica para a reserva do horário agendado")
+        return True, f"a coleta {run_coleta} publicou ({pub.get('resultado')}): post com os dados de hoje"
+    if evento == "schedule":
+        if feito:
+            return False, f"reserva encerrada: o post de hoje já saiu ({feito.get('tema')}: {feito.get('link')})"
+        return True, "reserva: o post de hoje ainda não saiu — publica com os dados mais recentes no site"
+    return True, f"execução {evento}"
+
+
+def dia():
+    """Passo do workflow: grava seguir=1|0 em $GITHUB_OUTPUT."""
+    try:
+        hist = json.load(open(PASTA / "historico.json", encoding="utf-8"))
+    except Exception:
+        hist = {"publicados": []}
+    try:
+        pub = json.load(open(ROOT / "dados" / "icp_publicacao.json", encoding="utf-8"))
+    except Exception:
+        pub = {}
+    seguir, motivo = decidir_dia(os.environ.get("EVENTO", ""), hist, pub, os.environ.get("RUN_COLETA"))
+    print(("▶️ " if seguir else "⏹ ") + motivo)
+    with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as f:
+        f.write(f"seguir={1 if seguir else 0}\n")
 
 
 def chamar(metodo, caminho, token, api=None, **params):
@@ -114,6 +172,8 @@ def conferir():
 def main():
     if "--conferir" in sys.argv:
         sys.exit(conferir())
+    if "--dia" in sys.argv:
+        return dia()
     token = os.environ.get("IG_TOKEN", "").strip()
     if not token:
         print("ℹ️ sem o Secret IG_TOKEN — post gerado, mas não publicado")
@@ -131,8 +191,7 @@ def main():
     if any(x.get("imagens") == post["imagens"] for x in hist["publicados"]):
         print("ℹ️ este post já foi publicado")
         return
-    hoje = datetime.now().strftime("%Y-%m-%d")
-    if any(str(x.get("data") or "")[:10] == hoje for x in hist["publicados"]):  # regra: no máximo 1 post por dia
+    if post_de_hoje(hist):  # regra: no máximo 1 post por dia (dia de Campo Grande)
         print("ℹ️ já houve post hoje — no máximo 1 por dia; fica para amanhã")
         return
     sys.path.insert(0, str(Path(__file__).parent))

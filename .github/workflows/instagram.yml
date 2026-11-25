@@ -1,10 +1,16 @@
 name: Instagram — post automático
 
-# Todo dia às 11h47 de Campo Grande (15h47 UTC). Também dá para rodar à mão em Actions → Run workflow.
+# 26/11/2026: o post sai logo depois que a coleta do dia publica com sucesso (workflow_run de "Atualizar dados
+# diariamente"); o horário das 11h47 de Campo Grande (15h47 UTC) fica só como RESERVA — se o post do dia já saiu, encerra
+# sozinho; se a coleta falhou, a reserva publica com os dados do dia anterior (os que estão no site). Também dá para rodar
+# à mão em Actions → Run workflow.
 # instagram/config.json: "publicar" (true = publica direto; false = pausa, só confere a chave) e "aprovacaoAte" (null =
 # sem aprovação; com data, cada post vira uma issue e só sai com o rótulo "aprovado" — desligado em 25/11/2026).
 # Regras de conteúdo em scripts/gerar_posts_instagram.py; no máximo 1 post por dia; a chave é conferida todo dia.
 on:
+  workflow_run:
+    workflows: ["Atualizar dados diariamente"]
+    types: [completed]
   schedule:
     - cron: '47 15 * * *'
   issues:
@@ -24,6 +30,7 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: write   # disparar a publicação do site depois de gravar as imagens
 
 concurrency:
   group: instagram
@@ -32,7 +39,10 @@ concurrency:
 jobs:
   post:
     # pelo rótulo: só quando o rótulo posto é "aprovado" numa issue de rascunho do Instagram
-    if: github.event_name != 'issues' || (github.event.label.name == 'aprovado' && contains(github.event.issue.labels.*.name, 'instagram-rascunho'))
+    # depois da coleta: só quando ela terminou com sucesso (a reserva das 11h47 cobre o resto)
+    if: >-
+      (github.event_name != 'issues' || (github.event.label.name == 'aprovado' && contains(github.event.issue.labels.*.name, 'instagram-rascunho')))
+      && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
@@ -52,23 +62,35 @@ jobs:
           IG_USER_ID: "17841400153468200"
         run: python3 -u scripts/publicar_instagram.py --conferir
 
+      - name: Post do dia — depois da coleta ou reserva
+        id: dia
+        if: github.event.inputs.so_conferir != 'true'
+        env:
+          EVENTO: ${{ github.event_name }}
+          RUN_COLETA: ${{ github.event.workflow_run.id }}
+        run: python3 scripts/publicar_instagram.py --dia
+
       - name: Modo aprovação — o que fazer hoje
         id: estado
-        if: github.event.inputs.so_conferir != 'true'
+        if: github.event.inputs.so_conferir != 'true' && steps.dia.outputs.seguir == '1'
         run: python3 scripts/instagram_aprovacao.py estado
 
       - name: Gerar o post da vez (imagens + legenda)
         if: steps.estado.outputs.acao == 'gerar_rascunho' || steps.estado.outputs.acao == 'publicar_direto'
         run: python3 scripts/gerar_posts_instagram.py ${{ github.event.inputs.tema }}
 
+      # o commit do robô (GITHUB_TOKEN) não dispara "push"; sem publicar o site aqui, as imagens novas só iriam ao ar
+      # depois do fim deste workflow, e o post esperaria por elas até desistir (26/11/2026)
       - name: Publicar as imagens no site
-        if: github.event.inputs.so_conferir != 'true'
+        if: github.event.inputs.so_conferir != 'true' && steps.dia.outputs.seguir == '1'
         run: |
           git config user.name "Cofre Aberto (robô)"
           git config user.email "noreply@github.com"
           git add -A instagram/
-          git diff --cached --quiet || git commit -m "Instagram: imagens do post de $(date +%d/%m)"
+          if git diff --cached --quiet; then echo "imagens sem mudança"; exit 0; fi
+          git commit -m "Instagram: imagens do post de $(TZ=America/Campo_Grande date +%d/%m)"
           for i in 1 2 3 4; do git pull -q --rebase origin main && git push -q origin main && break; sleep $((i*10)); done
+          gh workflow run publicar-site.yml --ref main && echo "▶️ publicação do site disparada para as imagens novas"
 
       - name: Abrir a issue do rascunho para aprovação (não publica)
         if: steps.estado.outputs.acao == 'gerar_rascunho'
@@ -84,7 +106,7 @@ jobs:
         run: python3 -u scripts/publicar_instagram.py
 
       - name: Guardar o histórico
-        if: github.event.inputs.so_conferir != 'true'
+        if: github.event.inputs.so_conferir != 'true' && steps.dia.outputs.seguir == '1'
         run: |
           git add -A instagram/
           git diff --cached --quiet && exit 0

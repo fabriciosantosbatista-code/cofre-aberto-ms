@@ -52,6 +52,8 @@ jobs:
         run: pip install -q requests && python3 tests/test_instagram_chave.py
       - name: Instagram — modo aprovação e regras de conteúdo
         run: pip install -q requests Pillow && python3 tests/test_instagram_aprovacao.py
+      - name: Instagram — post depois da coleta do dia, horário agendado como reserva
+        run: pip install -q requests pyyaml && python3 tests/test_instagram_dia.py
 
       - name: LGPD — nenhum CPF completo nos arquivos publicados (com e sem pontuação, em qualquer campo)
         run: python3 tests/test_cpf.py
