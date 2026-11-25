@@ -28,7 +28,7 @@ jobs:
     timeout-minutes: 20
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy2.outputs.page_url }}
     steps:
       - name: Checkout (main mais recente)
         uses: actions/checkout@v4
@@ -43,6 +43,20 @@ jobs:
         with:
           path: _site
 
+      # 25/11/2026: o GitHub às vezes não encontra o pacote recém-enviado ("No artifacts named github-pages") —
+      # falha intermitente do serviço; 4 publicações seguidas falharam assim. Agora há uma 2ª tentativa depois de 1 min.
       - name: Publicar
         id: deploy
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - name: Esperar 1 minuto antes da 2ª tentativa
+        if: steps.deploy.outcome == 'failure'
+        run: |
+          echo "⚠️ a 1ª tentativa de publicar falhou — nova tentativa em 60 s"
+          sleep 60
+
+      - name: Publicar (2ª tentativa)
+        id: deploy2
+        if: steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v4
