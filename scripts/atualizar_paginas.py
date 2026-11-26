@@ -492,8 +492,9 @@ def fluxo_cota(cg, est, fed, sen):
                 k = doc if len(doc) == 14 else (n.get("fornecedor") or "").strip().upper()
                 if not k:
                     continue
-                f = forn.setdefault(k, {"nome": (n.get("fornecedor") or "").strip(), "valor": 0.0, "gabinetes": set()})
+                f = forn.setdefault(k, {"nome": (n.get("fornecedor") or "").strip(), "valor": 0.0, "gabinetes": set(), "cats": {}})
                 f["valor"] += float(n.get("valor") or 0)
+                soma(f["cats"], grupo(n.get("categoria")), float(n.get("valor") or 0))
                 f["gabinetes"].add(x.get("nome"))
     fontes = [("Vereadores de CG", v_cg, "camara", "cg"),
               ("Deputados estaduais", sum(vi(d).get(f"gastoPago{ANO}") or 0 for d in est.get("vereadores", [])), "deputados-estaduais", "est"),
@@ -509,7 +510,8 @@ def fluxo_cota(cg, est, fed, sen):
         saida.append({"nome": n, "valor": round(v, 2), "aba": aba, "pessoas": p, "categorias": fl})
     return {"fontes": saida,
             "categorias": [{"nome": g, "valor": round(v, 2)} for g, v in sorted(cats.items(), key=lambda kv: -kv[1]) if v > 0],
-            "fornecedores": [{"nome": f["nome"], "valor": round(f["valor"], 2), "gabinetes": len(f["gabinetes"])}
+            "fornecedores": [{"nome": f["nome"], "valor": round(f["valor"], 2), "gabinetes": len(f["gabinetes"]),
+                              "categoria": max(f["cats"], key=f["cats"].get) if f["cats"] else "Outros"}
                              for f in sorted(forn.values(), key=lambda f: -f["valor"])[:8]]}
 
 
