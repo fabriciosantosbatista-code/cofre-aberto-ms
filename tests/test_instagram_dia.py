@@ -40,7 +40,7 @@ check(pi.post_de_hoje(hoje, onze47)["tema"] == "obras" and pi.post_de_hoje(ontem
 w = yaml.safe_load(open(ROOT / ".github/workflows/instagram.yml", encoding="utf-8"))
 on = w[True]
 check("workflow_run" not in on, "o Instagram não roda mais logo depois da coleta")
-check([c["cron"] for c in on["schedule"]] == ["47 15 * * *"], "reserva do GitHub às 15h47 UTC")
+check([c["cron"] for c in on["schedule"]] == ["47 15 * * *", "0 23 * * *"], "reservas do GitHub às 15h47 e 23h00 UTC")
 check("origem" in on["workflow_dispatch"]["inputs"], "aceita a entrada origem (o worker manda origem=externo)")
 dia = next(p for p in w["jobs"]["post"]["steps"] if p.get("id") == "dia")
 check("--dia" in dia["run"] and "inputs.origem == 'externo'" in dia["env"]["EVENTO"], "o passo do dia distingue o disparo externo")
@@ -52,10 +52,10 @@ check("gh workflow run publicar-site.yml" in img["run"] and w["permissions"].get
 # worker: cada cron dispara o seu workflow, com origem externo
 js = (ROOT / "infra/cloudflare-worker/disparo-coleta.js").read_text(encoding="utf-8")
 mapa = dict(re.findall(r'"([0-9*/ ,-]+)":\s*\{\s*workflow:\s*"([a-z-]+\.yml)"', js))
-check(mapa == {"37 4 * * *": "atualizar.yml", "47 15 * * *": "instagram.yml"}, f"worker: crons → workflows {mapa}")
+check(mapa == {"37 4 * * *": "atualizar.yml", "47 15 * * *": "instagram.yml", "0 23 * * *": "instagram.yml"}, f"worker: crons → workflows {mapa}")
 check("DISPAROS[event.cron]" in js and 'origem: "externo"' in js, "worker escolhe o workflow por event.cron e manda origem=externo")
-ig_cron = next(c for c, wf in mapa.items() if wf == "instagram.yml")
-check(ig_cron == on["schedule"][0]["cron"], "cron do worker e reserva do GitHub no mesmo horário (11h47 de Campo Grande)")
+ig_crons = sorted(c for c, wf in mapa.items() if wf == "instagram.yml")
+check(ig_crons == sorted(c["cron"] for c in on["schedule"]), "crons do worker e reservas do GitHub nos mesmos horários (11h47 e 19h00)")
 if shutil.which("node"):  # o worker carrega e despacha certo (fetch simulado)
     prog = (js.replace("export default", "const W =") + """
 const chamadas = []; globalThis.fetch = async (u, o) => { chamadas.push([u, JSON.parse(o.body)]); return { status: 204 }; };
@@ -77,6 +77,20 @@ const ctx = { waitUntil: (p) => p };
         check("sem workflow associado" in out["erro"], "worker (node): cron desconhecido não dispara nada")
     except Exception as e:
         check(False, f"worker (node) não rodou: {e} {r.stderr[:200]}")
+
+# dois horários por dia (26/11/2026): 11h47 e 19h00 de Campo Grande, 1 post por horário, 2 por dia
+noite = datetime(2026, 11, 26, 23, 0, tzinfo=timezone.utc)   # 19h00 em Campo Grande
+check(pi.horario(onze47) == "manhã" and pi.horario(noite) == "noite", "horários manhã/noite pelo relógio de Campo Grande")
+s1 = pi.decidir_dia("externo", hoje, noite)
+check(s1[0], f"19h: o post da manhã já saiu, o da noite ainda não — publica: {s1[1]}")
+dois = {"publicados": hoje["publicados"] + [{"tema": "shows", "data": "2026-11-26T23:00:40", "link": "z"}]}
+check(not pi.decidir_dia("externo", dois, noite)[0], "19h: o post da noite já saiu — não repete")
+check(not pi.decidir_dia("schedule", dois, noite, cron="0 23 * * *")[0], "reserva das 19h encerra se o post da noite já saiu")
+s2 = pi.decidir_dia("schedule", hoje, noite, cron="47 15 * * *")
+check(not s2[0] and "atrasada" in s2[1], f"reserva da manhã que roda atrasada à noite não publica no lugar do post da noite: {s2[1]}")
+check(pi.decidir_dia("schedule", ontem, noite, cron="0 23 * * *")[0], "reserva das 19h publica se o disparo externo falhou")
+src = (ROOT / "scripts" / "publicar_instagram.py").read_text(encoding="utf-8")
+check("post_do_horario(hist)" in src and "MAX_POR_DIA" in src, "publicador: no máximo 1 por horário e 2 por dia")
 
 for e in erros:
     print("❌", e)

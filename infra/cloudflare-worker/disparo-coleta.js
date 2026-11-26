@@ -1,4 +1,4 @@
-// Cofre Aberto MS — disparos externos (Cloudflare Worker "cofre-disparo-coleta", com 2 Cron Triggers).
+// Cofre Aberto MS — disparos externos (Cloudflare Worker "cofre-disparo-coleta", com 3 Cron Triggers).
 //
 // O agendador do GitHub pula ou atrasa horas as execuções agendadas (em 25/11/2026 o Instagram das 11h47 rodou 8 h
 // atrasado); este worker, fora do GitHub, dispara os workflows na hora certa com origem "externo". Os agendamentos do
@@ -6,7 +6,8 @@
 //
 // Cada cron dispara um workflow (a Cloudflare informa qual cron disparou em event.cron, exatamente como cadastrado):
 //   "37 4 * * *"   → atualizar.yml  (coleta diária)          04h37 UTC = 00h37 de Campo Grande
-//   "47 15 * * *"  → instagram.yml  (post do dia + story)     15h47 UTC = 11h47 de Campo Grande
+//   "47 15 * * *"  → instagram.yml  (1º post do dia + story)  15h47 UTC = 11h47 de Campo Grande
+//   "0 23 * * *"   → instagram.yml  (2º post do dia + story)  23h00 UTC = 19h00 de Campo Grande
 // Cron que não está na lista: nada é disparado e o erro aparece no log do worker.
 //
 // Secret necessário no worker: GH_TOKEN = token fine-grained do GitHub, só do repositório cofre-aberto-ms, com
@@ -17,7 +18,8 @@ const REPO = "https://api.github.com/repos/fabriciosantosbatista-code/cofre-aber
 
 const DISPAROS = {
   "37 4 * * *": { workflow: "atualizar.yml", nome: "coleta" },
-  "47 15 * * *": { workflow: "instagram.yml", nome: "Instagram" },
+  "47 15 * * *": { workflow: "instagram.yml", nome: "Instagram (11h47)" },
+  "0 23 * * *": { workflow: "instagram.yml", nome: "Instagram (19h00)" },
 };
 
 async function disparar(env, alvo) {

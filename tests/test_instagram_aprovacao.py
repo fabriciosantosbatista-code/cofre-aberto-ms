@@ -58,7 +58,7 @@ check(p is None, "o citado na legenda está bloqueado: o tema é pulado")
 esc["pedidos"][0]["resposta"] = "respondido em 10/12"
 check("ADEMAR DE SOUZA FREITAS" not in gp.nomes_bloqueados(), "com resposta ao pedido de esclarecimento, o nome deixa de ser bloqueado")
 
-# publicador: 1 por dia e aprovação
+# publicador: 1 por horário (2 por dia) e aprovação
 tmp = Path(tempfile.mkdtemp())
 pi.PASTA = tmp
 (tmp / "proximo.json").write_text(json.dumps({"tema": "shows", "imagens": ["b.jpg"], "urls": [], "legenda": "x"}))
@@ -67,7 +67,7 @@ os.environ["IG_TOKEN"] = "x"
 buf = io.StringIO()
 with redirect_stdout(buf):
     pi.main()
-check("no máximo 1 por dia" in buf.getvalue(), "já houve post hoje: não publica outro")
+check("no máximo 1 por horário" in buf.getvalue(), "já houve post neste horário hoje: não publica outro")
 (tmp / "historico.json").write_text(json.dumps({"publicados": []}))
 buf = io.StringIO()
 ap.publicar_ligado = lambda: False

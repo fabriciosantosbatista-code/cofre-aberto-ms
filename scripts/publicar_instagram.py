@@ -50,22 +50,63 @@ def hoje_cg(agora=None):
     return (agora or datetime.now(timezone.utc)).astimezone(FUSO).strftime("%Y-%m-%d")
 
 
-def post_de_hoje(hist, agora=None):
-    """O post já publicado hoje (Campo Grande), ou None."""
+# 26/11/2026: dois posts por dia, um em cada horário (Campo Grande): 11h47 ("manhã") e 19h00 ("noite").
+# Antes das 15h é o horário da manhã; das 15h em diante, o da noite. No máximo 1 post por horário (2 por dia).
+CORTE_NOITE_H = 15
+MAX_POR_DIA = 2
+CRON_HORARIO = {"47 15 * * *": "manhã", "0 23 * * *": "noite"}   # agendamentos do GitHub (reserva), em UTC
+
+
+def _cg(data):
+    d = datetime.fromisoformat(str(data))
+    if d.tzinfo is None:
+        d = d.replace(tzinfo=timezone.utc)
+    return d.astimezone(FUSO)
+
+
+def horario(agora=None):
+    """"manhã" ou "noite" do momento (Campo Grande)."""
+    return "manhã" if (agora or datetime.now(timezone.utc)).astimezone(FUSO).hour < CORTE_NOITE_H else "noite"
+
+
+def posts_de_hoje(hist, agora=None):
     h = hoje_cg(agora)
-    return next((x for x in reversed(hist.get("publicados") or []) if dia_cg(x.get("data")) == h), None)
+    return [x for x in hist.get("publicados") or [] if dia_cg(x.get("data")) == h]
 
 
-def decidir_dia(evento, hist, agora=None):
-    """(seguir, motivo). 26/11/2026: o post do dia sai às 11h47 de Campo Grande pelo disparo externo (Cloudflare Worker,
-    origem "externo"), com os dados que estão no site; o agendamento do GitHub é só reserva e encerra se o post do dia
-    já saiu; o disparo externo também não repete o post. Manual segue as regras de sempre (1 por dia no publicador)."""
-    feito = post_de_hoje(hist, agora)
+def post_de_hoje(hist, agora=None):
+    """O último post publicado hoje (Campo Grande), ou None."""
+    p = posts_de_hoje(hist, agora)
+    return p[-1] if p else None
+
+
+def post_do_horario(hist, agora=None):
+    """O post de hoje já publicado neste mesmo horário (manhã/noite), ou None."""
+    t = horario(agora)
+    for x in reversed(posts_de_hoje(hist, agora)):
+        try:
+            if horario(_cg(x.get("data"))) == t:
+                return x
+        except ValueError:
+            continue
+    return None
+
+
+def decidir_dia(evento, hist, agora=None, cron=None):
+    """(seguir, motivo). Disparo externo (Cloudflare Worker) às 11h47 e às 19h00 de Campo Grande; o agendamento do
+    GitHub no mesmo horário é só reserva: encerra se o post daquele horário já saiu, e uma reserva atrasada que caia
+    no outro horário não publica no lugar dele. Manual segue as regras do publicador (1 por horário, 2 por dia)."""
+    t = horario(agora)
+    if evento == "schedule" and cron in CRON_HORARIO and CRON_HORARIO[cron] != t:
+        return False, f"reserva do GitHub do horário da {CRON_HORARIO[cron]} rodou atrasada, já no horário da {t} — encerrada sem publicar"
     if evento in ("externo", "schedule"):
         quem = "disparo externo" if evento == "externo" else "reserva do GitHub"
+        feito = post_do_horario(hist, agora)
         if feito:
-            return False, f"{quem}: o post de hoje já saiu ({feito.get('tema')}: {feito.get('link')}) — encerrado"
-        return True, f"{quem}: o post de hoje ainda não saiu — publica com os dados que estão no site"
+            return False, f"{quem}: o post da {t} de hoje já saiu ({feito.get('tema')}: {feito.get('link')}) — encerrado"
+        if len(posts_de_hoje(hist, agora)) >= MAX_POR_DIA:
+            return False, f"{quem}: já houve {MAX_POR_DIA} posts hoje — encerrado"
+        return True, f"{quem}: o post da {t} de hoje ainda não saiu — publica com os dados que estão no site"
     return True, f"execução {evento}"
 
 
@@ -75,7 +116,7 @@ def dia():
         hist = json.load(open(PASTA / "historico.json", encoding="utf-8"))
     except Exception:
         hist = {"publicados": []}
-    seguir, motivo = decidir_dia(os.environ.get("EVENTO", ""), hist)
+    seguir, motivo = decidir_dia(os.environ.get("EVENTO", ""), hist, cron=os.environ.get("CRON") or None)
     print(("▶️ " if seguir else "⏹ ") + motivo)
     with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as f:
         f.write(f"seguir={1 if seguir else 0}\n")
@@ -181,8 +222,11 @@ def main():
     if any(x.get("imagens") == post["imagens"] for x in hist["publicados"]):
         print("ℹ️ este post já foi publicado")
         return
-    if post_de_hoje(hist):  # regra: no máximo 1 post por dia (dia de Campo Grande)
-        print("ℹ️ já houve post hoje — no máximo 1 por dia; fica para amanhã")
+    if post_do_horario(hist):  # regra: no máximo 1 post por horário (manhã/noite) e 2 por dia (dia de Campo Grande)
+        print(f"ℹ️ já houve post no horário da {horario()} hoje — no máximo 1 por horário; fica para o próximo")
+        return
+    if len(posts_de_hoje(hist)) >= MAX_POR_DIA:
+        print(f"ℹ️ já houve {MAX_POR_DIA} posts hoje — fica para amanhã")
         return
     sys.path.insert(0, str(Path(__file__).parent))
     import instagram_aprovacao as ap

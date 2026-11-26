@@ -11,7 +11,7 @@ Regras de conteúdo (25/11/2026):
   - só temas cuja base está "confere" no ICP (última conferência válida = confere e status sem divergência/falha);
   - nenhum nome de pessoa que esteja em "sinal de atenção" na Auditoria, nem pagamento/contracheque com divergência da
     fonte sem resposta ao pedido de esclarecimento: o item sai da lista; se for o citado na legenda, o tema é pulado;
-  - no máximo 1 post por dia (publicar_instagram.py).
+  - no máximo 1 post por horário (11h47 e 19h00) e 2 por dia (publicar_instagram.py).
 
 Grava instagram/<data>-<tema>-1.jpg, -2.jpg, -3.jpg (1080×1350, JPEG — o Instagram só aceita JPEG) e instagram/proximo.json
 com as imagens e a legenda. Quem publica é scripts/publicar_instagram.py.
