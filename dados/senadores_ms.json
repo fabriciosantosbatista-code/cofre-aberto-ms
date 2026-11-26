@@ -1,7 +1,7 @@
 {
-  "ultimaAtualizacao": "2026-11-26T00:37:37",
+  "ultimaAtualizacao": "2026-11-26T14:59:19",
   "ano": 2026,
-  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-26T00:37:37",
+  "fonte": "API do Senado Federal (adm.senado.gov.br) — 2026-11-26T14:59:19",
   "total": 3,
   "senadores": [
     {
@@ -26,22 +26,22 @@
         "Viagens Oficiais - Diárias": 58150.2,
         "Viagens Oficiais - Ressarcimento de Passagens": 0.0,
         "Consumo de Material - Outros materiais": 8280.09,
-        "Correios": 43816.0,
+        "Correios": 45279.96,
         "Cotas para Impulsionamento em Mídias Sociais": 31258.68,
         "Aquisição de passagens aéreas (ATC 2/2023)": 134850.72
       },
       "pessoal": {
-        "gabinete": 56,
-        "gabineteComissionados": 54,
-        "escritorio": 18,
-        "escritorioComissionados": 18
+        "gabinete": 55,
+        "gabineteComissionados": 53,
+        "escritorio": 14,
+        "escritorioComissionados": 14
       },
       "beneficios": {
         "auxilioMoradia": "Não utilizou",
         "imovelFuncional": "Utilizou"
       },
       "cotaGastaAno": 499728.24,
-      "totalGasto": 776083.93,
+      "totalGasto": 777547.89,
       "ceapsCategorias": [
         {
           "categoria": "Divulgação da atividade parlamentar",
@@ -1264,7 +1264,7 @@
       ],
       "totalNotasFiscais": 105,
       "escritorioApoio": "AV. AMÉRICA, 759 – VILA PLANALTO, CAMPO GRANDE/MS – CEP 79009-060",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-26T00:37:37",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-26T14:59:19",
       "nota": "",
       "emExercicio": true
     },
@@ -1894,9 +1894,9 @@
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
           "fornecedor": "LM Turismo Ltda",
           "cnpjCpf": "26.480.780/0001-08",
-          "doc": "NUEYWC",
+          "doc": "957.2200.7187",
           "tipoDocumento": "Passagem / Bilhete / Código Localizador",
-          "detalhamento": "Companhia Aérea: LATAM, Localizador: NUEYWC. Passageiros: HÉLIO MARTINS FIALHO DE SOUZA (Matrícula 426043, COMISSIONADO), Voo: 3806 - BSB - CGR - 13/08/26; ",
+          "detalhamento": "Companhia Aérea: LATAM, Localizador: 957.2200.7187. Passageiros: HÉLIO MARTINS FIALHO DE SOUZA (Matrícula 426043, COMISSIONADO), Voo: 3806 - BSB - CGR - 13/08/26; ",
           "valor": 3808.6
         },
         {
@@ -1905,9 +1905,9 @@
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
           "fornecedor": "LM Turismo Ltda",
           "cnpjCpf": "26.480.780/0001-08",
-          "doc": "957.2200.7187",
+          "doc": "NUEYWC",
           "tipoDocumento": "Passagem / Bilhete / Código Localizador",
-          "detalhamento": "Companhia Aérea: LATAM, Localizador: 957.2200.7187. Passageiros: HÉLIO MARTINS FIALHO DE SOUZA (Matrícula 426043, COMISSIONADO), Voo: 3806 - BSB - CGR - 13/08/26; ",
+          "detalhamento": "Companhia Aérea: LATAM, Localizador: NUEYWC. Passageiros: HÉLIO MARTINS FIALHO DE SOUZA (Matrícula 426043, COMISSIONADO), Voo: 3806 - BSB - CGR - 13/08/26; ",
           "valor": 3808.6
         },
         {
@@ -2840,7 +2840,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HRV ADMINISTRAÇÃO DE NEGOCIOS LTDA",
           "cnpjCpf": "58.815.791/0001-98",
-          "doc": "2195",
+          "doc": "2196",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 393.01
@@ -2851,7 +2851,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HRV ADMINISTRAÇÃO DE NEGOCIOS LTDA",
           "cnpjCpf": "58.815.791/0001-98",
-          "doc": "2196",
+          "doc": "2195",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 393.01
@@ -3236,6 +3236,17 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "Hoteis Martins Ltda",
           "cnpjCpf": "01.511.724/0001-62",
+          "doc": "73301",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": null,
+          "valor": 735.0
+        },
+        {
+          "data": "2026-03-06",
+          "mes": 2,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Hoteis Martins Ltda",
+          "cnpjCpf": "01.511.724/0001-62",
           "doc": "73300",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
@@ -3248,17 +3259,6 @@
           "fornecedor": "Hoteis Martins Ltda",
           "cnpjCpf": "01.511.724/0001-62",
           "doc": "73299",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": null,
-          "valor": 735.0
-        },
-        {
-          "data": "2026-03-06",
-          "mes": 2,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Hoteis Martins Ltda",
-          "cnpjCpf": "01.511.724/0001-62",
-          "doc": "73301",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 735.0
@@ -3896,7 +3896,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HOTEL Bahamas Ltda-Epp",
           "cnpjCpf": "01.512.201/0001-30",
-          "doc": "1087502",
+          "doc": "1087503",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 465.0
@@ -3907,7 +3907,7 @@
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "HOTEL Bahamas Ltda-Epp",
           "cnpjCpf": "01.512.201/0001-30",
-          "doc": "1087503",
+          "doc": "1087502",
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": null,
           "valor": 465.0
@@ -4014,7 +4014,7 @@
       ],
       "totalNotasFiscais": 239,
       "escritorioApoio": "AV. PROF. LUIZ ALEXANDRE DE OLIVEIRA, 879 – TÉRREO, ROYAL PARK, CAMPO GRANDE/MS – CEP 79021-430 | Tel: (67) 3222-8738",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-26T00:37:37",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-26T14:59:19",
       "nota": "",
       "emExercicio": true
     },
@@ -4032,7 +4032,7 @@
         "Aquisição de material de consumo": 4054.77,
         "Locomoção, hospedagem, alimentação e combustíveis": 66176.46,
         "Contratação de serviços de apoio ao parlamentar": 41617.8,
-        "Divulgação da atividade parlamentar": 17500.0,
+        "Divulgação da atividade parlamentar": 20000.0,
         "Passagens aéreas, aquáticas e terrestres nacionais": 152314.22,
         "Serviços de Segurança Privada": 0.0
       },
@@ -4054,8 +4054,8 @@
         "auxilioMoradia": "Não utilizou",
         "imovelFuncional": "Utilizou"
       },
-      "cotaGastaAno": 293394.8,
-      "totalGasto": 446457.86,
+      "cotaGastaAno": 295894.8,
+      "totalGasto": 448957.86,
       "ceapsCategorias": [
         {
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
@@ -4071,7 +4071,7 @@
         },
         {
           "categoria": "Divulgação da atividade parlamentar",
-          "valor": 17500.0
+          "valor": 20000.0
         },
         {
           "categoria": "Aluguel de imóveis para escritório político",
@@ -4095,6 +4095,17 @@
           "tipoDocumento": "Nota Fiscal Eletrônica",
           "detalhamento": "Referente à locação de veículo modelo Jeep Compass Long, período de 07-10 a 31-10-2026.",
           "valor": 5980.0
+        },
+        {
+          "data": "2026-10-27",
+          "mes": 10,
+          "categoria": "Divulgação da atividade parlamentar",
+          "fornecedor": "Mercuri Serviços e Comunicações LTDA",
+          "cnpjCpf": "50.117.292/0001-15",
+          "doc": "1547",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": "Divulgação de matéria das atividades parlamentares da Senadora Tereza Cristina no Jornal Boca do Povo e/ou Site Boca do Povo News.",
+          "valor": 2500.0
         },
         {
           "data": "2026-10-14",
@@ -5330,39 +5341,6 @@
         },
         {
           "data": "2026-04-01",
-          "mes": 3,
-          "categoria": "Aquisição de material de consumo para uso no escritório político",
-          "fornecedor": "J. Monteiro da Silva - ME - Tech3 Brasil",
-          "cnpjCpf": "21.626.690/0001-69",
-          "doc": "19376",
-          "tipoDocumento": "Boleto",
-          "detalhamento": "Referente à locação de impressora para uso em escritório parlamentar no estado de Mato Grosso do Sul - 03-2026.",
-          "valor": 175.0
-        },
-        {
-          "data": "2026-04-01",
-          "mes": 3,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Ancelmo e Paulino LTDA",
-          "cnpjCpf": "04.990.440/0001-94",
-          "doc": "42239",
-          "tipoDocumento": "Boleto",
-          "detalhamento": "Referente ao uso de combustível para uso no estado de Mato Grosso do Sul - atividades parlamentares - 03-2026.",
-          "valor": 874.51
-        },
-        {
-          "data": "2026-04-01",
-          "mes": 3,
-          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
-          "fornecedor": "Daleth Veículos LTDA EPP Village Rent a Car",
-          "cnpjCpf": "04.515.963/0001-89",
-          "doc": "910",
-          "tipoDocumento": "Nota Fiscal Eletrônica",
-          "detalhamento": "Referente à locação de veículo modelo GM tracker LT, placa PAL8G29, no período de 01-03-2026 a 31-03-2026.",
-          "valor": 4500.0
-        },
-        {
-          "data": "2026-04-01",
           "mes": 4,
           "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
           "fornecedor": "Grand Park Eventos e Hospedagem LTDA",
@@ -5461,6 +5439,39 @@
           "valor": 2262.19
         },
         {
+          "data": "2026-04-01",
+          "mes": 3,
+          "categoria": "Aquisição de material de consumo para uso no escritório político",
+          "fornecedor": "J. Monteiro da Silva - ME - Tech3 Brasil",
+          "cnpjCpf": "21.626.690/0001-69",
+          "doc": "19376",
+          "tipoDocumento": "Boleto",
+          "detalhamento": "Referente à locação de impressora para uso em escritório parlamentar no estado de Mato Grosso do Sul - 03-2026.",
+          "valor": 175.0
+        },
+        {
+          "data": "2026-04-01",
+          "mes": 3,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Ancelmo e Paulino LTDA",
+          "cnpjCpf": "04.990.440/0001-94",
+          "doc": "42239",
+          "tipoDocumento": "Boleto",
+          "detalhamento": "Referente ao uso de combustível para uso no estado de Mato Grosso do Sul - atividades parlamentares - 03-2026.",
+          "valor": 874.51
+        },
+        {
+          "data": "2026-04-01",
+          "mes": 3,
+          "categoria": "Locomoção, hospedagem, alimentação, combustíveis e lubrificantes",
+          "fornecedor": "Daleth Veículos LTDA EPP Village Rent a Car",
+          "cnpjCpf": "04.515.963/0001-89",
+          "doc": "910",
+          "tipoDocumento": "Nota Fiscal Eletrônica",
+          "detalhamento": "Referente à locação de veículo modelo GM tracker LT, placa PAL8G29, no período de 01-03-2026 a 31-03-2026.",
+          "valor": 4500.0
+        },
+        {
           "data": "2026-03-31",
           "mes": 3,
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
@@ -5488,10 +5499,10 @@
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
           "fornecedor": "Aerotur Serviços",
           "cnpjCpf": "05.120.923/0001-09",
-          "doc": "2279717238",
+          "doc": "2300604125",
           "tipoDocumento": "Fatura",
           "detalhamento": null,
-          "valor": 1556.05
+          "valor": 2285.08
         },
         {
           "data": "2026-03-26",
@@ -5499,10 +5510,10 @@
           "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
           "fornecedor": "Aerotur Serviços",
           "cnpjCpf": "05.120.923/0001-09",
-          "doc": "2300604125",
+          "doc": "2279717238",
           "tipoDocumento": "Fatura",
           "detalhamento": null,
-          "valor": 2285.08
+          "valor": 1556.05
         },
         {
           "data": "2026-03-19",
@@ -5923,9 +5934,9 @@
           "valor": 4500.0
         }
       ],
-      "totalNotasFiscais": 167,
+      "totalNotasFiscais": 168,
       "escritorioApoio": "",
-      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-26T00:37:37",
+      "fonteCeaps": "adm.senado.gov.br — dados de 2026-11-26T14:59:19",
       "nota": "",
       "emExercicio": true
     }

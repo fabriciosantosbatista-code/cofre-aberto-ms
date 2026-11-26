@@ -122,16 +122,6 @@
    "obs": "o atraso aqui é dos senadores, que apresentam as notas depois"
   },
   {
-   "orgao": "Assembleia Legislativa (ALEMS)",
-   "dado": "notas da verba indenizatória",
-   "ultimo": "2026-11-06",
-   "dias": 20,
-   "prazo": 45,
-   "base": "dado mensal: até 45 dias depois do fim do mês",
-   "nivel": "ok",
-   "obs": ""
-  },
-  {
    "orgao": "Câmara dos Deputados",
    "dado": "notas da cota parlamentar (CEAP)",
    "ultimo": "2026-11-23",
@@ -148,6 +138,16 @@
    "dias": 2,
    "prazo": 3,
    "base": "LC 131/2009: despesas em tempo real (até o 1º dia útil seguinte)",
+   "nivel": "ok",
+   "obs": ""
+  },
+  {
+   "orgao": "Assembleia Legislativa (ALEMS)",
+   "dado": "notas da verba indenizatória",
+   "ultimo": "2026-11-25",
+   "dias": 1,
+   "prazo": 45,
+   "base": "dado mensal: até 45 dias depois do fim do mês",
    "nivel": "ok",
    "obs": ""
   },

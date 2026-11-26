@@ -1,47 +1,97 @@
 {
- "geradoEm": "2026-11-26T01:10:43",
- "ultimaAtualizacao": "2026-11-26T00:37:37",
- "registros": 57477,
+ "geradoEm": "2026-11-26T15:36:14",
+ "ultimaAtualizacao": "2026-11-26T14:59:19",
+ "registros": 58265,
  "registrosPorTipo": {
-  "notas": 10686,
-  "contratos": 3589,
-  "licitacoes": 3829,
-  "despesas": 39373
+  "notas": 11437,
+  "contratos": 3594,
+  "licitacoes": 3833,
+  "despesas": 39401
  },
- "notasHoje": 0,
- "valorHoje": 0,
- "notasSemana": 16,
- "valorSemana": 22454.79,
+ "notasHoje": 24,
+ "valorHoje": 101568.52,
+ "notasSemana": 39,
+ "valorSemana": 124023.31,
  "desde": "2026-11-20",
  "semana": [
   {
+   "grupo": "estadual",
+   "nome": "Marcio Fernandes",
+   "partido": "PL",
+   "notas": 14,
+   "valor": 57470.19,
+   "url": "/deputado-estadual/marcio-fernandes/",
+   "de": "2026-09-30",
+   "ate": "2026-11-25"
+  },
+  {
    "grupo": "federal",
-   "nome": "Camila Jara",
-   "partido": "PT",
+   "nome": "Beto Pereira",
+   "partido": "REPUBLICANOS",
    "notas": 4,
-   "valor": 528.21,
-   "url": "/deputado-federal/camila-jara/",
-   "de": "2026-10-28",
-   "ate": "2026-11-23"
+   "valor": 5619.95,
+   "url": "/deputado-federal/beto-pereira/",
+   "de": "2026-10-07",
+   "ate": "2026-11-04"
+  },
+  {
+   "grupo": "federal",
+   "nome": "Dagoberto Nogueira",
+   "partido": "PP",
+   "notas": 4,
+   "valor": 2036.43,
+   "url": "/deputado-federal/dagoberto-nogueira/",
+   "de": "2026-10-24",
+   "ate": "2026-11-13"
   },
   {
    "grupo": "federal",
    "nome": "Marcos Pollon",
    "partido": "PL",
-   "notas": 3,
-   "valor": 1339.49,
+   "notas": 4,
+   "valor": 1479.49,
    "url": "/deputado-federal/marcos-pollon/",
    "de": "2026-10-23",
    "ate": "2026-11-22"
   },
   {
    "grupo": "federal",
-   "nome": "Dagoberto Nogueira",
+   "nome": "Camila Jara",
+   "partido": "PT",
+   "notas": 4,
+   "valor": 628.21,
+   "url": "/deputado-federal/camila-jara/",
+   "de": "2026-11-18",
+   "ate": "2026-11-23"
+  },
+  {
+   "grupo": "senador",
+   "nome": "Tereza Cristina",
    "partido": "PP",
    "notas": 2,
-   "valor": 328.9,
-   "url": "/deputado-federal/dagoberto-nogueira/",
-   "de": "2026-10-24",
+   "valor": 8480.0,
+   "url": "/senador/tereza-cristina/",
+   "de": "2026-10-27",
+   "ate": "2026-11-04"
+  },
+  {
+   "grupo": "federal",
+   "nome": "Vander Loubet",
+   "partido": "PT",
+   "notas": 2,
+   "valor": 651.85,
+   "url": "/deputado-federal/vander-loubet/",
+   "de": "2026-10-13",
+   "ate": "2026-11-10"
+  },
+  {
+   "grupo": "federal",
+   "nome": "Rodolfo Nogueira",
+   "partido": "PL",
+   "notas": 1,
+   "valor": 34000.0,
+   "url": "/deputado-federal/rodolfo-nogueira/",
+   "de": "2026-11-13",
    "ate": "2026-11-13"
   },
   {
@@ -53,16 +103,6 @@
    "url": "/vereador/dr-livio/",
    "de": "2026-10-01",
    "ate": "2026-10-01"
-  },
-  {
-   "grupo": "senador",
-   "nome": "Tereza Cristina",
-   "partido": "PP",
-   "notas": 1,
-   "valor": 5980.0,
-   "url": "/senador/tereza-cristina/",
-   "de": "2026-11-04",
-   "ate": "2026-11-04"
   },
   {
    "grupo": "senador",
@@ -86,26 +126,6 @@
   },
   {
    "grupo": "federal",
-   "nome": "Vander Loubet",
-   "partido": "PT",
-   "notas": 1,
-   "valor": 439.0,
-   "url": "/deputado-federal/vander-loubet/",
-   "de": "2026-10-13",
-   "ate": "2026-10-13"
-  },
-  {
-   "grupo": "federal",
-   "nome": "Beto Pereira",
-   "partido": "REPUBLICANOS",
-   "notas": 1,
-   "valor": 182.0,
-   "url": "/deputado-federal/beto-pereira/",
-   "de": "2026-11-04",
-   "ate": "2026-11-04"
-  },
-  {
-   "grupo": "federal",
    "nome": "Dr. Luiz Ovando",
    "partido": "PP",
    "notas": 1,
@@ -115,6 +135,6 @@
    "ate": "2026-11-04"
   }
  ],
- "atrasadasSemana": 23,
+ "atrasadasSemana": 763,
  "limiteGasto": "2026-09-27"
 }

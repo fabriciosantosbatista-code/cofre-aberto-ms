@@ -1,7 +1,7 @@
 {
   "cidade": "Três Lagoas",
-  "ultimaAtualizacao": "2026-11-26T00:37:37",
-  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-11-26T00:37:37",
+  "ultimaAtualizacao": "2026-11-26T14:59:19",
+  "fonte": "Portal Transparência Fiorilli (pmtreslagoas.rcmsuporte.com.br:8079) — Dados Abertos — 2026-11-26T14:59:19",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://cmtls.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -594,7 +594,7 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 31426012.55,
+    "totalGeral": 31426046.24,
     "totalNotas": 883,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 17283803.59,
@@ -602,11 +602,11 @@
       "Auxílio-Alimentação": 3130463.55,
       "Obrigações Patronais": 2644178.07,
       "Serviços de Tecnologia da Informação": 765732.94,
-      "Diárias — Civil": 738767.95,
+      "Diárias — Civil": 736459.42,
       "Serviços de Consultoria": 507203.09,
       "Locação de Mão de Obra": 479496.15,
       "Aporte para Cobertura de Déficit Atuarial do RPPS": 367746.84,
-      "Material de Consumo": 305340.34,
+      "Material de Consumo": 307682.56,
       "Outros Benefícios Assistenciais do Servidor": 145164.04,
       "Indenizações e Restituições": 88396.42,
       "Equipamentos e Material Permanente": 60254.75,
@@ -1812,6 +1812,14 @@
       },
       {
         "data": "2026-01-19",
+        "fornecedor": "PPR COMERCIAL LTDA",
+        "cnpj": "54.711.829/0001-21",
+        "categoria": "Material de Consumo",
+        "valor": 9265.86,
+        "descricao": "Processo: 02/25 -fornecimento de materiais de limpeza e higienização de uso comum para a Câmara Municipal de Três Lagoas."
+      },
+      {
+        "data": "2026-01-19",
         "fornecedor": "C. L. R. COMERCIO DE PRODUTOS DE HIGIENE E LIMPEZA",
         "cnpj": "18.493.600/0001-02",
         "categoria": "Material de Consumo",
@@ -1921,14 +1929,6 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 6952.86,
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES COMISSIONADOS (FERIAS – ABONO CONSTITUCIONAL) VINCULADOS AO RGPS,  REF. MES DE AGOSTO/2026"
-      },
-      {
-        "data": "2026-01-19",
-        "fornecedor": "PPR COMERCIAL LTDA",
-        "cnpj": "54.711.829/0001-21",
-        "categoria": "Material de Consumo",
-        "valor": 6923.64,
-        "descricao": "Processo: 02/25 -fornecimento de materiais de limpeza e higienização de uso comum para a Câmara Municipal de Três Lagoas."
       },
       {
         "data": "2026-05-19",
@@ -3726,14 +3726,6 @@
         "data": "2026-11-23",
         "fornecedor": "REGINALDO OLIVEIRA DO NASCIMENTO",
         "cnpj": "008.XXX.XXX-69",
-        "categoria": "Diárias — Civil",
-        "valor": 2308.53,
-        "descricao": "\"DESPESAS REFERENTE A CONCESSÃO DE 3 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 25/11 a 28/11/2026, CONFORME SOLICITAÇÃO ASSINADA PELO REQUISITANTE E VEREADO"
-      },
-      {
-        "data": "2026-11-23",
-        "fornecedor": "LARYSSA DE SOUZA MEDEIROS",
-        "cnpj": "090.XXX.XXX-67",
         "categoria": "Diárias — Civil",
         "valor": 2308.53,
         "descricao": "\"DESPESAS REFERENTE A CONCESSÃO DE 3 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 25/11 a 28/11/2026, CONFORME SOLICITAÇÃO ASSINADA PELO REQUISITANTE E VEREADO"
@@ -7665,6 +7657,14 @@
         "categoria": "Vencimentos e Vantagens Fixas — Pessoal Civil",
         "valor": 0.0,
         "descricao": "DESPESAS REFERENTE A FOLHA DE PAGAMENTO SERVIDORES EFETIVOS (GRATIFICAÇÃO DE TEMPO DE SERVIÇO) VINCULADOS AO RPPS,  REF.  EMPENHO ESTIMATIVA EXERCÍCIO 2026"
+      },
+      {
+        "data": "2026-11-23",
+        "fornecedor": "LARYSSA DE SOUZA MEDEIROS",
+        "cnpj": "090.XXX.XXX-67",
+        "categoria": "Diárias — Civil",
+        "valor": 0.0,
+        "descricao": "\"DESPESAS REFERENTE A CONCESSÃO DE 3 DIÁRIA(s), CONF. LEI Nº 3.960/2023, PARA A CIDADE DE Campo Grande - MS, NO PERÍODO DE 25/11 a 28/11/2026, CONFORME SOLICITAÇÃO ASSINADA PELO REQUISITANTE E VEREADO"
       },
       {
         "data": "2026-11-24",
