@@ -1,7 +1,7 @@
 {
   "cidade": "Ponta Porã",
-  "ultimaAtualizacao": "2026-11-25T13:18:32",
-  "fonte": "Portal Transparência Fiorilli (contabilidade.pontapora.ms.gov.br) — Dados Abertos — 2026-11-25T13:18:32",
+  "ultimaAtualizacao": "2026-11-26T00:37:37",
+  "fonte": "Portal Transparência Fiorilli (contabilidade.pontapora.ms.gov.br) — Dados Abertos — 2026-11-26T00:37:37",
   "sistema": "Fiorilli SCPI 9.0",
   "portalOficial": "https://www.camarapontapora.ms.gov.br/",
   "temDadosFinanceiros": true,
@@ -230,21 +230,22 @@
     }
   ],
   "despesasInstitucionais": {
-    "totalGeral": 16282927.69,
-    "totalNotas": 291,
+    "totalGeral": 16299588.23,
+    "totalNotas": 292,
     "porCategoria": {
       "Vencimentos e Vantagens Fixas — Pessoal Civil": 9729136.78,
-      "Outros Serviços de Terceiros — Pessoa Jurídica": 2492927.64,
+      "Outros Serviços de Terceiros — Pessoa Jurídica": 2494578.91,
       "Obrigações Patronais": 1798690.41,
       "Serviços de Consultoria": 1209451.99,
       "Aporte para Cobertura de Déficit Atuarial do RPPS": 345182.42,
-      "Serviços de Tecnologia da Informação": 187037.48,
+      "Serviços de Tecnologia da Informação": 188717.48,
       "Indenizações e Restituições": 141522.04,
       "Obras e Instalações": 140997.13,
-      "Material de Consumo": 88711.34,
+      "Material de Consumo": 91942.61,
       "Diárias — Civil": 58447.12,
       "Equipamentos e Material Permanente": 56389.7,
       "Outros Serviços de Terceiros — Pessoa Física": 26513.64,
+      "Elemento 31": 10098.0,
       "Passagens e Despesas com Locomoção": 7920.0
     },
     "despesas": [
@@ -617,6 +618,14 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000014/24 - Ano Mod.: 2024 - Modalidade: INEXIGIBILIDADE - Nº Mod.: 6 - Mod. Formatada: 6 - Locação de 1(um) imóvel matrícula nº 4453, situado na rua"
       },
       {
+        "data": "2026-06-29",
+        "fornecedor": "PABLO ENRIQUE SOARES ALVES",
+        "cnpj": "21.266.196/0001-30",
+        "categoria": "Material de Consumo",
+        "valor": 13161.7,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000015/24 - Ano Mod.: 2024 - Modalidade: DISPENSA - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada em fornecimento de água mine"
+      },
+      {
         "data": "2026-01-26",
         "fornecedor": "MAURICIO BATISTA DO NASCIMENTO ME",
         "cnpj": "12.475.033/0001-77",
@@ -673,12 +682,12 @@
         "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS LOCAÇÃO DE IMPRESSORAS TERMO ADITIVO 08/2023 PREGÃO 03/2023"
       },
       {
-        "data": "2026-06-29",
-        "fornecedor": "PABLO ENRIQUE SOARES ALVES",
-        "cnpj": "21.266.196/0001-30",
-        "categoria": "Material de Consumo",
-        "valor": 9930.43,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000015/24 - Ano Mod.: 2024 - Modalidade: DISPENSA - Nº Mod.: 6 - Mod. Formatada: 6 - Contratação de empresa especializada em fornecimento de água mine"
+        "data": "2026-11-25",
+        "fornecedor": "AURORA DUE BRASIL COMERCIO LTDA",
+        "cnpj": "11.533.762/0001-70",
+        "categoria": "Elemento 31",
+        "valor": 10098.0,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE AO REGIME DE ADIANTAMENTO DE PAGAMENTO, CONFORME A LEI MUNICIPAL Nº 4.432, 01/04.2020, E LEI MUNICIPAL Nº 4.569, 12/06/2023, CMPP. MEDALHAS DE HONRA"
       },
       {
         "data": "2026-02-13",
@@ -687,6 +696,14 @@
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 9900.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000013/25 - Ano Mod.: 2025 - Modalidade: CM - DISPENSA - Nº Mod.: 2 - Mod. Formatada: 2 - 1.1.\tContratação de serviço de locação de fragmentadoras de"
+      },
+      {
+        "data": "2026-01-23",
+        "fornecedor": "EMPRESA DE SANEAMENTO DE MS SA SANESUL",
+        "cnpj": "03.982.931/0001-20",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 9812.04,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS COM AGUA E ESGOTO EXERCICIO 2026"
       },
       {
         "data": "2026-10-13",
@@ -721,14 +738,6 @@
         "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS DE LOCAÇÃO DE SOFTWARE PARA PRECIFOCAÇÃO E COMPARAÇÃO DE PREÇOS PRATICADOS PEL"
       },
       {
-        "data": "2026-01-23",
-        "fornecedor": "EMPRESA DE SANEAMENTO DE MS SA SANESUL",
-        "cnpj": "03.982.931/0001-20",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 8935.54,
-        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS COM AGUA E ESGOTO EXERCICIO 2026"
-      },
-      {
         "data": "2026-02-12",
         "fornecedor": "67 TELECOM LTDA",
         "cnpj": "08.611.669/0003-93",
@@ -737,20 +746,20 @@
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/25 - Ano Mod.: 2025 - Modalidade: DISPENSA - Nº Mod.: 3 - Mod. Formatada: 3 - 1.1.\tContratação de empresa  de link de internet dedicado com vel"
       },
       {
+        "data": "2026-06-29",
+        "fornecedor": "67 TELECOM LTDA",
+        "cnpj": "08.611.669/0003-93",
+        "categoria": "Serviços de Tecnologia da Informação",
+        "valor": 8400.0,
+        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/25 - Ano Mod.: 2025 - Modalidade: CM - DISPENSA - Nº Mod.: 3 - Mod. Formatada: 3 - 1.1.\tContratação de empresa  de link de internet dedicado co"
+      },
+      {
         "data": "2026-09-24",
         "fornecedor": "CORREIO DO ESTADO S/A",
         "cnpj": "03.119.724/0001-47",
         "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
         "valor": 7920.0,
         "descricao": "Pedido gerado a partir do resultado da Licitação: 000012/25 - Ano Mod.: 2025 - Modalidade: CM INEXIGIBILIDADE - Nº Mod.: 6 - Mod. Formatada: 6 -  Contratação de serviço de assinatura anual do jornal C"
-      },
-      {
-        "data": "2026-06-29",
-        "fornecedor": "67 TELECOM LTDA",
-        "cnpj": "08.611.669/0003-93",
-        "categoria": "Serviços de Tecnologia da Informação",
-        "valor": 6720.0,
-        "descricao": "Pedido gerado a partir do resultado da Licitação: 000007/25 - Ano Mod.: 2025 - Modalidade: CM - DISPENSA - Nº Mod.: 3 - Mod. Formatada: 3 - 1.1.\tContratação de empresa  de link de internet dedicado co"
       },
       {
         "data": "2026-09-03",
@@ -1041,6 +1050,14 @@
         "descricao": "O VALOR QUE SE EMPENHA PARA PAGAMENTO DE DIÁRIAS AO SERVIDORES E MEMBROS DO PODER LEGISLATIVO (LEI Nº 4.528/2022), CONFORME PORTARIA Nº 215/2026"
       },
       {
+        "data": "2026-09-17",
+        "fornecedor": "ENERGISA MS-DISTRIBUIDORA DE ENERGIA S.A",
+        "cnpj": "15.413.826/0001-50",
+        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
+        "valor": 2381.19,
+        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS FORNECIMENTO DE ENERGIA ELETRICA EXERCICIO 2026"
+      },
+      {
         "data": "2026-04-17",
         "fornecedor": "CARLOS ALEXANDRE BORDÃO",
         "cnpj": "827.XXX.XXX-72",
@@ -1295,14 +1312,6 @@
         "categoria": "Indenizações e Restituições",
         "valor": 1625.26,
         "descricao": "VALOR QUE SE EMPENHA REFERENTE A DESPESA DE GASTO COM COMBUSTIVEL PAGO A VEREADORES ATRAVES DA PORTARIA N° 095/2025 QUE REGULAMENTA A RESOLUÇÃO N° 013/2024. LEI 4.684/2025/CMPP E LEI 4735/2026/CMPP."
-      },
-      {
-        "data": "2026-09-17",
-        "fornecedor": "ENERGISA MS-DISTRIBUIDORA DE ENERGIA S.A",
-        "cnpj": "15.413.826/0001-50",
-        "categoria": "Outros Serviços de Terceiros — Pessoa Jurídica",
-        "valor": 1606.42,
-        "descricao": "O VALOR QUE SE EMPENHA REFERENTE A DESPESAS COM PRESTAÇÃO DE SERVIÇOS POR PESSOA JURÍDICA PARA ÖRGÃO PUBLICO COM SERVIÇOS FORNECIMENTO DE ENERGIA ELETRICA EXERCICIO 2026"
       },
       {
         "data": "2026-06-03",

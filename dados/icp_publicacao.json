@@ -1,6 +1,6 @@
 {
- "em": "2026-11-25T13:56:23",
- "runId": "45663286715",
+ "em": "2026-11-26T01:11:23",
+ "runId": "45756355096",
  "testes": {
   "json": {
    "codigo": 0,
@@ -28,12 +28,12 @@
   {
    "teste": "variacoes",
    "base": "deputados",
-   "texto": "deputados: registros caíram de 2701 para 2070 (-23%) entre 2026-11-25T12:58 e 2026-11-25T13:18"
+   "texto": "deputados: registros caíram de 2701 para 1981 (-27%) entre 2026-11-25T14:26 e 2026-11-26T00:37"
   },
   {
    "teste": "variacoes",
    "base": "deputados",
-   "texto": "deputados: total acumulado caiu de 3,425,406.23 para 3,040,274.83 (-11.2%) — no mesmo ano o acumulado não deveria cair"
+   "texto": "deputados: total acumulado caiu de 3,425,406.23 para 2,986,174.01 (-12.8%) — no mesmo ano o acumulado não deveria cair"
   }
  ],
  "basesAfetadas": [
@@ -49,17 +49,17 @@
     {
      "teste": "variacoes",
      "base": "deputados",
-     "texto": "deputados: registros caíram de 2701 para 2070 (-23%) entre 2026-11-25T12:58 e 2026-11-25T13:18"
+     "texto": "deputados: registros caíram de 2701 para 1981 (-27%) entre 2026-11-25T14:26 e 2026-11-26T00:37"
     },
     {
      "teste": "variacoes",
      "base": "deputados",
-     "texto": "deputados: total acumulado caiu de 3,425,406.23 para 3,040,274.83 (-11.2%) — no mesmo ano o acumulado não deveria cair"
+     "texto": "deputados: total acumulado caiu de 3,425,406.23 para 2,986,174.01 (-12.8%) — no mesmo ano o acumulado não deveria cair"
     }
    ],
    "texto": "dados de 24/11: a coleta de hoje não passou no teste de integridade"
   }
  },
- "versaoMantida": "e91d685446b9fb85002c03eed166c23a24c3f10f",
- "evidencias": "artefato coleta-bloqueada-45663286715 (30 dias)"
+ "versaoMantida": "c27aab4bc0078e001e35d78afa22750769ca9807",
+ "evidencias": "artefato coleta-bloqueada-45756355096 (30 dias)"
 }
