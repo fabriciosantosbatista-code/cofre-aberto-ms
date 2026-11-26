@@ -1,0 +1,384 @@
+<title>Cofre Aberto MS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: palco fixo (sticky) em duas colunas, texto à esquerda e porta 3D em estúdio claro à direita; a rolagem abre a porta; em seguida uma faixa escura, o "interior", com o livro-caixa dos números. */
+:root{
+  --paper:#e8ebf0;
+  --paper-2:#f3f5f8;
+  --ink:#0c111c;
+  --ink-2:#2a3140;
+  --muted:#5e6676;
+  --line:rgba(12,17,28,.11);
+  --vault:#0b0f18;
+  --vault-line:rgba(232,235,240,.1);
+  --vault-muted:#8a93a5;
+  --accent:#3d6bf0;
+  --gold:#d6a24a;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --ease-in-out:cubic-bezier(.77,0,.175,1);
+  --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --gutter:max(clamp(16px,3.2vw,48px),env(safe-area-inset-left,0px));
+  --gutter-r:max(clamp(16px,3.2vw,48px),env(safe-area-inset-right,0px));
+}
+html{background:var(--paper)}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1440px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+
+/* navegação */
+.nav{position:absolute;top:0;left:0;right:0;z-index:5}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:22px}
+.mark{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.02em;font-size:15px;white-space:nowrap}
+.mark i{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--ink);position:relative;flex:none}
+.mark i::after{content:"";position:absolute;inset:3.5px;border-radius:50%;background:var(--accent)}
+.links{display:flex;gap:28px;font-size:14px;color:var(--ink-2)}
+.links a{position:relative;padding-block:4px;transition:color 200ms ease}
+@media (hover:hover) and (pointer:fine){.links a:hover{color:var(--ink)}}
+.btn{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px;border-radius:999px;font-size:14px;font-weight:500;letter-spacing:-.005em;white-space:nowrap;border:1px solid var(--line);background:var(--paper-2);color:var(--ink);cursor:pointer;transition:transform 160ms var(--ease-out),background-color 200ms ease,border-color 200ms ease}
+.btn:active{transform:scale(.97)}
+.btn.dark{background:var(--ink);border-color:var(--ink);color:var(--paper-2)}
+.btn .arr{display:inline-block;transition:transform 200ms var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{border-color:rgba(12,17,28,.28)}
+  .btn.dark:hover{background:#1b2232}
+  .btn:hover .arr{transform:translateX(3px)}
+}
+
+/* palco */
+.stage{height:290vh;position:relative}
+.sticky{position:sticky;top:0;height:100vh;min-height:640px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.copy{display:flex;flex-direction:column;justify-content:space-between;padding-block:124px 40px;padding-left:var(--gutter);padding-right:24px;min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;align-items:center}
+.eyebrow b{font-weight:500;color:var(--ink)}
+.live{width:6px;height:6px;border-radius:50%;background:#1fa36a;box-shadow:0 0 0 3px rgba(31,163,106,.18)}
+h1{font-weight:600;font-size:clamp(2.9rem,5.1vw,5.4rem);line-height:.96;letter-spacing:-.045em;margin:22px 0 0;text-wrap:balance;max-width:11ch}
+h1 .dot{color:var(--accent)}
+.lead{font-size:18px;line-height:1.5;color:var(--ink-2);max-width:40ch;margin:24px 0 0;letter-spacing:-.01em}
+.ctas{display:flex;gap:10px;margin-top:32px;flex-wrap:wrap}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.steps li{display:grid;gap:8px;min-width:0}
+.steps .bar{height:1px;background:var(--line);position:relative;overflow:hidden}
+.steps .bar i{position:absolute;inset:0;background:var(--ink);transform-origin:left;transform:scaleX(0)}
+.steps .n{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+.steps .t{font-size:14px;font-weight:500;letter-spacing:-.01em;color:var(--muted);transition:color 200ms ease}
+.steps .d{font-size:13px;color:var(--muted);line-height:1.4}
+.steps li.on .t{color:var(--ink)}
+
+.view{position:relative;min-width:0}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 900ms var(--ease-out)}
+#scene.ready{opacity:1}
+.status{position:absolute;left:24px;bottom:40px;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;color:var(--ink-2);background:rgba(243,245,248,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:999px;padding:8px 14px 8px 12px;font-variant-numeric:tabular-nums}
+.status .lamp{width:7px;height:7px;border-radius:50%;background:var(--gold);transition:background-color 200ms ease}
+.status.open .lamp{background:#1fa36a}
+.status .pct{color:var(--muted);min-width:3.5ch;text-align:right}
+.coords{position:absolute;right:var(--gutter-r);bottom:44px;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em;text-align:right;line-height:1.6}
+body.no-gl .view{background:radial-gradient(45% 45% at 50% 50%,#cfd5de,var(--paper))}
+
+/* entrada da página: uma onda, título primeiro */
+.rise{animation:rise 640ms var(--ease-out) both;animation-delay:var(--d,0ms)}
+.fade{animation:fade 600ms ease both;animation-delay:var(--d,0ms)}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}}
+@keyframes fade{from{opacity:0}}
+
+/* interior: livro-caixa */
+.ledger{background:var(--vault);color:var(--paper-2)}
+.ledger .wrap{padding-block:120px 96px;display:grid;gap:72px}
+.ledger-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:end}
+.ledger h2{font-weight:600;font-size:clamp(2.2rem,3.6vw,3.6rem);line-height:1;letter-spacing:-.04em;margin:14px 0 0;text-wrap:balance}
+.ledger .eyebrow{color:var(--vault-muted)}
+.ledger .eyebrow b{color:var(--paper-2)}
+.ledger-head p{color:var(--vault-muted);max-width:52ch;margin:0;justify-self:end}
+.hero-figs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--vault-line)}
+.fig{padding:28px 24px 8px 0;display:grid;gap:10px;min-width:0}
+.fig+.fig{padding-left:24px;border-left:1px solid var(--vault-line)}
+.fig .v{font-weight:500;font-size:clamp(2.6rem,4.4vw,4.4rem);letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums;color:var(--gold)}
+.fig .v small{font-size:.42em;letter-spacing:-.01em;color:var(--vault-muted);font-weight:400;margin-right:.3em;vertical-align:.55em}
+.fig .k{font-size:15px;color:var(--paper-2)}
+.fig .s{font-family:var(--mono);font-size:11px;color:var(--vault-muted);letter-spacing:.04em;text-transform:uppercase}
+.rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;gap:16px;padding:18px 0;border-top:1px solid var(--vault-line)}
+.row span{color:var(--vault-muted);font-size:15px}
+.row b{font-weight:500;font-size:22px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--paper-2)}
+.sources{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sources .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--vault-muted);margin-right:8px}
+.sources span:not(.lbl){font-size:13px;color:var(--paper-2);border:1px solid var(--vault-line);border-radius:999px;padding:6px 12px}
+
+.close{background:var(--vault);color:var(--paper-2);border-top:1px solid var(--vault-line)}
+.close .wrap{padding-block:88px 64px;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;align-items:end}
+.close h2{font-weight:600;font-size:clamp(2.2rem,3.6vw,3.6rem);line-height:1;letter-spacing:-.04em;margin:0;max-width:14ch;text-wrap:balance}
+.close .ctas{justify-content:flex-end;margin:0}
+.close .btn{background:transparent;color:var(--paper-2);border-color:var(--vault-line)}
+.close .btn.light{background:var(--paper-2);color:var(--ink);border-color:var(--paper-2)}
+@media (hover:hover) and (pointer:fine){.close .btn:hover{border-color:rgba(232,235,240,.35)}.close .btn.light:hover{background:#fff}}
+.fine{grid-column:1/-1;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;border-top:1px solid var(--vault-line);padding-top:24px;font-size:13px;color:var(--vault-muted)}
+
+@media (max-width:960px){
+  .links{display:none}
+  .stage{height:auto}
+  .sticky{position:relative;height:auto;grid-template-columns:1fr}
+  .view{height:70vh;order:-1}
+  .copy{padding-block:24px 48px}
+  .steps{display:none}
+  .ledger-head,.close .wrap{grid-template-columns:1fr}
+  .ledger-head p{justify-self:start}
+  .hero-figs{grid-template-columns:1fr}
+  .fig+.fig{padding-left:0;border-left:0;border-top:1px solid var(--vault-line)}
+  .rows{grid-template-columns:1fr}
+  .close .ctas{justify-content:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  .rise{animation:fade 200ms ease both}
+  .btn,.btn .arr{transition:background-color 200ms ease,border-color 200ms ease}
+  .btn:active{transform:none}
+}
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark fade" href="https://cofreabertoms.com.br/index.html" target="_blank" rel="noopener"><i></i>Cofre Aberto MS</a>
+    <nav class="links fade" style="--d:60ms" aria-label="Seções do site">
+      <a href="https://cofreabertoms.com.br/vereador/" target="_blank" rel="noopener">Parlamentares</a>
+      <a href="https://cofreabertoms.com.br/governo-ms/" target="_blank" rel="noopener">Governo MS</a>
+      <a href="https://cofreabertoms.com.br/emendas-parlamentares-ms/" target="_blank" rel="noopener">Emendas</a>
+      <a href="https://cofreabertoms.com.br/supersalarios-ms/" target="_blank" rel="noopener">Supersalários</a>
+    </nav>
+    <a class="btn dark fade" style="--d:60ms" href="https://cofreabertoms.com.br/cofre-aberto-ms.html" target="_blank" rel="noopener">Abrir o painel <span class="arr">→</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="stage" id="stage">
+    <div class="sticky">
+      <div class="copy">
+        <div>
+          <span class="eyebrow rise"><span class="live"></span><b>Atualizado em 20/11/2026</b> · Fontes oficiais, todo dia</span>
+          <h1 class="rise" style="--d:40ms">Fiscalize o dinheiro público de Mato Grosso do Sul<span class="dot">.</span></h1>
+          <p class="lead rise" style="--d:120ms">Notas fiscais, contratos, emendas e salários de quem recebe dinheiro público em MS. Cada número leva à fonte original.</p>
+          <div class="ctas rise" style="--d:180ms">
+            <a class="btn dark" href="https://cofreabertoms.com.br/cofre-aberto-ms.html" target="_blank" rel="noopener">Abrir o painel completo <span class="arr">→</span></a>
+            <a class="btn" href="#dentro">Ver o que tem dentro</a>
+          </div>
+        </div>
+        <ol class="steps fade" style="--d:300ms" aria-label="Etapas da abertura">
+          <li id="st0"><span class="bar"><i></i></span><span class="n">01</span><span class="t">Trancado</span><span class="d">Role para girar a roda.</span></li>
+          <li id="st1"><span class="bar"><i></i></span><span class="n">02</span><span class="t">Destravando</span><span class="d">Dez ferrolhos recuam.</span></li>
+          <li id="st2"><span class="bar"><i></i></span><span class="n">03</span><span class="t">Aberto</span><span class="d">Os dados aparecem.</span></li>
+        </ol>
+      </div>
+      <div class="view">
+        <canvas id="scene" aria-label="Porta de cofre em 3D que se abre conforme a rolagem"></canvas>
+        <div class="status" id="status" role="status"><span class="lamp"></span><span id="statusText">Trancado</span><span class="pct" id="statusPct">0%</span></div>
+        <div class="coords" aria-hidden="true">20°26′ S · 54°38′ O<br>Campo Grande, MS</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ledger" id="dentro">
+    <div class="wrap">
+      <div class="ledger-head">
+        <div>
+          <span class="eyebrow"><b>Livro-caixa</b> · 20/11/2026</span>
+          <h2>O que está dentro do cofre</h2>
+        </div>
+        <p>Os maiores fluxos de dinheiro catalogados pela plataforma e o que já está registrado em cada área. Tudo vem de câmaras, governo, tribunais e portais de transparência.</p>
+      </div>
+      <div class="hero-figs">
+        <div class="fig"><span class="v"><small>R$</small>21,5 bi</span><span class="k">pagos pelo Governo de MS</span><span class="s">Governo do Estado · TCE-MS</span></div>
+        <div class="fig"><span class="v"><small>R$</small>4,8 bi</span><span class="k">pagos pela Prefeitura de Campo Grande</span><span class="s">Portal da Transparência CG</span></div>
+        <div class="fig"><span class="v"><small>R$</small>628,7 mi</span><span class="k">em emendas recebidas em MS</span><span class="s">Emendas parlamentares</span></div>
+      </div>
+      <div class="rows">
+        <div class="row"><span>Parlamentares de MS</span><b>65</b></div>
+        <div class="row"><span>Pagos a ONGs</span><b>R$ 1,5 bi</b></div>
+        <div class="row"><span>Notas fiscais de parlamentares</span><b>11.411</b></div>
+        <div class="row"><span>A agências de publicidade</span><b>R$ 102,0 mi</b></div>
+        <div class="row"><span>Salários líquidos acima do teto</span><b>421</b></div>
+        <div class="row"><span>Em cachês de shows</span><b>R$ 78,1 mi</b></div>
+        <div class="row"><span>Contratos da Prefeitura</span><b>352</b></div>
+        <div class="row"><span>Páginas de empresas</span><b>1.432</b></div>
+      </div>
+      <div class="sources">
+        <span class="lbl">Fontes</span>
+        <span>Câmara de Campo Grande</span><span>ALEMS</span><span>Prefeitura de CG</span><span>Governo do Estado</span><span>TCE-MS</span><span>Câmara dos Deputados</span><span>Senado</span><span>Portal da Transparência</span><span>DadosJusBr</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="wrap">
+      <h2>Transparência é direito seu.</h2>
+      <div class="ctas">
+        <a class="btn" href="https://cofreabertoms.com.br/index.html" target="_blank" rel="noopener">Ver o site atual</a>
+        <a class="btn light" href="https://cofreabertoms.com.br/cofre-aberto-ms.html" target="_blank" rel="noopener">Abrir o painel completo <span class="arr">→</span></a>
+      </div>
+      <div class="fine"><span>Protótipo visual para computador. Números copiados da página inicial do cofreabertoms.com.br em 20/11/2026.</span><span>Dados sob CC BY 4.0</span></div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function clamp(v){return v<0?0:v>1?1:v}
+  function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+  function rnd(a,b){return a+Math.random()*(b-a)}
+  var canvas=$('scene'),view=canvas.parentNode,stage=$('stage');
+  var statusEl=$('status'),statusText=$('statusText'),statusPct=$('statusPct');
+  var stepEls=[$('st0'),$('st1'),$('st2')],stepBars=stepEls.map(function(e){return e.querySelector('.bar i')});
+  if(!window.THREE){document.body.classList.add('no-gl');return}
+  var renderer;
+  try{renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true,powerPreference:'high-performance'})}catch(e){document.body.classList.add('no-gl');return}
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
+  renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  renderer.setClearColor(0x000000,0);
+
+  var scene=new THREE.Scene();
+  var camera=new THREE.PerspectiveCamera(30,1,.1,80);
+
+  // estúdio claro para os reflexos: fundo cinza-aço, caixas de luz suaves
+  (function(){var env=new THREE.Scene();env.background=new THREE.Color('#9aa2ae');
+    function box(w,h,x,y,z,c){var m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:c,side:THREE.DoubleSide}));m.position.set(x,y,z);m.lookAt(0,0,0);env.add(m)}
+    box(12,4,0,8,3,'#ffffff');box(3,9,-8,1,3,'#f2f4f8');box(3,9,8,1,1,'#e6e9ef');box(14,3,0,-7,2,'#4a5160');box(6,3,0,2,9,'#ffffff');
+    var pm=new THREE.PMREMGenerator(renderer);scene.environment=pm.fromScene(env,.04).texture;pm.dispose()})();
+
+  function cv(w,h){var c=document.createElement('canvas');c.width=w;c.height=h;return c}
+  var brushC=(function(){var c=cv(64,1024),g=c.getContext('2d');for(var y=0;y<1024;y++){var v=80+Math.random()*50|0;g.fillStyle='rgb('+v+','+v+','+v+')';g.fillRect(0,y,64,1)}return c})();
+  var brushT=new THREE.CanvasTexture(brushC);brushT.wrapS=brushT.wrapT=THREE.RepeatWrapping;brushT.repeat.set(24,1);
+  var radC=(function(){var s=512,c=cv(s,s),g=c.getContext('2d');g.fillStyle='rgb(100,100,100)';g.fillRect(0,0,s,s);
+    for(var r=1;r<s*.72;r+=.9){var v=80+Math.random()*45|0;g.strokeStyle='rgba('+v+','+v+','+v+','+rnd(.2,.4)+')';g.beginPath();var a0=Math.random()*6.28;g.arc(s/2,s/2,r,a0,a0+rnd(2,6.28));g.stroke()}return c})();
+  var radT=new THREE.CanvasTexture(radC);
+  var wallC=(function(){var s=512,c=cv(s,s),g=c.getContext('2d');g.fillStyle='#eceef2';g.fillRect(0,0,s,s);var id=g.getImageData(0,0,s,s),d=id.data;for(var i=0;i<d.length;i+=4){var n=(Math.random()-.5)*9;d[i]+=n;d[i+1]+=n;d[i+2]+=n}g.putImageData(id,0,0);return c})();
+  var wallT=new THREE.CanvasTexture(wallC);wallT.encoding=THREE.sRGBEncoding;wallT.wrapS=wallT.wrapT=THREE.RepeatWrapping;wallT.repeat.set(.15,.15);
+  var wallB=new THREE.CanvasTexture(wallC);wallB.wrapS=wallB.wrapT=THREE.RepeatWrapping;wallB.repeat.set(.15,.15);
+  var boxesC=(function(){var w=1024,h=768,c=cv(w,h),g=c.getContext('2d');g.fillStyle='#0d1018';g.fillRect(0,0,w,h);var cols=12,rows=9,bw=w/cols,bh=h/rows,n=101;
+    for(var r=0;r<rows;r++)for(var q=0;q<cols;q++){var x=q*bw,y=r*bh,gr=g.createLinearGradient(x,y,x,y+bh);gr.addColorStop(0,'#5a606c');gr.addColorStop(1,'#353a44');g.fillStyle=gr;g.fillRect(x+3,y+3,bw-6,bh-6);
+      g.strokeStyle='rgba(255,255,255,.16)';g.lineWidth=1.2;g.strokeRect(x+5,y+5,bw-10,bh-10);
+      g.fillStyle='#b8873a';g.fillRect(x+bw/2-13,y+12,26,10);g.fillStyle='#1d1d1d';g.font='bold 8px monospace';g.textAlign='center';g.fillText(String(n++).padStart(4,'0'),x+bw/2,y+20);
+      g.fillStyle='#1a1d24';g.beginPath();g.arc(x+bw/2,y+bh/2+8,6.5,0,6.28);g.fill();g.fillStyle='#9097a3';g.beginPath();g.arc(x+bw/2,y+bh/2+8,4,0,6.28);g.fill()}
+    return c})();
+
+  var R=2.2,i,a;
+  var vault=new THREE.Group();scene.add(vault);
+  var steel=new THREE.MeshStandardMaterial({color:'#9aa1ad',metalness:1,roughness:1,roughnessMap:brushT,envMapIntensity:1,side:THREE.DoubleSide});
+  var steelFace=new THREE.MeshStandardMaterial({color:'#a3aab6',metalness:1,roughness:1,roughnessMap:radT,bumpMap:radT,bumpScale:.0012,envMapIntensity:1});
+  var gunmetal=new THREE.MeshStandardMaterial({color:'#565d69',metalness:.95,roughness:.34,envMapIntensity:.9,side:THREE.DoubleSide});
+  var chrome=new THREE.MeshStandardMaterial({color:'#e9ecf1',metalness:1,roughness:.12,envMapIntensity:1.1,side:THREE.DoubleSide});
+  var wallMat=new THREE.MeshStandardMaterial({map:wallT,bumpMap:wallB,bumpScale:.015,roughness:.92,metalness:0,envMapIntensity:.35});
+  var gold=new THREE.MeshStandardMaterial({color:'#c98b25',metalness:1,roughness:.24,envMapIntensity:.9});
+  function sh(m){m.castShadow=true;m.receiveShadow=true;return m}
+
+  var ws=new THREE.Shape();ws.moveTo(-14,-10);ws.lineTo(14,-10);ws.lineTo(14,10);ws.lineTo(-14,10);ws.lineTo(-14,-10);
+  var wh=new THREE.Path();wh.absarc(0,0,R+.5,0,Math.PI*2,true);ws.holes.push(wh);
+  var wall=new THREE.Mesh(new THREE.ExtrudeGeometry(ws,{depth:1.2,bevelEnabled:false,curveSegments:128}),wallMat);wall.position.z=-1.05;wall.receiveShadow=true;vault.add(wall);
+
+  var fp=[[R+.04,-1.2],[R+.04,.3],[R+.12,.42],[R+.5,.42],[R+.62,.34],[R+.68,.18],[R+.68,-1.2]];
+  var frameG=new THREE.LatheGeometry(fp.map(function(p){return new THREE.Vector2(p[0],p[1])}),180);frameG.rotateX(Math.PI/2);
+  vault.add(sh(new THREE.Mesh(frameG,gunmetal)));
+  for(i=0;i<24;i++){a=i/24*Math.PI*2;var hb=sh(new THREE.Mesh(new THREE.CylinderGeometry(.07,.07,.08,6),chrome));hb.rotation.x=Math.PI/2;hb.position.set(Math.cos(a)*(R+.31),Math.sin(a)*(R+.31),.45);vault.add(hb)}
+  for(i=-1;i<=1;i+=2){var hg=sh(new THREE.Mesh(new THREE.CylinderGeometry(.15,.15,.85,32),chrome));hg.position.set(-R-.24,i*1.2,.45);vault.add(hg)}
+
+  // interior escuro, iluminado por dentro
+  var boxesT=new THREE.CanvasTexture(boxesC);boxesT.encoding=THREE.sRGBEncoding;var boxesB=new THREE.CanvasTexture(boxesC);
+  var boxesMat=new THREE.MeshStandardMaterial({map:boxesT,bumpMap:boxesB,bumpScale:.03,metalness:.6,roughness:.42,envMapIntensity:.12,side:THREE.BackSide});
+  var roomDark=new THREE.MeshStandardMaterial({color:'#0b0e15',roughness:.9,envMapIntensity:.05,side:THREE.BackSide});
+  var room=new THREE.Mesh(new THREE.BoxGeometry(8,6,8),[boxesMat,boxesMat,roomDark,roomDark,roomDark,boxesMat]);room.position.z=-5.2;room.receiveShadow=true;vault.add(room);
+  var table=sh(new THREE.Mesh(new THREE.BoxGeometry(3,.1,1.4),gunmetal));table.position.set(0,-1.45,-4.2);vault.add(table);
+  var barG=new THREE.BoxGeometry(.5,.16,.24);
+  [[5,0],[4,1],[3,2],[2,3]].forEach(function(row){for(var k=0;k<row[0];k++){var b=sh(new THREE.Mesh(barG,gold));b.position.set((k-(row[0]-1)/2)*.54,-1.32+row[1]*.17,-4.2);vault.add(b)}});
+  var inner=new THREE.SpotLight('#ffd49a',0,14,.9,.8,1.6);inner.position.set(0,2.7,-2.6);inner.target.position.set(0,-1.4,-4.6);vault.add(inner);vault.add(inner.target);
+
+  // porta
+  var pivot=new THREE.Group();pivot.position.set(-R-.02,0,0);vault.add(pivot);
+  var door=new THREE.Group();door.position.x=R+.02;pivot.add(door);
+  var dp=[[0,.3],[.5,.3],[.56,.33],[1.22,.33],[1.27,.3],[1.33,.3],[1.36,.27],[1.86,.27],[1.9,.3],[2.02,.3],[2.1,.26],[R-.03,.2],[R,.14],[R,-.24],[R-.04,-.28],[R*.84,-.28],[R*.84,-.62],[R*.8,-.66],[0,-.66]];
+  var doorG=new THREE.LatheGeometry(dp.map(function(p){return new THREE.Vector2(p[0],p[1])}),200);doorG.rotateX(Math.PI/2);
+  door.add(sh(new THREE.Mesh(doorG,steel)));
+  var face=sh(new THREE.Mesh(new THREE.CircleGeometry(1.2,128),steelFace));face.position.z=.331;door.add(face);
+  for(i=0;i<36;i++){a=i/36*Math.PI*2;var rv=sh(new THREE.Mesh(new THREE.SphereGeometry(.045,14,8,0,Math.PI*2,0,Math.PI/2),chrome));rv.rotation.x=Math.PI/2;rv.position.set(Math.cos(a)*1.96,Math.sin(a)*1.96,.3);door.add(rv)}
+  var hubG=new THREE.LatheGeometry([[0,0],[.46,0],[.46,.08],[.42,.14],[.36,.16],[.3,.3],[.2,.34],[0,.34]].map(function(p){return new THREE.Vector2(p[0],p[1])}),72);hubG.rotateX(Math.PI/2);
+  var hub=sh(new THREE.Mesh(hubG,chrome));hub.position.z=.33;door.add(hub);
+  var lampMat=new THREE.MeshStandardMaterial({color:'#000',emissive:new THREE.Color('#d6a24a'),emissiveIntensity:1.6});
+  var lamp=new THREE.Mesh(new THREE.TorusGeometry(.6,.018,10,120),lampMat);lamp.position.z=.345;door.add(lamp);
+  var wheel=new THREE.Group();wheel.position.z=.78;door.add(wheel);
+  wheel.add(sh(new THREE.Mesh(new THREE.TorusGeometry(.98,.07,28,160),chrome)));
+  for(i=0;i<3;i++){var spk=sh(new THREE.Mesh(new THREE.CylinderGeometry(.045,.045,1.96,20),chrome));spk.rotation.z=i*Math.PI/3+Math.PI/2;wheel.add(spk)}
+  wheel.add(sh(new THREE.Mesh(new THREE.SphereGeometry(.15,32,16),chrome)));
+  for(i=0;i<6;i++){a=i/6*Math.PI*2;var kn=sh(new THREE.Mesh(new THREE.CylinderGeometry(.055,.065,.38,20),chrome));kn.rotation.x=Math.PI/2;kn.position.set(Math.cos(a)*1.06,Math.sin(a)*1.06,.15);wheel.add(kn);
+    var cap=sh(new THREE.Mesh(new THREE.SphereGeometry(.08,20,12),chrome));cap.position.set(Math.cos(a)*1.06,Math.sin(a)*1.06,.35);wheel.add(cap)}
+  var axle=sh(new THREE.Mesh(new THREE.CylinderGeometry(.08,.08,.5,20),chrome));axle.rotation.x=Math.PI/2;axle.position.z=.55;door.add(axle);
+  // placa gravada
+  (function(){var c=cv(512,128),g=c.getContext('2d');function draw(){g.fillStyle='#20252f';g.fillRect(0,0,512,128);g.strokeStyle='rgba(214,162,74,.9)';g.lineWidth=3;g.strokeRect(8,8,496,112);g.fillStyle='#d6a24a';g.font='600 40px Geist, system-ui, sans-serif';g.textAlign='center';g.fillText('COFRE ABERTO · MS',256,64);g.fillStyle='#9aa1ad';g.font='500 17px "Geist Mono", monospace';g.fillText('DADOS PÚBLICOS · CAMPO GRANDE',256,96)}
+    draw();var t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;
+    var plate=new THREE.Mesh(new THREE.BoxGeometry(1.4,.35,.025),[gunmetal,gunmetal,gunmetal,gunmetal,new THREE.MeshStandardMaterial({map:t,metalness:.5,roughness:.4,envMapIntensity:.6}),gunmetal]);plate.position.set(0,-1.6,.3);plate.receiveShadow=true;door.add(plate);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){draw();t.needsUpdate=true})})();
+  var bolts=[];
+  for(i=0;i<10;i++){a=i/10*Math.PI*2+Math.PI/10;var bm=sh(new THREE.Mesh(new THREE.CylinderGeometry(.12,.12,.8,24),chrome));bm.rotation.z=a-Math.PI/2;bm.userData={a:a,s:{x:0,v:0}};door.add(bm);bolts.push(bm)}
+
+  // luz de estúdio: uma principal macia do alto à esquerda + preenchimento
+  scene.add(new THREE.HemisphereLight('#f4f6fa','#7d8491',.45));
+  var key=new THREE.SpotLight('#ffffff',1.35,60,.5,.9,1);key.position.set(-6,8,11);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.bias=-.0003;key.shadow.normalBias=.02;key.shadow.radius=6;key.shadow.camera.near=4;key.shadow.camera.far=40;
+  scene.add(key);scene.add(key.target);
+  var fill=new THREE.DirectionalLight('#dfe6f5',.35);fill.position.set(6,2,6);scene.add(fill);
+
+  // enquadramento: a porta preenche a coluna da direita
+  function layout(){var w=view.clientWidth,h=view.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;
+    var fitH=(R+.9)*2/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)));var fitW=fitH/Math.min(1,camera.aspect);
+    camera.userData.z=Math.max(fitH,fitW)*1.05;camera.updateProjectionMatrix()}
+  layout();
+  if(window.ResizeObserver)new ResizeObserver(layout).observe(view);else addEventListener('resize',layout);
+
+  var target=0,p=0,mx=0,my=0,cmx=0,cmy=0;
+  function onScroll(){var r=stage.getBoundingClientRect(),span=stage.offsetHeight-innerHeight;target=span>0?clamp(-r.top/span):0}
+  onScroll();addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('pointermove',function(e){mx=e.clientX/innerWidth*2-1;my=e.clientY/innerHeight*2-1},{passive:true});
+
+  var wheelS={x:0,v:0},doorS={x:0,v:0};
+  function spring(s,t,dt,k,c){var acc=(t-s.x)*k-s.v*c;s.v+=acc*dt;s.x+=s.v*dt}
+  var amber=new THREE.Color('#d6a24a'),green=new THREE.Color('#1fa36a');
+  var released=false,lastLabel='',lastStep=-1,last=performance.now(),first=true;
+
+  function frame(now){
+    var dt=Math.min(.05,(now-last)/1000);last=now;
+    p+=(target-p)*(reduce?1:Math.min(1,dt*8));
+    // mouse: decorativo, com mola e amplitude pequena
+    cmx+=(mx-cmx)*Math.min(1,dt*2.2);cmy+=(my-cmy)*Math.min(1,dt*2.2);
+
+    var spin=ease(clamp(p/.32)),unbolt=clamp((p-.3)/.24),open=ease(clamp((p-.56)/.4));
+    spring(wheelS,-spin*Math.PI*2,dt,reduce?600:60,reduce?50:15);wheel.rotation.z=wheelS.x;
+    var allIn=true;
+    for(var i=0;i<bolts.length;i++){var b=bolts[i],u=b.userData,tg=clamp((unbolt-i*.06)/.4);spring(u.s,tg,dt,reduce?900:110,reduce?60:21);
+      var r=R+.12-u.s.x*.62;b.position.set(Math.cos(u.a)*r,Math.sin(u.a)*r,0);if(u.s.x<.96)allIn=false}
+    released=allIn;
+    spring(doorS,released?-1.75*open:0,dt,reduce?600:22,reduce?50:9.4);pivot.rotation.y=doorS.x;
+    var openAmt=clamp(-doorS.x/1.75);
+    lampMat.emissive.copy(amber).lerp(green,clamp(unbolt));
+    inner.intensity=openAmt*3.2;
+
+    var z=camera.userData.z;
+    camera.position.set(cmx*.35,-cmy*.22,z-openAmt*.6);camera.lookAt(0,0,-openAmt*.8);
+
+    // interface: escreve direto no estilo, sem re-render
+    var seg=[clamp(p/.32),clamp((p-.3)/.26),clamp((p-.56)/.4)];
+    for(i=0;i<3;i++)stepBars[i].style.transform='scaleX('+seg[i].toFixed(3)+')';
+    var step=openAmt>.02?2:unbolt>0?1:0;
+    if(step!==lastStep){stepEls.forEach(function(e,k){e.classList.toggle('on',k===step)});lastStep=step}
+    var label=step===0?'Trancado':step===1?'Destravando':openAmt>.97?'Aberto':'Abrindo';
+    if(label!==lastLabel){statusText.textContent=label;statusEl.classList.toggle('open',step===2);lastLabel=label}
+    statusPct.textContent=Math.round(p*100)+'%';
+
+    renderer.render(scene,camera);
+    if(first){first=false;canvas.classList.add('ready')}
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>

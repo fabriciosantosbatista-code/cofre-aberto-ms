@@ -224,6 +224,39 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
     gap: 6px; margin-top: 48px; color: var(--ink-caption);
     font-size: .72rem;
 }
+
+/* CAPA COM A FOTO DO COFRE ABERTO (nov/2026) — os números e a data seguem sendo atualizados por scripts/atualizar_paginas.py */
+.hero{position:relative;width:100vw;margin-left:calc(50% - 50vw);min-height:min(88vh,860px);display:flex;align-items:center;text-align:left;padding:72px 0;overflow:hidden;isolation:isolate;background:#1d1e21;}
+.hero-foto{position:absolute;inset:0;z-index:-2;display:block;}
+.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:left center;display:block;transform-origin:30% 50%;animation:capaAssenta 1.8s cubic-bezier(.23,1,.32,1) both;}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(7,9,16,0) 38%,rgba(7,9,16,.42) 56%,rgba(7,9,16,.76) 78%,rgba(7,9,16,.86) 100%),linear-gradient(180deg,rgba(7,9,16,.3) 0,rgba(7,9,16,0) 18%,rgba(7,9,16,0) 74%,var(--bg) 100%);}
+.hero-conteudo{width:100%;max-width:1320px;margin:0 auto;padding:0 32px;display:flex;justify-content:flex-end;}
+.hero-texto{width:min(450px,36%);}
+.hero .hero-logo{display:none;}
+.hero .hero-badge{background:rgba(15,17,23,.7);backdrop-filter:blur(8px);}
+.hero h1{font-size:clamp(2rem,3.4vw,3.3rem);text-shadow:0 2px 24px rgba(0,0,0,.5);}
+.hero h1 em{background:linear-gradient(135deg,#f5c842 0%,#f5c842 25%,#e8a020 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 14px rgba(232,160,32,.25));}
+.hero p{margin:0 0 28px;max-width:none;font-size:1rem;color:#c3c8d2;text-shadow:0 1px 12px rgba(0,0,0,.6);}
+.hero .hero-btns{justify-content:flex-start;}
+.hero .btn-primary,.hero .btn-secondary{padding:13px 22px;}
+.hero .btn-primary,.nav-cta{background:linear-gradient(135deg,#f5c842,#e8a020);color:#0f1117;}
+.hero .btn-primary:hover,.nav-cta:hover{background:linear-gradient(135deg,#ffd75e,#f0ad2c);box-shadow:0 8px 24px rgba(232,160,32,.35);}
+.hero .btn-primary svg path{stroke:#0f1117;}
+.hero .btn-primary svg rect:first-of-type{fill:#0f1117;}
+.hero .btn-primary svg circle,.hero .btn-primary svg rect:last-of-type{fill:#f5c842;}
+.hero .btn-secondary{background:rgba(7,9,16,.55);backdrop-filter:blur(8px);}
+.hero .btn-secondary:hover{border-color:#f5c842;color:#f5c842;}
+.hero .scroll-indicator{align-items:flex-start;}
+@keyframes capaAssenta{from{transform:scale(1.045);}}
+@media(max-width:860px){
+  .hero{display:block;min-height:0;padding:0 0 40px;}
+  .hero-foto{position:relative;z-index:0;}
+  .hero-foto img{height:auto;aspect-ratio:4/3;}
+  .hero::after{background:linear-gradient(180deg,rgba(7,9,16,0) 28%,var(--bg) 56%);z-index:0;}
+  .hero-conteudo{position:relative;z-index:1;margin-top:-12vw;}
+  .hero-texto{width:100%;}
+}
+@media(prefers-reduced-motion:reduce){.hero-foto img{animation:none;}}
 </style>
 
 <!-- Structured data (JSON-LD) -->
@@ -334,6 +367,12 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
   </nav>
 
   <section class="hero">
+    <picture class="hero-foto">
+      <source media="(max-width: 860px)" srcset="capa/cofre-aberto-celular.webp" type="image/webp"/>
+      <source srcset="capa/cofre-aberto-1280.webp 1280w, capa/cofre-aberto-1920.webp 1920w" sizes="100vw" type="image/webp"/>
+      <img src="capa/cofre-aberto-1920.jpg" alt="Porta de cofre de banco aberta; dentro, gavetas de cofre, barras de ouro e maços de dinheiro" width="1920" height="1080" fetchpriority="high"/>
+    </picture>
+    <div class="hero-conteudo"><div class="hero-texto">
     <div class="hero-logo" style="margin-bottom:28px">
       <img src="logo.svg?v=2" alt="Cofre Aberto MS" width="240" height="72" style="display:inline-block"/>
     </div>
@@ -355,6 +394,7 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
         <span>role para ver mais</span>
       <div class="scroll-arrow"></div>
     </div>
+    </div></div>
   </section>
 
   <div class="stats-bar">
