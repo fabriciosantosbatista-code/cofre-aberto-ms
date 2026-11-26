@@ -14,7 +14,7 @@ on:
     - cron: '13 9 * * *'
   # Coleta principal do dia: disparada de fora do GitHub (Cloudflare Worker, cron 37 4 * * * = 00h37 de Campo Grande),
   # porque o agendador do GitHub pula ou atrasa horas (21/11/2026: 05:37 e 09:13 não rodaram; a de 09:13 começou às
-  # 13:39). Os agendamentos acima ficam como reserva e encerram sozinhos se já houve coleta com sucesso em 12 h.
+  # 13:39). Os agendamentos acima ficam como reserva e encerram sozinhos se já houve coleta com sucesso no dia (Campo Grande).
   workflow_dispatch:
     inputs:
       origem:
@@ -39,7 +39,7 @@ permissions:
   actions: read   # o ICP lê o log dos robôs desta execução para saber qual coleta falhou
 
 jobs:
-  # Reserva do GitHub: se já houve coleta concluída com sucesso nas últimas 12 h, a execução agendada se encerra aqui
+  # Reserva do GitHub: se já houve coleta concluída com sucesso hoje (dia de Campo Grande), a execução agendada se encerra aqui
   # (cancelada, sem coletar nem publicar). Disparos manuais, externos e do vigia sempre seguem.
   decidir:
     runs-on: ubuntu-latest
@@ -65,13 +65,16 @@ jobs:
           from datetime import datetime, timedelta, timezone
           runs = json.loads(subprocess.run(["gh", "api", f"repos/{os.environ['REPO']}/actions/workflows/atualizar.yml/runs?status=success&per_page=10"],
                                            capture_output=True, text=True, check=True).stdout)["workflow_runs"]
-          agora = datetime.now(timezone.utc)
+          # "hoje" é o dia de Campo Grande (UTC-4): a reserva atrasada à tarde não repete a coleta da madrugada
+          # (26/11/2026: a reserva rodou às 14h57, mais de 12 h depois da coleta das 00h37, e coletou de novo)
+          cg = timezone(timedelta(hours=-4))
+          inicio = datetime.now(cg).replace(hour=0, minute=0, second=0, microsecond=0)
           ok = [r for r in runs if str(r["id"]) != os.environ["RUN"]
-                and agora - datetime.fromisoformat(r["updated_at"].replace("Z", "+00:00")) < timedelta(hours=12)]
+                and datetime.fromisoformat(r["updated_at"].replace("Z", "+00:00")) >= inicio]
           saida = open(os.environ["GITHUB_OUTPUT"], "a")
           if not ok:
-              print("▶️ nenhuma coleta com sucesso nas últimas 12 h — a reserva do GitHub coleta agora"); saida.write("coletar=true\n"); sys.exit(0)
-          print(f"⏭ já houve coleta com sucesso há menos de 12 h ({ok[0]['id']}, {ok[0]['display_title']}) — reserva encerrada sem coletar")
+              print("▶️ nenhuma coleta com sucesso hoje (dia de Campo Grande) — a reserva do GitHub coleta agora"); saida.write("coletar=true\n"); sys.exit(0)
+          print(f"⏭ já houve coleta com sucesso hoje (dia de Campo Grande) ({ok[0]['id']}, {ok[0]['display_title']}) — reserva encerrada sem coletar")
           saida.write("coletar=false\n"); saida.close()
           import time
           for t in range(5):  # a API do GitHub às vezes devolve 500 no cancelamento
