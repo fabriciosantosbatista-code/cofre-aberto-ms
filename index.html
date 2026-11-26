@@ -310,6 +310,26 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
   .hero-conteudo{max-width:none;margin-left:0;margin-right:0;padding-left:var(--x-capa);padding-right:24px}
 }
 
+
+/* 26/11/2026 — foto larga (render 4320×1080 com parede dos dois lados): altura própria da foto em px, que encolhe com
+   o zoom junto com as letras; em tela baixa (notebook 11") a foto se ajusta para texto e botões caberem na 1ª tela */
+@media(min-width:861px){
+  .hero{--h-foto:min(560px,max(300px,calc(100svh - 330px)))}
+  .hero-foto img{width:100%;height:var(--h-foto);aspect-ratio:auto;object-fit:cover;object-position:30% 30%}
+  .hero-conteudo{margin-top:calc(var(--h-foto) * -.1)}
+  .logo-capa{height:72px}
+  .hero h1{font-size:3.6rem}
+  .hero .hero-lead{font-size:1.1rem}
+  .hero-eyebrow{font-size:.78rem}
+  .hero .btn-primary,.hero .btn-secondary{font-size:1rem;padding:14px 22px}
+  .hero .hero-badge{font-size:.74rem}
+}
+@media(min-width:861px) and (max-height:760px){
+  .logo-capa{height:58px}
+  .hero h1{font-size:2.8rem}
+  .hero .hero-lead{font-size:1rem}
+  .hero .hero-texto{gap:12px}
+}
 </style>
 
 <!-- Structured data (JSON-LD) -->
@@ -422,7 +442,7 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
   <section class="hero">
     <picture class="hero-foto">
       <source media="(max-width: 860px)" srcset="capa/cofre-aberto-celular.webp" type="image/webp"/>
-      <source srcset="capa/cofre-aberto-1280.webp 1280w, capa/cofre-aberto-1920.webp 1920w" sizes="100vw" type="image/webp"/>
+      <source srcset="capa/cofre-aberto-largo-2160.webp 2160w, capa/cofre-aberto-largo.webp 4320w" sizes="100vw" type="image/webp"/>
       <img src="capa/cofre-aberto-1920.jpg" alt="Porta de cofre de banco aberta; dentro, gavetas de cofre, barras de ouro e maços de dinheiro" width="1920" height="1080" fetchpriority="high"/>
     </picture>
     <div class="hero-conteudo"><div class="hero-texto">
