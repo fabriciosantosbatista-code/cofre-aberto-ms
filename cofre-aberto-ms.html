@@ -5770,7 +5770,7 @@ function renderAuditoria(d) {
     const f = lista.filter(s => !teste || s.teste === teste);
     caixa.innerHTML = f.slice(0, limite).map(s => `
       <div class="alerta-card ${s.nivel === "forte" ? "forte" : "medio"}" id="sinal-${s.id}">
-        <div class="alerta-topo"><span class="cx-tag">${escHTML(s.rotulo)}</span><span class="alerta-data">nível ${escHTML(s.nivel)}</span>${s.vistoEm > base && s.vistoEm >= recente ? `<span class="cx-tag" style="border-color:var(--amber);color:var(--amber)">novo</span>` : ""}</div>
+        <div class="alerta-topo"><span class="cx-tag">${escHTML(s.rotulo)}</span><span class="alerta-data">nível ${escHTML(s.nivel)}</span>${s.vistoEm > base && s.vistoEm >= recente ? `<span class="cx-tag" style="border-color:var(--amber);color:var(--amber)">novo</span>` : ""}${s.naoReconferido ? `<span class="cx-tag" title="${escHTML(s.naoReconferidoMotivo || "")}">não reconferido nesta coleta</span>` : ""}</div>
         <div class="alerta-titulo">${escHTML(s.titulo)}</div>
         <div class="alerta-desc">${escHTML(s.descricao)}</div>
         ${(s.evidencias || []).length ? `<ul class="alerta-evid">${s.evidencias.map(e => `<li>${escHTML(e)}</li>`).join("")}</ul>` : ""}

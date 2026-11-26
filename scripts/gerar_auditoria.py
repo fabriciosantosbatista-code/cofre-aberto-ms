@@ -155,14 +155,28 @@ def main():
     anterior = {s["id"]: s for s in (carregar("auditoria.json") or {}).get("sinais", [])}
     sinais = []
 
-    def add(teste, chave, titulo, descricao, valor, evid, quem=None, cnpj=None, link=None):
-        i = hashlib.sha1(("|".join([teste] + [str(c) for c in chave])).encode()).hexdigest()[:12]
+    def id_de(teste, chave):
+        return hashlib.sha1(("|".join([teste] + [str(c) for c in chave])).encode()).hexdigest()[:12]
+
+    def add(teste, chave, titulo, descricao, valor, evid, quem=None, cnpj=None, link=None, par=None):
+        # par = (a, b): sinal de duas empresas. A fonte lista as vencedoras em ordem que muda de uma coleta para outra;
+        # o sinal fica com o id que já tinha (em qualquer das duas ordens) e com a data em que foi visto pela 1ª vez.
+        ids = [id_de(teste, chave)]
+        if par:
+            a, b = par
+            troca = {a: min(a, b), b: max(a, b)}, {a: max(a, b), b: min(a, b)}
+            ids = [id_de(teste, [m.get(x, x) for x in chave]) for m in troca]  # 1º: a ordem fixa (CNPJ menor antes)
+        i = next((x for x in ids if x in anterior), ids[0])
+        if any(x["id"] == i for x in sinais):
+            return
+        vistos = [anterior[x]["vistoEm"] for x in ids if anterior.get(x, {}).get("vistoEm")]
         c = dig(cnpj)
         sinais.append({"id": i, "teste": teste, "rotulo": ROTULO[teste], "nivel": NIVEL[teste], "titulo": titulo,
                        "descricao": descricao, "valor": round(valor or 0, 2), "evidencias": evid, "quem": quem,
                        "cnpj": c or None, "empresa": (cad.get(c) or {}).get("razao") if c else None,
                        "paginaEmpresa": f"/empresa/{c[:8]}/" if c and c[:8] in emp_idx else None, "link": link,
-                       "vistoEm": anterior.get(i, {}).get("vistoEm") or HOJE.isoformat()})
+                       "cnpjs": sorted(dig(x) for x in par) if par else None,
+                       "vistoEm": min(vistos) if vistos else HOJE.isoformat()})
 
     # recebimentos por empresa (CNPJ completo) e por pagador
     por_cnpj = {}
@@ -745,7 +759,7 @@ def main():
                         f"{cad[a].get('razao')} e {cad[b].get('razao')} venceram a mesma licitação ({l['objeto'][:140]}) e têm {' e '.join(lig)} "
                         f"na Receita. Em licitação por lotes, empresas do mesmo grupo podem vencer itens diferentes.",
                         l.get("valorEstimado") or 0, [f"Processo {l['processo']}", f"Data: {data_br(l['data'])}"], "Prefeitura de CG", a,
-                        "#aba=contratos-cg&p=" + l["processo"])
+                        "#aba=contratos-cg&p=" + l["processo"], par=(a, b))
 
     # ── Sócios em comum entre vencedoras da mesma licitação ──
     for l in licit:
@@ -766,7 +780,7 @@ def main():
                         f"{venc[i]['nome']} e {venc[j]['nome']} venceram a mesma licitação ({l['objeto'][:160]}) e têm em comum o(s) sócio(s) "
                         f"{', '.join(sorted(comum))}. Empresas do mesmo dono numa disputa podem simular concorrência.",
                         l.get("valorEstimado") or 0, [f"Processo {l['processo']}", f"Data: {data_br(l['data'])}", f"Situação: {l['status']}"],
-                        "Prefeitura de CG", a, "#aba=contratos-cg&p=" + l["processo"])
+                        "Prefeitura de CG", a, "#aba=contratos-cg&p=" + l["processo"], par=(a, b))
 
     # ── Atividade incompatível ──
     agr = {}
@@ -962,6 +976,26 @@ def main():
                         f"é um ponto para perguntar ao órgão, não prova de irregularidade. O processo pode ser pedido pela Lei de Acesso à Informação.",
                         x["valor"] - med, [f"{brl(y['valor'])} — {y['orgao']}" + (f" ({y['cidade']})" if y.get("cidade") else "") for y in lst[:6]],
                         x["orgao"], None, x.get("link"))
+
+    # ── Fonte que falhou nesta coleta: os sinais anteriores ficam, com a data original, marcados "não reconferido" ──
+    # Nunca remove e recria: sinal só sai quando a fonte respondeu e o sinal deixou de existir nela.
+    sem_licit = not licit
+    atuais = {x["id"] for x in sinais}
+    for s_ant in anterior.values():
+        if s_ant["id"] in atuais or s_ant.get("teste") not in ROTULO:
+            continue
+        motivo = None
+        if s_ant["teste"] in ("socios_licitacao", "endereco_comum") and sem_licit:
+            motivo = "licitações da Prefeitura não vieram nesta coleta"
+        else:
+            faltam = [c for c in (s_ant.get("cnpjs") or [s_ant.get("cnpj")]) if c and (c not in cad or "socios" not in cad[c]) and not (cad.get(c) or {}).get("naoEncontrado")]
+            if faltam:
+                motivo = "consulta ao cadastro da Receita falhou nesta coleta"
+        if motivo:
+            sinais.append({**s_ant, "naoReconferido": True, "naoReconferidoMotivo": motivo})
+    for x in sinais:
+        if x["id"] in atuais:
+            x.pop("naoReconferido", None); x.pop("naoReconferidoMotivo", None)
 
     ordem = {"forte": 0, "médio": 1}
     sinais.sort(key=lambda s: (ordem[s["nivel"]], -s["valor"]))
