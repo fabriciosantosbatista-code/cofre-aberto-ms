@@ -270,28 +270,45 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
 .hero .btn-primary svg{display:none}
 .hero .hero-badge{background:none;border:0;padding:0;margin:0;backdrop-filter:none;gap:10px;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);animation:none}
 .hero .hero-badge>span:first-child{width:8px;height:8px;background:#3ddc97;box-shadow:0 0 10px #3ddc97;animation:none}
-@media(max-width:860px){.hero-eyebrow{font-size:.62rem;letter-spacing:.1em}.hero .hero-texto{width:100%;gap:16px}.hero .hero-btns{flex-direction:row;flex-wrap:wrap;align-items:flex-start}.hero .btn-primary,.hero .btn-secondary{width:auto}}
+@media(max-width:860px){.hero-eyebrow{font-size:.62rem;letter-spacing:.1em}.hero .hero-texto{width:100%}.hero .hero-btns{flex-direction:row;flex-wrap:wrap;align-items:flex-start}.hero .btn-primary,.hero .btn-secondary{width:auto}}
 /* texto embaixo do cofre em todos os tamanhos; logo e botão do menu por cima da foto */
 .page>nav{position:absolute;top:0;left:24px;right:24px;z-index:5;border-bottom:0;padding:22px 0}
 .logo-capa{height:56px;width:auto;display:block;filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))}
 .hero{display:block;min-height:0;padding:0 0 56px;background:var(--bg)}
 .hero-foto{position:relative;z-index:0;overflow:hidden;line-height:0}
-@media(min-width:861px){.hero-foto{width:min(100%,calc(52vh*1920/760));margin:0 auto}}
-.hero-foto img{width:100%;height:auto;aspect-ratio:1920/760;object-position:30% 52%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 78%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 78%,transparent 100%)}
+.hero-foto img{height:auto;aspect-ratio:1920/845;object-position:30% 62%}
 .hero::after{display:none}
-.hero-foto::after{content:'';position:absolute;inset:0 0 -2px 0;pointer-events:none;background:linear-gradient(180deg,rgba(7,11,20,.55) 0,rgba(7,11,20,0) 18%,rgba(7,11,20,0) 93%,var(--bg) 100%)}
+.hero-foto::after{content:'';position:absolute;inset:0 0 -2px 0;pointer-events:none;background:linear-gradient(180deg,rgba(7,11,20,.55) 0,rgba(7,11,20,0) 18%,rgba(7,11,20,0) 86%,rgba(7,11,20,.65) 94%,var(--bg) 100%)}
 .cta-final::before{background:linear-gradient(90deg,#f5c842,#e8a020)}
-.hero-conteudo{position:relative;z-index:1;justify-content:flex-start;margin-top:4px;max-width:1240px;padding:0 24px}
-.hero .hero-texto{width:100%;gap:16px}
+.hero-conteudo{position:relative;z-index:1;justify-content:flex-start;margin-top:-36px;max-width:1240px;padding:0 24px}
+.hero .hero-texto{width:100%}
 .hero h1{font-size:clamp(2.4rem,4.6vw,4.6rem);text-wrap:wrap}
 .hero .hero-lead{max-width:60ch}
 /* todos os botões principais no âmbar do logo (o do fim da página ainda estava azul) */
 .btn-primary{background:linear-gradient(135deg,#f5c842,#e8a020)!important;color:#0f1117!important;border:0}
 .btn-primary:hover{background:linear-gradient(135deg,#ffd75e,#f0ad2c)!important;box-shadow:0 8px 24px rgba(232,160,32,.35)}
 .btn-primary svg path{stroke:#0f1117}.btn-primary svg rect:first-of-type{fill:#0f1117}.btn-primary svg circle,.btn-primary svg rect:last-of-type{fill:#f5c842}
-@media(max-width:860px){.page>nav{left:16px;right:16px;padding:16px 0}.logo-capa{height:44px}.hero-foto img{width:100%;height:auto;aspect-ratio:4/3;object-position:center top;-webkit-mask-image:none;mask-image:none}.hero-foto::after{background:linear-gradient(180deg,rgba(7,11,20,.55) 0,rgba(7,11,20,0) 16%,rgba(7,11,20,0) 76%,rgba(7,11,20,.7) 90%,var(--bg) 100%)}.hero-conteudo{margin-top:-12vw;padding:0 16px}}
+@media(max-width:860px){.page>nav{left:16px;right:16px;padding:16px 0}.logo-capa{height:44px}.hero-foto img{height:auto;aspect-ratio:4/3;object-position:center top}.hero-foto::after{background:linear-gradient(180deg,rgba(7,11,20,.55) 0,rgba(7,11,20,0) 16%,rgba(7,11,20,0) 76%,rgba(7,11,20,.7) 90%,var(--bg) 100%)}.hero-conteudo{margin-top:-12vw;padding:0 16px}}
 @media(max-width:600px){.hero h1{font-size:clamp(1.9rem,8.6vw,2.5rem)}.hero .hero-texto{gap:16px}.hero .hero-lead{font-size:1rem}}
 @media(prefers-reduced-motion:reduce){.hero *{animation:none!important}}
+/* computador: texto e botões sobem para o chão da foto, logo abaixo da base do cofre, e cabem na primeira tela */
+@media(min-width:861px){
+  .hero-conteudo{margin-top:calc(-11vw)}
+  .hero-foto::after{background:linear-gradient(180deg,rgba(7,11,20,.55) 0,rgba(7,11,20,0) 18%,rgba(7,11,20,0) 70%,rgba(7,11,20,.72) 82%,rgba(7,11,20,.92) 92%,var(--bg) 100%)}
+  .hero .hero-texto{gap:14px}
+  /* logo maior e um pouco mais para a esquerda (metade do caminho até a borda da tela) */
+  /* logo e palavras na mesma linha, mais perto da borda esquerda (metade do caminho até a borda) */
+  .hero{--x-capa:max(32px,calc((100vw - 1100px) / 6 + 16px))}
+  .page>nav{left:calc(max(32px,calc((100vw - 1100px) / 6 + 16px)) - max(0px,calc((100vw - 1100px) / 2)))}
+  .logo-capa{height:clamp(64px,5.4vw,120px)}
+  /* letras crescem com a tela (antes paravam em 4,6rem e ficavam pequenas em monitor grande) */
+  .hero h1{font-size:clamp(2.2rem,4.6vw,6.6rem)}
+  .hero .hero-lead{font-size:clamp(1rem,.55vw + .6rem,1.45rem)}
+  .hero-eyebrow{font-size:clamp(.74rem,.42vw + .4rem,1.05rem)}
+  .hero .btn-primary,.hero .btn-secondary{font-size:clamp(.95rem,.5vw + .55rem,1.25rem);padding:clamp(13px,.8vw,18px) clamp(20px,1.3vw,28px)}
+  .hero .hero-badge{font-size:clamp(.72rem,.35vw + .45rem,.95rem)}
+  .hero-conteudo{max-width:none;margin-left:0;margin-right:0;padding-left:var(--x-capa);padding-right:24px}
+}
 
 </style>
 
