@@ -275,12 +275,12 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
 .page>nav{position:absolute;top:0;left:24px;right:24px;z-index:5;border-bottom:0;padding:22px 0}
 .logo-capa{height:56px;width:auto;display:block;filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))}
 .hero{display:block;min-height:0;padding:0 0 56px;background:var(--bg)}
-.hero-foto{position:relative;z-index:0}
-.hero-foto img{height:clamp(340px,60vh,720px);aspect-ratio:auto;object-position:30% 90%}
+.hero-foto{position:relative;z-index:0;overflow:hidden;line-height:0}
+.hero-foto img{height:auto;aspect-ratio:1920/845;object-position:30% 62%}
 .hero::after{display:none}
-.hero-foto::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(7,11,20,.55) 0,rgba(7,11,20,0) 18%,rgba(7,11,20,0) 72%,rgba(7,11,20,.7) 88%,var(--bg) 100%)}
+.hero-foto::after{content:'';position:absolute;inset:0 0 -2px 0;pointer-events:none;background:linear-gradient(180deg,rgba(7,11,20,.55) 0,rgba(7,11,20,0) 18%,rgba(7,11,20,0) 86%,rgba(7,11,20,.65) 94%,var(--bg) 100%)}
 .cta-final::before{background:linear-gradient(90deg,#f5c842,#e8a020)}
-.hero-conteudo{position:relative;z-index:1;justify-content:flex-start;margin-top:-64px;max-width:1240px;padding:0 24px}
+.hero-conteudo{position:relative;z-index:1;justify-content:flex-start;margin-top:-36px;max-width:1240px;padding:0 24px}
 .hero .hero-texto{width:100%}
 .hero h1{font-size:clamp(2.4rem,4.6vw,4.6rem);text-wrap:wrap}
 .hero .hero-lead{max-width:60ch}
@@ -288,7 +288,7 @@ footer .footer-links a.footer-whatsapp:hover{color:#25D366;}
 .btn-primary{background:linear-gradient(135deg,#f5c842,#e8a020)!important;color:#0f1117!important;border:0}
 .btn-primary:hover{background:linear-gradient(135deg,#ffd75e,#f0ad2c)!important;box-shadow:0 8px 24px rgba(232,160,32,.35)}
 .btn-primary svg path{stroke:#0f1117}.btn-primary svg rect:first-of-type{fill:#0f1117}.btn-primary svg circle,.btn-primary svg rect:last-of-type{fill:#f5c842}
-@media(max-width:860px){.page>nav{left:16px;right:16px;padding:16px 0}.logo-capa{height:44px}.hero-foto img{height:auto;aspect-ratio:3/2}.hero-conteudo{margin-top:-12vw;padding:0 16px}}
+@media(max-width:860px){.page>nav{left:16px;right:16px;padding:16px 0}.logo-capa{height:44px}.hero-foto img{height:auto;aspect-ratio:4/3;object-position:center top}.hero-foto::after{background:linear-gradient(180deg,rgba(7,11,20,.55) 0,rgba(7,11,20,0) 16%,rgba(7,11,20,0) 76%,rgba(7,11,20,.7) 90%,var(--bg) 100%)}.hero-conteudo{margin-top:-12vw;padding:0 16px}}
 @media(max-width:600px){.hero h1{font-size:clamp(1.9rem,8.6vw,2.5rem)}.hero .hero-texto{gap:16px}.hero .hero-lead{font-size:1rem}}
 @media(prefers-reduced-motion:reduce){.hero *{animation:none!important}}
 
