@@ -196,6 +196,10 @@ def carregar_ceap_bulk(ano):
 
     # O arquivo anual da Câmara demora a receber os lançamentos recentes, e em 2026 deixou de trazer as passagens
     # aéreas do SIGEPA. A API tem os dois: completa o que falta no arquivo (o arquivo prevalece quando chegar).
+    try:
+        complementar_encolhidos(por_dep, _notas_publicadas(ano), ano)
+    except Exception as e:
+        log(f"  ⚠️ complemento dos meses encolhidos falhou: {e} — a proteção da publicação decide")
     sigepa_no_arquivo = any("SIGEPA" in c for d in por_dep.values() for c in d["cats"])
     ordem = sorted(por_dep, key=lambda i: por_dep[i].get("uf") != "MS")  # MS primeiro
     n_api = n_dup = 0
@@ -245,6 +249,131 @@ def _valor_api(item, invertida=False):
 
 
 ORIGEM_API = "API da Câmara (ainda não está no arquivo anual)"
+
+
+# 26/11/2026 — arquivo anual da Câmara incompleto (desde 25/11 traz menos notas que a versão publicada). Quando a queda
+# passa do limite da proteção da publicação (total −2% ou notas −10%, tests/test_variacoes.py), os meses que encolheram
+# de cada deputado são lidos da API, mês a mês e por data; as notas que faltam no arquivo entram marcadas com esta
+# origem. Cada coleta recomeça do arquivo: quando ele se normalizar, volta a prevalecer sozinho. A proteção continua:
+# se arquivo + API ainda ficarem abaixo da versão publicada, a versão anterior é mantida.
+LIMITE_TOTAL, LIMITE_NOTAS = 0.98, 0.90
+
+
+def origem_incompleto(hoje=None):
+    return f"API da Câmara (arquivo anual incompleto em {(hoje or date.today()).strftime('%d/%m')})"
+
+
+def _mes_da_nota(n):
+    m = n.get("mes")
+    if m:
+        return int(m)
+    d = str(n.get("data") or "")
+    return int(d[5:7]) if len(d) >= 7 and d[5:7].isdigit() else None
+
+
+def _por_mes(notas):
+    out = {}
+    for n in notas:
+        m = _mes_da_nota(n)
+        if m:
+            c = out.setdefault(m, [0, 0.0])
+            c[0] += 1
+            c[1] += float(n.get("valor") or 0)
+    return out
+
+
+def arquivo_encolheu(por_dep, publicado):
+    """(encolheu, total_arquivo, total_publicado, notas_arquivo, notas_publicadas) dos deputados da versão publicada."""
+    ta = tp = na = np_ = 0
+    for dep_id, notas_pub in publicado.items():
+        arq = (por_dep.get(dep_id) or {}).get("despesas") or []
+        ta += sum(float(n.get("valor") or 0) for n in arq)
+        na += len(arq)
+        tp += sum(float(n.get("valor") or 0) for n in notas_pub)
+        np_ += len(notas_pub)
+    encolheu = bool(publicado) and ((tp > 1000 and ta < tp * LIMITE_TOTAL) or (np_ > 20 and na < np_ * LIMITE_NOTAS))
+    return encolheu, ta, tp, na, np_
+
+
+def meses_encolhidos(notas_arquivo, notas_publicadas):
+    """Meses em que o arquivo tem menos notas ou menos valor que a versão publicada (ordem crescente)."""
+    a, p = _por_mes(notas_arquivo), _por_mes(notas_publicadas)
+    return sorted(m for m, (n, v) in p.items() if a.get(m, [0, 0.0])[0] < n or a.get(m, [0, 0.0])[1] < v - 0.01)
+
+
+def despesas_api_meses(dep_id, ano, meses, tentativas=4, espera=time.sleep, get=None):
+    """Despesas do deputado só nos meses pedidos, mês a mês, ordenadas pela data (ORDEM_API), com novas tentativas
+    por página. {mes: itens}; mês que não veio inteiro fica de fora (leitura parcial não serve)."""
+    get = get or (lambda params: requests.get(f"https://dadosabertos.camara.leg.br/api/v2/deputados/{dep_id}/despesas",
+                                              params=params, headers=HEADERS, timeout=40))
+    out = {}
+    for mes in meses:
+        itens, pagina, ok = [], 1, True
+        while ok:
+            for t in range(1, tentativas + 1):
+                try:
+                    r = get({"ano": ano, "mes": mes, "itens": 100, "pagina": pagina, **ORDEM_API})
+                    r.raise_for_status()
+                    j = r.json()
+                    break
+                except Exception:
+                    if t == tentativas:
+                        ok = False
+                        break
+                    espera(3 * t)
+            if not ok:
+                break
+            itens += j.get("dados") or []
+            if not any(l.get("rel") == "next" for l in j.get("links") or []):
+                break
+            pagina += 1
+            espera(0.3)
+        if ok:
+            out[mes] = itens
+    return out
+
+
+def complementar_encolhidos(por_dep, publicado, ano, hoje=None, ler=None):
+    """Completa pela API os meses que encolheram no arquivo anual. Devolve {dep_id: {"meses": [...], "lidos": [...],
+    "novas": n}} (vazio quando o arquivo não encolheu além do limite)."""
+    encolheu, ta, tp, na, np_ = arquivo_encolheu(por_dep, publicado)
+    if not encolheu:
+        return {}
+    log(f"  ⚠️ arquivo anual da Câmara abaixo da versão publicada ({na} notas, R$ {ta:,.2f} × {np_} notas, R$ {tp:,.2f}) — "
+        "completando pela API os meses que encolheram")
+    ler = ler or (lambda dep_id, meses: despesas_api_meses(dep_id, ano, meses))
+    rel, rotulo = {}, origem_incompleto(hoje)
+    for dep_id, notas_pub in publicado.items():
+        d = por_dep.setdefault(dep_id, {"total": 0.0, "cats": {}, "despesas": [], "uf": "MS"})
+        meses = meses_encolhidos(d["despesas"], notas_pub)
+        if not meses:
+            continue
+        lidos = ler(dep_id, meses)
+        itens = [it for m in sorted(lidos) for it in lidos[m]]
+        novas, _ = complemento_api(d["despesas"], itens, incluir_sigepa=True)
+        for n in novas:
+            n["origem"] = rotulo
+            d["total"] += n["valor"]
+            d["cats"][n["categoria"]] = d["cats"].get(n["categoria"], 0) + n["valor"]
+            d["despesas"].append(n)
+        rel[dep_id] = {"meses": meses, "lidos": sorted(lidos), "novas": len(novas)}
+        faltou = [m for m in meses if m not in lidos]
+        log(f"    deputado {dep_id}: meses {meses} → {len(novas)} notas da API" + (f"; sem resposta nos meses {faltou}" if faltou else ""))
+    encolheu, ta, tp, na, np_ = arquivo_encolheu(por_dep, publicado)
+    log(f"  arquivo + API: {na} notas, R$ {ta:,.2f} (versão publicada: {np_} notas, R$ {tp:,.2f})"
+        + (" — ainda abaixo: a proteção da publicação mantém a versão anterior" if encolheu else ""))
+    return rel
+
+
+def _notas_publicadas(ano):
+    """{dep_id: notas} da versão publicada de deputados_federais_ms.json (só do mesmo ano)."""
+    try:
+        pub = json.load(open(DADOS / "deputados_federais_ms.json", encoding="utf-8"))
+    except Exception:
+        return {}
+    if str(pub.get("ano") or ano) != str(ano):
+        return {}
+    return {d["id"]: d.get("despesas") or [] for d in pub.get("deputados", []) if d.get("despesas")}
 
 
 def _nota_api(it, invertida):
