@@ -557,6 +557,26 @@ def bloco_patrimonio(p):
             f"<a href='/cofre-aberto-ms.html#aba=eleicoes'>Ver todos no painel →</a></p>")
 
 
+CORRECOES = ROOT / "config" / "correcoes_paginas.json"
+
+
+def nota_correcao(p, hoje=None):
+    """Nota de correção discreta e datada (config/correcoes_paginas.json), exibida até a data "ate"."""
+    hoje = hoje or HOJE
+    try:
+        cs = json.load(open(CORRECOES, encoding="utf-8")).get("correcoes", [])
+    except Exception:
+        return ""
+    out = []
+    for c in cs:
+        if c.get("grupo") == p["grupo"] and c.get("nome") == p["nome"] and str(hoje) <= str(c.get("ate")):
+            dia = datetime.fromisoformat(c["data"]).strftime("%d/%m/%Y")
+            out.append(f"<p class='correcao' style='font-size:.82rem;color:var(--ink-soft,#9aa0a6);border-left:3px solid var(--border,#3a3f47);"
+                       f"padding:4px 10px;margin:8px 0 14px'>Correção em {dia}: o total desta página passou de {brl(c['de'])} para "
+                       f"{brl(c['para'])}. {e(c.get('texto') or '')}</p>")
+    return "".join(out)
+
+
 def pagina(p, irmaos):
     g = GRUPOS[p["grupo"]]
     cargo = g["cargo"] if p["grupo"] in ("vereador", "estadual") else f"{g['cargo']} por {p['uf']}"
@@ -662,7 +682,7 @@ def pagina(p, irmaos):
 <div class="perfil">{img_html}<div><h1>{e(p['nome'])}</h1>
 <div class="cargo">{e(cargo)} · {e(p['partido'] or 'sem partido')}{f" · {e(p['nomeCompleto'])}" if p.get('nomeCompleto') else ''}</div>{f"<div class='cargo'><b>Fora de exercício: {e(p['situacaoExercicio'])}</b></div>" if p.get('situacaoExercicio') else ''}{f"<div class='cargo'>⏳ Aguardando a fonte: {e(p['aguardandoFonte'])}. O total é a soma das notas publicadas.</div>" if p.get('aguardandoFonte') else ''}</div></div>
 <p><strong>{e(p['nome'])}</strong> gastou <strong>{brl(total)}</strong> de {e(g['cota'])} em {ANO}{f", registrados em <strong>{milhar(n)}</strong> notas fiscais" if n else ""}.{var_txt}</p>
-<div class="resumo-grid">{resumo}</div>
+{nota_correcao(p)}<div class="resumo-grid">{resumo}</div>
 <div class="acoes">
 <a class="btn prim" href="{painel}">Ver detalhes no painel</a>
 <a class="btn zap" href="{zap}" target="_blank" rel="noopener">💬 Compartilhar no WhatsApp</a>

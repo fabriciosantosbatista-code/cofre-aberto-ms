@@ -53,6 +53,19 @@ for o in outros:
         ruins.append(o["slug"])
 check(not ruins, f"endereços antigos: página curta noindex, com o link da Câmara e fora do sitemap ({len(ruins)} com problema: {ruins[:3]})")
 
+# nota de correção de 26/11/2026 (90 dias), com o total antigo e o novo de cada deputado
+sys.path.insert(0, str(ROOT / "scripts"))
+from datetime import date  # noqa: E402
+import gerar_paginas_parlamentares as gp  # noqa: E402
+cs = json.load(open(ROOT / "config" / "correcoes_paginas.json", encoding="utf-8"))["correcoes"]
+check(len(cs) == 8 and all(c["ate"] == "2027-02-24" and c["para"] > c["de"] for c in cs), "8 correções, até 24/02/2027 (90 dias)")
+for c in cs:
+    url = fed.get(f"federal|{c['nome']}")
+    h = (ROOT / url.strip("/") / "index.html").read_text(encoding="utf-8") if url else ""
+    check(f"Correção em 26/11/2026: o total desta página passou de R$ {br(c['de'])} para R$ {br(c['para'])}." in h, f"{c['nome']}: nota de correção na página")
+p0 = {"grupo": "federal", "nome": cs[0]["nome"]}
+check(gp.nota_correcao(p0, date(2027, 2, 24)) and not gp.nota_correcao(p0, date(2027, 2, 25)), "a nota sai depois de 90 dias")
+
 for e in erros:
     print("❌", e)
 print(f"✅ {len(oks)} checagens OK · ❌ {len(erros)} erros")
