@@ -1,22 +1,26 @@
 name: Instagram — post automático
 
-# 26/11/2026: o post sai logo depois que a coleta do dia publica com sucesso (workflow_run de "Atualizar dados
-# diariamente"); o horário das 11h47 de Campo Grande (15h47 UTC) fica só como RESERVA — se o post do dia já saiu, encerra
-# sozinho; se a coleta falhou, a reserva publica com os dados do dia anterior (os que estão no site). Também dá para rodar
-# à mão em Actions → Run workflow.
+# 26/11/2026: o post sai às 11h47 de Campo Grande (15h47 UTC) por um disparo externo — Cloudflare Worker
+# cofre-disparo-coleta (infra/cloudflare-worker/disparo-coleta.js), origem "externo" —, porque o agendador do GitHub
+# atrasa horas. O agendamento do GitHub no mesmo horário fica só como RESERVA: se o post do dia já saiu, encerra sozinho.
+# Usa os dados que estão no site (se a coleta do dia ainda não publicou, os do dia anterior). Também dá para rodar à mão
+# em Actions → Run workflow.
 # instagram/config.json: "publicar" (true = publica direto; false = pausa, só confere a chave) e "aprovacaoAte" (null =
 # sem aprovação; com data, cada post vira uma issue e só sai com o rótulo "aprovado" — desligado em 25/11/2026).
 # Regras de conteúdo em scripts/gerar_posts_instagram.py; no máximo 1 post por dia; a chave é conferida todo dia.
+run-name: "Instagram — post automático — ${{ github.event_name == 'schedule' && 'agendada (reserva do GitHub)' || github.event_name == 'issues' && 'aprovação' || inputs.origem || 'manual' }}"
+
 on:
-  workflow_run:
-    workflows: ["Atualizar dados diariamente"]
-    types: [completed]
   schedule:
     - cron: '47 15 * * *'
   issues:
     types: [labeled]
   workflow_dispatch:
     inputs:
+      origem:
+        description: 'Quem disparou: "externo" (Cloudflare Worker, o post do dia) ou "manual"'
+        required: false
+        default: 'manual'
       tema:
         description: 'Tema (vazio = o próximo da fila): precos, shows, obras, vereadores, publicidade, entidades, emendas, supersalarios'
         required: false
@@ -39,10 +43,7 @@ concurrency:
 jobs:
   post:
     # pelo rótulo: só quando o rótulo posto é "aprovado" numa issue de rascunho do Instagram
-    # depois da coleta: só quando ela terminou com sucesso (a reserva das 11h47 cobre o resto)
-    if: >-
-      (github.event_name != 'issues' || (github.event.label.name == 'aprovado' && contains(github.event.issue.labels.*.name, 'instagram-rascunho')))
-      && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    if: github.event_name != 'issues' || (github.event.label.name == 'aprovado' && contains(github.event.issue.labels.*.name, 'instagram-rascunho'))
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
@@ -62,12 +63,11 @@ jobs:
           IG_USER_ID: "17841400153468200"
         run: python3 -u scripts/publicar_instagram.py --conferir
 
-      - name: Post do dia — depois da coleta ou reserva
+      - name: Post do dia — disparo externo ou reserva
         id: dia
         if: github.event.inputs.so_conferir != 'true'
         env:
-          EVENTO: ${{ github.event_name }}
-          RUN_COLETA: ${{ github.event.workflow_run.id }}
+          EVENTO: ${{ github.event_name == 'workflow_dispatch' && inputs.origem == 'externo' && 'externo' || github.event_name }}
         run: python3 scripts/publicar_instagram.py --dia
 
       - name: Modo aprovação — o que fazer hoje

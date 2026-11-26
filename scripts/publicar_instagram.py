@@ -56,22 +56,16 @@ def post_de_hoje(hist, agora=None):
     return next((x for x in reversed(hist.get("publicados") or []) if dia_cg(x.get("data")) == h), None)
 
 
-def decidir_dia(evento, hist, pub=None, run_coleta=None, agora=None):
-    """(seguir, motivo) — 26/11/2026: o post sai logo depois que a coleta do dia publica com sucesso (workflow_run);
-    o horário agendado é só reserva e se encerra se o post do dia já saiu; manual segue as regras de sempre."""
+def decidir_dia(evento, hist, agora=None):
+    """(seguir, motivo). 26/11/2026: o post do dia sai às 11h47 de Campo Grande pelo disparo externo (Cloudflare Worker,
+    origem "externo"), com os dados que estão no site; o agendamento do GitHub é só reserva e encerra se o post do dia
+    já saiu; o disparo externo também não repete o post. Manual segue as regras de sempre (1 por dia no publicador)."""
     feito = post_de_hoje(hist, agora)
-    if evento == "workflow_run":
+    if evento in ("externo", "schedule"):
+        quem = "disparo externo" if evento == "externo" else "reserva do GitHub"
         if feito:
-            return False, f"o post de hoje já saiu ({feito.get('tema')}: {feito.get('link')})"
-        pub = pub or {}
-        if str(pub.get("runId")) != str(run_coleta) or pub.get("resultado") not in ("publicado", "publicado_parcial"):
-            return False, (f"a coleta {run_coleta} não publicou (icp_publicacao.json: execução {pub.get('runId')}, "
-                           f"{pub.get('resultado')}) — fica para a reserva do horário agendado")
-        return True, f"a coleta {run_coleta} publicou ({pub.get('resultado')}): post com os dados de hoje"
-    if evento == "schedule":
-        if feito:
-            return False, f"reserva encerrada: o post de hoje já saiu ({feito.get('tema')}: {feito.get('link')})"
-        return True, "reserva: o post de hoje ainda não saiu — publica com os dados mais recentes no site"
+            return False, f"{quem}: o post de hoje já saiu ({feito.get('tema')}: {feito.get('link')}) — encerrado"
+        return True, f"{quem}: o post de hoje ainda não saiu — publica com os dados que estão no site"
     return True, f"execução {evento}"
 
 
@@ -81,11 +75,7 @@ def dia():
         hist = json.load(open(PASTA / "historico.json", encoding="utf-8"))
     except Exception:
         hist = {"publicados": []}
-    try:
-        pub = json.load(open(ROOT / "dados" / "icp_publicacao.json", encoding="utf-8"))
-    except Exception:
-        pub = {}
-    seguir, motivo = decidir_dia(os.environ.get("EVENTO", ""), hist, pub, os.environ.get("RUN_COLETA"))
+    seguir, motivo = decidir_dia(os.environ.get("EVENTO", ""), hist)
     print(("▶️ " if seguir else "⏹ ") + motivo)
     with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as f:
         f.write(f"seguir={1 if seguir else 0}\n")

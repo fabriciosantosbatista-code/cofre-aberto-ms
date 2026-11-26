@@ -52,7 +52,7 @@ jobs:
         run: pip install -q requests && python3 tests/test_instagram_chave.py
       - name: Instagram — modo aprovação e regras de conteúdo
         run: pip install -q requests Pillow && python3 tests/test_instagram_aprovacao.py
-      - name: Instagram — post depois da coleta do dia, horário agendado como reserva
+      - name: Instagram — disparo externo às 11h47 (Cloudflare), agendamento do GitHub como reserva
         run: pip install -q requests pyyaml && python3 tests/test_instagram_dia.py
       - name: Licitações da Prefeitura — número corrigido (fonte manda "102/102") e textos da auditoria
         run: pip install -q requests && python3 tests/test_licitacao_numero.py
