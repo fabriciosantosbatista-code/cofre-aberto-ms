@@ -65,7 +65,7 @@ def J(rel):
 
 
 # arquivos de cada base (os mesmos do ICP); só com eles dá para manter uma base na versão anterior sem mexer nas outras
-ARQUIVOS_BASE_PADRAO = {"senadores": ["dados/senadores_ms.json"], "deputados": ["dados/deputados_federais_ms.json"],
+ARQUIVOS_BASE_PADRAO = {"senadores": ["dados/senadores_ms.json"], "deputados": ["dados/deputados_federais_ms.json", "dados/ceap_federal/MS.json"],
                         "deputados-estaduais": ["dados/deputados_estaduais_ms.json"]}
 # derivados regerados depois de manter uma base (para continuarem iguais aos dados publicados)
 # 25/11/2026: gerar_analises.py (evolução mensal, conexões, RSS) entra primeiro — sem ele, manter Deputados deixava a
@@ -77,8 +77,8 @@ DERIVADOS = [["scripts/gerar_analises.py"], ["scripts/gerar_dados_abertos.py"], 
 def arquivos_das_bases():
     m = dict(ARQUIVOS_BASE_PADRAO)
     for b, v in (J("dados/icp.json").get("bases") or {}).items():
-        if v.get("arquivos"):
-            m[b] = list(v["arquivos"])
+        if v.get("arquivos"):  # os do ICP + os daqui (ex.: dados/ceap_federal/MS.json acompanha Deputados)
+            m[b] = list(dict.fromkeys(list(v["arquivos"]) + ARQUIVOS_BASE_PADRAO.get(b, [])))
     return m
 
 

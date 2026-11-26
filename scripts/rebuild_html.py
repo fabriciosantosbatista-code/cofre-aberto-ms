@@ -45,7 +45,6 @@ if __name__ == "__main__":
     dep_est         = carregar_json("deputados_estaduais_ms.json")
     sen_brasil      = carregar_json("senadores_brasil.json")
     dep_fed_ms      = carregar_json("deputados_federais_ms.json")
-    dep_fed_brasil  = carregar_json("deputados_federais_brasil.json")
     notas_est       = carregar_json("ceap_notas_estaduais.json")
     status          = carregar_json("status.json")
 
@@ -58,9 +57,6 @@ if __name__ == "__main__":
 
     if sen_brasil:
         html = embutir_const(html, "DADOS_SENADORES_BRASIL", sen_brasil)
-
-    if dep_fed_brasil:
-        html = embutir_const(html, "DADOS_DEP_FEDERAIS_BRASIL", dep_fed_brasil)
 
     # Notas fiscais estaduais (formato compacto)
     if notas_est:

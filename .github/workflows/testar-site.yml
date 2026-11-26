@@ -58,6 +58,8 @@ jobs:
         run: pip install -q requests && python3 tests/test_licitacao_numero.py
       - name: Deputados — arquivo anual da Câmara incompleto completado pela API (meses que encolheram)
         run: pip install -q requests && python3 tests/test_deputados_arquivo_incompleto.py
+      - name: Deputados federais — só MS; endereços antigos de outros estados com aviso e fora do sitemap
+        run: python3 tests/test_foco_ms_deputados.py
 
       - name: LGPD — nenhum CPF completo nos arquivos publicados (com e sem pontuação, em qualquer campo)
         run: python3 tests/test_cpf.py

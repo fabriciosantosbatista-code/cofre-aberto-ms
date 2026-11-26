@@ -172,6 +172,8 @@ def carregar_ceap_bulk(ano):
                         continue
                     if not dep_id:
                         continue
+                    if (row.get("sgUF") or "").strip().upper() != "MS":
+                        continue  # 26/11/2026 ("Foco em MS"): só deputados de MS, inclusive suplentes que exerceram no ano
                     valor = float((row.get("vlrLiquido") or "0").replace(",", ".") or 0)
                     d = por_dep.setdefault(dep_id, {"total": 0.0, "cats": {}, "despesas": [], "uf": row.get("sgUF")})
                     cat = row.get("txtDescricao") or "Outros"
@@ -201,7 +203,7 @@ def carregar_ceap_bulk(ano):
     except Exception as e:
         log(f"  ⚠️ complemento dos meses encolhidos falhou: {e} — a proteção da publicação decide")
     sigepa_no_arquivo = any("SIGEPA" in c for d in por_dep.values() for c in d["cats"])
-    ordem = sorted(por_dep, key=lambda i: por_dep[i].get("uf") != "MS")  # MS primeiro
+    ordem = sorted(por_dep)  # só MS (o arquivo já vem filtrado por UF)
     n_api = n_dup = 0
     for dep_id, itens in despesas_api_de(ordem, ano).items():
         d = por_dep[dep_id]
@@ -554,6 +556,20 @@ def coletar_dep_federais_ms():
         log("  Usando a lista de deputados da coleta anterior")
         deputados = [{"id": a["id"], "nome": a.get("nome"), "siglaPartido": a.get("partido"),
                       "urlFoto": a.get("foto"), "_ant": a} for a in ceap_ant.values()]
+    # suplentes de MS que exerceram mandato no ano: estão no arquivo anual (UF=MS) e não na lista de quem está em exercício
+    ids_lista = {d["id"] for d in deputados}
+    for dep_id in sorted(set(carregar_ceap_bulk(ANO) or {}) - ids_lista):
+        try:
+            x = get_com_retry(f"https://dadosabertos.camara.leg.br/api/v2/deputados/{dep_id}").json().get("dados", {})
+            us = x.get("ultimoStatus") or {}
+            deputados.append({"id": dep_id, "nome": us.get("nomeEleitoral") or us.get("nome") or x.get("nomeCivil"),
+                              "siglaPartido": us.get("siglaPartido"), "urlFoto": us.get("urlFoto")})
+            log(f"  + suplente de MS que exerceu mandato no ano: {deputados[-1]['nome']} ({dep_id})")
+        except Exception as e:
+            a = ceap_ant.get(dep_id)
+            if a:
+                deputados.append({"id": dep_id, "nome": a.get("nome"), "siglaPartido": a.get("partido"), "urlFoto": a.get("foto"), "_ant": a})
+            log(f"  ⚠️ suplente {dep_id} no arquivo anual sem dados na API: {e}")
     log(f"  {len(deputados)} deputados federais de MS encontrados")
 
     resultado = []
@@ -609,6 +625,9 @@ def coletar_dep_federais_ms():
         "deputados": resultado,
     }
     salvar("deputados_federais_ms.json", data)
+    # notas dos deputados de MS também em dados/ceap_federal/MS.json (dados abertos; antes saía da coleta nacional)
+    salvar_notas_por_uf("ceap_federal", ((d["id"], "MS") for d in resultado), {d["id"]: d.get("despesas") or [] for d in resultado},
+                        "CEAP — arquivo anual da Câmara (camara.leg.br/cotas), completado pela API quando incompleto")
     return resultado
 
 # ============================================================
@@ -1193,75 +1212,7 @@ def buscar_ceap_deputado_agregado(dep_id, ano):
     return {"cotaGastaAno": round(total, 2) if notas else None, "ceapCategorias": cats, "totalNotasFiscais": notas}
 
 
-def coletar_dep_federais_brasil():
-    log("Coletando lista completa de deputados federais...")
-
-    try:
-        r = requests.get(
-            "https://dadosabertos.camara.leg.br/api/v2/deputados?itens=513",
-            headers=HEADERS, timeout=60
-        )
-        r.raise_for_status()
-        deputados = r.json().get("dados", [])
-    except Exception as e:
-        deputados = None
-        log(f"  ⚠️ API Câmara indisponível: {e}")
-
-    try:
-        dados_ant = json.load(open(DADOS / "deputados_federais_brasil.json", encoding="utf-8"))
-        ceap_ant = {d["id"]: d for d in dados_ant.get("deputados", [])}
-    except:
-        dados_ant, ceap_ant = {}, {}
-    if not mesmo_ano(dados_ant):
-        ceap_ant = {k: {kk: vv for kk, vv in v.items() if kk not in ("cotaGastaAno", "ceapCategorias", "totalNotasFiscais")}
-                    for k, v in ceap_ant.items()}
-
-    if not deputados:
-        if not ceap_ant or carregar_ceap_bulk(ANO) is None:
-            log("  ⚠️ Sem lista de deputados — mantendo dados anteriores")
-            return None
-        log("  Usando a lista de deputados da coleta anterior")
-        deputados = [{"id": a["id"], "nome": a.get("nome"), "siglaPartido": a.get("partido"),
-                      "siglaUf": a.get("uf"), "urlFoto": a.get("foto")} for a in ceap_ant.values()]
-
-    log(f"  {len(deputados)} deputados federais em exercício")
-    usa_bulk = carregar_ceap_bulk(ANO) is not None
-
-    resultado = []
-    for i, d in enumerate(deputados):
-        if not usa_bulk:
-            time.sleep(0.3)  # respeitar rate limit da API por deputado
-        ant = ceap_ant.get(d["id"], {})
-        ceap = ceap_do_deputado(d["id"], {
-            "cotaGastaAno": ant.get("cotaGastaAno"),
-            "ceapCategorias": ant.get("ceapCategorias", []),
-            "totalNotasFiscais": ant.get("totalNotasFiscais", 0),
-        }, d.get("nome"), incluir_notas=False)
-
-        resultado.append({
-            "id": d["id"],
-            "nome": d["nome"],
-            "partido": d["siglaPartido"],
-            "uf": d["siglaUf"],
-            "foto": d["urlFoto"],
-            "urlPerfil": f"https://www.camara.leg.br/deputados/{d['id']}",
-            **ceap,
-        })
-        if (i + 1) % 50 == 0:
-            log(f"  ... {i + 1}/{len(deputados)} deputados processados")
-
-    data = {
-        "ultimaAtualizacao": hoje,
-        "ano": ANO,
-        "fonte": f"API da Câmara dos Deputados — {hoje}",
-        "total": len(resultado),
-        "deputados": resultado,
-    }
-    salvar("deputados_federais_brasil.json", data)
-    salvar_notas_por_uf("ceap_federal", ((d["id"], d["uf"]) for d in resultado),
-                        {k: v["despesas"] for k, v in (carregar_ceap_bulk(ANO) or {}).items()},
-                        "CEAP — arquivo completo da Câmara (camara.leg.br/cotas)")
-    return resultado
+# coletar_dep_federais_brasil() saiu em 26/11/2026 ("Foco em MS"): o site só acompanha os deputados de MS.
 
 # ============================================================
 # 6. GERAR TIMESTAMP de última atualização
@@ -2206,12 +2157,6 @@ if __name__ == "__main__":
         coletar_senado_brasil()
     except Exception as e:
         erros.append(f"Senado Brasil: {e}")
-        log(f"❌ {e}")
-
-    try:
-        coletar_dep_federais_brasil()
-    except Exception as e:
-        erros.append(f"Dep. Federais Brasil: {e}")
         log(f"❌ {e}")
 
     gerar_status()

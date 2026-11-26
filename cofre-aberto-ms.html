@@ -648,8 +648,7 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       "distribution": [
         { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/prefeitura.json" },
         { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/camara_municipal.json" },
-        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/senadores_brasil.json" },
-        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/deputados_federais_brasil.json" }
+        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://cofreabertoms.com.br/dados/senadores_brasil.json" }
       ]
     }
   ]
@@ -2411,7 +2410,6 @@ let DADOS_EMENDAS_MS = {};
 
 // Deputados federais de MS e do Brasil — usados pela busca global (ver initBuscaGlobal)
 let DADOS_DEPUTADOS_FEDERAIS_MS = [];
-let DADOS_DEPUTADOS_FEDERAIS_BRASIL = [];
 
 // Magistrados de MS por tribunal — folha nominal (mesmo schema CNJ Anexo VIII)
 let DADOS_TRT24 = {};
@@ -4426,99 +4424,6 @@ function renderPrefeitura(data) {
   });
 }
 
-// ===================== RENDER DEPUTADOS BRASIL =====================
-function renderDeputadosBrasil(deputados) {
-  if (!deputados || deputados.length === 0) return;
-
-  const total = deputados.reduce((a, d) => a + (d.cotaGastaAno || 0), 0);
-  const totalNotas = deputados.reduce((a, d) => a + (d.totalNotasFiscais || 0), 0);
-  const media = total / deputados.length;
-
-  document.getElementById("depbr-total").textContent = formatBRL(total);
-  document.getElementById("depbr-qtd").textContent = deputados.length;
-  document.getElementById("depbr-notas").textContent = totalNotas.toLocaleString("pt-BR");
-  document.getElementById("depbr-media").textContent = formatCompact(media);
-  document.getElementById("depbr-gabinete").textContent = formatBRL(VERBA_GABINETE);
-
-  const ordenados = [...deputados].sort((a, b) => (b.cotaGastaAno || 0) - (a.cotaGastaAno || 0));
-  const max = ordenados[0]?.cotaGastaAno || 1;
-  const tbody = document.querySelector("#ranking-depbr tbody");
-  const panel = document.getElementById("detail-depbr");
-
-  function renderTabela(filtro = "") {
-    const f = filtro.toLowerCase();
-    const filtrados = ordenados.filter(d =>
-      d.nome.toLowerCase().includes(f) ||
-      (d.partido || "").toLowerCase().includes(f) ||
-      (d.uf || "").toLowerCase().includes(f)
-    );
-    tbody.innerHTML = filtrados.map((d, i) => `
-      <tr class="clickable" data-id="${d.id}">
-        <td class="rank-pos">${String(i + 1).padStart(2, "0")}</td>
-        <td>
-          <div class="rank-person">
-            ${avatarHTML(d.nome, d.foto, "avatar")}
-            <div>
-              <div class="rank-name">${d.nome}</div>
-              <div class="rank-meta">${d.partido || "—"}</div>
-            </div>
-          </div>
-        </td>
-        <td class="rank-meta">${d.uf || "—"}</td>
-        <td class="num">${formatBRL(d.cotaGastaAno)}</td>
-        <td class="num">${d.totalNotasFiscais ?? 0}</td>
-        <td class="progress-cell">${progressBar((d.cotaGastaAno || 0) / max * 100)}</td>
-      </tr>
-    `).join("");
-
-    tbody.querySelectorAll("tr.clickable").forEach(row => {
-      row.addEventListener("click", () => {
-        const id = parseInt(row.dataset.id, 10);
-        const d = deputados.find(x => x.id === id);
-        if (d.despesas?.length || d.cotaGastaAno == null) {
-          renderDetalheDeputado(d, deputados, ANO_REFERENCIA, panel);
-          return;
-        }
-        // Lista nacional só vem com o total agregado — busca as notas individuais sob demanda.
-        panel.innerHTML = `<p class="section-note">Carregando notas fiscais de ${d.nome}…</p>`;
-        panel.classList.add("active");
-        panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        carregarNotasPorUF("ceap_federal", d.uf, d.id)
-          .then(notas => notas.length ? notas : buscarDespesasDeputadoAoVivo(d.id, ANO_REFERENCIA))
-          .then(despesas => {
-            d.despesas = despesas;
-            d.totalNotasFiscais = despesas.length || d.totalNotasFiscais;
-            renderDetalheDeputado(d, deputados, ANO_REFERENCIA, panel);
-          });
-      });
-    });
-  }
-
-  renderTabela();
-  document.getElementById("busca-depbr").addEventListener("input", e => {
-    panel.classList.remove("active");
-    renderTabela(e.target.value);
-  });
-
-  // Categorias nacionais
-  const categorias = {};
-  deputados.forEach(d => {
-    (d.despesas || []).forEach(item => {
-      const cat = item.categoria || "Outros";
-      categorias[cat] = (categorias[cat] || 0) + (item.valor || 0);
-    });
-  });
-  const cats = Object.entries(categorias).sort((a, b) => b[1] - a[1]).slice(0, 12);
-  const maxCat = cats[0]?.[1] || 1;
-  document.getElementById("categorias-depbr").innerHTML = cats.map(([cat, valor]) => `
-    <div class="bar-list-row">
-      <div class="bar-list-label" title="${cat}">${cat}</div>
-      <div class="bar-list-track"><div class="bar-list-fill" style="width:${(valor/maxCat*100).toFixed(1)}%"></div></div>
-      <div class="bar-list-value">${formatCompact(valor)}</div>
-    </div>
-  `).join("") || "<div class='section-note'>Sem dados de categorias ainda.</div>";
-}
-
 // ===================== RENDER SENADO BRASIL =====================
 function renderSenadoBrasil(senadores) {
   if (!senadores || senadores.length === 0) return;
@@ -5647,7 +5552,7 @@ function preencherPatrimonio(boxId, chave) {
 // Ao abrir um parlamentar ou magistrado, a aba mostra só os dados dele (esconde a lista e as seções gerais),
 // com um botão "Voltar para a lista". Vale para todos os painéis de detalhe de pessoa.
 (function () {
-  const IDS = ["detail-vereador", "detail-depest", "detail-deputado", "detail-senador", "detail-depbr", "detail-senbr", "detail-magistrado"];
+  const IDS = ["detail-vereador", "detail-depest", "detail-deputado", "detail-senador", "detail-senbr", "detail-magistrado"];
   const cadeia = el => { const c = []; while (el && !el.classList.contains("tabpanel")) { c.push(el); el = el.parentElement; } return [c, el]; };
   function entrar(panel) {
     const [c, tab] = cadeia(panel);
@@ -7430,7 +7335,7 @@ function abrirDoHash() {
 // ===================== PÁGINA PRÓPRIA DO PARLAMENTAR =====================
 // /vereador/<nome>/, /deputado-estadual/..., /deputado-federal/..., /senador/... (gerar_paginas_parlamentares.py)
 const PAGINA_GRUPO = { "camara": "vereador", "deputados-estaduais": "estadual", "deputados": "federal",
-                       "deputados-brasil": "federal", "senadores": "senador", "senado-brasil": "senador" };
+                       "senadores": "senador", "senado-brasil": "senador" };
 let _paginasIndice = null;
 function montarLinkPagina(panel) {
   const tabpanel = panel.closest(".tabpanel");
@@ -7524,7 +7429,6 @@ const FONTE_ABA = {
   "supersalarios": { titulo: "Supersalários: as maiores remunerações do poder público em MS", csv: [["Ranking", "supersalarios_ranking.csv"], ["Por órgão", "supersalarios_orgaos.csv"], ["Penduricalhos por item", "supersalarios_penduricalhos.csv"]], json: "supersalarios.json" },
   "camaras-ms": { titulo: "Câmaras municipais do interior de MS", csv: [["Vereadores", "camaras_interior.csv"]], json: null },
   "judiciario": { titulo: "Remuneração dos magistrados de MS", csv: [["Magistrados", "judiciario_magistrados.csv"]], json: "tjms_magistrados.json" },
-  "deputados-brasil": { titulo: "CEAP dos deputados federais do Brasil", csv: [["Resumo", "deputados_federais_brasil.csv"]], json: "deputados_federais_brasil.json" },
   "senado-brasil": { titulo: "CEAPS dos senadores do Brasil", csv: [["Resumo", "senadores_brasil.csv"]], json: "senadores_brasil.json" },
   "conexoes": { titulo: "Conexões entre fornecedores de políticos de MS", csv: [["Conexões", "conexoes_fornecedores.csv"]], json: "conexoes_fornecedores.json" },
   "arrecadacao": { titulo: "Arrecadação do Governo de MS e da Prefeitura de Campo Grande", csv: [], json: "receitas.json" },
@@ -7699,7 +7603,6 @@ async function init() {
       btn.classList.add("active");
       document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
       window.scrollTo({ top: 0, behavior: "instant" });  // a aba nova abre no topo, não na altura em que a anterior estava
-      if (btn.dataset.tab === "deputados-brasil" && !window._depBrLoaded) { window._depBrLoaded = true; carregarDeputadosBrasil(); }
       if (btn.dataset.tab === "senado-brasil" && !window._senBrLoaded) { window._senBrLoaded = true; carregarSenadoBrasil(); }
       // (o antigo ceap_notas_estaduais.json, carga de jun/2026, não é mais baixado: as notas atuais vêm sob demanda)
       if (btn.dataset.tab === "camara" && !window._camaraLoaded) {
@@ -7890,46 +7793,6 @@ async function init() {
       .then(vivos => { if (vivos?.length) renderDeps(vivos); })
       .catch(() => { if (!locais) { renderDeps([]); } });
   }
-}
-
-async function carregarDeputadosBrasil() {
-    document.getElementById("depbr-total").textContent = "carregando…";
-
-    // Tentar JSON local primeiro (mais rápido)
-    const local = await carregarJSON("dados/deputados_federais_brasil.json");
-    if (local && local.deputados && local.deputados.length > 0) {
-          DADOS_DEPUTADOS_FEDERAIS_BRASIL = local.deputados;
-          renderDeputadosBrasil(local.deputados);
-          // Se a API da Câmara não devolveu CEAP para ninguém, não exibir "R$ 0,00"
-          const temCota = local.deputados.some(d => d.cotaGastaAno != null);
-          document.getElementById("depbr-total").textContent = temCota
-            ? formatBRL(local.deputados.reduce((s, d) => s + (d.cotaGastaAno || 0), 0))
-            : "R$ — (CEAP indisponível na API da Câmara)";
-          return;
-    }
-
-    // Fallback: API ao vivo (só lista, sem CEAP individual)
-    try {
-          const r = await fetch(
-                  "https://dadosabertos.camara.leg.br/api/v2/deputados?itens=513&ordem=ASC&ordenarPor=nome",
-            { signal: AbortSignal.timeout(15000) }
-                );
-          if (!r.ok) throw new Error("API indisponível");
-          const data = neutralizarTexto(await r.json());
-          const deps = (data.dados || []).map(d => ({
-                  id: d.id,
-                  nome: d.nome,
-                  partido: d.siglaPartido,
-                  uf: d.siglaUf,
-                  foto: d.urlFoto,
-                  cotaGastaAno: null,
-          }));
-          DADOS_DEPUTADOS_FEDERAIS_BRASIL = deps;
-          renderDeputadosBrasil(deps);
-          document.getElementById("depbr-total").textContent = `${deps.length} deputados`;
-    } catch(e) {
-          document.getElementById("depbr-total").textContent = "indisponível";
-    }
 }
 
 async function carregarSenadoBrasil() {

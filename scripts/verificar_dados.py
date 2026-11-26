@@ -163,13 +163,7 @@ def main():
               "**Dep. federais MS**: deputado(s) sem CEAP (cotaGastaAno vazio) — fonte da Câmara falhou?")
         datas = [n.get("data") for x in d for n in (x.get("despesas") or []) if n.get("data")]
         recente("Dep. federais MS (CEAP)", max(datas) if datas else None, 30, o_que="nota fiscal mais recente")
-    br = carregar("deputados_federais_brasil.json")
-    if br:
-        d = br.get("deputados", [])
-        checa(505 <= len(d) <= 520, f"Dep. federais Brasil: {len(d)}", f"**Dep. federais Brasil**: {len(d)} deputados (esperado ~513)")
-        sem = sum(1 for x in d if x.get("cotaGastaAno") is None)
-        checa(sem <= len(d) * 0.05, f"Dep. federais Brasil: {len(d) - sem} com CEAP",
-              f"**Dep. federais Brasil**: {sem} de {len(d)} sem CEAP — fonte da Câmara falhou?")
+    # Dep. federais Brasil: saiu em 26/11/2026 ("Foco em MS") — o site só acompanha os de MS
 
     # ---------- Senadores ----------
     sen = carregar("senadores_ms.json")
@@ -341,16 +335,20 @@ def main():
     # ---------- páginas próprias dos parlamentares ----------
     paginas = list(ROOT.glob("vereador/*/index.html")) + list(ROOT.glob("deputado-estadual/*/index.html")) + \
               list(ROOT.glob("deputado-federal/*/index.html")) + list(ROOT.glob("senador/*/index.html"))
-    checa(len(paginas) >= 600, f"Páginas de parlamentares: {len(paginas)}",
-          f"**Páginas de parlamentares**: só {len(paginas)} (esperado ~648)")
+    # desde 26/11/2026 os endereços antigos de deputados de outros estados são páginas curtas noindex: não contam
+    paginas = [x for x in paginas if 'name="robots" content="noindex' not in x.read_text(encoding="utf-8")[:2000]]
+    checa(len(paginas) >= 120, f"Páginas de parlamentares: {len(paginas)}",
+          f"**Páginas de parlamentares**: só {len(paginas)} (esperado ~143)")
     smap = (ROOT / "sitemap.xml").read_text(encoding="utf-8") if (ROOT / "sitemap.xml").exists() else ""
-    checa(smap.count("<url>") >= 600, f"sitemap.xml: {smap.count('<url>')} endereços",
+    checa(smap.count("<url>") >= 130, f"sitemap.xml: {smap.count('<url>')} endereços",
           f"**sitemap.xml**: só {smap.count('<url>')} endereços", "aviso")
 
     # ---------- arquivos de notas por estado ----------
-    for pasta, nome in (("ceap_federal", "Notas dep. federais por UF"), ("ceaps_senado", "Notas senadores por UF")):
-        arqs = list((DADOS / pasta).glob("*.json"))
-        checa(len(arqs) >= 26, f"{nome}: {len(arqs)} estados", f"**{nome}**: só {len(arqs)} arquivos de estado", "aviso")
+    arqs = list((DADOS / "ceaps_senado").glob("*.json"))
+    checa(len(arqs) >= 26, f"Notas senadores por UF: {len(arqs)} estados", f"**Notas senadores por UF**: só {len(arqs)} arquivos de estado", "aviso")
+    fora = sorted(a.name for a in (DADOS / "ceap_federal").glob("*.json") if a.name != "MS.json")
+    checa((DADOS / "ceap_federal" / "MS.json").exists() and not fora, "Notas dep. federais: só MS (dados/ceap_federal/MS.json)",
+          f"**Notas dep. federais**: esperado só dados/ceap_federal/MS.json" + (f" — sobraram {', '.join(fora)}" if fora else " — MS.json ausente"), "aviso")
 
 
 ULTIMO_EMPENHO = None

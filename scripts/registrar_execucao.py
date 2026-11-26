@@ -45,7 +45,7 @@ API = os.environ.get("GITHUB_API_URL", "https://api.github.com")
 WORKFLOW = "atualizar.yml"
 # job do workflow → bases do ICP que ele coleta
 JOB_BASES = {
-    "coletar_dados": ["deputados", "deputados-estaduais", "senadores", "prefeitura", "camaras-ms", "deputados-brasil", "senado-brasil"],
+    "coletar_dados": ["deputados", "deputados-estaduais", "senadores", "prefeitura", "camaras-ms", "senado-brasil"],
     "coletar_verba_camara": ["camara"],
     "coletar_contratos_cg": ["contratos-cg", "shows", "alugueis"],
     "coletar_governo_ms": ["governo-ms", "obras"],

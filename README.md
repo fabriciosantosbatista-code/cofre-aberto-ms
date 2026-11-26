@@ -154,7 +154,6 @@ cofre-aberto-ms/
 │   ├── camara_municipal.json     ← Vereadores CG (manual)
 │   ├── deputados_estaduais_ms.json ← ALEMS (automático)
 │   ├── deputados_federais_ms.json  ← API Câmara (automático)
-│   ├── deputados_federais_brasil.json ← API Câmara (automático)
 │   ├── senadores_ms.json         ← API Senado (automático)
 │   ├── senadores_brasil.json     ← API Senado (automático)
 │   ├── ceap_notas_estaduais.json ← Notas ALEMS (manual)

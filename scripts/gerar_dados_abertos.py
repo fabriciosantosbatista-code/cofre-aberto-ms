@@ -145,10 +145,7 @@ def gerar_csvs():
         [[s["nome"], n.get("mes"), n.get("data"), n.get("categoria"), n.get("tipoDocumento"), n.get("fornecedor"),
           n.get("cnpjCpf"), n.get("doc"), n.get("detalhamento"), num(n.get("valor"))] for s in sen for n in s.get("notasCeaps") or []])
 
-    br = carregar("deputados_federais_brasil.json").get("deputados", [])
-    contagem["deputados_federais_brasil.csv"] = grava_csv("deputados_federais_brasil.csv",
-        ["deputado", "id_camara", "partido", "uf", f"ceap_{ANO}", "notas_fiscais", "perfil_oficial"],
-        [[d["nome"], d["id"], d.get("partido"), d.get("uf"), num(d.get("cotaGastaAno")), d.get("totalNotasFiscais"), d.get("urlPerfil")] for d in br])
+    # "Deputados federais — Brasil (513)" saiu em 26/11/2026 ("Foco em MS")
     sbr = carregar("senadores_brasil.json").get("senadores", [])
     contagem["senadores_brasil.csv"] = grava_csv("senadores_brasil.csv",
         ["senador", "id_senado", "partido", "uf", f"ceaps_{ANO}", "portal_oficial"],
@@ -462,10 +459,6 @@ def status_fontes():
     add("judiciario", "Anexo VIII (Res. CNJ 102/2009) — portais do TRT24 e TRE-MS; TJMS via DadosJusBr", "https://dadosjusbr.org/",
         carregar("tjms_magistrados.json").get("ultimaAtualizacao"), "folha de " + ", ".join(refs), not msgs, "; ".join(msgs) or None)
 
-    br = carregar("deputados_federais_brasil.json")
-    sem = sum(1 for x in br.get("deputados", []) if x.get("cotaGastaAno") is None)
-    add("deputados-brasil", "Câmara dos Deputados — arquivo completo da CEAP", "https://www.camara.leg.br/cotas/",
-        br.get("ultimaAtualizacao"), f"{len(br.get('deputados', [])) - sem} de {len(br.get('deputados', []))} com CEAP", sem <= 25)
     sbr = carregar("senadores_brasil.json")
     add("senado-brasil", "Senado Federal — dados abertos", "https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html",
         sbr.get("ultimaAtualizacao"), f"{len(sbr.get('senadores', []))} senadores", em_dia(sbr.get("ultimaAtualizacao"), 3))

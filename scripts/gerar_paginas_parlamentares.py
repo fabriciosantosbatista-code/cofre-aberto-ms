@@ -6,7 +6,8 @@ Gera HTML estático (indexável pelo Google, com prévia no WhatsApp) em:
 
   /vereador/<nome>/            29 vereadores de Campo Grande
   /deputado-estadual/<nome>/   deputados estaduais de MS (ALEMS)
-  /deputado-federal/<nome>/    513 deputados federais (os de MS com notas completas)
+  /deputado-federal/<nome>/    deputados federais de MS (desde 26/11/2026 só MS — os endereços antigos de outros
+                               estados viram uma página curta, noindex e fora do sitemap, com o link da Câmara)
   /senador/<nome>/             81 senadores (os de MS com notas completas)
 
 mais uma página-índice por grupo, dados/paginas_index.json (usado pelo painel
@@ -46,7 +47,7 @@ GRUPOS = {
     "estadual": {"pasta": "deputado-estadual", "cargo": "Deputado(a) estadual de MS", "plural": "Deputados estaduais de MS",
                  "aba": "deputados-estaduais", "cota": "CEAP da ALEMS", "feed": "estadual"},
     "federal": {"pasta": "deputado-federal", "cargo": "Deputado(a) federal", "plural": "Deputados federais",
-                "aba": "deputados", "aba_br": "deputados-brasil", "cota": "CEAP da Câmara dos Deputados", "feed": "federal"},
+                "aba": "deputados", "cota": "CEAP da Câmara dos Deputados", "feed": "federal"},
     "senador": {"pasta": "senador", "cargo": "Senador(a)", "plural": "Senadores",
                 "aba": "senadores", "aba_br": "senado-brasil", "cota": "CEAPS do Senado", "feed": "senador"},
 }
@@ -178,11 +179,11 @@ def coleta():
                           notas=[{**n, "url": n.get("urlPdf")} for n in v.get("despesas") or []],
                           totalNotas=len(v.get("despesas") or []), categorias=vi.get("categorias"),
                           extra={}, aba="deputados-estaduais", ms=True))
-    fed_ms = {d["id"]: d for d in carregar("deputados_federais_ms.json").get("deputados", [])}
-    for d in carregar("deputados_federais_brasil.json").get("deputados", []):
-        ms = d.get("uf") == "MS"
-        fonte = fed_ms.get(d["id"], d)
-        notas = fonte.get("despesas") or notas_estado("ceap_federal", d.get("uf"), d["id"])
+    # 26/11/2026 ("Foco em MS"): só os deputados federais de MS (e suplentes de MS que exerceram mandato no ano), com o
+    # total e as notas da mesma versão do painel (deputados_federais_ms.json, protegida pela publicação)
+    for d in carregar("deputados_federais_ms.json").get("deputados", []):
+        ms = True
+        notas = d.get("despesas") or []
         lista.append(dict(grupo="federal", nome=d["nome"], partido=d.get("partido"), uf=d.get("uf"), foto=d.get("foto"),
                           total=d.get("cotaGastaAno") or 0, cota=None,
                           notas=[{"data": n.get("data"), "fornecedor": n.get("fornecedor"), "categoria": n.get("categoria"),
@@ -190,7 +191,7 @@ def coleta():
                                   "possivelDuplicidade": n.get("possivelDuplicidade"), "sinalAtencao": n.get("sinalAtencao")} for n in notas],
                           totalNotas=d.get("totalNotasFiscais") or len(notas),
                           categorias={c["categoria"]: c["valor"] for c in d.get("ceapCategorias") or []},
-                          extra={}, aba="deputados" if ms else "deputados-brasil", ms=ms, id=d["id"],
+                          extra={}, aba="deputados", ms=ms, id=d["id"],
                           urlOficial=d.get("urlPerfil")))
     sen_ms = {x["id"]: x for x in carregar("senadores_ms.json").get("senadores", [])}  # MS: total = soma das notas publicadas
     _nac = carregar("senadores_brasil.json").get("senadores", [])
@@ -764,6 +765,34 @@ def indice(grupo, lst):
     return cabecalho(titulo, desc, url, None, jsonld, tipo="website") + corpo + RODAPE
 
 
+OUTROS_ESTADOS = ROOT / "config" / "deputados_federais_outros_estados.json"
+
+
+def pagina_outro_estado(d):
+    """Endereço antigo de deputado federal de outro estado (até 26/11/2026): página curta, noindex, fora do sitemap."""
+    camara = f"https://www.camara.leg.br/deputados/{int(d['id'])}"
+    nome = f"{d['nome']} ({d.get('partido') or ''}/{d.get('uf') or ''})".replace("(/", "(").replace("/)", ")")
+    return f"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, follow"/>
+<title>{e(d['nome'])} — fora da cobertura do Cofre Aberto MS</title>
+<link rel="canonical" href="{camara}"/>
+<style>body{{margin:0;background:#0b0e14;color:#e8e6e1;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}}
+main{{max-width:640px;margin:0 auto;padding:48px 16px}}a{{color:#e0b84c}}h1{{font-size:1.25rem;margin:0 0 12px}}
+@media (prefers-color-scheme: light){{body{{background:#faf8f3;color:#1c1d21}}a{{color:#8a6a00}}}}</style>
+</head>
+<body><main>
+<h1>{e(nome)}</h1>
+<p>O Cofre Aberto MS acompanha apenas os parlamentares de Mato Grosso do Sul. Veja os gastos deste deputado no site oficial da Câmara: <a href="{camara}">{e(camara)}</a></p>
+<p><a href="/deputado-federal/">Deputados federais de MS</a> · <a href="/">Início do Cofre Aberto MS</a></p>
+</main></body>
+</html>
+"""
+
+
 def sitemap(lista):
     hoje = HOJE.isoformat()
     fixos = [("/", "daily", "1.0"), ("/cofre-aberto-ms.html", "daily", "0.9"), ("/vereadores-campo-grande.html", "daily", "0.8"),
@@ -787,6 +816,16 @@ def main():
         caminho = ROOT / GRUPOS[p["grupo"]]["pasta"] / p["slug"] / "index.html"
         validos.add(caminho.parent)
         mudou += escreve_se_mudou(caminho, pagina(p, irmaos))
+    try:
+        outros = json.load(open(OUTROS_ESTADOS, encoding="utf-8")).get("paginas", [])
+    except Exception:
+        outros = []
+    for d in outros:
+        caminho = ROOT / GRUPOS["federal"]["pasta"] / d["slug"] / "index.html"
+        if caminho.parent in validos:
+            continue  # o nome passou a ser de um deputado de MS
+        validos.add(caminho.parent)
+        escreve_se_mudou(caminho, pagina_outro_estado(d))
     for grupo, g in GRUPOS.items():
         escreve_se_mudou(ROOT / g["pasta"] / "index.html", indice(grupo, [p for p in lista if p["grupo"] == grupo]))
         # remove páginas de quem saiu (ex.: suplente que deixou o cargo)
