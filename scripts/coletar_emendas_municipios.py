@@ -44,7 +44,8 @@ def norm(t):
 
 def valor(t):
     try:
-        return float(str(t).replace(".", "").replace(",", "."))
+        # estorno vem negativo e com espaço depois do sinal ("- 2.664,31"): antes virava 0
+        return float(re.sub(r"\s+", "", str(t)).replace(".", "").replace(",", "."))
     except ValueError:
         return 0.0
 

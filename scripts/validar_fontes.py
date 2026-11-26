@@ -374,6 +374,12 @@ def _cgu(caminho, params=None):
 COMPARTILHADO = "o documento de pagamento é compartilhado entre emendas e a API não informa a parte de cada uma"
 
 
+def valor_brl(v):
+    """Valor da CGU: número ou texto "1.234,56"; estorno vem negativo e com espaço depois do sinal ("- 2.664,31")."""
+    if not isinstance(v, str):
+        return float(v or 0)
+    return float(re.sub(r"\s+", "", v).replace(".", "").replace(",", "."))
+
 def parte_da_emenda(obs, emenda):
     """Documento de pagamento que paga mais de uma emenda (21/11/2026): a API traz o valor TOTAL do documento.
     Devolve ("exclusivo", None) se o texto (observação) não cita outra emenda; ("parte", valor) se o texto informa a parte
@@ -444,7 +450,7 @@ def v_emendas(n_emendas=30):
                 if (det.get("ufFavorecido") or "").upper() != "MS" or not mes or not mes.endswith(ano):
                     continue
                 v = det.get("valor")
-                v = float(str(v).replace(".", "").replace(",", ".")) if isinstance(v, str) else float(v or 0)
+                v = valor_brl(v)
                 k = f"{e}|{_dig(det.get('codigoFavorecido')) or norm(det.get('nomeFavorecido'))}|{mes}"
                 tipo, parte = parte_da_emenda(det.get("observacao"), e)
                 if tipo == "parte":
