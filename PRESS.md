@@ -1,6 +1,6 @@
 # Kit de Imprensa — Cofre Aberto MS
 
-*Última atualização: 26 de novembro de 2026 — gerado automaticamente a partir de press.html*
+*Última atualização: 27 de novembro de 2026 — gerado automaticamente a partir de press.html*
 
 Este documento reúne informações para jornalistas que queiram cobrir o **Cofre Aberto MS**, uma plataforma independente de transparência pública sobre gastos de parlamentares e da Prefeitura de Campo Grande.
 
@@ -27,15 +27,15 @@ O projeto nasceu da constatação de que, embora esses dados sejam legalmente p�
 
 | Número | O que é |
 |---|---|
-| **26.194** | Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor) |
-| **R$ 27,2 bi+** | Total de gastos públicos catalogados em 2026 (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares pagas em MS) |
+| **26.211** | Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor) |
+| **R$ 27,3 bi+** | Total de gastos públicos catalogados em 2026 (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares pagas em MS) |
 | **R$ 21,6 bi** | Pagos pelo Governo do Estado de MS em 2026 |
-| **R$ 5,0 bi** | Pagos pela Prefeitura de Campo Grande em 2026, em 14.739 empenhos |
+| **R$ 5,0 bi** | Pagos pela Prefeitura de Campo Grande em 2026, em 14.756 empenhos |
 | **R$ 5,8 mi** | Verba indenizatória paga aos 29 vereadores de Campo Grande em 2026 |
 | **R$ 13,1 mi** | CEAP paga aos 25 deputados estaduais de MS em 2026 |
 | **R$ 3,5 mi** | CEAP dos 8 deputados federais de MS em 2026 |
 | **R$ 1,3 mi** | CEAPS dos 3 senadores de MS em 2026 |
-| **R$ 371,4 mi** | Emendas parlamentares pagas em Mato Grosso do Sul em 2026 |
+| **R$ 376,8 mi** | Emendas parlamentares pagas em Mato Grosso do Sul em 2026 |
 | **R$ 4,4 mi/mês** | Folha de pessoal dos 29 gabinetes da Câmara de Campo Grande (684 funcionários, outubro/2026) |
 | **R$ 24,0 mi/mês** | Folha bruta dos 286 magistrados ativos de MS (TJMS e TRT24, com a gratificação eleitoral do TRE-MS) |
 | **551** | Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões) |
@@ -60,7 +60,7 @@ Ideias de matéria pensadas para veículos de Mato Grosso do Sul, com dados já 
 1. **"Quem mais e quem menos gastou a verba indenizatória em 2026"** — entre os 29 vereadores de Campo Grande, o uso da cota anual de R$ 300 mil por gabinete vai de 52% (Jean Ferreira) a 75% (Dr. Jamal). Bom gancho para pedir explicação aos gabinetes nos dois extremos — o painel mostra mês a mês e nota a nota.
 2. **"A Câmara de Campo Grande é a única do estado que não publica a verba indenizatória em formato de dados abertos"** — enquanto a maioria das câmaras municipais de MS usa sistemas com API pública (Fiorilli, SAPL), a Câmara de Campo Grande só divulga a verba indenizatória em PDFs individuais por vereador, dificultando a fiscalização por qualquer sistema automatizado, inclusive por este projeto.
 3. **"R$ 4,4 mi por mês: o custo da folha de pessoal dos gabinetes da Câmara de Campo Grande"** — com 684 funcionários distribuídos entre 29 gabinetes (outubro/2026), uma média de 23,6 funcionários por vereador. Bom gancho para comparar com outras capitais de porte semelhante.
-4. **"Emendas parlamentares somam R$ 371,4 mi em MS neste ano"** — matéria sobre para onde vai o dinheiro das emendas de deputados e senadores sul-mato-grossenses, com o ranking por parlamentar disponível no painel.
+4. **"Emendas parlamentares somam R$ 376,8 mi em MS neste ano"** — matéria sobre para onde vai o dinheiro das emendas de deputados e senadores sul-mato-grossenses, com o ranking por parlamentar disponível no painel.
 5. **"Site mostra nota fiscal por nota fiscal de vereadores, deputados e senadores de MS"** — pauta de perfil sobre o próprio projeto: como foi feito, quem mantém, que dificuldades a coleta automática enfrenta (PDFs, sistemas fora do ar, formatos inconsistentes entre câmaras).
 6. **"CEAP dos deputados estaduais de MS: veja onde cada um gastou"** — releitura local do tipo de matéria que já é comum sobre a Câmara dos Deputados em Brasília, mas aplicada à ALEMS, com dados que raramente chegam à imprensa local em formato consolidado.
 
