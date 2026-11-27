@@ -309,49 +309,48 @@ p{margin:0;}
 .lai-box{margin:0 0 18px;padding:14px 16px;border:1px solid #c98500;border-left:4px solid #c98500;border-radius:10px;background:rgba(201,133,0,.08);font-size:.86rem;line-height:1.55;color:var(--ink-soft)}
 .lai-box b{color:var(--ink)}.lai-box summary{cursor:pointer;margin-top:8px;font-weight:700;color:#e8a020}
 .lai-box textarea{width:100%;box-sizing:border-box;margin:8px 0;background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:10px;font:12.5px/1.5 var(--font-body)}
-.fluxo-card{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 30% 40%,rgba(245,200,66,.07),transparent 60%),var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px}
-.fluxo-card::before{content:"";position:absolute;inset:-44px 0 0 0;pointer-events:none;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%);mask-image:linear-gradient(to bottom,transparent,#000 70%)}
-@keyframes fluxoGrade{to{background-position:0 44px}}
-.fluxo-eyebrow{position:relative;font:600 .68rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
-.fluxo-total{position:relative;font:800 clamp(1.6rem,4vw,2.2rem) var(--font-display);letter-spacing:-.03em;color:#f5c842;text-shadow:0 0 28px rgba(245,200,66,.35);line-height:1.1;margin:2px 0 6px;font-variant-numeric:tabular-nums}
-.fluxo-grid{position:relative;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:16px;align-items:center;max-width:920px;margin:0 auto}
-.fluxo-svg{width:100%;height:auto;display:block;overflow:visible;margin:0 auto}
-.fluxo-svg .fita{fill:none;stroke-linecap:round;transition:opacity .2s}
-.fluxo-svg .trilha{font-family:var(--font-display);font-weight:800;fill:#fff3c4;stroke:#14120a;stroke-width:.6px;paint-order:stroke;pointer-events:none;filter:drop-shadow(0 0 3px rgba(245,200,66,.8))}
-@keyframes fluxoTraco{to{stroke-dashoffset:-220}}
-.fluxo-svg .anel{fill:none;stroke-dasharray:1 6;stroke-linecap:round}
-.fluxo-svg .anel.rev{animation-duration:74s;animation-direction:reverse}
-@keyframes fluxoGira{to{transform:rotate(360deg)}}
-@keyframes cofreRoda{0%,60%,100%{transform:rotate(0)}75%{transform:rotate(100deg)}88%{transform:rotate(-20deg)}}
-.fluxo-svg .cofre{filter:drop-shadow(0 6px 10px rgba(0,0,0,.5))}
-.fluxo-svg .no{cursor:pointer}.fluxo-svg .no text{paint-order:stroke;stroke:#15171c;stroke-width:3.5px;stroke-linejoin:round}.fluxo-svg .rotulos text{paint-order:stroke;stroke:#15171c;stroke-width:4px;stroke-linejoin:round}
-.fluxo-svg .no:hover .disco{stroke-width:2}
-.fluxo-svg .v{font:700 17px var(--font-mono);fill:var(--ink)}
-.fluxo-svg .l{font:600 9.5px var(--font-mono);letter-spacing:.1em;fill:var(--ink-soft);text-transform:uppercase}
-@keyframes fluxoPulsa{50%{opacity:.45}}
-.fluxo-svg.foco .fita:not(.ativo),.fluxo-svg.foco .trilha:not(.ativo){opacity:.15}
-.fluxo-forn{list-style:none;margin:0;padding:0 0 0 12px;border-left:1px solid var(--border);display:flex;flex-direction:column;gap:7px;min-width:0}
-.fluxo-forn h3{font:600 .66rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 2px}
-.fluxo-forn li{display:grid;grid-template-columns:8px minmax(0,1fr);gap:8px;font-size:.875rem;line-height:1.25;color:var(--ink)}.fluxo-forn-nome{display:block;overflow-wrap:anywhere}
-.fluxo-forn li i{width:8px;height:8px;border-radius:50%;margin-top:4px}
-.fluxo-forn li small{display:block;color:var(--ink-soft);font-size:.78rem;line-height:1.25}
-.fluxo-leg{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:5px}.fluxo-leg li{display:grid;grid-template-columns:10px 1fr auto;gap:8px;align-items:baseline;font-size:.8rem;color:var(--ink-soft)}.fluxo-leg i{width:9px;height:9px;border-radius:50%}.fluxo-leg b{color:var(--ink);font:600 .8rem var(--font-mono);white-space:nowrap}.fluxo-leg small{color:var(--ink-soft)}
-.fluxo-nota{position:relative;font-size:.76rem;line-height:1.45;color:var(--ink-soft);margin-top:10px}
-@media(max-width:900px){.fluxo-grid{grid-template-columns:1fr}.fluxo-forn{border-left:0;border-top:1px solid var(--border);padding:14px 0 0;display:grid;grid-template-columns:1fr 1fr}.fluxo-forn h3{grid-column:1/-1}}
-@media(max-width:640px){.fluxo-eyebrow{letter-spacing:.05em}.fluxo-card{padding:16px 12px}.fluxo-forn{grid-template-columns:1fr;gap:2px}.fluxo-forn-nome{white-space:normal}.fluxo-forn li{font-size:.8125rem;line-height:1.1}.fluxo-forn li small{font-size:.72rem;line-height:1.15}.fluxo-nota{font-size:.72rem;line-height:1.35;margin-top:6px}.fluxo-total{font-size:clamp(1.5rem,3.6vw,1.9rem)}}
-.fv{display:flex;flex-direction:column;gap:6px}
-.fv-casas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.fv-casa{display:grid;grid-template-columns:38px minmax(0,1fr);grid-template-rows:auto auto;column-gap:8px;align-items:center;padding:6px 8px;border:1px solid var(--border);border-radius:10px;background:rgba(245,200,66,.04);cursor:pointer}
-.fv-casa svg{grid-row:1/3}.fv-casa b{font:700 15px var(--font-mono);color:var(--ink)}.fv-casa span{font-size:13px;line-height:1.2;color:#f5c842}
-.fv-seta{height:16px;width:2px;margin:0 auto;background:linear-gradient(#f5c842,rgba(245,200,66,.2));position:relative}
-.fv-seta::after{content:"";position:absolute;left:-4px;bottom:-2px;border:5px solid transparent;border-top-color:#f5c842}
-.fv-total{display:flex;align-items:center;justify-content:center;gap:10px}.fv-total div{display:flex;flex-direction:column}
-.fv-total span,.fv-total small{font-size:13px;color:var(--ink-soft)}.fv-total b{font:800 18px var(--font-mono);color:#f5c842}
-.fv-cats{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
-.fv-cats li{display:grid;grid-template-columns:10px minmax(0,1fr) auto;column-gap:8px;align-items:baseline;font-size:13px;color:var(--ink)}
-.fv-cats li i{width:9px;height:9px;border-radius:50%}.fv-cats b{font:600 13px var(--font-mono);white-space:nowrap}.fv-cats small{color:var(--ink-soft);font-size:13px}
-.fv-cats em{grid-column:2/4;height:4px;border-radius:2px;opacity:.85;margin-top:3px}
-@media(prefers-reduced-motion:reduce){.fluxo-card::before,.fluxo-svg .trilha,.fluxo-svg .anel,.fluxo-svg .ponto,.fluxo-svg .roda,.fluxo-svg .registro{animation:none}}
+.fluxo-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 26px}
+.fluxo-eyebrow{font:600 .68rem var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.fluxo-total{font:800 clamp(1.6rem,4vw,2.2rem) var(--font-display);letter-spacing:-.03em;color:#f5c842;line-height:1.1;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.fluxo-sub{font-size:.875rem;color:var(--ink-soft);margin:0 0 20px;max-width:62ch}
+.fluxo-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:32px;align-items:start}
+.sk{position:relative;min-width:0}
+.sk svg{width:100%;height:auto;display:block;overflow:visible}
+.sk .lk{fill:none;stroke-opacity:.36;transition:stroke-opacity .15s ease}
+.sk.foco .lk{stroke-opacity:.07}.sk.foco .lk.on{stroke-opacity:.72}
+.sk .nd{cursor:default}.sk .nd[data-aba]{cursor:pointer}
+.sk .nd rect{transition:opacity .15s ease}.sk.foco .nd:not(.on) rect{opacity:.3}
+.sk .nm{font:600 13px var(--font-body);fill:var(--ink)}.sk .vl{font:500 12px var(--font-mono);fill:var(--ink-soft);font-variant-numeric:tabular-nums}
+.sk-tip{position:absolute;left:0;top:0;pointer-events:none;background:#1b1f2a;border:1px solid var(--border);border-radius:8px;padding:8px 11px;font-size:.8rem;line-height:1.4;color:var(--ink-soft);box-shadow:0 10px 28px rgba(0,0,0,.45);white-space:nowrap;opacity:0;transition:opacity .12s ease;z-index:3}
+.sk-tip strong{color:var(--ink);font-weight:600}.sk-tip b{color:var(--ink);font:600 .82rem var(--font-mono)}.sk-tip.on{opacity:1}
+.mb{display:flex;flex-direction:column;gap:16px}
+.mb-casa{display:grid;gap:6px;cursor:pointer}.mb-casa header{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.mb-casa header span{font-size:.9rem;font-weight:600;color:var(--ink)}.mb-casa header small{display:block;font-size:.75rem;color:var(--ink-soft);font-weight:400}
+.mb-casa header b{font:600 .9rem var(--font-mono);color:var(--ink);white-space:nowrap}
+.mb-bar{display:flex;gap:2px;height:12px}.mb-bar i{display:block;height:100%;min-width:2px}.mb-bar i:first-child{border-radius:4px 0 0 4px}.mb-bar i:last-child{border-radius:0 4px 4px 0}.mb-bar i:only-child{border-radius:4px}
+.mb-leg{list-style:none;margin:6px 0 0;padding:14px 0 0;border-top:1px solid var(--border);display:grid;gap:8px}
+.mb-leg li{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:8px;align-items:baseline;font-size:.84rem;color:var(--ink)}
+.mb-leg i{width:9px;height:9px;border-radius:50%}.mb-leg b{font:600 .82rem var(--font-mono);white-space:nowrap}.mb-leg small{color:var(--ink-soft);font:500 .78rem var(--font-mono)}
+.fluxo-forn{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px;min-width:0}
+.fluxo-forn h3{font:600 .68rem var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 3px}
+.ff{display:grid;grid-template-columns:20px minmax(0,1fr) auto;column-gap:8px;row-gap:4px;align-items:baseline}
+.ff .n{font:500 .72rem var(--font-mono);color:var(--ink-faint);font-variant-numeric:tabular-nums}
+.ff .nome{font-size:.86rem;color:var(--ink);line-height:1.3;overflow-wrap:anywhere}
+.ff .val{font:600 .8rem var(--font-mono);color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.ff .bar{grid-column:2/4;height:4px;border-radius:2px;background:var(--surface-2);overflow:hidden}.ff .bar i{display:block;height:100%;border-radius:2px}
+.ff .meta{grid-column:2/4;font-size:.74rem;line-height:1.35;color:var(--ink-soft)}.ff .meta i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.fluxo-tab{margin-top:18px;border-top:1px solid var(--border);padding-top:12px}
+.fluxo-tab summary{cursor:pointer;font-size:.8rem;color:var(--ink-soft);list-style:none;display:inline-flex;gap:6px;align-items:center}
+.fluxo-tab summary::-webkit-details-marker{display:none}.fluxo-tab summary::before{content:"▸";transition:transform .15s ease}.fluxo-tab[open] summary::before{transform:rotate(90deg)}
+.fluxo-tab summary:hover{color:var(--ink)}
+.fluxo-tab .tw{overflow-x:auto;margin-top:10px}
+.fluxo-tab table{border-collapse:collapse;font-size:.8rem;min-width:100%}
+.fluxo-tab th,.fluxo-tab td{padding:6px 10px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap;font-variant-numeric:tabular-nums}
+.fluxo-tab th:first-child,.fluxo-tab td:first-child{text-align:left}.fluxo-tab thead th{color:var(--ink-soft);font-weight:600}.fluxo-tab td{font-family:var(--font-mono);color:var(--ink)}.fluxo-tab td:first-child{font-family:var(--font-body)}
+.fluxo-tab tfoot td{font-weight:700;border-bottom:0}
+.fluxo-nota{font-size:.76rem;line-height:1.5;color:var(--ink-soft);margin-top:14px;max-width:110ch}
+@media(max-width:900px){.fluxo-grid{grid-template-columns:1fr}.fluxo-forn{border-top:1px solid var(--border);padding-top:16px}}
+@media(max-width:640px){.fluxo-card{padding:18px 14px}.fluxo-eyebrow{letter-spacing:.05em}.fluxo-total{font-size:clamp(1.5rem,7vw,1.9rem)}}
 .sinc{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin:-8px 0 20px;padding:9px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface);font-size:.78rem;color:var(--ink-soft)}
 .sinc b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 .sinc .vivo{display:inline-flex;align-items:center;gap:7px;color:var(--positive);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.7rem}
@@ -2122,7 +2121,9 @@ table.notes-table tr:hover td{background:var(--surface-2);}
       <div class="fluxo-card" id="fluxo-cota" hidden>
         <div class="fluxo-eyebrow" id="fluxo-eyebrow">// Parlamentares de MS · cotas e verbas</div>
         <div class="fluxo-total" id="fluxo-total">R$ 0</div>
-        <div class="fluxo-grid"><div><div id="fluxo-svg"></div><ul class="fluxo-leg" id="fluxo-leg"></ul></div><ul class="fluxo-forn" id="fluxo-forn"></ul></div>
+        <p class="fluxo-sub" id="fluxo-sub">De qual casa sai a cota e a verba de gabinete, e em que tipo de gasto ela é usada.</p>
+        <div class="fluxo-grid"><div class="sk" id="fluxo-svg"></div><ul class="fluxo-forn" id="fluxo-forn"></ul></div>
+        <details class="fluxo-tab" id="fluxo-tab"><summary>Ver os valores em tabela</summary><div class="tw" id="fluxo-tabela"></div></details>
         <div class="fluxo-nota" id="fluxo-nota"></div>
       </div>
     </div>
@@ -5275,90 +5276,94 @@ function torneiraSVG(xc, xb, yb, w, g, k = 1) {
       <rect x="${f(xh - 10 * k)}" y="${f(yb - a - 10 * k)}" width="${f(20 * k)}" height="${f(4.4 * k)}" rx="${f(2.2 * k)}" fill="#f5c842" stroke="#5c4a14" stroke-width=".7"/>
       <circle cx="${f(xh)}" cy="${f(yb - a - 8 * k)}" r="${f(3.2 * k)}" fill="#8a6f1f"/></g></g>`;
 }
+// Cor fixa por categoria (a cor acompanha a categoria, nunca a posição no ranking). Paleta validada para o fundo escuro.
+const COR_CAT = { "Consultorias e assessorias": "#338ced", "Divulgação": "#e76624", "Veículos e combustível": "#00a888",
+  "Viagens, passagens e hospedagem": "#d28e05", "Escritório, aluguel e apoio": "#e24d8b" };
+const COR_CAT_RESERVA = ["#9887ef", "#0aac23", "#eb6263"];
 function renderFluxo(d, ano) {
   const f = d && d.fluxoCota; if (!f || !f.fontes?.length || !f.categorias?.length) return;
   const card = document.getElementById("fluxo-cota"); card.hidden = false;
   const fontes = f.fontes.filter(x => x.valor > 0).sort((a, b) => b.valor - a.valor), total = fontes.reduce((t, x) => t + x.valor, 0);
   const resto = c => c.nome === "Outros" || c.nome.includes("sem categoria");
-  const cats = f.categorias.slice().sort((a, b) => (resto(a) - resto(b)) || b.valor - a.valor);
+  const cats = f.categorias.filter(c => c.valor > 0).sort((a, b) => (resto(a) - resto(b)) || b.valor - a.valor);
   const totCat = cats.reduce((t, x) => t + x.valor, 0);
-  const cor = (c, i) => resto(c) ? CINZA_FLUXO : CORES_FLUXO[i % CORES_FLUXO.length];
+  let reserva = 0; const corDe = {};
+  cats.forEach(c => { corDe[c.nome] = resto(c) ? CINZA_FLUXO : (COR_CAT[c.nome] || COR_CAT_RESERVA[reserva++ % COR_CAT_RESERVA.length]); });
+  const pct = (v, t) => (v / t * 100).toLocaleString("pt-BR", { maximumFractionDigits: v / t < .01 ? 1 : 0 }) + "%";
+  const quem = x => /^Vereadores/.test(x.nome) ? "vereadores" : /^Senadores/.test(x.nome) ? "senadores" : "deputados";
+  const valorDe = (x, c) => (x.categorias && x.categorias[c.nome]) || 0;
   document.getElementById("fluxo-eyebrow").textContent = `// Parlamentares de MS · cotas e verbas · ${ano}`;
-  // Celular (< 640 px): as etapas ficam empilhadas na vertical (casas → total → categorias), em HTML, com fonte de 13 px
-  // ou mais. Desktop: o desenho em SVG desenhado no tamanho real da coluna (1 unidade = 1 px), então o texto das caixas
-  // sai com o tamanho em px escrito aqui (mínimo 13 px), sem encolher junto com o desenho.
   const box = document.getElementById("fluxo-svg"), m = matchMedia("(max-width: 640px)").matches;
-  const nomeCurto = n => n.replace("Deputados ", "Dep. ").replace("Vereadores de CG", "Vereadores de CG");
-  const pctDe = c => (c.valor / totCat * 100).toLocaleString("pt-BR", { maximumFractionDigits: 0 }) + "%";
-  const pessoas = fontes.reduce((t, x) => t + x.pessoas, 0);
+  const abrir = aba => document.querySelector(`.sidebar nav button[data-tab="${aba}"]`)?.click();
   if (m) {
-    const mini = (aberto, s = 44) => `<svg viewBox="0 0 ${s + 8} ${s + 8}" width="${s}" height="${s}" aria-hidden="true"><defs>${COFRE_DEFS}</defs>${cofreSVG((s + 8) / 2, (s + 8) / 2, s, aberto)}</svg>`;
-    box.innerHTML = `<div class="fv">
-      <ul class="fv-casas">${fontes.map(x => `<li class="fv-casa" data-aba="${x.aba}" role="button" tabindex="0" title="${escHTML(x.nome)}: ${formatBRL(x.valor)}">
-        ${mini(false, 38)}<b>${formatCompact(x.valor)}</b><span>${escHTML(nomeCurto(x.nome))} · ${x.pessoas}</span></li>`).join("")}</ul>
-      <div class="fv-seta" aria-hidden="true"></div>
-      <div class="fv-total">${mini(true, 52)}<div><span>Total ${ano}</span><small>${pessoas} parlamentares</small></div></div>
-      <div class="fv-seta" aria-hidden="true"></div>
-      <ul class="fv-cats">${cats.map((c, i) => `<li title="${escHTML(c.nome)}: ${formatBRL(c.valor)} (${pctDe(c)})"><i style="background:${cor(c, i)}"></i><span>${escHTML(c.nome)}</span>
-        <b>${formatCompact(c.valor)} <small>${pctDe(c)}</small></b><em style="width:${Math.max(c.valor / totCat * 100, 1.5).toFixed(1)}%;background:${cor(c, i)}"></em></li>`).join("")}</ul></div>`;
-    box.querySelectorAll(".fv-casa").forEach(el => { const ir = () => document.querySelector(`.sidebar nav button[data-tab="${el.dataset.aba}"]`)?.click();
-      el.addEventListener("click", ir); el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); ir(); } }); });
+    // Celular: uma barra por casa, dividida pelas categorias (a mesma informação do diagrama, legível em tela estreita)
+    box.innerHTML = `<div class="mb">${fontes.map(x => `<div class="mb-casa" data-aba="${x.aba}" role="button" tabindex="0">
+        <header><span>${escHTML(x.nome)}<small>${x.pessoas} ${quem(x)}</small></span><b>${formatCompact(x.valor)}</b></header>
+        <div class="mb-bar" aria-hidden="true">${cats.map(c => { const v = valorDe(x, c); return v > 0 ? `<i style="flex:${(v / x.valor).toFixed(4)};background:${corDe[c.nome]}" title="${escHTML(c.nome)}: ${formatBRL(v)}"></i>` : ""; }).join("")}</div></div>`).join("")}
+      <ul class="mb-leg">${cats.map(c => `<li><i style="background:${corDe[c.nome]}"></i><span>${escHTML(c.nome)}</span><span><b>${formatCompact(c.valor)}</b> <small>${pct(c.valor, totCat)}</small></span></li>`).join("")}</ul></div>`;
+    box.querySelectorAll(".mb-casa").forEach(el => { el.addEventListener("click", () => abrir(el.dataset.aba));
+      el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); abrir(el.dataset.aba); } }); });
   } else {
-    // Mesmas proporções do desenho original (casas ~14%, total ~45%, categorias ~72% da largura), um pouco mais baixo.
-    // As fontes são convertidas pela escala real do desenho: valor 16 px e nome 14 px na tela, qualquer que seja a largura.
-    const W = 660, H = 348, CX = 300, CY = 180, CW = 104, LARG = 74, sx = 96, tx = 474;
-    const esc = (box.clientWidth || W) / W, PX = n => +(n / esc).toFixed(2);  // px na tela → unidades do desenho
-    const FV = PX(16), FL = PX(14), LH = PX(16);
-    const SANS = `font-family:var(--font-body);letter-spacing:0;text-transform:none`;
-    const cabe = Math.max(12, Math.floor((W - tx - 16) / (FL * .5)));  // caracteres por linha no nome da categoria
-    const quebra = t => { const out = []; let l = ""; for (const w of t.split(" ")) { if (l && (l + " " + w).length > cabe) { out.push(l); l = w; } else l = l ? l + " " + w : w; } if (l) out.push(l); return out; };
-    const linhasCat = cats.map(c => quebra(c.nome));
-    const M = (x, y) => `${x.toFixed(1)} ${y.toFixed(1)}`;
-    const curva = (x1, y1, x2, y2) => { const m = (x1 + x2) / 2; return `M ${M(x1, y1)} C ${M(m, y1)} ${M(m, y2)} ${M(x2, y2)}`; };
-    let defs = "", fitas = "", nos = "", torneiras = "";
-    const rMax = Math.sqrt(Math.max(...fontes.map(x => x.valor)));
-    // Mesma escala dos dois lados: a soma das faixas que entram no cofre central tem a mesma espessura (LARG) da soma das que saem.
-    let acc = CY - LARG / 2;
-    fontes.forEach((x, i) => {
-      const y = 34 + i * (H - 94) / Math.max(fontes.length - 1, 1), wj = Math.max(x.valor / total * LARG, 2.5);
-      const yc = acc + wj / 2; acc += wj;
-      const cs = 34 + 12 * Math.sqrt(x.valor) / rMax, cy = y - 12, ch = cs * .92;
-      defs += `<linearGradient id="fg-e${i}" gradientUnits="userSpaceOnUse" x1="${sx}" x2="${CX}"><stop offset="0" stop-color="#f5c842" stop-opacity=".3"/><stop offset="1" stop-color="#f5c842" stop-opacity=".75"/></linearGradient>`;
-      const p = curva(sx + cs / 2 - 2, cy, CX - CW / 2 + 10, yc);
-      fitas += `<path class="fita" data-g="e${i}" d="${p}" stroke="url(#fg-e${i})" stroke-width="${wj.toFixed(1)}"/>`;
-      nos += `<g class="no" data-g="e${i}" data-aba="${x.aba}"><title>${escHTML(x.nome)}: ${formatBRL(x.valor)}</title>
-        ${cofreSVG(sx, cy, cs, false)}
-        <text class="v" x="${sx}" y="${(cy + ch / 2 + FV + 1).toFixed(1)}" text-anchor="middle" style="font-size:${FV}px">${formatCompact(x.valor)}</text>
-        <text class="l" x="${sx}" y="${(cy + ch / 2 + FV + 1 + LH).toFixed(1)}" text-anchor="middle" style="font-size:${FL}px;${SANS};fill:#f5c842">${escHTML(x.nome)} · ${x.pessoas}</text></g>`;
-    });
-    acc = CY - LARG / 2;
-    cats.forEach((c, i) => {
-      const y = 18 + i * (H - 64) / Math.max(cats.length - 1, 1), w = Math.max(c.valor / totCat * LARG, 3), k = cor(c, i);
-      const yc = acc + w / 2; acc += w;
-      defs += `<linearGradient id="fg-s${i}" gradientUnits="userSpaceOnUse" x1="${CX}" x2="${tx}"><stop offset="0" stop-color="#f5c842" stop-opacity=".7"/><stop offset="1" stop-color="${k}" stop-opacity=".9"/></linearGradient>`;
-      const p = curva(CX + CW / 2 - 10, yc, tx, y);
-      fitas += `<path class="fita" data-g="s${i}" d="${p}" stroke="url(#fg-s${i})" stroke-width="${w.toFixed(1)}"/>`;
-      nos += `<g class="no" data-g="s${i}"><title>${escHTML(c.nome)}: ${formatBRL(c.valor)} (${pctDe(c)})</title>
-        <circle class="ponto" cx="${tx}" cy="${y}" r="5" fill="${k}" style="filter:drop-shadow(0 0 5px ${k})"/>
-        <text class="v" x="${tx + 13}" y="${(y + FV * .35).toFixed(1)}" style="font-size:${FV}px">${formatCompact(c.valor)} <tspan style="font-size:${FL}px;fill:var(--ink-soft)">${pctDe(c)}</tspan></text>
-        ${linhasCat[i].map((l, j) => `<text class="l" x="${tx + 13}" y="${(y + FV * .35 + (j + 1) * LH).toFixed(1)}" style="font-size:${FL}px;${SANS}">${escHTML(l)}</text>`).join("")}</g>`;
-    });
-    const centro = `<g class="no-centro">${cofreSVG(CX, CY, CW, true)}
-        <text class="l" x="${CX + CW * .06}" y="${(CY - CW * .58 - 6).toFixed(1)}" text-anchor="middle" style="font-size:${FL}px;${SANS}">Total ${ano}</text>
-        <text class="l" x="${CX + CW * .06}" y="${(CY + CW * .46 + FL + 10).toFixed(1)}" text-anchor="middle" style="font-size:${FL}px;${SANS}">${pessoas} parlamentares</text></g>`;
-    box.innerHTML = `<svg class="fluxo-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Fluxo das cotas e verbas dos parlamentares de MS: de cada casa para o total e daí para as categorias de gasto"><defs>${COFRE_DEFS}${defs}</defs>${centro}${fitas}${nos}${torneiras}${centro.replace(/^<g class="no-centro">[\s\S]*?(?=<text)/, '<g class="no-centro rotulos">')}</svg>`;
+    // Computador: diagrama de fluxo (casa → categoria). Desenhado em px reais da coluna; a espessura de cada faixa é o valor.
+    const W = Math.max(600, box.clientWidth || 720), LBL_E = 200, LBL_D = 236, NW = 10, GAP = 14;
+    const xE = LBL_E, xD = W - LBL_D, H = Math.max(420, cats.length * 56 + 40);
+    const k = Math.min((H - GAP * (fontes.length - 1)) / total, (H - GAP * (cats.length - 1)) / totCat);
+    const empilha = (lista, val) => { const alt = lista.reduce((t, x) => t + val(x) * k, 0) + GAP * (lista.length - 1); let y = (H - alt) / 2;
+      return lista.map(x => { const h = Math.max(val(x) * k, 2), o = { y, h }; y += h + GAP; return o; }); };
+    const nE = empilha(fontes, x => x.valor), nD = empilha(cats, c => c.valor);
+    const offE = nE.map(n => n.y), offD = nD.map(n => n.y);
+    let links = "";
+    fontes.forEach((x, i) => cats.forEach((c, j) => {
+      const v = valorDe(x, c); if (v <= 0) return; const t = v * k;
+      const y0 = offE[i] + t / 2, y1 = offD[j] + t / 2; offE[i] += t; offD[j] += t;
+      const x0 = xE + NW, x1 = xD, mx = (x0 + x1) / 2;
+      links += `<path class="lk" data-e="${i}" data-d="${j}" d="M${x0} ${y0.toFixed(1)}C${mx} ${y0.toFixed(1)} ${mx} ${y1.toFixed(1)} ${x1} ${y1.toFixed(1)}" stroke="${corDe[c.nome]}" stroke-width="${Math.max(t, 1).toFixed(1)}"
+        data-tip="<strong>${escHTML(x.nome)} → ${escHTML(c.nome)}</strong><br><b>${formatBRL(v)}</b> · ${pct(v, x.valor)} do gasto da casa"/>`;
+    }));
+    // rótulos sem colisão: centro de cada rótulo a pelo menos 32 px do anterior
+    const rotY = ns => { const out = []; ns.forEach((n, i) => { let c = n.y + n.h / 2; if (i && c - out[i - 1] < 38) c = out[i - 1] + 38; out.push(c); }); return out; };
+    const yE = rotY(nE), yD = rotY(nD);
+    let nos = "";
+    fontes.forEach((x, i) => { const n = nE[i];
+      nos += `<g class="nd" data-e="${i}" data-aba="${x.aba}" data-tip="<strong>${escHTML(x.nome)}</strong><br><b>${formatBRL(x.valor)}</b> · ${x.pessoas} ${quem(x)} · clique para abrir">
+        <rect x="${xE}" y="${n.y.toFixed(1)}" width="${NW}" height="${n.h.toFixed(1)}" rx="2" fill="#f5c842"/>
+        <rect x="0" y="${(yE[i] - 18).toFixed(1)}" width="${xE + NW}" height="36" fill="transparent"/>
+        <text class="nm" x="${xE - 12}" y="${(yE[i] - 3).toFixed(1)}" text-anchor="end">${escHTML(x.nome)}</text>
+        <text class="vl" x="${xE - 12}" y="${(yE[i] + 13).toFixed(1)}" text-anchor="end">${formatCompact(x.valor)} · ${x.pessoas} ${quem(x)}</text></g>`; });
+    cats.forEach((c, j) => { const n = nD[j];
+      nos += `<g class="nd" data-d="${j}" data-tip="<strong>${escHTML(c.nome)}</strong><br><b>${formatBRL(c.valor)}</b> · ${pct(c.valor, totCat)} do total">
+        <rect x="${xD}" y="${n.y.toFixed(1)}" width="${NW}" height="${n.h.toFixed(1)}" rx="2" fill="${corDe[c.nome]}"/>
+        <rect x="${xD}" y="${(yD[j] - 18).toFixed(1)}" width="${LBL_D}" height="36" fill="transparent"/>
+        <text class="nm" x="${xD + NW + 12}" y="${(yD[j] - 3).toFixed(1)}">${escHTML(c.nome)}</text>
+        <text class="vl" x="${xD + NW + 12}" y="${(yD[j] + 13).toFixed(1)}">${formatCompact(c.valor)} · ${pct(c.valor, totCat)}</text></g>`; });
+    box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Fluxo das cotas e verbas dos parlamentares de MS em ${ano}: de cada casa para cada tipo de gasto. Os valores estão na tabela abaixo do gráfico.">${links}${nos}</svg><div class="sk-tip" id="fluxo-tip" role="tooltip"></div>`;
     renderFluxo.larg = box.clientWidth;
-    const svg = box.querySelector("svg");
-    const foca = g => { svg.classList.toggle("foco", !!g); svg.querySelectorAll(".fita,.trilha").forEach(p => p.classList.toggle("ativo", p.dataset.g === g)); };
-    svg.querySelectorAll(".no,.fita").forEach(el => { el.addEventListener("mouseenter", () => foca(el.dataset.g)); el.addEventListener("mouseleave", () => foca(null)); });
-    svg.querySelectorAll(".no[data-aba]").forEach(el => el.addEventListener("click", () => document.querySelector(`.sidebar nav button[data-tab="${el.dataset.aba}"]`)?.click()));
+    const tip = box.querySelector("#fluxo-tip");
+    const foca = el => { box.classList.toggle("foco", !!el); const e = el?.dataset.e, dd = el?.dataset.d, eLk = el?.classList.contains("lk");
+      box.querySelectorAll(".lk").forEach(p => p.classList.toggle("on", !!el && (eLk ? p === el : (e != null ? p.dataset.e === e : p.dataset.d === dd))));
+      box.querySelectorAll(".nd").forEach(g => g.classList.toggle("on", !!el && ((e != null && g.dataset.e === e) || (dd != null && g.dataset.d === dd)))); };
+    const move = ev => { const r = box.getBoundingClientRect(); let x = ev.clientX - r.left + 14, y = ev.clientY - r.top + 14;
+      if (x + tip.offsetWidth > r.width) x = ev.clientX - r.left - tip.offsetWidth - 14; tip.style.transform = `translate(${x}px,${y}px)`; };
+    box.querySelectorAll(".lk,.nd").forEach(el => {
+      el.addEventListener("pointerenter", ev => { foca(el); tip.innerHTML = el.dataset.tip; tip.classList.add("on"); move(ev); });
+      el.addEventListener("pointermove", move);
+      el.addEventListener("pointerleave", () => { foca(null); tip.classList.remove("on"); });
+    });
+    box.querySelectorAll(".nd[data-aba]").forEach(el => el.addEventListener("click", () => abrir(el.dataset.aba)));
   }
-  const corCat = {}; cats.forEach((c, i) => { corCat[c.nome] = cor(c, i); });
-  document.getElementById("fluxo-forn").innerHTML = `<h3>▸ Maiores fornecedores</h3>` + (f.fornecedores || []).map((x, i) => { const k = corCat[x.categoria] || "#f5c842"; return `<li title="${escHTML(x.nome)}${x.categoria ? " · " + escHTML(x.categoria) : ""}"><i style="background:${k};box-shadow:0 0 6px ${k}"></i><span><span class="fluxo-forn-nome">${escHTML(x.nome)}</span><small>${formatCompact(x.valor)} · ${x.gabinetes} ${x.gabinetes > 1 ? "gabinetes" : "gabinete"}</small></span></li>`; }).join("");
+  // tabela com os mesmos valores (casa × categoria)
+  document.getElementById("fluxo-tabela").innerHTML = `<table><thead><tr><th>Casa</th>${cats.map(c => `<th>${escHTML(c.nome)}</th>`).join("")}<th>Total</th></tr></thead>
+    <tbody>${fontes.map(x => `<tr><td>${escHTML(x.nome)}</td>${cats.map(c => `<td>${formatCompact(valorDe(x, c))}</td>`).join("")}<td>${formatCompact(x.valor)}</td></tr>`).join("")}</tbody>
+    <tfoot><tr><td>Total</td>${cats.map(c => `<td>${formatCompact(c.valor)}</td>`).join("")}<td>${formatCompact(total)}</td></tr></tfoot></table>`;
+  const maxF = Math.max(...(f.fornecedores || []).map(x => x.valor), 1);
+  document.getElementById("fluxo-forn").innerHTML = `<h3>Maiores fornecedores</h3>` + (f.fornecedores || []).map((x, i) => {
+    const k = corDe[x.categoria] || "#8b95aa";
+    return `<li class="ff" title="${escHTML(x.nome)}"><span class="n">${i + 1}</span><span class="nome">${escHTML(x.nome)}</span><span class="val">${formatCompact(x.valor)}</span>
+      <span class="bar" aria-hidden="true"><i style="width:${(x.valor / maxF * 100).toFixed(1)}%;background:${k}"></i></span>
+      <span class="meta">${x.categoria ? `<i style="background:${k}"></i>${escHTML(x.categoria)} · ` : ""}${x.gabinetes} ${x.gabinetes > 1 ? "gabinetes" : "gabinete"}</span></li>`; }).join("");
   document.getElementById("fluxo-nota").textContent = `Valores pagos em ${ano} com as cotas de senadores e deputados federais e a verba indenizatória dos deputados estaduais e dos vereadores de Campo Grande. ` +
     `A Câmara de CG não publica o tipo de gasto: ele foi identificado pela descrição de cada nota (o Ato 028, de assessoria técnica, entra em consultorias). ` +
-    `A largura de cada faixa é proporcional ao valor. Fornecedores somados por CNPJ (senadores, deputados federais e estaduais). Toque numa casa para abrir a aba.`;
-  document.getElementById("fluxo-leg").innerHTML = "";
+    `A espessura de cada faixa é proporcional ao valor. Fornecedores somados por CNPJ (senadores, deputados federais e estaduais). Clique numa casa para abrir a aba.`;
   if (!renderFluxo.redim) { renderFluxo.redim = true; let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(() => { if (matchMedia("(max-width: 640px)").matches !== m || (!m && Math.abs((box.clientWidth || 0) - (renderFluxo.larg || 0)) > 24)) renderFluxo(d, ano); }, 250); }); }
   if (renderFluxo.contou) return; renderFluxo.contou = true;
   const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); contarAte(document.getElementById("fluxo-total"), total); } });
