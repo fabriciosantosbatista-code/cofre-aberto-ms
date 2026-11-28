@@ -37,7 +37,8 @@ CSS_TEMA = CSS_EXTRA + """
 .btn-painel{display:inline-block;margin:6px 0 4px;padding:9px 16px;border-radius:999px;background:#f5c842;color:#14120a;font-weight:600;text-decoration:none;font-size:.86rem}
 """
 TEMAS, PERGUNTAS = [], []
-VEREADOR_CG = []  # (pergunta, resposta) do vereador de CG: a página é /vereadores-campo-grande.html  # (url, título curto) para o sitemap e os links entre as páginas
+VEREADOR_CG = []
+TETO_FAQ = []  # (pergunta, resposta) da página do teto (/salario-ministros-stf/): FAQPage  # (pergunta, resposta) do vereador de CG: a página é /vereadores-campo-grande.html  # (url, título curto) para o sitemap e os links entre as páginas
 
 
 def carregar(nome):
@@ -177,6 +178,34 @@ def tema_prefeitura():
     return ("/prefeitura-campo-grande/", f"Gastos e contratos da Prefeitura de Campo Grande {ano} | Cofre Aberto MS",
             f"Quanto a Prefeitura de Campo Grande gastou em {ano} ({compacto(p['totalDespesas'])}), por secretaria, as empresas com mais contratos e os maiores contratos.",
             f"Gastos e contratos da Prefeitura de Campo Grande em {ano}", corpo)
+
+
+def tema_teto_stf():
+    """28/11/2026 (SEO): /salario-ministros-stf/ voltou como a página do TETO constitucional (36% das impressões no
+    Search Console). Não é a volta do STF ao site: não há contracheque de ministro; o número é o subsídio fixado em lei,
+    que é o teto do funcionalismo, e a página leva a quem em MS recebe acima dele."""
+    ss = carregar("supersalarios.json")
+    if not ss.get("teto"):
+        return None
+    teto, ano = ss["teto"], ss.get("ano", ANO)
+    r = (f"Em {ano}, o salário (subsídio) de ministro do STF é de {brl(teto)} brutos por mês, valor fixado pela Lei nº 14.520/2023 "
+         f"e em vigor desde fevereiro de 2025. Esse é também o teto constitucional: nenhum servidor público deveria ganhar mais que isso.")
+    corpo = f"<div class='resposta'>{e(r)}</div>"
+    corpo += kpis([(brl(teto), f"subsídio de ministro do STF em {ano}"), (brl(teto * 13), "por ano, com o 13º"),
+                   (milhar(ss.get("liquidoAcimaTeto") or 0), "pessoas em MS com líquido acima do teto")])
+    corpo += (f"<p>O valor vale para os 11 ministros do Supremo Tribunal Federal e é a referência do teto previsto no art. 37, XI, da "
+              f"Constituição. Fonte: {e(ss.get('tetoFonte') or 'Lei nº 14.520/2023')}.</p>")
+    corpo += (f"<h2>Esse é o teto do funcionalismo — veja quem em MS ganha acima dele</h2>"
+              f"<p>Mesmo com o teto, verbas indenizatórias e outros \"penduricalhos\" não entram no limite. No último mês publicado, "
+              f"<strong>{milhar(ss.get('liquidoAcimaTeto') or 0)} pessoas</strong> receberam em MS um valor líquido acima de {brl(teto)}, "
+              f"e {milhar(ss.get('acimaTeto') or 0)} tiveram o bruto acima do teto, entre {milhar(ss.get('totalPessoas') or 0)} contracheques analisados.</p>"
+              f"<p><a class='btn-painel' href='/supersalarios-ms/'>Veja quem recebe acima do teto em MS →</a></p>")
+    corpo += ("<p><a href='/perguntas/o-que-e-supersalario-e-teto-constitucional/'>O que é supersalário e qual é o teto do funcionalismo?</a> · "
+              "<a href='/perguntas/quanto-ganha-um-senador/'>Quanto ganha um senador?</a></p>")
+    TETO_FAQ[:] = [(f"Quanto ganha um ministro do STF em {ano}?", r)]
+    return ("/salario-ministros-stf/", f"Salário de ministro do STF em {ano}: {brl(teto)} | Cofre Aberto MS",
+            f"O salário de ministro do STF em {ano} é {brl(teto)} por mês, o teto do funcionalismo. Veja quem em MS recebe acima dele.",
+            f"Salário dos ministros do STF em {ano}: o teto do funcionalismo", corpo)
 
 
 def tema_supersalarios():
@@ -785,7 +814,7 @@ def perguntas():
 
 
 def main():
-    temas = [t for t in (tema_apoie(), tema_termometro(), tema_votacoes(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_auditoria(), tema_emendas(), tema_shows(), tema_obras(), tema_publicidade(), tema_entidades(), tema_arrecadacao()) if t]
+    temas = [t for t in (tema_apoie(), tema_termometro(), tema_votacoes(), tema_governo(), tema_prefeitura(), tema_supersalarios(), tema_teto_stf(), tema_auditoria(), tema_emendas(), tema_shows(), tema_obras(), tema_publicidade(), tema_entidades(), tema_arrecadacao()) if t]
     pergs = perguntas()
     # Apoie desligado (chave Pix vazia em apoie-config.js): a página continua existindo, mas sai dos "Veja também"
     apoie_on = bool(re.search(r'chave:\s*"[^"]+"', (ROOT / "apoie-config.js").read_text(encoding="utf-8"))) if (ROOT / "apoie-config.js").exists() else False
@@ -793,7 +822,8 @@ def main():
     PERGUNTAS[:] = [(f"/perguntas/{s}/", p) for s, p, *_ in pergs]
     paginas = []
     for url, tit, desc, h1, corpo in temas:
-        paginas.append((url, pagina(url, tit, desc, h1, corpo)))
+        ld = faq_ld(url, TETO_FAQ) if url == "/salario-ministros-stf/" and TETO_FAQ else None
+        paginas.append((url, pagina(url, tit, desc, h1, corpo, ld)))
     for url, tit, desc, h1, corpo in paginas_institucionais():  # não entram no "Veja também"
         html = pagina(url, tit, desc, h1, corpo).replace("com dados de fontes oficiais.", "— versão em vigor.")
         paginas.append((url, html))
