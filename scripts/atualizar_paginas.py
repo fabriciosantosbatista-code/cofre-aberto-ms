@@ -373,6 +373,7 @@ def main():
                            f'<td class="num">{brl(pago)}</td>', f'<td class="num">{pago / cota * 100:.1f}%</td>',
                            f'<td class="num">{v.get("totalNotasFiscais") or 0}</td>'])
         html = troca(html, r"(<tbody>\n).*?(\n      </tbody>)", r"\g<1>" + tabela(linhas).replace("\\", "\\\\") + r"\2", "vereadores: tabela")
+        html = seo_vereadores_cg(html, vereadores, subsidio, verba_cg)
         p.write_text(html, encoding="utf-8")
         print("✅ vereadores-campo-grande.html")
 
@@ -440,6 +441,34 @@ PALAVRAS_CG = (
     ("Consultorias e assessorias", ("ASSESSORIA", "CONSULTORIA", "ADVOCACIA", "ADVOGAD", "CONTÁBIL", "CONTABIL", "PESQUISA")),
 )
 
+
+def seo_vereadores_cg(html, vereadores, subsidio, verba_cg):
+    """SEO (28/11/2026, Search Console: a busca é "salário de vereador em Campo Grande"): title e description com o valor,
+    1º parágrafo responde em uma frase e FAQPage. A página /perguntas/quanto-ganha-um-vereador-de-campo-grande/ redireciona para cá."""
+    import html as h_
+    cota = ((vereadores[0].get("verbaIndenizatoria") or {}).get(f"cotaAnual{ANO}") or 300000)
+    titulo = f"Salário de vereador em Campo Grande: {brl(subsidio)} em {ANO} | Cofre Aberto MS"
+    desc = (f"Vereador de Campo Grande recebe {brl(subsidio)} brutos por mês em {ANO}, mais até {brl(cota)} por ano de verba "
+            f"indenizatória. Veja quanto cada vereador gasta.")
+    resposta = (f"Em {ANO}, cada vereador de Campo Grande recebe subsídio bruto de {brl(subsidio)} por mês, mais até {brl(cota)} por ano "
+                f"de verba indenizatória; os {len(vereadores)} vereadores já usaram {brl(verba_cg)} da verba no ano.")
+    esc = lambda t: h_.escape(t, quote=True).replace("\\", "\\\\")
+    html = troca(html, r"<title>.*?</title>", f"<title>{esc(titulo)}</title>", "vereadores: title")
+    html = troca(html, r'<meta name="description" content="[^"]*"', f'<meta name="description" content="{esc(desc)}"', "vereadores: description")
+    html = troca(html, r'<meta property="og:title" content="[^"]*"', f'<meta property="og:title" content="{esc(titulo.split(" | ")[0])}"', "vereadores: og:title")
+    html = troca(html, r'<meta property="og:description" content="[^"]*"', f'<meta property="og:description" content="{esc(desc)}"', "vereadores: og:description")
+    html = troca(html, r"<h1>.*?</h1>", f"<h1>Salário e gastos dos vereadores de Campo Grande em {ANO}</h1>", "vereadores: h1")
+    html = troca(html, r'<p class="subtitulo">.*?</p>', f'<p class="subtitulo"><strong>{esc(resposta)}</strong> Abaixo, a verba e as notas fiscais de cada um, '
+                 f'coletadas do Portal da Transparência da Câmara e atualizadas todos os dias.</p>', "vereadores: resposta")
+    ld = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "url": "https://cofreabertoms.com.br/vereadores-campo-grande.html",
+                     "mainEntity": [{"@type": "Question", "name": "Quanto ganha um vereador de Campo Grande?",
+                                     "acceptedAnswer": {"@type": "Answer", "text": resposta}}]}, ensure_ascii=False)
+    bloco = f'<script type="application/ld+json" id="faq-salario">{ld}</script>'
+    if 'id="faq-salario"' in html:
+        html = re.sub(r'<script type="application/ld\+json" id="faq-salario">.*?</script>', lambda m: bloco, html, flags=re.S)
+    else:
+        html = html.replace("</head>", bloco + "\n</head>", 1)
+    return html
 
 def categorias_vereador_cg(v):
     """{família: valor} de um vereador de CG: Ato 028 inteiro em assessoria; Ato 027 dividido pela descrição das notas,

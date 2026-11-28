@@ -36,7 +36,8 @@ CSS_TEMA = CSS_EXTRA + """
 .relacionadas{columns:2 260px;font-size:.9rem;line-height:2}.relacionadas a{color:var(--ink)}
 .btn-painel{display:inline-block;margin:6px 0 4px;padding:9px 16px;border-radius:999px;background:#f5c842;color:#14120a;font-weight:600;text-decoration:none;font-size:.86rem}
 """
-TEMAS, PERGUNTAS = [], []  # (url, título curto) para o sitemap e os links entre as páginas
+TEMAS, PERGUNTAS = [], []
+VEREADOR_CG = []  # (pergunta, resposta) do vereador de CG: a página é /vereadores-campo-grande.html  # (url, título curto) para o sitemap e os links entre as páginas
 
 
 def carregar(nome):
@@ -601,7 +602,9 @@ def tema_arrecadacao():
 
 # Endereços antigos que mudaram: a página antiga continua existindo e manda o visitante para a nova (links antigos não
 # quebram). Saem do sitemap e do índice dos buscadores (noindex + canonical para a nova).
-REDIRECIONA = {"/impostometro-ms/": ("/contador-da-arrecadacao-ms/", "Contador da arrecadação MS")}
+REDIRECIONA = {"/impostometro-ms/": ("/contador-da-arrecadacao-ms/", "Contador da arrecadação MS"),
+               # 28/11/2026 (SEO): a pergunta do salário de vereador foi juntada à página principal dos vereadores de CG
+               "/perguntas/quanto-ganha-um-vereador-de-campo-grande/": ("/vereadores-campo-grande.html", "Salário e gastos dos vereadores de Campo Grande")}
 
 
 def pagina_redireciona(novo, nome):
@@ -729,8 +732,8 @@ def perguntas():
             f"<tr><td>{link_empresa(v['nome'], url_parl('vereador', v['nome']))} "
             f"<small>{e(v.get('partido') or '')}</small></td><td class='num'>{brl((v.get('verbaIndenizatoria') or {}).get(f'gastoPago{ANO}'))}</td></tr>"
             for v in sorted(vs, key=lambda v: -((v.get('verbaIndenizatoria') or {}).get(f'gastoPago{ANO}') or 0))])
-        out.append(("quanto-ganha-um-vereador-de-campo-grande", "Quanto ganha um vereador de Campo Grande?", r, corpo, "camara",
-                    f"Salário de vereador em Campo Grande: {brl(sal)} por mês, mais verba indenizatória de até {brl(cota)} por ano e o gabinete."))
+        # 28/11/2026: a resposta mora em /vereadores-campo-grande.html (a página daqui redireciona); fica só no índice /perguntas/
+        VEREADOR_CG[:] = [("Quanto ganha um vereador de Campo Grande?", r)]
     ds = est.get("vereadores") or []
     if ds:
         sal = float(ds[0].get("salarioBase") or 0)
@@ -801,11 +804,13 @@ def main():
                                     migalha="<a href='/perguntas/'>Perguntas</a>")))
     idx_corpo = "<p>Respostas curtas, com números atualizados todo dia a partir de fontes oficiais.</p>" + "".join(
         f"<div class='dest'><b><a href='/perguntas/{s}/'>{e(p)}</a></b><small>{e(resumo(r))}</small>"
-        f"<a class='mais' href='/perguntas/{s}/'>Ver a resposta completa →</a></div>" for s, p, r, *_ in pergs)
+        f"<a class='mais' href='/perguntas/{s}/'>Ver a resposta completa →</a></div>" for s, p, r, *_ in pergs) + "".join(
+        f"<div class='dest'><b><a href='/vereadores-campo-grande.html'>{e(p)}</a></b><small>{e(resumo(r))}</small>"
+        f"<a class='mais' href='/vereadores-campo-grande.html'>Ver a resposta completa →</a></div>" for p, r in VEREADOR_CG)
     paginas.append(("/perguntas/", pagina("/perguntas/", "Perguntas sobre salários e gastos públicos em MS | Cofre Aberto MS",
                                           "Quanto ganha o governador de MS, um vereador de Campo Grande, um deputado, um senador; o que é a cota parlamentar e as Emendas Pix.",
                                           "Perguntas frequentes sobre o dinheiro público em MS", idx_corpo,
-                                          faq_ld("/perguntas/", [(p, r) for _, p, r, *_ in pergs]))))
+                                          faq_ld("/perguntas/", [(p, r) for _, p, r, *_ in pergs] + VEREADOR_CG))))
     mudou = 0
     for url, html in paginas:
         html = html.replace("{RELACIONADAS}", links_relacionados(url))
