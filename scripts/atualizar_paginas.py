@@ -396,6 +396,9 @@ def main():
                    f'<td class="num">{len(d.get("despesas") or [])}</td>']
                   for d in sorted(deps_est, key=lambda d: -len(d.get("despesas") or []))]
         html = troca(html, r"(<tbody>\n).*?(\n      </tbody>)", r"\g<1>" + tabela(linhas).replace("\\", "\\\\") + r"\2", "dep. estaduais: tabela")
+        html = seo_cabecalho(html, f"Deputados estaduais de MS: {valor_curto(ceap_est)} de verba em {ANO} | Cofre Aberto MS",
+                             f"Deputado estadual de MS recebe {brl(subsidio)} brutos por mês em {ANO}; os {len(deps_est)} deputados já usaram "
+                             f"{brl(ceap_est)} de verba indenizatória. Veja quanto cada um gasta.", "dep. estaduais")
         p.write_text(html, encoding="utf-8")
         print("✅ deputados-estaduais-ms.html")
 
@@ -415,6 +418,11 @@ def main():
                    f'<td class="num">{len(s.get("notasCeaps") or [])}</td>']
                   for s in sorted(senadores, key=lambda s: -(s.get("cotaGastaAno") or 0))]
         html = troca(html, r"(<tbody>\n).*?(\n      </tbody>)", r"\g<1>" + tabela(linhas).replace("\\", "\\\\") + r"\2", "senadores: tabela")
+        gasto_sen = sum(s.get("cotaGastaAno") or 0 for s in senadores)
+        sub_sen = (carregar("supersalarios.json") or {}).get("teto") or 46366.19  # subsídio de senador = teto (mesmo valor em lei)
+        html = seo_cabecalho(html, f"Senadores de MS: {valor_curto(gasto_sen)} da cota (CEAPS) em {ANO} | Cofre Aberto MS",
+                             f"Os {len(senadores)} senadores de MS usaram {brl(gasto_sen)} da CEAPS em {ANO}; o salário de senador é "
+                             f"{brl(sub_sen)} brutos por mês. Veja quanto cada um gasta.", "senadores")
         p.write_text(html, encoding="utf-8")
         print("✅ senadores-ms.html")
 
@@ -440,6 +448,18 @@ PALAVRAS_CG = (
     ("Viagens, passagens e hospedagem", ("PASSAGE", "HOSPEDAG", "HOTEL", "DIÁRIA", "DIARIA", "ALIMENTA", "RESTAURANTE", "TÁXI", "TAXI", "UBER")),
     ("Consultorias e assessorias", ("ASSESSORIA", "CONSULTORIA", "ADVOCACIA", "ADVOGAD", "CONTÁBIL", "CONTABIL", "PESQUISA")),
 )
+
+
+def seo_cabecalho(html, titulo, desc, nome):
+    """Regra de SEO (28/11/2026): title com nome + número + ano; description com o número (também og: e twitter:)."""
+    import html as h_
+    esc = lambda t: h_.escape(t, quote=True).replace("\\", "\\\\")
+    html = troca(html, r"<title>.*?</title>", f"<title>{esc(titulo)}</title>", f"{nome}: title")
+    for k in ('name="description"', 'property="og:description"', 'name="twitter:description"'):
+        html = re.sub(rf'<meta {k} content="[^"]*"', lambda m: f'<meta {k} content="{h_.escape(desc, quote=True)}"', html, count=1)
+    for k in ('property="og:title"', 'name="twitter:title"'):
+        html = re.sub(rf'<meta {k} content="[^"]*"', lambda m: f'<meta {k} content="{h_.escape(titulo.split(" | ")[0], quote=True)}"', html, count=1)
+    return html
 
 
 def seo_vereadores_cg(html, vereadores, subsidio, verba_cg):
