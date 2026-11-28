@@ -36,19 +36,26 @@ def md_inline(t):
 
 
 def titulo_e_detalhe(celula):
-    """O título é o trecho em negrito do começo da célula ("**Emendas — ...:**"); sem ele, a primeira frase."""
+    """O título é o trecho em negrito do começo da célula ("**Emendas — ...:**"); sem ele, a primeira frase.
+    Tudo a partir de "**Detalhe técnico:**" fica só na documentação: não vai para a página."""
+    celula = re.split(r"\s*\*\*Detalhe técnico:?\*\*", celula, maxsplit=1)[0].strip()
     m = re.match(r"^\*\*(.+?):?\*\*:?\s*(.*)$", celula, re.S)
     if m:
         det = m.group(2)
-        return m.group(1).rstrip(":"), det[:1].upper() + det[1:]
+        return m.group(1).rstrip(":."), det[:1].upper() + det[1:]
     frase = re.split(r"(?<=[.!?])\s", celula, maxsplit=1)
     return frase[0], (frase[1] if len(frase) > 1 else "")
+
+
+def partes(h):
+    """"O que mudou", "Por quê" e "Para quem lê o site" em parágrafos separados."""
+    return re.sub(r"\s*(<strong>(?:Por quê|Para quem lê o site):</strong>)", r"<br><br>\1", h)
 
 
 def montar(linhas):
     corpo = "".join(
         f"<tr><td style='white-space:nowrap'>{d}</td><td><details><summary>{md_inline(t)}</summary>"
-        f"<div style='margin-top:6px;font-size:.88rem;line-height:1.6'>{md_inline(det) or '—'}</div></details></td></tr>"
+        f"<div style='margin-top:6px;font-size:.88rem;line-height:1.6'>{partes(md_inline(det)) or '—'}</div></details></td></tr>"
         for d, (t, det) in ((d, titulo_e_detalhe(c)) for d, c in linhas))
     return (f"{INI}\n<h2 id=\"mudancas-regras\">Mudanças nas regras de conferência</h2>\n"
             "<p>Quando mudamos a forma de conferir os dados na fonte oficial ou de calcular o índice de confiabilidade (ICP), a mudança "
