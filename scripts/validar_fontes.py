@@ -479,6 +479,8 @@ def v_emendas(n_emendas=30):
     res["registrosConferidosUmAUm"] = len(res.get("hashes") or {})
     res["registrosPorTotais"] = 0
     res["chamadasApi"], res["duracaoSeg"] = chamadas, round(time.monotonic() - t0)
+    res["emendasConferidas"] = len(escolhidas)
+    print(f"  ⏱ emendas: {len(escolhidas)} emendas, {len(itens)} pagamentos, {chamadas} chamadas à API da CGU, {res['duracaoSeg']} s")
     res["motivosRegistros"] = motivos  # divergência ou não obtido, com o motivo (mostrados no ICP)
     # valor do download = 2× o da API: o dono decide se faz pedido à CGU (as já anotadas ficam em config/notas_fonte_emendas.json)
     try:
@@ -1594,6 +1596,10 @@ def main():
     Fora da janela da coleta (rodada manual, por exemplo), só gera um relatório em dados/verificacao/relatorios/ — não
     entra no histórico nem na nota."""
     so = set(sys.argv[1:])
+    # 28/11/2026: Emendas roda no job próprio "conferir_emendas" (não cabia nos 300 s do passo principal):
+    # CONFERENCIA_PULAR lista as bases que o passo principal não confere; CONFERENCIA_TETO_SEG troca o teto das bases pedidas
+    pular = {b for b in os.environ.get("CONFERENCIA_PULAR", "").split(",") if b}
+    teto_env = int(os.environ.get("CONFERENCIA_TETO_SEG") or 0)
     vale, motivo = janela_coleta()
     if not vale:
         return relatorio_fora_da_janela(so, motivo)
@@ -1608,14 +1614,16 @@ def main():
     if mantidas:
         print(f"  bases que não vão ao ar com os dados desta coleta: {', '.join(sorted(mantidas))} — a conferência compara a versão mantida")
     for fonte, fn in ordem:
-        if so and fonte not in so:
+        if (so and fonte not in so) or fonte in pular:
+            if fonte in pular:
+                print(f"  {fonte:20} conferida no job próprio desta coleta")
             continue
         if fonte in CONFERE_DADOS_DA_COLETA and (fonte in mantidas or "*" in mantidas):
             if out.get(fonte):
                 out[fonte] = {**out[fonte], "ultimaTentativa": AGORA, "ultimaTentativaResultado": NAO_APLICADA}
             print(f"  {fonte:20} {NAO_APLICADA} — nenhum resultado gravado")
             continue
-        teto = TETO_BASE_SEG.get(fonte, TETO_PADRAO_SEG)
+        teto = teto_env if (teto_env and so) else TETO_BASE_SEG.get(fonte, TETO_PADRAO_SEG)
         agora = time.monotonic()
         if fim_total - agora < min(teto, TETO_PADRAO_SEG) / 2:  # sem tempo nem para começar: fica a conferência anterior
             if out.get(fonte):

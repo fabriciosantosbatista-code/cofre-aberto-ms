@@ -769,6 +769,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
+          CONFERENCIA_PULAR: emendas   # Emendas tem job próprio (conferir_emendas), depois da publicação
         run: |
           export COLETA_INICIO=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }} --jq .run_started_at 2>/dev/null || true)
           python3 -u scripts/validar_fontes.py || echo "⚠️ validar_fontes.py falhou — conferência anterior mantida"
@@ -1049,6 +1050,69 @@ jobs:
             dados/verificacao/conferencia_supersalarios.json
             dados/verificacao/conferencia_supersalarios.csv
           retention-days: 1
+
+  # Conferência de Emendas em job próprio (28/11/2026): na conferência geral o teto de 300 s não cabia (4 coletas sem
+  # conferir). Roda depois da publicação, sobre o main que foi ao ar, com até 18 min; só vale até 2 h depois do início
+  # da coleta (janela do validar_fontes.py). Grava só a entrada "emendas" e a linha nova do histórico, recalcula o ICP
+  # (sem nova linha no histórico das notas) e faz o push; se o main mudar no meio, refaz sobre a versão nova.
+  conferir_emendas:
+    needs: [commit_e_push]
+    if: ${{ !cancelled() && needs.commit_e_push.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout (main que foi ao ar)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -q requests Pillow
+      - name: Conferir Emendas na API da CGU (até 18 min)
+        timeout-minutes: 20
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
+          CONFERENCIA_PRAZO_MIN: "18"
+          CONFERENCIA_TETO_SEG: "1080"
+        run: |
+          export COLETA_INICIO=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }} --jq .run_started_at 2>/dev/null || true)
+          antes=$(wc -l < dados/icp_verificacoes.jsonl)
+          inicio=$(date +%s)
+          python3 -u scripts/validar_fontes.py emendas
+          echo "⏱ conferência de Emendas (job próprio): $(( $(date +%s) - inicio )) s"
+          mkdir -p /tmp/emendas
+          tail -n +$((antes + 1)) dados/icp_verificacoes.jsonl > /tmp/emendas/historico_novo.jsonl
+          python3 -c "import json; json.dump(json.load(open('dados/validacao_fontes.json'))['fontes']['emendas'], open('/tmp/emendas/emendas.json','w'), ensure_ascii=False)"
+      - name: Gravar, recalcular o ICP e enviar
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ICP_SEM_HISTORICO: "1"
+        run: |
+          git config user.name "Cofre Aberto Bot"
+          git config user.email "bot@cofreabertoms.com.br"
+          for t in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            python3 - <<'EOF'
+          import json
+          p = "dados/validacao_fontes.json"
+          d = json.load(open(p, encoding="utf-8"))
+          d["fontes"]["emendas"] = json.load(open("/tmp/emendas/emendas.json", encoding="utf-8"))
+          open(p, "w", encoding="utf-8").write(json.dumps(d, ensure_ascii=False, indent=1))
+          EOF
+            cat /tmp/emendas/historico_novo.jsonl >> dados/icp_verificacoes.jsonl
+            python3 scripts/gerar_icp.py || echo "⚠️ gerar_icp.py falhou — índice anterior mantido"
+            python3 scripts/mascarar_cpf.py --paginas && python3 tests/test_cpf.py || { echo "❌ CPF nas páginas — nada é gravado"; exit 1; }
+            git add dados/validacao_fontes.json dados/icp_verificacoes.jsonl $(grep -v "^#" .github/publicar.txt)
+            if git diff --staged --quiet; then echo "Sem mudanças"; exit 0; fi
+            git commit -q -m "🤖 Emendas: conferência na fonte — $(date +'%d/%m/%Y %H:%M') BRT"
+            if git push -q origin HEAD:main; then echo "✅ conferência de Emendas gravada"; exit 0; fi
+            sleep 15
+          done
+          echo "❌ não foi possível gravar a conferência de Emendas (main mudando); fica a anterior"; exit 1
 
   # Grava a conferência de Supersalários depois da publicação principal: pega o main mais recente, põe o resultado,
   # recalcula o ICP (mesma execução; sem nova linha no histórico das notas) e faz o push. Se o main mudar no meio,
