@@ -57,12 +57,13 @@ def montar(linhas):
         f"<tr><td style='white-space:nowrap'>{d}</td><td><details><summary>{md_inline(t)}</summary>"
         f"<div style='margin-top:6px;font-size:.88rem;line-height:1.6'>{partes(md_inline(det)) or '—'}</div></details></td></tr>"
         for d, (t, det) in ((d, titulo_e_detalhe(c)) for d, c in linhas))
-    return (f"{INI}\n<h2 id=\"mudancas-regras\">Mudanças nas regras de conferência</h2>\n"
+    # seção fechada por padrão no fim da página (abre ao clicar no título; o link #mudancas-regras abre direto)
+    return (f"{INI}\n<details class=\"secao-fechada\" id=\"mudancas-regras\"><summary><h2>Mudanças nas regras de conferência</h2></summary>\n"
             "<p>Quando mudamos a forma de conferir os dados na fonte oficial ou de calcular o índice de confiabilidade (ICP), a mudança "
             "fica registrada aqui, com a data e o motivo. Os pesos e a fórmula do índice não mudam nessas alterações. Clique em cada "
             "linha para ver o detalhe.</p>\n<div class=\"tabela-wrap\" style=\"overflow-x:hidden\"><table style=\"width:100%;table-layout:fixed\"><colgroup><col style=\"width:7.5em\"><col></colgroup>\n<thead><tr><th>Desde</th><th>O que mudou (clique para ver o "
             f"motivo)</th></tr></thead>\n<tbody>{corpo}</tbody></table></div>\n"
-            "<p style=\"font-size:.82rem\">Gerado automaticamente a partir da documentação do ICP (seção 3.0).</p>\n" + FIM)
+            "<p style=\"font-size:.82rem\">Gerado automaticamente a partir da documentação do ICP (seção 3.0).</p>\n</details>\n" + FIM)
 
 
 def main():
@@ -74,8 +75,8 @@ def main():
     bloco = montar(linhas)
     if INI in pag:
         novo = re.sub(re.escape(INI) + r".*?" + re.escape(FIM), lambda _: bloco, pag, flags=re.S)
-    else:  # 1ª vez: logo antes de "Correções e direito de resposta"
-        novo = pag.replace('<h2 id="correcoes">', bloco + '\n\n<h2 id="correcoes">', 1)
+    else:  # 1ª vez: logo antes de "Correções e direito de resposta" (seção fechada no fim da página)
+        novo = pag.replace('<details class="secao-fechada" id="correcoes">', bloco + '\n\n<details class="secao-fechada" id="correcoes">', 1)
     if novo != pag:
         PAGINA.write_text(novo, encoding="utf-8")
     print(f"✅ metodologia.html — {len(linhas)} mudanças de regra publicadas")
