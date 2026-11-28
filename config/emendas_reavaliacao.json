@@ -1,0 +1,11 @@
+{
+ "_leia": "Reavaliação, sem nova chamada à API, de pagamentos já gravados como divergência na conferência de Emendas, com a regra de 28/11/2026 (documento que paga outras despesas além da emenda). Só entram itens cuja observação do documento foi lida e não informa a parte da emenda; a evidência é a execução do diagnóstico (só leitura) que mostrou o documento. Daqui em diante a conferência grava isso item a item (semParteNaObservacao) e a reavaliação não precisa desta lista.",
+ "itens": [
+  {"conferenciaEm": "2026-11-28T01:40:44", "item": "202543670019|11319557000378|02/2026", "documento": "783602000012026OB000150",
+   "evidencia": "diagnóstico de 28/11/2026, execução 46147648376: observação 'LIQUIDACAO NF 189270-189271 DENTECK LTDA ... 2025NE1288-1291' (paga 4 empenhos, não informa a parte da emenda)"},
+  {"conferenciaEm": "2026-11-28T01:40:44", "item": "202643180009|30521824000178|07/2026", "documento": "154054152692026OB003776",
+   "evidencia": "diagnóstico de 28/11/2026, execução 46147650457: observação cita a emenda sem valor ('... CONTRATO 136/2025, FONTE 1000000000 (EMENDA Nº 202643180009 - CAMILA JARA)')"},
+  {"conferenciaEm": "2026-11-28T01:40:44", "item": "202643180009|32352772000189|08/2026", "documento": "154054152692026OB004660",
+   "evidencia": "diagnóstico de 28/11/2026, execução 46147650457: observação cita a emenda sem valor ('... CONTRATO 24/2026, FONTE 1000000000 (EMENDA Nº 202643180009 - CAMILA JARA)')"}
+ ]
+}

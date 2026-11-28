@@ -64,6 +64,8 @@ jobs:
         run: pip install -q requests pyyaml && python3 tests/test_emendas_job_proprio.py
       - name: Emendas — documento que paga outras despesas além da emenda (não verificado num sentido só)
         run: pip install -q requests && python3 tests/test_emendas_paga_outras.py
+      - name: Emendas — reavaliação sem API da conferência gravada (regra de 28/11)
+        run: pip install -q requests && python3 tests/test_emendas_reavaliacao.py
       - name: Deputados — arquivo anual da Câmara incompleto completado pela API (meses que encolheram)
         run: pip install -q requests && python3 tests/test_deputados_arquivo_incompleto.py
       - name: Deputados federais — só MS; endereços antigos de outros estados com aviso e fora do sitemap

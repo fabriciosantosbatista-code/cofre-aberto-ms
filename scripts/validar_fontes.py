@@ -427,6 +427,7 @@ def v_emendas(n_emendas=30):
     escolhidas += [e for e in sorted(set(emendas) - set(pendentes), key=lambda e: min(valem.get(idp(x), "") for x in pags if x["emenda"] == e))][:max(0, n_emendas - len(escolhidas))]
     ano = str(em.get("ano") or date.today().year)
     itens, chamadas, motivos, dobro = [], 0, {}, []
+    com_parte_total = set()
     for e in escolhidas:
         docs, falhou, motivo_falha = [], False, None
         for pag in range(1, 40):
@@ -464,6 +465,7 @@ def v_emendas(n_emendas=30):
                 elif tipo == "compartilhado":
                     sem_parte.add(k)  # a API não informa a parte desta emenda: o pagamento do mês não é comparável
                 fonte[k] = round(fonte.get(k, 0) + v, 2)
+        com_parte_total.update(com_parte)
         for x in [x for x in pags if x["emenda"] == e]:
             k = idp(x)
             v = None if falhou or k in sem_parte else fonte.get(k, 0.0 if fonte else None)
@@ -493,6 +495,8 @@ def v_emendas(n_emendas=30):
     res["emendasConferidas"] = len(escolhidas)
     print(f"  ⏱ emendas: {len(escolhidas)} emendas, {len(itens)} pagamentos, {chamadas} chamadas à API da CGU, {res['duracaoSeg']} s")
     res["motivosRegistros"] = motivos  # divergência ou não obtido, com o motivo (mostrados no ICP)
+    # itens cuja observação do documento não informa a parte da emenda: permite reavaliar sem chamar a API de novo
+    res["semParteNaObservacao"] = sorted(str(i[0]) for i in itens if str(i[0]) not in com_parte_total)
     # valor do download = 2× o da API: o dono decide se faz pedido à CGU (as já anotadas ficam em config/notas_fonte_emendas.json)
     try:
         conhecidas = {f"{n['emenda']}|{n['doc']}|{n['mes']}" for n in json.load(open(DADOS.parent / "config" / "notas_fonte_emendas.json", encoding="utf-8"))["notas"]}
@@ -1602,8 +1606,70 @@ def marcar_sem_conferencia(r, motivo):
     return {**r, "ultimaTentativa": AGORA, "ultimaTentativaResultado": motivo, "coletasSemConferencia": n}
 
 
+def reavaliar_emendas():
+    """28/11/2026: reavalia, SEM chamar a API, a última conferência gravada de Emendas com a regra do documento que paga
+    outras despesas além da emenda. Divergência com documento da API maior que o site e sem a parte da emenda na
+    observação (gravado em semParteNaObservacao, ou com evidência em config/emendas_reavaliacao.json) passa a
+    "não verificado". Site maior que o documento continua divergência. Grava a conferência reavaliada no histórico
+    (só acrescenta, com "reavaliacao") e uma anotação pública ligada à conferência original."""
+    vale, motivo = janela_coleta()
+    if not vale:
+        print(f"ℹ️ reavaliação de Emendas não feita: fora da janela da coleta ({motivo})")
+        return 0
+    ant = J("validacao_fontes.json")
+    out = dict(ant.get("fontes") or {})
+    r = out.get("emendas") or {}
+    if r.get("resultado") != "diverge" or r.get("reavaliadaEm"):
+        print("ℹ️ reavaliação de Emendas: nada a reavaliar (última conferência sem divergência ou já reavaliada)")
+        return 0
+    try:
+        evid = {x["item"]: x for x in json.load(open(DADOS.parent / "config" / "emendas_reavaliacao.json", encoding="utf-8"))["itens"]
+                if x.get("conferenciaEm") == r.get("em")}
+    except Exception:
+        evid = {}
+    sem_parte = set(r.get("semParteNaObservacao") or []) | set(evid)
+    passam = [d for d in r.get("divergentes") or [] if d["item"] in sem_parte and (d.get("fonte") or 0) > (d.get("site") or 0) + 1]
+    if not passam:
+        print("ℹ️ reavaliação de Emendas: nenhuma divergência se enquadra na regra")
+        return 0
+    ids = {d["item"] for d in passam}
+    novo = {**r, "divergentes": [d for d in r["divergentes"] if d["item"] not in ids],
+            "comparados": [c for c in r.get("comparados") or [] if c.get("item") not in ids],
+            "conferidos": max(0, int(r.get("conferidos") or 0) - len(ids)),
+            "motivosRegistros": {**(r.get("motivosRegistros") or {}), **{i: PAGA_OUTRAS for i in ids}},
+            "reavaliadaEm": AGORA, "reavaliacao": {"de": r.get("em"), "itens": sorted(ids), "regra": "documento que paga outras despesas além da emenda (28/11/2026)",
+                                                    "semNovaChamadaApi": True}}
+    novo["resultado"] = "diverge" if novo["divergentes"] else "confere"
+    novo["nota"] = (f"Reavaliação em {AGORA[:10]} da conferência de {str(r.get('em'))[:16]} (sem nova chamada à API): {len(ids)} pagamento(s) "
+                    f"passam a não verificado — o documento paga outras despesas além desta emenda e a API não informa a parte da emenda. "
+                    + (r.get("nota") or ""))
+    with open(HISTORICO, "a", encoding="utf-8") as h:
+        h.write(json.dumps({"em": AGORA, "base": "emendas", "resultado": novo["resultado"], "reavaliacao": novo["reavaliacao"],
+                            "metodo": r.get("metodo"), "fonteUrl": r.get("fonteUrl"), "conferidos": novo["conferidos"],
+                            "comparados": novo["comparados"], "divergentes": novo["divergentes"], "nota": novo["nota"],
+                            "coletaRunId": os.environ.get("GITHUB_RUN_ID"), "motivosRegistros": novo["motivosRegistros"],
+                            **{k: r.get(k) for k in ("granularidade", "unidade", "unidadesBase", "selecao", "metodologia")}},
+                           ensure_ascii=False) + "\n")
+    out["emendas"] = novo
+    SAIDA.write_text(json.dumps({"geradoEm": AGORA, "fontes": out}, ensure_ascii=False, indent=1), encoding="utf-8")
+    arq = DADOS / "icp_anotacoes.json"
+    an = json.load(open(arq, encoding="utf-8")) if arq.exists() else {"anotacoes": []}
+    if not any(a.get("base") == "emendas" and a.get("em") == r.get("em") for a in an.get("anotacoes") or []):
+        an.setdefault("anotacoes", []).append({"base": "emendas", "em": r.get("em"), "registradaEm": AGORA[:10],
+            "nota": f"Reavaliada em {AGORA[:10]} com a regra de 28/11/2026, sem nova chamada à API: {len(ids)} das "
+                    f"{len(r.get('divergentes') or [])} divergências passam a não verificado (o documento da API paga outras despesas além da "
+                    f"emenda e não informa a parte dela)."})
+        arq.write_text(json.dumps(an, ensure_ascii=False, indent=1), encoding="utf-8")
+    for d in passam:
+        print(f"  🔁 reavaliação (sem API): {d['item']} · site {d['site']} · documento {d['fonte']} → não verificado")
+    print(f"🔁 REAVALIAÇÃO da conferência de Emendas de {str(r.get('em'))[:16]} (sem nova chamada à API): {len(ids)} de "
+          f"{len(r.get('divergentes') or [])} divergências → não verificado; resultado: {novo['resultado']}")
+    return 0
+
+
 def main():
     """Uso: python3 scripts/validar_fontes.py [base ...]   (sem argumento: todas)
+    python3 scripts/validar_fontes.py --reavaliar-emendas   (reavalia a última conferência de Emendas, sem API)
     Fora da janela da coleta (rodada manual, por exemplo), só gera um relatório em dados/verificacao/relatorios/ — não
     entra no histórico nem na nota."""
     so = set(sys.argv[1:])
@@ -1673,4 +1739,4 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main() or 0)
+    sys.exit((reavaliar_emendas() if "--reavaliar-emendas" in sys.argv else main()) or 0)
