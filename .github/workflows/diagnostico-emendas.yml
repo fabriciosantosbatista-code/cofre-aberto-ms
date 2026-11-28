@@ -1,0 +1,65 @@
+name: Diagnóstico Emendas (CGU)
+
+# Só leitura (28/11/2026): lista os documentos de PAGAMENTO de uma emenda na API da CGU para os favorecidos pedidos (CNPJ),
+# com data, valor, código do documento e o começo da observação — para investigar divergência da conferência sem mudar
+# nada publicado. Nunca imprime a chave. Só CNPJ (14 dígitos) é aceito como favorecido: nada de CPF no log.
+on:
+  workflow_dispatch:
+    inputs:
+      emenda:
+        description: "Código da emenda (12 dígitos)"
+        required: true
+      cnpjs:
+        description: "CNPJs dos favorecidos, separados por vírgula"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  diagnosticar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Documentos da emenda na API da CGU
+        env:
+          CHAVE: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
+          EMENDA: ${{ inputs.emenda }}
+          CNPJS: ${{ inputs.cnpjs }}
+        run: |
+          python3 - <<'EOF'
+          import json, os, re, sys, time, urllib.parse, urllib.request
+          chave, emenda = os.environ["CHAVE"], re.sub(r"\D", "", os.environ["EMENDA"])
+          alvo = {c for c in (re.sub(r"\D", "", x) for x in os.environ["CNPJS"].split(",")) if len(c) == 14}
+          if len(emenda) != 12 or not alvo:
+              sys.exit("❌ emenda (12 dígitos) e ao menos um CNPJ (14 dígitos) são obrigatórios")
+          def get(caminho, params=None):
+              url = "https://api.portaldatransparencia.gov.br/api-de-dados/" + caminho + ("?" + urllib.parse.urlencode(params) if params else "")
+              for t in range(4):
+                  try:
+                      req = urllib.request.Request(url, headers={"chave-api-dados": chave, "Accept": "application/json", "User-Agent": "cofre-aberto-ms/diagnostico"})
+                      with urllib.request.urlopen(req, timeout=60) as r:
+                          return json.loads(r.read() or b"null")
+                  except Exception as e:
+                      print(f"  tentativa {t + 1}: {type(e).__name__}"); time.sleep(5 * (t + 1))
+              return None
+          docs, pag = [], 1
+          while True:
+              j = get(f"emendas/documentos/{emenda}", {"pagina": pag})
+              if not j:
+                  break
+              docs += j; pag += 1
+              time.sleep(0.3)
+          print(f"emenda {emenda}: {len(docs)} documentos na API")
+          for d in docs:
+              if "pagamento" not in str(d.get("fase") or "").lower():
+                  continue
+              det = get(f"despesas/documentos/{d.get('codigoDocumento')}") or {}
+              time.sleep(0.25)
+              fav = re.sub(r"\D", "", str(det.get("codigoFavorecido") or ""))
+              if fav not in alvo:
+                  continue
+              obs = re.sub(r"\s+", " ", str(det.get("observacao") or ""))[:400]
+              print(f"- doc {d.get('codigoDocumento')} · data {det.get('data') or d.get('data')} · fav {fav} · UF {det.get('ufFavorecido')} · "
+                    f"valor {det.get('valor')} · fase {d.get('fase')}\n    obs: {obs}")
+          EOF
