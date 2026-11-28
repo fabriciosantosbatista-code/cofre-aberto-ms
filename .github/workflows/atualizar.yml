@@ -739,6 +739,8 @@ jobs:
 
       - name: Páginas por tema e perguntas frequentes (para as buscas) (+ sitemap)
         run: python3 scripts/gerar_paginas_temas.py || echo "⚠️ gerar_paginas_temas.py falhou — páginas anteriores mantidas"
+      - name: Metodologia — tabela de mudanças de regra do ICP (a partir de ICP_DOCUMENTACAO.md, seção 3.0)
+        run: python3 scripts/gerar_mudancas_metodologia.py || echo "⚠️ tabela de mudanças de regra não atualizada"
 
       - name: Boletim semanal (+ feed RSS e sitemap)
         run: python3 scripts/gerar_boletim.py || echo "⚠️ gerar_boletim.py falhou — boletim anterior mantido"
