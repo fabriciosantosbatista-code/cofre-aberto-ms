@@ -372,6 +372,11 @@ def _cgu(caminho, params=None):
 
 
 COMPARTILHADO = "o documento de pagamento é compartilhado entre emendas e a API não informa a parte de cada uma"
+# 28/11/2026: a API (emendas/documentos e despesas/documentos) só traz o valor TOTAL da ordem bancária, não a parte que
+# coube à emenda (diagnóstico de 28/11: o item da lista tem só código, data, fase, espécie e tipo). Regra de campo não
+# informado, num sentido só: documento MAIOR que o pagamento do site e sem a parte da emenda na observação → não verificado;
+# site maior que o documento inteiro continua divergência (nenhuma parte de um documento pode passar do documento).
+PAGA_OUTRAS = "não verificado — o documento paga outras despesas além desta emenda e a API não informa a parte da emenda"
 
 
 def valor_brl(v):
@@ -434,7 +439,7 @@ def v_emendas(n_emendas=30):
             if not j:
                 break
             docs += j
-        fonte, sem_parte = {}, set()
+        fonte, sem_parte, com_parte = {}, set(), set()
         if not falhou:
             for d in docs:
                 if "pagamento" not in str(d.get("fase") or "").lower():
@@ -455,14 +460,20 @@ def v_emendas(n_emendas=30):
                 tipo, parte = parte_da_emenda(det.get("observacao"), e)
                 if tipo == "parte":
                     v = parte  # o texto do próprio documento informa a parte desta emenda
+                    com_parte.add(k)
                 elif tipo == "compartilhado":
                     sem_parte.add(k)  # a API não informa a parte desta emenda: o pagamento do mês não é comparável
                 fonte[k] = round(fonte.get(k, 0) + v, 2)
         for x in [x for x in pags if x["emenda"] == e]:
             k = idp(x)
             v = None if falhou or k in sem_parte else fonte.get(k, 0.0 if fonte else None)
+            paga_outras = v is not None and v > x["valor"] + 1 and k not in com_parte and abs(x["valor"] - 2 * v) > 1
+            if paga_outras:
+                v = None
             itens.append((k, x["valor"], v))
-            if v is None:
+            if paga_outras:
+                motivos[k] = PAGA_OUTRAS
+            elif v is None:
                 motivos[k] = (COMPARTILHADO if k in sem_parte else
                               motivo_falha or "nenhum pagamento a favorecido de MS no ano entre os documentos da emenda na API")
             elif v > 0 and abs(x["valor"] - 2 * v) <= 1:
