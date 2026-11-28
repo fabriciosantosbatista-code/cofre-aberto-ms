@@ -60,7 +60,7 @@ def montar(linhas):
     return (f"{INI}\n<h2 id=\"mudancas-regras\">Mudanças nas regras de conferência</h2>\n"
             "<p>Quando mudamos a forma de conferir os dados na fonte oficial ou de calcular o índice de confiabilidade (ICP), a mudança "
             "fica registrada aqui, com a data e o motivo. Os pesos e a fórmula do índice não mudam nessas alterações. Clique em cada "
-            "linha para ver o detalhe.</p>\n<div class=\"tabela-wrap\"><table>\n<thead><tr><th>Desde</th><th>O que mudou (clique para ver o "
+            "linha para ver o detalhe.</p>\n<div class=\"tabela-wrap\" style=\"overflow-x:hidden\"><table style=\"width:100%;table-layout:fixed\"><colgroup><col style=\"width:7.5em\"><col></colgroup>\n<thead><tr><th>Desde</th><th>O que mudou (clique para ver o "
             f"motivo)</th></tr></thead>\n<tbody>{corpo}</tbody></table></div>\n"
             "<p style=\"font-size:.82rem\">Gerado automaticamente a partir da documentação do ICP (seção 3.0).</p>\n" + FIM)
 

@@ -7023,8 +7023,10 @@ function abrirPaginaNaAba(tab) {
   if (!f) return;
   if (!f.src) {
     f.src = f.dataset.src;
-    const ajustar = () => { try { const h = f.contentDocument.documentElement.scrollHeight; if (h && Math.abs(h - f.offsetHeight) > 4) f.style.height = h + "px"; } catch (e) {} };
-    f.addEventListener("load", () => { ajustar(); try { f.contentWindow.scrollTo(0, 0); } catch (e) {} window.scrollTo({ top: 0 }); });
+    // a altura do quadro segue a da página por inteiro: a página de dentro nunca mostra barra de rolagem própria
+    // (antes, uma diferença de até 4 px — ao abrir um item da Metodologia, por exemplo — deixava uma 2ª barra)
+    const ajustar = () => { try { const d = f.contentDocument.documentElement; d.style.overflowY = "hidden"; const h = d.scrollHeight; if (h && h !== f.offsetHeight) f.style.height = h + "px"; } catch (e) {} };
+    f.addEventListener("load", () => { ajustar(); try { f.contentDocument.addEventListener("toggle", ajustar, true); } catch (e) {} try { f.contentWindow.scrollTo(0, 0); } catch (e) {} window.scrollTo({ top: 0 }); });
     setInterval(() => { if (tab.classList.contains("active")) ajustar(); }, 700);
   }
 }
