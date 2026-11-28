@@ -36,9 +36,9 @@ CSS_TEMA = CSS_EXTRA + """
 .relacionadas{columns:2 260px;font-size:.9rem;line-height:2}.relacionadas a{color:var(--ink)}
 .btn-painel{display:inline-block;margin:6px 0 4px;padding:9px 16px;border-radius:999px;background:#f5c842;color:#14120a;font-weight:600;text-decoration:none;font-size:.86rem}
 """
-TEMAS, PERGUNTAS = [], []
-VEREADOR_CG = []
-TETO_FAQ = []  # (pergunta, resposta) da página do teto (/salario-ministros-stf/): FAQPage  # (pergunta, resposta) do vereador de CG: a página é /vereadores-campo-grande.html  # (url, título curto) para o sitemap e os links entre as páginas
+TEMAS, PERGUNTAS = [], []  # (url, título curto) para o sitemap e os links entre as páginas
+VEREADOR_CG = []  # (pergunta, resposta) do vereador de CG: a página é /vereadores-campo-grande.html
+TETO_FAQ = []  # (pergunta, resposta) da página do teto (/salario-ministros-stf/): FAQPage
 
 
 def carregar(nome):
@@ -58,6 +58,14 @@ def barras_n(itens):
 
 def url_parl(grupo, nome):
     return (carregar("paginas_index.json") or {}).get(f"{grupo}|{nome}")
+
+
+def lista_parl(grupo, lst):
+    """Tabela com nome (link para a página de cada um) e a cota usada no ano."""
+    return tabela(["Nome", "#Cota usada no ano"], [
+        f"<tr><td>{link_empresa(p['nome'], url_parl(grupo, p['nome']))} <small>{e(p.get('partido') or '')}</small></td>"
+        f"<td class='num'>{brl(float(p.get('cotaGastaAno') or 0))}</td></tr>"
+        for p in sorted(lst, key=lambda p: -float(p.get("cotaGastaAno") or 0))])
 
 
 def kpis(itens):
@@ -749,7 +757,8 @@ def perguntas():
             f"<tr><td>{e(p['nome'].title())}</td><td>{e(p['cargo'])}<br><small>{e(p['orgao'])}</small></td><td class='num'>{brl(p['bruto'])}</td><td class='num'>{brl(p['liquido'])}</td></tr>"
             for p in pessoas])
         out.append(("quanto-ganha-o-governador-de-ms", "Quanto ganha o governador de MS?", r, corpo, "governo-ms",
-                    f"Salário do governador de MS em {pe.get('competencia')}: {brl(gov['bruto'])} brutos. Veja também o vice e os secretários."))
+                    f"Salário do governador de MS em {pe.get('competencia')}: {brl(gov['bruto'])} brutos. Veja também o vice e os secretários.",
+                    f"Salário do governador de MS em {ANO}: {brl(gov['bruto'])} | Cofre Aberto MS"))
     vs = cg.get("vereadores") or []
     if vs:
         sal = float(vs[0].get("salarioBase") or 0)
@@ -767,35 +776,43 @@ def perguntas():
     if ds:
         sal = float(ds[0].get("salarioBase") or 0)
         cota = (ds[0].get("verbaIndenizatoria") or {}).get(f"cotaAnual{ANO}") or 0
-        r = (f"Um deputado estadual de Mato Grosso do Sul recebe subsídio de {brl(sal)} por mês. Cada um também pode usar até {brl(cota)} por ano "
+        r = (f"Em {ANO}, um deputado estadual de Mato Grosso do Sul recebe subsídio bruto de {brl(sal)} por mês. Cada um também pode usar até {brl(cota)} por ano "
              f"de verba indenizatória da Assembleia Legislativa (ALEMS) para despesas do mandato, com nota fiscal.")
         corpo = f"<div class='resposta'>{e(r)}</div><p><a href='/deputado-estadual/'>Veja quanto cada deputado estadual gastou →</a></p>"
         out.append(("quanto-ganha-um-deputado-estadual-de-ms", "Quanto ganha um deputado estadual de MS?", r, corpo, "deputados-estaduais",
-                    f"Salário de deputado estadual em MS: {brl(sal)} por mês, mais verba indenizatória de até {brl(cota)} por ano."))
+                    f"Deputado estadual de MS recebe {brl(sal)} brutos por mês em {ANO}, mais até {brl(cota)} por ano de verba indenizatória. Veja quanto cada um gasta.",
+                    f"Salário de deputado estadual de MS em {ANO}: {brl(sal)} | Cofre Aberto MS"))
     dfs = fed.get("deputados") or []
     if dfs:
         sal = float(dfs[0].get("salarioBase") or 0)
         media = sum(d.get("cotaGastaAno") or 0 for d in dfs) / len(dfs)
-        r = (f"Um deputado federal recebe salário de {brl(sal)} por mês. Além disso, tem a cota parlamentar (CEAP) para despesas do mandato; "
-             f"os {len(dfs)} deputados federais de MS usaram em média {brl(media)} da cota em {ANO}.")
-        corpo = f"<div class='resposta'>{e(r)}</div><p><a href='/deputado-federal/'>Veja quanto cada deputado federal gastou →</a></p>"
+        r = (f"Em {ANO}, um deputado federal recebe salário bruto de {brl(sal)} por mês. Além disso, tem a cota parlamentar (CEAP) para despesas "
+             f"do mandato; os {len(dfs)} deputados federais de MS usaram em média {brl(media)} da cota em {ANO}.")
+        corpo = (f"<div class='resposta'>{e(r)}</div><h2>Os {len(dfs)} deputados federais de MS e a cota usada em {ANO}</h2>" + lista_parl("federal", dfs)
+                 + "<p><a href='/deputado-federal/'>Veja quanto cada deputado federal gastou →</a></p>")
         out.append(("quanto-ganha-um-deputado-federal", "Quanto ganha um deputado federal?", r, corpo, "deputados",
-                    f"Salário de deputado federal: {brl(sal)} por mês, mais a cota parlamentar. Quanto os deputados de MS gastaram em {ANO}."))
-    if st.get("subsidio"):
+                    f"Deputado federal recebe {brl(sal)} brutos por mês em {ANO}, mais a cota parlamentar. Veja quanto cada deputado federal de MS gasta.",
+                    f"Salário de deputado federal em {ANO}: {brl(sal)} | Cofre Aberto MS"))
+    sub_sen = st.get("subsidio") or ss.get("teto")  # stf.json saiu em 18/11/2026; o subsídio de senador é o mesmo valor do teto
+    if sub_sen:
         sens = sen.get("senadores") or []
-        r = (f"Um senador recebe salário de {brl(st['subsidio'])} por mês, o mesmo valor do teto do funcionalismo. "
+        r = (f"Em {ANO}, um senador recebe salário bruto de {brl(sub_sen)} por mês, o mesmo valor do teto do funcionalismo. "
              f"Também tem a cota para despesas do mandato (CEAPS): os {len(sens)} senadores de MS já usaram "
              f"{brl(sum(float(s.get('cotaGastaAno') or 0) for s in sens))} em {ANO}.")
-        corpo = f"<div class='resposta'>{e(r)}</div><p><a href='/senador/'>Veja quanto cada senador gastou →</a></p>"
+        corpo = (f"<div class='resposta'>{e(r)}</div><h2>Os {len(sens)} senadores de MS e a cota usada em {ANO}</h2>" + lista_parl("senador", sens)
+                 + "<p><a href='/senador/'>Veja quanto cada senador gastou →</a> · <a href='/salario-ministros-stf/'>O teto do funcionalismo em "
+                 f"{ANO}</a></p>")
         out.append(("quanto-ganha-um-senador", "Quanto ganha um senador?", r, corpo, "senadores",
-                    f"Salário de senador: {brl(st['subsidio'])} por mês, mais a cota parlamentar. Quanto os senadores de MS gastaram em {ANO}."))
+                    f"Senador recebe {brl(sub_sen)} brutos por mês em {ANO}, mais a cota parlamentar. Veja quanto cada senador de MS gasta.",
+                    f"Salário de senador em {ANO}: {brl(sub_sen)} | Cofre Aberto MS"))
     if ss.get("teto"):
         r = (f"Supersalário é quando um servidor público recebe acima do teto constitucional, que é o subsídio de ministro do STF ({brl(ss['teto'])}). "
              f"Em MS, {milhar(ss.get('liquidoAcimaTeto') or 0)} pessoas receberam líquido acima do teto no último mês publicado, quase sempre por verbas "
              f"indenizatórias e outros \"penduricalhos\", que não entram no limite.")
         corpo = f"<div class='resposta'>{e(r)}</div><p><a href='/supersalarios-ms/'>Veja quem recebe acima do teto em MS →</a></p>"
         out.append(("o-que-e-supersalario-e-teto-constitucional", "O que é supersalário e qual é o teto do funcionalismo?", r, corpo, "supersalarios",
-                    f"O teto é {brl(ss['teto'])}. Em MS, {milhar(ss.get('liquidoAcimaTeto') or 0)} pessoas receberam líquido acima dele."))
+                    f"O teto é {brl(ss['teto'])}. Em MS, {milhar(ss.get('liquidoAcimaTeto') or 0)} pessoas receberam líquido acima dele.",
+                    f"Teto do funcionalismo em {ANO}: {brl(ss['teto'])} — o que é supersalário | Cofre Aberto MS"))
     r = ("A cota parlamentar é um valor mensal que deputados e senadores podem usar para pagar despesas do mandato — passagens, combustível, "
          "aluguel de escritório, divulgação, consultorias — com reembolso mediante nota fiscal. Na Câmara dos Deputados se chama CEAP, no Senado CEAPS, "
          "e nas Assembleias e Câmaras Municipais costuma se chamar verba indenizatória. Ela é separada do salário.")
@@ -827,10 +844,11 @@ def main():
     for url, tit, desc, h1, corpo in paginas_institucionais():  # não entram no "Veja também"
         html = pagina(url, tit, desc, h1, corpo).replace("com dados de fontes oficiais.", "— versão em vigor.")
         paginas.append((url, html))
-    for s, p, r, corpo, aba, desc in pergs:
+    for s, p, r, corpo, aba, desc, *tit in pergs:
         url = f"/perguntas/{s}/"
         corpo += "<p>" + painel(aba) + "</p>"
-        paginas.append((url, pagina(url, f"{p} ({ANO}) | Cofre Aberto MS", desc, p, corpo, faq_ld(url, [(p, r)]),
+        # regra de SEO (28/11/2026): title com o cargo + o número + o ano, quando a pergunta tem um número
+        paginas.append((url, pagina(url, tit[0] if tit else f"{p} ({ANO}) | Cofre Aberto MS", desc, p, corpo, faq_ld(url, [(p, r)]),
                                     migalha="<a href='/perguntas/'>Perguntas</a>")))
     idx_corpo = "<p>Respostas curtas, com números atualizados todo dia a partir de fontes oficiais.</p>" + "".join(
         f"<div class='dest'><b><a href='/perguntas/{s}/'>{e(p)}</a></b><small>{e(resumo(r))}</small>"

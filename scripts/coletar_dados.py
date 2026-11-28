@@ -612,7 +612,7 @@ def coletar_dep_federais_ms():
             "gabinete": det.get("ultimoStatus", {}).get("gabinete", {}),
             "urlPerfil": f"https://www.camara.leg.br/deputados/{dep_id}",
             "urlCeap": f"https://dadosabertos.camara.leg.br/api/v2/deputados/{dep_id}/despesas?ano={ANO}",
-            "salarioBase": 41650.92,
+            "salarioBase": 46366.19,  # Decreto Legislativo 172/2022: R$ 46.366,19 desde fev/2025 (era 41.650,92, valor de abr/2023)
             **ceap,
         })
         log(f"  ✓ {d.get('nome')} — CEAP: R$ {ceap['cotaGastaAno']:,.2f}" if ceap["cotaGastaAno"] else f"  ✓ {d.get('nome')}")
