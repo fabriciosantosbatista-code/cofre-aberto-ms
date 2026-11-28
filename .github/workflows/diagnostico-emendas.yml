@@ -12,6 +12,10 @@ on:
       cnpjs:
         description: "CNPJs dos favorecidos, separados por vírgula"
         required: true
+      itens:
+        description: "Códigos de documento: mostra o item inteiro da lista emendas/documentos (todos os campos)"
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -26,6 +30,7 @@ jobs:
           CHAVE: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
           EMENDA: ${{ inputs.emenda }}
           CNPJS: ${{ inputs.cnpjs }}
+          ITENS: ${{ inputs.itens }}
         run: |
           python3 - <<'EOF'
           import json, os, re, sys, time, urllib.parse, urllib.request
@@ -51,6 +56,12 @@ jobs:
               docs += j; pag += 1
               time.sleep(0.3)
           print(f"emenda {emenda}: {len(docs)} documentos na API")
+          if docs:
+              print("campos de um item de emendas/documentos: " + ", ".join(sorted(docs[0].keys())))
+          itens = {x.strip() for x in os.environ.get("ITENS", "").split(",") if x.strip()}
+          for d in docs:
+              if d.get("codigoDocumento") in itens:
+                  print("ITEM " + json.dumps(d, ensure_ascii=False))
           for d in docs:
               if "pagamento" not in str(d.get("fase") or "").lower():
                   continue
