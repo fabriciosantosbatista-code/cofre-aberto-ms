@@ -77,6 +77,13 @@ def main():
     uniao = {chave(m["nome"]): m["valor"] for m in (tu.get("municipio") or [])}
     uniao_ano = tu.get("ate")
     ano_em = em.get("ano", ANO)
+    # shows por cidade, com link para a página de cachê do artista quando existe (gerar_paginas_cache.py)
+    cidx = carregar("cache_index.json") or {}
+    shows_d = carregar("shows.json") or {}
+    shows_cidade = {}
+    for x in shows_d.get("shows") or []:
+        if x.get("tipo") == "show" and (x.get("valor") or 0) > 0 and (x.get("cidade") or x.get("cidadeOrgao")):
+            shows_cidade.setdefault(chave(x.get("cidade") or x.get("cidadeOrgao")), []).append(x)
 
     def autor_link(a):
         url = por_nome.get(chave(a["autor"])) if a.get("atual") else None
@@ -114,6 +121,14 @@ def main():
             blocos.append(f"<h2>Emendas Pix em {ano_em}</h2><p>Transferências especiais: dinheiro que cai direto no caixa da prefeitura, sem convênio. "
                           f"{brl(pix_total)} pagos em {ano_em}{' até agora' if ano_em == HOJE.year else ''}, de:</p>" + tabela(["Autor", "#Valor"], [
                 f"<tr><td class='f'>{autor_link(a)}</td><td class='num'>{brl(a['valor'])}</td></tr>" for a in pix_ano["autores"][:20]]))
+        sh = sorted(shows_cidade.get(chave(nome), []), key=lambda x: -x["valor"])
+        if any(x.get("chaveArtista") in cidx for x in sh):
+            nome_art = lambda x: (f"<a href='{cidx[x['chaveArtista']]}'>{e(x.get('artista') or '')}</a>" if x.get("chaveArtista") in cidx
+                                  else e(x.get("artista") or (x.get("objeto") or "")[:60]))
+            blocos.append(f"<h2>Shows contratados em {e(nome)} em {shows_d.get('ano', ANO)}</h2><p>Contratos de show publicados no PNCP. "
+                          f"<a href='/cache/'>Cachê de cada artista em MS →</a></p>" + tabela(["Artista", "Evento", "Contratante", "#Valor"], [
+                f"<tr><td class='f'>{nome_art(x)}</td><td>{e(x.get('evento') or '—')}</td><td>{e(x.get('orgao') or '')}</td><td class='num'>{brl(x['valor'])}</td></tr>"
+                for x in sh[:20]]))
         resumo = (f"{nome} recebeu {compacto(m['total'])} em emendas parlamentares pagas em {ano_em}, de {len(m['autores'])} autores"
                   + (f", dos quais {compacto(pix_total)} em Emendas Pix" if pix_total else "") + ".")
         titulo = f"{nome} (MS): emendas parlamentares e Emendas Pix em {ano_em} | Cofre Aberto MS"

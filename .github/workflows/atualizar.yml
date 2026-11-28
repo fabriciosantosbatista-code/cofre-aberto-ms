@@ -732,13 +732,13 @@ jobs:
       - name: Gerar uma página por órgão (+ sitemap)
         run: python3 scripts/gerar_paginas_orgaos.py || echo "⚠️ gerar_paginas_orgaos.py falhou — páginas anteriores mantidas"
 
+      - name: Páginas de cachê por artista (/cache/, PNCP; antes de municípios e temas, que usam dados/cache_index.json)
+        run: python3 scripts/gerar_paginas_cache.py || echo "⚠️ gerar_paginas_cache.py falhou — páginas anteriores mantidas"
       - name: Gerar uma página por município (+ sitemap)
         run: python3 scripts/gerar_paginas_municipios.py || echo "⚠️ gerar_paginas_municipios.py falhou — páginas anteriores mantidas"
 
       - name: Páginas por tema e perguntas frequentes (para as buscas) (+ sitemap)
         run: python3 scripts/gerar_paginas_temas.py || echo "⚠️ gerar_paginas_temas.py falhou — páginas anteriores mantidas"
-      - name: Páginas de cachê por artista (/cache/, PNCP)
-        run: python3 scripts/gerar_paginas_cache.py || echo "⚠️ gerar_paginas_cache.py falhou — páginas anteriores mantidas"
 
       - name: Boletim semanal (+ feed RSS e sitemap)
         run: python3 scripts/gerar_boletim.py || echo "⚠️ gerar_boletim.py falhou — boletim anterior mantido"

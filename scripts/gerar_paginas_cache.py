@@ -34,11 +34,16 @@ def buscas():
         return []
 
 
-def selecionar(shows):
+def agrupar(shows):
     grupos = {}
     for s in shows:
         if s.get("chaveArtista") and s.get("tipo") == "show" and (s.get("valor") or 0) > 0:
             grupos.setdefault(s["chaveArtista"], []).append(s)
+    return grupos
+
+
+def selecionar(shows):
+    grupos = agrupar(shows)
     procurados = set(buscas())
     return {k: l for k, l in grupos.items()
             if sum(x["valor"] for x in l) >= TOTAL_MINIMO or len(l) >= MINIMO_CONTRATOS or slug(k) in procurados}
@@ -53,7 +58,8 @@ def nome_exibido(chave, lst):
     except Exception:
         pass
     nomes = [x["artista"] for x in lst]
-    nome = max(set(nomes), key=nomes.count)
+    # o mais comum; empate: o com acento (grafia correta), depois a ordem alfabética (o mesmo nome em todas as coletas)
+    nome = max(sorted(set(nomes)), key=lambda n: (nomes.count(n), sum(not c.isascii() for c in n)))
     return " ".join(w if len(w) <= 2 and w.lower() in ("e", "&") else w.capitalize() for w in nome.lower().split()) if nome.isupper() else nome
 
 
@@ -97,6 +103,11 @@ def main():
     d = json.load(open(ROOT / "dados" / "shows.json", encoding="utf-8"))
     ano = d.get("ano", ANO)
     sel = selecionar(d.get("shows") or [])
+    grupos = agrupar(d.get("shows") or [])
+    # página criada nunca é removida (28/11/2026): quem saiu do critério continua no ar, atualizado, e no sitemap;
+    # só não entra no destaque do índice. Sem nenhum contrato nos dados de hoje, a página fica como está.
+    existentes = {p.name for p in (ROOT / "cache").glob("*") if p.is_dir()} if (ROOT / "cache").exists() else set()
+    mantidas = {k: l for k, l in grupos.items() if slug(k) in existentes and k not in sel}
     if "--previa" in sys.argv:
         i = sys.argv.index("--previa")
         destino, pedidos = Path(sys.argv[i + 1]), [slug(a) for a in sys.argv[i + 2:]]
@@ -106,31 +117,35 @@ def main():
                 (destino / f"{slug(k)}.html").write_text(html.replace("{RELACIONADAS}", ""), encoding="utf-8")
                 print(f"✅ prévia: {destino / (slug(k) + '.html')}")
         return
-    paginas, linhas = [], []
-    for k, lst in sel.items():
+    paginas, linhas, outras, indice = [], [], [], {}
+    for k, lst in list(sel.items()) + list(mantidas.items()):
         url, html, info = pagina_artista(k, lst, ano)
         paginas.append((url, html.replace("{RELACIONADAS}", "")))
-        linhas.append((url, *info))
+        (linhas if k in sel else outras).append((url, *info))
+        indice[k] = url
+    sem_dados = sorted(existentes - {slug(k) for k in indice})
+    for sl in sem_dados:  # página antiga sem contrato nos dados de hoje: continua no ar e no sitemap, sem mudar
+        paginas.append((f"/cache/{sl}/", None))
     linhas.sort(key=lambda t: -t[2])
+    outras.sort(key=lambda t: t[1])
     idx = (f"<p>Quanto órgãos públicos de MS pagaram a cada artista em {ano}, com o link de cada contrato no PNCP. Entram os artistas com "
            f"{brl(TOTAL_MINIMO)} ou mais pagos no ano, {MINIMO_CONTRATOS} ou mais contratações, ou que são procurados na busca.</p>"
            + tabela(["Artista", "#Contratações", "#Total pago"], [
                f"<tr><td><a href='{u}'>{e(n)}</a></td><td class='num'>{milhar(c)}</td><td class='num'>{brl(t)}</td></tr>" for u, n, t, c in linhas]))
+    if outras:
+        idx += ("<h2>Outros artistas com página</h2><p class='aviso'>" + " · ".join(f"<a href='{u}'>{e(n)}</a>" for u, n, *_ in outras) + "</p>")
     paginas.append(("/cache/", pagina("/cache/", f"Cachês de artistas pagos por órgãos de MS em {ano} | Cofre Aberto MS",
                                       f"Cachês de {milhar(len(linhas))} artistas contratados por prefeituras e órgãos de MS em {ano}, com o contrato de cada show no PNCP.",
                                       f"Cachês de artistas pagos em MS em {ano}", idx).replace("{RELACIONADAS}", "")))
-    mudou = sum(escreve_se_mudou(ROOT / u.strip("/") / "index.html", h) or 0 for u, h in paginas)
-    atuais = {u.strip("/").split("/")[-1] for u, _ in paginas if u != "/cache/"}
-    for p in [x for x in (ROOT / "cache").glob("*") if x.is_dir()]:  # artista que saiu do critério: página removida (sai também do sitemap)
-        if p.name not in atuais:
-            for f in p.iterdir():
-                f.unlink()
-            p.rmdir()
+    mudou = sum(escreve_se_mudou(ROOT / u.strip("/") / "index.html", h) or 0 for u, h in paginas if h)
+    # chave do artista → página, para os links da lista de shows e das páginas de município
+    escreve_se_mudou(ROOT / "dados" / "cache_index.json", json.dumps(indice, ensure_ascii=False, indent=0, sort_keys=True))
     sm = ROOT / "sitemap.xml"
     txt = re.sub(rf"  <url><loc>{re.escape(SITE)}/cache/.*?</url>\n", "", sm.read_text(encoding="utf-8"))
     novos = [f"  <url><loc>{SITE}{u}</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>" for u, _ in paginas]
     escreve_se_mudou(sm, txt.replace("</urlset>", "\n".join(novos) + "\n</urlset>"))
-    print(f"✅ {len(paginas) - 1} páginas de cachê + índice /cache/ ({mudou} alteradas) + sitemap")
+    print(f"✅ {len(linhas)} páginas de cachê em destaque + {len(outras) + len(sem_dados)} mantidas fora do critério + índice /cache/ "
+          f"({mudou} alteradas) + sitemap")
 
 
 if __name__ == "__main__":

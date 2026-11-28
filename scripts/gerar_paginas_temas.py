@@ -487,8 +487,11 @@ def tema_shows():
               f"<strong>{milhar(d['totalShows'])} shows</strong>, somando <strong>{brl(d['valorShows'])}</strong> em cachês, sem licitação "
               f"(inexigibilidade para artista, permitida pela Lei 14.133/2021). O maior cachê foi de <strong>{e(top.get('artista') or 'um show')}</strong>: "
               f"{brl(top['valor'])}{', em ' + e(top['cidade']) if top.get('cidade') else ''}.</div>")
+    cidx = carregar("cache_index.json") or {}  # páginas de cachê por artista (gerar_paginas_cache.py)
+    art = lambda x, nome: (f"<a href='{cidx[x.get('chaveArtista')]}'>{e(nome)}</a>" if x.get("chaveArtista") in cidx else e(nome))
+    corpo += ("<p><a href='/cache/'>Cachê de cada artista em MS: total pago e todos os contratos →</a></p>" if cidx else "")
     corpo += "<h2>Os maiores cachês</h2>" + tabela(["Artista", "Evento", "Cidade", "#Cachê"], [
-        f"<tr><td>{e(x.get('artista') or x['objeto'][:80])}</td><td>{e(x.get('evento') or '—')}</td><td>{e(x.get('cidade') or '—')}</td>"
+        f"<tr><td>{art(x, x.get('artista') or x['objeto'][:80])}</td><td>{e(x.get('evento') or '—')}</td><td>{e(x.get('cidade') or '—')}</td>"
         f"<td class='num'><a href='{x['link']}' rel='nofollow noopener' target='_blank'>{brl(x['valor'])}</a></td></tr>" for x in sh[:25]])
     corpo += "<h2>Cidades que mais gastaram com shows</h2>" + tabela(["Cidade", "#Shows", "#Gasto", "#Por habitante"], [
         f"<tr><td>{e(r['nome'])}</td><td class='num'>{r['shows']}</td><td class='num'>{brl(r['valor'])}</td>"
@@ -500,7 +503,7 @@ def tema_shows():
     if rep:
         corpo += "<h2>O mesmo artista, preços diferentes</h2><p>Quanto cada órgão pagou pelo mesmo artista em " + str(ano) + ":</p>" + tabela(
             ["Artista", "#Contratações", "#Menor cachê", "#Maior cachê"],
-            [f"<tr><td>{e(r['artista'])}</td><td class='num'>{r['contratacoes']}</td><td class='num'>{brl(r['menor'])}</td><td class='num'>{brl(r['maior'])}</td></tr>" for r in rep[:15]])
+            [f"<tr><td>{art({'chaveArtista': r.get('chave')}, r['artista'])}</td><td class='num'>{r['contratacoes']}</td><td class='num'>{brl(r['menor'])}</td><td class='num'>{brl(r['maior'])}</td></tr>" for r in rep[:15]])
     corpo += "<p>" + painel("shows", "Todos os shows, com busca por artista, cidade e evento") + "</p>"
     corpo += f"<p class='aviso'>Fonte: {e(d['fonte'])}. A Prefeitura de Campo Grande não publica essas contratações no PNCP.</p>"
     return ("/shows-pagos-com-dinheiro-publico-ms/", f"Shows pagos com dinheiro público em MS em {ano}: cachês, artistas e cidades | Cofre Aberto MS",
