@@ -641,7 +641,9 @@ def tema_arrecadacao():
 # quebram). Saem do sitemap e do índice dos buscadores (noindex + canonical para a nova).
 REDIRECIONA = {"/impostometro-ms/": ("/contador-da-arrecadacao-ms/", "Contador da arrecadação MS"),
                # 28/11/2026 (SEO): a pergunta do salário de vereador foi juntada à página principal dos vereadores de CG
-               "/perguntas/quanto-ganha-um-vereador-de-campo-grande/": ("/vereadores-campo-grande.html", "Salário e gastos dos vereadores de Campo Grande")}
+               "/perguntas/quanto-ganha-um-vereador-de-campo-grande/": ("/vereadores-campo-grande.html", "Salário e gastos dos vereadores de Campo Grande"),
+               # saiu em 18/11/2026 com a seção Brasil (dava 404): vai para a página mais próxima em MS, os gastos do Governo de MS
+               "/cartao-corporativo-presidente/": ("/governo-ms/", "Gastos do Governo de MS")}
 
 
 def pagina_redireciona(novo, nome):
