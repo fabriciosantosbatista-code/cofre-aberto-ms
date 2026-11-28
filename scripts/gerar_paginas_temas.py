@@ -790,7 +790,11 @@ def perguntas():
         media = sum(d.get("cotaGastaAno") or 0 for d in dfs) / len(dfs)
         r = (f"Em {ANO}, um deputado federal recebe salário bruto de {brl(sal)} por mês. Além disso, tem a cota parlamentar (CEAP) para despesas "
              f"do mandato; os {len(dfs)} deputados federais de MS usaram em média {brl(media)} da cota em {ANO}.")
-        corpo = (f"<div class='resposta'>{e(r)}</div><h2>Os {len(dfs)} deputados federais de MS e a cota usada em {ANO}</h2>" + lista_parl("federal", dfs)
+        # nota de correção por 90 dias (28/11/2026 a 26/02/2027)
+        nota = ("<p class='correcao' style='font-size:.82rem;color:var(--ink-soft,#9aa0a6);border-left:3px solid var(--border,#3a3f47);padding:4px 10px;margin:8px 0 14px'>"
+                "Correção em 28/11/2026: esta página publicava R$ 41.650,92, valor de 2023. O salário correto em 2026 é R$ 46.366,19 "
+                "(Decreto Legislativo nº 172/2022, em vigor desde fevereiro de 2025).</p>") if HOJE.isoformat() <= "2027-02-26" else ""
+        corpo = (f"<div class='resposta'>{e(r)}</div>{nota}<h2>Os {len(dfs)} deputados federais de MS e a cota usada em {ANO}</h2>" + lista_parl("federal", dfs)
                  + "<p><a href='/deputado-federal/'>Veja quanto cada deputado federal gastou →</a></p>")
         out.append(("quanto-ganha-um-deputado-federal", "Quanto ganha um deputado federal?", r, corpo, "deputados",
                     f"Deputado federal recebe {brl(sal)} brutos por mês em {ANO}, mais a cota parlamentar. Veja quanto cada deputado federal de MS gasta.",
