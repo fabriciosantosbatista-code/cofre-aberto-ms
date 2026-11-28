@@ -580,8 +580,9 @@ def nota_correcao(p, hoje=None):
 def pagina(p, irmaos):
     g = GRUPOS[p["grupo"]]
     cargo = g["cargo"] if p["grupo"] in ("vereador", "estadual") else f"{g['cargo']} por {p['uf']}"
-    titulo = f"{p['nome']} ({p['partido'] or 'sem partido'}) — {cargo}: gastos {ANO} | Cofre Aberto MS"
     total, n = p["total"], p["totalNotas"]
+    # regra de SEO (28/11/2026): nome + número + ano no title
+    titulo = f"{p['nome']} ({p['partido'] or 'sem partido'}) gastou {compacto(total)} em {ANO} — {cargo} | Cofre Aberto MS"
     desc = (f"{p['nome']} ({cargo}) gastou {brl(total)} de {g['cota']} em {ANO}"
             + (f", em {milhar(n)} notas fiscais" if n else "")
             + ". Veja fornecedores, notas e a evolução mês a mês.")
@@ -675,7 +676,9 @@ def pagina(p, irmaos):
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Início", "item": SITE + "/"},
             {"@type": "ListItem", "position": 2, "name": g["plural"], "item": f"{SITE}/{g['pasta']}/"},
-            {"@type": "ListItem", "position": 3, "name": p["nome"], "item": url_abs}]}]}
+            {"@type": "ListItem", "position": 3, "name": p["nome"], "item": url_abs}]},
+        {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": f"Quanto {p['nome']} gastou de {g['cota']} em {ANO}?",
+                                             "acceptedAnswer": {"@type": "Answer", "text": desc.split(". Veja")[0] + "."}}]}]}
     fonte_data = carregar("status.json").get("ultimaAtualizacao", "")[:10]
     corpo = f"""<p class="breadcrumb"><a href="/">Início</a> / <a href="/{g['pasta']}/">{e(g['plural'])}</a> / {e(p['nome'])}</p>
 <article>
@@ -762,7 +765,11 @@ def bloco_equipe(p):
 def indice(grupo, lst):
     g = GRUPOS[grupo]
     url = f"/{g['pasta']}/"
-    titulo = f"{g['plural']} — gastos {ANO} | Cofre Aberto MS"
+    if grupo in ("federal", "senador"):  # o número do title é o dos parlamentares de MS
+        ms = [p for p in lst if p.get("uf") == "MS"]
+        titulo = f"{g['plural']} de MS: {compacto(sum(float(p.get('total') or 0) for p in ms))} em gastos em {ANO} | Cofre Aberto MS"
+    else:
+        titulo = f"{g['plural']}: {compacto(sum(float(p.get('total') or 0) for p in lst))} em gastos em {ANO} | Cofre Aberto MS"
     desc = f"Gastos de {g['cota']} em {ANO} de {len(lst)} {minusc(g['plural'])}, com notas fiscais e fornecedores. Dados públicos."
     if grupo in ("federal", "senador"):
         por_uf = {}
