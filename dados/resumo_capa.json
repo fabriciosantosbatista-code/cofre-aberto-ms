@@ -1,15 +1,15 @@
 {
  "ano": 2026,
- "atualizado": "2026-11-27",
+ "atualizado": "2026-11-28",
  "dinheiro": [
   {
    "nome": "Governo do Estado de MS",
-   "valor": 21639932146.78,
+   "valor": 21799181855.2,
    "aba": "governo-ms"
   },
   {
    "nome": "Prefeitura de Campo Grande",
-   "valor": 4975592617.12,
+   "valor": 5008181561.94,
    "aba": "prefeitura"
   },
   {
@@ -19,26 +19,26 @@
   },
   {
    "nome": "Cotas e verbas dos parlamentares de MS",
-   "valor": 23704956.58,
+   "valor": 23778203.72,
    "aba": "deputados"
   }
  ],
  "governoCredores": [
   {
    "nome": "Repasses a municípios, órgãos e previdência",
-   "valor": 10870461722.52
+   "valor": 10929734639.92
   },
   {
    "nome": "Fornecedores e prestadores de serviço",
-   "valor": 6068997217.7
+   "valor": 6117793494.91
   },
   {
    "nome": "Folha, aposentadorias e pensões",
-   "valor": 3391282717.75
+   "valor": 3437859960.9
   },
   {
    "nome": "Bancos e dívida",
-   "valor": 1309190488.81
+   "valor": 1313793759.47
   }
  ],
  "emendasTipos": [
@@ -65,12 +65,12 @@
  ],
  "kpis": {
   "parlamentares": 65,
-  "notas": 11455,
-  "empresas": 1447,
+  "notas": 11471,
+  "empresas": 1454,
   "sinais": 354,
-  "sinaisFortes": 27,
+  "sinaisFortes": 29,
   "acimaTeto": 421,
-  "contratosEstado": 2809,
+  "contratosEstado": 2811,
   "fontes": 24
  },
  "fluxoCota": {
@@ -90,27 +90,27 @@
    },
    {
     "nome": "Deputados estaduais",
-    "valor": 13134048.71,
+    "valor": 13203759.44,
     "aba": "deputados-estaduais",
     "pessoas": 25,
     "categorias": {
-     "Divulgação": 2487487.09,
-     "Escritório, aluguel e apoio": 804028.38,
-     "Consultorias e assessorias": 5886919.45,
-     "Veículos e combustível": 2109774.34,
-     "Viagens, passagens e hospedagem": 1845839.45
+     "Divulgação": 2538437.09,
+     "Escritório, aluguel e apoio": 805473.39,
+     "Consultorias e assessorias": 5895419.45,
+     "Veículos e combustível": 2112462.06,
+     "Viagens, passagens e hospedagem": 1851967.45
     }
    },
    {
     "nome": "Deputados federais",
-    "valor": 3488845.64,
+    "valor": 3492382.05,
     "aba": "deputados",
     "pessoas": 8,
     "categorias": {
-     "Divulgação": 1304718.5,
-     "Veículos e combustível": 1104192.58,
+     "Divulgação": 1307325.5,
+     "Veículos e combustível": 1104685.87,
      "Viagens, passagens e hospedagem": 575676.93,
-     "Escritório, aluguel e apoio": 530927.63
+     "Escritório, aluguel e apoio": 531363.75
     }
    },
    {
@@ -129,23 +129,23 @@
   "categorias": [
    {
     "nome": "Consultorias e assessorias",
-    "valor": 8880525.82
+    "valor": 8889025.82
    },
    {
     "nome": "Divulgação",
-    "valor": 5615916.13
+    "valor": 5669473.13
    },
    {
     "nome": "Veículos e combustível",
-    "valor": 4598455.74
+    "valor": 4601636.75
    },
    {
     "nome": "Viagens, passagens e hospedagem",
-    "valor": 2703002.23
+    "valor": 2709130.23
    },
    {
     "nome": "Escritório, aluguel e apoio",
-    "valor": 1761380.44
+    "valor": 1763261.57
    },
    {
     "nome": "Outros",
@@ -180,7 +180,7 @@
    },
    {
     "nome": "BARBOSA MILAN SOCIEDADE DE ADVOGADOS",
-    "valor": 297000.0,
+    "valor": 270000.0,
     "gabinetes": 1
    },
    {

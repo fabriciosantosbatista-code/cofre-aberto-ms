@@ -1,6 +1,6 @@
 # Kit de Imprensa — Cofre Aberto MS
 
-*Última atualização: 27 de novembro de 2026 — gerado automaticamente a partir de press.html*
+*Última atualização: 28 de novembro de 2026 — gerado automaticamente a partir de press.html*
 
 Este documento reúne informações para jornalistas que queiram cobrir o **Cofre Aberto MS**, uma plataforma independente de transparência pública sobre gastos de parlamentares e da Prefeitura de Campo Grande.
 
@@ -27,20 +27,20 @@ O projeto nasceu da constatação de que, embora esses dados sejam legalmente p�
 
 | Número | O que é |
 |---|---|
-| **26.211** | Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor) |
-| **R$ 27,3 bi+** | Total de gastos públicos catalogados em 2026 (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares pagas em MS) |
-| **R$ 21,6 bi** | Pagos pelo Governo do Estado de MS em 2026 |
-| **R$ 5,0 bi** | Pagos pela Prefeitura de Campo Grande em 2026, em 14.756 empenhos |
+| **26.285** | Notas fiscais e empenhos individuais catalogados (fornecedor, CNPJ e valor) |
+| **R$ 27,5 bi+** | Total de gastos públicos catalogados em 2026 (Governo do Estado, Prefeitura de CG, verba indenizatória, CEAP estadual e federal, CEAPS, emendas parlamentares pagas em MS) |
+| **R$ 21,8 bi** | Pagos pelo Governo do Estado de MS em 2026 |
+| **R$ 5,0 bi** | Pagos pela Prefeitura de Campo Grande em 2026, em 14.814 empenhos |
 | **R$ 5,8 mi** | Verba indenizatória paga aos 29 vereadores de Campo Grande em 2026 |
-| **R$ 13,1 mi** | CEAP paga aos 25 deputados estaduais de MS em 2026 |
+| **R$ 13,2 mi** | CEAP paga aos 25 deputados estaduais de MS em 2026 |
 | **R$ 3,5 mi** | CEAP dos 8 deputados federais de MS em 2026 |
 | **R$ 1,3 mi** | CEAPS dos 3 senadores de MS em 2026 |
 | **R$ 376,8 mi** | Emendas parlamentares pagas em Mato Grosso do Sul em 2026 |
 | **R$ 4,4 mi/mês** | Folha de pessoal dos 29 gabinetes da Câmara de Campo Grande (684 funcionários, outubro/2026) |
 | **R$ 24,0 mi/mês** | Folha bruta dos 286 magistrados ativos de MS (TJMS e TRT24, com a gratificação eleitoral do TRE-MS) |
-| **551** | Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões) |
+| **553** | Empresas pagas por mais de um político de MS ou também pela Prefeitura (aba Conexões) |
 | **421** | Pessoas com líquido acima do teto constitucional no último mês publicado (aba Supersalários) |
-| **354** | Sinais de atenção da Auditoria automática (27 de nível forte) |
+| **354** | Sinais de atenção da Auditoria automática (29 de nível forte) |
 | **100%** | Dos dados vêm de fontes oficiais — estimativas são sempre marcadas (ver Metodologia) |
 
 Todos os números são recalculados automaticamente pela coleta diária e podem variar ligeiramente a cada consulta — os valores acima refletem o estado do painel na data desta atualização.

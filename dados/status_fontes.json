@@ -1,10 +1,10 @@
 {
- "geradoEm": "2026-11-27T01:08:14",
+ "geradoEm": "2026-11-28T01:10:21",
  "fontes": {
   "camara": {
    "fonte": "Portal da Transparência da Câmara Municipal de Campo Grande (SCPI Fiorilli)",
    "url": "http://45.225.6.93:8079/transparencia/",
-   "coleta": "2026-11-27T00:45:45",
+   "coleta": "2026-11-28T00:46:36",
    "dadoMaisRecente": "verba indenizatória até set/2026",
    "nivel": "ok",
    "mensagem": null
@@ -12,23 +12,23 @@
   "deputados-estaduais": {
    "fonte": "Portal da Transparência da ALEMS — CEAP",
    "url": "https://transparencia2.al.ms.gov.br/ceap",
-   "coleta": "2026-11-27T00:37:28",
-   "dadoMaisRecente": "nota fiscal de 25/11/2026",
+   "coleta": "2026-11-28T00:37:26",
+   "dadoMaisRecente": "nota fiscal de 27/11/2026",
    "nivel": "ok",
    "mensagem": null
   },
   "deputados": {
    "fonte": "Câmara dos Deputados — arquivo completo da CEAP",
    "url": "https://www.camara.leg.br/cotas/",
-   "coleta": "2026-11-26T14:59:19",
-   "dadoMaisRecente": "nota fiscal de 23/11/2026",
+   "coleta": "2026-11-28T00:37:26",
+   "dadoMaisRecente": "nota fiscal de 25/11/2026",
    "nivel": "ok",
    "mensagem": null
   },
   "senadores": {
    "fonte": "Senado Federal — dados abertos da CEAPS",
    "url": "https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html",
-   "coleta": "2026-11-27T00:37:28",
+   "coleta": "2026-11-28T00:37:26",
    "dadoMaisRecente": "nota fiscal de 04/11/2026",
    "nivel": "ok",
    "mensagem": null
@@ -36,7 +36,7 @@
   "prefeitura": {
    "fonte": "SIG-Transparência da Prefeitura de Campo Grande",
    "url": "https://sig-transparencia.campogrande.ms.gov.br/despesas/consulta",
-   "coleta": "2026-11-27T00:37:28",
+   "coleta": "2026-11-28T00:37:26",
    "dadoMaisRecente": "empenho de 24/11/2026",
    "nivel": "ok",
    "mensagem": null
@@ -44,23 +44,23 @@
   "contratos-cg": {
    "fonte": "SIG-Transparência da Prefeitura de Campo Grande — Contratos e Licitações",
    "url": "https://sig-transparencia.campogrande.ms.gov.br/contratos/consulta",
-   "coleta": "2026-11-27T00:37:27",
-   "dadoMaisRecente": "contrato de 19/11/2026, licitação de 26/11/2026",
+   "coleta": "2026-11-28T00:37:39",
+   "dadoMaisRecente": "contrato de 19/11/2026, licitação de 27/11/2026",
    "nivel": "ok",
    "mensagem": null
   },
   "governo-ms": {
    "fonte": "Portal da Transparência do Estado de Mato Grosso do Sul",
    "url": "https://www.transparencia.ms.gov.br/",
-   "coleta": "2026-11-27T00:37:22",
-   "dadoMaisRecente": "despesas até 27/11/2026, folha de 10/2026, 63.112 trechos de diárias",
+   "coleta": "2026-11-28T00:37:26",
+   "dadoMaisRecente": "despesas até 28/11/2026, folha de 10/2026, 63.674 trechos de diárias",
    "nivel": "ok",
    "mensagem": null
   },
   "emendas": {
    "fonte": "Portal da Transparência do Governo Federal (CGU) — emendas por favorecido",
    "url": "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares",
-   "coleta": "2026-11-27T00:37:27",
+   "coleta": "2026-11-28T00:37:30",
    "dadoMaisRecente": "pagamentos até 11/2026",
    "nivel": "ok",
    "mensagem": null
@@ -68,7 +68,7 @@
   "supersalarios": {
    "fonte": "DadosJusBr / Transparência Brasil (Judiciário) e Portal da Transparência de MS (folha do Estado)",
    "url": "https://dadosjusbr.org/",
-   "coleta": "2026-11-27T00:41:20",
+   "coleta": "2026-11-28T00:41:07",
    "dadoMaisRecente": "contracheques de 08/2026, 09/2026, 10/2026",
    "nivel": "ok",
    "mensagem": null
@@ -76,8 +76,8 @@
   "auditoria": {
    "fonte": "Cruzamento das bases do site com a Receita Federal (BrasilAPI / Minha Receita), o TSE e a folha do Estado",
    "url": "https://brasilapi.com.br/docs#tag/CNPJ",
-   "coleta": "2026-11-27T01:07:10",
-   "dadoMaisRecente": "5001 empresas checadas na Receita",
+   "coleta": "2026-11-28T01:10:20",
+   "dadoMaisRecente": "5004 empresas checadas na Receita",
    "nivel": "ok",
    "mensagem": null
   },
@@ -92,7 +92,7 @@
   "arrecadacao": {
    "fonte": "Tesouro Nacional — Siconfi, RREO Anexo 3 (arrecadação do Governo de MS e da Prefeitura de CG)",
    "url": "https://siconfi.tesouro.gov.br/",
-   "coleta": "2026-11-27T00:41:14",
+   "coleta": "2026-11-28T00:41:15",
    "dadoMaisRecente": "mês 08/2026",
    "nivel": "ok",
    "mensagem": "O Estado e a Prefeitura publicam esse relatório a cada dois meses, até 30 dias após o fim do bimestre."
@@ -100,15 +100,15 @@
   "obras": {
    "fonte": "Portal da Transparência do Estado de MS — contratos de obras",
    "url": "https://www.transparencia.ms.gov.br/",
-   "coleta": "2026-11-27T00:45:15",
-   "dadoMaisRecente": "263 obras em andamento",
+   "coleta": "2026-11-28T00:54:40",
+   "dadoMaisRecente": "262 obras em andamento",
    "nivel": "ok",
    "mensagem": null
   },
   "publicidade": {
    "fonte": "Portal da Transparência do Estado de MS e SIG-Transparência da Prefeitura de CG",
    "url": "https://www.transparencia.ms.gov.br/",
-   "coleta": "2026-11-27T01:07:05",
+   "coleta": "2026-11-28T01:10:15",
    "dadoMaisRecente": "pagamento da Prefeitura de 24/11/2026",
    "nivel": "ok",
    "mensagem": null
@@ -116,15 +116,15 @@
   "entidades": {
    "fonte": "Portal da Transparência do Estado de MS, SIG-Transparência da Prefeitura de CG, emendas (CGU) e cadastro de CNPJ da Receita",
    "url": "https://www.transparencia.ms.gov.br/",
-   "coleta": "2026-11-27T01:07:06",
-   "dadoMaisRecente": "962 entidades",
+   "coleta": "2026-11-28T01:10:15",
+   "dadoMaisRecente": "965 entidades",
    "nivel": "ok",
    "mensagem": null
   },
   "shows": {
    "fonte": "Portal Nacional de Contratações Públicas (PNCP) — contratações de artistas em MS",
    "url": "https://pncp.gov.br/",
-   "coleta": "2026-11-27T00:49:04",
+   "coleta": "2026-11-28T00:49:11",
    "dadoMaisRecente": "publicação de 25/11/2026",
    "nivel": "ok",
    "mensagem": null
@@ -132,7 +132,7 @@
   "alugueis": {
    "fonte": "PNCP (aluguel de imóvel sem licitação em MS) e SIG-Transparência da Prefeitura de CG (locação de imóveis)",
    "url": "https://pncp.gov.br/",
-   "coleta": "2026-11-27T01:04:33",
+   "coleta": "2026-11-28T01:09:13",
    "dadoMaisRecente": "210 contratos e 82 locadores da Prefeitura",
    "nivel": "ok",
    "mensagem": null
@@ -140,7 +140,7 @@
   "producao": {
    "fonte": "Câmara dos Deputados e Senado Federal — dados abertos das proposições (autoria e situação)",
    "url": "https://dadosabertos.camara.leg.br/",
-   "coleta": "2026-11-27T00:41:08",
+   "coleta": "2026-11-28T00:40:37",
    "dadoMaisRecente": "529 projetos de 11 parlamentares",
    "nivel": "ok",
    "mensagem": null
@@ -148,7 +148,7 @@
   "votacoes": {
    "fonte": "Câmara dos Deputados e Senado Federal — dados abertos das votações nominais do plenário",
    "url": "https://dadosabertos.camara.leg.br/",
-   "coleta": "2026-11-27T00:38:31",
+   "coleta": "2026-11-28T00:38:00",
    "dadoMaisRecente": "votação de 25/11/2026",
    "nivel": "ok",
    "mensagem": null
@@ -156,7 +156,7 @@
   "camaras-ms": {
    "fonte": "Portais de transparência das câmaras (Fiorilli SCPI / SAPL)",
    "url": null,
-   "coleta": "2026-11-27T00:37:28",
+   "coleta": "2026-11-28T00:37:26",
    "dadoMaisRecente": "13 de 14 câmaras atualizadas",
    "nivel": "atencao",
    "mensagem": "sem resposta do portal: Sonora (27/10/2026)"
@@ -164,7 +164,7 @@
   "judiciario": {
    "fonte": "Anexo VIII (Res. CNJ 102/2009) — portais do TRT24 e TRE-MS; TJMS via DadosJusBr",
    "url": "https://dadosjusbr.org/",
-   "coleta": "2026-11-27T00:37:26",
+   "coleta": "2026-11-28T00:37:26",
    "dadoMaisRecente": "folha de TRT24 10/2026, TRE-MS 10/2026, TJMS 09/2026",
    "nivel": "ok",
    "mensagem": null
@@ -172,7 +172,7 @@
   "senado-brasil": {
    "fonte": "Senado Federal — dados abertos",
    "url": "https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html",
-   "coleta": "2026-11-27T00:37:28",
+   "coleta": "2026-11-28T00:37:26",
    "dadoMaisRecente": "81 senadores",
    "nivel": "ok",
    "mensagem": null
@@ -180,7 +180,7 @@
   "conexoes": {
    "fonte": "Cruzamento das notas fiscais de todas as fontes acima",
    "url": null,
-   "coleta": "2026-11-27T01:08:13",
+   "coleta": "2026-11-28T01:10:14",
    "dadoMaisRecente": "gerado a cada coleta",
    "nivel": "ok",
    "mensagem": null
@@ -188,7 +188,7 @@
   "evolucao": {
    "fonte": "Notas fiscais das fontes acima + histórico do ano anterior",
    "url": null,
-   "coleta": "2026-11-27T01:08:13",
+   "coleta": "2026-11-28T01:10:14",
    "dadoMaisRecente": "gerado a cada coleta",
    "nivel": "ok",
    "mensagem": null
