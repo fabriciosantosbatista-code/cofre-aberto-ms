@@ -3,8 +3,8 @@
 Cofre Aberto MS — páginas de cachê por artista (/cache/<artista>/), a partir de dados/shows.json (PNCP)
 
 Pedido de 28/11/2026 (SEO, Search Console: buscas como "cachê chitãozinho e xororó"). Uma página por artista que:
-  - tem 2 ou mais contratações em MS no ano, OU
-  - tem uma contratação de R$ 300 mil ou mais, OU
+  - recebeu R$ 500 mil ou mais no ano (soma das contratações em MS), OU
+  - tem 10 ou mais contratações em MS no ano, OU
   - aparece nas buscas do Search Console (config/cache_buscas.json).
 Cada página: total pago por órgãos de MS no ano, a lista de contratações (órgão, cidade, data, evento, valor) com o link
 de cada uma no PNCP. Texto neutro: o valor é o do contrato publicado; não é acusação.
@@ -19,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from gerar_paginas_temas import (ANO, ROOT, SITE, brl, data_br, e, escreve_se_mudou, faq_ld, kpis, milhar, pagina,  # noqa: E402
                                  tabela)
 
-MINIMO_CONTRATOS, VALOR_ALTO = 2, 300000
+MINIMO_CONTRATOS, TOTAL_MINIMO = 10, 500000  # 1º lote (28/11/2026): 55 páginas; em 26/12 vemos quais tiveram impressões
 
 
 def slug(t):
@@ -41,7 +41,7 @@ def selecionar(shows):
             grupos.setdefault(s["chaveArtista"], []).append(s)
     procurados = set(buscas())
     return {k: l for k, l in grupos.items()
-            if len(l) >= MINIMO_CONTRATOS or max(x["valor"] for x in l) >= VALOR_ALTO or slug(k) in procurados}
+            if sum(x["valor"] for x in l) >= TOTAL_MINIMO or len(l) >= MINIMO_CONTRATOS or slug(k) in procurados}
 
 
 def nome_exibido(chave, lst):
@@ -113,7 +113,7 @@ def main():
         linhas.append((url, *info))
     linhas.sort(key=lambda t: -t[2])
     idx = (f"<p>Quanto órgãos públicos de MS pagaram a cada artista em {ano}, com o link de cada contrato no PNCP. Entram os artistas com "
-           f"{MINIMO_CONTRATOS} ou mais contratações, uma contratação de {brl(VALOR_ALTO)} ou mais, ou que são procurados na busca.</p>"
+           f"{brl(TOTAL_MINIMO)} ou mais pagos no ano, {MINIMO_CONTRATOS} ou mais contratações, ou que são procurados na busca.</p>"
            + tabela(["Artista", "#Contratações", "#Total pago"], [
                f"<tr><td><a href='{u}'>{e(n)}</a></td><td class='num'>{milhar(c)}</td><td class='num'>{brl(t)}</td></tr>" for u, n, t, c in linhas]))
     paginas.append(("/cache/", pagina("/cache/", f"Cachês de artistas pagos por órgãos de MS em {ano} | Cofre Aberto MS",
@@ -121,7 +121,7 @@ def main():
                                       f"Cachês de artistas pagos em MS em {ano}", idx).replace("{RELACIONADAS}", "")))
     mudou = sum(escreve_se_mudou(ROOT / u.strip("/") / "index.html", h) or 0 for u, h in paginas)
     atuais = {u.strip("/").split("/")[-1] for u, _ in paginas if u != "/cache/"}
-    for p in (ROOT / "cache").glob("*/"):  # artista que saiu do critério: página removida (sai também do sitemap)
+    for p in [x for x in (ROOT / "cache").glob("*") if x.is_dir()]:  # artista que saiu do critério: página removida (sai também do sitemap)
         if p.name not in atuais:
             for f in p.iterdir():
                 f.unlink()
